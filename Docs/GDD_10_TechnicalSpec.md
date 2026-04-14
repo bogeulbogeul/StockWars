@@ -18,6 +18,7 @@ public class StockData : ScriptableObject {
     public float basePrice;       // 초기 상장가 (v2.25.0 매트릭스 기준)
     public VolatilityTier tier;   // S, A, B, C 등급
     public float currentPrice;    // 실시간 변동 가격
+    public List<float> priceHistory; // 최근 7일(168시간) 가격 이력 (선 그래프용)
 }
 ```
 
@@ -47,6 +48,22 @@ public class RumorData : ScriptableObject {
     1. `Portfolio.SellAll(MarketPrice * 0.7f); // 급매 패널티 30%`
     2. `FurnitureManager.RemoveLatest(); // 스탯 버프 즉시 삭제`
 
+### 2.3. 상장 폐지 및 IPO 서비스 (Delisting & IPO Logic)
+- **Delisting Process**:
+    ```csharp
+    public void FinalizeDelisting(string stockID) {
+        var stock = DataRegistry.GetStock(stockID);
+        stock.isDelisted = true;
+        // 정리 매매 종료 후 강제 청산
+        PlayerPortfolio.RemoveAll(stockID); 
+        MarketManager.TriggerIPO(); // 공석 발생 시 즉시 IPO 시퀀스 진입
+    }
+    ```
+- **IPO Sequence**:
+    1. 후보군 리스트(`pendingIPOList`)에서 대상 섹터 매칭.
+    2. `NewsService.Announce("New Listing", stockName);`
+    3. 지정된 쿨타임 후 `ActiveStocks.Add(newStock);`
+
 ---
 
 ## 3. 씬 관리 전략 (Scene Management)
@@ -62,3 +79,45 @@ public class RumorData : ScriptableObject {
 
 ## 4. 기획 의도와 기술적 결합 (Design Intent)
 본 기술 명세는 **'데이터의 휘발성(찌라시)'**과 **'물리적 박탈(압류)'**이라는 기획 의도를 기술적으로 뒷받침하기 위해 설계되었습니다. 모든 거래는 **Atomic Transaction**으로 처리되어 강제 종료 시에도 이자와 압류 데이터가 무결하게 보존됩니다.
+
+---
+
+## 5. 데이터 최적화 및 캐시 관리 (Data Optimization) [v2.60.0]
+실시간으로 발생하는 대량의 데이터를 효율적으로 관리하여 메모리 비대화와 가비지(Garbage) 누적을 방지합니다.
+
+### 5.1. 주가 데이터 슬라이딩 윈도우 (Sliding Window)
+- **대상**: `StockData.priceHistory`
+- **정책**: 최대 길이를 **168개(7일 x 24시간)**로 고정.
+- **메커니즘**: 
+    - `Enqueue`: 매시간 정각에 새로운 가격 데이터 추가.
+    - `Trim`: `Count > 168`인 경우 가장 오래된 데이터(`Index 0`)를 즉시 제거하여 메모리 할당량을 상수로 유지.
+
+### 5.2. 마일스톤 아카이빙 (Milestone Archiving)
+초장기 데이터(1개월~1년)는 전 종목의 가격 대신 유저의 **성치 요약본**만 보존합니다.
+- **저장 시점**: 매 정산 시점(Weekly).
+- **데이터 구조**:
+    ```csharp
+    [Serializable]
+    public struct MilestoneData {
+        public DateTime timeStamp;   // 정산 일자
+        public float totalAsset;     // 당시 총 자산
+        public float totalDebt;      // 당시 총 부채
+        public string topStockName;  // 수익 기여도 1위 종목
+    }
+    ```
+- **의도**: 최소한의 메모리 점유로 유저에게 장기적인 성장 서사를 시각화할 수 있는 기반 마련.
+
+### 5.4. 액면분할 데이터 보정 (Stock Split Normalization) [v2.65.0]
+액면분할 시 데이터 무결성과 차트의 연속성을 위해 다음 로직을 **Atomic Transaction**으로 수행합니다.
+
+1. **포트폴리오 보정 (Portfolio Sync)**: 
+    - 보유 수량: `SharesOwned = SharesOwned * SplitRatio`
+    - 평균 단가: `AvgPrice = floor(AvgPrice / SplitRatio)`
+2. **차트 데이터 소급 보정 (Chart Normalization)**:
+    - 대상: `StockData.priceHistory` 내의 모든 인덱스.
+    - 로직: `price = floor(price / SplitRatio)`
+    - 목적: 차트에서 비정상적인 가격 급락(Gap)이 보이지 않도록 시각적 연속성 확보.
+
+### 5.3. 휘발성 오브젝트 풀링 (Object Pooling & TTL)
+- **찌라시 관리**: 만료된 `RumorData`는 즉시 리스트에서 제거하고 `DestroyImmediate` 혹은 풀링(Pooling)을 통해 메모리 파편화를 방지함.
+- **UI 글리치 효과**: 셰이더 기반의 연출을 우선하여 CPU의 가비지 생성을 최소화함.

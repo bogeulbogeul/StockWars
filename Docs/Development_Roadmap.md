@@ -13,7 +13,8 @@
 - [ ] 4. **GlobalSettings.cs 구현**: 게임 전역 레이어, 태그, 공통 상수(Color, Speed) 정의
 - [ ] 5. **GameEnums.cs 통합 정의**: StockTier, ThemeType, GameState, ItemSlot 등 열거형 정의
 - [ ] 6. **Singleton<T> 베이스 클래스**: 모든 매니저의 기반이 될 제네릭 싱글톤 템플릿 구현
-- [ ] 7. **GameManager.cs 구현**: 게임 주 상태(메뉴, 오피스, 타운, 휴장 등) 제어 로직
+- [ ] 7. **GameManager.cs 구현**: 게임 주 상태(메뉴, 캐릭터 생성, 오피스, 타운 등) 제어 로직
+- [ ] 7.1. **CharacterCreationUI.cs 구현**: 외형 커스텀, 성향 선택 및 초기 데이터 생성 UI
 - [ ] 8. **DataManager.cs(Persistence)**: JSON 기반 로컬 저장/불러오기(Save/Load) 핵심 로직
 - [ ] 9. **TimeManager.cs(Tick)**: 게임 내부 틱(Tick) 시스템 및 분/시 단위 변환 엔진
 - [ ] 10. **TimeManager.cs(Day/Week)**: 거래일 및 주간 사이클 갱신 이벤트 트리거 구축
@@ -36,6 +37,8 @@
 - [ ] 25. **PlayerWallet.cs 구현**: 가용 현금(Cash) 및 누적 수익금 실시간 트래킹 모듈
 - [ ] 26. **PortfolioManager.cs 구현**: 보유 종목별 평단가, 보유 비중, 실시간 손익 계산
 - [ ] 27. **DividendCalculator.cs 구현**: 72시간 보유(HODL) 판정 및 배당금 입금 시스템
+- [ ] 27.1. **DelistingEngine.cs 구현**: 정리 매매 및 강제 청산 로직 구현
+- [ ] 27.2. **IPOSystem.cs 구현**: 공석 발생 시 신규 상장 및 상장 예고 공시 엔진 구현
 
 ### Phase 3: 금융 압박 및 사회적 신용 (Finance & Social Credit)
 - [ ] 28. **DebtAccount.cs 정의**: 대출 원금 및 누적 이자 데이터 관리 클래스
@@ -66,14 +69,15 @@
 
 ### Phase 6: 프론트엔드 UI 구축 (UI/UX)
 - [ ] 49. **MainDashboard.cs 구현**: 상단 HUD (현금, 시간, 총자산, 부채) 실시간 갱신 UI
-- [ ] 50. **TickerUI.cs 연출**: 화면 하단의 흐르는 실시간 종목 시세 전광판 연출
+- [ ] 50. **TickerUI.cs 연출**: 화면 하단의 흐르는 실시간 종목 시세 선 그래프(Area View) 전광판 연출
 - [ ] 51. **StockListUI.cs 보드**: 종목 리스트, 필터링, 검색 기능이 포함된 주식 보드 UI
-- [ ] 52. **DetailChartUI.cs 시각화**: LineRenderer 등을 이용한 7일 주가 그래프 레이아웃
+- [ ] 52. **DetailChartUI.cs 시각화**: LineRenderer를 이용한 7일 주가 선 그래프 (Area Chart) 레이아웃
 - [ ] 53. **OrderWindow.cs 팝업**: 매수/매도 수량 조절 슬라이더 및 금융 거래 실행창
 - [ ] 54. **PortfolioUI.cs 요약**: 소유 종목 리스트와 전체 수익률 상세 요약 페이지
 - [ ] 55. **InventoryUI.cs 구축**: 7개 카테고리 탭 방식의 아이템 선택 및 장착 UI
 - [ ] 56. **ShopUI.cs 구축**: 데일리 랜덤 매대와 상설 매대, VIP 전용 슬롯 UI
 - [ ] 57. **PhoneOverlay.cs 스마트폰**: 전체화면 스마트폰 UI (친구, 랭킹, 알림, 설정)
+- [ ] 57.1. **MailSystemUI.cs 구축**: 스마트폰 내 메일 리스트, 상세 보기 및 아이템 수령 로직
 
 ### Phase 7: 도시 생활 및 미니게임 (Lifestyle)
 - [ ] 58. **TownMapController.cs**: 라이프스타일 거점(은행, 증권, 펍 등) 이동 로직
