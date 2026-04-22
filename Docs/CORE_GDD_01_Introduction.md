@@ -1,4 +1,4 @@
-# StockWars GDD: 01. 프로젝트 소개 및 디자인 철학
+﻿# StockWars GDD: CORE_GDD_01. 프로젝트 소개 및 디자인 철학
 
 **버전:** v2.14.0 (GDD 모듈화 및 구조 재편 완결본)  
 **상태:** 활성 (Active)  

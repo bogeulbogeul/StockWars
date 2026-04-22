@@ -1,4 +1,4 @@
-# StockWars GDD: 19. 캐릭터 생성 시스템 (Character Creation)
+﻿# StockWars GDD: CORE_GDD_08. 캐릭터 생성 시스템 (Character Creation)
 
 **버전:** v1.0.0 (초안 구축)  
 **핵심 컨셉:** 사이퍼 증권(Cipher Securities) 트레이더 등록 및 출입증 발급 연출  

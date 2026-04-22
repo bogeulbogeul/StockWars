@@ -1,4 +1,4 @@
-# StockWars GDD: 21. 고스트 트레이더 시스템 (Ghost Trader System)
+﻿# StockWars GDD: MOD_GDD_13. 고스트 트레이더 시스템 (Ghost Trader System)
 
 **버전:** v1.0.0 (신규 수립)  
 **핵심 기획:** 완벽한 익명성을 기반으로 한 가상 거래량 및 시장 지지선 형성
@@ -29,7 +29,7 @@
 - 반대로 과열 시 고가에서 물량을 던져 시장의 속도를 조절함.
 
 ### 3.2. 세력 시뮬레이션 (Market Manipulation Sim)
-- **매집 세력**: [GDD_09]의 찌라시 내용과 연동되어, 호재가 예정된 종목을 미리 야금야금 사 모으는 행동을 보여줌.
+- **매집 세력**: [MOD_MOD_CORE_GDD_01]의 찌라시 내용과 연동되어, 호재가 예정된 종목을 미리 야금야금 사 모으는 행동을 보여줌.
 - **유도**: 유저가 고스트의 거래 로그(티커)를 보고 "오, 누군가 사고 있네? 나도 타야지"라는 판단을 내리게 유도함.
 
 ---
@@ -37,7 +37,7 @@
 ## 4. 엔진 연동 (Engine Integration)
 
 ### 4.1. 주가 엔진 영향 (Price Impact)
-고스트의 거래는 [GDD_02]의 가격 수식에 `ExternalVolume`으로 포함되어 실시간 주가를 변동시킵니다.
+고스트의 거래는 [CORE_GDD_02]의 가격 수식에 `ExternalVolume`으로 포함되어 실시간 주가를 변동시킵니다.
 - `PriceChange = sqrt((TotalUserBuy + GhostBuy) / FloatingSupply) * VolatilityFactor`
 
 ### 4.2. 수익 정산 및 소각

@@ -1,4 +1,4 @@
-# StockWars GDD: 17. 예비 종목 풀 (Reserve Stock Pool)
+﻿# StockWars GDD: MOD_GDD_10. 예비 종목 풀 (Reserve Stock Pool)
 
 **버전:** v1.0.0 (배포용 초안)  
 **역할:** 상장 폐지 시 시장의 공백을 메우기 위한 IPO 대기 종목군

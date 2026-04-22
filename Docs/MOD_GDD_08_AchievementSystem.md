@@ -1,4 +1,4 @@
-# StockWars GDD: 14. 업적 시스템 (Achievement System)
+﻿# StockWars GDD: MOD_GDD_08. 업적 시스템 (Achievement System)
 
 **버전:** v2.39.2 (최종 완결본 - 히든 업적 사양 수정 반영)  
 **기능:** 업적 달성 조건, 칭호 보상, 비밀 매대 해금 규칙 명세
