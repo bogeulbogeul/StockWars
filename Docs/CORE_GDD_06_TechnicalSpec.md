@@ -1,272 +1,148 @@
 # StockWars GDD: CORE_GDD_06. 기술 명세 및 데이터 구조 (Technical Spec)
 
-**버전:** v2.25.0 (최종 완결본)  
-**기능:** 시스템 구현을 위한 데이터 아키텍처 및 핵심 엔진 의사 코드 명세
+**버전:** v5.0.0 (2026.05.01 최종 SSOT 및 하이브리드 엔진 통합본)  
+**핵심 기획:** 실시간-접속 시간 하이브리드 동기화, 이중 스탯 시스템, 원자적 정산 엔진 명세
 
 ---
 
-## 1. 데이터 모델링 (Data Structures)
+## 1. 하이브리드 시간 동기화 정책 (Hybrid Time Sync)
 
-교수님, 본 프로젝트는 데이터의 일관성과 확장성을 위해 유니티의 **ScriptableObject** 시스템을 적극 활용합니다.
+본 시스템은 '서버 시간(Server Time)'과 '유저 플레이 시간(Play Time)'을 분리하여 관리함으로써 경제적 공정성과 유저 편의성을 동시에 확보합니다.
 
-### 1.1. StockData (주식 기초 데이터)
+### 1.1. 실시간 (Server Time) 적용 항목
+유저가 오프라인일 때도 서버 클락($Server\ Clock$)에 의해 계속 흐르는 항목입니다. 로그인 시 `Delta Time`을 계산하여 배치 정산(Batch Processing)합니다.
+- **블랙 스완 (100일 주기)**: 전 세계 유저에게 동일한 타이밍에 발생하여 '시장의 냉혹함'을 연출합니다.
+- **은행 이자 및 오피스 유지비**: 오프라인 중에도 자산 가용 비용은 발생합니다 (리텐션 요소).
+- **압류 엔진 (Forfeiture)**: 전당포 및 은행 채무의 상환 기한은 실시간(168시간 등)을 따릅니다.
+- **로또 추첨**: 매주 토요일 21:00 정각에 일괄 처리됩니다.
+
+### 1.2. 접속 시간 (Play Time) 적용 항목
+유저가 게임에 접속하여 활동 중일 때만 소모되거나 갱신되는 항목입니다.
+- **서적 정독 (Reading)**: 1~5분간의 집중 시간이 필요하며, 정지 메뉴 호출 시 일시 정지됩니다.
+- **버프 지속 시간**: 아이템(각성제 등) 효과는 순수 플레이 시간만큼만 유지됩니다.
+- **노동 스테미너 회복**: 오프라인 회복 보너스가 존재하지만, 기본적으로 유저의 활발한 활동을 전제로 합니다.
+
+---
+
+## 2. 플레이어 데이터 구조 (Player Data Structure)
+
+### 2.1. 이중 스탯 시스템 (Dual Stat System)
+최종 스탯 효과는 `Base Blocks`와 `Bonus Fragments`의 합산으로 결정됩니다.
+
 ```csharp
-[CreateAssetMenu]
-public class StockData : ScriptableObject {
-    public string stockName;      // 종목명
-    public SectorType sector;     // IT, 바이오, 엔터 등
-    public float basePrice;       // 초기 상장가 (v2.25.0 매트릭스 기준)
-    public VolatilityTier tier;   // S, A, B, C 등급
-    public float currentPrice;    // 실시간 변동 가격
-    public List<float> priceHistory; // 최근 7일(168시간) 가격 이력 (선 그래프용)
-}
-```
+public struct UserStats {
+    // Base Blocks: 캐릭터 레벨업으로 획득 (최대 5)
+    public int base_analysis_lv;   // 분석력
+    public int base_negotiation_lv; // 협상력
+    public int base_trading_lv;     // 운용력
+    public int base_recovery_lv;    // 회복력
 
-### 1.2. RumorData (찌라시 데이터)
-```csharp
-[CreateAssetMenu]
-public class RumorData : ScriptableObject {
-    public string targetStockID;  // 대상 종목
-    public RumorType type;        // 호재, 악재, 가짜뉴스
-    public string[] tierDialogs;  // Tier 1~3 텍스트 배열
-    public float impactValue;     // 주가에 미칠 영향력 가중치
-    public DateTime expiryTime;   // 소멸 시간 (24h TTL)
-}
-```
+    // Bonus Fragments: 서적 정독, 가구 세트, 세미나 등으로 무제한 누적
+    public float bonus_analysis_val;
+    public float bonus_negotiation_val;
+    public float bonus_trading_val;
+    public float bonus_recovery_val;
 
-### 1.3. InstitutionData (기관 및 위탁 정보) [v3.5.0]
-```csharp
-[CreateAssetMenu]
-public class InstitutionData : ScriptableObject {
-    public string ownerID;            // 기관장(유저) ID
-    public long trustFund;            // 위탁 운용 총액 (Trust Fund)
-    public float commissionRate;      // 수익 공유 수수료율 (10~20%)
-    public long accumulatedEmbezzled; // 누적 횡령액 (적색 수배 트리거용)
-    public bool isWanted;             // 적색 수배 여부
-}
-```
-
-### 1.4. ShortPosition (공매도 포지션) [v3.5.0]
-```csharp
-[Serializable]
-public struct ShortPosition {
-    public string stockID;      // 공매도 종목
-    public int quantity;        // 수량
-    public float entryPrice;    // 진입 가격
-    public long collateral;     // 동결된 증거금 (150%)
+    // 최종 효과 계산 공식
+    // FinalEffect = (Base_LV * Unit_Value) + Bonus_Value
 }
 ```
 
 ---
 
-## 2. 핵심 엔진 로직 (Core Engine Logic)
+## 3. 금융 정산 엔진 (Settlement Engine)
 
-### 2.1. 희소성 기반 가격 엔진 (Scarcity Engine)
-유저의 매수 총량이 유동 주식수(Floating Supply)의 일정 비율을 넘어서면 주가 가중치를 제곱근 함수로 적용하여 폭등을 유도합니다.
-- **Formula**: `PriceChange = sqrt(TotalBuyVolume / FloatingSupply) * VolatilityFactor`
-
-### 2.2. 자산 압류 엔진 (Seizure Engine)
-정산 시 자산 가치가 0 이하 혹은 이자 체납 시 실행됩니다.
-- **Priority**:
-    1. `Portfolio.SellAll(MarketPrice * 0.7f); // 급매 패널티 30%`
-    2. `FurnitureManager.RemoveLatest(); // 스탯 버프 즉시 삭제`
-    3. **[v3.5.0] Margin Call**: 마진콜 임계값(100%) 도달 시 시장가 강제 매수(Cover) 및 5배 수수료 부과.
-
-### 2.3. 상장 폐지 및 IPO 서비스 (Delisting & IPO Logic)
-- **Delisting Process**:
-    ```csharp
-    public void FinalizeDelisting(string stockID) {
-        var stock = DataRegistry.GetStock(stockID);
-        stock.isDelisted = true;
-        // 정리 매매 종료 후 강제 청산
-        PlayerPortfolio.RemoveAll(stockID); 
-        MarketManager.TriggerIPO(); // 공석 발생 시 즉시 IPO 시퀀스 진입
-    }
-    ```
-- **IPO Sequence**:
-    1. 후보군 리스트(`pendingIPOList`)에서 대상 섹터 매칭.
-    2. `NewsService.Announce("New Listing", stockName);`
-    3. 지정된 쿨타임 후 `ActiveStocks.Add(newStock);`
-
----
-
-## 3. 씬 관리 전략 (Scene Management)
-
-| 씬 이름 | 주요 역할 | UI/UX 특징 |
-| :--- | :--- | :--- |
-| **Scene_HomeOffice** | 가구 배치, 트레이딩, 안나와 대화 | Lo-Fi 감성 조명, 서랍장 인벤토리 |
-| **Scene_Town** | 노동 시설(편의점/치킨/상하차) 이동 | 3인칭 쿼터뷰 혹은 횡스크롤 픽셀 아트 |
-| **Scene_Labor_MiniGame** | 3종 미니게임 실행 | 조작 집중을 위한 UI 오버레이 |
-| **Scene_Market** | 전체 주식 차트 및 대형 시황판 | 하이테크-빈티지 감성의 전광판 연출 |
-
----
-
-## 4. 기획 의도와 기술적 결합 (Design Intent)
-본 기술 명세는 **'데이터의 휘발성(찌라시)'**과 **'물리적 박탈(압류)'**이라는 기획 의도를 기술적으로 뒷받침하기 위해 설계되었습니다. 모든 거래는 **Atomic Transaction**으로 처리되어 강제 종료 시에도 이자와 압류 데이터가 무결하게 보존됩니다.
-
----
-
-## 5. 데이터 최적화 및 캐시 관리 (Data Optimization) [v2.60.0]
-실시간으로 발생하는 대량의 데이터를 효율적으로 관리하여 메모리 비대화와 가비지(Garbage) 누적을 방지합니다.
-
-### 5.1. 주가 데이터 슬라이딩 윈도우 (Sliding Window)
-- **대상**: `StockData.priceHistory`
-- **정책**: 최대 길이를 **168개(7일 x 24시간)**로 고정.
-- **메커니즘**: 
-    - `Enqueue`: 매시간 정각에 새로운 가격 데이터 추가.
-    - `Trim`: `Count > 168`인 경우 가장 오래된 데이터(`Index 0`)를 즉시 제거하여 메모리 할당량을 상수로 유지.
-
-### 5.2. 마일스톤 아카이빙 (Milestone Archiving)
-초장기 데이터(1개월~1년)는 전 종목의 가격 대신 유저의 **성치 요약본**만 보존합니다.
-- **저장 시점**: 매 정산 시점(Weekly).
-- **데이터 구조**:
-    ```csharp
-    [Serializable]
-    public struct MilestoneData {
-        public DateTime timeStamp;   // 정산 일자
-        public float totalAsset;     // 당시 총 자산
-        public float totalDebt;      // 당시 총 부채
-        public string topStockName;  // 수익 기여도 1위 종목
-    }
-    ```
-- **의도**: 최소한의 메모리 점유로 유저에게 장기적인 성장 서사를 시각화할 수 있는 기반 마련.
-
-### 5.4. 액면분할 데이터 보정 (Stock Split Normalization) [v2.65.0]
-액면분할 시 데이터 무결성과 차트의 연속성을 위해 다음 로직을 **Atomic Transaction**으로 수행합니다.
-
-1. **포트폴리오 보정 (Portfolio Sync)**: 
-    - 보유 수량: `SharesOwned = SharesOwned * SplitRatio`
-    - 평균 단가: `AvgPrice = floor(AvgPrice / SplitRatio)`
-2. **차트 데이터 소급 보정 (Chart Normalization)**:
-    - 대상: `StockData.priceHistory` 내의 모든 인덱스.
-    - 로직: `price = floor(price / SplitRatio)`
-    - 목적: 차트에서 비정상적인 가격 급락(Gap)이 보이지 않도록 시각적 연속성 확보.
-
-### 5.3. 휘발성 오브젝트 풀링 (Object Pooling & TTL)
-- **찌라시 관리**: 만료된 `RumorData`는 즉시 리스트에서 제거하고 `DestroyImmediate` 혹은 풀링(Pooling)을 통해 메모리 파편화를 방지함.
-- **UI 글리치 효과**: 셰이더 기반의 연출을 우선하여 CPU의 가비지 생성을 최소화함.
-
----
-
-## 6. 금융 및 이벤트 데이터 무결성 [v2.60.0]
-
-### 6.1. 주간 금융 틱 (Finance Tick) 우선순위 설계 [v3.5.0]
-매주 월요일 00:00에 실행되는 **Atomic Transaction** 내에서 논리적 모순이 발생하지 않도록 다음 순서로 연산을 처리합니다.
+### 3.1. 주간 금융 틱 (Finance Tick) 우선순위
+매주 월요일 00:00에 실행되는 **Atomic Transaction** 내에서 다음 순서로 연산을 처리합니다.
 
 1.  **배당금 입금 (Credit First)**: 72시간 보유 조건을 충족한 종목에 대해 배당금 지급.
-2.  **유지비 차감 (Maintenance)**: 오피스 레벨(LV 1~4)에 따른 고정 비용(500G~5,000G) 선차감.
-3.  **이자 및 부채 상환 (Debt Settlement)**: '이자 우선 상환' 원칙에 따라 미납/당월 이자를 먼저 0으로 만든 후 원금 상환.
-4.  **기관 운영비 정산**: 기관 유지비(5,000G) 및 위탁 운용 수익(15%) 정산.
-5.  **적색 수배 및 압류 판정**: 최종 가용 자산 확인 후 Seizure Engine 혹은 Red Notice 발동 여부 결정.
+2.  **유지비 차감 (Maintenance)**: 오피스 레벨(LV 1~5)에 따른 고정 비용 선차감.
+3.  **이자 및 부채 상환 (Debt Settlement)**: 이자 우선 상환 원칙에 따라 이자 정산 후 원금 상환.
+4.  **적색 수배 및 압류 판정**: 최종 가용 자산 확인 후 Seizure Engine 혹은 Red Notice 발동.
 
-### 6.2. 원자적 트랜잭션 (Atomic Transaction)
-이자 차감, 배당금 입금, 유지비 정산 프로세스는 하나의 트랜잭션으로 묶여 실행됨. 또한 **고스트 트레이더의 모든 수익**은 정산 시점에 시스템에 의해 전액 소각(Nullify) 처리되어야 함.
-
----
-
-## 7. 로또 및 전당포 시스템 기술 명세 [v3.00.0]
-
-### 7.1. 로또 판매 상태 엔진 (Lotto Sales State Engine)
-- **상태 판정 로직 (IsSalesLocked)**:
-    - **조건**: `(CurrentDay == Saturday)` && `(19:00 <= CurrentTime < 21:05)`
-    - **처리**: 위 조건 충족 시 `LottoManager.Purchase()` API 호출 시 `ErrorCode.SALES_LOCKED` 반환.
-- **당첨금 풀 프리징 (Pool Freezing)**:
-    - 매주 토요일 19:00 정각에 현재까지의 총 판매액을 데이터베이스에 고정(Snapshot).
-
-### 7.2. 전당포 담보 및 실시간 몰수 엔진 (Pawn & Forfeiture Engine)
-- **Real-time Tick Check**: 담보 아이템의 `LoanTimestamp`를 서버 시간과 매 프레임 대조하여 168시간 초과 여부를 감시함.
-- **Ownership Transfer**: 기한 만료 즉시 아이템의 `OwnerID`를 `Barter_Shop`으로 강제 이전하고, 유저 인벤토리에서 삭제 처리함.
-- **Interest Logic**: `Current_Pawn_Debt = Current_Pawn_Debt * 1.05` (매주 월요일 00:00 복리 적용).
-
-### 7.3. 서사적 역제안 엔진 (Counter-Proposal Engine)
-- **트리거**: 유저가 특정 종목의 '상장 폐지' 정보를 보유한 상태로 바터 방문 시 발생.
-- **효과**: 정보 소모와 교환으로 부채 이자 탕감 혹은 상환 기한 72시간 연장 처리.
-
-## 8. 엔드게임 보조 엔진 (Short & Embezzlement) [v3.5.0]
-- **Embezzlement Tracker**: 위탁 계좌 인출 시 `ManagedAssets.TotalWithdrawal` 누적 연산.
-- **누진적 적색 수배 트리거 (Progressive Trigger)**:
-    - **1단계 (의심: 5~10%)**: 안나의 경고 메일 발송 및 'Standard' 표정에서 날카로운 지적 추가.
-    - **2단계 (조사: 10~15%)**: 모든 상점 이용 수수료 **2.0배** 적용. 안나의 'Angry' 표정 고정.
-    - **3단계 (수배: 15% 초과)**: **[적색 수배]** 발동. 안나 상호작용 완전 차단 및 **뒷모습 초상화** 강제 고정.
-- **상환 태만 페널티 (Reliability Drop)**:
-    - **조건**: `(Cash >= DebtInterest)` && `(InterestPaid == false)` 상태로 주간 정산 종료 시.
-    - **결과**: `Anna.Reliability -= 1;` 및 'Pain' 표정 애니메이션 1회 실행.
-- **횡령 복구 및 소각 (Recovery & Burn)**:
-    - **복구 조건**: 횡령액이 임계치(10%) 이하로 낮아지는 즉시 수수료 배율 정상화(1.0).
-    - **소각 로직**: 위탁 원금 복구 트랜잭션 시, 입금액의 **1%**를 `System_Burn_Account`로 강제 전송하고 소각 처리.
-- **Bounty Loop**: 수배자의 공매도 포지션 붕괴를 유도한 유저에게 횡령액의 일부를 보상으로 분배.
+### 3.2. 실시간 몰수 엔진 (Real-time Forfeiture)
+- **담보 상태 감시**: `LoanTimestamp`를 체크하여 168시간 경과 시 즉시 소유권을 바터(Barter)에게 이전.
+- **스탯 실시간 무효화**: 압류 즉시 해당 아이템이 제공하던 **모든 스탯 및 기능 버프는 실시간으로 무효화** 처리되어야 함.
 
 ---
 
----
+## 4. 엔드게임 보조 엔진 (Short & Embezzlement)
 
-## 9. 실시간 마진콜 감시 엔진 (Margin Watcher) [v3.5.0]
-공매도 포지션의 리스크를 실시간으로 체크하는 백그라운드 로직입니다.
+### 4.1. 적색 수배 (Red Notice) 로직
+횡령액 임계치에 따른 누진적 페널티 시스템입니다.
+- **1단계 (의심: 5~10%)**: 안나의 경고 메일 발송 및 지적 대사 추가.
+- **2단계 (조사: 10~15%)**: 상점 수수료 2.0배 적용. 안나의 'Angry' 표정 고정.
+- **3단계 (수배: 15% 초과)**: **[적색 수배]** 발동. 안나 상호작용 차단 및 뒷모습 초상화 고정.
+- **회생 프로토콜**: 
+    - **자수 (120% 납부)**: 은행을 통해 횡령액+20% 벌금 납부. 피해자에게 120% 전액 보상 트리거 발동.
+    - **신분 세탁 (200% 납부)**: 안드레를 통해 은밀히 해결. 피해자 구제금으로는 100%만 전달되며 나머지는 시스템 소각.
 
-- **Update Loop**: 매 프레임 주가 변동 시마다 포지션의 손실률 계산.
-- **Trigger Levels**:
-    - **Lvl 1 (Warning)**: `Loss >= Collateral * 0.9` 
-        - 스마트폰 메일 앱 긴급 푸시 발송 및 UI 경고.
-    - **Lvl 2 (Force Close)**: `Loss >= Collateral * 1.0`
-        - 포지션 강제 청산 및 증거금 전액 몰수. (유예 기간 72시간 종료 후 실행)
-        - **유저 보호**: 추가 패널티 없이 **표준 수수료(0.1%)**만 부과 후, 자산이 마이너스일 경우 **[MOD_GDD_14] 개인 회생** 엔진으로 강제 이진.
-- **Anna's Bailout Quest (구원 퀘스트)**:
-    - **보상**: 파산 전 자산과 무관하게 **재기를 위한 최소 시드(Fixed Amount)** 지급 및 **이자 초기화**.
-    - **실패 패널티 (Critical)**: 퀘스트 실패 시 `Rehab_Penalty_Duration`을 기본값의 2배인 **336시간(2주)**으로 강제 고정하고 `Trading_Fee_Multiplier` 2.0배 즉시 적용.
-    - **데이터 영속성 (Persistence)**: 모든 패널티 상태는 세이브 데이터에 직렬화되어 세션 종료 후에도 엄격히 유지됨.
-
----
-
-## 10. 글리치 해독 및 블랙 스완 매니저 (Glitch & Crisis Manager) [v4.0.0]
-
-### 10.1. 분석력 기반 정보 오염 알고리즘
-찌라시 텍스트 생성 시 유저의 `Analysis_Stat`에 따라 `Decryption_Rate`를 적용하여 원문을 글리치 텍스트로 변환합니다.
-- **가림 확률 산식**: `HideChance = 1.0f - Decryption_Rate`
-- **우선순위 큐 (Masking Priority)**:
-    1.  `[STOCK_NAME]` (최우선 가림)
-    2.  `[DIRECTION_UP_DOWN]`
-    3.  `[CAUSE_REASON]`
-- **전략적 노이즈**: `Analysis_Stat == 5` 일지라도 `Strategic_Noise_Chance(0.05f)`를 체크하여 5% 확률로 오보 찌라시 생성.
-
-### 10.2. 블랙 스완 사이클 매니저 (Black Swan Cycle)
-- **주기 상수**: `BLACK_SWAN_CYCLE = 100 Days (Real-time)`
-- **시나리오 트리거**: `CycleDay % 100 == 0` 일 때 랜덤 시나리오 인스턴스 생성.
-- **예외 처리 플래그 (Relief Logic)**:
-    - `Weekly_Tick_Bypass = true`: 블랙 스완 진행 중 월요일 정산 무시. (이자/유지비 0원 처리)
-    - `Seizure_Engine_Lock = true`: 이벤트 중 압류 로직 가동 완전 중단.
-    - `Relief_Week_Active = true`: 정상화 후 차기 정산일까지 `Interest_Rate = 0.0f` 강제 고정.
-- **환경 변수 제어**:
-    - `Emergency_Red_Lighting = true` (시작 시)
-    - `Buy_Order_Disabled = true` (Scenario 01 한정)
-    - `Ghost_Price_Override = true` (Scenario 03 한정)
+### 4.2. 마진콜 감시 (Margin Watcher)
+- **Lvl 1 (Warning)**: 손실률 90% 도달 시 긴급 푸시 알림.
+- **Lvl 2 (Force Close)**: 손실률 100% 도달 시 포지션 강제 청산 및 증거금 몰수.
+- **안나의 구원 퀘스트**: 파산 위기 시 1회 한정으로 최소 시드 지급 및 이자 초기화 퀘스트 발생.
 
 ---
 
-## 11. 은행 및 저축 시스템 연산 엔진 (Banking Logic) [v4.0.0]
+## 5. 블랙 스완 및 글리치 매니저 (Glitch & Crisis)
 
-### 11.1. 수익률 및 수수료 상수 (Constants)
-- `DEPOSIT_INTEREST_RATE = 0.002f;` (주당 0.2%)
-- `SAVINGS_INTEREST_RATE = 0.010f;` (주당 1.0%)
-- `SAVINGS_EARLY_TERM_PENALTY = 0.050f;` (원금 5%)
-- `SAVINGS_LOCK_DURATION = 168 Hours (Real-time)`
+### 5.1. 정보 오염 알고리즘 (Decryption Algorithm)
+- **가림 확률**: `HideChance = 1.0f - Decryption_Rate`
+- **Masking Priority**: `[STOCK_NAME]` > `[DIRECTION]` > `[CAUSE]` 순으로 가려짐.
+- **전략적 노이즈**: 분석력 만렙 유저라도 5% 확률로 오보 찌라시 생성(리스크 관리 학습).
 
-### 11.2. 저축 해지 로직 (Savings Termination Logic)
-```csharp
-public void TerminateSavings(string userID, long principal) {
-    var savings = Database.GetSavings(userID);
-    if (DateTime.Now < savings.expiryDate) {
-        // 중도 해지 패널티 적용
-        long penalty = (long)(principal * SAVINGS_EARLY_TERM_PENALTY);
-        PlayerWallet.AddCash(principal - penalty);
-        // 누적 이자 소각
-        savings.accumulatedInterest = 0;
-        Notification.Send("Early termination fee: 5% applied. Interest nullified.");
-    } else {
-        // 정상 만기 수령
-        PlayerWallet.AddCash(principal + savings.accumulatedInterest);
-    }
-}
-```
+### 5.2. 블랙 스완 사이클 매니저
+- **주기**: 실시간 100일.
+- **예외 처리 플래그**:
+    - `Weekly_Tick_Bypass = true`: 블랙 스완 진행 중 월요일 정산 무시.
+    - `Seizure_Engine_Lock = true`: 이벤트 중 압류 로직 중단.
+    - `Relief_Week_Active = true`: 종료 후 차기 정산일까지 이자 0원 고정.
 
+---
 
+## 6. 데이터 영속성 및 무결성 (Persistence)
+- **Atomic Transaction**: 모든 재무 정산은 'All or Nothing' 원칙을 준수하여 데이터 꼬임을 방지함.
+- **Delta Time 정산**: 로그인 시점과 로그아웃 시점의 차이를 계산하여 부재 중 발생한 모든 경제적 변동을 시뮬레이션함.
 
+---
+
+## 7. 타운 인스턴스 및 동적 채널링 (World Channeling)
+
+유저 증가 시의 기술적 안정성과 쾌적한 커뮤니티 환경을 위해 **'분신 공간(채널)'** 시스템을 도입합니다.
+
+### 7.1. 동적 채널링 엔진 (Dynamic Scaling)
+- **자동 생성**: 한 구역당 최대 인원을 **50명**으로 설정하며, 점유율 80% 초과 시 새로운 구역이 자동으로 생성됩니다.
+- **자동 소멸**: 유저가 빠져나가 인원이 희박해진 구역은 일정 시간 유지 후 기존 구역으로 통합(Merge)되며 소멸합니다.
+
+### 7.2. 마스터 데이터 통합 (Unified Data)
+- **통합 경제**: 유저가 어느 구역에 있더라도 **주가 데이터, 개인 계좌, 인벤토리**는 단일 마스터 서버에서 통합 관리됩니다. 구역 이동은 오직 시각적인 아바타 위치 정보만 변경합니다.
+- **통합 대화**: 구역 번호와 무관하게 전 세계 유저와 소통할 수 있는 **'전체 대화'** 기능을 상시 제공합니다.
+
+### 7.3. 구역 이동 로직
+- **직접 선택**: 타운 입구 혹은 설정 메뉴를 통해 이동하고자 하는 구역 번호를 직접 선택할 수 있습니다.
+- **친구 추적**: 친구 목록의 유저가 위치한 구역으로 즉시 이동할 수 있는 편의 기능을 제공합니다.
+
+---
+
+## 8. 클라우드 세이브 및 데이터 이관 (Cloud Save & Migration)
+
+데모 버전에서 정식 버전으로의 매끄러운 데이터 전이와 멀티 플랫폼 환경을 위한 데이터 영속성 명세입니다.
+
+### 8.1. 데이터 저장 구조 (Save Architecture)
+- **포맷**: **JSON Serialization**. 유연한 데이터 확장을 위해 JSON 형식을 채택하며, `Newtonsoft.Json` 라이브러리를 사용하여 직렬화합니다.
+- **보안 (Anti-Cheat)**:
+    - **Checksum**: 저장 파일의 하단에 데이터 본문의 **SHA-256 해시값**을 기록하여, 파일 강제 수정 시 데이터 오염으로 판정하고 로드를 차단합니다.
+    - **AES-256 암호화**: 클라우드 전송 및 로컬 저장 시 핵심 재무 데이터(Gold, Portfolio)는 암호화하여 저장합니다.
+
+### 8.2. 클라우드 백엔드 구성 (Cloud Backend)
+- **추천 솔루션**: **Unity Gaming Services (UGS) Cloud Save** 또는 **Firebase Cloud Firestore**.
+- **동기화 로직**:
+    1. **Conflict Resolution**: 로컬 세이브와 클라우드 세이브의 타임스탬프를 비교하여 최신 데이터를 우선하되, 자산 가치가 더 높은 데이터를 보존하는 'Whale First' 정책을 선택지로 제공합니다.
+    2. **Version Tag**: 각 세이브 데이터에는 `AppVersion` 태그가 포함되어, 하위 버전 데이터 로드 시 자동으로 상위 스키마로 마이그레이션하는 로직을 수행합니다.
+
+### 8.3. 데모 데이터 이관 프로토콜 (Demo Migration)
+1. **경로 탐색**: 정식 버전 실행 시 `%APPDATA%/StockWars/Saves/` 경로에서 `Save_Demo.dat` 파일을 탐색합니다.
+2. **검증 및 이관**:
+    - 데모 세이브의 유효성을 체크한 후, 내부의 `isDemoCompleted` 플래그를 확인합니다.
+    - 확인 시 유저에게 **"데모 데이터 통합"** 팝업을 노출하고, 기존 데이터를 신규 정식 버전 세이브 파일(`Save_Main.dat`)로 복사 및 변환합니다.
+3. **특전 지급 플래그**: 이관 성공 시 유저 프로필 데이터 내 `isDemoVeteran` 플래그를 `true`로 설정하여 특전 아이템(기념 뱃지 등) 지급 로직을 트리거합니다.

@@ -1,8 +1,11 @@
-# StockWars: 초미세 원자적 개발 로드맵 (The Ultra-Atomic Roadmap v5.0.0)
+# StockWars: 초미세 원자적 개발 로드맵 (The Ultra-Atomic Roadmap v5.1.0)
 
-**개발 기간:** 2026.05 ~ 2026.10 (6개월)  
-**목표:** 4월 기획 완료 후, 10월 말 플레이 가능한 베타 빌드 실행  
+**개발 기간:** 2026.05 ~ 2026.10 (데모 집중 개발 기간)  
+**핵심 목표:** 10월 31일까지 **[튜토리얼 ~ 캐릭터 레벨 3]** 구간의 버그 없는 **데모 버전(Demo Build)** 완성  
 **지시 방법:** "로드맵 [번호]번 개발해줘"라고 요청하세요.
+
+> [!IMPORTANT]
+> 본 로드맵은 10월 31일 데모 출시를 최우선 순위로 하며, 이후 시스템(기관, 신디케이트, 엔딩 등)은 데모 안정화 이후 순차 개발합니다.
 
 ---
 
@@ -153,7 +156,7 @@
 - [ ] 133. **[MOD_GDD_05]** `GridUndoSystem`: 가구 배치 실수를 되돌리기 위한 Stack 기반의 Undo/Redo 엔진
 - [ ] 134. **[MOD_GDD_05]** `InteriorValueReport`: 현재 가구 배치의 조화로움과 스탯 기여도를 정리한 리포트 UI
 - [ ] 135. **[MOD_GDD_06]** `Anna_MovementSet`: 시간대에 따라 오피스 창가, 책상, 침대 등으로 이동하는 안나
-- [ ] 136. **[MOD_GDD_01]** `LoFiFogEffect`: 맵 구석구석에 로파이 감성을 더하는 미세한 노이즈와 안개 파티클
+- [ ] 136. **[MOD_GDD_01]** `CozyFogEffect`: 맵 구석구석에 아늑한 감성을 더하는 미세한 노이즈와 안개 파티클
 - [ ] 137. **[MOD_GDD_01]** `InteractiveProps`: 클릭 시 짧은 소리를 내거나 흔들리는 오피스 내 인테리어 소품화
 - [ ] 138. **[MOD_GDD_01]** `SceneFastTravel`: 맵 UI 특정 위치 클릭 시 페이드아웃 후 해당 장소로 즉시 이동
 - [ ] 139. **[MOD_GDD_05]** `FurnitureDepreciation`: 중고 가구 판매 시 구입 시점 대비 가격이 깎이는 감가상각 연산
@@ -191,10 +194,10 @@
 - [ ] 166. **[MOD_GDD_02]** `JobSystemController`: 전체 노동 리스트 및 보상 데이터 매크로 관리
 - [ ] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
 - [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 미니게임 공통 UI (시작/제한시간/결과화면) 프리팹
-- [ ] 169. **[MOD_GDD_02]** `Neon24_Sorting`: 편의점 물건을 올바른 바구니에 담는 드래그 미니게임
-- [ ] 170. **[MOD_GDD_02]** `Neon24_Timer`: 레벨 상승에 따른 물건 하강 속도 증가 밸런싱
-- [ ] 171. **[MOD_GDD_02]** `Rooster_Timing`: 게이지의 최적 지점에서 버튼을 누르는 튀김 로직
-- [ ] 172. **[MOD_GDD_02]** `Rooster_Visuals`: 고온 튀김 이펙트 및 백사장의 "좋았어!" 말풍선 연출
+- [ ] 169. **[제외]** ~~[MOD_GDD_02] `Neon24_Sorting`: 편의점 물건을 올바른 바구니에 담는 드래그 미니게임~~
+- [ ] 170. **[제외]** ~~[MOD_GDD_02] `Neon24_Timer`: 레벨 상승에 따른 물건 하강 속도 증가 밸런싱~~
+- [ ] 171. **[제외]** ~~[MOD_GDD_02] `Rooster_Timing`: 게이지의 최적 지점에서 버튼을 누르는 튀김 로직~~
+- [ ] 172. **[제외]** ~~[MOD_GDD_02] `Rooster_Visuals`: 고온 튀김 이펙트 및 백사장의 "좋았어!" 말풍선 연출~~
 - [ ] 173. **[MOD_GDD_02]** `SortingHub_Balance`: 좌우 키로 상자 탑의 균형을 잡는 물리 엔진 연동
 - [ ] 174. **[MOD_GDD_02]** `SortingHub_Wind`: 강풍 환경 변수 추가로 인한 상하차 난이도 증가 로직
 - [ ] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
@@ -248,16 +251,23 @@
 - [ ] 223. **[MOD_GDD_04]** `RumorFeedbackLoop`: 내가 퍼뜨린 찌라시가 실제 주가에 미미하게 영향을 주는 피드백 엔진
 - [ ] 224. **[MOD_GDD_05]** `OfficeBackgroundAudio`: 오피스 내 라디오 가구 배치 시 플레이리스트 재생 기능
 - [ ] 225. **[MOD_GDD_03]** `InventoryFullWarning`: 인벤토리가 가득 찼을 때 알바 보상 수취 거부 및 안내 메시지
+- [ ] 226. **[MOD_GDD_17]** `CollectionMaster.cs`: 아이템 ID 기반 수집 여부 및 CP(Collection Point) 합산 엔진
+- [ ] 227. **[MOD_GDD_17]** `ArchiveUI_Layout`: 실루엣 프리뷰, 등급별 필터링, 로어 텍스트를 포함한 도감 UI
+- [ ] 228. **[MOD_GDD_17]** `CP_TierManager`: 누적 CP에 따른 5단계 티어 자동 판정 및 보상 지급 시스템
+- [ ] 229. **[MOD_GDD_17]** `ThemeSynergyLogic`: 특정 테마(코지, 사이버 등) 완판 시 특수 패시브 활성화 트리거
+- [ ] 230. **[MOD_GDD_17]** `ArchiveSilhouette`: 미획득 아이템의 실루엣 연출 및 획득처 가이드 시스템
 
 ---
 
-## 🗓️ Phase 5: 9월 - 서사 서사 및 소셜 시스템 (226 ~ 290)
+---
 
-- [ ] 226. **[MOD_GDD_06]** `AnnaAnimator`: 안나의 감정별(Happy, Sad, Angry, Blush) 자연스러운 표정 전이
-- [ ] 227. **[MOD_GDD_06]** `AffectionLogic`: 안나와의 누적 친밀도(0~100) 데이터 및 가중치 연산 엔진
-- [ ] 228. **[MOD_GDD_06]** `AnnaDailyBriefing`: 매일 아침 안나가 시장 상황과 유저 자산을 요약해주는 브리핑 로직
-- [ ] 229. **[MOD_GDD_06]** `Anna_OfficePos`: 오피스 내 안나의 위치 매핑 및 시간대별 대기 동작(애니메이션) 분기
-- [ ] 230. **[MOD_GDD_06]** `BarterNpcProfile`: 전당포 주인 바터의 고해상도 초상화 및 대기 상태 구축
+## 🗓️ Phase 5: 9월 - 서사 및 소셜 시스템 (231 ~ 295)
+
+- [ ] 231. **[MOD_GDD_06]** `AnnaAnimator`: 안나의 감정별(Happy, Sad, Angry, Blush) 자연스러운 표정 전이
+- [ ] 232. **[MOD_GDD_06]** `AffectionLogic`: 안나와의 누적 친밀도(0~100) 데이터 및 가중치 연산 엔진
+- [ ] 233. **[MOD_GDD_06]** `AnnaDailyBriefing`: 매일 아침 안나가 시장 상황과 유저 자산을 요약해주는 브리핑 로직
+- [ ] 234. **[MOD_GDD_06]** `Anna_OfficePos`: 오피스 내 안나의 위치 매핑 및 시간대별 대기 동작(애니메이션) 분기
+- [ ] 235. **[MOD_GDD_06]** `BarterNpcProfile`: 전당포 주인 바터의 고해상도 초상화 및 대기 상태 구축
 - [ ] 231. **[MOD_GDD_06]** `RichPoorSpeechEngine`: 유저 자산 규모를 체크하여 NPC의 대사 톤앤매너 필터링
 - [ ] 232. **[MOD_GDD_07]** `DialogueSystemCore`: 텍스트 타이핑 효과 및 유저 선택지에 따른 결과 분기 엔진
 - [ ] 233. **[MOD_GDD_11]** `SmartphoneUI`: 화면 우하단 스마트폰 아이콘 및 앱 서랍 슬라이드 애니메이션
@@ -268,53 +278,53 @@
 - [ ] 238. **[MOD_GDD_13]** `GhostTraderAI`: 시장 유동성을 공급하는 고스트 트레이더들의 구역별 매매 알고리즘
 - [ ] 239. **[MOD_GDD_14]** `DebtReliefWizard`: 파산 시나리오 진입 시 회생 신청 가능 여부 판정 및 절차 위저드
 - [ ] 240. **[MOD_GDD_14]** `DebtForgivenessLogic`: 회생 승인 시 이자 즉시 탕감 및 원금 50% 유예 트랙 전환
-- [ ] 241. **[MOD_GDD_15]** `InstitutionSetup`: 자산 1M 돌파 시 '기관 설립' 권한 해금 및 초기 인프라 구축
-- [ ] 242. **[MOD_GDD_15]** `InvestorWaitlist`: 기관 등급에 따른 외부 투자자(Ghost)들의 자금 예치 대기열 로직
-- [ ] 243. **[MOD_GDD_15]** `OperatingFeeCalc`: 위탁 자산 변동에 따른 15% 운용 수수료의 주간 정산부
-- [ ] 244. **[MOD_GDD_15]** `EmbezzlementEngine`: 위탁금 인출 시 '횡령' 판정 (5% 임계값) 및 도덕 점수 차감
-- [ ] 245. **[MOD_GDD_15]** `InsiderTradingTracker`: 기관 내부 고발자 시스템에 의한 비정상 매매 탐지 트리거
-- [ ] 246. **[MOD_GDD_15]** `ShortSellingLogic`: 공매도 주문 시 150% 증거금 강제 홀딩 및 종목 대차 로직
-- [ ] 247. **[MOD_GDD_15]** `MarginCallVisual`: 유지비율 90% 도달 시 화면 테두리가 붉게 깜빡이는 사이렌 FX
-- [ ] 248. **[MOD_GDD_15]** `SeizureEngine_AutoCover`: 마진콜 100% 도달 시 시스템에 의한 시장가 강제 대차상환(Cover)
-- [ ] 249. **[MOD_GDD_15]** `FiveFoldPenalty`: 강제 청산 발생 시 기본 수수료의 5배를 즉시 차감하는 패널티 루틴
-- [ ] 250. **[MOD_GDD_16]** `Syndicate_Formation`: 유저 간 '투자 신디케이트' 결성 및 엠블럼 에디터 UI
-- [ ] 251. **[MOD_GDD_16]** `Syndicate_EmblemMapping`: 생성된 엠블럼을 멤버의 어깨 및 프로필 UI에 고화질 렌더링
-- [ ] 252. **[MOD_GDD_16]** `SecretHideoutUI`: 미드나잇 펍 지하 '비밀 아지트' 입장 및 인테리어 커스텀
-- [ ] 253. **[MOD_GDD_16]** `JointBuyOperation`: 리더의 작전주 지정 시 멤버 동시 매수 시너지(x1.5 가중치) 엔진
-- [ ] 254. **[MOD_GDD_16]** `JointLiabilityCalc`: 신디케이트 파산 시 멤버 기여도에 따른 채무 배분 및 연대 책임 로직
-- [ ] 255. **[MOD_GDD_16]** `BlackBrokerJack`: 전설급 작전주 소스를 판매하는 블랙 브로커 잭과의 특수 거래창
+- [ ] 241. **[데모 이후] [MOD_GDD_15]** `InstitutionSetup`: 자산 1M 돌파 시 '기관 설립' 권한 해금 및 초기 인프라 구축
+- [ ] 242. **[데모 이후] [MOD_GDD_15]** `InvestorWaitlist`: 기관 등급에 따른 외부 투자자(Ghost)들의 자금 예치 대기열 로직
+- [ ] 243. **[데모 이후] [MOD_GDD_15]** `OperatingFeeCalc`: 위탁 자산 변동에 따른 15% 운용 수수료의 주간 정산부
+- [ ] 244. **[데모 이후] [MOD_GDD_15]** `EmbezzlementEngine`: 위탁금 인출 시 '횡령' 판정 (5% 임계값) 및 도덕 점수 차감
+- [ ] 245. **[데모 이후] [MOD_GDD_15]** `InsiderTradingTracker`: 기관 내부 고발자 시스템에 의한 비정상 매매 탐지 트리거
+- [ ] 246. **[데모 이후] [MOD_GDD_15]** `ShortSellingLogic`: 공매도 주문 시 150% 증거금 강제 홀딩 및 종목 대차 로직
+- [ ] 247. **[데모 이후] [MOD_GDD_15]** `MarginCallVisual`: 유지비율 90% 도달 시 화면 테두리가 붉게 깜빡이는 사이렌 FX
+- [ ] 248. **[데모 이후] [MOD_GDD_15]** `SeizureEngine_AutoCover`: 마진콜 100% 도달 시 시스템에 의한 시장가 강제 대차상환(Cover)
+- [ ] 249. **[데모 이후] [MOD_GDD_15]** `FiveFoldPenalty`: 강제 청산 발생 시 기본 수수료의 5배를 즉시 차감하는 패널티 루틴
+- [ ] 250. **[데모 이후] [MOD_GDD_16]** `Syndicate_Formation`: 유저 간 '투자 신디케이트' 결성 및 엠블럼 에디터 UI
+- [ ] 251. **[데모 이후] [MOD_GDD_16]** `Syndicate_EmblemMapping`: 생성된 엠블럼을 멤버의 어깨 및 프로필 UI에 고화질 렌더링
+- [ ] 252. **[데모 이후] [MOD_GDD_16]** `SecretHideoutUI`: 미드나잇 펍 지하 '비밀 아지트' 입장 및 인테리어 커스텀
+- [ ] 253. **[데모 이후] [MOD_GDD_16]** `JointBuyOperation`: 리더의 작전주 지정 시 멤버 동시 매수 시너지(x1.5 가중치) 엔진
+- [ ] 254. **[데모 이후] [MOD_GDD_16]** `JointLiabilityCalc`: 신디케이트 파산 시 멤버 기여도에 따른 채무 배분 및 연대 책임 로직
+- [ ] 255. **[데모 이후] [MOD_GDD_16]** `BlackBrokerJack`: 전설급 작전주 소스를 판매하는 블랙 브로커 잭과의 특수 거래창
 - [ ] 256. **[MOD_GDD_06]** `Anna_MoodBoard`: 안나의 호감도에 따라 오피스 내부 BGM과 조명 색온도가 미세하게 변화
 - [ ] 257. **[MOD_GDD_11]** `SmartphoneVibrate`: 긴급 속보나 마진콜 경고 시 장치 엔진을 통한 햅틱 피드백 연동
-- [ ] 258. **[MOD_GDD_15]** `InstitutionalReport`: 기관 운영 수익/손실 및 배당 현황을 정리한 전용 대시보드
-- [ ] 259. **[MOD_GDD_15]** `RedNoticePreheat`: 횡령 누적 시 안나의 말투가 점차 차갑고 사무적으로 변하는 상태 전이
+- [ ] 258. **[데모 이후] [MOD_GDD_15]** `InstitutionalReport`: 기관 운영 수익/손실 및 배당 현황을 정리한 전용 대시보드
+- [ ] 259. **[데모 이후] [MOD_GDD_15]** `RedNoticePreheat`: 횡령 누적 시 안나의 말투가 점차 차갑고 사무적으로 변하는 상태 전이
 - [ ] 260. **[MOD_GDD_07]** `DialogueCameraZoom`: 중요 대사 전달 시 NPC의 얼굴로 카메라가 부드럽게 줌인(Lerp) 연출
 - [ ] 261. **[MOD_GDD_07]** `SelectiveSkip`: 이미 열람한 대사 그룹만 빠르게 스킵할 수 있는 고급 다이얼로그 모듈
 - [ ] 262. **[MOD_GDD_11]** `AppUpdateVisual`: 스토리 마일스톤 달성 시 스마트폰 앱 아이콘이 골드로 업그레이드되는 연출
-- [ ] 263. **[MOD_GDD_15]** `ClientAngryMail`: 수익 배분 지연 시 위탁 투자자들의 항의성 익명 메일 발송 로직
-- [ ] 264. **[MOD_GDD_16]** `SyndicateRankings`: 신디케이트 간의 주간 수익률 대결 및 전용 리더보드 시스템
+- [ ] 263. **[데모 이후] [MOD_GDD_15]** `ClientAngryMail`: 수익 배분 지연 시 위탁 투자자들의 항의성 익명 메일 발송 로직
+- [ ] 264. **[데모 이후] [MOD_GDD_16]** `SyndicateRankings`: 신디케이트 간의 주간 수익률 대결 및 전용 리더보드 시스템
 - [ ] 265. **[MOD_GDD_06]** `AnnaSecretGifts`: 호감도 Max 상태에서만 발생하는 안나의 비밀 선물 컷신 이벤트
 - [ ] 266. **[MOD_GDD_07]** `StorySummaryWindow`: 현재 진행 중인 메인 퀘스트와 서사적 위치를 요약해주는 기록장
 - [ ] 267. **[MOD_GDD_11]** `SmartphoneDustFX`: 장시간 미사용 시 스마트폰 화면에 미세한 먼지가 쌓이는 디테일 연출
-- [ ] 268. **[MOD_GDD_16]** `SyndicateWallboard`: 아지트 내 멤버들의 실시간 보유 종목을 보여주는 대형 전광판
-- [ ] 269. **[MOD_GDD_15]** `TaxEvaderTracker`: 세금 포탈이나 횡령 시도 시 시스템이 실시간으로 추적하는 투기 감시 모니터
+- [ ] 268. **[데모 이후] [MOD_GDD_16]** `SyndicateWallboard`: 아지트 내 멤버들의 실시간 보유 종목을 보여주는 대형 전광판
+- [ ] 269. **[데모 이후] [MOD_GDD_15]** `TaxEvaderTracker`: 세금 포탈이나 횡령 시도 시 시스템이 실시간으로 추적하는 투기 감시 모니터
 - [ ] 270. **[MOD_GDD_07]** `NpcEyeTracking`: 마우스 포인터의 위치를 NPC의 눈동자가 자연스럽게 쫓아가는 연출
-- [ ] 271. **[MOD_GDD_12]** `NewsVideoPlayer`: 중요 경제 지표 발표 시 UI 내에서 재생되는 짧은 로파이 뉴스 영상
-- [ ] 272. **[MOD_GDD_15]** `BrokerFeeDiscount`: 평판 등급 S 이상 시 기관 거래 수수료를 0.5% 감면받는 특혜 로직
-- [ ] 273. **[MOD_GDD_16]** `GhostSyndicateAI`: 유저 신디케이트의 독점적 지위를 위협하는 라이벌 NPC 신디케이트 생성
+- [ ] 271. **[MOD_GDD_12]** `NewsVideoPlayer`: 중요 경제 지표 발표 시 UI 내에서 재생되는 짧은 코지 뉴스 영상
+- [ ] 272. **[데모 이후] [MOD_GDD_15]** `BrokerFeeDiscount`: 평판 등급 S 이상 시 기관 거래 수수료를 0.5% 감면받는 특혜 로직
+- [ ] 273. **[데모 이후] [MOD_GDD_16]** `GhostSyndicateAI`: 유저 신디케이트의 독점적 지위를 위협하는 라이벌 NPC 신디케이트 생성
 - [ ] 274. **[MOD_GDD_06]** `Anna_LateNightConvo`: 현실 시간 심야(00~04시)에만 들을 수 있는 안나의 감성 대사 세트
 - [ ] 275. **[MOD_GDD_11]** `PhoneCaseCustom`: 포인트 소모하여 스마트폰의 외형과 폰트 스타일을 바꾸는 커스터마이징
-- [ ] 276. **[MOD_GDD_15]** `InstitutionAudit`: 정기적인 기관 감사 이벤트 발생 시 장부 조작 미니게임 연동
-- [ ] 277. **[MOD_GDD_16]** `SyndicateEmergencyLoop`: 연맹 위기 시 멤버 모두의 화면에 경고 알람이 동시에 뜨는 연출
-- [ ] 278. **[MOD_GDD_15]** `StockNakedShorting`: 리스크는 크지만 하락장에서 유용한 무차입 공매도 해금 조건 설정
+- [ ] 276. **[데모 이후] [MOD_GDD_15]** `InstitutionAudit`: 정기적인 기관 감사 이벤트 발생 시 장부 조작 미니게임 연동
+- [ ] 277. **[데모 이후] [MOD_GDD_16]** `SyndicateEmergencyLoop`: 연맹 위기 시 멤버 모두의 화면에 경고 알람이 동시에 뜨는 연출
+- [ ] 278. **[데모 이후] [MOD_GDD_15]** `StockNakedShorting`: 리스크는 크지만 하락장에서 유용한 무차입 공매도 해금 조건 설정
 - [ ] 279. **[MOD_GDD_09]** `TradingBadgeCore`: 특정 수익률이나 매매 횟수 달성 시 프로필에 장착하는 마스터 휘장
 - [ ] 280. **[MOD_GDD_07]** `DialogueSelectionSFX`: 선택지 위에 마우스 오버 시 출력되는 부드러운 화이트 노이즈 사운드
-- [ ] 281. **[MOD_GDD_15]** `MarginLiquidationReport`: 강제 청산 후 손실액과 남은 담보금을 요약해주는 '절망의 보고서'
-- [ ] 282. **[MOD_GDD_16]** `SyndicateHideoutUpgrade`: 아지트 내에 고효율 트레이딩 룸을 증축하는 건설 시스템
+- [ ] 281. **[데모 이후] [MOD_GDD_15]** `MarginLiquidationReport`: 강제 청산 후 손실액과 남은 담보금을 요약해주는 '절망의 보고서'
+- [ ] 282. **[데모 이후] [MOD_GDD_16]** `SyndicateHideoutUpgrade`: 아지트 내에 고효율 트레이딩 룸을 증축하는 건설 시스템
 - [ ] 283. **[MOD_GDD_11]** `SpamMailFilter`: 특정 평판 이하 시 쏟아지는 스팸/사기 메일을 걸러주는 필터 기능
-- [ ] 284. **[MOD_GDD_15]** `EmbezzlementFeedback`: 횡령 성공 시 단기적으로 자산은 늘지만 전당포 바터의 신뢰도가 하락
+- [ ] 284. **[데모 이후] [MOD_GDD_15]** `EmbezzlementFeedback`: 횡령 성공 시 단기적으로 자산은 늘지만 전당포 바터의 신뢰도가 하락
 - [ ] 285. **[MOD_GDD_06]** `Anna_WorkFocus`: 대화가 불가능할 정도로 안나가 업무에 집중하는 특정 시간대 플래그
-- [ ] 286. **[MOD_GDD_15]** `ShortSqueezeEvent`: 유저 공매도 비중이 높은 종목에 시스템 고래가 매수 대전(Short Squeeze)을 거는 이벤트
-- [ ] 287. **[MOD_GDD_16]** `SyndicateAssetSharing`: 멤버 간의 일시적인 자산 대여 및 증거금 합산 공동 대응 기능
+- [ ] 286. **[데모 이후] [MOD_GDD_15]** `ShortSqueezeEvent`: 유저 공매도 비중이 높은 종목에 시스템 고래가 매수 대전(Short Squeeze)을 거는 이벤트
+- [ ] 287. **[데모 이후] [MOD_GDD_16]** `SyndicateAssetSharing`: 멤버 간의 일시적인 자산 대여 및 증거금 합산 공동 대응 기능
 - [ ] 288. **[MOD_GDD_11]** `FlashLightApp`: 어두운 타운 구역 탐험 시 스마트폰 손전등 기능을 켜는 조명 효과
 - [ ] 289. **[MOD_GDD_15]** `InstitutionLeveling`: 기관 누적 운용액에 따라 '엔젤'에서 '헤지펀드'로 진화하는 레벨 시스템
 - [ ] 290. **[MOD_GDD_07]** `DialogueHistoryViewer`: 현재 대화 세션의 이전 텍스트들을 위로 스크롤하여 다시 읽는 기능
@@ -330,20 +340,20 @@
 - [ ] 295. **[CORE_GDD_05]** `JackpotAnimation`: 1등 당첨 시 화면 전체에 쏟아지는 골드 및 축하 연출
 - [ ] 296. **[CORE_GDD_02]** `IPO_reserveLogic`: 폐지된 종목 섹터에 맞춰 신규 상장주 자동 선정 엔진
 - [ ] 297. **[CORE_GDD_02]** `ListingCeremony`: 상장 12시간 전 카운트다운 공시 및 상장 축하 불꽃 FX
-- [ ] 298. **[MOD_GDD_15]** `RedNotice_UI_Glitch`: 수배 발동 시 전 종목 차트가 붉게 변하며 지지직거리는 글리치 셰이더
-- [ ] 299. **[MOD_GDD_15]** `AssetFreezeLogic`: 개인 자산(Wallet) 동결 및 모든 부동산 가구의 상호작용 불가능화
-- [ ] 300. **[MOD_GDD_15]** `NpcHostilitySet`: 안나 신뢰도 LV 0 고정 및 타운 내 모든 NPC의 적대적 대사/거래 거부
-- [ ] 301. **[MOD_GDD_15]** `RedNoticeBGM`: 수배 기간 동안 흐르는 긴박한 추격전 테마 BGM 크로스페이드
-- [ ] 302. **[MOD_GDD_15]** `BountyBoardUI`: 타 유저(또는 AI)들이 수배자의 포지션을 무너뜨리고 보상을 받는 현상금 판넬
-- [ ] 303. **[MOD_GDD_15]** `SurvivalTimer`: 자본 세탁 전까지 버텨야 하는 생존 타이머 및 검거 확률 연산부
-- [ ] 304. **[MOD_GDD_15]** `PardonQuest`: 안나의 신뢰도를 복구하기 위해 제시되는 거액의 자수금(Bail) 상환 퀘스트
+- [ ] 298. **[데모 이후] [MOD_GDD_15]** `RedNotice_UI_Glitch`: 수배 발동 시 전 종목 차트가 붉게 변하며 지지직거리는 글리치 셰이더
+- [ ] 299. **[데모 이후] [MOD_GDD_15]** `AssetFreezeLogic`: 개인 자산(Wallet) 동결 및 모든 부동산 가구의 상호작용 불가능화
+- [ ] 300. **[데모 이후] [MOD_GDD_15]** `NpcHostilitySet`: 안나 신뢰도 LV 0 고정 및 타운 내 모든 NPC의 적대적 대사/거래 거부
+- [ ] 301. **[데모 이후] [MOD_GDD_15]** `RedNoticeBGM`: 수배 기간 동안 흐르는 긴박한 추격전 테마 BGM 크로스페이드
+- [ ] 302. **[데모 이후] [MOD_GDD_15]** `BountyBoardUI`: 타 유저(또는 AI)들이 수배자의 포지션을 무너뜨리고 보상을 받는 현상금 판넬
+- [ ] 303. **[데모 이후] [MOD_GDD_15]** `SurvivalTimer`: 자본 세탁 전까지 버텨야 하는 생존 타이머 및 검거 확률 연산부
+- [ ] 304. **[데모 이후] [MOD_GDD_15]** `PardonQuest`: 안나의 신뢰도를 복구하기 위해 제시되는 거액의 자수금(Bail) 상환 퀘스트
 - [ ] 305. **[CORE_GDD_06]** `EncryptionUpgrade`: 정식 빌드를 위한 세이브 데이터 비대칭 암호화(RSA 권장) 레이어
 - [ ] 306. **[CORE_GDD_06]** `AntiCheatSystem`: 런타임 자산 수치 변조 발생 시 즉시 서버(또는 로컬)에 비정상 로그 생성
 - [ ] 307. **[CORE_GDD_03]** `CareerPathSummary`: 현재까지의 거래 성향을 분석한 '트레이더 자격증' 발급 연출
-- [ ] 308. **[MOD_GDD_01~16]** `GeneralEnding`: 자산 10M Gold 미만 일반 엔딩 판정 및 연출
-- [ ] 309. **[MOD_GDD_01~16]** `WealthyEnding`: 자산 100M Gold 이상 '자본의 신' 엔딩 연출
-- [ ] 310. **[MOD_GDD_01~16]** `CiphersVowEnding`: 안나와의 결혼 및 비밀 서약(Cipher's Vow) 전용 컷신
-- [ ] 311. **[MOD_GDD_01~16]** `EndingCredits`: 후원자와 개발진 명단이 올라가는 로파이 스타일의 크레딧 스크롤
+- [ ] 308. **[데모 이후] [MOD_GDD_01~16]** `GeneralEnding`: 자산 10M Gold 미만 일반 엔딩 판정 및 연출
+- [ ] 309. **[데모 이후] [MOD_GDD_01~16]** `WealthyEnding`: 자산 100M Gold 이상 '자본의 신' 엔딩 연출
+- [ ] 310. **[데모 이후] [MOD_GDD_01~16]** `CiphersVowEnding`: 안나와의 결혼 및 비밀 서약(Cipher's Vow) 전용 컷신
+- [ ] 311. **[MOD_GDD_01~16]** `EndingCredits`: 후원자와 개발진 명단이 올라가는 코지 스타일의 크레딧 스크롤
 - [ ] 312. **[Audio]** `AudioMixerSetup`: BGM, SFX, Ambient 소리 크기 및 입체감(Reverb) 최종 믹싱
 - [ ] 313. **[Tutorial]** `FlowManager`: 최초 접속 시 튜토리얼 단계 강제 트리거 및 보상 시스템 연동
 - [ ] 314. **[UI/UX]** `AnimationPolish`: 모든 윈도우 열기/닫기 시 부드러운 스케일(Elastic) 효과 적용
