@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockWars - Cozy Prototype</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>☕ Home Office</h1>
+                <p class="subtitle">Cozy Multi-Trading</p>
+            </div>
+            <div class="wallet-panel">
+                <div class="wallet-item">
+                    <span class="label">총 자산 (Net Worth)</span>
+                    <span class="value" id="net-worth">10,000 G</span>
+                </div>
+                <div class="wallet-item">
+                    <span class="label">보유 현금 (Gold)</span>
+                    <span class="value" id="gold">10,000 G</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="market-board">
+            <h2>오늘의 시장 동향</h2>
+            <div class="stock-list" id="stock-list">
+                <!-- 주식 카드가 동적으로 생성됩니다 -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>따뜻한 커피 한 잔과 함께하는 여유로운 트레이딩 타임.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

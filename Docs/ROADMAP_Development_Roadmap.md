@@ -1,46 +1,48 @@
-# StockWars: 초미세 원자적 개발 로드맵 (The Ultra-Atomic Roadmap v5.1.0)
+# StockWars: GIGDC 집중 개발 로드맵 (The Ultra-Atomic Roadmap v5.2.0)
 
-**개발 기간:** 2026.05 ~ 2026.10 (데모 집중 개발 기간)  
-**핵심 목표:** 10월 31일까지 **[튜토리얼 ~ 캐릭터 레벨 3]** 구간의 버그 없는 **데모 버전(Demo Build)** 완성  
+**개발 기간:** 2026.05 ~ 2026.06 (GIGDC 출품 집중 기간)
+**핵심 목표:** 6월 말까지 **[튜토리얼 ~ 캐릭터 레벨 3]** 구간의 버그 없는 **데모 버전(Demo Build)** 완성
 **지시 방법:** "로드맵 [번호]번 개발해줘"라고 요청하세요.
 
 > [!IMPORTANT]
-> 본 로드맵은 10월 31일 데모 출시를 최우선 순위로 하며, 이후 시스템(기관, 신디케이트, 엔딩 등)은 데모 안정화 이후 순차 개발합니다.
+> 본 로드맵은 GIGDC 출품(6월 말)을 최우선 순위로 하며, 핵심 재미 검증에 불필요한 시스템(건설, 기관 등)은 출품 이후로 연기합니다.
 
 ---
 
-## 🗓️ Phase 1: 5월 - 코어 인프라 및 엔진 기초 (001 ~ 055)
+## 🏆 GIGDC 출품 집중 마일스톤 (5월 ~ 6월 말)
 
-- [ ] 001. **[CORE_GDD_01]** Unity 프로젝트 URP 템플릿 초기화 및 전역 렌더링 파이프라인 설정
-- [ ] 002. **[CORE_GDD_01]** 20종의 표준 폴더 아키텍처 생성 (Managers, Modules, Data, Art 등)
-- [ ] 003. **[CORE_GDD_01]** Git LFS 설정 및 대규모 텍스처/사운드 파일 관리 자동화 스크립트
-- [ ] 004. **[CORE_GDD_01]** `GameEnums.cs`: 주식 섹터, 아이템 등급, NPC 감정, 수배 상태 등 전역 열거형 정의
-- [ ] 005. **[CORE_GDD_01]** `GlobalConstants.cs`: 2.0% 이자율, 500G 유지비 등 모든 밸런스 상수 통합 관리
-- [ ] 006. **[CORE_GDD_01]** `Singleton<T>` 제네릭 추상 클래스 구현 (Thread-safe 고려)
-- [ ] 007. **[CORE_GDD_01]** `EventBus.cs`: `Action<T>` 기반 관찰자 패턴 핵심 엔진 구축
-- [ ] 008. **[CORE_GDD_01]** `PoolManager.cs`: 차트 캔들, UI 파티클용 고성능 오브젝트 풀링 시스템
-- [ ] 009. **[CORE_GDD_01]** `SceneSwitcher.cs`: 씬 전환 시 비동기 로딩 및 페이드인/아웃 연출 엔진
-- [ ] 010. **[CORE_GDD_06]** `TickEngine.cs`: 현실 시간 1초를 게임 내 1시간으로 변환하는 속도 제어 엔진
+### 🗓️ Sprint 1: 5월 3~4주차 - 코어 인프라 및 엔진 기초 (001 ~ 055)
+
+- [x] 001. **[CORE_GDD_01]** Unity 프로젝트 URP 템플릿 초기화 및 전역 렌더링 파이프라인 설정
+- [x] 002. **[CORE_GDD_01]** 20종의 표준 폴더 아키텍처 생성 (Managers, Modules, Data, Art 등)
+- [x] 003. **[CORE_GDD_01]** Git LFS 설정 및 대규모 텍스처/사운드 파일 관리 자동화 스크립트
+- [x] 004. **[CORE_GDD_01]** `GameEnums.cs`: 주식 섹터, 아이템 등급, NPC 감정, 수배 상태 등 전역 열거형 정의
+- [x] 005. **[CORE_GDD_01]** `GlobalConstants.cs`: 2.0% 이자율, 500G 유지비 등 모든 밸런스 상수 통합 관리
+- [x] 006. **[CORE_GDD_01]** `Singleton<T>` 제네릭 추상 클래스 구현 (Thread-safe 고려)
+- [x] 007. **[CORE_GDD_01]** `EventBus.cs`: `Action<T>` 기반 관찰자 패턴 핵심 엔진 구축
+- [x] 008. **[CORE_GDD_01]** `PoolManager.cs`: 차트 캔들, UI 파티클용 고성능 오브젝트 풀링 시스템
+- [x] 009. **[CORE_GDD_01]** `SceneSwitcher.cs`: 씬 전환 시 비동기 로딩 및 페이드인/아웃 연출 엔진
+- [x] 010. **[CORE_GDD_06]** `TickEngine.cs`: 유저 PC 로컬 시간(Real-Time) 1:1 동기화 및 틱 이벤트 엔진
 - [ ] 011. **[CORE_GDD_06]** `CalendarSystem.cs`: 요일/시간 연동 및 매주 월요일 00:00 기점 정산 트리거
 - [ ] 012. **[CORE_GDD_06]** `DataSerializer.cs`: JSON.NET 기반 인코딩/복호화 및 압축 유틸리티
 - [ ] 013. **[CORE_GDD_06]** `SaveDataDTO.cs`: 계좌, 포트폴리오, 수배 상태를 포함한 마스터 저장 스키마
 - [ ] 014. **[CORE_GDD_06]** `IOManager.cs`: 암호화된 세이브 파일 읽기/쓰기 및 파일 무결성 검증 로직
 - [ ] 015. **[CORE_GDD_06]** `SaveMetadata.cs`: 플레이 타임, 타임스탬프, 최종 접속 위치 자동 트래킹
-- [ ] 016. **[CORE_GDD_02]** `StockDataSO`: IT 섹터(3종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
-- [ ] 017. **[CORE_GDD_02]** `StockDataSO`: 엔터/인프라 섹터(6종) 종목별 변동성 티어 매핑
-- [ ] 018. **[CORE_GDD_02]** `StockDataSO`: 바이오/항공우주 섹터(6종) 호재/악재 감도 가중치 설정
-- [ ] 019. **[CORE_GDD_02]** `StockDataSO`: 유통/에너지/금융 섹터(9종) 종목 마스터 데이터 구축
+- [ ] 016. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: IT 섹터(3종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
+- [ ] 017. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 엔터/인프라 섹터(6종) 종목별 변동성 티어 매핑
+- [ ] 018. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 바이오/항공우주 섹터(6종) 호재/악재 감도 가중치 설정
+- [ ] 019. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 유통/에너지/금융 섹터(9종) 종목 마스터 데이터 구축
 - [ ] 020. **[CORE_GDD_02]** `MarketManager.cs`: 24개 종목 인스턴스화 및 런타임 데이터 동기화
 - [ ] 021. **[CORE_GDD_02]** `BasePriceInit.cs`: 섹터별 상장가 동적 생성 및 초기 유동 물량 할당
-- [ ] 022. **[CORE_GDD_02]** `RNG_System.cs`: 시드 기반 의사 난수 생성기를 이용한 주가 변동 정밀 제어
-- [ ] 023. **[CORE_GDD_02]** `PriceEngine.cs`: 매수 압력 및 변동성 가중치를 합산한 실시간 가격 결정부
-- [ ] 024. **[CORE_GDD_02]** `BuyPressure.cs`: 물량 고갈 시 가격 폭등을 유도하는 제곱근 함수 연산
-- [ ] 025. **[CORE_GDD_02]** `VolatilityTier.cs`: S~C 등급별 주당 최소/최대 변동폭 제한 로직
-- [ ] 026. **[CORE_GDD_02]** `TrendEngine.cs`: 168시간(7일) 주기의 상승/하락 사이클 전환 시스템
+- [ ] 022. **[CORE_GDD_02]** 🤖[Claude] `RNG_System.cs`: 시드 기반 의사 난수 생성기를 이용한 주가 변동 정밀 제어
+- [ ] 023. **[CORE_GDD_02]** 🤖[Claude] `PriceEngine.cs`: 매수 압력 및 변동성 가중치를 합산한 실시간 가격 결정부
+- [ ] 024. **[CORE_GDD_02]** 🤖[Claude] `BuyPressure.cs`: 물량 고갈 시 가격 폭등을 유도하는 제곱근 함수 연산
+- [ ] 025. **[CORE_GDD_02]** 🤖[Claude] `VolatilityTier.cs`: S~C 등급별 주당 최소/최대 변동폭 제한 로직
+- [ ] 026. **[CORE_GDD_02]** 🤖[Claude] `TrendEngine.cs`: 168시간(7일) 주기의 상승/하락 사이클 전환 시스템
 - [ ] 027. **[CORE_GDD_02]** `CircularBuffer.cs`: 최근 168틱 가격 히스토리 저장을 위한 효율적 메모리 구조
 - [ ] 028. **[CORE_GDD_02]** `PeakTracker.cs`: 전고점(ATH) 및 당일 변동폭 실시간 트래킹 레이어
-- [ ] 029. **[CORE_GDD_02]** `MarketTimer.cs`: 09:00~15:30 개장/폐표 시간 엄수 및 UI 연동
-- [ ] 030. **[CORE_GDD_02]** `WeekendPause.cs`: 토요일 오후부터 월요일 아침까지 시장 거래 정지 플래그
+- [ ] 029. **[CORE_GDD_02]** `MarketTimer.cs`: 08:00~17:00 은행/증권사 기본 운영 시간 엄수 (야간 할증 연동)
+- [ ] 030. **[CORE_GDD_02]** `GhostTrader.cs`: 주말 휴장 없이 365일 초 단위로 주가를 움직이는 마이크로 변동 봇
 - [ ] 031. **[CORE_GDD_02]** `DividendController.cs`: 72시간 보유 조건 판정 및 배당금 누적 연산부
 - [ ] 032. **[CORE_GDD_02]** `SplitChecker.cs`: 1,000,000G 도달 시 액면분할 트리거 및 수량 보정 로직
 - [ ] 033. **[CORE_GDD_02]** `DelistingMonitor.cs`: 상장가 1% 미만 장기 체납 시 상폐 프로세스 감시
@@ -69,7 +71,7 @@
 
 ---
 
-## 🗓️ Phase 2: 6월 - 금융 고도화 및 UI 시스템 (056 ~ 110)
+### 🗓️ Sprint 2: 6월 1~2주차 - 금융 고도화 및 UI 시스템 (056 ~ 110)
 
 - [ ] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
 - [ ] 057. **[CORE_GDD_04]** `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
@@ -129,67 +131,7 @@
 
 ---
 
-## 🗓️ Phase 3: 7월 - 월드 환경 및 그리드 시스템 (111 ~ 165)
-
-- [ ] 111. **[MOD_GDD_05]** `IsoGrid_Base`: 2:1 비율의 아이소메트릭 그리드 논리 좌표계 및 타운 셋업
-- [ ] 112. **[MOD_GDD_05]** `TileSelection`: 마우스 오버 시 해당 타일에 노란색 하이라이트 박스 연출
-- [ ] 113. **[MOD_GDD_05]** `OfficeFloorPlan`: 10x10에서 30x30까지의 오피스 평수 확장 트리거 및 맵 데이터
-- [ ] 114. **[MOD_GDD_05]** `SortingLayerManager`: 가구의 Y축 위치에 따라 전후 관계를 자동 정렬하는 렌더링 레이어
-- [ ] 115. **[MOD_GDD_05]** `GhostPreview_FX`: 설치 전 반투명 가구 이미지와 설치 가능/불가능 영역 시각화
-- [ ] 116. **[MOD_GDD_05]** `CollisionValidator`: 가구 간 배치 겹침 및 문 앞을 막는 동선 방해 실시간 체크
-- [ ] 117. **[MOD_GDD_05]** `RotationLogic`: 90도 회전 시 1/2/4방향 스프라이트 정밀 전환 및 좌표 보정
-- [ ] 118. **[MOD_GDD_05]** `FurnitureBuffProcessor`: 가구 배치 즉시 명성치와 스탯 보너스를 전역 스탯에 가산
-- [ ] 119. **[MOD_GDD_05]** `EditModeUI`: 가구 이동, 회전, 판매 버튼이 있는 하단 건설 모드 툴바 셋업
-- [ ] 120. **[MOD_GDD_05]** `WallpaperManager`: 벽면과 바닥재의 텍스처를 클릭 한 번으로 교체하는 팔레트 시스템
-- [ ] 121. **[MOD_GDD_01]** `TownMapSetup`: 7개 구역(은행, 전당포, 치킨집 등)으로 구성된 타운 거점 배치
-- [ ] 122. **[MOD_GDD_01]** `NpcSpawnPoint`: 장소별 NPC(안나, 바터, 백사장) 상주 위치 및 시야각 설정
-- [ ] 123. **[MOD_GDD_01]** `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹
-- [ ] 124. **[MOD_GDD_01]** `CipherSecuritiesFloor`: 증권사 내부의 대형 전광판과 트레이딩 데스크 레이아웃
-- [ ] 125. **[MOD_GDD_01]** `DustyRoomInterior`: 전당포 내부의 어두운 필터와 먼지 날리는 먼지 입자 FX 연출
-- [ ] 126. **[MOD_GDD_01]** `RoosterKitchen`: 치킨집 주방 미니게임 진입을 위한 주방 조리대와 집기 배치
-- [ ] 127. **[MOD_GDD_01]** `LogisticsHub`: 상하차 센터의 컨베이어 벨트 구동 애니메이션 및 물류 상자 적재함
-- [ ] 128. **[MOD_GDD_01]** `Neon24Store`: 편의점 내부의 밝은 형광등과 빼곡한 진열대 상호작용 지점 구축
-- [ ] 129. **[MOD_GDD_01]** `HomeOfficeBranding`: 유저가 지은 이름이 출입문 간판에 네온사인으로 빛나는 연출
-- [ ] 130. **[MOD_GDD_01]** `AmbientLightSync`: 타운 외부 하늘 색상이 실제 게임 시간(Day/Night)에 맞춰 그라데이션 변화
-- [ ] 131. **[MOD_GDD_01]** `ExtraNpcRoutine`: 타운 배경에서 가볍게 움직이는 보행자 NPC들의 AI 순회 경로
-- [ ] 132. **[MOD_GDD_01]** `CameraFollowController`: 오피스 내 드래그 이동, 줌 인/아웃 및 경계선 제한 스크립트
-- [ ] 133. **[MOD_GDD_05]** `GridUndoSystem`: 가구 배치 실수를 되돌리기 위한 Stack 기반의 Undo/Redo 엔진
-- [ ] 134. **[MOD_GDD_05]** `InteriorValueReport`: 현재 가구 배치의 조화로움과 스탯 기여도를 정리한 리포트 UI
-- [ ] 135. **[MOD_GDD_06]** `Anna_MovementSet`: 시간대에 따라 오피스 창가, 책상, 침대 등으로 이동하는 안나
-- [ ] 136. **[MOD_GDD_01]** `CozyFogEffect`: 맵 구석구석에 아늑한 감성을 더하는 미세한 노이즈와 안개 파티클
-- [ ] 137. **[MOD_GDD_01]** `InteractiveProps`: 클릭 시 짧은 소리를 내거나 흔들리는 오피스 내 인테리어 소품화
-- [ ] 138. **[MOD_GDD_01]** `SceneFastTravel`: 맵 UI 특정 위치 클릭 시 페이드아웃 후 해당 장소로 즉시 이동
-- [ ] 139. **[MOD_GDD_05]** `FurnitureDepreciation`: 중고 가구 판매 시 구입 시점 대비 가격이 깎이는 감가상각 연산
-- [ ] 140. **[MOD_GDD_05]** `InteriorDataSync`: 가구별 ID, 좌표, 회전값을 한 줄의 문자열로 압축하여 저장하는 스키마
-- [ ] 141. **[MOD_GDD_05]** `ExpansionCostCurve`: 오피스 평수 확장 시 요구되는 골드 및 평판 등급의 상승 곡선 설정
-- [ ] 142. **[MOD_GDD_05]** `GridVisualGuide`: 가구 배치 모드 활성화 시 바닥에 은은한 쿼터뷰 격자 가루가 깔리는 FX
-- [ ] 143. **[MOD_GDD_01]** `BGMZoneDetector`: 소속 구역(은행, 펍 등)에 따라 해당 오디오 트랙으로 자연스럽게 전환
-- [ ] 144. **[MOD_GDD_01]** `CityGlowFX`: 야간 시간대 창문 밖으로 보이는 도시 마천루들의 깜빡이는 불빛 셰이더
-- [ ] 145. **[MOD_GDD_06]** `Anna_OfficeRoutine`: 안나가 책상에 앉아 키보드를 두드리거나 자료를 검토하는 대기 동작
-- [ ] 146. **[MOD_GDD_05]** `SinglePlacementLimit`: 특정 고가 대형 가구(예: 서버 랙)의 중복 설치를 제한하는 감시 로직
-- [ ] 147. **[MOD_GDD_01]** `StreetClickFX`: 땅을 클릭했을 때 나타나는 사이버펑크 스타일의 파란색 육각형 파티클
-- [ ] 148. **[MOD_GDD_01]** `BuildingOutlineFX`: 마우스 오버한 타운 건물의 외곽선이 얇게 빛나는 아웃라인 연출
-- [ ] 149. **[MOD_GDD_01]** `MetroTransitAnim`: 장소 이동 시 지하철이 웅장하게 화면을 가로질러 지나가는 컷신 연출
-- [ ] 150. **[MOD_GDD_01]** `TownVignetteFX`: 타운 화면 가장자리에 필름 그레인과 갈색 비네팅을 더해 빈티지 무드 완성
-- [ ] 151. **[MOD_GDD_05]** `CarpetLayer`: 바닥재 바로 위에 겹쳐서 설치되는 카펫 전용 레이어 및 마킹 로직
-- [ ] 152. **[MOD_GDD_05]** `WallAccessory`: 벽면에 거는 포스터나 시계를 위한 수직 그리드 배치 엔진
-- [ ] 153. **[MOD_GDD_01]** `AmbientCrowdSound`: 타운 중앙 광장 진입 시 웅성웅성거리는 환경 소음 자동 재생
-- [ ] 154. **[MOD_GDD_01]** `NeonSignGlitch`: 야간에 타운 네온사인이 미세하게 지지직거리며 글리치가 나는 연출
-- [ ] 155. **[MOD_GDD_06]** `Anna_InteractivePoint`: 안나 옆에 섰을 때 '대화하기(F)' 상호작용 툴팁이 뜨는 위치 매핑
-- [ ] 156. **[MOD_GDD_01]** `SubwayEntrance`: 지하철 역 입구 프리팹 구축 및 월드맵 이동 트리거 바인딩
-- [ ] 157. **[MOD_GDD_05]** `GridConstraint`: 설치 불가능한 가구가 있는 타일에 설치 시 붉은색 경고 박스 노출
-- [ ] 158. **[MOD_GDD_05]** `SaveThumbnail`: 인테리어 저장 시 현재 오피스 모습을 작은 썸네일로 캡처하여 저장
-- [ ] 159. **[MOD_GDD_01]** `ReflectionShader`: 전당포나 은색 건물 유리창에 비치는 노란색 가로등 빛 반사 연출
-- [ ] 160. **[MOD_GDD_01]** `VendingMachine`: 타운 곳곳에 배치된 자판기 클릭 시 짧은 캔 따는 소리와 효과음 재생
-- [ ] 161. **[MOD_GDD_05]** `FurnitureSellConfirm`: 가구 판매 시 판매가와 삭제 여부를 묻는 2차 확인 모달창
-- [ ] 162. **[MOD_GDD_01]** `WeatherSyncLogic`: 맑음/비/안개발생에 따른 타운 전체 라이트 강도 및 색온도 조절
-- [ ] 163. **[MOD_GDD_01]** `TrafficLightAnim`: 타운 도로의 신호등이 빨강/초록으로 주기적으로 변하는 애니메이션
-- [ ] 164. **[MOD_GDD_05]** `AutoSortingLogic`: 버튼 클릭 시 현재 배치된 가구들을 종류별로 나란히 정렬해주는 편의 기능
-- [ ] 165. **[MOD_GDD_01]** `StreetLightGlow`: 밤에 가로등 주변으로 은은하게 퍼지는 라이트 후광 효과(Halo) 제작
-
----
-
-## 🗓️ Phase 4: 8월 - 노동 미니게임 및 아이템/찌라시 (166 ~ 225)
+### 🗓️ Sprint 3: 6월 3~4주차 - 노동 미니게임 및 찌라시 (166 ~ 225)
 
 - [ ] 166. **[MOD_GDD_02]** `JobSystemController`: 전체 노동 리스트 및 보상 데이터 매크로 관리
 - [ ] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
@@ -261,7 +203,72 @@
 
 ---
 
-## 🗓️ Phase 5: 9월 - 서사 및 소셜 시스템 (231 ~ 295)
+
+---
+
+## 🚀 Post-GIGDC 마일스톤 (7월 ~ 10월 출시)
+
+### 🗓️ Phase 4: 7월 - 월드 환경 및 그리드 시스템 (111 ~ 165)
+
+- [ ] 111. **[MOD_GDD_05]** `IsoGrid_Base`: 2:1 비율의 아이소메트릭 그리드 논리 좌표계 및 타운 셋업
+- [ ] 112. **[MOD_GDD_05]** `TileSelection`: 마우스 오버 시 해당 타일에 노란색 하이라이트 박스 연출
+- [ ] 113. **[MOD_GDD_05]** `OfficeFloorPlan`: 10x10에서 30x30까지의 오피스 평수 확장 트리거 및 맵 데이터
+- [ ] 114. **[MOD_GDD_05]** `SortingLayerManager`: 가구의 Y축 위치에 따라 전후 관계를 자동 정렬하는 렌더링 레이어
+- [ ] 115. **[MOD_GDD_05]** `GhostPreview_FX`: 설치 전 반투명 가구 이미지와 설치 가능/불가능 영역 시각화
+- [ ] 116. **[MOD_GDD_05]** `CollisionValidator`: 가구 간 배치 겹침 및 문 앞을 막는 동선 방해 실시간 체크
+- [ ] 117. **[MOD_GDD_05]** `RotationLogic`: 90도 회전 시 1/2/4방향 스프라이트 정밀 전환 및 좌표 보정
+- [ ] 118. **[MOD_GDD_05]** `FurnitureBuffProcessor`: 가구 배치 즉시 명성치와 스탯 보너스를 전역 스탯에 가산
+- [ ] 119. **[MOD_GDD_05]** `EditModeUI`: 가구 이동, 회전, 판매 버튼이 있는 하단 건설 모드 툴바 셋업
+- [ ] 120. **[MOD_GDD_05]** `WallpaperManager`: 벽면과 바닥재의 텍스처를 클릭 한 번으로 교체하는 팔레트 시스템
+- [ ] 121. **[MOD_GDD_01]** `TownMapSetup`: 7개 구역(은행, 전당포, 치킨집 등)으로 구성된 타운 거점 배치
+- [ ] 122. **[MOD_GDD_01]** `NpcSpawnPoint`: 장소별 NPC(안나, 바터, 백사장) 상주 위치 및 시야각 설정
+- [ ] 123. **[MOD_GDD_01]** `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹
+- [ ] 124. **[MOD_GDD_01]** `CipherSecuritiesFloor`: 증권사 내부의 대형 전광판과 트레이딩 데스크 레이아웃
+- [ ] 125. **[MOD_GDD_01]** `DustyRoomInterior`: 전당포 내부의 어두운 필터와 먼지 날리는 먼지 입자 FX 연출
+- [ ] 126. **[MOD_GDD_01]** `RoosterKitchen`: 치킨집 주방 미니게임 진입을 위한 주방 조리대와 집기 배치
+- [ ] 127. **[MOD_GDD_01]** `LogisticsHub`: 상하차 센터의 컨베이어 벨트 구동 애니메이션 및 물류 상자 적재함
+- [ ] 128. **[MOD_GDD_01]** `Neon24Store`: 편의점 내부의 밝은 형광등과 빼곡한 진열대 상호작용 지점 구축
+- [ ] 129. **[MOD_GDD_01]** `HomeOfficeBranding`: 유저가 지은 이름이 출입문 간판에 네온사인으로 빛나는 연출
+- [ ] 130. **[MOD_GDD_01]** `AmbientLightSync`: 타운 외부 하늘 색상이 실제 게임 시간(Day/Night)에 맞춰 그라데이션 변화
+- [ ] 131. **[MOD_GDD_01]** `ExtraNpcRoutine`: 타운 배경에서 가볍게 움직이는 보행자 NPC들의 AI 순회 경로
+- [ ] 132. **[MOD_GDD_01]** `CameraFollowController`: 오피스 내 드래그 이동, 줌 인/아웃 및 경계선 제한 스크립트
+- [ ] 133. **[MOD_GDD_05]** `GridUndoSystem`: 가구 배치 실수를 되돌리기 위한 Stack 기반의 Undo/Redo 엔진
+- [ ] 134. **[MOD_GDD_05]** `InteriorValueReport`: 현재 가구 배치의 조화로움과 스탯 기여도를 정리한 리포트 UI
+- [ ] 135. **[MOD_GDD_06]** `Anna_MovementSet`: 시간대에 따라 오피스 창가, 책상, 침대 등으로 이동하는 안나
+- [ ] 136. **[MOD_GDD_01]** `CozyFogEffect`: 맵 구석구석에 아늑한 감성을 더하는 미세한 노이즈와 안개 파티클
+- [ ] 137. **[MOD_GDD_01]** `InteractiveProps`: 클릭 시 짧은 소리를 내거나 흔들리는 오피스 내 인테리어 소품화
+- [ ] 138. **[MOD_GDD_01]** `SceneFastTravel`: 맵 UI 특정 위치 클릭 시 페이드아웃 후 해당 장소로 즉시 이동
+- [ ] 139. **[MOD_GDD_05]** `FurnitureDepreciation`: 중고 가구 판매 시 구입 시점 대비 가격이 깎이는 감가상각 연산
+- [ ] 140. **[MOD_GDD_05]** `InteriorDataSync`: 가구별 ID, 좌표, 회전값을 한 줄의 문자열로 압축하여 저장하는 스키마
+- [ ] 141. **[MOD_GDD_05]** `ExpansionCostCurve`: 오피스 평수 확장 시 요구되는 골드 및 평판 등급의 상승 곡선 설정
+- [ ] 142. **[MOD_GDD_05]** `GridVisualGuide`: 가구 배치 모드 활성화 시 바닥에 은은한 쿼터뷰 격자 가루가 깔리는 FX
+- [ ] 143. **[MOD_GDD_01]** `BGMZoneDetector`: 소속 구역(은행, 펍 등)에 따라 해당 오디오 트랙으로 자연스럽게 전환
+- [ ] 144. **[MOD_GDD_01]** `CityGlowFX`: 야간 시간대 창문 밖으로 보이는 도시 마천루들의 깜빡이는 불빛 셰이더
+- [ ] 145. **[MOD_GDD_06]** `Anna_OfficeRoutine`: 안나가 책상에 앉아 키보드를 두드리거나 자료를 검토하는 대기 동작
+- [ ] 146. **[MOD_GDD_05]** `SinglePlacementLimit`: 특정 고가 대형 가구(예: 서버 랙)의 중복 설치를 제한하는 감시 로직
+- [ ] 147. **[MOD_GDD_01]** `StreetClickFX`: 땅을 클릭했을 때 나타나는 사이버펑크 스타일의 파란색 육각형 파티클
+- [ ] 148. **[MOD_GDD_01]** `BuildingOutlineFX`: 마우스 오버한 타운 건물의 외곽선이 얇게 빛나는 아웃라인 연출
+- [ ] 149. **[MOD_GDD_01]** `MetroTransitAnim`: 장소 이동 시 지하철이 웅장하게 화면을 가로질러 지나가는 컷신 연출
+- [ ] 150. **[MOD_GDD_01]** `TownVignetteFX`: 타운 화면 가장자리에 필름 그레인과 갈색 비네팅을 더해 빈티지 무드 완성
+- [ ] 151. **[MOD_GDD_05]** `CarpetLayer`: 바닥재 바로 위에 겹쳐서 설치되는 카펫 전용 레이어 및 마킹 로직
+- [ ] 152. **[MOD_GDD_05]** `WallAccessory`: 벽면에 거는 포스터나 시계를 위한 수직 그리드 배치 엔진
+- [ ] 153. **[MOD_GDD_01]** `AmbientCrowdSound`: 타운 중앙 광장 진입 시 웅성웅성거리는 환경 소음 자동 재생
+- [ ] 154. **[MOD_GDD_01]** `NeonSignGlitch`: 야간에 타운 네온사인이 미세하게 지지직거리며 글리치가 나는 연출
+- [ ] 155. **[MOD_GDD_06]** `Anna_InteractivePoint`: 안나 옆에 섰을 때 '대화하기(F)' 상호작용 툴팁이 뜨는 위치 매핑
+- [ ] 156. **[MOD_GDD_01]** `SubwayEntrance`: 지하철 역 입구 프리팹 구축 및 월드맵 이동 트리거 바인딩
+- [ ] 157. **[MOD_GDD_05]** `GridConstraint`: 설치 불가능한 가구가 있는 타일에 설치 시 붉은색 경고 박스 노출
+- [ ] 158. **[MOD_GDD_05]** `SaveThumbnail`: 인테리어 저장 시 현재 오피스 모습을 작은 썸네일로 캡처하여 저장
+- [ ] 159. **[MOD_GDD_01]** `ReflectionShader`: 전당포나 은색 건물 유리창에 비치는 노란색 가로등 빛 반사 연출
+- [ ] 160. **[MOD_GDD_01]** `VendingMachine`: 타운 곳곳에 배치된 자판기 클릭 시 짧은 캔 따는 소리와 효과음 재생
+- [ ] 161. **[MOD_GDD_05]** `FurnitureSellConfirm`: 가구 판매 시 판매가와 삭제 여부를 묻는 2차 확인 모달창
+- [ ] 162. **[MOD_GDD_01]** `WeatherSyncLogic`: 맑음/비/안개발생에 따른 타운 전체 라이트 강도 및 색온도 조절
+- [ ] 163. **[MOD_GDD_01]** `TrafficLightAnim`: 타운 도로의 신호등이 빨강/초록으로 주기적으로 변하는 애니메이션
+- [ ] 164. **[MOD_GDD_05]** `AutoSortingLogic`: 버튼 클릭 시 현재 배치된 가구들을 종류별로 나란히 정렬해주는 편의 기능
+- [ ] 165. **[MOD_GDD_01]** `StreetLightGlow`: 밤에 가로등 주변으로 은은하게 퍼지는 라이트 후광 효과(Halo) 제작
+
+---
+
+### 🗓️ Phase 5: 8월~9월 - 서사 및 소셜 시스템 (231 ~ 295)
 
 - [ ] 231. **[MOD_GDD_06]** `AnnaAnimator`: 안나의 감정별(Happy, Sad, Angry, Blush) 자연스러운 표정 전이
 - [ ] 232. **[MOD_GDD_06]** `AffectionLogic`: 안나와의 누적 친밀도(0~100) 데이터 및 가중치 연산 엔진
@@ -331,7 +338,7 @@
 
 ---
 
-## 🗓️ Phase 6: 10월 - 적색 수배 및 최종 빌드 안정화 (291 ~ 350)
+### 🗓️ Phase 6: 10월 - 적색 수배 및 최종 빌드 안정화 (291 ~ 350)
 
 - [ ] 291. **[CORE_GDD_07]** `LottoManagerCore`: 로또 1~45 고유 번호 선정 및 당첨금 풀 연산
 - [ ] 292. **[CORE_GDD_07]** `LottoPurchaseUI`: 수동/자동 번호 선택 및 구매 티켓 인벤토리 저장
