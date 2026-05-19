@@ -73,5 +73,14 @@ namespace StockWars.Core
         
         /// <summary>에너지 드링크 상점 구매가</summary>
         public const long ENERGY_DRINK_PRICE = 500L;
+
+        // ----------------------------------------------------
+        // 6. 레벨 및 성장 설정
+        // ----------------------------------------------------
+        /// <summary>레벨업 공식에 적용되는 거래액 가중치 (기본 1000)</summary>
+        public const long LEVEL_VOLUME_SCALE = 1000L;
+
+        /// <summary>데모 버전 최대 레벨 제한</summary>
+        public const int MAX_DEMO_LEVEL = 3;
     }
 }
