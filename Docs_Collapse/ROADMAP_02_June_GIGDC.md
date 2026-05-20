@@ -1,0 +1,185 @@
+# ROADMAP 02: 6월 (GIGDC 출품 준비)
+
+**우선순위:** 2. 6월 말 GIGDC까지 해야 하는 것
+**목표:** [GIGDC: Lv.3 데모] 튜토리얼부터 Lv.3 구간 내 주요 기능(UI, 찌라시, 미니게임) 탑재 및 겉모습 완성
+
+> **[AI 주의사항]** 주요 기능이 모두 구동되어야 하지만, 복잡한 백엔드 연산보다는 시각적 완성도(행색)를 우선합니다.
+
+## Sprint 2 & 3: 금융 고도화, 노동 미니게임 및 찌라시 (056 ~ 230)
+
+- [ ] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 057. **[CORE_GDD_04]** 🧠[Pro] `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 058. **[CORE_GDD_04]** `AnnaWelcomeGift`: 최초 대출 시 168시간 무이자 플래그 및 타이머 작동
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 059. **[CORE_GDD_04]** 🧠[Pro] `LoanEvaluator`: 총자산/평판 대비 대출 가능 한도(최대 10,000G 초기값) 연산
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 065. **[CORE_GDD_07]** `OfficeMaintenance`: 오피스 레벨(1~4)에 따른 주간 감가상각비(500~5000G) 차감
+  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 066. **[CORE_GDD_07]** `GhostSinkEngine`: 고스트 트레이더의 모든 수익을 시스템으로 회수하는 소각부
+  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 상단 바, 사이드 메뉴를 포함한 핵심 HUD 레이아웃 셋업
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 068. **[CORE_GDD_05]** `StatTextLerp`: 골드와 수치 변동 시 드르륵 올라가는 시각적 숫자 연출
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 069. **[CORE_GDD_05]** `BottomTicker_Loop`: 24개 종목명이 하단에 무한 스크롤되는 티커 UI 제작
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 070. **[CORE_GDD_05]** `TickerDataBinder`: 실시간 주가/변동률 정보를 티커 텍스트에 동적 할당
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 071. **[CORE_GDD_05]** 🎨[Graphics] `TickerColorFX`: 상승(Cyan)/하락(Peach) 텍스트 색상 및 글로우 셰이더 적용
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 072. **[CORE_GDD_05]** 🧠[Pro] `AreaChart_Core`: Mesh API 기반의 실시간 주가 선 및 면 선형 렌더러
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 073. **[CORE_GDD_05]** `ChartTooltip`: 차트 위에 마우스 포인터 위치 시 해당 시점 주가/시간 팝업
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 074. **[CORE_GDD_05]** `ChartTimeline`: 시간축(1H, 1D, 7D) 전환 시 데이터 리인덱싱 및 리렌더링
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 075. **[CORE_GDD_05]** 🎨[Graphics] `GlobalLighting_Cycle`: 게임 시간대에 따른 실시간 환경 광원(Day/Night) 변화
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Controller`: 날씨 시스템과 연동된 창밖 빗줄기 입자 및 바닥 물튀김
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 077. **[CORE_GDD_05]** 🎨[Graphics] `WindowRainShader`: 유리창에 흘러내리는 물방울의 굴절 셰이더 디테일 작업
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 078. **[CORE_GDD_05]** 🎨[Graphics] `GlitchCore`: 뉴스 발생 시 UI가 일시적으로 깨지는 도트 글리치 컴포넌트
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_IdleState`: 홈 오피스 내 안나의 대기 위치 설정 및 기본적인 숨쉬기 애니
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 080. **[CORE_GDD_08]** 🎨[Graphics] `CharacterSelectUI`: 초기 외형(머리, 안경, 의상) 선택을 위한 갤러리 뷰
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 081. **[CORE_GDD_08]** `AvatarDataMapping`: 선택된 파츠를 실제 3D/2D 캐릭터 프리팹에 실시간 적용
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 082. **[CORE_GDD_08]** `StarterPackDistributor`: 초기 시드 5,000G 및 기본 가구 세트 인벤토리 지급
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 083. **[CORE_GDD_06]** 🎨[Graphics] `AssetDissolveFX`: 가구 압류 시 입자가 흩어지며 사라지는 디졸브(Dissolve) 효과
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 084. **[CORE_GDD_02]** `OrderWindow_UI`: 수량 입력 필드, 슬라이더, 총액 계산이 포함된 매매창
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 085. **[CORE_GDD_02]** `QuickBuyToggle`: 클릭 한 번으로 가용 자산 100% 매수하는 단축 기능 로직
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 086. **[CORE_GDD_02]** `TransactionLogger`: 매수/매도 시 시간, 단가, 수량을 전역 거래 일지에 기록
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 087. **[CORE_GDD_05]** 🎨[Graphics] `SceneNavigationUI`: 지하철 노선도 테마의 맵 선택 창 및 장소별 썸네일 노출
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 088. **[CORE_GDD_05]** `TooltipManager`: 모든 아이콘 마우스 오버 시 정보를 뿌려주는 전역 툴팁 시스템
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 089. **[CORE_GDD_03]** 🎨[Graphics] `LevelUpVisual`: 레벨 상승 시 화면 중앙에 나타나는 금빛 엠블럼과 보상 연출
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 090. **[CORE_GDD_04]** `InterestReportUI`: 매주 월요일 정산 내역(이자/유지비)을 보여주는 팝업창
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 091. **[CORE_GDD_06]** `AsyncPatcher`: 저장 실패 시 임시 메모리에 데이터를 보관하고 재시도하는 로직
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 092. **[CORE_GDD_05]** 🎨[Graphics] `ResolutionScaler`: 720p ~ 4K까지의 UI 스프라이트 해상도 최적화 대응
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 093. **[CORE_GDD_02]** 🎨[Graphics] `StatusLED.cs`: 장 열림(Green)/닫힘(Red)을 표시하는 책상 위 기계 장치 연출
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 094. **[CORE_GDD_05]** `UI_SfxAtlas`: 버튼 클릭, 창 열기 등 모든 UI 소리와 연동되는 전역 오디오 믹서
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 테스트를 위한 `~`키 입력 시 나타나는 명령어 입력창
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 097. **[CORE_GDD_05]** `MainHUD_TimeDisplay`: 상단 중앙에 현재 요일과 디지털 시각 실시간 표기
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 098. **[CORE_GDD_05]** `ChartGridRenderer`: 가격대 구분을 위한 차트 배경 눈금 및 실시간 수평선
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 윈도우 창을 드래그하여 벽면에 스냅(Snap)시키는 편의 기능
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 100. **[CORE_GDD_01]** `PrefabLibrary`: 모든 NPC, 가구, UI 조각들의 인스턴스화를 위한 리소드 로드부
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 101. **[CORE_GDD_04]** `BankNPC_Interaction`: 지점장 샤일록과의 대화창 및 대출/상환 선택지 바인딩
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 에이전트 K와의 대화창 및 아레나 신청 인터페이스
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 103. **[CORE_GDD_05]** `HUD_Notification`: 찌라시 획득이나 뉴스 발생 시 우측 상단에 뜨는 슬라이드 알림
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 104. **[CORE_GDD_03]** `StatPointUI`: 포인트 소모하여 직관적으로 능력치 블록을 채우는 업그레이드창
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 105. **[CORE_GDD_02]** 🧠[Pro] `CandleStick_Renderer`: 봉 차트 보기 모드 전환을 위한 시가/고가/저가/종가 계산부
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 106. **[CORE_GDD_05]** 🎨[Graphics] `UI_BlurEffect`: 창이 뜰 때 배경을 은은하게 흐리게 만드는 가우시안 블러 셰이더
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 107. **[CORE_GDD_04]** `AutomaticSeizureMail`: 압류 6시간 전 자동으로 발송되는 최후의 결제 독촉 알림 로직
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 108. **[CORE_GDD_05]** 🎨[Graphics] `Ticker_NewsSymbol`: 실시간으로 터지는 호재/악재 뉴스 아이콘을 티커에 삽입
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 109. **[CORE_GDD_06]** 🧠[Pro] `SaveSafetyCheck`: 저장 도중 전원 차단 시 직전 세이브 데이터를 보호하는 백업본 생성
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 110. **[CORE_GDD_05]** `UI_MasterMixer`: 마스터 볼륨 및 각 장소별 앰비언트(빗소리 등) 볼륨 조절 슬라이더
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 166. **[MOD_GDD_02]** 🤖[Claude] `JobSystemController`: 전체 노동 리스트 및 보상 데이터 매크로 관리
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 미니게임 공통 UI (시작/제한시간/결과화면) 프리팹
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 173. **[MOD_GDD_02]** 🧠[Pro] `SortingHub_Balance`: 좌우 키로 상자 탑의 균형을 잡는 물리 엔진 연동
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 174. **[MOD_GDD_02]** `SortingHub_Wind`: 강풍 환경 변수 추가로 인한 상하차 난이도 증가 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 176. **[MOD_GDD_03]** 🤖[Claude] `ItemMasterTable`: CSV 기반 가구/의상 200종 스탯 대량 로드 시스템
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 177. **[MOD_GDD_03]** `InventoryUI_Grid`: 7개 카테고리별 슬롯 생성 및 아이콘 바인딩
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 178. **[MOD_GDD_03]** `ItemDetailPopup`: 아이템 상세 옵션 및 플레이버 텍스트 노출 윈도우
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 179. **[MOD_GDD_03]** `EquipController`: 아바타 파츠(Hair, Top, Bottom 등) 실시간 스위칭
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 182. **[MOD_GDD_03]** `ConsumableItem`: 사용 시 즉시 효과(분석력 증가 등)를 주는 소모품 엔진
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 183. **[MOD_GDD_04]** 🤖[Claude] `RumorGenerator`: 알바 성공 시 48종 시나리오 중 확률적 찌라시 획득
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 184. **[MOD_GDD_04]** `RumorInventory`: 획득한 찌라시 전용 수집함 및 열람 인터페이스
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 185. **[MOD_GDD_04]** `BurnTimerLogic`: 열람 후 60분 뒤 인벤토리에서 자동 삭제되는 타이머
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 186. **[MOD_GDD_04]** 🧠[Pro] `InsightMaskingEngine`: 분석 레벨 1~3단계별 단어 은폐 및 치환 알고리즘
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 187. **[MOD_GDD_04]** 🎨[Graphics] `RumorExpirationFX`: 만료 임박(5분 전) 찌라시 아이콘의 붉은 깜빡임 연출
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 188. **[MOD_GDD_04]** 🎨[Graphics] `DecoderItemAction`: '찌라시 판독기' 사용 시 마스킹 해제 실시간 연출
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 195. **[MOD_GDD_02]** `EnergyDrinkItem`: 에너지 드링크(500G) 사용 시 일일 알바 횟수 2회 복구 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 196. **[MOD_GDD_02]** `JobPromotion`: 노동 횟수 누적 시 시급이 1.1~1.5배 상승하는 승급 시스템
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 미니게임 성공/실패 시 비프음 및 백사장 호통 소리
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 198. **[MOD_GDD_03]** 🎨[Graphics] `ItemRarityFX`: 레전더리 등급 아이템 획득 시 화면 전체 아우라 연출
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 199. **[MOD_GDD_04]** `RumorSourceTag`: 찌라시 출처(다크넷, 브로커, 우연) 표기 로직
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 200. **[MOD_GDD_04]** 🧠[Pro] `ReliabilitySystem`: 찌라시 텍스트 중 '거짓'이 섞일 확률 관리 엔진
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 203. **[MOD_GDD_02]** `NightShiftJob`: 야간(22:00-02:00) 노동 시 찌라시 획득 확률 2배 적용
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료 시 정보가 타 들어가며 사라지는 셰이더 효과
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 206. **[MOD_GDD_03]** `ItemPurchaseFlow`: 상점에서 가구 구매 시 자금 체크 및 배송 연출
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 207. **[MOD_GDD_02]** `MiniGamePause`: 게임 도중 일시 정지 및 포기 시 패널티(급여 0) 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 208. **[MOD_GDD_02]** `ComboSystem`: 편의점/상하차 시 연속 성공 시 콤보 가산금 지급
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 주는 빨간색 '치명적 찌라시' 연출
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 210. **[MOD_GDD_03]** 🎨[Graphics] `InventoryExpansion`: 서랍장 칸 늘리기 아이템 사용 시 그리드 확장 연출
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 획득 Gold와 경험치를 보여주는 전광판 UI
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 213. **[MOD_GDD_04]** `RumorMarketPrice`: 찌라시의 희귀도에 따라 암시장에서의 거래 가격 변동 로직
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 214. **[MOD_GDD_03]** `ItemStorageLock`: 특정 레벨 도달 전까지 잠겨있는 프리미엄 아이템 슬롯
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 215. **[MOD_GDD_02]** `FatigueSystem`: 연속 노동 시 성공 판정 범위가 좁아지는 피로도 연산 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 216. **[MOD_GDD_04]** `CipherRumorDecryption`: 안나의 신뢰도에 따라 마스킹된 찌라시 글자를 복원해주는 이벤트
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 221. **[MOD_GDD_03]** `LuckyBoxLogic`: 일정 확률로 희귀 가구가 나오는 '박스' 아이템 오픈 엔진
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 225. **[MOD_GDD_03]** `InventoryFullWarning`: 인벤토리가 가득 찼을 때 알바 보상 수취 거부 및 안내 메시지
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)

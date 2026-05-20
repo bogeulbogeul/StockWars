@@ -1,0 +1,138 @@
+# ROADMAP 04: 8~9월 (캡스톤 중반부: 서사 및 소셜)
+
+**우선순위:** 3. 10월 말 캡스톤까지 해야 하는 것
+**목표:** [Capstone: Lv.4 ~ 10 확장] 플레이타임 누적에 따른 서사 진행, NPC 호감도, 스마트폰 및 기관 기능 해금
+
+> **[AI 주의사항]** GIGDC(Lv.3)를 넘어 레벨 10에 도달하기 위한 핵심 서사 콘텐츠입니다.
+
+## Phase 5: 서사 및 소셜 시스템 (231 ~ 290)
+
+- [ ] 231. **[MOD_GDD_06]** 🎨[Graphics] `AnnaAnimator`: 안나의 감정별(Happy, Sad, Angry, Blush) 자연스러운 표정 전이
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 232. **[MOD_GDD_06]** 🧠[Pro] `AffectionLogic`: 안나와의 누적 친밀도(0~100) 데이터 및 가중치 연산 엔진
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 233. **[MOD_GDD_06]** 🤖[Claude] `AnnaDailyBriefing`: 매일 아침 안나가 시장 상황과 유저 자산을 요약해주는 브리핑 로직
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 234. **[MOD_GDD_06]** `Anna_OfficePos`: 오피스 내 안나의 위치 매핑 및 시간대별 대기 동작(애니메이션) 분기
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 235. **[MOD_GDD_06]** 🎨[Graphics] `BarterNpcProfile`: 전당포 주인 바터의 고해상도 초상화 및 대기 상태 구축
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 231. **[MOD_GDD_06]** 🤖[Claude] `RichPoorSpeechEngine`: 유저 자산 규모를 체크하여 NPC의 대사 톤앤매너 필터링
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 232. **[MOD_GDD_07]** 🤖[Claude] `DialogueSystemCore`: 텍스트 타이핑 효과 및 유저 선택지에 따른 결과 분기 엔진
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 233. **[MOD_GDD_11]** `SmartphoneUI`: 화면 우하단 스마트폰 아이콘 및 앱 서랍 슬라이드 애니메이션
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 234. **[MOD_GDD_11]** `MailApp_List`: 시스템 및 NPC 메일 수신 목록, 중요도 필터 및 읽음 처리 기능
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 235. **[MOD_GDD_11]** `AnnaWelcomeGift`: 안나의 웰컴 선물(10,000G) 및 친밀도 기반 특별 메일 보상 시스템
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 236. **[MOD_GDD_09]** 🤖[Claude] `VirtualFriendNet`: 가상의 친구 유저 10명의 프로필 및 가짜 투자 일지 자동 생성기
+  - 📖 읽을 문서: `[MOD_GDD_09]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 237. **[MOD_GDD_12]** `NewsAgencyApp`: 가상 언론사의 속보 알림 및 과거 기사 아카이빙 조회 앱
+  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 238. **[MOD_GDD_13]** 🧠[Pro] `GhostTraderAI`: 시장 유동성을 공급하는 고스트 트레이더들의 구역별 매매 알고리즘
+  - 📖 읽을 문서: `[MOD_GDD_13]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 239. **[MOD_GDD_14]** `DebtReliefWizard`: 파산 시나리오 진입 시 회생 신청 가능 여부 판정 및 절차 위저드
+  - 📖 읽을 문서: `[MOD_GDD_14]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 240. **[MOD_GDD_14]** `DebtForgivenessLogic`: 회생 승인 시 이자 즉시 탕감 및 원금 50% 유예 트랙 전환
+  - 📖 읽을 문서: `[MOD_GDD_14]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 250. **[데모 이후] [MOD_GDD_16]** `Syndicate_Formation`: 유저 간 '투자 신디케이트' 결성 및 엠블럼 에디터 UI
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 251. **[데모 이후] [MOD_GDD_16]** 🎨[Graphics] `Syndicate_EmblemMapping`: 생성된 엠블럼을 멤버의 어깨 및 프로필 UI에 고화질 렌더링
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 252. **[데모 이후] [MOD_GDD_16]** 🎨[Graphics] `SecretHideoutUI`: 미드나잇 펍 지하 '비밀 아지트' 입장 및 인테리어 커스텀
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 253. **[데모 이후] [MOD_GDD_16]** `JointBuyOperation`: 리더의 작전주 지정 시 멤버 동시 매수 시너지(x1.5 가중치) 엔진
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 254. **[데모 이후] [MOD_GDD_16]** 🧠[Pro] `JointLiabilityCalc`: 신디케이트 파산 시 멤버 기여도에 따른 채무 배분 및 연대 책임 로직
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 255. **[데모 이후] [MOD_GDD_16]** `BlackBrokerJack`: 전설급 작전주 소스를 판매하는 블랙 브로커 잭과의 특수 거래창
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 256. **[MOD_GDD_06]** `Anna_MoodBoard`: 안나의 호감도에 따라 오피스 내부 BGM과 조명 색온도가 미세하게 변화
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 257. **[MOD_GDD_11]** `SmartphoneVibrate`: 긴급 속보나 마진콜 경고 시 장치 엔진을 통한 햅틱 피드백 연동
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 260. **[MOD_GDD_07]** `DialogueCameraZoom`: 중요 대사 전달 시 NPC의 얼굴로 카메라가 부드럽게 줌인(Lerp) 연출
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 261. **[MOD_GDD_07]** `SelectiveSkip`: 이미 열람한 대사 그룹만 빠르게 스킵할 수 있는 고급 다이얼로그 모듈
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 262. **[MOD_GDD_11]** 🎨[Graphics] `AppUpdateVisual`: 스토리 마일스톤 달성 시 스마트폰 앱 아이콘이 골드로 업그레이드되는 연출
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 264. **[데모 이후] [MOD_GDD_16]** `SyndicateRankings`: 신디케이트 간의 주간 수익률 대결 및 전용 리더보드 시스템
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 265. **[MOD_GDD_06]** 🎨[Graphics] `AnnaSecretGifts`: 호감도 Max 상태에서만 발생하는 안나의 비밀 선물 컷신 이벤트
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 266. **[MOD_GDD_07]** `StorySummaryWindow`: 현재 진행 중인 메인 퀘스트와 서사적 위치를 요약해주는 기록장
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 267. **[MOD_GDD_11]** 🎨[Graphics] `SmartphoneDustFX`: 장시간 미사용 시 스마트폰 화면에 미세한 먼지가 쌓이는 디테일 연출
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 268. **[데모 이후] [MOD_GDD_16]** `SyndicateWallboard`: 아지트 내 멤버들의 실시간 보유 종목을 보여주는 대형 전광판
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 270. **[MOD_GDD_07]** 🎨[Graphics] `NpcEyeTracking`: 마우스 포인터의 위치를 NPC의 눈동자가 자연스럽게 쫓아가는 연출
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 271. **[MOD_GDD_12]** 🎨[Graphics] `NewsVideoPlayer`: 중요 경제 지표 발표 시 UI 내에서 재생되는 짧은 코지 뉴스 영상
+  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 273. **[데모 이후] [MOD_GDD_16]** 🧠[Pro] `GhostSyndicateAI`: 유저 신디케이트의 독점적 지위를 위협하는 라이벌 NPC 신디케이트 생성
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 274. **[MOD_GDD_06]** 🤖[Claude] `Anna_LateNightConvo`: 현실 시간 심야(00~04시)에만 들을 수 있는 안나의 감성 대사 세트
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 275. **[MOD_GDD_11]** `PhoneCaseCustom`: 포인트 소모하여 스마트폰의 외형과 폰트 스타일을 바꾸는 커스터마이징
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 277. **[데모 이후] [MOD_GDD_16]** `SyndicateEmergencyLoop`: 연맹 위기 시 멤버 모두의 화면에 경고 알람이 동시에 뜨는 연출
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 279. **[MOD_GDD_09]** `TradingBadgeCore`: 특정 수익률이나 매매 횟수 달성 시 프로필에 장착하는 마스터 휘장
+  - 📖 읽을 문서: `[MOD_GDD_09]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 280. **[MOD_GDD_07]** `DialogueSelectionSFX`: 선택지 위에 마우스 오버 시 출력되는 부드러운 화이트 노이즈 사운드
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 282. **[데모 이후] [MOD_GDD_16]** `SyndicateHideoutUpgrade`: 아지트 내에 고효율 트레이딩 룸을 증축하는 건설 시스템
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 283. **[MOD_GDD_11]** `SpamMailFilter`: 특정 평판 이하 시 쏟아지는 스팸/사기 메일을 걸러주는 필터 기능
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 285. **[MOD_GDD_06]** `Anna_WorkFocus`: 대화가 불가능할 정도로 안나가 업무에 집중하는 특정 시간대 플래그
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 287. **[데모 이후] [MOD_GDD_16]** `SyndicateAssetSharing`: 멤버 간의 일시적인 자산 대여 및 증거금 합산 공동 대응 기능
+  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 288. **[MOD_GDD_11]** `FlashLightApp`: 어두운 타운 구역 탐험 시 스마트폰 손전등 기능을 켜는 조명 효과
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 290. **[MOD_GDD_07]** `DialogueHistoryViewer`: 현재 대화 세션의 이전 텍스트들을 위로 스크롤하여 다시 읽는 기능
+  - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+
+## Phase 5.1: 추가 커스텀 및 부가 소셜 시스템 (GIGDC에서 연기됨)
+
+- [ ] 180. **[MOD_GDD_03]** `InventorySort`: 획득순, 가격순, 등급순 아이템 정렬 필터 구현
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 181. **[MOD_GDD_03]** `ItemSearch`: 인벤토리 내 이름 검색 기능을 위한 텍스트 필터
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 189. **[MOD_GDD_05]** `WardrobeUI`: 현재 착용 중인 의상 세트 효과 및 총 버프 계산창
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 194. **[MOD_GDD_05]** 🎨[Graphics] `BarberShopUI`: 헤어 스타일 및 컬러 변경 프리뷰 및 자본 차감 로직
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 201. **[MOD_GDD_05]** `StylingScore`: 현재 코디네이션의 '힙함'을 점수로 환산하는 엔진
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 202. **[MOD_GDD_03]** `ItemRecycle`: 필요 없는 가구를 분해하여 제작 재료로 바꾸는 기능
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 212. **[MOD_GDD_03]** `CosmeticVendor`: 타운 광장에 비주기적으로 나타나는 희귀 의상 노점상 NPC
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 217. **[MOD_GDD_03]** `FurnitureUpgrade`: 특정 재료를 사용해 기존 가구의 스탯 버프를 강화하는 시스템
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 218. **[MOD_GDD_02]** `GlobalJobEvent`: 전역적으로 특정 알바 수익이 2배가 되는 '황금 시간대' 공시
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 219. **[MOD_GDD_04]** `DarkWebMarket`: 스마트폰 앱을 통해 익명으로 찌라시를 사고파는 비대면 시장
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 222. **[MOD_GDD_02]** `PartTimeRanking`: 한 주간 알바 수익이 가장 높은 유저에게 주는 '성실 트레이더' 칭호
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 223. **[MOD_GDD_04]** 🧠[Pro] `RumorFeedbackLoop`: 내가 퍼뜨린 찌라시가 실제 주가에 미미하게 영향을 주는 피드백 엔진
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 224. **[MOD_GDD_05]** `OfficeBackgroundAudio`: 오피스 내 라디오 가구 배치 시 플레이리스트 재생 기능
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 226. **[MOD_GDD_17]** `CollectionMaster.cs`: 아이템 ID 기반 수집 여부 및 CP(Collection Point) 합산 엔진
+  - 📖 읽을 문서: `[MOD_GDD_17]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 227. **[MOD_GDD_17]** `ArchiveUI_Layout`: 실루엣 프리뷰, 등급별 필터링, 로어 텍스트를 포함한 도감 UI
+  - 📖 읽을 문서: `[MOD_GDD_17]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 228. **[MOD_GDD_17]** `CP_TierManager`: 누적 CP에 따른 5단계 티어 자동 판정 및 보상 지급 시스템
+  - 📖 읽을 문서: `[MOD_GDD_17]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 229. **[MOD_GDD_17]** `ThemeSynergyLogic`: 특정 테마(코지, 사이버 등) 완판 시 특수 패시브 활성화 트리거
+  - 📖 읽을 문서: `[MOD_GDD_17]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 230. **[MOD_GDD_17]** `ArchiveSilhouette`: 미획득 아이템의 실루엣 연출 및 획득처 가이드 시스템
+  - 📖 읽을 문서: `[MOD_GDD_17]` (Docs_Collapse에서 SLIM 버전 확인)

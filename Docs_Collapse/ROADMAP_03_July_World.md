@@ -1,0 +1,128 @@
+# ROADMAP 03: 7월 (캡스톤 전반부: 월드 및 하우징)
+
+**우선순위:** 3. 10월 말 캡스톤까지 해야 하는 것
+**목표:** [Capstone: Lv.4 ~ 10 확장] 레벨 4 이상 진입 시 본격적으로 해금되는 쿼터뷰 월드 및 오피스 하우징
+
+> **[AI 주의사항]** GIGDC 이후 본격적인 콘텐츠 확장 단계입니다.
+
+## Phase 4: 월드 환경 및 그리드 시스템 (111 ~ 165)
+
+- [ ] 111. **[MOD_GDD_05]** 🧠[Pro] `IsoGrid_Base`: 2:1 비율의 아이소메트릭 그리드 논리 좌표계 및 타운 셋업
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 112. **[MOD_GDD_05]** 🎨[Graphics] `TileSelection`: 마우스 오버 시 해당 타일에 노란색 하이라이트 박스 연출
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 113. **[MOD_GDD_05]** `OfficeFloorPlan`: 10x10에서 30x30까지의 오피스 평수 확장 트리거 및 맵 데이터
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 114. **[MOD_GDD_05]** 🧠[Pro] `SortingLayerManager`: 가구의 Y축 위치에 따라 전후 관계를 자동 정렬하는 렌더링 레이어
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 115. **[MOD_GDD_05]** 🎨[Graphics] `GhostPreview_FX`: 설치 전 반투명 가구 이미지와 설치 가능/불가능 영역 시각화
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 116. **[MOD_GDD_05]** 🧠[Pro] `CollisionValidator`: 가구 간 배치 겹침 및 문 앞을 막는 동선 방해 실시간 체크
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 117. **[MOD_GDD_05]** `RotationLogic`: 90도 회전 시 1/2/4방향 스프라이트 정밀 전환 및 좌표 보정
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 118. **[MOD_GDD_05]** `FurnitureBuffProcessor`: 가구 배치 즉시 명성치와 스탯 보너스를 전역 스탯에 가산
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 119. **[MOD_GDD_05]** `EditModeUI`: 가구 이동, 회전, 판매 버튼이 있는 하단 건설 모드 툴바 셋업
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 120. **[MOD_GDD_05]** 🎨[Graphics] `WallpaperManager`: 벽면과 바닥재의 텍스처를 클릭 한 번으로 교체하는 팔레트 시스템
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 121. **[MOD_GDD_01]** 🎨[Graphics] `TownMapSetup`: 7개 구역(은행, 전당포, 치킨집 등)으로 구성된 타운 거점 배치
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 122. **[MOD_GDD_01]** `NpcSpawnPoint`: 장소별 NPC(안나, 바터, 백사장) 상주 위치 및 시야각 설정
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 123. **[MOD_GDD_01]** 🎨[Graphics] `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 124. **[MOD_GDD_01]** 🎨[Graphics] `CipherSecuritiesFloor`: 증권사 내부의 대형 전광판과 트레이딩 데스크 레이아웃
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 125. **[MOD_GDD_01]** 🎨[Graphics] `DustyRoomInterior`: 전당포 내부의 어두운 필터와 먼지 날리는 먼지 입자 FX 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 126. **[MOD_GDD_01]** 🎨[Graphics] `RoosterKitchen`: 치킨집 주방 미니게임 진입을 위한 주방 조리대와 집기 배치
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 127. **[MOD_GDD_01]** 🎨[Graphics] `LogisticsHub`: 상하차 센터의 컨베이어 벨트 구동 애니메이션 및 물류 상자 적재함
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 128. **[MOD_GDD_01]** 🎨[Graphics] `Neon24Store`: 편의점 내부의 밝은 형광등과 빼곡한 진열대 상호작용 지점 구축
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 129. **[MOD_GDD_01]** 🎨[Graphics] `HomeOfficeBranding`: 유저가 지은 이름이 출입문 간판에 네온사인으로 빛나는 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 130. **[MOD_GDD_01]** 🎨[Graphics] `AmbientLightSync`: 타운 외부 하늘 색상이 실제 게임 시간(Day/Night)에 맞춰 그라데이션 변화
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 131. **[MOD_GDD_01]** `ExtraNpcRoutine`: 타운 배경에서 가볍게 움직이는 보행자 NPC들의 AI 순회 경로
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 132. **[MOD_GDD_01]** `CameraFollowController`: 오피스 내 드래그 이동, 줌 인/아웃 및 경계선 제한 스크립트
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 133. **[MOD_GDD_05]** 🧠[Pro] `GridUndoSystem`: 가구 배치 실수를 되돌리기 위한 Stack 기반의 Undo/Redo 엔진
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 134. **[MOD_GDD_05]** `InteriorValueReport`: 현재 가구 배치의 조화로움과 스탯 기여도를 정리한 리포트 UI
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 135. **[MOD_GDD_06]** `Anna_MovementSet`: 시간대에 따라 오피스 창가, 책상, 침대 등으로 이동하는 안나
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 136. **[MOD_GDD_01]** 🎨[Graphics] `CozyFogEffect`: 맵 구석구석에 아늑한 감성을 더하는 미세한 노이즈와 안개 파티클
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 137. **[MOD_GDD_01]** `InteractiveProps`: 클릭 시 짧은 소리를 내거나 흔들리는 오피스 내 인테리어 소품화
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 138. **[MOD_GDD_01]** `SceneFastTravel`: 맵 UI 특정 위치 클릭 시 페이드아웃 후 해당 장소로 즉시 이동
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 139. **[MOD_GDD_05]** `FurnitureDepreciation`: 중고 가구 판매 시 구입 시점 대비 가격이 깎이는 감가상각 연산
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 140. **[MOD_GDD_05]** 🧠[Pro] `InteriorDataSync`: 가구별 ID, 좌표, 회전값을 한 줄의 문자열로 압축하여 저장하는 스키마
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 141. **[MOD_GDD_05]** 🧠[Pro] `ExpansionCostCurve`: 오피스 평수 확장 시 요구되는 골드 및 평판 등급의 상승 곡선 설정
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 142. **[MOD_GDD_05]** 🎨[Graphics] `GridVisualGuide`: 가구 배치 모드 활성화 시 바닥에 은은한 쿼터뷰 격자 가루가 깔리는 FX
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 143. **[MOD_GDD_01]** `BGMZoneDetector`: 소속 구역(은행, 펍 등)에 따라 해당 오디오 트랙으로 자연스럽게 전환
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 144. **[MOD_GDD_01]** 🎨[Graphics] `CityGlowFX`: 야간 시간대 창문 밖으로 보이는 도시 마천루들의 깜빡이는 불빛 셰이더
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 145. **[MOD_GDD_06]** `Anna_OfficeRoutine`: 안나가 책상에 앉아 키보드를 두드리거나 자료를 검토하는 대기 동작
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 146. **[MOD_GDD_05]** `SinglePlacementLimit`: 특정 고가 대형 가구(예: 서버 랙)의 중복 설치를 제한하는 감시 로직
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 147. **[MOD_GDD_01]** 🎨[Graphics] `StreetClickFX`: 땅을 클릭했을 때 나타나는 사이버펑크 스타일의 파란색 육각형 파티클
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 148. **[MOD_GDD_01]** 🎨[Graphics] `BuildingOutlineFX`: 마우스 오버한 타운 건물의 외곽선이 얇게 빛나는 아웃라인 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 149. **[MOD_GDD_01]** 🎨[Graphics] `MetroTransitAnim`: 장소 이동 시 지하철이 웅장하게 화면을 가로질러 지나가는 컷신 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 150. **[MOD_GDD_01]** 🎨[Graphics] `TownVignetteFX`: 타운 화면 가장자리에 필름 그레인과 갈색 비네팅을 더해 빈티지 무드 완성
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 151. **[MOD_GDD_05]** `CarpetLayer`: 바닥재 바로 위에 겹쳐서 설치되는 카펫 전용 레이어 및 마킹 로직
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 152. **[MOD_GDD_05]** `WallAccessory`: 벽면에 거는 포스터나 시계를 위한 수직 그리드 배치 엔진
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 153. **[MOD_GDD_01]** `AmbientCrowdSound`: 타운 중앙 광장 진입 시 웅성웅성거리는 환경 소음 자동 재생
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 154. **[MOD_GDD_01]** 🎨[Graphics] `NeonSignGlitch`: 야간에 타운 네온사인이 미세하게 지지직거리며 글리치가 나는 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 155. **[MOD_GDD_06]** `Anna_InteractivePoint`: 안나 옆에 섰을 때 '대화하기(F)' 상호작용 툴팁이 뜨는 위치 매핑
+  - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 156. **[MOD_GDD_01]** `SubwayEntrance`: 지하철 역 입구 프리팹 구축 및 월드맵 이동 트리거 바인딩
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 157. **[MOD_GDD_05]** `GridConstraint`: 설치 불가능한 가구가 있는 타일에 설치 시 붉은색 경고 박스 노출
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 158. **[MOD_GDD_05]** `SaveThumbnail`: 인테리어 저장 시 현재 오피스 모습을 작은 썸네일로 캡처하여 저장
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 159. **[MOD_GDD_01]** 🎨[Graphics] `ReflectionShader`: 전당포나 은색 건물 유리창에 비치는 노란색 가로등 빛 반사 연출
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 160. **[MOD_GDD_01]** `VendingMachine`: 타운 곳곳에 배치된 자판기 클릭 시 짧은 캔 따는 소리와 효과음 재생
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 161. **[MOD_GDD_05]** `FurnitureSellConfirm`: 가구 판매 시 판매가와 삭제 여부를 묻는 2차 확인 모달창
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 162. **[MOD_GDD_01]** `WeatherSyncLogic`: 맑음/비/안개발생에 따른 타운 전체 라이트 강도 및 색온도 조절
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 163. **[MOD_GDD_01]** `TrafficLightAnim`: 타운 도로의 신호등이 빨강/초록으로 주기적으로 변하는 애니메이션
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 164. **[MOD_GDD_05]** `AutoSortingLogic`: 버튼 클릭 시 현재 배치된 가구들을 종류별로 나란히 정렬해주는 편의 기능
+  - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 165. **[MOD_GDD_01]** 🎨[Graphics] `StreetLightGlow`: 밤에 가로등 주변으로 은은하게 퍼지는 라이트 후광 효과(Halo) 제작
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+
+## Phase 4.1: 추가 금융 고도화 시스템 (GIGDC에서 연기됨)
+
+- [ ] 062. **[CORE_GDD_04]** 🧠[Pro] `MarginShortLogic`: 공매도 시 주문가 150% 현금 동결 및 담보물 설정 로직
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 063. **[CORE_GDD_04]** 🧠[Pro] `MarginCallEngine`: 유지비율 90% 도달 시 경고, 100% 도달 시 강제 청산 루틴
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 064. **[CORE_GDD_04]** 🧠[Pro] `SeizureManager`: 자산 0 이하 시 주식->가구 순의 순차적 압류 실행 엔진
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
