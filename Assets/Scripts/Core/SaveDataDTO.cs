@@ -42,6 +42,9 @@ namespace StockWars.Core
 
         // 8. 시장 전체 영속 데이터 (96종 대응)
         public Dictionary<string, StockStateDTO> MarketState { get; set; } = new Dictionary<string, StockStateDTO>();
+
+        // 9. RNG 시드 (세션 재현성 보장 — 0이면 신규 시드 자동 할당)
+        public int RngGlobalSeed { get; set; } = 0;
     }
 
     /// <summary>

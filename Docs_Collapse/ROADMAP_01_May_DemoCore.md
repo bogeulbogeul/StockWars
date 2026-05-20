@@ -1,0 +1,119 @@
+# ROADMAP 01: 5월 (데모버전 코어 구동)
+
+**우선순위:** 1. 데모버전 구동
+**목표:** [GIGDC: Lv.3 데모] 구동을 위한 핵심 엔진 및 인프라 구축 (주요 기능 뼈대)
+
+> **[AI 주의사항]** 아래 태스크를 구현할 때는 괄호 안의 문서를 `Docs_Collapse/` 폴더에서 `_SLIM.md` 버전으로 찾아 읽으세요. SLIM 문서가 없다면 원본을 읽고 압축부터 해야 합니다.
+
+## Sprint 1: 코어 인프라 및 엔진 기초 (001 ~ 055)
+
+- [x] 001. **[CORE_GDD_01]** Unity 프로젝트 URP 템플릿 초기화 및 전역 렌더링 파이프라인 설정
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 002. **[CORE_GDD_01]** 20종의 표준 폴더 아키텍처 생성 (Managers, Modules, Data, Art 등)
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 003. **[CORE_GDD_01]** Git LFS 설정 및 대규모 텍스처/사운드 파일 관리 자동화 스크립트
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 004. **[CORE_GDD_01]** `GameEnums.cs`: 주식 섹터, 아이템 등급, NPC 감정, 수배 상태 등 전역 열거형 정의
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 005. **[CORE_GDD_01]** `GlobalConstants.cs`: 2.0% 이자율, 500G 유지비 등 모든 밸런스 상수 통합 관리
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 006. **[CORE_GDD_01]** `Singleton<T>` 제네릭 추상 클래스 구현 (Thread-safe 고려)
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 007. **[CORE_GDD_01]** `EventBus.cs`: `Action<T>` 기반 관찰자 패턴 핵심 엔진 구축
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 008. **[CORE_GDD_01]** `PoolManager.cs`: 차트 캔들, UI 파티클용 고성능 오브젝트 풀링 시스템
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 009. **[CORE_GDD_01]** `SceneSwitcher.cs`: 씬 전환 시 비동기 로딩 및 페이드인/아웃 연출 엔진
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 010. **[CORE_GDD_06]** `TickEngine.cs`: 유저 PC 로컬 시간(Real-Time) 1:1 동기화 및 틱 이벤트 엔진
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 011. **[CORE_GDD_06]** 🧠[Pro] `CalendarSystem.cs`: 요일/시간 연동 및 매주 월요일 00:00 기점 정산 트리거
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 012. **[CORE_GDD_06]** 🧠[Pro] `DataSerializer.cs`: JSON.NET 기반 인코딩/복호화 및 압축 유틸리티
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 013. **[CORE_GDD_06]** `SaveDataDTO.cs`: 계좌, 포트폴리오, 수배 상태를 포함한 마스터 저장 스키마
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 014. **[CORE_GDD_06]** 🧠[Pro] `IOManager.cs`: 암호화된 세이브 파일 읽기/쓰기 및 파일 무결성 검증 로직
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 015. **[CORE_GDD_06]** `SaveMetadata.cs`: 플레이 타임, 타임스탬프, 최종 접속 위치 자동 트래킹
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 016. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: IT 섹터(9종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 017. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 엔터/인프라 섹터(18종) 종목별 변동성 티어 매핑
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 018. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 바이오/항공우주 섹터(18종) 호재/악재 감도 가중치 설정
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 019. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 유통/에너지/금융 섹터(27종) 종목 마스터 데이터 구축
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 020. **[CORE_GDD_02]** 🧠[Pro] `MarketManager.cs`: 96개 종목 인스턴스화 및 런타임 데이터 동기화
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 021. **[CORE_GDD_02]** 🧠[Pro] `BasePriceInit.cs`: 섹터별 상장가 동적 생성 및 초기 유동 물량 할당
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 022. **[CORE_GDD_02]** 🤖[Claude] `RNG_System.cs`: 시드 기반 의사 난수 생성기를 이용한 주가 변동 정밀 제어
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 023. **[CORE_GDD_02]** 🤖[Claude] `PriceEngine.cs`: 매수 압력 및 변동성 가중치를 합산한 실시간 가격 결정부
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 024. **[CORE_GDD_02]** 🤖[Claude] `BuyPressure.cs`: 물량 고갈 시 가격 폭등을 유도하는 제곱근 함수 연산
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 025. **[CORE_GDD_02]** 🤖[Claude] `VolatilityTier.cs`: S~C 등급별 주당 최소/최대 변동폭 제한 로직
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 026. **[CORE_GDD_02]** 🤖[Claude] `TrendEngine.cs`: 168시간(7일) 주기의 상승/하락 사이클 전환 시스템
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 027. **[CORE_GDD_02]** 🧠[Pro] `CircularBuffer.cs`: 최근 168틱 가격 히스토리 저장을 위한 효율적 메모리 구조
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 028. **[CORE_GDD_02]** 🧠[Pro] `PeakTracker.cs`: 전고점(ATH) 및 당일 변동폭 실시간 트래킹 레이어
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 029. **[CORE_GDD_02]** 🧠[Pro] `MarketTimer.cs`: 게임 내 시간(날짜/요일) 흐름 제어 및 정산 주기 연동
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 030. **[CORE_GDD_02]** 🧠[Pro] `GhostTrader.cs`: 주말 휴장 없이 365일 초 단위로 주가를 움직이는 마이크로 변동 봇
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 031. **[CORE_GDD_02]** 🧠[Pro] `DividendController.cs`: 72시간 보유 조건 판정 및 배당금 누적 연산부
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 032. **[CORE_GDD_02]** 🧠[Pro] `SplitChecker.cs`: 1,000,000G 도달 시 액면분할 트리거 및 수량 보정 로직
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 033. **[CORE_GDD_02]** 🧠[Pro] `DelistingMonitor.cs`: 상장가 1% 미만 장기 체납 시 상폐 프로세스 감시
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 034. **[CORE_GDD_02]** 🧠[Pro] `IPO_Service.cs`: 상폐 공석 발생 시 대기 종목 풀에서 신규 상장 트리거
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 035. **[CORE_GDD_03]** 🧠[Pro] `WalletManager.cs`: 가용 현금, 누적 이자, 미지급 배당금의 실시간 정산부
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 036. **[CORE_GDD_03]** 🧠[Pro] `NetWorthCore.cs`: 포트폴리오 평가액 + 부동산 + 현물 자산 합산 연산 엔진
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 037. **[CORE_GDD_03]** `LevelEngine.cs`: 누적 거래액 기반 레벨업 및 스탯 포인트 지급 루틴
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 038. **[CORE_GDD_03]** `StatCore.cs`: 협상력, 분석력, 운용력, 회복력 등 4대 능력치 갱신 및 데이터 보존부
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 039. **[CORE_GDD_03]** `ReputationSystem.cs`: 사회적 명성 등급(F~S) 산출 및 지위 버프 연동
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 040. **[CORE_GDD_03]** `ResilienceStat.cs`: **[회복력]** 레벨에 따른 일일 알바 횟수 확장(3~5회) 로직
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 041. **[CORE_GDD_01]** `AssetBundleLoader`: 배경 스프라이트 및 NPC 일러스트 비동기 로드 관리
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 042. **[CORE_GDD_01]** 🎨[Graphics] `GlobalPostPro`: 씬별 포스트 프로세싱(Vignette, Bloom, CRT) 프로필 설정
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 043. **[CORE_GDD_01]** 🎨[Graphics] `CursorManager`: 상황별 커서 아이템(돋보기, 손바닥) 변경 및 애니메이션
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 044. **[CORE_GDD_01]** `BGMController`: 씬 진입 시 크로스페이드 기반 배경음 전환 스크립트
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 045. **[CORE_GDD_06]** `TimeScaleController`: 개발용 배속 기능 및 연출용 타임 스톱 플러그인
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 046. **[CORE_GDD_06]** `ErrorLogger.cs`: 런타임 예외 발생 시 전용 팝업 및 로그 파일 추출 기능
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 047. **[CORE_GDD_05]** `UI_SafeArea`: 다양한 PC 해상도 및 윈도우 창 모드 대응 캔버스 조절 스크립트
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 048. **[CORE_GDD_05]** `UI_Navigation`: 백버튼 및 메인 메뉴 진입을 위한 전역 네비게이션 제어
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 049. **[CORE_GDD_05]** `UI_CanvasOrder`: 레이어 순서(Order in Layer) 최적화 및 드로우콜 관리
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 050. **[CORE_GDD_03]** `CareerPathInit`: 최초 시작 시 유저 성향에 따른 기본 스탯 분배 로직
+  - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 051. **[CORE_GDD_02]** 🧠[Pro] `PriceNoise.cs`: 주간 평탄화 사이사이의 미세한 '노이즈' 가격 변동 연산부
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 052. **[CORE_GDD_02]** 🎨[Graphics] `MarketOpeningFX`: 개장 시 증권사 UI가 반짝이며 켜지는 시계 연출
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 053. **[CORE_GDD_06]** 🧠[Pro] `DataIntegrity.cs`: 매 프레임 세이브 데이터 변조를 감시하는 무결성 엔진
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 054. **[CORE_GDD_06]** `AutoSaveRouter`: 특정 주기 및 주요 상호작용 후 자동 저장 실행 가이드
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 055. **[CORE_GDD_01]** `DebugConsole`: 개발용 자금 주입 및 아이템 획득 치트 명령 프레임워크
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)

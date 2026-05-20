@@ -77,6 +77,12 @@ namespace StockWars.Core
                     saveData.MarketState = MarketManager.Instance.SaveMarketState();
                 }
 
+                // [자동 연동] RNG 글로벌 시드 영속 저장 (로드 시 주가 흐름 재현성 보장)
+                if (RNG_System.Instance != null)
+                {
+                    saveData.RngGlobalSeed = RNG_System.Instance.GetCurrentSeed();
+                }
+
                 // 1. 임시 파일(.tmp)에 암호화된 세이브 바디 선 작성 (Retry 지원)
                 string encryptedData = DataSerializer.SerializeAndEncrypt(saveData);
                 WriteFileWithRetry(tmpPath, encryptedData);
@@ -151,6 +157,12 @@ namespace StockWars.Core
                 if (loadedData != null && MarketManager.Instance != null)
                 {
                     MarketManager.Instance.LoadMarketState(loadedData.MarketState);
+                }
+
+                // [자동 연동] RNG 시드 복원 (0이면 신규 시드 유지, 그 외 세션 재현성 복구)
+                if (loadedData != null && RNG_System.Instance != null && loadedData.RngGlobalSeed != 0)
+                {
+                    RNG_System.Instance.RestoreSeed(loadedData.RngGlobalSeed);
                 }
 
                 return loadedData;
