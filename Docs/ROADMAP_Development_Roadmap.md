@@ -28,8 +28,8 @@
 - [x] 013. **[CORE_GDD_06]** `SaveDataDTO.cs`: 계좌, 포트폴리오, 수배 상태를 포함한 마스터 저장 스키마
 - [x] 014. **[CORE_GDD_06]** 🧠[Pro] `IOManager.cs`: 암호화된 세이브 파일 읽기/쓰기 및 파일 무결성 검증 로직
 - [x] 015. **[CORE_GDD_06]** `SaveMetadata.cs`: 플레이 타임, 타임스탬프, 최종 접속 위치 자동 트래킹
-- [ ] 016. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: IT 섹터(3종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
-- [ ] 017. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 엔터/인프라 섹터(6종) 종목별 변동성 티어 매핑
+- [x] 016. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: IT 섹터(3종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
+- [x] 017. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 엔터/인프라 섹터(6종) 종목별 변동성 티어 매핑
 - [ ] 018. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 바이오/항공우주 섹터(6종) 호재/악재 감도 가중치 설정
 - [ ] 019. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 유통/에너지/금융 섹터(9종) 종목 마스터 데이터 구축
 - [x] 020. **[CORE_GDD_02]** 🧠[Pro] `MarketManager.cs`: 96개 종목 인스턴스화 및 런타임 데이터 동기화
