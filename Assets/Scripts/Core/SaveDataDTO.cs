@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine.Scripting;
 
 namespace StockWars.Core
 {
@@ -8,6 +9,7 @@ namespace StockWars.Core
     /// 마스터 저장 데이터 스키마 (DTO)
     /// </summary>
     [Serializable]
+    [Preserve]
     public class SaveDataDTO
     {
         // 0. 버전 정보 (마이그레이션용)
@@ -31,12 +33,39 @@ namespace StockWars.Core
         public int AvailableStatPoints { get; set; } // 투자 가능한 스탯 포인트
         public long CumulativeTradingVolume { get; set; } // 누적 거래액 (레벨업 조건)
         public ReputationGrade Reputation { get; set; } = ReputationGrade.F;
+        
+        // 6. 금융 정산 상태
+        public DateTime LastProcessedSettlementTime { get; set; }
+
+        // 7. 데모 특전 정보
+        public bool IsDemoVeteran { get; set; }
+
+        // 8. 시장 전체 영속 데이터 (96종 대응)
+        public Dictionary<string, StockStateDTO> MarketState { get; set; } = new Dictionary<string, StockStateDTO>();
+    }
+
+    /// <summary>
+    /// 개별 주식의 런타임 시장 상태 영속 데이터 DTO
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class StockStateDTO
+    {
+        public string StockId { get; set; }
+        public long CurrentPrice { get; set; }
+        public long AvailableVolume { get; set; }
+        public long PeakPrice { get; set; }
+        public int SplitCount { get; set; }
+        public bool IsListed { get; set; }
+        public bool IsIpoReady { get; set; }
+        public List<long> PriceHistory { get; set; } = new List<long>();
     }
 
     /// <summary>
     /// 보유 주식 정보
     /// </summary>
     [Serializable]
+    [Preserve]
     public class StockHoldingsDTO
     {
         public string StockId { get; set; }
@@ -48,6 +77,7 @@ namespace StockWars.Core
     /// CORE_GDD_06 이중 스탯 시스템
     /// </summary>
     [Serializable]
+    [Preserve]
     public struct UserStats
     {
         // Base Blocks: 캐릭터 레벨업으로 획득 (최대 5)

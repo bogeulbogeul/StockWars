@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Scripting;
 
 namespace StockWars.Core
 {
@@ -7,6 +8,7 @@ namespace StockWars.Core
     /// 세이브 슬롯 목록을 표시할 때 전체 데이터를 로드하지 않고 메타데이터만 빠르게 읽기 위해 분리합니다.
     /// </summary>
     [Serializable]
+    [Preserve]
     public class SaveMetadata
     {
         /// <summary>총 플레이 시간 (초 단위)</summary>

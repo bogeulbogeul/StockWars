@@ -23,17 +23,17 @@
 - [x] 008. **[CORE_GDD_01]** `PoolManager.cs`: 차트 캔들, UI 파티클용 고성능 오브젝트 풀링 시스템
 - [x] 009. **[CORE_GDD_01]** `SceneSwitcher.cs`: 씬 전환 시 비동기 로딩 및 페이드인/아웃 연출 엔진
 - [x] 010. **[CORE_GDD_06]** `TickEngine.cs`: 유저 PC 로컬 시간(Real-Time) 1:1 동기화 및 틱 이벤트 엔진
-- [ ] 011. **[CORE_GDD_06]** 🧠[Pro] `CalendarSystem.cs`: 요일/시간 연동 및 매주 월요일 00:00 기점 정산 트리거
-- [ ] 012. **[CORE_GDD_06]** 🧠[Pro] `DataSerializer.cs`: JSON.NET 기반 인코딩/복호화 및 압축 유틸리티
+- [x] 011. **[CORE_GDD_06]** 🧠[Pro] `CalendarSystem.cs`: 요일/시간 연동 및 매주 월요일 00:00 기점 정산 트리거
+- [x] 012. **[CORE_GDD_06]** 🧠[Pro] `DataSerializer.cs`: JSON.NET 기반 인코딩/복호화 및 압축 유틸리티
 - [x] 013. **[CORE_GDD_06]** `SaveDataDTO.cs`: 계좌, 포트폴리오, 수배 상태를 포함한 마스터 저장 스키마
-- [ ] 014. **[CORE_GDD_06]** 🧠[Pro] `IOManager.cs`: 암호화된 세이브 파일 읽기/쓰기 및 파일 무결성 검증 로직
+- [x] 014. **[CORE_GDD_06]** 🧠[Pro] `IOManager.cs`: 암호화된 세이브 파일 읽기/쓰기 및 파일 무결성 검증 로직
 - [x] 015. **[CORE_GDD_06]** `SaveMetadata.cs`: 플레이 타임, 타임스탬프, 최종 접속 위치 자동 트래킹
 - [ ] 016. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: IT 섹터(3종) 종목명, 상장가, 배당률(0.5~0.8%) 프로필화
 - [ ] 017. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 엔터/인프라 섹터(6종) 종목별 변동성 티어 매핑
 - [ ] 018. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 바이오/항공우주 섹터(6종) 호재/악재 감도 가중치 설정
 - [ ] 019. **[CORE_GDD_02]** 🤖[Claude] `StockDataSO`: 유통/에너지/금융 섹터(9종) 종목 마스터 데이터 구축
-- [ ] 020. **[CORE_GDD_02]** 🧠[Pro] `MarketManager.cs`: 24개 종목 인스턴스화 및 런타임 데이터 동기화
-- [ ] 021. **[CORE_GDD_02]** 🧠[Pro] `BasePriceInit.cs`: 섹터별 상장가 동적 생성 및 초기 유동 물량 할당
+- [x] 020. **[CORE_GDD_02]** 🧠[Pro] `MarketManager.cs`: 96개 종목 인스턴스화 및 런타임 데이터 동기화
+- [x] 021. **[CORE_GDD_02]** 🧠[Pro] `BasePriceInit.cs`: 섹터별 상장가 동적 생성 및 초기 유동 물량 할당
 - [ ] 022. **[CORE_GDD_02]** 🤖[Claude] `RNG_System.cs`: 시드 기반 의사 난수 생성기를 이용한 주가 변동 정밀 제어
 - [ ] 023. **[CORE_GDD_02]** 🤖[Claude] `PriceEngine.cs`: 매수 압력 및 변동성 가중치를 합산한 실시간 가격 결정부
 - [ ] 024. **[CORE_GDD_02]** 🤖[Claude] `BuyPressure.cs`: 물량 고갈 시 가격 폭등을 유도하는 제곱근 함수 연산

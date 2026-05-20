@@ -1,6 +1,16 @@
 namespace StockWars.Core
 {
     /// <summary>
+    /// 종목 위험도 등급 (Low, Mid, High)
+    /// </summary>
+    public enum RiskLevel
+    {
+        Low,
+        Mid,
+        High
+    }
+
+    /// <summary>
     /// 주식 섹터 (종목의 소속 산업군)
     /// </summary>
     public enum StockSector
