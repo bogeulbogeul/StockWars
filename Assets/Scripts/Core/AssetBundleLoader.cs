@@ -160,13 +160,17 @@ namespace StockWars.Core
         #region Cache Purge (메모리 정리를 위한 캐시 비우기)
 
         /// <summary>
-        /// 씬 전환 시나 메모리 부족 이벤트 감지 시 로드된 모든 비동기 캐시를 비워 가비지 컬렉션을 돕습니다.
+        /// 씬 전환 시나 메모리 부족 이벤트 감지 시 로드된 모든 비동기 캐시를 비우고 미사용 네이티브 에셋을 방출합니다.
         /// </summary>
         public void ClearCache()
         {
             _spriteCache.Clear();
             _genericCache.Clear();
-            Debug.Log("[AssetBundleLoader] 에셋 로더 메모리 캐시 정리가 수행되었습니다.");
+            
+            // 네이티브 GPU 메모리에 남아있는 미사용 리소스를 물리적으로 즉각 방출
+            Resources.UnloadUnusedAssets();
+            
+            Debug.Log("[AssetBundleLoader] 에셋 로더 메모리 캐시 정리 및 네이티브 에셋 방출 완료.");
         }
 
         #endregion
