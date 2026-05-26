@@ -59,13 +59,13 @@
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 026. **[CORE_GDD_02]** 🤖[Claude] `TrendEngine.cs`: 168시간(7일) 주기의 상승/하락 사이클 전환 시스템
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 027. **[CORE_GDD_02]** 🧠[Pro] `CircularBuffer.cs`: 최근 168틱 가격 히스토리 저장을 위한 효율적 메모리 구조
+- [x] 027. **[CORE_GDD_02]** 🧠[Pro] `CircularBuffer.cs`: 최근 168틱 가격 히스토리 저장을 위한 효율적 메모리 구조
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 028. **[CORE_GDD_02]** 🧠[Pro] `PeakTracker.cs`: 전고점(ATH) 및 당일 변동폭 실시간 트래킹 레이어
+- [x] 028. **[CORE_GDD_02]** 🧠[Pro] `PeakTracker.cs`: 전고점(ATH) 및 당일 변동폭 실시간 트래킹 레이어
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 029. **[CORE_GDD_02]** 🧠[Pro] `MarketTimer.cs`: 게임 내 시간(날짜/요일) 흐름 제어 및 정산 주기 연동
+- [x] 029. **[CORE_GDD_02]** 🧠[Pro] `MarketTimer.cs`: 게임 내 시간(날짜/요일) 흐름 제어 및 정산 주기 연동
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 030. **[CORE_GDD_02]** 🧠[Pro] `GhostTrader.cs`: 주말 휴장 없이 365일 초 단위로 주가를 움직이는 마이크로 변동 봇
+- [x] 030. **[CORE_GDD_02]** 🧠[Pro] `GhostTrader.cs`: 주말 휴장 없이 365일 초 단위로 주가를 움직이는 마이크로 변동 봇
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 031. **[CORE_GDD_02]** 🧠[Pro] `DividendController.cs`: 72시간 보유 조건 판정 및 배당금 누적 연산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)

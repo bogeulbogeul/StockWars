@@ -61,6 +61,8 @@ namespace StockWars.Core
         public int SplitCount { get; set; }
         public bool IsListed { get; set; }
         public bool IsIpoReady { get; set; }
+        public long DailyHigh { get; set; }
+        public long DailyLow { get; set; }
         public List<long> PriceHistory { get; set; } = new List<long>();
     }
 

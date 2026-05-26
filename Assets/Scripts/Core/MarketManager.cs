@@ -172,6 +172,10 @@ namespace StockWars.Core
         {
             base.Awake();
             InitializeStocks();
+
+            // PeakTracker 및 GhostTrader 강제 초기화 (이벤트 구독 활성화)
+            var tracker = PeakTracker.Instance;
+            var ghost = GhostTrader.Instance;
         }
 
         /// <summary>
@@ -326,7 +330,11 @@ namespace StockWars.Core
                     instance.SplitCount = state.SplitCount;
                     instance.IsListed = state.IsListed;
                     instance.IsIpoReady = state.IsIpoReady;
-                    instance.PriceHistory = new List<long>(state.PriceHistory);
+                    instance.DailyHigh = state.DailyHigh == 0 ? state.CurrentPrice : state.DailyHigh;
+                    instance.DailyLow = state.DailyLow == 0 ? state.CurrentPrice : state.DailyLow;
+                    
+                    instance.PriceHistory.Clear();
+                    instance.PriceHistory.AddRange(state.PriceHistory);
                 }
                 else
                 {
@@ -336,9 +344,12 @@ namespace StockWars.Core
                     instance.CurrentPrice = instance.Data.listingPrice;
                     instance.AvailableVolume = instance.Data.floatingSupply;
                     instance.PeakPrice = instance.Data.listingPrice;
+                    instance.DailyHigh = instance.Data.listingPrice;
+                    instance.DailyLow = instance.Data.listingPrice;
                     instance.SplitCount = 0;
+                    
                     instance.PriceHistory.Clear();
-                    instance.AddPriceToHistory(instance.CurrentPrice);
+                    instance.PriceHistory.Add(instance.CurrentPrice);
                 }
             }
             Debug.Log($"[MarketManager] Successfully restored 96 stocks runtime states from save metadata.");
@@ -361,7 +372,9 @@ namespace StockWars.Core
                     SplitCount = instance.SplitCount,
                     IsListed = instance.IsListed,
                     IsIpoReady = instance.IsIpoReady,
-                    PriceHistory = new List<long>(instance.PriceHistory)
+                    DailyHigh = instance.DailyHigh,
+                    DailyLow = instance.DailyLow,
+                    PriceHistory = instance.PriceHistory.ToList()
                 };
                 stateDict[instance.StockId] = dto;
             }
@@ -383,6 +396,8 @@ namespace StockWars.Core
                 instance.AvailableVolume = instance.Data.floatingSupply;
                 instance.PeakPrice = instance.Data.listingPrice;
                 instance.SplitCount = 0;
+                instance.DailyHigh = instance.Data.listingPrice;
+                instance.DailyLow = instance.Data.listingPrice;
                 
                 instance.PriceHistory.Clear();
                 instance.AddPriceToHistory(instance.CurrentPrice);
@@ -412,6 +427,12 @@ namespace StockWars.Core
         /// <summary>역대 최고가 (ATH - All Time High)</summary>
         public long PeakPrice;
 
+        /// <summary>당일 최고가</summary>
+        public long DailyHigh;
+
+        /// <summary>당일 최저가</summary>
+        public long DailyLow;
+
         /// <summary>누적 주식 액면 분할 횟수 (최대 3회 제한)</summary>
         public int SplitCount;
 
@@ -422,7 +443,7 @@ namespace StockWars.Core
         public bool IsIpoReady;
 
         /// <summary>최근 가격 변동 기록 (최대 168틱 = 7주간 보존)</summary>
-        public List<long> PriceHistory = new List<long>();
+        public CircularBuffer<long> PriceHistory = new CircularBuffer<long>(168);
 
         public StockInstance(StockDataSO data)
         {
@@ -430,6 +451,8 @@ namespace StockWars.Core
             CurrentPrice = data.listingPrice;
             AvailableVolume = data.floatingSupply;
             PeakPrice = data.listingPrice;
+            DailyHigh = data.listingPrice;
+            DailyLow = data.listingPrice;
             SplitCount = 0;
             IsListed = !data.isIpoCandidate;
             IsIpoReady = data.isIpoCandidate;
@@ -439,15 +462,11 @@ namespace StockWars.Core
         }
 
         /// <summary>
-        /// 가격 변동 내역을 누적 저장하며, 최대 168틱 한계치를 넘어서는 고형 데이터는 고속 트림 처리합니다.
+        /// 가격 변동 내역을 누적 저장하며, 최대 168틱 한계치를 넘는 데이터는 자동 덮어씁니다.
         /// </summary>
         public void AddPriceToHistory(long price)
         {
             PriceHistory.Add(price);
-            if (PriceHistory.Count > 168)
-            {
-                PriceHistory.RemoveAt(0);
-            }
         }
     }
 }
