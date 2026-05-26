@@ -72,6 +72,12 @@ namespace StockWars.Core
         {
             if (stock == null || !stock.IsListed) return;
 
+            // ── 거래 정지(Trading Halt) 또는 정리매매(Liquidation) 기간 동안은 가격 고정 및 갱신 스킵 ──
+            if (stock.IsLiquidationPeriod || (stock.TradingHaltEndTimeUtc.HasValue && DateTime.UtcNow < stock.TradingHaltEndTimeUtc.Value))
+            {
+                return;
+            }
+
             // ── 4-1. 변동성 표준편차 (VolatilityTierService — Task 025 완료) ──────────
             double stdDev = VolatilityTierService.GetStdDev(stock.Data.volatilityTier);
 

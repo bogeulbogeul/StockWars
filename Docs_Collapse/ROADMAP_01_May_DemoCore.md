@@ -67,17 +67,17 @@
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 030. **[CORE_GDD_02]** 🧠[Pro] `GhostTrader.cs`: 주말 휴장 없이 365일 초 단위로 주가를 움직이는 마이크로 변동 봇
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 031. **[CORE_GDD_02]** 🧠[Pro] `DividendController.cs`: 72시간 보유 조건 판정 및 배당금 누적 연산부
+- [x] 031. **[CORE_GDD_02]** 🧠[Pro] `DividendController.cs`: 72시간 보유 조건 판정 및 배당금 누적 연산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 032. **[CORE_GDD_02]** 🧠[Pro] `SplitChecker.cs`: 1,000,000G 도달 시 액면분할 트리거 및 수량 보정 로직
+- [x] 032. **[CORE_GDD_02]** 🧠[Pro] `SplitChecker.cs`: 1,000,000G 도달 시 액면분할 트리거 및 수량 보정 로직
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 033. **[CORE_GDD_02]** 🧠[Pro] `DelistingMonitor.cs`: 상장가 1% 미만 장기 체납 시 상폐 프로세스 감시
+- [x] 033. **[CORE_GDD_02]** 🧠[Pro] `DelistingMonitor.cs`: 상장가 1% 미만 장기 체납 시 상폐 프로세스 감시
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 034. **[CORE_GDD_02]** 🧠[Pro] `IPO_Service.cs`: 상폐 공석 발생 시 대기 종목 풀에서 신규 상장 트리거
+- [x] 034. **[CORE_GDD_02]** 🧠[Pro] `IPO_Service.cs`: 상폐 공석 발생 시 대기 종목 풀에서 신규 상장 트리거
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 035. **[CORE_GDD_03]** 🧠[Pro] `WalletManager.cs`: 가용 현금, 누적 이자, 미지급 배당금의 실시간 정산부
+- [x] 035. **[CORE_GDD_03]** 🧠[Pro] `WalletManager.cs`: 가용 현금, 누적 이자, 미지급 배당금의 실시간 정산부
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 036. **[CORE_GDD_03]** 🧠[Pro] `NetWorthCore.cs`: 포트폴리오 평가액 + 부동산 + 현물 자산 합산 연산 엔진
+- [x] 036. **[CORE_GDD_03]** 🧠[Pro] `NetWorthCore.cs`: 가용 현금 + 포트폴리오 가치 + 누적 배당금 합산 유틸리티
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 037. **[CORE_GDD_03]** `LevelEngine.cs`: 누적 거래액 기반 레벨업 및 스탯 포인트 지급 루틴
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)

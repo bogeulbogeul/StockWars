@@ -39,8 +39,8 @@
 - [MOD_GDD_16: 투자 신디케이트](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_16_SyndicateSystem.md)
 
 ## 📑 5. 데이터 및 서사 (Data & Narrative)
-- [MOD_GDD_04: 유니버설 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_04_RumorLibrary.md)
-- [MOD_GDD_19: IPO 종목 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_19_IPORumorLibrary.md)
+- [MOD_GDD_04: 유니버설 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_04_0_RumorIndex.md)
+- [MOD_GDD_19: IPO 종목 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_19_0_IPORumorIndex.md)
 - [MOD_GDD_06: NPC 레지스트리 및 프로필](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_06_NPCRegistry.md)
 - [MOD_GDD_07: 다이얼로그 및 대사 DB](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_07_DialogueDB.md)
 - [MOD_GDD_08: 업적 및 칭호 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_08_AchievementSystem.md)

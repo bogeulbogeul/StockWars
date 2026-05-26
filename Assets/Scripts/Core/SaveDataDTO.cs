@@ -17,6 +17,8 @@ namespace StockWars.Core
 
         // 1. 기본 정보 (계좌 및 자산)
         public long Gold { get; set; } = GlobalConstants.INITIAL_SEED_MONEY;
+        public long AccumulatedDividends { get; set; } = 0; // 미지급 배당금 누적액
+        public long AccumulatedInterest { get; set; } = 0;  // 누적 이자 누적액
         
         // 2. 포트폴리오 (보유 주식)
         // Key: StockId, Value: Holdings
@@ -64,6 +66,24 @@ namespace StockWars.Core
         public long DailyHigh { get; set; }
         public long DailyLow { get; set; }
         public List<long> PriceHistory { get; set; } = new List<long>();
+
+        // --- 액면분할 및 상폐 정지 시간 영속 데이터 ---
+        public DateTime? BelowOnePercentStartTimeUtc { get; set; }
+        public DateTime? TradingHaltEndTimeUtc { get; set; }
+        public bool IsLiquidationPeriod { get; set; }
+        public DateTime? LiquidationEndTimeUtc { get; set; }
+    }
+
+    /// <summary>
+    /// 주식 개별 매수 이력 정보 (72시간 배당 판정용)
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class PurchaseChunkDTO
+    {
+        public int Quantity { get; set; }
+        public DateTime PurchaseTimeUtc { get; set; }
+        public double PurchasePrice { get; set; }
     }
 
     /// <summary>
@@ -76,6 +96,7 @@ namespace StockWars.Core
         public string StockId { get; set; }
         public int Quantity { get; set; }
         public double AveragePurchasePrice { get; set; }
+        public List<PurchaseChunkDTO> PurchaseChunks { get; set; } = new List<PurchaseChunkDTO>();
     }
 
     /// <summary>

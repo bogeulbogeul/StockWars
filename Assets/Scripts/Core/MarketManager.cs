@@ -333,6 +333,11 @@ namespace StockWars.Core
                     instance.DailyHigh = state.DailyHigh == 0 ? state.CurrentPrice : state.DailyHigh;
                     instance.DailyLow = state.DailyLow == 0 ? state.CurrentPrice : state.DailyLow;
                     
+                    instance.BelowOnePercentStartTimeUtc = state.BelowOnePercentStartTimeUtc;
+                    instance.TradingHaltEndTimeUtc = state.TradingHaltEndTimeUtc;
+                    instance.IsLiquidationPeriod = state.IsLiquidationPeriod;
+                    instance.LiquidationEndTimeUtc = state.LiquidationEndTimeUtc;
+                    
                     instance.PriceHistory.Clear();
                     instance.PriceHistory.AddRange(state.PriceHistory);
                 }
@@ -347,6 +352,11 @@ namespace StockWars.Core
                     instance.DailyHigh = instance.Data.listingPrice;
                     instance.DailyLow = instance.Data.listingPrice;
                     instance.SplitCount = 0;
+                    
+                    instance.BelowOnePercentStartTimeUtc = null;
+                    instance.TradingHaltEndTimeUtc = null;
+                    instance.IsLiquidationPeriod = false;
+                    instance.LiquidationEndTimeUtc = null;
                     
                     instance.PriceHistory.Clear();
                     instance.PriceHistory.Add(instance.CurrentPrice);
@@ -374,6 +384,10 @@ namespace StockWars.Core
                     IsIpoReady = instance.IsIpoReady,
                     DailyHigh = instance.DailyHigh,
                     DailyLow = instance.DailyLow,
+                    BelowOnePercentStartTimeUtc = instance.BelowOnePercentStartTimeUtc,
+                    TradingHaltEndTimeUtc = instance.TradingHaltEndTimeUtc,
+                    IsLiquidationPeriod = instance.IsLiquidationPeriod,
+                    LiquidationEndTimeUtc = instance.LiquidationEndTimeUtc,
                     PriceHistory = instance.PriceHistory.ToList()
                 };
                 stateDict[instance.StockId] = dto;
@@ -398,6 +412,11 @@ namespace StockWars.Core
                 instance.SplitCount = 0;
                 instance.DailyHigh = instance.Data.listingPrice;
                 instance.DailyLow = instance.Data.listingPrice;
+                
+                instance.BelowOnePercentStartTimeUtc = null;
+                instance.TradingHaltEndTimeUtc = null;
+                instance.IsLiquidationPeriod = false;
+                instance.LiquidationEndTimeUtc = null;
                 
                 instance.PriceHistory.Clear();
                 instance.AddPriceToHistory(instance.CurrentPrice);
@@ -445,6 +464,12 @@ namespace StockWars.Core
         /// <summary>최근 가격 변동 기록 (최대 168틱 = 7주간 보존)</summary>
         public CircularBuffer<long> PriceHistory = new CircularBuffer<long>(168);
 
+        // --- 액면분할 및 상폐 정지 시간 런타임 데이터 ---
+        public DateTime? BelowOnePercentStartTimeUtc;
+        public DateTime? TradingHaltEndTimeUtc;
+        public bool IsLiquidationPeriod;
+        public DateTime? LiquidationEndTimeUtc;
+
         public StockInstance(StockDataSO data)
         {
             Data = data ?? throw new ArgumentNullException(nameof(data));
@@ -456,6 +481,11 @@ namespace StockWars.Core
             SplitCount = 0;
             IsListed = !data.isIpoCandidate;
             IsIpoReady = data.isIpoCandidate;
+            
+            BelowOnePercentStartTimeUtc = null;
+            TradingHaltEndTimeUtc = null;
+            IsLiquidationPeriod = false;
+            LiquidationEndTimeUtc = null;
 
             PriceHistory.Clear();
             AddPriceToHistory(CurrentPrice);

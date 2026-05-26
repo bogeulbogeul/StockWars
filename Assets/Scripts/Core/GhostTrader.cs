@@ -60,6 +60,14 @@ namespace StockWars.Core
         /// </summary>
         private void SimulateStockTrade(StockInstance stock)
         {
+            if (stock == null || !stock.IsListed) return;
+
+            // ── 거래 정지(Trading Halt) 또는 정리매매(Liquidation) 기간 동안은 봇 거래 시뮬레이션 중지 ──
+            if (stock.IsLiquidationPeriod || (stock.TradingHaltEndTimeUtc.HasValue && DateTime.UtcNow < stock.TradingHaltEndTimeUtc.Value))
+            {
+                return;
+            }
+
             string stockId = stock.StockId;
             VolatilityTier tier = stock.Data.volatilityTier;
 
