@@ -97,4 +97,15 @@ namespace StockWars.Core
         Shoes,
         Accessory
     }
+
+    /// <summary>
+    /// CORE_GDD_03 플레이어 4대 능력치 구분
+    /// </summary>
+    public enum StatType
+    {
+        Negotiation, // 협상력
+        Analysis,    // 분석력
+        Management,  // 운용력
+        Resilience   // 회복력
+    }
 }

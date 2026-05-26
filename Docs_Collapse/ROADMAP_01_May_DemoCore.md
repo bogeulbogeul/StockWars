@@ -81,13 +81,13 @@
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 037. **[CORE_GDD_03]** `LevelEngine.cs`: 누적 거래액 기반 레벨업 및 스탯 포인트 지급 루틴
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 038. **[CORE_GDD_03]** `StatCore.cs`: 협상력, 분석력, 운용력, 회복력 등 4대 능력치 갱신 및 데이터 보존부
+- [x] 038. **[CORE_GDD_03]** `StatCore.cs`: 협상력, 분석력, 운용력, 회복력 등 4대 능력치 갱신 및 데이터 보존부
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 039. **[CORE_GDD_03]** `ReputationSystem.cs`: 사회적 명성 등급(F~S) 산출 및 지위 버프 연동
+- [x] 039. **[CORE_GDD_03]** `ReputationSystem.cs`: 사회적 명성 등급(F~S) 산출 및 지위 버프 연동
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 040. **[CORE_GDD_03]** `ResilienceStat.cs`: **[회복력]** 레벨에 따른 일일 알바 횟수 확장(3~5회) 로직
+- [x] 040. **[CORE_GDD_03]** `ResilienceStat.cs`: **[회복력]** 레벨에 따른 일일 알바 횟수 확장(3~5회) 로직
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 041. **[CORE_GDD_01]** `AssetBundleLoader`: 배경 스프라이트 및 NPC 일러스트 비동기 로드 관리
+- [x] 041. **[CORE_GDD_01]** `AssetBundleLoader`: 배경 스프라이트 및 NPC 일러스트 비동기 로드 관리
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 042. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
 - [ ] 043. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)

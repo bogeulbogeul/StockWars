@@ -260,7 +260,43 @@ namespace StockWars.Core
 
             var portfolio = ActiveSaveData.Portfolio;
 
-            if (!portfolio.TryGetValue(targetId, out var holding))
+            // ── 운용력(Management) 포트폴리오 슬롯 제한 검사 ─────────────────
+            bool isNewStock = !portfolio.TryGetValue(targetId, out var holding) || holding.Quantity <= 0;
+            if (isNewStock && StatCore.Instance != null)
+            {
+                int maxSlots = StatCore.Instance.GetPortfolioSlots();
+                int activeSlotsCount = 0;
+                foreach (var kvp in portfolio)
+                {
+                    if (kvp.Value.Quantity > 0)
+                    {
+                        activeSlotsCount++;
+                    }
+                }
+
+                if (activeSlotsCount >= maxSlots)
+                {
+                    Debug.LogWarning($"[WalletManager] 주식 매수 실패 (포트폴리오 슬롯 제한): 최대 허용 슬롯={maxSlots}개, 현재 보유={activeSlotsCount}개. 운용력 레벨을 올려 슬롯을 늘리십시오.");
+                    return false;
+                }
+            }
+
+            // ── 운용력(Management) 단일 종목 매수 한도(Buy Cap) 제한 검사 ──────────
+            if (StatCore.Instance != null)
+            {
+                long maxBuyCap = StatCore.Instance.GetMaxBuyCapPerStock();
+                long currentHoldingValue = holding != null ? (long)Math.Round(holding.Quantity * holding.AveragePurchasePrice) : 0L;
+                long newPurchaseValue = (long)Math.Round(quantity * purchasePrice);
+                long totalInvestment = currentHoldingValue + newPurchaseValue;
+
+                if (totalInvestment > maxBuyCap)
+                {
+                    Debug.LogWarning($"[WalletManager] 주식 매수 실패 (매수 한도제한 Buy Cap 초과): 최대 허용 한도={maxBuyCap:N0}G, 시도된 총액={totalInvestment:N0}G. 운용력 레벨을 올려 매수한도를 늘리십시오.");
+                    return false;
+                }
+            }
+
+            if (holding == null)
             {
                 holding = new StockHoldingsDTO
                 {
@@ -288,6 +324,16 @@ namespace StockWars.Core
             });
 
             Debug.Log($"[WalletManager] 주식 매수 반영 완료: {targetId} +{quantity}주 (단가: {purchasePrice:F1}G, 현재 총 보유: {holding.Quantity}주, 평단: {holding.AveragePurchasePrice:F1}G)");
+
+            // 매수 트랜잭션 전역 이벤트 발행
+            EventBus.Publish(new StockTransactionEvent
+            {
+                StockId = targetId,
+                IsBuy = true,
+                Quantity = quantity,
+                Price = purchasePrice
+            });
+
             return true;
         }
 
@@ -346,6 +392,7 @@ namespace StockWars.Core
             }
 
             // 3. 보유 물량이 0이 되면 포트폴리오에서 깔끔하게 삭제
+            double salePrice = stock != null ? stock.CurrentPrice : holding.AveragePurchasePrice;
             if (holding.Quantity <= 0)
             {
                 portfolio.Remove(targetId);
@@ -356,6 +403,15 @@ namespace StockWars.Core
                 Debug.Log($"[WalletManager] 주식 매도 반영 완료: {targetId} -{quantity}주 (현재 총 보유: {holding.Quantity}주, 평단: {holding.AveragePurchasePrice:F1}G)");
             }
 
+            // 매도 트랜잭션 전역 이벤트 발행
+            EventBus.Publish(new StockTransactionEvent
+            {
+                StockId = targetId,
+                IsBuy = false,
+                Quantity = quantity,
+                Price = salePrice
+            });
+
             return true;
         }
 
@@ -363,6 +419,19 @@ namespace StockWars.Core
     }
 
     #region Wallet Events (지갑 전역 이벤트 구조체)
+
+    /// <summary>
+    /// 주식 매수/매도 트랜잭션이 성공적으로 완결되었을 때 발행되는 전역 이벤트.
+    /// 명성(Renown) 포인트 지급 감시자 등에서 감청합니다.
+    /// </summary>
+    public struct StockTransactionEvent
+    {
+        public string StockId;
+        public bool IsBuy; // true = 매수, false = 매도
+        public int Quantity;
+        public double Price;
+        public long TotalAmount => (long)Math.Round(Quantity * Price);
+    }
 
     /// <summary>
     /// 가용 현금 잔고가 변동되었을 때 발행되는 이벤트.

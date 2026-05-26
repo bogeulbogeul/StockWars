@@ -44,11 +44,31 @@ namespace StockWars.Core
                     saveData.AvailableStatPoints++;
                     
                     leveledUp = true;
+
+                    // 데모 종료 트리거 감지 (레벨 3 도달 시 즉시 발동)
+                    if (saveData.PlayerLevel == GlobalConstants.MAX_DEMO_LEVEL)
+                    {
+                        EventBus.Publish(new DemoCompletedEvent
+                        {
+                            FinalLevel = saveData.PlayerLevel,
+                            FinalGold = saveData.Gold,
+                            TotalTradingVolume = saveData.CumulativeTradingVolume
+                        });
+                    }
                 }
                 else
                 {
                     break;
                 }
+            }
+
+            if (leveledUp)
+            {
+                EventBus.Publish(new PlayerLevelUpEvent
+                {
+                    NewLevel = saveData.PlayerLevel,
+                    GainedLevels = levelsGained
+                });
             }
 
             return leveledUp;
@@ -70,4 +90,33 @@ namespace StockWars.Core
             return Math.Clamp((float)progress / totalNeeded, 0f, 1f);
         }
     }
+
+    #region Leveling Events (레벨 전역 이벤트)
+
+    /// <summary>
+    /// 캐릭터 데모 버전 목표 달성(레벨 3) 시 발행되는 이벤트.
+    /// UI 암전 연출 및 최종 성적표 리포트 창 출력부에서 구독합니다.
+    /// </summary>
+    public struct DemoCompletedEvent
+    {
+        /// <summary>최종 달성 레벨 (3)</summary>
+        public int FinalLevel;
+
+        /// <summary>데모 종료 시점 가용 보유 현금 (Gold)</summary>
+        public long FinalGold;
+
+        /// <summary>총 누적 매매 거래 대금 (Gold)</summary>
+        public long TotalTradingVolume;
+    }
+
+    /// <summary>
+    /// 플레이어 레벨이 실제로 상승했을 때 발행되는 전역 이벤트.
+    /// </summary>
+    public struct PlayerLevelUpEvent
+    {
+        public int NewLevel;
+        public int GainedLevels;
+    }
+
+    #endregion
 }

@@ -35,6 +35,12 @@ namespace StockWars.Core
         public int AvailableStatPoints { get; set; } // 투자 가능한 스탯 포인트
         public long CumulativeTradingVolume { get; set; } // 누적 거래액 (레벨업 조건)
         public ReputationGrade Reputation { get; set; } = ReputationGrade.F;
+        public long RenownPoints { get; set; } = 0; // 누적 명성 수치
+        public List<string> UnlockedBreakthroughs { get; set; } = new List<string>(); // 달성 완료한 자산 돌파 단계 리스트
+        
+        // 5.1. 노동(알바) 리셋 상태
+        public int DailyJobsUsed { get; set; } = 0; // 당일 사용한 노동 횟수
+        public DateTime LastJobResetTimeUtc { get; set; } = DateTime.MinValue; // 마지막 노동 초기화 일시
         
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }
