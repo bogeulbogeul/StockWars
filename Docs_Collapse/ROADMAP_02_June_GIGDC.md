@@ -7,22 +7,20 @@
 
 ## Sprint 2 & 3: 금융 고도화, 노동 미니게임 및 찌라시 (056 ~ 230)
 
-- [ ] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 057. **[CORE_GDD_04]** 🧠[Pro] `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 058. **[CORE_GDD_04]** `AnnaWelcomeGift`: 최초 대출 시 168시간 무이자 플래그 및 타이머 작동
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 059. **[CORE_GDD_04]** 🧠[Pro] `LoanEvaluator`: 총자산/평판 대비 대출 가능 한도(최대 10,000G 초기값) 연산
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 065. **[CORE_GDD_07]** `OfficeMaintenance`: 오피스 레벨(1~4)에 따른 주간 감가상각비(500~5000G) 차감
-  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 066. **[CORE_GDD_07]** `GhostSinkEngine`: 고스트 트레이더의 모든 수익을 시스템으로 회수하는 소각부
-  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 042. **[CORE_GDD_01]** 🎨[Graphics] `GlobalPostPro`: 씬별 포스트 프로세싱(Vignette, Bloom, CRT) 프로필 설정
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 043. **[CORE_GDD_01]** 🎨[Graphics] `CursorManager`: 상황별 커서 아이템(돋보기, 손바닥) 변경 및 애니메이션
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 052. **[CORE_GDD_02]** 🎨[Graphics] `MarketOpeningFX`: 개장 시 증권사 UI가 반짝이며 켜지는 시계 연출
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 056. ➡️ 5월 조기 이관 및 완료
+- [ ] 057. ➡️ 5월 조기 이관 및 완료
+- [ ] 058. ➡️ 5월 조기 이관 및 완료
+- [ ] 059. ➡️ 5월 조기 이관 및 완료
+- [ ] 060. ➡️ 5월 조기 이관 및 완료
+- [ ] 061. ➡️ 5월 조기 이관 및 완료
+- [ ] 065. ➡️ 5월 조기 이관 및 완료
+- [ ] 066. ➡️ 5월 조기 이관 및 완료
 - [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 상단 바, 사이드 메뉴를 포함한 핵심 HUD 레이아웃 셋업
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 068. **[CORE_GDD_05]** `StatTextLerp`: 골드와 수치 변동 시 드르륵 올라가는 시각적 숫자 연출

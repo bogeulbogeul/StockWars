@@ -89,10 +89,8 @@
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 041. **[CORE_GDD_01]** `AssetBundleLoader`: 배경 스프라이트 및 NPC 일러스트 비동기 로드 관리
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 042. **[CORE_GDD_01]** 🎨[Graphics] `GlobalPostPro`: 씬별 포스트 프로세싱(Vignette, Bloom, CRT) 프로필 설정
-  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 043. **[CORE_GDD_01]** 🎨[Graphics] `CursorManager`: 상황별 커서 아이템(돋보기, 손바닥) 변경 및 애니메이션
-  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 042. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
+- [ ] 043. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
 - [ ] 044. **[CORE_GDD_01]** `BGMController`: 씬 진입 시 크로스페이드 기반 배경음 전환 스크립트
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 045. **[CORE_GDD_06]** `TimeScaleController`: 개발용 배속 기능 및 연출용 타임 스톱 플러그인
@@ -109,11 +107,27 @@
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 051. **[CORE_GDD_02]** 🧠[Pro] `PriceNoise.cs`: 주간 평탄화 사이사이의 미세한 '노이즈' 가격 변동 연산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 052. **[CORE_GDD_02]** 🎨[Graphics] `MarketOpeningFX`: 개장 시 증권사 UI가 반짝이며 켜지는 시계 연출
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 052. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
 - [ ] 053. **[CORE_GDD_06]** 🧠[Pro] `DataIntegrity.cs`: 매 프레임 세이브 데이터 변조를 감시하는 무결성 엔진
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 054. **[CORE_GDD_06]** `AutoSaveRouter`: 특정 주기 및 주요 상호작용 후 자동 저장 실행 가이드
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 055. **[CORE_GDD_01]** `DebugConsole`: 개발용 자금 주입 및 아이템 획득 치트 명령 프레임워크
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 057. **[CORE_GDD_04]** 🧠[Pro] `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 058. **[CORE_GDD_04]** `AnnaWelcomeGift`: 최초 대출 시 168시간 무이자 플래그 및 타이머 작동
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 059. **[CORE_GDD_04]** 🧠[Pro] `LoanEvaluator`: 총자산/평판 대비 대출 가능 한도(최대 10,000G 초기값) 연산
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 065. **[CORE_GDD_07]** `OfficeMaintenance`: 오피스 레벨(1~4)에 따른 주간 감가상각비(500~5000G) 차감
+  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 066. **[CORE_GDD_07]** `GhostSinkEngine`: 고스트 트레이더의 모든 수익을 시스템으로 회수하는 소각부
+  - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+
