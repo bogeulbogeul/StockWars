@@ -105,24 +105,24 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 050. **[CORE_GDD_03]** `CareerPathInit`: 최초 시작 시 유저 성향에 따른 기본 스탯 분배 로직
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 051. **[CORE_GDD_02]** 🧠[Pro] `PriceNoise.cs`: 주간 평탄화 사이사이의 미세한 '노이즈' 가격 변동 연산부
+- [x] 051. **[CORE_GDD_02]** 🧠[Pro] `PriceNoise.cs`: 주간 평탄화 사이사이의 미세한 '노이즈' 가격 변동 연산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 052. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
-- [ ] 053. **[CORE_GDD_06]** 🧠[Pro] `DataIntegrity.cs`: 매 프레임 세이브 데이터 변조를 감시하는 무결성 엔진
+- [x] 053. **[CORE_GDD_06]** 🧠[Pro] `DataIntegrity.cs`: 매 프레임 세이브 데이터 변조를 감시하는 무결성 엔진
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 054. **[CORE_GDD_06]** `AutoSaveRouter`: 특정 주기 및 주요 상호작용 후 자동 저장 실행 가이드
+- [x] 054. **[CORE_GDD_06]** `AutoSaveRouter`: 특정 주기 및 주요 상호작용 후 자동 저장 실행 가이드
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 055. **[CORE_GDD_01]** `DebugConsole`: 개발용 자금 주입 및 아이템 획득 치트 명령 프레임워크
+- [x] 055. **[CORE_GDD_01]** `DebugConsole`: 개발용 자금 주입 및 아이템 획득 치트 명령 프레임워크
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
+- [x] 056. **[CORE_GDD_04]** `DebtKernel`: 원금, 복리 이자, 정산일자 정보를 담은 부채 데이터 구조체
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 057. **[CORE_GDD_04]** 🧠[Pro] `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
+- [x] 057. **[CORE_GDD_04]** 🧠[Pro] `InterestCycle`: 매주 월요일 00:00 2.0% 기본 이자 합산 및 트랜잭션 보장
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 058. **[CORE_GDD_04]** `AnnaWelcomeGift`: 최초 대출 시 168시간 무이자 플래그 및 타이머 작동
+- [x] 058. **[CORE_GDD_04]** `AnnaWelcomeGift`: 최초 대출 시 168시간 무이자 플래그 및 타이머 작동
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 059. **[CORE_GDD_04]** 🧠[Pro] `LoanEvaluator`: 총자산/평판 대비 대출 가능 한도(최대 10,000G 초기값) 연산
+- [x] 059. **[CORE_GDD_04]** 🧠[Pro] `LoanEvaluator`: 총자산/평판 대비 대출 가능 한도(최대 10,000G 초기값) 연산
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
+- [x] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)

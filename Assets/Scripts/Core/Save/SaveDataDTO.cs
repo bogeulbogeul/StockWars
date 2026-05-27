@@ -20,6 +20,9 @@ namespace StockWars.Core
         public long AccumulatedDividends { get; set; } = 0; // 미지급 배당금 누적액
         public long AccumulatedInterest { get; set; } = 0;  // 누적 이자 누적액
         
+        // 1.1. 활성 부채 목록 (CORE_GDD_04)
+        public List<DebtKernel> Debts { get; set; } = new List<DebtKernel>();
+        
         // 2. 포트폴리오 (보유 주식)
         // Key: StockId, Value: Holdings
         public Dictionary<string, StockHoldingsDTO> Portfolio { get; set; } = new Dictionary<string, StockHoldingsDTO>();
@@ -47,6 +50,9 @@ namespace StockWars.Core
 
         // 7. 데모 특전 정보
         public bool IsDemoVeteran { get; set; }
+        
+        // 7.1. 안나의 무이자 웰컴 기프트 수령 플래그 (CORE_GDD_04)
+        public bool IsAnnaWelcomeGiftClaimed { get; set; } = false;
 
         // 8. 시장 전체 영속 데이터 (96종 대응)
         public Dictionary<string, StockStateDTO> MarketState { get; set; } = new Dictionary<string, StockStateDTO>();

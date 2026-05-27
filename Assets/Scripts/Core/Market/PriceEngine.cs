@@ -98,9 +98,12 @@ namespace StockWars.Core
                 ? TrendEngine.Instance.GetBias(stock.StockId)
                 : 0.0;
 
+            // ── 4-4.5. 미세 노이즈 (PriceNoise — Task 051 완료) ─────────────────
+            double microNoise = PriceNoise.GetMicroNoise(stock.StockId, stock.Data.volatilityTier);
+
             // ── 4-5. 최종 변동률 합산 ─────────────────────────────────────
-            // gaussNoise는 이미 클램프 완료. scarcity + trend는 항상 반영 보장.
-            double deltaRatio = gaussNoise + scarcityPressure + trendBias;
+            // gaussNoise는 이미 클램프 완료. scarcity + trend + microNoise는 항상 반영 보장.
+            double deltaRatio = gaussNoise + scarcityPressure + trendBias + microNoise;
 
             // ── 4-6. 새 가격 적용 ─────────────────────────────────────────
             long newPrice = (long)Math.Round(stock.CurrentPrice * (1.0 + deltaRatio));
