@@ -35,6 +35,8 @@ namespace StockWars.Core
         
         // 5. 기타 상태 (레벨, 명성 등)
         public int PlayerLevel { get; set; } = 1;
+        public int OfficeLevel { get; set; } = 1; // 오피스 단계 (LV 1~4) (CORE_GDD_07)
+        public long GhostTraderVirtualLedger { get; set; } = 0; // 고스트 트레이더의 누적 주간 가상 원장 잔고 (소각 대응) (CORE_GDD_07)
         public int AvailableStatPoints { get; set; } // 투자 가능한 스탯 포인트
         public long CumulativeTradingVolume { get; set; } // 누적 거래액 (레벨업 조건)
         public ReputationGrade Reputation { get; set; } = ReputationGrade.F;

@@ -124,10 +124,61 @@
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 060. **[CORE_GDD_04]** 🧠[Pro] `AutoRepayment.cs`: 배당금 발생 시 부채 원금을 우선 차감하는 자동 이체부
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
+- [x] 061. **[CORE_GDD_04]** 🧠[Pro] `ManualRepayment.cs`: 유저 입력 기반의 부분 상환 및 상환 후 이윤 재계산
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 065. **[CORE_GDD_07]** `OfficeMaintenance`: 오피스 레벨(1~4)에 따른 주간 감가상각비(500~5000G) 차감
+- [x] 065. **[CORE_GDD_07]** `OfficeMaintenance`: 오피스 레벨(1~4)에 따른 주간 감가상각비(500~5000G) 차감
   - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 066. **[CORE_GDD_07]** `GhostSinkEngine`: 고스트 트레이더의 모든 수익을 시스템으로 회수하는 소각부
+- [x] 066. **[CORE_GDD_07]** `GhostSinkEngine`: 고스트 트레이더의 모든 수익을 시스템으로 회수하는 소각부
   - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+
+## Sprint 1.1: 6월에서 조기 이관된 핵심 엔진 및 데이터 논리 (070 ~ 215)
+
+- [ ] 070. **[CORE_GDD_05]** `TickerDataBinder`: 실시간 주가/변동률 정보를 티커 텍스트에 동적 할당
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 081. **[CORE_GDD_08]** `AvatarDataMapping`: 선택된 파츠를 실제 3D/2D 캐릭터 프리팹에 실시간 적용
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 082. **[CORE_GDD_08]** `StarterPackDistributor`: 초기 시드 5,000G 및 기본 가구 세트 인벤토리 지급
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 085. **[CORE_GDD_02]** `QuickBuyToggle`: 클릭 한 번으로 가용 자산 100% 매수하는 단축 기능 로직
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 086. **[CORE_GDD_02]** `TransactionLogger`: 매수/매도 시 시간, 단가, 수량을 전역 거래 일지에 기록
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 088. **[CORE_GDD_05]** `TooltipManager`: 모든 아이콘 마우스 오버 시 정보를 뿌려주는 전역 툴팁 시스템
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 091. **[CORE_GDD_06]** `AsyncPatcher`: 저장 실패 시 임시 메모리에 데이터를 보관하고 재시도하는 로직
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 100. **[CORE_GDD_01]** `PrefabLibrary`: 모든 NPC, 가구, UI 조각들의 인스턴스화를 위한 리소드 로드부
+  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 107. **[CORE_GDD_04]** `AutomaticSeizureMail`: 압류 6시간 전 자동으로 발송되는 최후의 결제 독촉 알림 로직
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 109. **[CORE_GDD_06]** 🧠[Pro] `SaveSafetyCheck`: 저장 도중 전원 차단 시 직전 세이브 데이터를 보호하는 백업본 생성
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 166. **[MOD_GDD_02]** 🤖[Claude] `JobSystemController`: 전체 노동 리스트 및 보상 데이터 매크로 관리
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 176. **[MOD_GDD_03]** 🤖[Claude] `ItemMasterTable`: CSV 기반 가구/의상 200종 스탯 대량 로드 시스템
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 182. **[MOD_GDD_03]** `ConsumableItem`: 사용 시 즉시 효과(분석력 증가 등)를 주는 소모품 엔진
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 183. **[MOD_GDD_04]** 🤖[Claude] `RumorGenerator`: 알바 성공 시 48종 시나리오 중 확률적 찌라시 획득
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 185. **[MOD_GDD_04]** `BurnTimerLogic`: 열람 후 60분 뒤 인벤토리에서 자동 삭제되는 타이머
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 186. **[MOD_GDD_04]** 🧠[Pro] `InsightMaskingEngine`: 분석 레벨 1~3단계별 단어 은폐 및 치환 알고리즘
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 195. **[MOD_GDD_02]** `EnergyDrinkItem`: 에너지 드링크(500G) 사용 시 일일 알바 횟수 2회 복구 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 196. **[MOD_GDD_02]** `JobPromotion`: 노동 횟수 누적 시 시급이 1.1~1.5배 상승하는 승급 시스템
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 199. **[MOD_GDD_04]** `RumorSourceTag`: 찌라시 출처(다크넷, 브로커, 우연) 표기 로직
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 200. **[MOD_GDD_04]** 🧠[Pro] `ReliabilitySystem`: 찌라시 텍스트 중 '거짓'이 섞일 확률 관리 엔진
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 208. **[MOD_GDD_02]** `ComboSystem`: 편의점/상하차 시 연속 성공 시 콤보 가산금 지급
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 215. **[MOD_GDD_02]** `FatigueSystem`: 연속 노동 시 성공 판정 범위가 좁아지는 피로도 연산 로직
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
