@@ -91,19 +91,19 @@
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 042. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
 - [ ] 043. ➡️ 6월 이관 (그래픽 작업 개시 시 변경)
-- [ ] 044. **[CORE_GDD_01]** `BGMController`: 씬 진입 시 크로스페이드 기반 배경음 전환 스크립트
+- [x] 044. **[CORE_GDD_01]** `BGMController`: 씬 진입 시 크로스페이드 기반 배경음 전환 스크립트
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 045. **[CORE_GDD_06]** `TimeScaleController`: 개발용 배속 기능 및 연출용 타임 스톱 플러그인
+- [x] 045. **[CORE_GDD_06]** `TimeScaleController`: 개발용 배속 기능 및 연출용 타임 스톱 플러그인
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 046. **[CORE_GDD_06]** `ErrorLogger.cs`: 런타임 예외 발생 시 전용 팝업 및 로그 파일 추출 기능
+- [x] 046. **[CORE_GDD_06]** `ErrorLogger.cs`: 런타임 예외 발생 시 전용 팝업 및 로그 파일 추출 기능
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 047. **[CORE_GDD_05]** `UI_SafeArea`: 다양한 PC 해상도 및 윈도우 창 모드 대응 캔버스 조절 스크립트
+- [x] 047. **[CORE_GDD_05]** `UI_SafeArea`: 다양한 PC 해상도 및 윈도우 창 모드 대응 캔버스 조절 스크립트
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 048. **[CORE_GDD_05]** `UI_Navigation`: 백버튼 및 메인 메뉴 진입을 위한 전역 네비게이션 제어
+- [x] 048. **[CORE_GDD_05]** `UI_Navigation`: 백버튼 및 메인 메뉴 진입을 위한 전역 네비게이션 제어
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 049. **[CORE_GDD_05]** `UI_CanvasOrder`: 레이어 순서(Order in Layer) 최적화 및 드로우콜 관리
+- [x] 049. **[CORE_GDD_05]** `UI_CanvasOrder`: 레이어 순서(Order in Layer) 최적화 및 드로우콜 관리
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 050. **[CORE_GDD_03]** `CareerPathInit`: 최초 시작 시 유저 성향에 따른 기본 스탯 분배 로직
+- [x] 050. **[CORE_GDD_03]** `CareerPathInit`: 최초 시작 시 유저 성향에 따른 기본 스탯 분배 로직
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 051. **[CORE_GDD_02]** 🧠[Pro] `PriceNoise.cs`: 주간 평탄화 사이사이의 미세한 '노이즈' 가격 변동 연산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
