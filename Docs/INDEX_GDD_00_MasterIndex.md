@@ -19,7 +19,7 @@
 
 ## 📉 2. 시장 및 경제 콘텐츠 (Market & Economy)
 - [MOD_GDD_10: 상장 예비 종목 풀](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_10_ReserveStockPool.md)
-- [MOD_GDD_12: 기업 뉴스 이벤트 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_12_CorporateNews.md)
+- [MOD_GDD_12: 기업 뉴스 이벤트 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_12_0_CorporateNewsIndex.md)
 - [MOD_GDD_13: 고스트 트레이더 운영 로직](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_13_GhostTrader.md)
 - [MOD_GDD_14: 부채 탕감 및 회생 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_14_DebtRelief.md)
 
