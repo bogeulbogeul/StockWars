@@ -162,9 +162,9 @@
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 📦 Track 2: 전역 리소스 및 공통 인터페이스 (Asset & UI Infrastructure)
-- [ ] 100. **[CORE_GDD_01]** `PrefabLibrary`: 모든 NPC, 가구, UI 조각들의 인스턴스화를 위한 리소드 로드부
+- [x] 100. **[CORE_GDD_01]** `PrefabLibrary`: 모든 NPC, 가구, UI 조각들의 인스턴스화를 위한 리소드 로드부
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 088. **[CORE_GDD_05]** `TooltipManager`: 모든 아이콘 마우스 오버 시 정보를 뿌려주는 전역 툴팁 시스템
+- [x] 088. **[CORE_GDD_05]** `TooltipManager`: 모든 아이콘 마우스 오버 시 정보를 뿌려주는 전역 툴팁 시스템
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🏪 Track 3: 알바(노동) 미니게임 수치 모델 및 피로도 알고리즘 (Labor & Fatigue Engine)
