@@ -17,10 +17,8 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 295. **[CORE_GDD_05]** 🎨[Graphics] `JackpotAnimation`: 1등 당첨 시 화면 전체에 쏟아지는 골드 및 축하 연출
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 296. **[CORE_GDD_02]** 🧠[Pro] `IPO_reserveLogic`: 폐지된 종목 섹터에 맞춰 신규 상장주 자동 선정 엔진
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 297. **[CORE_GDD_02]** 🎨[Graphics] `ListingCeremony`: 상장 12시간 전 카운트다운 공시 및 상장 축하 불꽃 FX
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 296. ➡️ 11월 이후 이관 (상장/IPO 일정 연기)
+- [ ] 297. ➡️ 11월 이후 이관 (상장/IPO 일정 연기)
 - [ ] 305. **[CORE_GDD_06]** 🧠[Pro] `EncryptionUpgrade`: 정식 빌드를 위한 세이브 데이터 비대칭 암호화(RSA 권장) 레이어
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 306. **[CORE_GDD_06]** 🧠[Pro] `AntiCheatSystem`: 런타임 자산 수치 변조 발생 시 즉시 서버(또는 로컬)에 비정상 로그 생성

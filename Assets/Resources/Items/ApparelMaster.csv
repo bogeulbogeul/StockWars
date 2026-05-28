@@ -1,0 +1,83 @@
+ItemId,DisplayName,Category,Rarity,Price,Scale,SubCategory,Install,GridW,GridH,MinLevelReq,BonusAnalysis,BonusNegotiation,BonusManagement,BonusResilience,SpecialEffect,ApparelPart,ThemeTag
+APP_TOP_NS_M_001,체크무늬 버튼다운 셔츠,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,단정한 체크 셔츠,Top,NaturalStarter
+APP_BOT_NS_M_001,슬림핏 베이지 치노,Apparel,Common,1800,Small,None,Grid,0,0,1,0,0,0,0,기본 면바지,Bottom,NaturalStarter
+APP_SHOE_NS_M_001,브라운 가죽 로퍼,Apparel,Common,1500,Small,None,Grid,0,0,1,0,0,0,0,편안한 갈색 단화,Shoes,NaturalStarter
+APP_TOP_NS_F_001,파스텔 가디건 & 블라우스,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,청순한 레이어드 상의,Top,NaturalStarter
+APP_BOT_NS_F_001,A라인 플리츠 스커트,Apparel,Common,1800,Small,None,Grid,0,0,1,0,0,0,0,단정한 베이지 치마,Bottom,NaturalStarter
+APP_SHOE_NS_F_001,리본 플랫 슈즈,Apparel,Common,1500,Small,None,Grid,0,0,1,0,0,0,0,귀여운 리본 장식 신발,Shoes,NaturalStarter
+APP_TOP_MD_M_001,하이넥 블랙 터틀넥,Apparel,Rare,5000,Small,None,Grid,0,0,1,1,0,0,0,[분석력] +1,Top,ModernDark
+APP_BOT_MD_M_001,차콜 그레이 슬랙스,Apparel,Rare,4500,Small,None,Grid,0,0,1,0,0,0,0,깔끔한 검정 바지,Bottom,ModernDark
+APP_SHOE_MD_M_001,블랙 더비 슈즈,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,광택 가죽 구두,Shoes,ModernDark
+APP_TOP_MD_F_001,슬림핏 블랙 블레이저,Apparel,Rare,5000,Small,None,Grid,0,0,1,1,0,0,0,[분석력] +1,Top,ModernDark
+APP_BOT_MD_F_001,세미 부츠컷 트라우저,Apparel,Rare,4500,Small,None,Grid,0,0,1,0,0,0,0,정장 바지,Bottom,ModernDark
+APP_SHOE_MD_F_001,포인티드 토 힐,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,세련된 하이힐,Shoes,ModernDark
+APP_TOP_MW_M_001,화이트 옥스포드 셔츠,Apparel,Rare,5000,Small,None,Grid,0,0,1,0,1,0,0,[협상력] +1,Top,MinimalistWhite
+APP_BOT_MW_M_001,라이트 그레이 면바지,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,밝은 톤 일자 바지,Bottom,MinimalistWhite
+APP_SHOE_MW_M_001,화이트 캔버스화,Apparel,Rare,3500,Small,None,Grid,0,0,1,0,0,0,0,가벼운 스니커즈,Shoes,MinimalistWhite
+APP_TOP_MW_F_001,실크 리본 블라우스,Apparel,Rare,5000,Small,None,Grid,0,0,1,0,1,0,0,[협상력] +1,Top,MinimalistWhite
+APP_BOT_MW_F_001,화이트 펜슬 스커트,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,무릎 길이 깔끔한 치마,Bottom,MinimalistWhite
+APP_SHOE_MW_F_001,화이트 스틸레토 힐,Apparel,Rare,3500,Small,None,Grid,0,0,1,0,0,0,0,순백색 우아한 하이힐,Shoes,MinimalistWhite
+APP_TOP_IS_M_001,헤비 코튼 워크 자켓,Apparel,Rare,5500,Small,None,Grid,0,0,1,0,0,1,0,[운용력] +1,Top,IndustrialStudio
+APP_BOT_IS_M_001,와이드 카고 팬츠,Apparel,Rare,4500,Small,None,Grid,0,0,1,0,0,0,0,주머니 많은 작업 바지,Bottom,IndustrialStudio
+APP_SHOE_IS_M_001,강철캡 안전화,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,발 보호 무거운 워커,Shoes,IndustrialStudio
+APP_TOP_IS_F_001,유틸리티 조끼 & 탑,Apparel,Rare,5500,Small,None,Grid,0,0,1,0,0,1,0,[운용력] +1,Top,IndustrialStudio
+APP_BOT_IS_F_001,슬림 카고 레깅스,Apparel,Rare,4500,Small,None,Grid,0,0,1,0,0,0,0,활동성 좋은 작업 바지,Bottom,IndustrialStudio
+APP_SHOE_IS_F_001,택티컬 컴뱃 부츠,Apparel,Rare,4000,Small,None,Grid,0,0,1,0,0,0,0,가볍고 튼튼한 부츠,Shoes,IndustrialStudio
+APP_TOP_RA_M_001,픽셀 도트 오버핏 티,Apparel,Common,2500,Small,None,Grid,0,0,1,0,0,0,0,도트 캐릭터 힙한 티셔츠,Top,RetroArcade
+APP_BOT_RA_M_001,체크보드 조거 팬츠,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,레트로 체크무늬 바지,Bottom,RetroArcade
+APP_SHOE_RA_M_001,컬러풀 하이탑 픽셀,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,도트 질감 운동화,Shoes,RetroArcade
+APP_TOP_RA_F_001,8비트 크롭 후드,Apparel,Common,2500,Small,None,Grid,0,0,1,0,0,0,0,픽셀 감성 짧은 후드,Top,RetroArcade
+APP_BOT_RA_F_001,레트로 테니스 스커트,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,활동적인 체크무늬 치마,Bottom,RetroArcade
+APP_SHOE_RA_F_001,픽셀 롤러스케이트,Apparel,Common,2000,Small,None,Grid,0,0,1,0,0,0,0,레트로 감성 신발,Shoes,RetroArcade
+APP_HAIR_NC_M_001,네온 스파이크 헤어,Apparel,Epic,15000,Middle,None,Grid,0,0,3,0,0,0,0,형광 강렬한 남성 숏컷,Hair,NeonCyber
+APP_TOP_NC_M_001,네온 엣지 윈드브레이커,Apparel,Epic,20000,Middle,None,Grid,0,0,3,2,0,0,0,[분석력] +2 글리치 감지 증가,Top,NeonCyber
+APP_BOT_NC_M_001,테크니컬 하이테크 팬츠,Apparel,Epic,15000,Middle,None,Grid,0,0,3,0,0,0,0,네온 스트랩 기능성 바지,Bottom,NeonCyber
+APP_SHOE_NC_M_001,LED 하이탑 운동화,Apparel,Epic,18000,Middle,None,Grid,0,0,3,0,0,0,0,네온 빛 발산 신발,Shoes,NeonCyber
+APP_ACC_NC_M_001,네온 사이버 고글,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,매매 UI 네온 스킨 적용,Accessory,NeonCyber
+APP_HAIR_NC_F_001,글로우 사이버 트윈테일,Apparel,Epic,15000,Middle,None,Grid,0,0,3,0,0,0,0,끝단이 빛나는 트윈테일,Hair,NeonCyber
+APP_SET_NC_F_001,사이버 테크 드레스,Apparel,Epic,25000,Middle,None,Grid,0,0,3,2,0,0,0,[분석력] +2 홀로그램 의상,Set,NeonCyber
+APP_SHOE_NC_F_001,네온 레이저 부츠,Apparel,Epic,18000,Middle,None,Grid,0,0,3,0,0,0,0,빛의 선이 흐르는 롱 부츠,Shoes,NeonCyber
+APP_ACC_NC_F_001,홀로그램 사이버 귀걸이,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,데이터 수신 귀걸이 연출,Accessory,NeonCyber
+APP_HAIR_CP_M_001,후와후와 마카롱 펌,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,몽글몽글 파스텔톤 펌,Hair,CozyPastel
+APP_SET_CP_M_001,오버사이즈 구름 파자마,Apparel,Epic,20000,Middle,None,Grid,0,0,3,0,0,0,2,[회복력] +2 최상의 잠옷,Set,CozyPastel
+APP_SHOE_CP_M_001,폭신한 구름 슬리퍼,Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,구름 위 같은 실내화,Shoes,CozyPastel
+APP_ACC_CP_M_001,몽글몽글 구름 배낭,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,구름 조각 가방,Accessory,CozyPastel
+APP_HAIR_CP_F_001,솜사탕 롱 웨이브,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,풍성하고 부드러운 머리,Hair,CozyPastel
+APP_SET_CP_F_001,프릴 구름 파자마 드레스,Apparel,Epic,20000,Middle,None,Grid,0,0,3,0,0,0,2,[회복력] +2 아늑한 원피스,Set,CozyPastel
+APP_SHOE_CP_F_001,리본 몽글 슬리퍼,Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,핑크빛 리본 실내화,Shoes,CozyPastel
+APP_ACC_CP_F_001,포근한 구름 크로스백,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,별가루 날리는 가방,Accessory,CozyPastel
+APP_HAIR_KT_M_001,정갈한 선비 헤어,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,단정하게 묶은 남성 헤어,Hair,KTraditional
+APP_SET_KT_M_001,K-모던 철릭 (남성용),Apparel,Epic,22000,Middle,None,Grid,0,0,3,0,0,0,2,[회복력] +2 현대 재해석 철릭,Set,KTraditional
+APP_SHOE_KT_M_001,전통 가죽 태사혜,Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,우아한 선비 가죽신,Shoes,KTraditional
+APP_ACC_KT_M_001,수묵화 대나무 부채,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,수묵화 부채 장식,Accessory,KTraditional
+APP_HAIR_KT_F_001,단아한 쪽머리 & 비녀,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,비녀 올림머리,Hair,KTraditional
+APP_SET_KT_F_001,K-모던 당의 (여성용),Apparel,Epic,22000,Middle,None,Grid,0,0,3,0,0,0,2,[회복력] +2 우아한 한복 원피스,Set,KTraditional
+APP_SHOE_KT_F_001,비단 꽃신 (당혜),Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,자수 전통 신발,Shoes,KTraditional
+APP_ACC_KT_F_001,오색 비단 노리개,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,오색 기품 장식,Accessory,KTraditional
+APP_HAIR_NW_M_001,내추럴 핸섬 펌,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,부드러운 웨이브 금발,Hair,NordicWood
+APP_TOP_NW_M_001,케이블 울 스웨터,Apparel,Epic,20000,Middle,None,Grid,0,0,3,2,0,0,0,[분석력] +2 두툼한 스웨터,Top,NordicWood
+APP_BOT_NW_M_001,코듀로이 브라운 팬츠,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,포근한 갈색 골지 바지,Bottom,NordicWood
+APP_SHOE_NW_M_001,노르딕 가죽 워커,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,튼튼한 워커,Shoes,NordicWood
+APP_ACC_NW_M_001,클래식 뿔테 안경,Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,지적 이미지 안경,Accessory,NordicWood
+APP_HAIR_NW_F_001,포레스트 롱 브레이드,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,땋아 내린 금발,Hair,NordicWood
+APP_SET_NW_F_001,노르딕 패턴 니트 드레스,Apparel,Epic,22000,Middle,None,Grid,0,0,3,2,0,0,0,[분석력] +2 눈꽃 원피스,Set,NordicWood
+APP_SHOE_NW_F_001,양털 안감 어그 부츠,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,따뜻한 어그 부츠,Shoes,NordicWood
+APP_ACC_NW_F_001,내추럴 원목 안경,Apparel,Epic,8000,Middle,None,Grid,0,0,3,0,0,0,0,나무 프레임 안경,Accessory,NordicWood
+APP_HAIR_MJ_M_001,클래식 포마드 헤어,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,깔끔한 신사 헤어,Hair,MidnightJazz
+APP_SET_MJ_M_001,더블 벨벳 턱시도,Apparel,Epic,25000,Middle,None,Grid,0,0,3,0,2,0,0,[협상력] +2 완벽 핏 예복,Set,MidnightJazz
+APP_SHOE_MJ_M_001,페이턴트 레더 로퍼,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,유광 드레스 슈즈,Shoes,MidnightJazz
+APP_ACC_MJ_M_001,실버 체인 회중시계,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,회중시계 확인 대기 연출,Accessory,MidnightJazz
+APP_HAIR_MJ_F_001,할리우드 클래식 컬,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,복고풍 웨이브 헤어,Hair,MidnightJazz
+APP_SET_MJ_F_001,실크 머메이드 드레스,Apparel,Epic,25000,Middle,None,Grid,0,0,3,0,2,0,0,[협상력] +2 이브닝 가운,Set,MidnightJazz
+APP_SHOE_MJ_F_001,실버 스트랩 힐,Apparel,Epic,12000,Middle,None,Grid,0,0,3,0,0,0,0,화려한 은색 힐,Shoes,MidnightJazz
+APP_ACC_MJ_F_001,다이아몬드 테슬 귀걸이,Apparel,Epic,10000,Middle,None,Grid,0,0,3,0,0,0,0,영롱하게 빛나는 귀걸이,Accessory,MidnightJazz
+APP_FACE_GE_M_001,냉철한 제왕의 눈매,Apparel,Legendary,30000,Big,None,Grid,0,0,5,0,0,0,0,압도적 위엄 눈매,Face,GoldenEmpire
+APP_HAIR_GE_M_001,엠퍼러 사이드 파트,Apparel,Legendary,25000,Big,None,Grid,0,0,5,0,0,0,0,금색 하이라이트 제왕 헤어,Hair,GoldenEmpire
+APP_SET_GE_M_001,황금 제국의 황제 예복,Apparel,Legendary,100000,Big,None,Grid,0,0,5,2,2,2,2,[All Stats] +2 황제 의상,Set,GoldenEmpire
+APP_SHOE_GE_M_001,골든 리프 윙팁 슈즈,Apparel,Legendary,30000,Big,None,Grid,0,0,5,0,0,0,0,금색 나뭇잎 장식 최고 구두,Shoes,GoldenEmpire
+APP_ACC_GE_M_001,엠퍼러 픽셀 워치,Apparel,Legendary,25000,Big,None,Grid,0,0,5,0,0,0,0,황금 오라 생성 시계,Accessory,GoldenEmpire
+APP_FACE_GE_F_001,고결한 여제의 눈매,Apparel,Legendary,30000,Big,None,Grid,0,0,5,0,0,0,0,찬란한 기품 지성 눈매,Face,GoldenEmpire
+APP_HAIR_GE_F_001,임페리얼 로열 롱헤어,Apparel,Legendary,25000,Big,None,Grid,0,0,5,0,0,0,0,황금 왕관 장엄한 머리,Hair,GoldenEmpire
+APP_SET_GE_F_001,황금 제국의 여제 드레스,Apparel,Legendary,100000,Big,None,Grid,0,0,5,2,2,2,2,[All Stats] +2 여제 드레스,Set,GoldenEmpire
+APP_SHOE_GE_F_001,골든 글래스 샌들,Apparel,Legendary,30000,Big,None,Grid,0,0,5,0,0,0,0,보석 박힌 황금빛 샌들,Shoes,GoldenEmpire
+APP_ACC_GE_F_001,여제의 보석 목걸이,Apparel,Legendary,25000,Big,None,Grid,0,0,5,0,0,0,0,신의 권위 찬란한 목걸이,Accessory,GoldenEmpire

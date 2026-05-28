@@ -79,3 +79,10 @@
   - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 220. **[MOD_GDD_05]** 🤖[Claude] `PawnShopBargain`: 바터와의 [협상력] 대결을 통해 담보 대출 이율을 깎는 미니 토크
   - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+
+## Phase 7.2: Post-Launch 마일스톤 (신규 상장 및 세레머니 - 11월 이후)
+
+- [ ] 296. **[CORE_GDD_02]** 🧠[Pro] `IPO_reserveLogic`: 폐지된 종목 섹터에 맞춰 신규 상장주 자동 선정 엔진
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 297. **[CORE_GDD_02]** 🎨[Graphics] `ListingCeremony`: 상장 12시간 전 카운트다운 공시 및 상장 축하 불꽃 FX
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)

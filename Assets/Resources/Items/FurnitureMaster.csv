@@ -1,0 +1,85 @@
+ItemId,DisplayName,Category,Rarity,Price,Scale,SubCategory,Install,GridW,GridH,MinLevelReq,BonusAnalysis,BonusNegotiation,BonusManagement,BonusResilience,SpecialEffect,ApparelPart,ThemeTag
+FURN_WALL_NS_001,[벽지] 베이직 화이트 벽지,Furniture,Common,0,Small,Wallpaper,Skin,0,0,1,0,0,0,0,기본 지급 벽지,,NaturalStarter
+FURN_FLOOR_NS_001,[바닥] 오크우드 바닥,Furniture,Common,0,Small,Floor,Skin,0,0,1,0,0,0,0,기본 지급 바닥재,,NaturalStarter
+FURN_DESK_NS_001,[책상] 기초 목재 책상,Furniture,Common,3000,Small,Desk,Grid,2,1,1,0,0,0,0,기본적인 목재 트레이딩 데스크,,NaturalStarter
+FURN_CHAIR_NS_001,[의자] 클래식 목재 의자,Furniture,Common,2500,Small,Chair,Grid,1,1,1,0,0,0,0,카페 스타일 목재 의자,,NaturalStarter
+FURN_BED_NS_001,[침대] 아늑한 목재 침대,Furniture,Uncommon,5000,Small,Bed,Grid,2,1,1,0,0,0,0.1,스테미너 자연 회복량 +10%,,NaturalStarter
+FURN_DECOR_NS_001,[장식품] 몬스테라 화분,Furniture,Common,3500,Small,Decor,Grid,1,1,1,0.02,0,0,0,찌라시 해독 확률 +2%,,NaturalStarter
+FURN_WALL_NS_DOOR,[벽 장식] 기본 목재 방문,Furniture,Common,0,Small,WallDecor,Grid,1,1,1,0,0,0,0,[마을 이동] 클릭 시 서버 선택 창 오픈,,NaturalStarter
+FURN_STORAGE_NS_001,[수납] 기본 목재 옷장,Furniture,Common,4000,Small,Storage,Grid,1,1,1,0,0,0,0,[아바타 커스터마이징] 기능 활성화,,NaturalStarter
+FURN_WALL_MD_001,[벽지] 다크 모드 벽지,Furniture,Uncommon,3000,Small,Wallpaper,Skin,0,0,1,0,0,0,0,장시간 매매 시 피로도 완화,,ModernDark
+FURN_FLOOR_MD_001,[바닥] 콘크리트 그레이 바닥,Furniture,Uncommon,4500,Small,Floor,Skin,0,0,1,0,0,0,0,차트 가독성 10% 복구,,ModernDark
+FURN_DESK_MD_001,[책상] 스마트 모션 데스크,Furniture,Uncommon,7500,Small,Desk,Grid,2,1,1,0,0,0,0,스트레스 상승률 -10%,,ModernDark
+FURN_CHAIR_MD_001,[의자] 컴포트 오피스 체어,Furniture,Uncommon,8000,Small,Chair,Grid,1,1,1,0,0,0,0.1,스테미너 회복 효율 상승,,ModernDark
+FURN_BED_MD_001,[침대] 원목 싱글 침대,Furniture,Uncommon,9000,Small,Bed,Grid,2,1,1,0.1,0,0,0,[분석력] 경험치 획득 효율 1.1배,,ModernDark
+FURN_STORAGE_MD_001,[수납] 시공 대형 수납장,Furniture,Uncommon,6000,Small,Storage,Grid,2,1,1,0,0,0.1,0,인벤토리 슬롯 +10칸,,ModernDark
+FURN_WALL_MW_001,[벽지] 화이트 브릭 벽지,Furniture,Uncommon,3500,Small,Wallpaper,Skin,0,0,1,0,0,0,0,세련된 흰색 벽돌 질감,,MinimalistWhite
+FURN_FLOOR_MW_001,[바닥] 마블 패턴 바닥,Furniture,Uncommon,4000,Small,Floor,Skin,0,0,1,0,0,0,0,깔끔한 대리석 패턴,,MinimalistWhite
+FURN_DESK_MW_001,[책상] 투명 강화유리 데스크,Furniture,Uncommon,8500,Small,Desk,Grid,2,1,1,0,0,0,0,시각적 개방감으로 집중력 보너스,,MinimalistWhite
+FURN_CHAIR_MW_001,[의자] 화이트 클리어 체어,Furniture,Uncommon,4000,Small,Chair,Grid,1,1,1,0,0,0,0,모던 투명 소재 의자,,MinimalistWhite
+FURN_BED_MW_001,[침대] 화이트 철제 침대,Furniture,Uncommon,7500,Small,Bed,Grid,2,1,1,0,0,0,0,심플 프레임 싱글 침대,,MinimalistWhite
+FURN_DECOR_MW_001,[장식품] 미니 선인장,Furniture,Common,2000,Small,Decor,Grid,1,1,1,0,0,0,0,관리 편한 인테리어 식물,,MinimalistWhite
+FURN_WALL_IS_001,[벽지] 레드 브릭 벽지,Furniture,Uncommon,4000,Small,Wallpaper,Skin,0,0,1,0,0,0,0,노출 벽돌 빈티지 벽면,,IndustrialStudio
+FURN_FLOOR_IS_001,[바닥] 에폭시 그레이 바닥,Furniture,Uncommon,4500,Small,Floor,Skin,0,0,1,0,0,0,0,무광 에폭시 바닥재,,IndustrialStudio
+FURN_DESK_IS_001,[책상] 스틸 파이프 책상,Furniture,Uncommon,9000,Small,Desk,Grid,2,1,1,0,0,0,0,금속 파이프 프레임 데스크,,IndustrialStudio
+FURN_CHAIR_IS_001,[의자] 빈티지 톨릭스 체어,Furniture,Uncommon,3500,Small,Chair,Grid,1,1,1,0,0,0,0,철제 인더스트리얼 체어,,IndustrialStudio
+FURN_BED_IS_001,[침대] 파이프 프레임 침대,Furniture,Uncommon,8000,Small,Bed,Grid,2,1,1,0,0,0,0,금속 프레임 침대,,IndustrialStudio
+FURN_DECOR_IS_001,[장식품] 에디슨 전구 스탠드,Furniture,Common,3000,Small,Decor,Grid,1,1,1,0,0,0,0,따뜻한 오렌지빛 감성 조명,,IndustrialStudio
+FURN_WALL_RA_001,[벽지] 픽셀 패턴 벽지,Furniture,Common,3000,Small,Wallpaper,Skin,0,0,1,0,0,0,0,도트 노이즈 보라색 픽셀 벽지,,RetroArcade
+FURN_FLOOR_RA_001,[바닥] 체크판 아케이드 바닥,Furniture,Uncommon,4000,Small,Floor,Skin,0,0,1,0,0,0,0,레트로 오락실 체크무늬 바닥,,RetroArcade
+FURN_DESK_RA_001,[책상] 아케이드 머신 데스크,Furniture,Uncommon,8000,Small,Desk,Grid,2,1,1,0,0,0,0,조이스틱·버튼 장착 트레이딩 책상,,RetroArcade
+FURN_CHAIR_RA_001,[의자] 레드 원형 스툴,Furniture,Common,3000,Small,Chair,Grid,1,1,1,0,0,0,0,오락실용 빨간 원형 의자,,RetroArcade
+FURN_BED_RA_001,[침대] 8비트 박스 침대,Furniture,Uncommon,7000,Small,Bed,Grid,2,1,1,0,0,0,0,투박한 도트형 침대,,RetroArcade
+FURN_DECOR_RA_001,[장식품] 도트 하트 램프,Furniture,Common,2500,Small,Decor,Grid,1,1,1,0,0,0,0,픽셀 하트 빛나는 미니 램프,,RetroArcade
+FURN_WALL_NC_001,[벽지] 사이버 그리드 벽지,Furniture,Rare,6000,Middle,Wallpaper,Skin,0,0,3,0.1,0,0,0,[분석력] 스탯 보너스 감성,,NeonCyber
+FURN_FLOOR_NC_001,[바닥] 디지털 매트릭스 바닥,Furniture,Rare,5500,Middle,Floor,Skin,0,0,3,0,0,0.1,0,[운용력] 스탯 보너스 감성,,NeonCyber
+FURN_DESK_NC_001,[책상] 사이버 하이테크 데스크,Furniture,Rare,30000,Middle,Desk,Grid,3,1,3,0,0,0,0,차트 분석 속도 +15%,,NeonCyber
+FURN_CHAIR_NC_001,[의자] 레이싱 게이밍 체어,Furniture,Rare,18000,Middle,Chair,Grid,1,1,3,0.1,0,0,0,찌라시 해독 시간 +10%,,NeonCyber
+FURN_BED_NC_001,[침대] 네온 2층 침대,Furniture,Rare,15000,Middle,Bed,Grid,2,1,3,0,0,0,0.2,스테미너 회복력 +2 보너스,,NeonCyber
+FURN_DECOR_NC_001,[장식품] 홀로그램 시가총액 구체,Furniture,Rare,15000,Middle,Decor,Grid,1,1,3,0,0,0.05,0,분석 효율 +5%,,NeonCyber
+FURN_DECOR_NC_002,[장식품] 네온 써클 러그,Furniture,Rare,4500,Middle,Decor,Grid,2,2,3,0,0,0,0,화려한 원형 하이테크 러그,,NeonCyber
+FURN_TILE_NC_001,[타일] 디지털 그리드 타일,Furniture,Rare,1200,Middle,Tile,Grid,1,1,3,0,0,0,0,데이터 흐름 포인트 타일,,NeonCyber
+FURN_WALL_NC_DOOR,[벽 장식] 하이테크 자동문,Furniture,Rare,12000,Middle,WallDecor,Grid,1,1,3,0,0,0,0,[마을 이동] 서버 선택,,NeonCyber
+FURN_PART_NC_001,[파티션] 가상 데이터 월,Furniture,Rare,10000,Middle,Partition,Grid,2,1,3,0,0,0,0,데이터 스트림 반투명 파티션,,NeonCyber
+FURN_WALL_CP_001,[벽지] 파스텔 그라데이션 실크,Furniture,Rare,7000,Middle,Wallpaper,Skin,0,0,3,0,0,0,0,보라·핑크 몽환 그라데이션,,CozyPastel
+FURN_FLOOR_CP_001,[바닥] 울트라 소프트 샴바닥,Furniture,Rare,8000,Middle,Floor,Skin,0,0,3,0,0,0,0.1,최고급 카펫 바닥재,,CozyPastel
+FURN_DESK_CP_001,[책상] 클라우드 라운드 데스크,Furniture,Rare,18000,Middle,Desk,Grid,3,1,3,0,0,0,0,구름 모양 상판 넓은 책상,,CozyPastel
+FURN_CHAIR_CP_001,[의자] 매직 빈백 소파,Furniture,Rare,12000,Middle,Chair,Grid,1,1,3,0,0,0,0,체형에 맞춰 변하는 소파,,CozyPastel
+FURN_BED_CP_001,[침대] 파스텔 킹 사이즈 캐노피 베드,Furniture,Rare,28000,Middle,Bed,Grid,2,2,3,0,0,0,0.2,구름 침대,,CozyPastel
+FURN_DECOR_CP_001,[장식품] 자이언트 플러피 테디베어,Furniture,Rare,9000,Middle,Decor,Grid,2,2,3,0,0,0,0,압도적 크기 곰인형,,CozyPastel
+FURN_DECOR_CP_002,[장식품] 마법 구름 러그,Furniture,Rare,6000,Middle,Decor,Grid,3,2,3,0,0,0,0,파스텔톤 타원형 러그,,CozyPastel
+FURN_TILE_CP_001,[타일] 마카롱 육각 타일,Furniture,Rare,1800,Middle,Tile,Grid,1,1,3,0,0,0,0,달콤한 컬러 육각 타일,,CozyPastel
+FURN_WALL_KT_001,[벽지] 천연 한지 장판 벽지,Furniture,Rare,8000,Middle,Wallpaper,Skin,0,0,3,0,0,0,0,전통 한지 결 벽면,,KTraditional
+FURN_FLOOR_KT_001,[바닥] 옻칠 흑색 마루,Furniture,Rare,7500,Middle,Floor,Skin,0,0,3,0,0,0,0,전통 옻칠 바닥,,KTraditional
+FURN_DESK_KT_001,[책상] 전통 자개 소반 책상,Furniture,Rare,10000,Middle,Desk,Grid,2,2,3,0,0,0,0,나전칠기 트레이딩 데스크,,KTraditional
+FURN_CHAIR_KT_001,[의자] 전통 보료 평상 소파,Furniture,Rare,22000,Middle,Chair,Grid,3,1,3,0,0,0,0.1,보료+평상 소파,,KTraditional
+FURN_BED_KT_001,[침대] 옥 장판 한옥 침대,Furniture,Rare,35000,Middle,Bed,Grid,2,2,3,0,0,0,0.2,온돌 재현 옥 장판 침대,,KTraditional
+FURN_DECOR_KT_001,[장식품] 거북 무늬 화문석 러그,Furniture,Rare,5000,Middle,Decor,Grid,3,2,3,0,0,0,0,대형 화문석 러그,,KTraditional
+FURN_PART_KT_001,[파티션] 한국식 꽃살 문 병풍,Furniture,Rare,9000,Middle,Partition,Grid,2,1,3,0,0,0,0,꽃살 문양 전통 칸막이,,KTraditional
+FURN_WALL_NW_001,[벽지] 화이트 우드 패널,Furniture,Rare,7500,Middle,Wallpaper,Skin,0,0,3,0,0,0,0,밝은 세로 결 화이트 우드,,NordicWood
+FURN_FLOOR_NW_001,[바닥] 라이트 오크 원목 바닥,Furniture,Rare,7000,Middle,Floor,Skin,0,0,3,0,0,0,0,자연스러운 밝은 오크 바닥,,NordicWood
+FURN_DESK_NW_001,[책상] 스칸디나비아 롱 데스크,Furniture,Rare,12000,Middle,Desk,Grid,3,1,3,0,0,0,0,넓은 원목 데스크,,NordicWood
+FURN_CHAIR_NW_001,[의자] 패브릭 윙백 체어,Furniture,Rare,8500,Middle,Chair,Grid,1,1,3,0,0,0,0.1,몸을 감싸는 패브릭 의자,,NordicWood
+FURN_BED_NW_001,[침대] 노르딕 패브릭 퀸 베드,Furniture,Rare,18000,Middle,Bed,Grid,2,2,3,0,0,0,0.15,푹신한 헤드보드 퀸 침대,,NordicWood
+FURN_PART_NW_001,[파티션] 우드 루버 파티션,Furniture,Rare,10000,Middle,Partition,Grid,2,1,3,0,0,0,0,세로 살 빛 투과 파티션,,NordicWood
+FURN_DECOR_NW_001,[장식품] 보헤미안 패턴 러그,Furniture,Rare,4500,Middle,Decor,Grid,3,2,3,0,0,0,0,기하학 문양 대형 러그,,NordicWood
+FURN_DECOR_NW_002,[장식품] 대형 극락조 화분,Furniture,Rare,6000,Middle,Decor,Grid,1,1,3,0,0,0,0.05,공기 정화 대형 식물,,NordicWood
+FURN_TILE_NW_001,[타일] 코르크 육각 타일,Furniture,Rare,1500,Middle,Tile,Grid,1,1,3,0,0,0,0,따뜻한 코르크 타일,,NordicWood
+FURN_WALL_MJ_001,[벽지] 딥 블루 벨벳 벽지,Furniture,Rare,8500,Middle,Wallpaper,Skin,0,0,3,0,0,0,0,고급스러운 청색 벽면,,MidnightJazz
+FURN_FLOOR_MJ_001,[바닥] 다크 월넛 헤링본 바닥,Furniture,Rare,9000,Middle,Floor,Skin,0,0,3,0,0,0,0,클래식 V자 패턴 원목 바닥,,MidnightJazz
+FURN_DESK_MJ_001,[책상] 마호가니 라운드 바 데스크,Furniture,Rare,15000,Middle,Desk,Grid,3,1,3,0,0,0,0,곡선미 마호가니 책상,,MidnightJazz
+FURN_CHAIR_MJ_001,[의자] 가죽 첼시 소파 체어,Furniture,Rare,12000,Middle,Chair,Grid,1,1,3,0,0,0,0,클래식 단추 가죽 의자,,MidnightJazz
+FURN_BED_MJ_001,[침대] 실크 커버 퀸 사이즈 베드,Furniture,Rare,22000,Middle,Bed,Grid,2,2,3,0,0,0,0.15,실크 침구 다크 원목 침대,,MidnightJazz
+FURN_PART_MJ_001,[파티션] 브론즈 프레임 유리 파티션,Furniture,Rare,13000,Middle,Partition,Grid,2,1,3,0,0,0,0,브론즈 프레임 반투명 파티션,,MidnightJazz
+FURN_DECOR_MJ_001,[장식품] 레드 벨벳 타원형 러그,Furniture,Rare,6500,Middle,Decor,Grid,3,2,3,0,0,0,0,강렬한 레드 부드러운 러그,,MidnightJazz
+FURN_DECOR_MJ_002,[장식품] 빈티지 레코드 플레이어,Furniture,Rare,8000,Middle,Decor,Grid,1,1,3,0,0,0,0,아날로그 감성 소품,,MidnightJazz
+FURN_TILE_MJ_001,[타일] 블랙 다이아몬드 타일,Furniture,Rare,2000,Middle,Tile,Grid,1,1,3,0,0,0,0,은은한 광택 블랙 유광 타일,,MidnightJazz
+FURN_WALL_GE_001,[벽지] 골든 실크 벽지,Furniture,Legendary,15000,Big,Wallpaper,Skin,0,0,5,0,0,0,0,황금빛 문양 최고급 실크,,GoldenEmpire
+FURN_FLOOR_GE_001,[바닥] 골드 포인트 대리석,Furniture,Legendary,12000,Big,Floor,Skin,0,0,5,0,0,0,0,황금색 맥 대리석 바닥,,GoldenEmpire
+FURN_DESK_GE_001,[책상] 황금 도금 워크스테이션,Furniture,Legendary,60000,Big,Desk,Grid,3,2,5,0,0.01,0,0,수수료 -0.01% 전용 골드 UI,,GoldenEmpire
+FURN_CHAIR_GE_001,[의자] CEO 엠퍼러 체어,Furniture,Legendary,55000,Big,Chair,Grid,1,1,5,0,0,0,1,최대 하트 +1개 확장,,GoldenEmpire
+FURN_BED_GE_001,[침대] 엠퍼러 킹 사이즈 베드,Furniture,Legendary,65000,Big,Bed,Grid,3,3,5,0,0,0,0,휴식 시 모든 하트 즉시 회복,,GoldenEmpire
+FURN_DECOR_GE_001,[장식품] 황금 황소 자수 러그,Furniture,Legendary,15000,Big,Decor,Grid,3,2,5,0,0,0,0,황금실 황소 타원형 최고급 러그,,GoldenEmpire
+FURN_TILE_GE_001,[타일] 제국의 황금 타일,Furniture,Legendary,3500,Big,Tile,Grid,1,1,5,0,0,0,0,제국 문양 황금 포인트 타일,,GoldenEmpire
+FURN_WALL_GE_DOOR,[벽 장식] 골든 제국의 문,Furniture,Legendary,25000,Big,WallDecor,Grid,1,1,5,0,0,0,0,[마을 이동] 서버 선택,,GoldenEmpire
+FURN_PART_GE_001,[파티션] 황금 수묵 황소 병풍,Furniture,Legendary,30000,Big,Partition,Grid,3,1,5,0,0,0,0,강세장 상징 황금 병풍,,GoldenEmpire

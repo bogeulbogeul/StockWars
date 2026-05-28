@@ -31,7 +31,7 @@
 | **04-2** | **엔터 섹터** | 스타더스트, 스튜디오 루나, 넥스트 원 등 9종 | [MOD_GDD_04_2_Rumor_Entertainment.md](MOD_GDD_04_2_Rumor_Entertainment.md) |
 | **04-3** | **인프라 섹터** | S-커넥트, 에어 링크, 웨이브 통신 등 9종 | [MOD_GDD_04_3_Rumor_Infrastructure.md](MOD_GDD_04_3_Rumor_Infrastructure.md) |
 | **04-4** | **바이오 섹터** | 포레스트 랩, 뉴런 바이오, 라이프 큐어 등 9종 | [MOD_GDD_04_4_Rumor_Bio.md](MOD_GDD_04_4_Rumor_Bio.md) |
-| **04-5** | **항공우주 섹터** | 윙스 로지스 등 (기존 훼손 파일 무손실 보존본) | [MOD_GDD_04_5_Rumor_Aerospace.md](MOD_GDD_04_5_Rumor_Aerospace.md) |
+| **04-5** | **항공우주 섹터** | 윙스 로지스, 오비탈 테크, 코스모스 X 등 9종 | [MOD_GDD_04_5_Rumor_Aerospace.md](MOD_GDD_04_5_Rumor_Aerospace.md) |
 | **04-6** | **유통 섹터** | 모닝 브루, 오가닉 테이블, 스윗 베이커리 등 9종 | [MOD_GDD_04_6_Rumor_Distribution.md](MOD_GDD_04_6_Rumor_Distribution.md) |
-| **04-7** | **에너지 섹터** | 윈드 힐, 선 라이트, 에코 배터리 등 5종 | [MOD_GDD_04_7_Rumor_Energy.md](MOD_GDD_04_7_Rumor_Energy.md) |
+| **04-7** | **에너지 섹터** | 윈드 힐, 선 라이트, 에코 배터리 등 9종 | [MOD_GDD_04_7_Rumor_Energy.md](MOD_GDD_04_7_Rumor_Energy.md) |
 | **04-8** | **금융 섹터** | 코지 페이, 민트 자산운용, 골드 포켓 등 9종 | [MOD_GDD_04_8_Rumor_Finance.md](MOD_GDD_04_8_Rumor_Finance.md) |

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine.Scripting;
+using static StockWars.Core.RumorGenerator;
 
 namespace StockWars.Core
 {
@@ -44,8 +45,12 @@ namespace StockWars.Core
         public List<string> UnlockedBreakthroughs { get; set; } = new List<string>(); // 달성 완료한 자산 돌파 단계 리스트
         
         // 5.1. 노동(알바) 리셋 상태
-        public int DailyJobsUsed { get; set; } = 0; // 당일 사용한 노동 횟수
-        public DateTime LastJobResetTimeUtc { get; set; } = DateTime.MinValue; // 마지막 노동 초기화 일시
+        public int DailyJobsUsed { get; set; } = 0;                                   // 당일 사용한 노동 횟수
+        public DateTime LastJobResetTimeUtc { get; set; } = DateTime.MinValue;         // 마지막 노동 초기화 일시
+        public int TotalJobsCompleted { get; set; } = 0;                               // 누적 알바 완료 횟수 (위탁 효율 해금 조건: 100회)
+
+        // 5.2. 찌라시 인벤토리 (MOD_GDD_04)
+        public List<RumorInstance> RumorInventory { get; set; } = new List<RumorInstance>(); // 보유 중인 찌라시 목록
         
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }
@@ -56,11 +61,70 @@ namespace StockWars.Core
         // 7.1. 안나의 무이자 웰컴 기프트 수령 플래그 (CORE_GDD_04)
         public bool IsAnnaWelcomeGiftClaimed { get; set; } = false;
 
+        // 7.2. 웰컴 스타터팩 수령 플래그 (CORE_GDD_08)
+        public bool IsStarterPackClaimed { get; set; } = false;
+
         // 8. 시장 전체 영속 데이터 (96종 대응)
         public Dictionary<string, StockStateDTO> MarketState { get; set; } = new Dictionary<string, StockStateDTO>();
 
         // 9. RNG 시드 (세션 재현성 보장 — 0이면 신규 시드 자동 할당)
         public int RngGlobalSeed { get; set; } = 0;
+
+        // 10. 아바타 커스터마이징 정보 (CORE_GDD_08)
+        public string Gender { get; set; } = "Male";
+        public string SkinTone { get; set; } = "Fair";
+        public string HairStyle { get; set; } = "Style1";
+
+        private Dictionary<string, string> _equippedApparel = new();
+        
+        /// <summary>
+        /// 장착된 의상 리스트. Newtonsoft.Json의 enum 키 직렬화 예외 방지를 위해 string 키를 사용합니다.
+        /// </summary>
+        public Dictionary<string, string> EquippedApparel
+        {
+            get => _equippedApparel ??= new();
+            set => _equippedApparel = value;
+        }
+
+        // 10.1. 소유 가구 및 의상 인벤토리 (CORE_GDD_08, MOD_GDD_03)
+        private List<string> _ownedFurnitureIds = new();
+        public List<string> OwnedFurnitureIds
+        {
+            get => _ownedFurnitureIds ??= new();
+            set => _ownedFurnitureIds = value;
+        }
+
+        private List<string> _ownedApparelIds = new();
+        public List<string> OwnedApparelIds
+        {
+            get => _ownedApparelIds ??= new();
+            set => _ownedApparelIds = value;
+        }
+
+        // 10.2. 전역 거래 일지 세이브 데이터 (CORE_GDD_02, CORE_GDD_08)
+        private List<TradeLogEntry> _tradeLogs = new();
+        public List<TradeLogEntry> TradeLogs
+        {
+            get => _tradeLogs ??= new();
+            set => _tradeLogs = value;
+        }
+    }
+
+    /// <summary>
+    /// 개별 매수/매도 거래 체결 일지 기록 엔트리 구조체
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class TradeLogEntry
+    {
+        public string TimestampUtc { get; set; } = string.Empty;
+        public string StockId { get; set; } = string.Empty;
+        public string StockName { get; set; } = string.Empty;
+        public bool IsBuy { get; set; }
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+        public long Fee { get; set; }
+        public long TotalAmount { get; set; }
     }
 
     /// <summary>

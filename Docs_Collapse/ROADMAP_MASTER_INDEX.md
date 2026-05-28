@@ -16,8 +16,8 @@ GIGDC 제출 이후, 유저가 레벨 10까지 플레이하며 겪게 될 심화
 - [ROADMAP_03_July_World.md](./ROADMAP_03_July_World.md) (7월: 오피스 하우징 & 그리드 시스템)
 - [ROADMAP_04_Aug_Social.md](./ROADMAP_04_Aug_Social.md) (8월: 금융 구역 해금, 서사/금융 에셋 및 대화 기초)
 - [ROADMAP_05_Sep_Social.md](./ROADMAP_05_Sep_Social.md) (9월: 생활/소셜 상점 구역 해금, 신디케이트 아지트 & 수집/도감 UI)
-- [ROADMAP_06_Oct_Capstone.md](./ROADMAP_06_Oct_Capstone.md) (10월: 추첨/상장 세레머니 & 멀티 엔딩 연출 폴리싱)
+- [ROADMAP_06_Oct_Capstone.md](./ROADMAP_06_Oct_Capstone.md) (10월: 추첨 세레머니 & 멀티 엔딩 연출 폴리싱)
 
 ## 🏅 4순위: 그 이후 (출시 후 업데이트)
 캡스톤 심사 이후 트랙입니다.
-- [ROADMAP_07_PostLaunch.md](./ROADMAP_07_PostLaunch.md) (그 이후 진행)
+- [ROADMAP_07_PostLaunch.md](./ROADMAP_07_PostLaunch.md) (11월 이후: 신규 상장/IPO 세레머니 및 기관/전당포 시스템)
