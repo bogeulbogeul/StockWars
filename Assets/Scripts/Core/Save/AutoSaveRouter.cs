@@ -182,6 +182,19 @@ namespace StockWars.Core
             catch (Exception ex)
             {
                 Debug.LogError($"[AutoSaveRouter] 자동 저장 도중 심각한 예외 발생: {ex.Message}");
+
+                // [저장 장애 대응 연동] 물리 저장 실패 시 AsyncPatcher에게 메모리 보관 및 백그라운드 재시도 위탁
+                if (AsyncPatcher.Instance != null && WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null)
+                {
+                    var currentSave = WalletManager.Instance.ActiveSaveData;
+                    SaveMetadata metadata = new SaveMetadata
+                    {
+                        AppVersion = Application.version,
+                        LastLocation = "Auto Saved Zone (Failed - Pending Retry)",
+                        TotalPlayTime = Time.time
+                    };
+                    AsyncPatcher.Instance.QueueFailedSave(ActiveSlotIndex, currentSave, metadata, ex.Message);
+                }
             }
         }
 

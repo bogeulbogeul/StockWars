@@ -5,8 +5,11 @@
 
 > **[AI 주의사항]** 캡스톤 데모의 엔딩을 장식하는 구간입니다.
 
-## Phase 6: 적색 수배 및 최종 빌드 안정화 (291 ~ 340)
+---
 
+## 🎨 기능군(Feature Groups)별 스프린트 계획
+
+### 🎫 Track 1: 복권(로또) 수치 계산 및 구매/추첨 연출 (Lottery System & Drawings)
 - [ ] 291. **[CORE_GDD_07]** 🧠[Pro] `LottoManagerCore`: 로또 1~45 고유 번호 선정 및 당첨금 풀 연산
   - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 292. **[CORE_GDD_07]** `LottoPurchaseUI`: 수동/자동 번호 선택 및 구매 티켓 인벤토리 저장
@@ -17,20 +20,28 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 295. **[CORE_GDD_05]** 🎨[Graphics] `JackpotAnimation`: 1등 당첨 시 화면 전체에 쏟아지는 골드 및 축하 연출
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 296. ➡️ 11월 이후 이관 (상장/IPO 일정 연기)
-- [ ] 297. ➡️ 11월 이후 이관 (상장/IPO 일정 연기)
+
+### 🔒 Track 2: 세이브 보안 및 암호화/핵 감지 (Save Data Security & Anti-Cheat)
 - [ ] 305. **[CORE_GDD_06]** 🧠[Pro] `EncryptionUpgrade`: 정식 빌드를 위한 세이브 데이터 비대칭 암호화(RSA 권장) 레이어
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 306. **[CORE_GDD_06]** 🧠[Pro] `AntiCheatSystem`: 런타임 자산 수치 변조 발생 시 즉시 서버(또는 로컬)에 비정상 로그 생성
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+
+### 🎖️ Track 3: 스탯 기반 거래 성향 분석 및 자격증 연출 (Trader Analytics & Certification)
 - [ ] 307. **[CORE_GDD_03]** 🤖[Claude] `CareerPathSummary`: 현재까지의 거래 성향을 분석한 '트레이더 자격증' 발급 연출
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+
+### 🎬 Track 4: 다중 엔딩 판정 및 연출 (Multi-Endings & Credits)
 - [ ] 308. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `GeneralEnding`: 자산 10M Gold 미만 일반 엔딩 판정 및 연출
 - [ ] 309. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `WealthyEnding`: 자산 100M Gold 이상 '자본의 신' 엔딩 연출
 - [ ] 310. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `CiphersVowEnding`: 안나와의 결혼 및 비밀 서약(Cipher's Vow) 전용 컷신
 - [ ] 311. **[MOD_GDD_01~16]** `EndingCredits`: 후원자와 개발진 명단이 올라가는 코지 스타일의 크레딧 스크롤
+
+### 🔊 Track 5: 튜토리얼 흐름 및 전역 오디오 셋업 (Tutorial Flow & Audio Mixing)
 - [ ] 312. **[Audio]** `AudioMixerSetup`: BGM, SFX, Ambient 소리 크기 및 입체감(Reverb) 최종 믹싱
 - [ ] 313. **[Tutorial]** `FlowManager`: 최초 접속 시 튜토리얼 단계 강제 트리거 및 보상 시스템 연동
+
+### ⚡ Track 6: 후반부 밸런스 및 성능 최적화 (Late-Game Balance & Code Optimization)
 - [ ] 314. **[UI/UX]** 🎨[Graphics] `AnimationPolish`: 모든 윈도우 열기/닫기 시 부드러운 스케일(Elastic) 효과 적용
 - [ ] 315. **[Balance]** 🧠[Pro] 1,000회 이상의 오토 플레이 시뮬레이션을 통한 후반부 경제 정체 구간 해소
 - [ ] 316. **[Optim]** 🎨[Graphics] 텍스처 아틀라스 압축 최적화 및 비사용 모델링 에셋 스트리밍 시스템 점검
@@ -39,10 +50,14 @@
 - [ ] 318-1. **[Optim]** 찌라시 UI 및 파티클 이펙트 생성/파괴 방지를 위한 오브젝트 풀링(Object Pooling) 구현
 - [ ] 318-2. **[Optim]** 매일 새벽 04:00(서버 시간) 주기로 가비지 컬렉션(GC) 및 미사용 에셋 강제 해제 루틴 구현
 - [ ] 318-3. **[Optim]** 채팅 및 뉴스 로그 메모리 누적 방지를 위한 최대 보관 개수 제한(Data Capping) 시스템 적용
+
+### 🧪 Track 7: 세이브 복구 및 다국어 빌드 테스트 (Crash Recovery & Localization QA)
 - [ ] 319. **[Test]** 장기 실행(72시간) 테스트를 통한 메모리 누수(Memory Leak) 및 타이머 오차 검증
 - [ ] 320. **[Test]** 비정상 종료(Crash) 후 재시작 시 세이브 데이터 자동 복구 및 무결성 전수 테스트
 - [ ] 321. **[Test]** 다국어(KR/EN) 텍스트 오버플로우 전수 점검 및 폰트 유니코드 누락 확인
 - [ ] 322. **[Test]** 다양한 사양의 PC 환경에서의 UI 렌더링 지연 시간 및 최적화 점검
+
+### 🚀 Track 8: 스팀 SDK 연동 및 마스터 빌드 런칭 (Steam Integration & Gold Master Launch)
 - [ ] 323. **[Final]** 모든 태스크 `- [x]` 완료 여부 및 각 GDD 문서와의 상호 정합성 전수 대조
 - [ ] 324. **[Final]** 스팀웍스(Steamworks) SDK 연동 및 Windows/Mac 빌드 수행
 - [ ] 325. **[Final]** 🤖[Claude] 개발 기획서와 최종 빌드 간의 사양 차이점(Spec Diff) 문서 최종 정리

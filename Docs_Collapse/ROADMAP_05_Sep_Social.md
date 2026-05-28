@@ -5,8 +5,11 @@
 
 > **[AI 주의사항]** 에셋 생성 및 UI 배치 소요를 감안하여, 9월은 **4대 생활/상업 구역의 실내외 그래픽을 구현하고, 신디케이트 비밀 아지트/리더보드 UI 및 의상/헤어/도감 등 각종 꾸미기 및 아카이브 UI 배치**에 완전히 집중합니다.
 
-## Phase 5.3: 타운 생활/상점 구역 에셋 및 UI 배치
+---
 
+## 🎨 기능군(Feature Groups)별 스프린트 계획
+
+### 🏪 Track 1: 타운 생활/상점 구역 에셋 및 UI 배치 (Town Shop & Commercial Assets)
 - [ ] 125. **[MOD_GDD_01]** 🎨[Graphics] `DustyRoomInterior`: 전당포 내부의 어두운 필터와 먼지 날리는 먼지 입자 FX 연출 및 에셋 배치
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 126. **[MOD_GDD_01]** 🎨[Graphics] `RoosterKitchen`: 치킨집 주방 미니게임 진입을 위한 주방 조리대와 집기 에셋 및 UI 배치
@@ -16,8 +19,7 @@
 - [ ] 128. **[MOD_GDD_01]** 🎨[Graphics] `Neon24Store`: 편의점 내부의 밝은 형광등과 빼곡한 진열대 상호작용 지점 에셋 및 UI 구축
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 
-## Phase 5.4: 타운 환경 고도화 비주얼 FX
-
+### 🌃 Track 2: 타운 환경 고도화 및 날씨 시각 연출 (Advanced Town Environmental FX & Weather)
 - [ ] 148. **[MOD_GDD_01]** 🎨[Graphics] `BuildingOutlineFX`: 마우스 오버한 타운 건물의 외곽선이 얇게 빛나는 아웃라인 연출
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 153. **[MOD_GDD_01]** `AmbientCrowdSound`: 타운 중앙 광장 진입 시 웅성웅성거리는 환경 소음 자동 재생
@@ -35,8 +37,7 @@
 - [ ] 165. **[MOD_GDD_01]** 🎨[Graphics] `StreetLightGlow`: 밤에 가로등 주변으로 은은하게 퍼지는 라이트 후광 효과(Halo) 제작
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 
-## Phase 5.5: 신디케이트(투자 연맹) 에셋 및 UI 배치
-
+### 🤝 Track 3: 투자 신디케이트(연맹) 비밀 아지트 및 UI (Syndicate Hideout & Social Hub)
 - [ ] 250. **[데모 이후] [MOD_GDD_16]** `Syndicate_Formation`: 유저 간 '투자 신디케이트' 결성 및 엠블럼 에디터 UI 배치
   - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 251. **[데모 이후] [MOD_GDD_16]** 🎨[Graphics] `Syndicate_EmblemMapping`: 생성된 엠블럼을 멤버의 어깨 및 프로필 UI에 고화질 렌더링
@@ -49,6 +50,8 @@
   - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 282. **[데모 이후] [MOD_GDD_16]** `SyndicateHideoutUpgrade`: 아지트 내에 고효율 트레이딩 룸을 증축하는 건설 UI 배치
   - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
+
+### ⛓️ Track 4: 투자 신디케이트 백엔드 공동 작전/부채 분배 (Syndicate Backend Ops & Liability)
 - [ ] 253. **[데모 이후] [MOD_GDD_16]** `JointBuyOperation`: 리더의 작전주 지정 시 멤버 동시 매수 시너지(x1.5 가중치) 엔진
   - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 254. **[데모 이후] [MOD_GDD_16]** 🧠[Pro] `JointLiabilityCalc`: 신디케이트 파산 시 멤버 기여도에 따른 채무 배분 및 연대 책임 로직
@@ -62,43 +65,43 @@
 - [ ] 287. **[데모 이후] [MOD_GDD_16]** `SyndicateAssetSharing`: 멤버 간의 일시적인 자산 대여 및 증거금 합산 공동 대응 기능
   - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
 
-## Phase 5.6: 서사/소셜 심화 및 연출 고도화
-
+### 💬 Track 5: 서사/대화 고도화 및 안나 특별 상호작용 (Advanced Narrative & Anna Romance)
 - [ ] 256. **[MOD_GDD_06]** `Anna_MoodBoard`: 안나의 호감도에 따라 오피스 내부 BGM과 조명 색온도가 미세하게 변화
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 257. **[MOD_GDD_11]** `SmartphoneVibrate`: 긴급 속보나 마진콜 경고 시 장치 엔진을 통한 햅틱 피드백 연동
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 260. **[MOD_GDD_07]** `DialogueCameraZoom`: 중요 대사 전달 시 NPC의 얼굴로 카메라가 부드럽게 줌인(Lerp) 연출
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 261. **[MOD_GDD_07]** `SelectiveSkip`: 이미 열람한 대사 그룹만 빠르게 스킵할 수 있는 고급 다이얼로그 모듈
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 262. **[MOD_GDD_11]** 🎨[Graphics] `AppUpdateVisual`: 스토리 마일스톤 달성 시 스마트폰 앱 아이콘이 골드로 업그레이드되는 연출
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 265. **[MOD_GDD_06]** 🎨[Graphics] `AnnaSecretGifts`: 호감도 Max 상태에서만 발생하는 안나의 비밀 선물 컷신 이벤트
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 266. **[MOD_GDD_07]** `StorySummaryWindow`: 현재 진행 중인 메인 퀘스트와 서사적 위치를 요약해주는 기록장 UI
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 267. **[MOD_GDD_11]** 🎨[Graphics] `SmartphoneDustFX`: 장시간 미사용 시 스마트폰 화면에 미세한 먼지가 쌓이는 디테일 연출
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 270. **[MOD_GDD_07]** 🎨[Graphics] `NpcEyeTracking`: 마우스 포인터의 위치를 NPC의 눈동자가 자연스럽게 쫓아가는 연출
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 271. **[MOD_GDD_12]** 🎨[Graphics] `NewsVideoPlayer`: 중요 경제 지표 발표 시 UI 내에서 재생되는 짧은 코지 뉴스 영상
-  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 274. **[MOD_GDD_06]** 🤖[Claude] `Anna_LateNightConvo`: 현실 시간 심야(00~04시)에만 들을 수 있는 안나의 감성 대사 세트
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 280. **[MOD_GDD_07]** `DialogueSelectionSFX`: 선택지 위에 마우스 오버 시 출력되는 부드러운 화이트 노이즈 사운드
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 283. **[MOD_GDD_11]** `SpamMailFilter`: 특정 평판 이하 시 쏟아지는 스팸/사기 메일을 걸러주는 필터 기능
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 285. **[MOD_GDD_06]** `Anna_WorkFocus`: 대화가 불가능할 정도로 안나가 업무에 집중하는 특정 시간대 플래그
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+
+### 📱 Track 6: 스마트폰 유틸리티 확장 및 햅틱 연동 (Smartphone Utilities & Haptics)
+- [ ] 257. **[MOD_GDD_11]** `SmartphoneVibrate`: 긴급 속보나 마진콜 경고 시 장치 엔진을 통한 햅틱 피드백 연동
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 262. **[MOD_GDD_11]** 🎨[Graphics] `AppUpdateVisual`: 스토리 마일스톤 달성 시 스마트폰 앱 아이콘이 골드로 업그레이드되는 연출
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 267. **[MOD_GDD_11]** 🎨[Graphics] `SmartphoneDustFX`: 장시간 미사용 시 스마트폰 화면에 미세한 먼지가 쌓이는 디테일 연출
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 271. **[MOD_GDD_12]** 🎨[Graphics] `NewsVideoPlayer`: 중요 경제 지표 발표 시 UI 내에서 재생되는 짧은 코지 뉴스 영상
+  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 275. **[MOD_GDD_11]** `PhoneCaseCustom`: 포인트 소모하여 스마트폰의 외형과 폰트 스타일을 바꾸는 커스터마이징 UI
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 283. **[MOD_GDD_11]** `SpamMailFilter`: 특정 평판 이하 시 쏟아지는 스팸/사기 메일을 걸러주는 필터 기능
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 288. **[MOD_GDD_11]** `FlashLightApp`: 어두운 타운 구역 탐험 시 스마트폰 손전등 기능을 켜는 조명 효과
   - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
 
-## Phase 5.7: 커스터마이징, 스마트폰 앱 확장 및 도감/수집 UI
-
-- [ ] 275. **[MOD_GDD_11]** `PhoneCaseCustom`: 포인트 소모하여 스마트폰의 외형과 폰트 스타일을 바꾸는 커스터마이징 UI
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+### 📚 Track 7: 수집/도감 라이브러리 및 의상 꾸미기 UI (Archive Library & Customization UI)
 - [ ] 236. **[MOD_GDD_09]** 🤖[Claude] `VirtualFriendNet`: 가상의 친구 유저 10명의 프로필 및 가짜 투자 일지 자동 생성기
   - 📖 읽을 문서: `[MOD_GDD_09]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 279. **[MOD_GDD_09]** `TradingBadgeCore`: 특정 수익률이나 매매 횟수 달성 시 프로필에 장착하는 마스터 휘장 UI

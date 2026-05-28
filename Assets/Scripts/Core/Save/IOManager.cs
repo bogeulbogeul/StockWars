@@ -102,8 +102,10 @@ namespace StockWars.Core
                 // 4. 안전 쓰기가 끝난 임시 파일(.tmp)을 본 파일(.dat)로 이름 변경하여 활성화 (Retry 지원)
                 MoveFileWithRetry(tmpPath, datPath);
 
-                // 5. 트랜잭션이 최종 성공한 경우 백업 파일 파일 안전 제거 (Retry 지원)
-                DeleteFileWithRetry(bakPath);
+                // 5. [SaveSafetyCheck 무결성 패치] 트랜잭션 최종 성공 후에도 백업 파일(.bak)을 즉각 삭제하지 않고 영구 보존합니다.
+                // 이로써 새로운 .dat 파일이 추후 외부 요인(정전, 디스크 마모 등)으로 인해 깨지더라도 
+                // 항상 로딩 시점에서 직전 버전의 .bak 파일로 자가 복구할 수 있는 무결성 롤백 환경을 완전 보장합니다.
+                // DeleteFileWithRetry(bakPath);
 
                 Debug.Log($"[IOManager] Successfully saved slot {slotIndex} with SaveSafetyCheck protection.");
             }
