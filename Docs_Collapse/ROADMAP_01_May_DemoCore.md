@@ -168,17 +168,17 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🏪 Track 3: 알바(노동) 미니게임 수치 모델 및 피로도 알고리즘 (Labor & Fatigue Engine)
-- [ ] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
+- [x] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
+- [x] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 195. **[MOD_GDD_02]** `EnergyDrinkItem`: 에너지 드링크(500G) 사용 시 일일 알바 횟수 2회 복구 로직
+- [x] 195. **[MOD_GDD_02]** `EnergyDrinkItem`: 에너지 드링크(500G) 사용 시 일일 알바 횟수 2회 복구 로직
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 196. **[MOD_GDD_02]** `JobPromotion`: 노동 횟수 누적 시 시급이 1.1~1.5배 상승하는 승급 시스템
+- [x] 196. **[MOD_GDD_02]** `JobPromotion`: 노동 횟수 누적 시 시급이 1.1~1.5배 상승하는 승급 시스템
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 208. **[MOD_GDD_02]** `ComboSystem`: 편의점/상하차 시 연속 성공 시 콤보 가산금 지급
+- [x] 208. **[MOD_GDD_02]** `ComboSystem`: 상하차 시 연속 성공 시 콤보 가산금 지급
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 215. **[MOD_GDD_02]** `FatigueSystem`: 연속 노동 시 성공 판정 범위가 좁아지는 피로도 연산 로직
+- [x] 215. **[MOD_GDD_02]** `FatigueSystem`: 연속 노동 시 성공 판정 범위가 좁아지는 피로도 연산 로직
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 📑 Track 4: 찌라시 분석 및 출처/신뢰도 확률 제어 (Rumor & Masking System)

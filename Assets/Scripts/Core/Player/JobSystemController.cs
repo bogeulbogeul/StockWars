@@ -65,19 +65,7 @@ namespace StockWars.Core
         /// <param name="isBroken">파손 게이지 100% 초과 여부</param>
         public JobGrade EvaluateGrade(int deliveredCount, bool isBroken)
         {
-            if (isBroken)
-            {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-                // 파손은 정상 게임플레이 흐름이므로 개발 빌드에서만 로그 출력 (릴리스 스팸 방지)
-                Debug.Log($"[JobSystemController] 화물 파손 판정 → 강제 C등급 (운송 수: {deliveredCount})");
-#endif
-                return JobGrade.C;
-            }
-
-            if (deliveredCount >= 10) return JobGrade.S;
-            if (deliveredCount >= 7)  return JobGrade.A;
-            if (deliveredCount >= 4)  return JobGrade.B;
-            return JobGrade.C;
+            return (JobGrade)JobResultCalculator.EvaluateGrade(deliveredCount, isBroken);
         }
 
         /// <summary>
@@ -107,15 +95,25 @@ namespace StockWars.Core
         #region Reward Dispatch (보상 지급 처리)
 
         /// <summary>
+        /// 알바 세션 결과를 판정하고 Gold 및 EXP를 지급합니다. (하위 호환용 오버로드)
+        /// </summary>
+        public long DispatchJobReward(int deliveredCount, bool isBroken,
+                                      bool isPassUsed = false, bool isAutoConsignment = false)
+        {
+            return DispatchJobReward(deliveredCount, 0, isBroken, isPassUsed, isAutoConsignment);
+        }
+
+        /// <summary>
         /// 알바 세션 결과를 판정하고 Gold 및 EXP를 지급합니다.
-        /// 협상력 스탯 배율, 위탁 수수료, 패스권 여부를 모두 반영하여 최종 지급액을 산출합니다.
+        /// 협상력 스탯 배율, 승급 배율, 연속 성공 콤보 가산금, 위탁 수수료, 패스권 여부를 반영하여 최종 지급액을 산출합니다.
         /// </summary>
         /// <param name="deliveredCount">운송 성공 화물 수</param>
+        /// <param name="maxCombo">기록된 최대 연속 성공 콤보 수</param>
         /// <param name="isBroken">파손 여부</param>
         /// <param name="isPassUsed">퀵-패스권 사용 여부 (사용 시 수수료 0%)</param>
         /// <param name="isAutoConsignment">위탁 자동 완료 여부 (패스권 미사용 자동 시 수수료 20%)</param>
         /// <returns>최종 지급된 Gold 수량</returns>
-        public long DispatchJobReward(int deliveredCount, bool isBroken,
+        public long DispatchJobReward(int deliveredCount, int maxCombo, bool isBroken,
                                       bool isPassUsed = false, bool isAutoConsignment = false)
         {
             if (WalletManager.Instance == null)
@@ -124,61 +122,44 @@ namespace StockWars.Core
                 return 0L;
             }
 
-            JobGrade grade = EvaluateGrade(deliveredCount, isBroken);
-            JobRewardData reward = GetRewardData(grade);
+            // JobResultCalculator를 호출하여 수치 및 확률 정산 위임
+            var result = JobResultCalculator.CalculateResult(deliveredCount, maxCombo, isBroken, isPassUsed, isAutoConsignment);
 
-            // ① 협상력 스탯 배율 적용 (StatCore 기반)
-            float negotiationMultiplier = StatCore.Instance != null
-                ? StatCore.Instance.GetJobRewardMultiplier()
-                : 1.0f;
+            // ① Gold 지급
+            WalletManager.Instance.AddGold(result.FinalGold, "알바 보상 지급");
 
-            // ② 위탁 수수료 적용 (GDD 7.2절)
-            // NOTE: 이전에는 baseGold를 (long) 캐스팅 후 다시 feeRate 적용 시 (long) 캐스팅하여
-            //       소수점 손실이 2회 발생했습니다. 단일 연산으로 통합하여 손실 1회로 줄입니다.
-            float feeRate = CalculateFeeRate(isPassUsed, isAutoConsignment);
-            long finalGold = (long)(reward.GoldReward * negotiationMultiplier * (1f - feeRate));
-
-            // ③ 황금 기회 잭팟 판정 (S등급 전용, 0.002%)
-            bool jackpotTriggered = false;
-            if (grade == JobGrade.S)
-            {
-                jackpotTriggered = TryGoldenOpportunity(ref finalGold);
-            }
-
-            // ④ Gold 지급
-            WalletManager.Instance.AddGold(finalGold, "알바 보상 지급");
-
-            // ⑤ EXP 지급
+            // ② EXP 지급
             if (LevelEngine.Instance != null)
             {
-                LevelEngine.Instance.AddExp(reward.ExpReward);
+                LevelEngine.Instance.AddExp(result.ExpGained);
             }
 
-            // ⑥ 누적 알바 횟수 기록
-            // NOTE: 이전에는 외부 호출자가 RecordJobCompletion()을 수동으로 호출해야 했으나,
-            //       호출 누락 시 위탁 효율 해금 조건(100회)이 영구 미달성되는 버그가 있었습니다.
-            //       DispatchJobReward() 내에서 직접 처리하여 누락 가능성을 제거합니다.
+            // ③ 누적 알바 횟수 기록
             WalletManager.Instance.ActiveSaveData.TotalJobsCompleted++;
 
-            Debug.Log($"[JobSystemController] 알바 완료 | 등급={grade} | 화물={deliveredCount}개 | " +
-                      $"기본={reward.GoldReward}G | 협상배율={negotiationMultiplier:F2}x | " +
-                      $"수수료율={feeRate:P0} | 최종지급={finalGold}G | 잭팟={jackpotTriggered} | " +
+            Debug.Log($"[JobSystemController] 알바 완료 | 등급={result.Grade} | 화물={deliveredCount}개 | 콤보={maxCombo}회(보너스:{result.ComboBonusGold}G) | " +
+                      $"기본={result.BaseGold}G | 최종지급={result.FinalGold}G | 수수료율={result.AppliedFeeRate:P0} | " +
+                      $"잭팟={result.IsJackpotTriggered} | 찌라시드롭확률={result.FinalRumorChance:P0} | " +
                       $"누적횟수={WalletManager.Instance.ActiveSaveData.TotalJobsCompleted}회");
 
-            // ⑦ 전역 이벤트 발행
+            // ④ 전역 이벤트 발행
             EventBus.Publish(new JobSessionCompletedEvent
             {
-                Grade            = grade,
-                DeliveredCount   = deliveredCount,
-                BaseGold         = reward.GoldReward,
-                FinalGold        = finalGold,
-                ExpGained        = reward.ExpReward,
-                FeeRate          = feeRate,
-                JackpotTriggered = jackpotTriggered,
-                RumorChance      = reward.RumorChance
+                Grade                      = result.Grade,
+                DeliveredCount             = deliveredCount,
+                BaseGold                   = result.BaseGold,
+                FinalGold                  = result.FinalGold,
+                ExpGained                  = result.ExpGained,
+                FeeRate                    = result.AppliedFeeRate,
+                JackpotTriggered           = result.IsJackpotTriggered,
+                RumorChance                = result.FinalRumorChance,
+                AppliedTitle               = result.AppliedTitle,
+                AppliedPromotionMultiplier = result.AppliedPromotionMultiplier,
+                MaxCombo                   = result.MaxCombo,
+                ComboBonusGold             = result.ComboBonusGold
             });
 
-            return finalGold;
+            return result.FinalGold;
         }
 
         #endregion
@@ -310,6 +291,10 @@ namespace StockWars.Core
         public float FeeRate;
         public bool  JackpotTriggered;
         public float RumorChance; // 찌라시 획득 시도에 전달할 확률값
+        public JobPromotion.PromotionTitle AppliedTitle; // 적용된 승급 직급
+        public float AppliedPromotionMultiplier;       // 적용된 시급 배율
+        public int   MaxCombo;                            // [MOD_GDD_02] 기록된 최대 콤보 수
+        public long  ComboBonusGold;                     // [MOD_GDD_02] 산출된 콤보 가산금
     }
 
     #endregion
