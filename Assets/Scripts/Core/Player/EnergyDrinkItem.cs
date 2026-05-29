@@ -85,8 +85,20 @@ namespace StockWars.Core
             // (예외 발생 시 차감 골드를 복구하는 원자적 롤백 메커니즘 가동)
             try
             {
+                // 구매 효과음 재생 (AudioManager 연동)
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Item_Buy);
+                }
+
                 // 알바 사용 횟수 회복
                 JobLimitSystem.Instance.RecoverJobCount(RECOVERY_AMOUNT);
+
+                // 피로도 해소 효과음 재생
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Item_UseDrink);
+                }
 
                 int newRemaining = JobLimitSystem.Instance.GetRemainingJobs();
 

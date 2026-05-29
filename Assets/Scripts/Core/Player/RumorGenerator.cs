@@ -189,26 +189,11 @@ namespace StockWars.Core
         // ──────────────────────────────────────────────────────────
 
         /// <summary>
-        /// 야간 시간대 보너스 및 [회복력] LV3 보너스를 합산하여 최종 획득 확률을 반환합니다.
+        /// 최종 획득 확률을 반환합니다. (중복 연산 방지를 위해 JobResultCalculator에서 계산된 완결된 값을 전적으로 수용합니다.)
         /// </summary>
         private float CalculateFinalRumorChance(float baseChance)
         {
-            float chance = baseChance;
-
-            // 야간 알바 보너스 (22:00~02:00 → 확률 2배)
-            if (IsNightShift())
-            {
-                chance *= 2f;
-                Debug.Log($"[RumorGenerator] 야간 알바 보너스 적용 → 찌라시 확률 2배 ({baseChance:P1} → {chance:P1})");
-            }
-
-            // [회복력] LV3 패시브 +5%
-            if (StatCore.Instance != null)
-            {
-                chance += StatCore.Instance.GetJobRumorFindBonus();
-            }
-
-            return Mathf.Clamp01(chance);
+            return Mathf.Clamp01(baseChance);
         }
 
         /// <summary>

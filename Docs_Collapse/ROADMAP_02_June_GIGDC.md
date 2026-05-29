@@ -52,8 +52,6 @@
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 에이전트 K와의 대화창 및 아레나 신청 인터페이스
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 094. **[CORE_GDD_05]** `UI_SfxAtlas`: 버튼 클릭, 창 열기 등 모든 UI 소리와 연동되는 전역 오디오 믹서
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 테스트를 위한 `~`키 입력 시 나타나는 명령어 입력창
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 윈도우 창을 드래그하여 벽면에 스냅(Snap)시키는 편의 기능
@@ -86,15 +84,7 @@
 ### 🏪 Track 7: 노동(알바) 미니게임 시각 및 사운드 쉘 (Labor Game Shell & Audio)
 - [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 미니게임 공통 UI (시작/제한시간/결과화면) 프리팹
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 173. **[MOD_GDD_02]** 🧠[Pro] `SortingHub_Balance`: 좌우 키로 상자 탑의 균형을 잡는 물리 엔진 연동
-  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 174. **[MOD_GDD_02]** `SortingHub_Wind`: 강풍 환경 변수 추가로 인한 상하차 난이도 증가 로직
-  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 미니게임 성공/실패 시 비프음 및 백사장 호통 소리
-  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 203. **[MOD_GDD_02]** `NightShiftJob`: 야간(22:00-02:00) 노동 시 찌라시 획득 확률 2배 적용
-  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 207. **[MOD_GDD_02]** `MiniGamePause`: 게임 도중 일시 정지 및 포기 시 패널티(급여 0) 로직
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 획득 Gold와 경험치를 보여주는 전광판 UI
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -114,10 +104,6 @@
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 214. **[MOD_GDD_03]** `ItemStorageLock`: 특정 레벨 도달 전까지 잠겨있는 프리미엄 아이템 슬롯
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 221. **[MOD_GDD_03]** `LuckyBoxLogic`: 일정 확률로 희귀 가구가 나오는 '박스' 아이템 오픈 엔진
-  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 225. **[MOD_GDD_03]** `InventoryFullWarning`: 인벤토리가 가득 찼을 때 알바 보상 수취 거부 및 안내 메시지
-  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 📰 Track 9: 찌라시/속보 알림 UI 및 글리치 연출 (Rumor & Speed Notification UI)
 - [ ] 184. **[MOD_GDD_04]** `RumorInventory`: 획득한 찌라시 전용 수집함 및 열람 인터페이스
@@ -129,10 +115,6 @@
 - [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료 시 정보가 타 들어가며 사라지는 셰이더 효과
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 주는 빨간색 '치명적 찌라시' 연출
-  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 213. **[MOD_GDD_04]** `RumorMarketPrice`: 찌라시의 희귀도에 따라 암시장에서의 거래 가격 변동 로직
-  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 216. **[MOD_GDD_04]** `CipherRumorDecryption`: 안나의 신뢰도에 따라 마스킹된 찌라시 글자를 복원해주는 이벤트
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 103. **[CORE_GDD_05]** `HUD_Notification`: 찌라시 획득이나 뉴스 발생 시 우측 상단에 뜨는 슬라이드 알림
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)

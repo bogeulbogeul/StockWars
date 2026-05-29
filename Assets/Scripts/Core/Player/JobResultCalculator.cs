@@ -49,7 +49,7 @@ namespace StockWars.Core
         /// <param name="isAutoConsignment">위탁 자동 완료 여부 (기본 20%, 효율 달성 시 10%)</param>
         /// <returns>최종 정산 결과 구조체</returns>
         public static JobCalculatedResult CalculateResult(int deliveredCount, int maxCombo, bool isBroken, 
-                                                          bool isPassUsed = false, bool isAutoConsignment = false)
+                                                          bool isPassUsed = false, bool isAutoConsignment = false, bool isAbandoned = false)
         {
             // 1. 등급 판정 (GDD v2.25.0 5절)
             JobSystemController.JobGrade grade = EvaluateGrade(deliveredCount, isBroken);
@@ -58,6 +58,15 @@ namespace StockWars.Core
             long baseGold = GetBaseGoldReward(grade);
             int expReward = GetBaseExpReward(grade);
             float baseRumorChance = GetBaseRumorChance(grade);
+
+            // [포기/탈퇴 패널티 집행]: 포기 시 등급은 C로 설정하되 보상금, 경험치, 찌라시는 모두 0으로 강제 몰수
+            if (isAbandoned)
+            {
+                grade = JobSystemController.JobGrade.C;
+                baseGold = 0L;
+                expReward = 0;
+                baseRumorChance = 0f;
+            }
 
             // 3. 협상력 스탯 가산 배율 및 알바 승급 배율 적용 (StatCore & JobPromotion 연동)
             float negotiationMultiplier = StatCore.Instance != null 
@@ -78,34 +87,36 @@ namespace StockWars.Core
             float combinedMultiplier = negotiationMultiplier + promotionMultiplier - 1.0f;
 
             // 3.5. 연속 운송 성공 콤보 보너스 금액 산출 (ComboSystem 연동)
-            long comboBonusGold = ComboSystem.CalculateComboBonus(maxCombo);
+            long comboBonusGold = isAbandoned ? 0L : ComboSystem.CalculateComboBonus(maxCombo);
 
             // 협상력 및 승급 보너스가 합산 방식으로 융합된 세전 골드 + 콤보 보너스 골드 합산
             // 콤보 보너스 골드는 순수 숙련도 실력 포상이므로, 수수료를 떼기 전 세전 골드에 직접 합산해줍니다.
-            long preTaxGold = (long)(baseGold * combinedMultiplier) + comboBonusGold;
+            long preTaxGold = isAbandoned ? 0L : (long)(baseGold * combinedMultiplier) + comboBonusGold;
 
             // 4. 위탁 수수료 산출 및 적용 (GDD 7.1 & 7.2절)
-            float feeRate = CalculateFeeRate(isPassUsed, isAutoConsignment);
+            float feeRate = isAbandoned ? 0f : CalculateFeeRate(isPassUsed, isAutoConsignment);
             long feeSubtracted = (long)(preTaxGold * feeRate);
             long finalGold = preTaxGold - feeSubtracted;
 
             // 5. 황금 기회 잭팟 판정 (S등급 한정, 0.002% 확률로 10배, 최대 8,000G 한도 캡)
             // 부동소수점 오차 차단을 위해 정밀 정수 매칭(1/50,000) 기법 적용
             bool jackpotTriggered = false;
-            if (grade == JobSystemController.JobGrade.S)
+            if (grade == JobSystemController.JobGrade.S && !isAbandoned)
             {
                 jackpotTriggered = TryJackpotOpportunity(ref finalGold);
             }
 
-            // 6. 찌라시 획득 최종 확률 연산 (회복력 LV 3 패시브 버프 가산 반영)
-            // NOTE: 2중 롤링 및 야간 보정(2배) 누락 버그 방지를 위해 주사위 판정은 이벤트를 수신한
-            //       RumorGenerator가 독자적으로 집행합니다. 본 엔진은 스탯이 가산된 순수 최종 확률만 도출합니다.
+            // 6. 찌라시 획득 최종 확률 연산 (야간 2배 버프 및 회복력 LV 3 패시브 버프 가산 반영)
+            // 야간 알바 버프: 야간(22:00~02:00) 노동 시 기본 획득 확률이 2배가 됩니다. (단, C등급 0%는 제외)
+            bool isNight = IsNightShift();
+            float nightMultiplier = isNight ? 2.0f : 1.0f;
+
             float resilienceBonusChance = StatCore.Instance != null 
                 ? StatCore.Instance.GetJobRumorFindBonus() 
                 : 0.0f;
 
             float finalRumorChance = baseRumorChance > 0f 
-                ? baseRumorChance + resilienceBonusChance 
+                ? (baseRumorChance * nightMultiplier) + resilienceBonusChance 
                 : 0f; // C등급(기본 확률 0%)은 추가 버프가 있더라도 획득 불가 규정 고수
 
             return new JobCalculatedResult
@@ -237,6 +248,15 @@ namespace StockWars.Core
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 현재 로컬 시각이 야간 알바 시간대(22:00~02:00)에 해당하는지 판별합니다.
+        /// </summary>
+        public static bool IsNightShift()
+        {
+            int hour = (RumorGenerator.NowProvider?.Invoke() ?? DateTime.Now).Hour;
+            return hour >= 22 || hour < 2;
         }
     }
 }

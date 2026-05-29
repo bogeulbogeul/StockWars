@@ -100,21 +100,22 @@ namespace StockWars.Core
         public long DispatchJobReward(int deliveredCount, bool isBroken,
                                       bool isPassUsed = false, bool isAutoConsignment = false)
         {
-            return DispatchJobReward(deliveredCount, 0, isBroken, isPassUsed, isAutoConsignment);
+            return DispatchJobReward(deliveredCount, 0, isBroken, isPassUsed, isAutoConsignment, false);
         }
 
         /// <summary>
         /// 알바 세션 결과를 판정하고 Gold 및 EXP를 지급합니다.
-        /// 협상력 스탯 배율, 승급 배율, 연속 성공 콤보 가산금, 위탁 수수료, 패스권 여부를 반영하여 최종 지급액을 산출합니다.
+        /// 협상력 스탯 배율, 승급 배율, 연속 성공 콤보 가산금, 위탁 수수료, 패스권 여부, 중도 탈퇴 여부를 반영하여 최종 지급액을 산출합니다.
         /// </summary>
         /// <param name="deliveredCount">운송 성공 화물 수</param>
         /// <param name="maxCombo">기록된 최대 연속 성공 콤보 수</param>
         /// <param name="isBroken">파손 여부</param>
         /// <param name="isPassUsed">퀵-패스권 사용 여부 (사용 시 수수료 0%)</param>
         /// <param name="isAutoConsignment">위탁 자동 완료 여부 (패스권 미사용 자동 시 수수료 20%)</param>
+        /// <param name="isAbandoned">게임 일시정지 중 포기/중도이탈 여부</param>
         /// <returns>최종 지급된 Gold 수량</returns>
         public long DispatchJobReward(int deliveredCount, int maxCombo, bool isBroken,
-                                      bool isPassUsed = false, bool isAutoConsignment = false)
+                                      bool isPassUsed = false, bool isAutoConsignment = false, bool isAbandoned = false)
         {
             if (WalletManager.Instance == null)
             {
@@ -123,7 +124,7 @@ namespace StockWars.Core
             }
 
             // JobResultCalculator를 호출하여 수치 및 확률 정산 위임
-            var result = JobResultCalculator.CalculateResult(deliveredCount, maxCombo, isBroken, isPassUsed, isAutoConsignment);
+            var result = JobResultCalculator.CalculateResult(deliveredCount, maxCombo, isBroken, isPassUsed, isAutoConsignment, isAbandoned);
 
             // ① Gold 지급
             WalletManager.Instance.AddGold(result.FinalGold, "알바 보상 지급");
@@ -136,6 +137,38 @@ namespace StockWars.Core
 
             // ③ 누적 알바 횟수 기록
             WalletManager.Instance.ActiveSaveData.TotalJobsCompleted++;
+
+            // 3.5. [AudioManager 효과음 채널링 연동]
+            if (AudioManager.Instance != null)
+            {
+                // 1) 잭팟 효과음 우선 재생
+                if (result.IsJackpotTriggered)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Job_Jackpot);
+                }
+                // 2) 콤보 보너스 획득 효과음
+                else if (result.ComboBonusGold > 0)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Job_ComboBonus);
+                }
+                // 3) 등급별 일반 정산 사운드 (S, A, B등급 성공 vs C, F등급 파손/실패)
+                else if (result.Grade == JobGrade.S || result.Grade == JobGrade.A || result.Grade == JobGrade.B)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Job_DeliverySuccess);
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Job_DeliveryFail);
+                }
+
+                // 4) [승급 순간 포착]: 이전 알바 누적 수와 현재 누적 수의 배율 상승을 대조하여 승급 효과음 재생
+                int prevJobs = WalletManager.Instance.ActiveSaveData.TotalJobsCompleted - 1;
+                float prevMult = JobPromotion.GetPromotionMultiplier(prevJobs);
+                if (result.AppliedPromotionMultiplier > prevMult)
+                {
+                    AudioManager.Instance.PlaySFX(SfxType.Job_Promotion);
+                }
+            }
 
             Debug.Log($"[JobSystemController] 알바 완료 | 등급={result.Grade} | 화물={deliveredCount}개 | 콤보={maxCombo}회(보너스:{result.ComboBonusGold}G) | " +
                       $"기본={result.BaseGold}G | 최종지급={result.FinalGold}G | 수수료율={result.AppliedFeeRate:P0} | " +

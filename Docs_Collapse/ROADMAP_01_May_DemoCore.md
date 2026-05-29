@@ -166,15 +166,25 @@
   - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 088. **[CORE_GDD_05]** `TooltipManager`: 모든 아이콘 마우스 오버 시 정보를 뿌려주는 전역 툴팁 시스템
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 094. **[6월 조기 이관] [CORE_GDD_05]** `UI_SfxAtlas`: UI 소리와 연동되는 전역 오디오 믹서의 볼륨/오디오 채널링 로직
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🏪 Track 3: 알바(노동) 미니게임 수치 모델 및 피로도 알고리즘 (Labor & Fatigue Engine)
 - [x] 167. **[MOD_GDD_02]** `JobLimitSystem.cs`: 일일 알바 횟수 제한(기본 3회, 회복력 비례 최대 5회)
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 173. **[6월 조기 이관] [MOD_GDD_02]** 🧠[Pro] `SortingHub_Balance`: 좌우 키로 상자 탑의 균형을 잡는 물리 엔진 연동 논리
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] ~~174. **[6월 조기 이관] [MOD_GDD_02]** `SortingHub_Wind`: 강풍 환경 변수 추가로 인한 상하차 난이도 증가 로직 (실내 배경 기획 변경으로 인한 취소)~~
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 175. **[MOD_GDD_02]** `JobResultCalculator`: 최종 스코어 기반 Gold 및 평판 점수 정산 엔진
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 195. **[MOD_GDD_02]** `EnergyDrinkItem`: 에너지 드링크(500G) 사용 시 일일 알바 횟수 2회 복구 로직
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 196. **[MOD_GDD_02]** `JobPromotion`: 노동 횟수 누적 시 시급이 1.1~1.5배 상승하는 승급 시스템
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapseで使用할 SLIM 버전 확인)
+- [x] 203. **[6월 조기 이관] [MOD_GDD_02]** `NightShiftJob`: 야간(22:00-02:00) 노동 시 찌라시 획득 확률 2배 적용
+  - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [x] 207. **[6월 조기 이관] [MOD_GDD_02]** `MiniGamePause`: 게임 도중 일시 정지 및 포기 시 패널티(급여 0) 로직
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [x] 208. **[MOD_GDD_02]** `ComboSystem`: 상하차 시 연속 성공 시 콤보 가산금 지급
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -190,9 +200,17 @@
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 200. **[MOD_GDD_04]** 🧠[Pro] `ReliabilitySystem`: 찌라시 텍스트 중 '거짓'이 섞일 확률 관리 엔진
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 213. **[6월 조기 이관] [MOD_GDD_04]** `RumorMarketPrice`: 찌라시의 희귀도에 따라 암시장에서의 거래 가격 변동 로직
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 216. **[6월 조기 이관] [MOD_GDD_04]** `CipherRumorDecryption`: 안나의 신뢰도에 따라 마스킹된 찌라시 글자를 복원해주는 이벤트
+  - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 🎒 Track 5: 소비 아이템 시스템 (Consumable Items)
+### 🎒 Track 5: 소비 아이템 및 인벤토리 논리 (Consumable Items & Inventory Logic)
 - [ ] 182. **[MOD_GDD_03]** `ConsumableItem`: 사용 시 즉시 효과(분석력 증가 등)를 주는 소모품 엔진
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 221. **[6월 조기 이관] [MOD_GDD_03]** `LuckyBoxLogic`: 일정 확률로 희귀 가구가 나오는 '박스' 아이템 오픈 엔진
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 225. **[6월 조기 이관] [MOD_GDD_03]** `InventoryFullWarning`: 인벤토리가 가득 찼을 때 알바 보상 수취 거부 판정 논리
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🏦 Track 6: 은행 대출 연체 및 압류 통보 자동화 (Debt & Seizure Automation)
