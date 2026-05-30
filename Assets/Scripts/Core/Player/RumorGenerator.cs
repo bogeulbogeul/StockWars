@@ -41,13 +41,15 @@ namespace StockWars.Core
             base.Awake();
             LoadRumorPool();
 
-            // JobSystemController의 세션 완료 이벤트 구독
+            // JobSystemController의 세션 완료 및 GameTickEvent 구독
             EventBus.Subscribe<JobSessionCompletedEvent>(OnJobSessionCompleted);
+            EventBus.Subscribe<GameTickEvent>(OnGameTick);
         }
 
         private void OnDestroy()
         {
             EventBus.Unsubscribe<JobSessionCompletedEvent>(OnJobSessionCompleted);
+            EventBus.Unsubscribe<GameTickEvent>(OnGameTick);
         }
 
         // ──────────────────────────────────────────────────────────
@@ -58,6 +60,11 @@ namespace StockWars.Core
         /// 찌라시 정보 타입 (호재/악재)
         /// </summary>
         public enum RumorType { Bullish, Bearish }
+
+        /// <summary>
+        /// 찌라시 정보 출처 (M199)
+        /// </summary>
+        public enum RumorSource { Coincidence, Broker, Darknet }
 
         /// <summary>
         /// 찌라시 1개의 전체 데이터 (MOD_GDD_04_SLIM 2.1절 C# 스키마 기준).
@@ -90,6 +97,8 @@ namespace StockWars.Core
             public bool      IsViewed;
             public DateTime? FirstViewedAt; // 열람 시각 (null = 미열람)
             public bool      IsMisinformation; // 5% 오보 여부 (분석력 LV5 이후 가시)
+            public bool      IsExpiringSoon;   // 만료 5분 전 플래그
+            public RumorSource Source;         // 찌라시 출처 정보
         }
 
         // ──────────────────────────────────────────────────────────
@@ -239,6 +248,11 @@ namespace StockWars.Core
             // 5% 오보 판정 (ReliabilitySystem, MOD_GDD_04_SLIM 1.4절)
             bool isMisinformation = UnityEngine.Random.value < 0.05f;
 
+            // 찌라시 출처 랜덤 설정 (우연 50%, 브로커 35%, 다크넷 15%)
+            float rand = UnityEngine.Random.value;
+            RumorSource source = rand < 0.50f ? RumorSource.Coincidence :
+                                 (rand < 0.85f ? RumorSource.Broker : RumorSource.Darknet);
+
             return new RumorInstance
             {
                 StockId           = data.StockId,
@@ -246,12 +260,86 @@ namespace StockWars.Core
                 Tier1Text         = data.Tier1Text,
                 Tier2Text         = data.Tier2Text,
                 Tier3Text         = data.Tier3Text,
-                MaskedTier1Text   = MaskAll(data.Tier1Text),
-                AcquiredAt        = DateTime.Now,
+                MaskedTier1Text   = string.Empty, // InsightMaskingEngine 도입으로 고정 캐시 무효화
+                AcquiredAt        = DateTime.UtcNow,
                 IsViewed          = false,
                 FirstViewedAt     = null,
                 IsMisinformation  = isMisinformation,
+                IsExpiringSoon    = false,
+                Source            = source
             };
+        }
+
+        /// <summary>
+        /// 찌라시를 열람 상태로 변경하고 만료 타이머 기준 시각(UTC)을 기록합니다.
+        /// </summary>
+        public void ViewRumor(RumorInstance rumor)
+        {
+            if (rumor == null) return;
+            
+            if (!rumor.IsViewed)
+            {
+                rumor.IsViewed = true;
+                rumor.FirstViewedAt = DateTime.UtcNow;
+                Debug.Log($"[RumorGenerator] 찌라시 열람됨: [{rumor.StockId} / {rumor.Type}], 만료 타이머 시작 (UTC: {rumor.FirstViewedAt})");
+            }
+        }
+
+        private void OnGameTick(GameTickEvent e)
+        {
+            UpdateRumorTimers();
+        }
+
+        /// <summary>
+        /// 인벤토리 내의 모든 찌라시 만료 타이머를 갱신하고, 만료된 찌라시를 삭제합니다. (열람 후 60분)
+        /// </summary>
+        private void UpdateRumorTimers()
+        {
+            if (WalletManager.Instance == null) return;
+
+            var inventory = WalletManager.Instance.ActiveSaveData.RumorInventory;
+            if (inventory == null || inventory.Count == 0) return;
+
+            DateTime nowUtc = DateTime.UtcNow;
+
+            for (int i = inventory.Count - 1; i >= 0; i--)
+            {
+                var rumor = inventory[i];
+                if (rumor.IsViewed && rumor.FirstViewedAt.HasValue)
+                {
+                    double elapsedMinutes = (nowUtc - rumor.FirstViewedAt.Value).TotalMinutes;
+
+                    if (elapsedMinutes >= 60.0)
+                    {
+                        // 60분 경과: 자동 만료 및 인벤토리 제거
+                        inventory.RemoveAt(i);
+                        Debug.Log($"[RumorGenerator] 찌라시 만료 자동 삭제: [{rumor.StockId} / {rumor.Type}] (열람 후 {elapsedMinutes:F1}분 경과)");
+
+                        // 만료 전역 이벤트 발행
+                        EventBus.Publish(new RumorExpiredEvent
+                        {
+                            StockId = rumor.StockId,
+                            RumorType = rumor.Type
+                        });
+                    }
+                    else if (elapsedMinutes >= 55.0)
+                    {
+                        // 55분 경과 (만료 5분 전): 붉은 깜빡임 연출 활성화
+                        if (!rumor.IsExpiringSoon)
+                        {
+                            rumor.IsExpiringSoon = true;
+                            Debug.Log($"[RumorGenerator] 찌라시 만료 5분 전 돌입 (붉은 깜빡임 활성화): [{rumor.StockId} / {rumor.Type}]");
+
+                            // 깜빡임 돌입 이벤트 발행
+                            EventBus.Publish(new RumorExpiringSoonEvent
+                            {
+                                StockId = rumor.StockId,
+                                RumorType = rumor.Type
+                            });
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -295,10 +383,22 @@ namespace StockWars.Core
                 var inv = WalletManager.Instance.ActiveSaveData.RumorInventory;
                 if (inv.Count >= MAX_RUMOR_INVENTORY)
                 {
-                    Debug.LogWarning($"[RumorGenerator] 첌라시 인벤토리 상한({MAX_RUMOR_INVENTORY}개) 도달 — 가장 오래된 항목을 제거합니다.");
+                    Debug.LogWarning($"[RumorGenerator] 찌라시 인벤토리 상한({MAX_RUMOR_INVENTORY}개) 도달 — 가장 오래된 항목을 제거합니다.");
                     inv.RemoveAt(0);
                 }
                 inv.Add(instance);
+
+                // M200: 시장 영향력(Drift) 엔진용 24시간 활성 찌라시 등록
+                double targetImpact = UnityEngine.Random.Range(0.05f, 0.15f); // 5% ~ 15% 변동 목표
+                var marketRumor = new ActiveMarketRumor
+                {
+                    StockId = instance.StockId,
+                    RumorType = instance.Type,
+                    AcquiredAtUtc = instance.AcquiredAt,
+                    TargetImpactRate = targetImpact,
+                    IsMisinformation = instance.IsMisinformation
+                };
+                WalletManager.Instance.ActiveSaveData.ActiveMarketRumors.Add(marketRumor);
             }
 
             // 보상 화면 슬라이드 알림 이벤트 발행
@@ -316,40 +416,127 @@ namespace StockWars.Core
         // ──────────────────────────────────────────────────────────
 
         /// <summary>
-        /// 플레이어의 현재 [분석력] 레벨에 따라 마스킹이 적용된 최적 Tier 텍스트를 반환합니다.
-        /// (MOD_GDD_04_SLIM 1.3절 마스킹 테이블 기준)
+        /// 플레이어의 현재 [분석력] 레벨에 따라 마스킹이 적용된 최적 텍스트를 반환합니다.
+        /// (MOD_GDD_04_SLIM 1.3절 마스킹 테이블 및 186번 InsightMaskingEngine 연동)
         /// </summary>
         /// <param name="instance">조회할 찌라시 인스턴스</param>
-        /// <returns>플레이어가 실제로 볼 수 있는 텍스트 (InsightMaskingEngine 연동 전 임시 Tier 분기)</returns>
+        /// <returns>플레이어가 실제로 볼 수 있는 텍스트</returns>
         public string GetMaskedText(RumorInstance instance)
         {
-            if (StatCore.Instance == null) return instance.MaskedTier1Text; // 캐시된 승인 마스킹 텍스트 사용
+            if (instance == null) return string.Empty;
 
-            int analysisLv = StatCore.Instance.GetBaseStat(StatType.Analysis);
+            int analysisLv = StatCore.Instance != null ? StatCore.Instance.GetBaseStat(StatType.Analysis) : 1;
+            int annaTrust = WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null
+                ? WalletManager.Instance.ActiveSaveData.AnnaTrust
+                : 0;
 
-            // Tier3: 완전 해독 (LV 4 이상이면 전체 열람, LV 5는 오보 포함 표시)
-            if (analysisLv >= 4) return instance.Tier3Text;
-            // Tier2: 섹터/방향 추론 가능 (LV 2~3)
-            if (analysisLv >= 2) return instance.Tier2Text;
-            // Tier1: 비유적 힌트만 (LV 0~1) — 캐시된 마스킹 텍스트 사용 (호출마다 변동 없음)
-            return instance.MaskedTier1Text;
+            // 시드: 찌라시 획득 시간 기반 (항상 동일한 결과 보장)
+            int seed = (int)(instance.AcquiredAt.Ticks % int.MaxValue);
+
+            // Tier3(가장 구체적인 정보)를 원본으로 사용하여 알고리즘 가림 처리 (안나 신뢰도 연동)
+            string masked = InsightMaskingEngine.ApplyMasking(instance.Tier3Text, instance.StockId, analysisLv, seed, annaTrust);
+
+            // M216: 복원 연동 이벤트 발행 (안나의 조력이 활성화된 경우만)
+            if (annaTrust > 0 && analysisLv < 5)
+            {
+                float baseRatio = analysisLv switch { 1 => 0.80f, 2 => 0.60f, 3 => 0.40f, 4 => 0.15f, _ => 0.80f };
+                float bonus = Mathf.Min((annaTrust / 10) * 0.05f, 0.30f);
+                
+                EventBus.Publish(new CipherDecryptionCompletedEvent
+                {
+                    StockId = instance.StockId,
+                    AnnaTrust = annaTrust,
+                    TargetRatioAfterBonus = Mathf.Max(0f, baseRatio - bonus)
+                });
+            }
+
+            return masked;
         }
 
         /// <summary>
-        /// Tier 1 텍스트에 80% 가림을 적용하여 사실상 무의미한 텍스트를 반환합니다. (LV 1 이하)
-        /// InsightMaskingEngine(186번) 구현 전 임시 플레이스홀더 처리입니다.
+        /// 찌라시 출처(RumorSource)의 한글 번역 명칭을 반환합니다. (M199)
         /// </summary>
-        private string MaskAll(string text)
+        public static string GetSourceLocalizedName(RumorSource source)
         {
-            if (string.IsNullOrEmpty(text)) return string.Empty;
-            // 단어 단위로 80%를 █ 블록으로 대체
-            string[] words = text.Split(' ');
-            for (int i = 0; i < words.Length; i++)
+            return source switch
             {
-                if (UnityEngine.Random.value < 0.8f)
-                    words[i] = new string('█', words[i].Length);
+                RumorSource.Coincidence => "우연한 귀동냥",
+                RumorSource.Broker => "정보 브로커",
+                RumorSource.Darknet => "다크넷 마켓",
+                _ => "알 수 없음"
+            };
+        }
+
+        /// <summary>
+        /// M213: 찌라시 인스턴스의 현재 암시장 거래(판매/구매) 가치를 산출합니다.
+        /// 찌라시 출처(희귀도), 연동 종목의 변동성 티어, 만료 시간(번 타이머)에 따라 동적으로 가격이 변동합니다.
+        /// </summary>
+        public static long GetRumorMarketPrice(RumorInstance instance)
+        {
+            if (instance == null) return 0;
+
+            // 1. 기본 베이스 가격 책정 (출처 희귀도 비례)
+            double basePrice = instance.Source switch
+            {
+                RumorSource.Coincidence => 1000.0, // 우연: 1,000G
+                RumorSource.Broker => 3000.0,      // 브로커: 3,000G
+                RumorSource.Darknet => 7000.0,     // 다크넷: 7,000G
+                _ => 1000.0
+            };
+
+            // 2. 연동 종목 변동성 티어 가중치 적용
+            double volatilityMultiplier = 1.0;
+            if (MarketManager.Instance != null)
+            {
+                var stock = MarketManager.Instance.GetStock(instance.StockId);
+                if (stock != null)
+                {
+                    volatilityMultiplier = stock.Data.volatilityTier switch
+                    {
+                        VolatilityTier.S => 2.0, // S티어: 200% 가치
+                        VolatilityTier.A => 1.5, // A티어: 150% 가치
+                        VolatilityTier.B => 1.2, // B티어: 120% 가치
+                        VolatilityTier.C => 1.0, // C티어: 100% 가치
+                        _ => 1.0
+                    };
+                }
             }
-            return string.Join(" ", words);
+
+            // 3. 만료 시간에 따른 지수적 가치 감쇄 (번 타이머 반영)
+            // 열람한 시점부터 60분간 타이머가 작동하며, 미열람 시에는 100% 가치 유지.
+            double decayMultiplier = 1.0;
+            if (instance.FirstViewedAt.HasValue)
+            {
+                double elapsedMinutes = (DateTime.UtcNow - instance.FirstViewedAt.Value).TotalMinutes;
+                double remainingMinutes = 60.0 - elapsedMinutes;
+
+                if (remainingMinutes <= 0)
+                {
+                    decayMultiplier = 0.0; // 완전히 만료된 정보는 가치 0
+                }
+                else
+                {
+                    // 남은 시간 비례 지수 감쇄 (남은 시간이 절반(30분)이 되면 가치는 약 25%로 하락)
+                    // 공식: (남은시간 / 60)^2
+                    decayMultiplier = Math.Pow(remainingMinutes / 60.0, 2.0);
+                }
+            }
+
+            // 4. 최종 정산
+            double finalPrice = basePrice * volatilityMultiplier * decayMultiplier;
+
+            // 정수형 골드 가치로 형변환 및 최소 1G 보장 (만료되지 않았다면)
+            long price = (long)Math.Round(finalPrice);
+            if (decayMultiplier > 0.0)
+            {
+                price = Math.Max(1L, price);
+            }
+            else
+            {
+                price = 0L;
+            }
+
+            return price;
         }
 
         // ──────────────────────────────────────────────────────────
@@ -476,5 +663,33 @@ namespace StockWars.Core
         public RumorGenerator.RumorType RumorType;
         public DateTime  AcquiredAt;
         public bool      IsMisinformation; // 분석 LV5 이전 UI에는 표시 금지
+    }
+
+    /// <summary>
+    /// 찌라시가 만료되어 인벤토리에서 삭제될 때 발생합니다.
+    /// </summary>
+    public struct RumorExpiredEvent
+    {
+        public string StockId;
+        public RumorGenerator.RumorType RumorType;
+    }
+
+    /// <summary>
+    /// 찌라시가 만료 5분 전(55분 경과)에 도달해 붉은 깜빡임 연출이 필요할 때 발생합니다.
+    /// </summary>
+    public struct RumorExpiringSoonEvent
+    {
+        public string StockId;
+        public RumorGenerator.RumorType RumorType;
+    }
+
+    /// <summary>
+    /// M216: 안나의 신뢰도(AnnaTrust) 보너스에 의해 마스킹 단어가 알고리즘적으로 일부 영구 해독되었을 때 발행됩니다.
+    /// </summary>
+    public struct CipherDecryptionCompletedEvent
+    {
+        public string StockId;
+        public int AnnaTrust;
+        public float TargetRatioAfterBonus;
     }
 }

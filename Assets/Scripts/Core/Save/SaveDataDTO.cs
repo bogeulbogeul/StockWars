@@ -52,6 +52,9 @@ namespace StockWars.Core
         // 5.2. 찌라시 인벤토리 (MOD_GDD_04)
         public List<RumorInstance> RumorInventory { get; set; } = new List<RumorInstance>(); // 보유 중인 찌라시 목록
         
+        // 5.3. 찌라시 시장 영향(Drift) 엔진용 24시간 활성화 목록 (M200)
+        public List<ActiveMarketRumor> ActiveMarketRumors { get; set; } = new List<ActiveMarketRumor>();
+        
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }
 
@@ -60,6 +63,9 @@ namespace StockWars.Core
         
         // 7.1. 안나의 무이자 웰컴 기프트 수령 플래그 (CORE_GDD_04)
         public bool IsAnnaWelcomeGiftClaimed { get; set; } = false;
+
+        // 7.1.5. 안나 친밀도 / 신뢰도 스코어 (M216 복원 시스템 연동용)
+        public int AnnaTrust { get; set; } = 0;
 
         // 7.2. 웰컴 스타터팩 수령 플래그 (CORE_GDD_08)
         public bool IsStarterPackClaimed { get; set; } = false;
@@ -195,5 +201,20 @@ namespace StockWars.Core
         public float BonusNegotiationVal;
         public float BonusTradingVal;
         public float BonusRecoveryVal;
+    }
+
+    /// <summary>
+    /// 시장에 영향을 미치고 있는 활성화된 찌라시 데이터.
+    /// 세이브/로드 시에도 시장 가격(PriceEngine) 유도(Drift) 영향력과 오보 방향을 유지하기 위해 별도 분리 저장.
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class ActiveMarketRumor
+    {
+        public string StockId;
+        public RumorGenerator.RumorType RumorType;
+        public DateTime AcquiredAtUtc;
+        public double TargetImpactRate; // e.g. 0.05 to 0.15 (5% ~ 15%)
+        public bool IsMisinformation;   // 5% 확률의 오보 여부 (오보 시 가격 반대로 유도)
     }
 }

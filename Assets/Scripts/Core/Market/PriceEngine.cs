@@ -54,6 +54,20 @@ namespace StockWars.Core
             if (MarketManager.Instance == null) return;
             if (RNG_System.Instance == null) return;
 
+            // M200: 24시간이 경과한 활성 찌라시 시장 영향력 제거
+            if (WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null)
+            {
+                var activeRumors = WalletManager.Instance.ActiveSaveData.ActiveMarketRumors;
+                DateTime nowUtc = DateTime.UtcNow;
+                for (int i = activeRumors.Count - 1; i >= 0; i--)
+                {
+                    if ((nowUtc - activeRumors[i].AcquiredAtUtc).TotalHours >= 24.0)
+                    {
+                        activeRumors.RemoveAt(i);
+                    }
+                }
+            }
+
             var listedStocks = MarketManager.Instance.GetListedStocks();
             foreach (var stock in listedStocks)
             {
@@ -101,9 +115,12 @@ namespace StockWars.Core
             // ── 4-4.5. 미세 노이즈 (PriceNoise — Task 051 완료) ─────────────────
             double microNoise = PriceNoise.GetMicroNoise(stock.StockId, stock.Data.volatilityTier);
 
+            // ── 4-4.8. 찌라시 시장 영향력 (ReliabilitySystem — M200 완료) ──────────
+            double rumorBias = GetRumorBias(stock.StockId, stock.Data.volatilityTier);
+
             // ── 4-5. 최종 변동률 합산 ─────────────────────────────────────
-            // gaussNoise는 이미 클램프 완료. scarcity + trend + microNoise는 항상 반영 보장.
-            double deltaRatio = gaussNoise + scarcityPressure + trendBias + microNoise;
+            // gaussNoise는 이미 클램프 완료. scarcity + trend + microNoise + rumorBias는 항상 반영 보장.
+            double deltaRatio = gaussNoise + scarcityPressure + trendBias + microNoise + rumorBias;
 
             // ── 4-6. 새 가격 적용 ─────────────────────────────────────────
             long newPrice = (long)Math.Round(stock.CurrentPrice * (1.0 + deltaRatio));
@@ -132,6 +149,54 @@ namespace StockWars.Core
                 NewPrice = newPrice,
                 Delta    = delta
             });
+        }
+
+        /// <summary>
+        /// M200: 현재 시장에 영향을 미치고 있는 찌라시에 의한 주가 유도(Drift) 바이어스를 계산합니다.
+        /// 24시간 동안 점진적으로 주가를 밀어올리거나 내립니다.
+        /// 5% 확률의 오보(Misinformation)일 경우 반대 방향으로 작용합니다.
+        /// </summary>
+        private double GetRumorBias(string stockId, VolatilityTier tier)
+        {
+            if (WalletManager.Instance == null || WalletManager.Instance.ActiveSaveData == null) return 0.0;
+
+            var activeRumors = WalletManager.Instance.ActiveSaveData.ActiveMarketRumors;
+            if (activeRumors == null || activeRumors.Count == 0) return 0.0;
+
+            double totalBias = 0.0;
+            const double TICKS_IN_24H = 86400.0; // 24시간 = 86,400초(틱)
+
+            // 변동성 티어에 따른 찌라시 영향력 증폭 배율 (S티어는 2배 더 민감)
+            double tierMultiplier = tier switch
+            {
+                VolatilityTier.S => 2.0,
+                VolatilityTier.A => 1.5,
+                VolatilityTier.B => 1.2,
+                VolatilityTier.C => 1.0,
+                _ => 1.0
+            };
+
+            foreach (var rumor in activeRumors)
+            {
+                if (rumor.StockId.Equals(stockId, StringComparison.OrdinalIgnoreCase))
+                {
+                    // 24시간에 걸쳐 점진적으로 TargetImpactRate만큼 변동하도록 1틱당 Bias 분할
+                    double biasPerTick = (rumor.TargetImpactRate * tierMultiplier) / TICKS_IN_24H;
+                    
+                    // 기본 방향: Bullish면 +, Bearish면 -
+                    double sign = (rumor.RumorType == RumorGenerator.RumorType.Bullish) ? 1.0 : -1.0;
+
+                    // M200: 오보(Misinformation) 판정 시 방향 역전
+                    if (rumor.IsMisinformation)
+                    {
+                        sign *= -1.0;
+                    }
+
+                    totalBias += sign * biasPerTick;
+                }
+            }
+
+            return totalBias;
         }
 
         // --------------------------------------------------------

@@ -192,17 +192,17 @@
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 📑 Track 4: 찌라시 분석 및 출처/신뢰도 확률 제어 (Rumor & Masking System)
-- [ ] 185. **[MOD_GDD_04]** `BurnTimerLogic`: 열람 후 60분 뒤 인벤토리에서 자동 삭제되는 타이머
+- [x] 185. **[MOD_GDD_04]** `BurnTimerLogic`: 열람 후 60분 뒤 인벤토리에서 자동 삭제되는 타이머
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 186. **[MOD_GDD_04]** 🧠[Pro] `InsightMaskingEngine`: 분석 레벨 1~3단계별 단어 은폐 및 치환 알고리즘
+- [x] 186. **[MOD_GDD_04]** 🧠[Pro] `InsightMaskingEngine`: 분석 레벨 1~3단계별 단어 은폐 및 치환 알고리즘
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 199. **[MOD_GDD_04]** `RumorSourceTag`: 찌라시 출처(다크넷, 브로커, 우연) 표기 로직
+- [x] 199. **[MOD_GDD_04]** `RumorSourceTag`: 찌라시 출처(다크넷, 브로커, 우연) 표기 로직
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 200. **[MOD_GDD_04]** 🧠[Pro] `ReliabilitySystem`: 찌라시 텍스트 중 '거짓'이 섞일 확률 관리 엔진
+- [x] 200. **[MOD_GDD_04]** 🧠[Pro] `ReliabilitySystem`: 찌라시 텍스트 중 '거짓'이 섞일 확률 관리 엔진
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 213. **[6월 조기 이관] [MOD_GDD_04]** `RumorMarketPrice`: 찌라시의 희귀도에 따라 암시장에서의 거래 가격 변동 로직
+- [x] 213. **[6월 조기 이관] [MOD_GDD_04]** `RumorMarketPrice`: 찌라시의 희귀도에 따라 암시장에서의 거래 가격 변동 로직
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 216. **[6월 조기 이관] [MOD_GDD_04]** `CipherRumorDecryption`: 안나의 신뢰도에 따라 마스킹된 찌라시 글자를 복원해주는 이벤트
+- [x] 216. **[6월 조기 이관] [MOD_GDD_04]** `CipherRumorDecryption`: 안나의 신뢰도에 따라 마스킹된 찌라시 글자를 복원해주는 이벤트
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🎒 Track 5: 소비 아이템 및 인벤토리 논리 (Consumable Items & Inventory Logic)
