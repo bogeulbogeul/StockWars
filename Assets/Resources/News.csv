@@ -1,0 +1,56 @@
+StockId,Type,Headline,ImpactPercentage
+CLOUDBERRY,NormalPositive,"클라우드 베리, 1분기 영업익 전년비 10%↑... 클라우드 수요 '견조'",4.0
+CLOUDBERRY,NormalNegative,"클라우드 베리, 데이터 센터 확충에 따른 감가상각비 부담 가중",-3.0
+CLOUDBERRY,CorePositive,"[단독] 클라우드 베리, 제국 정부 차세대 데이터 통합 사업 '단독 낙점'",22.0
+CLOUDBERRY,CoreNegative,"클라우드 베리, 메인 센터 화재로 '셧다운'... 대규모 보상 절차 착수",-20.0
+CLOUDBERRY,Disaster,"[긴급] 고객 정보 1억 건 무단 유출... 당국, '영업 정지' 및 파산 검토",-95.0
+SYNAPSENET,NormalPositive,"시냅스 망, 수도권 뉴럴 링크 노드 확장 완료... 연결 가입자 20% 급증",4.0
+SYNAPSENET,NormalNegative,"시냅스 망, 신호 처리 칩 수급 불안정으로 신규 설치 지연 우려",-3.0
+SYNAPSENET,CorePositive,"[단독] 시냅스 망, 제국 정부 '국가 뉴럴 그리드 1단계' 사업 수주 확정",21.0
+SYNAPSENET,CoreNegative,"시냅스 망, 핵심 노드 오작동으로 도시 일부 서비스 마비... 집단 소송 예고",-19.0
+SYNAPSENET,Disaster,"[긴급] 시냅스 망 중앙 릴레이 해킹... 수백만 명 생체 신호 데이터 무단 탈취",-92.0
+TECHDOME,NormalPositive,"테크 돔, '돔 OS 6.0' 업데이트 공개... 기업용 라이선스 갱신율 역대 최고",3.5
+TECHDOME,NormalNegative,"테크 돔, 오픈소스 OS 급부상에 따른 기업용 시장 점유율 소폭 하락",-3.0
+TECHDOME,CorePositive,"[특징주] 테크 돔, 글로벌 반도체 기업과 '돔 OS' 전용 칩셋 독점 공동 개발 계약",20.0
+TECHDOME,CoreNegative,"테크 돔, '돔 OS' 핵심 보안 취약점 발견... 전 버전 긴급 패치 및 매출 타격 불가피",-18.0
+TECHDOME,Disaster,"[긴급] 테크 돔, '돔 OS' 설계 원천 소스코드 경쟁사 유출 정황 포착... 사업 존립 기로",-91.0
+MOMOSOLUTION,NormalPositive,"모모 솔루션, AI 비서 '모모 어시스턴트' 월 활성 사용자 500만 돌파",4.5
+MOMOSOLUTION,NormalNegative,"모모 솔루션, 데이터 라벨링 인력 비용 증가로 분기 영업이익률 소폭 하락",-3.5
+MOMOSOLUTION,CorePositive,"[단독] 모모 솔루션, 글로벌 테크 대기업과 AI 비서 엔진 OEM 공급 계약 체결",23.0
+MOMOSOLUTION,CoreNegative,"모모 솔루션, 핵심 개발팀 집단 이탈... AI 엔진 고도화 로드맵 전면 재검토",-21.0
+MOMOSOLUTION,Disaster,"[긴급] 모모 솔루션 AI, 사용자 개인 대화 내용 무단 학습·외부 판매 의혹... 당국 수사 착수",-93.0
+CODEMASTER,NormalPositive,"코드 마스터, 신규 개발 툴킷 'CM Studio 5' 출시 첫 주 다운로드 100만 건 돌파",4.0
+CODEMASTER,NormalNegative,"코드 마스터, 일부 엔터프라이즈 구독 고객 이탈로 반복 매출 소폭 감소",-2.5
+CODEMASTER,CorePositive,"[특징주] 코드 마스터, 제국 전역 공공 소프트웨어 개발 표준 플랫폼으로 공식 채택",22.0
+CODEMASTER,CoreNegative,"코드 마스터, 핵심 특허 기술 무효 심판 패소... 경쟁사와의 라이선스 분쟁 본격화",-20.0
+CODEMASTER,Disaster,"[긴급] 코드 마스터 메인 리포지터리, 악성코드 삽입 흔적 발견... 글로벌 사용 중단 권고",-94.0
+IRONBRAIN,NormalPositive,"아이언 브레인, 신형 AI 연산 칩 'IB-X9' 성능 벤치마크 업계 최고 기록 경신",5.0
+IRONBRAIN,NormalNegative,"아이언 브레인, 희소 금속 수급 차질로 3분기 칩 생산량 목표치 하향 조정",-3.5
+IRONBRAIN,CorePositive,"[단독] 아이언 브레인, 글로벌 AI 데이터센터 기업과 5년 장기 독점 공급 계약 체결",24.0
+IRONBRAIN,CoreNegative,"아이언 브레인, 최신 칩셋 발열 결함 리콜 사태... 공급 차질 및 위약금 부담 현실화",-22.0
+IRONBRAIN,Disaster,"[긴급] 아이언 브레인 메인 공장, 원인불명 화재로 전소... 연간 생산 라인 사실상 전멸",-96.0
+PATCHWORK,NormalPositive,"패치워크, 신규 제로데이 취약점 패치 서비스 출시... 기업 고객 계약 30% 증가",3.0
+PATCHWORK,NormalNegative,"패치워크, 단기 개발 인력 확충에 따른 판관비 증가로 수익성 일시 둔화",-2.5
+PATCHWORK,CorePositive,"[단독] 패치워크, 제국 사이버안보국과 전국 공공망 취약점 전담 패치 계약 낙점",19.0
+PATCHWORK,CoreNegative,"패치워크, 자사 보안 패치 솔루션에서 역설적 취약점 발견... 신뢰도 심각 훼손",-17.0
+PATCHWORK,Disaster,"[긴급] 패치워크 내부자, 미패치 제로데이 목록 경쟁 해커 집단에 유출... 전 고객사 피해 속출",-90.0
+GHOSTSHELL,NormalPositive,"고스트 쉘, 양자 암호화 모듈 신규 버전 출시... 금융권 도입 계약 잇따라",3.5
+GHOSTSHELL,NormalNegative,"고스트 쉘, 양자 컴퓨팅 표준 변경 이슈로 기존 모듈 업그레이드 비용 부담 가중",-3.0
+GHOSTSHELL,CorePositive,"[단독] 고스트 쉘, 제국 국방부 차세대 양자 암호 통신망 단독 수주 확정",21.0
+GHOSTSHELL,CoreNegative,"고스트 쉘, 핵심 양자키 생성 알고리즘 특허 분쟁 패소... 기술 경쟁력 훼손 우려",-19.0
+GHOSTSHELL,Disaster,"[긴급] 고스트 쉘 메인 암호화 DB 완전 탈취... 전 고객 기밀 통신 내용 해커 손에 넘어가",-92.0
+ZEROPIXEL,NormalPositive,"제로 픽셀, 초저지연 렌더링 엔진 신버전 출시... 메타버스 플랫폼사 계약 급증",5.0
+ZEROPIXEL,NormalNegative,"제로 픽셀, 글로벌 반도체 수급 불안정으로 핵심 렌더링 칩 조달 비용 급등",-4.0
+ZEROPIXEL,CorePositive,"[단독] 제로 픽셀, 글로벌 1위 게임 엔진 기업과 차세대 실시간 렌더링 기술 공동 개발 협약",23.0
+ZEROPIXEL,CoreNegative,"제로 픽셀, 핵심 렌더링 특허 침해 소송 제기당해... 기술 기반 사업 모델 전면 흔들",-20.0
+ZEROPIXEL,Disaster,"[긴급] 제로 픽셀 엔진 치명적 버그, 연결된 AR 헤드셋 사용자 수천 명 신체 이상 유발... 집단 소송·사업 정지",-97.0
+STARDUST,NormalPositive,"스타더스트, 월드 투어 MD 매출 '어닝 서프라이즈' 기록",5.0
+STARDUST,NormalNegative,"스타더스트, 신인 그룹 데뷔 연기 가능성에 단기 모멘텀 둔화",-4.0
+STARDUST,CorePositive,"[단독] 스타더스트, 글로벌 엔터 그룹과 3억 달러 규모 레이블 합병 계약",20.0
+STARDUST,CoreNegative,"스타더스트, 핵심 아티스트 '재계약 불발' 루머 확산... 펀더멘탈 훼손",-22.0
+STARDUST,Disaster,"[긴급] 대표이사, 도박 자금 마련 위한 보유 지분 전량 투매 후 도주",-90.0
+FORESTLAB,NormalPositive,"포레스트 랩, 신형 면역 강화 주사제 임상 1상 긍정적 지표 획득",3.0
+FORESTLAB,NormalNegative,"포레스트 랩, 원재료 가격 상승에 따른 제조 원가 부담 증가",-3.0
+FORESTLAB,CorePositive,"[특징주] 포레스트 랩, 글로벌 제약사와 5,000억 규모 CMO 공급 계약",25.0
+FORESTLAB,CoreNegative,"포레스트 랩, 핵심 항암 후보 물질의 글로벌 특허 분쟁 패소 리스크 노출",-18.0
+FORESTLAB,Disaster,"[긴급] 포레스트 랩, 유독 물질 함유된 가짜 약품 조직적 유통 적발",-99.0

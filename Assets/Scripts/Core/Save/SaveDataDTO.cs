@@ -55,6 +55,14 @@ namespace StockWars.Core
         // 5.3. 찌라시 시장 영향(Drift) 엔진용 24시간 활성화 목록 (M200)
         public List<ActiveMarketRumor> ActiveMarketRumors { get; set; } = new List<ActiveMarketRumor>();
         
+        // 5.4. 기업 뉴스 시장 영향 엔진용 활성화 목록 (253번)
+        private List<NewsImpactInstance> _activeNewsImpacts = new();
+        public List<NewsImpactInstance> ActiveNewsImpacts
+        {
+            get => _activeNewsImpacts ??= new();
+            set => _activeNewsImpacts = value;
+        }
+        
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }
 
@@ -105,6 +113,25 @@ namespace StockWars.Core
         {
             get => _ownedApparelIds ??= new();
             set => _ownedApparelIds = value;
+        }
+
+        private List<string> _ownedConsumableIds = new();
+        public List<string> OwnedConsumableIds
+        {
+            get => _ownedConsumableIds ??= new();
+            set => _ownedConsumableIds = value;
+        }
+
+        // 10.3. 자산 압류 유예 및 통보 상태 (CORE_GDD_04, MOD_GDD_11)
+        public DateTime? SeizureGracePeriodExpiryTimeUtc { get; set; } = null;
+        public bool IsSeizureWarningMailSent { get; set; } = false;
+
+        // 10.4. 스마트폰 메일 보관함 (MOD_GDD_11)
+        private List<MailInstance> _mails = new();
+        public List<MailInstance> Mails
+        {
+            get => _mails ??= new();
+            set => _mails = value;
         }
 
         // 10.2. 전역 거래 일지 세이브 데이터 (CORE_GDD_02, CORE_GDD_08)
@@ -216,5 +243,19 @@ namespace StockWars.Core
         public DateTime AcquiredAtUtc;
         public double TargetImpactRate; // e.g. 0.05 to 0.15 (5% ~ 15%)
         public bool IsMisinformation;   // 5% 확률의 오보 여부 (오보 시 가격 반대로 유도)
+    }
+
+    /// <summary>
+    /// MOD_GDD_12 기업 뉴스 발생에 따른 런타임 실시간 주가 바이어스 영향력 세이브 직렬화 데이터.
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class NewsImpactInstance
+    {
+        public string StockId;
+        public NewsType Type;
+        public string Headline;
+        public int RemainingTicks; // 잔여 지속 틱 수 (예: 24 ~ 72틱)
+        public double BiasPerTick; // 틱당 deltaRatio에 추가 가산할 영향력
     }
 }

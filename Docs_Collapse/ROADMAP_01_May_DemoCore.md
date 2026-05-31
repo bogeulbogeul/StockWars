@@ -206,21 +206,19 @@
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 🎒 Track 5: 소비 아이템 및 인벤토리 논리 (Consumable Items & Inventory Logic)
-- [ ] 182. **[MOD_GDD_03]** `ConsumableItem`: 사용 시 즉시 효과(분석력 증가 등)를 주는 소모품 엔진
-  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 221. **[6월 조기 이관] [MOD_GDD_03]** `LuckyBoxLogic`: 일정 확률로 희귀 가구가 나오는 '박스' 아이템 오픈 엔진
-  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 225. **[6월 조기 이관] [MOD_GDD_03]** `InventoryFullWarning`: 인벤토리가 가득 찼을 때 알바 보상 수취 거부 판정 논리
+- [x] 182. **[MOD_GDD_03]** `ConsumableItem`: 사용 시 즉시 효과(분석력 증가 등)를 주는 소모품 엔진
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
+
+
 ### 🏦 Track 6: 은행 대출 연체 및 압류 통보 자동화 (Debt & Seizure Automation)
-- [ ] 107. **[CORE_GDD_04]** `AutomaticSeizureMail`: 압류 6시간 전 자동으로 발송되는 최후의 결제 독촉 알림 로직
+- [x] 107. **[CORE_GDD_04]** `AutomaticSeizureMail`: 압류 6시간 전 자동으로 발송되는 최후의 결제 독촉 알림 로직
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ### 📰 Track 7: 기업 뉴스 이벤트 및 실시간 시장 영향 엔진 (MOD_GDD_12: News Engine)
-- [ ] 251. **[MOD_GDD_12]** `NewsTemplateParser`: `News.csv`로부터 3개 시범 종목(CloudBerry, Stardust, ForestLab)의 5대 등급별 뉴스 템플릿 파싱 로드
+- [x] 251. **[MOD_GDD_12]** `NewsTemplateParser`: `News.csv`로부터 3개 시범 종목(CloudBerry, Stardust, ForestLab)의 5대 등급별 뉴스 템플릿 파싱 로드
   - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 252. **[MOD_GDD_12]** `NewsEventScheduler`: 틱 엔진 주기 또는 무작위 확률(일반/핵심/대형사고)에 의거해 뉴스를 생성 및 대기시키는 스케줄러
+- [x] 252. **[MOD_GDD_12]** `NewsEventScheduler`: 틱 엔진 주기 또는 무작위 확률(일반/핵심/대형사고)에 의거해 뉴스를 생성 및 대기시키는 스케줄러
   - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 253. **[MOD_GDD_12]** `NewsImpactApplier`: 활성화된 뉴스 발생 시 주가 변동률(`ImpactPercentage`)을 실시간으로 `PriceEngine`에 반영해 시세를 변동시키는 물리 연산부
+- [x] 253. **[MOD_GDD_12]** `NewsImpactApplier`: 활성화된 뉴스 발생 시 주가 변동률(`ImpactPercentage`)을 실시간으로 `PriceEngine`에 반영해 시세를 변동시키는 물리 연산부
   - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)

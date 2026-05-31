@@ -118,9 +118,14 @@ namespace StockWars.Core
             // ── 4-4.8. 찌라시 시장 영향력 (ReliabilitySystem — M200 완료) ──────────
             double rumorBias = GetRumorBias(stock.StockId, stock.Data.volatilityTier);
 
+            // ── 4-4.9. 기업 뉴스 여진 시장 영향력 (NewsImpactApplier — 253번 완료) ──────
+            double newsBias = (NewsImpactApplier.Instance != null)
+                ? NewsImpactApplier.Instance.GetNewsBias(stock.StockId)
+                : 0.0;
+
             // ── 4-5. 최종 변동률 합산 ─────────────────────────────────────
-            // gaussNoise는 이미 클램프 완료. scarcity + trend + microNoise + rumorBias는 항상 반영 보장.
-            double deltaRatio = gaussNoise + scarcityPressure + trendBias + microNoise + rumorBias;
+            // gaussNoise는 이미 클램프 완료. scarcity + trend + microNoise + rumorBias + newsBias는 항상 반영 보장.
+            double deltaRatio = gaussNoise + scarcityPressure + trendBias + microNoise + rumorBias + newsBias;
 
             // ── 4-6. 새 가격 적용 ─────────────────────────────────────────
             long newPrice = (long)Math.Round(stock.CurrentPrice * (1.0 + deltaRatio));
