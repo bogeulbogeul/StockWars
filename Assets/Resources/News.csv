@@ -45,12 +45,321 @@ ZEROPIXEL,CorePositive,"[단독] 제로 픽셀, 글로벌 1위 게임 엔진 기
 ZEROPIXEL,CoreNegative,"제로 픽셀, 핵심 렌더링 특허 침해 소송 제기당해... 기술 기반 사업 모델 전면 흔들",-20.0
 ZEROPIXEL,Disaster,"[긴급] 제로 픽셀 엔진 치명적 버그, 연결된 AR 헤드셋 사용자 수천 명 신체 이상 유발... 집단 소송·사업 정지",-97.0
 STARDUST,NormalPositive,"스타더스트, 월드 투어 MD 매출 '어닝 서프라이즈' 기록",5.0
-STARDUST,NormalNegative,"스타더스트, 신인 그룹 데뷔 연기 가능성에 단기 모멘텀 둔화",-4.0
-STARDUST,CorePositive,"[단독] 스타더스트, 글로벌 엔터 그룹과 3억 달러 규모 레이블 합병 계약",20.0
+STARDUST,NormalNegative,"스타더스트, 차기 데뷔조 홍보비 선반영에 따른 단기 순이익 감소",-3.0
+STARDUST,CorePositive,"[특징주] 스타더스트 소속 아티스트, 빌보드 '핫 100' 1위 등극",25.0
 STARDUST,CoreNegative,"스타더스트, 핵심 아티스트 '재계약 불발' 루머 확산... 펀더멘탈 훼손",-22.0
 STARDUST,Disaster,"[긴급] 대표이사, 도박 자금 마련 위한 보유 지분 전량 투매 후 도주",-90.0
-FORESTLAB,NormalPositive,"포레스트 랩, 신형 면역 강화 주사제 임상 1상 긍정적 지표 획득",3.0
+ROYALMEDIA,NormalPositive,"로열 미디어, 주간 드라마 시청률 35% 돌파로 광고 단가 상향",4.0
+ROYALMEDIA,NormalNegative,"로열 미디어, 지상파 송출망 설비 교체 비용 반영으로 이익 소폭 하락",-3.0
+ROYALMEDIA,CorePositive,"[단독] 로열 미디어, 전역 통합 OTT 플랫폼 가입자 수 3,000만 명 돌파",22.0
+ROYALMEDIA,CoreNegative,"로열 미디어, 방통위 규제 강화에 따른 광고 수익성 악화 우려",-15.0
+ROYALMEDIA,Disaster,"[속보] 로열 미디어, 정관계 불법 로비 및 방송 편성 청탁 비밀 문건 폭로",-90.0
+CINEMAHOLIC,NormalPositive,"시네마 홀릭, 신작 영화 사전 예매량 역대 최대치 달성",4.0
+CINEMAHOLIC,NormalNegative,"시네마 홀릭, 해외 촬영지 로케이션 비용 증가로 영업익 일시 감소",-3.0
+CINEMAHOLIC,CorePositive,"[분석] 시네마 홀릭, 글로벌 대작 블록버스터 흥행으로 3천억대 매출 확보",21.0
+CINEMAHOLIC,CoreNegative,"시네마 홀릭, 야심차게 준비한 대형 텐트폴 영화 개봉 연기 발표",-16.0
+CINEMAHOLIC,Disaster,"[긴급] 시네마 홀릭, 투자 배급금 무단 유용 및 허위 상영관 표기 사기 적발",-95.0
+STUDIOLUNA,NormalPositive,"스튜디오 루나, 신작 티저 영상 조회수 '역대 최단기간' 1억 뷰 돌파",4.0
+STUDIOLUNA,NormalNegative,"스튜디오 루나, 대규모 인력 확충에 따른 인건비 부담 증대 전망",-4.0
+STUDIOLUNA,CorePositive,"[단독] 스튜디오 루나, 글로벌 OTT와 1,000억 규모 콘텐츠 공급 계약",20.0
+STUDIOLUNA,CoreNegative,"스튜디오 루나, '기대작' 개발 전면 중단 선언... 개발 동력 상실 우려",-22.0
+STUDIOLUNA,Disaster,"[속보] 핵심 IP 표절 확정 판결... 거액 배상금 및 전량 폐기 처분",-95.0
+POPCORE,NormalPositive,"팝 코어, AI 기반 개인 맞춤형 음원 추천 알고리즘 고도화 성공",5.0
+POPCORE,NormalNegative,"팝 코어, 음원 저작권 수수료 정산 비율 인상에 따른 비용 증가",-4.0
+POPCORE,CorePositive,"[단독] 팝 코어, 제국 내 음원 스트리밍 서비스 시장 점유율 1위 등극",20.0
+POPCORE,CoreNegative,"팝 코어, 가상 작곡가 음원 침해 소송 피소로 서비스 일시 제한",-15.0
+POPCORE,Disaster,"[긴급] 팝 코어, 이용자 청취 데이터 조작 및 차트 무단 순위 조작 적발",-90.0
+VISUALART,NormalPositive,"비주얼 아트, 글로벌 메이저 게임 제작사 VFX 프로젝트 수주",4.0
+VISUALART,NormalNegative,"비주얼 아트, 고사양 렌더링 장비 수입가 상승에 따른 마진율 하락",-3.0
+VISUALART,CorePositive,"[특징주] 비주얼 아트, 독자 개발 '실시간 시각 효과 엔진' 상용화 성공",23.0
+VISUALART,CoreNegative,"비주얼 아트, 주요 계약사의 대형 프로젝트 무산 소식에 실적 우려",-18.0
+VISUALART,Disaster,"[속보] 비주얼 아트, 수백억대 국책 기술 지원금 허위 서류로 수취 적발",-99.0
+NEXTONE,NormalPositive,"넥스트 원, 홀로그램 공연 기술 유저 만족도 조사 1위 달성",3.0
+NEXTONE,NormalNegative,"넥스트 원, 공연 장비 노후화에 따른 유지보수 비용 선반영",-3.0
+NEXTONE,CorePositive,"[단독] 넥스트 원, 세계 최대 돔 공연장 '홀로그램 전용관' 독점권",18.0
+NEXTONE,CoreNegative,"넥스트 원, 라이브 공연 중 서버 다운으로 인한 대규모 환불 사태",-20.0
+NEXTONE,Disaster,"[긴급] 넥스트 원, 불법 자금 세탁 통로 활용 혐의로 영업 정지",-90.0
+DARKHORSE,NormalPositive,"다크 호스, 퍼블리싱 인디 게임 '로그 라이트' 스팀 판매 1위",5.0
+DARKHORSE,NormalNegative,"다크 호스, 글로벌 게임 전시회 출전 비용 선반영으로 적자 전환",-4.0
+DARKHORSE,CorePositive,"[단독] 다크 호스, 텐배거 흥행작 단독 유통으로 창사 이래 최대 실적",25.0
+DARKHORSE,CoreNegative,"다크 호스, 유통 계약 중이던 핵심 개발사의 일방적 계약 파기",-18.0
+DARKHORSE,Disaster,"[긴급] 다크 호스, 불법 사설 도박 서버 호스팅 및 자금 세탁 공모 적발",-95.0
+SOCIALMIX,NormalPositive,"소셜 믹스, 숏폼 챌린지 열풍에 힘입어 일일 활성 사용자 급증",5.0
+SOCIALMIX,NormalNegative,"소셜 믹스, 트래픽 폭증에 따른 서버 대역폭 임대 비용 부담 증가",-4.0
+SOCIALMIX,CorePositive,"[특징주] 소셜 믹스, 신규 광고 비즈니스 모델 안착... 월 매출 서프라이즈",24.0
+SOCIALMIX,CoreNegative,"소셜 믹스, 유저 이탈 추세 관련 부정적 애널리스트 보고서 보고",-15.0
+SOCIALMIX,Disaster,"[긴급] 소셜 믹스, 사용자 위치 및 사생활 영상 대규모 유출 사고 발생",-90.0
+SCONNECT,NormalPositive,"S-커넥트, 전국망 커버리지 100% 달성... '디지털 소외' 해소",3.0
+SCONNECT,NormalNegative,"S-커넥트, 노후 케이블 교체 비용 선반영... 분기 실적 컨센서스 하회",-2.0
+SCONNECT,CorePositive,"[특징주] S-커넥트, 차세대 '6G 국가 표준' 사업 주관사 선정",15.0
+SCONNECT,CoreNegative,"S-커넥트, 위성 통신망 대규모 수신 장애... '블랙아웃' 공포 확산",-12.0
+SCONNECT,Disaster,"[긴급] S-커넥트, 국가 기간망 관리 소홀에 따른 '사업권 박탈' 결정",-90.0
+METROLINK,NormalPositive,"메트로 링크, 자율주행 전용 차선 결제 모듈 도입 성공",3.0
+METROLINK,NormalNegative,"메트로 링크, 정기권 할인율 인상 압박에 분기 영업익 하락",-2.0
+METROLINK,CorePositive,"[단독] 메트로 링크, 수도권 스마트 대중교통 허브 시스템 독점 구축",20.0
+METROLINK,CoreNegative,"메트로 링크, 중앙 관제망 일시적 에러로 출퇴근 시간 혼선 발생",-15.0
+METROLINK,Disaster,"[긴급] 메트로 링크, 자율주행 버스 충돌 사고 대규모 사망자 발생... 사업 폐쇄",-95.0
+GLOBALROUTE,NormalPositive,"글로벌 루트, 태평양 횡단 초고속 해저 광케이블 포설 순항",4.0
+GLOBALROUTE,NormalNegative,"글로벌 루트, 심해 지진으로 인한 복구 공사 비용 임시 선반영",-3.0
+GLOBALROUTE,CorePositive,"[분석] 글로벌 루트, 국가간 데이터 전송 독점망 구축... 영업이익 폭등",24.0
+GLOBALROUTE,CoreNegative,"글로벌 루트, 해저 통신망 점거 리스크 등 국제 분쟁 여파 발생",-16.0
+GLOBALROUTE,Disaster,"[긴급] 글로벌 루트, 타국 첩보 기관과 국가 통신 데이터 백도어 유출 공모",-90.0
+AIRLINK,NormalPositive,"에어 링크, UAM 실증 비행 무사고 1,000시간 달성",4.0
+AIRLINK,NormalNegative,"에어 링크, 기체용 차세대 배터리 수급가 인상에 따른 수익성 저하",-3.0
+AIRLINK,CorePositive,"[단독] 에어 링크, 제국 수도권 핵심 항공 노선 '운항 독점권' 획득",20.0
+AIRLINK,CoreNegative,"에어 링크, 테스트 기체 도심 추락 사고 발생... 안전성 논란 증폭",-22.0
+AIRLINK,Disaster,"[속보] 에어 링크, 불법 항로 운영 및 뇌물 수수 적발... 전 기체 압류",-95.0
+CITYGUARD,NormalPositive,"시티 가드, 인공지능 기반 범죄 예방 감시 카메라 추가 수주",4.0
+CITYGUARD,NormalNegative,"시티 가드, 지능형 모니터링 고사양 그래픽 하드웨어 구입비 부담",-3.0
+CITYGUARD,CorePositive,"[특징주] 시티 가드, 제국 3대 대도시 통합 치안 시스템 구축 계약",22.0
+CITYGUARD,CoreNegative,"시티 가드, AI 안면 인식 오작동으로 인한 인권 유린 소송 피소",-15.0
+CITYGUARD,Disaster,"[속보] 시티 가드, 사설 해킹 그룹과 국가 VIP 동선 정보 거래 적발",-90.0
+PIPELINE,NormalPositive,"파이프 라인, 중부 가스관 공급 안정화로 분기 매출액 개선",3.0
+PIPELINE,NormalNegative,"파이프 라인, 부식 방지용 특수 페인트 단가 인상에 고전",-3.0
+PIPELINE,CorePositive,"[단독] 파이프 라인, 제국 전역 관통 신규 원유 수송관 단독 운영권",21.0
+PIPELINE,CoreNegative,"파이프 라인, 밸브 압력 결함으로 인한 수송 일시 정지 지연 발생",-12.0
+PIPELINE,Disaster,"[긴급] 파이프 라인, 대규모 독성 화학물질 유출 사고로 환경 재앙 유발",-99.0
+WAVECOMM,NormalPositive,"웨이브 통신, 가입자당 평균 매출(ARPU) 견조한 상승세 지속",3.0
+WAVECOMM,NormalNegative,"웨이브 통신, 경쟁사 공격적 마케팅에 따른 가입자 유치 비용 증가",-4.0
+WAVECOMM,CorePositive,"[단독] 웨이브 통신, 심해 해저 광케이블 글로벌 프로젝트 주도",22.0
+WAVECOMM,CoreNegative,"웨이브 통신, 주요 해저 케이블 단선 사고로 국제 통신 장애 발생",-18.0
+WAVECOMM,Disaster,"[긴급] 웨이브 통신, 국가 정보 당국과의 무단 도감청 협조 의혹",-90.0
+SIGNALZERO,NormalPositive,"시그널 제로, 초고주파 안테나 전송 전력 효율 40% 개선",5.0
+SIGNALZERO,NormalNegative,"시그널 제로, 6G 기지국 필드 테스트 비용으로 단기 적자 기록",-4.0
+SIGNALZERO,CorePositive,"[특징주] 시그널 제로, 세계 최초 6G 이동통신 원천 특허 등록 완료",25.0
+SIGNALZERO,CoreNegative,"시그널 제로, 경쟁사의 6G 특허 무효 심판 청구 소식에 급락",-18.0
+SIGNALZERO,Disaster,"[속보] 시그널 제로, 상장 전 원천 특허 데이터 조작 및 허위 기술 사기",-95.0
+LASTMILE,NormalPositive,"라스트 마일, 국토부 드론 배송 전용 비행로 시범 지정 소식",4.0
+LASTMILE,NormalNegative,"라스트 마일, 드론 스테이션 전기 인입 비용 선반영으로 영업익 둔화",-3.0
+LASTMILE,CorePositive,"[단독] 라스트 마일, 제국 전역 배달망 연계 드론 물류 독점 파트너십",22.0
+LASTMILE,CoreNegative,"라스트 마일, 드론 전파 교란 테러 발생... 안전 가이드라인 강화 규제",-18.0
+LASTMILE,Disaster,"[긴급] 라스트 마일, 불법 정찰 드론 운영 및 군사 정보 사진 무단 촬영",-90.0
+FORESTLAB,NormalPositive,"포레스트 랩, 신규 천연물 영양제 라인업 동남아 시장 안착",4.0
 FORESTLAB,NormalNegative,"포레스트 랩, 원재료 가격 상승에 따른 제조 원가 부담 증가",-3.0
 FORESTLAB,CorePositive,"[특징주] 포레스트 랩, 글로벌 제약사와 5,000억 규모 CMO 공급 계약",25.0
-FORESTLAB,CoreNegative,"포레스트 랩, 핵심 항암 후보 물질의 글로벌 특허 분쟁 패소 리스크 노출",-18.0
+FORESTLAB,CoreNegative,"포레스트 랩, 핵심 신약 후보 물질 임상 데이터 재검토 결정",-20.0
 FORESTLAB,Disaster,"[긴급] 포레스트 랩, 유독 물질 함유된 가짜 약품 조직적 유통 적발",-99.0
+WHITEMEDI,NormalPositive,"화이트 메디, 독감 백신 원료 해외 수주 증가세 확인",3.0
+WHITEMEDI,NormalNegative,"화이트 메디, 콜드체인 보관 설비 전력료 상승으로 단기 실적 둔화",-2.0
+WHITEMEDI,CorePositive,"[단독] 화이트 메디, 제국 국방부 군용 특수 백신 독점 생산 계약",21.0
+WHITEMEDI,CoreNegative,"화이트 메디, 보건소 백신 납품 과정에서 온도 유지 불량 사과문",-15.0
+WHITEMEDI,Disaster,"[긴급] 화이트 메디, 맹독성 미생물 유출 사고로 인근 공장 잠정 폐쇄",-99.0
+PURESCIENCE,NormalPositive,"퓨어 사이언스, 신형 초간편 호흡기 진단 키트 출시",4.0
+PURESCIENCE,NormalNegative,"퓨어 사이언스, 검체 시약용 희귀 효소 관세 인상에 마진율 압박",-3.0
+PURESCIENCE,CorePositive,"[속보] 퓨어 사이언스, 글로벌 바이오 유통망 진단 시약 단독 독점 공급",22.0
+PURESCIENCE,CoreNegative,"퓨어 사이언스, 일부 공급 진단 키트 불량 보고로 리콜 비용 반영",-12.0
+PURESCIENCE,Disaster,"[속보] 퓨어 사이언스, 가짜 불량 진단 키트의 조직적 대량 유통 덜미",-95.0
+NEURONBIO,NormalPositive,"뉴런 바이오, BCI 뇌파 분석 정확도 업계 최고 수준 달성",5.0
+NEURONBIO,NormalNegative,"뉴런 바이오, 고가 연구 장비 리스 비용 증가로 단기 실적 둔화",-4.0
+NEURONBIO,CorePositive,"[속보] 뉴런 바이오, 파킨슨병 치료용 뇌 임플란트 임상 성공",24.0
+NEURONBIO,CoreNegative,"뉴런 바이오, 핵심 연구진의 경쟁사 집단 이직으로 기술 유출 우려",-18.0
+NEURONBIO,Disaster,"[긴급] 뉴런 바이오, 인체 실험 윤리 규정 위반 및 불법 실험 적발",-90.0
+GENEMATRIX,NormalPositive,"진 매트릭스, 유전자 가위 절단 정확도 99.9% 도달",5.0
+GENEMATRIX,NormalNegative,"진 매트릭스, 유전체 교정 장비 사용료 부담으로 단기 적자 기록",-4.0
+GENEMATRIX,CorePositive,"[특징주] 진 매트릭스, 희귀 혈액 질환 유전자 가위 임상 승인 성공",24.0
+GENEMATRIX,CoreNegative,"진 매트릭스, 바이오 윤리 위원회의 유전자 복제 규제 강화 성명",-16.0
+GENEMATRIX,Disaster,"[긴급] 진 매트릭스, 비인가 유전자 조작 실험을 통한 키메라 태아 적발",-99.0
+CELLEFFECT,NormalPositive,"셀 이펙트, 손상 관절 재생 줄기세포 치료제 식약처 품목 허가",4.0
+CELLEFFECT,NormalNegative,"셀 이펙트, 줄기세포 배양 배지 단가 인상에 따른 원가율 상승",-3.0
+CELLEFFECT,CorePositive,"[단독] 셀 이펙트, 손상 신경계 세포 복구 기술 특허권 최종 확보",20.0
+CELLEFFECT,CoreNegative,"셀 이펙트, 임상 과정 내 비정상 종양 발생 사례 보고로 임상 연기",-18.0
+CELLEFFECT,Disaster,"[긴급] 셀 이펙트, 환자 동의 없는 타인 줄기세포 무단 복제 이식 적발",-90.0
+LIFECURE,NormalPositive,"라이프 큐어, 희귀 난치병 치료제 유럽 판매 허가 획득",4.0
+LIFECURE,NormalNegative,"라이프 큐어, 신약 홍보 마케팅비 집중 투입에 따른 적자 전환",-5.0
+LIFECURE,CorePositive,"[분석] 라이프 큐어, 암 정복 기술 상용화 임박... 기업 가치 재평가",25.0
+LIFECURE,CoreNegative,"라이프 큐어, 라이벌사의 유사 기전 신약 선점 뉴스에 하락세",-15.0
+LIFECURE,Disaster,"[긴급] 라이프 큐어, 조작된 임상 데이터로 식약청 승인 취득 적발",-99.0
+VIRUSX,NormalPositive,"바이러스 X, 변종 인플루엔자 예방 치료제 해외 테스트 개시",5.0
+VIRUSX,NormalNegative,"바이러스 X, 실험용 바이러스 분양 수수료 부담 가중 공시",-3.0
+VIRUSX,CorePositive,"[분석] 바이러스 X, 신종 코로나 변종 면역 물질 독점 생산 개시",23.0
+VIRUSX,CoreNegative,"바이러스 X, 신약 후보 물질의 타사 특허 침해 소송 최종 피소",-15.0
+VIRUSX,Disaster,"[속보] 바이러스 X, 자체 배양 중이던 슈퍼 바이러스 외부 유출 확인 및 상폐",-98.0
+BIOSYNC,NormalPositive,"바이오 싱크, 인공 각막 생체 적합성 1차 테스트 성공",4.0
+BIOSYNC,NormalNegative,"바이오 싱크, 인공 파츠 생산 정밀 기계 리스료 상승 부담",-3.0
+BIOSYNC,CorePositive,"[특징주] 바이오 싱크, 제국 보훈처와 인공 의수/의족 단독 공급 계약",22.0
+BIOSYNC,CoreNegative,"바이오 싱크, 일부 시제품 내 유해 중금속 미량 검출 루머에 급락",-18.0
+BIOSYNC,Disaster,"[긴급] 바이오 싱크, 상장 전 가짜 인공 신장 허위 임상 및 분식 회계 적발",-95.0
+WINGSLOGIS,NormalPositive,"윙스 로직스, 물류 자동화 수율 개선으로 영업이익률 상승",3.0
+WINGSLOGIS,NormalNegative,"윙스 로직스, 국제 유가 급등에 따른 항공 운송비 부담 가중",-4.0
+WINGSLOGIS,CorePositive,"[단독] 윙스 로직스, 자율주행 드론 배송 서비스 '전역 상용화'",22.0
+WINGSLOGIS,CoreNegative,"윙스 로직스, 주요 물류 허브 터미널 대규모 파업으로 배송 중단",-18.0
+WINGSLOGIS,Disaster,"[긴급] 윙스 로지스, 고가 배송 물품 대규모 조직적 횡령 적발",-90.0
+SKYNET,NormalPositive,"스카이 넷, '스카이 링크' 남반구 기지국 추가 개설",4.0
+SKYNET,NormalNegative,"스카이 넷, 우주 쓰레기 충돌 방지 회피 기동으로 위성 수명 소폭 하락",-3.0
+SKYNET,CorePositive,"[속보] 스카이 넷, 전세계 해상/항공 통신망 위성 링크 독점 공급 계약",23.0
+SKYNET,CoreNegative,"스카이 넷, 태양풍 발 자기 폭풍 여파로 단기 위성 통신 지연 보고",-15.0
+SKYNET,Disaster,"[긴급] 스카이 넷, 제국 주요 정찰 위성 해킹 당해 중앙 제어권 상실",-95.0
+AIRCARRIER,NormalPositive,"에어 캐리어, 분기 여객 탑승률(L/F) 92% 돌파로 어닝 서프라이즈",4.0
+AIRCARRIER,NormalNegative,"에어 캐리어, 국제 항공 유가 부담 가중으로 단기 영업익 하락",-4.0
+AIRCARRIER,CorePositive,"[단독] 에어 캐리어, 글로벌 다국적 물류 기업과 대규모 독점 화물 수송 계약",21.0
+AIRCARRIER,CoreNegative,"에어 캐리어, 자사 항공 노선 승무원 총파업 결의로 운항 일시 차질",-18.0
+AIRCARRIER,Disaster,"[속보] 에어 캐리어 대형 화물선, 엔진 결함으로 도심 인근 추락 참사",-99.0
+BLUESKY,NormalPositive,"블루 스카이, 하계 성수기 노선 예약률 98%로 역대 최고치",4.0
+BLUESKY,NormalNegative,"블루 스카이, 기체 노후화에 따른 안전 점검 비용 선반영",-3.0
+BLUESKY,CorePositive,"[분석] 블루 스카이, 저가 항공 시장 점유율 1위 탈환 성공",20.0
+BLUESKY,CoreNegative,"블루 스카이, 신규 노선 운수권 배분 제외로 성장 동력 약화",-15.0
+BLUESKY,Disaster,"[긴급] 블루 스카이 경영진, 비자금 조성을 위한 불법 유상증자",-90.0
+ORBITALTECH,NormalPositive,"오비탈 테크, 민간 위성 3기 저궤도 안착 성공",4.0
+ORBITALTECH,NormalNegative,"오비탈 테크, 발사대 유지보수용 특수 내열재 가격 상승 부담",-3.0
+ORBITALTECH,CorePositive,"[단독] 오비탈 테크, 향후 3년간 로켓 발사 대행 20회 단독 계약",22.0
+ORBITALTECH,CoreNegative,"오비탈 테크, 기상 악화로 인한 차세대 다목적 위성 발사 일정 무기한 연기",-15.0
+ORBITALTECH,Disaster,"[긴급] 오비탈 테크, 연소 시험 중 로켓 폭발로 메인 발사 패드 전체 완파",-90.0
+JETSTREAM,NormalPositive,"젯 스트림, 이온 추진체 연료 소비 효율 15% 개선 성공",3.0
+JETSTREAM,NormalNegative,"젯 스트림, 추진체 블레이드 합금 수입 가격 폭등에 고전",-3.0
+JETSTREAM,CorePositive,"[특징주] 젯 스트림, 초음속 여객기용 특수 하이브리드 엔진 수출 계약",25.0
+JETSTREAM,CoreNegative,"젯 스트림, 군용 전투기 탑재 엔진 설계 결함으로 보상 요구 직면",-18.0
+JETSTREAM,Disaster,"[속보] 젯 스트림, 군사 기술 무단 해외 유출 및 횡령 혐의 대표 구속",-95.0
+AURORAAERO,NormalPositive,"오로라 에어로, 민간 우주 관광 대기 명단 1만 명 돌파",5.0
+AURORAAERO,NormalNegative,"오로라 에어로, 차세대 발사체 연료 가격 인상에 따른 실적 둔화",-3.0
+AURORAAERO,CorePositive,"[단독] 오로라 에어로, 제국 항공우주국 달 정거장 건설 참여",25.0
+AURORAAERO,CoreNegative,"오로라 에어로, 로켓 엔진 연소 테스트 도중 폭발 사고 발생",-22.0
+AURORAAERO,Disaster,"[속보] 오로라 에어로 우주 관광선, 궤도 이탈 후 승객 전원 실종",-95.0
+COSMOSX,NormalPositive,"코스모스 X, 심우주 탐사선 '오디세이 호' 순항 중",5.0
+COSMOSX,NormalNegative,"코스모스 X, 심우주 통신 중계국 건립 예산 과다 지출로 적자",-4.0
+COSMOSX,CorePositive,"[단독] 코스모스 X, 소행성 지대 도달 및 희귀 자원 매장 샘플 공식 확인",25.0
+COSMOSX,CoreNegative,"코스모스 X, 탐사 위성 안테나 전개 실패로 통신 두절 루머",-18.0
+COSMOSX,Disaster,"[긴급] 코스모스 X, 탐사선 폭발 사실 은폐 및 투자 유치용 허위 보고서 적발",-99.0
+GALAXYMINING,NormalPositive,"갤럭시 마이닝, 소행성 채굴선용 자율 로봇 장비 시험 가동",4.0
+GALAXYMINING,NormalNegative,"갤럭시 마이닝, 희토류 대체재 연구 개발 예산 증액에 이익 감소",-3.0
+GALAXYMINING,CorePositive,"[특징주] 갤럭시 마이닝, 제국 우주 자원 위원회 '소행성 채굴권' 최초 획득",22.0
+GALAXYMINING,CoreNegative,"갤럭시 마이닝, 채굴 로봇 팔 기계 고장으로 소행성 자원 회수 연기",-16.0
+GALAXYMINING,Disaster,"[긴급] 갤럭시 마이닝, 상장 전 채굴 자원 함량 조작 사기 및 분식 회계 적발",-95.0
+MORNINGBREW,NormalPositive,"모닝 브루, 신규 에너지 드링크 '네온 샷' 판매 호조",3.0
+MORNINGBREW,NormalNegative,"모닝 브루, 국제 원두 수입 가격 상승에 따른 마진율 하락",-3.0
+MORNINGBREW,CorePositive,"[특징주] 모닝 브루, 글로벌 프랜차이즈 점포 수 세계 1위 등극",18.0
+MORNINGBREW,CoreNegative,"모닝 브루, 일부 매장 위생 점검 부적격 판정으로 이미지 타격",-10.0
+MORNINGBREW,Disaster,"[긴급] 모닝 브루 전 제품에서 치명적 독성 물질 검출... 영업 정지",-90.0
+EVERYMART,NormalPositive,"에브리 마트, PB 상품 '에브리 초이스' 판매 비중 30% 돌파",4.0
+EVERYMART,NormalNegative,"에브리 마트, 최저 임금 인상에 따른 오프라인 매장 관리비 상승",-3.0
+EVERYMART,CorePositive,"[특징주] 에브리 마트, 제국 대규모 유통 창고 자동화 설비 도입 성공",20.0
+EVERYMART,CoreNegative,"에브리 마트, 추석 명절 과일 세트 보관 불량에 따른 환불 청구 증가",-12.0
+EVERYMART,Disaster,"[속보] 에브리 마트, 협력사 납품 단가 후려치기 적발 및 공정위 과징금 폭탄",-90.0
+RETAILPRO,NormalPositive,"리테일 프로, 무인 결제 및 AI 도난 방지 솔루션 특허 취득",3.0
+RETAILPRO,NormalNegative,"리테일 프로, 영세 가맹점 상생 지원금 지출로 영업익 소폭 하락",-2.0
+RETAILPRO,CorePositive,"[단독] 리테일 프로, 하이브리드 편의점 1만 호점 돌파 및 업계 성장 1위",21.0
+RETAILPRO,CoreNegative,"리테일 프로, 심야 시간대 무인 결제 에러로 전국적 매출 결손 보고",-15.0
+RETAILPRO,Disaster,"[긴급] 리테일 프로, 가맹 보증금 수천억 원 무단 유용 및 대표 해외 도피",-95.0
+ORGANICTABLE,NormalPositive,"오가닉 테이블, 새벽 배송 가능 지역 전국 단위 확대",4.0
+ORGANICTABLE,NormalNegative,"오가닉 테이블, 신선도 유지를 위한 냉장 물류비 부담 증가",-3.0
+ORGANICTABLE,CorePositive,"[단독] 오가닉 테이블, 북부 청정 지역 농가와 독점 공급 계약",20.0
+ORGANICTABLE,CoreNegative,"오가닉 테이블, 일부 채소 제품 농약 잔류 기준치 초과 검출",-15.0
+ORGANICTABLE,Disaster,"[긴급] 오가닉 테이블, 유통 기한 위조 및 조직적 가담 정황 적발",-99.0
+FASHIONWEEK,NormalPositive,"패션 위크, 가을/겨울 시즌 디자이너 브랜드 독점 컬렉션 완판",4.0
+FASHIONWEEK,NormalNegative,"패션 위크, 모바일 앱 서버 리뉴얼 비용 증가로 분기 순익 감소",-3.0
+FASHIONWEEK,CorePositive,"[단독] 패션 위크, 제국 최대 패션 플랫폼 인수 완료... 시장 과점 지위 확보",22.0
+FASHIONWEEK,CoreNegative,"패션 위크, 입점 업체 일부의 가짜 가품 유통 의혹 제기에 신뢰 하락",-18.0
+FASHIONWEEK,Disaster,"[속보] 패션 위크, 고객 개인정보 및 카드 결제 데이터 다크넷 전량 유출 적발",-90.0
+SMARTHOME,NormalPositive,"스마트 홈, 친환경 원목 가구 라인업 런칭 및 소비자 호평",3.0
+SMARTHOME,NormalNegative,"스마트 홈, 해외 목재 원자재가 인상에 따른 가구 제조 비용 증가",-3.0
+SMARTHOME,CorePositive,"[속보] 스마트 홈, 제국 내 주요 신도시 아파트 빌트인 가구 공급 계약",21.0
+SMARTHOME,CoreNegative,"스마트 홈, IoT 스마트 소파 오작동으로 인한 소비자 화재 민원 제기",-15.0
+SMARTHOME,Disaster,"[긴급] 스마트 홈, 발암 물질인 1급 폼알데하이드 기준치 10배 초과 자재 사용 적발",-99.0
+SWEETBAKERY,NormalPositive,"스윗 베이커리, 시즌 한정 디저트 '루나 케이크' 품절 대란",4.0
+SWEETBAKERY,NormalNegative,"스윗 베이커리, 해외 출점 초기 비용 증가로 단기 적자 전환",-4.0
+SWEETBAKERY,CorePositive,"[단독] 스윗 베이커리, 유럽 디저트 시장 진출 및 대성공",22.0
+SWEETBAKERY,CoreNegative,"스윗 베이커리, 핵심 기술자들의 라이벌사 대거 이적 루머",-12.0
+SWEETBAKERY,Disaster,"[긴급] 스윗 베이커리, 공업용 유출 원료 사용 적발 및 전량 폐기",-90.0
+LUXURYBEAN,NormalPositive,"럭셔리 빈, 희귀 스페셜티 원두 옥션 낙찰 및 백화점 납품",4.0
+LUXURYBEAN,NormalNegative,"럭셔리 빈, 환율 상승에 따른 고가 수입 사치품 통관 관세 부담 가중",-4.0
+LUXURYBEAN,CorePositive,"[특징주] 럭셔리 빈, 제국 내 VVIP 전용 멤버십 백화점 독점 파트너십",22.0
+LUXURYBEAN,CoreNegative,"럭셔리 빈, 독점 수입 명품 식자재 유통 과정 중 부패 루머 보고",-16.0
+LUXURYBEAN,Disaster,"[속보] 럭셔리 빈, 가짜 짝퉁 원두 및 원산지 위조 조직적 공모 적발",-95.0
+LASTDEAL,NormalPositive,"라스트 딜, 한정판 스니커즈 주간 거래액 역대 최대 돌파",5.0
+LASTDEAL,NormalNegative,"라스트 딜, 검수 센터 확장 및 전문 감정사 채용으로 단기 지출 증가",-3.0
+LASTDEAL,CorePositive,"[단독] 라스트 딜, 블록체인 기반 한정판 진품 보증서 발급 시스템 도입",22.0
+LASTDEAL,CoreNegative,"라스트 딜, 일부 한정판 의류 감정 오류로 인한 소송 피소",-15.0
+LASTDEAL,Disaster,"[긴급] 라스트 딜, 대표이사 및 주요 주주들의 상장 전 가짜 거래 매출 조작 적발",-99.0
+WINDHILL,NormalPositive,"윈드 힐, 해상 풍력 발전 효율 개선 기술 적용 성공",3.0
+WINDHILL,NormalNegative,"윈드 힐, 노후 터빈 유지보수 비용 증가로 실적 소폭 하락",-2.0
+WINDHILL,CorePositive,"[단독] 윈드 힐, 정부 주도 대규모 해상 풍력 단지 독점권 획득",18.0
+WINDHILL,CoreNegative,"윈드 힐, 핵심 터빈 블레이드 설계 결함 발견 및 교체 권고",-15.0
+WINDHILL,Disaster,"[긴급] 윈드 힐, 국가 보조금 편취를 위한 가짜 발전량 조작 적발",-90.0
+SOLARFUTURE,NormalPositive,"솔라 퓨처, 서부 사막 지역 태양광 패널 1단계 공사 가동",4.0
+SOLARFUTURE,NormalNegative,"솔라 퓨처, 겨울철 일조량 부족에 따른 발전 용량 소폭 감소",-2.0
+SOLARFUTURE,CorePositive,"[단독] 솔라 퓨처, 글로벌 IT 기업과 2,000억 규모 친환경 RE100 공급 계약",21.0
+SOLARFUTURE,CoreNegative,"솔라 퓨처, 태양광 패널 세정 로봇 오작동으로 대규모 교체 비용 발생",-15.0
+SOLARFUTURE,Disaster,"[속보] 솔라 퓨처, 정부 보조금 확보용 가짜 발전기 가동 및 분식 적발",-90.0
+AQUAENERGY,NormalPositive,"아쿠아 에너지, 동부 해안 조력 발전소 누적 발전량 역대 최대",3.0
+AQUAENERGY,NormalNegative,"아쿠아 에너지, 댐 및 수문 안전 진단 정기 비용 선반영",-3.0
+AQUAENERGY,CorePositive,"[특징주] 아쿠아 에너지, 제국 전역 친환경 수력 에너지 전력 전담 공급원",20.0
+AQUAENERGY,CoreNegative,"아쿠아 에너지, 가뭄 지속에 따른 전국 수력 발전기 가동률 50% 급락",-16.0
+AQUAENERGY,Disaster,"[긴급] 아쿠아 에너지, 댐 균열 붕괴 위기 사실 은폐 시도 적발 및 거래정지",-95.0
+SUNLIGHT,NormalPositive,"선 라이트, 가정용 에너지 저장 장치(ESS) 판매량 급증",4.0
+SUNLIGHT,NormalNegative,"선 라이트, 글로벌 태양광 패널 단가 하락에 따른 매출 감소",-3.0
+SUNLIGHT,CorePositive,"[속보] 선 라이트, 차세대 고효율 페로브스카이트 패널 개발",22.0
+SUNLIGHT,CoreNegative,"선 라이트, 경쟁사의 저가 공세로 인한 동남아 시장 점유율 하락",-12.0
+SUNLIGHT,Disaster,"[긴급] 선 라이트, 태양광 효율 데이터 500% 부풀리기 사기 적발",-99.0
+FUSIONLAB,NormalPositive,"핵 융합 랩, 초전도 자석 코일 냉각 기술 테스트 성공",5.0
+FUSIONLAB,NormalNegative,"핵 융합 랩, 입자 가속기 액체 헬륨 수입 가격 인상에 부담",-4.0
+FUSIONLAB,CorePositive,"[단독] 핵 융합 랩, 상온 플라즈마 300초 연속 유지 특이점 도달",25.0
+FUSIONLAB,CoreNegative,"핵 융합 랩, 핵심 플라즈마 제어 알고리즘 오류 보고 및 실험 중단",-18.0
+FUSIONLAB,Disaster,"[긴급] 핵 융합 랩, 초고온 플라즈마 차폐망 붕괴 사고로 소속 연구원 피폭",-99.0
+GREENGAS,NormalPositive,"그린 가스, 신형 고효율 수소 압축 충전기 자체 개발 성공",4.0
+GREENGAS,NormalNegative,"그린 가스, 전국 수소 충전소 인허가 절차 지연에 따른 매출 지연",-3.0
+GREENGAS,CorePositive,"[특징주] 그린 가스, 제국 수소 상용차 표준 충전망 '단독 운영사' 선정",22.0
+GREENGAS,CoreNegative,"그린 가스, 수소 이송 배관 일부 미세 가스 누출 보고로 안전진단",-15.0
+GREENGAS,Disaster,"[속보] 그린 가스, 중앙 수소 저장 탱크 대폭발 사고로 충전소 지구 완파",-99.0
+ECOBATTERY,NormalPositive,"에코 배터리, 글로벌 전기차 제조사 배터리 수주 물량 확대",4.0
+ECOBATTERY,NormalNegative,"에코 배터리, 원자재 리튬 가격 폭등에 따른 원가 압박 가중",-4.0
+ECOBATTERY,CorePositive,"[단독] 에코 배터리, 화재 위험 없는 전고체 배터리 양산 성공",25.0
+ECOBATTERY,CoreNegative,"에코 배터리, 주력 제품군 화재 리스크로 인한 전량 리콜 결정",-22.0
+ECOBATTERY,Disaster,"[긴급] 에코 배터리, 핵심 전고체 기술 통째로 해외 경쟁사 유출",-90.0
+CARBONZERO,NormalPositive,"카본 제로, 발전소 굴뚝용 탄소 포집 포터블 필터 추가 수주",4.0
+CARBONZERO,NormalNegative,"카본 제로, 포집용 화학 흡수제 원료 공급망 다변화 비용 발생",-3.0
+CARBONZERO,CorePositive,"[단독] 카본 제로, 탄소배출권 대량 확보 및 거래를 통한 역대급 마진 확보",22.0
+CARBONZERO,CoreNegative,"카본 제로, 탄소배출량 의무 감축 쿼터 법안 무산 소식에 투자심리 급랭",-18.0
+CARBONZERO,Disaster,"[긴급] 카본 제로, 지하 저장 탄소의 대량 누출로 인한 인근 주민 집단 중독",-90.0
+SUNPOWER,NormalPositive,"썬 파워, 정지궤도 위성용 초경량 박막 태양광 필름 테스트 통과",5.0
+SUNPOWER,NormalNegative,"썬 파워, 무선 송전 안테나 궤도 변경 시험 비용 지출 가중",-3.0
+SUNPOWER,CorePositive,"[속보] 썬 파워, 우주 태양광 무선 전력 전송 수율 80% 달성 성공",24.0
+SUNPOWER,CoreNegative,"썬 파워, 수신 안테나 방향 정렬 실패로 지상 송전 시범 중단",-16.0
+SUNPOWER,Disaster,"[긴급] 썬 파워, 고출력 무선 전력 빔 오발로 지상 민간인 거주지 소생 불가",-99.0
+COZYPAY,NormalPositive,"코지 페이, 연간 거래액 100조 돌파... '핀테크 절대 강자' 입증",5.0
+COZYPAY,NormalNegative,"코지 페이, 가맹점 수수료 인하 압박에 따른 수익성 둔화 우려",-4.0
+COZYPAY,CorePositive,"[단독] 코지 페이, 제국 통합 결제 표준망 '단독 사업자' 선정",22.0
+COZYPAY,CoreNegative,"코지 페이, 시스템 해킹으로 인한 대규모 '오결제' 사고 발생",-18.0
+COZYPAY,Disaster,"[속보] 고객 예치금 5,000억 무단 유용 적발... '지급 불능' 및 상폐",-99.0
+SAFEBANK,NormalPositive,"세이프 뱅크, 주택 담보 대출 잔액 사상 최대... 이자 이익 증대",3.0
+SAFEBANK,NormalNegative,"세이프 뱅크, 금융 당국의 가계 대출 총량 규제로 대출 증가세 둔화",-2.0
+SAFEBANK,CorePositive,"[단독] 세이프 뱅크, 제국 국고 대행 수납 은행 최종 자격 획득",20.0
+SAFEBANK,CoreNegative,"세이프 뱅크, 예대마진 축소 전망 소식에 연간 순이익 목표치 하향",-12.0
+SAFEBANK,Disaster,"[속보] 세이프 뱅크, 본점 금고 내 보관 중이던 골드바 대규모 분실 적발",-90.0
+ROYALCAPITAL,NormalPositive,"로열 캐피탈, 기업용 특수 기계 리스 계약 체결액 전년비 15%↑",4.0
+ROYALCAPITAL,NormalNegative,"로열 캐피탈, 시중 금리 상승에 따른 조달 금리 부담 가중",-3.0
+ROYALCAPITAL,CorePositive,"[특징주] 로열 캐피탈, 제국 내 주요 산업 단지 리스 독점 사업자 선정",21.0
+ROYALCAPITAL,CoreNegative,"로열 캐피탈, 주요 고객사 연쇄 부도로 인한 부실 채권 상각 비용 충당",-18.0
+ROYALCAPITAL,Disaster,"[긴급] 로열 캐피탈, 미공개 정보 유출을 통한 주가 조작 주도 혐의 기소",-95.0
+MINTASSET,NormalPositive,"민트 자산운용, 운용 자산(AUM) 규모 전년비 15% 성장",3.0
+MINTASSET,NormalNegative,"민트 자산운용, 기준 금리 인상에 따른 자산 운용 압박 가중",-3.0
+MINTASSET,CorePositive,"[특징주] 민트 자산운용, 제국 최대 인프라 펀드 결성 성공",20.0
+MINTASSET,CoreNegative,"민트 자산운용, 고위험 상품군 대규모 손실 보고로 신뢰도 타격",-18.0
+MINTASSET,Disaster,"[긴급] 민트 자산운용, 폰지 사기 연루 정황 포착 및 전 자산 동결",-99.0
+BLUEBOND,NormalPositive,"블루 본드, 대규모 국채 인수 중개 성공으로 수수료 이익 폭증",4.0
+BLUEBOND,NormalNegative,"블루 본드, 안전자산 선호 약화에 따른 채권 거래량 단기 하락",-3.0
+BLUEBOND,CorePositive,"[속보] 블루 본드, 제국 철도 건설 자금 용도 1조 원 채권 발행 주관",22.0
+BLUEBOND,CoreNegative,"블루 본드, 주요 인수 회사 신용 등급 강등 여파로 채권 매각 지연",-15.0
+BLUEBOND,Disaster,"[속보] 블루 본드, 상장 전 유령 채권 대량 가짜 발행 및 시세 차익 횡령",-99.0
+SMARTINSU,NormalPositive,"스마트 인슈, AI 사고 예측률 95% 돌파... 손해율 큰 폭 개선",4.0
+SMARTINSU,NormalNegative,"스마트 인슈, 여름철 이상 기후 대비 마케팅비 지출 증가",-3.0
+SMARTINSU,CorePositive,"[단독] 스마트 인슈, 자율주행 보험 시장 최초 표준 요율 승인",20.0
+SMARTINSU,CoreNegative,"스마트 인슈, 중부 지역 태풍 폭우로 인한 자동차 보험 손해율 폭등",-18.0
+SMARTINSU,Disaster,"[긴급] 스마트 인슈, 고객 의료비 부당 청구 기각 지시 내부 고발 폭로",-90.0
+GOLDPOCKET,NormalPositive,"골드 포켓, 파생 상품 거래량 증가로 수수료 수익 급증",4.0
+GOLDPOCKET,NormalNegative,"골드 포켓, 리스크 관리 시스템 고도화 비용 선반영",-3.0
+GOLDPOCKET,CorePositive,"[속보] 골드 포켓, 업계 최초 AI 기반 레버리지 상품 런칭",22.0
+GOLDPOCKET,CoreNegative,"골드 포켓, 옵션 만기일 대규모 예측 실패로 손실 보고",-18.0
+GOLDPOCKET,Disaster,"[긴급] 골드 포켓, 조직적 자전거래를 통한 시세 조종 주도 적발",-90.0
+CRYPTOBANK,NormalPositive,"크립토 뱅크, 제국 승인 공식 비트코인 보관량 사상 최고",5.0
+CRYPTOBANK,NormalNegative,"크립토 뱅크, 보안 규제 컴플라이언스 비용 선반영 영업익 둔화",-3.0
+CRYPTOBANK,CorePositive,"[특징주] 크립토 뱅크, 제국 최초 가상자산 연계 신용카드 서비스 출시",23.0
+CRYPTOBANK,CoreNegative,"크립토 뱅크, 글로벌 가상 자산 급락에 따른 수수료 수입 급감",-18.0
+CRYPTOBANK,Disaster,"[긴급] 크립토 뱅크, 중앙 보안 위탁 지갑 탈취로 4,000억 가상자산 증발",-95.0
+QUANTLAB,NormalPositive,"퀀트 랩, 시장 변동성 확대 수혜로 주간 트레이딩 이익 급증",5.0
+QUANTLAB,NormalNegative,"퀀트 랩, 초고성능 연산 서버 교체 주기에 따른 자본 지출 가중",-3.0
+QUANTLAB,CorePositive,"[단독] 퀀트 랩, 독자적 AI 퀀트 알고리즘 전 분기 수익률 전체 1위",25.0
+QUANTLAB,CoreNegative,"퀀트 랩, 거래소 통신 포트 레이턴시 지연 사고로 시스템 손실 발생",-15.0
+QUANTLAB,Disaster,"[긴급] 퀀트 랩, 알고리즘 폭주로 초당 수만 회 시장 무단 투매 참사 발생",-99.0
+
+
+
+

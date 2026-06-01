@@ -16,11 +16,6 @@ namespace StockWars.Core
     /// </summary>
     public class NewsEventScheduler : Singleton<NewsEventScheduler>
     {
-        private const int TICK_CHECK_INTERVAL = 6;     // 뉴스 발생 시도 틱 주기 (6시간)
-        private const float NEWS_SPAWN_CHANCE = 35.0f;  // 해당 주기 도달 시 뉴스 터질 확률 (%)
-
-        private int _accumulatedTicks = 0;
-
         protected override void Awake()
         {
             base.Awake();
@@ -34,17 +29,13 @@ namespace StockWars.Core
 
         private void OnGameTick(GameTickEvent e)
         {
-            _accumulatedTicks++;
-            if (_accumulatedTicks >= TICK_CHECK_INTERVAL)
+            int hour = e.CurrentTime.Hour;
+
+            // [6월 고도화] 08:00 ~ 20:00 시간대 제한 및 3시간 정기 틱 주기 판정
+            // (08:00, 11:00, 14:00, 17:00, 20:00 시점에만 정량 뉴스 트리거)
+            if (hour >= 8 && hour <= 20 && (hour - 8) % 3 == 0)
             {
-                _accumulatedTicks = 0;
-                
-                // 확률 주사위 롤링
-                float roll = UnityEngine.Random.Range(0f, 100f);
-                if (roll <= NEWS_SPAWN_CHANCE)
-                {
-                    TriggerRandomNews();
-                }
+                TriggerRandomNews();
             }
         }
 
@@ -72,9 +63,27 @@ namespace StockWars.Core
                 return null;
             }
 
-            // 무작위 1개 종목 초이스
-            var selectedStock = listedStocks[UnityEngine.Random.Range(0, listedStocks.Count)];
+            // [종목 연속 발생 제한 가드 - 6월 고도화]
+            // 직전에 뉴스가 터졌던 종목 식별자를 가져와 후보군에서 정교하게 배제
+            var wallet = WalletManager.Instance;
+            var saveData = wallet?.ActiveSaveData;
+            string lastStockId = saveData != null ? saveData.LastNewsStockId : string.Empty;
+
+            var candidateStocks = listedStocks;
+            if (listedStocks.Count > 1 && !string.IsNullOrEmpty(lastStockId))
+            {
+                candidateStocks = listedStocks.Where(s => !s.StockId.Equals(lastStockId, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            // 후보군 중 무작위 1개 종목 초이스
+            var selectedStock = candidateStocks[UnityEngine.Random.Range(0, candidateStocks.Count)];
             string stockId = selectedStock.StockId;
+
+            // 선정 완료 후 LastNewsStockId 캐시 락 갱신
+            if (saveData != null)
+            {
+                saveData.LastNewsStockId = stockId;
+            }
 
             // 2. 가중치 룰 주사위 굴리기 (40% / 40% / 9% / 9% / 2%)
             NewsType selectedType = NewsType.NormalPositive;
@@ -176,6 +185,16 @@ namespace StockWars.Core
 
             return chosenTemplate;
         }
+
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD || UNITY_INCLUDE_TESTS
+        /// <summary>
+        /// 유닛 테스트 환경에서 틱 발생 상황 및 시간대 룰을 정밀 제어 모사하기 위한 테스트 헬퍼 API.
+        /// </summary>
+        public void ProcessTickForTest(DateTime mockTime)
+        {
+            OnGameTick(new GameTickEvent { CurrentTime = mockTime });
+        }
+        #endif
     }
 
     #region Event

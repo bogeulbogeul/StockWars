@@ -62,6 +62,9 @@ namespace StockWars.Core
             get => _activeNewsImpacts ??= new();
             set => _activeNewsImpacts = value;
         }
+
+        // 5.5. 직전에 뉴스가 터진 종목 ID 캐시 (중복 발생 배제용 - 6월 고도화)
+        public string LastNewsStockId { get; set; } = string.Empty;
         
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }

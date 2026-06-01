@@ -177,7 +177,55 @@ namespace StockWars.Core
                     }
                 }
 
-                testResultStatus = "SUCCESS (10,000 statistical rolls correct, disaster execution math and EventBus dispatch verified)";
+                // 5. [시간대 및 3시간 정기 주기 작동 정합성 검증 - 6월 고도화]
+                Debug.Log("[NewsEventSchedulerTest] [Step 5] Starting mock timeline trigger tests...");
+                
+                int mockTriggerCount = 0;
+                Action<NewsPublishedEvent> timeTestHandler = (e) => mockTriggerCount++;
+                EventBus.Subscribe(timeTestHandler);
+
+                // (1) 07:00 (시간대 만족 안 됨) ➡️ 트리거 미작동 기대
+                scheduler.ProcessTickForTest(new DateTime(2026, 6, 1, 7, 0, 0));
+                if (mockTriggerCount != 0) throw new Exception("News triggered incorrectly at 07:00!");
+
+                // (2) 08:00 (08~20시 만족 & 0시점) ➡️ 트리거 작동 기대
+                scheduler.ProcessTickForTest(new DateTime(2026, 6, 1, 8, 0, 0));
+                if (mockTriggerCount != 1) throw new Exception("News failed to trigger at 08:00!");
+
+                // (3) 09:00 (시간대 만족되나 1시간 경과 시점) ➡️ 트리거 미작동 기대
+                scheduler.ProcessTickForTest(new DateTime(2026, 6, 1, 9, 0, 0));
+                if (mockTriggerCount != 1) throw new Exception("News triggered incorrectly at 09:00!");
+
+                // (4) 11:00 (시간대 만족 & 3시간 주기 충족 시점) ➡️ 트리거 작동 기대
+                scheduler.ProcessTickForTest(new DateTime(2026, 6, 1, 11, 0, 0));
+                if (mockTriggerCount != 2) throw new Exception("News failed to trigger at 11:00!");
+
+                EventBus.Unsubscribe(timeTestHandler);
+                Debug.Log("[NewsEventSchedulerTest] [Step 5] Mock timeline triggers verified successfully.");
+
+                // 6. [종목 연속 중복 발생 방지 검증 - 6월 고도화]
+                Debug.Log("[NewsEventSchedulerTest] [Step 6] Verifying stock duplication prevention lock...");
+                
+                // 연속으로 뉴스를 2회 강제 롤링
+                var firstNews = scheduler.TriggerRandomNews();
+                var secondNews = scheduler.TriggerRandomNews();
+
+                if (firstNews == null || secondNews == null)
+                {
+                    throw new Exception("Consecutive news triggers failed to produce DTOs.");
+                }
+
+                Debug.Log($"* First news stock: {firstNews.StockId} | Second news stock: {secondNews.StockId}");
+                
+                // 상장 종목이 여러 개이므로, 두 번 연속 뉴스가 터졌을 때 같은 종목이어서는 안 됨
+                if (firstNews.StockId.Equals(secondNews.StockId, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new Exception($"Duplicate stock published news consecutively: {firstNews.StockId}!");
+                }
+
+                Debug.Log("[NewsEventSchedulerTest] [Step 6] Consecutive stock duplication lock verified successfully.");
+
+                testResultStatus = "SUCCESS (10,000 rolls, disaster execution, 3h regular triggers at 08~20h, and duplicate stock prevention verified)";
                 Debug.Log("[NewsEventSchedulerTest] ===== CORPORATE NEWS SCHEDULER INTEGRITY TEST COMPLETED WITH 100% SUCCESS =====");
             }
             catch (Exception ex)
