@@ -23,6 +23,8 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 071. **[CORE_GDD_05]** 🎨[Graphics] `TickerColorFX`: 실시간 가격 변동에 따른 상승(Cyan)/하락(Peach) 텍스트 색상 및 글로우 셰이더 피드백 효과 적용
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 128. **[CORE_GDD_06]** `ServerClock_Sync`: 실제 서버 시간(NTP / Web API Mock) 동기화 및 부재 시간(Delta Time) 동안 발생한 오프라인 주가 변동 및 금융 비용(이자/유지비) 배치 정산 연산 가상 백엔드 코어
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
