@@ -25,7 +25,7 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 128. **[CORE_GDD_06]** `WebClient_Socket`: 실제 마스터 서버에 접속하여 24시간 실시간 주가 데이터, 채팅 릴레이, 거래 체결 요청을 처리하는 Unity 클라이언트 네트워크 소켓 매니저
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 244. **[CORE_GDD_06]** `StockWars_Server` (Node.js / WebSocket): 실시간 주가 연산 및 브로드캐스트, 거래 패킷 정합성 검증, 서버 시각(NTP) 공급 및 전체 유저 실시간 채팅을 릴레이하는 독립형 백엔드 서버 코어 구축
+- [ ] 244. **[CORE_GDD_06]** `StockWars_Server` (Node.js / WebSocket): 단일 채널 최대 50명 동시 접속(Connection Pooling) 및 패킷 라우팅 수용, 실시간 주가 연산 및 브로드캐스트, 거래 패킷 정합성 검증, 서버 시각(NTP) 공급 및 50인 동시 세션 내 실시간 채팅 릴레이를 처리하는 독립형 백엔드 서버 코어 구축
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
