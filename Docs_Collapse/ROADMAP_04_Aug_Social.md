@@ -15,6 +15,8 @@
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 290. **[MOD_GDD_07]** `DialogueHistoryViewer`: 현재 대화 세션의 이전 텍스트들을 위로 스크롤하여 다시 읽는 역사보기 UI
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 250. **[CORE_GDD_02]** `Anna_FinanceHelper`: 안나 대화 데이터셋 내에 주식 재무지표(PER, PBR) 캐주얼 해설 스크립트 및 미수거래 반대매매 임박 시 초조함 애니메이션/대사 트리거링 로직 연동 (금융 딱딱함 해소 장치)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
