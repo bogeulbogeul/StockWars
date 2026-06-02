@@ -69,6 +69,12 @@
   - 📖 읽을 문서: `[MOD_GDD_14]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 240. **[MOD_GDD_14]** `DebtForgivenessLogic`: 회생 승인 시 이자 즉시 탕감 및 원금 50% 유예 트랙 전환 논리
   - 📖 읽을 문서: `[MOD_GDD_14]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 247. **[CORE_GDD_02]** 🧠[Pro] `ValuationMetrics`: 개별 종목의 가상 재무제표 데이터를 기반으로 PER, PBR, EPS 지표를 실시간 산출하는 연산 엔진 (6월 금융 고증 강화 반영 추가)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 248. **[CORE_GDD_02]** `MarginTradingSystem`: 보유 예수금의 최대 2배 미수거래 주문 접수 및 T+2 영업일 경과 시 자동 시장가 반대매매 강제 청산 시스템 (6월 금융 고증 강화 반영 추가)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 249. **[CORE_GDD_02]** `CorporateActions_Emitter`: 24개 종목 기업들의 정기/돌발 무상증자 및 유상증자 공시 배포 및 자본금/발행량 변동 반영 이벤트 프로세서 (6월 금융 고증 강화 반영 추가)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
