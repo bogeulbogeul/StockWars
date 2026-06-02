@@ -1,4 +1,4 @@
-# ROADMAP 02: 6월 (GIGDC 출품 준비)
+# ROADMAP 02: 6월 (GIGDC 출품 준비) - 유니티 최적화 개발 순서 개편
 
 **우선순위:** 2. 6월 말 GIGDC까지 해야 하는 것
 **목표:** [GIGDC: Lv.3 데모] 튜토리얼부터 Lv.3 구간 내 주요 기능(UI, 찌라시, 미니게임) 탑재 및 겉모습 완성
@@ -7,51 +7,72 @@
 
 ---
 
-## 🎨 기능군(Feature Groups)별 스프린트 계획
+## 🎨 유니티 개발 친화적 6단계 빌드 로드맵
 
-### 🖥️ Track 1: 전역 그래픽 프로필 및 포스트 프로세싱 (Global Shaders & Screen FX)
-- [ ] 042. **[CORE_GDD_01]** 🎨[Graphics] `GlobalPostPro`: 씬별 포스트 프로세싱(Vignette, Bloom, CRT) 프로필 설정
-  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 043. **[CORE_GDD_01]** 🎨[Graphics] `CursorManager`: 상황별 커서 아이템(돋보기, 손바닥) 변경 및 애니메이션
-  - 📖 읽을 문서: `[CORE_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 075. **[CORE_GDD_05]** 🎨[Graphics] `GlobalLighting_Cycle`: 게임 시간대에 따른 실시간 환경 광원(Day/Night) 변화
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Controller`: 날씨 시스템과 연동된 창밖 빗줄기 입자 및 바닥 물튀김
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 077. **[CORE_GDD_05]** 🎨[Graphics] `WindowRainShader`: 유리창에 흘러내리는 물방울의 굴절 셰이더 디테일 작업
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+### 🖥️ Phase 1: 전역 그래픽 프로필 및 포스트 프로세싱 (Global FX - 완료)
+* 게임 전체의 아늑한 색감 톤앤매너와 조명의 뼈대를 잡는 최초 기초 단계입니다.
+- [x] 042. **[CORE_GDD_01]** 🎨[Graphics] `GlobalPostPro`: 씬별 포스트 프로세싱 프로필 설정 (Cozy-Only 아늑한 테마 최적화 완료)
+- [x] 043. **[CORE_GDD_01]** 🎨[Graphics] `CursorManager`: 상황별 커서 아이템(돋보기, 손바닥) 변경 및 애니메이션 (커서 상태 전이 및 UI 바인더 연동 완료)
+- [x] 075. **[CORE_GDD_05]** 🎨[Graphics] `GlobalLighting_Cycle`: 게임 시간대에 따른 실시간 환경 광원(Day/Night) 변화 (현실 시간 연동 완료)
 
-### 📊 Track 2: 핵심 HUD 레이아웃 및 티커 UI (Core HUD & Ticker UI)
+---
+
+### 📊 Phase 2: 홈 오피스 씬 프레임 및 메인 HUD 앵커 (Canvas Layout Frame)
+* 유니티 에디터 상에 최상위 캔버스를 셋업하고, 화면 외곽의 정보 바와 방 내부 기본 구도를 설정하는 레이아웃 단계입니다.
 - [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 상단 바, 사이드 메뉴를 포함한 핵심 HUD 레이아웃 셋업
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 097. **[CORE_GDD_05]** `MainHUD_TimeDisplay`: 상단 중앙에 현재 요일과 디지털 시각 실시간 표기 (달력 연동)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 068. **[CORE_GDD_05]** `StatTextLerp`: 골드와 수치 변동 시 드르륵 올라가는 시각적 숫자 연출
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_IdleState`: 홈 오피스 내 안나의 대기 위치 설정 및 기본적인 숨쉬기 애니
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+
+---
+
+### 📉 Phase 3: 실시간 마켓 피드 및 24H 거래 시스템 (Ticker & Trade UI)
+* 24시간 실시간 시세를 뿌리는 전광판을 달고, 지갑 데이터와 연계해 매수/매도하며 주간 정산 경보를 받는 핵심 플레이 루프 단계입니다.
 - [ ] 069. **[CORE_GDD_05]** `BottomTicker_Loop`: 24개 종목명이 하단에 무한 스크롤되는 티커 UI 제작
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 071. **[CORE_GDD_05]** 🎨[Graphics] `TickerColorFX`: 상승(Cyan)/하락(Peach) 텍스트 색상 및 글로우 셰이더 적용
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 097. **[CORE_GDD_05]** `MainHUD_TimeDisplay`: 상단 중앙에 현재 요일과 디지털 시각 실시간 표기
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 084. **[CORE_GDD_02]** `OrderWindow_UI`: 수량 입력 필드, 슬라이더, 총액 계산이 포함된 매매창
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 090. **[CORE_GDD_04]** `InterestReportUI`: 매주 월요일 정산 내역(이자/유지비)을 보여주는 팝업창
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 093. **[CORE_GDD_02]** 🎨[Graphics] `FinancialStatusLED.cs`: 주간 정산 안전 등급(평시 Green / 정산 임박 Yellow / 적자 위기 Red)을 책상 위 기계 장치 LED로 연출
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 052. **[CORE_GDD_02]** 🎨[Graphics] `WeeklySettlementAlertFX`: 주간 금융 정산 완료 시 증권사 UI가 반짝이며 정산 결과를 보고하는 연출
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 📉 Track 3: 주가 실시간 선/봉 차트 렌더러 (Dynamic Price Chart Rendering)
+---
+
+### 📉 Phase 4: 주가 실시간 선/봉 차트 렌더러 (Visual Price Charts)
+* 거래창 내에 실시간 주가 데이터를 렌더링하고 마우스 인터랙션을 구현하는 고난도 차트 시각화 단계입니다.
 - [ ] 072. **[CORE_GDD_05]** 🧠[Pro] `AreaChart_Core`: Mesh API 기반의 실시간 주가 선 및 면 선형 렌더러
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 098. **[CORE_GDD_05]** `ChartGridRenderer`: 가격대 구분을 위한 차트 배경 눈금 및 실시간 수평선
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 073. **[CORE_GDD_05]** `ChartTooltip`: 차트 위에 마우스 포인터 위치 시 해당 시점 주가/시간 팝업
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 074. **[CORE_GDD_05]** `ChartTimeline`: 시간축(1H, 1D, 7D) 전환 시 데이터 리인덱싱 및 리렌더링
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 098. **[CORE_GDD_05]** `ChartGridRenderer`: 가격대 구분을 위한 차트 배경 눈금 및 실시간 수평선
-  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 105. **[CORE_GDD_02]** 🧠[Pro] `CandleStick_Renderer`: 봉 차트 보기 모드 전환을 위한 시가/고가/저가/종가 계산부
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 🗣️ Track 4: NPC 상호작용 및 전역 UI/사운드 편의성 (NPC Interactions & UI/Audio Utility)
-- [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_IdleState`: 홈 오피스 내 안나의 대기 위치 설정 및 기본적인 숨쉬기 애니
+---
+
+### 🌧️ Phase 5: 날씨 환경 고도화 (Cozy Environmental FX)
+* 방 뼈대 배치가 완성된 후, 창문 바깥 뒤편에 빗줄기를 뿌리고 유리창 빗방울 흘러내림을 구현해 Cozy 감성을 최종 포장하는 단계입니다.
+- [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Controller`: 날씨 시스템과 연동된 창밖 빗줄기 입자 및 바닥 물튀김
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 101. **[CORE_GDD_04]** `BankNPC_Interaction`: 지점장 샤일록과의 대화창 및 대출/상환 선택지 바인딩
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 에이전트 K와의 대화창 및 아레나 신청 인터페이스
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 077. **[CORE_GDD_05]** 🎨[Graphics] `WindowRainShader`: 유리창에 흘러내리는 물방울의 굴절 셰이더 디테일 작업
+  - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+
+---
+
+### 🗣️ Phase 6: 편의성 기능 및 서브 콘텐츠 UI (NPCs & Utility UI)
+* 디버그 콘솔, 창 스냅, 사운드, 캐릭터 커스터마이징, 알바 미니게임, 가구 인벤토리, 찌라시 등 부가 및 보완 기능을 통합 완성하는 단계입니다.
 - [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 테스트를 위한 `~`키 입력 시 나타나는 명령어 입력창
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 윈도우 창을 드래그하여 벽면에 스냅(Snap)시키는 편의 기능
@@ -60,36 +81,24 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 110. **[CORE_GDD_05]** `UI_MasterMixer`: 마스터 볼륨 및 각 장소별 앰비언트(빗소리 등) 볼륨 조절 슬라이더
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-
-### 📈 Track 5: 성장 진단 및 초기화 UI (Character Choice & Growth UI)
 - [ ] 080. **[CORE_GDD_08]** 🎨[Graphics] `CharacterSelectUI`: 초기 외형(머리, 안경, 의상) 선택을 위한 갤러리 뷰
   - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 089. **[CORE_GDD_03]** 🎨[Graphics] `LevelUpVisual`: 레벨 상승 시 화면 중앙에 나타나는 금빛 엠블럼과 보상 연출
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 104. **[CORE_GDD_03]** `StatPointUI`: 포인트 소모하여 직관적으로 능력치 블록을 채우는 업그레이드창
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-
-### 📈 Track 6: 거래 및 금융 UI 연동 (Trading & Financial UI)
-- [ ] 052. **[CORE_GDD_02]** 🎨[Graphics] `MarketOpeningFX`: 개장 시 증권사 UI가 반짝이며 켜지는 시계 연출
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 084. **[CORE_GDD_02]** `OrderWindow_UI`: 수량 입력 필드, 슬라이더, 총액 계산이 포함된 매매창
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 090. **[CORE_GDD_04]** `InterestReportUI`: 매주 월요일 정산 내역(이자/유지비)을 보여주는 팝업창
-  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 093. **[CORE_GDD_02]** 🎨[Graphics] `StatusLED.cs`: 장 열림(Green)/닫힘(Red)을 표시하는 책상 위 기계 장치 연출
-  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 083. **[CORE_GDD_06]** 🎨[Graphics] `AssetDissolveFX`: 가구 압류 시 입자가 흩어지며 사라지는 디졸브(Dissolve) 효과
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
-
-### 🏪 Track 7: 노동(알바) 미니게임 시각 및 사운드 쉘 (Labor Game Shell & Audio)
+- [ ] 101. **[CORE_GDD_04]** `BankNPC_Interaction`: 지점장 샤일록과의 대화창 및 대출/상환 선택지 바인딩
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 에이전트 K와의 대화창 및 아레나 신청 인터페이스
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 미니게임 공통 UI (시작/제한시간/결과화면) 프리팹
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 미니게임 성공/실패 시 비프음 및 백사장 호통 소리
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 획득 Gold와 경험치를 보여주는 전광판 UI
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-
-### 🎒 Track 8: 아이템 상점 및 인벤토리 인터페이스 (Inventory & Store UI)
 - [ ] 177. **[MOD_GDD_03]** `InventoryUI_Grid`: 7개 카테고별 슬롯 생성 및 아이콘 바인딩
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 178. **[MOD_GDD_03]** `ItemDetailPopup`: 아이템 상세 옵션 및 플레이버 텍스트 노출 윈도우
@@ -104,15 +113,13 @@
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 214. **[MOD_GDD_03]** `ItemStorageLock`: 특정 레벨 도달 전까지 잠겨있는 프리미엄 아이템 슬롯
   - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
-
-### 📰 Track 9: 찌라시/속보 알림 UI 및 글리치 연출 (Rumor & Speed Notification UI)
 - [ ] 184. **[MOD_GDD_04]** `RumorInventory`: 획득한 찌라시 전용 수집함 및 열람 인터페이스
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 187. **[MOD_GDD_04]** 🎨[Graphics] `RumorExpirationFX`: 만료 임박(5분 전) 찌라시 아이콘의 붉은 깜빡임 연출
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 188. **[MOD_GDD_04]** 🎨[Graphics] `DecoderItemAction`: '찌라시 판독기' 사용 시 마스킹 해제 실시간 연출
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료 시 정보가 타 들어가며 사라지는 셰이더 효과
+- [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료 시 정보가 타 들어가며 사라되는 셰이더 효과
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 주는 빨간색 '치명적 찌라시' 연출
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)

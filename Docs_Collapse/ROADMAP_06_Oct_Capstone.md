@@ -1,4 +1,4 @@
-# ROADMAP 06: 10월 (캡스톤 최종 빌드 마감)
+# ROADMAP 06: 10월 (캡스톤 최종 빌드 마감) - 유니티 최적화 개발 순서 개편
 
 **우선순위:** 3. 10월 말 캡스톤까지 해야 하는 것
 **목표:** [Capstone: Lv.10 달성] 레벨 10 달성 시 겪는 후반부 위기(수배) 및 멀티 엔딩 연출
@@ -7,9 +7,10 @@
 
 ---
 
-## 🎨 기능군(Feature Groups)별 스프린트 계획
+## 🎨 유니티 개발 친화적 6단계 빌드 로드맵
 
-### 🎫 Track 1: 복권(로또) 수치 계산 및 구매/추첨 연출 (Lottery System & Drawings)
+### 🎫 Phase 1: 복권(로또) 수치 계산 및 구매/추첨 연출 (Lottery System)
+* 1~45 고유 번호 선정 핵심 코어부터 시작해 수동/자동 구매 UI, 당첨 추첨식 비주얼 연출 및 골드 잭팟 컷신을 올리는 기능 완성 단계입니다.
 - [ ] 291. **[CORE_GDD_07]** 🧠[Pro] `LottoManagerCore`: 로또 1~45 고유 번호 선정 및 당첨금 풀 연산
   - 📖 읽을 문서: `[CORE_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 292. **[CORE_GDD_07]** `LottoPurchaseUI`: 수동/자동 번호 선택 및 구매 티켓 인벤토리 저장
@@ -21,27 +22,42 @@
 - [ ] 295. **[CORE_GDD_05]** 🎨[Graphics] `JackpotAnimation`: 1등 당첨 시 화면 전체에 쏟아지는 골드 및 축하 연출
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 🔒 Track 2: 세이브 보안 및 암호화/핵 감지 (Save Data Security & Anti-Cheat)
+---
+
+### 🔒 Phase 2: 세이브 보안 및 암호화/핵 감지 (Save Data Security)
+* 정식 배포 빌드를 위한 세이브 데이터 비대칭 암호화(RSA 권장) 레이어와 메모리 자산 변조를 잡는 핵 감지 차단 시스템 단계입니다.
 - [ ] 305. **[CORE_GDD_06]** 🧠[Pro] `EncryptionUpgrade`: 정식 빌드를 위한 세이브 데이터 비대칭 암호화(RSA 권장) 레이어
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 306. **[CORE_GDD_06]** 🧠[Pro] `AntiCheatSystem`: 런타임 자산 수치 변조 발생 시 즉시 서버(또는 로컬)에 비정상 로그 생성
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 🎖️ Track 3: 스탯 기반 거래 성향 분석 및 자격증 연출 (Trader Analytics & Certification)
+---
+
+### 🎖️ Phase 3: 스탯 기반 거래 성향 분석 및 자격증 연출 (Trader Analytics)
+* 게임 도중 플레이어가 축적한 거래 데이터를 분석하여 성향 유형별 '트레이더 자격증' 발급 비주얼을 제공하는 세레머니 연출 단계입니다.
 - [ ] 307. **[CORE_GDD_03]** 🤖[Claude] `CareerPathSummary`: 현재까지의 거래 성향을 분석한 '트레이더 자격증' 발급 연출
   - 📖 읽을 문서: `[CORE_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
-### 🎬 Track 4: 다중 엔딩 판정 및 연출 (Multi-Endings & Credits)
+---
+
+### 🎬 Phase 4: 다중 엔딩 판정 및 연출 (Multi-Endings & Credits)
+* 엔딩 조건별 3종의 비주얼 컷신 분기와, 크레딧이 올라가며 데모 마무리를 아늑하게 장식할 스태프롤 연출 단계입니다.
 - [ ] 308. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `GeneralEnding`: 자산 10M Gold 미만 일반 엔딩 판정 및 연출
 - [ ] 309. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `WealthyEnding`: 자산 100M Gold 이상 '자본의 신' 엔딩 연출
 - [ ] 310. **[데모 이후] [MOD_GDD_01~16]** 🤖[Claude] `CiphersVowEnding`: 안나와의 결혼 및 비밀 서약(Cipher's Vow) 전용 컷신
 - [ ] 311. **[MOD_GDD_01~16]** `EndingCredits`: 후원자와 개발진 명단이 올라가는 코지 스타일의 크레딧 스크롤
 
-### 🔊 Track 5: 튜토리얼 흐름 및 전역 오디오 셋업 (Tutorial Flow & Audio Mixing)
+---
+
+### 🔊 Phase 5: 튜토리얼 흐름 및 전역 오디오 믹싱 (Tutorial & Audio Mixing)
+* 최초 실행 시 튜토리얼 단계를 강제 트리거하고 씬 간 볼륨 편차 및 입체감을 잡는 전역 오디오 믹싱 단계입니다.
 - [ ] 312. **[Audio]** `AudioMixerSetup`: BGM, SFX, Ambient 소리 크기 및 입체감(Reverb) 최종 믹싱
 - [ ] 313. **[Tutorial]** `FlowManager`: 최초 접속 시 튜토리얼 단계 강제 트리거 및 보상 시스템 연동
 
-### ⚡ Track 6: 후반부 밸런스 및 성능 최적화 (Late-Game Balance & Code Optimization)
+---
+
+### ⚡ Phase 6: 후반부 밸런스 및 성능 최적화 (Performance Optimization)
+* 출품 최종 본의 원활한 런타임을 위해 메모리 누수 방지, 가비지 컬렉션(GC) 제어, 데이터 Capping 및 스팀웍스 SDK 최종 연동 런칭 단계입니다.
 - [ ] 314. **[UI/UX]** 🎨[Graphics] `AnimationPolish`: 모든 윈도우 열기/닫기 시 부드러운 스케일(Elastic) 효과 적용
 - [ ] 315. **[Balance]** 🧠[Pro] 1,000회 이상의 오토 플레이 시뮬레이션을 통한 후반부 경제 정체 구간 해소
 - [ ] 316. **[Optim]** 🎨[Graphics] 텍스처 아틀라스 압축 최적화 및 비사용 모델링 에셋 스트리밍 시스템 점검
@@ -50,14 +66,10 @@
 - [ ] 318-1. **[Optim]** 찌라시 UI 및 파티클 이펙트 생성/파괴 방지를 위한 오브젝트 풀링(Object Pooling) 구현
 - [ ] 318-2. **[Optim]** 매일 새벽 04:00(서버 시간) 주기로 가비지 컬렉션(GC) 및 미사용 에셋 강제 해제 루틴 구현
 - [ ] 318-3. **[Optim]** 채팅 및 뉴스 로그 메모리 누적 방지를 위한 최대 보관 개수 제한(Data Capping) 시스템 적용
-
-### 🧪 Track 7: 세이브 복구 및 다국어 빌드 테스트 (Crash Recovery & Localization QA)
 - [ ] 319. **[Test]** 장기 실행(72시간) 테스트를 통한 메모리 누수(Memory Leak) 및 타이머 오차 검증
 - [ ] 320. **[Test]** 비정상 종료(Crash) 후 재시작 시 세이브 데이터 자동 복구 및 무결성 전수 테스트
 - [ ] 321. **[Test]** 다국어(KR/EN) 텍스트 오버플로우 전수 점검 및 폰트 유니코드 누락 확인
 - [ ] 322. **[Test]** 다양한 사양의 PC 환경에서의 UI 렌더링 지연 시간 및 최적화 점검
-
-### 🚀 Track 8: 스팀 SDK 연동 및 마스터 빌드 런칭 (Steam Integration & Gold Master Launch)
 - [ ] 323. **[Final]** 모든 태스크 `- [x]` 완료 여부 및 각 GDD 문서와의 상호 정합성 전수 대조
 - [ ] 324. **[Final]** 스팀웍스(Steamworks) SDK 연동 및 Windows/Mac 빌드 수행
 - [ ] 325. **[Final]** 🤖[Claude] 개발 기획서와 최종 빌드 간의 사양 차이점(Spec Diff) 문서 최종 정리

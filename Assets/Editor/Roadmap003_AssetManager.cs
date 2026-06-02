@@ -14,7 +14,13 @@ namespace StockWars.EditorScripts
             if (importer.assetPath.Contains("Art/UI"))
             {
                 importer.mipmapEnabled = false;
-                importer.textureType = TextureImporterType.Sprite;
+                
+                // 파일 이름이나 경로에 "cursor" 혹은 흔히 발생하는 오타인 "cusor"가 포함된 경우 강제 변경을 생략합니다.
+                bool isCursorFile = importer.assetPath.ToLower().Contains("cursor") || importer.assetPath.ToLower().Contains("cusor");
+                if (!isCursorFile && importer.textureType != TextureImporterType.Cursor)
+                {
+                    importer.textureType = TextureImporterType.Sprite;
+                }
             }
         }
 
