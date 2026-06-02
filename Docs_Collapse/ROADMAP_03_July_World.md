@@ -53,6 +53,18 @@
   - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 141. **[MOD_GDD_05]** 🧠[Pro] `ExpansionCostCurve`: 오피스 평수 확장 시 요구되는 골드 및 평판 등급의 상승 곡선 설정
   - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 177. **[MOD_GDD_03]** `InventoryUI_Grid`: 7개 카테고리별 슬롯 생성 및 아이콘 바인딩 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 178. **[MOD_GDD_03]** `ItemDetailPopup`: 아이템 상세 옵션 및 플레이버 텍스트 노출 윈도우 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 179. **[MOD_GDD_03]** `EquipController`: 아바타 파츠 및 실시간 가구 스위칭 연동 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 206. **[MOD_GDD_03]** `ItemPurchaseFlow`: 상점에서 가구/아이템 구매 시 자금 체크 및 배송 연출 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 210. **[MOD_GDD_03]** 🎨[Graphics] `InventoryExpansion`: 서랍장 칸 늘리기 아이템 사용 시 그리드 확장 연출 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 214. **[MOD_GDD_03]** `ItemStorageLock`: 프리미엄 아이템 슬롯 잠금 설정 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
@@ -106,6 +118,10 @@
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 064. **[CORE_GDD_04]** 🧠[Pro] `SeizureManager`: 자산 0 이하 시 주식->가구 순의 순차적 압류 실행 엔진
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 101. **[CORE_GDD_04]** `BankNPC_Interaction`: 지점장 샤일록과의 대화창 및 대출/상환 선택지 바인딩 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 083. **[CORE_GDD_06]** 🎨[Graphics] `AssetDissolveFX`: 가구 압류 시 입자가 흩어지며 사라되는 디졸브(Dissolve) 효과 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 

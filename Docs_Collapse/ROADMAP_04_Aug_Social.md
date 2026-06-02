@@ -30,6 +30,10 @@
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 235. **[MOD_GDD_06]** 🎨[Graphics] `BarterNpcProfile`: 전당포 주인 바터의 고해상도 초상화 및 대기 상태 구축
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 080. **[CORE_GDD_08]** 🎨[Graphics] `CharacterSelectUI`: 초기 캐릭터 외형(머리, 안경, 의상) 선택 및 가구 배치를 위한 갤러리 커스텀 UI (6월 데모에서 이월)
+  - 📖 읽을 문서: `[CORE_GDD_08]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 198. **[MOD_GDD_03]** 🎨[Graphics] `ItemRarityFX`: 레전더리 등급 가구 및 아이템 획득 시 뿜어져 나오는 전외선 아우라 특수 비주얼 연출 (6월 데모에서 이월)
+  - 📖 읽을 문서: `[MOD_GDD_03]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
