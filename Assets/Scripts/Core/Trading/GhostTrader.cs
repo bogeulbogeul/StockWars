@@ -21,7 +21,7 @@ namespace StockWars.Core
 
         [Tooltip("상수 - 시장의 급격한 붕괴를 막기 위한 하방 지지 개시 기준 가격 비율 (상장가의 N% 미만 도달 시)")]
         [Range(0.1f, 0.9f)]
-        public float supportTriggerRatio = 0.7f;
+        public float supportTriggerRatio = 0.8f;
 
         // 거래원 위장을 위한 주문 접속 채널 정보 (단일 시장 서버로 전송되는 접속 장소/매체)
         private static readonly string[] AnonymousBrokers = new[]
@@ -94,13 +94,18 @@ namespace StockWars.Core
 
             if (priceRatio < supportTriggerRatio)
             {
-                // 30% 이상 폭락 시 매수 성향 65%로 상향
-                buyProbability = 0.65;
+                // 20% 이상 폭락 시 매수 성향 75%로 상향 (기존 65%)
+                buyProbability = 0.75;
             }
             if (priceRatio < 0.50f)
             {
-                // 50% 이상 반토막 폭락 시 강력한 하방 지지 매수 성향 80%로 상향
-                buyProbability = 0.80;
+                // 50% 이상 반토막 폭락 시 강력한 하방 지지 매수 성향 90%로 상향 (기존 80%)
+                buyProbability = 0.90;
+            }
+            if (priceRatio < 0.30f)
+            {
+                // 70% 이상 극단적 폭락 시 상장폐지 원천 방어를 위해 매수 성향 99%로 상향
+                buyProbability = 0.99;
             }
 
             // ── [주의 2] 유동성 조율(Liquidity Balancing) 알고리즘 ────────────────
