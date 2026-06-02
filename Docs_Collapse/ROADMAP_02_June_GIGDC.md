@@ -1,13 +1,13 @@
-# ROADMAP 02: 6월 (GIGDC 출품 준비) - 유니티 조립 공정식 빌드 로드맵
+# ROADMAP 02: 6월 (GIGDC 출품 준비) - 데모 특화 조립식 로드맵
 
-**개발 기조:** 유니티 빈 씬(Empty Scene)에 Canvas와 배경 뼈대를 먼저 올리고, 데이터를 뿌리는 전광판을 셋업한 뒤, 핵심 거래창과 통계를 얹어 조립하는 물리적 개발 순서로 전면 재정리합니다.
+**개발 기조:** 6월 데모에서는 **홈 오피스, 증권사, 물류 창고**의 3개 장소만 진입이 허용됩니다. 이에 따라 은행, 일반 가구/의류 상점 등 접근이 차단되는 장소와 관련된 태스크(대출 상환, 가구 구매 상점, 인벤토리 스킨 스위칭 등)를 로드맵에서 전면 제외(정식 버전으로 이월)하여 실질적인 개발 스코프를 핵심에만 집중시킵니다.
 
 ---
 
-## 🎨 유니티 빈칸 시작 조립 로드맵 (6단계)
+## 🎨 데모 빌드 전용 조립 로드맵 (6단계)
 
 ### 🧱 Phase 1: 메인 UI 프레임 및 Canvas 뼈대 셋업 (Base Canvas & Layout)
-* 아무것도 없는 빈 유니티 씬에 전체 화면의 규격(해상도)을 맞추고 모든 UI의 부모가 될 마스터 캔버스와 배경 레이아웃을 가장 먼저 수립합니다.
+* 아무것도 없는 빈 유니티 씬에 전체 화면 해상도를 맞추고 모든 UI의 부모가 될 마스터 캔버스와 배경 레이아웃을 가장 먼저 수립합니다.
 - [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 2D 아늑한 오피스 배경 일러스트를 화면 전체에 렌더링하고, 상단 정보 바 및 사이드 바를 포함하여 매칭 창들이 얹어질 부모 Canvas 레이아웃 앵커 셋업
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_StandingUI`: 3D 캐릭터 대신 아늑한 2D 안나 스탠딩 일러스트를 오피스 캔버스 한편에 고정 배치하고 가벼운 UI 바운싱 모션 구현 (화면 레이아웃 안정화)
@@ -65,37 +65,24 @@
 
 ---
 
-### 🌧️ Phase 6: 날씨 환경 오버레이 및 기타 편의 UI (Cozy Weather & Misc UI)
-* 아늑하게 내리는 비 오버레이와 빗소리를 가미하여 Cozy 감성을 완성하고, 개발 테스트용 치트 콘솔 및 볼륨 조절 등 기타 보조 기능을 연동하여 최종 마무리합니다.
+### 🌧️ Phase 6: 데모 전용 편의 UI 및 장소 상호작용 (Demo Scope Integration)
+* 6월 데모에서 실제로 진입이 열려 있는 증권사, 물류 창고의 상호작용과 맵 전환 기능 및 주식 보조 도구(찌라시 수집함 등)들을 조립하여 빌드를 완결합니다.
+- [ ] 087. **[CORE_GDD_05]** 🎨[Graphics] `SceneNavigationUI`: 실제 장소 씬을 이동하는 대신, 맵 선택 시 해당 장소(증권사/은행/상점 등)의 2D 일러스트 배경 이미지로 즉시 전환되는 배경 스위칭 시스템 구축 (홈 오피스, 증권사, 물류 창고 외 타 장소 진입 시 "정식 출시 버전에서 이용 가능합니다." 토스트 팝업 경고를 띄우고 차단하는 데모 제한 필터 탑재)
 - [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Overlay`: 2D 스크린 Rain 오버레이 UI 및 잔물결 입자 연출 (배경 오버레이)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 087. **[CORE_GDD_05]** 🎨[Graphics] `SceneNavigationUI`: 실제 장소 씬을 이동하는 대신, 맵 선택 시 해당 장소(증권사/은행/상점 등)의 2D 일러스트 배경 이미지로 즉시 전환되는 배경 스위칭 시스템 구축 (홈 오피스, 증권사, 물류 창고 외 타 장소 진입 시 "정식 출시 버전에서 이용 가능합니다." 토스트 팝업 경고를 띄우고 차단하는 데모 제한 필터 탑재)
-- [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 테스트를 위한 `~`키 입력 시 나타나는 명령어 입력창
-- [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 윈도우 창을 드래그하여 벽면에 스냅(Snap)시키는 편의 기능
-- [ ] 106. **[CORE_GDD_05]** 🎨[Graphics] `UI_BlurEffect`: 창이 뜰 때 배경을 은은하게 흐리게 만드는 가우시안 블러 셰이더
-- [ ] 110. **[CORE_GDD_05]** `UI_MasterMixer`: 마스터 볼륨 및 각 장소별 앰비언트(빗소리 등) 볼륨 조절 슬라이더
-- [ ] 080. **[CORE_GDD_08]** 🎨[Graphics] `CharacterSelectUI`: 초기 외형(머리, 안경, 의상) 선택을 위한 갤러리 뷰
-- [ ] 089. **[CORE_GDD_03]** 🎨[Graphics] `LevelUpVisual`: 레벨 상승 시 화면 중앙에 나타나는 금빛 엠블럼과 보상 연출
-- [ ] 104. **[CORE_GDD_03]** `StatPointUI`: 포인트 소모하여 직관적으로 능력치 블록을 채우는 업그레이드창
-- [ ] 083. **[CORE_GDD_06]** 🎨[Graphics] `AssetDissolveFX`: 가구 압류 시 입자가 흩어지며 사라되는 디졸브(Dissolve) 효과
-- [ ] 101. **[CORE_GDD_04]** `BankNPC_Interaction`: 지점장 샤일록과의 대화창 및 대출/상환 선택지 바인딩
-- [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 에이전트 K와의 대화창 및 아레나 신청 인터페이스
-- [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 미니게임 공통 UI 프리팹
-- [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 미니게임 효과음 및 백사장 호통 소리
-- [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 획득 Gold와 경험치 정산 UI
-- [ ] 177. **[MOD_GDD_03]** `InventoryUI_Grid`: 7개 카테고리별 슬롯 생성 및 아이콘 바인딩
-- [ ] 178. **[MOD_GDD_03]** `ItemDetailPopup`: 아이템 상세 옵션 및 플레이버 텍스트 노출 윈도우
-- [ ] 179. **[MOD_GDD_03]** `EquipController`: 아바타 파츠 실시간 스위칭
-- [ ] 198. **[MOD_GDD_03]** 🎨[Graphics] `ItemRarityFX`: 레전더리 등급 아이템 획득 시 전체 아우라 연출
-- [ ] 206. **[MOD_GDD_03]** `ItemPurchaseFlow`: 상점에서 가구 구매 시 자금 체크 및 배송 연출
-- [ ] 210. **[MOD_GDD_03]** 🎨[Graphics] `InventoryExpansion`: 서랍장 칸 늘리기 아이템 사용 시 그리드 확장 연출
-- [ ] 214. **[MOD_GDD_03]** `ItemStorageLock`: 프리미엄 아이템 슬롯 잠금 설정
-- [ ] 184. **[MOD_GDD_04]** `RumorInventory`: 획득한 찌라시 전용 수집함 및 열람 인터페이스
+- [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 증권사에서 에이전트 K와의 대화창 연동 및 모바일 아레나 매칭 신청 인터페이스 구현
+- [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 물류 창고에서 수행할 물류 미니게임의 공통 UI 프레임 프리팹
+- [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 물류 알바 효과음 및 백사장 호통 앰비언트 오디오 연동
+- [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 일급(Gold)과 경험치 정산을 표시하는 정산 팝업 UI
+- [ ] 184. **[MOD_GDD_04]** `RumorInventory`: 획득한 주식 찌라시들을 홈 오피스/스마트폰에서 모아보는 전용 수집함 UI
 - [ ] 187. **[MOD_GDD_04]** 🎨[Graphics] `RumorExpirationFX`: 만료 임박(5분 전) 찌라시 아이콘의 붉은 깜빡임 연출
-- [ ] 188. **[MOD_GDD_04]** 🎨[Graphics] `DecoderItemAction`: '찌라시 판독기' 사용 시 마스킹 해제 실시간 연출
-- [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료 시 정보가 타 들어가며 사라지는 셰이더 효과
-- [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 주는 빨간색 '치명적 찌라시' 연출
-- [ ] 103. **[CORE_GDD_05]** `HUD_Notification`: 찌라시 획득이나 뉴스 발생 시 우측 상단에 뜨는 슬라이드 알림
+- [ ] 188. **[MOD_GDD_04]** 🎨[Graphics] `DecoderItemAction`: 홈 오피스에서 '찌라시 판독기' 사용 시 마스킹 텍스트가 지워지며 원래 찌라시가 해독되는 연출
+- [ ] 204. **[MOD_GDD_04]** 🎨[Graphics] `InformationPurge`: 만료된 찌라시가 타 들어가는 파티클 효과와 함께 사라지는 연출
+- [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 미치는 붉은색 '치명적 찌라시'의 HUD 전체 긴급 점멸 알림 연출
+- [ ] 103. **[CORE_GDD_05]** `HUD_Notification`: 주가 급등락, 뉴스 발생 시 우측 상단 슬라이드 팝업 알림 (클릭 시 스마트폰 연동)
 - [ ] 108. **[CORE_GDD_05]** 🎨[Graphics] `Ticker_NewsSymbol`: 실시간으로 터지는 호재/악재 뉴스 아이콘을 티커에 삽입
-- [ ] 078. **[CORE_GDD_05]** 🎨[Graphics] `GlitchCore`: 뉴스 발생 시 UI가 일시적으로 깨지는 도트 글리치 컴포넌트
-- [ ] 092. **[CORE_GDD_05]** 🎨[Graphics] `ResolutionScaler`: UI 스프라이트 해상도 최적화 대응
+- [ ] 078. **[CORE_GDD_05]** 🎨[Graphics] `GlitchCore`: 치명적 악재 발생 시 HUD가 찌그러지며 깨지는 도트 글리치 컴포넌트
+- [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 디버그용 치트키 입력창 (`~` 키 오픈)
+- [ ] 110. **[CORE_GDD_05]** `UI_MasterMixer`: 게임 및 빗소리 볼륨 조절 오디오 믹서 슬라이더
+- [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 팝업 윈도우를 화면 경계로 끌어다 붙이는 스냅 편의성
+- [ ] 106. **[CORE_GDD_05]** 🎨[Graphics] `UI_BlurEffect`: 팝업 윈도우 활성화 시 배경 2D 이미지를 뿌옇게 처리하는 가우시안 블러 효과
