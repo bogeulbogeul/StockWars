@@ -8,9 +8,9 @@
 
 ### 🧱 Phase 1: 메인 UI 프레임 및 Canvas 뼈대 셋업 (Base Canvas & Layout)
 * 아무것도 없는 빈 유니티 씬에 전체 화면 해상도를 맞추고 모든 UI의 부모가 될 마스터 캔버스와 배경 레이아웃을 가장 먼저 수립합니다.
-- [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 2D 아늑한 오피스 배경 일러스트를 화면 전체에 렌더링하고, 상단 정보 바 및 사이드 바를 포함하여 매칭 창들이 얹어질 부모 Canvas 레이아웃 앵커 셋업
+- [x] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 2D 아늑한 오피스 배경 일러스트를 화면 전체에 렌더링하고, 상단 정보 바 및 사이드 바를 포함하여 매칭 창들이 얹어질 부모 Canvas 레이아웃 앵커 셋업
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_StandingUI`: 3D 캐릭터 대신 아늑한 2D 안나 스탠딩 일러스트를 오피스 캔버스 한편에 고정 배치하고 가벼운 UI 바운싱 모션 구현 (화면 레이아웃 안정화)
+- [x] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_StandingUI`: 3D 캐릭터 대신 아늑한 2D 안나 스탠딩 일러스트를 오피스 캔버스 한편에 고정 배치하고 가벼운 UI 바운싱 모션 구현 (화면 레이아웃 안정화)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---

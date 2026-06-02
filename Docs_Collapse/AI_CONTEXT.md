@@ -15,12 +15,11 @@
 2. **1 세션 = 1 마일스톤**: 새로운 작업을 시작할 때는 이전 컨텍스트 누적을 막기 위해 반드시 **새 채팅(New Session)**을 여세요.
 3. **마일스톤 기반 작업**: 사용자가 "M3 작업하자"라고 하면, `Docs_Collapse/ROADMAP_01...` 등에서 항목을 확인하고 명시된 관련 SLIM 파일만 읽으세요.
 4. **반복 데이터 지양**: 대량의 데이터는 마크다운에 풀지 말고 무조건 CSV 구조로 빼세요.
-5. **🎨 그래픽 스타일 통일 (필수)**: 
-   * 에셋 기본 이미지 생성 시 반드시 [pixellab_asset_guide.md](file:///C:/Users/Administrator/.gemini/antigravity/brain/5c27179f-6506-4af4-b980-c6a1421d51bc/pixellab_asset_guide.md)의 **Target Aesthetic**을 따릅니다.
-   * **아늑한 홈오피스/동물의숲 스타일, 파스텔 색감, 선명한 갈색/차콜 외곽선, 둥글둥글한 비율(chibi), 단색 명암(Cel-shading, 노이즈/그라데이션 금지)**을 철저히 유지하여 PixelLab 변환 결과물이 통일되게 합니다.
+5. **🎨 그래픽 스타일 및 에셋 제작 규칙 (필수)**:
+   * **이미지 생성 툴 사용 금지**: AI가 직접 이미지를 생성하지 않고, 사용자가 직접 생성 모드(PixelLab Generate 등)에 입력하여 사용할 수 있는 **최적화된 영문 텍스트 프롬프트만 작성**하여 제공합니다.
+   * **화풍 통일**: 프롬프트 작성 시 [pixellab_asset_guide.md](file:///C:/Users/Administrator/.gemini/antigravity/brain/5c27179f-6506-4af4-b980-c6a1421d51bc/pixellab_asset_guide.md)의 **Target Aesthetic**을 반영합니다. (아늑한 홈오피스/동물의숲 스타일, 파스텔 색감, 선명한 갈색/차콜 외곽선, 둥글둥글한 비율(chibi), 단색 명암, 그라데이션 배제).
 
 ## 📍 3. 현재 작업 상태
 - **현재 마일스톤**: [사용자가 지정할 마일스톤 번호 기입 대기 중]
 - **직전 완료 마일스톤**: M2 (SaveDataDTO + SaveMetadata + LevelEngine + GlobalConstants)
 - **다음 마일스톤 후보**: M3 (시간/저장 시스템 통합)
-

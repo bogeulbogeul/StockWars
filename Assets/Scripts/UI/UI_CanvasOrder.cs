@@ -94,6 +94,16 @@ namespace StockWars.UI
         }
 
         /// <summary>
+        /// 런타임에 레이어 타입과 상대 순서를 동적으로 변경하고 소팅 오더를 재적용합니다.
+        /// </summary>
+        public void SetLayerType(CanvasLayerType layerType, int relativeOrder = 0)
+        {
+            _layerType = layerType;
+            _relativeOrder = relativeOrder;
+            ApplySortingOrder();
+        }
+
+        /// <summary>
         /// 캔버스 가시성을 완전히 끄거나 켜면서 성능 최적화를 병행하는 외부 API입니다.
         /// GameObject.SetActive(false) 대신 canvas.enabled = false를 쓸 때 GraphicRaycaster 잔여 부하를 차단합니다.
         /// </summary>
