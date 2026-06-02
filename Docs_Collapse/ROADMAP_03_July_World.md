@@ -122,6 +122,10 @@
   - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 083. **[CORE_GDD_06]** 🎨[Graphics] `AssetDissolveFX`: 가구 압류 시 입자가 흩어지며 사라되는 디졸브(Dissolve) 효과 (6월 데모에서 이월)
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 245. **[CORE_GDD_02]** 🧠[Pro] `StockSplit_Engine`: 서버 주가가 임계치(10만 Gold) 초과 시 총 발행수 10배 증가 및 주가 1/10 조정 처리를 수행하는 액면분할 연산 코어 (6월 기획 논의 반영 추가)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 246. **[CORE_GDD_02]** `DynamicWelcomeSeed`: 신규 계정 생성 시 서버 평균 주가 상승비율에 맞춰 초기 지원금을 스케일업해 배정하는 인플레이션 완충 시스템 (6월 기획 논의 반영 추가)
+  - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
