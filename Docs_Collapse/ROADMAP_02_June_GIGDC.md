@@ -23,7 +23,9 @@
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 071. **[CORE_GDD_05]** 🎨[Graphics] `TickerColorFX`: 실시간 가격 변동에 따른 상승(Cyan)/하락(Peach) 텍스트 색상 및 글로우 셰이더 피드백 효과 적용
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 128. **[CORE_GDD_06]** `ServerClock_Sync`: 실제 서버 시간(NTP / Web API Mock) 동기화 및 부재 시간(Delta Time) 동안 발생한 오프라인 주가 변동 및 금융 비용(이자/유지비) 배치 정산 연산 가상 백엔드 코어
+- [ ] 128. **[CORE_GDD_06]** `WebClient_Socket`: 실제 마스터 서버에 접속하여 24시간 실시간 주가 데이터, 채팅 릴레이, 거래 체결 요청을 처리하는 Unity 클라이언트 네트워크 소켓 매니저
+  - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 244. **[CORE_GDD_06]** `StockWars_Server` (Node.js / WebSocket): 실시간 주가 연산 및 브로드캐스트, 거래 패킷 정합성 검증, 서버 시각(NTP) 공급 및 전체 유저 실시간 채팅을 릴레이하는 독립형 백엔드 서버 코어 구축
   - 📖 읽을 문서: `[CORE_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
