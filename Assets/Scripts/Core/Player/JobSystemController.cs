@@ -127,13 +127,10 @@ namespace StockWars.Core
             var result = JobResultCalculator.CalculateResult(deliveredCount, maxCombo, isBroken, isPassUsed, isAutoConsignment, isAbandoned);
 
             // ① Gold 지급
-            WalletManager.Instance.AddGold(result.FinalGold, "알바 보상 지급");
+            WalletManager.Instance.AddCash(result.FinalGold);
 
-            // ② EXP 지급
-            if (LevelEngine.Instance != null)
-            {
-                LevelEngine.Instance.AddExp(result.ExpGained);
-            }
+            // ② EXP 지급 (거래액 누적을 통한 레벨 계산)
+            LevelEngine.AddTradingVolume(WalletManager.Instance.ActiveSaveData, result.ExpGained, out _);
 
             // ③ 누적 알바 횟수 기록
             WalletManager.Instance.ActiveSaveData.TotalJobsCompleted++;

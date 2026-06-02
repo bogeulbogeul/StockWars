@@ -99,7 +99,7 @@ namespace StockWars.Core
                 // 47번의 GameTickEvent를 임의 발생시켰을 때 잔여 틱이 1로 잘 감쇠하는지 확인
                 for (int i = 0; i < 47; i++)
                 {
-                    EventBus.Publish(new GameTickEvent(1, 1));
+                    EventBus.Publish(new GameTickEvent { CurrentTime = DateTime.UtcNow });
                 }
 
                 if (impact.RemainingTicks != 1)
@@ -113,7 +113,7 @@ namespace StockWars.Core
                 }
 
                 // 마지막 48번째 틱 발생 시 완벽 청소 소멸 여부 검증
-                EventBus.Publish(new GameTickEvent(1, 1));
+                EventBus.Publish(new GameTickEvent { CurrentTime = DateTime.UtcNow });
 
                 if (activeImpacts.Count != 0)
                 {

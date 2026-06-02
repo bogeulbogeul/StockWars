@@ -204,7 +204,7 @@ namespace StockWars.Core
                 long totalPaid = interestPaid + principalPaid;
 
                 remainingCashToPay -= totalPaid;
-                wallet.SubtractCash(totalPaid); // 실제로 지갑에서 지불
+                wallet.SpendCash(totalPaid); // 실제로 지갑에서 지불
 
                 // 빚이 완제(TotalDebt == 0)된 경우 리스트에서 영구 방출
                 if (debt.TotalDebt == 0)

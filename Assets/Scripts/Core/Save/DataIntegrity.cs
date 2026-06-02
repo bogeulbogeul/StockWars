@@ -114,8 +114,8 @@ namespace StockWars.Core
             _shadowDividendsEncoded = saveData.AccumulatedDividends ^ _xorSalt;
             _shadowInterestEncoded = saveData.AccumulatedInterest ^ _xorSalt;
 
-            _shadowLevelEncoded = saveData.PlayerLevel ^ _xorSalt;
-            _shadowStatPointsEncoded = saveData.AvailableStatPoints ^ _xorSalt;
+            _shadowLevelEncoded = saveData.PlayerLevel ^ (int)(_xorSalt & 0x7FFFFFFF);
+            _shadowStatPointsEncoded = saveData.AvailableStatPoints ^ (int)(_xorSalt & 0x7FFFFFFF);
             _shadowTradingVolumeEncoded = (int)(saveData.CumulativeTradingVolume & 0x7FFFFFFF) ^ (int)(_xorSalt & 0x7FFFFFFF);
 
             _shadowAnalysisLvEncoded = saveData.Stats.BaseAnalysisLv ^ (int)(_xorSalt & 0x7FFFFFFF);
@@ -150,9 +150,17 @@ namespace StockWars.Core
             if (!_isInitialized) return;
 
             // 무단 변조 실시간 판정 검증 (매 프레임 자가 회복 적용)
-            VerifyValue(ref currentSaveData.Gold, _shadowGoldEncoded, "Gold (현금)");
-            VerifyValue(ref currentSaveData.AccumulatedDividends, _shadowDividendsEncoded, "AccumulatedDividends (누적 배당금)");
-            VerifyValue(ref currentSaveData.AccumulatedInterest, _shadowInterestEncoded, "AccumulatedInterest (누적 이자)");
+            long currentGold = currentSaveData.Gold;
+            VerifyValue(ref currentGold, _shadowGoldEncoded, "Gold (현금)");
+            currentSaveData.Gold = currentGold;
+
+            long currentDividends = currentSaveData.AccumulatedDividends;
+            VerifyValue(ref currentDividends, _shadowDividendsEncoded, "AccumulatedDividends (누적 배당금)");
+            currentSaveData.AccumulatedDividends = currentDividends;
+
+            long currentInterest = currentSaveData.AccumulatedInterest;
+            VerifyValue(ref currentInterest, _shadowInterestEncoded, "AccumulatedInterest (누적 이자)");
+            currentSaveData.AccumulatedInterest = currentInterest;
 
             int currentLevel = currentSaveData.PlayerLevel;
             VerifyValue(ref currentLevel, _shadowLevelEncoded, "PlayerLevel (레벨)");
@@ -278,12 +286,12 @@ namespace StockWars.Core
         private void OnPlayerLevelUp(PlayerLevelUpEvent e)
         {
             if (!_isInitialized) return;
-            _shadowLevelEncoded = e.NewLevel ^ _xorSalt;
+            _shadowLevelEncoded = e.NewLevel ^ (int)(_xorSalt & 0x7FFFFFFF);
             
             // 레벨업 시 스탯 포인트가 합법적으로 증가하므로 섀도 복사 갱신
             if (_lastTrackedSaveData != null)
             {
-                _shadowStatPointsEncoded = _lastTrackedSaveData.AvailableStatPoints ^ _xorSalt;
+                _shadowStatPointsEncoded = _lastTrackedSaveData.AvailableStatPoints ^ (int)(_xorSalt & 0x7FFFFFFF);
             }
         }
 
@@ -291,7 +299,7 @@ namespace StockWars.Core
         {
             if (!_isInitialized) return;
             
-            _shadowStatPointsEncoded = e.RemainingPoints ^ _xorSalt;
+            _shadowStatPointsEncoded = e.RemainingPoints ^ (int)(_xorSalt & 0x7FFFFFFF);
 
             // 분배된 개별 스탯 섀도 갱신
             int newLvEncoded = e.NewBaseLevel ^ (int)(_xorSalt & 0x7FFFFFFF);
@@ -308,7 +316,7 @@ namespace StockWars.Core
         {
             if (!_isInitialized) return;
 
-            _shadowStatPointsEncoded = e.RefundedPoints ^ _xorSalt;
+            _shadowStatPointsEncoded = e.RefundedPoints ^ (int)(_xorSalt & 0x7FFFFFFF);
 
             // 모든 베이스 스탯이 0으로 밀림에 따른 섀도 동기화
             int zeroEncoded = 0 ^ (int)(_xorSalt & 0x7FFFFFFF);

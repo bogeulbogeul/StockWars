@@ -70,7 +70,7 @@ namespace StockWars.Core
                 var stock = MarketManager.Instance.GetStock(e.StockId);
                 if (stock != null && stock.Data != null)
                 {
-                    displayName = stock.Data.displayName;
+                    displayName = stock.Data.companyName;
                 }
             }
 

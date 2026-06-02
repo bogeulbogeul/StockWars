@@ -38,8 +38,8 @@ namespace StockWars.Core
         /// <summary>
         /// StockId(대문자) → 전용 System.Random 인스턴스 매핑 테이블
         /// </summary>
-        private System.Collections.Generic.Dictionary<string, Random> _stockRngs
-            = new System.Collections.Generic.Dictionary<string, Random>();
+        private System.Collections.Generic.Dictionary<string, System.Random> _stockRngs
+            = new System.Collections.Generic.Dictionary<string, System.Random>();
 
         // --------------------------------------------------------
         // 3. 초기화
@@ -89,7 +89,7 @@ namespace StockWars.Core
         /// 최초 호출 시 해당 종목 전용 시드로 인스턴스를 생성합니다.
         /// </summary>
         /// <param name="stockId">종목 고유 ID (대소문자 무관)</param>
-        private Random GetRng(string stockId)
+        private System.Random GetRng(string stockId)
         {
             string key = stockId.ToUpper();
             if (!_stockRngs.TryGetValue(key, out var rng))
@@ -98,7 +98,7 @@ namespace StockWars.Core
                 // (string.GetHashCode()는 IL2CPP/Mono/플랫폼에 따라 달라질 수 있어 사용 금지)
                 int stockHash = ComputeFnv1aHash(key);
                 int stockSeed = _globalSeed ^ stockHash;
-                rng = new Random(stockSeed);
+                rng = new System.Random(stockSeed);
                 _stockRngs[key] = rng;
 
                 Debug.Log($"[RNG_System] RNG instance created for '{key}' with seed {stockSeed}");
@@ -190,7 +190,7 @@ namespace StockWars.Core
         /// <summary>
         /// 종목에 무관한 시스템 레벨 랜덤값 (블랙스완, IPO 추첨 등에 사용)
         /// </summary>
-        private readonly Random _systemRng = new Random();
+        private readonly System.Random _systemRng = new System.Random();
 
         public double NextSystemDouble(double min = 0.0, double max = 1.0)
         {
