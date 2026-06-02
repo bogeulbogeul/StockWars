@@ -74,7 +74,5 @@
 
 ### 🏢 Phase 6: 금융 구역 그래픽 에셋 및 실내 씬 연출 (Financial District Scenes)
 * 은행과 증권사 내부의 그래픽 에셋을 셋업하고 무겁고 아늑한 실내 씬 조명 및 UI 핏을 정밀 조정하는 비주얼 마무리 단계입니다.
-- [ ] 123. **[MOD_GDD_01]** 🎨[Graphics] `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹
-  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 124. **[MOD_GDD_01]** 🎨[Graphics] `CipherSecuritiesFloor`: 증권사 내부의 대형 전광판과 트레이딩 데스크 레이아웃 및 UI 배치
+- [ ] 123. **[MOD_GDD_01]** 🎨[Graphics] `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹 (7월 은행 대출 상환 이월과 함께 연동)
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)

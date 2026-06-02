@@ -71,6 +71,9 @@
 - [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Overlay`: 2D 스크린 Rain 오버레이 UI 및 잔물결 입자 연출 (배경 오버레이)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 102. **[CORE_GDD_04]** `SecuritiesNPC_Interaction`: 증권사에서 에이전트 K와의 대화창 연동 및 모바일 아레나 매칭 신청 인터페이스 구현
+  - 📖 읽을 문서: `[CORE_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 124. **[MOD_GDD_01]** 🎨[Graphics] `CipherSecuritiesFloor`: 증권사 내부의 대형 호가 전광판과 트레이딩 데스크 레이아웃 및 에이전트 K의 2D 스탠딩 일러스트를 배치하여 증권사 전용 2D 룸 비주얼 완성 (8월에서 6월 데모를 위해 풀업 수용)
+  - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 168. **[MOD_GDD_02]** `MiniGameShell`: 물류 창고에서 수행할 물류 미니게임의 공통 UI 프레임 프리팹
 - [ ] 197. **[MOD_GDD_02]** `MiniGameAudio`: 물류 알바 효과음 및 백사장 호통 앰비언트 오디오 연동
 - [ ] 211. **[MOD_GDD_02]** `MiniGameEndSummary`: 알바 종료 후 일급(Gold)과 경험치 정산을 표시하는 정산 팝업 UI
