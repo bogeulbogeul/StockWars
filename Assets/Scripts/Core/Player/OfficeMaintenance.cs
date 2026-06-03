@@ -45,8 +45,8 @@ namespace StockWars.Core
 
             var saveData = WalletManager.Instance.ActiveSaveData;
 
-            // A. 플레이어의 현재 오피스 레벨 획득 및 검증 (LV 1 ~ 4)
-            int officeLevel = Math.Clamp(saveData.OfficeLevel, 1, 4);
+            // A. 플레이어의 현재 오피스 레벨 획득 및 검증 (LV 1 ~ 5)
+            int officeLevel = Math.Clamp(saveData.OfficeLevel, 1, 5);
 
             // B. 오피스 레벨별 주간 유지비 산출 (기획서 매트릭스)
             long maintenanceFee = GetMaintenanceFee(officeLevel);
@@ -102,10 +102,11 @@ namespace StockWars.Core
         {
             switch (level)
             {
-                case 1: return 500L;   // LV 1 고시원
-                case 2: return 1200L;  // LV 2 오피스텔
-                case 3: return 2800L;  // LV 3 트레이딩 룸
-                case 4: return 5000L;  // LV 4 로프트
+                case 1: return 500L;    // LV 1 고시원
+                case 2: return 1200L;   // LV 2 로프트 (수정: 2레벨)
+                case 3: return 2800L;   // LV 3 오피스텔 (수정: 3레벨)
+                case 4: return 5000L;   // LV 4 트레이딩 룸 (수정: 4레벨)
+                case 5: return 10000L;  // LV 5 펜트하우스 (추가: 5레벨 최종)
                 default: return 500L;
             }
         }
