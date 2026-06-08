@@ -299,6 +299,9 @@ namespace StockWars.UI
             GameObject annaGo = new GameObject("AnnaStandingUI", typeof(RectTransform), typeof(AnnaStandingUI));
             annaGo.transform.SetParent(safeAreaPanel, false);
 
+            // 8. 스마트폰 UI 생성 (우측 하단)
+            CreateSmartphoneUI();
+
             _isInitialized = true;
             Debug.Log("[MainHUDMaster] 마스터 HUD 동적 구축이 완료되었습니다.");
 
@@ -356,7 +359,115 @@ namespace StockWars.UI
         }
 
         /// <summary>
+        /// 화면 우측 하단에 상시 배치되는 스마트폰 아이콘과 앱 서랍(Frame) 프레임워크를 생성합니다.
+        /// </summary>
+        private void CreateSmartphoneUI()
+        {
+            // 1. 스마트폰 최상위 루트 (우측 하단 고정)
+            GameObject phoneRootGo = new GameObject("SmartphoneUI_Root", typeof(RectTransform));
+            phoneRootGo.transform.SetParent(safeAreaPanel, false);
+            RectTransform rootRt = phoneRootGo.GetComponent<RectTransform>();
+            rootRt.anchorMin = new Vector2(1f, 0f);
+            rootRt.anchorMax = new Vector2(1f, 0f);
+            rootRt.pivot = new Vector2(1f, 0f);
+            rootRt.anchoredPosition = new Vector2(-20f, 20f); // 우하단 여백
+            rootRt.sizeDelta = new Vector2(300f, 600f);
+
+            // 2. 스마트폰 프레임 패널 (앱 서랍)
+            GameObject frameGo = new GameObject("SmartphoneFrame", typeof(RectTransform), typeof(Image), typeof(SmartphoneController));
+            frameGo.transform.SetParent(phoneRootGo.transform, false);
+            RectTransform frameRt = frameGo.GetComponent<RectTransform>();
+            frameRt.anchorMin = new Vector2(0.5f, 0f);
+            frameRt.anchorMax = new Vector2(0.5f, 0f);
+            frameRt.pivot = new Vector2(0.5f, 0f);
+            frameRt.anchoredPosition = new Vector2(0f, 80f); // 아이콘 버튼 바로 위에 위치
+            frameRt.sizeDelta = new Vector2(340f, 650f);
+
+            Image frameImg = frameGo.GetComponent<Image>();
+            Sprite frameSprite = Resources.Load<Sprite>("Sprites/SmartPhone/Frame");
+            if (frameSprite != null)
+            {
+                frameImg.sprite = frameSprite;
+            }
+            else
+            {
+                // 로드 실패 시 폴백
+                frameImg.color = new Color(0.9f, 0.9f, 0.85f, 1f); // 코지 베이지
+            }
+
+            SmartphoneController controller = frameGo.GetComponent<SmartphoneController>();
+            controller.Initialize(frameRt);
+
+            // 3. 앱 그리드 컨테이너 생성
+            GameObject gridGo = new GameObject("AppGrid", typeof(RectTransform), typeof(GridLayoutGroup));
+            gridGo.transform.SetParent(frameGo.transform, false);
+            RectTransform gridRt = gridGo.GetComponent<RectTransform>();
+            gridRt.anchorMin = new Vector2(0f, 0f);
+            gridRt.anchorMax = new Vector2(1f, 1f);
+            gridRt.offsetMin = new Vector2(25f, 40f); // 프레임 내부 여백
+            gridRt.offsetMax = new Vector2(-25f, -60f);
+
+            GridLayoutGroup grid = gridGo.GetComponent<GridLayoutGroup>();
+            grid.cellSize = new Vector2(80f, 80f);
+            grid.spacing = new Vector2(10f, 15f);
+            grid.startCorner = GridLayoutGroup.Corner.UpperLeft;
+            grid.startAxis = GridLayoutGroup.Axis.Horizontal;
+            grid.childAlignment = TextAnchor.UpperCenter;
+
+            // 앱 아이콘 추가 (Mail, Stock, Social, Memo, Achievements, Option)
+            string[] appNames = { "Mail", "Stock", "Social", "Memo", "Achievements", "Option" };
+            foreach (string app in appNames)
+            {
+                GameObject appGo = new GameObject($"App_{app}", typeof(RectTransform), typeof(Image), typeof(Button));
+                appGo.transform.SetParent(gridGo.transform, false);
+                Image appImg = appGo.GetComponent<Image>();
+                Sprite appSprite = Resources.Load<Sprite>($"Sprites/SmartPhone/{app}Icon");
+                if (appSprite != null)
+                {
+                    appImg.sprite = appSprite;
+                }
+                else
+                {
+                    appImg.color = new Color(0.2f, 0.2f, 0.2f, 1f); // 더미 컬러
+                }
+                
+                Button appBtn = appGo.GetComponent<Button>();
+                appBtn.transition = Button.Transition.ColorTint;
+                appBtn.onClick.AddListener(() => Debug.Log($"[Smartphone] {app} 앱 실행됨!"));
+            }
+
+            // 4. 스마트폰 토글 아이콘 버튼 생성 (항상 표시됨)
+            GameObject iconBtnGo = new GameObject("ToggleSmartphoneButton", typeof(RectTransform), typeof(Image), typeof(Button));
+            iconBtnGo.transform.SetParent(phoneRootGo.transform, false);
+            RectTransform iconBtnRt = iconBtnGo.GetComponent<RectTransform>();
+            iconBtnRt.anchorMin = new Vector2(0.5f, 0f);
+            iconBtnRt.anchorMax = new Vector2(0.5f, 0f);
+            iconBtnRt.pivot = new Vector2(0.5f, 0f);
+            iconBtnRt.anchoredPosition = new Vector2(0f, 0f);
+            iconBtnRt.sizeDelta = new Vector2(80f, 80f);
+
+            Image iconImg = iconBtnGo.GetComponent<Image>();
+            Sprite toggleSprite = Resources.Load<Sprite>("Sprites/SmartPhone/SmartPhoneIcon");
+            if (toggleSprite != null)
+            {
+                iconImg.sprite = toggleSprite;
+            }
+            else
+            {
+                iconImg.color = new Color(0.1f, 0.8f, 0.6f, 1f); // 민트색 폴백
+            }
+
+            Button toggleBtn = iconBtnGo.GetComponent<Button>();
+            toggleBtn.transition = Button.Transition.ColorTint;
+            toggleBtn.onClick.AddListener(controller.ToggleSmartphone);
+            
+            // 호버 이펙트 추가 (부드럽게 커지는 효과)
+            iconBtnGo.AddComponent<UI_HoverEffect>();
+        }
+
+        /// <summary>
         /// 시간 갱신 처리 (매 프레임 호출되나, 1초마다 한 번씩 텍스트를 업데이트하여 GC 억제)
+
         /// </summary>
         private void UpdateTimeDisplay()
         {
