@@ -1,42 +1,454 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockWars - Cozy Prototype</title>
+    <title>StockWars - Cozy Smartphone & Office Prototype</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: 나눔명조 및 Outfit (모던 핀테크/Cozy 분위기 결합) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Outfit:wght@400;500;700;900&family=Noto+Sans+KR:wght@300;400;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <h1>☕ Home Office</h1>
-                <p class="subtitle">Cozy Multi-Trading</p>
-            </div>
-            <div class="wallet-panel">
-                <div class="wallet-item">
-                    <span class="label">총 자산 (Net Worth)</span>
-                    <span class="value" id="net-worth">10,000 G</span>
-                </div>
-                <div class="wallet-item">
-                    <span class="label">보유 현금 (Gold)</span>
-                    <span class="value" id="gold">10,000 G</span>
-                </div>
-            </div>
-        </header>
+    <div class="workspace">
 
-        <main class="market-board">
-            <h2>오늘의 시장 동향</h2>
-            <div class="stock-list" id="stock-list">
-                <!-- 주식 카드가 동적으로 생성됩니다 -->
-            </div>
-        </main>
+        <!-- 왼쪽: 홈 오피스 HUD & 관리자 제어판 -->
+        <div class="office-hud">
+            <header class="office-header">
+                <h1>☕ HOME OFFICE</h1>
+                <div class="office-status-badge">홈 오피스 Lv.3</div>
+            </header>
 
-        <footer class="footer">
-            <p>따뜻한 커피 한 잔과 함께하는 여유로운 트레이딩 타임.</p>
-        </footer>
+            <!-- 전광판 주가 티커 -->
+            <div class="ticker-board">
+                <div class="ticker-title">GLOBAL CIPHER INDEX</div>
+                <div class="ticker-value" id="global-index-val">2,450.80</div>
+                <div class="ticker-change up" id="global-index-change">▲ +12.45 (+0.51%)</div>
+            </div>
+
+            <!-- 안나의 비주얼 카드 -->
+            <div class="anna-card">
+                <div class="anna-avatar">👩‍💼</div>
+                <div class="anna-details">
+                    <div class="anna-name">비서 안나 (Anna)</div>
+                    <div class="anna-bubble" id="anna-dialog">"어서 오세요, 파트너! 오늘 시장 동향도 뜨겁네요. 사이퍼 M 앱을 켜서 확인해 보시겠어요?"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 프로토타입용 강제 시뮬레이션 제어판 (Admin Control) -->
+            <div class="admin-panel">
+                <h3>🛠️ 시뮬레이션 제어기</h3>
+                <p class="admin-desc">앱들의 특수 연출과 연동 흐름을 테스트하기 위한 트리거입니다.</p>
+                <div class="admin-buttons">
+                    <button class="btn-admin trigger-vi" onclick="triggerVI_Simulation()">🚨 VI (변동성 완화) 발동</button>
+                    <button class="btn-admin trigger-mail" onclick="triggerShadowMail()">✉️ 비밀 메일 수신</button>
+                    <button class="btn-admin trigger-rumor" onclick="triggerRumorAcquisition()">🕵️ 주점 찌라시 획득</button>
+                </div>
+            </div>
+
+            <div class="office-deco">
+                <span class="deco-item">🪴 선인장 화분</span>
+                <span class="deco-item">🛋️ 오피스 소파</span>
+                <span class="deco-item">💻 워크스테이션</span>
+            </div>
+        </div>
+
+        <!-- 오른쪽: 인터랙티브 스마트폰 단말기 -->
+        <div class="phone-wrapper">
+            <!-- 스마트폰 본체 -->
+            <div class="phone" id="smartphone-device">
+                <!-- 상단 스피커 & 전면 카메라 데코 -->
+                <div class="phone-notch"></div>
+
+                <!-- 상단 통신 상태바 (Status Bar) -->
+                <div class="phone-status-bar">
+                    <span class="status-time" id="phone-time">13:45</span>
+                    <div class="status-icons">
+                        <span>📶 5G</span>
+                        <span>🔋 88%</span>
+                    </div>
+                </div>
+
+                <!-- 스마트폰 액정 화면 -->
+                <div class="phone-screen" id="phone-screen">
+
+                    <!-- [1] 폰 헤더: 앱 상태에 따라 동적으로 바뀜 -->
+                    <div class="phone-header" id="phone-header-title">스마트폰 홈</div>
+
+                    <!-- [2] 홈 화면 (3x2 그리드 앱 목록) -->
+                    <div class="phone-view active" id="view-home">
+                        <div class="home-widget">
+                            <div class="widget-date" id="widget-date">6월 4일 목요일</div>
+                            <div class="widget-msg">"오늘도 대박 수익 기원! ☕"</div>
+                        </div>
+                        <div class="app-grid">
+                            <!-- 1. 사이퍼 M -->
+                            <div class="app-icon" onclick="openApp('cipher-m')"
+                                onmouseover="setPhoneHeader('사이퍼 M (Cipher M)')" onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-cipher">📈</div>
+                                <span class="icon-label">사이퍼 M</span>
+                            </div>
+                            <!-- 2. 메일함 -->
+                            <div class="app-icon" onclick="openApp('mail')" onmouseover="setPhoneHeader('메일 보관함')"
+                                onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-mail">✉️</div>
+                                <span class="icon-label">메일</span>
+                                <span class="badge-count" id="mail-badge" style="display:none;">1</span>
+                            </div>
+                            <!-- 3. 메모장 -->
+                            <div class="app-icon" onclick="openApp('memo')" onmouseover="setPhoneHeader('획득한 찌라시')"
+                                onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-memo">📝</div>
+                                <span class="icon-label">메모장</span>
+                                <span class="badge-count" id="memo-badge" style="display:none;">1</span>
+                            </div>
+                            <!-- 4. 소셜 -->
+                            <div class="app-icon" onclick="openApp('social')" onmouseover="setPhoneHeader('메신저 & 친구')"
+                                onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-social">💬</div>
+                                <span class="icon-label">소셜</span>
+                            </div>
+                            <!-- 5. 배지 -->
+                            <div class="app-icon" onclick="openApp('badge')" onmouseover="setPhoneHeader('도전 과제')"
+                                onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-badge">🏅</div>
+                                <span class="icon-label">배지</span>
+                            </div>
+                            <!-- 6. 설정 -->
+                            <div class="app-icon" onclick="openApp('option')" onmouseover="setPhoneHeader('단말기 설정')"
+                                onmouseout="resetPhoneHeader()">
+                                <div class="icon-img icon-option">⚙️</div>
+                                <span class="icon-label">설정</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [3] 사이퍼 M (Cipher M) 앱 내부 화면 -->
+                    <div class="phone-view" id="view-cipher-m">
+                        <div class="cipher-content-wrapper">
+
+                            <!-- 5대 탭 내부 화면 -->
+                            <!-- TAB A: 홈 -->
+                            <div class="cipher-tab-view active" id="cipher-tab-home">
+                                <div class="cipher-card">
+                                    <div class="card-title">내 자산 요약</div>
+                                    <div class="card-networth" id="cipher-net-worth">10,000 G</div>
+                                    <div class="card-row">
+                                        <span>보유 현금</span>
+                                        <span id="cipher-cash">10,000 G</span>
+                                    </div>
+                                    <div class="card-row">
+                                        <span>평가 손익</span>
+                                        <span class="up" id="cipher-pnl">+0 G (0.00%)</span>
+                                    </div>
+                                </div>
+                                <div class="cipher-card">
+                                    <div class="card-title">글로벌 사이퍼 지수</div>
+                                    <div class="mini-chart-container">
+                                        <!-- 미니 주가지수 라인 -->
+                                        <svg class="mini-chart-svg" viewBox="0 0 200 60">
+                                            <path d="M 0 50 Q 30 40 60 45 T 120 30 T 180 15 L 200 18" fill="none"
+                                                stroke="#22d3ee" stroke-width="2.5"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="card-row">
+                                        <span>시장 상태</span>
+                                        <span class="up font-bold">🟢 활성 (거래 중)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TAB B: 주식시장 (종목리스트) -->
+                            <div class="cipher-tab-view" id="cipher-tab-market">
+                                <div class="search-bar-container">
+                                    <input type="text" class="search-input" placeholder="종목 코드 및 이름 검색..."
+                                        onkeyup="filterStocks(this.value)">
+                                </div>
+                                <div class="sector-tabs">
+                                    <button class="sector-pill active" onclick="selectSector('ALL')">전체</button>
+                                    <button class="sector-pill" onclick="selectSector('IT')">IT</button>
+                                    <button class="sector-pill" onclick="selectSector('BIO')">바이오</button>
+                                    <button class="sector-pill" onclick="selectSector('SPACE')">우주항공</button>
+                                </div>
+                                <div class="market-stock-list" id="cipher-market-list">
+                                    <!-- 종목 카드가 동적으로 채워집니다 -->
+                                </div>
+                            </div>
+
+                            <!-- TAB C: 주문 (거래창) -->
+                            <div class="cipher-tab-view" id="cipher-tab-trade">
+                                <!-- VI 사이렌 비상 알림 바 -->
+                                <div class="vi-warning-banner" id="vi-banner">
+                                    🚨 [VI WARNING] 변동성 완화 장치 발동! 30초 대기
+                                </div>
+
+                                <div class="trade-stock-header">
+                                    <div class="trade-stock-name" id="trade-name">사이퍼 증권</div>
+                                    <div class="trade-stock-price-row">
+                                        <span class="trade-stock-price" id="trade-price">1,500 G</span>
+                                        <span class="trade-stock-percent up" id="trade-change">+3.09%</span>
+                                    </div>
+                                </div>
+
+                                <!-- 간이 차트 -->
+                                <div class="trade-chart-box">
+                                    <div class="vi-siren-animation" id="vi-siren-anim">⚠️</div>
+                                    <svg class="trade-chart-svg" viewBox="0 0 200 80" id="trade-chart-line">
+                                        <path d="M 0 60 L 40 55 L 80 65 L 120 40 L 160 30 L 200 35" fill="none"
+                                            stroke="#22d3ee" stroke-width="2.5"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- 5단계 호가창 & 주문 패널 레이아웃 -->
+                                <div class="trade-grid">
+                                    <!-- 호가창 -->
+                                    <div class="orderbook-panel">
+                                        <div class="orderbook-row ask" onclick="setOrderPrice(1530)"><span
+                                                class="ob-p">1,530</span><span class="ob-v">140</span></div>
+                                        <div class="orderbook-row ask" onclick="setOrderPrice(1515)"><span
+                                                class="ob-p">1,515</span><span class="ob-v">290</span></div>
+                                        <div class="orderbook-row active" onclick="setOrderPrice(1500)"><span
+                                                class="ob-p">1,500</span><span class="ob-v">950</span></div>
+                                        <div class="orderbook-row bid" onclick="setOrderPrice(1485)"><span
+                                                class="ob-p">1,485</span><span class="ob-v">410</span></div>
+                                        <div class="orderbook-row bid" onclick="setOrderPrice(1470)"><span
+                                                class="ob-p">1,470</span><span class="ob-v">180</span></div>
+                                    </div>
+
+                                    <!-- 입력 패널 -->
+                                    <div class="order-input-panel">
+                                        <div class="input-title">거래 설정</div>
+                                        <div class="input-row">
+                                            <span class="input-label">수량</span>
+                                            <input type="number" id="trade-qty" class="qty-input" value="1" min="1"
+                                                oninput="calculateTradeTotal()">
+                                        </div>
+                                        <div class="quick-ratio-row">
+                                            <button class="ratio-btn" onclick="setRatio(0.1)">10%</button>
+                                            <button class="ratio-btn" onclick="setRatio(0.25)">25%</button>
+                                            <button class="ratio-btn" onclick="setRatio(0.5)">50%</button>
+                                            <button class="ratio-btn" onclick="setRatio(1.0)">100%</button>
+                                        </div>
+                                        <div class="avg-down-row" id="average-down-btn-row" style="display: none; margin-top: 6px;">
+                                            <button class="avg-down-btn" onclick="applyAverageDownHelper()">💦 물타기 (기존 수량 2배 매수)</button>
+                                        </div>
+                                        <div class="total-estimated-row">
+                                            <span>예상 총액:</span>
+                                            <span id="estimated-total">1,500 G</span>
+                                        </div>
+                                        <div class="total-estimated-row" id="average-down-preview-row" style="display: none; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px; margin-top: 4px;">
+                                            <span style="color: #22d3ee;">💦 예상 평단가:</span>
+                                            <span id="estimated-avg-price" style="color: #22d3ee; font-weight: bold;">0 G</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 주문 버튼 -->
+                                <div class="trade-action-row">
+                                    <button class="btn-buy-action" id="btn-trade-buy" onclick="executeBuy()">시장가
+                                        매수</button>
+                                    <button class="btn-sell-action" id="btn-trade-sell" onclick="executeSell()">시장가
+                                        매도</button>
+                                </div>
+                            </div>
+
+                            <!-- TAB D: 보유 (계좌 보유현황) -->
+                            <div class="cipher-tab-view" id="cipher-tab-holdings">
+                                <div class="holdings-summary-card">
+                                    <div class="h-title">보유 주식 총 평가</div>
+                                    <div class="h-value" id="holdings-total-val">0 G</div>
+                                    <div class="card-row">
+                                        <span>실현 손익(P&L)</span>
+                                        <span class="up" id="holdings-total-profit">+0 G</span>
+                                    </div>
+                                    <div class="card-row">
+                                        <span>평균 매수 수수료 (0.15%)</span>
+                                        <span id="holdings-total-fee">0 G</span>
+                                    </div>
+                                    <button class="btn-liquidate-all" onclick="liquidateAllHoldings()">🚨 포트폴리오 전량 일괄 매도</button>
+                                </div>
+                                <div class="holdings-list" id="cipher-holdings-list">
+                                    <!-- 보유 중인 종목 리스트가 동적으로 렌더링됩니다 -->
+                                    <div class="no-holdings-placeholder">보유 중인 주식이 없습니다.</div>
+                                </div>
+                            </div>
+
+                            <!-- TAB E: 뉴스 (시장 피드) -->
+                            <div class="cipher-tab-view" id="cipher-tab-news">
+                                <div class="news-list" id="cipher-news-feed">
+                                    <!-- 실시간 속보 뉴스 피드 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 사이퍼 M 하단 탭 내비게이션 바 -->
+                        <div class="cipher-nav-bar">
+                            <div class="nav-item active" onclick="switchCipherTab('home')">
+                                <span class="nav-icon">🏠</span>
+                                <span class="nav-text">홈</span>
+                            </div>
+                            <div class="nav-item" onclick="switchCipherTab('market')">
+                                <span class="nav-icon">📊</span>
+                                <span class="nav-text">시장</span>
+                            </div>
+                            <div class="nav-item" onclick="switchCipherTab('trade')">
+                                <span class="nav-icon">⚡</span>
+                                <span class="nav-text">주문</span>
+                            </div>
+                            <div class="nav-item" onclick="switchCipherTab('holdings')">
+                                <span class="nav-icon">💼</span>
+                                <span class="nav-text">보유</span>
+                            </div>
+                            <div class="nav-item" onclick="switchCipherTab('news')">
+                                <span class="nav-icon">📰</span>
+                                <span class="nav-text">뉴스</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [4] 메일 앱 화면 -->
+                    <div class="phone-view" id="view-mail">
+                        <div class="app-back-bar">
+                            <button class="back-btn" onclick="backToHome()">◀ 홈 화면</button>
+                            <span class="app-title">메일 보관함</span>
+                        </div>
+                        <div class="mail-container" id="mail-list-container">
+                            <!-- 메일 리스트 -->
+                        </div>
+                        <div class="mail-detail-container" id="mail-detail-container" style="display:none;">
+                            <button class="mail-back-list-btn" onclick="showMailList()">◀ 메일 목록으로</button>
+                            <div class="mail-detail-header">
+                                <div class="mail-detail-subject" id="mail-det-subject">정산 완료 안내</div>
+                                <div class="mail-detail-meta" id="mail-det-meta">보낸이: 시스템 관리자</div>
+                                <div class="shadow-timer" id="mail-self-destruct-timer">🕒 이 비밀 메일은 10초 후에 폭파됩니다!</div>
+                            </div>
+                            <div class="mail-detail-body" id="mail-det-body">
+                                정산 내용 본문입니다...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [5] 메모장 앱 화면 (획득한 찌라시 보관함) -->
+                    <div class="phone-view" id="view-memo">
+                        <div class="app-back-bar">
+                            <button class="back-btn" onclick="backToHome()">◀ 홈 화면</button>
+                            <span class="app-title">찌라시 보관함</span>
+                        </div>
+                        <div class="memo-container" id="memo-list-container">
+                            <!-- 획득한 찌라시 목록 -->
+                            <div class="no-memo-placeholder">주점(Midnight Pub)에서 획득하거나 구매한 찌라시가 여기에 기록됩니다. 현재 비어있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [6] 소셜 메신저 앱 화면 -->
+                    <div class="phone-view" id="view-social">
+                        <div class="app-back-bar">
+                            <button class="back-btn" onclick="backToHome()">◀ 홈 화면</button>
+                            <span class="app-title">Social 메신저</span>
+                        </div>
+                        <div class="social-chat-container">
+                            <div class="chat-header">
+                                <span class="chat-friend-status">🟢</span> <strong>줄리안 (가구 상점)</strong>
+                            </div>
+                            <div class="chat-messages" id="chat-box">
+                                <div class="msg received">
+                                    <span class="msg-sender">줄리안</span>
+                                    <div class="msg-bubble">트레이더님, 이번에 네온 테마 가구가 새로 입고되었는데 보러 안 오시나요? ㅎㅎ</div>
+                                </div>
+                                <div class="msg sent">
+                                    <div class="msg-bubble">지금 사이퍼 M으로 단타 치느라 바쁩니다 ㅋㅋㅋ 다 벌면 갈게요.</div>
+                                </div>
+                                <div class="msg received">
+                                    <span class="msg-sender">줄리안</span>
+                                    <div class="msg-bubble">꼭 대박 나셔서 가구 싹 쓸어주시길 바랍니다! 화이팅! 💪</div>
+                                </div>
+                            </div>
+                            <div class="chat-input-row">
+                                <input type="text" class="chat-input" id="chat-input-text" placeholder="메시지 전송..."
+                                    onkeypress="handleChatKeyPress(event)">
+                                <button class="chat-send-btn" onclick="sendChatMessage()">전송</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [7] 배지 도전 과제 앱 화면 -->
+                    <div class="phone-view" id="view-badge">
+                        <div class="app-back-bar">
+                            <button class="back-btn" onclick="backToHome()">◀ 홈 화면</button>
+                            <span class="app-title">업적 & 배지</span>
+                        </div>
+                        <div class="badge-container">
+                            <div class="badge-item earned">
+                                <div class="badge-icon">☕</div>
+                                <div class="badge-info">
+                                    <div class="badge-name">홈 카페 개장</div>
+                                    <div class="badge-desc">홈 오피스 첫 매매를 성공적으로 실행함.</div>
+                                </div>
+                            </div>
+                            <div class="badge-item earned">
+                                <div class="badge-icon">🐱</div>
+                                <div class="badge-info">
+                                    <div class="badge-name">캔들캣의 간택</div>
+                                    <div class="badge-desc">사이퍼 증권 마스코트와 조우함.</div>
+                                </div>
+                            </div>
+                            <div class="badge-item locked" id="badge-rich">
+                                <div class="badge-icon">👑</div>
+                                <div class="badge-info">
+                                    <div class="badge-name">자본의 지배자</div>
+                                    <div class="badge-desc">순자산 10,000,000 G 돌파 (잠김).</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [8] 설정 앱 화면 -->
+                    <div class="phone-view" id="view-option">
+                        <div class="app-back-bar">
+                            <button class="back-btn" onclick="backToHome()">◀ 홈 화면</button>
+                            <span class="app-title">설정</span>
+                        </div>
+                        <div class="option-container">
+                            <div class="option-section">
+                                <div class="section-title">사운드 믹서</div>
+                                <div class="option-row">
+                                    <span>배경음 (BGM)</span>
+                                    <input type="range" class="volume-slider" min="0" max="100" value="80">
+                                </div>
+                                <div class="option-row">
+                                    <span>효과음 (SFX)</span>
+                                    <input type="range" class="volume-slider" min="0" max="100" value="90">
+                                </div>
+                            </div>
+                            <div class="option-section">
+                                <div class="section-title">단말기 스킨 테마</div>
+                                <div class="skin-selector-grid">
+                                    <div class="skin-pill active" onclick="changePhoneSkin('cozy')">Cozy Cream</div>
+                                    <div class="skin-pill" onclick="changePhoneSkin('mint')">Mint Macaron</div>
+                                    <div class="skin-pill" onclick="changePhoneSkin('dark')">Cyber Obsidian</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 스마트폰 물리 홈 버튼 -->
+                <div class="phone-home-button" onclick="backToHome()"></div>
+            </div>
+        </div>
+
     </div>
+
+    <!-- 오디오 효과음용 가상 플레이어 (비주얼 피드백) -->
+    <div class="audio-feedback-bubble" id="audio-sfx-toast">🎵 SFX</div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

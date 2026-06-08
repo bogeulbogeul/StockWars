@@ -1,13 +1,14 @@
 # ROADMAP 04: 8월 (캡스톤 중반부: 서사/금융 기초 & 에셋 파이프라인) - 유니티 최적화 개발 순서 개편
 
 **우선순위:** 3. 10월 말 캡스톤까지 해야 하는 것
-**목표:** [Capstone: Lv.4 ~ 10 확장] 플레이타임 누적에 따른 서사 진행, 핵심 금융 구역(은행/증권사) 에셋 및 스마트폰 기초 해금
+**목표:** [Capstone: Lv.4 ~ 10 확장] 플레이타임 누적에 따른 서사 진행, 핵심 금융 구역(은행/증권사) 에셋 해금
 
 > **[AI 주의사항]** 에셋 생성 및 UI 배치 시간을 충분히 고려하여, 8월은 **안나 관련 연출/초상화 에셋과 은행(Node Finance Room) 및 증권사(Cipher Securities Floor) 핵심 2대 구역의 UI 및 비주얼**을 구축하는 것에 중점을 둡니다.
+> 스마트폰 UI 및 코어 앱(메일/뉴스) 개발 항목은 6월 데모 빌드로 조기 이관되었습니다.
 
 ---
 
-## 🎨 유니티 개발 친화적 6단계 빌드 로드맵
+## 🎨 유니티 개발 친화적 5단계 빌드 로드맵
 
 ### 🗣️ Phase 1: 대화 시스템 코어 및 다이얼로그 연출 (Dialogue System Core)
 * 인게임의 모든 텍스트 기반 대화, 텍스트 연출, 다이얼로그 기록장 UI 등 핵심 대화 엔진을 올리는 단계입니다.
@@ -39,18 +40,7 @@
 
 ---
 
-### 📱 Phase 3: 스마트폰 UI 프레임워크 및 메일/뉴스 앱 (Smartphone Apps Framework)
-* 게임 화면 우측 하단의 핵심 도구인 스마트폰 UI를 구축하고, 메일과 뉴스 앱 등 코어 앱 인터페이스를 완성하는 단계입니다.
-- [ ] 233. **[MOD_GDD_11]** `SmartphoneUI`: 화면 우하단 스마트폰 아이콘 및 앱 서랍 슬라이드 애니메이션 UI
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 234-1. **[MOD_GDD_11]** `MailApp_List`: 시스템 및 NPC 메일 수신 목록, 중요도 필터 및 읽음 처리 기능 UI
-  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 237. **[MOD_GDD_12]** `NewsAgencyApp`: 가상 언론사의 속보 알림 및 과거 기사 아카이빙 조회 앱 UI
-  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
-
----
-
-### 💞 Phase 4: 안나 서사 및 친밀도 알고리즘 (Narrative Affection Logic)
+### 💞 Phase 3: 안나 서사 및 친밀도 알고리즘 (Narrative Affection Logic)
 * 플레이어의 자산 규모에 따른 NPC의 말투 필터링, 호감도 연산 엔진, 매일 아침 시장 상황 브리핑 등 서사 알고리즘 단계입니다.
 - [ ] 232-1. **[MOD_GDD_06]** 🧠[Pro] `AffectionLogic`: 안나와의 누적 친밀도(0~100) 데이터 및 가중치 연산 엔진
   - 📖 읽을 문서: `[MOD_GDD_06]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -63,7 +53,7 @@
 
 ---
 
-### 🏦 Phase 5: 파산 회생 판정 및 시장 거래 유동성 AI (Debt Relief & Market AI)
+### 🏦 Phase 4: 파산 회생 판정 및 시장 거래 유동성 AI (Debt Relief & Market AI)
 * 파산 시 구제 대출/회생 절차를 밟는 회생 위저드 및 시장의 실시간 유동성을 받치는 고스트 트레이더 AI를 탑재하는 8월 금융 로직 마감 단계입니다.
 - [ ] 238. **[MOD_GDD_13]** 🧠[Pro] `GhostTraderAI`: 시장 유동성을 공급하는 고스트 트레이더들의 구역별 매매 알고리즘
   - 📖 읽을 문서: `[MOD_GDD_13]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -80,7 +70,7 @@
 
 ---
 
-### 🏢 Phase 6: 금융 구역 그래픽 에셋 및 실내 씬 연출 (Financial District Scenes)
+### 🏢 Phase 5: 금융 구역 그래픽 에셋 및 실내 씬 연출 (Financial District Scenes)
 * 은행과 증권사 내부의 그래픽 에셋을 셋업하고 무겁고 아늑한 실내 씬 조명 및 UI 핏을 정밀 조정하는 비주얼 마무리 단계입니다.
 - [ ] 123. **[MOD_GDD_01]** 🎨[Graphics] `NodeFinanceRoom`: 은행 내부의 무겁고 빈티지한 금색 조명의 룸 연출 및 프리팹 (7월 은행 대출 상환 이월과 함께 연동)
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)

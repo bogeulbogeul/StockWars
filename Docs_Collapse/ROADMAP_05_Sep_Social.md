@@ -114,34 +114,6 @@
 - [ ] 280. **[MOD_GDD_07]** `DialogueSelectionSFX`: 선택지 위에 마우스 오버 시 출력되는 부드러운 화이트 노이즈 사운드
   - 📖 읽을 문서: `[MOD_GDD_07]` (Docs_Collapse에서 SLIM 버전 확인)
 
----
-
-### 🤝 Phase 6: [데모 이후] 투자 신디케이트 비밀 아지트 및 공동 작전 (Syndicate Content)
-* 9월 마무리 단계로써, 데모 출시 이후에 활성화될 유저 간 연대금융 및 작전 공동 참여 아지트/전광판/백엔드 로직 설계 단계입니다.
-- [ ] 250. **[데모 이후] [MOD_GDD_16]** `Syndicate_Formation`: 유저 간 '투자 신디케이트' 결성 및 엠블럼 에디터 UI 배치
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 251. **[데모 이후] [MOD_GDD_16]** 🎨[Graphics] `Syndicate_EmblemMapping`: 생성된 엠블럼을 멤버의 어깨 및 프로필 UI에 고화질 렌더링
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 252. **[데모 이후] [MOD_GDD_16]** 🎨[Graphics] `SecretHideoutUI`: 미드나잇 펍 지하 '비밀 아지트' 입장 및 인테리어 커스텀 UI/에셋
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 268. **[데모 이후] [MOD_GDD_16]** `SyndicateWallboard`: 아지트 내 멤버들의 실시간 보유 종목을 보여주는 대형 전광판 UI 배치
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 264. **[데모 이후] [MOD_GDD_16]** `SyndicateRankings`: 신디케이트 간의 주간 수익률 대결 및 전용 리더보드 UI 배치
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 282. **[데모 이후] [MOD_GDD_16]** `SyndicateHideoutUpgrade`: 아지트 내에 고효율 트레이딩 룸을 증축하는 건설 UI 배치
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 253. **[데모 이후] [MOD_GDD_16]** `JointBuyOperation`: 리더의 작전주 지정 시 멤버 동시 매수 시너지(x1.5 가중치) 엔진
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 254. **[데모 이후] [MOD_GDD_16]** 🧠[Pro] `JointLiabilityCalc`: 신디케이트 파산 시 멤버 기여도에 따른 채무 배분 및 연대 책임 로직
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 255. **[데모 이후] [MOD_GDD_16]** `BlackBrokerJack`: 전설급 작전주 소스를 판매하는 블랙 브로커 잭과의 특수 거래창 UI
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 273. **[데모 이후] [MOD_GDD_16]** 🧠[Pro] `GhostSyndicateAI`: 라이벌 NPC 신디케이트 생성 엔진
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 277. **[데모 이후] [MOD_GDD_16]** `SyndicateEmergencyLoop`: 연맹 위기 시 멤버 모두의 화면에 경고 알람이 동시에 뜨는 연출
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 287. **[데모 이후] [MOD_GDD_16]** `SyndicateAssetSharing`: 멤버 간의 일시적인 자산 대여 및 증거금 합산 공동 대응 기능
-  - 📖 읽을 문서: `[MOD_GDD_16]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 

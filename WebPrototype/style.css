@@ -1,108 +1,1581 @@
+/* ==========================================
+   StockWars: Cozy & Cyber Design System
+   ========================================== */
+
 :root {
-    --bg-color: #f7f3eb; /* 따뜻한 베이지 */
-    --card-bg: #ffffff;
-    --text-main: #4a3f35; /* 부드러운 브라운 */
-    --text-muted: #8b7d71;
-    --accent-wood: #c49a6c;
-    --color-up: #6ea982; /* 편안한 톤다운 그린 */
-    --color-down: #d17878; /* 부드러운 피치 레드 */
-    --shadow: 0 4px 12px rgba(120, 105, 90, 0.1);
+    /* 오피스 HUD 테마 (Cozy Warm) */
+    --hud-bg: #f8f6f0;
+    --hud-card: #ffffff;
+    --hud-text: #2d241e;
+    --hud-muted: #7d6b5f;
+    --hud-border: #e2dcd0;
+    --hud-accent: #c69b6d;
+
+    /* 스마트폰 스킨 컬러 (기본: Cozy Cream) */
+    --phone-shell: #f4edd4;
+    --phone-bezel: #eae0c2;
+    --phone-button: #decda1;
+
+    /* 주식 등락 컬러 체계 (Cozy Cyber) */
+    --color-up: #22d3ee;
+    /* 네온 사이언 (상승) */
+    --color-up-glow: rgba(34, 211, 238, 0.4);
+    --color-down: #ff6b6b;
+    /* 네온 피치 레드 (하락) */
+    --color-down-glow: rgba(255, 107, 107, 0.4);
+    --color-flat: #94a3b8;
+    /* 평보 */
+
+    /* 폰 내부 다크테마 */
+    --phone-bg: #0f1015;
+    --phone-card: #181920;
+    --phone-card-hover: #21232c;
+    --phone-border: rgba(255, 255, 255, 0.08);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ==========================================
+   공통 & 레이아웃 구조
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Nunito', 'Nanum Myeongjo', sans-serif;
+    background-color: #27211d;
+    /* 아늑한 밤 시간 오피스 분위기 어두운 갈색 */
+    color: var(--hud-text);
+    font-family: 'Outfit', 'Noto Sans KR', sans-serif;
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
-.container {
+.workspace {
+    display: flex;
+    gap: 40px;
+    background: #1f1a17;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    border: 4px solid #332924;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
+    align-items: stretch;
 }
 
-.header {
+/* ==========================================
+   왼쪽: 가상 홈 오피스 HUD (Office View)
+   ========================================== */
+.office-hud {
+    flex: 1.2;
+    background: var(--hud-bg);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid var(--hud-border);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.office-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px dashed var(--accent-wood);
+    margin-bottom: 20px;
 }
 
-.logo h1 { font-family: 'Nanum Myeongjo', serif; font-size: 2rem; color: var(--text-main); }
-.logo .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem; }
-
-.wallet-panel {
-    display: flex;
-    gap: 1.5rem;
-    background: var(--card-bg);
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+.office-header h1 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.8rem;
+    color: #433327;
 }
 
-.wallet-item { display: flex; flex-direction: column; align-items: flex-end; }
-.wallet-item .label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
-.wallet-item .value { font-size: 1.2rem; font-weight: 800; color: var(--accent-wood); }
+.office-status-badge {
+    background: var(--hud-accent);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
 
-.market-board h2 { font-family: 'Nanum Myeongjo', serif; margin-bottom: 1.5rem; font-size: 1.4rem; }
-
-.stock-list { display: flex; flex-direction: column; gap: 1rem; }
-
-.stock-card {
-    background: var(--card-bg);
-    padding: 1.5rem;
+/* 전광판 */
+.ticker-board {
+    background: #15110f;
     border-radius: 16px;
-    box-shadow: var(--shadow);
+    padding: 20px;
+    border: 3px solid #3c322b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticker-title {
+    color: #c4b5a9;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.ticker-value {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -1px;
+}
+
+.ticker-change {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* 안나 비주얼 대화 상자 */
+.anna-card {
+    background: var(--hud-card);
+    border: 1px solid var(--hud-border);
+    border-radius: 16px;
+    padding: 16px;
     display: flex;
-    justify-content: space-between;
+    gap: 15px;
     align-items: center;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(45, 36, 30, 0.05);
+    margin-bottom: 24px;
 }
-.stock-card:hover { transform: translateY(-2px); }
 
-.stock-info { flex: 1; }
-.stock-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
-.stock-shares { font-size: 0.9rem; color: var(--text-muted); }
+.anna-avatar {
+    font-size: 2.5rem;
+    background: #ffe3d1;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
-.stock-price-section {
+.anna-details {
     flex: 1;
-    text-align: right;
-    padding-right: 2rem;
 }
-.stock-price { font-size: 1.5rem; font-weight: 800; transition: color 0.3s; }
-.stock-diff { font-size: 0.9rem; font-weight: 600; }
-.up { color: var(--color-up); }
-.down { color: var(--color-down); }
 
-.stock-actions { display: flex; gap: 0.5rem; }
+.anna-name {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--hud-accent);
+    margin-bottom: 4px;
+}
 
-button {
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-family: inherit;
+.anna-bubble {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #4a3e35;
+}
+
+/* 시뮬레이션 제어판 */
+.admin-panel {
+    background: #eae2d6;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid #d4c8b7;
+}
+
+.admin-panel h3 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #4a382c;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-desc {
+    font-size: 0.75rem;
+    color: #6d5b4e;
+    margin-bottom: 12px;
+}
+
+.admin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-admin {
+    background: #ffffff;
+    border: 1.5px solid #c7bdae;
+    color: #4a382c;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s, opacity 0.2s;
-    font-size: 0.9rem;
+    text-align: left;
+    transition: all 0.2s;
 }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.btn-buy { background-color: var(--color-up); color: white; }
-.btn-buy:hover:not(:disabled) { background-color: #5b926d; }
-.btn-sell { background-color: var(--color-down); color: white; }
-.btn-sell:hover:not(:disabled) { background-color: #b86262; }
+.btn-admin:hover {
+    background: var(--hud-accent);
+    color: #ffffff;
+    border-color: var(--hud-accent);
+    transform: translateY(-1px);
+}
 
-.footer {
-    margin-top: 3rem;
+.office-deco {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: var(--hud-muted);
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* ==========================================
+   오른쪽: 스마트폰 단말기 프레임
+   ========================================== */
+.phone-wrapper {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone {
+    width: 320px;
+    height: 620px;
+    background-color: var(--phone-shell);
+    border: 10px solid var(--phone-bezel);
+    border-radius: 42px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 스마트폰 전원 스킨 테마 클래스 */
+.phone.skin-mint {
+    --phone-shell: #e2f4eb;
+    --phone-bezel: #d0e7dc;
+    --phone-button: #bad3c6;
+}
+
+.phone.skin-dark {
+    --phone-shell: #1b1c21;
+    --phone-bezel: #121316;
+    --phone-button: #2a2b30;
+    box-shadow: 0 20px 50px rgba(34, 211, 238, 0.15);
+}
+
+/* 상단 노치 */
+.phone-notch {
+    width: 110px;
+    height: 18px;
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 100;
+}
+
+/* 상단 상태바 */
+.phone-status-bar {
+    height: 28px;
+    background: rgba(15, 16, 21, 0.95);
+    color: #8b96a8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 0;
+    z-index: 99;
+}
+
+.status-icons {
+    display: flex;
+    gap: 6px;
+}
+
+/* 스마트폰 액정 스크린 */
+.phone-screen {
+    flex: 1;
+    background-color: var(--phone-bg);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 폰 헤더 */
+.phone-header {
+    height: 48px;
+    background: rgba(15, 16, 21, 0.95);
+    border-bottom: 1px solid var(--phone-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    letter-spacing: 0.5px;
+}
+
+/* 폰 화면 뷰 관리 */
+.phone-view {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.phone-view::-webkit-scrollbar {
+    display: none;
+}
+
+.phone-view.active {
+    display: flex;
+}
+
+/* ==========================================
+   홈 화면 (Home Screen)
+   ========================================== */
+.home-widget {
+    background: linear-gradient(135deg, #1b1f2b, #12141c);
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
-    color: var(--text-muted);
+}
+
+.widget-date {
+    font-size: 0.75rem;
+    color: var(--color-up);
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.widget-msg {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #a0aec0;
+    font-weight: 500;
+}
+
+/* 3x2 그리드 앱 목록 */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+
+.app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.icon-img {
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 동물의 숲 3D 바운스 효과 */
+.app-icon:hover .icon-img {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.icon-cipher {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.icon-mail {
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+}
+
+.icon-memo {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.icon-social {
+    background: linear-gradient(135deg, #34d399, #059669);
+}
+
+.icon-badge {
+    background: linear-gradient(135deg, #f472b6, #db2777);
+}
+
+.icon-option {
+    background: linear-gradient(135deg, #64748b, #475569);
+}
+
+.icon-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    text-align: center;
+    letter-spacing: -0.3px;
+}
+
+/* 뱃지 카운터 */
+.badge-count {
+    position: absolute;
+    top: -5px;
+    right: 8px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 900;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid var(--phone-bg);
+}
+
+/* ==========================================
+   앱 공통 스타일 (앱 타이틀 바 등)
+   ========================================== */
+.app-back-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.back-btn {
+    background: #272935;
+    border: none;
+    color: #cbd5e1;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: #3c3f52;
+}
+
+.app-title {
+    font-weight: 800;
     font-size: 0.9rem;
-    font-style: italic;
+    color: #cbd5e1;
+}
+
+/* ==========================================
+   사이퍼 M (주식 거래 & 5대 탭)
+   ========================================== */
+#view-cipher-m {
+    padding: 0;
+    /* 내부 마진은 컨텐츠 뷰에서 소화 */
+}
+
+.cipher-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 56px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.cipher-tab-view {
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    height: 100%;
+}
+
+.cipher-tab-view.active {
+    display: flex;
+}
+
+/* 자산 카드 */
+.cipher-card {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card-networth {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    margin-top: 6px;
+}
+
+.up {
+    color: var(--color-up);
+    text-shadow: 0 0 8px var(--color-up-glow);
+}
+
+.down {
+    color: var(--color-down);
+    text-shadow: 0 0 8px var(--color-down-glow);
+}
+
+.flat {
+    color: var(--color-flat);
+}
+
+.mini-chart-container {
+    height: 60px;
+    background: #111218;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+/* 탭 B: 시장 리스트 */
+.search-bar-container {
+    margin-bottom: 12px;
+}
+
+.search-input {
+    width: 100%;
+    background: #181920;
+    border: 1px solid var(--phone-border);
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.sector-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+}
+
+.sector-pill {
+    background: #1e202a;
+    border: none;
+    color: #94a3b8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sector-pill.active {
+    background: var(--color-up);
+    color: #0f1015;
+}
+
+.market-stock-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 개별 종목 카드 */
+.stock-row {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.stock-row:hover {
+    background: var(--phone-card-hover);
+}
+
+.s-name-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.s-name {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+.s-sector {
+    font-size: 0.68rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.s-chart-col {
+    width: 50px;
+    height: 24px;
+}
+
+.s-price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.s-price {
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.s-change {
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* 탭 C: 주문 거래창 */
+.vi-warning-banner {
+    background: #ea580c;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 12px;
+    display: none;
+    animation: flash-warning 1s infinite alternate;
+}
+
+@keyframes flash-warning {
+    0% {
+        background-color: #ea580c;
+        box-shadow: 0 0 5px rgba(234, 88, 12, 0.5);
+    }
+
+    100% {
+        background-color: #dc2626;
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.8);
+    }
+}
+
+.trade-stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.trade-stock-name {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.trade-stock-price-row {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.trade-chart-box {
+    height: 80px;
+    background: #111218;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 12px;
+    border: 1px solid var(--phone-border);
+}
+
+.trade-chart-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.vi-siren-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    color: #fbbf24;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
+    display: none;
+    animation: spin-siren 1.5s linear infinite;
+}
+
+@keyframes spin-siren {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+}
+
+/* VI 상태 시 차트 어둡게 */
+.trade-chart-box.vi-active {
+    background: #1a0f0a;
+}
+
+.trade-chart-box.vi-active .trade-chart-svg {
+    opacity: 0.2;
+}
+
+.trade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    grid-gap: 10px;
+    margin-bottom: 12px;
+}
+
+/* 호가창 */
+.orderbook-panel {
+    background: #121318;
+    border-radius: 12px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.orderbook-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.orderbook-row.ask {
+    background: rgba(255, 107, 107, 0.08);
+    color: #ff8e8e;
+}
+
+.orderbook-row.bid {
+    background: rgba(34, 211, 238, 0.08);
+    color: #8ee9ff;
+}
+
+.orderbook-row.active {
+    border: 1px solid var(--color-up);
+    background: rgba(34, 211, 238, 0.15);
+}
+
+/* 주문 설정 패널 */
+.order-input-panel {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-title {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 700;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.input-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.qty-input {
+    width: 60px;
+    background: #121318;
+    border: 1px solid var(--phone-border);
+    border-radius: 6px;
+    padding: 4px 6px;
+    color: white;
+    text-align: center;
+    font-size: 0.75rem;
+    outline: none;
+}
+
+.quick-ratio-row {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.ratio-btn {
+    flex: 1;
+    background: #272935;
+    color: #cbd5e1;
+    font-size: 0.62rem;
+    padding: 4px 2px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+
+.ratio-btn:hover {
+    background: #3b3e52;
+}
+
+.total-estimated-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-top: 8px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-top: 6px;
+}
+
+/* 매수/매도 실질 매매 액션 버튼 */
+.trade-action-row {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-buy-action,
+.btn-sell-action {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-buy-action {
+    background: #0891b2;
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+}
+
+.btn-buy-action:hover:not(:disabled) {
+    background: #0e7490;
+}
+
+.btn-sell-action {
+    background: #e11d48;
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+.btn-sell-action:hover:not(:disabled) {
+    background: #be123c;
+}
+
+.btn-buy-action:disabled,
+.btn-sell-action:disabled {
+    background: #334155;
+    color: #64748b;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* 탭 D: 보유계좌 */
+.holdings-summary-card {
+    background: linear-gradient(135deg, #1b2030, #141724);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.h-title {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.h-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.btn-liquidate-all {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 800;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.25);
+}
+.btn-liquidate-all:hover {
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+.btn-liquidate-all.confirm-pending {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    animation: pulse-warn 0.6s infinite alternate;
+}
+
+@keyframes pulse-warn {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
+}
+
+.avg-down-btn {
+    width: 100%;
+    padding: 6px;
+    background: rgba(34, 211, 238, 0.12);
+    border: 1px dashed #22d3ee;
+    border-radius: 6px;
+    color: #22d3ee;
+    font-weight: 800;
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    outline: none;
+}
+.avg-down-btn:hover {
+    background: rgba(34, 211, 238, 0.22);
+}
+
+.holdings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.h-card {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.h-card-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+}
+
+.h-card-qty {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.no-holdings-placeholder {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    padding: 40px 0;
+}
+
+/* 탭 E: 경제 뉴스 */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.news-card {
+    background: var(--phone-card);
+    border-left: 3px solid var(--hud-accent);
+    border-radius: 10px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--phone-border);
+    border-right: 1px solid var(--phone-border);
+    border-bottom: 1px solid var(--phone-border);
+}
+
+.news-card.news-up {
+    border-left-color: var(--color-up);
+}
+
+.news-card.news-down {
+    border-left-color: var(--color-down);
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.news-title {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.35;
+}
+
+.news-impact-badge {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    font-weight: 900;
+}
+
+.news-impact-badge.up {
+    background: rgba(34, 211, 238, 0.15);
+    color: var(--color-up);
+}
+
+.news-impact-badge.down {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--color-down);
+}
+
+/* 사이퍼 M 하단 네비바 */
+.cipher-nav-bar {
+    height: 56px;
+    background: #111218;
+    border-top: 1px solid var(--phone-border);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.nav-item.active {
+    opacity: 1;
+    color: var(--color-up);
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+}
+
+.nav-text {
+    font-size: 0.6rem;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+/* ==========================================
+   메일 앱 (Mail)
+   ========================================== */
+.mail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mail-item {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mail-item.unread {
+    border-left: 3.5px solid var(--color-up);
+}
+
+.mail-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #64748b;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.mail-subject {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.mail-preview {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 메일 디테일 뷰 */
+.mail-detail-container {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 14px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mail-back-list-btn {
+    align-self: flex-start;
+    background: #272935;
+    border: none;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.mail-detail-header {
+    border-bottom: 1px solid var(--phone-border);
+    padding-bottom: 10px;
+}
+
+.mail-detail-subject {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.mail-detail-meta {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.shadow-timer {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 6px;
+    border-radius: 6px;
+    margin-top: 8px;
+    display: none;
+    text-align: center;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.mail-detail-body {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #cbd5e1;
+    min-height: 120px;
+    white-space: pre-line;
+}
+
+/* 글리치 파기 연출 효과 */
+.self-destructed {
+    animation: glitch-destroy 0.5s steps(2) forwards;
+}
+
+@keyframes glitch-destroy {
+    0% {
+        filter: hue-rotate(0deg);
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        filter: hue-rotate(180deg) blur(2px);
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+
+    100% {
+        filter: grayscale(1) blur(5px);
+        opacity: 0;
+        transform: scale(0.8);
+        display: none;
+    }
+}
+
+/* ==========================================
+   메모장 앱 (Memo)
+   ========================================== */
+.memo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.memo-card {
+    background: #221c17;
+    border: 1px solid #4a3627;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.memo-tag {
+    font-size: 0.6rem;
+    background: #d97706;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.memo-text {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: #eae0c2;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.no-memo-placeholder {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    padding: 40px 10px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   소셜 메신저 (Social)
+   ========================================== */
+.social-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 480px;
+    background: #111218;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--phone-border);
+}
+
+.chat-header {
+    background: var(--phone-card);
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    color: #ffffff;
+    border-bottom: 1px solid var(--phone-border);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.msg.received {
+    align-self: flex-start;
+}
+
+.msg.sent {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.msg-sender {
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 2px;
+    margin-left: 4px;
+}
+
+.msg-bubble {
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    line-height: 1.35;
+}
+
+.msg.received .msg-bubble {
+    background: #20222f;
+    color: #cbd5e1;
+    border-top-left-radius: 2px;
+}
+
+.msg.sent .msg-bubble {
+    background: var(--color-up);
+    color: #000000;
+    border-top-right-radius: 2px;
+    font-weight: 700;
+}
+
+.chat-input-row {
+    display: flex;
+    padding: 8px;
+    background: var(--phone-card);
+    border-top: 1px solid var(--phone-border);
+}
+
+.chat-input {
+    flex: 1;
+    background: #121318;
+    border: 1px solid var(--phone-border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    color: white;
+    font-size: 0.75rem;
+    outline: none;
+}
+
+.chat-send-btn {
+    background: var(--color-up);
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+/* ==========================================
+   도전 과제 (Badge) & 설정 (Option)
+   ========================================== */
+.badge-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.badge-item {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.badge-item.locked {
+    opacity: 0.4;
+}
+
+.badge-icon {
+    font-size: 1.5rem;
+    background: #1f212a;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-info {
+    flex: 1;
+}
+
+.badge-name {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: white;
+}
+
+.badge-desc {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* 설정 */
+.option-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option-section {
+    background: var(--phone-card);
+    border: 1px solid var(--phone-border);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.section-title {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+}
+
+.option-row:last-child {
+    margin-bottom: 0;
+}
+
+.volume-slider {
+    width: 100px;
+    accent-color: var(--color-up);
+}
+
+.skin-selector-grid {
+    display: flex;
+    gap: 6px;
+}
+
+.skin-pill {
+    flex: 1;
+    background: #1e202a;
+    border: 1px solid var(--phone-border);
+    border-radius: 10px;
+    padding: 6px 2px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-align: center;
+    cursor: pointer;
+}
+
+.skin-pill.active {
+    background: var(--color-up);
+    color: #0f1015;
+    border-color: var(--color-up);
+}
+
+/* ==========================================
+   하단 물리 홈 버튼
+   ========================================== */
+.phone-home-button {
+    width: 44px;
+    height: 44px;
+    background-color: var(--phone-button);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(255, 255, 255, 0.4);
+    z-index: 100;
+    transition: background-color 0.2s;
+}
+
+.phone-home-button:active {
+    background-color: #baa77e;
+}
+
+/* ==========================================
+   오디오 효과음용 비주얼 토스트
+   ========================================== */
+.audio-feedback-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c69b6d;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.audio-feedback-bubble.show {
+    opacity: 1;
+    transform: translateY(0);
 }

@@ -24,9 +24,6 @@ namespace StockWars.Core
     /// pressure   = -(sellFactor × OVERSUPPLY_DAMPENER × PressurePerTick)
     /// </code>
     ///
-    /// <para><b>신디케이트 시너지 (GDD 3.2)</b></para>
-    /// 동일 신디케이트 공동 작전 선포 시 압력 가중치 × <b>1.5배</b>.
-    /// [ROADMAP_02] SyndicateManager 구현 완료 시 <see cref="IsSyndicateActive"/> 교체 예정.
     /// </summary>
     public static class BuyPressure
     {
@@ -36,9 +33,6 @@ namespace StockWars.Core
 
         /// <summary>GDD 3.1: 완전 고갈 시 주간 최대 매수 압력 (+15%)</summary>
         private const double MAX_WEEKLY_PRESSURE = 0.15;
-
-        /// <summary>신디케이트 공동 작전 가중치 배율 (GDD 3.2)</summary>
-        private const double SYNDICATE_MULTIPLIER = 1.5;
 
         /// <summary>
         /// 초과 공급(매도 과잉) 시 하락 압력 감쇠 계수.
@@ -86,32 +80,6 @@ namespace StockWars.Core
             // availableRatio=0.0  → factor=1.0 (완전 고갈, 최대 압력)
             double scarcityFactor = 1.0 - Math.Sqrt(availableRatio);
             return scarcityFactor * PressurePerTick;
-        }
-
-        /// <summary>
-        /// [주의 2 해결] 신디케이트 공동 작전 상태를 자동 조회하여 압력을 반환합니다.
-        /// PriceEngine은 이 메서드 하나만 호출하면 신디케이트 배율이 자동 반영됩니다.
-        /// (GDD 3.2: 신디케이트 공동 매수 → 압력 1.5배, 매도 압력에는 미적용)
-        /// </summary>
-        public static double ComputeWithSyndicate(StockInstance stock)
-        {
-            double pressure = Compute(stock);
-            // 음수(매도 압력) 구간에는 신디케이트 배율 미적용
-            if (pressure <= 0.0) return pressure;
-            return IsSyndicateActive(stock.StockId) ? pressure * SYNDICATE_MULTIPLIER : pressure;
-        }
-
-        /// <summary>
-        /// [주의 2 해결 — ROADMAP_02 연동 스텁]
-        /// 특정 종목에 신디케이트 공동 작전이 활성화됐는지 조회합니다.
-        /// 신디케이트 시스템(ROADMAP_02) 구현 전까지 항상 false 반환.
-        /// <br/>
-        /// TODO [ROADMAP_02]: SyndicateManager.Instance.IsOperationActive(stockId) 로 교체
-        /// </summary>
-        public static bool IsSyndicateActive(string stockId)
-        {
-            // TODO [ROADMAP_02]: SyndicateManager.Instance.IsOperationActive(stockId)
-            return false;
         }
 
         // --------------------------------------------------------

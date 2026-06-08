@@ -102,10 +102,8 @@ namespace StockWars.Core
             double rawNoise   = RNG_System.Instance.NextGaussian(stock.StockId, 0.0, stdDev);
             double gaussNoise = VolatilityTierService.ClampDelta(rawNoise, stock.Data.volatilityTier);
 
-            // ── 4-3. 희소성/매도 압력 (신디케이트 시너지 자동 포함) ─────────
-            // BuyPressure가 IsSyndicateActive() 스텁을 통해 신디케이트 상태를 자체 조회
-            // [ROADMAP_02] SyndicateManager 구현 시 BuyPressure.IsSyndicateActive()만 교체하면 됨
-            double scarcityPressure = BuyPressure.ComputeWithSyndicate(stock);
+            // ── 4-3. 희소성/매도 압력 ─────────
+            double scarcityPressure = BuyPressure.Compute(stock);
 
             // ── 4-4. 트렌드 바이어스 (TrendEngine — Task 026 완료) ─────────────
             double trendBias = (TrendEngine.Instance != null)

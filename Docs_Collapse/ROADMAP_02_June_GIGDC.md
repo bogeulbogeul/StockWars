@@ -4,18 +4,29 @@
 
 ---
 
-## 🎨 데모 빌드 전용 조립 로드맵 (6단계)
+## 🎨 데모 빌드 전용 조립 로드맵 (7단계)
 
-### 🧱 Phase 1: 메인 UI 프레임 및 Canvas 뼈대 셋업 (Base Canvas & Layout)
-* 아무것도 없는 빈 유니티 씬에 전체 화면 해상도를 맞추고 모든 UI의 부모가 될 마스터 캔버스와 배경 레이아웃을 가장 먼저 수립합니다.
-- [x] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 2D 아늑한 오피스 배경 일러스트를 화면 전체에 렌더링하고, 상단 정보 바 및 사이드 바를 포함하여 매칭 창들이 얹어질 부모 Canvas 레이아웃 앵커 셋업
+### 📱 Phase 1: 스마트폰 UI 프레임워크 및 코어 앱 구축 (Smartphone UI Framework & Core Apps)
+* 게임 화면 우측 하단의 핵심 도구인 스마트폰 UI를 가장 먼저 구축하고, 메일과 뉴스 앱 등 코어 앱 인터페이스를 조기 완성합니다.
+- [ ] 233. **[MOD_GDD_11]** `SmartphoneUI`: 화면 우하단 스마트폰 아이콘 및 앱 서랍 슬라이드 애니메이션 UI
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 234-1. **[MOD_GDD_11]** `MailApp_List`: 중요도 필터 및 읽음 처리 기능 UI
+  - 📖 읽을 문서: `[MOD_GDD_11]` (Docs_Collapse에서 SLIM 버전 확인)
+- [ ] 237. **[MOD_GDD_12]** `NewsAgencyApp`: 가상 언론사의 속보 알림 및 과거 기사 아카이빙 조회 앱 UI
+  - 📖 읽을 문서: `[MOD_GDD_12]` (Docs_Collapse에서 SLIM 버전 확인)
+
+---
+
+### 🧱 Phase 2: 메인 UI 프레임 및 Canvas 뼈대 셋업 (Base Canvas & Layout)
+* 오피스 배경과 HUD 뼈대가 될 마스터 캔버스와 배경 레이아웃을 셋업합니다.
+- [ ] 067. **[CORE_GDD_05]** 🎨[Graphics] `MainHUD_Master`: 2D 아늑한 오피스 배경 일러스트를 화면 전체에 렌더링하고, 상단 정보 바 및 사이드 바를 포함하여 매칭 창들이 얹어질 부모 Canvas 레이아웃 앵커 셋업
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
-- [x] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_StandingUI`: 3D 캐릭터 대신 아늑한 2D 안나 스탠딩 일러스트를 오피스 캔버스 한편에 고정 배치하고 가벼운 UI 바운싱 모션 구현 (화면 레이아웃 안정화)
+- [ ] 079. **[CORE_GDD_05]** 🎨[Graphics] `Anna_StandingUI`: 3D 캐릭터 대신 아늑한 2D 안나 스탠딩 일러스트를 오피스 캔버스 한편에 고정 배치하고 가벼운 UI 바운싱 모션 구현 (화면 레이아웃 안정화)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
 
 ---
 
-### 📊 Phase 2: 실시간 마켓 피드 및 HUD 데이터 연동 (Market Feed & Display)
+### 📊 Phase 3: 실시간 마켓 피드 및 HUD 데이터 연동 (Market Feed & Display)
 * 뼈대가 잡힌 화면 위에 24시간 실시간 가격 데이터와 시간이 흐르는 전광판을 연결하여 데이터가 정상적으로 수신되는지 먼저 검증합니다.
 - [ ] 097. **[CORE_GDD_05]** `MainHUD_TimeDisplay`: 상단 중앙에 현재 요일과 디지털 시각을 실시간 표기 (24시간 무중단 시간 흐름 동기화)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -30,7 +41,7 @@
 
 ---
 
-### 🛍️ Phase 3: 핵심 주식 매매창 본체 구현 (OrderWindow & Transaction)
+### 🛍️ Phase 4: 핵심 주식 매매창 본체 구현 (OrderWindow & Transaction)
 * 흐르는 현재가 데이터를 받아 실제 매수/매도를 체결하고 지갑 잔고를 차감하는 실시간 거래 본체를 마스터 HUD 위에 팝업형태로 얹어 조립합니다.
 - [ ] 084. **[CORE_GDD_02]** `OrderWindow_UI`: 수량 입력 필드, 슬라이더, 퀵 비율 버튼(10%, 25%, 50%, 100%), 거래 수수료(0.15%) 연산 및 실시간 매수/매도 트랜잭션 바인딩 UI (대기 없는 100% 즉시 시장가 체결 방식 적용, 5단계 호가 잔량 가로 Bar 그래프 및 개별 종목 VI 사이렌 경보 30초 대기 연출 탑재)
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -39,7 +50,7 @@
 
 ---
 
-### 🔔 Phase 4: 개인 계좌 포트폴리오 및 주간 성과 레포트 (Portfolio & Weekly Report)
+### 🔔 Phase 5: 개인 계좌 포트폴리오 및 주간 성과 레포트 (Portfolio & Weekly Report)
 * 매매를 마친 뒤 내 보유 주식 현황과 자산 비중을 언제든 자가 모니터링하고, 주말이 끝날 때 주간 정산 보고서를 받아볼 수 있도록 정보 팝업창을 통합 조립합니다.
 - [ ] 085. **[CORE_GDD_02]** `Portfolio_UI`: 총자산/평가손익 요약, 보유 종목별 평단가 및 수익률 그리드, 섹터별 보유 비중 가로 Bar, 그리고 누적 실현손익/수수료 등 거래 내역 통계를 노출하는 개인 계좌 포트폴리오 팝업창 (HUD 상의 단추나 스마트폰 앱을 통해 토글)
   - 📖 읽을 문서: `[CORE_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -54,7 +65,7 @@
 
 ---
 
-### 📈 Phase 5: 주가 실시간 선/봉 차트 렌더러 (Visual Price Charts)
+### 📉 Phase 6: 주가 실시간 선/봉 차트 렌더러 (Visual Price Charts)
 * 거래창 내부에 결합하여 실시간 가격 변화 추이를 시각화해 주는 정밀한 주가 차트 구성 요소들을 구현합니다.
 - [ ] 072. **[CORE_GDD_05]** 🧠[Pro] `AreaChart_Core`: Mesh API 기반의 실시간 주가 선 및 면 선형 렌더러
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -69,8 +80,8 @@
 
 ---
 
-### 🌧️ Phase 6: 데모 전용 편의 UI 및 장소 상호작용 (Demo Scope Integration)
-* 6월 데모에서 실제로 진입이 열려 있는 증권사, 물류 창고의 상호작용과 맵 전환 기능 및 주식 보조 도구(찌라시 수집함 등)들을 조립하여 빌드를 완결합니다.
+### 🌧️ Phase 7: 데모 전용 편의 UI 및 장소 상호작용 (Demo Scope Integration)
+* 6월 데모에서 실제로 진입이 열려 있는 증권사, 물류 창고의 상호작용과 맵 전환 기능 및 주식 보조 도구(스마트폰 앱 및 찌라시 수집함 등)들을 조립하여 빌드를 완결합니다.
 - [ ] 087. **[CORE_GDD_05]** 🎨[Graphics] `SceneNavigationUI`: 실제 장소 씬을 이동하는 대신, 맵 선택 시 해당 장소(증권사/은행/상점 등)의 2D 일러스트 배경 이미지로 즉시 전환되는 배경 스위칭 시스템 구축 (홈 오피스, 증권사, 물류 창고 외 타 장소 진입 시 "정식 출시 버전에서 이용 가능합니다." 토스트 팝업 경고를 띄우고 차단하는 데모 제한 필터 탑재)
 - [ ] 076. **[CORE_GDD_05]** 🎨[Graphics] `RainFX_Overlay`: 2D 스크린 Rain 오버레이 UI 및 잔물결 입자 연출 (배경 오버레이)
   - 📖 읽을 문서: `[CORE_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -88,7 +99,7 @@
 - [ ] 209. **[MOD_GDD_04]** 🎨[Graphics] `CriticalRumorAlert`: 시장 전체에 영향을 미치는 붉은색 '치명적 찌라시'의 HUD 전체 긴급 점멸 알림 연출
 - [ ] 103. **[CORE_GDD_05]** `HUD_Notification`: 주가 급등락, 뉴스 발생 시 우측 상단 슬라이드 팝업 알림 (클릭 시 스마트폰 연동)
 - [ ] 108. **[CORE_GDD_05]** 🎨[Graphics] `Ticker_NewsSymbol`: 실시간으로 터지는 호재/악재 뉴스 아이콘을 티커에 삽입
-- [ ] 078. **[CORE_GDD_05]** 🎨[Graphics] `GlitchCore`: 치명적 악재 발생 시 HUD가 찌그러지며 깨지는 도트 글리치 컴포넌트
+- [ ] 078. **[CORE_GDD_05]** 🎨[Graphics] `GlitchCore`: 뉴스 발생 시 UI가 일시적으로 깨지는 도트 글리치 컴포넌트
 - [ ] 095. **[CORE_GDD_06]** `CheatConsole_UI`: 개발 디버그용 치트키 입력창 (`~` 키 오픈)
 - [ ] 110. **[CORE_GDD_05]** `UI_MasterMixer`: 게임 및 빗소리 볼륨 조절 오디오 믹서 슬라이더
 - [ ] 099. **[CORE_GDD_05]** `UI_PanelSnap`: 팝업 윈도우를 화면 경계로 끌어다 붙이는 스냅 편의성

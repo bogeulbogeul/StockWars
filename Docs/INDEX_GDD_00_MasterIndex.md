@@ -36,7 +36,7 @@
 ## 🤝 4. 소셜 및 멀티플레이 (Social & Multiplayer)
 - [MOD_GDD_09: 친구 시스템 및 소셜 루프](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_09_FriendSystem.md)
 - [MOD_GDD_15: 기관 투자자 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_15_InstitutionSystem.md)
-- [MOD_GDD_16: 투자 신디케이트](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_16_SyndicateSystem.md)
+
 
 ## 📑 5. 데이터 및 서사 (Data & Narrative)
 - [MOD_GDD_04: 유니버설 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_04_0_RumorIndex.md)

@@ -63,7 +63,7 @@
 | MOD_GDD_18_QuizSystem | 248 | 데모 외 | **스킵** | 한 줄 언급 |
 | MOD_GDD_19_IPORumorLibrary | 286 | 데모 외 | **스킵** | 한 줄 언급 |
 | MOD_GDD_15_InstitutionSystem | 166 | 데모 외 | **스킵** | 한 줄 언급 |
-| MOD_GDD_16_SyndicateSystem | 50 | 데모 외 | **스킵** | 한 줄 언급 |
+
 | CORE_GDD_03_PlayerGrowth | 189 | 전체 필요 | 패턴 C + D | ~100줄 |
 | CORE_GDD_04_FinancialInstitutions | 146 | 부채/대출만 (공매도는 스킵 권장) | 패턴 B | ~80줄 |
 | CORE_GDD_06_TechnicalSpec | 173 | 저장/암호화 기본만 | 패턴 B | ~80줄 |
