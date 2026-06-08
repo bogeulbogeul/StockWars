@@ -396,7 +396,6 @@ namespace StockWars.UI
             }
 
             SmartphoneController controller = frameGo.GetComponent<SmartphoneController>();
-            controller.Initialize(frameRt);
 
             // 3. 앱 그리드 컨테이너 생성
             GameObject gridGo = new GameObject("AppGrid", typeof(RectTransform), typeof(GridLayoutGroup));
@@ -404,7 +403,7 @@ namespace StockWars.UI
             RectTransform gridRt = gridGo.GetComponent<RectTransform>();
             gridRt.anchorMin = new Vector2(0f, 0f);
             gridRt.anchorMax = new Vector2(1f, 1f);
-            gridRt.offsetMin = new Vector2(25f, 40f); // 프레임 내부 여백
+            gridRt.offsetMin = new Vector2(25f, 80f); // 하단 홈 버튼 영역(80px) 확보
             gridRt.offsetMax = new Vector2(-25f, -60f);
 
             GridLayoutGroup grid = gridGo.GetComponent<GridLayoutGroup>();
@@ -413,6 +412,82 @@ namespace StockWars.UI
             grid.startCorner = GridLayoutGroup.Corner.UpperLeft;
             grid.startAxis = GridLayoutGroup.Axis.Horizontal;
             grid.childAlignment = TextAnchor.UpperCenter;
+
+            // 4. 앱 상세 정보 화면 (App Details Panel) 생성
+            GameObject appDetailsGo = new GameObject("AppDetailsPanel", typeof(RectTransform), typeof(Image));
+            appDetailsGo.transform.SetParent(frameGo.transform, false);
+            RectTransform appDetailsRt = appDetailsGo.GetComponent<RectTransform>();
+            appDetailsRt.anchorMin = new Vector2(0f, 0f);
+            appDetailsRt.anchorMax = new Vector2(1f, 1f);
+            appDetailsRt.offsetMin = new Vector2(25f, 80f); // 하단 홈 버튼 영역 확보
+            appDetailsRt.offsetMax = new Vector2(-25f, -60f);
+
+            Image detailsBg = appDetailsGo.GetComponent<Image>();
+            detailsBg.color = new Color(0.08f, 0.08f, 0.12f, 0.98f); // 세련된 다크 아늑한 네이비
+
+            // 앱 상세 제목 텍스트
+            GameObject appTitleGo = new GameObject("AppTitle", typeof(RectTransform), typeof(TextMeshProUGUI));
+            appTitleGo.transform.SetParent(appDetailsGo.transform, false);
+            RectTransform appTitleRt = appTitleGo.GetComponent<RectTransform>();
+            appTitleRt.anchorMin = new Vector2(0f, 1f);
+            appTitleRt.anchorMax = new Vector2(1f, 1f);
+            appTitleRt.pivot = new Vector2(0.5f, 1f);
+            appTitleRt.anchoredPosition = new Vector2(0f, -20f);
+            appTitleRt.sizeDelta = new Vector2(0f, 40f);
+            appTitleRt.offsetMin = new Vector2(10f, appTitleRt.offsetMin.y);
+            appTitleRt.offsetMax = new Vector2(-10f, appTitleRt.offsetMax.y);
+
+            TextMeshProUGUI appTitleText = appTitleGo.GetComponent<TextMeshProUGUI>();
+            appTitleText.fontSize = 22;
+            appTitleText.color = new Color(0f, 0.92f, 1f, 1f); // Cyan (#00EAFF)
+            appTitleText.alignment = TextAlignmentOptions.Center;
+
+            // 앱 상세 내용 텍스트 (더미)
+            GameObject appContentGo = new GameObject("AppContent", typeof(RectTransform), typeof(TextMeshProUGUI));
+            appContentGo.transform.SetParent(appDetailsGo.transform, false);
+            RectTransform appContentRt = appContentGo.GetComponent<RectTransform>();
+            appContentRt.anchorMin = new Vector2(0f, 0f);
+            appContentRt.anchorMax = new Vector2(1f, 1f);
+            appContentRt.offsetMin = new Vector2(10f, 10f);
+            appContentRt.offsetMax = new Vector2(-10f, -80f);
+
+            TextMeshProUGUI appContentText = appContentGo.GetComponent<TextMeshProUGUI>();
+            appContentText.fontSize = 16;
+            appContentText.color = new Color(0.85f, 0.85f, 0.9f, 1f);
+            appContentText.text = "\n\n\n이 앱은 현재 개발 중입니다.\n\n하단의 홈 버튼(●)을 누르면\n홈 화면으로 돌아갑니다.";
+            appContentText.alignment = TextAlignmentOptions.Center;
+
+            // 5. 홈 버튼 생성 (스마트폰 프레임 하단 중앙 동그라미 버튼)
+            GameObject homeBtnGo = new GameObject("HomeButton", typeof(RectTransform), typeof(Image), typeof(Button));
+            homeBtnGo.transform.SetParent(frameGo.transform, false);
+            RectTransform homeBtnRt = homeBtnGo.GetComponent<RectTransform>();
+            homeBtnRt.anchorMin = new Vector2(0.5f, 0f);
+            homeBtnRt.anchorMax = new Vector2(0.5f, 0f);
+            homeBtnRt.pivot = new Vector2(0.5f, 0.5f);
+            homeBtnRt.anchoredPosition = new Vector2(0f, 40f); // 하단 프레임 내 적절한 배치
+            homeBtnRt.sizeDelta = new Vector2(40f, 40f); // 40x40 크기
+
+            Image homeBtnImg = homeBtnGo.GetComponent<Image>();
+            homeBtnImg.sprite = CreateCircleSprite(64); // 동적 원형 텍스처/스프라이트 적용
+            homeBtnImg.color = new Color(0.25f, 0.25f, 0.3f, 1f);
+
+            Button homeBtn = homeBtnGo.GetComponent<Button>();
+            homeBtn.transition = Button.Transition.ColorTint;
+            ColorBlock homeBtnColors = homeBtn.colors;
+            homeBtnColors.normalColor = new Color(0.25f, 0.25f, 0.3f, 1f);
+            homeBtnColors.highlightedColor = new Color(0.4f, 0.4f, 0.48f, 1f);
+            homeBtnColors.pressedColor = new Color(0.15f, 0.15f, 0.2f, 1f);
+            homeBtnColors.selectedColor = homeBtnColors.normalColor;
+            homeBtn.colors = homeBtnColors;
+
+            // 호버 마이크로 애니메이션 추가
+            homeBtnGo.AddComponent<UI_HoverEffect>();
+
+            // 컨트롤러 최종 초기화 (그리드, 세부 내용 패널, 타이틀 텍스트 연결)
+            controller.Initialize(frameRt, gridGo, appDetailsGo, appTitleText);
+
+            // 홈 버튼 클릭 액션 연결
+            homeBtn.onClick.AddListener(controller.OnHomeButtonClicked);
 
             // 앱 아이콘 추가 (Mail, Stock, Social, Memo, Achievements, Option)
             string[] appNames = { "Mail", "Stock", "Social", "Memo", "Achievements", "Option" };
@@ -433,10 +508,12 @@ namespace StockWars.UI
                 
                 Button appBtn = appGo.GetComponent<Button>();
                 appBtn.transition = Button.Transition.ColorTint;
-                appBtn.onClick.AddListener(() => Debug.Log($"[Smartphone] {app} 앱 실행됨!"));
+                
+                string currentApp = app;
+                appBtn.onClick.AddListener(() => controller.OpenApp(currentApp));
             }
 
-            // 4. 스마트폰 토글 아이콘 버튼 생성 (항상 표시됨)
+            // 6. 스마트폰 토글 아이콘 버튼 생성 (항상 표시됨)
             GameObject iconBtnGo = new GameObject("ToggleSmartphoneButton", typeof(RectTransform), typeof(Image), typeof(Button));
             iconBtnGo.transform.SetParent(phoneRootGo.transform, false);
             RectTransform iconBtnRt = iconBtnGo.GetComponent<RectTransform>();
@@ -534,6 +611,39 @@ namespace StockWars.UI
             {
                 netWorthText.text = $"<color=#00EAFF><b>NET WORTH:</b></color> {amount:N0} G";
             }
+        }
+
+        /// <summary>
+        /// 런타임에 원형 Sprite를 생성하는 헬퍼 메서드입니다.
+        /// </summary>
+        private Sprite CreateCircleSprite(int size)
+        {
+            Texture2D texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
+            Color[] colors = new Color[size * size];
+            float center = size / 2f;
+            float radius = size / 2f;
+
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float dist = Vector2.Distance(new Vector2(x + 0.5f, y + 0.5f), new Vector2(center, center));
+                    if (dist <= radius)
+                    {
+                        // 부드러운 안티앨리어싱 경계 처리
+                        float alpha = Mathf.Clamp01(radius - dist);
+                        colors[y * size + x] = new Color(1f, 1f, 1f, alpha);
+                    }
+                    else
+                    {
+                        colors[y * size + x] = Color.clear;
+                    }
+                }
+            }
+
+            texture.SetPixels(colors);
+            texture.Apply();
+            return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
         }
     }
 

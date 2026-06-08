@@ -9,21 +9,53 @@ namespace StockWars.UI
     /// </summary>
     public class SmartphoneController : MonoBehaviour
     {
-        private RectTransform _frameRect;
+        [Header("UI References")]
+        [SerializeField] private RectTransform _frameRect;
+        [SerializeField] private GameObject _appGrid;
+        [SerializeField] private GameObject _appDetailsPanel;
+        [SerializeField] private TMPro.TextMeshProUGUI _appTitleText;
+
+        [Header("Optional UX References")]
+        [Tooltip("스마트폰이 열려 있을 때 숨겨질 열기 아이콘 버튼")]
+        [SerializeField] private GameObject _toggleButton;
+        [Tooltip("스마트폰 외부 영역을 누르면 자동으로 닫히도록 처리하는 전체 화면 패널")]
+        [SerializeField] private GameObject _closeClickArea;
+
         private CanvasGroup _frameCanvasGroup;
         
         private bool _isOpen = false;
         private Coroutine _slideCoroutine;
+        private bool _isInitialized = false;
 
         // 화면 바깥 (아래) 및 안쪽 (위)의 Y축 위치
-        private float _closedY = -800f;
-        private float _openedY = -20f;
-        private float _animationDuration = 0.35f;
+        [Header("Animation Settings")]
+        [SerializeField] private float _closedY = -800f;
+        [SerializeField] private float _openedY = -20f;
+        [SerializeField] private float _animationDuration = 0.35f;
 
-        public void Initialize(RectTransform frameRect)
+        private void Start()
+        {
+            // 인스펙터에서 직접 드래그 앤 드롭으로 배치한 경우 자동 초기화
+            if (_frameRect != null && !_isInitialized)
+            {
+                SetupState();
+            }
+        }
+
+        public void Initialize(RectTransform frameRect, GameObject appGrid, GameObject appDetailsPanel, TMPro.TextMeshProUGUI appTitleText)
         {
             _frameRect = frameRect;
+            _appGrid = appGrid;
+            _appDetailsPanel = appDetailsPanel;
+            _appTitleText = appTitleText;
             
+            SetupState();
+        }
+
+        private void SetupState()
+        {
+            if (_frameRect == null) return;
+
             // CanvasGroup 부착 (페이드 인/아웃 효과를 위해)
             _frameCanvasGroup = _frameRect.GetComponent<CanvasGroup>();
             if (_frameCanvasGroup == null)
@@ -35,6 +67,35 @@ namespace StockWars.UI
             _frameCanvasGroup.alpha = 0f;
             _frameCanvasGroup.interactable = false;
             _frameCanvasGroup.blocksRaycasts = false;
+
+            if (_toggleButton != null) _toggleButton.SetActive(true);
+            if (_closeClickArea != null) _closeClickArea.SetActive(false);
+
+            // 초기 화면 셋업 (그리드 켜고, 앱 상세정보 끄기)
+            if (_appDetailsPanel != null) _appDetailsPanel.SetActive(false);
+            if (_appGrid != null) _appGrid.SetActive(true);
+
+            _isInitialized = true;
+        }
+
+        public void OpenApp(string appName)
+        {
+            if (_appGrid != null) _appGrid.SetActive(false);
+            if (_appDetailsPanel != null) _appDetailsPanel.SetActive(true);
+            if (_appTitleText != null) _appTitleText.text = appName;
+
+            Debug.Log($"[Smartphone] {appName} 앱이 실행되었습니다.");
+        }
+
+        public void OnHomeButtonClicked()
+        {
+            // 앱 상세정보 창이 열려 있으면 닫고 앱 그리드(홈)로 이동
+            if (_appDetailsPanel != null && _appDetailsPanel.activeSelf)
+            {
+                _appDetailsPanel.SetActive(false);
+                if (_appGrid != null) _appGrid.SetActive(true);
+                Debug.Log("[Smartphone] 앱 화면에서 홈 화면으로 이동합니다.");
+            }
         }
 
         public void ToggleSmartphone()
@@ -60,12 +121,18 @@ namespace StockWars.UI
                 // 열릴 때는 바로 클릭 가능하도록 설정
                 _frameCanvasGroup.blocksRaycasts = true;
                 _frameCanvasGroup.interactable = true;
+
+                if (_toggleButton != null) _toggleButton.SetActive(false);
+                if (_closeClickArea != null) _closeClickArea.SetActive(true);
             }
             else
             {
                 // 닫힐 때는 클릭 방지
                 _frameCanvasGroup.blocksRaycasts = false;
                 _frameCanvasGroup.interactable = false;
+
+                if (_toggleButton != null) _toggleButton.SetActive(true);
+                if (_closeClickArea != null) _closeClickArea.SetActive(false);
             }
 
             while (elapsed < _animationDuration)

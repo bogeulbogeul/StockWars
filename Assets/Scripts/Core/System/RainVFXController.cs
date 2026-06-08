@@ -37,7 +37,7 @@ namespace StockWars.Core
         }
 
         /// <summary>
-        /// 비 파티클 효과를 켜거나 끕니다. (Emission 조절)
+        /// 비 파티클 효과를 켜거나 끕니다. (Emission 조절 및 강제 정지/재생)
         /// </summary>
         public void SetRainActive(bool active)
         {
@@ -47,6 +47,19 @@ namespace StockWars.Core
             if (_particleSystem != null)
             {
                 _emissionModule.enabled = active;
+                
+                if (active)
+                {
+                    if (!_particleSystem.isPlaying)
+                    {
+                        _particleSystem.Play();
+                    }
+                }
+                else
+                {
+                    // 비가 내리지 않을 때는 이미 방출 중이던 파티클을 멈추고 즉시 지웁니다 (Play On Awake 버그 방지)
+                    _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                }
             }
         }
 
