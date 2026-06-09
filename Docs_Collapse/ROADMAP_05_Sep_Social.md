@@ -22,8 +22,8 @@
 
 ---
 
-### 🌃 Phase 2: 타운 환경 연출 고도화 및 날씨 연동 (Advanced Town FX)
-* 외부 타운 건물의 마우스 오버 아웃라인, 환경 사운드, 가로등 후광, 신호등, 날씨 변화에 따른 조명 연동 등 월드 디테일을 채우는 단계입니다.
+### 🌃 Phase 2: 타운 환경 연출 고도화 및 시각적 디테일 (Advanced Town FX)
+* 외부 타운 건물의 마우스 오버 아웃라인, 환경 사운드, 가로등 후광, 신호등, 순수 시각적 환경 변화 등 월드 디테일을 채우는 단계입니다.
 - [ ] 148. **[MOD_GDD_01]** 🎨[Graphics] `BuildingOutlineFX`: 마우스 오버한 타운 건물의 외곽선이 얇게 빛나는 아웃라인 연출
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 154. **[MOD_GDD_01]** 🎨[Graphics] `NeonSignGlitch`: 야간에 타운 네온사인이 미세하게 지지직거리며 글리치가 나는 연출
@@ -34,7 +34,7 @@
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 163. **[MOD_GDD_01]** `TrafficLightAnim`: 타운 도로의 신호등이 빨강/초록으로 주기적으로 변하는 애니메이션
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 162. **[MOD_GDD_01]** `WeatherSyncLogic`: 맑음/비/안개발생에 따른 타운 전체 라이트 강도 및 색온도 조절
+- [ ] 162. **[MOD_GDD_01]** `VisualWeatherFX`: 맑음/비/안개 등 순수 시각적 환경 변화 (주식 시장과 연동되지 않음)
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 153. **[MOD_GDD_01]** `AmbientCrowdSound`: 타운 중앙 광장 진입 시 웅성웅성거리는 환경 소음 자동 재생
   - 📖 읽을 문서: `[MOD_GDD_01]` (Docs_Collapse에서 SLIM 버전 확인)
@@ -122,9 +122,9 @@
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 222. **[MOD_GDD_02]** `PartTimeRanking`: 한 주간 알바 수익이 가장 높은 유저에게 주는 '성실 트레이더' 칭호
   - 📖 읽을 문서: `[MOD_GDD_02]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 219. **[MOD_GDD_04]** `DarkWebMarket`: 스마트폰 앱을 통해 익명으로 찌라시를 사고파는 비대면 시장 UI
+- [ ] 219. **[MOD_GDD_04]** `DarkWebMarket`: 거액의 비용을 지불하고 가짜 뉴스를 살포하는 스마트폰 다크웹 앱 작전 세력(Pump & Dump) UI
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
-- [ ] 223. **[MOD_GDD_04]** 🧠[Pro] `RumorFeedbackLoop`: 내가 퍼뜨린 찌라시가 실제 주가에 미미하게 영향을 주는 피드백 엔진
+- [ ] 223. **[MOD_GDD_04]** 🧠[Pro] `FakeNewsFeedback`: 유포한 가짜 찌라시로 개미들이 몰려 주가가 일시 폭등하고, 이후 적발 시 폭락 및 수배가 올라가는 피드백 엔진
   - 📖 읽을 문서: `[MOD_GDD_04]` (Docs_Collapse에서 SLIM 버전 확인)
 - [ ] 224. **[MOD_GDD_05]** `OfficeBackgroundAudio`: 오피스 내 라디오 가구 배치 시 플레이리스트 재생 기능
   - 📖 읽을 문서: `[MOD_GDD_05]` (Docs_Collapse에서 SLIM 버전 확인)

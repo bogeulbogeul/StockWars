@@ -151,10 +151,10 @@ CloudBerry,Bearish,"야, 구름 동네에 불났대...","클라우드 쪽 서버
 
 - 24종목 전체 라이브러리 (텍스트 144개)
 - IPO 종목 동적 추가 (`MOD_GDD_19_IPORumorLibrary` 연동)
-- 다크넷 마켓 (`DarkWebMarket`): 찌라시 거래
+- 다크넷 마켓 (`DarkWebMarket`): 거액을 지불하고 가짜 찌라시 살포 (Pump & Dump 기믹)
 - 찌라시 출처 태그 (다크넷/브로커/우연)
 - 안나 신뢰도에 따른 마스킹 복원 (`CipherRumorDecryption`)
-- 유저가 퍼뜨린 찌라시의 시장 피드백 (`RumorFeedbackLoop`)
+- 유저가 퍼뜨린 가짜 찌라시의 시장 피드백 (`FakeNewsFeedback`: 폭등 후 적발 시 폭락 및 수배 연동)
 - 치명적 찌라시 (시장 전체 영향) 연출
 - 찌라시 판독기 아이템
 
