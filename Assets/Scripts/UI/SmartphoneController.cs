@@ -15,6 +15,14 @@ namespace StockWars.UI
         [SerializeField] private GameObject _appDetailsPanel;
         [SerializeField] private TMPro.TextMeshProUGUI _appTitleText;
 
+        [Header("App Panels")]
+        [SerializeField] private GameObject _optionAppPanel;
+        [SerializeField] private GameObject _mailAppPanel;
+        [SerializeField] private GameObject _memoAppPanel;
+        [SerializeField] private GameObject _socialAppPanel;
+        [SerializeField] private GameObject _stockAppPanel;
+        [SerializeField] private GameObject _achievementAppPanel;
+
         [Header("Optional UX References")]
         [Tooltip("스마트폰이 열려 있을 때 숨겨질 열기 아이콘 버튼")]
         [SerializeField] private GameObject _toggleButton;
@@ -74,6 +82,7 @@ namespace StockWars.UI
             // 초기 화면 셋업 (그리드 켜고, 앱 상세정보 끄기)
             if (_appDetailsPanel != null) _appDetailsPanel.SetActive(false);
             if (_appGrid != null) _appGrid.SetActive(true);
+            DeactivateAllAppPanels();
 
             _isInitialized = true;
         }
@@ -84,6 +93,31 @@ namespace StockWars.UI
             if (_appDetailsPanel != null) _appDetailsPanel.SetActive(true);
             if (_appTitleText != null) _appTitleText.text = appName;
 
+            DeactivateAllAppPanels();
+
+            switch (appName)
+            {
+                case "옵션":
+                    if (_optionAppPanel != null) _optionAppPanel.SetActive(true);
+                    break;
+                case "메일":
+                    if (_mailAppPanel != null) _mailAppPanel.SetActive(true);
+                    break;
+                case "메모장":
+                    if (_memoAppPanel != null) _memoAppPanel.SetActive(true);
+                    break;
+                case "소셜":
+                    if (_socialAppPanel != null) _socialAppPanel.SetActive(true);
+                    break;
+                case "사이버넷":
+                case "주식마켓":
+                    if (_stockAppPanel != null) _stockAppPanel.SetActive(true);
+                    break;
+                case "업적":
+                    if (_achievementAppPanel != null) _achievementAppPanel.SetActive(true);
+                    break;
+            }
+
             Debug.Log($"[Smartphone] {appName} 앱이 실행되었습니다.");
         }
 
@@ -93,9 +127,20 @@ namespace StockWars.UI
             if (_appDetailsPanel != null && _appDetailsPanel.activeSelf)
             {
                 _appDetailsPanel.SetActive(false);
+                DeactivateAllAppPanels();
                 if (_appGrid != null) _appGrid.SetActive(true);
                 Debug.Log("[Smartphone] 앱 화면에서 홈 화면으로 이동합니다.");
             }
+        }
+
+        private void DeactivateAllAppPanels()
+        {
+            if (_optionAppPanel != null) _optionAppPanel.SetActive(false);
+            if (_mailAppPanel != null) _mailAppPanel.SetActive(false);
+            if (_memoAppPanel != null) _memoAppPanel.SetActive(false);
+            if (_socialAppPanel != null) _socialAppPanel.SetActive(false);
+            if (_stockAppPanel != null) _stockAppPanel.SetActive(false);
+            if (_achievementAppPanel != null) _achievementAppPanel.SetActive(false);
         }
 
         public void ToggleSmartphone()
