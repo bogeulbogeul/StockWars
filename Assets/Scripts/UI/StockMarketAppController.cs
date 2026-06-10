@@ -12,12 +12,15 @@ namespace StockWars.UI
     /// </summary>
     public class StockMarketAppController : MonoBehaviour
     {
-        [Header("Global Cipher Index UI")]
-        [SerializeField] private TMP_Text _cipherIndexText;
+        [Header("Dashboard Header UI")]
+        [SerializeField] private TMP_Text _profileGreetingText;
+        [SerializeField] private TMP_Text _cipherIndexText; // 글로벌 사이퍼 지수 (네온 스타일)
 
-        [Header("Account UI (AccountCard)")]
-        [SerializeField] private TMP_Text _netWorthValueText;
-        [SerializeField] private TMP_Text _profitsValueText;
+        [Header("Portfolio Card UI")]
+        [SerializeField] private TMP_Text _portfolioTotalText;
+        [SerializeField] private TMP_Text _portfolioTodayText;
+        [SerializeField] private TMP_Text _portfolioStocksText;
+        [SerializeField] private TMP_Text _portfolioCashText;
 
         [Header("Watchlist ScrollView UI")]
         [SerializeField] private Transform _cardsContainer;
@@ -102,18 +105,18 @@ namespace StockWars.UI
             double delta = currentIndex - prevIndex;
             double flucRate = prevIndex != 0 ? (delta / prevIndex) * 100.0 : 0.0;
 
-            string indicator = "→";
+            string indicator = "-";
             string colorHex = "AAAAAA"; // 보합 회색
 
             if (delta > 0)
             {
                 indicator = "▲";
-                colorHex = "00EAFF"; // 상승 Cyan
+                colorHex = "00EAFF"; // 네온 Cyan
             }
             else if (delta < 0)
             {
                 indicator = "▼";
-                colorHex = "FF4B4B"; // 하락 Red
+                colorHex = "FF4B4B"; // 네온 Red
             }
 
             string flucSign = delta > 0 ? "+" : "";
@@ -121,7 +124,7 @@ namespace StockWars.UI
         }
 
         /// <summary>
-        /// 플레이어 지갑 정보와 포트폴리오를 기반으로 총 순자산 및 평가손익률을 갱신합니다.
+        /// 플레이어 지갑 정보와 포트폴리오를 기반으로 총 순자산, 주식/현금 비율, 그리고 오늘의 수익률을 갱신합니다.
         /// </summary>
         private void UpdateAccountInfo()
         {
@@ -154,26 +157,42 @@ namespace StockWars.UI
             long profit = portfolioValue - totalCost;
             double profitRate = totalCost != 0 ? ((double)profit / totalCost) * 100.0 : 0.0;
 
-            if (_netWorthValueText != null)
+            if (_profileGreetingText != null)
             {
-                _netWorthValueText.text = $"{netWorth:N0} G";
+                // TODO: 실제 플레이어 이름 연동, 현재는 하드코딩
+                _profileGreetingText.text = "Hello,\nHana!";
             }
 
-            if (_profitsValueText != null)
+            if (_portfolioTotalText != null)
+            {
+                _portfolioTotalText.text = $"<color=#FFD700>G</color> {netWorth:N0}";
+            }
+
+            if (_portfolioTodayText != null)
             {
                 string colorHex = "AAAAAA";
                 string sign = "";
                 if (profit > 0)
                 {
-                    colorHex = "00EAFF"; // Cyan
+                    colorHex = "22C55E"; // 밝은 Green (목업 참고)
                     sign = "+";
                 }
                 else if (profit < 0)
                 {
-                    colorHex = "FF4B4B"; // Red
+                    colorHex = "EF4444"; // Red
                 }
 
-                _profitsValueText.text = $"Profits: <color=#{colorHex}><b>{sign}{profit:N0} G ({sign}{profitRate:F2}%)</b></color>";
+                _portfolioTodayText.text = $"Today\n<color=#{colorHex}>{sign}G {profit:N0} ({sign}{profitRate:F2}%)</color>";
+            }
+
+            if (_portfolioStocksText != null)
+            {
+                _portfolioStocksText.text = $"Stocks: <color=#D4AF37>G</color> {portfolioValue:N0}";
+            }
+
+            if (_portfolioCashText != null)
+            {
+                _portfolioCashText.text = $"Cash: <color=#D4AF37>G</color> {cash:N0}";
             }
         }
 

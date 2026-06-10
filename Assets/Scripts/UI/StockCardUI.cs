@@ -16,6 +16,7 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _stockCodeText;
         [SerializeField] private TMP_Text _currentPriceText;
         [SerializeField] private TMP_Text _changeRateText;
+        [SerializeField] private TMP_Text _sectorText;
 
         [Header("Icon Component")]
         [SerializeField] private Image _logoImage;
@@ -36,6 +37,23 @@ namespace StockWars.UI
             if (_companyNameText != null) _companyNameText.text = stock.Data.companyName;
             if (_stockCodeText != null) _stockCodeText.text = stock.StockId;
             if (_currentPriceText != null) _currentPriceText.text = $"{stock.CurrentPrice:N0} G";
+            
+            // 섹터 정보 매핑 (Enum -> 예쁜 문자열 표기)
+            if (_sectorText != null) 
+            {
+                switch (stock.Data.sector)
+                {
+                    case StockSector.IT: _sectorText.text = "Cloud Technology"; break;
+                    case StockSector.Finance: _sectorText.text = "Payment App"; break;
+                    case StockSector.Aerospace: _sectorText.text = "Space Tech"; break;
+                    case StockSector.Bio: _sectorText.text = "Bio & Health"; break;
+                    case StockSector.Energy: _sectorText.text = "Sustainable Tech"; break;
+                    case StockSector.Entertainment: _sectorText.text = "Media & Ent."; break;
+                    case StockSector.Infrastructure: _sectorText.text = "Infrastructure"; break;
+                    case StockSector.Retail: _sectorText.text = "Retail Market"; break;
+                    default: _sectorText.text = stock.Data.sector.ToString(); break;
+                }
+            }
 
             // 2. 등락 계산
             long delta = 0;

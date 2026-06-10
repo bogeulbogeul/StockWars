@@ -147,6 +147,12 @@ namespace StockWars.UI
         {
             _isOpen = !_isOpen;
 
+            // 폰을 닫을 때 항상 홈 화면(앱 그리드) 상태로 초기화
+            if (!_isOpen)
+            {
+                OnHomeButtonClicked();
+            }
+
             if (_slideCoroutine != null)
                 StopCoroutine(_slideCoroutine);
 
