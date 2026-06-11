@@ -13,13 +13,12 @@ namespace StockWars.UI
     {
         [Header("Text Components")]
         [SerializeField] private TMP_Text _companyNameText;
-        [SerializeField] private TMP_Text _stockCodeText;
         [SerializeField] private TMP_Text _currentPriceText;
         [SerializeField] private TMP_Text _changeRateText;
-        [SerializeField] private TMP_Text _sectorText;
 
-        [Header("Icon Component")]
+        [Header("Icon & Background")]
         [SerializeField] private Image _logoImage;
+        [SerializeField] private Image _bgColor;
 
         [Header("Colors (Standard)")]
         [SerializeField] private Color _colorGrowth = new Color(0f, 0.92f, 1f, 1f); // Neon Cyan (#00EAFF)
@@ -35,23 +34,22 @@ namespace StockWars.UI
 
             // 1. 기본 텍스트 정보 바인딩
             if (_companyNameText != null) _companyNameText.text = stock.Data.companyName;
-            if (_stockCodeText != null) _stockCodeText.text = stock.StockId;
             if (_currentPriceText != null) _currentPriceText.text = $"{stock.CurrentPrice:N0} G";
             
-            // 섹터 정보 매핑 (Enum -> 예쁜 문자열 표기)
-            if (_sectorText != null) 
+            // 섹터별 파스텔 배경색 매핑
+            if (_bgColor != null)
             {
                 switch (stock.Data.sector)
                 {
-                    case StockSector.IT: _sectorText.text = "Cloud Technology"; break;
-                    case StockSector.Finance: _sectorText.text = "Payment App"; break;
-                    case StockSector.Aerospace: _sectorText.text = "Space Tech"; break;
-                    case StockSector.Bio: _sectorText.text = "Bio & Health"; break;
-                    case StockSector.Energy: _sectorText.text = "Sustainable Tech"; break;
-                    case StockSector.Entertainment: _sectorText.text = "Media & Ent."; break;
-                    case StockSector.Infrastructure: _sectorText.text = "Infrastructure"; break;
-                    case StockSector.Retail: _sectorText.text = "Retail Market"; break;
-                    default: _sectorText.text = stock.Data.sector.ToString(); break;
+                    case StockSector.IT: _bgColor.color = new Color(0.88f, 0.95f, 1f, 1f); break; // 파스텔 블루
+                    case StockSector.Bio: _bgColor.color = new Color(0.88f, 1f, 0.88f, 1f); break; // 파스텔 그린
+                    case StockSector.Energy: _bgColor.color = new Color(1f, 0.98f, 0.85f, 1f); break; // 파스텔 옐로우
+                    case StockSector.Finance: _bgColor.color = new Color(1f, 0.92f, 0.85f, 1f); break; // 파스텔 오렌지
+                    case StockSector.Aerospace: _bgColor.color = new Color(0.93f, 0.88f, 1f, 1f); break; // 파스텔 퍼플
+                    case StockSector.Entertainment: _bgColor.color = new Color(1f, 0.88f, 0.95f, 1f); break; // 파스텔 핑크
+                    case StockSector.Infrastructure: _bgColor.color = new Color(0.94f, 0.90f, 0.85f, 1f); break; // 파스텔 베이지
+                    case StockSector.Retail: _bgColor.color = new Color(0.85f, 0.98f, 0.95f, 1f); break; // 파스텔 민트
+                    default: _bgColor.color = Color.white; break;
                 }
             }
 

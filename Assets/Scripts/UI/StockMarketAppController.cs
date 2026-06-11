@@ -12,6 +12,10 @@ namespace StockWars.UI
     /// </summary>
     public class StockMarketAppController : MonoBehaviour
     {
+        [Header("Pages (Navigation)")]
+        [SerializeField] private GameObject _pageHome;
+        [SerializeField] private GameObject _pageMarket;
+
         [Header("Dashboard Header UI")]
         [SerializeField] private TMP_Text _profileGreetingText;
         [SerializeField] private TMP_Text _cipherIndexText; // 글로벌 사이퍼 지수 (네온 스타일)
@@ -24,22 +28,29 @@ namespace StockWars.UI
 
         [Header("Watchlist ScrollView UI")]
         [SerializeField] private Transform _cardsContainer;
-        [SerializeField] private List<StockCardUI> _staticCards = new List<StockCardUI>();
+        [SerializeField] private GameObject _stockCardPrefab; // 프로젝트 창에 있는 StockList 프리팹
+        private List<StockCardUI> _instantiatedCards = new List<StockCardUI>();
 
         private float _updateInterval = 1f; // 1초마다 갱신
         private float _timeSinceLastUpdate = 0f;
 
         private void Start()
         {
-            // 컨테이너 하위의 카드들에서 StockCardUI 컴포넌트 자동 수집 (수동 등록 보조)
-            if (_staticCards.Count == 0 && _cardsContainer != null)
+            // 앱 시작 시 홈 화면부터 보여주기
+            ShowHome();
+
+            // 1. 프리팹을 이용해 상장된 모든 주식 카드를 동적으로 72개 생성!
+            if (_stockCardPrefab != null && _cardsContainer != null && MarketManager.Instance != null)
             {
-                foreach (Transform child in _cardsContainer)
+                var listedStocks = MarketManager.Instance.GetListedStocks();
+                foreach (var stock in listedStocks)
                 {
-                    var cardUI = child.GetComponent<StockCardUI>();
+                    GameObject cardObj = Instantiate(_stockCardPrefab, _cardsContainer);
+                    StockCardUI cardUI = cardObj.GetComponent<StockCardUI>();
                     if (cardUI != null)
                     {
-                        _staticCards.Add(cardUI);
+                        _instantiatedCards.Add(cardUI);
+                        cardUI.BindData(stock);
                     }
                 }
             }
@@ -66,6 +77,26 @@ namespace StockWars.UI
             UpdateAccountInfo();
             UpdateWatchlist();
         }
+
+        #region Navigation Methods
+        /// <summary>
+        /// 홈 탭 버튼 클릭 시 호출
+        /// </summary>
+        public void ShowHome()
+        {
+            if (_pageHome != null) _pageHome.SetActive(true);
+            if (_pageMarket != null) _pageMarket.SetActive(false);
+        }
+
+        /// <summary>
+        /// 마켓 탭 버튼 클릭 시 호출
+        /// </summary>
+        public void ShowMarket()
+        {
+            if (_pageHome != null) _pageHome.SetActive(false);
+            if (_pageMarket != null) _pageMarket.SetActive(true);
+        }
+        #endregion
 
         /// <summary>
         /// GDD 규격에 맞춰 72개 상장 종목의 평균 등락 가중치로 종합 사이퍼 지수를 계산하여 바인딩합니다.
@@ -201,22 +232,15 @@ namespace StockWars.UI
         /// </summary>
         private void UpdateWatchlist()
         {
-            if (MarketManager.Instance == null || _staticCards.Count == 0) return;
+            if (MarketManager.Instance == null || _instantiatedCards.Count == 0) return;
 
             var listedStocks = MarketManager.Instance.GetListedStocks();
             if (listedStocks == null || listedStocks.Count == 0) return;
 
-            // 최대 바인딩 개수는 배치된 카드 숫자 또는 상장 종목 수 중 작은 값
-            int bindCount = Math.Min(_staticCards.Count, listedStocks.Count);
-            for (int i = 0; i < bindCount; i++)
+            // 이미 생성된 72개 카드에 최신 가격 및 등락률 데이터를 덮어씌움
+            for (int i = 0; i < Math.Min(_instantiatedCards.Count, listedStocks.Count); i++)
             {
-                _staticCards[i].BindData(listedStocks[i]);
-            }
-
-            // 남은 자식 카드들은 데이터가 없으므로 비활성화 처리
-            for (int i = bindCount; i < _staticCards.Count; i++)
-            {
-                _staticCards[i].gameObject.SetActive(false);
+                _instantiatedCards[i].BindData(listedStocks[i]);
             }
         }
     }
