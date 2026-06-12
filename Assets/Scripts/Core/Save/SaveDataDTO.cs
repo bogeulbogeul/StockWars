@@ -28,6 +28,9 @@ namespace StockWars.Core
         // Key: StockId, Value: Holdings
         public Dictionary<string, StockHoldingsDTO> Portfolio { get; set; } = new Dictionary<string, StockHoldingsDTO>();
         
+        // 2.1. 최근 조회한 주식 목록 (유저 행동에 따라 업데이트됨)
+        public List<string> RecentViewedStockIds { get; set; } = new List<string>();
+        
         // 3. 수배 상태
         public WantedStatus WantedStatus { get; set; } = WantedStatus.Normal;
         

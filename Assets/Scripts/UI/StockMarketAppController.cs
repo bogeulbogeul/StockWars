@@ -16,6 +16,14 @@ namespace StockWars.UI
         [SerializeField] private GameObject _pageHome;
         [SerializeField] private GameObject _pageMarket;
 
+        [Header("Home: Recent Watchlist UI")]
+        [SerializeField] private Transform _recentCardsContainer;
+        [SerializeField] private GameObject _recentCardPrefab; // 홈 화면용 네모난 프리팹 (StockCard_01)
+        private List<StockCardUI> _instantiatedRecentCards = new List<StockCardUI>();
+
+        // 섹터 필터 상태 (null이면 '전체')
+        private StockSector? _currentSectorFilter = null;
+
         [Header("Dashboard Header UI")]
         [SerializeField] private TMP_Text _profileGreetingText;
         [SerializeField] private TMP_Text _cipherIndexText; // 글로벌 사이퍼 지수 (네온 스타일)
@@ -76,6 +84,7 @@ namespace StockWars.UI
             UpdateCipherIndex();
             UpdateAccountInfo();
             UpdateWatchlist();
+            UpdateRecentWatchlist();
         }
 
         #region Navigation Methods
@@ -95,6 +104,25 @@ namespace StockWars.UI
         {
             if (_pageHome != null) _pageHome.SetActive(false);
             if (_pageMarket != null) _pageMarket.SetActive(true);
+        }
+
+        /// <summary>
+        /// 섹터 버튼 클릭 시 호출 (유니티 버튼의 OnClick에서 int 매개변수 사용)
+        /// -1: 전체, 0: IT, 1: 엔터테인먼트, 2: 인프라 ...
+        /// </summary>
+        public void FilterBySector(int sectorIndex)
+        {
+            if (sectorIndex < 0)
+            {
+                _currentSectorFilter = null; // 전체 보기
+            }
+            else
+            {
+                _currentSectorFilter = (StockSector)sectorIndex;
+            }
+            
+            // 필터가 변경되었으므로 리스트를 즉시 새로고침합니다.
+            UpdateWatchlist();
         }
         #endregion
 
@@ -237,10 +265,70 @@ namespace StockWars.UI
             var listedStocks = MarketManager.Instance.GetListedStocks();
             if (listedStocks == null || listedStocks.Count == 0) return;
 
-            // 이미 생성된 72개 카드에 최신 가격 및 등락률 데이터를 덮어씌움
-            for (int i = 0; i < Math.Min(_instantiatedCards.Count, listedStocks.Count); i++)
+            // 현재 선택된 섹터가 있다면 필터링합니다.
+            var filteredStocks = listedStocks;
+            if (_currentSectorFilter.HasValue)
             {
-                _instantiatedCards[i].BindData(listedStocks[i]);
+                filteredStocks = listedStocks.FindAll(s => s.Data.sector == _currentSectorFilter.Value);
+            }
+
+            // 필터링된 주식 개수에 맞춰 카드를 활성화하고 데이터를 씌웁니다.
+            for (int i = 0; i < _instantiatedCards.Count; i++)
+            {
+                if (i < filteredStocks.Count)
+                {
+                    _instantiatedCards[i].gameObject.SetActive(true);
+                    _instantiatedCards[i].BindData(filteredStocks[i]);
+                }
+                else
+                {
+                    // 필터링되어 남는 카드는 임시로 숨깁니다.
+                    _instantiatedCards[i].gameObject.SetActive(false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 홈 화면의 최근 조회 목록을 업데이트합니다.
+        /// </summary>
+        private void UpdateRecentWatchlist()
+        {
+            if (_recentCardPrefab == null || _recentCardsContainer == null || MarketManager.Instance == null) return;
+            if (WalletManager.Instance == null) return;
+
+            var recentIds = WalletManager.Instance.ActiveSaveData?.RecentViewedStockIds;
+            if (recentIds == null) return;
+
+            // 아직 상세 조회(클릭) 기능이 없으므로, 최근 조회가 비어있다면 임시로 샘플 종목 3개를 넣어줍니다.
+            if (recentIds.Count == 0)
+            {
+                recentIds.Add("C001");
+                recentIds.Add("C002");
+                recentIds.Add("E001");
+            }
+
+            // 기존 카드 재활용 또는 부족하면 생성
+            for (int i = 0; i < recentIds.Count; i++)
+            {
+                if (i >= _instantiatedRecentCards.Count)
+                {
+                    GameObject cardObj = Instantiate(_recentCardPrefab, _recentCardsContainer);
+                    StockCardUI cardUI = cardObj.GetComponent<StockCardUI>();
+                    if (cardUI != null) _instantiatedRecentCards.Add(cardUI);
+                }
+                
+                var stock = MarketManager.Instance.GetStock(recentIds[i]);
+                if (stock != null)
+                {
+                    _instantiatedRecentCards[i].gameObject.SetActive(true);
+                    _instantiatedRecentCards[i].BindData(stock);
+                }
+            }
+
+            // 남는 카드는 숨김 처리
+            for (int i = recentIds.Count; i < _instantiatedRecentCards.Count; i++)
+            {
+                _instantiatedRecentCards[i].gameObject.SetActive(false);
             }
         }
     }
