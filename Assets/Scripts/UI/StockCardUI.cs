@@ -28,7 +28,7 @@ namespace StockWars.UI
         /// <summary>
         /// 종목의 실시간 데이터 인스턴스를 받아와 카드의 모든 UI 요소를 갱신합니다.
         /// </summary>
-        public void BindData(StockInstance stock)
+        public void BindData(StockInstance stock, StockMarketAppController controller = null)
         {
             if (stock == null) return;
 
@@ -106,6 +106,20 @@ namespace StockWars.UI
                 {
                     // 로드 실패 시 기본 하얀색 또는 투명화 처리
                     _logoImage.color = new Color(1f, 1f, 1f, 0.2f); // 연한 실루엣 폴백
+                }
+            }
+
+            // 5. 클릭 이벤트 연결 (클릭 시 해당 종목 거래 화면으로 이동)
+            if (controller != null)
+            {
+                Button button = GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(() =>
+                    {
+                        controller.ShowPaymentPage(stock.StockId);
+                    });
                 }
             }
         }

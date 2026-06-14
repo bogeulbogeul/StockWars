@@ -44,7 +44,7 @@
 
 ### ① 호가창 화면 (기본 화면)
 종목을 눌렀을 때 가장 먼저 나오는 화면입니다. 상단에 주가 정보가, 하단에는 매수/매도 대기 물량을 보여주는 넓은 호가창이 펼쳐집니다.
-![호가 탭](file:///C:/Users/Administrator/.gemini/antigravity/brain/270d41d4-2885-450c-bc10-9bffab45e99e/concept_trade_tab_main_1781395542750.png)
+![호가 탭](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/concept_trade_tab_main.png)
 
 ### ② 매수 화면 (Buy Tab)
 중앙의 '매수' 탭을 눌렀을 때 나오는 화면입니다. 하단이 정확히 50:50으로 나뉘어, 왼쪽엔 미니 호가창이 남고 오른쪽에는 수량 입력 폼과 거대한 **빨간색(매수)** 버튼이 나타납니다.

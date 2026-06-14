@@ -139,6 +139,23 @@ namespace StockWars.Core
             long interest = GetAccumulatedInterest();
             long totalNetWorth = GetNetWorth();
 
+            // ── 순자산 히스토리 기록 연동 ──
+            if (WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null)
+            {
+                var history = WalletManager.Instance.ActiveSaveData.NetWorthHistory;
+                if (history != null)
+                {
+                    if (history.Count == 0 || history[history.Count - 1] != totalNetWorth)
+                    {
+                        history.Add(totalNetWorth);
+                        if (history.Count > 30)
+                        {
+                            history.RemoveAt(0);
+                        }
+                    }
+                }
+            }
+
             EventBus.Publish(new NetWorthUpdatedEvent
             {
                 NetWorth = totalNetWorth,

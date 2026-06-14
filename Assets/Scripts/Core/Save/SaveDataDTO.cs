@@ -147,6 +147,14 @@ namespace StockWars.Core
             get => _tradeLogs ??= new();
             set => _tradeLogs = value;
         }
+
+        // 10.6. 순자산 변동 히스토리 (그래프용)
+        private List<long> _netWorthHistory = new();
+        public List<long> NetWorthHistory
+        {
+            get => _netWorthHistory ??= new();
+            set => _netWorthHistory = value;
+        }
     }
 
     /// <summary>

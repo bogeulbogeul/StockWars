@@ -15,6 +15,8 @@ namespace StockWars.UI
         [Header("Pages (Navigation)")]
         [SerializeField] private GameObject _pageHome;
         [SerializeField] private GameObject _pageMarket;
+        [SerializeField] private GameObject _pagePaymentMain;
+        [SerializeField] private GameObject _pageTrade;
 
         [Header("Home: Recent Watchlist UI")]
         [SerializeField] private Transform _recentCardsContainer;
@@ -33,6 +35,7 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _portfolioTodayText;
         [SerializeField] private TMP_Text _portfolioStocksText;
         [SerializeField] private TMP_Text _portfolioCashText;
+        [SerializeField] private UIMiniLineChart _netWorthChart;
 
         [Header("Watchlist ScrollView UI")]
         [SerializeField] private Transform _cardsContainer;
@@ -58,7 +61,7 @@ namespace StockWars.UI
                     if (cardUI != null)
                     {
                         _instantiatedCards.Add(cardUI);
-                        cardUI.BindData(stock);
+                        cardUI.BindData(stock, this);
                     }
                 }
             }
@@ -85,6 +88,12 @@ namespace StockWars.UI
             UpdateAccountInfo();
             UpdateWatchlist();
             UpdateRecentWatchlist();
+
+            if (_pageTrade != null && _pageTrade.activeSelf)
+            {
+                UITradePage tradePage = GetComponentInChildren<UITradePage>(true);
+                if (tradePage != null) tradePage.UpdateUI();
+            }
         }
 
         #region Navigation Methods
@@ -95,6 +104,8 @@ namespace StockWars.UI
         {
             if (_pageHome != null) _pageHome.SetActive(true);
             if (_pageMarket != null) _pageMarket.SetActive(false);
+            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
+            if (_pageTrade != null) _pageTrade.SetActive(false);
         }
 
         /// <summary>
@@ -104,6 +115,60 @@ namespace StockWars.UI
         {
             if (_pageHome != null) _pageHome.SetActive(false);
             if (_pageMarket != null) _pageMarket.SetActive(true);
+            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
+            if (_pageTrade != null) _pageTrade.SetActive(false);
+        }
+
+        /// <summary>
+        /// 특정 주식 종목을 클릭했을 때 거래/호가창 화면으로 전환합니다.
+        /// </summary>
+        public void ShowPaymentPage(string stockId)
+        {
+            if (_pageHome != null) _pageHome.SetActive(false);
+            if (_pageMarket != null) _pageMarket.SetActive(false);
+            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(true);
+            if (_pageTrade != null) _pageTrade.SetActive(false);
+
+            // 호가창 컴포넌트를 찾아서 데이터 로드
+            UIOrderBook orderBook = GetComponentInChildren<UIOrderBook>(true);
+            if (orderBook == null && _pagePaymentMain != null)
+            {
+                orderBook = _pagePaymentMain.GetComponentInChildren<UIOrderBook>(true);
+            }
+
+            if (orderBook != null)
+            {
+                orderBook.SetTargetStock(stockId);
+            }
+        }
+
+        /// <summary>
+        /// 호가 클릭 시 수량 선택 및 주문 거래 실행이 가능한 거래 전용 상세 페이지로 전환합니다.
+        /// </summary>
+        /// <param name="stockId">거래할 상장 주식 ID</param>
+        /// <param name="isBuy">true면 매수 탭 활성화, false면 매도 탭 활성화</param>
+        /// <param name="targetPrice">예상 거래 단가 (클릭된 호가 가격)</param>
+        public void ShowTradePage(string stockId, bool isBuy, long targetPrice)
+        {
+            if (_pageHome != null) _pageHome.SetActive(false);
+            if (_pageMarket != null) _pageMarket.SetActive(false);
+            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
+            if (_pageTrade != null) _pageTrade.SetActive(true);
+
+            UITradePage tradePage = GetComponentInChildren<UITradePage>(true);
+            if (tradePage == null && _pageTrade != null)
+            {
+                tradePage = _pageTrade.GetComponentInChildren<UITradePage>(true);
+            }
+
+            if (tradePage != null)
+            {
+                tradePage.Initialize(stockId, isBuy, targetPrice);
+            }
+            else
+            {
+                Debug.LogWarning("[StockMarketAppController] Page_Trade가 켜졌으나 UITradePage 컴포넌트를 찾을 수 없습니다.");
+            }
         }
 
         /// <summary>
@@ -227,21 +292,22 @@ namespace StockWars.UI
                 _portfolioTotalText.text = $"<color=#FFD700>G</color> {netWorth:N0}";
             }
 
+            Color targetColor = new Color(0.58f, 0.64f, 0.72f, 1f); // default gray (#94A3B8)
+            string sign = "";
+            if (profit > 0)
+            {
+                targetColor = new Color(0.13f, 0.77f, 0.37f, 1f); // green (#22C55E)
+                sign = "+";
+            }
+            else if (profit < 0)
+            {
+                targetColor = new Color(0.94f, 0.27f, 0.27f, 1f); // red (#EF4444)
+            }
+
             if (_portfolioTodayText != null)
             {
-                string colorHex = "AAAAAA";
-                string sign = "";
-                if (profit > 0)
-                {
-                    colorHex = "22C55E"; // 밝은 Green (목업 참고)
-                    sign = "+";
-                }
-                else if (profit < 0)
-                {
-                    colorHex = "EF4444"; // Red
-                }
-
-                _portfolioTodayText.text = $"Today\n<color=#{colorHex}>{sign}G {profit:N0} ({sign}{profitRate:F2}%)</color>";
+                _portfolioTodayText.color = targetColor;
+                _portfolioTodayText.text = $"Today\n{sign}G {profit:N0} ({sign}{profitRate:F2}%)";
             }
 
             if (_portfolioStocksText != null)
@@ -252,6 +318,50 @@ namespace StockWars.UI
             if (_portfolioCashText != null)
             {
                 _portfolioCashText.text = $"Cash: <color=#D4AF37>G</color> {cash:N0}";
+            }
+
+            // ── 순자산 미니 선형 차트 실시간 렌더링 ──
+            if (_netWorthChart == null && _portfolioTodayText != null)
+            {
+                Transform parent = _portfolioTodayText.transform.parent; // AccountCard
+                Transform existingChart = parent.Find("NetWorthChart");
+                if (existingChart != null)
+                {
+                    _netWorthChart = existingChart.GetComponent<UIMiniLineChart>();
+                }
+                else
+                {
+                    GameObject chartGo = new GameObject("NetWorthChart", typeof(RectTransform), typeof(UIMiniLineChart));
+                    chartGo.transform.SetParent(parent, false);
+
+                    RectTransform rt = chartGo.GetComponent<RectTransform>();
+                    rt.anchorMin = _portfolioTodayText.rectTransform.anchorMin;
+                    rt.anchorMax = _portfolioTodayText.rectTransform.anchorMax;
+                    rt.pivot = new Vector2(0.5f, 0.5f);
+
+                    // Today 텍스트 위치 기준 48픽셀 하단 배치
+                    Vector2 todayPos = _portfolioTodayText.rectTransform.anchoredPosition;
+                    rt.anchoredPosition = new Vector2(todayPos.x, todayPos.y - 48f);
+                    rt.sizeDelta = new Vector2(100f, 32f);
+
+                    _netWorthChart = chartGo.GetComponent<UIMiniLineChart>();
+                }
+            }
+
+            if (_netWorthChart != null && WalletManager.Instance.ActiveSaveData != null)
+            {
+                var history = WalletManager.Instance.ActiveSaveData.NetWorthHistory;
+                if (history != null)
+                {
+                    // 데이터가 비었거나 단일값인 경우 현재 순자산으로 최소 2개 채워 렌더링 보장
+                    while (history.Count < 2)
+                    {
+                        history.Add(netWorth);
+                    }
+
+                    _netWorthChart.SetColor(targetColor);
+                    _netWorthChart.DrawChart(history);
+                }
             }
         }
 
@@ -278,7 +388,7 @@ namespace StockWars.UI
                 if (i < filteredStocks.Count)
                 {
                     _instantiatedCards[i].gameObject.SetActive(true);
-                    _instantiatedCards[i].BindData(filteredStocks[i]);
+                    _instantiatedCards[i].BindData(filteredStocks[i], this);
                 }
                 else
                 {
@@ -321,7 +431,7 @@ namespace StockWars.UI
                 if (stock != null)
                 {
                     _instantiatedRecentCards[i].gameObject.SetActive(true);
-                    _instantiatedRecentCards[i].BindData(stock);
+                    _instantiatedRecentCards[i].BindData(stock, this);
                 }
             }
 
