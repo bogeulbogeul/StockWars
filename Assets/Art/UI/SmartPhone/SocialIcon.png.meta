@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54a25780a087edf4ea6b2ed0b7d06fbe
+guid: f642572e7b0d5f84fa75b7ac41d43545
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4488491810642188573
-    second: EntireButton_0
+      213: -7771319860785289552
+    second: SocialIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EntireButton_0
+      name: SocialIcon_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 333
-        width: 922
-        height: 367
+        x: 189
+        y: 189
+        width: 646
+        height: 646
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e62c61ba7ca5b1c0800000000000000
-      internalID: -4488491810642188573
+      spriteID: 0b664f5c2c9b62490800000000000000
+      internalID: -7771319860785289552
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 980f87d5f302fc143805edf89815c13a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EntireButton_0: -4488491810642188573
+      SocialIcon_0: -7771319860785289552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

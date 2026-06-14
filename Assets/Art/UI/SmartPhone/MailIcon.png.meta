@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54a25780a087edf4ea6b2ed0b7d06fbe
+guid: 5ec7e9b3deddf4149b7ed56c701758aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4488491810642188573
-    second: EntireButton_0
+      213: 5045460735251563706
+    second: MailIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EntireButton_0
+      name: MailIcon_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 333
-        width: 922
-        height: 367
+        x: 146
+        y: 145
+        width: 729
+        height: 729
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e62c61ba7ca5b1c0800000000000000
-      internalID: -4488491810642188573
+      spriteID: ab4c9d48ec3150640800000000000000
+      internalID: 5045460735251563706
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 980f87d5f302fc143805edf89815c13a
+    spriteID: 49cb3fb134f71794d8ab23e9926eb352
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EntireButton_0: -4488491810642188573
+      MailIcon_0: 5045460735251563706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

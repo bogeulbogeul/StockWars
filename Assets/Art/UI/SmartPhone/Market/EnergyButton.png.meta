@@ -103,10 +103,10 @@ TextureImporter:
       name: EnergyButton_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 342
-        width: 870
-        height: 342
+        x: 45
+        y: 329
+        width: 925
+        height: 370
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 67b717dda54dbdd47ad3999686cfb07f
+    spriteID: 361a2552449849e448e7cece152e61df
     internalID: 0
     vertices: []
     indices: 

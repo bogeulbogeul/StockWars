@@ -103,10 +103,10 @@ TextureImporter:
       name: FinanceButton_0
       rect:
         serializedVersion: 2
-        x: 92
-        y: 329
-        width: 829
-        height: 372
+        x: 47
+        y: 324
+        width: 929
+        height: 377
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cdc9c885235d6e7458ea09291ee3b274
+    spriteID: 409017a013aaa57439f6e993ff52bd49
     internalID: 0
     vertices: []
     indices: 

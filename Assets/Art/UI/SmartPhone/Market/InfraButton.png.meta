@@ -103,10 +103,10 @@ TextureImporter:
       name: InfraButton_0
       rect:
         serializedVersion: 2
-        x: 93
-        y: 337
-        width: 834
-        height: 352
+        x: 49
+        y: 322
+        width: 926
+        height: 380
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 70ec2e3b7a9dd5847b9d1b6934b914ec
+    spriteID: 144fea55326501845bb7e04b8f7fa080
     internalID: 0
     vertices: []
     indices: 

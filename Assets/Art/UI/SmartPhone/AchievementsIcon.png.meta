@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54a25780a087edf4ea6b2ed0b7d06fbe
+guid: 4bd078b2cbec1cf4ba6121b6cb8aae95
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4488491810642188573
-    second: EntireButton_0
+      213: 8717232945210282249
+    second: AchievementsIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EntireButton_0
+      name: AchievementsIcon_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 333
-        width: 922
-        height: 367
+        x: 149
+        y: 149
+        width: 724
+        height: 728
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e62c61ba7ca5b1c0800000000000000
-      internalID: -4488491810642188573
+      spriteID: 90157938d25d9f870800000000000000
+      internalID: 8717232945210282249
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 980f87d5f302fc143805edf89815c13a
+    spriteID: e07beb403c99e13448d4c4ce0d6cab3d
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EntireButton_0: -4488491810642188573
+      AchievementsIcon_0: 8717232945210282249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

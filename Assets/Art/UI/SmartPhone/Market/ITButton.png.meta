@@ -103,10 +103,10 @@ TextureImporter:
       name: ITButton_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 282
-        width: 889
-        height: 460
+        x: 48
+        y: 324
+        width: 923
+        height: 372
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4eba5217c56d78342b69f8990362261b
+    spriteID: 53ca306865540f14b9daaa84a5f3f2ff
     internalID: 0
     vertices: []
     indices: 

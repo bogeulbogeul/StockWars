@@ -103,10 +103,10 @@ TextureImporter:
       name: EnterButton_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 339
-        width: 881
-        height: 346
+        x: 52
+        y: 327
+        width: 923
+        height: 374
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 325a41c121e031c4c9f165957e80db86
+    spriteID: 2473c8c5fe98ddd409db76377e6d7226
     internalID: 0
     vertices: []
     indices: 

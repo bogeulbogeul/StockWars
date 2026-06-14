@@ -103,10 +103,10 @@ TextureImporter:
       name: BioButton_0
       rect:
         serializedVersion: 2
-        x: 93
-        y: 333
-        width: 837
-        height: 366
+        x: 47
+        y: 325
+        width: 928
+        height: 372
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 29a813e5026d4334cacd9b4ad67e1b7e
+    spriteID: 84fa259288fc0de41a95ec0a1ddd8d51
     internalID: 0
     vertices: []
     indices: 
