@@ -74,7 +74,7 @@ namespace StockWars.Core
                 UpdateSkyCycle();
                 
                 // 에디터 플레이 모드에서 Is Rainy 체크박스를 누를 때 파티클 시스템도 실시간 연동되도록 처리
-                RainVFXController rainVFX = FindFirstObjectByType<RainVFXController>();
+                RainVFXController rainVFX = FindAnyObjectByType<RainVFXController>();
                 if (rainVFX != null)
                 {
                     rainVFX.SetRainActive(_isRainy);
@@ -230,7 +230,7 @@ namespace StockWars.Core
         {
             _isRainy = isRainy;
             // 비가 시작되면 RainVFXController도 함께 싱크를 맞춰줍니다.
-            RainVFXController rainVFX = FindFirstObjectByType<RainVFXController>();
+            RainVFXController rainVFX = FindAnyObjectByType<RainVFXController>();
             if (rainVFX != null)
             {
                 rainVFX.SetRainActive(isRainy);

@@ -81,3 +81,21 @@
 
 ### 6-3. 결합된 스마트폰 아이콘 (꺼진 화면)
 ![결합된 스마트폰 (꺼진 화면)](file:///C:/Users/Administrator/.gemini/antigravity/brain/270d41d4-2885-450c-bc10-9bffab45e99e/vector_smartphone_screen_off_1781226724354.png)
+
+---
+
+## 📌 7. 탭 (책갈피) 버튼 에셋
+
+가로로 길고 아래쪽 선이 뚫려있어 폴더 탭/책갈피 UI에 최적화된 버튼 뼈대입니다.
+
+| 가로형 탭 프레임 (외곽선 전용) | 탭 내부 채우기용 (선 없음) |
+| :---: | :---: |
+| ![가로 탭 버튼 (투명, 밑선 없음)](file:///C:/Users/Administrator/.gemini/antigravity/brain/077e24bc-95d5-4889-81a9-47e10a20199b/inverted_u_shape_frame_1781490259619.png) | ![내부 채우기](file:///C:/Users/Administrator/.gemini/antigravity/brain/077e24bc-95d5-4889-81a9-47e10a20199b/tab_inner_fill_1781490670967.png) |
+
+---
+
+## 📌 8. 추가 UI 프레임 에셋
+
+| 흰색 둥근 모서리 프레임 (White Outline) |
+| :---: |
+| ![흰색 사각 프레임](file:///C:/Users/Administrator/.gemini/antigravity/brain/077e24bc-95d5-4889-81a9-47e10a20199b/white_rounded_rect_frame_1781491645727.png) |

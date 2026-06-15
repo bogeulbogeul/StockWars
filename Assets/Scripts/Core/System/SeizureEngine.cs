@@ -34,8 +34,9 @@ namespace StockWars.Core
             EventBus.Subscribe<GameTickEvent>(OnGameTick);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             EventBus.Unsubscribe<GameTickEvent>(OnGameTick);
         }
 

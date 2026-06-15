@@ -423,7 +423,7 @@ namespace StockWars.UI
             StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
             if (controller == null)
             {
-                controller = FindFirstObjectByType<StockMarketAppController>();
+                controller = FindAnyObjectByType<StockMarketAppController>();
             }
 
             if (controller != null)

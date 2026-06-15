@@ -29,7 +29,7 @@ namespace StockWars.Core
                         if (_instance == null)
                         {
                             // 1. 씬에 이미 인스턴스가 있는지 확인
-                            _instance = (T)FindObjectOfType(typeof(T));
+                            _instance = (T)FindAnyObjectByType(typeof(T));
 
                             // 2. 씬에 없다면 새로 생성
                             if (_instance == null)
