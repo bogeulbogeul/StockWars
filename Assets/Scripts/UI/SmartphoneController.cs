@@ -79,6 +79,17 @@ namespace StockWars.UI
             if (_toggleButton != null) _toggleButton.SetActive(true);
             if (_closeClickArea != null) _closeClickArea.SetActive(false);
 
+            // 시계(StatusBar_Time)가 AppDetailsPanel 자식으로 들어가 있어 홈 화면(AppDetailsPanel 비활성화 시)에서 사라지는 문제 해결을 위해 자동 부모 재설정
+            if (_appDetailsPanel != null)
+            {
+                Transform clockTrans = _appDetailsPanel.transform.Find("StatusBar_Time");
+                if (clockTrans != null)
+                {
+                    clockTrans.SetParent(_frameRect, true);
+                    clockTrans.SetAsLastSibling();
+                }
+            }
+
             // 초기 화면 셋업 (그리드 켜고, 앱 상세정보 끄기)
             if (_appDetailsPanel != null) _appDetailsPanel.SetActive(false);
             if (_appGrid != null) _appGrid.SetActive(true);

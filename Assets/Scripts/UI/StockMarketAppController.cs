@@ -106,6 +106,8 @@ namespace StockWars.UI
             if (_pageMarket != null) _pageMarket.SetActive(false);
             if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
             if (_pageTrade != null) _pageTrade.SetActive(false);
+
+            RefreshAppUI();
         }
 
         /// <summary>
@@ -128,6 +130,21 @@ namespace StockWars.UI
             if (_pageMarket != null) _pageMarket.SetActive(false);
             if (_pagePaymentMain != null) _pagePaymentMain.SetActive(true);
             if (_pageTrade != null) _pageTrade.SetActive(false);
+
+            // 최근 조회 목록(Recent Watchlist) 갱신
+            if (WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null)
+            {
+                var recentIds = WalletManager.Instance.ActiveSaveData.RecentViewedStockIds;
+                if (recentIds != null)
+                {
+                    recentIds.Remove(stockId);
+                    recentIds.Insert(0, stockId);
+                    if (recentIds.Count > 3)
+                    {
+                        recentIds.RemoveRange(3, recentIds.Count - 3);
+                    }
+                }
+            }
 
             // 호가창 컴포넌트를 찾아서 데이터 로드
             UIOrderBook orderBook = GetComponentInChildren<UIOrderBook>(true);
@@ -201,7 +218,7 @@ namespace StockWars.UI
             var listedStocks = MarketManager.Instance.GetListedStocks();
             if (listedStocks == null || listedStocks.Count == 0)
             {
-                _cipherIndexText.text = "Global Cipher Index: <color=#AAAAAA>2,500.00 (+0.00%) →</color>";
+                _cipherIndexText.text = " 글로벌 사이퍼 지수: <color=#AAAAAA>2,500.00 (+0.00%) →</color>";
                 return;
             }
 
@@ -244,7 +261,7 @@ namespace StockWars.UI
             }
 
             string flucSign = delta > 0 ? "+" : "";
-            _cipherIndexText.text = $"Global Cipher Index: <color=#{colorHex}><b>{currentIndex:N2} ({flucSign}{flucRate:F2}%) {indicator}</b></color>";
+            _cipherIndexText.text = $" 글로벌 사이퍼 지수: <color=#{colorHex}><b>{currentIndex:N2} ({flucSign}{flucRate:F2}%) {indicator}</b></color>";
         }
 
         /// <summary>

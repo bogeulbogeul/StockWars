@@ -173,7 +173,9 @@ namespace StockWars.Core
             base.Awake();
             InitializeStocks();
 
-            // PeakTracker 및 GhostTrader 강제 초기화 (이벤트 구독 활성화)
+            // 핵심 시간/주가 엔진 및 트레이더 강제 초기화 (이벤트 루프 기동)
+            var tick = TickEngine.Instance;
+            var price = PriceEngine.Instance;
             var tracker = PeakTracker.Instance;
             var ghost = GhostTrader.Instance;
         }

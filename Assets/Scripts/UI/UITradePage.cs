@@ -31,12 +31,24 @@ namespace StockWars.UI
         [SerializeField] private Color _sellActiveTabColor = new Color(0.6f, 0.8f, 0.9f, 1f); // 파스텔 블루
         [SerializeField] private Color _inactiveTabColor = new Color(0.9f, 0.9f, 0.9f, 0.6f);
 
+        [Header("Tab ON/OFF Objects")]
+        [SerializeField] private GameObject _buyTabOn;
+        [SerializeField] private GameObject _buyTabOff;
+        [SerializeField] private GameObject _sellTabOn;
+        [SerializeField] private GameObject _sellTabOff;
+        [SerializeField] private GameObject _infoTabOn;
+        [SerializeField] private GameObject _infoTabOff;
+
+        [Header("Trading & Info Sub Panels")]
+        [SerializeField] private GameObject _tradingPanel;
+        [SerializeField] private GameObject _infoPanel;
+
         [Header("Quantity & Price Selector")]
-        [SerializeField] private TMP_Text _qtyText;
+        [SerializeField] private TMP_InputField _qtyText;
         [SerializeField] private Button _minusQtyButton;
         [SerializeField] private Button _plusQtyButton;
-        [SerializeField] private TMP_Text _selectedPriceText;
-        [SerializeField] private Button _infoButton;
+        [Tooltip("1주당 가격을 표시할 TextMeshPro 텍스트")]
+        [SerializeField] private TMP_Text _pricePerShareText;
 
         [Header("Percentage Buttons")]
         [SerializeField] private Button _percent10Button;
@@ -49,17 +61,12 @@ namespace StockWars.UI
 
         [Header("Transaction Details")]
         [SerializeField] private TMP_Text _totalValueText;
-        [SerializeField] private TMP_Text _balanceText;
-        [SerializeField] private TMP_Text _availableStockText;
 
         [Header("Execute Button")]
         [SerializeField] private Button _executeButton;
         [SerializeField] private TMP_Text _executeButtonText;
         [SerializeField] private Color _buyButtonColor = new Color(0.96f, 0.35f, 0.35f, 1f); // 매수 빨강
         [SerializeField] private Color _sellButtonColor = new Color(0.23f, 0.58f, 0.94f, 1f); // 매도 파랑
-
-        [Header("Navigation Back Button")]
-        [SerializeField] private Button _backButton;
 
         [Header("Mini Order Book (5 Levels)")]
         [SerializeField] private Transform _miniOrderBookContainer;
@@ -68,9 +75,44 @@ namespace StockWars.UI
         // 거래 상태 관리 변수
         private string _targetStockId;
         private bool _isBuy = true;
+        private bool _isInfoActive = false;
         private int _qty = 1;
         private long _tradePrice;
         private List<GameObject> _instantiatedMiniRows = new List<GameObject>();
+
+        [Header("Realtime Update Settings")]
+        [SerializeField] private float _updateInterval = 1f;
+        private float _timeSinceLastUpdate = 0f;
+
+        private void Update()
+        {
+            if (string.IsNullOrEmpty(_targetStockId)) return;
+
+            _timeSinceLastUpdate += Time.deltaTime;
+            if (_timeSinceLastUpdate >= _updateInterval)
+            {
+                _timeSinceLastUpdate = 0f;
+                UpdateUI();
+            }
+        }
+
+        private void RegisterTabButtonListener(Button btn, UnityEngine.Events.UnityAction action)
+        {
+            if (btn == null) return;
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(action);
+        }
+
+        private void RegisterTabButtonListener(GameObject go, UnityEngine.Events.UnityAction action)
+        {
+            if (go == null) return;
+            Button btn = go.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(action);
+            }
+        }
 
         private void Start()
         {
@@ -78,11 +120,17 @@ namespace StockWars.UI
             if (_minusQtyButton != null) _minusQtyButton.onClick.AddListener(OnMinusQtyClicked);
             if (_plusQtyButton != null) _plusQtyButton.onClick.AddListener(OnPlusQtyClicked);
             
-            if (_buyTabButton != null) _buyTabButton.onClick.AddListener(() => SetTab(true));
-            if (_sellTabButton != null) _sellTabButton.onClick.AddListener(() => SetTab(false));
-            
-            if (_infoTabButton != null) _infoTabButton.onClick.AddListener(OnInfoClicked);
-            if (_infoButton != null) _infoButton.onClick.AddListener(OnInfoClicked);
+            RegisterTabButtonListener(_buyTabButton, () => SetTab(true));
+            RegisterTabButtonListener(_buyTabOn, () => SetTab(true));
+            RegisterTabButtonListener(_buyTabOff, () => SetTab(true));
+
+            RegisterTabButtonListener(_sellTabButton, () => SetTab(false));
+            RegisterTabButtonListener(_sellTabOn, () => SetTab(false));
+            RegisterTabButtonListener(_sellTabOff, () => SetTab(false));
+
+            RegisterTabButtonListener(_infoTabButton, OnInfoClicked);
+            RegisterTabButtonListener(_infoTabOn, OnInfoClicked);
+            RegisterTabButtonListener(_infoTabOff, OnInfoClicked);
 
             if (_percent10Button != null) _percent10Button.onClick.AddListener(() => OnPercentClicked(0.10f));
             if (_percent25Button != null) _percent25Button.onClick.AddListener(() => OnPercentClicked(0.25f));
@@ -90,9 +138,10 @@ namespace StockWars.UI
             if (_percent100Button != null) _percent100Button.onClick.AddListener(() => OnPercentClicked(1.00f));
 
             if (_executeButton != null) _executeButton.onClick.AddListener(OnExecuteClicked);
-            if (_backButton != null)
+
+            if (_qtyText != null)
             {
-                _backButton.onClick.AddListener(OnBackClicked);
+                _qtyText.onValueChanged.AddListener(OnQtyInputChanged);
             }
         }
 
@@ -103,6 +152,7 @@ namespace StockWars.UI
         {
             _targetStockId = stockId;
             _isBuy = isBuy;
+            _isInfoActive = false;
             _qty = 1;
             _tradePrice = initialPrice;
 
@@ -177,13 +227,12 @@ namespace StockWars.UI
                 _miniChart.DrawChart(stock.PriceHistory.ToList());
             }
 
-            // 2. 수량 및 거래 가격 텍스트 갱신
-            if (_qtyText != null) _qtyText.text = _qty.ToString();
-            if (_selectedPriceText != null) _selectedPriceText.text = $"{_tradePrice:N0} G";
+            // 2. 수량 및 텍스트 갱신
+            if (_qtyText != null && _qtyText.text != _qty.ToString()) _qtyText.text = _qty.ToString();
+            if (_pricePerShareText != null) _pricePerShareText.text = $"1주 금액: {_tradePrice:N0} G";
 
-            // 3. 지갑 잔고 및 보유 정보 갱신
+            // 3. 지갑 잔고 및 보유 정보 가져오기
             long cash = WalletManager.Instance.GetCash();
-            if (_balanceText != null) _balanceText.text = $"{cash:N0} G";
 
             int ownedQty = 0;
             var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
@@ -191,7 +240,6 @@ namespace StockWars.UI
             {
                 ownedQty = holding.Quantity;
             }
-            if (_availableStockText != null) _availableStockText.text = $"{ownedQty}주 보유 중";
 
             // 4. 수량과 호가 가격에 따른 총 예상 거래액 갱신 (수수료 포함)
             double baseFeeRate = 0.0015;
@@ -207,22 +255,61 @@ namespace StockWars.UI
             {
                 totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 - finalFeeRate));
             }
-            
-            if (_totalValueText != null) _totalValueText.text = $"총 금액: {totalValue:N0} G";
+
+            // 한도 초과 검사 (매수 시 보유 현금 초과, 매도 시 보유 수량 초과)
+            bool isValid = true;
+            if (_isBuy)
+            {
+                isValid = totalValue <= cash;
+            }
+            else
+            {
+                isValid = _qty <= ownedQty;
+            }
+
+            if (_totalValueText != null)
+            {
+                _totalValueText.text = $"총 금액: {totalValue:N0} G";
+                _totalValueText.color = isValid ? new Color(0.15f, 0.15f, 0.15f, 1f) : new Color(0.9f, 0.25f, 0.25f, 1f);
+            }
 
             // 5. 탭 시각적 상태 갱신 (책갈피 효과를 위해 활성화된 탭은 색상 변경 및 가장 앞으로 렌더링)
+            bool isBuyActive = _isBuy && !_isInfoActive;
+            bool isSellActive = !_isBuy && !_isInfoActive;
+            bool isInfoActive = _isInfoActive;
+
             if (_buyTabButton != null)
             {
                 var image = _buyTabButton.GetComponent<Image>();
-                if (image != null) image.color = _isBuy ? _buyActiveTabColor : _inactiveTabColor;
-                if (_isBuy) _buyTabButton.transform.SetAsLastSibling();
+                if (image != null) image.color = isBuyActive ? _buyActiveTabColor : _inactiveTabColor;
+                if (isBuyActive) _buyTabButton.transform.SetAsLastSibling();
             }
             if (_sellTabButton != null)
             {
                 var image = _sellTabButton.GetComponent<Image>();
-                if (image != null) image.color = !_isBuy ? _sellActiveTabColor : _inactiveTabColor;
-                if (!_isBuy) _sellTabButton.transform.SetAsLastSibling();
+                if (image != null) image.color = isSellActive ? _sellActiveTabColor : _inactiveTabColor;
+                if (isSellActive) _sellTabButton.transform.SetAsLastSibling();
             }
+            if (_infoTabButton != null)
+            {
+                var image = _infoTabButton.GetComponent<Image>();
+                if (image != null) image.color = isInfoActive ? _buyActiveTabColor : _inactiveTabColor;
+                if (isInfoActive) _infoTabButton.transform.SetAsLastSibling();
+            }
+
+            // ON/OFF 오브젝트 활성화 상태 제어
+            if (_buyTabOn != null) _buyTabOn.SetActive(isBuyActive);
+            if (_buyTabOff != null) _buyTabOff.SetActive(!isBuyActive);
+
+            if (_sellTabOn != null) _sellTabOn.SetActive(isSellActive);
+            if (_sellTabOff != null) _sellTabOff.SetActive(!isSellActive);
+
+            if (_infoTabOn != null) _infoTabOn.SetActive(isInfoActive);
+            if (_infoTabOff != null) _infoTabOff.SetActive(!isInfoActive);
+
+            // TradingPanel 및 InfoPanel 활성화 상태 제어
+            if (_tradingPanel != null) _tradingPanel.SetActive(!isInfoActive);
+            if (_infoPanel != null) _infoPanel.SetActive(isInfoActive);
 
             // 5.5. 라벨 및 텍스트 동적 변경 (구매 수량 / 판매 수량)
             if (_actionTitleText != null)
@@ -230,19 +317,21 @@ namespace StockWars.UI
                 _actionTitleText.text = _isBuy ? "구매 수량" : "판매 수량";
             }
 
-            // 6. 하단 최종 주문 버튼 비주얼 설정
+            // 6. 하단 최종 주문 버튼 비주얼 설정 (한도 초과 시 비활성화 및 회색 버튼 변경)
             if (_executeButton != null)
             {
-                var image = _executeButton.GetComponent<Image>();
+                _executeButton.interactable = isValid;
+                Transform bgColorTrans = _executeButton.transform.Find("bgColor");
+                Image image = bgColorTrans != null ? bgColorTrans.GetComponent<Image>() : _executeButton.GetComponent<Image>();
                 if (image != null)
                 {
-                    image.color = _isBuy ? _buyButtonColor : _sellButtonColor;
+                    image.color = isValid ? (_isBuy ? _buyButtonColor : _sellButtonColor) : new Color(0.75f, 0.75f, 0.75f, 1f);
                 }
             }
 
             if (_executeButtonText != null)
             {
-                _executeButtonText.text = _isBuy ? "BUY △" : "SELL ▽";
+                _executeButtonText.text = _isBuy ? "매수" : "매도";
             }
 
             // 7. 좌측 5단계 미니 호가창 그리기
@@ -255,6 +344,7 @@ namespace StockWars.UI
         public void SetTab(bool isBuy)
         {
             _isBuy = isBuy;
+            _isInfoActive = false; // 매수/매도 탭 선택 시 정보 탭 비활성화
             _qty = 1;
             UpdateUI();
         }
@@ -274,26 +364,90 @@ namespace StockWars.UI
             }
         }
 
-        private void OnBackClicked()
+        private void OnQtyInputChanged(string text)
         {
-            StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
-            if (controller != null)
+            if (int.TryParse(text, out int val))
             {
-                controller.ShowPaymentPage(_targetStockId);
+                _qty = Mathf.Max(1, val);
+            }
+            else
+            {
+                _qty = 1;
+            }
+
+            if (_qtyText != null && _qtyText.text != _qty.ToString())
+            {
+                _qtyText.text = _qty.ToString();
+            }
+
+            UpdateTotalValueOnly();
+        }
+
+        private void UpdateTotalValueOnly()
+        {
+            if (MarketManager.Instance == null || WalletManager.Instance == null) return;
+
+            double baseFeeRate = 0.0015;
+            double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
+            double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
+
+            long totalValue = 0;
+            if (_isBuy)
+            {
+                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 + finalFeeRate));
+            }
+            else
+            {
+                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 - finalFeeRate));
+            }
+
+            if (_totalValueText != null) _totalValueText.text = $"총 금액: {totalValue:N0} G";
+
+            long cash = WalletManager.Instance.GetCash();
+            int ownedQty = 0;
+            var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
+            if (portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding))
+            {
+                ownedQty = holding.Quantity;
+            }
+
+            bool isValid = true;
+            if (_isBuy)
+            {
+                isValid = totalValue <= cash;
+            }
+            else
+            {
+                isValid = _qty <= ownedQty;
+            }
+
+            if (_totalValueText != null)
+            {
+                _totalValueText.color = isValid ? new Color(0.15f, 0.15f, 0.15f, 1f) : new Color(0.9f, 0.25f, 0.25f, 1f);
+            }
+
+            if (_executeButton != null)
+            {
+                _executeButton.interactable = isValid;
+                Transform bgColorTrans = _executeButton.transform.Find("bgColor");
+                Image image = bgColorTrans != null ? bgColorTrans.GetComponent<Image>() : _executeButton.GetComponent<Image>();
+                if (image != null)
+                {
+                    image.color = isValid ? (_isBuy ? _buyButtonColor : _sellButtonColor) : new Color(0.75f, 0.75f, 0.75f, 1f);
+                }
             }
         }
 
         private void OnInfoClicked()
         {
+            _isInfoActive = true;
+            UpdateUI();
+
             // 정보 탭도 클릭 시 화면 맨 앞으로 튀어나오게 (책갈피 선 덮기 효과)
             if (_infoTabButton != null) _infoTabButton.transform.SetAsLastSibling();
 
             // 정보 탭이나 정보 버튼을 눌렀을 때의 동작 (추후 컨트롤러와 연동)
             Debug.Log($"[UITradePage] {_targetStockId} 정보(Info) 보기 요청됨!");
-            
-            // 예시: StockMarketAppController에 ShowInfoPage가 있다면 아래처럼 호출
-            // StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
-            // if (controller != null) controller.ShowInfoPage(_targetStockId);
         }
 
         private void OnPercentClicked(float percent)
@@ -418,21 +572,22 @@ namespace StockWars.UI
             }
             _instantiatedMiniRows.Clear();
 
-            // 선택된 가격(_tradePrice)을 기준으로 7단계 가격 계산 (+3틱 ~ -3틱)
+            // 실시간 현재가(stock.CurrentPrice)를 기준으로 7단계 가격 계산 (+3틱 ~ -3틱)
             double stepPercent = 0.002; // 0.2% 간격
-            long basePrice = _tradePrice > 0 ? _tradePrice : stock.CurrentPrice;
+            long basePrice = stock.CurrentPrice;
+            long tickSize = Math.Max(1, (long)Math.Round(basePrice * stepPercent));
 
             long[] prices = new long[7];
-            prices[0] = (long)Math.Round(basePrice * (1.0 + stepPercent * 3)); // 매도3
-            prices[1] = (long)Math.Round(basePrice * (1.0 + stepPercent * 2)); // 매도2
-            prices[2] = (long)Math.Round(basePrice * (1.0 + stepPercent * 1)); // 매도1
-            prices[3] = basePrice;                                             // 기준가 (선택된 가격)
-            prices[4] = (long)Math.Round(basePrice * (1.0 - stepPercent * 1)); // 매수1
-            prices[5] = (long)Math.Round(basePrice * (1.0 - stepPercent * 2)); // 매수2
-            prices[6] = (long)Math.Round(basePrice * (1.0 - stepPercent * 3)); // 매수3
+            prices[0] = basePrice + tickSize * 3; // 매도3
+            prices[1] = basePrice + tickSize * 2; // 매도2
+            prices[2] = basePrice + tickSize * 1; // 매도1
+            prices[3] = basePrice;                // 기준가 (선택된 가격)
+            prices[4] = basePrice - tickSize * 1; // 매수1
+            prices[5] = basePrice - tickSize * 2; // 매수2
+            prices[6] = basePrice - tickSize * 3; // 매수3
 
-            // 결정론적 무작위 수량 생성용 시드
-            int stockSeed = stock.Data.stockId.GetHashCode();
+            // 실시간 변동을 시각화하기 위해 시간(TickCount)을 시드에 혼합
+            int stockSeed = stock.Data.stockId.GetHashCode() ^ System.Environment.TickCount;
             System.Random rand = new System.Random(stockSeed);
 
             for (int i = 0; i < 7; i++)
@@ -476,49 +631,100 @@ namespace StockWars.UI
                 if (legPrice != null) legPrice.text = $"{price:N0}";
 
                 // 2 & 3. 텍스트 설정 및 배경 바(Bar) 가변 사이즈 조절
-                double vol = (i == 3) ? 0 : (3.0 + rand.NextDouble() * 12.0);
-                string volStr = (i == 3) ? "-" : $"{vol:F1}k";
-
-                // 가변 길이와 정렬을 위해 레이아웃 그룹 설정을 스크립트로 강제 교정 (마스크 잘림 방지)
-                UnityEngine.UI.HorizontalLayoutGroup hlg = rowGo.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>();
-                if (hlg != null)
+                int qty = (i == 3) ? 0 : rand.Next(50, 15000);
+                double vol = qty / 1000.0;
+                string volStr;
+                if (qty <= 0)
                 {
-                    hlg.childForceExpandWidth = false;
-                    hlg.childControlWidth = true;
-                    hlg.childAlignment = UnityEngine.TextAnchor.MiddleLeft; // 기준점을 무조건 왼쪽 끝으로 고정!
+                    volStr = "-";
+                }
+                else if (qty >= 1000000)
+                {
+                    volStr = $"{qty / 1000000f:F1}M";
+                }
+                else if (qty >= 1000)
+                {
+                    volStr = $"{qty / 1000f:F1}k";
+                }
+                else
+                {
+                    volStr = qty.ToString();
                 }
 
-                // 가격 텍스트 좌측 정렬 (캡슐이 줄어들어도 잘리지 않게)
+                // 1. 가격 텍스트를 바(PriceBackground)의 자식에서 꺼내어 행(MiniOrderRow)의 직속 자식으로 설정
+                // 이렇게 해야 바가 움직여도 가격 글씨가 흔들리거나 같이 움직이지 않습니다.
+                if (tmpPrice != null) tmpPrice.transform.SetParent(rowGo.transform);
+                if (legPrice != null) legPrice.transform.SetParent(rowGo.transform);
+
+                // 레이아웃 자동 정렬 해제 (직접 절대 위치 지정을 위해)
+                UnityEngine.UI.HorizontalLayoutGroup hlg = rowGo.GetComponent<HorizontalLayoutGroup>();
+                if (hlg != null) hlg.enabled = false;
+
+                // 가격 텍스트 배치 (매수 레이블의 왼쪽 끝에 맞추어 좌측 정렬 배치)
                 if (tmpPrice != null) 
                 {
                     tmpPrice.alignment = TMPro.TextAlignmentOptions.Left;
-                    tmpPrice.margin = new Vector4(15, 0, 0, 0); // 왼쪽 여백 살짝 띄우기
+                    tmpPrice.margin = new Vector4(0, 0, 0, 0);
+                    
+                    RectTransform priceRt = tmpPrice.rectTransform;
+                    if (priceRt != null)
+                    {
+                        priceRt.anchorMin = new Vector2(0f, 0.5f);
+                        priceRt.anchorMax = new Vector2(0f, 0.5f); // 좌측 끝 기준
+                        priceRt.pivot = new Vector2(0f, 0.5f); // 좌측 피벗
+                        priceRt.anchoredPosition = new Vector2(15f, 0f); // 좌측 끝에서 15px 오른쪽 시작 (매수 탭 왼쪽 라인과 정렬)
+                        priceRt.sizeDelta = new Vector2(80f, 30f);
+                    }
+                }
+                if (legPrice != null)
+                {
+                    legPrice.alignment = TextAnchor.MiddleLeft;
+                    
+                    RectTransform priceRt = legPrice.GetComponent<RectTransform>();
+                    if (priceRt != null)
+                    {
+                        priceRt.anchorMin = new Vector2(0f, 0.5f);
+                        priceRt.anchorMax = new Vector2(0f, 0.5f);
+                        priceRt.pivot = new Vector2(0f, 0.5f);
+                        priceRt.anchoredPosition = new Vector2(15f, 0f);
+                        priceRt.sizeDelta = new Vector2(80f, 30f);
+                    }
                 }
 
-                // 수량 텍스트 (오른쪽 고정, 최소 너비 지정하여 마스크에 잘리지 않게 방어)
-                if (tmpVol != null || legVol != null)
+                // 수량 텍스트 활성화 및 우측 끝 고정 배치 (잔량 숫자 연동)
+                if (tmpVol != null) 
                 {
-                    if (tmpVol != null) 
+                    tmpVol.gameObject.SetActive(true);
+                    tmpVol.text = volStr;
+                    tmpVol.alignment = TMPro.TextAlignmentOptions.Right;
+                    tmpVol.margin = new Vector4(0, 0, 0, 0);
+
+                    tmpVol.transform.SetParent(rowGo.transform);
+                    RectTransform volRt = tmpVol.rectTransform;
+                    if (volRt != null)
                     {
-                        tmpVol.text = volStr;
-                        tmpVol.enableWordWrapping = false;
-                        tmpVol.alignment = TMPro.TextAlignmentOptions.Right;
-                        var leVol = tmpVol.gameObject.GetComponent<UnityEngine.UI.LayoutElement>();
-                        if (leVol == null) leVol = tmpVol.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
-                        leVol.minWidth = 50f;
-                        leVol.preferredWidth = 50f;
-                        leVol.flexibleWidth = 1f; // 남는 공간 흡수하여 우측으로 쫙 밀어냄
+                        volRt.anchorMin = new Vector2(1f, 0.5f);
+                        volRt.anchorMax = new Vector2(1f, 0.5f);
+                        volRt.pivot = new Vector2(1f, 0.5f);
+                        volRt.anchoredPosition = new Vector2(-5f, 0f); // 우측 끝에서 5px 고정 (충분한 공간 확보)
+                        volRt.sizeDelta = new Vector2(80f, 30f); // 60f -> 80f로 확장하여 글자 잘림 방지
                     }
-                    if (legVol != null) 
+                }
+                if (legVol != null)
+                {
+                    legVol.gameObject.SetActive(true);
+                    legVol.text = volStr;
+                    legVol.alignment = TextAnchor.MiddleRight;
+
+                    legVol.transform.SetParent(rowGo.transform);
+                    RectTransform volRt = legVol.GetComponent<RectTransform>();
+                    if (volRt != null)
                     {
-                        legVol.text = volStr;
-                        legVol.horizontalOverflow = UnityEngine.HorizontalWrapMode.Overflow;
-                        legVol.alignment = UnityEngine.TextAnchor.MiddleRight;
-                        var leVol = legVol.gameObject.GetComponent<UnityEngine.UI.LayoutElement>();
-                        if (leVol == null) leVol = legVol.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
-                        leVol.minWidth = 50f;
-                        leVol.preferredWidth = 50f;
-                        leVol.flexibleWidth = 1f;
+                        volRt.anchorMin = new Vector2(1f, 0.5f);
+                        volRt.anchorMax = new Vector2(1f, 0.5f);
+                        volRt.pivot = new Vector2(1f, 0.5f);
+                        volRt.anchoredPosition = new Vector2(-5f, 0f);
+                        volRt.sizeDelta = new Vector2(80f, 30f);
                     }
                 }
 
@@ -540,12 +746,21 @@ namespace StockWars.UI
                     else if (i > 3) priceBg.color = new Color(0.6f, 0.8f, 1f, 1f); // 매수
                     else priceBg.color = new Color(0.9f, 0.9f, 0.9f, 1f); // 선택가격
 
-                    var leBg = priceBg.gameObject.GetComponent<UnityEngine.UI.LayoutElement>();
-                    if (leBg == null) leBg = priceBg.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
-                    leBg.flexibleWidth = 0f;
-                    
-                    if (i == 3) leBg.preferredWidth = 155f; // 기준가는 최대 너비 (215 - 60)
-                    else leBg.preferredWidth = 65f + (90f * (float)(vol / 15.0)); // 수량에 따라 캡슐 길이 조절 (65~155)
+                    // 수량 바 배치 (좌측 가격 글자 바로 우측에서 시작하여 늘어나도록 설정)
+                    RectTransform bgRt = priceBg.rectTransform;
+                    if (bgRt != null)
+                    {
+                        bgRt.anchorMin = new Vector2(0.35f, 0.5f); // 가격 글자(0~35%) 바로 다음 시작
+                        bgRt.anchorMax = new Vector2(0.35f, 0.5f);
+                        bgRt.pivot = new Vector2(0f, 0.5f); // 좌측 피벗 (오른쪽으로 늘어남)
+                        bgRt.anchoredPosition = new Vector2(5f, 0f); // 약간의 마진만 두고 시작
+                        
+                        float targetWidth;
+                        if (i == 3) targetWidth = 100f; // 기준가는 고정 너비
+                        else targetWidth = 30f + (70f * (float)(vol / 15.0)); // 30~100px 범위
+                        
+                        bgRt.sizeDelta = new Vector2(targetWidth, 20f); // 바 높이 20px로 고정
+                    }
                 }
 
                 // 4. 미니 호가 행 클릭 시 거래 예정 가격이 해당 가격으로 자동 갱신되는 편리함 추가!
