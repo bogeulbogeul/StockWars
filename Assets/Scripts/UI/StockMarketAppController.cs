@@ -426,12 +426,21 @@ namespace StockWars.UI
             var recentIds = WalletManager.Instance.ActiveSaveData?.RecentViewedStockIds;
             if (recentIds == null) return;
 
-            // 아직 상세 조회(클릭) 기능이 없으므로, 최근 조회가 비어있다면 임시로 샘플 종목 3개를 넣어줍니다.
+            // 최근 조회가 비어있다면 랜덤으로 3개의 종목을 채워줍니다.
             if (recentIds.Count == 0)
             {
-                recentIds.Add("C001");
-                recentIds.Add("C002");
-                recentIds.Add("E001");
+                var allStocks = MarketManager.Instance.GetListedStocks();
+                if (allStocks != null && allStocks.Count > 0)
+                {
+                    List<StockInstance> pool = new List<StockInstance>(allStocks);
+                    int count = Mathf.Min(3, pool.Count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        int rndIndex = UnityEngine.Random.Range(0, pool.Count);
+                        recentIds.Add(pool[rndIndex].StockId);
+                        pool.RemoveAt(rndIndex);
+                    }
+                }
             }
 
             // 기존 카드 재활용 또는 부족하면 생성

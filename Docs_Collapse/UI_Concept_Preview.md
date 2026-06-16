@@ -99,3 +99,22 @@
 | 흰색 둥근 모서리 프레임 (White Outline) |
 | :---: |
 | ![흰색 사각 프레임](file:///C:/Users/Administrator/.gemini/antigravity/brain/077e24bc-95d5-4889-81a9-47e10a20199b/white_rounded_rect_frame_1781491645727.png) |
+
+---
+
+## 📌 9. IT 섹터 종목 아이콘 (총 9종)
+
+게임 내 IT 섹터 9개 종목(우량주, 성장주, 테마주)에 맞춰 캐주얼하고 귀여운 파스텔톤 2D 벡터 스타일로 디자인된 아이콘입니다.
+
+| 클라우드 베리 (Low) | 시냅스 망 (Low) | 테크 돔 (Low) |
+| :---: | :---: | :---: |
+| ![클라우드 베리](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_cloudberry_1781571736655.png) | ![시냅스 망](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_synapsenet_1781571748768.png) | ![테크 돔](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_techdome_1781571760914.png) |
+
+| 모모 솔루션 (Mid) | 코드 마스터 (Mid) | 아이언 브레인 (Mid) |
+| :---: | :---: | :---: |
+| ![모모 솔루션](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_momosolution_1781571770507.png) | ![코드 마스터](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_codemaster_1781571780803.png) | ![아이언 브레인](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_ironbrain_1781571791287.png) |
+
+| 패치워크 (High) | 고스트 쉘 (High) | 제로 픽셀 (High) |
+| :---: | :---: | :---: |
+| ![패치워크](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_patchwork_1781571800725.png) | ![고스트 쉘](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_ghostshell_1781571811699.png) | ![제로 픽셀](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_zeropixel_1781571823453.png) |
+
