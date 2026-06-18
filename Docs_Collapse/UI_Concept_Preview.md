@@ -118,3 +118,49 @@
 | :---: | :---: | :---: |
 | ![패치워크](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_patchwork_1781571800725.png) | ![고스트 쉘](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_ghostshell_1781571811699.png) | ![제로 픽셀](file:///C:/Users/Administrator/.gemini/antigravity/brain/9f0f5488-8188-4a3f-9ef2-a3346d5ea095/icon_zeropixel_1781571823453.png) |
 
+---
+
+## 📌 10. Cozy & Cute 스타일 시안 (Flat 2D)
+
+3D 깊이감이나 복잡한 텍스처를 모두 제거하고, 2D 픽셀 아트 및 일러스트 풍의 따뜻한 감성으로 전반적인 MTS 화면들을 통합한 납작한(Flat) 2D 시안들입니다.
+
+### ① 스마트폰 홈 화면 (Home Screen)
+* 파스텔 톤의 둥근 사각 타일 컨테이너로 앱 아이콘 형태를 보완하고, 폰 하단 베젤 영역에 원형 홈 버튼을 유지했습니다.
+* ![코지 홈 화면](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_home.png)
+
+### ② 주식 마켓 목록 화면 (Stock List Screen)
+* 종이 카드 질감의 아이템 박스와 동글동글한 요소를 주었으며, 등락 폭을 알약 배지 형태로 귀엽게 정돈했습니다. 하단 네비게이션 역시 손그림 스타일을 채택했습니다.
+* ![코지 마켓 목록](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_stock_list.png)
+
+### ③ 자산 정보 화면 (Asset Details Screen)
+* '내 자산' 박스를 부드러운 단색 라운드 카드로 표현하고, 최근 조회 종목 리스트를 깔끔한 2D 카드 레이아웃으로 변환했습니다.
+* ![코지 자산 정보](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_assets.png)
+
+### ④ 주식 상세/차트 화면 (Stock Detail & Chart Screen)
+* 지나치게 정밀한 벡터 차트선 대신 부드러운 2D 곡선과 별표 모양 데이터 포인트를 주어 감성을 더하고, 호가 통계도 파스텔톤 플랫 바로 귀엽게 마감했습니다.
+* ![코지 주식 상세](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_stock_detail.png)
+
+### ⑤ 주식 거래/주문 화면 (Trading Screen - Buy Tab)
+* 탭 메뉴를 둥근 다이어리 서류 탭 스타일로 디자인하고, 호가 잔량 정보 및 수량 설정 버튼들을 도톰하고 부드러운 플랫 2D 스타일로 맞추었습니다.
+* ![코지 주식 거래](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_trade.png)
+
+### ⑥ 호가창 화면 (Order Book Screen)
+* 매수/매도 잔량 호가를 텍스트 표 형태가 아닌 파스텔 피치(매도) 및 파스텔 민트(매수) 행의 부드러운 도표 형태로 표현하고, 현재가 가격 행을 밝은 노란색 스티커로 하이라이트하여 귀엽고 직관적이게 구성했습니다.
+* ![코지 호가창](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_orderbook.png)
+
+### ⑦ 정보 탭 화면 (Info Tab Screen)
+* 매수/매도 화면에서 '정보' 탭을 활성화했을 때 나타나는 화면입니다. 상단에는 귀여운 말풍선 형태의 '기업 소개' 란이 자리 잡고, 하단에는 삐뚤빼뚤한 수제 장부 느낌의 '재무제표(매출액, 영업이익 등)' 단색 표를 배치해 통일된 감성을 보여줍니다.
+* ![코지 정보 탭](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_info.png)
+
+### ⑧ 뉴스 화면 (News Screen)
+* 하단 네비게이션 북 아이콘(뉴스 탭)을 통해 진입하는 전체 뉴스 피드 화면입니다. 신문 스크랩 또는 포스트잇 형태로 기사들을 나열하고, 호재(연두색)와 악재(연분홍) 분류 태그 및 작고 귀여운 삽화 스케치를 기재해 읽는 재미를 더해줍니다.
+* ![코지 뉴스 화면](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_news.png)
+
+### ⑨ 프로필 화면 (Profile Screen)
+* 플레이어의 닉네임과 아바타 정보 외에 **총자산(보유 현금 + 주식 잔고)**, 현재 **보유 중인 주식 목록**, 투자 분포를 알 수 있는 **보유 섹터 통계(도넛 차트/파스텔 바)**, 그리고 주간 주식 거래 빈도를 시각화한 **주간 활동 통계(Mon~Sun 바 그래프)**를 담아낸 아기자기한 다이어리 스타일의 종합 프로필 화면입니다.
+* ![코지 프로필 화면](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Designs/flat_2d_cozy_profile_v2.png)
+
+
+
+
+
