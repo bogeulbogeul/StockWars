@@ -116,10 +116,10 @@ TextureImporter:
       name: SmartphoneFrame_0
       rect:
         serializedVersion: 2
-        x: 233
-        y: 99
-        width: 555
-        height: 826
+        x: 541
+        y: 112
+        width: 959
+        height: 1824
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fadcf764674630f4dbf4418375a7e1fc
+    spriteID: 4850eeea5118b7f43b8c8cf5bd301435
     internalID: 0
     vertices: []
     indices: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2f1f8c2a67adccd4dbb5dafb0cde580d
+guid: 9d0e0086b6814ca46a1f5d0b4b5802d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -48001666320698822
-    second: SmartphoneIcon_0
+      213: -7487566478770451154
+    second: SmartphoneToggleButton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SmartphoneIcon_0
+      name: SmartphoneToggleButton_0
       rect:
         serializedVersion: 2
-        x: 253
-        y: 126
-        width: 515
-        height: 774
+        x: 546
+        y: 119
+        width: 956
+        height: 1819
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a32f3522db6755ff0800000000000000
-      internalID: -48001666320698822
+      spriteID: e2dc3c855f1d61890800000000000000
+      internalID: -7487566478770451154
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7c6c773fa975e4f439029d1cc59d6841
+    spriteID: 665a95fd315fcd548b201ba3a2790e48
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SmartphoneIcon_0: -48001666320698822
+      SmartphoneToggleButton_0: -7487566478770451154
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

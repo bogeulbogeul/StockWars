@@ -116,10 +116,10 @@ TextureImporter:
       name: SmartphoneHomeButton_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 65
-        width: 921
-        height: 901
+        x: 941
+        y: 156
+        width: 168
+        height: 158
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 986fc66279b3e9e46a7bffd40bb628c3
+    spriteID: 27da9552134d7404aa1fa6b751f811e5
     internalID: 0
     vertices: []
     indices: 

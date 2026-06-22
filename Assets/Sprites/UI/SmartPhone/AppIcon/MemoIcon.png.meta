@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 335d28cb084678149b4eb8a1091907d4
+guid: 05aacba7af54b3f40bcb8ce0a4facb8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1572406616607229405
-    second: AcheivementsIcon_0
+      213: 55050556466109430
+    second: MemoIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AcheivementsIcon_0
+      name: MemoIcon_0
       rect:
         serializedVersion: 2
-        x: 144
-        y: 150
-        width: 732
-        height: 724
+        x: 278
+        y: 277
+        width: 1489
+        height: 1494
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd50951ac7f42d510800000000000000
-      internalID: 1572406616607229405
+      spriteID: 6fb99de703493c000800000000000000
+      internalID: 55050556466109430
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: eaa011ffba58d074e9d01d89a5b0ec61
+    spriteID: 5a3b53026fbc8cc4f8fdbc2821904eaf
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AcheivementsIcon_0: 1572406616607229405
+      MemoIcon_0: 55050556466109430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

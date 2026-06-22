@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6c4817d793da4494c9a04d7671eb5df9
+guid: 87819e3b92f43cd4c9b7fb95fc652e8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5045460735251563706
-    second: MailIcon_0
+      213: -2508094525017559959
+    second: SummitConnectIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MailIcon_0
+      name: SummitConnectIcon_0
       rect:
         serializedVersion: 2
-        x: 148
-        y: 147
-        width: 726
-        height: 727
+        x: 465
+        y: 469
+        width: 1115
+        height: 1105
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab4c9d48ec3150640800000000000000
-      internalID: 5045460735251563706
+      spriteID: 96ce9356155713dd0800000000000000
+      internalID: -2508094525017559959
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 85ebf14d01e665d4daf08cd07bca0c21
+    spriteID: 0d0f42ebb63fac6488ab4126a4e73f76
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MailIcon_0: 5045460735251563706
+      SummitConnectIcon_0: -2508094525017559959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

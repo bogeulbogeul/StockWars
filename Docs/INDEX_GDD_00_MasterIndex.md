@@ -31,7 +31,7 @@
 - [MOD_GDD_18] 세미나 퀴즈 시스템 (Quiz System) [Quiz System](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_18_QuizSystem.md)
 - [MOD_GDD_03: 아이템 상점 및 리스트](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_0_ShopIndex.md)
 - [MOD_GDD_05: 라이프스타일 및 사교](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_05_LifestyleSocial.md)
-- [MOD_GDD_11: 스마트폰 메일 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_11_MailSystem.md)
+- [MOD_GDD_11: 스마트폰 Bubble 메신저 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_11_BubbleSystem.md)
 
 ## 🤝 4. 소셜 및 멀티플레이 (Social & Multiplayer)
 - [MOD_GDD_09: 친구 시스템 및 소셜 루프](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_09_FriendSystem.md)

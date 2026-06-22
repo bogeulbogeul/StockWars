@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f01aa0f1a81aade4882bc273ddca09a1
+guid: b130c04aacf7a93488321adaaba697b0
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: CipherMIcon_0
       rect:
         serializedVersion: 2
-        x: 153
-        y: 152
-        width: 718
-        height: 721
+        x: 300
+        y: 270
+        width: 1445
+        height: 1476
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: afe1d4b061b37bf47a33794425f2e4ac
+    spriteID: c961122c2a936b1488f24dfd88af55e8
     internalID: 0
     vertices: []
     indices: 
