@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f756e242046d0b8458527db5e1b8364d
+guid: 9ee4a2bf078d90b49bd1dcb9427e5e19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3275226492037007033
-    second: MarketIcon_0
+      213: -6168301650379281949
+    second: StoreIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,27 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MarketIcon_0
+      name: StoreIcon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 709
+        y: 191
+        width: 982
+        height: 956
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b680d04421f37d20800000000000000
-      internalID: 3275226492037007033
+      spriteID: 3e9efad745ac56aa0800000000000000
+      internalID: -6168301650379281949
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: fc34f6107c0d6594b95ad42b07966063
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MarketIcon_0: 3275226492037007033
+      StoreIcon_0: -6168301650379281949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
