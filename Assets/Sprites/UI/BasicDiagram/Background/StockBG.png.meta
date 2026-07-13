@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c70645d9b95ec44390b30eb55038408
+guid: ce7c62a35d8906549a44febfb5eec9c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5373859892194161729
-    second: inverted_u_shape_frame_0
+      213: -4756282816797148751
+    second: StockBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inverted_u_shape_frame_0
+      name: StockBG_0
       rect:
         serializedVersion: 2
-        x: 84
-        y: 204
-        width: 857
-        height: 617
+        x: 181
+        y: 853
+        width: 1686
+        height: 342
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 144b3fa9919c39a40800000000000000
-      internalID: 5373859892194161729
+      spriteID: 1b9f28d5af94efdb0800000000000000
+      internalID: -4756282816797148751
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 109bde14212ab8c42bd54e18b0dcbe08
+    spriteID: ee937a557ca508b4d86ca8f7b2845135
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      inverted_u_shape_frame_0: 5373859892194161729
+      StockBG_0: -4756282816797148751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

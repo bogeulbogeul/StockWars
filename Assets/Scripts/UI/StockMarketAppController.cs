@@ -21,6 +21,7 @@ namespace StockWars.UI
         [Header("Home: Recent Watchlist UI")]
         [SerializeField] private Transform _recentCardsContainer;
         [SerializeField] private GameObject _recentCardPrefab; // 홈 화면용 네모난 프리팹 (StockCard_01)
+        [SerializeField] private int _maxRecentCount = 3; // 최근 조회 최대 표시 개수
         private List<StockCardUI> _instantiatedRecentCards = new List<StockCardUI>();
 
         // 섹터 필터 상태 (null이면 '전체')
@@ -139,9 +140,9 @@ namespace StockWars.UI
                 {
                     recentIds.Remove(stockId);
                     recentIds.Insert(0, stockId);
-                    if (recentIds.Count > 3)
+                    if (recentIds.Count > _maxRecentCount)
                     {
-                        recentIds.RemoveRange(3, recentIds.Count - 3);
+                        recentIds.RemoveRange(_maxRecentCount, recentIds.Count - _maxRecentCount);
                     }
                 }
             }
@@ -306,7 +307,7 @@ namespace StockWars.UI
 
             if (_portfolioTotalText != null)
             {
-                _portfolioTotalText.text = $"<color=#FFD700>G</color> {netWorth:N0}";
+                _portfolioTotalText.text = $"자산 현황: <color=#FFD700>G</color> {netWorth:N0}";
             }
 
             Color targetColor = new Color(0.58f, 0.64f, 0.72f, 1f); // default gray (#94A3B8)
@@ -324,46 +325,21 @@ namespace StockWars.UI
             if (_portfolioTodayText != null)
             {
                 _portfolioTodayText.color = targetColor;
-                _portfolioTodayText.text = $"Today\n{sign}G {profit:N0} ({sign}{profitRate:F2}%)";
+                _portfolioTodayText.text = $"당일 손익: {sign}G {profit:N0} ({sign}{profitRate:F2}%)";
             }
 
             if (_portfolioStocksText != null)
             {
-                _portfolioStocksText.text = $"Stocks: <color=#D4AF37>G</color> {portfolioValue:N0}";
+                _portfolioStocksText.text = $"주식 평가액: <color=#D4AF37>G</color> {portfolioValue:N0}";
             }
 
             if (_portfolioCashText != null)
             {
-                _portfolioCashText.text = $"Cash: <color=#D4AF37>G</color> {cash:N0}";
+                _portfolioCashText.text = $"보유 현금: <color=#D4AF37>G</color> {cash:N0}";
             }
 
             // ── 순자산 미니 선형 차트 실시간 렌더링 ──
-            if (_netWorthChart == null && _portfolioTodayText != null)
-            {
-                Transform parent = _portfolioTodayText.transform.parent; // AccountCard
-                Transform existingChart = parent.Find("NetWorthChart");
-                if (existingChart != null)
-                {
-                    _netWorthChart = existingChart.GetComponent<UIMiniLineChart>();
-                }
-                else
-                {
-                    GameObject chartGo = new GameObject("NetWorthChart", typeof(RectTransform), typeof(UIMiniLineChart));
-                    chartGo.transform.SetParent(parent, false);
-
-                    RectTransform rt = chartGo.GetComponent<RectTransform>();
-                    rt.anchorMin = _portfolioTodayText.rectTransform.anchorMin;
-                    rt.anchorMax = _portfolioTodayText.rectTransform.anchorMax;
-                    rt.pivot = new Vector2(0.5f, 0.5f);
-
-                    // Today 텍스트 위치 기준 48픽셀 하단 배치
-                    Vector2 todayPos = _portfolioTodayText.rectTransform.anchoredPosition;
-                    rt.anchoredPosition = new Vector2(todayPos.x, todayPos.y - 48f);
-                    rt.sizeDelta = new Vector2(100f, 32f);
-
-                    _netWorthChart = chartGo.GetComponent<UIMiniLineChart>();
-                }
-            }
+            // 인스펙터에 차트가 연결되어 있을 때만 차트를 그리고, 그렇지 않으면 생성을 건너뜁니다.
 
             if (_netWorthChart != null && WalletManager.Instance.ActiveSaveData != null)
             {
@@ -426,14 +402,14 @@ namespace StockWars.UI
             var recentIds = WalletManager.Instance.ActiveSaveData?.RecentViewedStockIds;
             if (recentIds == null) return;
 
-            // 최근 조회가 비어있다면 랜덤으로 3개의 종목을 채워줍니다.
+            // 최근 조회가 비어있다면 랜덤으로 최대 _maxRecentCount개의 종목을 채워줍니다.
             if (recentIds.Count == 0)
             {
                 var allStocks = MarketManager.Instance.GetListedStocks();
                 if (allStocks != null && allStocks.Count > 0)
                 {
                     List<StockInstance> pool = new List<StockInstance>(allStocks);
-                    int count = Mathf.Min(3, pool.Count);
+                    int count = Mathf.Min(_maxRecentCount, pool.Count);
                     for (int i = 0; i < count; i++)
                     {
                         int rndIndex = UnityEngine.Random.Range(0, pool.Count);

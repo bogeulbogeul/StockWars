@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b48bffa4459c68443b8967b3218aa0ab
+guid: 45b9acbde6538db46a77db0355a92a48
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5089105487110534532
-    second: SearchFrame_0
+      213: 2063706565599053457
+    second: RecentStockFrame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SearchFrame_0
+      name: RecentStockFrame_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 339
-        width: 931
-        height: 340
+        x: 582
+        y: 241
+        width: 879
+        height: 1532
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7a0940d58ddf59b0800000000000000
-      internalID: -5089105487110534532
+      spriteID: 1964c2bff22c3ac10800000000000000
+      internalID: 2063706565599053457
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 278f1b7ccfbf72f46bc962da9184d6b9
+    spriteID: 843c1366d36d1894c8d085de837fe0c1
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SearchFrame_0: -5089105487110534532
+      RecentStockFrame_0: 2063706565599053457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

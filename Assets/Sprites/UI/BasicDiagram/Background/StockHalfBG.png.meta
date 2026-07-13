@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f5a0cd65990a6c340aa877e7bb11039c
+guid: 8d078f15ef99a0d469bee312eb88eeb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1463713885892760305
-    second: white_capsule_0
+      213: -4756282816797148751
+    second: StockBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: white_capsule_0
+      name: StockBG_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 332
-        width: 829
-        height: 358
+        x: 181
+        y: 999
+        width: 1686
+        height: 196
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0d2e82d9f7dfabe0800000000000000
-      internalID: -1463713885892760305
+      spriteID: 1b9f28d5af94efdb0800000000000000
+      internalID: -4756282816797148751
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d81d8e9318f5ce41a6ec89a4613d1b5
+    spriteID: ee937a557ca508b4d86ca8f7b2845135
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      white_capsule_0: -1463713885892760305
+      StockBG_0: -4756282816797148751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
