@@ -18,6 +18,8 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _companyNameText;
         [SerializeField] private TMP_Text _currentPriceText;
         [SerializeField] private TMP_Text _changeRateText;
+        [SerializeField] private Image _logoImage;                    // 회사 로고 이미지
+        [SerializeField] private Image _changeRateBgImage;             // 등락률 배경 캡슐 이미지 (색상 변경용)
         [SerializeField] private UIStockChart _miniChart;
 
         [Header("Sector Background Customization")]
@@ -182,16 +184,39 @@ namespace StockWars.UI
             if (_companyNameText != null) _companyNameText.text = stock.Data.companyName;
             if (_currentPriceText != null) _currentPriceText.text = $"{stock.CurrentPrice:N0} G";
 
+            Color flucColor = delta > 0 ? new Color(0.27f, 0.83f, 0.45f, 1f) : // #46D473 (초록)
+                             (delta < 0 ? new Color(1f, 0.37f, 0.38f, 1f) : new Color(0.5f, 0.5f, 0.5f, 1f));
+
             if (_changeRateText != null)
             {
                 string indicator = delta > 0 ? "▲" : (delta < 0 ? "▼" : "-");
                 string sign = delta > 0 ? "+" : "";
-                
-                Color textCol = delta > 0 ? new Color(0f, 0.8f, 0.4f, 1f) : 
-                               (delta < 0 ? new Color(0.9f, 0.3f, 0.3f, 1f) : new Color(0.5f, 0.5f, 0.5f, 1f));
-
                 _changeRateText.text = $"{indicator} {sign}{flucRate:F2}%";
-                _changeRateText.color = textCol;
+
+                if (_changeRateBgImage != null)
+                {
+                    _changeRateBgImage.color = flucColor;
+                    _changeRateText.color = Color.white; // 캡슐 배경이 칠해진 경우 흰색 텍스트로 고대비 가독성 확보
+                }
+                else
+                {
+                    _changeRateText.color = flucColor;
+                }
+            }
+
+            // 로고 이미지 동적 로드
+            if (_logoImage != null)
+            {
+                Sprite logoSprite = Resources.Load<Sprite>($"Sprites/Logos/{stock.StockId}");
+                if (logoSprite != null)
+                {
+                    _logoImage.sprite = logoSprite;
+                    _logoImage.color = Color.white;
+                }
+                else
+                {
+                    _logoImage.color = new Color(1f, 1f, 1f, 0.2f); // 기본 실루엣 폴백
+                }
             }
 
             // 1.5. 섹터에 맞춰 패널/헤더 배경색 변경
