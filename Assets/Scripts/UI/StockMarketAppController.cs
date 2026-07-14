@@ -15,7 +15,6 @@ namespace StockWars.UI
         [Header("Pages (Navigation)")]
         [SerializeField] private GameObject _pageHome;
         [SerializeField] private GameObject _pageMarket;
-        [SerializeField] private GameObject _pagePaymentMain;
         [SerializeField] private GameObject _pageTrade;
 
         [Header("Home: Recent Watchlist UI")]
@@ -119,7 +118,6 @@ namespace StockWars.UI
         {
             if (_pageHome != null) _pageHome.SetActive(true);
             if (_pageMarket != null) _pageMarket.SetActive(false);
-            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
             if (_pageTrade != null) _pageTrade.SetActive(false);
 
             RefreshAppUI();
@@ -132,7 +130,6 @@ namespace StockWars.UI
         {
             if (_pageHome != null) _pageHome.SetActive(false);
             if (_pageMarket != null) _pageMarket.SetActive(true);
-            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
             if (_pageTrade != null) _pageTrade.SetActive(false);
         }
 
@@ -156,79 +153,37 @@ namespace StockWars.UI
                 }
             }
 
-            // 통합 거래 화면 컴포넌트(UITradePage) 탐색
-            UITradePage tradePage = null;
-            if (_pageTrade != null) tradePage = _pageTrade.GetComponentInChildren<UITradePage>(true);
-            if (tradePage == null && _pagePaymentMain != null) tradePage = _pagePaymentMain.GetComponentInChildren<UITradePage>(true);
-
-            // 찾은 페이지 구조에 맞게 화면 활성화 제어
-            if (_pageHome != null) _pageHome.SetActive(false);
-            if (_pageMarket != null) _pageMarket.SetActive(false);
-
-            if (tradePage != null)
-            {
-                // UITradePage가 속한 게임 오브젝트 또는 부모 페이지를 활성화
-                tradePage.gameObject.SetActive(true);
-                
-                // 만약 _pageTrade와 _pagePaymentMain 중 하나가 부모라면 활성화 상태 맞추기
-                if (_pageTrade != null && (tradePage.transform.IsChildOf(_pageTrade.transform) || tradePage.gameObject == _pageTrade))
-                {
-                    _pageTrade.SetActive(true);
-                    if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
-                }
-                else if (_pagePaymentMain != null && (tradePage.transform.IsChildOf(_pagePaymentMain.transform) || tradePage.gameObject == _pagePaymentMain))
-                {
-                    if (_pageTrade != null) _pageTrade.SetActive(false);
-                    _pagePaymentMain.SetActive(true);
-                }
-
-                if (MarketManager.Instance != null)
-                {
-                    var stock = MarketManager.Instance.GetStock(stockId);
-                    long currentPrice = stock != null ? stock.CurrentPrice : 0;
-                    tradePage.Initialize(stockId, true, currentPrice); // 매수(Buy) 모드, 현재가로 초기화
-                }
-            }
-            else
-            {
-                // 폴백: UITradePage를 못 찾았다면 기존 호가창(UIOrderBook) 복구용 처리
-                if (_pagePaymentMain != null) _pagePaymentMain.SetActive(true);
-                if (_pageTrade != null) _pageTrade.SetActive(false);
-
-                UIOrderBook orderBook = GetComponentInChildren<UIOrderBook>(true);
-                if (orderBook == null && _pagePaymentMain != null)
-                {
-                    orderBook = _pagePaymentMain.GetComponentInChildren<UIOrderBook>(true);
-                }
-                if (orderBook != null)
-                {
-                    orderBook.SetTargetStock(stockId);
-                }
-            }
+            // 매수 모드 및 현재가 기준으로 상세 페이지 열기
+            ShowTradePage(stockId, true, 0);
         }
 
         /// <summary>
-        /// 호가 클릭 시 수량 선택 및 주문 거래 실행이 가능한 거래 전용 상세 페이지로 전환합니다.
+        /// 호가 클릭 시 또는 상세 정보 진입 시 거래 전용 상세 페이지로 전환합니다.
         /// </summary>
         /// <param name="stockId">거래할 상장 주식 ID</param>
         /// <param name="isBuy">true면 매수 탭 활성화, false면 매도 탭 활성화</param>
-        /// <param name="targetPrice">예상 거래 단가 (클릭된 호가 가격)</param>
+        /// <param name="targetPrice">예상 거래 단가 (0 이하이면 현재가로 자동 매핑)</param>
         public void ShowTradePage(string stockId, bool isBuy, long targetPrice)
         {
             if (_pageHome != null) _pageHome.SetActive(false);
             if (_pageMarket != null) _pageMarket.SetActive(false);
-            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
             if (_pageTrade != null) _pageTrade.SetActive(true);
 
-            UITradePage tradePage = GetComponentInChildren<UITradePage>(true);
-            if (tradePage == null && _pageTrade != null)
+            UITradePage tradePage = null;
+            if (_pageTrade != null)
             {
                 tradePage = _pageTrade.GetComponentInChildren<UITradePage>(true);
             }
 
             if (tradePage != null)
             {
-                tradePage.Initialize(stockId, isBuy, targetPrice);
+                long price = targetPrice;
+                if (price <= 0 && MarketManager.Instance != null)
+                {
+                    var stock = MarketManager.Instance.GetStock(stockId);
+                    if (stock != null) price = stock.CurrentPrice;
+                }
+                tradePage.Initialize(stockId, isBuy, price);
             }
             else
             {
