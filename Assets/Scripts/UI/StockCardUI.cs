@@ -15,10 +15,12 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _companyNameText;
         [SerializeField] private TMP_Text _currentPriceText;
         [SerializeField] private TMP_Text _changeRateText;
+        [SerializeField] private TMP_Text _changePriceText; // 등락 금액 텍스트 (예: +20G 또는 -15G)
 
         [Header("Icon & Background")]
         [SerializeField] private Image _logoImage;
-        [SerializeField] private Image _bgColor;
+        [SerializeField] private Image _changeRateBgImage; // 등락률 배경 이미지 (Pill 배경 등)
+        [SerializeField] private Color _changeRateTextOnBgColor = Color.white; // 배경색이 변경될 때의 텍스트 색상 (선택사항)
 
         [Header("Colors (Standard)")]
         [SerializeField] private Color _colorGrowth = new Color(0f, 0.92f, 1f, 1f); // Neon Cyan (#00EAFF)
@@ -141,12 +143,30 @@ namespace StockWars.UI
                 if (_changeRateText != null)
                 {
                     _changeRateText.text = $"{indicator} {sign}{flucRate:F2}%";
-                    _changeRateText.color = targetColor;
+                    if (_changeRateBgImage != null)
+                    {
+                        _changeRateText.color = _changeRateTextOnBgColor;
+                    }
+                    else
+                    {
+                        _changeRateText.color = targetColor;
+                    }
+                }
+
+                if (_changeRateBgImage != null)
+                {
+                    _changeRateBgImage.color = targetColor;
                 }
 
                 if (_currentPriceText != null)
                 {
-                    _currentPriceText.color = targetColor;
+                    _currentPriceText.color = Color.black; // 가격은 검은색으로 고정
+                }
+
+                if (_changePriceText != null)
+                {
+                    _changePriceText.text = $"{sign}{delta:N0}G"; // 등락 금액 텍스트 바인딩
+                    _changePriceText.color = targetColor; // 등락 금액 색상은 파랑/빨강으로 변경
                 }
             }
 
