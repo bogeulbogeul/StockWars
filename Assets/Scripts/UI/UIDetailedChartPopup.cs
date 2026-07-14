@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -116,7 +117,7 @@ namespace StockWars.UI
                 bottomGrad.a = 0f;
 
                 _detailedChart.SetColor(chartColor, topGrad, bottomGrad);
-                _detailedChart.DrawChart(_targetStockId, stock.PriceHistory);
+                _detailedChart.DrawChart(_targetStockId, stock.PriceHistory.ToList());
             }
         }
     }
