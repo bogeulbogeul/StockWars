@@ -112,7 +112,7 @@ namespace StockWars.UI
                     if (_yLabels[i] == null) continue;
                     // 인덱스 0이 가장 아래(최솟값), 마지막 인덱스가 가장 위(최댓값)라고 가정
                     long labelVal = minVal + (range * i / (yCount - 1));
-                    _yLabels[i].text = $"{labelVal:N0}";
+                    _yLabels[i].text = FormatPriceCompact(labelVal);
                 }
             }
 
@@ -244,6 +244,26 @@ namespace StockWars.UI
             {
                 Debug.LogWarning("[UIStockChart] StockMarketAppController를 찾을 수 없습니다.");
             }
+        }
+
+        /// <summary>
+        /// 가격이 지나치게 커졌을 때 텍스트가 차트를 침범하지 않도록 K, M, B 단위로 변환해 표기합니다.
+        /// </summary>
+        private string FormatPriceCompact(long value)
+        {
+            if (value >= 1000000000) // 10억 이상 (1B)
+            {
+                return (value / 1000000000f).ToString("0.##") + "B";
+            }
+            if (value >= 1000000) // 100만 이상 (1M)
+            {
+                return (value / 1000000f).ToString("0.##") + "M";
+            }
+            if (value >= 10000) // 1만 이상 (10K)
+            {
+                return (value / 1000f).ToString("0.#") + "K";
+            }
+            return value.ToString("N0"); // 그 미만은 일반 콤마 표기 (예: 9,999)
         }
     }
 }
