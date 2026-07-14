@@ -21,7 +21,9 @@ namespace StockWars.UI
         [Range(0f, 0.3f)]
         [SerializeField] private float _verticalPaddingPercent = 0.12f; // 상하 여백 12% (라인 차트와 동일 설정)
         [Range(0f, 0.3f)]
-        [SerializeField] private float _horizontalPaddingPercent = 0.05f; // 좌우 여백 5%
+        [SerializeField] private float _leftPaddingPercent = 0.14f;     // 좌측 여백 14% (Y축 가격 라벨 침범 방지)
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _rightPaddingPercent = 0.04f;    // 우측 여백 4%
 
         public void SetPoints(List<float> normalizedPoints)
         {
@@ -46,20 +48,26 @@ namespace StockWars.UI
             float height = rectTrans.rect.height;
 
             float verticalPadding = height * _verticalPaddingPercent;
-            float horizontalPadding = width * _horizontalPaddingPercent;
+            float leftPadding = width * _leftPaddingPercent;
+            float rightPadding = width * _rightPaddingPercent;
             float usableHeight = height - (verticalPadding * 2f);
-            float usableWidth = width - (horizontalPadding * 2f);
+            float usableWidth = width - leftPadding - rightPadding;
             float stepX = usableWidth / (_normalizedPoints.Count - 1);
+
+            float pivotX = rectTrans.pivot.x;
+            float pivotY = rectTrans.pivot.y;
+            float offsetX = -width * pivotX;
+            float offsetY = -height * pivotY;
 
             // 1. 모든 정점(Vertices) 추가
             for (int i = 0; i < _normalizedPoints.Count; i++)
             {
-                float x = horizontalPadding + (i * stepX);
-                float y = verticalPadding + (Mathf.Clamp01(_normalizedPoints[i]) * usableHeight);
+                float x = offsetX + leftPadding + (i * stepX);
+                float y = offsetY + verticalPadding + (Mathf.Clamp01(_normalizedPoints[i]) * usableHeight);
 
                 // 바닥점 정점 (투명) - 그라데이션이 밑바닥(0)까지 부드럽게 이어지도록 처리
                 UIVertex vertexBottom = UIVertex.simpleVert;
-                vertexBottom.position = new Vector3(x, 0, 0);
+                vertexBottom.position = new Vector3(x, offsetY, 0);
                 vertexBottom.color = _bottomColor;
                 vh.AddVert(vertexBottom);
 

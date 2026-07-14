@@ -40,9 +40,11 @@ namespace StockWars.UI
 
         [Header("Padding Settings")]
         [Range(0f, 0.3f)]
-        [SerializeField] private float _verticalPaddingPercent = 0.12f; // 상하 여백 12% (카드를 빠져나가지 않도록)
+        [SerializeField] private float _verticalPaddingPercent = 0.12f; // 상하 여백 12%
         [Range(0f, 0.3f)]
-        [SerializeField] private float _horizontalPaddingPercent = 0.05f; // 좌우 여백 5%
+        [SerializeField] private float _leftPaddingPercent = 0.14f;     // 좌측 여백 14% (Y축 가격 라벨 침범 방지)
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _rightPaddingPercent = 0.04f;    // 우측 여백 4%
 
         private List<Image> _activeSegments = new List<Image>();
         private List<Image> _segmentPool = new List<Image>();
@@ -155,15 +157,16 @@ namespace StockWars.UI
             }
 
             float verticalPadding = height * _verticalPaddingPercent;
-            float horizontalPadding = width * _horizontalPaddingPercent;
+            float leftPadding = width * _leftPaddingPercent;
+            float rightPadding = width * _rightPaddingPercent;
             float usableHeight = height - (verticalPadding * 2f);
-            float usableWidth = width - (horizontalPadding * 2f);
+            float usableWidth = width - leftPadding - rightPadding;
             float stepX = usableWidth / (dataPoints.Count - 1);
 
             Vector2 lastPoint = Vector2.zero;
             for (int i = 0; i < dataPoints.Count; i++)
             {
-                float x = horizontalPadding + (i * stepX);
+                float x = leftPadding + (i * stepX);
                 float y = verticalPadding + (normalizedPoints[i] * usableHeight);
                 Vector2 currentPoint = new Vector2(x, y);
 
