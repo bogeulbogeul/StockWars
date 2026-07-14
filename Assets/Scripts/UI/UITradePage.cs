@@ -18,7 +18,7 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _companyNameText;
         [SerializeField] private TMP_Text _currentPriceText;
         [SerializeField] private TMP_Text _changeRateText;
-        [SerializeField] private UIMiniLineChart _miniChart;
+        [SerializeField] private UIStockChart _miniChart;
 
         [Header("Sector Background Customization")]
         [SerializeField] private List<Image> _sectorBackgroundImages = new List<Image>();
@@ -218,13 +218,20 @@ namespace StockWars.UI
                 }
             }
 
-            // 1.6. 미니 라인 차트 렌더링
+            // 1.6. 통합 라인/영역 차트 렌더링
             if (_miniChart != null)
             {
-                // 차트 색상은 등락률에 따라 녹색/적색으로 설정 (또는 테마색)
-                Color chartColor = flucRate >= 0 ? new Color(0.2f, 0.8f, 0.2f, 1f) : new Color(0.9f, 0.2f, 0.2f, 1f);
-                _miniChart.SetColor(chartColor);
-                _miniChart.DrawChart(stock.PriceHistory.ToList());
+                // 차트 색상은 등락률에 따라 하늘색(상승) / 빨간색(하락) / 회색(보합)으로 설정
+                Color chartColor = delta > 0 ? new Color(0f, 0.92f, 1f, 1f) : 
+                                   (delta < 0 ? new Color(1f, 0.29f, 0.29f, 1f) : new Color(0.67f, 0.67f, 0.67f, 1f));
+                
+                Color topGrad = chartColor;
+                topGrad.a = 0.35f;
+                Color bottomGrad = chartColor;
+                bottomGrad.a = 0f;
+
+                _miniChart.SetColor(chartColor, topGrad, bottomGrad);
+                _miniChart.DrawChart(_targetStockId, stock.PriceHistory.ToList());
             }
 
             // 2. 수량 및 텍스트 갱신

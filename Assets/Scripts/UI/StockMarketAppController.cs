@@ -21,7 +21,7 @@ namespace StockWars.UI
         [Header("Home: Recent Watchlist UI")]
         [SerializeField] private Transform _recentCardsContainer;
         [SerializeField] private GameObject _recentCardPrefab; // 홈 화면용 네모난 프리팹 (StockCard_01)
-        [SerializeField] private int _maxRecentCount = 3; // 최근 조회 최대 표시 개수
+        [SerializeField] private int _maxRecentCount = 5; // 최근 조회 최대 표시 개수 (기존 3에서 5로 변경)
         private List<StockCardUI> _instantiatedRecentCards = new List<StockCardUI>();
 
         // 섹터 필터 상태 (null이면 '전체')
@@ -41,7 +41,10 @@ namespace StockWars.UI
         [Header("Watchlist ScrollView UI")]
         [SerializeField] private Transform _cardsContainer;
         [SerializeField] private GameObject _stockCardPrefab; // 프로젝트 창에 있는 StockList 프리팹
+        [SerializeField] private TMP_InputField _searchBarInputField; // 상단 검색창 InputField
+        [SerializeField] private UIDetailedChartPopup _detailedChartPopup; // 상세 차트 팝업창
         private List<StockCardUI> _instantiatedCards = new List<StockCardUI>();
+        private string _currentSearchQuery = ""; // 현재 입력된 검색어
 
         private float _updateInterval = 1f; // 1초마다 갱신
         private float _timeSinceLastUpdate = 0f;
@@ -65,6 +68,12 @@ namespace StockWars.UI
                         cardUI.BindData(stock, this);
                     }
                 }
+            }
+
+            // 2. 검색창 입력 리스너 연결
+            if (_searchBarInputField != null)
+            {
+                _searchBarInputField.onValueChanged.AddListener(OnSearchValueChanged);
             }
 
             RefreshAppUI();
@@ -94,6 +103,11 @@ namespace StockWars.UI
             {
                 UITradePage tradePage = GetComponentInChildren<UITradePage>(true);
                 if (tradePage != null) tradePage.UpdateUI();
+            }
+
+            if (_detailedChartPopup != null && _detailedChartPopup.gameObject.activeSelf)
+            {
+                _detailedChartPopup.RefreshPopupUI();
             }
         }
 
@@ -127,11 +141,6 @@ namespace StockWars.UI
         /// </summary>
         public void ShowPaymentPage(string stockId)
         {
-            if (_pageHome != null) _pageHome.SetActive(false);
-            if (_pageMarket != null) _pageMarket.SetActive(false);
-            if (_pagePaymentMain != null) _pagePaymentMain.SetActive(true);
-            if (_pageTrade != null) _pageTrade.SetActive(false);
-
             // 최근 조회 목록(Recent Watchlist) 갱신
             if (WalletManager.Instance != null && WalletManager.Instance.ActiveSaveData != null)
             {
@@ -147,16 +156,54 @@ namespace StockWars.UI
                 }
             }
 
-            // 호가창 컴포넌트를 찾아서 데이터 로드
-            UIOrderBook orderBook = GetComponentInChildren<UIOrderBook>(true);
-            if (orderBook == null && _pagePaymentMain != null)
-            {
-                orderBook = _pagePaymentMain.GetComponentInChildren<UIOrderBook>(true);
-            }
+            // 통합 거래 화면 컴포넌트(UITradePage) 탐색
+            UITradePage tradePage = null;
+            if (_pageTrade != null) tradePage = _pageTrade.GetComponentInChildren<UITradePage>(true);
+            if (tradePage == null && _pagePaymentMain != null) tradePage = _pagePaymentMain.GetComponentInChildren<UITradePage>(true);
 
-            if (orderBook != null)
+            // 찾은 페이지 구조에 맞게 화면 활성화 제어
+            if (_pageHome != null) _pageHome.SetActive(false);
+            if (_pageMarket != null) _pageMarket.SetActive(false);
+
+            if (tradePage != null)
             {
-                orderBook.SetTargetStock(stockId);
+                // UITradePage가 속한 게임 오브젝트 또는 부모 페이지를 활성화
+                tradePage.gameObject.SetActive(true);
+                
+                // 만약 _pageTrade와 _pagePaymentMain 중 하나가 부모라면 활성화 상태 맞추기
+                if (_pageTrade != null && (tradePage.transform.IsChildOf(_pageTrade.transform) || tradePage.gameObject == _pageTrade))
+                {
+                    _pageTrade.SetActive(true);
+                    if (_pagePaymentMain != null) _pagePaymentMain.SetActive(false);
+                }
+                else if (_pagePaymentMain != null && (tradePage.transform.IsChildOf(_pagePaymentMain.transform) || tradePage.gameObject == _pagePaymentMain))
+                {
+                    if (_pageTrade != null) _pageTrade.SetActive(false);
+                    _pagePaymentMain.SetActive(true);
+                }
+
+                if (MarketManager.Instance != null)
+                {
+                    var stock = MarketManager.Instance.GetStock(stockId);
+                    long currentPrice = stock != null ? stock.CurrentPrice : 0;
+                    tradePage.Initialize(stockId, true, currentPrice); // 매수(Buy) 모드, 현재가로 초기화
+                }
+            }
+            else
+            {
+                // 폴백: UITradePage를 못 찾았다면 기존 호가창(UIOrderBook) 복구용 처리
+                if (_pagePaymentMain != null) _pagePaymentMain.SetActive(true);
+                if (_pageTrade != null) _pageTrade.SetActive(false);
+
+                UIOrderBook orderBook = GetComponentInChildren<UIOrderBook>(true);
+                if (orderBook == null && _pagePaymentMain != null)
+                {
+                    orderBook = _pagePaymentMain.GetComponentInChildren<UIOrderBook>(true);
+                }
+                if (orderBook != null)
+                {
+                    orderBook.SetTargetStock(stockId);
+                }
             }
         }
 
@@ -368,11 +415,20 @@ namespace StockWars.UI
             var listedStocks = MarketManager.Instance.GetListedStocks();
             if (listedStocks == null || listedStocks.Count == 0) return;
 
-            // 현재 선택된 섹터가 있다면 필터링합니다.
+            // 1. 현재 선택된 섹터가 있다면 필터링합니다.
             var filteredStocks = listedStocks;
             if (_currentSectorFilter.HasValue)
             {
                 filteredStocks = listedStocks.FindAll(s => s.Data.sector == _currentSectorFilter.Value);
+            }
+
+            // 2. 검색어가 있다면 종목명 및 종목 코드를 기준으로 대소문자 구분 없이 필터링합니다.
+            if (!string.IsNullOrEmpty(_currentSearchQuery))
+            {
+                filteredStocks = filteredStocks.FindAll(s =>
+                    (s.Data.companyName != null && s.Data.companyName.IndexOf(_currentSearchQuery, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                    (s.StockId != null && s.StockId.IndexOf(_currentSearchQuery, StringComparison.OrdinalIgnoreCase) >= 0)
+                );
             }
 
             // 필터링된 주식 개수에 맞춰 카드를 활성화하고 데이터를 씌웁니다.
@@ -389,6 +445,15 @@ namespace StockWars.UI
                     _instantiatedCards[i].gameObject.SetActive(false);
                 }
             }
+        }
+
+        /// <summary>
+        /// 검색창의 입력값이 변경될 때 호출되는 리스너 메서드입니다.
+        /// </summary>
+        public void OnSearchValueChanged(string query)
+        {
+            _currentSearchQuery = query;
+            UpdateWatchlist();
         }
 
         /// <summary>
@@ -441,6 +506,17 @@ namespace StockWars.UI
             for (int i = recentIds.Count; i < _instantiatedRecentCards.Count; i++)
             {
                 _instantiatedRecentCards[i].gameObject.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// 상세 주가 차트 팝업창을 엽니다.
+        /// </summary>
+        public void ShowDetailedChartPopup(string stockId)
+        {
+            if (_detailedChartPopup != null)
+            {
+                _detailedChartPopup.OpenPopup(stockId);
             }
         }
     }

@@ -20,7 +20,7 @@ namespace StockWars.UI
         [Header("Icon & Background")]
         [SerializeField] private Image _logoImage;
         [SerializeField] private Image _changeRateBgImage; // 등락률 배경 이미지 (Pill 배경 등)
-        [SerializeField] private Color _changeRateTextOnBgColor = Color.white; // 배경색이 변경될 때의 텍스트 색상 (선택사항)
+        [SerializeField] private Color _changeRateTextOnBgColor = new Color(0.98f, 0.98f, 0.92f, 1f); // 아이보리색 (#FAFAEB)
 
         [Header("Colors (Standard)")]
         [SerializeField] private Color _colorGrowth = new Color(0f, 0.92f, 1f, 1f); // Neon Cyan (#00EAFF)
@@ -100,6 +100,16 @@ namespace StockWars.UI
             // 최근 조회용 가로/세로 Pill 레이아웃 활성화 상태인 경우 처리
             if (_changePillContainer != null)
             {
+                // 인스펙터 누락에 대비한 자동 탐색 예외 처리 (Fail-safe)
+                if (_changePillImage == null)
+                {
+                    _changePillImage = _changePillContainer.GetComponent<Image>();
+                    if (_changePillImage == null)
+                    {
+                        _changePillImage = _changePillContainer.GetComponentInChildren<Image>(true);
+                    }
+                }
+
                 // 가격 텍스트는 컨테이너 활성화 여부와 상관없이 항상 업데이트
                 if (_currentPriceText != null)
                 {
@@ -107,27 +117,32 @@ namespace StockWars.UI
                     _currentPriceText.color = new Color(0.24f, 0.14f, 0.09f, 1f); // #3D2417 (기본 고동색/갈색)
                 }
 
-                if (delta != 0)
-                {
-                    // 변동이 있으면 Pill 표시
-                    _changePillContainer.SetActive(true);
-                    if (_priceContainer != null) _priceContainer.SetActive(false);
+                // 캡슐(Pill)은 항상 활성화 상태로 유지
+                _changePillContainer.SetActive(true);
+                if (_priceContainer != null) _priceContainer.SetActive(false);
 
-                    if (_changePillText != null)
+                if (_changePillText != null)
+                {
+                    // 변동이 있을 때와 없을 때의 텍스트 분기
+                    if (delta != 0)
                     {
-                        // 쉼표 포맷팅과 함께 변동 절대값 표시 (예: ▲ 1,200 또는 ▼ 1,500)
                         _changePillText.text = $"{indicator} {Math.Abs(delta):N0}";
                     }
-                    if (_changePillImage != null)
+                    else
                     {
-                        _changePillImage.color = (delta > 0) ? _pillGrowthColor : _pillDeclineColor;
+                        _changePillText.text = "0"; // 변동이 없을 때는 0으로 표시
                     }
+                    _changePillText.color = _changeRateTextOnBgColor; // 글자색 아이보리색으로 설정
                 }
-                else
+                
+                // 캡슐 이미지 색상 변경 (변동이 없으면 targetColor가 _colorFlat(회색)으로 적용됨)
+                if (_changePillImage != null)
                 {
-                    // 변동이 없으면 Pill 숨김
-                    _changePillContainer.SetActive(false);
-                    if (_priceContainer != null) _priceContainer.SetActive(true);
+                    _changePillImage.color = targetColor;
+                }
+                if (_changeRateBgImage != null)
+                {
+                    _changeRateBgImage.color = targetColor;
                 }
 
                 // 퍼센트 텍스트(기존 _changeRateText 재활용)가 있으면 등락 퍼센트 표시 (예: +2.50% 또는 -1.50%)
