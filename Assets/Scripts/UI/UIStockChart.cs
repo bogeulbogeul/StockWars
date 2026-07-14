@@ -38,6 +38,12 @@ namespace StockWars.UI
         [SerializeField] private Color _gradientTopColor = new Color(0.13f, 0.77f, 0.37f, 0.35f);
         [SerializeField] private Color _gradientBottomColor = new Color(0.13f, 0.77f, 0.37f, 0f);
 
+        [Header("Padding Settings")]
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _verticalPaddingPercent = 0.12f; // 상하 여백 12% (카드를 빠져나가지 않도록)
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _horizontalPaddingPercent = 0.05f; // 좌우 여백 5%
+
         private List<Image> _activeSegments = new List<Image>();
         private List<Image> _segmentPool = new List<Image>();
         private Sprite _lineSprite;
@@ -124,7 +130,6 @@ namespace StockWars.UI
 
             // 4. 그라데이션 채우기 좌표 계산 및 드로우
             List<float> normalizedPoints = new List<float>();
-            float stepX = width / (dataPoints.Count - 1);
 
             for (int i = 0; i < dataPoints.Count; i++)
             {
@@ -149,11 +154,17 @@ namespace StockWars.UI
                 _lineSprite = Sprite.Create(tex, new Rect(0, 0, 2, 2), new Vector2(0.5f, 0.5f));
             }
 
+            float verticalPadding = height * _verticalPaddingPercent;
+            float horizontalPadding = width * _horizontalPaddingPercent;
+            float usableHeight = height - (verticalPadding * 2f);
+            float usableWidth = width - (horizontalPadding * 2f);
+            float stepX = usableWidth / (dataPoints.Count - 1);
+
             Vector2 lastPoint = Vector2.zero;
             for (int i = 0; i < dataPoints.Count; i++)
             {
-                float x = i * stepX;
-                float y = normalizedPoints[i] * height;
+                float x = horizontalPadding + (i * stepX);
+                float y = verticalPadding + (normalizedPoints[i] * usableHeight);
                 Vector2 currentPoint = new Vector2(x, y);
 
                 if (i > 0)

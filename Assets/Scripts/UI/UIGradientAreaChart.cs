@@ -17,6 +17,12 @@ namespace StockWars.UI
         [SerializeField] private Color _topColor = new Color(0f, 0.92f, 1f, 0.4f);   // 위쪽: 선명한 네온 하늘색 (알파 40%)
         [SerializeField] private Color _bottomColor = new Color(0f, 0.92f, 1f, 0f);  // 아래쪽: 완전 투명 (알파 0%)
 
+        [Header("Padding Settings")]
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _verticalPaddingPercent = 0.12f; // 상하 여백 12% (라인 차트와 동일 설정)
+        [Range(0f, 0.3f)]
+        [SerializeField] private float _horizontalPaddingPercent = 0.05f; // 좌우 여백 5%
+
         public void SetPoints(List<float> normalizedPoints)
         {
             _normalizedPoints = normalizedPoints;
@@ -38,15 +44,20 @@ namespace StockWars.UI
             RectTransform rectTrans = rectTransform;
             float width = rectTrans.rect.width;
             float height = rectTrans.rect.height;
-            float stepX = width / (_normalizedPoints.Count - 1);
+
+            float verticalPadding = height * _verticalPaddingPercent;
+            float horizontalPadding = width * _horizontalPaddingPercent;
+            float usableHeight = height - (verticalPadding * 2f);
+            float usableWidth = width - (horizontalPadding * 2f);
+            float stepX = usableWidth / (_normalizedPoints.Count - 1);
 
             // 1. 모든 정점(Vertices) 추가
             for (int i = 0; i < _normalizedPoints.Count; i++)
             {
-                float x = i * stepX;
-                float y = Mathf.Clamp01(_normalizedPoints[i]) * height;
+                float x = horizontalPadding + (i * stepX);
+                float y = verticalPadding + (Mathf.Clamp01(_normalizedPoints[i]) * usableHeight);
 
-                // 바닥점 정점 (투명)
+                // 바닥점 정점 (투명) - 그라데이션이 밑바닥(0)까지 부드럽게 이어지도록 처리
                 UIVertex vertexBottom = UIVertex.simpleVert;
                 vertexBottom.position = new Vector3(x, 0, 0);
                 vertexBottom.color = _bottomColor;
