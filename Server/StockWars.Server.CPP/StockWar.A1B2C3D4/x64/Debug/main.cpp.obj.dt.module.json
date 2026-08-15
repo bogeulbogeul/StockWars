@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "StockWar.A1B2C3D4\\x64\\Debug\\main.obj",
+            "outputs": [
+                "StockWar.A1B2C3D4\\x64\\Debug\\main.cpp.obj.dt.module.json",
+                "StockWar.A1B2C3D4\\x64\\Debug\\main.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
