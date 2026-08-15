@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "b+jufE3qOK4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bogeu\\OneDrive\\문서\\GitHub\\StockWars\\Server\\StockWars.Server\\StockWars.Server\\StockWars.Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bogeu\\.nuget\\packages\\fleck\\1.2.0\\fleck.1.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
