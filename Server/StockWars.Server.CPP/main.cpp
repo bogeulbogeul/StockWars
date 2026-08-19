@@ -274,8 +274,8 @@ void HandleClientSession(SOCKET clientSocket)
             {
                 std::string orderType = payload.find("BuyOrder") != std::string::npos ? "BuyOrder" : "SellOrder";
                 std::string stockCode = ExtractJsonValue(payload, "StockCode");
-                string qtyStr = ExtractJsonValue(payload, "Quantity");
-                string priceStr = ExtractJsonValue(payload, "Price");
+                std::string qtyStr = ExtractJsonValue(payload, "Quantity");
+                std::string priceStr = ExtractJsonValue(payload, "Price");
 
                 int qty = qtyStr.empty() ? 1 : std::stoi(qtyStr);
                 double price = priceStr.empty() ? 0.0 : std::stod(priceStr);
