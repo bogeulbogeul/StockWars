@@ -48,12 +48,57 @@ namespace StockWars.UI
         private float _updateInterval = 1f; // 1초마다 갱신
         private float _timeSinceLastUpdate = 0f;
 
+        private void OnEnable()
+        {
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null)
+            {
+                StockWars.Network.StockWarsNetworkClient.Instance.OnMarketTickReceived += OnLiveServerMarketTick;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null)
+            {
+                StockWars.Network.StockWarsNetworkClient.Instance.OnMarketTickReceived -= OnLiveServerMarketTick;
+            }
+        }
+
+        /// <summary>
+        /// C++ 서버에서 1초마다 실시간 주가 틱 수신 시 호출되는 이벤트 핸들러
+        /// </summary>
+        private void OnLiveServerMarketTick(List<StockWars.Network.StockData> serverStocks)
+        {
+            if (MarketManager.Instance != null && serverStocks != null)
+            {
+                foreach (var s in serverStocks)
+                {
+                    var stock = MarketManager.Instance.GetStock(s.Code);
+                    if (stock != null)
+                    {
+                        stock.CurrentPrice = (long)s.CurrentPrice;
+                        stock.AddPriceToHistory(stock.CurrentPrice);
+                    }
+                }
+            }
+
+            // 실시간 주가 변동에 맞추어 스마트폰 앱 UI 갱신
+            RefreshAppUI();
+        }
+
         private void Start()
         {
+            // C++ 서버 틱 구독 이중 연결 확인
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null)
+            {
+                StockWars.Network.StockWarsNetworkClient.Instance.OnMarketTickReceived -= OnLiveServerMarketTick;
+                StockWars.Network.StockWarsNetworkClient.Instance.OnMarketTickReceived += OnLiveServerMarketTick;
+            }
+
             // 앱 시작 시 홈 화면부터 보여주기
             ShowHome();
 
-            // 1. 프리팹을 이용해 상장된 모든 주식 카드를 동적으로 72개 생성!
+            // 1. 프리팹을 이용해 상장된 모든 주식 카드를 동적으로 생성!
             if (_stockCardPrefab != null && _cardsContainer != null && MarketManager.Instance != null)
             {
                 var listedStocks = MarketManager.Instance.GetListedStocks();

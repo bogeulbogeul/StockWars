@@ -9,7 +9,6 @@ namespace StockWarsServer
 {
     // =========================================================================
     // [C++ 핵심 학습 포인트 1: 구조체(Struct)와 메모리 배치]
-    // C++에서 struct는 기본 접근자가 public인 클래스입니다.
     // 주식 종목 하나의 기본 정보 및 현재 가격 데이터를 보관합니다.
     // =========================================================================
     struct StockItem
@@ -23,8 +22,23 @@ namespace StockWarsServer
     };
 
     // =========================================================================
+    // [C++ 주식 매수/매도 체결 구조체]
+    // =========================================================================
+    struct OrderResult
+    {
+        bool success;
+        std::string orderType;  // "BuyOrder" 또는 "SellOrder"
+        std::string stockCode;
+        std::string stockName;
+        int quantity;
+        double price;
+        double totalCost;
+        std::string message;
+    };
+
+    // =========================================================================
     // [C++ 핵심 학습 포인트 2: 클래스(Class)와 캡슐화]
-    // 1초 마다 24개 주식 종목의 가격 파동을 계산하는 C++ 주가 시뮬레이터 엔진
+    // 1초 마다 주가 파동을 연산하고 매수/매도 체결을 처리하는 C++ 코어 엔진
     // =========================================================================
     class MarketSimulator
     {
@@ -45,5 +59,11 @@ namespace StockWarsServer
 
         // 현재 주가 데이터를 JSON 패킷 문자열로 직렬화 (Serialize)
         std::string GenerateMarketTickJson();
+
+        // [C++ 오더북 체결 엔진] 유니티 클라이언트의 매수/매도 주문 정산 처리
+        OrderResult ProcessOrder(const std::string& orderType, const std::string& stockCode, int quantity, double price);
+
+        // 체결 결과를 JSON 문자열 패킷으로 변환
+        std::string OrderResultToJson(const OrderResult& result);
     };
 }

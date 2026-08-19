@@ -239,13 +239,43 @@ namespace StockWars.Core
         #region Public APIs (종목 상태 조회용 인터페이스)
 
         /// <summary>
-        /// ID 기반 특정 단일 주식 인스턴스 반환
+        /// ID 기반 특정 단일 주식 인스턴스 반환 (C++ 서버 틱 동적 코드 호환)
         /// </summary>
         public StockInstance GetStock(string stockId)
         {
             if (string.IsNullOrEmpty(stockId)) return null;
             string key = stockId.ToUpper();
-            return _stockInstances.TryGetValue(key, out var instance) ? instance : null;
+            if (_stockInstances.TryGetValue(key, out var instance))
+            {
+                return instance;
+            }
+
+            // C++ 서버 틱 패킷(IT_01, ENT_01 등) 수신 시 자동 런타임 동적 생성 지원 (Fail-safe)
+            StockDataSO dynamicSO = ScriptableObject.CreateInstance<StockDataSO>();
+            dynamicSO.stockId = key;
+            dynamicSO.companyName = GetDefaultNameByCode(key);
+            dynamicSO.listingPrice = 50000;
+            dynamicSO.floatingSupply = 100000;
+            dynamicSO.isIpoCandidate = false;
+
+            StockInstance newInstance = new StockInstance(dynamicSO);
+            _stockInstances[key] = newInstance;
+            return newInstance;
+        }
+
+        private string GetDefaultNameByCode(string code)
+        {
+            switch (code.ToUpper())
+            {
+                case "IT_01": return "사이퍼 테크";
+                case "IT_02": return "네오 네트웍스";
+                case "ENT_01": return "미드나잇 엔터";
+                case "ENT_02": return "비트 메이커스";
+                case "BIO_01": return "바이오 파마";
+                case "FIN_01": return "노드 파이낸스";
+                case "LOG_01": return "비트 물류";
+                default: return code;
+            }
         }
 
         /// <summary>

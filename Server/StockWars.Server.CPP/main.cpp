@@ -1,8 +1,8 @@
-﻿// =============================================================================
+// =============================================================================
 // [StockWars C++ Pure WinSock2 / WebSocket 게임 서버]
 // 
 // 네오플(Neople) 등 국내 대표 게임회사 서버 프로그래머 서류/면접에 100% 통과할 수 있도록
-// Windows C++ WinSock2 소켓, 멀티스레딩, 핸드셰이크, 바이너리 핑퐁 및 주가 시뮬레이터를
+// Windows C++ WinSock2 소켓, 멀티스레딩, 핸드셰이크, 바이너리 핑퐁 및 주식 체결 엔진을
 // 상세한 한글 주석과 함께 구현한 C++ 서버 솔루션입니다.
 // =============================================================================
 
@@ -30,6 +30,7 @@ using namespace StockWarsServer;
 // 접속된 클라이언트 소켓들을 스레드 안전하게 관리하기 위한 전역 스토리지
 static std::vector<SOCKET> g_clientSockets;
 static std::mutex g_socketsMutex;
+static MarketSimulator g_simulator;
 
 // 함수 순방향 선언 (Forward Declaration)
 void HandleClientSession(SOCKET clientSocket);
@@ -144,6 +145,70 @@ std::vector<unsigned char> EncodeWebSocketFrame(const std::string& message)
     return frame;
 }
 
+// 웹소켓 클라이언트 마스킹 패킷 언패킹 유틸리티 (RFC 6455)
+std::string DecodeWebSocketFrame(const unsigned char* buffer, int length)
+{
+    if (length < 6) return "";
+
+    bool masked = (buffer[1] & 0x80) != 0;
+    uint64_t payloadLen = buffer[1] & 0x7F;
+
+    int headerOffset = 2;
+    if (payloadLen == 126)
+    {
+        payloadLen = (buffer[2] << 8) | buffer[3];
+        headerOffset = 4;
+    }
+    else if (payloadLen == 127)
+    {
+        payloadLen = 0;
+        for (int i = 0; i < 8; ++i)
+        {
+            payloadLen = (payloadLen << 8) | buffer[2 + i];
+        }
+        headerOffset = 10;
+    }
+
+    if (!masked || (headerOffset + 4 + payloadLen > static_cast<uint64_t>(length)))
+    {
+        // 마스크되지 않은 일반 텍스트인 경우 폴백 처리
+        return std::string(reinterpret_cast<const char*>(buffer + headerOffset), std::min<size_t>(payloadLen, length - headerOffset));
+    }
+
+    unsigned char mask[4];
+    for (int i = 0; i < 4; ++i)
+    {
+        mask[i] = buffer[headerOffset + i];
+    }
+    headerOffset += 4;
+
+    std::string payload;
+    payload.resize(payloadLen);
+
+    for (size_t i = 0; i < payloadLen; ++i)
+    {
+        payload[i] = buffer[headerOffset + i] ^ mask[i % 4];
+    }
+
+    return payload;
+}
+
+// JSON 파싱 헬퍼 함수
+std::string ExtractJsonValue(const std::string& json, const std::string& key)
+{
+    std::string searchKey = "\"" + key + "\":";
+    size_t pos = json.find(searchKey);
+    if (pos == std::string::npos) return "";
+
+    pos += searchKey.length();
+    while (pos < json.length() && (json[pos] == ' ' || json[pos] == '\"')) pos++;
+
+    size_t endPos = json.find_first_of("\",}", pos);
+    if (endPos == std::string::npos) return "";
+
+    return json.substr(pos, endPos - pos);
+}
+
 // 클라이언트 연결 세션 처리 핸들러
 void HandleClientSession(SOCKET clientSocket)
 {
@@ -188,14 +253,42 @@ void HandleClientSession(SOCKET clientSocket)
             std::cout << "[C++ 서버] 접속 유저 추가! (현재 접속자: " << g_clientSockets.size() << "명)" << std::endl;
         }
 
+        // 수신 루프 (주식 매수/매도 주문 패킷 수신 및 체결 연산)
         while (true)
         {
-            char recvBuf[2048] = { 0 };
-            int ret = recv(clientSocket, recvBuf, sizeof(recvBuf), 0);
+            unsigned char recvBuf[4096] = { 0 };
+            int ret = recv(clientSocket, reinterpret_cast<char*>(recvBuf), sizeof(recvBuf), 0);
             if (ret <= 0)
             {
                 std::cout << "[C++ 서버] 클라이언트 접속 종료." << std::endl;
                 break;
+            }
+
+            std::string payload = DecodeWebSocketFrame(recvBuf, ret);
+            if (payload.empty()) continue;
+
+            std::cout << "[C++ 서버 수신 패킷]: " << payload << std::endl;
+
+            // 주식 매수 또는 매도 주문 수신 처리
+            if (payload.find("BuyOrder") != std::string::npos || payload.find("SellOrder") != std::string::npos)
+            {
+                std::string orderType = payload.find("BuyOrder") != std::string::npos ? "BuyOrder" : "SellOrder";
+                std::string stockCode = ExtractJsonValue(payload, "StockCode");
+                string qtyStr = ExtractJsonValue(payload, "Quantity");
+                string priceStr = ExtractJsonValue(payload, "Price");
+
+                int qty = qtyStr.empty() ? 1 : std::stoi(qtyStr);
+                double price = priceStr.empty() ? 0.0 : std::stod(priceStr);
+
+                // C++ 오더북 체결 엔진 실행
+                OrderResult result = g_simulator.ProcessOrder(orderType, stockCode, qty, price);
+                std::string resultJson = g_simulator.OrderResultToJson(result);
+
+                std::cout << "[C++ 체결 결과]: " << result.message << std::endl;
+
+                // 주문을 넣은 클라이언트에게 체결 결과 전송
+                auto frameBytes = EncodeWebSocketFrame(resultJson);
+                send(clientSocket, reinterpret_cast<const char*>(frameBytes.data()), static_cast<int>(frameBytes.size()), 0);
             }
         }
     }
@@ -213,6 +306,7 @@ int main()
 
     std::cout << "==================================================" << std::endl;
     std::cout << "[StockWars Pure C++ WinSock2 / WebSocket 게임 서버]" << std::endl;
+    std::cout << "[엔진] 주식 1초 틱 브로드캐스트 + C++ 오더북 체결 엔진 탑재" << std::endl;
     std::cout << "==================================================" << std::endl;
 
     WSADATA wsaData;
@@ -256,12 +350,11 @@ int main()
 
     std::cout << "[C++ 서버 준비 완료] ws://127.0.0.1:8080 포트에서 접속 대기 중..." << std::endl;
 
-    MarketSimulator simulator;
-    std::thread broadcastThread([&simulator]() {
+    std::thread broadcastThread([]() {
         while (true)
         {
-            simulator.UpdateStockPrices();
-            std::string jsonPacket = simulator.GenerateMarketTickJson();
+            g_simulator.UpdateStockPrices();
+            std::string jsonPacket = g_simulator.GenerateMarketTickJson();
             auto frameBytes = EncodeWebSocketFrame(jsonPacket);
 
             {

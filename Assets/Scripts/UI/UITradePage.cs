@@ -515,6 +515,56 @@ namespace StockWars.UI
             UpdateUI();
         }
 
+        private void OnEnable()
+        {
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null)
+            {
+                StockWars.Network.StockWarsNetworkClient.Instance.OnOrderResultReceived += OnServerOrderResultReceived;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null)
+            {
+                StockWars.Network.StockWarsNetworkClient.Instance.OnOrderResultReceived -= OnServerOrderResultReceived;
+            }
+        }
+
+        /// <summary>
+        /// C++ 서버에서 매수/매도 체결 결과 수신 시 호출되는 이벤트 핸들러
+        /// </summary>
+        private void OnServerOrderResultReceived(StockWars.Network.OrderResultData result)
+        {
+            if (result == null || WalletManager.Instance == null) return;
+
+            if (result.Success)
+            {
+                bool isBuy = result.OrderType == "BuyOrder";
+                if (isBuy)
+                {
+                    WalletManager.Instance.SpendCash(result.TotalCost);
+                    WalletManager.Instance.AddStockHolding(result.StockCode, result.Quantity, result.Price);
+                }
+                else
+                {
+                    WalletManager.Instance.RemoveStockHolding(result.StockCode, result.Quantity);
+                    WalletManager.Instance.AddCash(result.TotalCost);
+                }
+
+                Debug.Log($"<color=#00FF7F><b>[UITradePage C++ 체결 반영 성공]:</b></color> {result.Message}");
+
+                StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
+                if (controller != null) controller.RefreshAppUI();
+
+                UpdateUI();
+            }
+            else
+            {
+                Debug.LogWarning($"[UITradePage C++ 체결 실패]: {result.Message}");
+            }
+        }
+
         private void OnExecuteClicked()
         {
             if (WalletManager.Instance == null || MarketManager.Instance == null) return;
@@ -522,6 +572,14 @@ namespace StockWars.UI
             var stock = MarketManager.Instance.GetStock(_targetStockId);
             if (stock == null) return;
 
+            // C++ 서버가 연결되어 있다면 C++ 서버로 실시간 매수/매도 주문 패킷 전송!
+            if (StockWars.Network.StockWarsNetworkClient.Instance != null && StockWars.Network.StockWarsNetworkClient.Instance.IsConnected)
+            {
+                _ = StockWars.Network.StockWarsNetworkClient.Instance.SendOrderRequestAsync(_isBuy, _targetStockId, _qty, _tradePrice);
+                return;
+            }
+
+            // 오프라인 로컬 체결 폴백 (Fail-safe)
             double baseFeeRate = 0.0015;
             double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
             double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);

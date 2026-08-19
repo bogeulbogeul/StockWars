@@ -26,8 +26,22 @@ namespace StockWars.Network
         public List<StockData> Stocks;
     }
 
+    [Serializable]
+    public class OrderResultData
+    {
+        public string Type;
+        public bool Success;
+        public string OrderType;
+        public string StockCode;
+        public string StockName;
+        public int Quantity;
+        public long Price;
+        public long TotalCost;
+        public string Message;
+    }
+
     /// <summary>
-    /// C# 서버(ws://localhost:8080) 연결 및 실시간 1초 주가 틱 이벤트를 수신하는 유니티 네트워크 매니저
+    /// C# / C++ 서버(ws://127.0.0.1:8080) 연결 및 실시간 1초 주가 틱/체결 이벤트를 수신하는 유니티 네트워크 매니저
     /// </summary>
     public class StockWarsNetworkClient : MonoBehaviour
     {
@@ -44,6 +58,11 @@ namespace StockWars.Network
         /// 1초 마다 서버에서 실시간 주가 틱이 날아올 때 발생하는 전역 이벤트
         /// </summary>
         public event Action<List<StockData>> OnMarketTickReceived;
+
+        /// <summary>
+        /// C++ 서버에서 매수/매도 체결 결과가 날아올 때 발생하는 전역 이벤트
+        /// </summary>
+        public event Action<OrderResultData> OnOrderResultReceived;
 
         public bool IsConnected => _webSocket != null && _webSocket.State == WebSocketState.Open;
 
@@ -74,10 +93,10 @@ namespace StockWars.Network
                 string targetUrl = _serverUrl.Replace("localhost", "127.0.0.1").Trim();
                 if (!targetUrl.EndsWith("/")) targetUrl += "/";
 
-                Debug.Log($"[NetworkClient] C# 서버 접속 시도 중... ({targetUrl})");
+                Debug.Log($"[NetworkClient] C++ 서버 접속 시도 중... ({targetUrl})");
                 await _webSocket.ConnectAsync(new Uri(targetUrl), _cts.Token);
 
-                Debug.Log("<color=#4CAF50><b>[NetworkClient] C# 서버 접속 성공!</b></color>");
+                Debug.Log("<color=#4CAF50><b>[NetworkClient] C++ 서버 접속 성공!</b></color>");
 
                 await SendMessageAsync("Hello Server! I am Unity Client!");
                 _ = ReceiveLoopAsync();
@@ -86,6 +105,24 @@ namespace StockWars.Network
             {
                 Debug.LogError($"[NetworkClient] 서버 접속 실패: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// C++ 서버로 주식 매수/매도 체결 요청 패킷 발송
+        /// </summary>
+        public async Task SendOrderRequestAsync(bool isBuy, string stockCode, int quantity, long price)
+        {
+            if (!IsConnected)
+            {
+                Debug.LogWarning("[NetworkClient] C++ 서버에 연결되어 있지 않아 주문을 송신할 수 없습니다.");
+                return;
+            }
+
+            string orderType = isBuy ? "BuyOrder" : "SellOrder";
+            string orderJson = $"{{\"Type\":\"{orderType}\",\"StockCode\":\"{stockCode}\",\"Quantity\":{quantity},\"Price\":{price}}}";
+
+            Debug.Log($"<color=#FFD700>[NetworkClient -> C++ Server 주문 송신]:</color> {orderJson}");
+            await SendMessageAsync(orderJson);
         }
 
         public async Task SendMessageAsync(string message)
@@ -145,16 +182,16 @@ namespace StockWars.Network
                     MarketTickPacketData tickData = JsonUtility.FromJson<MarketTickPacketData>(json);
                     if (tickData != null && tickData.Stocks != null)
                     {
-                        // 1초 주가 변동 전역 이벤트 발행
                         OnMarketTickReceived?.Invoke(tickData.Stocks);
-
-                        // 콘솔 로그 디스플레이 (대표 종목)
-                        if (tickData.Stocks.Count > 0)
-                        {
-                            var s0 = tickData.Stocks[0];
-                            string sign = s0.ChangeRate >= 0 ? "+" : "";
-                            Debug.Log($"<color=#00EAFF>[실시간 서버 주가 틱 수신]:</color> {s0.Name}({s0.Code}) = {s0.CurrentPrice:N0}원 ({sign}{s0.ChangeRate:F2}%)");
-                        }
+                    }
+                }
+                else if (json.Contains("\"Type\":\"OrderResult\""))
+                {
+                    OrderResultData orderResult = JsonUtility.FromJson<OrderResultData>(json);
+                    if (orderResult != null)
+                    {
+                        Debug.Log($"<color=#00FF7F><b>[C++ 서버 체결 결과 수신]:</b></color> {orderResult.Message}");
+                        OnOrderResultReceived?.Invoke(orderResult);
                     }
                 }
                 else

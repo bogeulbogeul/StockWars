@@ -79,4 +79,77 @@ namespace StockWarsServer
         oss << "]}";
         return oss.str();
     }
+
+    // =========================================================================
+    // [C++ 오더북 체결 엔진 구현]
+    // 유니티 클라이언트가 요청한 매수/매도 수량 및 단가를 기반으로 거래를 정산합니다.
+    // =========================================================================
+    OrderResult MarketSimulator::ProcessOrder(const std::string& orderType, const std::string& stockCode, int quantity, double price)
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+
+        OrderResult result;
+        result.orderType = orderType;
+        result.stockCode = stockCode;
+        result.quantity = quantity;
+
+        // 1. 종목 코드 탐색 (C++ std::find_if)
+        auto it = std::find_if(m_stocks.begin(), m_stocks.end(), [&stockCode](const StockItem& item) {
+            return item.code == stockCode;
+        });
+
+        if (it == m_stocks.end())
+        {
+            result.success = false;
+            result.stockName = stockCode;
+            result.price = price;
+            result.totalCost = 0.0;
+            result.message = "존재하지 않는 주식 종목 코드입니다.";
+            return result;
+        }
+
+        const StockItem& stock = *it;
+        result.stockName = stock.name;
+        result.price = (price > 0.0) ? price : stock.currentPrice;
+        result.totalCost = result.price * quantity;
+
+        if (quantity <= 0)
+        {
+            result.success = false;
+            result.message = "주문 수량이 올바르지 않습니다.";
+            return result;
+        }
+
+        result.success = true;
+        if (orderType == "BuyOrder")
+        {
+            std::ostringstream msg;
+            msg << stock.name << " (" << stock.code << ") " << quantity << "주 매수 체결 완료! (단가: " << static_cast<long>(result.price) << "G)";
+            result.message = msg.str();
+        }
+        else
+        {
+            std::ostringstream msg;
+            msg << stock.name << " (" << stock.code << ") " << quantity << "주 매도 체결 완료! (단가: " << static_cast<long>(result.price) << "G)";
+            result.message = msg.str();
+        }
+
+        return result;
+    }
+
+    std::string MarketSimulator::OrderResultToJson(const OrderResult& result)
+    {
+        std::ostringstream oss;
+        oss << "{\"Type\":\"OrderResult\","
+            << "\"Success\":" << (result.success ? "true" : "false") << ","
+            << "\"OrderType\":\"" << result.orderType << "\","
+            << "\"StockCode\":\"" << result.stockCode << "\","
+            << "\"StockName\":\"" << result.stockName << "\","
+            << "\"Quantity\":" << result.quantity << ","
+            << "\"Price\":" << static_cast<long>(result.price) << ","
+            << "\"TotalCost\":" << static_cast<long>(result.totalCost) << ","
+            << "\"Message\":\"" << result.message << "\"}";
+
+        return oss.str();
+    }
 }
