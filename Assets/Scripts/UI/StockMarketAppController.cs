@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using StockWars.Core;
 
@@ -16,6 +17,7 @@ namespace StockWars.UI
         [SerializeField] private GameObject _pageHome;
         [SerializeField] private GameObject _pageMarket;
         [SerializeField] private GameObject _pageTrade;
+        [SerializeField] private GameObject _pageNews;
 
         [Header("Home: Recent Watchlist UI")]
         [SerializeField] private Transform _recentCardsContainer;
@@ -519,5 +521,102 @@ namespace StockWars.UI
                 _detailedChartPopup.OpenPopup(stockId);
             }
         }
+
+        #region Navigation Page Switching
+        private void EnsurePagesSetup()
+        {
+            Transform contentArea = transform.Find("ContentArea");
+            if (contentArea == null) contentArea = transform.Find("AppDetailsPanel/StockMarketApp/ContentArea");
+            if (contentArea == null) contentArea = transform;
+
+            foreach (Transform child in contentArea)
+            {
+                string n = child.name.Replace(" ", "").Replace("_", "");
+                if (_pageHome == null && n.IndexOf("Home", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    _pageHome = child.gameObject;
+                }
+                else if (_pageMarket == null && (n.IndexOf("Market", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Shop", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Store", StringComparison.OrdinalIgnoreCase) >= 0))
+                {
+                    _pageMarket = child.gameObject;
+                }
+                else if (_pageTrade == null && n.IndexOf("Trade", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    _pageTrade = child.gameObject;
+                }
+                else if (_pageNews == null && n.IndexOf("News", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    _pageNews = child.gameObject;
+                }
+            }
+
+            // NavigationBar 하단 탭 버튼 100% 자동 리스너 바인딩
+            Transform navBar = transform.Find("NavigationBar");
+            if (navBar == null) navBar = transform.parent?.Find("NavigationBar");
+            if (navBar == null) navBar = transform.root.GetComponentInChildren<Transform>()?.Find("NavigationBar");
+            
+            if (navBar != null)
+            {
+                var buttons = navBar.GetComponentsInChildren<Button>(true);
+                foreach (var btn in buttons)
+                {
+                    string btnName = btn.name.Replace(" ", "").Replace("_", "");
+                    if (btnName.IndexOf("Home", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        btn.onClick.RemoveAllListeners();
+                        btn.onClick.AddListener(OpenPageHome);
+                    }
+                    else if (btnName.IndexOf("Market", StringComparison.OrdinalIgnoreCase) >= 0 || btnName.IndexOf("Shop", StringComparison.OrdinalIgnoreCase) >= 0 || btnName.IndexOf("Store", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        btn.onClick.RemoveAllListeners();
+                        btn.onClick.AddListener(OpenPageMarket);
+                    }
+                    else if (btnName.IndexOf("News", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        btn.onClick.RemoveAllListeners();
+                        btn.onClick.AddListener(OpenPageNews);
+                    }
+                }
+            }
+        }
+
+        public void OpenPageHome()
+        {
+            SetAllPagesActive(false);
+            if (_pageHome != null) _pageHome.SetActive(true);
+        }
+
+        public void OpenPageMarket()
+        {
+            SetAllPagesActive(false);
+            if (_pageMarket != null) _pageMarket.SetActive(true);
+        }
+
+        public void OpenPageTrade()
+        {
+            SetAllPagesActive(false);
+            if (_pageTrade != null) _pageTrade.SetActive(true);
+        }
+
+        public void OpenPageNews()
+        {
+            SetAllPagesActive(false);
+            if (_pageNews != null)
+            {
+                _pageNews.SetActive(true);
+                UINewsPage newsPage = _pageNews.GetComponent<UINewsPage>();
+                if (newsPage != null) newsPage.RenderNewsList();
+            }
+        }
+
+        private void SetAllPagesActive(bool active)
+        {
+            EnsurePagesSetup();
+            if (_pageHome != null) _pageHome.SetActive(active);
+            if (_pageMarket != null) _pageMarket.SetActive(active);
+            if (_pageTrade != null) _pageTrade.SetActive(active);
+            if (_pageNews != null) _pageNews.SetActive(active);
+        }
+        #endregion
     }
 }

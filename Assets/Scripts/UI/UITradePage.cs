@@ -29,9 +29,8 @@ namespace StockWars.UI
         [SerializeField] private Button _buyTabButton;
         [SerializeField] private Button _sellTabButton;
         [SerializeField] private Button _infoTabButton;
-        [SerializeField] private Color _buyActiveTabColor = new Color(0.6f, 0.9f, 0.6f, 1f); // 파스텔 그린
-        [SerializeField] private Color _sellActiveTabColor = new Color(0.6f, 0.8f, 0.9f, 1f); // 파스텔 블루
-        [SerializeField] private Color _inactiveTabColor = new Color(0.9f, 0.9f, 0.9f, 0.6f);
+        [SerializeField] private Color _activeTabColor = new Color(0.77f, 0.64f, 0.51f, 1f); // ON 색상 (탠 브라운)
+        [SerializeField] private Color _inactiveTabColor = new Color(0.90f, 0.85f, 0.76f, 1f); // OFF 색상 (샌드 베이지)
 
         [Header("Tab ON/OFF Objects")]
         [SerializeField] private GameObject _buyTabOn;
@@ -51,6 +50,9 @@ namespace StockWars.UI
         [SerializeField] private Button _plusQtyButton;
         [Tooltip("1주당 가격을 표시할 TextMeshPro 텍스트")]
         [SerializeField] private TMP_Text _pricePerShareText;
+        [SerializeField] private TMP_InputField _priceInputField;
+        [SerializeField] private Button _minusPriceButton;
+        [SerializeField] private Button _plusPriceButton;
 
         [Header("Percentage Buttons")]
         [SerializeField] private Button _percent10Button;
@@ -62,13 +64,28 @@ namespace StockWars.UI
         [SerializeField] private TMP_Text _actionTitleText; // "구매 수량" 또는 "판매 수량"으로 자동 변경될 텍스트
 
         [Header("Transaction Details")]
+        [SerializeField] private TMP_Text _totalQtyText;
         [SerializeField] private TMP_Text _totalValueText;
 
         [Header("Execute Button")]
         [SerializeField] private Button _executeButton;
         [SerializeField] private TMP_Text _executeButtonText;
-        [SerializeField] private Color _buyButtonColor = new Color(0.96f, 0.35f, 0.35f, 1f); // 매수 빨강
-        [SerializeField] private Color _sellButtonColor = new Color(0.23f, 0.58f, 0.94f, 1f); // 매도 파랑
+
+        [Header("Confirm Popup Bindings")]
+        [SerializeField] private GameObject _confirmPopup;
+        [SerializeField] private TMP_Text _confirmMessageText;
+        [SerializeField] private Button _confirmYesButton;
+        [SerializeField] private Button _confirmNoButton;
+
+        [Header("Receipt Popup Bindings")]
+        [SerializeField] private GameObject _receiptPopup;
+        [SerializeField] private TMP_Text _receiptTitleText;
+        [SerializeField] private TMP_Text _receiptStockNameText;
+        [SerializeField] private TMP_Text _receiptUnitPriceText;
+        [SerializeField] private TMP_Text _receiptQuantityText;
+        [SerializeField] private TMP_Text _receiptTaxText;
+        [SerializeField] private TMP_Text _receiptTotalPriceText;
+        [SerializeField] private Button _receiptOkButton;
 
         [Header("Mini Order Book (5 Levels)")]
         [SerializeField] private Transform _miniOrderBookContainer;
@@ -145,6 +162,28 @@ namespace StockWars.UI
             {
                 _qtyText.onValueChanged.AddListener(OnQtyInputChanged);
             }
+
+            // Price 상자 자동 탐색 (인스펙터 미할당 시 자식 Price 오브젝트 자동 바인딩)
+            if (_priceInputField == null || _minusPriceButton == null || _plusPriceButton == null)
+            {
+                Transform priceTrans = transform.Find("TradingPanel/Price");
+                if (priceTrans == null) priceTrans = transform.Find("Price");
+                if (priceTrans == null && _tradingPanel != null) priceTrans = _tradingPanel.transform.Find("Price");
+                if (priceTrans != null)
+                {
+                    if (_priceInputField == null) _priceInputField = priceTrans.GetComponentInChildren<TMP_InputField>(true);
+                    var btns = priceTrans.GetComponentsInChildren<Button>(true);
+                    foreach (var b in btns)
+                    {
+                        if ((b.name == "-" || b.name.IndexOf("Minus", StringComparison.OrdinalIgnoreCase) >= 0) && _minusPriceButton == null) _minusPriceButton = b;
+                        else if ((b.name == "+" || b.name.IndexOf("Plus", StringComparison.OrdinalIgnoreCase) >= 0) && _plusPriceButton == null) _plusPriceButton = b;
+                    }
+                }
+            }
+
+            if (_minusPriceButton != null) _minusPriceButton.onClick.AddListener(OnMinusPriceClicked);
+            if (_plusPriceButton != null) _plusPriceButton.onClick.AddListener(OnPlusPriceClicked);
+            if (_priceInputField != null) _priceInputField.onValueChanged.AddListener(OnPriceInputChanged);
         }
 
         /// <summary>
@@ -273,35 +312,28 @@ namespace StockWars.UI
                 ownedQty = holding.Quantity;
             }
 
-            // 4. 수량과 호가 가격에 따른 총 예상 거래액 갱신 (수수료 포함)
-            double baseFeeRate = 0.0015;
-            double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
-            double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
-
-            long totalValue = 0;
-            if (_isBuy)
-            {
-                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 + finalFeeRate));
-            }
-            else
-            {
-                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 - finalFeeRate));
-            }
+            // 4. 수량과 호가 가격에 따른 총 예상 거래액 갱신 (순수 거래금액: 수량 x 단가)
+            long rawTotal = _qty * _tradePrice;
 
             // 한도 초과 검사 (매수 시 보유 현금 초과, 매도 시 보유 수량 초과)
             bool isValid = true;
             if (_isBuy)
             {
-                isValid = totalValue <= cash;
+                isValid = rawTotal <= cash;
             }
             else
             {
                 isValid = _qty <= ownedQty;
             }
 
+            if (_totalQtyText != null)
+            {
+                _totalQtyText.text = $"({(_isBuy ? "구매 개수" : "판매 개수")}: {_qty:N0}개)";
+            }
+
             if (_totalValueText != null)
             {
-                _totalValueText.text = $"총 금액: {totalValue:N0} G";
+                _totalValueText.text = $"총 금액: {rawTotal:N0} G";
                 _totalValueText.color = isValid ? new Color(0.15f, 0.15f, 0.15f, 1f) : new Color(0.9f, 0.25f, 0.25f, 1f);
             }
 
@@ -313,19 +345,19 @@ namespace StockWars.UI
             if (_buyTabButton != null)
             {
                 var image = _buyTabButton.GetComponent<Image>();
-                if (image != null) image.color = isBuyActive ? _buyActiveTabColor : _inactiveTabColor;
+                if (image != null) image.color = isBuyActive ? _activeTabColor : _inactiveTabColor;
                 if (isBuyActive) _buyTabButton.transform.SetAsLastSibling();
             }
             if (_sellTabButton != null)
             {
                 var image = _sellTabButton.GetComponent<Image>();
-                if (image != null) image.color = isSellActive ? _sellActiveTabColor : _inactiveTabColor;
+                if (image != null) image.color = isSellActive ? _activeTabColor : _inactiveTabColor;
                 if (isSellActive) _sellTabButton.transform.SetAsLastSibling();
             }
             if (_infoTabButton != null)
             {
                 var image = _infoTabButton.GetComponent<Image>();
-                if (image != null) image.color = isInfoActive ? _buyActiveTabColor : _inactiveTabColor;
+                if (image != null) image.color = isInfoActive ? _activeTabColor : _inactiveTabColor;
                 if (isInfoActive) _infoTabButton.transform.SetAsLastSibling();
             }
 
@@ -341,29 +373,27 @@ namespace StockWars.UI
 
             // TradingPanel 및 InfoPanel 활성화 상태 제어
             if (_tradingPanel != null) _tradingPanel.SetActive(!isInfoActive);
-            if (_infoPanel != null) _infoPanel.SetActive(isInfoActive);
-
-            // 5.5. 라벨 및 텍스트 동적 변경 (구매 수량 / 판매 수량)
-            if (_actionTitleText != null)
+            if (_infoPanel != null)
             {
-                _actionTitleText.text = _isBuy ? "구매 수량" : "판매 수량";
+                _infoPanel.SetActive(isInfoActive);
+                if (isInfoActive) UpdateInfoPanel(stock);
             }
 
-            // 6. 하단 최종 주문 버튼 비주얼 설정 (한도 초과 시 비활성화 및 회색 버튼 변경)
+            // 5.5. 라벨 및 텍스트 동적 변경 (구매 개수 / 판매 개수)
+            if (_actionTitleText != null)
+            {
+                _actionTitleText.text = _isBuy ? "구매 개수" : "판매 개수";
+            }
+
+            // 6. 하단 최종 주문 버튼 비주얼 설정 (버튼 기본 색상 유지, 글자만 매수/매도 변경)
             if (_executeButton != null)
             {
                 _executeButton.interactable = isValid;
-                Transform bgColorTrans = _executeButton.transform.Find("bgColor");
-                Image image = bgColorTrans != null ? bgColorTrans.GetComponent<Image>() : _executeButton.GetComponent<Image>();
-                if (image != null)
-                {
-                    image.color = isValid ? (_isBuy ? _buyButtonColor : _sellButtonColor) : new Color(0.75f, 0.75f, 0.75f, 1f);
-                }
             }
 
             if (_executeButtonText != null)
             {
-                _executeButtonText.text = _isBuy ? "매수" : "매도";
+                _executeButtonText.text = _isBuy ? "매수하기" : "매도하기";
             }
 
             // 7. 좌측 5단계 미니 호가창 그리기
@@ -415,25 +445,76 @@ namespace StockWars.UI
             UpdateTotalValueOnly();
         }
 
+        private void OnMinusPriceClicked()
+        {
+            double stepPercent = 0.002;
+            long tick = Math.Max(1, (long)Math.Round(_tradePrice * stepPercent));
+            _tradePrice = Math.Max(1, _tradePrice - tick);
+            if (_priceInputField != null && _priceInputField.text != _tradePrice.ToString())
+            {
+                _priceInputField.text = _tradePrice.ToString();
+            }
+            UpdateTotalValueOnly();
+        }
+
+        private void OnPlusPriceClicked()
+        {
+            double stepPercent = 0.002;
+            long tick = Math.Max(1, (long)Math.Round(_tradePrice * stepPercent));
+            _tradePrice += tick;
+            if (_priceInputField != null && _priceInputField.text != _tradePrice.ToString())
+            {
+                _priceInputField.text = _tradePrice.ToString();
+            }
+            UpdateTotalValueOnly();
+        }
+
+        private void OnPriceInputChanged(string text)
+        {
+            if (long.TryParse(text, out long val))
+            {
+                _tradePrice = Math.Max(1, val);
+            }
+            UpdateTotalValueOnly();
+        }
+
+        /// <summary>
+        /// 정보 탭 활성화 시 전담 독립 스크립트 UIStockInfoPanel로 업데이트를 위임합니다.
+        /// </summary>
+        private void UpdateInfoPanel(StockInstance stock)
+        {
+            if (_infoPanel == null || stock == null) return;
+
+            UIStockInfoPanel infoScript = _infoPanel.GetComponent<UIStockInfoPanel>();
+            if (infoScript == null) infoScript = _infoPanel.AddComponent<UIStockInfoPanel>();
+
+            infoScript.SetStock(stock);
+        }
+
         private void UpdateTotalValueOnly()
         {
             if (MarketManager.Instance == null || WalletManager.Instance == null) return;
 
-            double baseFeeRate = 0.0015;
-            double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
-            double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
+            long rawTotal = _qty * _tradePrice;
 
-            long totalValue = 0;
-            if (_isBuy)
+            if (_priceInputField != null && _priceInputField.text != _tradePrice.ToString() && !_priceInputField.isFocused)
             {
-                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 + finalFeeRate));
+                _priceInputField.text = _tradePrice.ToString();
             }
-            else
+            if (_pricePerShareText != null)
             {
-                totalValue = (long)Math.Round((_qty * _tradePrice) * (1.0 - finalFeeRate));
+                _pricePerShareText.text = $"{_tradePrice:N0} G";
             }
 
-            if (_totalValueText != null) _totalValueText.text = $"총 금액: {totalValue:N0} G";
+            if (_totalQtyText != null)
+            {
+                _totalQtyText.text = $"({(_isBuy ? "구매 개수" : "판매 개수")}: {_qty:N0}개)";
+            }
+
+            if (_totalValueText != null)
+            {
+                _totalValueText.text = $"총 금액: {rawTotal:N0} G";
+            }
 
             long cash = WalletManager.Instance.GetCash();
             int ownedQty = 0;
@@ -446,7 +527,7 @@ namespace StockWars.UI
             bool isValid = true;
             if (_isBuy)
             {
-                isValid = totalValue <= cash;
+                isValid = rawTotal <= cash;
             }
             else
             {
@@ -461,12 +542,6 @@ namespace StockWars.UI
             if (_executeButton != null)
             {
                 _executeButton.interactable = isValid;
-                Transform bgColorTrans = _executeButton.transform.Find("bgColor");
-                Image image = bgColorTrans != null ? bgColorTrans.GetComponent<Image>() : _executeButton.GetComponent<Image>();
-                if (image != null)
-                {
-                    image.color = isValid ? (_isBuy ? _buyButtonColor : _sellButtonColor) : new Color(0.75f, 0.75f, 0.75f, 1f);
-                }
             }
         }
 
@@ -489,12 +564,7 @@ namespace StockWars.UI
             if (_isBuy)
             {
                 long availableCash = WalletManager.Instance.GetCash();
-                double baseFeeRate = 0.0015;
-                double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
-                double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
-
-                double pricePerShare = _tradePrice * (1.0 + finalFeeRate);
-                int maxBuyQty = (int)Math.Floor(availableCash / pricePerShare);
+                int maxBuyQty = (int)Math.Floor((double)availableCash / _tradePrice);
 
                 _qty = Math.Max(1, (int)(maxBuyQty * percent));
                 if (maxBuyQty == 0) _qty = 0;
@@ -579,7 +649,164 @@ namespace StockWars.UI
                 return;
             }
 
-            // 오프라인 로컬 체결 폴백 (Fail-safe)
+            // 사전 검증 (예수금 / 보유량 확인)
+            double baseFeeRate = 0.0015;
+            double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
+            double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
+            long subtotal = _qty * _tradePrice;
+            long fee = (long)Math.Round(subtotal * finalFeeRate);
+
+            if (_isBuy)
+            {
+                long availableCash = WalletManager.Instance.GetCash();
+                long totalCost = subtotal + fee;
+                if (availableCash < totalCost)
+                {
+                    Debug.LogWarning($"[UITradePage] 매수 실패: 예수금이 부족합니다. 필요={totalCost}G, 보유={availableCash}G");
+                    return;
+                }
+            }
+            else
+            {
+                var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
+                bool hasHolding = portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding) && holding.Quantity >= _qty;
+                if (!hasHolding)
+                {
+                    Debug.LogWarning($"[UITradePage] 매도 실패: 보유량이 부족합니다.");
+                    return;
+                }
+            }
+
+            // 1단계: 주문 체결 확인 팝업(ShowConfirmPopup) 먼저 호출!
+            ShowConfirmPopup(stock);
+        }
+
+        /// <summary>
+        /// 매수/매도 체결 전 사용자 확인 팝업(Popup_TradeConfirm)을 표시합니다.
+        /// </summary>
+        private void ShowConfirmPopup(StockInstance stock)
+        {
+            if (_confirmPopup == null)
+            {
+                var found = transform.parent != null ? transform.parent.GetComponentsInChildren<Transform>(true) : GetComponentsInChildren<Transform>(true);
+                foreach (var t in found)
+                {
+                    if (t.name.IndexOf("Popup_TradeConfirm", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        t.name.IndexOf("Popup_Confirm", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        t.name.IndexOf("ConfirmPopup", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        _confirmPopup = t.gameObject;
+                        break;
+                    }
+                }
+            }
+
+            // 만약 확인 팝업이 하이라키에 배치되어 있지 않다면 폴백으로 즉시 체결 진행
+            if (_confirmPopup == null)
+            {
+                ExecuteTradeActual(stock);
+                return;
+            }
+
+            TMP_Text msg = _confirmMessageText;
+            Button yesBtn = _confirmYesButton, noBtn = _confirmNoButton;
+
+            if (msg == null)
+            {
+                var texts = _confirmPopup.GetComponentsInChildren<TMP_Text>(true);
+                foreach (var txt in texts)
+                {
+                    if (txt.name.IndexOf("ConfirmText", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        txt.name.IndexOf("Message", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        msg = txt;
+                        break;
+                    }
+                }
+                if (msg == null && texts.Length > 0) msg = texts[0];
+            }
+
+            if (yesBtn == null || noBtn == null)
+            {
+                var btns = _confirmPopup.GetComponentsInChildren<Button>(true);
+                foreach (var btn in btns)
+                {
+                    string n = btn.name;
+                    if (yesBtn == null && (n.IndexOf("Yes", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Confirm", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("OK", StringComparison.OrdinalIgnoreCase) >= 0)) yesBtn = btn;
+                    else if (noBtn == null && (n.IndexOf("No", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Cancel", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Close", StringComparison.OrdinalIgnoreCase) >= 0)) noBtn = btn;
+                }
+
+                if (yesBtn == null && btns.Length >= 1) yesBtn = btns[0];
+                if (noBtn == null && btns.Length >= 2) noBtn = btns[1];
+            }
+
+            long subtotal = _qty * _tradePrice;
+            string actionText = _isBuy ? "매수" : "매도";
+
+            // 확인 팝업 내 텍스트들을 탐색하여 매수하시겠습니까? / 매도하시겠습니까? 동적 전환
+            var allTmpTexts = _confirmPopup.GetComponentsInChildren<TMP_Text>(true);
+            foreach (var txt in allTmpTexts)
+            {
+                // 확인 / 취소 버튼 글씨는 변경 제외
+                if (txt.transform.parent != null && txt.transform.parent.GetComponent<Button>() != null) continue;
+
+                string n = txt.name;
+                if (n.IndexOf("ConfirmText", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    n.IndexOf("Title", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    txt.text.Contains("하시겠습니까"))
+                {
+                    txt.text = $"{actionText}하시겠습니까?";
+                }
+                else if (n.IndexOf("Detail", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                         n.IndexOf("Desc", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                         n.IndexOf("Sub", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    txt.text = $"[{stock.Data.name}] {_qty:N0}주 (총 {subtotal:N0} G)";
+                }
+            }
+
+            var allLegTexts = _confirmPopup.GetComponentsInChildren<UnityEngine.UI.Text>(true);
+            foreach (var txt in allLegTexts)
+            {
+                if (txt.transform.parent != null && txt.transform.parent.GetComponent<Button>() != null) continue;
+
+                string n = txt.name;
+                if (n.IndexOf("ConfirmText", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    n.IndexOf("Title", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    txt.text.Contains("하시겠습니까"))
+                {
+                    txt.text = $"{actionText}하시겠습니까?";
+                }
+            }
+
+            if (noBtn != null)
+            {
+                noBtn.onClick.RemoveAllListeners();
+                noBtn.onClick.AddListener(() =>
+                {
+                    _confirmPopup.SetActive(false);
+                });
+            }
+
+            if (yesBtn != null)
+            {
+                yesBtn.onClick.RemoveAllListeners();
+                yesBtn.onClick.AddListener(() =>
+                {
+                    _confirmPopup.SetActive(false);
+                    ExecuteTradeActual(stock);
+                });
+            }
+
+            _confirmPopup.SetActive(true);
+            _confirmPopup.transform.SetAsLastSibling();
+        }
+
+        /// <summary>
+        /// 확인 팝업 승인 후 실제 체결 로직을 수행하고 영수증 팝업(ShowReceiptPopup)을 띄웁니다.
+        /// </summary>
+        private void ExecuteTradeActual(StockInstance stock)
+        {
             double baseFeeRate = 0.0015;
             double feeDiscount = StatCore.Instance != null ? StatCore.Instance.GetTradingFeeDiscount() : 0.0;
             double finalFeeRate = Math.Max(0.0, baseFeeRate - feeDiscount);
@@ -587,13 +814,11 @@ namespace StockWars.UI
             if (_isBuy)
             {
                 long availableCash = WalletManager.Instance.GetCash();
-                long totalCost = (long)Math.Round((_qty * _tradePrice) * (1.0 + finalFeeRate));
+                long subtotal = _qty * _tradePrice;
+                long fee = (long)Math.Round(subtotal * finalFeeRate);
+                long totalCost = subtotal + fee;
 
-                if (availableCash < totalCost)
-                {
-                    Debug.LogWarning($"[UITradePage] 매수 실패: 예수금이 부족합니다. 필요={totalCost}G, 보유={availableCash}G");
-                    return;
-                }
+                if (availableCash < totalCost) return;
 
                 if (WalletManager.Instance.SpendCash(totalCost))
                 {
@@ -604,6 +829,7 @@ namespace StockWars.UI
                         StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
                         if (controller != null) controller.RefreshAppUI();
                         
+                        ShowReceiptPopup(stock, true, _tradePrice, _qty, fee, totalCost);
                         UpdateUI();
                     }
                     else
@@ -617,15 +843,13 @@ namespace StockWars.UI
                 var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
                 bool hasHolding = portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding) && holding.Quantity >= _qty;
 
-                if (!hasHolding)
-                {
-                    Debug.LogWarning($"[UITradePage] 매도 실패: 보유량이 부족합니다.");
-                    return;
-                }
+                if (!hasHolding) return;
 
                 if (WalletManager.Instance.RemoveStockHolding(_targetStockId, _qty))
                 {
-                    long saleRevenue = (long)Math.Round((_qty * _tradePrice) * (1.0 - finalFeeRate));
+                    long subtotal = _qty * _tradePrice;
+                    long fee = (long)Math.Round(subtotal * finalFeeRate);
+                    long saleRevenue = subtotal - fee;
                     WalletManager.Instance.AddCash(saleRevenue);
                     
                     Debug.Log($"[UITradePage] 매도 성공: {_targetStockId} {_qty}주 체결 완료! (단가: {_tradePrice}G)");
@@ -633,6 +857,7 @@ namespace StockWars.UI
                     StockMarketAppController controller = GetComponentInParent<StockMarketAppController>();
                     if (controller != null) controller.RefreshAppUI();
 
+                    ShowReceiptPopup(stock, false, _tradePrice, _qty, fee, saleRevenue);
                     _qty = 1; // 수량 초기화
                     UpdateUI();
                 }
@@ -640,54 +865,204 @@ namespace StockWars.UI
         }
 
         /// <summary>
+        /// 매수/매도 성공 시 영수증 팝업(Popup_TradeReceipt)에 체결 정보를 렌더링하고 표시합니다.
+        /// </summary>
+        private void ShowReceiptPopup(StockInstance stock, bool isBuy, long unitPrice, int qty, long fee, long totalCost)
+        {
+            if (_receiptPopup == null)
+            {
+                var found = transform.parent != null ? transform.parent.GetComponentsInChildren<Transform>(true) : GetComponentsInChildren<Transform>(true);
+                foreach (var t in found)
+                {
+                    if (t.name.IndexOf("Popup_TradeReceipt", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        _receiptPopup = t.gameObject;
+                        break;
+                    }
+                }
+            }
+
+            if (_receiptPopup == null)
+            {
+                Debug.LogWarning("[UITradePage] ShowReceiptPopup: Popup_TradeReceipt를 찾을 수 없습니다.");
+                return;
+            }
+
+            TMP_Text title = _receiptTitleText, stockName = _receiptStockNameText, unitP = _receiptUnitPriceText;
+            TMP_Text quant = _receiptQuantityText, tax = _receiptTaxText, totalP = _receiptTotalPriceText;
+            Button okBtn = _receiptOkButton;
+
+            var texts = _receiptPopup.GetComponentsInChildren<TMP_Text>(true);
+            foreach (var txt in texts)
+            {
+                string n = txt.name;
+                if (title == null && n.IndexOf("TitleText", StringComparison.OrdinalIgnoreCase) >= 0) title = txt;
+                else if (stockName == null && n.IndexOf("StockName", StringComparison.OrdinalIgnoreCase) >= 0) stockName = txt;
+                else if (unitP == null && n.IndexOf("UnitPrice", StringComparison.OrdinalIgnoreCase) >= 0) unitP = txt;
+                else if (quant == null && (n.IndexOf("Quantity", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Quantitiy", StringComparison.OrdinalIgnoreCase) >= 0)) quant = txt;
+                else if (tax == null && (n.IndexOf("Tax", StringComparison.OrdinalIgnoreCase) >= 0 || n.IndexOf("Fee", StringComparison.OrdinalIgnoreCase) >= 0)) tax = txt;
+                else if (totalP == null && n.IndexOf("TotalPrice", StringComparison.OrdinalIgnoreCase) >= 0) totalP = txt;
+            }
+
+            if (okBtn == null)
+            {
+                okBtn = _receiptPopup.GetComponentInChildren<Button>(true);
+            }
+
+            if (title != null) title.text = isBuy ? "매수 체결 영수증" : "매도 체결 영수증";
+            if (stockName != null) stockName.text = $"종목 이름: {stock.Data.name}";
+            if (unitP != null) unitP.text = $"종목 당 가격: {unitPrice:N0}G";
+            if (quant != null) quant.text = $"{(isBuy ? "구매 개수" : "판매 개수")}: {qty:N0}개";
+            if (tax != null) tax.text = $"세금: {fee:N0}G";
+            if (totalP != null) totalP.text = $"총 금액: {totalCost:N0}G";
+
+            if (okBtn != null)
+            {
+                okBtn.onClick.RemoveAllListeners();
+                okBtn.onClick.AddListener(() =>
+                {
+                    _receiptPopup.SetActive(false);
+                });
+            }
+
+            _receiptPopup.SetActive(true);
+            _receiptPopup.transform.SetAsLastSibling(); // 팝업을 최상단으로 렌더링
+        }
+
+        /// <summary>
         /// 좌측에 5단계 미니 호가 데이터를 렌더링하고, 클릭 시 거래 가격에 반영되도록 리스너를 연동합니다.
         /// </summary>
         private void UpdateMiniOrderBook(StockInstance stock)
         {
-            if (_miniRowPrefab == null || _miniOrderBookContainer == null) return;
+            if (_miniRowPrefab == null || _miniOrderBookContainer == null)
+            {
+                Debug.LogWarning($"[UITradePage] UpdateMiniOrderBook 실행 불가: _miniRowPrefab={(_miniRowPrefab != null ? _miniRowPrefab.name : "NULL")}, _miniOrderBookContainer={(_miniOrderBookContainer != null ? _miniOrderBookContainer.name : "NULL")}");
+                return;
+            }
 
             Transform actualContainer = _miniOrderBookContainer;
             
-            // 만약 유저가 Scroll View 자체를 할당했다면, 자동으로 그 안의 Content를 찾아줍니다.
-            UnityEngine.UI.ScrollRect scrollRect = actualContainer.GetComponent<UnityEngine.UI.ScrollRect>();
-            if (scrollRect != null && scrollRect.content != null)
+            // 1. ScrollRect: 가로 스크롤 차단, 세로 스크롤 부드럽게 허용!
+            UnityEngine.UI.ScrollRect scrollRect = _miniOrderBookContainer.GetComponentInParent<UnityEngine.UI.ScrollRect>();
+            if (scrollRect != null)
             {
-                actualContainer = scrollRect.content;
+                if (scrollRect.content != null) actualContainer = scrollRect.content;
+                scrollRect.enabled = true;
+                scrollRect.horizontal = false; // 가로 이동 차단
+                scrollRect.vertical = true;    // 세로 스크롤 허용
+                scrollRect.movementType = UnityEngine.UI.ScrollRect.MovementType.Elastic;
+                scrollRect.inertia = true;
+                scrollRect.decelerationRate = 0.135f;
+                scrollRect.scrollSensitivity = 15f;
             }
 
-            // 기존 미니 호가 리스트 클리어
-            foreach (var row in _instantiatedMiniRows)
+            // 스크롤 정규화 위치(0.0~1.0) 보존 로직 (화면 밖 튕김/사라짐 현상 100% 방지)
+            float savedNormPos = 1f;
+            bool shouldRestoreScroll = (_instantiatedMiniRows.Count > 0 && scrollRect != null);
+            if (shouldRestoreScroll)
             {
-                Destroy(row);
+                savedNormPos = Mathf.Clamp01(scrollRect.verticalNormalizedPosition);
+            }
+
+            // 2. ScrollView 상위의 Frame, bgColor, Viewport 등이 클릭 이벤트를 막지 못하게 raycastTarget = false 처리
+            Transform scrollViewTrans = scrollRect != null ? scrollRect.transform : actualContainer.parent;
+            if (scrollViewTrans != null)
+            {
+                foreach (var img in scrollViewTrans.GetComponentsInChildren<UnityEngine.UI.Image>(true))
+                {
+                    if (img.gameObject.name.IndexOf("Frame", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        img.gameObject.name.IndexOf("bgColor", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        img.gameObject.name.IndexOf("Viewport", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        img.raycastTarget = false; // 클릭 레이캐스트 방해 차단!
+                    }
+                }
+            }
+
+            // 3. Viewport 마스크 영역을 둥근 프레임 안쪽에 맞춰 깔끔하게 세로 스크롤 클리핑
+            Transform viewportTrans = actualContainer.parent;
+            if (viewportTrans != null)
+            {
+                UnityEngine.UI.Mask vpMask = viewportTrans.GetComponent<UnityEngine.UI.Mask>();
+                if (vpMask != null) vpMask.enabled = false;
+
+                UnityEngine.UI.RectMask2D vpRectMask = viewportTrans.GetComponent<UnityEngine.UI.RectMask2D>();
+                if (vpRectMask == null) vpRectMask = viewportTrans.gameObject.AddComponent<UnityEngine.UI.RectMask2D>();
+                vpRectMask.enabled = true;
+
+                RectTransform vpRt = viewportTrans.GetComponent<RectTransform>();
+                if (vpRt != null)
+                {
+                    vpRt.anchorMin = new Vector2(0f, 0f);
+                    vpRt.anchorMax = new Vector2(1f, 1f);
+                    vpRt.offsetMin = new Vector2(4f, 4f);
+                    vpRt.offsetMax = new Vector2(-4f, -4f);
+                }
+            }
+
+            RectTransform containerRt = actualContainer.GetComponent<RectTransform>();
+            if (containerRt != null)
+            {
+                containerRt.anchorMin = new Vector2(0f, 1f);
+                containerRt.anchorMax = new Vector2(1f, 1f);
+                containerRt.pivot = new Vector2(0.5f, 1f);
+                containerRt.anchoredPosition = Vector2.zero; // 기본 (0,0) 상단 고정
+            }
+
+            // 4. VerticalLayoutGroup & ContentSizeFitter (확실한 6px 행 간격 및 동일한 상하 여백 6px 적용)
+            UnityEngine.UI.VerticalLayoutGroup vlg = actualContainer.GetComponent<UnityEngine.UI.VerticalLayoutGroup>();
+            if (vlg != null)
+            {
+                vlg.childAlignment = TextAnchor.UpperCenter;
+                vlg.childControlWidth = true;
+                vlg.childControlHeight = true;
+                vlg.childForceExpandWidth = true;
+                vlg.childForceExpandHeight = false;
+                vlg.spacing = 6f; // 행 사이 6px 세로 간격
+                vlg.padding = new RectOffset(2, 2, 6, 6);
+            }
+
+            UnityEngine.UI.ContentSizeFitter csf = actualContainer.GetComponent<UnityEngine.UI.ContentSizeFitter>();
+            if (csf == null) csf = actualContainer.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>();
+            csf.horizontalFit = UnityEngine.UI.ContentSizeFitter.FitMode.Unconstrained;
+            csf.verticalFit = UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
+
+            // 기존 자식 오브젝트 즉시 전면 삭제
+            for (int k = actualContainer.childCount - 1; k >= 0; k--)
+            {
+                GameObject childGo = actualContainer.GetChild(k).gameObject;
+                if (Application.isPlaying) Destroy(childGo);
+                else DestroyImmediate(childGo);
             }
             _instantiatedMiniRows.Clear();
 
-            // 실시간 현재가(stock.CurrentPrice)를 기준으로 7단계 가격 계산 (+3틱 ~ -3틱)
+            // 실시간 현재가(stock.CurrentPrice)를 기준으로 9단계 가격 계산 (+4틱 ~ -4틱)
             double stepPercent = 0.002; // 0.2% 간격
             long basePrice = stock.CurrentPrice;
             long tickSize = Math.Max(1, (long)Math.Round(basePrice * stepPercent));
 
-            long[] prices = new long[7];
-            prices[0] = basePrice + tickSize * 3; // 매도3
-            prices[1] = basePrice + tickSize * 2; // 매도2
-            prices[2] = basePrice + tickSize * 1; // 매도1
-            prices[3] = basePrice;                // 기준가 (선택된 가격)
-            prices[4] = basePrice - tickSize * 1; // 매수1
-            prices[5] = basePrice - tickSize * 2; // 매수2
-            prices[6] = basePrice - tickSize * 3; // 매수3
+            long[] prices = new long[9];
+            prices[0] = basePrice + tickSize * 4; // 매도4
+            prices[1] = basePrice + tickSize * 3; // 매도3
+            prices[2] = basePrice + tickSize * 2; // 매도2
+            prices[3] = basePrice + tickSize * 1; // 매도1
+            prices[4] = basePrice;                // 기준가 (선택된 가격)
+            prices[5] = basePrice - tickSize * 1; // 매수1
+            prices[6] = basePrice - tickSize * 2; // 매수2
+            prices[7] = basePrice - tickSize * 3; // 매수3
+            prices[8] = basePrice - tickSize * 4; // 매수4
 
-            // 실시간 변동을 시각화하기 위해 시간(TickCount)을 시드에 혼합
             int stockSeed = stock.Data.stockId.GetHashCode() ^ System.Environment.TickCount;
             System.Random rand = new System.Random(stockSeed);
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 long price = prices[i];
-                // UI 프리팹 생성 시 반드시 세 번째 인자를 false로 주어 스케일과 위치가 꼬이는 것을 방지합니다.
                 GameObject rowGo = Instantiate(_miniRowPrefab, actualContainer, false);
+                rowGo.SetActive(true);
                 _instantiatedMiniRows.Add(rowGo);
 
-                // 만약을 위한 강제 스케일/위치 초기화
+                // 스케일 및 RectTransform 기본값 보장
                 RectTransform rt = rowGo.GetComponent<RectTransform>();
                 if (rt != null)
                 {
@@ -695,176 +1070,155 @@ namespace StockWars.UI
                     rt.localPosition = new Vector3(rt.localPosition.x, rt.localPosition.y, 0);
                 }
 
-                // 프리팹의 크기/설정 오류를 무시하고 무조건 컨테이너 안에 7줄이 맞도록 강제
+                // LayoutElement 높이 확대 (38px로 넉넉하게 확대하여 하단 행 잘림 연출)
                 UnityEngine.UI.LayoutElement le = rowGo.GetComponent<UnityEngine.UI.LayoutElement>();
                 if (le == null) le = rowGo.AddComponent<UnityEngine.UI.LayoutElement>();
-                le.minHeight = 310f / 7f;
-                le.preferredHeight = 310f / 7f;
-                le.flexibleHeight = 1f;
+                le.minHeight = 36f;
+                le.preferredHeight = 38f;
+                le.flexibleHeight = 0f;
 
-                // 1 & 3. 텍스트 바인딩 (TMP_Text와 구버전 Text 모두 대응)
+                // 프리팹 내부 Frame 및 자식 높이를 38px로 동시 확대
+                foreach (RectTransform childRt in rowGo.GetComponentsInChildren<RectTransform>(true))
+                {
+                    if (childRt == rt) continue;
+                    Vector2 sz = childRt.sizeDelta;
+                    sz.y = 38f;
+                    childRt.sizeDelta = sz;
+                }
+
+                // 텍스트 탐색 (이름 기반 + 순서 기반 폴백)
                 TMP_Text tmpPrice = null, tmpVol = null;
-                UnityEngine.UI.Text legPrice = null, legVol = null;
-
-                foreach (var txt in rowGo.GetComponentsInChildren<TMP_Text>(true))
+                var tmpTexts = rowGo.GetComponentsInChildren<TMP_Text>(true);
+                if (tmpTexts != null && tmpTexts.Length > 0)
                 {
-                    if (txt.name.IndexOf("Price", System.StringComparison.OrdinalIgnoreCase) >= 0) tmpPrice = txt;
-                    else if (txt.name.IndexOf("Volume", System.StringComparison.OrdinalIgnoreCase) >= 0 || txt.name.IndexOf("Number", System.StringComparison.OrdinalIgnoreCase) >= 0) tmpVol = txt;
-                }
-                foreach (var txt in rowGo.GetComponentsInChildren<UnityEngine.UI.Text>(true))
-                {
-                    if (txt.name.IndexOf("Price", System.StringComparison.OrdinalIgnoreCase) >= 0) legPrice = txt;
-                    else if (txt.name.IndexOf("Volume", System.StringComparison.OrdinalIgnoreCase) >= 0 || txt.name.IndexOf("Number", System.StringComparison.OrdinalIgnoreCase) >= 0) legVol = txt;
-                }
-
-                if (tmpPrice != null) tmpPrice.text = $"{price:N0}";
-                if (legPrice != null) legPrice.text = $"{price:N0}";
-
-                // 2 & 3. 텍스트 설정 및 배경 바(Bar) 가변 사이즈 조절
-                int qty = (i == 3) ? 0 : rand.Next(50, 15000);
-                double vol = qty / 1000.0;
-                string volStr;
-                if (qty <= 0)
-                {
-                    volStr = "-";
-                }
-                else if (qty >= 1000000)
-                {
-                    volStr = $"{qty / 1000000f:F1}M";
-                }
-                else if (qty >= 1000)
-                {
-                    volStr = $"{qty / 1000f:F1}k";
-                }
-                else
-                {
-                    volStr = qty.ToString();
-                }
-
-                // 1. 가격 텍스트를 바(PriceBackground)의 자식에서 꺼내어 행(MiniOrderRow)의 직속 자식으로 설정
-                // 이렇게 해야 바가 움직여도 가격 글씨가 흔들리거나 같이 움직이지 않습니다.
-                if (tmpPrice != null) tmpPrice.transform.SetParent(rowGo.transform);
-                if (legPrice != null) legPrice.transform.SetParent(rowGo.transform);
-
-                // 레이아웃 자동 정렬 해제 (직접 절대 위치 지정을 위해)
-                UnityEngine.UI.HorizontalLayoutGroup hlg = rowGo.GetComponent<HorizontalLayoutGroup>();
-                if (hlg != null) hlg.enabled = false;
-
-                // 가격 텍스트 배치 (매수 레이블의 왼쪽 끝에 맞추어 좌측 정렬 배치)
-                if (tmpPrice != null) 
-                {
-                    tmpPrice.alignment = TMPro.TextAlignmentOptions.Left;
-                    tmpPrice.margin = new Vector4(0, 0, 0, 0);
-                    
-                    RectTransform priceRt = tmpPrice.rectTransform;
-                    if (priceRt != null)
+                    foreach (var txt in tmpTexts)
                     {
-                        priceRt.anchorMin = new Vector2(0f, 0.5f);
-                        priceRt.anchorMax = new Vector2(0f, 0.5f); // 좌측 끝 기준
-                        priceRt.pivot = new Vector2(0f, 0.5f); // 좌측 피벗
-                        priceRt.anchoredPosition = new Vector2(15f, 0f); // 좌측 끝에서 15px 오른쪽 시작 (매수 탭 왼쪽 라인과 정렬)
-                        priceRt.sizeDelta = new Vector2(80f, 30f);
+                        if (txt.name.IndexOf("Price", StringComparison.OrdinalIgnoreCase) >= 0) tmpPrice = txt;
+                        else if (txt.name.IndexOf("Volume", StringComparison.OrdinalIgnoreCase) >= 0 || txt.name.IndexOf("Number", StringComparison.OrdinalIgnoreCase) >= 0) tmpVol = txt;
                     }
+
+                    if (tmpPrice == null && tmpTexts.Length >= 1) tmpPrice = tmpTexts[0];
+                    if (tmpVol == null && tmpTexts.Length >= 2) tmpVol = tmpTexts[1];
+                }
+
+                UnityEngine.UI.Text legPrice = null, legVol = null;
+                var legTexts = rowGo.GetComponentsInChildren<UnityEngine.UI.Text>(true);
+                if (legTexts != null && legTexts.Length > 0)
+                {
+                    foreach (var txt in legTexts)
+                    {
+                        if (txt.name.IndexOf("Price", StringComparison.OrdinalIgnoreCase) >= 0) legPrice = txt;
+                        else if (txt.name.IndexOf("Volume", StringComparison.OrdinalIgnoreCase) >= 0 || txt.name.IndexOf("Number", StringComparison.OrdinalIgnoreCase) >= 0) legVol = txt;
+                    }
+                    if (legPrice == null && legTexts.Length >= 1) legPrice = legTexts[0];
+                    if (legVol == null && legTexts.Length >= 2) legVol = legTexts[1];
+                }
+
+                if (tmpPrice != null)
+                {
+                    tmpPrice.text = $"{price:N0}";
+                    tmpPrice.color = new Color(0.24f, 0.17f, 0.12f, 1f);
+                    tmpPrice.fontSize = 13f;
+                    tmpPrice.raycastTarget = false; // 클릭 이벤트 하위 통과
                 }
                 if (legPrice != null)
                 {
-                    legPrice.alignment = TextAnchor.MiddleLeft;
-                    
-                    RectTransform priceRt = legPrice.GetComponent<RectTransform>();
-                    if (priceRt != null)
-                    {
-                        priceRt.anchorMin = new Vector2(0f, 0.5f);
-                        priceRt.anchorMax = new Vector2(0f, 0.5f);
-                        priceRt.pivot = new Vector2(0f, 0.5f);
-                        priceRt.anchoredPosition = new Vector2(15f, 0f);
-                        priceRt.sizeDelta = new Vector2(80f, 30f);
-                    }
+                    legPrice.text = $"{price:N0}";
+                    legPrice.color = new Color(0.24f, 0.17f, 0.12f, 1f);
+                    legPrice.fontSize = 13;
+                    legPrice.raycastTarget = false;
                 }
 
-                // 수량 텍스트 활성화 및 우측 끝 고정 배치 (잔량 숫자 연동)
-                if (tmpVol != null) 
-                {
-                    tmpVol.gameObject.SetActive(true);
-                    tmpVol.text = volStr;
-                    tmpVol.alignment = TMPro.TextAlignmentOptions.Right;
-                    tmpVol.margin = new Vector4(0, 0, 0, 0);
+                int qty = (i == 4) ? 0 : rand.Next(50, 15000);
+                string volStr = (qty <= 0) ? "-" : (qty >= 1000 ? $"{qty / 1000f:F1}k" : qty.ToString());
 
-                    tmpVol.transform.SetParent(rowGo.transform);
-                    RectTransform volRt = tmpVol.rectTransform;
-                    if (volRt != null)
-                    {
-                        volRt.anchorMin = new Vector2(1f, 0.5f);
-                        volRt.anchorMax = new Vector2(1f, 0.5f);
-                        volRt.pivot = new Vector2(1f, 0.5f);
-                        volRt.anchoredPosition = new Vector2(-5f, 0f); // 우측 끝에서 5px 고정 (충분한 공간 확보)
-                        volRt.sizeDelta = new Vector2(80f, 30f); // 60f -> 80f로 확장하여 글자 잘림 방지
-                    }
+                if (tmpVol != null)
+                {
+                    tmpVol.text = volStr;
+                    tmpVol.color = new Color(0.24f, 0.17f, 0.12f, 1f);
+                    tmpVol.fontSize = 13f;
+                    tmpVol.raycastTarget = false; // 클릭 이벤트 하위 통과
                 }
                 if (legVol != null)
                 {
-                    legVol.gameObject.SetActive(true);
                     legVol.text = volStr;
-                    legVol.alignment = TextAnchor.MiddleRight;
-
-                    legVol.transform.SetParent(rowGo.transform);
-                    RectTransform volRt = legVol.GetComponent<RectTransform>();
-                    if (volRt != null)
-                    {
-                        volRt.anchorMin = new Vector2(1f, 0.5f);
-                        volRt.anchorMax = new Vector2(1f, 0.5f);
-                        volRt.pivot = new Vector2(1f, 0.5f);
-                        volRt.anchoredPosition = new Vector2(-5f, 0f);
-                        volRt.sizeDelta = new Vector2(80f, 30f);
-                    }
+                    legVol.color = new Color(0.24f, 0.17f, 0.12f, 1f);
+                    legVol.fontSize = 13;
+                    legVol.raycastTarget = false;
                 }
 
-                // 배경(캡슐) 찾기 및 색상/크기 조절
-                Image priceBg = null;
-                foreach (var img in rowGo.GetComponentsInChildren<Image>(true))
+                // 행 루트 투명 이미지 (터치 감지용 raycastTarget = true)
+                Image rootImg = rowGo.GetComponent<Image>();
+                if (rootImg == null) rootImg = rowGo.AddComponent<Image>();
+                rootImg.color = new Color(0, 0, 0, 0.001f); // 투명하지만 터치는 100% 감지!
+                rootImg.raycastTarget = true;
+
+                // 내적 PriceText & Number 카드 배경 이미지에 은은한 색상 적용 (i<4: 매도 모카, i>4: 매수 베이지, i==4: 기준가 탠)
+                Color targetBgColor = (i < 4) ? new Color(0.85f, 0.77f, 0.68f, 1f) : 
+                                     ((i > 4) ? new Color(0.92f, 0.87f, 0.79f, 1f) : new Color(0.78f, 0.66f, 0.54f, 1f));
+
+                if (tmpPrice != null)
                 {
-                    if (img.name.Contains("PriceBackground") || img.name.Contains("bgColor") || img.name.Contains("BG")) 
+                    Image pBg = tmpPrice.transform.parent != null ? tmpPrice.transform.parent.GetComponent<Image>() : tmpPrice.GetComponent<Image>();
+                    if (pBg != null && pBg.gameObject != rowGo)
                     {
-                        priceBg = img;
-                        break;
+                        pBg.color = targetBgColor;
+                        pBg.raycastTarget = false; // 터치가 버튼으로 흡수되도록 설정
                     }
                 }
-                if (priceBg == null) priceBg = rowGo.GetComponent<Image>(); // 폴백
-
-                if (priceBg != null)
+                if (tmpVol != null)
                 {
-                    if (i < 3) priceBg.color = new Color(1f, 0.6f, 0.6f, 1f); // 매도
-                    else if (i > 3) priceBg.color = new Color(0.6f, 0.8f, 1f, 1f); // 매수
-                    else priceBg.color = new Color(0.9f, 0.9f, 0.9f, 1f); // 선택가격
-
-                    // 수량 바 배치 (좌측 가격 글자 바로 우측에서 시작하여 늘어나도록 설정)
-                    RectTransform bgRt = priceBg.rectTransform;
-                    if (bgRt != null)
+                    Image vBg = tmpVol.transform.parent != null ? tmpVol.transform.parent.GetComponent<Image>() : tmpVol.GetComponent<Image>();
+                    if (vBg != null && vBg.gameObject != rowGo)
                     {
-                        bgRt.anchorMin = new Vector2(0.35f, 0.5f); // 가격 글자(0~35%) 바로 다음 시작
-                        bgRt.anchorMax = new Vector2(0.35f, 0.5f);
-                        bgRt.pivot = new Vector2(0f, 0.5f); // 좌측 피벗 (오른쪽으로 늘어남)
-                        bgRt.anchoredPosition = new Vector2(5f, 0f); // 약간의 마진만 두고 시작
-                        
-                        float targetWidth;
-                        if (i == 3) targetWidth = 100f; // 기준가는 고정 너비
-                        else targetWidth = 30f + (70f * (float)(vol / 15.0)); // 30~100px 범위
-                        
-                        bgRt.sizeDelta = new Vector2(targetWidth, 20f); // 바 높이 20px로 고정
+                        vBg.color = targetBgColor;
+                        vBg.raycastTarget = false; // 터치가 버튼으로 흡수되도록 설정
                     }
                 }
 
-                // 4. 미니 호가 행 클릭 시 거래 예정 가격이 해당 가격으로 자동 갱신되는 편리함 추가!
+                // 미니 호가 행 클릭 시 거래 단가 및 총금액 즉시 반영 (ScrollRect 드래그와 100% 호환되는 Button.onClick 사용)
+                long selectedPrice = price;
+
+                // EventTrigger가 드래그 이벤트를 낚아채서 스크롤을 방해하지 않도록 기존 EventTrigger 제거
+                UnityEngine.EventSystems.EventTrigger trigger = rowGo.GetComponent<UnityEngine.EventSystems.EventTrigger>();
+                if (trigger != null) Destroy(trigger);
+
                 Button rowBtn = rowGo.GetComponent<Button>();
                 if (rowBtn == null) rowBtn = rowGo.AddComponent<Button>();
-                
-                rowBtn.transition = Selectable.Transition.None;
+                rowBtn.targetGraphic = rootImg;
+                rowBtn.transition = Selectable.Transition.ColorTint;
+
+                ColorBlock colors = rowBtn.colors;
+                colors.normalColor = Color.white;
+                colors.highlightedColor = new Color(0.95f, 0.90f, 0.80f, 1f);
+                colors.pressedColor = new Color(0.75f, 0.65f, 0.55f, 1f);
+                rowBtn.colors = colors;
+
                 rowBtn.onClick.RemoveAllListeners();
                 rowBtn.onClick.AddListener(() =>
                 {
-                    _tradePrice = price;
-                    UpdateUI();
+                    Debug.Log($"<color=#FFD700>[호가 선택 성공!] 선택 단가: {selectedPrice:N0} G -> 총금액 갱신!</color>");
+                    _tradePrice = selectedPrice;
+                    UpdateTotalValueOnly();
                 });
+
+                if (i == 0)
+                {
+                    Debug.Log($"<color=#00FF7F>[진단] 호가행0: active={rowGo.activeInHierarchy}, Pos={rt.anchoredPosition}, Size={rt.rect.size}, PriceTxt={tmpPrice?.text}({tmpPrice?.gameObject.name}), VolTxt={tmpVol?.text}({tmpVol?.gameObject.name})</color>");
+                }
             }
+
+            // 스크롤 정규화 위치 안전 복원 (0.0 ~ 1.0 범위 내로 안전 고정하여 화면 이탈 100% 방지)
+            if (shouldRestoreScroll && scrollRect != null)
+            {
+                scrollRect.verticalNormalizedPosition = savedNormPos;
+            }
+            else if (scrollRect != null)
+            {
+                scrollRect.verticalNormalizedPosition = 1f; // 최초 생성 시 맨 위(1.0f) 상단 고정
+            }
+
+            Debug.Log($"<color=#00FF7F>[UITradePage] 미니 호가창 9개 행 생성 완료! 컨테이너={actualContainer.name}, 자식수={actualContainer.childCount}</color>");
         }
     }
 }
