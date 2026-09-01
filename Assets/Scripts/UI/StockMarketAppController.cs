@@ -18,6 +18,7 @@ namespace StockWars.UI
         [SerializeField] private GameObject _pageMarket;
         [SerializeField] private GameObject _pageTrade;
         [SerializeField] private GameObject _pageNews;
+        [SerializeField] private GameObject _pageProfile;
 
         [Header("Home: Recent Watchlist UI")]
         [SerializeField] private Transform _recentCardsContainer;
@@ -548,6 +549,10 @@ namespace StockWars.UI
                 {
                     _pageNews = child.gameObject;
                 }
+                else if (_pageProfile == null && n.IndexOf("Profile", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    _pageProfile = child.gameObject;
+                }
             }
 
             // NavigationBar 하단 탭 버튼 100% 자동 리스너 바인딩
@@ -575,6 +580,44 @@ namespace StockWars.UI
                     {
                         btn.onClick.RemoveAllListeners();
                         btn.onClick.AddListener(OpenPageNews);
+                    }
+                    else if (btnName.IndexOf("Profile", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        btn.onClick.RemoveAllListeners();
+                        btn.onClick.AddListener(OpenPageProfile);
+                    }
+                }
+            }
+
+            // Page_Home 내부 [내 자산] 카드 터치/클릭 시 프로필 페이지로 즉시 이동하는 리스너 자동 연동
+            if (_pageHome != null)
+            {
+                var homeButtons = _pageHome.GetComponentsInChildren<Button>(true);
+                foreach (var btn in homeButtons)
+                {
+                    string bName = btn.name.Replace(" ", "").Replace("_", "");
+                    if (bName.IndexOf("Asset", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        bName.IndexOf("Account", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        bName.IndexOf("자산", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        btn.onClick.RemoveAllListeners();
+                        btn.onClick.AddListener(OpenPageProfile);
+                    }
+                }
+
+                if (_portfolioTotalText != null)
+                {
+                    Transform cardTrans = _portfolioTotalText.transform.parent;
+                    while (cardTrans != null && cardTrans != _pageHome.transform)
+                    {
+                        Button cardBtn = cardTrans.GetComponent<Button>();
+                        if (cardBtn == null)
+                        {
+                            cardBtn = cardTrans.gameObject.AddComponent<Button>();
+                        }
+                        cardBtn.onClick.RemoveAllListeners();
+                        cardBtn.onClick.AddListener(OpenPageProfile);
+                        break;
                     }
                 }
             }
@@ -609,6 +652,18 @@ namespace StockWars.UI
             }
         }
 
+        public void OpenPageProfile()
+        {
+            SetAllPagesActive(false);
+            if (_pageProfile != null)
+            {
+                _pageProfile.SetActive(true);
+                UIProfilePage profilePage = _pageProfile.GetComponent<UIProfilePage>();
+                if (profilePage == null) profilePage = _pageProfile.AddComponent<UIProfilePage>();
+                if (profilePage != null) profilePage.RefreshProfileUI();
+            }
+        }
+
         private void SetAllPagesActive(bool active)
         {
             EnsurePagesSetup();
@@ -616,6 +671,7 @@ namespace StockWars.UI
             if (_pageMarket != null) _pageMarket.SetActive(active);
             if (_pageTrade != null) _pageTrade.SetActive(active);
             if (_pageNews != null) _pageNews.SetActive(active);
+            if (_pageProfile != null) _pageProfile.SetActive(active);
         }
         #endregion
     }
