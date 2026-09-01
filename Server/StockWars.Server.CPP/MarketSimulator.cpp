@@ -100,12 +100,29 @@ namespace StockWarsServer
 
         if (it == m_stocks.end())
         {
-            result.success = false;
-            result.stockName = stockCode;
-            result.price = price;
-            result.totalCost = 0.0;
-            result.message = "존재하지 않는 주식 종목 코드입니다.";
-            return result;
+            // 유니티 클라이언트에서 상장 종목(예: VISUALART, CLOUDBERRY) 주문 시 C++ 서버 런타임 동적 등록 처리
+            StockItem newItem;
+            newItem.code = stockCode;
+            
+            if (stockCode == "VISUALART") newItem.name = "비주얼 아트";
+            else if (stockCode == "CLOUDBERRY") newItem.name = "클라우드 베리";
+            else if (stockCode == "SYNAPSENET") newItem.name = "시냅스 망";
+            else if (stockCode == "STARDUST") newItem.name = "스타더스트";
+            else if (stockCode == "SCONNECT") newItem.name = "S-커넥트";
+            else if (stockCode == "FORESTLAB") newItem.name = "포레스트 랩";
+            else if (stockCode == "WINGSLOGIS") newItem.name = "윙스 로지스";
+            else if (stockCode == "MORNINGBREW") newItem.name = "모닝 브루";
+            else if (stockCode == "WINDHILL") newItem.name = "윈드 힐";
+            else if (stockCode == "COZYPAY") newItem.name = "코지 페이";
+            else newItem.name = stockCode;
+
+            newItem.basePrice = (price > 0.0) ? price : 500.0;
+            newItem.currentPrice = newItem.basePrice;
+            newItem.changeRate = 0.0;
+            newItem.volatility = 0.03;
+
+            m_stocks.push_back(newItem);
+            it = m_stocks.end() - 1;
         }
 
         const StockItem& stock = *it;
