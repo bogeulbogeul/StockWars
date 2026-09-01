@@ -105,6 +105,7 @@ namespace StockWarsServer
             newItem.code = stockCode;
             
             if (stockCode == "VISUALART") newItem.name = "비주얼 아트";
+            else if (stockCode == "AQUAENERGY") newItem.name = "아쿠아 에너지";
             else if (stockCode == "CLOUDBERRY") newItem.name = "클라우드 베리";
             else if (stockCode == "SYNAPSENET") newItem.name = "시냅스 망";
             else if (stockCode == "STARDUST") newItem.name = "스타더스트";
