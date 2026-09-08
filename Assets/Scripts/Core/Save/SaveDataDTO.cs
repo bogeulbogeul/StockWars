@@ -18,6 +18,8 @@ namespace StockWars.Core
 
         // 1. 기본 정보 (계좌 및 자산)
         public long Gold { get; set; } = GlobalConstants.INITIAL_SEED_MONEY;
+        public long LikeCoins { get; set; } = 0;             // [좋아요 코인] (소셜/명성 보상)
+        public int MemorySandglasses { get; set; } = 0;      // [추억의 모래시계] (특수 교환권)
         public long AccumulatedDividends { get; set; } = 0; // 미지급 배당금 누적액
         public long AccumulatedInterest { get; set; } = 0;  // 누적 이자 누적액
         
@@ -71,6 +73,8 @@ namespace StockWars.Core
         
         // 6. 금융 정산 상태
         public DateTime LastProcessedSettlementTime { get; set; }
+        public long WeeklyRealizedProfit { get; set; } = 0;       // 당해주간 실현 순수익 (소득세 산출용)
+        public long WeeklyFurnitureSpending { get; set; } = 0;    // 당해주간 가구/인테리어 지출액 (소득세 경비 공제용)
 
         // 7. 데모 특전 정보
         public bool IsDemoVeteran { get; set; }
@@ -155,6 +159,49 @@ namespace StockWars.Core
             get => _netWorthHistory ??= new();
             set => _netWorthHistory = value;
         }
+
+        // 10.7. 오피스에 배치된 가구 정보 (MOD_GDD_03-2)
+        private List<PlacedFurnitureDTO> _placedFurnitures = new();
+        public List<PlacedFurnitureDTO> PlacedFurnitures
+        {
+            get => _placedFurnitures ??= new();
+            set => _placedFurnitures = value;
+        }
+
+        // 10.8. 적용된 글로벌 스킨 (벽지/바닥)
+        public string AppliedWallpaperId { get; set; } = "FURN_WALL_WHITE_01";
+        public string AppliedFloorId { get; set; } = "FURN_FLOOR_OAK_01";
+
+        // 10.9. 가구 상점 일일 테마 로테이션 상태 (MOD_GDD_03-2)
+        private List<string> _dailyFurnitureShopItemIds = new();
+        public List<string> DailyFurnitureShopItemIds
+        {
+            get => _dailyFurnitureShopItemIds ??= new();
+            set => _dailyFurnitureShopItemIds = value;
+        }
+        public string DailyFurnitureShopThemeTag { get; set; } = string.Empty;
+        public string LastFurnitureShopRefreshDate { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 오피스 룸 아이소메트릭 그리드에 배치된 가구 데이터 DTO
+    /// </summary>
+    [Serializable]
+    [Preserve]
+    public class PlacedFurnitureDTO
+    {
+        public string InstanceId { get; set; } = Guid.NewGuid().ToString("N");
+        public string ItemId { get; set; } = string.Empty;
+        public int GridX { get; set; }
+        public int GridY { get; set; }
+        public int RotationIndex { get; set; } // 0=0도, 1=90도, 2=180도, 3=270도
+        public int Width { get; set; } = 1;
+        public int Height { get; set; } = 1;
+
+        // 벽면 부착 가구(창문, 문, 벽장식 등) 전용 메타데이터
+        public bool IsWallMounted { get; set; } = false;
+        public bool IsLeftWall { get; set; } = true;
+        public float WallElevation { get; set; } = 0f;
     }
 
     /// <summary>

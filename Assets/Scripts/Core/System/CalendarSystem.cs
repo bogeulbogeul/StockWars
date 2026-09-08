@@ -17,14 +17,18 @@ namespace StockWars.Core
         private string _lastProcessedSettlementDisplay = "None";
 
         /// <summary>
-        /// 현재 게임 속 시간 (UTC 기준)
+        /// 현재 게임 속 시간 (서버 권한 UTC 기준 - 윈도우 시계 변조 불변)
         /// </summary>
-        public DateTime CurrentTimeUtc => DateTime.UtcNow;
+        public DateTime CurrentTimeUtc => NetworkTimeManager.Instance != null 
+            ? NetworkTimeManager.Instance.UtcNow 
+            : DateTime.UtcNow;
 
         /// <summary>
-        /// 현재 게임 속 시간 (로컬 시간 기준 - UI 표시용)
+        /// 현재 게임 속 시간 (서버 기준 로컬 타임존 시간 - UI 표시용)
         /// </summary>
-        public DateTime CurrentTimeLocal => DateTime.Now;
+        public DateTime CurrentTimeLocal => NetworkTimeManager.Instance != null 
+            ? NetworkTimeManager.Instance.LocalNow 
+            : DateTime.Now;
 
         /// <summary>
         /// 마지막으로 금융 정산이 성공적으로 완료된 월요일 00:00:00 일시 (UTC 기준)

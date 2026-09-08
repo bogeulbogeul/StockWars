@@ -7,9 +7,18 @@ using StockWars.Core;
 
 namespace StockWars.UI
 {
+    public enum TradeTabMode
+    {
+        Buy = 0,        // 일반 현물 매수 (1x)
+        MarginLong = 1, // 신용 레버리지 롱 (2x) [Lv.10 필요]
+        ShortSell = 2,  // 공매도 숏 [Lv.10 필요]
+        Sell = 3,       // 일반 보유 매도
+        Info = 4        // 기업/종목 정보
+    }
+
     /// <summary>
     /// CORE_GDD_02 [주식 거래 시스템] 상세 주문 화면 컨트롤러.
-    /// 수량 조절 (+/-), 탭 전환(매수/매도), 잔고/보유수량 조회 및 최종 주문 체결을 처리합니다.
+    /// 수량 조절 (+/-), 탭 전환(매수/레버리지롱/공매도숏/매도/정보), 잔고/보유수량 조회 및 최종 주문 체결을 처리합니다.
     /// 추가로 좌측에 5단계 미니 호가창을 함께 렌더링합니다.
     /// </summary>
     public class UITradePage : MonoBehaviour
@@ -25,14 +34,22 @@ namespace StockWars.UI
         [Header("Sector Background Customization")]
         [SerializeField] private List<Image> _sectorBackgroundImages = new List<Image>();
 
-        [Header("Buy / Sell / Info Tabs")]
+        [Header("Trading Tabs")]
         [SerializeField] private Button _buyTabButton;
+        [SerializeField] private Button _marginTabButton;
+        [SerializeField] private Button _shortTabButton;
         [SerializeField] private Button _sellTabButton;
         [SerializeField] private Button _infoTabButton;
-        [SerializeField] private Color _activeTabColor = new Color(0.77f, 0.64f, 0.51f, 1f); // ON 색상 (탠 브라운)
-        [SerializeField] private Color _inactiveTabColor = new Color(0.90f, 0.85f, 0.76f, 1f); // OFF 색상 (샌드 베이지)
 
-        [Header("Tab ON/OFF Objects")]
+        [Header("Tab Colors (Theme Palette)")]
+        [SerializeField] private Color _activeTabColor = new Color(0.77f, 0.64f, 0.51f, 1f);   // 활성 색상 (탠 브라운)
+        [SerializeField] private Color _inactiveTabColor = new Color(0.90f, 0.85f, 0.76f, 1f); // 비활성 색상 (샌드 베이지)
+        [SerializeField] private Color _lockedTabColor = new Color(0.85f, 0.85f, 0.85f, 1f);   // 잠김 색상 (밝은 회색)
+        [SerializeField] private Color _activeTextColor = new Color(0.18f, 0.12f, 0.08f, 1f);  // 활성 글자색
+        [SerializeField] private Color _inactiveTextColor = new Color(0.45f, 0.40f, 0.35f, 1f);// 비활성 글자색
+        [SerializeField] private Color _lockedTextColor = new Color(0.60f, 0.60f, 0.60f, 1f);  // 잠김 글자색
+
+        [Header("Legacy Tab ON/OFF Objects (Optional)")]
         [SerializeField] private GameObject _buyTabOn;
         [SerializeField] private GameObject _buyTabOff;
         [SerializeField] private GameObject _sellTabOn;
@@ -93,6 +110,7 @@ namespace StockWars.UI
 
         // 거래 상태 관리 변수
         private string _targetStockId;
+        private TradeTabMode _currentTabMode = TradeTabMode.Buy;
         private bool _isBuy = true;
         private bool _isInfoActive = false;
         private int _qty = 1;
@@ -133,33 +151,92 @@ namespace StockWars.UI
             }
         }
 
+        private void Awake()
+        {
+            EnsureBindings();
+        }
+
         private void Start()
         {
-            // +/- 버튼 및 탭 리스너 등록
-            if (_minusQtyButton != null) _minusQtyButton.onClick.AddListener(OnMinusQtyClicked);
-            if (_plusQtyButton != null) _plusQtyButton.onClick.AddListener(OnPlusQtyClicked);
+            EnsureBindings();
+        }
+
+        private void EnsureBindings()
+        {
+            // Qty 버튼 및 인풋 리스너
+            if (_minusQtyButton != null)
+            {
+                _minusQtyButton.onClick.RemoveListener(OnMinusQtyClicked);
+                _minusQtyButton.onClick.AddListener(OnMinusQtyClicked);
+            }
+            if (_plusQtyButton != null)
+            {
+                _plusQtyButton.onClick.RemoveListener(OnPlusQtyClicked);
+                _plusQtyButton.onClick.AddListener(OnPlusQtyClicked);
+            }
             
-            RegisterTabButtonListener(_buyTabButton, () => SetTab(true));
-            RegisterTabButtonListener(_buyTabOn, () => SetTab(true));
-            RegisterTabButtonListener(_buyTabOff, () => SetTab(true));
+            // 탭 버튼 자동 바인딩 (인스펙터 미할당 시 계층 구조에서 자동 탐색)
+            if (_buyTabButton == null) _buyTabButton = FindTabButton("BuyTab", "Buy");
+            if (_sellTabButton == null) _sellTabButton = FindTabButton("SellTab", "Sell");
+            if (_marginTabButton == null) _marginTabButton = FindTabButton("2XTab", "MarginTab", "2X", "LeverageTab", "Leverage");
+            if (_shortTabButton == null) _shortTabButton = FindTabButton("ShortTab", "Short", "ShortSellTab");
+            if (_infoTabButton == null) _infoTabButton = FindTabButton("InfoTab", "Info");
 
-            RegisterTabButtonListener(_sellTabButton, () => SetTab(false));
-            RegisterTabButtonListener(_sellTabOn, () => SetTab(false));
-            RegisterTabButtonListener(_sellTabOff, () => SetTab(false));
+            // 모든 탭 버튼 항상 활성화 보장 (오브젝트 꺼짐/사라짐 방지)
+            if (_buyTabButton != null) _buyTabButton.gameObject.SetActive(true);
+            if (_sellTabButton != null) _sellTabButton.gameObject.SetActive(true);
+            if (_marginTabButton != null) _marginTabButton.gameObject.SetActive(true);
+            if (_shortTabButton != null) _shortTabButton.gameObject.SetActive(true);
+            if (_infoTabButton != null) _infoTabButton.gameObject.SetActive(true);
+            if (_buyTabOn != null) _buyTabOn.SetActive(true);
+            if (_sellTabOn != null) _sellTabOn.SetActive(true);
+            if (_infoTabOn != null) _infoTabOn.SetActive(true);
 
-            RegisterTabButtonListener(_infoTabButton, OnInfoClicked);
-            RegisterTabButtonListener(_infoTabOn, OnInfoClicked);
-            RegisterTabButtonListener(_infoTabOff, OnInfoClicked);
+            // 탭 버튼 리스너 바인딩 (색상 기반 전환)
+            RegisterTabButtonListener(_buyTabButton, () => SelectTabMode(TradeTabMode.Buy));
+            RegisterTabButtonListener(_marginTabButton, () => SelectTabMode(TradeTabMode.MarginLong));
+            RegisterTabButtonListener(_shortTabButton, () => SelectTabMode(TradeTabMode.ShortSell));
+            RegisterTabButtonListener(_sellTabButton, () => SelectTabMode(TradeTabMode.Sell));
+            RegisterTabButtonListener(_infoTabButton, () => SelectTabMode(TradeTabMode.Info));
 
-            if (_percent10Button != null) _percent10Button.onClick.AddListener(() => OnPercentClicked(0.10f));
-            if (_percent25Button != null) _percent25Button.onClick.AddListener(() => OnPercentClicked(0.25f));
-            if (_percent50Button != null) _percent50Button.onClick.AddListener(() => OnPercentClicked(0.50f));
-            if (_percent100Button != null) _percent100Button.onClick.AddListener(() => OnPercentClicked(1.00f));
+            // Legacy ON/OFF 리스너 호환성 지원
+            RegisterTabButtonListener(_buyTabOn, () => SelectTabMode(TradeTabMode.Buy));
+            RegisterTabButtonListener(_buyTabOff, () => SelectTabMode(TradeTabMode.Buy));
+            RegisterTabButtonListener(_sellTabOn, () => SelectTabMode(TradeTabMode.Sell));
+            RegisterTabButtonListener(_sellTabOff, () => SelectTabMode(TradeTabMode.Sell));
+            RegisterTabButtonListener(_infoTabOn, () => SelectTabMode(TradeTabMode.Info));
+            RegisterTabButtonListener(_infoTabOff, () => SelectTabMode(TradeTabMode.Info));
 
-            if (_executeButton != null) _executeButton.onClick.AddListener(OnExecuteClicked);
+            if (_percent10Button != null)
+            {
+                _percent10Button.onClick.RemoveAllListeners();
+                _percent10Button.onClick.AddListener(() => OnPercentClicked(0.10f));
+            }
+            if (_percent25Button != null)
+            {
+                _percent25Button.onClick.RemoveAllListeners();
+                _percent25Button.onClick.AddListener(() => OnPercentClicked(0.25f));
+            }
+            if (_percent50Button != null)
+            {
+                _percent50Button.onClick.RemoveAllListeners();
+                _percent50Button.onClick.AddListener(() => OnPercentClicked(0.50f));
+            }
+            if (_percent100Button != null)
+            {
+                _percent100Button.onClick.RemoveAllListeners();
+                _percent100Button.onClick.AddListener(() => OnPercentClicked(1.00f));
+            }
+
+            if (_executeButton != null)
+            {
+                _executeButton.onClick.RemoveListener(OnExecuteClicked);
+                _executeButton.onClick.AddListener(OnExecuteClicked);
+            }
 
             if (_qtyText != null)
             {
+                _qtyText.onValueChanged.RemoveListener(OnQtyInputChanged);
                 _qtyText.onValueChanged.AddListener(OnQtyInputChanged);
             }
 
@@ -181,23 +258,97 @@ namespace StockWars.UI
                 }
             }
 
-            if (_minusPriceButton != null) _minusPriceButton.onClick.AddListener(OnMinusPriceClicked);
-            if (_plusPriceButton != null) _plusPriceButton.onClick.AddListener(OnPlusPriceClicked);
-            if (_priceInputField != null) _priceInputField.onValueChanged.AddListener(OnPriceInputChanged);
+            if (_minusPriceButton != null)
+            {
+                _minusPriceButton.onClick.RemoveListener(OnMinusPriceClicked);
+                _minusPriceButton.onClick.AddListener(OnMinusPriceClicked);
+            }
+            if (_plusPriceButton != null)
+            {
+                _plusPriceButton.onClick.RemoveListener(OnPlusPriceClicked);
+                _plusPriceButton.onClick.AddListener(OnPlusPriceClicked);
+            }
+            if (_priceInputField != null)
+            {
+                _priceInputField.onValueChanged.RemoveListener(OnPriceInputChanged);
+                _priceInputField.onValueChanged.AddListener(OnPriceInputChanged);
+            }
         }
 
         /// <summary>
         /// 상세 거래 화면을 지정된 가격 및 주문 유형(매수/매도)으로 초기 바인딩합니다.
+        /// 매 진입 시 이전 종목의 수량 및 가격 입력값을 완전히 초기화합니다.
         /// </summary>
         public void Initialize(string stockId, bool isBuy, long initialPrice)
         {
+            EnsureBindings();
+
             _targetStockId = stockId;
             _isBuy = isBuy;
             _isInfoActive = false;
             _qty = 1;
-            _tradePrice = initialPrice;
+
+            if (initialPrice > 0)
+            {
+                _tradePrice = initialPrice;
+            }
+            else if (MarketManager.Instance != null && !string.IsNullOrEmpty(stockId))
+            {
+                var stock = MarketManager.Instance.GetStock(stockId);
+                _tradePrice = stock != null ? stock.CurrentPrice : 0;
+            }
+            else
+            {
+                _tradePrice = 0;
+            }
+
+            // 입력 필드 텍스트 및 수량 즉시 초기화
+            if (_priceInputField != null)
+            {
+                _priceInputField.text = _tradePrice > 0 ? _tradePrice.ToString() : "";
+            }
+            if (_qtyText != null)
+            {
+                _qtyText.text = _qty.ToString();
+            }
+
+            // 팝업 잔여물 닫기
+            if (_confirmPopup != null) _confirmPopup.SetActive(false);
+            if (_receiptPopup != null) _receiptPopup.SetActive(false);
 
             UpdateUI();
+        }
+
+        /// <summary>
+        /// 결제창 진입/재진입 시 거래 단가를 해당 종목의 실시간 현재가로, 수량을 1주로 리셋합니다.
+        /// </summary>
+        public void ResetTradeInputs()
+        {
+            EnsureBindings();
+
+            _qty = 1;
+            if (!string.IsNullOrEmpty(_targetStockId) && MarketManager.Instance != null)
+            {
+                var stock = MarketManager.Instance.GetStock(_targetStockId);
+                if (stock != null)
+                {
+                    _tradePrice = stock.CurrentPrice;
+                }
+            }
+
+            if (_priceInputField != null)
+            {
+                _priceInputField.text = _tradePrice > 0 ? _tradePrice.ToString() : "";
+            }
+            if (_qtyText != null)
+            {
+                _qtyText.text = _qty.ToString();
+            }
+
+            if (_confirmPopup != null) _confirmPopup.SetActive(false);
+            if (_receiptPopup != null) _receiptPopup.SetActive(false);
+
+            UpdateTotalValueOnly();
         }
 
         /// <summary>
@@ -299,7 +450,8 @@ namespace StockWars.UI
             }
 
             // 2. 수량 및 텍스트 갱신
-            if (_qtyText != null && _qtyText.text != _qty.ToString()) _qtyText.text = _qty.ToString();
+            if (_qtyText != null && _qtyText.text != _qty.ToString() && !_qtyText.isFocused) _qtyText.text = _qty.ToString();
+            if (_priceInputField != null && _priceInputField.text != _tradePrice.ToString() && !_priceInputField.isFocused) _priceInputField.text = _tradePrice.ToString();
             if (_pricePerShareText != null) _pricePerShareText.text = $"1주 금액: {_tradePrice:N0} G";
 
             // 3. 지갑 잔고 및 보유 정보 가져오기
@@ -307,85 +459,81 @@ namespace StockWars.UI
 
             int ownedQty = 0;
             var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
-            if (portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding))
+            if (!string.IsNullOrEmpty(_targetStockId) && portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding))
             {
                 ownedQty = holding.Quantity;
             }
 
-            // 4. 수량과 호가 가격에 따른 총 예상 거래액 갱신 (순수 거래금액: 수량 x 단가)
+            // 4. 수량과 호가 가격에 따른 총 예상 거래액 및 유효성 검사
             long rawTotal = _qty * _tradePrice;
-
-            // 한도 초과 검사 (매수 시 보유 현금 초과, 매도 시 보유 수량 초과)
             bool isValid = true;
-            if (_isBuy)
+            string actionTitle = "구매 수량";
+            string executeText = "매수하기";
+            string totalDesc = $"총 금액: {rawTotal:N0} G";
+
+            switch (_currentTabMode)
             {
-                isValid = rawTotal <= cash;
-            }
-            else
-            {
-                isValid = _qty <= ownedQty;
+                case TradeTabMode.Buy:
+                    isValid = rawTotal <= cash && _qty > 0;
+                    actionTitle = "구매 개수";
+                    executeText = "매수하기";
+                    totalDesc = $"총 구매액: {rawTotal:N0} G";
+                    break;
+                case TradeTabMode.MarginLong:
+                    long requiredMargin = (long)Math.Ceiling(rawTotal * 0.5); // 50% 담보금 (2배 레버리지)
+                    isValid = requiredMargin <= cash && _qty > 0;
+                    actionTitle = "2X 롱 개수";
+                    executeText = "2X 롱 매수하기";
+                    totalDesc = $"필요 담보금: {requiredMargin:N0} G (총 {rawTotal:N0} G)";
+                    break;
+                case TradeTabMode.ShortSell:
+                    isValid = rawTotal <= cash && _qty > 0; // 100% 증거금
+                    actionTitle = "공매도 개수";
+                    executeText = "공매도 숏 진입";
+                    totalDesc = $"필요 증거금: {rawTotal:N0} G";
+                    break;
+                case TradeTabMode.Sell:
+                    isValid = _qty <= ownedQty && _qty > 0;
+                    actionTitle = "판매 개수";
+                    executeText = "매도하기";
+                    totalDesc = $"총 판매액: {rawTotal:N0} G";
+                    break;
+                case TradeTabMode.Info:
+                    isValid = true;
+                    actionTitle = "정보 조회";
+                    executeText = "정보 확인";
+                    break;
             }
 
             if (_totalQtyText != null)
             {
-                _totalQtyText.text = $"({(_isBuy ? "구매 개수" : "판매 개수")}: {_qty:N0}개)";
+                _totalQtyText.text = $"({actionTitle}: {_qty:N0}개)";
             }
 
             if (_totalValueText != null)
             {
-                _totalValueText.text = $"총 금액: {rawTotal:N0} G";
+                _totalValueText.text = totalDesc;
                 _totalValueText.color = isValid ? new Color(0.15f, 0.15f, 0.15f, 1f) : new Color(0.9f, 0.25f, 0.25f, 1f);
             }
 
-            // 5. 탭 시각적 상태 갱신 (책갈피 효과를 위해 활성화된 탭은 색상 변경 및 가장 앞으로 렌더링)
-            bool isBuyActive = _isBuy && !_isInfoActive;
-            bool isSellActive = !_isBuy && !_isInfoActive;
-            bool isInfoActive = _isInfoActive;
-
-            if (_buyTabButton != null)
-            {
-                var image = _buyTabButton.GetComponent<Image>();
-                if (image != null) image.color = isBuyActive ? _activeTabColor : _inactiveTabColor;
-                if (isBuyActive) _buyTabButton.transform.SetAsLastSibling();
-            }
-            if (_sellTabButton != null)
-            {
-                var image = _sellTabButton.GetComponent<Image>();
-                if (image != null) image.color = isSellActive ? _activeTabColor : _inactiveTabColor;
-                if (isSellActive) _sellTabButton.transform.SetAsLastSibling();
-            }
-            if (_infoTabButton != null)
-            {
-                var image = _infoTabButton.GetComponent<Image>();
-                if (image != null) image.color = isInfoActive ? _activeTabColor : _inactiveTabColor;
-                if (isInfoActive) _infoTabButton.transform.SetAsLastSibling();
-            }
-
-            // ON/OFF 오브젝트 활성화 상태 제어
-            if (_buyTabOn != null) _buyTabOn.SetActive(isBuyActive);
-            if (_buyTabOff != null) _buyTabOff.SetActive(!isBuyActive);
-
-            if (_sellTabOn != null) _sellTabOn.SetActive(isSellActive);
-            if (_sellTabOff != null) _sellTabOff.SetActive(!isSellActive);
-
-            if (_infoTabOn != null) _infoTabOn.SetActive(isInfoActive);
-            if (_infoTabOff != null) _infoTabOff.SetActive(!isInfoActive);
-
-            // TradingPanel 및 InfoPanel 활성화 상태 제어
-            if (_tradingPanel != null) _tradingPanel.SetActive(!isInfoActive);
-            if (_infoPanel != null)
-            {
-                _infoPanel.SetActive(isInfoActive);
-                if (isInfoActive) UpdateInfoPanel(stock);
-            }
-
-            // 5.5. 라벨 및 텍스트 동적 변경 (구매 개수 / 판매 개수)
             if (_actionTitleText != null)
             {
-                _actionTitleText.text = _isBuy ? "구매 개수" : "판매 개수";
+                _actionTitleText.text = actionTitle;
             }
 
-            // 6. 하단 최종 주문 버튼 비주얼 설정 (버튼 기본 색상 유지, 글자만 매수/매도 변경)
+            // 5. 탭 시각적 상태 갱신 (단일 버튼 색상 변경 & 밝은 회색 잠금)
+            UpdateTabVisuals();
+
+            // TradingPanel 및 InfoPanel 활성화 상태 제어
+            bool isInfo = (_currentTabMode == TradeTabMode.Info);
+            if (_tradingPanel != null) _tradingPanel.SetActive(!isInfo);
+            if (_infoPanel != null)
+            {
+                _infoPanel.SetActive(isInfo);
+                if (isInfo) UpdateInfoPanel(stock);
+            }
+
+            // 6. 하단 최종 주문 버튼 비주얼 설정
             if (_executeButton != null)
             {
                 _executeButton.interactable = isValid;
@@ -393,7 +541,7 @@ namespace StockWars.UI
 
             if (_executeButtonText != null)
             {
-                _executeButtonText.text = _isBuy ? "매수하기" : "매도하기";
+                _executeButtonText.text = executeText;
             }
 
             // 7. 좌측 5단계 미니 호가창 그리기
@@ -401,14 +549,134 @@ namespace StockWars.UI
         }
 
         /// <summary>
-        /// 탭을 매수(true) 또는 매도(false)로 직접 변경합니다.
+        /// 탭 버튼들의 배경 색상(bgColor)과 텍스트 색상(Active/Inactive/Locked)을 갱신합니다.
+        /// (유저가 배치한 탭의 순서와 텍스트 내용은 절대 덮어쓰지 않고 원본 그대로 유지합니다)
+        /// </summary>
+        private void UpdateTabVisuals()
+        {
+            int playerLevel = WalletManager.Instance?.ActiveSaveData?.PlayerLevel ?? 1;
+            bool isLeverageLocked = playerLevel < 10;
+
+            UpdateSingleTabVisual(_buyTabButton, _currentTabMode == TradeTabMode.Buy, false);
+            UpdateSingleTabVisual(_sellTabButton, _currentTabMode == TradeTabMode.Sell, false);
+            UpdateSingleTabVisual(_marginTabButton, _currentTabMode == TradeTabMode.MarginLong, isLeverageLocked);
+            UpdateSingleTabVisual(_shortTabButton, _currentTabMode == TradeTabMode.ShortSell, isLeverageLocked);
+            UpdateSingleTabVisual(_infoTabButton, _currentTabMode == TradeTabMode.Info, false);
+        }
+
+        private void UpdateSingleTabVisual(Button tabBtn, bool isActive, bool isLocked)
+        {
+            if (tabBtn == null) return;
+
+            // 탭 버튼 오브젝트 자체는 항상 켜져 있도록 보장 (버튼 사라짐 방지)
+            if (!tabBtn.gameObject.activeSelf)
+            {
+                tabBtn.gameObject.SetActive(true);
+            }
+
+            // 1. 실제 배경 이미지 탐색 (자식 bgColor, bg, Background 또는 targetGraphic)
+            Image targetImage = null;
+            Transform bgTrans = tabBtn.transform.Find("bgColor") ?? tabBtn.transform.Find("bg") ?? tabBtn.transform.Find("Background");
+            if (bgTrans != null)
+            {
+                targetImage = bgTrans.GetComponent<Image>();
+            }
+            if (targetImage == null && tabBtn.targetGraphic is Image tImg)
+            {
+                targetImage = tImg;
+            }
+            if (targetImage == null)
+            {
+                targetImage = tabBtn.GetComponent<Image>();
+            }
+            if (targetImage == null)
+            {
+                var allImages = tabBtn.GetComponentsInChildren<Image>(true);
+                foreach (var img in allImages)
+                {
+                    if (img.name.IndexOf("Frame", StringComparison.OrdinalIgnoreCase) < 0 &&
+                        img.name.IndexOf("Icon", StringComparison.OrdinalIgnoreCase) < 0)
+                    {
+                        targetImage = img;
+                        break;
+                    }
+                }
+            }
+
+            if (targetImage != null)
+            {
+                targetImage.color = isLocked ? _lockedTabColor : (isActive ? _activeTabColor : _inactiveTabColor);
+            }
+
+            // 2. 텍스트 색상만 상태에 맞춰 변경 (텍스트 내용은 유저가 배치한 그대로 유지)
+            var txt = tabBtn.GetComponentInChildren<TMP_Text>(true);
+            if (txt != null)
+            {
+                txt.color = isLocked ? _lockedTextColor : (isActive ? _activeTextColor : _inactiveTextColor);
+            }
+            else
+            {
+                var legTxt = tabBtn.GetComponentInChildren<UnityEngine.UI.Text>(true);
+                if (legTxt != null)
+                {
+                    legTxt.color = isLocked ? _lockedTextColor : (isActive ? _activeTextColor : _inactiveTextColor);
+                }
+            }
+
+            // ⚠️ SetAsLastSibling()은 HorizontalLayoutGroup 내에서 순서를 바꾸므로 절대 호출하지 않습니다.
+        }
+
+        private Button FindTabButton(params string[] names)
+        {
+            var buttons = GetComponentsInChildren<Button>(true);
+            foreach (var b in buttons)
+            {
+                foreach (var n in names)
+                {
+                    if (b.name.Equals(n, StringComparison.OrdinalIgnoreCase) || b.name.IndexOf(n, StringComparison.OrdinalIgnoreCase) >= 0)
+                        return b;
+                }
+            }
+
+            // Button 컴포넌트가 부모에 아직 안 붙어있을 경우 자동 추가
+            foreach (var n in names)
+            {
+                var trans = transform.Find($"TabBar/Content/{n}") ?? transform.Find($"TabBar/{n}") ?? transform.Find(n);
+                if (trans != null)
+                {
+                    var btn = trans.GetComponent<Button>() ?? trans.gameObject.AddComponent<Button>();
+                    return btn;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 탭 모드를 변경합니다. (레벨 10 미만 시 신용 롱/공매도는 잠금 처리)
+        /// </summary>
+        public void SelectTabMode(TradeTabMode mode)
+        {
+            int playerLevel = WalletManager.Instance?.ActiveSaveData?.PlayerLevel ?? 1;
+            if ((mode == TradeTabMode.MarginLong || mode == TradeTabMode.ShortSell) && playerLevel < 10)
+            {
+                Debug.LogWarning($"<color=#FFA500>[UITradePage] 신용 레버리지 및 공매도는 플레이어 Lv.10 이상부터 이용 가능합니다. (현재 Lv.{playerLevel})</color>");
+                return;
+            }
+
+            _currentTabMode = mode;
+            _isBuy = (mode == TradeTabMode.Buy || mode == TradeTabMode.MarginLong || mode == TradeTabMode.ShortSell);
+            _isInfoActive = (mode == TradeTabMode.Info);
+
+            ResetTradeInputs();
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// 레거시 호환용 탭 전환 메서드 (매수/매도)
         /// </summary>
         public void SetTab(bool isBuy)
         {
-            _isBuy = isBuy;
-            _isInfoActive = false; // 매수/매도 탭 선택 시 정보 탭 비활성화
-            _qty = 1;
-            UpdateUI();
+            SelectTabMode(isBuy ? TradeTabMode.Buy : TradeTabMode.Sell);
         }
 
         private void OnPlusQtyClicked()
@@ -437,7 +705,7 @@ namespace StockWars.UI
                 _qty = 1;
             }
 
-            if (_qtyText != null && _qtyText.text != _qty.ToString())
+            if (_qtyText != null && _qtyText.text != _qty.ToString() && !_qtyText.isFocused)
             {
                 _qtyText.text = _qty.ToString();
             }
@@ -475,6 +743,11 @@ namespace StockWars.UI
             {
                 _tradePrice = Math.Max(1, val);
             }
+            else if (string.IsNullOrEmpty(text) && MarketManager.Instance != null && !string.IsNullOrEmpty(_targetStockId))
+            {
+                var stock = MarketManager.Instance.GetStock(_targetStockId);
+                if (stock != null) _tradePrice = stock.CurrentPrice;
+            }
             UpdateTotalValueOnly();
         }
 
@@ -494,6 +767,7 @@ namespace StockWars.UI
         private void UpdateTotalValueOnly()
         {
             if (MarketManager.Instance == null || WalletManager.Instance == null) return;
+            if (string.IsNullOrEmpty(_targetStockId)) return;
 
             long rawTotal = _qty * _tradePrice;
 
@@ -506,16 +780,6 @@ namespace StockWars.UI
                 _pricePerShareText.text = $"{_tradePrice:N0} G";
             }
 
-            if (_totalQtyText != null)
-            {
-                _totalQtyText.text = $"({(_isBuy ? "구매 개수" : "판매 개수")}: {_qty:N0}개)";
-            }
-
-            if (_totalValueText != null)
-            {
-                _totalValueText.text = $"총 금액: {rawTotal:N0} G";
-            }
-
             long cash = WalletManager.Instance.GetCash();
             int ownedQty = 0;
             var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
@@ -525,17 +789,42 @@ namespace StockWars.UI
             }
 
             bool isValid = true;
-            if (_isBuy)
+            string actionTitle = "구매 개수";
+            string totalDesc = $"총 금액: {rawTotal:N0} G";
+
+            switch (_currentTabMode)
             {
-                isValid = rawTotal <= cash;
+                case TradeTabMode.Buy:
+                    isValid = rawTotal <= cash && _qty > 0;
+                    actionTitle = "구매 개수";
+                    totalDesc = $"총 구매액: {rawTotal:N0} G";
+                    break;
+                case TradeTabMode.MarginLong:
+                    long requiredMargin = (long)Math.Ceiling(rawTotal * 0.5);
+                    isValid = requiredMargin <= cash && _qty > 0;
+                    actionTitle = "2X 롱 개수";
+                    totalDesc = $"필요 담보금: {requiredMargin:N0} G (총 {rawTotal:N0} G)";
+                    break;
+                case TradeTabMode.ShortSell:
+                    isValid = rawTotal <= cash && _qty > 0;
+                    actionTitle = "공매도 개수";
+                    totalDesc = $"필요 증거금: {rawTotal:N0} G";
+                    break;
+                case TradeTabMode.Sell:
+                    isValid = _qty <= ownedQty && _qty > 0;
+                    actionTitle = "판매 개수";
+                    totalDesc = $"총 판매액: {rawTotal:N0} G";
+                    break;
             }
-            else
+
+            if (_totalQtyText != null)
             {
-                isValid = _qty <= ownedQty;
+                _totalQtyText.text = $"({actionTitle}: {_qty:N0}개)";
             }
 
             if (_totalValueText != null)
             {
+                _totalValueText.text = totalDesc;
                 _totalValueText.color = isValid ? new Color(0.15f, 0.15f, 0.15f, 1f) : new Color(0.9f, 0.25f, 0.25f, 1f);
             }
 
@@ -547,39 +836,41 @@ namespace StockWars.UI
 
         private void OnInfoClicked()
         {
-            _isInfoActive = true;
-            UpdateUI();
-
-            // 정보 탭도 클릭 시 화면 맨 앞으로 튀어나오게 (책갈피 선 덮기 효과)
-            if (_infoTabButton != null) _infoTabButton.transform.SetAsLastSibling();
-
-            // 정보 탭이나 정보 버튼을 눌렀을 때의 동작 (추후 컨트롤러와 연동)
-            Debug.Log($"[UITradePage] {_targetStockId} 정보(Info) 보기 요청됨!");
+            SelectTabMode(TradeTabMode.Info);
         }
 
         private void OnPercentClicked(float percent)
         {
-            if (WalletManager.Instance == null || _tradePrice <= 0) return;
+            if (WalletManager.Instance == null || _tradePrice <= 0 || string.IsNullOrEmpty(_targetStockId)) return;
 
-            if (_isBuy)
-            {
-                long availableCash = WalletManager.Instance.GetCash();
-                int maxBuyQty = (int)Math.Floor((double)availableCash / _tradePrice);
+            long availableCash = WalletManager.Instance.GetCash();
 
-                _qty = Math.Max(1, (int)(maxBuyQty * percent));
-                if (maxBuyQty == 0) _qty = 0;
-            }
-            else
+            switch (_currentTabMode)
             {
-                int maxSellQty = 0;
-                var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
-                if (portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding))
-                {
-                    maxSellQty = holding.Quantity;
-                }
-                
-                _qty = Math.Max(1, (int)(maxSellQty * percent));
-                if (maxSellQty == 0) _qty = 0;
+                case TradeTabMode.Buy:
+                case TradeTabMode.ShortSell:
+                    int maxBuyQty = (int)Math.Floor((double)availableCash / _tradePrice);
+                    _qty = Math.Max(1, (int)(maxBuyQty * percent));
+                    if (maxBuyQty == 0) _qty = 0;
+                    break;
+
+                case TradeTabMode.MarginLong:
+                    // 2배 레버리지이므로 담보금 기준 2배 수량 가능
+                    int maxMarginQty = (int)Math.Floor((double)(availableCash * 2) / _tradePrice);
+                    _qty = Math.Max(1, (int)(maxMarginQty * percent));
+                    if (maxMarginQty == 0) _qty = 0;
+                    break;
+
+                case TradeTabMode.Sell:
+                    int maxSellQty = 0;
+                    var portfolio = WalletManager.Instance.ActiveSaveData?.Portfolio;
+                    if (portfolio != null && portfolio.TryGetValue(_targetStockId.ToUpper(), out var holding))
+                    {
+                        maxSellQty = holding.Quantity;
+                    }
+                    _qty = Math.Max(1, (int)(maxSellQty * percent));
+                    if (maxSellQty == 0) _qty = 0;
+                    break;
             }
 
             UpdateUI();
@@ -587,10 +878,15 @@ namespace StockWars.UI
 
         private void OnEnable()
         {
+            EnsureBindings();
             if (StockWars.Network.StockWarsNetworkClient.Instance != null)
             {
                 StockWars.Network.StockWarsNetworkClient.Instance.OnOrderResultReceived += OnServerOrderResultReceived;
             }
+
+            // 프리팹/페이지 활성화 시 이전 종목의 가격/수량 잔여값 초기화
+            ResetTradeInputs();
+            UpdateUI();
         }
 
         private void OnDisable()
@@ -599,6 +895,11 @@ namespace StockWars.UI
             {
                 StockWars.Network.StockWarsNetworkClient.Instance.OnOrderResultReceived -= OnServerOrderResultReceived;
             }
+
+            if (_confirmPopup != null) _confirmPopup.SetActive(false);
+            if (_receiptPopup != null) _receiptPopup.SetActive(false);
+
+            _qty = 1;
         }
 
         /// <summary>
@@ -741,7 +1042,14 @@ namespace StockWars.UI
             }
 
             long subtotal = _qty * _tradePrice;
-            string actionText = _isBuy ? "매수" : "매도";
+            string actionText = "매수";
+            switch (_currentTabMode)
+            {
+                case TradeTabMode.Buy: actionText = "매수"; break;
+                case TradeTabMode.MarginLong: actionText = "2X 롱 매수"; break;
+                case TradeTabMode.ShortSell: actionText = "공매도 숏"; break;
+                case TradeTabMode.Sell: actionText = "매도"; break;
+            }
 
             // 확인 팝업 내 텍스트들을 탐색하여 매수하시겠습니까? / 매도하시겠습니까? 동적 전환
             var allTmpTexts = _confirmPopup.GetComponentsInChildren<TMP_Text>(true);
@@ -909,11 +1217,22 @@ namespace StockWars.UI
                 okBtn = _receiptPopup.GetComponentInChildren<Button>(true);
             }
 
-            if (title != null) title.text = isBuy ? "매수 체결 영수증" : "매도 체결 영수증";
+            if (title != null)
+            {
+                string receiptAction = "매수";
+                switch (_currentTabMode)
+                {
+                    case TradeTabMode.Buy: receiptAction = "매수"; break;
+                    case TradeTabMode.MarginLong: receiptAction = "2X 롱 매수"; break;
+                    case TradeTabMode.ShortSell: receiptAction = "공매도 숏"; break;
+                    case TradeTabMode.Sell: receiptAction = "매도"; break;
+                }
+                title.text = $"{receiptAction} 체결 영수증";
+            }
             if (stockName != null) stockName.text = $"종목 이름: {stock.Data.name}";
             if (unitP != null) unitP.text = $"종목 당 가격: {unitPrice:N0}G";
-            if (quant != null) quant.text = $"{(isBuy ? "구매 개수" : "판매 개수")}: {qty:N0}개";
-            if (tax != null) tax.text = $"세금: {fee:N0}G";
+            if (quant != null) quant.text = $"{(_isBuy ? "구매 개수" : "판매 개수")}: {qty:N0}개";
+            if (tax != null) tax.text = $"세금/수수료: {fee:N0}G";
             if (totalP != null) totalP.text = $"총 금액: {totalCost:N0}G";
 
             if (okBtn != null)

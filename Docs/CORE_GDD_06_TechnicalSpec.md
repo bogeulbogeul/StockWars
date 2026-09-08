@@ -22,6 +22,11 @@
 - **버프 지속 시간**: 아이템(각성제 등) 효과는 순수 플레이 시간만큼만 유지됩니다.
 - **노동 스테미너 회복**: 오프라인 회복 보너스가 존재하지만, 기본적으로 유저의 활발한 활동을 전제로 합니다.
 
+### 1.3. 서버 권한 네트워크 시간 및 시간 변조 방어 (Anti-Time Tampering Architecture) [NEW]
+클라이언트 로컬 OS 시계(`DateTime.UtcNow / DateTime.Now`) 직접 참조를 전면 배제하고, `NetworkTimeManager`를 통해 서버 권한 표준시(Server Authoritative UTC)를 동기화합니다.
+- **모노토닉 하드웨어 누적 (`Time.realtimeSinceStartupAsDouble`)**: 서버 동기화 후 시간 경과는 OS 윈도우 시계 변경에 영향을 받지 않는 CPU 모노토닉 클럭을 통해 누적되므로, 유저가 컴퓨터 시계를 임의로 앞당기거나 되돌려도 게임 속 시간은 변조되지 않습니다.
+- **변조 감지 및 보안 처리 (`SystemTimeTamperedEvent`)**: 로컬 OS 시계와 서버 모노토닉 시간 간의 급격한 드리프트($\Delta > 10\text{초}$) 발생 시 변조 시도를 감지하고 서버 표준시를 강제 유지합니다.
+
 ---
 
 ## 2. 플레이어 데이터 구조 (Player Data Structure)
@@ -53,12 +58,16 @@ public struct UserStats {
 ## 3. 금융 정산 엔진 (Settlement Engine)
 
 ### 3.1. 주간 금융 틱 (Finance Tick) 우선순위
-매주 월요일 00:00에 실행되는 **Atomic Transaction** 내에서 다음 순서로 연산을 처리합니다.
+매주 월요일 00:00(UTC)에 실행되는 **Atomic Transaction** 내에서 다음 순서로 연산을 처리합니다.
 
-1.  **배당금 입금 (Credit First)**: 72시간 보유 조건을 충족한 종목에 대해 배당금 지급.
-2.  **유지비 차감 (Maintenance)**: 오피스 레벨(LV 1~5)에 따른 고정 비용 선차감.
-3.  **이자 및 부채 상환 (Debt Settlement)**: 이자 우선 상환 원칙에 따라 이자 정산 후 원금 상환.
-4.  **적색 수배 및 압류 판정**: 최종 가용 자산 확인 후 Seizure Engine 혹은 Red Notice 발동.
+1.  **배당금 입금 (Credit First)**: 72시간 보유 조건을 충족한 종목에 대해 배당금 일괄 지급.
+2.  **기본 임대료 차감 (Rent Settlement)**: 오피스 표준 기본 임대료(5,000G) 선차감 (가입 72시간 이내 신규 유저 면제).
+3.  **누진 세금 차감 (Tax Settlement)**:
+    - **금융소득세**: 지난 1주일간 실현 순수익($Realized\_Profit$)에 대한 누진 소득세 (0% ~ 20%). (가구 구매비용 50% 공제 적용)
+    - **종합 자산세**: 총 자산($Cash + Portfolio\_Value$)에 대한 누진 보유세 (0% ~ 1.0%). (정기적금 원금 비과세)
+    - **안나 절세 보정**: 협상력 스탯당 3% 최종 세액 감면 ($Tax_{Final} = Tax_{Raw} \times (1 - Negotiation\_Lv \times 0.03)$).
+4.  **이자 및 부채 상환 (Debt Settlement)**: 이자 우선 상환 원칙에 따라 이자 정산 후 원금 상환.
+5.  **적색 수배 및 압류 판정**: 최종 가용 자산 확인 후 Seizure Engine 혹은 Red Notice 발동.
 
 ### 3.2. 실시간 몰수 엔진 (Real-time Forfeiture)
 - **담보 상태 감시**: `LoanTimestamp`를 체크하여 168시간 경과 시 즉시 소유권을 바터(Barter)에게 이전.
@@ -77,10 +86,53 @@ public struct UserStats {
     - **자수 (120% 납부)**: 은행을 통해 횡령액+20% 벌금 납부. 피해자에게 120% 전액 보상 트리거 발동.
     - **신분 세탁 (200% 납부)**: 안드레를 통해 은밀히 해결. 피해자 구제금으로는 100%만 전달되며 나머지는 시스템 소각.
 
-### 4.2. 마진콜 감시 (Margin Watcher)
-- **Lvl 1 (Warning)**: 손실률 90% 도달 시 긴급 푸시 알림.
-- **Lvl 2 (Force Close)**: 손실률 100% 도달 시 포지션 강제 청산 및 증거금 몰수.
-- **안나의 구원 퀘스트**: 파산 위기 시 1회 한정으로 최소 시드 지급 및 이자 초기화 퀘스트 발생.
+### 4.2. 신용 레버리지 및 공매도 마진콜 감시 엔진 (Margin Trading & Short Watcher) [NEW]
+
+#### 4.2.1. 포지션 데이터 구조 (Holdings Data Extension)
+```csharp
+public class StockHoldingsDTO
+{
+    // [현물 및 신용 롱(Long) 포지션]
+    public int Quantity;                // 총 매수 보유 수량
+    public double AveragePurchasePrice; // 평균 매입단가
+    public float LeverageMultiplier;    // 레버리지 배수 (1.0x = 일반 현물, 2.0x~3.0x = 신용 롱)
+    public long BorrowedMarginLoan;     // 차입한 신용 융자 원금 (Gold)
+
+    // [공매도/숏(Short) 포지션]
+    public int ShortQuantity;           // 숏 포지션 수량
+    public double ShortEntryPrice;      // 숏 진입 평단가
+    public long LockedMargin;           // 담보로 동결된 증거금 (주문액의 140%)
+    public DateTime ShortOpenedTimeUtc; // 숏 포지션 진입 시각
+}
+```
+
+#### 4.2.2. 마진콜 및 강제 청산 알고리즘 (Liquidation Math)
+실시간 시세 변동 시마다 포트폴리오 내 신용 롱 / 공매도 숏 포지션의 담보 유지 비율($Margin\_Ratio$)을 실시간 연산합니다.
+
+1. **공매도 숏 담보율 산출식**:
+   $$\text{Short\_Collateral} = \text{LockedMargin} + (\text{ShortEntryPrice} - \text{CurrentPrice}) \times \text{ShortQuantity}$$
+   $$\text{Margin\_Ratio}_{Short} = \frac{\text{Short\_Collateral}}{\text{CurrentPrice} \times \text{ShortQuantity}}$$
+
+2. **신용 롱 담보율 산출식 (2.0x~3.0x)**:
+   $$\text{Margin\_Ratio}_{Long} = \frac{\text{CurrentPrice} \times \text{Quantity}}{\text{BorrowedMarginLoan}}$$
+
+- **경고 단계 (Warning - $Margin\_Ratio \le 1.25$)**: 
+  - 위험도 게이지 적색 점멸, 안나의 긴급 경고 다이얼로그(`ANN_SHORT_SQUEEZE_WARN` / `ANN_MARGIN_CALL_WARN`) 및 스마트폰 푸시 발송.
+- **강제 청산 단계 (Force Close - $Margin\_Ratio < 1.10$)**:
+  - 시스템이 즉시 시장가 **강제 반대매매(Forced Liquidation / Buy to Cover)** 체결 단행.
+  - 부족분은 동결된 증거금에서 차감 정산하고 포지션 강제 소거. 초과 손실액은 지갑 잔고를 음수(Negative Gold)로 전락시켜 즉시 부채로 전환.
+
+#### 4.2.3. 주문 유효성 검증 및 10레벨 게이팅 (Validation Rules)
+```csharp
+// 주문 접수 시 서버/로컬 공통 유효성 검사
+if (order.OrderType == OrderType.MarginLong || order.OrderType == OrderType.ShortSelling)
+{
+    if (saveData.PlayerLevel < 10)
+    {
+        return TransactionResult.Failed("ERR_LEVEL_LOCKED", "신용 레버리지 및 공매도는 플레이어 Lv.10 이상부터 이용 가능합니다.");
+    }
+}
+```
 
 ---
 

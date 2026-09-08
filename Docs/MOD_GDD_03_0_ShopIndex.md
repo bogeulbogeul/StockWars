@@ -19,7 +19,7 @@
 | 문서 번호 | 상점 명칭 | 담당 NPC | 주요 취급 품목 | 문서 링크 |
 | :--- | :--- | :--- | :--- | :--- |
 | **03-1** | **비비안 잡화점** | **비비안** | 소모품, 찌라시, 전술 도구 | [MOD_GDD_03_1_VivianStore.md](MOD_GDD_03_1_VivianStore.md) |
-| **03-2** | **가구 상점** | **줄리안** | 테마 가구, 오피스 확장 | [MOD_GDD_03_2_JulianFurniture.md](MOD_GDD_03_2_JulianFurniture.md) |
+| **03-2** | **가구 상점** | **줄리안** | 일일 테마 로테이션 가구, 오피스 인테리어 | [MOD_GDD_03_2_JulianFurniture.md](MOD_GDD_03_2_JulianFurniture.md) |
 | **03-3** | **의상 상점** | **클레어** | 아바타 의상, 코스튬 | [MOD_GDD_03_3_ClaireApparel.md](MOD_GDD_03_3_ClaireApparel.md) |
 | **03-4** | **전문 서점** | **비비안(위탁)** | 영구 스탯 강화 도서 | [MOD_GDD_03_4_Bookstore.md](MOD_GDD_03_4_Bookstore.md) |
 

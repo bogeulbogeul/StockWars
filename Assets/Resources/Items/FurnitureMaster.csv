@@ -83,3 +83,18 @@ FURN_DECOR_GE_001,[장식품] 황금 황소 자수 러그,Furniture,Legendary,15
 FURN_TILE_GE_001,[타일] 제국의 황금 타일,Furniture,Legendary,3500,Big,Tile,Grid,1,1,5,0,0,0,0,제국 문양 황금 포인트 타일,,GoldenEmpire
 FURN_WALL_GE_DOOR,[벽 장식] 골든 제국의 문,Furniture,Legendary,25000,Big,WallDecor,Grid,1,1,5,0,0,0,0,[마을 이동] 서버 선택,,GoldenEmpire
 FURN_PART_GE_001,[파티션] 황금 수묵 황소 병풍,Furniture,Legendary,30000,Big,Partition,Grid,3,1,5,0,0,0,0,강세장 상징 황금 병풍,,GoldenEmpire
+FURN_WALL_PM_001,[벽지] 파스텔 구름 벽지,Furniture,Common,5000,Small,Wallpaper,Skin,0,0,1,0,0,0,0,파스텔 구름과 별빛 무늬 실크 벽지,,PrivateMascot
+FURN_FLOOR_PM_001,[바닥] 핑크 파스텔 체크 바닥,Furniture,Common,5500,Small,Floor,Skin,0,0,1,0,0,0,0,푹신한 감촉의 파스텔 핑크 & 민트 체크무늬 바닥재,,PrivateMascot
+FURN_BED_PM_001,[침대] 마스코트 트램펄린,Furniture,Common,35000,Big,Bed,Grid,3,3,1,0,0,0,0.2,점프하며 에너지와 스트레스를 단숨에 회복하는 대형 트램펄린,,PrivateMascot
+FURN_CHAIR_PM_001,[의자] 마스코트 파스텔 스윙,Furniture,Common,22000,Small,Chair,Grid,2,1,1,0,0,0,0.1,흔들거리며 편안한 휴식을 선사하는 그네 의자,,PrivateMascot
+FURN_DESK_PM_001,[책상] 마스코트 티 테이블,Furniture,Common,15000,Middle,Desk,Grid,2,2,1,0,0,0,0,큐티 디저트가 세팅된 달콤한 트레이딩 티 테이블,,PrivateMascot
+FURN_DECOR_PM_001,[장식품] 마스코트 분수대,Furniture,Common,25000,Middle,Decor,Grid,2,2,1,0.05,0,0,0,은은하게 물이 뿜어져 나오는 파스텔 톤 미니 분수대,,PrivateMascot
+FURN_WALL_PM_DOOR,[벽 장식] 유니콘 아치 게이트,Furniture,Common,18000,Small,WallDecor,Grid,1,1,1,0,0,0,0,[마을 이동] 별빛이 쏟아지는 유니콘 테마 이동문,,PrivateMascot
+FURN_DECOR_PM_002,[장식품] 미니 회전목마 오르골,Furniture,Common,28000,Middle,Decor,Grid,2,2,1,0,0,0,0,멜로디와 함께 천천히 회전하는 동화풍 미니 회전목마,,PrivateMascot
+FURN_DECOR_PM_003,[장식품] 마스코트 유니콘 인형,Furniture,Common,12000,Small,Decor,Grid,1,1,1,0,0,0.05,0,방을 지켜주는 거대한 푹신 인형,,PrivateMascot
+FURN_DECOR_PM_004,[장식품] 파스텔 디저트 왜건 카트,Furniture,Common,16000,Small,Decor,Grid,2,1,1,0,0,0,0,알록달록한 이동식 디저트 왜건,,PrivateMascot
+FURN_PART_PM_001,[파티션] 마스코트 구름 파티션,Furniture,Common,10000,Small,Partition,Grid,2,1,1,0,0,0,0,별과 달 모양 장식이 들어간 둥근 구름 파티션,,PrivateMascot
+FURN_STORAGE_PM_001,[수납] 옐로우 스타 버블 기둥,Furniture,Common,8000,Small,Storage,Grid,1,1,1,0,0,0,0,노란 별빛 버블이 솟아오르는 감성 라이트 기둥,,PrivateMascot
+FURN_STORAGE_PM_002,[수납] 민트 스타 버블 기둥,Furniture,Common,8000,Small,Storage,Grid,1,1,1,0,0,0,0,시원한 민트빛 별과 버블이 빛나는 인테리어 기둥,,PrivateMascot
+FURN_STORAGE_PM_003,[수납] 퍼플 스타 버블 기둥,Furniture,Common,8000,Small,Storage,Grid,1,1,1,0,0,0,0,신비로운 보라빛 별빛 버블 라이트 기둥,,PrivateMascot
+

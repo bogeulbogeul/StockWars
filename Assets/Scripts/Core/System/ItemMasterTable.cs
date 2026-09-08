@@ -364,6 +364,171 @@ namespace StockWars.Core
         /// </summary>
         public int GetTotalCount() => _table.Count;
 
+        /// <summary>
+        /// 오늘의 일일 로테이션 상점 가구 풀(6~10종)을 반환합니다.
+        /// 세이브 데이터의 갱신 일자가 오늘과 다르면 새로운 오늘의 추천 메인 테마(4~6개) + 서브 테마 믹스(3~4개)를 선별하여 세이브에 저장합니다.
+        /// </summary>
+        public List<ItemData> GetDailyFurnitureShopPool(SaveDataDTO saveData)
+        {
+            if (!_isLoaded) LoadAllItems();
+
+            var allFurniture = GetByCategory(ItemCategory.Furniture);
+            if (allFurniture == null || allFurniture.Count == 0)
+            {
+                return new List<ItemData>();
+            }
+
+            string todayStr = DateTime.UtcNow.ToString("yyyy-MM-dd");
+
+            // 갱신 필요 여부 확인
+            bool needsRefresh = saveData == null ||
+                                string.IsNullOrEmpty(saveData.LastFurnitureShopRefreshDate) ||
+                                saveData.LastFurnitureShopRefreshDate != todayStr ||
+                                saveData.DailyFurnitureShopItemIds == null ||
+                                saveData.DailyFurnitureShopItemIds.Count == 0;
+
+            if (needsRefresh && saveData != null)
+            {
+                // 사용 가능한 테마 목록 수집
+                var themeDict = new Dictionary<string, List<ItemData>>(StringComparer.OrdinalIgnoreCase);
+                foreach (var f in allFurniture)
+                {
+                    string tag = string.IsNullOrEmpty(f.ThemeTag) ? "General" : f.ThemeTag;
+                    if (!themeDict.ContainsKey(tag))
+                    {
+                        themeDict[tag] = new List<ItemData>();
+                    }
+                    themeDict[tag].Add(f);
+                }
+
+                var themeKeys = new List<string>(themeDict.Keys);
+                if (themeKeys.Count > 0)
+                {
+                    // 1. 오늘의 메인 추천 테마 1종 선택
+                    var rng = new System.Random();
+                    int pickedThemeIdx = rng.Next(0, themeKeys.Count);
+                    string mainTheme = themeKeys[pickedThemeIdx];
+                    saveData.DailyFurnitureShopThemeTag = mainTheme;
+
+                    var chosenIds = new List<string>();
+                    var mainItems = new List<ItemData>(themeDict[mainTheme]);
+                    
+                    // 메인 테마 셔플 후 4~6개 선택
+                    Shuffle(mainItems, rng);
+                    int mainCount = Math.Min(mainItems.Count, rng.Next(4, 7)); // 4~6개
+                    for (int i = 0; i < mainCount; i++)
+                    {
+                        chosenIds.Add(mainItems[i].ItemId);
+                    }
+
+                    // 2. 다른 테마들에서 3~4개 서브 아이템 선별
+                    var otherItems = new List<ItemData>();
+                    foreach (var kvp in themeDict)
+                    {
+                        if (!kvp.Key.Equals(mainTheme, StringComparison.OrdinalIgnoreCase))
+                        {
+                            otherItems.AddRange(kvp.Value);
+                        }
+                    }
+
+                    Shuffle(otherItems, rng);
+                    int subCount = Math.Min(otherItems.Count, rng.Next(3, 5)); // 3~4개
+                    for (int i = 0; i < subCount; i++)
+                    {
+                        if (!chosenIds.Contains(otherItems[i].ItemId))
+                        {
+                            chosenIds.Add(otherItems[i].ItemId);
+                        }
+                    }
+
+                    saveData.DailyFurnitureShopItemIds = chosenIds;
+                    saveData.LastFurnitureShopRefreshDate = todayStr;
+                }
+            }
+
+            // DTO의 ID 목록을 기반으로 ItemData 리스트 구성
+            var result = new List<ItemData>();
+            if (saveData != null && saveData.DailyFurnitureShopItemIds != null && saveData.DailyFurnitureShopItemIds.Count > 0)
+            {
+                foreach (var id in saveData.DailyFurnitureShopItemIds)
+                {
+                    var item = GetItem(id);
+                    if (item != null) result.Add(item);
+                }
+            }
+
+            // 폴백: 세이브 데이터가 없거나 풀이 빈 경우 전체 가구 중 최대 10개 반환
+            if (result.Count == 0)
+            {
+                int count = Math.Min(10, allFurniture.Count);
+                for (int i = 0; i < count; i++)
+                {
+                    result.Add(allFurniture[i]);
+                }
+            }
+
+            return result;
+        }
+
+        private static void Shuffle<T>(List<T> list, System.Random rng)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                (list[k], list[n]) = (list[n], list[k]);
+            }
+        }
+
+        /// <summary>
+        /// 테마 태그에 따른 정식 표시 명칭을 반환합니다.
+        /// </summary>
+        public static string GetThemeDisplayName(string themeTag)
+        {
+            if (string.IsNullOrEmpty(themeTag)) return "기본 에디션";
+            return themeTag switch
+            {
+                "PrivateMascot" => "🦄 프라이빗 마스코트 시리즈",
+                "NeonCyber" => "💻 네온 사이버 시리즈",
+                "NaturalStarter" => "🪵 내추럴 스타터 시리즈",
+                "ModernDark" => "🖤 모던 다크 시리즈",
+                "MinimalistWhite" => "🤍 미니멀 화이트 시리즈",
+                "RetroArcade" => "🕹️ 레트로 아케이드 시리즈",
+                "IndustrialStudio" => "⚙️ 인더스트리얼 스튜디오 시리즈",
+                "GoldenEmpire" or "PenthouseGold" => "✨ 펜트하우스 골드 시리즈",
+                "MidnightJazz" or "AntiqueClassic" => "🏛️ 앤틱 클래식 시리즈",
+                "CozyPastel" => "☁️ 코지 파스텔 시리즈",
+                "KTraditional" => "🏮 한국 전통 시리즈",
+                "NordicWood" => "🌲 노르딕 우드 시리즈",
+                _ => $"{themeTag} 시리즈"
+            };
+        }
+
+        /// <summary>
+        /// 가구 카드에 표시할 짧은 테마 뱃지 텍스트를 반환합니다.
+        /// </summary>
+        public static string GetThemeBadge(string themeTag)
+        {
+            if (string.IsNullOrEmpty(themeTag)) return "기본";
+            return themeTag switch
+            {
+                "PrivateMascot" => "🦄 마스코트",
+                "NeonCyber" => "💻 사이버",
+                "NaturalStarter" => "🪵 내추럴",
+                "ModernDark" => "🖤 다크",
+                "MinimalistWhite" => "🤍 화이트",
+                "RetroArcade" => "🕹️ 아케이드",
+                "IndustrialStudio" => "⚙️ 인더스트리얼",
+                "GoldenEmpire" or "PenthouseGold" => "✨ 펜트하우스",
+                "MidnightJazz" or "AntiqueClassic" => "🏛️ 앤틱",
+                "CozyPastel" => "☁️ 파스텔",
+                "KTraditional" => "🏮 전통",
+                "NordicWood" => "🌲 노르딕",
+                _ => themeTag
+            };
+        }
+
         // ──────────────────────────────────────────────────────────
         //  유틸리티 파서
         // ──────────────────────────────────────────────────────────

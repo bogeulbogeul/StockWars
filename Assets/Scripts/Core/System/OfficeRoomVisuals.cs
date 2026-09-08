@@ -38,6 +38,21 @@ namespace StockWars.Core
         [Range(1, 5)]
         [SerializeField] private int _debugLevel = 1;
 
+        private void Awake()
+        {
+            EventBus.Subscribe<OfficeLevelUpgradedEvent>(OnOfficeLevelUpgraded);
+        }
+
+        private void OnDestroy()
+        {
+            EventBus.Unsubscribe<OfficeLevelUpgradedEvent>(OnOfficeLevelUpgraded);
+        }
+
+        private void OnOfficeLevelUpgraded(OfficeLevelUpgradedEvent e)
+        {
+            ApplyLevelVisuals(e.NewLevel);
+        }
+
         private void Start()
         {
             ApplyCurrentLevelVisuals();

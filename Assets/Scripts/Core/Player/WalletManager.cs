@@ -221,6 +221,154 @@ namespace StockWars.Core
 
         #endregion
 
+        #region Special Currencies & Housing API
+
+        /// <summary>
+        /// [좋아요 코인] 잔고 조회
+        /// </summary>
+        public long GetLikeCoins()
+        {
+            return ActiveSaveData.LikeCoins;
+        }
+
+        /// <summary>
+        /// [좋아요 코인] 획득/추가
+        /// </summary>
+        public void AddLikeCoins(long amount)
+        {
+            if (amount <= 0) return;
+            ActiveSaveData.LikeCoins = Math.Clamp(ActiveSaveData.LikeCoins + amount, 0L, long.MaxValue);
+            EventBus.Publish(new LikeCoinsChangedEvent
+            {
+                NewLikeCoins = ActiveSaveData.LikeCoins,
+                Delta = amount
+            });
+        }
+
+        /// <summary>
+        /// [좋아요 코인] 사용
+        /// </summary>
+        public bool SpendLikeCoins(long amount)
+        {
+            if (amount <= 0) return false;
+            if (ActiveSaveData.LikeCoins < amount) return false;
+
+            ActiveSaveData.LikeCoins -= amount;
+            EventBus.Publish(new LikeCoinsChangedEvent
+            {
+                NewLikeCoins = ActiveSaveData.LikeCoins,
+                Delta = -amount
+            });
+            return true;
+        }
+
+        /// <summary>
+        /// [추억의 모래시계] 잔고 조회
+        /// </summary>
+        public int GetMemorySandglasses()
+        {
+            return ActiveSaveData.MemorySandglasses;
+        }
+
+        /// <summary>
+        /// [추억의 모래시계] 획득/추가
+        /// </summary>
+        public void AddMemorySandglasses(int amount)
+        {
+            if (amount <= 0) return;
+            ActiveSaveData.MemorySandglasses = Math.Clamp(ActiveSaveData.MemorySandglasses + amount, 0, int.MaxValue);
+            EventBus.Publish(new MemorySandglassesChangedEvent
+            {
+                NewCount = ActiveSaveData.MemorySandglasses,
+                Delta = amount
+            });
+        }
+
+        /// <summary>
+        /// [추억의 모래시계] 사용
+        /// </summary>
+        public bool SpendMemorySandglasses(int amount)
+        {
+            if (amount <= 0) return false;
+            if (ActiveSaveData.MemorySandglasses < amount) return false;
+
+            ActiveSaveData.MemorySandglasses -= amount;
+            EventBus.Publish(new MemorySandglassesChangedEvent
+            {
+                NewCount = ActiveSaveData.MemorySandglasses,
+                Delta = -amount
+            });
+            return true;
+        }
+
+        /// <summary>
+        /// 현재 오피스 레벨 조회 (1~5)
+        /// </summary>
+        public int GetOfficeLevel()
+        {
+            return Math.Clamp(ActiveSaveData.OfficeLevel, 1, 5);
+        }
+
+        /// <summary>
+        /// 표준 오피스 룸 그리드 크기 (8x8 고정)
+        /// </summary>
+        public int GetOfficeGridSize(int level = 1)
+        {
+            return 8;
+        }
+
+        /// <summary>
+        /// 오피스 레벨별 다음 업그레이드 비용 (Gold / L$)
+        /// </summary>
+        public long GetOfficeUpgradeCost(int currentLevel)
+        {
+            switch (currentLevel)
+            {
+                case 1: return 15000L;   // Lv.1 -> Lv.2 (8x8 -> 10x10)
+                case 2: return 40000L;   // Lv.2 -> Lv.3 (10x10 -> 12x12)
+                case 3: return 100000L;  // Lv.3 -> Lv.4 (12x12 -> 14x14)
+                case 4: return 250000L;  // Lv.4 -> Lv.5 (14x14 -> 16x16)
+                default: return 0L;
+            }
+        }
+
+        /// <summary>
+        /// 가구상점 줄리안을 통한 오피스 증축/업그레이드 실행
+        /// </summary>
+        public bool UpgradeOfficeLevel()
+        {
+            int currentLevel = GetOfficeLevel();
+            if (currentLevel >= 5)
+            {
+                Debug.LogWarning("[WalletManager] 이미 오피스가 최고 레벨(Lv.5)입니다.");
+                return false;
+            }
+
+            long cost = GetOfficeUpgradeCost(currentLevel);
+            if (!SpendCash(cost))
+            {
+                Debug.LogWarning($"[WalletManager] 오피스 업그레이드 비용 부족: 필요={cost}G, 보유={GetCash()}G");
+                return false;
+            }
+
+            int nextLevel = currentLevel + 1;
+            ActiveSaveData.OfficeLevel = nextLevel;
+
+            Debug.Log($"<color=#00FF7F>[WalletManager] 오피스 레벨 업그레이드 성공! Lv.{currentLevel} -> Lv.{nextLevel} (그리드: {GetOfficeGridSize(nextLevel)}x{GetOfficeGridSize(nextLevel)})</color>");
+
+            EventBus.Publish(new OfficeLevelUpgradedEvent
+            {
+                PreviousLevel = currentLevel,
+                NewLevel = nextLevel,
+                GridSize = GetOfficeGridSize(nextLevel),
+                UpgradeCost = cost
+            });
+
+            return true;
+        }
+
+        #endregion
+
         #region Stock Holdings (보유 주식 포트폴리오 제어) API
 
         /// <summary>
@@ -393,14 +541,18 @@ namespace StockWars.Core
 
             // 3. 보유 물량이 0이 되면 포트폴리오에서 깔끔하게 삭제
             double salePrice = stock != null ? stock.CurrentPrice : holding.AveragePurchasePrice;
+            double avgCost = holding.AveragePurchasePrice;
+            long profitFromTrade = (long)Math.Round((salePrice - avgCost) * quantity);
+            ActiveSaveData.WeeklyRealizedProfit += profitFromTrade;
+
             if (holding.Quantity <= 0)
             {
                 portfolio.Remove(targetId);
-                Debug.Log($"[WalletManager] {targetId} 잔고가 0이 되어 포트폴리오에서 완전히 삭제되었습니다.");
+                Debug.Log($"[WalletManager] {targetId} 잔고가 0이 되어 포트폴리오에서 완전히 삭제되었습니다. (실현손익: {profitFromTrade:+#,##0;-#,##0;0}G)");
             }
             else
             {
-                Debug.Log($"[WalletManager] 주식 매도 반영 완료: {targetId} -{quantity}주 (현재 총 보유: {holding.Quantity}주, 평단: {holding.AveragePurchasePrice:F1}G)");
+                Debug.Log($"[WalletManager] 주식 매도 반영 완료: {targetId} -{quantity}주 (현재 총 보유: {holding.Quantity}주, 평단: {holding.AveragePurchasePrice:F1}G, 실현손익: {profitFromTrade:+#,##0;-#,##0;0}G)");
             }
 
             // 매도 트랜잭션 전역 이벤트 발행
@@ -469,6 +621,35 @@ namespace StockWars.Core
     public struct DividendsClaimedEvent
     {
         public long ClaimedAmount;
+    }
+
+    /// <summary>
+    /// [좋아요 코인] 잔고가 변동되었을 때 발행되는 이벤트
+    /// </summary>
+    public struct LikeCoinsChangedEvent
+    {
+        public long NewLikeCoins;
+        public long Delta;
+    }
+
+    /// <summary>
+    /// [추억의 모래시계] 개수가 변동되었을 때 발행되는 이벤트
+    /// </summary>
+    public struct MemorySandglassesChangedEvent
+    {
+        public int NewCount;
+        public int Delta;
+    }
+
+    /// <summary>
+    /// 오피스 레벨이 증축/업그레이드 되었을 때 발행되는 이벤트
+    /// </summary>
+    public struct OfficeLevelUpgradedEvent
+    {
+        public int PreviousLevel;
+        public int NewLevel;
+        public int GridSize;
+        public long UpgradeCost;
     }
 
     #endregion
