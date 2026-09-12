@@ -55,7 +55,7 @@ namespace StockWars.UI
                 }
 
                 // 씬 전환 시 파괴되지 않도록 방지
-                UnityEngine.Object.DontDestroyOnLoad(eventSystemGo);
+                if (Application.isPlaying) UnityEngine.Object.DontDestroyOnLoad(eventSystemGo);
             }
         }
     }

@@ -81,7 +81,7 @@ namespace StockWars.UI
             {
                 Debug.LogWarning($"[TooltipManager] 매니저가 부모 트랜스폼 '{transform.parent.name}'의 자식으로 등록되어 있어, 싱글톤 생존을 위해 부모 관계를 끊고 루트로 복구합니다.");
                 transform.SetParent(null);
-                DontDestroyOnLoad(gameObject); // 루트로 변경되었으므로 확실하게 생존 조치
+                if (Application.isPlaying) DontDestroyOnLoad(gameObject); // 루트로 변경되었으므로 확실하게 생존 조치
             }
 
             // Spawn<T>를 사용해 루트에 부착된 UI_TooltipView를 안전하게 로드 및 매핑

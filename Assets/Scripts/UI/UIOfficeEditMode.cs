@@ -37,6 +37,7 @@ namespace StockWars.UI
 
         [Header("Catalog Drawer References")]
         [SerializeField] private GameObject _catalogDrawerPanel;
+        [SerializeField] private UIDrawerResizeHandle _resizeHandle;
         [SerializeField] private Transform _cardContentContainer;
         [SerializeField] private TMP_Dropdown _themeFilterDropdown;
         [SerializeField] private Button _doneButton;
@@ -72,6 +73,10 @@ namespace StockWars.UI
             "MonsteraPot",
             "WoodFloor",
             "IvoryWallPaper",
+            "WoodComputerDesk",
+            "Building",
+            "WoodFloorTexture",
+            "RoomBasic",
             "FURN_DESK_NS_001",
             "FURN_CHAIR_NS_001",
             "FURN_BED_NS_001",
@@ -131,6 +136,17 @@ namespace StockWars.UI
             if (_catalogDrawerPanel != null)
             {
                 _catalogDrawerPanel.SetActive(isEditMode);
+                EnsureResizeHandle();
+            }
+
+            // 1. 스마트폰 토글 버튼 및 앱 UI 숨기기 / 복구
+            var allButtons = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var btn in allButtons)
+            {
+                if (btn != null && (btn.gameObject.name == "ToggleSmartphoneButton" || btn.gameObject.name.Contains("Smartphone")))
+                {
+                    btn.gameObject.SetActive(!isEditMode);
+                }
             }
 
             if (_toggleButtonText != null)
@@ -151,6 +167,42 @@ namespace StockWars.UI
             {
                 UpdateTabVisuals();
                 PopulateCatalogCards();
+            }
+
+            // 바닥 그리드 시각화 켜기/끄기
+            OfficeGridManager.Instance?.SetGridVisible(isEditMode);
+        }
+
+        /// <summary>
+        /// 카탈로그 패널 최상단 분리선(Top Border Line) 직위에 투명 히트 박스 및 슬림 4px 핸들 바를 연동합니다.
+        /// </summary>
+        private void EnsureResizeHandle()
+        {
+            if (_catalogDrawerPanel == null) return;
+
+            var existingHandle = _catalogDrawerPanel.GetComponentInChildren<UIDrawerResizeHandle>();
+            if (existingHandle == null)
+            {
+                GameObject handleGo = new GameObject("TopResizeHandle");
+                handleGo.transform.SetParent(_catalogDrawerPanel.transform, false);
+
+                RectTransform rt = handleGo.AddComponent<RectTransform>();
+                rt.anchorMin = new Vector2(0f, 1f);
+                rt.anchorMax = new Vector2(1f, 1f);
+                rt.pivot = new Vector2(0.5f, 0.5f); // 분리선 경계에 피벗 장착
+                rt.anchoredPosition = Vector2.zero; // 최상단 분리선 Y=0 위치에 안착
+                rt.sizeDelta = new Vector2(0f, 18f); // 18px 투명 드래그 히트 존 (탭 버튼 가림 없음)
+
+                var img = handleGo.AddComponent<Image>();
+                img.color = new Color(0f, 0f, 0f, 0f); // 100% 투명 배경 (탭 UI 배경 가림 완전 방지)
+                img.raycastTarget = true;
+
+                handleGo.AddComponent<UIDrawerResizeHandle>();
+                handleGo.transform.SetAsLastSibling();
+            }
+            else
+            {
+                existingHandle.transform.SetAsLastSibling();
             }
         }
 
@@ -208,14 +260,22 @@ namespace StockWars.UI
         // 3. 하단 가로 카탈로그 카드 채우기
         // --------------------------------------------------------
 
+        [ContextMenu("Populate Catalog Cards (Editor Preview)")]
+        public void PopulateCatalogCardsInEditor()
+        {
+            PopulateCatalogCards();
+        }
+
         public void PopulateCatalogCards()
         {
             if (_cardContentContainer == null) return;
 
-            // 기존 카드 정리
-            foreach (var c in _spawnedCards)
+            // 기존 카드 정리 (에디터/런타임 하이브리드 지원)
+            for (int i = _cardContentContainer.childCount - 1; i >= 0; i--)
             {
-                if (c != null) Destroy(c);
+                var child = _cardContentContainer.GetChild(i).gameObject;
+                if (Application.isPlaying) Destroy(child);
+                else DestroyImmediate(child);
             }
             _spawnedCards.Clear();
 

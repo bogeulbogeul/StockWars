@@ -13,8 +13,8 @@ namespace StockWars.Core
     /// C# 리스트 내에서의 참조 변경 및 쉬운 데이터 동기화를 보장하기 위해 참조 형식(Class)으로 설계되었습니다.
     /// </para>
     /// </summary>
-    [Serializable]
-    [Preserve]
+    [System.Serializable]
+    [UnityEngine.Scripting.Preserve]
     public class DebtKernel
     {
         /// <summary>대출 거래 고유 식별자 (ID)</summary>

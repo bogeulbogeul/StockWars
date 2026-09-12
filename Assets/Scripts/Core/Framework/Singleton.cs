@@ -38,8 +38,11 @@ namespace StockWars.Core
                                 _instance = singletonObject.AddComponent<T>();
                                 singletonObject.name = typeof(T).Name + " (Singleton)";
                                 
-                                // 씬이 전환되어도 매니저가 파괴되지 않도록 설정
-                                DontDestroyOnLoad(singletonObject);
+                                // 씬이 전환되어도 매니저가 파괴되지 않도록 설정 (런타임 전용)
+                                if (Application.isPlaying)
+                                {
+                                    DontDestroyOnLoad(singletonObject);
+                                }
                             }
                         }
                     }
@@ -54,12 +57,22 @@ namespace StockWars.Core
             if (_instance == null)
             {
                 _instance = this as T;
-                DontDestroyOnLoad(gameObject);
+                if (Application.isPlaying)
+                {
+                    DontDestroyOnLoad(gameObject);
+                }
             }
             else if (_instance != this)
             {
                 // 이미 인스턴스가 존재하는데 다른 씬에서 중복 생성되려고 하면 파괴
-                Destroy(gameObject);
+                if (Application.isPlaying)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(gameObject);
+                }
             }
         }
 

@@ -55,7 +55,7 @@ namespace StockWars.Core
             base.Awake();
 
             // 씬 전이 시 사운드가 파괴되지 않도록 조치
-            DontDestroyOnLoad(gameObject);
+            if (Application.isPlaying) DontDestroyOnLoad(gameObject);
 
             InitializeAudioSources();
             InitializeVolumeDefaults();

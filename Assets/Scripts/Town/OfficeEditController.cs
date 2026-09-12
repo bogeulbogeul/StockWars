@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using StockWars.Core;
 
 namespace StockWars.Town
@@ -45,6 +47,7 @@ namespace StockWars.Town
 
         private bool _isMovingExisting = false;
         private string _movingInstanceId = null;
+        private int _startPlacementFrame = -1;
 
         public bool IsEditMode => _isEditMode;
         public string HeldItemId => _heldItemId;
@@ -136,6 +139,7 @@ namespace StockWars.Town
 
             _isMovingExisting = false;
             _movingInstanceId = null;
+            _startPlacementFrame = Time.frameCount;
 
             UpdateGhostVisuals();
             SetGhostActive(true);
@@ -223,6 +227,9 @@ namespace StockWars.Town
 
             if (OfficeGridManager.Instance == null) return;
 
+            bool isStartFrame = (Time.frameCount == _startPlacementFrame);
+            bool isOverUI = IsPointerOverCatalogUI();
+
             bool canPlace = false;
 
             // A. 벽면 가구(문, 창문 등) 처리
@@ -240,8 +247,8 @@ namespace StockWars.Town
 
                 canPlace = OfficeGridManager.Instance.CanPlaceWallFurniture(_heldWallIsLeft, segmentIndex, _movingInstanceId);
 
-                // 좌클릭: 배치 확정
-                if (Input.GetMouseButtonDown(0) && canPlace)
+                // 좌클릭: 배치 확정 (시작 프레임 및 UI 클릭 제외)
+                if (Input.GetMouseButtonDown(0) && !isStartFrame && !isOverUI && canPlace)
                 {
                     OfficeGridManager.Instance.PlaceWallFurniture(_heldItemId, _heldWallIsLeft, segmentIndex, _heldWallElevation);
                     _heldItemId = null;
@@ -258,12 +265,18 @@ namespace StockWars.Town
 
                 if (OfficeGridManager.Instance.WorldToGridPosition(mouseWorldPos, out int gx, out int gy))
                 {
+                    // 0 ~ CurrentGridSize - 1 (0..7) 범위로 원점 좌표 안전 클램핑 (벽면 바로 옆 타일까지 자유로운 이동 허용)
+                    gx = Mathf.Clamp(gx, 0, OfficeGridManager.Instance.CurrentGridSize - 1);
+                    gy = Mathf.Clamp(gy, 0, OfficeGridManager.Instance.CurrentGridSize - 1);
+
                     Vector3 originPos = OfficeGridManager.Instance.GridToWorldPosition(gx, gy);
                     Vector3 centerPos = originPos;
 
                     if (w > 1 || h > 1)
                     {
-                        Vector3 endPos = OfficeGridManager.Instance.GridToWorldPosition(gx + w - 1, gy + h - 1);
+                        Vector3 endPos = OfficeGridManager.Instance.GridToWorldPosition(
+                            Mathf.Min(gx + w - 1, OfficeGridManager.Instance.CurrentGridSize - 1),
+                            Mathf.Min(gy + h - 1, OfficeGridManager.Instance.CurrentGridSize - 1));
                         centerPos = (originPos + endPos) * 0.5f;
                     }
 
@@ -273,8 +286,8 @@ namespace StockWars.Town
 
                     canPlace = OfficeGridManager.Instance.CanPlaceFurniture(gx, gy, w, h, _movingInstanceId);
 
-                    // 좌클릭: 배치 확정
-                    if (Input.GetMouseButtonDown(0) && canPlace)
+                    // 좌클릭: 배치 확정 (시작 프레임 및 UI 클릭 제외)
+                    if (Input.GetMouseButtonDown(0) && !isStartFrame && !isOverUI && canPlace)
                     {
                         OfficeGridManager.Instance.PlaceFurniture(_heldItemId, gx, gy, _heldRotationIndex);
                         _heldItemId = null;
@@ -295,6 +308,37 @@ namespace StockWars.Town
             _ghostRenderer.color = canPlace ? _validPlacementColor : _invalidPlacementColor;
         }
 
+        private bool IsPointerOverCatalogUI()
+        {
+            if (UnityEngine.EventSystems.EventSystem.current == null) return false;
+
+            var pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
+
+            var results = new List<UnityEngine.EventSystems.RaycastResult>();
+            UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
+
+            foreach (var r in results)
+            {
+                if (r.gameObject != null)
+                {
+                    if (r.gameObject.GetComponentInParent<UnityEngine.UI.Button>() != null ||
+                        r.gameObject.GetComponentInParent<TMP_Dropdown>() != null ||
+                        r.gameObject.GetComponentInParent<TMP_InputField>() != null ||
+                        r.gameObject.GetComponentInParent<UnityEngine.UI.InputField>() != null ||
+                        r.gameObject.name.Contains("Catalog") || r.gameObject.name.Contains("Drawer") ||
+                        r.gameObject.name.Contains("ScrollView") || r.gameObject.name.Contains("Viewport"))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         // --------------------------------------------------------
         // 3. 기배치 가구 픽업(선택하여 재이동) 상호작용
         // --------------------------------------------------------
@@ -302,6 +346,9 @@ namespace StockWars.Town
         private void HandleInspectHover(Vector3 mouseWorldPos)
         {
             if (OfficeGridManager.Instance == null) return;
+
+            bool isOverUI = IsPointerOverCatalogUI();
+            if (isOverUI) return;
 
             // 좌클릭 시 마우스 아래에 있는 가구 픽업
             if (Input.GetMouseButtonDown(0))
@@ -319,6 +366,7 @@ namespace StockWars.Town
 
                     _isMovingExisting = true;
                     _movingInstanceId = instId;
+                    _startPlacementFrame = Time.frameCount;
 
                     UpdateGhostVisuals();
                     SetGhostActive(true);
@@ -348,7 +396,31 @@ namespace StockWars.Town
         {
             if (_ghostRenderer == null || string.IsNullOrEmpty(_heldItemId)) return;
 
-            _ghostRenderer.sprite = OfficeGridManager.Instance?.ResolveFurnitureSprite(_heldItemId);
+            Sprite sp = OfficeGridManager.Instance?.ResolveFurnitureSprite(_heldItemId);
+            _ghostRenderer.sprite = sp;
+
+            if (sp != null && sp.bounds.size.x > 0f && sp.bounds.size.y > 0f)
+            {
+                int w = 1, h = 1;
+                var itemData = ItemMasterTable.Instance?.GetItem(_heldItemId);
+                if (itemData != null)
+                {
+                    w = Math.Max(1, itemData.GridW);
+                    h = Math.Max(1, itemData.GridH);
+                }
+
+                float targetW = _heldIsWall ? 0.95f : (Math.Max(w, h) * 0.85f);
+                float scale = targetW / sp.bounds.size.x;
+
+                // 세로로 긴 가구(옷장 등)는 높이가 1.35f를 넘지 않도록 비율 자동 보정
+                if (!_heldIsWall && sp.bounds.size.y * scale > 1.35f)
+                {
+                    scale = 1.35f / sp.bounds.size.y;
+                }
+
+                _ghostObject.transform.localScale = new Vector3(scale, scale, 1f);
+            }
+
             if (_heldIsWall)
             {
                 _ghostRenderer.flipX = !_heldWallIsLeft;

@@ -13,20 +13,26 @@ namespace StockWars.Town
     {
         [Header("Grid Geometry Settings")]
         [Tooltip("아이소메트릭 타일 가로 폭 (월드 단위)")]
-        [SerializeField] private float _tileWidth = 1.0f;
+        [SerializeField] private float _tileWidth = 0.81f;
         
         [Tooltip("아이소메트릭 타일 세로 높이 (월드 단위 - 일반적으로 가로 폭의 절반)")]
-        [SerializeField] private float _tileHeight = 0.5f;
+        [SerializeField] private float _tileHeight = 0.405f;
 
         [Tooltip("그리드 생성 기준점 (오피스 바닥 중심 오프셋)")]
-        [SerializeField] private Vector2 _gridOrigin = Vector2.zero;
+        [SerializeField] private Vector2 _gridOrigin = new Vector2(0.10f, 0.03f);
 
         [Header("Tile Visuals & Prefabs")]
         [Tooltip("타일 1칸을 시각화할 프리팹 (SpriteRenderer 또는 LineRenderer 포함)")]
         [SerializeField] private GameObject _tilePrefab;
 
-        [Tooltip("타일 기본 색상 (은은한 골드/나무 테두리)")]
+        [Tooltip("타일 기본 색상 (은은한 테두리)")]
         [SerializeField] private Color _tileNormalColor = new Color(1f, 1f, 1f, 0.25f);
+
+        [Tooltip("편집 모드 서피스 그리드 선 색상 (은은하고 세련된 회색)")]
+        [SerializeField] private Color _activeGridColor = new Color(0.42f, 0.42f, 0.45f, 0.52f);
+
+        [Tooltip("편집 모드 서피스 그리드 선 두께")]
+        [SerializeField] private float _activeGridLineWidth = 0.018f;
 
         [Tooltip("배치 가능 시 하이라이트 색상 (초록 계열)")]
         [SerializeField] private Color _tileValidPlacementColor = new Color(0.27f, 0.83f, 0.45f, 0.65f);
@@ -118,6 +124,101 @@ namespace StockWars.Town
             LoadAndSpawnPlacedFurniture();
             SetGridVisibility(OfficeEditController.Instance != null && OfficeEditController.Instance.IsEditMode);
         }
+
+        private void Update()
+        {
+            // Shift 키를 누른 상태에서 방향키 및 +/- 키로 그리드 위치/크기 수동 미세 조정
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                float step = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) ? 0.002f : 0.01f;
+                bool changed = false;
+
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    _gridOrigin.y += step;
+                    changed = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    _gridOrigin.y -= step;
+                    changed = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    _gridOrigin.x -= step;
+                    changed = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    _gridOrigin.x += step;
+                    changed = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus))
+                {
+                    _tileWidth += step;
+                    _tileHeight = _tileWidth * 0.5f;
+                    changed = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
+                {
+                    _tileWidth = Mathf.Max(0.1f, _tileWidth - step);
+                    _tileHeight = _tileWidth * 0.5f;
+                    changed = true;
+                }
+
+                if (changed)
+                {
+                    UpdateGridTransforms();
+                    Debug.Log($"<color=#00FFFF>[Grid Tweak Hotkey] _gridOrigin = ({_gridOrigin.x:F3}f, {_gridOrigin.y:F3}f), _tileWidth = {_tileWidth:F3}f, _tileHeight = {_tileHeight:F3}f</color>");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 런타임/에디터 인스펙터 실시간 미세 조율 시 그리드 타일 위치 및 선을 재배치합니다.
+        /// </summary>
+        public void UpdateGridTransforms()
+        {
+            if (_spawnedTileObjects == null) return;
+
+            float halfN = (_currentGridSize - 1) * 0.5f;
+            float hw = _tileWidth * 0.5f;
+            float hh = _tileHeight * 0.5f;
+
+            for (int x = 0; x < _currentGridSize; x++)
+            {
+                for (int y = 0; y < _currentGridSize; y++)
+                {
+                    var tileGo = _spawnedTileObjects[x, y];
+                    if (tileGo == null) continue;
+
+                    tileGo.transform.position = GridToWorldPosition(x, y, halfN);
+                    var lr = tileGo.GetComponentInChildren<LineRenderer>();
+                    if (lr != null)
+                    {
+                        lr.SetPosition(0, new Vector3(0, hh, 0));
+                        lr.SetPosition(1, new Vector3(hw, 0, 0));
+                        lr.SetPosition(2, new Vector3(0, -hh, 0));
+                        lr.SetPosition(3, new Vector3(-hw, 0, 0));
+                        lr.SetPosition(4, new Vector3(0, hh, 0));
+                        lr.startWidth = _activeGridLineWidth;
+                        lr.endWidth = _activeGridLineWidth;
+                        lr.startColor = _activeGridColor;
+                        lr.endColor = _activeGridColor;
+                    }
+                }
+            }
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (Application.isPlaying)
+            {
+                UpdateGridTransforms();
+            }
+        }
+#endif
 
         private void OnEditModeChanged(OfficeEditModeChangedEvent e)
         {
@@ -221,6 +322,47 @@ namespace StockWars.Town
         }
 
         /// <summary>
+        /// 편집 모드 진입/이탈 시 바닥 타일 그리드 시각화 레이어를 켜고 끕니다.
+        /// </summary>
+        public void SetGridVisible(bool visible)
+        {
+            if (_spawnedTileObjects == null) return;
+
+            Color gridColor = visible ? _activeGridColor : _tileNormalColor;
+            float lineWidth = visible ? _activeGridLineWidth : 0.018f;
+
+            for (int x = 0; x < _currentGridSize; x++)
+            {
+                for (int y = 0; y < _currentGridSize; y++)
+                {
+                    var tileGo = _spawnedTileObjects[x, y];
+                    if (tileGo == null) continue;
+
+                    // LineRenderer 방식 아이소메트릭 그리드 선 처리
+                    var lr = tileGo.GetComponentInChildren<LineRenderer>();
+                    if (lr != null)
+                    {
+                        lr.startColor = gridColor;
+                        lr.endColor = gridColor;
+                        lr.sortingOrder = visible ? 150 : -100;
+                        lr.startWidth = lineWidth;
+                        lr.endWidth = lineWidth;
+                        lr.enabled = visible;
+                    }
+
+                    // SpriteRenderer 방식 바닥 타일 처리
+                    var sr = tileGo.GetComponentInChildren<SpriteRenderer>();
+                    if (sr != null)
+                    {
+                        sr.color = gridColor;
+                        sr.sortingOrder = visible ? (150 + x + y) : (-100 + x + y);
+                        sr.enabled = visible;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 그리드 좌표 (gx, gy)를 아이소메트릭 2.5D 월드 좌표로 변환합니다.
         /// </summary>
         public Vector3 GridToWorldPosition(int gx, int gy, float centerOffset = -1f)
@@ -253,8 +395,23 @@ namespace StockWars.Town
             float cx = ((dx / halfW) + (dy / halfH)) * 0.5f;
             float cy = ((dy / halfH) - (dx / halfW)) * 0.5f;
 
-            gridX = Mathf.RoundToInt(cx + centerOffset);
-            gridY = Mathf.RoundToInt(cy + centerOffset);
+            float gridFloatX = cx + centerOffset;
+            float gridFloatY = cy + centerOffset;
+
+            // 마우스가 벽면이나 상단/외곽 몰딩 부근까지 올라가더라도 가장 가까운 벽면 테두리 타일(0 또는 size-1)로 유연하게 스냅
+            float edgeMarginMin = -1.5f;
+            float edgeMarginMax = (_currentGridSize - 1) + 0.5f + 5.0f; // 벽면 상단 방향 넉넉한 수용 범위
+
+            if (gridFloatX >= edgeMarginMin && gridFloatX <= edgeMarginMax &&
+                gridFloatY >= edgeMarginMin && gridFloatY <= edgeMarginMax)
+            {
+                gridX = Mathf.Clamp(Mathf.FloorToInt(gridFloatX + 0.5f), 0, _currentGridSize - 1);
+                gridY = Mathf.Clamp(Mathf.FloorToInt(gridFloatY + 0.5f), 0, _currentGridSize - 1);
+                return true;
+            }
+
+            gridX = Mathf.Clamp(Mathf.FloorToInt(gridFloatX + 0.5f), 0, _currentGridSize - 1);
+            gridY = Mathf.Clamp(Mathf.FloorToInt(gridFloatY + 0.5f), 0, _currentGridSize - 1);
 
             return IsValidGridCoordinate(gridX, gridY);
         }
@@ -334,14 +491,14 @@ namespace StockWars.Town
                 // 좌측 벽: Y = size-1 라인 (X: 0 -> size-1)
                 float relX = worldPos.x - _gridOrigin.x;
                 float rawSeg = (_currentGridSize - 1) + (relX / hw);
-                segmentIndex = Mathf.Clamp(Mathf.RoundToInt(rawSeg), 0, _currentGridSize - 1);
+                segmentIndex = Mathf.Clamp(Mathf.FloorToInt(rawSeg + 0.5f), 0, _currentGridSize - 1);
             }
             else
             {
                 // 우측 벽: X = size-1 라인 (Y: 0 -> size-1)
                 float relX = worldPos.x - _gridOrigin.x;
                 float rawSeg = (_currentGridSize - 1) - (relX / hw);
-                segmentIndex = Mathf.Clamp(Mathf.RoundToInt(rawSeg), 0, _currentGridSize - 1);
+                segmentIndex = Mathf.Clamp(Mathf.FloorToInt(rawSeg + 0.5f), 0, _currentGridSize - 1);
             }
 
             return true;
@@ -641,11 +798,23 @@ namespace StockWars.Town
             fGo.transform.position = centerPos;
 
             SpriteRenderer sr = fGo.AddComponent<SpriteRenderer>();
-            sr.sprite = ResolveFurnitureSprite(itemId);
+            Sprite sp = ResolveFurnitureSprite(itemId);
+            sr.sprite = sp;
+
+            if (sp != null && sp.bounds.size.x > 0f && sp.bounds.size.y > 0f)
+            {
+                float targetW = Mathf.Max(w, h) * 0.85f;
+                float scale = targetW / sp.bounds.size.x;
+                if (sp.bounds.size.y * scale > 1.35f)
+                {
+                    scale = 1.35f / sp.bounds.size.y;
+                }
+                fGo.transform.localScale = new Vector3(scale, scale, 1f);
+            }
 
             // 90도(1) 또는 180도(2) 회전 시 스프라이트 좌우 반전 적용
             sr.flipX = (rot == 1 || rot == 2);
-            sr.sortingOrder = (gx + gy) * 2; // 아이소메트릭 Y/Depth 소팅
+            sr.sortingOrder = 10 + (gx + gy) * 2; // 아이소메트릭 Y/Depth 소팅 (기본 10 오프셋으로 RoomFrame/BuildingBase 위에 렌더링)
 
             _placedFurnitureObjects[instanceId] = fGo;
         }
@@ -662,7 +831,15 @@ namespace StockWars.Town
             fGo.transform.position = worldPos;
 
             SpriteRenderer sr = fGo.AddComponent<SpriteRenderer>();
-            sr.sprite = ResolveFurnitureSprite(itemId);
+            Sprite sp = ResolveFurnitureSprite(itemId);
+            sr.sprite = sp;
+
+            if (sp != null && sp.bounds.size.x > 0f)
+            {
+                float targetW = 0.95f;
+                float scale = targetW / sp.bounds.size.x;
+                fGo.transform.localScale = new Vector3(scale, scale, 1f);
+            }
 
             // 우측 벽일 경우 좌우 반전하여 벽면 기울기 일치
             sr.flipX = !isLeftWall;
@@ -678,12 +855,27 @@ namespace StockWars.Town
         {
             if (string.IsNullOrEmpty(itemId)) return null;
 
-            Sprite sp = Resources.Load<Sprite>($"Sprites/Furniture/{itemId}");
+            Sprite sp = Resources.Load<Sprite>($"Sprites/Item/Funiture/{itemId}");
+            if (sp == null) sp = Resources.Load<Sprite>($"Item/Funiture/{itemId}");
+            if (sp == null) sp = Resources.Load<Sprite>($"Sprites/Furniture/{itemId}");
             if (sp == null) sp = Resources.Load<Sprite>($"Furniture/{itemId}");
             if (sp == null) sp = Resources.Load<Sprite>($"Sprites/Items/{itemId}");
             if (sp == null) sp = Resources.Load<Sprite>($"Items/{itemId}");
             if (sp == null) sp = Resources.Load<Sprite>($"Sprites/Props/{itemId}");
             if (sp == null) sp = Resources.Load<Sprite>(itemId);
+
+#if UNITY_EDITOR
+            if (sp == null)
+            {
+                string path = $"Assets/Sprites/Item/Funiture/{itemId}.png";
+                sp = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            }
+            if (sp == null)
+            {
+                string path = $"Assets/Sprites/Item/Furniture/{itemId}.png";
+                sp = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            }
+#endif
 
             return sp;
         }
@@ -772,6 +964,7 @@ namespace StockWars.Town
             lr.positionCount = 5;
             lr.startWidth = 0.02f;
             lr.endWidth = 0.02f;
+            lr.sortingOrder = -100;
             lr.material = new Material(Shader.Find("Sprites/Default"));
             lr.startColor = _tileNormalColor;
             lr.endColor = _tileNormalColor;
@@ -894,7 +1087,7 @@ namespace StockWars.Town
             float targetSize = _baseCameraSize + levelIndex * _cameraSizePerGridIncrement;
 
             _targetCamera.orthographicSize = targetSize;
-            _targetCamera.transform.position = new Vector3(_gridOrigin.x, _gridOrigin.y + (size * 0.1f), -10f);
+            _targetCamera.transform.position = new Vector3(_gridOrigin.x, 1.65f + levelIndex * 0.2f, -10f);
         }
 
         /// <summary>

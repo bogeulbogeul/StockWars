@@ -51,7 +51,7 @@ namespace StockWars.UI
             if (_parentTmpText != null && _childTmpText != null)
             {
                 CopyTextSettings(_parentTmpText, _childTmpText);
-                _childTmpText.enableWordWrapping = false; // 줄바꿈 차단
+                _childTmpText.textWrappingMode = TextWrappingModes.NoWrap; // 줄바꿈 차단
             }
         }
 

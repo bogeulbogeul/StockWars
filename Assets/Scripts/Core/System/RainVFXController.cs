@@ -14,7 +14,6 @@ namespace StockWars.Core
         [SerializeField] private bool _isRainy = false;
 
         private ParticleSystem _particleSystem;
-        private ParticleSystem.EmissionModule _emissionModule;
 
         private void Awake()
         {
@@ -29,10 +28,6 @@ namespace StockWars.Core
             if (_particleSystem == null)
             {
                 _particleSystem = GetComponent<ParticleSystem>();
-                if (_particleSystem != null)
-                {
-                    _emissionModule = _particleSystem.emission;
-                }
             }
         }
 
@@ -46,7 +41,8 @@ namespace StockWars.Core
 
             if (_particleSystem != null)
             {
-                _emissionModule.enabled = active;
+                var emission = _particleSystem.emission;
+                emission.enabled = active;
                 
                 if (active)
                 {
@@ -72,7 +68,8 @@ namespace StockWars.Core
 
             if (_particleSystem != null)
             {
-                _emissionModule.rateOverTime = rateOverTime;
+                var emission = _particleSystem.emission;
+                emission.rateOverTime = rateOverTime;
             }
         }
     }

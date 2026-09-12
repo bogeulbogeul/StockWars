@@ -318,7 +318,7 @@ namespace StockWars.UI
             nameTxt.fontSize = 13;
             nameTxt.color = new Color(0.24f, 0.17f, 0.12f, 1f);
             nameTxt.alignment = TextAlignmentOptions.Center;
-            nameTxt.enableWordWrapping = true;
+            nameTxt.textWrappingMode = TextWrappingModes.Normal;
 
             // 효과 설명 / 비고
             if (!string.IsNullOrEmpty(item.SpecialEffect))
@@ -329,7 +329,7 @@ namespace StockWars.UI
                 descTxt.text = $"<size=80%><color=#6A6055>{item.SpecialEffect}</color></size>";
                 descTxt.fontSize = 10;
                 descTxt.alignment = TextAlignmentOptions.Center;
-                descTxt.enableWordWrapping = true;
+                descTxt.textWrappingMode = TextWrappingModes.Normal;
             }
 
             // 구매 버튼
