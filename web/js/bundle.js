@@ -799,8 +799,6 @@
                 this.stocks.set(stock.id, stockCopy);
                 this.priceHistory.set(stock.id, this.generateInitialHistory(stock.price));
             });
-            // Initial starter stock for portfolio visualization
-            this.portfolio.set('PATCHWORK', { qty: 1, avgPrice: 113, leverage: 1, isShort: false });
             this.startEngine();
         }
 
