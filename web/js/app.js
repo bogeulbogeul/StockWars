@@ -125,9 +125,12 @@ class StockWarsApp {
     initEventListeners() {
         // Frame Toggle
         this.btnToggleFrame?.addEventListener('click', () => {
+            document.body.classList.remove('phone-minimized');
             document.body.classList.toggle('phone-view-active');
             const isActive = document.body.classList.contains('phone-view-active');
-            this.txtFrameToggle.textContent = isActive ? '전체 화면 전환' : '스마트폰 프레임 전환';
+            if (this.txtFrameToggle) {
+                this.txtFrameToggle.textContent = isActive ? '전체 화면 전환' : '스마트폰 프레임 전환';
+            }
         });
 
         // Fast forward day
@@ -151,7 +154,7 @@ class StockWarsApp {
             this.showToast('🔄 시현 데모 데이터가 초기화되었습니다.');
         });
 
-        // Click outside smartphone frame to minimize & show Home Office view
+        // Click outside smartphone frame to minimize & show Isometric Rooftop view
         const deviceContainer = document.querySelector('.device-container');
         const phoneShell = document.querySelector('.phone-shell');
         const floatingPhoneBtn = document.getElementById('floatingPhoneBtn');
@@ -159,7 +162,10 @@ class StockWarsApp {
 
         if (deviceContainer && phoneShell) {
             deviceContainer.addEventListener('click', (e) => {
-                if (!phoneShell.contains(e.target) && !e.target.closest('.modal-overlay') && !e.target.closest('.demo-top-bar')) {
+                if (document.body.classList.contains('phone-view-active') &&
+                    !phoneShell.contains(e.target) && 
+                    !e.target.closest('.modal-overlay') && 
+                    !e.target.closest('.demo-top-bar')) {
                     document.body.classList.add('phone-minimized');
                 }
             });
