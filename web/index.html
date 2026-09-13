@@ -47,7 +47,7 @@
             <div class="cloud cloud-4">☁️</div>
         </div>
 
-        <!-- Isometric Building & Room Vector Stage (Seamless Flush Architectural Spec) -->
+        <!-- Isometric Building & Room Vector Stage (100% Building Boundary Aligned Spec) -->
         <div class="iso-stage-wrapper">
             <svg class="iso-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMax slice">
                 <defs>
@@ -182,23 +182,22 @@
                 <!-- Back Wall Inner Corner Vertical Line -->
                 <line x1="500" y1="310" x2="500" y2="90" stroke="#8c6d53" stroke-width="3" />
 
-                <!-- 5. 3D ISOMETRIC WALL BEZELS (Side Bezels & Refined Isometric Top Bezel Frame) -->
-                <!-- 3D Refined Isometric Top Bezels -->
-                <polygon points="240,220 500,90 500,74 240,204" fill="#d7ccc8" stroke="#8c6d53" stroke-width="2" />
-                <polygon points="500,90 760,220 760,204 500,74" fill="#efebe9" stroke="#8c6d53" stroke-width="2" />
+                <!-- 5. 3D ISOMETRIC WALL BEZELS (100% Within x=240 to x=760 Building Boundary) -->
+                <!-- Top Isometric Bezel Surfaces -->
+                <polygon points="240,220 500,90 500,74 240,206" fill="#d7ccc8" stroke="#8c6d53" stroke-width="2" />
+                <polygon points="500,90 760,220 760,206 500,74" fill="#efebe9" stroke="#8c6d53" stroke-width="2" />
                 
                 <!-- Inner Bezel Accent Lip Lines -->
                 <line x1="240" y1="220" x2="500" y2="90" stroke="#a67c52" stroke-width="2.5" />
                 <line x1="500" y1="90" x2="760" y2="220" stroke="#a67c52" stroke-width="2.5" />
 
-                <!-- 3D Side Bezels (Left & Right Outer Wall Thickness Profile Framing) -->
-                <!-- Left Side Bezel -->
-                <polygon points="240,440 240,220 226,213 226,433" fill="#c7a783" stroke="#8c6d53" stroke-width="2" />
-                <polygon points="240,220 240,204 226,197 226,213" fill="#d7ccc8" stroke="#8c6d53" stroke-width="1.5" />
+                <!-- Inward Vertical Wall End Facets (Aligned Flush to x=240 and x=760) -->
+                <polygon points="240,220 240,206 252,212 252,426" fill="#c7a783" opacity="0.85" stroke="#8c6d53" stroke-width="1.5" />
+                <polygon points="760,220 760,206 748,212 748,426" fill="#d9b996" opacity="0.85" stroke="#8c6d53" stroke-width="1.5" />
 
-                <!-- Right Side Bezel -->
-                <polygon points="760,440 760,220 774,213 774,433" fill="#d9b996" stroke="#8c6d53" stroke-width="2" />
-                <polygon points="760,220 760,204 774,197 774,213" fill="#efebe9" stroke="#8c6d53" stroke-width="1.5" />
+                <!-- Outer Vertical Corner Outlines (Matching Building Edge Lines x=240 and x=760) -->
+                <line x1="240" y1="206" x2="240" y2="440" stroke="#8c6d53" stroke-width="3" />
+                <line x1="760" y1="206" x2="760" y2="440" stroke="#8c6d53" stroke-width="3" />
             </svg>
         </div>
     </div>
