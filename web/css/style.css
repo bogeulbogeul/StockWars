@@ -1583,3 +1583,229 @@ body.phone-view-active .phone-screen {
     margin-top: 8px;
     letter-spacing: -0.2px;
 }
+
+/* ==========================================================================
+   Home Office & Smartphone Floating Minimize / Toggle Component
+   ========================================================================== */
+
+.device-container {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+    cursor: pointer;
+}
+
+body.phone-minimized .device-container {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(60px) scale(0.88);
+}
+
+/* Home Office Background Atmosphere Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 50% 35%, rgba(0, 229, 255, 0.08) 0%, transparent 65%),
+        radial-gradient(circle at 85% 85%, rgba(255, 179, 71, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 15% 75%, rgba(179, 136, 255, 0.07) 0%, transparent 50%),
+        linear-gradient(180deg, #070a10 0%, #0d121c 50%, #06080e 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Home Office Banner (Visible when Phone is Minimized) */
+.home-office-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.92);
+    z-index: 5;
+    text-align: center;
+    padding: 36px 48px;
+    background: rgba(18, 24, 36, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.phone-minimized .home-office-banner {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home-office-banner .office-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 12px rgba(0, 229, 255, 0.3));
+}
+
+.home-office-banner .office-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.home-office-banner .office-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.home-office-banner .office-btn {
+    background: linear-gradient(135deg, var(--accent-cyan), #00a8ff);
+    color: #000;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px 26px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.35);
+    transition: all 0.2s ease;
+}
+
+.home-office-banner .office-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.5);
+}
+
+/* Floating Off-Screen Smartphone Toggle Button (Bottom Right) */
+.floating-phone-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(18, 24, 36, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    padding: 8px 16px 8px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.25);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    transform: translateY(30px) scale(0.85);
+    pointer-events: none;
+}
+
+body.phone-minimized .floating-phone-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.floating-phone-btn:hover {
+    background: rgba(24, 34, 52, 0.98);
+    border-color: var(--accent-cyan);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 255, 0.45);
+}
+
+/* Mini Phone Shell Graphic */
+.mini-phone-shell {
+    width: 30px;
+    height: 52px;
+    background: #121722;
+    border: 2px solid #2e3b52;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.floating-phone-btn:hover .mini-phone-shell {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.mini-phone-camera {
+    width: 4px;
+    height: 4px;
+    background: #3a475e;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+}
+
+.mini-phone-screen {
+    width: 22px;
+    height: 38px;
+    background: #080b12;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mini-screen-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+}
+
+.mini-power-icon {
+    font-size: 12px;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.9));
+    animation: phonePulse 2s infinite ease-in-out;
+}
+
+@keyframes phonePulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.mini-phone-home-line {
+    width: 10px;
+    height: 2px;
+    background: #3a475e;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 3px;
+}
+
+.floating-phone-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.floating-phone-badge .badge-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    line-height: 1.2;
+}
+
+.floating-phone-badge .badge-sub {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+}

@@ -151,6 +151,28 @@ class StockWarsApp {
             this.showToast('🔄 시현 데모 데이터가 초기화되었습니다.');
         });
 
+        // Click outside smartphone frame to minimize & show Home Office view
+        const deviceContainer = document.querySelector('.device-container');
+        const phoneShell = document.querySelector('.phone-shell');
+        const floatingPhoneBtn = document.getElementById('floatingPhoneBtn');
+        const btnRestorePhoneCenter = document.getElementById('btnRestorePhoneCenter');
+
+        if (deviceContainer && phoneShell) {
+            deviceContainer.addEventListener('click', (e) => {
+                if (!phoneShell.contains(e.target) && !e.target.closest('.modal-overlay') && !e.target.closest('.demo-top-bar')) {
+                    document.body.classList.add('phone-minimized');
+                }
+            });
+        }
+
+        const restorePhone = (e) => {
+            if (e) e.stopPropagation();
+            document.body.classList.remove('phone-minimized');
+        };
+
+        floatingPhoneBtn?.addEventListener('click', restorePhone);
+        btnRestorePhoneCenter?.addEventListener('click', restorePhone);
+
         // Phone Home & App Launching
         this.iconStockApp?.addEventListener('click', () => {
             this.homeScreen.classList.remove('active');
