@@ -1644,42 +1644,48 @@ body.phone-minimized .floating-phone-btn {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* Mini Phone Shell Graphic matching the beige/rose-gold phone style in reference image */
+/* Mini Phone Shell Graphic matching the dark main smartphone shell */
 .mini-phone-shell {
     width: 44px;
     height: 84px;
-    background: #f4e3d3;
-    border: 2.5px solid #5a3c28;
-    border-radius: 12px;
+    background: #181d28;
+    border: 2.5px solid #222938;
+    border-radius: 14px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 6px 4px 6px 4px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 0 2px #10141d, 0 8px 25px rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.floating-phone-btn:hover .mini-phone-shell {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.4), 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 .mini-phone-speaker {
     width: 8px;
     height: 2px;
-    background: #6b4d37;
+    background: #3a475e;
     border-radius: 1px;
 }
 
 .mini-phone-screen {
     width: 100%;
     height: 54px;
-    background: #121212;
-    border-radius: 4px;
-    border: 1px solid #4a3323;
+    background: #090c12;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .mini-phone-home-btn {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 1.5px solid #6b4d37;
+    border: 1.5px solid #3a475e;
     background: transparent;
 }
