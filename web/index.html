@@ -35,6 +35,102 @@
                 <span class="btn-icon">🔄</span> 리셋
             </button>
         </div>
+    <!-- Isometric Rooftop Office Stage (Visible when Phone is Minimized) -->
+    <div id="isoOfficeStage" class="iso-office-stage">
+        <!-- Floating Animated Clouds Background -->
+        <div class="cloud-layer">
+            <div class="cloud cloud-1">☁️</div>
+            <div class="cloud cloud-2">☁️</div>
+            <div class="cloud cloud-3">☁️</div>
+            <div class="cloud cloud-4">☁️</div>
+        </div>
+
+        <!-- Isometric Building & Room Vector Stage -->
+        <div class="iso-stage-wrapper">
+            <svg class="iso-svg" viewBox="0 0 800 650" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#74b9ff" />
+                        <stop offset="100%" stop-color="#b2bec3" />
+                    </linearGradient>
+                    <linearGradient id="glassWallLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#dff9fb" />
+                        <stop offset="100%" stop-color="#c7ecee" />
+                    </linearGradient>
+                    <linearGradient id="glassWallRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#c7ecee" />
+                        <stop offset="100%" stop-color="#95afc0" />
+                    </linearGradient>
+                </defs>
+
+                <!-- 1. BUILDING BASE (Skyscraper Facade) -->
+                <!-- Building Left Glass Facade -->
+                <polygon points="200,420 400,520 400,650 200,550" fill="#a4b0be" stroke="#57606f" stroke-width="3" />
+                <polygon points="200,420 400,520 400,650 200,550" fill="url(#glassWallLeft)" opacity="0.85" />
+                
+                <!-- Building Left Windows Grid -->
+                <line x1="250" y1="445" x2="250" y2="575" stroke="#747d8c" stroke-width="2" />
+                <line x1="300" y1="470" x2="300" y2="600" stroke="#747d8c" stroke-width="2" />
+                <line x1="350" y1="495" x2="350" y2="625" stroke="#747d8c" stroke-width="2" />
+
+                <line x1="200" y1="465" x2="400" y2="565" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+                <line x1="200" y1="510" x2="400" y2="610" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+
+                <!-- Building Right Glass Facade -->
+                <polygon points="400,520 600,420 600,550 400,650" fill="#747d8c" stroke="#57606f" stroke-width="3" />
+                <polygon points="400,520 600,420 600,550 400,650" fill="url(#glassWallRight)" opacity="0.85" />
+
+                <!-- Building Right Windows Grid -->
+                <line x1="450" y1="495" x2="450" y2="625" stroke="#57606f" stroke-width="2" />
+                <line x1="500" y1="470" x2="500" y2="600" stroke="#57606f" stroke-width="2" />
+                <line x1="550" y1="445" x2="550" y2="575" stroke="#57606f" stroke-width="2" />
+
+                <line x1="400" y1="565" x2="600" y2="465" stroke="#ffffff" stroke-width="2" opacity="0.7" />
+                <line x1="400" y1="610" x2="600" y2="510" stroke="#ffffff" stroke-width="2" opacity="0.7" />
+
+                <!-- 2. ROOM FLOOR (Platform for Player Characters) -->
+                <!-- Floor Base Rhombus -->
+                <polygon points="400,210 580,300 400,390 220,300" fill="#f5e6d3" stroke="#8c6d53" stroke-width="3" />
+                <!-- Inner Floor Tiles Grid -->
+                <line x1="265" y1="322" x2="445" y2="232" stroke="#e0cfb8" stroke-width="1.5" />
+                <line x1="310" y1="345" x2="490" y2="255" stroke="#e0cfb8" stroke-width="1.5" />
+                <line x1="355" y1="367" x2="535" y2="277" stroke="#e0cfb8" stroke-width="1.5" />
+
+                <line x1="355" y1="232" x2="535" y2="322" stroke="#e0cfb8" stroke-width="1.5" />
+                <line x1="310" y1="255" x2="490" y2="345" stroke="#e0cfb8" stroke-width="1.5" />
+                <line x1="265" y1="277" x2="445" y2="367" stroke="#e0cfb8" stroke-width="1.5" />
+
+                <!-- 3. ROOM BACK LEFT WALL -->
+                <polygon points="220,300 400,210 400,70 220,160" fill="#fff5ea" stroke="#8c6d53" stroke-width="3" />
+                
+                <!-- Door on Left Wall -->
+                <!-- Door Frame -->
+                <polygon points="275,247 315,227 315,147 275,167" fill="#6d4c41" stroke="#3e2723" stroke-width="2.5" />
+                <!-- Inner Door Panel -->
+                <polygon points="278,243 312,226 312,151 278,168" fill="#8d6e63" stroke="#4e342e" stroke-width="1.5" />
+                <!-- Door Handle -->
+                <circle cx="305" cy="195" r="3" fill="#ffd54f" stroke="#ffb300" stroke-width="1" />
+
+                <!-- 4. ROOM BACK RIGHT WALL -->
+                <polygon points="400,210 580,300 580,160 400,70" fill="#ffebd7" stroke="#8c6d53" stroke-width="3" />
+
+                <!-- Window on Right Wall -->
+                <!-- Window Outer Frame -->
+                <polygon points="455,212 505,237 505,177 455,152" fill="#b0bec5" stroke="#546e7a" stroke-width="2.5" />
+                <!-- Window Glass Left Pane -->
+                <polygon points="458,210 478,220 478,164 458,154" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
+                <!-- Window Glass Right Pane -->
+                <polygon points="482,222 502,232 502,176 482,166" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
+                <!-- Window Reflection Streak -->
+                <line x1="462" y1="165" x2="498" y2="225" stroke="#ffffff" stroke-width="2" opacity="0.7" />
+
+                <!-- 5. WALL TOP TRIMS / THICKNESS -->
+                <!-- Left Wall Top Cap -->
+                <polygon points="220,160 400,70 400,56 220,146" fill="#d7ccc8" stroke="#8c6d53" stroke-width="2" />
+                <!-- Right Wall Top Cap -->
+                <polygon points="400,70 580,160 580,146 400,56" fill="#efebe9" stroke="#8c6d53" stroke-width="2" />
+            </svg>
+        </div>
     </div>
 
     <!-- Smartphone Wrapper Container -->
