@@ -661,7 +661,6 @@ body.phone-view-active .phone-screen {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 4px;
     margin-top: 10px;
     padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -669,33 +668,60 @@ body.phone-view-active .phone-screen {
     box-sizing: border-box;
 }
 
-.sort-btn {
-    flex: 1;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--text-muted);
-    font-size: 11px;
+.sort-label {
+    font-size: 12px;
     font-weight: 600;
-    padding: 6px 2px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sort-select-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.market-sort-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: rgba(20, 26, 38, 0.95);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    color: var(--accent-cyan);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 30px 6px 14px;
     border-radius: 8px;
     cursor: pointer;
-    white-space: nowrap;
+    outline: none;
     transition: all 0.2s ease;
-    min-width: 0;
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.sort-btn:hover {
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-.sort-btn.active {
-    color: var(--accent-cyan);
-    background: rgba(0, 229, 255, 0.15);
+.market-sort-select:hover, .market-sort-select:focus {
+    background: rgba(26, 35, 50, 1);
     border-color: var(--accent-cyan);
-    font-weight: 700;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+}
+
+.market-sort-select option {
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.sort-select-wrapper::after {
+    content: "▼";
+    font-size: 9px;
+    color: var(--accent-cyan);
+    position: absolute;
+    right: 11px;
+    pointer-events: none;
+    transition: transform 0.2s ease;
 }
 
 .stock-list-container { display: flex; flex-direction: column; gap: 8px; }

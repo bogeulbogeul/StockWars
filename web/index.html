@@ -198,10 +198,15 @@
                                     <button class="chip-btn" data-sector="Retail">유통</button>
                                 </div>
                                 <div class="market-sort-bar" id="marketSortBar">
-                                    <button class="sort-btn active" data-sort="POPULAR">🔥 인기순</button>
-                                    <button class="sort-btn" data-sort="CHANGE">📈 변동률</button>
-                                    <button class="sort-btn" data-sort="PRICE">💰 가격순</button>
-                                    <button class="sort-btn" data-sort="NAME">🔤 이름순</button>
+                                    <span class="sort-label">📊 정렬</span>
+                                    <div class="sort-select-wrapper">
+                                        <select id="marketSortSelect" class="market-sort-select">
+                                            <option value="POPULAR">🔥 인기순</option>
+                                            <option value="CHANGE">📈 변동률순</option>
+                                            <option value="PRICE">💰 높은가격순</option>
+                                            <option value="NAME">🔤 종목명순</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 

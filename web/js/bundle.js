@@ -1109,6 +1109,7 @@
             this.searchInput = document.getElementById('searchInput');
             this.sectorChips = document.getElementById('sectorChips');
             this.marketSortBar = document.getElementById('marketSortBar');
+            this.marketSortSelect = document.getElementById('marketSortSelect');
             this.stockListContainer = document.getElementById('stockListContainer');
 
             this.newsListContainer = document.getElementById('newsListContainer');
@@ -1322,12 +1323,8 @@
                 }
             });
 
-            this.marketSortBar?.addEventListener('click', e => {
-                const btn = e.target.closest('.sort-btn');
-                if (!btn) return;
-                this.marketSortBar.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.selectedSortMode = btn.dataset.sort;
+            this.marketSortSelect?.addEventListener('change', e => {
+                this.selectedSortMode = e.target.value;
                 this.render(marketEngine.getState());
             });
 
