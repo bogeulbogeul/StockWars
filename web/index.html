@@ -49,46 +49,56 @@
 
         <!-- Isometric Building & Room Vector Stage -->
         <div class="iso-stage-wrapper">
-            <svg class="iso-svg" viewBox="0 0 800 650" preserveAspectRatio="xMidYMid meet">
+            <svg class="iso-svg" viewBox="0 0 800 750" preserveAspectRatio="xMidYMax meet">
                 <defs>
-                    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#74b9ff" />
-                        <stop offset="100%" stop-color="#b2bec3" />
-                    </linearGradient>
                     <linearGradient id="glassWallLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#dff9fb" />
-                        <stop offset="100%" stop-color="#c7ecee" />
+                        <stop offset="0%" stop-color="#b2bec3" />
+                        <stop offset="50%" stop-color="#81ecec" />
+                        <stop offset="100%" stop-color="#74b9ff" />
                     </linearGradient>
                     <linearGradient id="glassWallRight" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#c7ecee" />
-                        <stop offset="100%" stop-color="#95afc0" />
+                        <stop offset="0%" stop-color="#6c5ce7" />
+                        <stop offset="50%" stop-color="#0984e3" />
+                        <stop offset="100%" stop-color="#2bcbba" />
                     </linearGradient>
                 </defs>
 
-                <!-- 1. BUILDING BASE (Skyscraper Facade) -->
+                <!-- 1. BUILDING BASE (Attached seamlessly to room floor & extends to screen bottom) -->
                 <!-- Building Left Glass Facade -->
-                <polygon points="200,420 400,520 400,650 200,550" fill="#a4b0be" stroke="#57606f" stroke-width="3" />
-                <polygon points="200,420 400,520 400,650 200,550" fill="url(#glassWallLeft)" opacity="0.85" />
+                <polygon points="220,300 400,390 400,850 220,760" fill="#a4b0be" stroke="#57606f" stroke-width="3" />
+                <polygon points="220,300 400,390 400,850 220,760" fill="url(#glassWallLeft)" opacity="0.85" />
                 
                 <!-- Building Left Windows Grid -->
-                <line x1="250" y1="445" x2="250" y2="575" stroke="#747d8c" stroke-width="2" />
-                <line x1="300" y1="470" x2="300" y2="600" stroke="#747d8c" stroke-width="2" />
-                <line x1="350" y1="495" x2="350" y2="625" stroke="#747d8c" stroke-width="2" />
+                <line x1="265" y1="322" x2="265" y2="782" stroke="#485460" stroke-width="2" />
+                <line x1="310" y1="345" x2="310" y2="805" stroke="#485460" stroke-width="2" />
+                <line x1="355" y1="367" x2="355" y2="827" stroke="#485460" stroke-width="2" />
 
-                <line x1="200" y1="465" x2="400" y2="565" stroke="#ffffff" stroke-width="2" opacity="0.8" />
-                <line x1="200" y1="510" x2="400" y2="610" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+                <line x1="220" y1="345" x2="400" y2="435" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="390" x2="400" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="435" x2="400" y2="525" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="480" x2="400" y2="570" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="525" x2="400" y2="615" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="570" x2="400" y2="660" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="615" x2="400" y2="705" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="220" y1="660" x2="400" y2="750" stroke="#ffffff" stroke-width="2" opacity="0.6" />
 
                 <!-- Building Right Glass Facade -->
-                <polygon points="400,520 600,420 600,550 400,650" fill="#747d8c" stroke="#57606f" stroke-width="3" />
-                <polygon points="400,520 600,420 600,550 400,650" fill="url(#glassWallRight)" opacity="0.85" />
+                <polygon points="400,390 580,300 580,760 400,850" fill="#747d8c" stroke="#57606f" stroke-width="3" />
+                <polygon points="400,390 580,300 580,760 400,850" fill="url(#glassWallRight)" opacity="0.85" />
 
                 <!-- Building Right Windows Grid -->
-                <line x1="450" y1="495" x2="450" y2="625" stroke="#57606f" stroke-width="2" />
-                <line x1="500" y1="470" x2="500" y2="600" stroke="#57606f" stroke-width="2" />
-                <line x1="550" y1="445" x2="550" y2="575" stroke="#57606f" stroke-width="2" />
+                <line x1="445" y1="367" x2="445" y2="827" stroke="#3d3d3d" stroke-width="2" />
+                <line x1="490" y1="345" x2="490" y2="805" stroke="#3d3d3d" stroke-width="2" />
+                <line x1="535" y1="322" x2="535" y2="782" stroke="#3d3d3d" stroke-width="2" />
 
-                <line x1="400" y1="565" x2="600" y2="465" stroke="#ffffff" stroke-width="2" opacity="0.7" />
-                <line x1="400" y1="610" x2="600" y2="510" stroke="#ffffff" stroke-width="2" opacity="0.7" />
+                <line x1="400" y1="435" x2="580" y2="345" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="480" x2="580" y2="390" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="525" x2="580" y2="435" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="570" x2="580" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="615" x2="580" y2="525" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="660" x2="580" y2="570" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="705" x2="580" y2="615" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="400" y1="750" x2="580" y2="660" stroke="#ffffff" stroke-width="2" opacity="0.5" />
 
                 <!-- 2. ROOM FLOOR (Platform for Player Characters) -->
                 <!-- Floor Base Rhombus -->
