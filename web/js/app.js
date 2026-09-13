@@ -18,10 +18,31 @@ class StockWarsApp {
         this.initDOM();
         this.initEventListeners();
         this.initChart();
+        this.initRealTimeClock();
 
         // Subscribe to Market Engine state changes
         marketEngine.subscribe(state => this.render(state));
         this.render(marketEngine.getState());
+    }
+
+    initRealTimeClock() {
+        const updateClock = () => {
+            const now = new Date();
+            const hours24 = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours24 >= 12 ? 'PM' : 'AM';
+            const hours12 = String(hours24 % 12 || 12).padStart(2, '0');
+
+            const formattedTime = `${hours12}:${minutes}:${seconds} ${ampm}`;
+            const phoneTimeStr = `${String(hours24).padStart(2, '0')}:${minutes}`;
+
+            if (this.hudTimeVal) this.hudTimeVal.textContent = formattedTime;
+            if (this.statusClock) this.statusClock.textContent = phoneTimeStr;
+        };
+
+        updateClock();
+        setInterval(updateClock, 1000);
     }
 
     initDOM() {
@@ -38,6 +59,22 @@ class StockWarsApp {
         this.iconStockApp = document.getElementById('iconStockApp');
         this.statusClock = document.getElementById('statusClock');
         this.headerDayBadge = document.getElementById('headerDayBadge');
+
+        // Top Main HUD Elements
+        this.hudDayVal = document.getElementById('hudDayVal');
+        this.hudTimeVal = document.getElementById('hudTimeVal');
+        this.hudMarketStatus = document.getElementById('hudMarketStatus');
+        this.hudStatusDot = document.getElementById('hudStatusDot');
+        this.hudWeatherTxt = document.getElementById('hudWeatherTxt');
+        this.hudCashVal = document.getElementById('hudCashVal');
+        this.hudTotalAssetVal = document.getElementById('hudTotalAssetVal');
+        this.hudPnlVal = document.getElementById('hudPnlVal');
+
+        // Top HUD Nav Buttons
+        this.btnHudRanking = document.getElementById('btnHudRanking');
+        this.btnHudBook = document.getElementById('btnHudBook');
+        this.btnHudHelp = document.getElementById('btnHudHelp');
+        this.btnHudSettings = document.getElementById('btnHudSettings');
 
         // Marquee
         this.tickerMarquee = document.getElementById('tickerMarquee');
@@ -153,6 +190,12 @@ class StockWarsApp {
             marketEngine.reset();
             this.showToast('🔄 시현 데모 데이터가 초기화되었습니다.');
         });
+
+        // Top HUD Nav Button Listeners
+        this.btnHudRanking?.addEventListener('click', () => this.showToast('🏆 랭킹 시스템: 데모 버전 준비중입니다.'));
+        this.btnHudBook?.addEventListener('click', () => this.showToast('📖 주식 도감: 데모 버전 준비중입니다.'));
+        this.btnHudHelp?.addEventListener('click', () => this.showToast('❓ 도움말: 7일 동안 주식 투자로 수익을 극대화하세요!'));
+        this.btnHudSettings?.addEventListener('click', () => this.showToast('⚙️ 환경 설정: 데모 옵션'));
 
         // Click outside smartphone frame to minimize & show Isometric Rooftop view
         const deviceContainer = document.querySelector('.device-container');
@@ -442,6 +485,18 @@ class StockWarsApp {
 
     render(state) {
         if (this.headerDayBadge) this.headerDayBadge.textContent = `Day ${state.day} / ${state.maxDays}`;
+
+        // Top Main HUD Updates
+        if (this.hudDayVal) this.hudDayVal.textContent = state.day;
+        if (this.hudCashVal) this.hudCashVal.textContent = `${state.cash.toLocaleString()} G`;
+        if (this.hudTotalAssetVal) this.hudTotalAssetVal.textContent = `${state.totalNetWorth.toLocaleString()} G`;
+        
+        if (this.hudPnlVal) {
+            const isPos = state.totalProfitLoss >= 0;
+            const pct = state.totalNetWorth > 0 ? (state.totalProfitLoss / (state.initialCash || 5000000)) * 100 : 0;
+            this.hudPnlVal.textContent = `${isPos ? '+' : ''}${state.totalProfitLoss.toLocaleString()} G (${isPos ? '+' : ''}${pct.toFixed(2)}%)`;
+            this.hudPnlVal.className = `asset-val pnl ${isPos ? 'positive' : 'negative'}`;
+        }
 
         // Home View Summary
         if (this.homeNetWorth) this.homeNetWorth.textContent = `${state.totalNetWorth.toLocaleString()} Gold`;
