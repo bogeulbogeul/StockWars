@@ -47,9 +47,9 @@
             <div class="cloud cloud-4">☁️</div>
         </div>
 
-        <!-- Isometric Building & Room Vector Stage -->
+        <!-- Isometric Building & Room Vector Stage (GDD 8x8 Grid Spec) -->
         <div class="iso-stage-wrapper">
-            <svg class="iso-svg" viewBox="0 0 800 750" preserveAspectRatio="xMidYMax meet">
+            <svg class="iso-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMax meet">
                 <defs>
                     <linearGradient id="glassWallLeft" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stop-color="#b2bec3" />
@@ -63,84 +63,74 @@
                     </linearGradient>
                 </defs>
 
-                <!-- 1. BUILDING BASE (Attached seamlessly to room floor & extends to screen bottom) -->
+                <!-- 1. BUILDING BASE (Lowered Height Pedestal Base attached seamlessly) -->
                 <!-- Building Left Glass Facade -->
-                <polygon points="220,300 400,390 400,850 220,760" fill="#a4b0be" stroke="#57606f" stroke-width="3" />
-                <polygon points="220,300 400,390 400,850 220,760" fill="url(#glassWallLeft)" opacity="0.85" />
+                <polygon points="140,380 500,620 500,800 140,560" fill="#a4b0be" stroke="#57606f" stroke-width="3" />
+                <polygon points="140,380 500,620 500,800 140,560" fill="url(#glassWallLeft)" opacity="0.85" />
                 
                 <!-- Building Left Windows Grid -->
-                <line x1="265" y1="322" x2="265" y2="782" stroke="#485460" stroke-width="2" />
-                <line x1="310" y1="345" x2="310" y2="805" stroke="#485460" stroke-width="2" />
-                <line x1="355" y1="367" x2="355" y2="827" stroke="#485460" stroke-width="2" />
+                <line x1="230" y1="440" x2="230" y2="620" stroke="#485460" stroke-width="2" />
+                <line x1="320" y1="500" x2="320" y2="680" stroke="#485460" stroke-width="2" />
+                <line x1="410" y1="560" x2="410" y2="740" stroke="#485460" stroke-width="2" />
 
-                <line x1="220" y1="345" x2="400" y2="435" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="390" x2="400" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="435" x2="400" y2="525" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="480" x2="400" y2="570" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="525" x2="400" y2="615" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="570" x2="400" y2="660" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="615" x2="400" y2="705" stroke="#ffffff" stroke-width="2" opacity="0.6" />
-                <line x1="220" y1="660" x2="400" y2="750" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="140" y1="440" x2="500" y2="680" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+                <line x1="140" y1="500" x2="500" y2="740" stroke="#ffffff" stroke-width="2" opacity="0.6" />
 
                 <!-- Building Right Glass Facade -->
-                <polygon points="400,390 580,300 580,760 400,850" fill="#747d8c" stroke="#57606f" stroke-width="3" />
-                <polygon points="400,390 580,300 580,760 400,850" fill="url(#glassWallRight)" opacity="0.85" />
+                <polygon points="500,620 860,380 860,560 500,800" fill="#747d8c" stroke="#57606f" stroke-width="3" />
+                <polygon points="500,620 860,380 860,560 500,800" fill="url(#glassWallRight)" opacity="0.85" />
 
                 <!-- Building Right Windows Grid -->
-                <line x1="445" y1="367" x2="445" y2="827" stroke="#3d3d3d" stroke-width="2" />
-                <line x1="490" y1="345" x2="490" y2="805" stroke="#3d3d3d" stroke-width="2" />
-                <line x1="535" y1="322" x2="535" y2="782" stroke="#3d3d3d" stroke-width="2" />
+                <line x1="590" y1="560" x2="590" y2="740" stroke="#3d3d3d" stroke-width="2" />
+                <line x1="680" y1="500" x2="680" y2="680" stroke="#3d3d3d" stroke-width="2" />
+                <line x1="770" y1="440" x2="770" y2="620" stroke="#3d3d3d" stroke-width="2" />
 
-                <line x1="400" y1="435" x2="580" y2="345" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="480" x2="580" y2="390" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="525" x2="580" y2="435" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="570" x2="580" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="615" x2="580" y2="525" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="660" x2="580" y2="570" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="705" x2="580" y2="615" stroke="#ffffff" stroke-width="2" opacity="0.5" />
-                <line x1="400" y1="750" x2="580" y2="660" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="500" y1="680" x2="860" y2="440" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+                <line x1="500" y1="740" x2="860" y2="500" stroke="#ffffff" stroke-width="2" opacity="0.5" />
 
-                <!-- 2. ROOM FLOOR (Platform for Player Characters) -->
+                <!-- 2. ROOM FLOOR (GDD 8x8 Standard Grid Spec - 64 Tiles for Player Characters) -->
                 <!-- Floor Base Rhombus -->
-                <polygon points="400,210 580,300 400,390 220,300" fill="#f5e6d3" stroke="#8c6d53" stroke-width="3" />
-                <!-- Inner Floor Tiles Grid -->
-                <line x1="265" y1="322" x2="445" y2="232" stroke="#e0cfb8" stroke-width="1.5" />
-                <line x1="310" y1="345" x2="490" y2="255" stroke="#e0cfb8" stroke-width="1.5" />
-                <line x1="355" y1="367" x2="535" y2="277" stroke="#e0cfb8" stroke-width="1.5" />
+                <polygon points="500,140 860,380 500,620 140,380" fill="#f5e6d3" stroke="#8c6d53" stroke-width="3.5" />
+                
+                <!-- Inner 8x8 Floor Grid (7 division lines each way = 64 tiles) -->
+                <!-- NW to SE Division Lines -->
+                <line x1="185" y1="350" x2="545" y2="590" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="230" y1="320" x2="590" y2="560" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="275" y1="290" x2="635" y2="530" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="320" y1="260" x2="680" y2="500" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="365" y1="230" x2="725" y2="470" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="410" y1="200" x2="770" y2="440" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="455" y1="170" x2="815" y2="410" stroke="#dfceb7" stroke-width="1.8" />
 
-                <line x1="355" y1="232" x2="535" y2="322" stroke="#e0cfb8" stroke-width="1.5" />
-                <line x1="310" y1="255" x2="490" y2="345" stroke="#e0cfb8" stroke-width="1.5" />
-                <line x1="265" y1="277" x2="445" y2="367" stroke="#e0cfb8" stroke-width="1.5" />
+                <!-- NE to SW Division Lines -->
+                <line x1="815" y1="350" x2="455" y2="590" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="770" y1="320" x2="410" y2="560" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="725" y1="290" x2="365" y2="530" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="680" y1="260" x2="320" y2="500" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="635" y1="230" x2="275" y2="470" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="590" y1="200" x2="230" y2="440" stroke="#dfceb7" stroke-width="1.8" />
+                <line x1="545" y1="170" x2="185" y2="410" stroke="#dfceb7" stroke-width="1.8" />
 
                 <!-- 3. ROOM BACK LEFT WALL -->
-                <polygon points="220,300 400,210 400,70 220,160" fill="#fff5ea" stroke="#8c6d53" stroke-width="3" />
+                <polygon points="140,380 500,140 500,40 140,220" fill="#fff5ea" stroke="#8c6d53" stroke-width="3.5" />
                 
                 <!-- Door on Left Wall -->
-                <!-- Door Frame -->
-                <polygon points="275,247 315,227 315,147 275,167" fill="#6d4c41" stroke="#3e2723" stroke-width="2.5" />
-                <!-- Inner Door Panel -->
-                <polygon points="278,243 312,226 312,151 278,168" fill="#8d6e63" stroke="#4e342e" stroke-width="1.5" />
-                <!-- Door Handle -->
-                <circle cx="305" cy="195" r="3" fill="#ffd54f" stroke="#ffb300" stroke-width="1" />
+                <polygon points="230,320 320,260 320,110 230,170" fill="#6d4c41" stroke="#3e2723" stroke-width="3" />
+                <polygon points="235,315 315,262 315,116 235,167" fill="#8d6e63" stroke="#4e342e" stroke-width="1.5" />
+                <circle cx="300" cy="200" r="4.5" fill="#ffd54f" stroke="#ffb300" stroke-width="1.2" />
 
                 <!-- 4. ROOM BACK RIGHT WALL -->
-                <polygon points="400,210 580,300 580,160 400,70" fill="#ffebd7" stroke="#8c6d53" stroke-width="3" />
+                <polygon points="500,140 860,380 860,220 500,40" fill="#ffebd7" stroke="#8c6d53" stroke-width="3.5" />
 
-                <!-- Window on Right Wall -->
-                <!-- Window Outer Frame -->
-                <polygon points="455,212 505,237 505,177 455,152" fill="#b0bec5" stroke="#546e7a" stroke-width="2.5" />
-                <!-- Window Glass Left Pane -->
-                <polygon points="458,210 478,220 478,164 458,154" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
-                <!-- Window Glass Right Pane -->
-                <polygon points="482,222 502,232 502,176 482,166" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
-                <!-- Window Reflection Streak -->
-                <line x1="462" y1="165" x2="498" y2="225" stroke="#ffffff" stroke-width="2" opacity="0.7" />
+                <!-- Double-Pane Window on Right Wall -->
+                <polygon points="590,140 725,230 725,110 590,20" fill="#b0bec5" stroke="#546e7a" stroke-width="3" />
+                <polygon points="595,138 653,177 653,62 595,23" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
+                <polygon points="662,183 720,222 720,107 662,68" fill="#e0f7fa" stroke="#80deea" stroke-width="1" opacity="0.9" />
+                <line x1="600" y1="35" x2="710" y2="195" stroke="#ffffff" stroke-width="2.5" opacity="0.75" />
 
                 <!-- 5. WALL TOP TRIMS / THICKNESS -->
-                <!-- Left Wall Top Cap -->
-                <polygon points="220,160 400,70 400,56 220,146" fill="#d7ccc8" stroke="#8c6d53" stroke-width="2" />
-                <!-- Right Wall Top Cap -->
-                <polygon points="400,70 580,160 580,146 400,56" fill="#efebe9" stroke="#8c6d53" stroke-width="2" />
+                <polygon points="140,220 500,40 500,24 140,204" fill="#d7ccc8" stroke="#8c6d53" stroke-width="2.5" />
+                <polygon points="500,40 860,220 860,204 500,24" fill="#efebe9" stroke="#8c6d53" stroke-width="2.5" />
             </svg>
         </div>
     </div>
