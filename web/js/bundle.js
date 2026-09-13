@@ -1067,7 +1067,7 @@
             this.selectedLeverage = 1;
             this.isLevel20Unlocked = false; // Toggle for Lv.20 demo override
             this.recentlyViewedIds = ['MOMO', 'SOCIAL', 'ECOBAT', 'PATCHWORK'];
-            this.favorites = new Set(['CLOUDBERRY', 'MOMO']);
+            this.favorites = this.loadFavorites();
             this.selectedSortMode = 'POPULAR'; // 'POPULAR', 'CHANGE', 'PRICE', 'NAME'
             window.stockWarsApp = this; // Global reference for inline events
 
@@ -1494,13 +1494,29 @@
             if (lev5) lev5.querySelector('.lock-tag').textContent = this.isLevel20Unlocked ? '🔓' : '🔒';
         }
 
+        loadFavorites() {
+            try {
+                const saved = localStorage.getItem('stockwars_favorites');
+                if (saved) {
+                    return new Set(JSON.parse(saved));
+                }
+            } catch (e) {}
+            return new Set();
+        }
+
+        saveFavorites() {
+            try {
+                localStorage.setItem('stockwars_favorites', JSON.stringify(Array.from(this.favorites)));
+            } catch (e) {}
+        }
+
         toggleFavorite(stockId) {
             const targetId = stockId || this.selectedStockId;
             if (!targetId) return;
             const stock = marketEngine.stocks.get(targetId);
             const name = stock ? stock.name : targetId;
 
-            if (!this.favorites) this.favorites = new Set(['CLOUDBERRY', 'MOMO']);
+            if (!this.favorites) this.favorites = this.loadFavorites();
 
             if (this.favorites.has(targetId)) {
                 this.favorites.delete(targetId);
@@ -1510,13 +1526,14 @@
                 this.showToast(`⭐ ${name} 종목이 관심 종목으로 등록되었습니다!`);
             }
 
+            this.saveFavorites();
             this.updateFavoriteBtnState();
             this.render(marketEngine.getState());
         }
 
         updateFavoriteBtnState() {
             if (!this.btnFavoriteStock) return;
-            if (!this.favorites) this.favorites = new Set(['CLOUDBERRY', 'MOMO']);
+            if (!this.favorites) this.favorites = this.loadFavorites();
             const isFav = this.favorites.has(this.selectedStockId);
             if (isFav) {
                 this.btnFavoriteStock.textContent = '⭐';
