@@ -22,6 +22,7 @@
 | **03-2** | **가구 상점** | **줄리안** | 일일 테마 로테이션 가구, 오피스 인테리어 | [MOD_GDD_03_2_JulianFurniture.md](MOD_GDD_03_2_JulianFurniture.md) |
 | **03-3** | **의상 상점** | **클레어** | 아바타 의상, 코스튬 | [MOD_GDD_03_3_ClaireApparel.md](MOD_GDD_03_3_ClaireApparel.md) |
 | **03-4** | **전문 서점** | **비비안(위탁)** | 영구 스탯 강화 도서 | [MOD_GDD_03_4_Bookstore.md](MOD_GDD_03_4_Bookstore.md) |
+| **03-5** | **럭키 캡슐 & 마일리지** | **사이퍼몰 / 백화점 머신** | 2주 한정 테마 의상/가구, 마일리지 교환 | [MOD_GDD_03_5_LuckyCapsuleGacha.md](MOD_GDD_03_5_LuckyCapsuleGacha.md) |
 
 ---
 
