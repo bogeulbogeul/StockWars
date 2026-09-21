@@ -1,0 +1,32 @@
+﻿/* Settlement Modal */
+.settlement-card {
+    background: linear-gradient(135deg, #161e2e, #0e131d);
+    border-color: var(--accent-yellow);
+    padding: 24px;
+}
+
+.receipt-header { text-align: center; border-bottom: 2px dashed rgba(255, 255, 255, 0.15); padding-bottom: 16px; margin-bottom: 16px; }
+.receipt-logo { font-size: 16px; font-weight: 800; color: var(--accent-yellow); }
+.receipt-title { font-size: 18px; font-weight: 800; margin-top: 4px; }
+.receipt-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.receipt-body { display: flex; flex-direction: column; gap: 8px; font-family: var(--font-mono); font-size: 13px; }
+.receipt-row { display: flex; justify-content: space-between; }
+.receipt-divider { height: 1px; background: rgba(255, 255, 255, 0.1); margin: 4px 0; }
+.receipt-row.total { font-weight: 700; font-size: 14px; color: var(--accent-cyan); }
+.receipt-row.rent-deduct { color: var(--accent-red); }
+.receipt-row.final-net { font-size: 16px; font-weight: 800; color: var(--accent-yellow); margin-top: 4px; }
+
+.result-stamp-container {
+    text-align: center;
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(0, 229, 255, 0.05);
+    border: 2px dashed var(--accent-cyan);
+    border-radius: var(--radius-md);
+}
+
+.result-stamp { font-size: 24px; font-weight: 900; letter-spacing: 2px; color: var(--accent-cyan); }
+.result-grade { font-size: 14px; font-weight: 700; color: var(--accent-yellow); margin-top: 4px; }
+
+.full-btn { width: 100%; padding: 14px; font-size: 14px; font-weight: 800; margin-top: 16px; }

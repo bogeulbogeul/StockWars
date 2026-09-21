@@ -1,0 +1,81 @@
+﻿/* ==========================================================================
+   StockWars Web Demo - Stylesheet
+   Dark Glassmorphic Cyberpunk Financial HTS Aesthetic
+   ========================================================================== */
+
+:root {
+    /* Color Tokens */
+    --bg-primary: #0a0d14;
+    --bg-surface: #121824;
+    --bg-surface-elevated: #1a2233;
+    --bg-glass: rgba(26, 34, 51, 0.75);
+    
+    --accent-cyan: #00e5ff;
+    --accent-cyan-glow: rgba(0, 229, 255, 0.25);
+    --accent-green: #00e676;
+    --accent-green-glow: rgba(0, 230, 118, 0.25);
+    --accent-red: #ff3b5c;
+    --accent-red-glow: rgba(255, 59, 92, 0.25);
+    --accent-yellow: #ffd600;
+    --accent-purple: #b388ff;
+    
+    --text-main: #f0f4fc;
+    --text-muted: #8a99b5;
+    --text-dim: #5c6b8a;
+    
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(0, 229, 255, 0.2);
+    
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}

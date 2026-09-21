@@ -1,0 +1,139 @@
+﻿/* Detailed Interactive 2-Week Chart Modal */
+.clickable-chart {
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-chart:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+}
+
+#detailedChartModal {
+    z-index: 99999 !important;
+}
+
+#detailedChartModal:not(.hidden) {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+#detailedChartModal.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.modal-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.detail-header-date {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+.detailed-chart-card {
+    max-width: 640px;
+    width: 95%;
+    background: #0b0f19;
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+    padding: 18px;
+    border-radius: var(--radius-lg);
+}
+
+.detailed-header-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    margin: 10px 0;
+    border: 1px solid var(--border-light);
+}
+
+.detail-price-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-price-val {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--text-main);
+}
+
+.detail-price-change {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.detail-metrics-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.metric-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 10px;
+}
+
+.metric-chip .lbl {
+    color: var(--text-muted);
+}
+
+.metric-chip .val {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.chart-controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.pill-selector {
+    display: flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 20px;
+    border: 1px solid var(--border-light);
+}
+
+.pill-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pill-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.demo-btn.danger-btn:hover {
+    background: var(--accent-red);
+    color: #fff;
+}

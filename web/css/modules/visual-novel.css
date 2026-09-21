@@ -1,0 +1,361 @@
+﻿/* ==========================================================================
+   Visual Novel (미연시 스타일) Dialogue Box & Tutorial System
+   ========================================================================== */
+
+.vn-tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 24px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vn-tutorial-overlay.hidden {
+    display: none !important;
+}
+
+.vn-dialogue-box {
+    pointer-events: auto;
+    width: 92%;
+    max-width: 860px;
+    background: rgba(11, 15, 26, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.18);
+    display: flex;
+    gap: 20px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: vnSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vn-dialogue-box:hover {
+    border-color: rgba(0, 229, 255, 0.65);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 229, 255, 0.25);
+}
+
+/* Side-docked Companion Layout when Smartphone is Active (prevents covering bottom navigation bar) */
+@media (min-width: 920px) {
+    body.phone-view-active .vn-tutorial-overlay {
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding-left: 36px;
+        padding-bottom: 36px;
+    }
+
+    body.phone-view-active .vn-dialogue-box {
+        width: 380px;
+        max-width: 400px;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 18px;
+        border-color: rgba(0, 229, 255, 0.5);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 229, 255, 0.25);
+    }
+
+    body.phone-view-active .vn-portrait-frame {
+        flex-direction: row;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-right: 0;
+        padding-bottom: 10px;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    body.phone-view-active .vn-portrait-avatar {
+        width: 52px;
+        height: 52px;
+    }
+
+    body.phone-view-active .vn-portrait-emoji {
+        font-size: 26px;
+    }
+
+    body.phone-view-active .vn-dialogue-body {
+        min-height: 54px;
+    }
+
+    body.phone-view-active .vn-dialogue-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 919px) {
+    body.phone-view-active .vn-tutorial-overlay {
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 65px;
+        padding-bottom: 0;
+    }
+
+    body.phone-view-active .vn-dialogue-box {
+        width: 92%;
+        max-width: 420px;
+        padding: 12px 16px;
+    }
+}
+
+@keyframes vnSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Anna Character Portrait Frame (Left) */
+.vn-portrait-frame {
+    flex-shrink: 0;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-right: 14px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vn-portrait-avatar {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.25) 0%, rgba(20, 30, 50, 0.9) 70%);
+    border: 2px solid var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.vn-portrait-emoji {
+    font-size: 38px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.vn-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vn-portrait-badge {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.12);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 10px;
+    padding: 2px 7px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Content Area (Right) */
+.vn-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+}
+
+.vn-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vn-nameplate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 229, 255, 0.15);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+}
+
+.vn-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00e676;
+    box-shadow: 0 0 8px #00e676;
+    animation: pulseDot 1.5s infinite alternate;
+}
+
+.vn-speaker-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.2px;
+}
+
+.vn-speaker-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    opacity: 0.85;
+}
+
+.vn-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.vn-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vn-btn:hover {
+    background: rgba(0, 229, 255, 0.2);
+    border-color: var(--accent-cyan);
+    color: #fff;
+}
+
+.vn-skip-btn {
+    opacity: 0.75;
+}
+
+.vn-skip-btn:hover {
+    opacity: 1;
+    color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+}
+
+.vn-dialogue-body {
+    position: relative;
+    padding-right: 25px;
+    min-height: 48px;
+}
+
+.vn-dialogue-text {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.65;
+    color: #f1f5f9;
+    letter-spacing: 0.2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.vn-indicator-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.vn-step-tracker {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    opacity: 0.9;
+}
+
+.vn-next-indicator {
+    font-size: 12px;
+    color: var(--accent-cyan);
+    animation: vnBounce 1s infinite alternate ease-in-out;
+    transition: opacity 0.2s ease;
+}
+
+@keyframes vnBounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(5px); }
+}
+
+.vn-action-area {
+    margin-top: 4px;
+}
+
+.vn-action-area.hidden {
+    display: none !important;
+}
+
+.vn-action-btn {
+    background: linear-gradient(135deg, #00e5ff, #00b0ff);
+    color: #000;
+    font-size: 13px;
+    font-weight: 800;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+    transition: all 0.2s ease;
+}
+
+.vn-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.6);
+}
+
+.pulse-glow {
+    animation: pulseGlow 1.8s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 229, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+/* Highlight / Pulse Target Effect for Tutorial Guided Interaction */
+.tutorial-pulse-target {
+    z-index: 1000 !important;
+    animation: tutorialTargetGlow 1.2s infinite alternate ease-in-out !important;
+    box-shadow: 0 0 0 3px var(--accent-cyan), 0 0 20px rgba(0, 229, 255, 0.8) !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+@keyframes tutorialTargetGlow {
+    from {
+        box-shadow: 0 0 0 2px var(--accent-cyan), 0 0 10px rgba(0, 229, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 0 5px var(--accent-yellow), 0 0 25px rgba(255, 214, 0, 0.8);
+    }
+}
+
+/* Shake Animation when player clicks dialogue instead of target interaction */
+@keyframes targetShake {
+    0%, 100% { transform: translateX(0) scale(1); }
+    20%, 60% { transform: translateX(-8px) scale(1.08); }
+    40%, 80% { transform: translateX(8px) scale(1.08); }
+}
+
+.tutorial-target-shake {
+    animation: targetShake 0.5s ease-in-out !important;
+}

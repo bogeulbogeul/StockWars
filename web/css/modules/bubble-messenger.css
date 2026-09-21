@@ -1,0 +1,404 @@
+﻿/* ==========================================================================
+   Bubble Messenger Application (익명 찌라시 & 실시간 메신저) Styles
+   ========================================================================== */
+#bubbleApp {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #0f1422;
+    color: var(--text-main);
+    overflow: hidden;
+    position: relative;
+}
+
+#bubbleApp.hidden {
+    display: none !important;
+}
+
+.bubble-header {
+    height: 52px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #141b2d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+.bubble-back-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bubble-back-btn:hover {
+    background: rgba(0, 229, 255, 0.2);
+    color: var(--accent-cyan);
+}
+
+.bubble-header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.bubble-title-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.bubble-logo-icon {
+    font-size: 16px;
+}
+
+.bubble-title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #f857a6, #ff5858);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bubble-verified-tag {
+    font-size: 9px;
+    font-weight: 800;
+    background: rgba(248, 87, 166, 0.2);
+    color: #f857a6;
+    border: 1px solid rgba(248, 87, 166, 0.4);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.bubble-status-sub {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+
+.bubble-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.bubble-action-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Bubble Channel Tabs */
+.bubble-channel-bar {
+    display: flex;
+    background: #111728;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 8px;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.bubble-chan-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 6px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.bubble-chan-tab:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.bubble-chan-tab.active {
+    background: rgba(248, 87, 166, 0.14);
+    color: #ff7597;
+    border-color: rgba(248, 87, 166, 0.35);
+}
+
+.bubble-chan-tab .chan-badge {
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 10px;
+    min-width: 14px;
+    text-align: center;
+}
+
+.bubble-chan-tab .chan-badge.dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    min-width: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+}
+
+/* Chat Feed */
+.bubble-chat-feed {
+    flex: 1;
+    padding: 12px 14px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bubble-date-divider {
+    text-align: center;
+    margin: 4px 0 8px 0;
+}
+
+.bubble-date-divider span {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.bubble-system-notice {
+    font-size: 11px;
+    color: #ffd166;
+    background: rgba(255, 209, 102, 0.1);
+    border: 1px solid rgba(255, 209, 102, 0.25);
+    border-radius: 8px;
+    padding: 8px 10px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.bubble-msg-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.bubble-msg-row.user-row {
+    justify-content: flex-end;
+}
+
+.bubble-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #1c253b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.bubble-msg-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 82%;
+}
+
+.bubble-msg-content.user-content {
+    align-items: flex-end;
+}
+
+.bubble-msg-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+}
+
+.bubble-msg-author .author-name {
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.bubble-msg-author .author-role {
+    font-size: 9.5px;
+    color: #a0aec0;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.bubble-msg-author .msg-time {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.bubble-bubble {
+    background: #1a2236;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px 14px 14px 14px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.bubble-bubble.user-bubble {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: #ffffff;
+    border-radius: 14px 4px 14px 14px;
+    border: none;
+    font-weight: 500;
+}
+
+.bubble-msg-content .user-time {
+    font-size: 9.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.bubble-bubble.anna-bubble {
+    border-color: rgba(0, 229, 255, 0.25);
+    background: #14243b;
+}
+
+.bubble-bubble.quant-bubble {
+    border-color: rgba(255, 214, 0, 0.25);
+    background: #232219;
+}
+
+.bubble-bubble.rumor-bubble {
+    border-color: rgba(248, 87, 166, 0.3);
+    background: #201625;
+}
+
+.rumor-headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.rumor-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #ff7597;
+}
+
+.rumor-impact {
+    font-size: 11px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+}
+
+.rumor-text {
+    font-size: 12px;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+}
+
+.rumor-meta {
+    font-size: 10px;
+    color: #a0aec0;
+    margin-bottom: 8px;
+}
+
+.bubble-trade-btn {
+    width: 100%;
+    padding: 7px 10px;
+    background: rgba(0, 229, 255, 0.12);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 6px;
+    color: var(--accent-cyan);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bubble-trade-btn:hover {
+    background: rgba(0, 229, 255, 0.25);
+    border-color: var(--accent-cyan);
+    transform: translateY(-1px);
+}
+
+/* Bottom Input Bar */
+.bubble-input-bar {
+    height: 52px;
+    padding: 6px 10px;
+    background: #141b2d;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.bubble-input {
+    flex: 1;
+    height: 38px;
+    background: #0b0f19;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 19px;
+    padding: 0 14px;
+    font-size: 12px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.bubble-input:focus {
+    border-color: #f857a6;
+}
+
+.bubble-send-btn {
+    height: 38px;
+    padding: 0 16px;
+    background: linear-gradient(135deg, #f857a6, #ff5858);
+    border: none;
+    border-radius: 19px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.bubble-send-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.bubble-send-btn:active {
+    transform: scale(0.96);
+}

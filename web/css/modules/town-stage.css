@@ -1,0 +1,1333 @@
+/* ==========================================================================
+   2D Side-Scrolling Town Stage (TownStage.js)
+   ========================================================================== */
+
+.town-stage-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    background: #080c14;
+    user-select: none;
+}
+
+.town-stage-container.hidden {
+    display: none !important;
+}
+
+/* Town Top Info Header HUD */
+.town-channel-header-hud {
+    position: absolute;
+    top: 106px;
+    left: 24px;
+    right: 24px;
+    z-index: 40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.town-hud-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: rgba(13, 20, 36, 0.85);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.15);
+    pointer-events: auto;
+}
+
+.town-hud-badge {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    background: rgba(0, 229, 255, 0.15);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.town-channel-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono);
+}
+
+.town-hud-right {
+    pointer-events: auto;
+}
+
+.town-return-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: linear-gradient(135deg, rgba(20, 28, 48, 0.95), rgba(30, 42, 70, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.town-return-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(30, 50, 90, 0.95));
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0, 229, 255, 0.25);
+}
+
+/* Town Controls Hint HUD */
+.town-controls-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(13, 20, 36, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(10px);
+    color: var(--text-dim);
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.town-controls-hint .hint-icon {
+    font-size: 14px;
+}
+
+.town-controls-hint .hint-text b {
+    color: var(--accent-cyan);
+}
+
+/* Main Viewport */
+.town-viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.town-viewport:active {
+    cursor: grabbing;
+}
+
+/* Parallax Background Skyline */
+.town-parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(180deg, #050811 0%, #0a1122 45%, #101c36 75%, #182846 100%);
+    z-index: 2;
+    will-change: transform;
+}
+
+.parallax-skyline {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    background-image: 
+        linear-gradient(to right, transparent 0px, transparent 30px, rgba(14, 24, 48, 0.9) 30px, rgba(14, 24, 48, 0.9) 80px, transparent 80px, transparent 110px, rgba(18, 30, 60, 0.85) 110px, rgba(18, 30, 60, 0.85) 200px, transparent 200px),
+        linear-gradient(to right, rgba(10, 16, 32, 0.95) 0px, rgba(10, 16, 32, 0.95) 140px, transparent 140px, transparent 180px, rgba(15, 25, 50, 0.9) 180px, rgba(15, 25, 50, 0.9) 320px, transparent 320px);
+    background-size: 400px 380px, 600px 320px;
+    opacity: 0.65;
+}
+
+.parallax-clouds {
+    position: absolute;
+    top: 140px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0.25;
+    font-size: 32px;
+}
+
+/* World Track */
+.town-world-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 5;
+    will-change: transform;
+}
+
+/* Buildings Layer */
+.town-buildings-layer {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    pointer-events: auto;
+}
+
+/* Modular Town Building Box */
+.town-building-box {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 12px 12px 0 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    z-index: 10;
+}
+
+.town-building-box:hover {
+    transform: translateY(-8px);
+}
+
+/* Theme Color Variants (Realistic Urban Architecture & Materials) */
+.town-building-box.theme-home-officetel {
+    background: linear-gradient(180deg, #1b2636 0%, #111822 100%);
+    border: 2px solid #3d506d;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.town-building-box.theme-home-officetel:hover {
+    border-color: #5d7ca8;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
+}
+
+.town-building-box.theme-yellow {
+    background: linear-gradient(180deg, #2a2512 0%, #18150a 100%);
+    border: 2px solid #54461e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-yellow:hover {
+    border-color: #8c732a;
+}
+
+.town-building-box.theme-green {
+    background: linear-gradient(180deg, #13281d 0%, #0c1811 100%);
+    border: 2px solid #28543b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-green:hover {
+    border-color: #3e825c;
+}
+
+.town-building-box.theme-amber {
+    background: linear-gradient(180deg, #2b2014 0%, #1a120b 100%);
+    border: 2px solid #573e24;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-amber:hover {
+    border-color: #876036;
+}
+
+.town-building-box.theme-magenta {
+    background: linear-gradient(180deg, #2c1626 0%, #190c15 100%);
+    border: 2px solid #592c4d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-magenta:hover {
+    border-color: #8a4377;
+}
+
+.town-building-box.theme-indigo {
+    background: linear-gradient(180deg, #161e30 0%, #0d121c 100%);
+    border: 2px solid #2e3d61;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-indigo:hover {
+    border-color: #49619a;
+}
+
+.town-building-box.theme-violet {
+    background: linear-gradient(180deg, #261738 0%, #150c20 100%);
+    border: 2px solid #542f7d;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+}
+.town-building-box.theme-violet:hover {
+    border-color: #7b45b5;
+}
+
+.town-building-box.theme-blue {
+    background: linear-gradient(180deg, #121f36 0%, #0a1220 100%);
+    border: 2px solid #25406d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-blue:hover {
+    border-color: #3b66ad;
+}
+
+.town-building-box.theme-purple {
+    background: linear-gradient(180deg, #22142e 0%, #130a1a 100%);
+    border: 2px solid #482963;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-purple:hover {
+    border-color: #6f3f99;
+}
+
+.town-building-box.theme-red {
+    background: linear-gradient(180deg, #2b1315 0%, #18090a 100%);
+    border: 2px solid #59252a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-red:hover {
+    border-color: #8c3941;
+}
+
+/* Landmark Special Architecture */
+.town-building-box.landmark-main {
+    z-index: 12;
+}
+
+/* Architectural Rooftop Parapet / Header */
+.building-roof-parapet {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background: rgba(18, 24, 34, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px 10px 0 0;
+}
+
+.parapet-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.building-category-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-dim);
+}
+
+.building-name-plate {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #e2e8f0;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Officetel Special Penthouse Terrace */
+.officetel-penthouse-top {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.penthouse-window {
+    width: 28px;
+    height: 12px;
+    background: rgba(255, 230, 140, 0.75);
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(255, 230, 140, 0.4);
+}
+
+/* Modular Architectural Asset Slot */
+.building-asset-slot {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.building-wireframe-facade {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.building-windows-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 4px 0;
+}
+
+.mock-window-pane {
+    width: 18px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+.mock-window-pane.officetel-window {
+    width: 16px;
+    height: 18px;
+}
+
+.mock-window-pane.lit {
+    background: rgba(255, 235, 160, 0.55);
+    box-shadow: 0 0 6px rgba(255, 235, 160, 0.25);
+    border-color: rgba(255, 245, 190, 0.7);
+}
+
+/* Building Entrance Gate / Canopy */
+.building-entrance-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: rgba(10, 14, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+    margin-top: 6px;
+}
+
+.entrance-door-light {
+    width: 24px;
+    height: 3px;
+    background: #a0aec0;
+    border-radius: 2px;
+}
+
+.entrance-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #cbd5e0;
+}
+
+/* Interactive Props Layer (Benches & Electronic Billboard) */
+.town-interactive-props-layer {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    pointer-events: auto;
+    z-index: 16;
+}
+
+/* 1. Town Recovery Bench Prop */
+.town-bench-prop {
+    position: absolute;
+    bottom: 0;
+    height: 54px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transition: transform 0.2s ease;
+}
+
+.town-bench-prop:hover {
+    transform: translateY(-3px);
+}
+
+.bench-aura-glow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+    animation: benchGlowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes benchGlowPulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.95); }
+    50% { opacity: 0.85; transform: translateX(-50%) scale(1.1); }
+}
+
+.bench-structure {
+    width: 100%;
+    height: 44px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bench-backrest {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.bench-slat {
+    height: 6px;
+    background: linear-gradient(90deg, #8d5b2c 0%, #b3733b 50%, #8d5b2c 100%);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.bench-seat {
+    width: 96%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bench-armrests .arm-left,
+.bench-armrests .arm-right {
+    position: absolute;
+    top: 6px;
+    width: 6px;
+    height: 24px;
+    background: #212b36;
+    border-radius: 3px;
+    border: 1px solid #455a64;
+}
+.bench-armrests .arm-left { left: 0; }
+.bench-armrests .arm-right { right: 0; }
+
+.bench-legs .leg-left,
+.bench-legs .leg-right {
+    position: absolute;
+    bottom: -2px;
+    width: 5px;
+    height: 18px;
+    background: #1e293b;
+    border-radius: 2px;
+}
+.bench-legs .leg-left { left: 6px; transform: skewX(-4deg); }
+.bench-legs .leg-right { right: 6px; transform: skewX(4deg); }
+
+.bench-name-tag {
+    position: absolute;
+    top: -24px;
+    padding: 2px 7px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(74, 222, 128, 0.5);
+    border-radius: 10px;
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 8px rgba(74, 222, 128, 0.25);
+}
+
+.bench-shadow {
+    position: absolute;
+    bottom: -4px;
+    width: 102%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+/* 2. Town Electronic Billboard Prop */
+.town-billboard-prop {
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transition: transform 0.25s ease;
+}
+
+.town-billboard-prop:hover {
+    transform: translateY(-4px);
+}
+
+.billboard-pylons {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.pylon-leg {
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
+    border: 1px solid #475569;
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.pylon-cross-bracing {
+    position: absolute;
+    top: 25px;
+    left: 10%;
+    width: 80%;
+    height: 35px;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(71, 85, 105, 0.6) 10px, rgba(71, 85, 105, 0.6) 13px);
+}
+
+.billboard-screen-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 195px;
+    background: #090e17;
+    border: 3px solid #1e293b;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 229, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.billboard-top-status {
+    height: 24px;
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+}
+
+.live-dot-pulse {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ef4444;
+    animation: livePulse 1s infinite alternate;
+}
+
+@keyframes livePulse {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.live-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #ef4444;
+    letter-spacing: 0.5px;
+}
+
+.live-tag {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-family: var(--font-mono);
+}
+
+.billboard-main-screen {
+    flex: 1;
+    position: relative;
+    background: radial-gradient(circle at center, #0f2038 0%, #060b13 100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.billboard-slides-container {
+    flex: 1;
+    position: relative;
+    padding: 12px 14px;
+}
+
+.billboard-news-slide {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    bottom: 30px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.billboard-news-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.news-badge-row {
+    margin-bottom: 6px;
+}
+
+.news-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.news-badge.badge-breaking {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid #ef4444;
+    color: #f87171;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+.news-badge.badge-ad {
+    background: rgba(234, 179, 8, 0.2);
+    border: 1px solid #eab308;
+    color: #fde047;
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
+}
+
+.news-badge.badge-market {
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid #3b82f6;
+    color: #93c5fd;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.news-badge.badge-event {
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid #a855f7;
+    color: #d8b4fe;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+.news-body-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.45;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.billboard-ticker-tape {
+    height: 26px;
+    background: #020617;
+    border-top: 1px solid #1e293b;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-text-track {
+    display: inline-flex;
+    gap: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-family: var(--font-mono);
+    animation: marqueeTicker 22s linear infinite;
+}
+
+@keyframes marqueeTicker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.billboard-base-shadow {
+    position: absolute;
+    bottom: -6px;
+    width: 90%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+
+/* Street Props (Lamps, Trees, Signs) */
+.town-street-props {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.street-lamp {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 125px;
+    background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+    border-radius: 2px;
+}
+
+.street-lamp .lamp-head {
+    position: absolute;
+    top: -12px;
+    left: -8px;
+    width: 26px;
+    height: 14px;
+    background: #0f172a;
+    border: 1px solid #64748b;
+    border-radius: 6px 6px 2px 2px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.street-lamp .lamp-light {
+    position: absolute;
+    top: 2px;
+    left: -35px;
+    width: 80px;
+    height: 155px;
+    background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.38) 0%, rgba(254, 240, 138, 0.1) 45%, transparent 75%);
+    pointer-events: none;
+}
+
+.street-lamp .lamp-base {
+    position: absolute;
+    bottom: -2px;
+    left: -4px;
+    width: 18px;
+    height: 6px;
+    background: #0f172a;
+    border-radius: 3px;
+}
+
+/* Urban Trees & Planters */
+.town-urban-tree {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tree-foliage {
+    position: absolute;
+    top: 0;
+    width: 54px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foliage-layer.layer-1 {
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle, #22c55e 0%, #15803d 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.foliage-layer.layer-2 {
+    width: 54px;
+    height: 38px;
+    background: radial-gradient(circle, #16a34a 0%, #166534 100%);
+    border-radius: 50%;
+    margin-top: -24px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.tree-trunk {
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(90deg, #5c3818, #78481e, #5c3818);
+    border-radius: 2px;
+}
+
+.tree-planter-pot {
+    width: 32px;
+    height: 18px;
+    background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+    border: 1px solid #475569;
+    border-radius: 4px 4px 2px 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Direction Signs */
+.town-direction-sign {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-plate {
+    padding: 4px 10px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 6px;
+    color: #e2e8f0;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 229, 255, 0.25);
+}
+
+.sign-pole {
+    width: 6px;
+    height: 48px;
+    background: #334155;
+    border-radius: 1px;
+}
+
+/* Healing Particle Effect */
+.town-heal-sparkle {
+    position: absolute;
+    bottom: 190px;
+    z-index: 45;
+    padding: 6px 14px;
+    background: rgba(13, 22, 40, 0.95);
+    border: 1.5px solid #4ade80;
+    border-radius: 20px;
+    color: #4ade80;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 20px rgba(74, 222, 128, 0.5);
+    animation: healFloatUp 2.2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes healFloatUp {
+    0% { opacity: 0; transform: translateY(15px) scale(0.9); }
+    15% { opacity: 1; transform: translateY(0) scale(1.05); }
+    80% { opacity: 1; transform: translateY(-25px) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(0.95); }
+}
+
+/* Character Resting Pose on Bench */
+.town-player-character.resting .town-char-body {
+    transform: translateY(4px) scale(0.95);
+}
+
+/* Floating Toast Notification */
+.town-floating-toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    background: rgba(10, 16, 30, 0.96);
+    border: 1.5px solid var(--accent-cyan);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 229, 255, 0.35);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+    pointer-events: none;
+}
+
+.town-floating-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Billboard News Interactive Modal */
+.town-billboard-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 8, 16, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    animation: fadeIn 0.2s ease;
+}
+
+.town-billboard-modal-dialog {
+    width: 680px;
+    max-width: 92vw;
+    max-height: 85vh;
+    background: linear-gradient(180deg, #0e1726 0%, #090e18 100%);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 229, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.billboard-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.modal-title-icon {
+    font-size: 28px;
+}
+
+.modal-title-text {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.modal-subtitle-text {
+    margin: 3px 0 0 0;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.modal-close-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.billboard-modal-body {
+    padding: 22px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
+}
+
+.news-list-grid, .ad-list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.news-card-item, .ad-card-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.news-card-item:hover, .ad-card-item:hover {
+    background: rgba(20, 32, 56, 0.8);
+    border-color: var(--accent-cyan);
+    transform: translateX(4px);
+}
+
+.news-card-badge, .ad-card-badge {
+    align-self: flex-start;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.news-card-item.breaking .news-card-badge {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid #ef4444;
+    color: #f87171;
+}
+
+.news-card-item.market .news-card-badge {
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid #3b82f6;
+    color: #93c5fd;
+}
+
+.ad-card-item.shop .ad-card-badge {
+    background: rgba(234, 179, 8, 0.2);
+    border: 1px solid #eab308;
+    color: #fde047;
+}
+
+.ad-card-item.furniture .ad-card-badge {
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid #a855f7;
+    color: #d8b4fe;
+}
+
+.news-card-headline, .ad-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.news-card-detail, .ad-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Ground Platform */
+.town-ground-platform {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.ground-sidewalk-top {
+    height: 38px;
+    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
+    border-top: 3px solid #607d8b;
+    border-bottom: 2px solid #1c252a;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.ground-pavement-body {
+    flex: 1;
+    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.road-dashed-line {
+    width: 100%;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
+    opacity: 0.85;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* 2D Side-View Player Character */
+.town-player-character {
+    position: absolute;
+    bottom: 125px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    will-change: left, transform;
+}
+
+.town-char-nametag {
+    padding: 3px 10px;
+    background: rgba(10, 16, 28, 0.9);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 12px;
+    color: var(--accent-cyan);
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.town-char-body {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 2.5px solid #2c3e50;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease;
+}
+
+.town-char-body .char-face-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.town-char-body .char-eye {
+    position: absolute;
+    top: 14px;
+    width: 5px;
+    height: 8px;
+    background: #1e272e;
+    border-radius: 3px;
+}
+
+.town-char-body .char-eye.left { left: 14px; }
+.town-char-body .char-eye.right { left: 26px; }
+
+.town-char-body .char-smile {
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 11px;
+    height: 6px;
+    border-bottom: 2.5px solid #1e272e;
+    border-radius: 0 0 8px 8px;
+}
+
+.town-char-body .char-badge-pip {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.town-char-shadow {
+    width: 38px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    margin-top: -3px;
+    filter: blur(2px);
+}
+
+/* Building Proximity Action Prompt Overlay */
+.town-building-prompt {
+    position: absolute;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 24px;
+    background: rgba(13, 22, 40, 0.95);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.35);
+    cursor: pointer;
+    animation: promptFloat 1.4s ease-in-out infinite alternate;
+}
+
+.town-building-prompt.hidden {
+    display: none !important;
+}
+
+@keyframes promptFloat {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-6px); }
+}
+
+.town-building-prompt .prompt-icon {
+    font-size: 26px;
+}
+
+.town-building-prompt .prompt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.town-building-prompt .prompt-building-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.town-building-prompt .prompt-building-desc {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+}
+
+.town-building-prompt .prompt-hotkey-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent-cyan);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 900;
+    border-radius: 6px;
+    box-shadow: 0 0 12px var(--accent-cyan);
+    margin-left: 8px;
+}

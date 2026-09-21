@@ -1,0 +1,27 @@
+﻿/* News Detail Modal */
+.news-detail-card { max-width: 480px; }
+.news-detail-badge-area { display: flex; align-items: center; gap: 8px; }
+.news-detail-time { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+.news-detail-title { font-size: 16px; font-weight: 800; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); }
+.news-detail-content { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; background: rgba(0, 0, 0, 0.2); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-light); }
+
+.market-analysis-box {
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.analysis-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px; }
+.analysis-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+.credibility-val { font-weight: 600; color: var(--accent-yellow); }
+
+.analysis-comment-box {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border-light);
+}

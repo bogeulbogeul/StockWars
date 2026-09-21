@@ -1,0 +1,83 @@
+﻿/* Top Demo Control Bar */
+.demo-top-bar {
+    width: 100%;
+    max-width: 1200px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    z-index: 100;
+}
+
+.demo-branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.demo-badge {
+    background: linear-gradient(135deg, var(--accent-cyan), #00a8ff);
+    color: #000;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.5px;
+}
+
+.demo-sub {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.demo-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.demo-btn {
+    background: var(--bg-surface-elevated);
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.demo-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.demo-btn.special-btn {
+    background: rgba(179, 136, 255, 0.15);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+.demo-btn.accent-btn {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.demo-btn.warning-btn {
+    background: rgba(255, 214, 0, 0.15);
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
+}
+
+.demo-btn.danger-btn {
+    background: rgba(255, 59, 92, 0.15);
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+}
