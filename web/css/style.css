@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    StockWars Web Demo - Master Modular Stylesheet
    Architecture: Domain-driven modular CSS structure for high token efficiency
    ========================================================================== */
@@ -33,6 +33,7 @@
 @import './modules/office-stage.css';
 @import './modules/town-gateway-modal.css';
 @import './modules/town-stage.css';
+@import './modules/logistics-game.css';
 
 /* 8. Settlement & Reporting */
 @import './modules/settlement-modal.css';

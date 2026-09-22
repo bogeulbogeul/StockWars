@@ -26,6 +26,9 @@ export class TopDemoBar {
                     <button id="btnToggleStage" class="demo-btn special-btn" title="오피스 ↔ 타운 맵 전환">
                         <span class="btn-icon">🏙️</span> <span id="txtStageToggle">타운으로 이동</span>
                     </button>
+                    <button id="btnLogisticsDemo" class="demo-btn accent-btn" title="비트 물류 상하차 알바 바로 시작">
+                        <span class="btn-icon">📦</span> <span>물류 알바 (60초)</span>
+                    </button>
                     <button id="btnToggleFrame" class="demo-btn">
                         <span class="btn-icon">📱</span> <span id="txtFrameToggle">스마트폰 열기</span>
                     </button>
@@ -56,6 +59,7 @@ export class TopDemoBar {
         this.btnFastForwardDay = document.getElementById('btnFastForwardDay');
         this.btnTriggerSettlement = document.getElementById('btnTriggerSettlement');
         this.btnResetDemo = document.getElementById('btnResetDemo');
+        this.btnLogisticsDemo = document.getElementById('btnLogisticsDemo');
     }
 
     initEventListeners() {
@@ -65,6 +69,10 @@ export class TopDemoBar {
 
         this.btnToggleStage?.addEventListener('click', () => {
             if (this.callbacks.onToggleStage) this.callbacks.onToggleStage();
+        });
+
+        this.btnLogisticsDemo?.addEventListener('click', () => {
+            if (this.callbacks.onOpenLogistics) this.callbacks.onOpenLogistics();
         });
 
         this.btnToggleFrame?.addEventListener('click', () => {

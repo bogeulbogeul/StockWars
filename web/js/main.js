@@ -20,6 +20,7 @@ import { SettlementModal } from './components/SettlementModal.js';
 import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
+import { LogisticsMiniGame } from './components/LogisticsMiniGame.js';
 
 class StockWarsApplication {
     constructor() {
@@ -35,6 +36,7 @@ class StockWarsApplication {
             onShowTitle: () => this.showTitleScreen(),
             onToggleStage: () => this.toggleStage(),
             onToggleFrame: () => this.togglePhoneFrame(),
+            onOpenLogistics: () => this.logisticsMiniGame?.open(),
             onUnlockLevel20: () => this.toggleLevel20(),
             onNextDay: () => this.nextDay(),
             onTriggerSettlement: () => this.openSettlement(),
@@ -129,11 +131,25 @@ class StockWarsApplication {
             onConnect: (server) => this.enterTown(server)
         });
 
+        // Logistics Mini-Game (Bit Logistics 60-second delivery)
+        this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
+            onComplete: (result) => {
+                marketEngine.cash += result.goldReward;
+                marketEngine.notify();
+                toastManager.show(`📦 [비트 물류] 정산 완료: +${result.goldReward.toLocaleString()}G 급여 및 ${result.expReward} EXP가 지급되었습니다!`);
+                if (result.hasRumor) {
+                    setTimeout(() => {
+                        toastManager.show('💌 [찌라시 알림] 비트 물류 동료가 보낸 주가 복선 정보가 스마트폰 메일함에 도착했습니다!');
+                    }, 1200);
+                }
+            }
+        });
+
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => {
-                toastManager.show('📦 [비트 물류센터] 관리소장 박씨: "시드 머니 벌러 왔나? 60초 상하차 알바 준비하게!"');
+                this.logisticsMiniGame.open();
             },
             onOpenStore: () => {
                 toastManager.show('🏪 [비비안 잡화점] 비비안: "어서 오세요! 기력 회복용 특제 에너지 드링크와 찌라시가 준비되어 있어요."');

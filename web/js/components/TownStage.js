@@ -156,7 +156,9 @@ export class TownStage {
                 colorTheme: 'purple',
                 desc: '확정형 고급 찌라시 정보 거래, 지하 정통 블랙잭 테이블 (브로커 안드레)',
                 actionText: '펍 입장'
-            },
+            }
+        ];
+
         // Interactive Town Props (2 Recovery Benches + 1 News/Ad LED Billboard)
         this.interactiveProps = [
             {

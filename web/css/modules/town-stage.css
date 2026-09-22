@@ -924,6 +924,130 @@
     border-radius: 1px;
 }
 
+/* Ground Platform (Sidewalk & Road) */
+.town-ground-platform {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.ground-sidewalk-top {
+    height: 38px;
+    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
+    border-top: 3px solid #607d8b;
+    border-bottom: 2px solid #1c252a;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.ground-pavement-body {
+    flex: 1;
+    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.road-dashed-line {
+    width: 100%;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
+    opacity: 0.85;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* 2D Side-View Player Character */
+.town-player-character {
+    position: absolute;
+    bottom: 125px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    will-change: left, transform;
+}
+
+.town-char-nametag {
+    padding: 3px 10px;
+    background: rgba(10, 16, 28, 0.9);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 12px;
+    color: var(--accent-cyan);
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.town-char-body {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 2.5px solid #2c3e50;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease;
+}
+
+.town-char-body .char-face-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.town-char-body .char-eye {
+    position: absolute;
+    top: 14px;
+    width: 5px;
+    height: 8px;
+    background: #1e272e;
+    border-radius: 3px;
+}
+
+.town-char-body .char-eye.left { left: 14px; }
+.town-char-body .char-eye.right { left: 26px; }
+
+.town-char-body .char-smile {
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 11px;
+    height: 6px;
+    border-bottom: 2.5px solid #1e272e;
+    border-radius: 0 0 8px 8px;
+}
+
+.town-char-body .char-badge-pip {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.town-char-shadow {
+    width: 38px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    margin-top: -3px;
+    filter: blur(2px);
+}
+
 /* Healing Particle Effect */
 .town-heal-sparkle {
     position: absolute;
@@ -952,6 +1076,72 @@
 /* Character Resting Pose on Bench */
 .town-player-character.resting .town-char-body {
     transform: translateY(4px) scale(0.95);
+}
+
+/* Proximity Action Prompt Overlay */
+.town-building-prompt {
+    position: absolute;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 24px;
+    background: rgba(13, 22, 40, 0.95);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.35);
+    cursor: pointer;
+    animation: promptFloat 1.4s ease-in-out infinite alternate;
+}
+
+.town-building-prompt.hidden {
+    display: none !important;
+}
+
+@keyframes promptFloat {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-6px); }
+}
+
+.town-building-prompt .prompt-icon {
+    font-size: 26px;
+}
+
+.town-building-prompt .prompt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.town-building-prompt .prompt-building-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.town-building-prompt .prompt-building-desc {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+}
+
+.town-building-prompt .prompt-hotkey-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent-cyan);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 900;
+    border-radius: 6px;
+    box-shadow: 0 0 12px var(--accent-cyan);
+    margin-left: 8px;
 }
 
 /* Floating Toast Notification */
@@ -993,6 +1183,10 @@
     justify-content: center;
     z-index: 80;
     animation: fadeIn 0.2s ease;
+}
+
+.town-billboard-modal-overlay.hidden {
+    display: none !important;
 }
 
 .town-billboard-modal-dialog {
