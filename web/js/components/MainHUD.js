@@ -25,8 +25,8 @@ export class MainHUD {
                         <span class="hud-label">DAY</span>
                         <span class="hud-val" id="hudDayVal">1</span>
                     </div>
-                    <div class="hud-item market-clock">
-                        <span class="hud-icon">⏰</span>
+                    <div class="hud-item market-clock" id="hudClockItem" title="클릭하여 하늘 시간대 전환 (새벽/낮/노을/밤)" style="cursor: pointer;">
+                        <span class="hud-icon" id="hudClockIcon">⏰</span>
                         <span class="hud-time-txt" id="hudTimeVal">09:00:00 AM</span>
                     </div>
                     <div class="hud-item weather-item" id="hudWeatherItem" title="실시간 로컬 날씨 조회 중...">
@@ -59,6 +59,10 @@ export class MainHUD {
 
                 <!-- Right Group: Quick Navigation Menu Buttons -->
                 <div class="hud-group hud-menu-group">
+                    <button class="hud-nav-btn" id="btnHudInventory" title="소지품 인벤토리 (TAB / I)">
+                        <span class="nav-icon">🎒</span>
+                        <span class="nav-label">소지품</span>
+                    </button>
                     <button class="hud-nav-btn" id="btnHudRanking" title="랭킹">
                         <span class="nav-icon">🏆</span>
                         <span class="nav-label">랭킹</span>
@@ -79,6 +83,7 @@ export class MainHUD {
 
     initDOM() {
         this.hudDayVal = document.getElementById('hudDayVal');
+        this.hudClockItem = document.getElementById('hudClockItem');
         this.hudTimeVal = document.getElementById('hudTimeVal');
         this.hudWeatherItem = document.getElementById('hudWeatherItem');
         this.hudWeatherIcon = document.getElementById('hudWeatherIcon');
@@ -89,6 +94,7 @@ export class MainHUD {
         this.hudStaminaItem = document.getElementById('hudStaminaItem');
         this.hudHeartContainer = document.getElementById('hudHeartContainer');
 
+        this.btnHudInventory = document.getElementById('btnHudInventory');
         this.btnHudRanking = document.getElementById('btnHudRanking');
         this.btnHudHelp = document.getElementById('btnHudHelp');
         this.btnHudSettings = document.getElementById('btnHudSettings');
@@ -97,6 +103,9 @@ export class MainHUD {
     }
 
     initEventListeners() {
+        this.hudClockItem?.addEventListener('click', () => {
+            if (this.callbacks.onTimeClick) this.callbacks.onTimeClick();
+        });
         this.hudWeatherItem?.addEventListener('click', () => {
             if (this.callbacks.onWeatherClick) this.callbacks.onWeatherClick();
         });
@@ -106,6 +115,9 @@ export class MainHUD {
             }
         });
 
+        this.btnHudInventory?.addEventListener('click', () => {
+            if (this.callbacks.onInventory) this.callbacks.onInventory();
+        });
         this.btnHudRanking?.addEventListener('click', () => {
             if (this.callbacks.onRanking) this.callbacks.onRanking();
         });

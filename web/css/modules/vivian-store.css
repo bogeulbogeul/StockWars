@@ -1,0 +1,714 @@
+/* ==========================================================================
+   StockWars Web Demo - Vivian's General Store (비비안 잡화점) Modular Styles
+   Architecture: Cyber-Luxe General Store HUD / Ambient Modal
+   Color Theme: Warm Amber (#ffb300) & Neon Emerald (#00e676)
+   ========================================================================== */
+
+.vivian-store-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 920;
+    background: rgba(8, 12, 18, 0.88);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    animation: vivianFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vivian-store-card {
+    width: 100%;
+    max-width: 1100px;
+    height: 88vh;
+    max-height: 780px;
+    background: linear-gradient(135deg, rgba(16, 24, 34, 0.96) 0%, rgba(10, 16, 24, 0.98) 100%);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 230, 118, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #e0f2f1;
+    font-family: var(--font-sans, 'Inter', -apple-system, sans-serif);
+}
+
+/* 1. Header */
+.vivian-store-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vivian-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.vivian-header-icon-box {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(255, 179, 0, 0.2));
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.vivian-header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vivian-store-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+}
+
+.vivian-badge-online {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    background: rgba(0, 230, 118, 0.15);
+    color: #00e676;
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    border-radius: 4px;
+}
+
+.vivian-badge-sub {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+}
+
+.vivian-header-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2px;
+}
+
+.vivian-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vivian-meta-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+.vivian-meta-chip .meta-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.vivian-meta-chip .meta-val.gold {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffd600;
+    font-family: var(--font-mono, monospace);
+}
+
+.vivian-meta-chip .meta-val.affinity {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff80ab;
+}
+
+.vivian-close-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.vivian-close-btn:hover {
+    background: rgba(244, 67, 54, 0.2);
+    border-color: #f44336;
+    color: #ff5252;
+}
+
+/* 2. Main Stage Split Body */
+.vivian-store-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left: NPC Panel */
+.vivian-npc-panel {
+    width: 320px;
+    background: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+}
+
+.vivian-portrait-card {
+    background: rgba(14, 22, 32, 0.8);
+    border: 1px solid rgba(0, 230, 118, 0.25);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.vivian-portrait-viewport {
+    width: 100%;
+    height: 120px;
+    background: radial-gradient(circle, rgba(0, 230, 118, 0.15) 0%, rgba(10, 18, 26, 0.9) 80%);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.vivian-avatar-emoji {
+    font-size: 54px;
+    filter: drop-shadow(0 4px 12px rgba(0, 230, 118, 0.4));
+}
+
+.vivian-portrait-mood-tag {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    color: #00e676;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.vivian-nameplate {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.vivian-npc-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.vivian-npc-role {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Speech Bubble */
+.vivian-dialogue-bubble {
+    background: rgba(20, 30, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-height: 86px;
+    display: flex;
+    flex-direction: column;
+}
+
+.vivian-speech-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.vivian-dot-pulse {
+    width: 6px;
+    height: 6px;
+    background: #00e676;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #00e676;
+}
+
+.speech-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #00e676;
+}
+
+.vivian-speech-content {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.vivian-npc-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.vivian-action-chip {
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vivian-action-chip:hover {
+    background: rgba(0, 230, 118, 0.12);
+    border-color: rgba(0, 230, 118, 0.3);
+    color: #00e676;
+}
+
+.vivian-stock-link-box {
+    margin-top: auto;
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.stock-link-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #00e5ff;
+    margin-bottom: 4px;
+}
+
+.stock-link-desc {
+    font-size: 10.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Right: Store Showcase */
+.vivian-shelves-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.vivian-tabs-bar {
+    display: flex;
+    gap: 8px;
+    padding: 14px 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.vivian-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vivian-tab-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.vivian-tab-btn.active {
+    color: #00e676;
+    border-bottom-color: #00e676;
+    background: rgba(0, 230, 118, 0.06);
+}
+
+.vivian-shelf-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(0, 230, 118, 0.05);
+    border-bottom: 1px solid rgba(0, 230, 118, 0.1);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.vivian-items-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+}
+
+.vivian-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.vivian-item-card {
+    background: rgba(16, 24, 34, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.vivian-item-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 230, 118, 0.4);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 12px var(--rarity-glow);
+}
+
+.vivian-item-card.selected {
+    border-color: #00e676;
+    background: rgba(0, 230, 118, 0.1);
+    box-shadow: 0 0 16px rgba(0, 230, 118, 0.3);
+}
+
+.vivian-item-card.locked {
+    opacity: 0.55;
+}
+
+.locked-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    color: #ffd600;
+    z-index: 5;
+}
+
+.card-icon-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.card-item-icon {
+    font-size: 28px;
+}
+
+.card-rarity-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid currentColor;
+}
+
+.card-item-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.card-item-summary {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.3;
+    min-height: 28px;
+}
+
+.card-bottom-row {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-stock-badge {
+    font-size: 10.5px;
+    color: #00e676;
+    font-weight: 600;
+}
+
+.card-stock-badge.empty {
+    color: #f44336;
+}
+
+.card-price-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffd600;
+    font-family: var(--font-mono, monospace);
+}
+
+/* Bottom Purchase Drawer */
+.vivian-purchase-drawer {
+    padding: 14px 20px;
+    background: rgba(12, 18, 26, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.drawer-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.drawer-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.drawer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.drawer-rarity-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #90a4ae;
+}
+
+.drawer-item-desc {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 2px 0 4px;
+}
+
+.drawer-effects-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.effect-tag {
+    font-size: 10.5px;
+    padding: 2px 6px;
+    background: rgba(0, 230, 118, 0.1);
+    color: #00e676;
+    border-radius: 4px;
+}
+
+.effect-tag.linked {
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+}
+
+.drawer-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.drawer-qty-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.qty-stepper {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.qty-input {
+    width: 38px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.qty-max-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.drawer-price-group {
+    text-align: right;
+}
+
+.price-subtext {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.price-total {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffd600;
+    font-family: var(--font-mono, monospace);
+}
+
+.drawer-actions-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-vivian-buy, .btn-vivian-consume {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-vivian-buy {
+    background: linear-gradient(135deg, #00e676, #00b0ff);
+    color: #041014;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+}
+
+.btn-vivian-buy:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 230, 118, 0.45);
+}
+
+.btn-vivian-consume {
+    background: linear-gradient(135deg, #ff9100, #ff3d00);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 145, 0, 0.3);
+}
+
+.btn-vivian-consume:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 145, 0, 0.45);
+}
+
+/* 3. Footer */
+.vivian-store-footer {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.key-badge {
+    padding: 1px 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-mono, monospace);
+}
+
+.footer-inv-btn {
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+@keyframes vivianFadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}

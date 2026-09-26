@@ -1,0 +1,251 @@
+/* Buildings Layer */
+.town-buildings-layer {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    pointer-events: auto;
+}
+
+/* Modular Town Building Box */
+.town-building-box {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 12px 12px 0 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    z-index: 10;
+}
+
+.town-building-box:hover {
+    transform: translateY(-8px);
+}
+
+/* Theme Color Variants (Realistic Urban Architecture & Materials) */
+.town-building-box.theme-home-officetel {
+    background: linear-gradient(180deg, #1b2636 0%, #111822 100%);
+    border: 2px solid #3d506d;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.town-building-box.theme-home-officetel:hover {
+    border-color: #5d7ca8;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
+}
+
+.town-building-box.theme-yellow {
+    background: linear-gradient(180deg, #2a2512 0%, #18150a 100%);
+    border: 2px solid #54461e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-yellow:hover {
+    border-color: #8c732a;
+}
+
+.town-building-box.theme-green {
+    background: linear-gradient(180deg, #13281d 0%, #0c1811 100%);
+    border: 2px solid #28543b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-green:hover {
+    border-color: #3e825c;
+}
+
+.town-building-box.theme-amber {
+    background: linear-gradient(180deg, #2b2014 0%, #1a120b 100%);
+    border: 2px solid #573e24;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-amber:hover {
+    border-color: #876036;
+}
+
+.town-building-box.theme-magenta {
+    background: linear-gradient(180deg, #2c1626 0%, #190c15 100%);
+    border: 2px solid #592c4d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-magenta:hover {
+    border-color: #8a4377;
+}
+
+.town-building-box.theme-indigo {
+    background: linear-gradient(180deg, #161e30 0%, #0d121c 100%);
+    border: 2px solid #2e3d61;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-indigo:hover {
+    border-color: #49619a;
+}
+
+.town-building-box.theme-violet {
+    background: linear-gradient(180deg, #261738 0%, #150c20 100%);
+    border: 2px solid #542f7d;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+}
+.town-building-box.theme-violet:hover {
+    border-color: #7b45b5;
+}
+
+.town-building-box.theme-blue {
+    background: linear-gradient(180deg, #121f36 0%, #0a1220 100%);
+    border: 2px solid #25406d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-blue:hover {
+    border-color: #3b66ad;
+}
+
+.town-building-box.theme-purple {
+    background: linear-gradient(180deg, #22142e 0%, #130a1a 100%);
+    border: 2px solid #482963;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-purple:hover {
+    border-color: #6f3f99;
+}
+
+.town-building-box.theme-red {
+    background: linear-gradient(180deg, #2b1315 0%, #18090a 100%);
+    border: 2px solid #59252a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.town-building-box.theme-red:hover {
+    border-color: #8c3941;
+}
+
+/* Landmark Special Architecture */
+.town-building-box.landmark-main {
+    z-index: 12;
+}
+
+/* Architectural Rooftop Parapet / Header */
+.building-roof-parapet {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background: rgba(18, 24, 34, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px 10px 0 0;
+}
+
+.parapet-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.building-category-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-dim);
+}
+
+.building-name-plate {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #e2e8f0;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Officetel Special Penthouse Terrace */
+.officetel-penthouse-top {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.penthouse-window {
+    width: 28px;
+    height: 12px;
+    background: rgba(255, 230, 140, 0.75);
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(255, 230, 140, 0.4);
+}
+
+/* Modular Architectural Asset Slot */
+.building-asset-slot {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.building-wireframe-facade {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.building-windows-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 4px 0;
+}
+
+.mock-window-pane {
+    width: 18px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+.mock-window-pane.officetel-window {
+    width: 16px;
+    height: 18px;
+}
+
+.mock-window-pane.lit {
+    background: rgba(255, 235, 160, 0.55);
+    box-shadow: 0 0 6px rgba(255, 235, 160, 0.25);
+    border-color: rgba(255, 245, 190, 0.7);
+}
+
+/* Building Entrance Gate / Canopy */
+.building-entrance-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: rgba(10, 14, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+    margin-top: 6px;
+}
+
+.entrance-door-light {
+    width: 24px;
+    height: 3px;
+    background: #a0aec0;
+    border-radius: 2px;
+}
+
+.entrance-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #cbd5e0;
+}

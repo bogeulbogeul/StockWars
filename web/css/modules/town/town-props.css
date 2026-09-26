@@ -1,0 +1,211 @@
+/* Street Props (Lamps, Trees, Signs) */
+.town-street-props {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.street-lamp {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 125px;
+    background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+    border-radius: 2px;
+}
+
+.street-lamp .lamp-head {
+    position: absolute;
+    top: -12px;
+    left: -8px;
+    width: 26px;
+    height: 14px;
+    background: #0f172a;
+    border: 1px solid #64748b;
+    border-radius: 6px 6px 2px 2px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.street-lamp .lamp-light {
+    position: absolute;
+    top: 2px;
+    left: -35px;
+    width: 80px;
+    height: 155px;
+    background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.38) 0%, rgba(254, 240, 138, 0.1) 45%, transparent 75%);
+    pointer-events: none;
+}
+
+.street-lamp .lamp-base {
+    position: absolute;
+    bottom: -2px;
+    left: -4px;
+    width: 18px;
+    height: 6px;
+    background: #0f172a;
+    border-radius: 3px;
+}
+
+/* Urban Trees & Planters */
+.town-urban-tree {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tree-foliage {
+    position: absolute;
+    top: 0;
+    width: 54px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foliage-layer.layer-1 {
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle, #22c55e 0%, #15803d 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.foliage-layer.layer-2 {
+    width: 54px;
+    height: 38px;
+    background: radial-gradient(circle, #16a34a 0%, #166534 100%);
+    border-radius: 50%;
+    margin-top: -24px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.tree-trunk {
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(90deg, #5c3818, #78481e, #5c3818);
+    border-radius: 2px;
+}
+
+.tree-planter-pot {
+    width: 32px;
+    height: 18px;
+    background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+    border: 1px solid #475569;
+    border-radius: 4px 4px 2px 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Direction Signs */
+.town-direction-sign {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-plate {
+    padding: 4px 10px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 6px;
+    color: #e2e8f0;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 229, 255, 0.25);
+}
+
+.sign-pole {
+    width: 6px;
+    height: 48px;
+    background: #334155;
+    border-radius: 1px;
+}
+
+/* Ground Platform (Sidewalk & Road) */
+.town-ground-platform {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.ground-sidewalk-top {
+    height: 38px;
+    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
+    border-top: 3px solid #607d8b;
+    border-bottom: 2px solid #1c252a;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.ground-pavement-body {
+    flex: 1;
+    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.road-dashed-line {
+    width: 100%;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
+    opacity: 0.85;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+
+/* Ground Platform */
+.town-ground-platform {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.ground-sidewalk-top {
+    height: 38px;
+    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
+    border-top: 3px solid #607d8b;
+    border-bottom: 2px solid #1c252a;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.ground-pavement-body {
+    flex: 1;
+    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.road-dashed-line {
+    width: 100%;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
+    opacity: 0.85;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}

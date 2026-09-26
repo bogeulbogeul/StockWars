@@ -1,0 +1,302 @@
+/* Character Creation: Step 3 Trader ID Hologram Card */
+/* STEP 3: ID Card Ceremony */
+.id-ceremony-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 6px 0;
+}
+
+.ceremony-anna-bubble {
+    width: 100%;
+    background: rgba(18, 24, 36, 0.85);
+    border: 1px solid rgba(255, 214, 0, 0.3);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.anna-mini-avatar {
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 214, 0, 0.2), rgba(0, 229, 255, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--accent-yellow);
+    flex-shrink: 0;
+}
+
+.anna-speech-txt {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-main);
+}
+
+/* Hologram ID Card */
+.hologram-id-card {
+    width: 100%;
+    max-width: 440px;
+    background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 60%, #152238 100%);
+    border: 2px solid rgba(0, 229, 255, 0.5);
+    border-radius: 18px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hologram-id-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, transparent 40%, rgba(0, 229, 255, 0.12) 50%, rgba(255, 214, 0, 0.12) 55%, transparent 65%);
+    pointer-events: none;
+    animation: holoSheen 6s linear infinite;
+}
+
+@keyframes holoSheen {
+    0% { transform: translateY(-30%) rotate(0deg); }
+    100% { transform: translateY(30%) rotate(360deg); }
+}
+
+.id-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 10px;
+}
+
+.id-card-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.id-emblem {
+    font-size: 24px;
+}
+
+.id-corp-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.id-corp-main {
+    font-size: 13px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.id-corp-sub {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    letter-spacing: 1px;
+}
+
+.id-chip {
+    width: 32px;
+    height: 24px;
+    background: linear-gradient(135deg, #ffd700, #ffae19);
+    border-radius: 4px;
+    border: 1px solid #b8860b;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.id-card-body {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.id-photo-frame {
+    width: 110px;
+    height: 120px;
+    background: rgba(10, 13, 20, 0.9);
+    border: 2px solid rgba(0, 229, 255, 0.3);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-photo-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.id-photo-layers {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.35) translateY(12px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.id-photo-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    user-select: none;
+    pointer-events: none;
+}
+
+.id-photo-layer.layer-base { z-index: 1; }
+.id-photo-layer.layer-face { z-index: 4; }
+.id-photo-layer.layer-hair { z-index: 6; }
+
+.id-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transform: scale(1.35) translateY(12px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    user-select: none;
+    pointer-events: none;
+}
+
+.id-certified-stamp {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 900;
+    padding: 2px 4px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    transform: rotate(-8deg);
+}
+
+.id-info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.id-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.id-lbl {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+}
+
+.id-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.id-val.highlight {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.id-trait-tag {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.id-bonus-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 5px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.bonus-lbl {
+    font-size: 8px;
+    color: var(--text-muted);
+}
+
+.bonus-val {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-yellow);
+}
+
+.id-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 8px;
+}
+
+.id-barcode {
+    width: 140px;
+    height: 18px;
+    background: repeating-linear-gradient(90deg, #fff, #fff 2px, transparent 2px, transparent 4px, #fff 4px, #fff 5px, transparent 5px, transparent 8px);
+    opacity: 0.7;
+}
+
+.id-reg-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
+}
+
+.kiosk-action-btn.complete-btn {
+    background: linear-gradient(135deg, #00e676, #00b0ff);
+    color: #000;
+    font-size: 15px;
+    box-shadow: 0 8px 25px rgba(0, 230, 118, 0.4);
+}
+
+.kiosk-action-btn.complete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 230, 118, 0.6);
+}

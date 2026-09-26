@@ -1,4 +1,4 @@
-﻿/**
+/**
  * HomeTab Component (스마트폰 HTS 홈 탭)
  * Handles Net Worth summary, 7-day rent goal progress, Cipher Index banner, and Recently Viewed stocks grid.
  */
@@ -27,43 +27,48 @@ export class HomeTab {
     updateState(state) {
         if (!state) return;
 
+        // Header Day Tag
+        if (this.dom.headerDayBadge) {
+            this.dom.headerDayBadge.textContent = `Day ${state.day} / ${state.maxDays}`;
+        }
+
         // Cipher Index Banner & Home Widgets
         if (state.cipherIndex) {
             const isPos = state.cipherIndex.diffPct >= 0;
             const sign = isPos ? '+' : '';
-            const text = ${state.cipherIndex.val} pts;
-            const changeText = ${sign}%;
+            const text = `${state.cipherIndex.val} pts`;
+            const changeText = `${sign}${state.cipherIndex.diffPct.toFixed(2)}%`;
 
             if (this.dom.bannerCipherVal) this.dom.bannerCipherVal.textContent = text;
             if (this.dom.bannerCipherChange) {
                 this.dom.bannerCipherChange.textContent = changeText;
-                this.dom.bannerCipherChange.className = cipher-change ;
+                this.dom.bannerCipherChange.className = `cipher-change ${isPos ? 'gainer' : 'loser'}`;
             }
-            if (this.dom.widgetIndex) this.dom.widgetIndex.textContent = Cipher ;
+            if (this.dom.widgetIndex) this.dom.widgetIndex.textContent = `Cipher ${text}`;
             if (this.dom.widgetIndexSub) {
-                this.dom.widgetIndexSub.textContent = ${changeText} Today;
-                this.dom.widgetIndexSub.className = widget-sub ;
+                this.dom.widgetIndexSub.textContent = `${changeText} Today`;
+                this.dom.widgetIndexSub.className = `widget-sub ${isPos ? 'gainer' : 'loser'}`;
             }
         }
 
         // Summary Net Worth & Cash Stats
-        if (this.dom.homeNetWorth) this.dom.homeNetWorth.textContent = ${state.totalNetWorth.toLocaleString()} Gold;
-        if (this.dom.homeCash) this.dom.homeCash.textContent = ${state.cash.toLocaleString()}G;
-        if (this.dom.homePortfolioVal) this.dom.homePortfolioVal.textContent = ${state.portfolioValue.toLocaleString()}G;
+        if (this.dom.homeNetWorth) this.dom.homeNetWorth.textContent = `${state.totalNetWorth.toLocaleString()} Gold`;
+        if (this.dom.homeCash) this.dom.homeCash.textContent = `${state.cash.toLocaleString()}G`;
+        if (this.dom.homePortfolioVal) this.dom.homePortfolioVal.textContent = `${state.portfolioValue.toLocaleString()}G`;
 
         if (this.dom.homeProfitLoss) {
             const isPos = state.totalProfitLoss >= 0;
             const pct = state.totalNetWorth > 0 ? (state.totalProfitLoss / (state.initialCash || 5000)) * 100 : 0;
-            this.dom.homeProfitLoss.textContent = ${isPos ? '+' : ''}G (%);
-            this.dom.homeProfitLoss.className = stat-val ;
+            this.dom.homeProfitLoss.textContent = `${isPos ? '+' : ''}${state.totalProfitLoss.toLocaleString()}G (${isPos ? '+' : ''}${pct.toFixed(1)}%)`;
+            this.dom.homeProfitLoss.className = `stat-val ${isPos ? 'gainer' : 'loser'}`;
         }
 
-        if (this.dom.settlementDDay) this.dom.settlementDDay.textContent = 정산 D-;
+        if (this.dom.settlementDDay) this.dom.settlementDDay.textContent = `정산 D-${state.maxDays - state.day + 1}`;
 
         // Rent Goal Progress
         const rentPct = Math.min(100, Math.max(0, (state.totalNetWorth / state.targetRent) * 100));
-        if (this.dom.rentGoalText) this.dom.rentGoalText.textContent = ${state.totalNetWorth.toLocaleString()}G 중 G;
-        if (this.dom.rentProgressFill) this.dom.rentProgressFill.style.width = ${rentPct}%;
+        if (this.dom.rentGoalText) this.dom.rentGoalText.textContent = `${state.totalNetWorth.toLocaleString()}G 중 ${state.targetRent.toLocaleString()}G`;
+        if (this.dom.rentProgressFill) this.dom.rentProgressFill.style.width = `${rentPct}%`;
 
         this.renderRecentlyViewedStocks(state.stocks);
     }
@@ -86,18 +91,18 @@ export class HomeTab {
             const isPos = diff >= 0;
             const sec = SECTORS[s.sector] || { name: s.sector, color: '#00e5ff' };
 
-            return 
-                <div class="hot-stock-card" data-id="">
+            return `
+                <div class="hot-stock-card" data-id="${s.id}">
                     <div class="hot-card-top">
-                        <span class="hot-stock-name"></span>
-                        <span class="sector-tag" style="background:; color:"></span>
+                        <span class="hot-stock-name">${s.name}</span>
+                        <span class="sector-tag" style="background:${sec.bg}; color:${sec.color}">${sec.name}</span>
                     </div>
-                    <div class="hot-card-price">G</div>
-                    <div class="hot-card-change ">
-                         %
+                    <div class="hot-card-price">${s.price.toLocaleString()}G</div>
+                    <div class="hot-card-change ${isPos ? 'gainer' : 'loser'}">
+                        ${isPos ? '▲' : '▼'} ${Math.abs(diffPct).toFixed(2)}%
                     </div>
                 </div>
-            ;
+            `;
         }).join('');
 
         this.dom.recentStocksGrid.querySelectorAll('.hot-stock-card').forEach(card => {

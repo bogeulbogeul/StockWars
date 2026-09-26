@@ -1,0 +1,406 @@
+/* ===================================================================
+   Bit Logistics Mini Game (비트 물류 상하차 미니게임) Stylesheet
+   =================================================================== */
+
+.logistics-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 8, 16, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+}
+
+.logistics-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.logistics-game-window {
+    width: 1080px;
+    max-width: 95vw;
+    height: 640px;
+    max-height: 92vh;
+    background: #090e17;
+    border: 2px solid rgba(0, 229, 255, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 229, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+/* Window Header HUD */
+.logistics-header {
+    height: 54px;
+    background: rgba(13, 22, 38, 0.95);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+    z-index: 20;
+}
+
+.logistics-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logistics-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0b0f19;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.logistics-title {
+    color: #f1f5f9;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logistics-stats-group {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logistics-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logistics-stat-label {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.logistics-stat-value {
+    color: #00e5ff;
+    font-size: 15px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.logistics-timer-value {
+    color: #ef4444;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    animation: timerPulse 1s infinite alternate;
+}
+
+@keyframes timerPulse {
+    0% { opacity: 0.85; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+.logistics-guide-btn {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+    padding: 5px 12px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+.logistics-guide-btn:hover {
+    background: rgba(245, 158, 11, 0.3);
+    border-color: #fbbf24;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    transform: translateY(-1px);
+}
+
+.logistics-close-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.logistics-close-btn:hover {
+    background: #ef4444;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+}
+
+/* News Ticker Bar */
+.logistics-ticker-bar {
+    height: 28px;
+    background: rgba(6, 11, 20, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+    font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 15;
+}
+
+.logistics-ticker-badge {
+    background: rgba(0, 229, 255, 0.15);
+    color: #00e5ff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.logistics-ticker-text {
+    color: #cbd5e1;
+    white-space: nowrap;
+    animation: tickerMarquee 25s linear infinite;
+}
+
+@keyframes tickerMarquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* 2D Gameplay Viewport */
+.logistics-game-canvas-area {
+    flex: 1;
+    position: relative;
+    background: linear-gradient(180deg, #0b1322 0%, #0d1a2d 60%, #16263d 100%);
+    overflow: hidden;
+    cursor: default;
+}
+
+/* Background Elements */
+.logistics-bg-warehouse {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.logistics-bg-racks {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 260px;
+    background-image: 
+        repeating-linear-gradient(90deg, rgba(30, 41, 59, 0.5) 0, rgba(30, 41, 59, 0.5) 8px, transparent 8px, transparent 120px),
+        repeating-linear-gradient(0deg, rgba(30, 41, 59, 0.3) 0, rgba(30, 41, 59, 0.3) 6px, transparent 6px, transparent 60px);
+    opacity: 0.7;
+}
+
+.logistics-bg-light-cone {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(0, 229, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Ground & Platform */
+.logistics-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    border-top: 4px solid #f59e0b;
+    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.logistics-ground-stripes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(45deg, #f59e0b 0, #f59e0b 14px, #0f172a 14px, #0f172a 28px);
+}
+
+/* Left Zone: Cargo Delivery Truck */
+.logistics-truck-zone {
+    position: absolute;
+    bottom: 95px;
+    left: 20px;
+    width: 240px;
+    height: 260px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logistics-truck-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+}
+
+.logistics-truck-target-indicator {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 185, 129, 0.95);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    animation: bounceIndicator 1.2s infinite;
+}
+
+/* Right Zone: Stacked Package Boxes */
+.logistics-boxes-zone {
+    position: absolute;
+    bottom: 95px;
+    right: 30px;
+    width: 200px;
+    height: 220px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logistics-boxes-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+}
+
+.logistics-boxes-target-indicator {
+    position: absolute;
+    top: -52px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(245, 158, 11, 0.95);
+    color: #0b0f19;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    animation: bounceIndicator 1.2s infinite;
+}
+
+@keyframes bounceIndicator {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -6px); }
+}
+
+/* Sensitivity (Damage) Gauge - As depicted in user sketch */
+.logistics-sensitivity-gauge-container {
+    position: absolute;
+    top: 25px;
+    left: 280px;
+    width: 44px;
+    height: 230px;
+    background: rgba(13, 22, 38, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
+    z-index: 12;
+    backdrop-filter: blur(6px);
+}
+
+.gauge-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1.1;
+    letter-spacing: -0.2px;
+}
+
+.gauge-track {
+    flex: 1;
+    width: 16px;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.gauge-fill {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(0deg, #10b981 0%, #f59e0b 60%, #ef4444 100%);
+    border-radius: 6px;
+    transition: height 0.06s linear;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+}
+
+.gauge-percent-text {
+    font-size: 10px;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-top: 6px;
+    font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,171 @@
+/* ==========================================================================
+   2D Side-Scrolling Town Stage (TownStage.js)
+   ========================================================================== */
+
+.town-stage-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    background: #080c14;
+    user-select: none;
+}
+
+.town-stage-container.hidden {
+    display: none !important;
+}
+
+/* Town Top Info Header HUD */
+.town-channel-header-hud {
+    position: absolute;
+    top: 106px;
+    left: 24px;
+    right: 24px;
+    z-index: 40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.town-hud-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: rgba(13, 20, 36, 0.85);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.15);
+    pointer-events: auto;
+}
+
+.town-hud-badge {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    background: rgba(0, 229, 255, 0.15);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.town-channel-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono);
+}
+
+.town-hud-right {
+    pointer-events: auto;
+}
+
+.town-return-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: linear-gradient(135deg, rgba(20, 28, 48, 0.95), rgba(30, 42, 70, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.town-return-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(30, 50, 90, 0.95));
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0, 229, 255, 0.25);
+}
+
+/* Town Controls Hint HUD */
+.town-controls-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(13, 20, 36, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(10px);
+    color: var(--text-dim);
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.town-controls-hint .hint-icon {
+    font-size: 14px;
+}
+
+.town-controls-hint .hint-text b {
+    color: var(--accent-cyan);
+}
+
+/* Main Viewport */
+.town-viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.town-viewport:active {
+    cursor: grabbing;
+}
+
+/* Parallax Background Skyline */
+.town-parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 2;
+    will-change: transform;
+}
+
+.parallax-skyline {
+    position: absolute;
+    bottom: 130px;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    background-image: 
+        linear-gradient(to right, transparent 0px, transparent 30px, rgba(14, 24, 48, 0.9) 30px, rgba(14, 24, 48, 0.9) 80px, transparent 80px, transparent 110px, rgba(18, 30, 60, 0.85) 110px, rgba(18, 30, 60, 0.85) 200px, transparent 200px),
+        linear-gradient(to right, rgba(10, 16, 32, 0.95) 0px, rgba(10, 16, 32, 0.95) 140px, transparent 140px, transparent 180px, rgba(15, 25, 50, 0.9) 180px, rgba(15, 25, 50, 0.9) 320px, transparent 320px);
+    background-size: 400px 380px, 600px 320px;
+    opacity: 0.65;
+}
+
+/* World Track */
+.town-world-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 5;
+    will-change: transform;
+}

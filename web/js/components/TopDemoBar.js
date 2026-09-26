@@ -4,6 +4,8 @@
  * Renders and manages the top demo control bar for presentations.
  */
 
+import { timeOfDayService } from '../engine/timeOfDayService.js';
+
 export class TopDemoBar {
     constructor(container, callbacks = {}) {
         this.container = container;
@@ -14,14 +16,17 @@ export class TopDemoBar {
 
     render() {
         const html = `
-            <div class="demo-top-bar">
+            <div id="demoTopBar" class="demo-top-bar hidden">
                 <div class="demo-branding">
-                    <span class="demo-badge">StockWars Web Demo</span>
-                    <span class="demo-sub">스마트폰 & 주식 HTS 앱 시현 모드</span>
+                    <span class="demo-badge">StockWars Dev Mode</span>
+                    <span class="demo-sub">스마트폰 & 주식 HTS 앱 개발자 모드</span>
                 </div>
                 <div class="demo-controls">
                     <button id="btnTitleScreen" class="demo-btn" title="타이틀 화면으로 돌아가기">
                         <span class="btn-icon">🏠</span> <span>타이틀 화면</span>
+                    </button>
+                    <button id="btnCycleTime" class="demo-btn special-btn" title="하늘 시간대 전환 (새벽 🌅 -> 낮 ☀️ -> 노을 🌇 -> 밤 🌙)">
+                        <span class="btn-icon" id="iconDemoTime">☀️</span> <span id="txtDemoTime">낮</span>
                     </button>
                     <button id="btnToggleStage" class="demo-btn special-btn" title="오피스 ↔ 타운 맵 전환">
                         <span class="btn-icon">🏙️</span> <span id="txtStageToggle">타운으로 이동</span>
@@ -49,7 +54,11 @@ export class TopDemoBar {
         `;
         this.container.insertAdjacentHTML('beforeend', html);
 
+        this.element = document.getElementById('demoTopBar');
         this.btnTitleScreen = document.getElementById('btnTitleScreen');
+        this.btnCycleTime = document.getElementById('btnCycleTime');
+        this.iconDemoTime = document.getElementById('iconDemoTime');
+        this.txtDemoTime = document.getElementById('txtDemoTime');
         this.btnToggleStage = document.getElementById('btnToggleStage');
         this.txtStageToggle = document.getElementById('txtStageToggle');
         this.btnToggleFrame = document.getElementById('btnToggleFrame');
@@ -65,6 +74,15 @@ export class TopDemoBar {
     initEventListeners() {
         this.btnTitleScreen?.addEventListener('click', () => {
             if (this.callbacks.onShowTitle) this.callbacks.onShowTitle();
+        });
+
+        this.btnCycleTime?.addEventListener('click', () => {
+            timeOfDayService.cycleNext();
+        });
+
+        timeOfDayService.subscribe((_timeKey, meta) => {
+            if (this.iconDemoTime) this.iconDemoTime.textContent = meta.icon;
+            if (this.txtDemoTime) this.txtDemoTime.textContent = meta.label.split('/')[0].trim();
         });
 
         this.btnToggleStage?.addEventListener('click', () => {
@@ -118,5 +136,17 @@ export class TopDemoBar {
                 this.btnUnlockLevel20.classList.remove('active-unlocked');
             }
         }
+    }
+
+    show() {
+        this.element?.classList.remove('hidden');
+    }
+
+    hide() {
+        this.element?.classList.add('hidden');
+    }
+
+    isVisible() {
+        return this.element && !this.element.classList.contains('hidden');
     }
 }

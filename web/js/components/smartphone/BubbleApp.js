@@ -1,6 +1,6 @@
-﻿/**
- * BubbleApp Component (스마트폰 Bubble 메신저 & 익명 찌라시 앱)
- * Handles in-game SNS channels (여의도 참새방앗간, 매니저 안나, 퀀트 AI) and interactive chat simulation.
+/**
+ * BubbleApp Component (스마트폰 Bubble 메신저 앱)
+ * Handles secret rumor channels (여의도 참새방앗간), Mentor Anna 1:1 chat, and Quant AI signal feeds.
  */
 
 export class BubbleApp {
@@ -8,51 +8,46 @@ export class BubbleApp {
         this.dom = domElements;
         this.callbacks = callbacks;
         this.currentBubbleChannel = 'rumor';
-        this.bubbleUserMessages = {
-            rumor: [],
-            anna: [],
-            quant: []
-        };
+        this.bubbleUserMessages = { rumor: [], anna: [], quant: [] };
         this.latestState = null;
 
         this.initEventListeners();
     }
 
     initEventListeners() {
-        this.dom.btnBubbleBack?.addEventListener('click', () => {
-            if (this.callbacks.onShowHomeScreen) this.callbacks.onShowHomeScreen();
-        });
-
-        this.dom.btnBubbleRefresh?.addEventListener('click', () => {
-            this.renderBubbleChannel(this.currentBubbleChannel);
-            if (this.callbacks.onShowToast) this.callbacks.onShowToast('🔄 Bubble 채널 메시지를 새로고침했습니다.');
-        });
-
-        document.querySelectorAll('.bubble-chan-tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const chan = btn.dataset.channel;
-                document.querySelectorAll('.bubble-chan-tab').forEach(b => b.classList.toggle('active', b === btn));
-                this.currentBubbleChannel = chan;
-                if (this.dom.bubbleActiveChannelName) {
-                    if (chan === 'rumor') this.dom.bubbleActiveChannelName.textContent = '🔥 여의도 참새방앗간 (익명 찌라시 룸)';
-                    else if (chan === 'anna') this.dom.bubbleActiveChannelName.textContent = '💼 매니저 안나 (1:1 멘토링)';
-                    else if (chan === 'quant') this.dom.bubbleActiveChannelName.textContent = '⚡ 퀀트 AI 급등락 시그널';
-                }
-                this.renderBubbleChannel(chan);
+        // Channel Tabs
+        if (this.dom.bubbleApp) {
+            this.dom.bubbleApp.querySelectorAll('.bubble-chan-tab').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.dom.bubbleApp.querySelectorAll('.bubble-chan-tab').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    this.currentBubbleChannel = btn.dataset.channel;
+                    if (this.dom.bubbleActiveChannelName) {
+                        const names = {
+                            rumor: '🔥 여의도 참새방앗간 (익명 찌라시 룸)',
+                            anna: '💼 전담 매니저 안나 (1:1 VIP 상담실)',
+                            quant: '⚡ 퀀트 AI 초단타 시그널'
+                        };
+                        this.dom.bubbleActiveChannelName.textContent = names[this.currentBubbleChannel] || 'Bubble Secret Channel';
+                    }
+                    this.renderBubbleChannel(this.currentBubbleChannel);
+                });
             });
-        });
+        }
 
+        // Send Button & Enter Key
         this.dom.btnBubbleSend?.addEventListener('click', () => this.handleSendBubbleMessage());
         this.dom.bubbleMsgInput?.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                this.handleSendBubbleMessage();
-            }
+            if (e.key === 'Enter') this.handleSendBubbleMessage();
+        });
+
+        // Refresh Button
+        this.dom.btnBubbleRefresh?.addEventListener('click', () => {
+            this.renderBubbleChannel(this.currentBubbleChannel);
         });
     }
 
     updateState(state) {
-        if (!state) return;
         this.latestState = state;
         const rumorCount = (state.news || []).filter(n => n.type === '찌라시').length;
         if (this.dom.badgeRumorCount) this.dom.badgeRumorCount.textContent = rumorCount;
@@ -73,14 +68,14 @@ export class BubbleApp {
         if (channel === 'rumor') {
             const rawRumors = (state?.news || []).filter(n => n.type === '찌라시');
             
-            html += 
+            html += `
                 <div class="bubble-date-divider">
                     <span>📅 오늘 • 익명 찌라시 라운지 (1,420명 참여 중)</span>
                 </div>
                 <div class="bubble-system-notice">
                     ⚠️ <b>주의:</b> 본 채널의 정보는 시장 루머(찌라시)입니다. 공식 뉴스는 주식앱에서 확인하세요.
                 </div>
-            ;
+            `;
 
             rawRumors.forEach((r, idx) => {
                 const stock = stocksMap.get(r.stockId);
@@ -93,63 +88,63 @@ export class BubbleApp {
                 ];
                 const s = senders[idx % senders.length];
 
-                html += 
+                html += `
                     <div class="bubble-msg-row">
-                        <div class="bubble-avatar"></div>
+                        <div class="bubble-avatar">${s.avatar}</div>
                         <div class="bubble-msg-content">
                             <div class="bubble-msg-author">
-                                <span class="author-name"></span>
-                                <span class="author-role"></span>
-                                <span class="msg-time"></span>
+                                <span class="author-name">${s.name}</span>
+                                <span class="author-role">${s.role}</span>
+                                <span class="msg-time">${r.time || '방금 전'}</span>
                             </div>
                             <div class="bubble-bubble rumor-bubble">
                                 <div class="rumor-headline">
-                                    <span class="rumor-badge"></span>
-                                    <span class="rumor-impact "></span>
+                                    <span class="rumor-badge">${isPos ? '🔥 급등 찌라시' : '⚠️ 급락 루머'}</span>
+                                    <span class="rumor-impact ${isPos ? 'gainer' : 'loser'}">${r.impact}</span>
                                 </div>
-                                <div class="rumor-text"></div>
+                                <div class="rumor-text">${r.content}</div>
                                 <div class="rumor-meta">
-                                    <span>🔍 신뢰도: </span>
+                                    <span>🔍 신뢰도: ${r.credibility || 'Tier 1 Rumor'}</span>
                                 </div>
                                 <div class="rumor-actions">
-                                    <button class="bubble-trade-btn" data-stock-id="">
-                                        📈 [] 차트 & 매매 바로가기 ➔
+                                    <button class="bubble-trade-btn" data-stock-id="${r.stockId}">
+                                        📈 [${stockName}] 차트 & 매매 바로가기 ➔
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                ;
+                `;
             });
 
             // Append user custom chat in rumor channel
             (this.bubbleUserMessages.rumor || []).forEach(msg => {
-                html += 
+                html += `
                     <div class="bubble-msg-row user-row">
                         <div class="bubble-msg-content user-content">
-                            <div class="bubble-bubble user-bubble"></div>
-                            <div class="msg-time user-time"></div>
+                            <div class="bubble-bubble user-bubble">${msg.text}</div>
+                            <div class="msg-time user-time">${msg.time}</div>
                         </div>
                     </div>
-                ;
+                `;
                 if (msg.reply) {
-                    html += 
+                    html += `
                         <div class="bubble-msg-row">
                             <div class="bubble-avatar">🦅</div>
                             <div class="bubble-msg-content">
                                 <div class="bubble-msg-author">
                                     <span class="author-name">여의도 우주갈매기</span>
-                                    <span class="msg-time"></span>
+                                    <span class="msg-time">${msg.time}</span>
                                 </div>
-                                <div class="bubble-bubble"></div>
+                                <div class="bubble-bubble">${msg.reply}</div>
                             </div>
                         </div>
-                    ;
+                    `;
                 }
             });
 
         } else if (channel === 'anna') {
-            html += 
+            html += `
                 <div class="bubble-date-divider">
                     <span>📅 오늘 • 매니저 안나 1:1 상담실</span>
                 </div>
@@ -182,36 +177,36 @@ export class BubbleApp {
                         </div>
                     </div>
                 </div>
-            ;
+            `;
 
             // Append user custom chat in anna channel
             (this.bubbleUserMessages.anna || []).forEach(msg => {
-                html += 
+                html += `
                     <div class="bubble-msg-row user-row">
                         <div class="bubble-msg-content user-content">
-                            <div class="bubble-bubble user-bubble"></div>
-                            <div class="msg-time user-time"></div>
+                            <div class="bubble-bubble user-bubble">${msg.text}</div>
+                            <div class="msg-time user-time">${msg.time}</div>
                         </div>
                     </div>
-                ;
+                `;
                 if (msg.reply) {
-                    html += 
+                    html += `
                         <div class="bubble-msg-row">
                             <div class="bubble-avatar">👩‍💼</div>
                             <div class="bubble-msg-content">
                                 <div class="bubble-msg-author">
                                     <span class="author-name">전담 매니저 안나</span>
-                                    <span class="msg-time"></span>
+                                    <span class="msg-time">${msg.time}</span>
                                 </div>
-                                <div class="bubble-bubble anna-bubble"></div>
+                                <div class="bubble-bubble anna-bubble">${msg.reply}</div>
                             </div>
                         </div>
-                    ;
+                    `;
                 }
             });
 
         } else if (channel === 'quant') {
-            html += 
+            html += `
                 <div class="bubble-date-divider">
                     <span>⚡ AI 퀀트 알고리즘 실시간 탐지 피드</span>
                 </div>
@@ -243,17 +238,17 @@ export class BubbleApp {
                         </div>
                     </div>
                 </div>
-            ;
+            `;
 
             (this.bubbleUserMessages.quant || []).forEach(msg => {
-                html += 
+                html += `
                     <div class="bubble-msg-row user-row">
                         <div class="bubble-msg-content user-content">
-                            <div class="bubble-bubble user-bubble"></div>
-                            <div class="msg-time user-time"></div>
+                            <div class="bubble-bubble user-bubble">${msg.text}</div>
+                            <div class="msg-time user-time">${msg.time}</div>
                         </div>
                     </div>
-                ;
+                `;
             });
         }
 

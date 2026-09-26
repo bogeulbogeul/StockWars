@@ -1,14 +1,14 @@
 /* In-Game Main Status HUD Bar (Top Glassmorphic Financial HUD) */
 .main-hud-bar {
     width: calc(100% - 40px);
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 12px auto 0 auto;
     height: 56px;
     padding: 0 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(18, 24, 36, 0.88);
+    background: rgba(18, 24, 36, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -16,13 +16,16 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     z-index: 95;
     position: relative;
+    user-select: none;
     transition: all 0.3s ease;
 }
 
 .hud-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 /* Left Group: Time & Calendar Status */
@@ -33,24 +36,28 @@
     font-size: 13px;
     padding: 4px 10px;
     border-radius: var(--radius-sm);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
     box-shadow: 0 2px 8px rgba(255, 214, 0, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-badge .hud-label {
     font-size: 10px;
-    opacity: 0.8;
+    opacity: 0.85;
+    white-space: nowrap;
 }
 
 .hud-badge .hud-val {
     font-size: 15px;
     font-family: var(--font-mono);
+    white-space: nowrap;
 }
 
 .hud-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     background: rgba(255, 255, 255, 0.05);
@@ -58,11 +65,13 @@
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.06);
     font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Stamina / Health Heart Bar */
 .hud-item.stamina-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     background: rgba(255, 51, 102, 0.08);
@@ -70,6 +79,8 @@
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-item.stamina-item:hover {
@@ -83,17 +94,22 @@
     font-weight: 700;
     color: #ff6b8b;
     letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-heart-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-heart {
-    display: block;
+    display: inline-block;
     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+    flex-shrink: 0;
 }
 
 .hud-heart.filled {
@@ -118,6 +134,7 @@
     font-family: var(--font-mono);
     font-weight: 700;
     color: var(--accent-cyan);
+    white-space: nowrap;
 }
 
 .hud-status-dot {
@@ -125,6 +142,7 @@
     height: 7px;
     border-radius: 50%;
     background: var(--text-dim);
+    flex-shrink: 0;
 }
 
 .hud-status-dot.online {
@@ -135,16 +153,19 @@
 .hud-status-txt {
     font-size: 12px;
     color: var(--text-muted);
+    white-space: nowrap;
 }
 
 /* Center Group: Player Asset Summary Header */
 .hud-asset-group {
-    background: rgba(10, 13, 20, 0.65);
+    background: rgba(10, 13, 20, 0.72);
     padding: 6px 20px;
     border-radius: var(--radius-full);
-    border: 1px solid rgba(0, 229, 255, 0.18);
+    border: 1px solid rgba(0, 229, 255, 0.22);
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
     gap: 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-asset-item {
@@ -152,18 +173,22 @@
     flex-direction: column;
     align-items: center;
     gap: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hud-asset-item .asset-label {
     font-size: 10px;
     color: var(--text-dim);
     letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 .hud-asset-item .asset-val {
     font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .asset-val.gold {
@@ -190,6 +215,7 @@
     width: 1px;
     height: 20px;
     background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
 }
 
 /* Right Group: Navigation Buttons */
@@ -201,10 +227,12 @@
     border-radius: var(--radius-sm);
     font-size: 12px;
     font-weight: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: all 0.2s ease;
 }
 

@@ -1,4 +1,4 @@
-﻿/* News Detail Modal */
+/* News Detail Modal */
 .news-detail-card { max-width: 480px; }
 .news-detail-badge-area { display: flex; align-items: center; gap: 8px; }
 .news-detail-time { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }

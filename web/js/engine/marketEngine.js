@@ -210,8 +210,8 @@ class MarketEngine {
 
     getPortfolioList() {
         const list = [];
-        this.portfolio.forEach((pos, stockId) => {
-            const stock = this.stocks.get(stockId);
+        this.portfolio.forEach((pos) => {
+            const stock = this.stocks.get(pos.id);
             if (!stock) return;
 
             let currentVal = 0;
@@ -234,7 +234,7 @@ class MarketEngine {
             }
 
             list.push({
-                id: stockId,
+                id: pos.id,
                 stock: stock,
                 qty: pos.qty,
                 avgPrice: pos.avgPrice,

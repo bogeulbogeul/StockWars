@@ -1,0 +1,227 @@
+/* Stock Market: Profile, Sector Allocation Donut Chart, Portfolio List & Nav Bar */
+/* Profile View & Sector Allocation */
+.profile-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.profile-avatar { font-size: 36px; background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 50%; }
+.profile-name { font-size: 16px; font-weight: 700; }
+.profile-title { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.partner-status { font-size: 11px; color: var(--accent-cyan); margin-top: 4px; }
+
+/* Sector Allocation Donut Card */
+.sector-allocation-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    margin-bottom: 16px;
+}
+
+.allocation-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.donut-chart-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.donut-center-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.donut-center-lbl {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.donut-center-val {
+    font-size: 13px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--text-main);
+}
+
+.allocation-legend-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.legend-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legend-name {
+    font-weight: 600;
+}
+
+.legend-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+}
+
+.legend-pct {
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.legend-val {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+.portfolio-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.portfolio-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.portfolio-item:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+.portfolio-item:active {
+    transform: scale(0.98);
+}
+
+.port-stock-name { font-size: 14px; font-weight: 700; }
+.port-stock-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.port-right { text-align: right; }
+.port-val { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+.port-pl { font-size: 12px; font-weight: 600; font-family: var(--font-mono); }
+
+.profile-actions { display: flex; flex-direction: column; gap: 10px; }
+.action-btn { width: 100%; padding: 12px; border-radius: var(--radius-md); font-size: 13px; font-weight: 700; border: none; cursor: pointer; }
+.action-btn.warning { background: linear-gradient(135deg, #ffd600, #ffab00); color: #000; }
+.action-btn.danger { background: rgba(255, 59, 92, 0.15); color: var(--accent-red); border: 1px solid var(--accent-red); }
+
+/* Navigation */
+.app-nav-bar {
+    height: 56px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-shrink: 0;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+.nav-tab {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.nav-tab.active, .nav-tab:hover { color: var(--accent-cyan); }
+.nav-icon { font-size: 18px; z-index: 2; }
+.nav-label { font-size: 10px; font-weight: 600; z-index: 2; }
+
+/* Tutorial highlight for Nav Tab: Inner rounded glow without vertical divider lines */
+.nav-tab.tutorial-pulse-target {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    animation: navTabTutorialPulse 1.2s infinite alternate ease-in-out !important;
+}
+
+.nav-tab.tutorial-pulse-target::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 8px;
+    right: 8px;
+    border-radius: 12px;
+    background: rgba(0, 229, 255, 0.14);
+    border: 1.5px solid rgba(0, 229, 255, 0.7);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+    pointer-events: none;
+    z-index: 1;
+    animation: navPillGlow 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes navTabTutorialPulse {
+    0% {
+        color: var(--accent-cyan);
+    }
+    100% {
+        color: var(--accent-yellow);
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes navPillGlow {
+    0% {
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        background: rgba(0, 229, 255, 0.12);
+    }
+    100% {
+        border-color: var(--accent-yellow);
+        box-shadow: 0 0 18px rgba(255, 214, 0, 0.8);
+        background: rgba(255, 214, 0, 0.18);
+    }
+}

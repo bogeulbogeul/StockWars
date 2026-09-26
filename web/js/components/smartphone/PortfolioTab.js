@@ -1,41 +1,25 @@
-﻿/**
- * PortfolioTab Component (스마트폰 내 계좌/자산 탭)
- * Handles player identity, holding stocks portfolio list, and sector allocation donut chart.
+/**
+ * PortfolioTab Component (스마트폰 HTS 내 계좌 & 포트폴리오 탭)
+ * Handles user profile, holding stock cards, and sector allocation donut chart rendering.
  */
 
 import { SECTORS } from '../../data/stocksData.js';
-import { createGeometricAvatarSVG } from '../GeometricAvatar.js';
 
 export class PortfolioTab {
     constructor(domElements, callbacks = {}) {
         this.dom = domElements;
         this.callbacks = callbacks;
-
         this.initEventListeners();
     }
 
     initEventListeners() {
         this.dom.btnProfileSettlement?.addEventListener('click', () => {
-            if (this.callbacks.onTriggerSettlement) this.callbacks.onTriggerSettlement();
+            if (this.callbacks.onRunSettlement) this.callbacks.onRunSettlement();
         });
-        this.dom.btnProfileReset?.addEventListener('click', () => {
-            if (this.callbacks.onReset) this.callbacks.onReset();
-        });
-    }
 
-    updateUserProfile(profile) {
-        if (!profile) return;
-        if (this.dom.profileAvatar) {
-            this.dom.profileAvatar.innerHTML = createGeometricAvatarSVG(profile, 48);
-            this.dom.profileAvatar.style.width = '48px';
-            this.dom.profileAvatar.style.height = '48px';
-        }
-        if (this.dom.profileName) {
-            this.dom.profileName.textContent = profile.nickname || '사이퍼 트레이더';
-        }
-        if (this.dom.profileTitle && profile.trait) {
-            this.dom.profileTitle.textContent = ${profile.trait.title} • 레벨 1 ();
-        }
+        this.dom.btnProfileReset?.addEventListener('click', () => {
+            if (this.callbacks.onResetData) this.callbacks.onResetData();
+        });
     }
 
     updateState(state) {
@@ -44,31 +28,38 @@ export class PortfolioTab {
         this.renderSectorAllocation(state.portfolio);
     }
 
-    renderPortfolio(portfolio) {
-        if (!this.dom.portfolioListContainer || !portfolio) return;
+    updateUserProfile(profile) {
+        if (!profile) return;
+        if (this.dom.profileName && profile.nickname) this.dom.profileName.textContent = profile.nickname;
+        if (this.dom.profileAvatar && profile.avatar) this.dom.profileAvatar.textContent = profile.avatar;
+        if (this.dom.profileTitle && profile.tptType) this.dom.profileTitle.textContent = `${profile.tptType} 트레이더 • 레벨 1`;
+    }
+
+    renderPortfolio(portfolio = []) {
+        if (!this.dom.portfolioListContainer) return;
         if (portfolio.length === 0) {
-            this.dom.portfolioListContainer.innerHTML = <div class="item-desc" style="text-align:center; padding:20px;">보유 중인 주식이 없습니다.</div>;
+            this.dom.portfolioListContainer.innerHTML = `<div class="item-desc" style="text-align:center; padding:20px;">보유 중인 주식이 없습니다.</div>`;
             return;
         }
 
         this.dom.portfolioListContainer.innerHTML = portfolio.map(item => {
             const isPos = item.profitLoss >= 0;
-            const modeBadge = item.isShort ? <span class="lock-tag" style="background:#ff3b5c; color:#fff;">SHORT x</span> : (item.leverage > 1 ? <span class="lock-tag" style="background:#00e5ff; color:#000;">LONG x</span> : '');
+            const modeBadge = item.isShort ? `<span class="lock-tag" style="background:#ff3b5c; color:#fff;">SHORT ${item.leverage}x</span>` : (item.leverage > 1 ? `<span class="lock-tag" style="background:#00e5ff; color:#000;">LONG ${item.leverage}x</span>` : '');
 
-            return 
-                <div class="portfolio-item" data-id="">
+            return `
+                <div class="portfolio-item" data-id="${item.id}">
                     <div>
-                        <div class="port-stock-name"> () </div>
-                        <div class="port-stock-sub">보유: 주 • 평균가: G</div>
+                        <div class="port-stock-name">${item.stock.name} (${item.id}) ${modeBadge}</div>
+                        <div class="port-stock-sub">보유: ${item.qty}주 • 평균가: ${item.avgPrice.toLocaleString()}G</div>
                     </div>
                     <div class="port-right">
-                        <div class="port-val">G</div>
-                        <div class="port-pl ">
-                            G (%)
+                        <div class="port-val">${Math.round(item.currentVal).toLocaleString()}G</div>
+                        <div class="port-pl ${isPos ? 'gainer' : 'loser'}">
+                            ${isPos ? '+' : ''}${Math.round(item.profitLoss).toLocaleString()}G (${isPos ? '+' : ''}${item.profitLossPct.toFixed(1)}%)
                         </div>
                     </div>
                 </div>
-            ;
+            `;
         }).join('');
 
         this.dom.portfolioListContainer.querySelectorAll('.portfolio-item').forEach(el => {
@@ -80,8 +71,8 @@ export class PortfolioTab {
         });
     }
 
-    renderSectorAllocation(portfolio) {
-        if (!this.dom.sectorDonutChart || !portfolio) return;
+    renderSectorAllocation(portfolio = []) {
+        if (!this.dom.sectorDonutChart) return;
         const canvas = this.dom.sectorDonutChart;
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
@@ -99,7 +90,7 @@ export class PortfolioTab {
         });
 
         if (this.dom.donutCenterVal) {
-            this.dom.donutCenterVal.textContent = ${sectorWeights.size}개;
+            this.dom.donutCenterVal.textContent = `${sectorWeights.size}개`;
         }
 
         if (totalVal <= 0 || sectorWeights.size === 0) {
@@ -110,7 +101,7 @@ export class PortfolioTab {
             ctx.stroke();
 
             if (this.dom.allocationLegendList) {
-                this.dom.allocationLegendList.innerHTML = <div class="item-desc">보유 종목이 없습니다.</div>;
+                this.dom.allocationLegendList.innerHTML = `<div class="item-desc">보유 종목이 없습니다.</div>`;
             }
             return;
         }
@@ -131,13 +122,13 @@ export class PortfolioTab {
 
             startAngle += sliceAngle;
 
-            legendHtml += 
+            legendHtml += `
                 <div class="legend-row">
-                    <span class="legend-dot" style="background: ;"></span>
-                    <span class="legend-name"></span>
-                    <span class="legend-pct">%</span>
+                    <span class="legend-dot" style="background: ${sec.color};"></span>
+                    <span class="legend-name">${sec.name}</span>
+                    <span class="legend-pct">${pct}%</span>
                 </div>
-            ;
+            `;
         });
 
         if (this.dom.allocationLegendList) {

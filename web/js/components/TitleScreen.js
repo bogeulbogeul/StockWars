@@ -73,10 +73,10 @@ export class TitleScreen {
                     <!-- Main Navigation Menu Buttons -->
                     <div class="title-menu-container">
                         <button class="title-btn primary-start-btn" id="btnTitleStartDemo">
-                            <span class="btn-icon">⚡</span>
+                            <span class="btn-icon">🛠️</span>
                             <div class="btn-text-group">
-                                <span class="btn-title">시현 데모 플레이</span>
-                                <span class="btn-sub">기본 500만G 자금으로 즉시 HTS 매매 체험</span>
+                                <span class="btn-title">개발자 모드</span>
+                                <span class="btn-sub">디버그 툴바 활성화 & 500만G 빠른 시연</span>
                             </div>
                             <span class="btn-arrow">➔</span>
                         </button>

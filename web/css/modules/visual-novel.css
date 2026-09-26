@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Visual Novel (미연시 스타일) Dialogue Box & Tutorial System
    ========================================================================== */
 
@@ -9,7 +9,7 @@
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 11000;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -43,6 +43,235 @@
 .vn-dialogue-box:hover {
     border-color: rgba(0, 229, 255, 0.65);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 229, 255, 0.25);
+}
+
+/* ==========================================================================
+   Zero-Overlap Layout Modes (Modal Left Card Dock, Town Sky Card, Phone Side Dock)
+   ========================================================================== */
+
+/* 1. Modal Active Mode: Dock Dialogue Box to Left Side Card (Matches user blue-box location, clears all center modals) */
+body.modal-active .vn-tutorial-overlay,
+body:has(.modal-overlay:not(.hidden)) .vn-tutorial-overlay {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-left: 16px !important;
+    padding-top: 84px !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+body.modal-active .vn-dialogue-box,
+body:has(.modal-overlay:not(.hidden)) .vn-dialogue-box {
+    width: 260px !important;
+    max-width: 265px !important;
+    flex-direction: column !important;
+    padding: 12px 14px !important;
+    gap: 8px !important;
+    border-radius: 14px !important;
+    background: rgba(10, 14, 24, 0.96) !important;
+    border: 1.5px solid var(--accent-cyan) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 229, 255, 0.25) !important;
+    animation: vnHoloSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.modal-active .vn-portrait-frame,
+body:has(.modal-overlay:not(.hidden)) .vn-portrait-frame {
+    flex-direction: row !important;
+    width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-bottom: 6px !important;
+    gap: 8px !important;
+    align-items: center !important;
+}
+
+body.modal-active .vn-portrait-avatar,
+body:has(.modal-overlay:not(.hidden)) .vn-portrait-avatar {
+    width: 38px !important;
+    height: 38px !important;
+    flex-shrink: 0 !important;
+}
+
+body.modal-active .vn-portrait-badge,
+body:has(.modal-overlay:not(.hidden)) .vn-portrait-badge {
+    display: none !important;
+}
+
+body.modal-active .vn-portrait-emoji,
+body:has(.modal-overlay:not(.hidden)) .vn-portrait-emoji {
+    font-size: 20px !important;
+}
+
+body.modal-active .vn-top-bar,
+body:has(.modal-overlay:not(.hidden)) .vn-top-bar {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+}
+
+body.modal-active .vn-nameplate,
+body:has(.modal-overlay:not(.hidden)) .vn-nameplate {
+    padding: 3px 8px !important;
+    gap: 5px !important;
+    white-space: nowrap !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+}
+
+body.modal-active .vn-speaker-name,
+body:has(.modal-overlay:not(.hidden)) .vn-speaker-name {
+    font-size: 12px !important;
+    white-space: nowrap !important;
+}
+
+body.modal-active .vn-speaker-title,
+body:has(.modal-overlay:not(.hidden)) .vn-speaker-title {
+    display: none !important;
+}
+
+body.modal-active .vn-controls,
+body:has(.modal-overlay:not(.hidden)) .vn-controls {
+    gap: 3px !important;
+    flex-shrink: 0 !important;
+}
+
+body.modal-active .vn-btn,
+body:has(.modal-overlay:not(.hidden)) .vn-btn {
+    padding: 2px 5px !important;
+    font-size: 10px !important;
+    border-radius: 4px !important;
+}
+
+body.modal-active .vn-dialogue-body,
+body:has(.modal-overlay:not(.hidden)) .vn-dialogue-body {
+    min-height: 44px !important;
+    margin: 0 !important;
+}
+
+body.modal-active .vn-dialogue-text,
+body:has(.modal-overlay:not(.hidden)) .vn-dialogue-text {
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    color: #ffffff !important;
+    word-break: keep-all !important;
+}
+
+body.modal-active .vn-step-tracker,
+body:has(.modal-overlay:not(.hidden)) .vn-step-tracker {
+    font-size: 9.5px !important;
+    white-space: nowrap !important;
+}
+
+/* 2. Town Mode (When no modal is active): Dock to Top-Left Skyline (below HUD, away from player, street and buildings) */
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-tutorial-overlay {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 140px;
+    padding-left: 24px;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-dialogue-box {
+    width: 400px;
+    max-width: 430px;
+    padding: 12px 16px;
+    gap: 12px;
+    border-radius: 14px;
+    background: rgba(10, 14, 24, 0.94);
+    border: 1.5px solid rgba(0, 229, 255, 0.5);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 229, 255, 0.2);
+    animation: vnHoloSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-portrait-frame {
+    width: auto;
+    border-right: none;
+    padding-right: 0;
+    gap: 4px;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-portrait-avatar {
+    width: 44px;
+    height: 44px;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-portrait-badge {
+    display: none;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-portrait-emoji {
+    font-size: 22px;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-dialogue-body {
+    min-height: 40px;
+}
+
+body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) .vn-dialogue-text {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 3. Collapsed State: Super Compact Pill Badge on One-Click */
+.vn-dialogue-box.collapsed {
+    width: auto !important;
+    max-width: 320px !important;
+    min-height: 36px !important;
+    padding: 6px 14px !important;
+    gap: 8px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    background: rgba(10, 16, 28, 0.96) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 229, 255, 0.3) !important;
+}
+
+.vn-dialogue-box.collapsed .vn-dialogue-body,
+.vn-dialogue-box.collapsed .vn-portrait-badge,
+.vn-dialogue-box.collapsed .vn-speaker-title,
+.vn-dialogue-box.collapsed .vn-action-area {
+    display: none !important;
+}
+
+.vn-dialogue-box.collapsed .vn-portrait-avatar {
+    width: 26px !important;
+    height: 26px !important;
+}
+
+.vn-dialogue-box.collapsed .vn-portrait-emoji {
+    font-size: 15px !important;
+}
+
+.vn-collapse-btn {
+    font-size: 11px;
+    padding: 3px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--accent-cyan);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vn-collapse-btn:hover {
+    background: rgba(0, 229, 255, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+@keyframes vnHoloSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* Side-docked Companion Layout when Smartphone is Active (prevents covering bottom navigation bar) */
@@ -359,3 +588,134 @@
 .tutorial-target-shake {
     animation: targetShake 0.5s ease-in-out !important;
 }
+
+/* ==========================================================================
+   Manager Park (관리소장 박씨) Theme for Logistics Mini-Game Tutorial
+   Bottom Docked Layout: Placed at bottom footer bar (User Blue Box area, 100% clears entire truck & warehouse scene)
+   ========================================================================== */
+.vn-theme-park {
+    z-index: 12000 !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding-bottom: 24px !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.vn-theme-park .vn-dialogue-box {
+    width: 1040px !important;
+    max-width: 93vw !important;
+    min-height: 60px !important;
+    padding: 10px 20px !important;
+    gap: 16px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    border-radius: 14px !important;
+    border: 2px solid rgba(245, 158, 11, 0.85) !important;
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.95), 0 0 35px rgba(245, 158, 11, 0.35) !important;
+    background: rgba(14, 11, 6, 0.98) !important;
+    z-index: 12001 !important;
+    animation: vnSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.vn-theme-park .vn-portrait-frame {
+    flex-direction: row !important;
+    width: auto !important;
+    border-right: none !important;
+    padding-right: 0 !important;
+    gap: 8px !important;
+    align-items: center !important;
+}
+
+.vn-theme-park .vn-dialogue-box:hover {
+    border-color: rgba(251, 191, 36, 0.9) !important;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95), 0 0 35px rgba(245, 158, 11, 0.45) !important;
+}
+
+.vn-theme-park .vn-portrait-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(45, 25, 5, 0.9) 70%) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5) !important;
+}
+
+.vn-theme-park .vn-portrait-emoji {
+    font-size: 20px !important;
+}
+
+.vn-theme-park .vn-portrait-badge {
+    display: none !important;
+}
+
+.vn-theme-park .vn-top-bar {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.vn-theme-park .vn-dialogue-body {
+    min-height: auto !important;
+    margin: 0 !important;
+    padding-right: 14px !important;
+    flex: 1 !important;
+}
+
+.vn-theme-park .vn-dialogue-text {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    color: #fef3c7 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.vn-theme-park .vn-status-dot {
+    background: #f59e0b !important;
+    box-shadow: 0 0 8px #f59e0b !important;
+}
+
+.vn-theme-park .vn-speaker-name {
+    color: #fbbf24 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
+
+.vn-theme-park .vn-speaker-title {
+    color: #d97706 !important;
+    font-size: 10px !important;
+}
+
+.vn-theme-park .vn-step-tracker {
+    color: #fbbf24 !important;
+    font-size: 10px !important;
+    white-space: nowrap !important;
+}
+
+.vn-theme-park .vn-next-indicator {
+    color: #f59e0b;
+}
+
+.vn-theme-park .vn-next-btn {
+    background: rgba(245, 158, 11, 0.2);
+    border-color: rgba(245, 158, 11, 0.5);
+    color: #fbbf24;
+}
+
+.vn-theme-park .vn-next-btn:hover {
+    background: rgba(245, 158, 11, 0.35);
+    border-color: #fbbf24;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+.vn-theme-park .vn-action-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #1a0f02;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+}
+
+.vn-theme-park .vn-action-btn:hover {
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.7);
+}
+
