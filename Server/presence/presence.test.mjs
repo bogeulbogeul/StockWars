@@ -1,0 +1,80 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { PresenceRegistry } from './registry.mjs';
+import { createPresenceServer } from './server.mjs';
+import clientModule from '../../electron-app/src/presence-client.cjs';
+const { PresenceClient } = clientModule;
+
+test('ten clients: join, duplicate session, leave, reconnect, disconnect and timeout', async t => {
+    let now = 100000;
+    const registry = new PresenceRegistry({ now: () => now });
+    const server = createPresenceServer({ registry });
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    const dir = await mkdtemp(path.join(tmpdir(), 'stockwars-presence-'));
+    t.after(async () => {
+        await new Promise(resolve => server.close(resolve));
+        assert.equal(path.dirname(path.resolve(dir)), path.resolve(tmpdir()));
+        assert.ok(path.basename(dir).startsWith('stockwars-presence-'));
+        await rm(dir, { recursive: true });
+    });
+    const url = `http://127.0.0.1:${server.address().port}`;
+    const clients = Array.from({ length: 10 }, (_, i) => new PresenceClient({ url, tokenFile: path.join(dir, `${i}.json`) }));
+    const joined = await Promise.all(clients.map(client => client.command('join', 'town-1')));
+    assert.ok(joined.every(result => !result.error));
+    assert.equal(registry.snapshot().totalCCU, 10);
+    assert.equal(registry.snapshot().channels[0].users, 10);
+    assert.ok(!('token' in clients[0].state().snapshot));
+    await clients[0].command('join', 'town-1');
+    assert.equal(registry.snapshot().totalCCU, 10);
+    await clients[0].command('leave');
+    assert.equal(registry.snapshot().channels[0].users, 9);
+    assert.equal(registry.snapshot().totalCCU, 10);
+    await clients[0].stop();
+    assert.equal(registry.snapshot().totalCCU, 9);
+    const reopened = new PresenceClient({ url, tokenFile: path.join(dir, '0.json') });
+    await reopened.command('join', 'town-1');
+    assert.equal(registry.snapshot().totalCCU, 10);
+    now += 30000;
+    assert.equal(registry.snapshot().totalCCU, 0);
+    await reopened.command('heartbeat');
+    assert.equal(registry.snapshot().totalCCU, 1);
+    registry.sessions.clear(); // Server restart: an old session must renew automatically.
+    await reopened.command('heartbeat');
+    assert.equal(registry.snapshot().totalCCU, 1);
+    assert.equal(registry.snapshot().channels[0].users, 1);
+    const network = reopened.fetch;
+    reopened.fetch = async () => { throw new Error('offline during departure'); };
+    await reopened.command('leave');
+    reopened.fetch = network;
+    await reopened.command('heartbeat');
+    assert.equal(registry.snapshot().channels[0].users, 0, 'reconnection must not restore a town the player already left');
+    const invalid = await fetch(`${url}/api/presence`, { method: 'POST', body: '{bad' });
+    assert.equal(invalid.status, 400);
+    const denied = await fetch(`${url}/api/presence`, { method: 'POST', body: JSON.stringify({action: 'join', channelId: 'town-1'}) });
+    assert.equal(denied.status, 401);
+    const health = await fetch(`${url}/health`);
+    assert.equal(health.status, 200);
+});
+
+test('capacity is enforced by server without synthetic players or channels', () => {
+    const registry = new PresenceRegistry({ capacity: 1 });
+    const first = registry.session().token;
+    const second = registry.session().token;
+    registry.update(first, 'join', 'town-1');
+    assert.throws(() => registry.update(second, 'join', 'town-1'), { status: 409 });
+    assert.throws(() => registry.update(second, 'join', 'town-2'), { status: 404 });
+    assert.equal(registry.snapshot().channels.length, 1);
+    assert.equal(registry.snapshot().channels[0].users, 1);
+});
+
+test('missing server and connection failures do not report zero or stale numbers', async () => {
+    const missing = new PresenceClient({ url: '', tokenFile: 'unused' });
+    assert.match((await missing.command('heartbeat')).error, /미설정/);
+    const failed = new PresenceClient({ url: 'https://example.invalid', tokenFile: 'unused', fetchImpl: async () => { throw new Error('offline'); } });
+    failed.snapshot = { totalCCU: 10 };
+    assert.match((await failed.command('heartbeat')).error, /연결 끊김/);
+    assert.equal(failed.state().snapshot, null);
+});
