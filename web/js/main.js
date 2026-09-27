@@ -22,7 +22,7 @@ import { SettlementModal } from './components/SettlementModal.js';
 import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
-import { LogisticsMiniGame } from './components/LogisticsMiniGame.js';
+import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
 import { InventoryModal } from './components/InventoryModal.js';
 import { FurnitureEditModal } from './components/FurnitureEditModal.js';
 import { VivianStoreModal } from './components/store/VivianStoreModal.js';

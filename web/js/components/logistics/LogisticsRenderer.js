@@ -3,6 +3,8 @@
  * Handles DOM character visual state, stacked boxes tower, and SVG truck cargo box rendering.
  */
 
+import { LOGISTICS_ASSETS } from './LogisticsAssets.js?v=2';
+
 export class LogisticsRenderer {
     static updateTruckBoxesGraphic(containerGroup, loadedCount) {
         let boxesSvg = '';
@@ -10,13 +12,11 @@ export class LogisticsRenderer {
         for (let i = 0; i < count; i++) {
             const col = i % 4;
             const row = Math.floor(i / 4);
-            const bx = 90 + col * 28;
-            const by = 175 - row * 26;
+            // Match the empty loading bay in the truck's 1478 x 1064 artwork.
+            const bx = 610 + col * 175;
+            const by = 560 - row * 90;
             boxesSvg += `
-                <g transform="translate(${bx}, ${by})">
-                    <rect width="25" height="23" rx="2" fill="#d97706" stroke="#78350f" stroke-width="1.5" />
-                    <line x1="0" y1="8" x2="25" y2="8" stroke="#b45309" stroke-width="1" />
-                </g>
+                <image href="${LOGISTICS_ASSETS.parcel}" x="${bx}" y="${by}" width="140" height="100" />
             `;
         }
         containerGroup.innerHTML = boxesSvg;
@@ -41,7 +41,7 @@ export class LogisticsRenderer {
                 for (let i = 1; i <= game.carriedCount; i++) {
                     towerHtml += `
                         <div class="char-box-item level-${i}" id="charBoxLevel_${i}">
-                            📦
+                            <img src="${LOGISTICS_ASSETS.parcel}" width="34" height="34" alt="" draggable="false" />
                         </div>
                     `;
                 }

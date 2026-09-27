@@ -43,6 +43,7 @@ export class VivianStoreModal {
         this.userCashEl = document.getElementById('vivianUserCash');
         this.affinityBadgeEl = document.getElementById('vivianAffinityBadge');
         this.moodTagEl = document.getElementById('vivianMoodTag');
+        this.portraitEl = document.getElementById('vivianPortrait');
         this.speechTextEl = document.getElementById('vivianSpeechText');
         this.tabsContainer = document.getElementById('vivianTabsContainer');
         this.shelfBannerIcon = document.getElementById('shelfBannerIcon');
@@ -354,6 +355,14 @@ export class VivianStoreModal {
     }
 
     triggerDialogue(type = 'greet', fixedIdx = null) {
+        const expression = {
+            greet: 'neutral', talk: 'neutral', hardware: 'skeptical',
+            consume: 'smile', done: 'smile', poor: 'skeptical', secret: 'secret'
+        }[type] || 'neutral';
+        if (this.portraitEl) {
+            this.portraitEl.src = `assets/characters/vivian/vivian-dialogue-${expression}-v1.png`;
+            this.portraitEl.alt = `비비안 — ${{ neutral: '차분한 미소', smile: '흡족한 미소', skeptical: '의심과 단호함', secret: '비밀스러운 귓속말' }[expression]}`;
+        }
         const pool = VIVIAN_DIALOGUES[type] || VIVIAN_DIALOGUES.greet;
         const text = fixedIdx !== null ? pool[fixedIdx] : pool[Math.floor(Math.random() * pool.length)];
 

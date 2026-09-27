@@ -50,10 +50,9 @@ export function getVivianStoreHtml() {
                         <!-- Portrait Frame (Ready for 2D/3D illustration asset) -->
                         <div class="vivian-portrait-card">
                             <div class="vivian-portrait-viewport" id="vivianPortraitViewport">
-                                <div class="vivian-portrait-avatar-placeholder">
-                                    <span class="vivian-avatar-emoji">👩‍🔬</span>
-                                    <div class="vivian-avatar-glow"></div>
-                                </div>
+                                <img id="vivianPortrait" class="vivian-portrait-image"
+                                     src="assets/characters/vivian/vivian-dialogue-neutral-v1.png"
+                                     alt="비비안 — 차분한 미소" draggable="false">
                                 <div class="vivian-portrait-mood-tag" id="vivianMoodTag">영업 중 • 침착</div>
                             </div>
                             <div class="vivian-nameplate">

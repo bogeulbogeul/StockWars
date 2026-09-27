@@ -311,6 +311,23 @@ body:has(#parkTutorialOverlay:not(.hidden)) .logistics-footer-bar,
     margin-bottom: 6px;
 }
 
+.park-settlement-dialogue {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0 16px;
+    text-align: left;
+}
+
+.park-settlement-dialogue img {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    object-fit: contain;
+    background: radial-gradient(circle, #49331a, transparent);
+    border-radius: 10px;
+}
+
 .settlement-subtitle {
     font-size: 13px;
     color: #94a3b8;

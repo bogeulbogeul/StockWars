@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<title>물류 미니게임 아트 미리보기</title>
+<link rel="stylesheet" href="/web/css/style.css">
+<style>body{margin:0;background:#090e17}#restart{position:fixed;bottom:8px;left:8px;z-index:11000}</style>
+<div id="preview"></div>
+<button id="restart">미니게임 다시 시작</button>
+<script type="module">
+import { LogisticsMiniGame } from '/web/js/components/LogisticsMiniGame.js';
+const game = new LogisticsMiniGame(document.querySelector('#preview'));
+game.hasSeenTutorial = true;
+document.querySelector('#restart').onclick = () => { game.close(); game.open(); };
+game.open();
+</script>
+</html>

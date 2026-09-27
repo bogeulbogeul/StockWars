@@ -9,11 +9,11 @@
  * 4. 60-Second Timer -> Settlement Modal (Grade S/A/B/C + Gold/EXP + Rumor info)
  */
 
-import { getLogisticsModalHtml } from './logistics/LogisticsTemplate.js';
+import { getLogisticsModalHtml } from './logistics/LogisticsTemplate.js?v=art-2';
 import { calculateLogisticsGrade, calculateLogisticsSettlement } from './logistics/LogisticsRewardEngine.js';
 import { LogisticsAudio } from './logistics/LogisticsAudio.js';
 import { LogisticsPhysicsEngine } from './logistics/LogisticsPhysicsEngine.js';
-import { LogisticsRenderer } from './logistics/LogisticsRenderer.js';
+import { LogisticsRenderer } from './logistics/LogisticsRenderer.js?v=art-2';
 import { ParkLogisticsTutorial } from './ParkLogisticsTutorial.js';
 
 export class LogisticsMiniGame {
@@ -453,6 +453,23 @@ export class LogisticsMiniGame {
         const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime);
         this.completedJobsCount++;
         const { grade, goldReward, expReward, hasRumor, isJackpot, gradeLabel } = result;
+        const parkExpression = isJackpot || grade === 'S' || grade === 'A'
+            ? 'smile' : (this.brokenCount > 0 ? 'angry' : (grade === 'C' ? 'worried' : 'neutral'));
+        const parkPortrait = document.getElementById('parkSettlementPortrait');
+        const parkSpeech = document.getElementById('parkSettlementSpeech');
+        if (parkPortrait) {
+            parkPortrait.src = `assets/characters/manager-park/park-dialogue-${parkExpression}-v1.png`;
+            parkPortrait.alt = `관리소장 박씨 — ${{ smile: '흡족한 미소', angry: '호통', worried: '걱정', neutral: '무뚝뚝한 표정' }[parkExpression]}`;
+        }
+        if (parkSpeech) {
+            const lines = {
+                smile: '제법 하는군! 네 몸으로 번 돈이다. 소중히 써라.',
+                angry: '화물은 조심해서 다뤄! 다음엔 속도보다 균형부터 잡아라.',
+                worried: '많이 지쳤나 보군. 수고비는 챙겨 줄 테니 좀 쉬고 와라.',
+                neutral: '60초 동안 수고 많았네. 정산 내역을 확인하게.'
+            };
+            parkSpeech.textContent = `관리소장 박씨: "${lines[parkExpression]}"`;
+        }
 
         // Update Settlement Card
         this.settlementStamp.className = `settlement-stamp grade-${grade}`;

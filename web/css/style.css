@@ -49,6 +49,7 @@
 @import './modules/town/town-modal.css';
 @import './modules/logistics/logistics-arena.css';
 @import './modules/logistics/logistics-settlement.css';
+@import './modules/logistics/logistics-artwork.css';
 
 /* 8. Settlement & Reporting */
 @import './modules/settlement-modal.css';

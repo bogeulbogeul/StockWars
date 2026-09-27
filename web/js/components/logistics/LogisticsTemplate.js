@@ -5,6 +5,7 @@
  */
 
 import { createGeometricAvatarSVG } from '../GeometricAvatar.js';
+import { LOGISTICS_ASSETS } from './LogisticsAssets.js?v=2';
 
 export function getLogisticsModalHtml() {
     return `
@@ -55,51 +56,17 @@ export function getLogisticsModalHtml() {
                 <!-- 2D Gameplay Viewport -->
                 <div class="logistics-game-canvas-area" id="logisticsCanvasArea">
                     <!-- Background Environment -->
-                    <div class="logistics-bg-warehouse">
-                        <div class="logistics-bg-racks"></div>
-                        <div class="logistics-bg-light-cone" style="left: 120px;"></div>
-                        <div class="logistics-bg-light-cone" style="left: 680px;"></div>
-                    </div>
+                    <div class="logistics-bg-warehouse" aria-hidden="true"></div>
 
                     <!-- Left Zone: Cargo Delivery Truck -->
                     <div class="logistics-truck-zone" id="logisticsTruckZone">
                         <div class="logistics-truck-target-indicator" id="truckTargetIndicator">
                             <span>🚛 여기에 하차! [A]</span>
                         </div>
-                        <!-- Vector Truck SVG -->
-                        <svg class="logistics-truck-svg" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="truckBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#1e293b"/>
-                                    <stop offset="100%" stop-color="#0f172a"/>
-                                </linearGradient>
-                                <linearGradient id="truckCargoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#334155"/>
-                                    <stop offset="100%" stop-color="#1e293b"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Truck Cab (Front) -->
-                            <path d="M 30 140 L 60 140 L 75 170 L 75 220 L 15 220 L 15 160 Z" fill="#0284c7" stroke="#38bdf8" stroke-width="3" />
-                            <rect x="35" y="148" width="22" height="18" rx="3" fill="#bae6fd" opacity="0.8" />
-                            <circle cx="45" cy="225" r="16" fill="#0f172a" stroke="#64748b" stroke-width="4" />
-                            
-                            <!-- Truck Cargo Container (Back Open Gate) -->
-                            <rect x="75" y="70" width="150" height="150" rx="8" fill="url(#truckCargoGrad)" stroke="#f59e0b" stroke-width="4" />
-                            <!-- Inside Cargo Area (Dark Depth) -->
-                            <rect x="85" y="80" width="130" height="130" rx="4" fill="#070b12" />
-                            
-                            <!-- Dynamic Loaded Boxes Inside Truck -->
-                            <g id="truckLoadedBoxesGroup">
-                                <!-- Populated dynamically via JS -->
-                            </g>
-
-                            <!-- Truck Wheels -->
-                            <circle cx="120" cy="225" r="16" fill="#0f172a" stroke="#64748b" stroke-width="4" />
-                            <circle cx="190" cy="225" r="16" fill="#0f172a" stroke="#64748b" stroke-width="4" />
-
-                            <!-- BIT LOGISTICS Logo on Truck -->
-                            <rect x="90" y="85" width="60" height="14" rx="3" fill="#f59e0b" opacity="0.9"/>
-                            <text x="94" y="96" font-size="9" font-weight="900" fill="#090e17">BIT HUB</text>
+                        <!-- Generated truck with a live cargo overlay. -->
+                        <svg class="logistics-truck-svg" width="280" height="200" viewBox="0 0 1478 1064" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                            <image href="${LOGISTICS_ASSETS.truck}" width="1478" height="1064" />
+                            <g id="truckLoadedBoxesGroup"></g>
                         </svg>
                     </div>
 
@@ -118,47 +85,8 @@ export function getLogisticsModalHtml() {
                         <div class="logistics-boxes-target-indicator" id="boxesTargetIndicator">
                             <span>📦 상자 집기 / 더 쌓기 [W • Space]</span>
                         </div>
-                        <!-- Vector Stacked Boxes SVG -->
-                        <svg class="logistics-boxes-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Wooden Pallet Base -->
-                            <rect x="10" y="190" width="180" height="18" rx="3" fill="#854d0e" stroke="#451a03" stroke-width="3"/>
-                            <rect x="30" y="196" width="30" height="8" fill="#451a03"/>
-                            <rect x="85" y="196" width="30" height="8" fill="#451a03"/>
-                            <rect x="140" y="196" width="30" height="8" fill="#451a03"/>
-
-                            <!-- Stack of Cardboard Boxes -->
-                            <g transform="translate(18, 126)">
-                                <rect width="52" height="60" rx="4" fill="#d97706" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="20" x2="52" y2="20" stroke="#b45309" stroke-width="2"/>
-                                <rect x="12" y="30" width="16" height="10" fill="#fef3c7" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(74, 126)">
-                                <rect width="52" height="60" rx="4" fill="#b45309" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="20" x2="52" y2="20" stroke="#92400e" stroke-width="2"/>
-                                <rect x="12" y="30" width="16" height="10" fill="#fef3c7" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(130, 126)">
-                                <rect width="52" height="60" rx="4" fill="#d97706" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="20" x2="52" y2="20" stroke="#b45309" stroke-width="2"/>
-                                <rect x="12" y="30" width="16" height="10" fill="#fef3c7" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(42, 62)">
-                                <rect width="54" height="60" rx="4" fill="#f59e0b" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="20" x2="54" y2="20" stroke="#d97706" stroke-width="2"/>
-                                <rect x="14" y="30" width="18" height="10" fill="#fef3c7" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(102, 62)">
-                                <rect width="54" height="60" rx="4" fill="#d97706" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="20" x2="54" y2="20" stroke="#b45309" stroke-width="2"/>
-                                <rect x="14" y="30" width="18" height="10" fill="#fef3c7" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(70, 0)">
-                                <rect width="56" height="58" rx="4" fill="#fbbf24" stroke="#78350f" stroke-width="2.5"/>
-                                <line x1="0" y1="18" x2="56" y2="18" stroke="#d97706" stroke-width="2"/>
-                                <rect x="15" y="26" width="18" height="10" fill="#fef3c7" opacity="0.8"/>
-                                <text x="12" y="48" font-size="8" font-weight="900" fill="#78350f">FRAGILE</text>
-                            </g>
-                        </svg>
+                        <!-- Generated parcel pallet. -->
+                        <img class="logistics-boxes-svg" src="${LOGISTICS_ASSETS.pallet}" width="200" height="220" alt="운반할 택배 상자 팔레트" draggable="false" />
                     </div>
 
                     <!-- Character Avatar on Ground -->
@@ -198,7 +126,10 @@ export function getLogisticsModalHtml() {
                     <div class="settlement-card">
                         <div class="settlement-stamp grade-S" id="settlementStamp">S</div>
                         <div class="settlement-title">📦 작업 완료 및 급여 정산</div>
-                        <div class="settlement-subtitle">관리소장 박씨: "60초 동안 수고 많았네. 정산 내역을 확인하게."</div>
+                        <div class="park-settlement-dialogue">
+                            <img id="parkSettlementPortrait" src="assets/characters/manager-park/park-dialogue-neutral-v1.png" alt="관리소장 박씨" draggable="false">
+                            <div class="settlement-subtitle" id="parkSettlementSpeech">관리소장 박씨: "60초 동안 수고 많았네. 정산 내역을 확인하게."</div>
+                        </div>
 
                         <div class="settlement-table">
                             <div class="settlement-row">

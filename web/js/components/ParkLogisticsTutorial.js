@@ -28,7 +28,7 @@ export class ParkLogisticsTutorial {
                     <!-- Left: Park Portrait Frame -->
                     <div class="vn-portrait-frame" id="vnParkPortraitFrame">
                         <div class="vn-portrait-avatar" id="vnParkPortraitAvatar">
-                            <span class="vn-portrait-emoji">👷‍♂️</span>
+                            <img id="vnParkPortrait" src="assets/characters/manager-park/park-dialogue-neutral-v1.png" alt="관리소장 박씨 — 무뚝뚝한 표정" draggable="false">
                         </div>
                         <div class="vn-portrait-badge">MANAGER PARK</div>
                     </div>
@@ -73,6 +73,7 @@ export class ParkLogisticsTutorial {
         this.overlay = document.getElementById('parkTutorialOverlay');
         this.dialogueBox = document.getElementById('vnParkDialogueBox');
         this.portraitAvatar = document.getElementById('vnParkPortraitAvatar');
+        this.portraitImage = document.getElementById('vnParkPortrait');
         this.speakerName = document.getElementById('vnParkSpeakerName');
         this.dialogueText = document.getElementById('vnParkDialogueText');
         this.stepTracker = document.getElementById('vnParkStepTracker');
@@ -145,6 +146,7 @@ export class ParkLogisticsTutorial {
             // STEP 1: 박씨의 현장 오리엔테이션
             {
                 id: 'park_intro',
+                expression: 'neutral',
                 speaker: "관리소장 박씨",
                 text: `어이, ${nickname}! 증시에서 제대로 털리고 땡전 한 푼 없어서 찾아온 거냐? 쯧쯧... 여기선 차트 속 가짜 숫자 말고 네 몸뚱이로 정직하게 뛰어 번 돈이 최고다. 장갑 단단히 껴라!`,
                 tracker: "1/5 • 현장 오리엔테이션",
@@ -157,6 +159,7 @@ export class ParkLogisticsTutorial {
             // STEP 2: 상자 집기 및 최대 4단 스택 조작
             {
                 id: 'park_box_stack',
+                expression: 'neutral',
                 speaker: "관리소장 박씨",
                 text: `우선 [D] 키로 우측 끝 파렛트까지 가라! 상자 앞에서 [W] 키나 [상자 더 쌓기] 버튼을 누르면 최대 4단까지 실을 수 있어. 많이 질수록 효율은 좋지만 무게 때문에 휘청거리니 명심해!`,
                 tracker: "2/5 • 상자 집기 & 다중 적재",
@@ -171,6 +174,7 @@ export class ParkLogisticsTutorial {
             // STEP 3: 이동 및 파손 위험 게이지 관리
             {
                 id: 'park_balance_damage',
+                expression: 'angry',
                 speaker: "관리소장 박씨",
                 text: `상자를 들었으면 [A] 키로 좌측 트럭을 향해 달려! [Shift]로 질주할 수 있지만, 급커브를 돌거나 너무 빠르면 [파손 위험] 게이지가 치솟아 박스가 와장창 깨지니까 완급 조절 잘해라!`,
                 tracker: "3/5 • 운반 & 파손 게이지 관리",
@@ -184,6 +188,7 @@ export class ParkLogisticsTutorial {
             // STEP 4: 트럭 하차 및 루프
             {
                 id: 'park_truck_unload',
+                expression: 'neutral',
                 speaker: "관리소장 박씨",
                 text: `좌측 화물 트럭 적재함 앞에 도착하면 자동으로 하차 완료다! 짐을 내리고 빈손이 되면 다시 오른쪽으로 쏜살같이 뛰어가서 새 상자를 채워오는 걸 반복하는 거지!`,
                 tracker: "4/5 • 트럭 하차 & 적재",
@@ -198,6 +203,7 @@ export class ParkLogisticsTutorial {
             // STEP 5: 정산 등급 및 특급 찌라시 보상
             {
                 id: 'park_reward_rumor',
+                expression: 'smile',
                 speaker: "관리소장 박씨",
                 text: `제한 시간은 딱 60초다! S등급을 찍으면 일당 800 Gold에 듬뿍 얹어주고, 가끔 화물 상자 속에 숨겨진 '시장 특급 찌라시'도 건질 수 있다. 자, 실력 한번 보여봐라!`,
                 tracker: "5/5 • 정산 등급 & 찌라시 보너스",
@@ -231,6 +237,11 @@ export class ParkLogisticsTutorial {
 
         this.currentStepIdx = idx;
         const step = this.steps[idx];
+        if (this.portraitImage) {
+            const expression = step.expression || 'neutral';
+            this.portraitImage.src = `assets/characters/manager-park/park-dialogue-${expression}-v1.png`;
+            this.portraitImage.alt = `관리소장 박씨 — ${{ neutral: '무뚝뚝한 표정', smile: '흡족한 미소', angry: '호통', worried: '걱정' }[expression]}`;
+        }
 
         // Speaker & Tracker
         if (this.speakerName) this.speakerName.textContent = step.speaker || "관리소장 박씨";
