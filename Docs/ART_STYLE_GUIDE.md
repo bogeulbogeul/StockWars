@@ -48,9 +48,13 @@
 * **태양:** 둥근 꽃잎/과슈 붓터치 형태의 웜 허니 옐로우 태양
 * **구름:** 솜사탕/마시멜로 질감의 몽글몽글한 구름 팩 (먹구름은 차분한 슬레이트 그레이 톤)
 
-### 2) 마을/오피스 환경 및 가구 소품 (Props & Furniture)
-* **공통 규칙:** 정면(Front) 또는 약한 쿼터뷰(Slight isometric/front), 따뜻한 원목/패브릭 질감
-* **키워드:** `cozy wooden furniture, warm fabric texture, gentle hand-painted gouache, soft shadows, cute stylized props`
+### 2) 마을/오피스 건물 및 시설 파사드 (Buildings & Facades)
+* **시점 규칙 (필수):** **완전한 정면 직각 투시 (Strict Orthographic 2D Front View / 0-degree Flat Elevation)**
+* **배제 요소:** 3D 원근 투시(Perspective), 측면 벽면 노출(Side walls), 옥상 각도(Roof depth angle), 아이소메트릭(Isometric) **완전 금지**
+* **하단 기준선:** 지면 접지를 위한 완벽한 수평 바닥선 (`Flat straight horizontal bottom baseline`)
+* **키워드:** `Strict orthographic 2D front view elevation, 0 degree perspective, perfectly flat facade, 2D side-scroller game building asset, horizontal flat bottom baseline, isolated on pure solid white background`
+
+### 3) 환경 및 가구 소품 (Props & Furniture)
 
 ### 3) NPC & 캐릭터 포트레이트 (Characters & NPCs)
 * **공통 규칙:** 2.5등신 치비(SD) 또는 부드러운 동화책 삽화 스타일, 따스한 표정

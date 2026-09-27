@@ -1,6 +1,6 @@
-# StockWars GDD: [MOD_GDD_03_4] 전문 서점 (Bookstore)
+# StockWars GDD: [MOD_GDD_03_4] 데이터 잉크 서점 (Data Ink Bookstore)
 
-**판매처:** 비비안 잡화점 내 위탁 코너  
+**판매처:** 데이터 잉크 서점 (사서 소피아)  
 **문서 번호:** MOD_GDD_03-4
 
 ---
