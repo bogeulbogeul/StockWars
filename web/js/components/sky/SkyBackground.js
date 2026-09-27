@@ -5,6 +5,7 @@
  */
 
 import { TIME_OF_DAY, timeOfDayService } from '../../engine/timeOfDayService.js';
+import { SkyWeatherLayer } from './SkyWeatherLayer.js';
 
 export class SkyBackground {
     constructor(parentContainer, options = {}) {
@@ -13,6 +14,7 @@ export class SkyBackground {
         this.currentActive = null;
         this.containerEl = null;
         this.layers = {};
+        this.weatherLayer = null;
         this.unsubscribe = null;
 
         this.init();
@@ -27,6 +29,7 @@ export class SkyBackground {
                 <div class="sky-layer sky-night" data-time="${TIME_OF_DAY.NIGHT}"></div>
                 <div class="sky-twinkle-layer"></div>
                 <div class="sky-ambient-overlay"></div>
+                ${SkyWeatherLayer.getTemplateHtml()}
             </div>
         `;
     }
@@ -46,6 +49,9 @@ export class SkyBackground {
         this.layers[TIME_OF_DAY.DAY] = this.containerEl.querySelector('.sky-day');
         this.layers[TIME_OF_DAY.SUNSET] = this.containerEl.querySelector('.sky-sunset');
         this.layers[TIME_OF_DAY.NIGHT] = this.containerEl.querySelector('.sky-night');
+
+        // Dynamic Weather & Sun Layer
+        this.weatherLayer = new SkyWeatherLayer(this.containerEl);
 
         // Subscribe to global timeOfDayService
         this.unsubscribe = timeOfDayService.subscribe((timeKey) => {

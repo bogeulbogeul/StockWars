@@ -6,30 +6,30 @@
  */
 
 const WMO_CODES = {
-    0: { text: '맑음', dayIcon: '☀️', nightIcon: '🌙' },
-    1: { text: '대체로 맑음', dayIcon: '🌤️', nightIcon: '🌤️' },
-    2: { text: '구름 조금', dayIcon: '⛅', nightIcon: '☁️' },
-    3: { text: '흐림', dayIcon: '☁️', nightIcon: '☁️' },
-    45: { text: '안개', dayIcon: '🌫️', nightIcon: '🌫️' },
-    48: { text: '짙은 안개', dayIcon: '🌫️', nightIcon: '🌫️' },
-    51: { text: '이슬비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    53: { text: '이슬비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    55: { text: '강한 이슬비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    61: { text: '약한 비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    63: { text: '비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    65: { text: '강한 비', dayIcon: '🌧️', nightIcon: '🌧️' },
-    71: { text: '약한 눈', dayIcon: '❄️', nightIcon: '❄️' },
-    73: { text: '눈', dayIcon: '❄️', nightIcon: '❄️' },
-    75: { text: '폭설', dayIcon: '❄️', nightIcon: '❄️' },
-    77: { text: '싸락눈', dayIcon: '❄️', nightIcon: '❄️' },
-    80: { text: '소나기', dayIcon: '🌦️', nightIcon: '🌦️' },
-    81: { text: '강한 소나기', dayIcon: '🌧️', nightIcon: '🌧️' },
-    82: { text: '폭우', dayIcon: '⛈️', nightIcon: '⛈️' },
-    85: { text: '약한 눈보라', dayIcon: '🌨️', nightIcon: '🌨️' },
-    86: { text: '강한 눈보라', dayIcon: '🌨️', nightIcon: '🌨️' },
-    95: { text: '뇌우', dayIcon: '⛈️', nightIcon: '⛈️' },
-    96: { text: '뇌우 및 우박', dayIcon: '⛈️', nightIcon: '⛈️' },
-    99: { text: '강한 뇌우', dayIcon: '⛈️', nightIcon: '⛈️' }
+    0: { text: '맑음', category: 'clear', dayIcon: '☀️', nightIcon: '🌙' },
+    1: { text: '대체로 맑음', category: 'clear', dayIcon: '🌤️', nightIcon: '🌤️' },
+    2: { text: '구름 조금', category: 'partly_cloudy', dayIcon: '⛅', nightIcon: '☁️' },
+    3: { text: '흐림', category: 'overcast', dayIcon: '☁️', nightIcon: '☁️' },
+    45: { text: '안개', category: 'overcast', dayIcon: '🌫️', nightIcon: '🌫️' },
+    48: { text: '짙은 안개', category: 'overcast', dayIcon: '🌫️', nightIcon: '🌫️' },
+    51: { text: '이슬비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    53: { text: '이슬비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    55: { text: '강한 이슬비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    61: { text: '약한 비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    63: { text: '비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    65: { text: '강한 비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    71: { text: '약한 눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
+    73: { text: '눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
+    75: { text: '폭설', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
+    77: { text: '싸락눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
+    80: { text: '소나기', category: 'rain', dayIcon: '🌦️', nightIcon: '🌦️' },
+    81: { text: '강한 소나기', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
+    82: { text: '폭우', category: 'rain', dayIcon: '⛈️', nightIcon: '⛈️' },
+    85: { text: '약한 눈보라', category: 'rain', dayIcon: '🌨️', nightIcon: '🌨️' },
+    86: { text: '강한 눈보라', category: 'rain', dayIcon: '🌨️', nightIcon: '🌨️' },
+    95: { text: '뇌우', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' },
+    96: { text: '뇌우 및 우박', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' },
+    99: { text: '강한 뇌우', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' }
 };
 
 class WeatherService {
@@ -38,11 +38,13 @@ class WeatherService {
             city: '로컬',
             temp: 22,
             weatherCode: 0,
+            category: 'clear',
             text: '맑음',
             icon: '☀️',
             isDay: true,
             humidity: 50
         };
+        this.isManual = false;
         this.listeners = new Set();
         this.updateInterval = null;
     }
@@ -84,6 +86,7 @@ class WeatherService {
                 temp: Math.round(current.temperature_2m),
                 humidity: current.relative_humidity_2m,
                 weatherCode: code,
+                category: wmo.category || 'clear',
                 text: wmo.text,
                 icon: icon,
                 isDay: isDay
@@ -100,12 +103,31 @@ class WeatherService {
                 temp: 21,
                 humidity: 45,
                 weatherCode: 0,
+                category: 'clear',
                 text: isDay ? '맑음' : '맑은 밤',
                 icon: isDay ? '☀️' : '🌙',
                 isDay: isDay
             };
             this.notify();
         }
+    }
+
+    cycleWeather() {
+        this.isManual = true;
+        const testCodes = [0, 2, 3, 63, 95]; // 맑음 -> 구름조금 -> 흐림 -> 비 -> 뇌우
+        const currentIdx = testCodes.indexOf(this.currentWeather.weatherCode);
+        const nextCode = testCodes[(currentIdx + 1) % testCodes.length];
+        const wmo = WMO_CODES[nextCode];
+        
+        this.currentWeather = {
+            ...this.currentWeather,
+            weatherCode: nextCode,
+            category: wmo.category,
+            text: wmo.text,
+            icon: this.currentWeather.isDay ? wmo.dayIcon : wmo.nightIcon
+        };
+        this.notify();
+        return this.currentWeather;
     }
 
     getCoordinates() {

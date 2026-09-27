@@ -158,7 +158,7 @@ export function getVivianStoreHtml() {
                 <!-- Footer Quick Navigation -->
                 <div class="vivian-store-footer">
                     <div class="footer-tips">
-                        <span class="key-badge">1~4</span> 탭 전환 &nbsp;|&nbsp;
+                        <span class="key-badge">1~3</span> 탭 전환 &nbsp;|&nbsp;
                         <span class="key-badge">E / ENTER</span> 구매 &nbsp;|&nbsp;
                         <span class="key-badge">ESC</span> 마을로 나가기
                     </div>

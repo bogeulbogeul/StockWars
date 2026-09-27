@@ -7,8 +7,7 @@
 export const VIVIAN_TABS = {
     daily: { id: 'daily', name: '일일 보급 매대', icon: '⚡', desc: '매일 00:00 갱신 소모품 및 유틸리티 도구' },
     weekly: { id: 'weekly', name: '주간 특수 매대', icon: '📅', desc: '매주 월요일 갱신 기간제 패스 및 배급권' },
-    secret: { id: 'secret', name: '비밀 매대 (Under)', icon: '🔒', desc: '트레이더 신뢰도 및 생존 업적 전용 은밀한 보급품' },
-    books: { id: 'books', name: '서점 위탁 코너', icon: '📚', desc: '영구 스탯 및 시장 통찰력을 높여주는 투자 전문 서적' }
+    secret: { id: 'secret', name: '비밀 매대 (Under)', icon: '🔒', desc: '트레이더 신뢰도 및 생존 업적 전용 은밀한 보급품' }
 };
 
 export const VIVIAN_SHOP_CATALOG = [
@@ -201,50 +200,6 @@ export const VIVIAN_SHOP_CATALOG = [
         reqUnlock: { level: 1, conditionDesc: '신뢰도 Lv.2 달성' },
         desc: '폭락장의 패닉 셀 노이즈와 글리치 왜곡을 차단하여 차트의 진짜 저점을 식별하게 합니다.',
         effects: ['🛡️ [블랙 스완] 차트 가독성 70% 복구', '📈 왜곡된 호가창 정상 틱 표시'],
-        linkedStock: null
-    },
-
-    // 4. 서점 위탁 코너 (Books)
-    {
-        id: 'item_book_candlestick',
-        tab: 'books',
-        name: '캔들스틱 차트 마스터북',
-        category: 'book',
-        rarity: 'rare',
-        icon: '📖',
-        price: 3500,
-        dailyLimit: 1,
-        instantUsable: true,
-        desc: '월스트리트 전설의 트레이더들이 집대성한 캔들 패턴과 지지/저항선 완벽 해설서.',
-        effects: ['📘 영구 스탯: [분석력] +1', '💡 차트 내 지지/저항선 가이드라인 투영'],
-        linkedStock: null
-    },
-    {
-        id: 'item_book_risk_management',
-        tab: 'books',
-        name: '자금 관리의 정석 (Risk Control)',
-        category: 'book',
-        rarity: 'rare',
-        icon: '📕',
-        price: 4500,
-        dailyLimit: 1,
-        instantUsable: true,
-        desc: '포트폴리오 비중 조절과 분할 매수/매도로 어떤 하락장에서도 살아남는 자금 관리법.',
-        effects: ['📕 영구 스탯: [운용력] +1', '💰 파산 리스크 방어율 +10%'],
-        linkedStock: null
-    },
-    {
-        id: 'item_book_mindset',
-        tab: 'books',
-        name: '트레이더의 멘탈 수양록',
-        category: 'book',
-        rarity: 'uncommon',
-        icon: '📗',
-        price: 3000,
-        dailyLimit: 1,
-        instantUsable: true,
-        desc: '공포와 탐욕을 다스리고 냉철한 결정을 내릴 수 있도록 돕는 심리 훈련 교본.',
-        effects: ['📗 영구 스탯: [회복력] +1', '💖 일일 스테미너 최대치 +0.5'],
         linkedStock: null
     }
 ];

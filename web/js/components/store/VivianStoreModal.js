@@ -121,7 +121,6 @@ export class VivianStoreModal {
             } else if (e.key === '1') this.switchTab('daily');
             else if (e.key === '2') this.switchTab('weekly');
             else if (e.key === '3') this.switchTab('secret');
-            else if (e.key === '4') this.switchTab('books');
             else if (e.key === 'e' || e.key === 'E') {
                 if (document.activeElement !== this.qtyInput) {
                     this.executePurchase(false);

@@ -36,6 +36,7 @@
 
 /* 7. World Environments & Stages */
 @import './modules/sky-background.css';
+@import './modules/sky-weather.css';
 @import './modules/office-stage.css';
 @import './modules/town-gateway-modal.css';
 @import './modules/town/town-base.css';

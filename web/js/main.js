@@ -54,8 +54,14 @@ class StockWarsApplication {
                 toastManager.show(`⏱️ 하늘 시간대 전환: ${nextMeta.icon} ${nextMeta.label} - ${nextMeta.desc}`);
             },
             onWeatherClick: () => {
-                const w = weatherService.currentWeather;
-                toastManager.show(`📍 실시간 로컬 날씨 (${w.city}): ${w.icon} ${w.text} ${w.temp}°C (습도: ${w.humidity}%)`);
+                const isDev = new URLSearchParams(window.location.search).get('dev') === 'true';
+                if (isDev) {
+                    const w = weatherService.cycleWeather();
+                    toastManager.show(`🛠️ [DEV] 날씨 시뮬레이션: ${w.icon} ${w.text} ${w.temp}°C (태양/구름 연동)`);
+                } else {
+                    const w = weatherService.currentWeather;
+                    toastManager.show(`📍 실시간 로컬 날씨 (${w.city}): ${w.icon} ${w.text} ${w.temp}°C (습도: ${w.humidity}%)`);
+                }
             },
             onStaminaClick: (s) => toastManager.show(`❤️ 체력 (스테미너): ${s.current} / ${s.max} | 알바, 속독 등에 소모`),
             onInventory: () => this.inventoryModal.toggle(),
