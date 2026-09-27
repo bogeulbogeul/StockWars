@@ -1,0 +1,102 @@
+{
+  "Bit": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      50,
+      208,
+      1676,
+      538
+    ]
+  },
+  "BankBuilding": {
+    "width": 1402,
+    "height": 1122,
+    "bounds": [
+      34,
+      48,
+      1334,
+      998
+    ]
+  },
+  "MordenFrame": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      118,
+      66,
+      1300,
+      876
+    ]
+  },
+  "VivianStore": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      88,
+      96,
+      1628,
+      706
+    ]
+  },
+  "BookStore": {
+    "width": 1358,
+    "height": 1159,
+    "bounds": [
+      148,
+      100,
+      1064,
+      926
+    ]
+  },
+  "BarterPawnShop": {
+    "width": 1145,
+    "height": 1374,
+    "bounds": [
+      124,
+      114,
+      900,
+      1108
+    ]
+  },
+  "OfficeBuilding": {
+    "width": 1060,
+    "height": 1484,
+    "bounds": [
+      214,
+      74,
+      634,
+      1346
+    ]
+  },
+  "MidnightPub": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      98,
+      74,
+      1342,
+      852
+    ]
+  },
+  "CipherBuilding": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      42,
+      36,
+      942,
+      1420
+    ]
+  },
+  "TailerShop": {
+    "width": 1214,
+    "height": 1295,
+    "bounds": [
+      158,
+      102,
+      912,
+      1090
+    ]
+  }
+}

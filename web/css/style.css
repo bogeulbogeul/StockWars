@@ -41,6 +41,7 @@
 @import './modules/town-gateway-modal.css';
 @import './modules/town/town-base.css';
 @import './modules/town/town-buildings.css';
+@import './modules/town/town-building-assets.css';
 @import './modules/town/town-billboard.css';
 @import './modules/town/town-props.css';
 @import './modules/town/town-character.css';

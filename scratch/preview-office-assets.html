@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<base href="/web/">
+<title>StockWars 오피스룸 미리보기</title>
+<link rel="stylesheet" href="css/style.css">
+<div id="preview"></div>
+<script type="module">
+import { OfficeStage } from '/web/js/components/OfficeStage.js';
+new OfficeStage(document.querySelector('#preview'), {
+    onOpenServerSelect: () => alert('마을 이동 연결 확인')
+});
+</script>
+</html>

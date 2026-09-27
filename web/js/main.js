@@ -210,6 +210,7 @@ class StockWarsApplication {
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            isInputBlocked: () => this.logisticsMiniGame?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
@@ -469,6 +470,7 @@ class StockWarsApplication {
     }
 
     enterOffice() {
+        this.serverSelectModal?.close();
         this.townStage?.hide();
         this.officeStage?.show?.();
         document.body.classList.remove('town-mode-active');

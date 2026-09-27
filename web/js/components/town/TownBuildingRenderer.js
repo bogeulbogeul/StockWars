@@ -8,68 +8,31 @@ import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_T
 export class TownBuildingRenderer {
     static renderBuildingsHTML() {
         return TOWN_BUILDINGS.map(b => `
-            <div class="town-building-box theme-${b.colorTheme} ${b.isMainLandmark ? 'landmark-main' : ''} ${b.isOfficetel ? 'building-officetel' : ''}" 
+            <div class="town-building-box building-with-asset ${b.isMainLandmark ? 'landmark-main' : ''}"
                  id="building_${b.id}"
                  data-building-id="${b.id}"
                  data-building-name="${b.name}"
                  data-building-desc="${b.desc}"
                  data-action-text="${b.actionText}"
+                 aria-label="${b.name}${b.available === false ? ' · 개점 준비 중' : ''}"
+                 ${b.available === false ? 'aria-disabled="true"' : ''}
                  style="left: ${b.x}px; width: ${b.width}px; height: ${b.height}px;">
-                
-                <!-- Architectural Rooftop Parapet / Header Plate -->
-                <div class="building-roof-parapet">
-                    <div class="parapet-header-bar">
-                        <span class="building-category-tag">${b.category}</span>
-                        <span class="building-name-plate">${b.name}</span>
-                    </div>
-                    ${b.isOfficetel ? '<div class="officetel-penthouse-top"><span class="penthouse-window"></span><span class="penthouse-window"></span></div>' : ''}
-                </div>
-
-                <!-- Modular Architectural Asset Slot -->
-                <div class="building-asset-slot" data-slot-id="${b.id}">
-                    <div class="building-wireframe-facade">
-                        <div class="building-windows-grid">
-                            ${this.renderMockWindows(b.width, b.height, b.isOfficetel)}
-                        </div>
-                        <div class="building-entrance-gate">
-                            <span class="entrance-door-light"></span>
-                            <span class="entrance-text">${b.name} 출입구</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ground Shadow Base -->
-                <div class="building-base-shadow"></div>
+                <svg class="building-artwork" width="${b.asset.displayWidth}" height="${b.height}"
+                     viewBox="${b.asset.x} ${b.asset.y} ${b.asset.cropWidth} ${b.asset.cropHeight}"
+                     aria-hidden="true" focusable="false">
+                    <image href="${b.asset.src}" width="${b.asset.width}" height="${b.asset.height}" />
+                </svg>
             </div>
         `).join('');
     }
-
     static renderInteractivePropsHTML() {
         return TOWN_INTERACTIVE_PROPS.map(p => {
             if (p.type === 'bench') {
                 return `
                     <div class="town-bench-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px;">
-                        <div class="bench-aura-glow"></div>
-                        <div class="bench-structure">
-                            <div class="bench-backrest">
-                                <span class="bench-slat"></span>
-                                <span class="bench-slat"></span>
-                            </div>
-                            <div class="bench-seat">
-                                <span class="bench-slat"></span>
-                                <span class="bench-slat"></span>
-                            </div>
-                            <div class="bench-armrests">
-                                <span class="arm-left"></span>
-                                <span class="arm-right"></span>
-                            </div>
-                            <div class="bench-legs">
-                                <span class="leg-left"></span>
-                                <span class="leg-right"></span>
-                            </div>
-                        </div>
-                        <div class="bench-name-tag">힐링 벤치</div>
-                        <div class="bench-shadow"></div>
+                        <svg class="town-prop-art" viewBox="154 136 1468 620" aria-hidden="true" focusable="false">
+                            <image href="${new URL('../../../assets/props/Banch.png', import.meta.url).href}" width="1774" height="887" />
+                        </svg>
                     </div>
                 `;
             } else if (p.type === 'billboard') {
@@ -134,12 +97,9 @@ export class TownBuildingRenderer {
         TOWN_URBAN_TREES.forEach(x => {
             html += `
                 <div class="town-urban-tree" style="left: ${x}px;">
-                    <div class="tree-foliage">
-                        <span class="foliage-layer layer-1"></span>
-                        <span class="foliage-layer layer-2"></span>
-                    </div>
-                    <div class="tree-trunk"></div>
-                    <div class="tree-planter-pot"></div>
+                    <svg class="town-prop-art" viewBox="30 25 1140 1260" aria-hidden="true" focusable="false">
+                        <image href="${new URL('../../../assets/props/Tree.png', import.meta.url).href}" width="1189" height="1323" />
+                    </svg>
                 </div>
             `;
         });

@@ -6,7 +6,7 @@
 export class TownPlayerController {
     constructor(callbacks = {}) {
         this.callbacks = callbacks;
-        this.worldWidth = 5900;
+        this.worldWidth = 5900 * 1.7;
         this.charPosX = 260;
         this.charFacing = 1;
         this.isMoving = false;

@@ -1,6 +1,5 @@
 /**
  * TownStage Component (2D 횡스크롤 마을 무대 컨트롤러)
- * Unity equivalent: TownScene / TownGroundController.cs / TownCameraController.cs
  * Modular architecture:
  * - TownBuildingRenderer: HTML markup for buildings, props, and modals
  * - TownPlayerController: 2D side-view physics, inputs, and camera tracking
@@ -156,6 +155,7 @@ export class TownStage {
     initEventListeners() {
         window.addEventListener('keydown', (e) => {
             if (this.containerEl?.classList.contains('hidden')) return;
+            if (this.callbacks.isInputBlocked?.()) return;
             const key = e.key.toLowerCase();
             if (key === 'f') {
                 if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
@@ -172,6 +172,7 @@ export class TownStage {
         });
 
         this.btnReturnOffice?.addEventListener('click', () => {
+            if (this.callbacks.isInputBlocked?.()) return;
             if (this.callbacks.onReturnOffice) this.callbacks.onReturnOffice();
         });
 
@@ -191,11 +192,12 @@ export class TownStage {
 
         // Click on buildings or interactive props
         this.viewportEl?.addEventListener('click', (e) => {
+            if (this.callbacks.isInputBlocked?.()) return;
             const targetBuilding = e.target.closest('.town-building-box');
             if (targetBuilding) {
                 const bId = targetBuilding.dataset.buildingId;
                 const building = TOWN_BUILDINGS.find(b => b.id === bId);
-                if (building) {
+                if (building && building.available !== false) {
                     this.playerController.charPosX = building.x + building.width / 2;
                     this.checkProximity();
                     this.triggerAction(building);
@@ -242,13 +244,21 @@ export class TownStage {
     }
 
     update(dt) {
-        this.playerController.update(dt);
+        if (this.callbacks.isInputBlocked?.()) {
+            // Release movement held before entering the mini-game as well.
+            this.playerController.keysHeld.clear();
+            this.playerController.isMoving = false;
+            this.playerController.walkPhase = 0;
+        } else {
+            this.playerController.update(dt);
+        }
 
         // Apply World & Camera Transforms
         if (this.worldTrackEl) {
             this.worldTrackEl.style.transform = `translateX(${-this.playerController.cameraX}px)`;
         }
         if (this.parallaxBgEl) {
+            this.parallaxBgEl.style.width = `calc(100% + ${this.playerController.worldWidth * 0.25}px)`;
             this.parallaxBgEl.style.transform = `translateX(${-this.playerController.cameraX * 0.25}px)`;
         }
         if (this.townChar) {
@@ -268,6 +278,7 @@ export class TownStage {
         let nearby = null;
 
         for (const b of TOWN_BUILDINGS) {
+            if (b.available === false) continue;
             const center = b.x + b.width / 2;
             if (Math.abs(charX - center) <= b.width / 2 + 30) {
                 nearby = { ...b, kind: 'building' };
@@ -295,7 +306,7 @@ export class TownStage {
             if (nearby.kind === 'prop' && nearby.type === 'bench') {
                 promptBottom = 130 + (nearby.height || 52) + 75;
             }
-            this.promptEl.style.bottom = `${promptBottom}px`;
+            this.promptEl.style.bottom = `${Math.min(promptBottom, this.viewportEl.clientHeight - 110)}px`;
 
             if (this.promptIcon) this.promptIcon.textContent = nearby.icon || '🏢';
             if (this.promptTitle) this.promptTitle.textContent = nearby.name || '';
@@ -306,7 +317,8 @@ export class TownStage {
     }
 
     triggerAction(obj) {
-        if (!obj) return;
+        if (this.callbacks.isInputBlocked?.()) return;
+        if (!obj || obj.available === false) return;
         if (obj.kind === 'prop' || obj.type === 'bench' || obj.type === 'billboard') {
             if (obj.type === 'bench') {
                 this.playerController.restOnBench(obj, this.townChar, this.worldTrackEl);
@@ -335,18 +347,20 @@ export class TownStage {
         if (this.channelText) this.channelText.textContent = `채널: ${channel.name} (원활 • ${channel.ping}ms)`;
 
         if (spawnLocation === 'bit_logistics' || spawnLocation === 'logistics') {
-            // Spawn in front of Bit Logistics building (x: 720, width: 280 -> center 860)
-            this.playerController.charPosX = 860;
+            const building = TOWN_BUILDINGS.find(b => b.id === 'bit_logistics');
+            const center = building.x + building.width / 2;
+            this.playerController.charPosX = center;
             this.playerController.charFacing = 1;
             const vpWidth = window.innerWidth;
-            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, 860 - vpWidth / 2));
+            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, center - vpWidth / 2));
             this.playerController.targetCameraX = this.playerController.cameraX;
         } else if (spawnLocation === 'vivian_store' || spawnLocation === 'vivian') {
-            // Spawn in front of Vivian Store building (x: 1280, width: 240 -> center 1400)
-            this.playerController.charPosX = 1400;
+            const building = TOWN_BUILDINGS.find(b => b.id === 'vivian_store');
+            const center = building.x + building.width / 2;
+            this.playerController.charPosX = center;
             this.playerController.charFacing = 1;
             const vpWidth = window.innerWidth;
-            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, 1400 - vpWidth / 2));
+            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, center - vpWidth / 2));
             this.playerController.targetCameraX = this.playerController.cameraX;
         } else if (typeof spawnLocation === 'number') {
             this.playerController.charPosX = spawnLocation;
@@ -354,7 +368,8 @@ export class TownStage {
             this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, spawnLocation - vpWidth / 2));
             this.playerController.targetCameraX = this.playerController.cameraX;
         } else {
-            this.playerController.charPosX = 260;
+            const home = TOWN_BUILDINGS.find(b => b.id === 'home_office_tower');
+            this.playerController.charPosX = home.x + home.width / 2;
             this.playerController.cameraX = 0;
             this.playerController.targetCameraX = 0;
         }

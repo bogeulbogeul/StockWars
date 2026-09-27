@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<title>StockWars 마을 건물 미리보기</title>
+<base href="/web/">
+<link rel="stylesheet" href="/web/css/style.css">
+<style>body{margin:0;background:#f6ecd8;font-family:sans-serif}#preview{height:100vh}.hidden{display:none!important}</style>
+<div id="preview"></div>
+<script type="module">
+import { TownStage } from '/web/js/components/TownStage.js';
+const stage = new TownStage(document.querySelector('#preview'), {
+    onOpenLogistics: () => alert('물류센터 입장 연결 확인'),
+    onOpenStore: () => alert('잡화점 입장 연결 확인')
+});
+stage.show(undefined, Number(new URLSearchParams(location.search).get('x')) || null);
+</script>
+</html>

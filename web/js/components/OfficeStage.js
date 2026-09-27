@@ -1,6 +1,6 @@
 /**
  * OfficeStage Component
- * Unity equivalent: HomeOfficeScene / OfficeGridManager.cs
+ * Web rooftop office with layered room and building artwork.
  * Renders the 3D Isometric Rooftop Office Stage, background SVG skyscraper,
  * and the interactive Player Character (기본 하얀색 네모) with continuous free WASD & mouse movement.
  */
@@ -85,6 +85,7 @@ export class OfficeStage {
 
         // 2. Door Clicks (SVG Door & Prompts)
         const triggerDoorInteraction = () => {
+            if (this.stageContainer?.classList.contains('hidden')) return;
             if (this.callbacks.onOpenServerSelect) {
                 this.callbacks.onOpenServerSelect();
             }
@@ -113,6 +114,7 @@ export class OfficeStage {
 
         // 3. Continuous Keyboard Tracking (WASD / Arrow Keys & F Key for Door Interaction)
         window.addEventListener('keydown', (e) => {
+            if (this.stageContainer?.classList.contains('hidden')) return;
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
             const key = e.key.toLowerCase();
@@ -123,6 +125,7 @@ export class OfficeStage {
                 this.keysHeld.add(key);
                 this.targetTile = null; // Keyboard immediately overrides mouse path
             } else if (key === 'f' || key === 'enter') {
+                if (e.repeat) return;
                 if (this.isNearDoor) {
                     e.preventDefault();
                     triggerDoorInteraction();
@@ -159,6 +162,7 @@ export class OfficeStage {
     update(now) {
         const dt = Math.min(0.06, (now - this.lastTimestamp) / 1000);
         this.lastTimestamp = now;
+        if (this.stageContainer?.classList.contains('hidden')) return;
 
         let inputScreenX = 0;
         let inputScreenY = 0;
@@ -253,7 +257,7 @@ export class OfficeStage {
 
         // Convert Isometric Grid coordinates (posX, posY) to Screen SVG space
         const screenX = 500 + (this.posY - this.posX) * 33.75;
-        const screenY = 320 + (this.posX + this.posY + 1) * 16.875;
+        const screenY = 320 + (this.posX + this.posY + 1) * 19.1;
 
         let bobY = 0;
         let tiltDeg = 0;
@@ -284,16 +288,16 @@ export class OfficeStage {
         if (!this.targetGroup || !this.targetTilePolygon) return;
 
         const topX = 500 + (gy - gx) * 33.75;
-        const topY = 320 + (gx + gy) * 16.875;
+        const topY = 320 + (gx + gy) * 19.1;
 
         const rightX = 500 + ((gy + 1) - gx) * 33.75;
-        const rightY = 320 + (gx + gy + 1) * 16.875;
+        const rightY = 320 + (gx + gy + 1) * 19.1;
 
         const botX = 500 + ((gy + 1) - (gx + 1)) * 33.75;
-        const botY = 320 + (gx + 1 + gy + 1) * 16.875;
+        const botY = 320 + (gx + 1 + gy + 1) * 19.1;
 
         const leftX = 500 + (gy - (gx + 1)) * 33.75;
-        const leftY = 320 + (gx + 1 + gy) * 16.875;
+        const leftY = 320 + (gx + 1 + gy) * 19.1;
 
         this.targetTilePolygon.setAttribute('points', `${topX},${topY} ${rightX},${rightY} ${botX},${botY} ${leftX},${leftY}`);
         this.targetGroup.classList.remove('hidden');
@@ -311,6 +315,9 @@ export class OfficeStage {
     }
 
     hide() {
+        this.keysHeld.clear();
+        this.targetTile = null;
+        this.isMoving = false;
         if (this.stageContainer) {
             this.stageContainer.classList.add('hidden');
         }

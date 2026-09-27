@@ -23,63 +23,14 @@ export function getOfficeStageHtml() {
 
             <!-- Isometric Building & Room Vector Stage (Centered Framing) -->
             <div class="iso-stage-wrapper">
-                <svg class="iso-svg" id="isoSvgStage" viewBox="160 45 680 600" preserveAspectRatio="xMidYMid meet">
-                    <defs>
-                        <linearGradient id="glassWallLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#90a4ae" />
-                            <stop offset="40%" stop-color="#b2ebf2" />
-                            <stop offset="100%" stop-color="#4fd1c5" />
-                        </linearGradient>
-                        <linearGradient id="glassWallRight" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#4a69bd" />
-                            <stop offset="50%" stop-color="#1e3799" />
-                            <stop offset="100%" stop-color="#0c2461" />
-                        </linearGradient>
-                        <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4" />
-                            <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05" />
-                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
-                        </linearGradient>
-                    </defs>
-
-                    <!-- 1. BUILDING BASE & SKYSCRAPER FACADE -->
-                    <polygon points="216,466 500,608 500,1200 216,1058" fill="#a4b0be" stroke="#37474f" stroke-width="3" stroke-linejoin="round" />
-                    <polygon points="216,466 500,608 500,1200 216,1058" fill="url(#glassWallLeft)" opacity="0.88" />
-                    
-                    <line x1="287" y1="501.5" x2="287" y2="1093.5" stroke="#37474f" stroke-width="2" />
-                    <line x1="358" y1="537" x2="358" y2="1129" stroke="#37474f" stroke-width="2" />
-                    <line x1="429" y1="572.5" x2="429" y2="1164.5" stroke="#37474f" stroke-width="2" />
-
-                    <line x1="216" y1="511" x2="500" y2="653" stroke="#ffffff" stroke-width="1.8" opacity="0.65" />
-                    <line x1="216" y1="556" x2="500" y2="698" stroke="#ffffff" stroke-width="1.8" opacity="0.65" />
-                    <line x1="216" y1="601" x2="500" y2="743" stroke="#ffffff" stroke-width="1.8" opacity="0.65" />
-
-                    <polygon points="500,608 784,466 784,1058 500,1200" fill="#747d8c" stroke="#1e272e" stroke-width="3" stroke-linejoin="round" />
-                    <polygon points="500,608 784,466 784,1058 500,1200" fill="url(#glassWallRight)" opacity="0.88" />
-
-                    <line x1="571" y1="572.5" x2="571" y2="1164.5" stroke="#1e272e" stroke-width="2" />
-                    <line x1="642" y1="537" x2="642" y2="1129" stroke="#1e272e" stroke-width="2" />
-                    <line x1="713" y1="501.5" x2="713" y2="1093.5" stroke="#1e272e" stroke-width="2" />
-
-                    <line x1="500" y1="653" x2="784" y2="511" stroke="#ffffff" stroke-width="1.8" opacity="0.55" />
-                    <line x1="500" y1="698" x2="784" y2="556" stroke="#ffffff" stroke-width="1.8" opacity="0.55" />
-                    <line x1="500" y1="743" x2="784" y2="601" stroke="#ffffff" stroke-width="1.8" opacity="0.55" />
-
-                    <polygon points="216,466 500,608 500,620 216,478" fill="#718093" stroke="#2f3640" stroke-width="1.5" stroke-linejoin="round" />
-                    <polygon points="500,608 784,466 784,478 500,620" fill="#a6b5c5" stroke="#2f3640" stroke-width="1.5" stroke-linejoin="round" />
-
-                    <!-- 2. ROOM FOUNDATION SLAB -->
-                    <polygon points="216,448 500,590 500,608 216,466" fill="#c7a783" />
-                    <polygon points="500,590 784,448 784,466 500,608" fill="#d9b996" />
-
-                    <!-- ISOMETRIC CUBE ROOM FLOOR (8x8 Grid) -->
-                    <polygon points="500,320 770,455 500,590 230,455" fill="#f5e6d3" stroke="#8c6d53" stroke-width="3" stroke-linejoin="round" />
-                    
-                    <!-- 3. BACK LEFT WALL -->
-                    <polygon points="230,455 500,320 500,80 230,215" fill="#fff5ea" stroke="#8c6d53" stroke-width="2.5" stroke-linejoin="round" />
-
+                <svg class="iso-svg" id="isoSvgStage" viewBox="160 -10 680 760" preserveAspectRatio="xMidYMid meet">
+                    <!-- Original artwork: the room floor sits on the building roof. -->
+                    <image class="office-building-art" href="${new URL('../../../assets/office/IsomatricBuilding.png', import.meta.url).href}"
+                           x="60.1" y="229.7" width="879.8" height="1231.72" pointer-events="none" />
+                    <image class="office-room-art" href="${new URL('../../../assets/office/BasicRoom.png', import.meta.url).href}"
+                           x="140.96" y="-27.55" width="720.38" height="720.38" pointer-events="none" />
                     <!-- Door on Left Wall (Interactive Office Exit Gate) -->
-                    <g id="isoOfficeDoor" class="iso-office-door" cursor="pointer">
+                    <g id="isoOfficeDoor" class="iso-office-door" transform="translate(0, 12)" cursor="pointer">
                         <polygon points="275,432.5 356,392 356,245 275,285.5" fill="#5d4037" stroke="#3e2723" stroke-width="2.5" stroke-linejoin="round" class="door-frame" />
                         <polygon points="280,430 351,394.5 351,249.5 280,285" fill="#8d6e63" stroke="#4e342e" stroke-width="2" stroke-linejoin="round" class="door-panel" />
                         <polygon points="286,421.5 345,392 345,258 286,287.5" fill="#6d4c41" stroke="#3e2d20" stroke-width="1.2" stroke-linejoin="round" />
@@ -98,18 +49,6 @@ export function getOfficeStageHtml() {
                         <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#0b0f1a" font-family="'JetBrains Mono', monospace">F</text>
                     </g>
 
-                    <!-- 4. BACK RIGHT WALL -->
-                    <polygon points="500,320 770,455 770,215 500,80" fill="#ffebd7" stroke="#8c6d53" stroke-width="2.5" stroke-linejoin="round" />
-
-                    <!-- Window on Right Wall -->
-                    <polygon points="623,305.5 721,354.5 721,265.5 623,216.5" fill="#78909c" stroke="#37474f" stroke-width="2.5" stroke-linejoin="round" />
-                    <polygon points="628,303 668,323 668,237 628,217" fill="#e0f7fa" class="office-window-glass" stroke="#4dd0e1" opacity="0.95" stroke-linejoin="round" />
-                    <polygon points="676,327 716,347 716,261 676,241" fill="#e0f7fa" class="office-window-glass" stroke="#4dd0e1" opacity="0.95" stroke-linejoin="round" />
-                    <line x1="632" y1="225" x2="662" y2="315" stroke="#ffffff" stroke-width="2.5" opacity="0.8" stroke-linecap="round" />
-                    <line x1="680" y1="249" x2="710" y2="339" stroke="#ffffff" stroke-width="2.5" opacity="0.8" stroke-linecap="round" />
-
-                    <line x1="500" y1="320" x2="500" y2="80" stroke="#8c6d53" stroke-width="3" stroke-linecap="round" />
-
                     <!-- Interactive 8x8 Isometric Floor Grid Tiles -->
                     <g id="isoFloorTilesGroup" class="iso-floor-tiles"></g>
 
@@ -117,16 +56,6 @@ export function getOfficeStageHtml() {
                     <g id="isoTargetGroup" class="iso-target-group hidden">
                         <polygon id="isoTargetTilePolygon" points="0,0 0,0 0,0 0,0" fill="rgba(0,229,255,0.35)" stroke="#00e5ff" stroke-width="2" />
                     </g>
-
-                    <!-- 5. 3D ROOFTOP BEZEL SYSTEM -->
-                    <polygon points="216,208 500,66 784,208 770,215 500,80 230,215" fill="#ded4c9" stroke="#8c6d53" stroke-width="2.5" stroke-linejoin="round" />
-                    <polygon points="216,208 230,215 230,455 216,466" fill="#c7a783" />
-                    <polygon points="770,215 784,208 784,466 770,455" fill="#d9b996" />
-
-                    <line x1="216" y1="208" x2="216" y2="466" stroke="#8c6d53" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="230" y1="215" x2="230" y2="455" stroke="#8c6d53" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="784" y1="208" x2="784" y2="466" stroke="#8c6d53" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="770" y1="215" x2="770" y2="455" stroke="#8c6d53" stroke-width="2.5" stroke-linecap="round" />
 
                     <!-- 6. PLAYER CHARACTER (기본 하얀색 네모 - 3D Isometric White Square Block) -->
                     <g id="isoPlayerCharacter" class="iso-player-character" transform="translate(500, 438)">
@@ -179,16 +108,16 @@ export function generateFloorTilesSvg(gridSize = 8) {
     for (let gx = 0; gx < gridSize; gx++) {
         for (let gy = 0; gy < gridSize; gy++) {
             const topX = 500 + (gy - gx) * 33.75;
-            const topY = 320 + (gx + gy) * 16.875;
+            const topY = 320 + (gx + gy) * 19.1;
 
             const rightX = 500 + ((gy + 1) - gx) * 33.75;
-            const rightY = 320 + (gx + gy + 1) * 16.875;
+            const rightY = 320 + (gx + gy + 1) * 19.1;
 
             const botX = 500 + ((gy + 1) - (gx + 1)) * 33.75;
-            const botY = 320 + (gx + 1 + gy + 1) * 16.875;
+            const botY = 320 + (gx + 1 + gy + 1) * 19.1;
 
             const leftX = 500 + (gy - (gx + 1)) * 33.75;
-            const leftY = 320 + (gx + 1 + gy) * 16.875;
+            const leftY = 320 + (gx + 1 + gy) * 19.1;
 
             tilesHtml += `
                 <polygon 
@@ -198,7 +127,7 @@ export function generateFloorTilesSvg(gridSize = 8) {
                     data-gy="${gy}" 
                     points="${topX},${topY} ${rightX},${rightY} ${botX},${botY} ${leftX},${leftY}"
                     fill="rgba(255,255,255,0.001)"
-                    stroke="rgba(140, 109, 83, 0.2)"
+                    stroke="transparent"
                     stroke-width="1"
                     cursor="pointer"
                 />

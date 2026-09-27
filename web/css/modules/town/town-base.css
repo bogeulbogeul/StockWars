@@ -152,12 +152,11 @@
     bottom: 130px;
     left: 0;
     width: 100%;
-    height: 380px;
-    background-image: 
-        linear-gradient(to right, transparent 0px, transparent 30px, rgba(14, 24, 48, 0.9) 30px, rgba(14, 24, 48, 0.9) 80px, transparent 80px, transparent 110px, rgba(18, 30, 60, 0.85) 110px, rgba(18, 30, 60, 0.85) 200px, transparent 200px),
-        linear-gradient(to right, rgba(10, 16, 32, 0.95) 0px, rgba(10, 16, 32, 0.95) 140px, transparent 140px, transparent 180px, rgba(15, 25, 50, 0.9) 180px, rgba(15, 25, 50, 0.9) 320px, transparent 320px);
-    background-size: 400px 380px, 600px 320px;
-    opacity: 0.65;
+    height: clamp(340px, 58vh, 620px);
+    background-image: url('../../../assets/backgrounds/CityBackground.png');
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: auto 100%;
 }
 
 /* World Track */

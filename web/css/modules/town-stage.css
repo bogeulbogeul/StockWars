@@ -4,6 +4,7 @@
 
 @import './town/town-base.css';
 @import './town/town-buildings.css';
+@import './town/town-building-assets.css';
 @import './town/town-billboard.css';
 @import './town/town-props.css';
 @import './town/town-character.css';

@@ -1,7 +1,9 @@
-﻿/**
+/**
  * Town World Geometry & Static Definitions
  * Contains canonical building specifications, interactive props, street decoration assets, and billboard news.
  */
+
+import { applyBuildingAsset } from './townBuildingAssets.js';
 
 export const TOWN_BUILDINGS = [
     {
@@ -122,8 +124,22 @@ export const TOWN_BUILDINGS = [
         colorTheme: 'purple',
         desc: '확정형 고급 찌라시 정보 거래, 지하 정통 블랙잭 테이블 (브로커 안드레)',
         actionText: '펍 입장'
+    },
+    {
+        id: 'barter_pawn_shop',
+        name: '바터 전당포',
+        sign: '바터 전당포',
+        category: '전당포 / 교환',
+        icon: '🪙',
+        x: 5500,
+        width: 240,
+        height: 280,
+        colorTheme: 'amber',
+        desc: '개점 준비 중인 전당포입니다.',
+        actionText: '개점 준비 중',
+        available: false
     }
-];
+].map(applyBuildingAsset);
 
 export const TOWN_INTERACTIVE_PROPS = [
     {
@@ -132,8 +148,8 @@ export const TOWN_INTERACTIVE_PROPS = [
         name: '서부 공원 힐링 벤치',
         icon: '🪑',
         x: 1590,
-        width: 100,
-        height: 52,
+        width: 150,
+        height: 63.35,
         desc: '도심 속 녹음이 어우러진 휴식 공간입니다. 잠시 앉아 피로와 기력/체력을 100% 충전할 수 있습니다.',
         actionText: '벤치에 앉아 체력 회복'
     },
@@ -154,19 +170,19 @@ export const TOWN_INTERACTIVE_PROPS = [
         name: '동부 광장 쉼터 벤치',
         icon: '🪑',
         x: 4130,
-        width: 100,
-        height: 52,
+        width: 150,
+        height: 63.35,
         desc: '증권가와 은행가 사이 위치한 휴식 벤치입니다. 지친 트레이더들의 체력과 기력을 빠르게 회복시킵니다.',
         actionText: '벤치에 앉아 체력 회복'
     }
-];
+].map(prop => ({ ...prop, x: prop.x * 1.7 }));
 
-export const TOWN_STREET_LAMPS = [80, 480, 1060, 1530, 1750, 2190, 2690, 3140, 3500, 4060, 4290, 4770, 5320, 5800];
-export const TOWN_URBAN_TREES = [580, 1720, 2260, 3120, 4230, 5380];
+export const TOWN_STREET_LAMPS = [80, 480, 1060, 1530, 1750, 2190, 2690, 3140, 3500, 4060, 4290, 4770, 5320, 5800].map(x => x * 1.7);
+export const TOWN_URBAN_TREES = [580, 1720, 2260, 3120, 4230, 5380].map(x => x * 1.7);
 export const TOWN_DIRECTION_SIGNS = [
     { x: 490, text: '← 홈 오피스텔 | 센트럴 상점가 →' },
     { x: 3500, text: '← 데이터 서점 | 증권사 • 금융가 →' }
-];
+].map(sign => ({ ...sign, x: sign.x * 1.7 }));
 
 export const TOWN_BILLBOARD_NEWS = [
     { badge: '🔥 긴급 속보', type: 'breaking', text: '바이오닉스, 차세대 AI 신약 임상 3상 돌파 루머에 거래량 폭증!' },
