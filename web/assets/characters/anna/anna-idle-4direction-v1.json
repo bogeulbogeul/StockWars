@@ -1,0 +1,90 @@
+{
+  "image": "anna-idle-4direction-v1.png",
+  "width": 1024,
+  "height": 1536,
+  "rowOrder": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "sequence": [
+    0,
+    1
+  ],
+  "suggestedFps": 1,
+  "frames": [
+    {
+      "name": "down_0",
+      "direction": "down",
+      "column": 0,
+      "x": 250,
+      "y": 0,
+      "width": 262,
+      "height": 384
+    },
+    {
+      "name": "down_1",
+      "direction": "down",
+      "column": 1,
+      "x": 512,
+      "y": 0,
+      "width": 266,
+      "height": 384
+    },
+    {
+      "name": "left_0",
+      "direction": "left",
+      "column": 0,
+      "x": 250,
+      "y": 384,
+      "width": 262,
+      "height": 384
+    },
+    {
+      "name": "left_1",
+      "direction": "left",
+      "column": 1,
+      "x": 512,
+      "y": 384,
+      "width": 266,
+      "height": 384
+    },
+    {
+      "name": "right_0",
+      "direction": "right",
+      "column": 0,
+      "x": 250,
+      "y": 768,
+      "width": 262,
+      "height": 384
+    },
+    {
+      "name": "right_1",
+      "direction": "right",
+      "column": 1,
+      "x": 512,
+      "y": 768,
+      "width": 266,
+      "height": 384
+    },
+    {
+      "name": "up_0",
+      "direction": "up",
+      "column": 0,
+      "x": 250,
+      "y": 1152,
+      "width": 262,
+      "height": 384
+    },
+    {
+      "name": "up_1",
+      "direction": "up",
+      "column": 1,
+      "x": 512,
+      "y": 1152,
+      "width": 266,
+      "height": 384
+    }
+  ]
+}

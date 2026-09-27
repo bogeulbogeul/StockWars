@@ -149,7 +149,7 @@ export class BubbleApp {
                     <span>📅 오늘 • 매니저 안나 1:1 상담실</span>
                 </div>
                 <div class="bubble-msg-row">
-                    <div class="bubble-avatar">👩‍💼</div>
+                    <div class="bubble-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="미소 짓는 안나"></span></div>
                     <div class="bubble-msg-content">
                         <div class="bubble-msg-author">
                             <span class="author-name">전담 매니저 안나</span>
@@ -163,7 +163,7 @@ export class BubbleApp {
                     </div>
                 </div>
                 <div class="bubble-msg-row">
-                    <div class="bubble-avatar">👩‍💼</div>
+                    <div class="bubble-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="미소 짓는 안나"></span></div>
                     <div class="bubble-msg-content">
                         <div class="bubble-msg-author">
                             <span class="author-name">전담 매니저 안나</span>
@@ -192,7 +192,7 @@ export class BubbleApp {
                 if (msg.reply) {
                     html += `
                         <div class="bubble-msg-row">
-                            <div class="bubble-avatar">👩‍💼</div>
+                            <div class="bubble-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="미소 짓는 안나"></span></div>
                             <div class="bubble-msg-content">
                                 <div class="bubble-msg-author">
                                     <span class="author-name">전담 매니저 안나</span>

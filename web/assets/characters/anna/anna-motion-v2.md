@@ -1,0 +1,27 @@
+# Anna walk correction and idle assets
+
+Created with the built-in image_gen tool using the original Anna chibi as identity reference.
+
+## Deliverables
+- anna-walk-4direction-v2.png: 1086 x 1448 RGBA, 3 columns x 4 rows. Opposite leading-foot poses with neutral standing between them. Play zero-based columns 0, 1, 2, 1 at approximately 6 fps.
+- anna-idle-4direction-v1.png: 1024 x 1536 RGBA, 2 columns x 4 rows. Both feet planted; two near-identical resting poses intended for subtle idle animation.
+- Rows in both: down/front, left, right, up/back.
+- Adjacent JSON files describe source rectangles. Artwork placement does not fill an exact equal-width grid; use these rectangles instead of an automatic equal-grid cutter.
+- Visual review: front/rear contact frames alternate raised and extended legs; side contacts alternate light foreground and shaded background legs. Static poses have planted feet.
+- Runtime integration and playback have not been performed. Align frame pivots when importing, and verify motion in the engine. AI-generated idle differences are not guaranteed to be an exact two-pixel breathing motion.
+- Prior v1 walk is retained as history; use v2 for the revised poses.
+
+## Walk generation prompt
+Create a NEW animation keyframe sheet of Anna, using the reference ONLY for character design. Do not copy its pose. Three columns, four rows, exactly twelve full-body characters. Transparent background. Rows face FRONT, LEFT, RIGHT, BACK in that order. Columns are A LEFT-FOOT-FORWARD, B NEUTRAL STANDING WITH BOTH FEET PLANTED SIDE BY SIDE, C RIGHT-FOOT-FORWARD. Animation will play A B C B. This is a technical biped animation reference, alternating legs is the highest priority.
+For FRONT row: A screen-right foot extends DOWNWARD toward viewer, screen-left shoe tucked HIGHER back. B two shoes flat side by side. C screen-left foot extends DOWNWARD toward viewer, screen-right shoe tucked HIGHER back. A and C leg shapes MUST look like horizontal mirror opposites below the skirt, but NEVER mirror the asymmetrical hairstyle.
+For LEFT profile row: A camera-near light-colored leg extends to LEFT and overlaps far leg, camera-near arm extends RIGHT. B both feet together under hips. C camera-near light-colored leg extends RIGHT and far darker leg extends LEFT, camera-near arm extends LEFT. Draw the near leg's uninterrupted contour attached to the NEAR hip in each pose, to show which leg it is.
+For RIGHT profile row: A camera-near light-colored leg extends RIGHT, near arm LEFT. B two planted feet under hips. C camera-near light-colored leg extends LEFT and far darker leg RIGHT, near arm RIGHT.
+For BACK row: A screen-left leg extends downward and screen-right heel raised exposing sole. B shoes planted side by side. C screen-right leg extends downward and screen-left heel raised exposing sole.
+Character: copper red curly bob, emerald eyes, pale lemon long sleeve blouse, navy knee-length skirt, brown flat shoes, same warm outlines and polished anime chibi style as reference. Fixed upper body, scale and hairstyle, same neutral expression. Equal 3x4 grid of cells, centered and grounded identically with generous margins. No text, no grid lines, no shadows.
+
+## Walk correction prompt
+Edit this exact 3-column 4-row Anna atlas with MINIMAL changes. Preserve every pixel of rows 1 and 4 and ALL middle-column standing sprites as closely as possible. Fix ONLY side-view walk limb poses in rows 2 and 3. In row2 column1, the foreground arm must extend screen-RIGHT behind her, foreground leg screen-LEFT forward, shaded background leg screen-RIGHT. Row2 column3 foreground arm must extend screen-LEFT forward, foreground leg screen-RIGHT backward, shaded background leg screen-LEFT. For row3 column1 foreground arm must extend screen-LEFT behind her, foreground leg screen-RIGHT forward, shaded background leg screen-LEFT backward. For row3 column3 foreground arm must extend screen-RIGHT forward, foreground leg screen-LEFT backward, shaded background leg screen-RIGHT forward. Draw the foreground leg clearly overlapping the background leg and rooted to the same near hip, with the far leg visibly darker. Opposite arms and legs, never same-side arm and leg forward together. This leg and arm reversal between columns 1 and 3 is essential. Keep everything else: exact same character identity, all heads hair and torsos, exact cell placement and sizes, blank transparent background, no labels or lines.
+
+## Idle prompt
+Use case: identity-preserve. Create a separate IDLE standing animation sprite sheet of the exact Anna in this reference. Use the CENTER COLUMN neutral standing poses as the reference, NOT any walking poses. 2 columns x 4 rows, eight sprites total. Rows top to bottom FRONT, LEFT profile, RIGHT profile, BACK. In ALL EIGHT sprites, both feet planted flat side by side directly under hips, legs straight relaxed, arms resting down beside body, no steps, no lifted knees or heels, no arm swing. Column1 resting neutral; column2 subtle inhale: torso/shoulders rise only 2 pixels, eyes remain open, soles stay at the exact same location. This is extremely subtle standing breathing, no large pose change. Same copper curly bob, green eyes, lemon blouse, navy knee-length skirt, brown flat shoes, exact chibi body proportions and polished 2D art. Equal grid, all characters same scale, same relative horizontal center and sole baseline, generous transparent margin within cells. Transparent background with no floor, no shadows, no labels, no grid.
+

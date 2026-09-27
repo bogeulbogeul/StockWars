@@ -3,10 +3,12 @@
  * Handles 2D Side-view player keyboard movement, physics bounding, walking animation, and camera tracking.
  */
 
+import { TOWN_WORLD_WIDTH } from '../../data/townLayout.js';
+
 export class TownPlayerController {
     constructor(callbacks = {}) {
         this.callbacks = callbacks;
-        this.worldWidth = 5900 * 1.7;
+        this.worldWidth = TOWN_WORLD_WIDTH;
         this.charPosX = 260;
         this.charFacing = 1;
         this.isMoving = false;
@@ -20,7 +22,11 @@ export class TownPlayerController {
 
     handleKeyDown(e) {
         const key = e.key.toLowerCase();
+        if (key === 'shift') this.keysHeld.add('shift');
         if (['arrowleft', 'arrowright', 'a', 'd'].includes(key)) {
+            // Also recover Shift state when entering town with it already held.
+            if (e.shiftKey) this.keysHeld.add('shift');
+            else this.keysHeld.delete('shift');
             this.keysHeld.add(key);
             if (this.isResting) {
                 this.isResting = false;
@@ -42,12 +48,13 @@ export class TownPlayerController {
         if (this.keysHeld.has('arrowright') || this.keysHeld.has('d')) moveDir += 1;
 
         if (moveDir !== 0) {
-            const speed = 280; // px/sec
+            const running = this.keysHeld.has('shift');
+            const speed = running ? 504 : 280; // Shift runs at 1.8x walking speed.
             this.charPosX += moveDir * speed * dt;
             this.charPosX = Math.max(60, Math.min(this.worldWidth - 60, this.charPosX));
             this.charFacing = moveDir > 0 ? 1 : -1;
             this.isMoving = true;
-            this.walkPhase += dt * 9.5;
+            this.walkPhase += dt * (running ? 15 : 9.5);
         } else {
             this.isMoving = false;
             this.walkPhase = 0;

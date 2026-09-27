@@ -6,7 +6,13 @@
 <link rel="stylesheet" href="/web/css/style.css">
 <style>body{margin:0;background:#f6ecd8;font-family:sans-serif}#preview{height:100vh}.hidden{display:none!important}</style>
 <div id="preview"></div>
+<div style="position:fixed;top:12px;left:12px;z-index:10000">
+<button id="previewDay">낮 확인</button><button id="previewNight">밤 확인</button>
+</div>
 <script type="module">
+import { timeOfDayService } from '/web/js/engine/timeOfDayService.js';
+document.querySelector('#previewDay').onclick = () => timeOfDayService.setTimeOfDay('day');
+document.querySelector('#previewNight').onclick = () => timeOfDayService.setTimeOfDay('night');
 import { TownStage } from '/web/js/components/TownStage.js';
 const stage = new TownStage(document.querySelector('#preview'), {
     onOpenLogistics: () => alert('물류센터 입장 연결 확인'),

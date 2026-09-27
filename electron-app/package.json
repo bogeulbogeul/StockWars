@@ -16,7 +16,14 @@
   },
   "build": {
     "appId": "com.example.stockwars",
+    "productName": "StockWars Demo",
+    "files": ["src/**/*", "server-config.json", "package.json"],
+    "extraResources": [
+      { "from": "../web", "to": "web", "filter": ["**/*", "!tests/**/*", "!js/legacy/**/*"] },
+      { "from": "server-config.json", "to": "server-config.json" }
+    ],
     "win": {
+      "signAndEditExecutable": false,
       "target": "nsis"
     },
     "directories": {

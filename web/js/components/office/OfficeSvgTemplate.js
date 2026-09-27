@@ -58,6 +58,7 @@ export function getOfficeStageHtml() {
                     </g>
 
                     <!-- 6. PLAYER CHARACTER (기본 하얀색 네모 - 3D Isometric White Square Block) -->
+                    <g id="isoOfficeActors">
                     <g id="isoPlayerCharacter" class="iso-player-character" transform="translate(500, 438)">
                         <!-- Ground Shadow -->
                         <ellipse id="isoCharShadow" cx="0" cy="0" rx="22" ry="11" fill="rgba(0,0,0,0.35)" />
@@ -96,6 +97,7 @@ export function getOfficeStageHtml() {
                             <rect x="-42" y="-13" width="84" height="20" rx="10" fill="rgba(11,15,26,0.92)" stroke="#00e5ff" stroke-width="1.4" />
                             <text x="0" y="1.5" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff" font-family="'Inter', sans-serif" id="isoPlayerName">사이퍼 트레이더</text>
                         </g>
+                    </g>
                     </g>
                 </svg>
             </div>

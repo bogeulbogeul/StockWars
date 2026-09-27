@@ -1,0 +1,128 @@
+{
+  "image": "anna-walk-4direction-v2.png",
+  "width": 1086,
+  "height": 1448,
+  "rowOrder": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "suggestedFps": 6,
+  "frames": [
+    {
+      "name": "down_0",
+      "direction": "down",
+      "column": 0,
+      "x": 128,
+      "y": 0,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "down_1",
+      "direction": "down",
+      "column": 1,
+      "x": 411,
+      "y": 0,
+      "width": 265,
+      "height": 362
+    },
+    {
+      "name": "down_2",
+      "direction": "down",
+      "column": 2,
+      "x": 676,
+      "y": 0,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "left_0",
+      "direction": "left",
+      "column": 0,
+      "x": 128,
+      "y": 362,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "left_1",
+      "direction": "left",
+      "column": 1,
+      "x": 411,
+      "y": 362,
+      "width": 265,
+      "height": 362
+    },
+    {
+      "name": "left_2",
+      "direction": "left",
+      "column": 2,
+      "x": 676,
+      "y": 362,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "right_0",
+      "direction": "right",
+      "column": 0,
+      "x": 128,
+      "y": 724,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "right_1",
+      "direction": "right",
+      "column": 1,
+      "x": 411,
+      "y": 724,
+      "width": 265,
+      "height": 362
+    },
+    {
+      "name": "right_2",
+      "direction": "right",
+      "column": 2,
+      "x": 676,
+      "y": 724,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "up_0",
+      "direction": "up",
+      "column": 0,
+      "x": 128,
+      "y": 1086,
+      "width": 283,
+      "height": 362
+    },
+    {
+      "name": "up_1",
+      "direction": "up",
+      "column": 1,
+      "x": 411,
+      "y": 1086,
+      "width": 265,
+      "height": 362
+    },
+    {
+      "name": "up_2",
+      "direction": "up",
+      "column": 2,
+      "x": 676,
+      "y": 1086,
+      "width": 283,
+      "height": 362
+    }
+  ]
+}

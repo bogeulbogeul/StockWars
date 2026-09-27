@@ -10,6 +10,7 @@ import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../
 import { TownBuildingRenderer } from './town/TownBuildingRenderer.js';
 import { TownPlayerController } from './town/TownPlayerController.js';
 import { SkyBackground } from './sky/SkyBackground.js';
+import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
 export class TownStage {
     constructor(container, callbacks = {}) {
@@ -59,7 +60,7 @@ export class TownStage {
                 <!-- Town Side-Scrolling Controls Hint -->
                 <div class="town-controls-hint" id="townControlsHint">
                     <span class="hint-icon">🎮</span>
-                    <span class="hint-text">마을 탐색: <b>A, D / 방향키</b> 이동 | <b>F 키 / 클릭</b> 상호작용</span>
+                    <span class="hint-text">마을 탐색: <b>A, D / 방향키</b> 이동 | <b>Shift</b> 달리기 | <b>F 키 / 클릭</b> 상호작용</span>
                 </div>
 
                 <!-- Main Town Viewport & Camera Stage -->
@@ -103,12 +104,7 @@ export class TownStage {
                         </div>
 
                         <!-- Ground Platform (Sidewalk & Asphalt Road) -->
-                        <div class="town-ground-platform" id="townGroundPlatform">
-                            <div class="ground-sidewalk-top"></div>
-                            <div class="ground-pavement-body">
-                                <div class="road-dashed-line"></div>
-                            </div>
-                        </div>
+                        <div class="town-ground-platform" id="townGroundPlatform" aria-hidden="true"></div>
 
                         <!-- Proximity Action Prompt Overlay (Positioned above Building Roof) -->
                         <div class="town-building-prompt hidden" id="townBuildingPrompt">
@@ -169,6 +165,9 @@ export class TownStage {
 
         window.addEventListener('keyup', (e) => {
             this.playerController.handleKeyUp(e);
+        });
+        window.addEventListener('blur', () => {
+            this.playerController.keysHeld.clear();
         });
 
         this.btnReturnOffice?.addEventListener('click', () => {
@@ -234,13 +233,27 @@ export class TownStage {
 
     startBillboardCarousel() {
         if (this.billboardTimer) clearInterval(this.billboardTimer);
-        this.billboardTimer = setInterval(() => {
-            const slides = document.querySelectorAll('.billboard-news-slide');
-            if (!slides || slides.length === 0) return;
-            slides[this.billboardSlideIdx]?.classList.remove('active');
-            this.billboardSlideIdx = (this.billboardSlideIdx + 1) % slides.length;
-            slides[this.billboardSlideIdx]?.classList.add('active');
-        }, 4000);
+        this.refreshBillboard();
+        this.billboardTimer = setInterval(() => this.refreshBillboard(), 1000);
+    }
+
+    refreshBillboard(date = new Date()) {
+        const state = this.callbacks.getBillboardState?.() || {};
+        const ads = TOWN_BILLBOARD_NEWS.filter(item => item.type === 'ad' || item.type === 'event');
+        const broadcast = getBillboardBroadcast(date, state.news || [], ads);
+        const screen = this.containerEl?.querySelector('.billboard-screen-frame');
+        if (!screen) return;
+        const badge = screen.querySelector('.news-badge');
+        badge.className = `news-badge badge-${broadcast.type}`;
+        badge.textContent = broadcast.badge;
+        screen.querySelector('.news-body-text').textContent = broadcast.text;
+        screen.querySelector('.live-title').textContent = broadcast.title;
+        if (state.cipherIndex) {
+            const text = formatCipherIndex(state.cipherIndex);
+            screen.querySelectorAll('.cipher-index-value').forEach(item => {
+                if (item.textContent !== text) item.textContent = text;
+            });
+        }
     }
 
     update(dt) {
@@ -344,7 +357,9 @@ export class TownStage {
         this.containerEl?.classList.remove('hidden');
         document.body.classList.add('town-mode-active');
         this.activeChannel = channel.name;
-        if (this.channelText) this.channelText.textContent = `채널: ${channel.name} (원활 • ${channel.ping}ms)`;
+        if (this.channelText) this.channelText.textContent = channel.ping == null
+            ? `채널: ${channel.name}`
+            : `채널: ${channel.name} (원활 • ${channel.ping}ms)`;
 
         if (spawnLocation === 'bit_logistics' || spawnLocation === 'logistics') {
             const building = TOWN_BUILDINGS.find(b => b.id === 'bit_logistics');

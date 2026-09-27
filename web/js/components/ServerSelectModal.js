@@ -1,33 +1,29 @@
-import { toastManager } from './ToastManager.js';
 
 export class ServerSelectModal {
     constructor(container, callbacks = {}) {
         this.container = container;
         this.callbacks = callbacks;
         
-        // GDD Spec Capacity (Max 50 players per channel)
         this.maxCapacity = 50;
-        this.totalCCU = 138; // Real-time concurrent players across town
-        this.autoScaleThreshold = 0.72; // Auto-scale when load > 72% or single channel > 84%
-        this.jitterTimer = null;
-
-        // Dynamic Channel Pool (Initial active channels)
+        // Counts are unknown until the installed app receives a server snapshot.
+        this.totalCCU = null;
         this.townChannels = [
-            { id: 'town-1', name: '타운 1', users: 44, ping: 12, isNew: false },
-            { id: 'town-2', name: '타운 2', users: 26, ping: 14, isNew: false },
-            { id: 'town-3', name: '타운 3', users: 14, ping: 13, isNew: false }
+            { id: 'town-1', name: '타운 1', users: null, ping: null, isNew: false }
         ];
-
-        this.totalCCU = this.townChannels.reduce((sum, ch) => sum + ch.users, 0);
-        this.currentChannel = { id: 'town-2', name: '타운 2', ping: 14, statusLabel: '보통' };
+        this.currentChannel = { id: 'town-1', name: '타운 1', ping: null, statusLabel: '집계 대기' };
 
         this.render();
         this.initDOM();
         this.initEventListeners();
         this.updateStats();
+        if (window.stockWarsPresence) {
+            void this.refreshPresence();
+            this.presenceTimer = setInterval(() => { void this.refreshPresence(); }, 3000);
+        }
     }
 
     getChannelStatus(users) {
+        if (users === null) return { status: 'unknown', label: '집계 대기', pct: 0 };
         const pct = Math.round((users / this.maxCapacity) * 100);
         if (pct >= 85) return { status: 'busy', label: '혼잡', pct };
         if (pct >= 45) return { status: 'normal', label: '보통', pct };
@@ -45,7 +41,7 @@ export class ServerSelectModal {
 
     render() {
         const rec = this.getRecommendedChannel();
-        const recStatus = rec ? this.getChannelStatus(rec.users) : { label: '쾌적', pct: 20 };
+
 
         const html = `
             <div id="serverSelectModal" class="modal-overlay hidden">
@@ -58,9 +54,9 @@ export class ServerSelectModal {
                                 <h2 class="cyber-modal-title">사이퍼 타운 채널 선택</h2>
                                 <div class="cyber-current-chip">
                                     <span class="pulse-indicator"></span>
-                                    <span class="chip-label">현재 접속:</span>
+                                    <span class="chip-label">선택 채널:</span>
                                     <b id="currentChannelNameText" class="chip-val">${this.currentChannel.name}</b>
-                                    <span class="chip-sub" id="currentChannelSubText">(${this.currentChannel.ping}ms • ${this.currentChannel.statusLabel})</span>
+                                    <span class="chip-sub" id="currentChannelSubText">${this.currentChannel.statusLabel}</span>
                                 </div>
                             </div>
                         </div>
@@ -71,15 +67,15 @@ export class ServerSelectModal {
                     <div class="town-autoscale-status-bar">
                         <div class="autoscale-stat-pill">
                             <span>📡 동시 접속자:</span>
-                            <b id="txtTotalCCU">${this.totalCCU}명</b>
+                            <b id="txtTotalCCU">${this.totalCCU === null ? '집계 대기' : `${this.totalCCU}명`}</b>
                         </div>
                         <div class="autoscale-stat-pill">
                             <span>🏙️ 활성 채널:</span>
-                            <b id="txtActiveChannelsCount">${this.townChannels.length}개</b>
+                            <b id="txtActiveChannelsCount">${this.totalCCU === null ? '확인 대기' : `${this.townChannels.length}개`}</b>
                         </div>
                         <div class="autoscale-stat-pill">
                             <span class="autoscale-mode-tag">
-                                <i class="pulse-dot"></i> 오토스케일링 가동중
+                                <i class="pulse-dot"></i> 실제 이용자 기준
                             </span>
                         </div>
                     </div>
@@ -89,14 +85,11 @@ export class ServerSelectModal {
                         <div class="intro-left">
                             <span class="intro-icon">🏙️</span>
                             <div class="intro-text">
-                                <h3 class="intro-title">퍼블릭 타운 채널 (Auto-Scaled)</h3>
-                                <p class="intro-desc">모든 채널이 보통(주황 45%+) 이상 도달 시 새 채널이 증설됩니다. (채널당 최대 50명)</p>
+                                <h3 class="intro-title">퍼블릭 타운 채널</h3>
+                                <p class="intro-desc" id="presenceStatusText">서버 접속 인원 집계 연결 대기 중입니다.</p>
                             </div>
                         </div>
                         <div class="intro-actions-group">
-                            <button class="btn-autoscale-action btn-surge" id="btnSimulateSurge" title="트래픽 인구 증가 시뮬레이션">
-                                <span>⚡ 유저 유입 (+30명)</span>
-                            </button>
                             <button class="btn-autoscale-action" id="btnQuickConnect" title="가장 쾌적한 추천 채널로 즉시 접속">
                                 <span>🚀 <b id="txtRecChannelBtn">${rec ? rec.name : '추천 채널'}</b> 빠른 접속</span>
                             </button>
@@ -148,8 +141,8 @@ export class ServerSelectModal {
                         <div class="traffic-bar-fill bar-${status}" style="width: ${pct}%;"></div>
                     </div>
                     <div class="card-footer-row">
-                        <span class="ping-text">📶 ${ch.ping}ms</span>
-                        <span class="density-text">${ch.users}/${this.maxCapacity}명 (${pct}%)</span>
+                        <span class="ping-text">${ch.ping === null ? '지연 측정 대기' : `📶 ${ch.ping}ms`}</span>
+                        <span class="density-text">${ch.users === null ? '인원 집계 대기' : `${ch.users}/${this.maxCapacity}명 (${pct}%)`}</span>
                     </div>
                 </div>
             `;
@@ -165,7 +158,6 @@ export class ServerSelectModal {
         this.txtTotalCCU = document.getElementById('txtTotalCCU');
         this.txtActiveChannelsCount = document.getElementById('txtActiveChannelsCount');
         this.txtRecChannelBtn = document.getElementById('txtRecChannelBtn');
-        this.btnSimulateSurge = document.getElementById('btnSimulateSurge');
         this.btnQuickConnect = document.getElementById('btnQuickConnect');
     }
 
@@ -176,12 +168,6 @@ export class ServerSelectModal {
             if (e.target === this.modalOverlay) {
                 this.close();
             }
-        });
-
-        // Traffic Surge Simulation Button
-        this.btnSimulateSurge?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.simulateTrafficSurge(30);
         });
 
         // Quick Connect Button
@@ -205,7 +191,7 @@ export class ServerSelectModal {
             if (card) {
                 const channelId = card.dataset.channelId;
                 const channelName = card.dataset.channelName;
-                const ping = parseInt(card.dataset.ping || '14', 10);
+                const ping = (card.dataset.ping === 'null' ? null : Number(card.dataset.ping));
                 const statusLabel = card.dataset.statusLabel || '원활';
 
                 this.selectAndConnectChannel({
@@ -226,77 +212,15 @@ export class ServerSelectModal {
         });
     }
 
-    simulateTrafficSurge(amount = 30) {
-        let remaining = amount;
-
-        // 1. Fill emptiest (green/lowest load) channels first up to orange (23+) or red
-        const sortedChannels = [...this.townChannels].sort((a, b) => a.users - b.users);
-
-        for (const ch of sortedChannels) {
-            if (remaining <= 0) break;
-            const spaceInChannel = this.maxCapacity - ch.users;
-            if (spaceInChannel > 0) {
-                const targetAdd = Math.min(remaining, Math.min(spaceInChannel, Math.floor(Math.random() * 5) + 12));
-                ch.users += targetAdd;
-                remaining -= targetAdd;
-            }
-        }
-
-        // 2. Check if all channels are now in orange (>= 45%) or red (>= 85%) stage
-        const didScale = this.checkAndScale();
-
-        // 3. If a new channel was spawned and there is still remaining traffic, place it into the new channel
-        if (didScale && remaining > 0) {
-            const newChannel = this.townChannels[this.townChannels.length - 1];
-            const add = Math.min(remaining, 8);
-            newChannel.users = Math.min(this.maxCapacity, newChannel.users + add);
-            remaining -= add;
-        }
-
-        this.totalCCU = this.townChannels.reduce((sum, ch) => sum + ch.users, 0);
-        this.updateStats();
-        toastManager.show(`⚡ [트래픽 증가] 동시 접속자 +${amount}명 유입 (총 ${this.totalCCU}명)`, true);
-    }
-
-    checkAndScale() {
-        // Condition: ONLY spawn a new channel if ALL current channels are at least in the orange (>= 45% / 23명+) stage!
-        const allChannelsAtLeastOrange = this.townChannels.every(ch => {
-            const pct = Math.round((ch.users / this.maxCapacity) * 100);
-            return pct >= 45; // '보통' (45~84%) or '혼잡' (85%+)
-        });
-
-        if (allChannelsAtLeastOrange) {
-            const nextIdx = this.townChannels.length + 1;
-            const newChannelId = `town-${nextIdx}`;
-            const newChannelName = `타운 ${nextIdx}`;
-
-            // The new channel starts with low initial traffic (Green / 쾌적 12%~20%)
-            const initialUsers = Math.floor(Math.random() * 5) + 6; // 6~10 users
-            
-            this.townChannels.push({
-                id: newChannelId,
-                name: newChannelName,
-                users: initialUsers,
-                ping: 10 + Math.floor(Math.random() * 4),
-                isNew: true
-            });
-
-            this.updateStats();
-            toastManager.show(`⚡ [서버 오토스케일링] 모든 채널이 보통(주황 45%+) 이상에 도달하여 신규 채널 '${newChannelName}'이 자동 증설되었습니다!`, true);
-            return true;
-        }
-        return false;
-    }
-
     updateStats() {
         if (this.townChannelsGrid) {
             this.townChannelsGrid.innerHTML = this.renderTownCards();
         }
         if (this.txtTotalCCU) {
-            this.txtTotalCCU.textContent = `${this.totalCCU}명`;
+            this.txtTotalCCU.textContent = this.totalCCU === null ? '집계 대기' : `${this.totalCCU}명`;
         }
         if (this.txtActiveChannelsCount) {
-            this.txtActiveChannelsCount.textContent = `${this.townChannels.length}개`;
+            this.txtActiveChannelsCount.textContent = this.totalCCU === null ? '확인 대기' : `${this.townChannels.length}개`;
         }
         const rec = this.getRecommendedChannel();
         if (this.txtRecChannelBtn && rec) {
@@ -304,7 +228,40 @@ export class ServerSelectModal {
         }
     }
 
-    selectAndConnectChannel(channel) {
+    async refreshPresence() {
+        try { this.applyPresence(await window.stockWarsPresence.state()); }
+        catch { this.applyPresence({ error: '서버 연결 확인 중' }); }
+    }
+
+    applyPresence({ snapshot, error }) {
+        const status = this.modalOverlay?.querySelector('#presenceStatusText');
+        if (snapshot) {
+            this.totalCCU = snapshot.totalCCU;
+            this.maxCapacity = snapshot.capacity;
+            this.townChannels = snapshot.channels.map(ch => ({ ...ch, ping: snapshot.ping, isNew: false }));
+            const current = this.townChannels.find(ch => ch.id === snapshot.currentChannelId);
+            this.currentChannel = current
+                ? { ...current, statusLabel: this.getChannelStatus(current.users).label }
+                : { id: null, name: '오피스 / 대기', ping: null, statusLabel: '마을 미입장' };
+            if (status) status.textContent = '실제 앱 접속 기준 · 채널 인원은 마을 입장자 · 연결 종료 시 자동 갱신';
+        } else {
+            this.totalCCU = null;
+            this.townChannels = this.townChannels.map(ch => ({ ...ch, users: null, ping: null }));
+            this.currentChannel = { ...this.currentChannel, ping: null, statusLabel: '집계 대기' };
+            if (status) status.textContent = error || '서버 연결 확인 중';
+        }
+        if (this.currentChannelText) this.currentChannelText.textContent = this.currentChannel.name;
+        if (this.currentChannelSubText) this.currentChannelSubText.textContent = this.currentChannel.statusLabel;
+        this.updateStats();
+    }
+
+    async selectAndConnectChannel(channel) {
+        if (this.connecting) return;
+        this.connecting = true;
+        try {
+            const connected = await this.callbacks.onConnect?.(channel);
+            if (connected === false) return;
+        } finally { this.connecting = false; }
         this.currentChannel = channel;
 
         // Highlight updated card
@@ -321,40 +278,10 @@ export class ServerSelectModal {
             this.currentChannelText.textContent = channel.name;
         }
         if (this.currentChannelSubText) {
-            this.currentChannelSubText.textContent = `(${channel.ping}ms • ${channel.statusLabel})`;
+            this.currentChannelSubText.textContent = channel.ping === null ? channel.statusLabel : `(${channel.ping}ms • ${channel.statusLabel})`;
         }
 
-        setTimeout(() => {
-            this.close();
-            if (this.callbacks.onConnect) {
-                this.callbacks.onConnect(channel);
-            }
-        }, 160);
-    }
-
-    startJitter() {
-        this.stopJitter();
-        this.jitterTimer = setInterval(() => {
-            if (!this.isOpen()) return;
-
-            // Subtle fluctuation within realistic limits
-            for (const ch of this.townChannels) {
-                const chDelta = (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * 2);
-                ch.users = Math.max(4, Math.min(this.maxCapacity, ch.users + chDelta));
-                ch.ping = Math.max(9, Math.min(22, ch.ping + (Math.random() > 0.5 ? 1 : -1)));
-            }
-
-            this.totalCCU = this.townChannels.reduce((sum, ch) => sum + ch.users, 0);
-            this.checkAndScale();
-            this.updateStats();
-        }, 3000);
-    }
-
-    stopJitter() {
-        if (this.jitterTimer) {
-            clearInterval(this.jitterTimer);
-            this.jitterTimer = null;
-        }
+        this.close();
     }
 
     open() {
@@ -362,12 +289,10 @@ export class ServerSelectModal {
         this.modalOverlay.classList.remove('hidden');
         document.body.classList.add('modal-open');
         this.updateStats();
-        this.startJitter();
     }
 
     close() {
         if (!this.modalOverlay) return;
-        this.stopJitter();
         this.modalOverlay.classList.add('hidden');
         document.body.classList.remove('modal-open');
     }

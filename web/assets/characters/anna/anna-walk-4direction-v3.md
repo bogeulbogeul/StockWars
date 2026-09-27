@@ -1,0 +1,19 @@
+# Anna walk v3: side-view anatomy and shading
+
+Review asset only; not integrated into the game. Created with the built-in image_gen tool from the user's selected image at C:/Users/bogeu/Downloads/ChatGPT 이미지 2026년 9월 28일 오전 04_53_34.png.
+
+Revised side-view ankle/shoe orientation and reduced dark far-leg shading. A second generation restored canvas padding after the first edit cropped the rear-view feet. Image-generation edits may redraw surrounding areas; front/back pixels are not guaranteed identical. Previous version retained. Existing v2 frame coordinates must not be reused without checking v3 placement. In-game animation playback remains unverified.
+
+## Edit prompt
+
+Use case: precise-object-edit. Edit the supplied Anna sprite sheet with strictly localized corrections. It is a 3 column x 4 row atlas. Keep the complete first (front-facing) and fourth (back-facing) rows unchanged. Keep all heads, faces, hairstyles, torsos, skirts, arms, neutral standing middle-column sprites, character positions, scale, layout, and transparent background unchanged as closely as possible.
+Only correct the walking legs beneath the skirts in row 2 (left-facing) and row 3 (right-facing), columns 1 and 3.
+Problem 1: left-facing walking poses have twisted ankles and shoes pointing the wrong way. Reconstruct anatomically coherent side-view legs, continuous hip-knee-ankle chains with gentle natural knee flexion. In EVERY LEFT-facing pose, BOTH shoes' toe boxes point LEFT, heels are on their RIGHT side; the trailing foot may lift at the heel but never rotate outward or point right. Specifically row2 column3 trailing near leg on screen-right: calf runs down naturally from the knee, ankle connects to heel at the RIGHT end of the shoe, rounded toe extends LEFT. No reversed ankle, no broken knee, no crossed or corkscrew limbs. Short natural walking stride.
+Problem 2: far legs are currently a very dark chocolate brown, looking like mismatched skin or stockings. Recolor ALL four side-view walking far legs to the SAME peach skin as the near legs, with only a very subtle warm shadow about 8-12% darker. Soft peach shading, never brown skin, no hard black shadow. Brown shoes remain brown with soft consistent shading.
+CRITICAL preserve alternating ANATOMICAL leading legs between columns 1 and 3. Row2 C1 near leg forward LEFT, far leg back RIGHT; row2 C3 far leg forward LEFT, near leg back RIGHT. Row3 C1 near leg forward RIGHT, far leg back LEFT; row3 C3 far leg forward RIGHT, near leg back LEFT. Use contour overlap at the skirt hem to distinguish near/far legs, NOT extreme color contrast. In right-facing row, both toes point RIGHT. Do not convert the two contacts into identical poses.
+Preserve source illustration quality, transparency, canvas aspect ratio and exact atlas arrangement. No new objects, background, floor, cast shadow, labels or grid.
+
+## Framing correction
+
+Fix framing only in this Anna 3x4 sprite sheet. Bottom row feet are cut off by canvas edge. Scale the entire complete atlas down slightly within the SAME portrait aspect-ratio canvas to leave at least 40 pixels of genuine transparent padding around ALL FOUR sides. Reconstruct and fully show the missing bottom-row brown shoes to match the original back-facing walking/standing feet. All twelve characters must have their entire hair silhouette AND entire shoes comfortably inside the canvas and separated from adjacent rows. Preserve the existing poses, pale peach subtle leg shading, corrected left-pointing shoe anatomy in row2, copper bob, outfit, faces, character scale consistency, three columns four rows. Keep the alternating left-foot/right-foot poses in columns 1 and 3, neutral standing middle column. No labels or floor, no shadows, no added backdrop. Genuine transparent PNG. Do not crop any character.
+

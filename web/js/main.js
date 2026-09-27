@@ -1,3 +1,4 @@
+import { worldNavigation } from './app/WorldNavigation.js';
 /**
  * StockWars Web App Main Bootstrap & Orchestrator
  * Unity equivalent: GameManager.cs / SceneManager.cs
@@ -73,6 +74,8 @@ class StockWarsApplication {
 
         // 3. 3D Isometric Rooftop Office Stage Background
         this.officeStage = new OfficeStage(this.appContainer, {
+            isTutorialActive: () => !!this.annaTutorial?.isActive,
+            isAnnaMarriageCompleted: () => this.userProfile?.annaMarriageCompleted === true,
             onOpenServerSelect: () => this.openServerSelect()
         });
 
@@ -183,10 +186,10 @@ class StockWarsApplication {
                     });
                     setTimeout(() => toastManager.show('💌 [찌라시 알림] 비트 물류 동료가 보낸 주가 복선 정보가 가방에 도착했습니다!'), 1200);
                 }
-                this.enterTown({ name: '타운 2', ping: 14 }, 'bit_logistics');
+                this.enterTown(null, 'bit_logistics');
                 this.annaTutorial?.notifyLogisticsJobCompleted(result);
             },
-            onClose: () => this.enterTown({ name: '타운 2', ping: 14 }, 'bit_logistics')
+            onClose: () => this.enterTown(null, 'bit_logistics')
         });
 
         // Vivian Store Modal (MOD_GDD_03_1)
@@ -204,12 +207,16 @@ class StockWarsApplication {
             },
             onOpenInventory: () => this.inventoryModal?.open(),
             onClose: () => {
-                if (document.body.classList.contains('town-mode-active')) this.enterTown({ name: '타운 2', ping: 14 }, 'vivian_store');
+                if (document.body.classList.contains('town-mode-active')) this.enterTown(null, 'vivian_store');
             }
         });
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            getBillboardState: () => ({
+                cipherIndex: marketEngine.getCipherIndex(),
+                news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
+            }),
             isInputBlocked: () => this.logisticsMiniGame?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
@@ -316,6 +323,7 @@ class StockWarsApplication {
     }
 
     startGame(mode) {
+        this.officeStage?.anna?.resetForGameStart();
         if (mode === 'DEMO' || mode === 'DEV') {
             marketEngine.cash = 5000000;
             marketEngine.initialCash = 5000000;
@@ -447,52 +455,12 @@ class StockWarsApplication {
         this.serverSelectModal?.open();
     }
 
-    enterTown(server = { name: '타운 2', ping: 14 }, spawnLocation = null) {
-        this.serverSelectModal?.close();
-        this.officeStage?.hide?.();
-        this.townStage?.show(server, spawnLocation);
-        document.body.classList.add('town-mode-active');
-        if (this.topDemoBar?.txtStageToggle) {
-            this.topDemoBar.txtStageToggle.textContent = '오피스로 이동';
-        }
-        if (spawnLocation === 'logistics' || spawnLocation === 'bit_logistics') {
-            toastManager.show(`📦 [비트 물류 앞] 마을 거리에 복귀했습니다!`, true);
-        } else if (spawnLocation === 'vivian_store' || spawnLocation === 'vivian') {
-            toastManager.show(`🏪 [비비안 잡화점 앞] 보급품 상점 거리에 복귀했습니다!`, true);
-        } else {
-            toastManager.show(`🏙️ [${server.name}] 마을 광장에 도착했습니다! (A/D로 이동, 드래그/휠로 스크롤)`, true);
-        }
-        this.annaTutorial?.notifyTownEntered();
-    }
-
-    openVivianStore() {
-        this.vivianStoreModal?.open();
-    }
-
-    enterOffice() {
-        this.serverSelectModal?.close();
-        this.townStage?.hide();
-        this.officeStage?.show?.();
-        document.body.classList.remove('town-mode-active');
-        if (this.topDemoBar?.txtStageToggle) {
-            this.topDemoBar.txtStageToggle.textContent = '타운으로 이동';
-        }
-        toastManager.show('🏢 [홈 오피스] 개인 트레이딩 룸으로 복귀했습니다.', true);
-    }
-
-    toggleStage() {
-        const isTownActive = document.body.classList.contains('town-mode-active');
-        if (isTownActive) {
-            this.enterOffice();
-        } else {
-            this.enterTown({ name: '타운 2', ping: 14 });
-        }
-    }
-
     switchTab(tabName) {
         this.smartphoneUI.switchTab(tabName);
     }
 }
+
+Object.assign(StockWarsApplication.prototype, worldNavigation);
 
 // Bootstrap on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {

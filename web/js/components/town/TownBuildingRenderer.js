@@ -3,7 +3,7 @@
  * Renders town buildings, mock windows, interactive props (benches, billboard), street lamps, and modal popups.
  */
 
-import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES, TOWN_DIRECTION_SIGNS, TOWN_BILLBOARD_NEWS } from '../../data/townWorldData.js';
+import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES, TOWN_DIRECTION_SIGNS } from '../../data/townWorldData.js';
 
 export class TownBuildingRenderer {
     static renderBuildingsHTML() {
@@ -38,12 +38,9 @@ export class TownBuildingRenderer {
             } else if (p.type === 'billboard') {
                 return `
                     <div class="town-billboard-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px; height: ${p.height}px;">
-                        <!-- Steel Pylons Support Truss -->
-                        <div class="billboard-pylons">
-                            <div class="pylon-leg left"></div>
-                            <div class="pylon-leg right"></div>
-                            <div class="pylon-cross-bracing"></div>
-                        </div>
+                        <svg class="billboard-frame-art" viewBox="96 54 1344 916" aria-hidden="true" focusable="false">
+                            <image href="${new URL('../../../assets/props/BillboardFrame.png', import.meta.url).href}" width="1536" height="1024" />
+                        </svg>
                         <!-- LED Display Enclosure -->
                         <div class="billboard-screen-frame">
                             <div class="billboard-top-status">
@@ -53,24 +50,19 @@ export class TownBuildingRenderer {
                             </div>
                             <!-- Screen Content Area -->
                             <div class="billboard-main-screen">
-                                <div class="screen-scanlines"></div>
                                 <div class="billboard-slides-container" id="townBillboardSlides">
-                                    ${TOWN_BILLBOARD_NEWS.map((news, idx) => `
-                                        <div class="billboard-news-slide ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+                                        <div class="billboard-news-slide active">
                                             <div class="news-badge-row">
-                                                <span class="news-badge badge-${news.type}">${news.badge}</span>
+                                                <span class="news-badge badge-ad">사이퍼 센트럴</span>
                                             </div>
-                                            <p class="news-body-text">${news.text}</p>
+                                            <p class="news-body-text"></p>
                                         </div>
-                                    `).join('')}
                                 </div>
-                                <!-- Bottom Live Stock Ticker -->
+                                <!-- Live Cipher Index: duplicate for continuous scrolling. -->
                                 <div class="billboard-ticker-tape">
                                     <div class="ticker-text-track">
-                                        <span>📈 코스닥 912.45 (+2.6%)</span>
-                                        <span>🚀 비트코인 $96,400 (+4.2%)</span>
-                                        <span>⚡ 이더리움 $3,850 (+2.8%)</span>
-                                        <span>🏛️ 사이퍼 증권 객장 수수료 0.01% 우대 적용 중</span>
+                                        <span class="cipher-index-value">사이퍼 지수</span>
+                                        <span class="cipher-index-value" aria-hidden="true">사이퍼 지수</span>
                                     </div>
                                 </div>
                             </div>
@@ -88,9 +80,12 @@ export class TownBuildingRenderer {
         TOWN_STREET_LAMPS.forEach(x => {
             html += `
                 <div class="street-lamp" style="left: ${x}px;">
-                    <div class="lamp-head"></div>
+                    <svg class="lamp-art" viewBox="360 20 310 1495" aria-hidden="true" focusable="false">
+                        <image href="${new URL('../../../assets/props/StreetLamp-off.png', import.meta.url).href}" width="1024" height="1536" />
+                    </svg>
+                    <div class="lamp-bulb"></div>
+                    <div class="lamp-halo"></div>
                     <div class="lamp-light"></div>
-                    <div class="lamp-base"></div>
                 </div>
             `;
         });

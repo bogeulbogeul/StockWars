@@ -22,10 +22,10 @@ export class AnnaTutorial {
             <div id="annaTutorialOverlay" class="vn-tutorial-overlay hidden">
                 <!-- Visual Novel Dialogue Box (Bottom Floating) -->
                 <div class="vn-dialogue-box" id="vnDialogueBox">
-                    <!-- Left: Anna Portrait Frame (Ready for image asset) -->
+                    <!-- Left: Anna expression portrait -->
                     <div class="vn-portrait-frame" id="vnPortraitFrame">
                         <div class="vn-portrait-avatar" id="vnPortraitAvatar">
-                            <span class="vn-portrait-emoji">👩‍💼</span>
+                            <span class="anna-portrait" id="vnAnnaPortrait" data-expression="Standard" role="img" aria-label="안나 — 기본 표정"></span>
                         </div>
                         <div class="vn-portrait-badge">MANAGER ANNA</div>
                     </div>
@@ -70,6 +70,7 @@ export class AnnaTutorial {
         this.overlay = document.getElementById('annaTutorialOverlay');
         this.dialogueBox = document.getElementById('vnDialogueBox');
         this.portraitAvatar = document.getElementById('vnPortraitAvatar');
+        this.portrait = document.getElementById('vnAnnaPortrait');
         this.speakerName = document.getElementById('vnSpeakerName');
         this.dialogueText = document.getElementById('vnDialogueText');
         this.stepTracker = document.getElementById('vnStepTracker');
@@ -171,6 +172,7 @@ export class AnnaTutorial {
         this.cleanupHighlights();
 
         const step = this.steps[this.currentStepIdx];
+        this.setExpression(step.expression);
         if (this.speakerName) this.speakerName.textContent = step.speaker;
         if (this.stepTracker) this.stepTracker.textContent = step.tracker;
 
@@ -189,6 +191,15 @@ export class AnnaTutorial {
 
         // Typewriter animation
         this.typeText(step.text);
+    }
+
+    setExpression(expression = 'Standard') {
+        const labels = { Standard: '기본', Smile: '미소', Happy: '기쁨', Pain: '걱정', Angry: '분노' };
+        const resolved = Object.hasOwn(labels, expression) ? expression : 'Standard';
+        if (this.portrait) {
+            this.portrait.dataset.expression = resolved;
+            this.portrait.setAttribute('aria-label', `안나 — ${labels[resolved]} 표정`);
+        }
     }
 
     typeText(fullText) {

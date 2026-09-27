@@ -4,6 +4,7 @@
  */
 
 import { applyBuildingAsset } from './townBuildingAssets.js';
+import { TOWN_PROP_POSITIONS, TOWN_LAMP_POSITIONS, TOWN_TREE_POSITIONS, TOWN_SIGN_POSITIONS } from './townLayout.js';
 
 export const TOWN_BUILDINGS = [
     {
@@ -159,8 +160,8 @@ export const TOWN_INTERACTIVE_PROPS = [
         name: '사이퍼 센트럴 미디어 전광판',
         icon: '📺',
         x: 3200,
-        width: 260,
-        height: 275,
+        width: 520,
+        height: 354.4,
         desc: '실시간 긴급 뉴스 속보, 상점 특별 할인 광고 및 아레나 대회 공지가 송출되는 타운 대형 LED 전광판입니다.',
         actionText: '실시간 속보 & 광고 브리핑'
     },
@@ -175,14 +176,14 @@ export const TOWN_INTERACTIVE_PROPS = [
         desc: '증권가와 은행가 사이 위치한 휴식 벤치입니다. 지친 트레이더들의 체력과 기력을 빠르게 회복시킵니다.',
         actionText: '벤치에 앉아 체력 회복'
     }
-].map(prop => ({ ...prop, x: prop.x * 1.7 }));
+].map(prop => ({ ...prop, x: TOWN_PROP_POSITIONS[prop.id] }));
 
-export const TOWN_STREET_LAMPS = [80, 480, 1060, 1530, 1750, 2190, 2690, 3140, 3500, 4060, 4290, 4770, 5320, 5800].map(x => x * 1.7);
-export const TOWN_URBAN_TREES = [580, 1720, 2260, 3120, 4230, 5380].map(x => x * 1.7);
+export const TOWN_STREET_LAMPS = TOWN_LAMP_POSITIONS;
+export const TOWN_URBAN_TREES = TOWN_TREE_POSITIONS;
 export const TOWN_DIRECTION_SIGNS = [
     { x: 490, text: '← 홈 오피스텔 | 센트럴 상점가 →' },
     { x: 3500, text: '← 데이터 서점 | 증권사 • 금융가 →' }
-].map(sign => ({ ...sign, x: sign.x * 1.7 }));
+].map((sign, index) => ({ ...sign, x: TOWN_SIGN_POSITIONS[index] }));
 
 export const TOWN_BILLBOARD_NEWS = [
     { badge: '🔥 긴급 속보', type: 'breaking', text: '바이오닉스, 차세대 AI 신약 임상 3상 돌파 루머에 거래량 폭증!' },

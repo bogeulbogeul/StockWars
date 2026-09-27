@@ -42,52 +42,31 @@
     transform: translateY(-4px);
 }
 
-.billboard-pylons {
+.billboard-frame-art {
     position: absolute;
-    bottom: 0;
-    width: 80%;
-    height: 85px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 1;
-}
-
-.pylon-leg {
-    width: 14px;
+    inset: 0;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
-    border: 1px solid #475569;
-    border-radius: 2px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    z-index: 6;
+    pointer-events: none;
 }
 
-.pylon-cross-bracing {
-    position: absolute;
-    top: 25px;
-    left: 10%;
-    width: 80%;
-    height: 35px;
-    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(71, 85, 105, 0.6) 10px, rgba(71, 85, 105, 0.6) 13px);
-}
-
+/* Live HTML content sits just inside the opening of the PNG frame. */
 .billboard-screen-frame {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 195px;
+    top: 11.3%;
+    left: 9.3%;
+    width: 81.4%;
+    height: 38.3%;
     background: #090e17;
-    border: 3px solid #1e293b;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 229, 255, 0.25);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     z-index: 5;
 }
-
 .billboard-top-status {
     height: 24px;
+    flex-shrink: 0;
     background: #0f172a;
     border-bottom: 1px solid #1e293b;
     display: flex;
@@ -127,27 +106,17 @@
 
 .billboard-main-screen {
     flex: 1;
+    min-height: 0;
     position: relative;
-    background: radial-gradient(circle at center, #0f2038 0%, #060b13 100%);
+    background: #0f172a;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.screen-scanlines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
-    background-size: 100% 4px, 6px 100%;
-    pointer-events: none;
-    z-index: 10;
-}
-
 .billboard-slides-container {
     flex: 1;
+    min-height: 0;
     position: relative;
     padding: 12px 14px;
 }
@@ -157,7 +126,7 @@
     top: 10px;
     left: 12px;
     right: 12px;
-    bottom: 30px;
+    bottom: 8px;
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -218,11 +187,12 @@
     color: #ffffff;
     line-height: 1.45;
     margin: 0;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    text-shadow: none;
 }
 
 .billboard-ticker-tape {
     height: 26px;
+    flex-shrink: 0;
     background: #020617;
     border-top: 1px solid #1e293b;
     display: flex;
@@ -233,17 +203,25 @@
 
 .ticker-text-track {
     display: inline-flex;
-    gap: 20px;
-    font-size: 10px;
+    width: max-content;
+    flex-shrink: 0;
+    font-size: 12px;
     font-weight: 700;
     color: var(--accent-cyan);
     font-family: var(--font-mono);
-    animation: marqueeTicker 22s linear infinite;
+    animation: marqueeTicker 18s linear infinite;
+}
+
+.cipher-index-value {
+    box-sizing: border-box;
+    min-width: 424px;
+    padding: 0 24px;
+    flex-shrink: 0;
 }
 
 @keyframes marqueeTicker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .billboard-base-shadow {

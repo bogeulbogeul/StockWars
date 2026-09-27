@@ -9,54 +9,64 @@
     z-index: 15;
 }
 
+/* The same time classes that select the sky also control street lighting. */
+.town-stage-container { --street-light-opacity: 0; }
+.town-stage-container:has(.town-parallax-bg.time-sunset) { --street-light-opacity: 0.65; }
+.town-stage-container:has(.town-parallax-bg.time-night) { --street-light-opacity: 1; }
+
 .street-lamp {
     position: absolute;
     bottom: 0;
-    width: 10px;
-    height: 125px;
-    background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
-    border-radius: 2px;
-}
-
-.street-lamp .lamp-head {
-    position: absolute;
-    top: -12px;
-    left: -8px;
-    width: 26px;
-    height: 14px;
-    background: #0f172a;
-    border: 1px solid #64748b;
-    border-radius: 6px 6px 2px 2px;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);
-}
-
-.street-lamp .lamp-light {
-    position: absolute;
-    top: 2px;
-    left: -35px;
-    width: 80px;
-    height: 155px;
-    background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.38) 0%, rgba(254, 240, 138, 0.1) 45%, transparent 75%);
+    width: 49.77px;
+    height: 240px;
     pointer-events: none;
 }
 
-.street-lamp .lamp-base {
+.lamp-art { display: block; width: 100%; height: 100%; }
+
+.lamp-bulb, .lamp-halo, .lamp-light {
     position: absolute;
-    bottom: -2px;
-    left: -4px;
-    width: 18px;
-    height: 6px;
-    background: #0f172a;
-    border-radius: 3px;
+    pointer-events: none;
+    opacity: var(--street-light-opacity);
+    transition: opacity 2.2s ease;
 }
 
+.lamp-bulb {
+    top: 30px;
+    left: 8px;
+    width: 33px;
+    height: 27px;
+    background: #ffe6a0;
+    clip-path: polygon(8% 0, 92% 0, 74% 100%, 28% 100%);
+    mix-blend-mode: screen;
+}
+
+.lamp-halo {
+    top: -5px;
+    left: -35px;
+    width: 120px;
+    height: 100px;
+    background: radial-gradient(ellipse, rgba(255, 215, 125, 0.5), rgba(255, 206, 100, 0.16) 40%, transparent 70%);
+}
+
+.lamp-light {
+    top: 52px;
+    left: -70px;
+    width: 190px;
+    height: 188px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 224, 150, 0.24), rgba(255, 220, 130, 0.08) 50%, transparent 75%);
+    clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lamp-bulb, .lamp-halo, .lamp-light { transition: none; }
+}
 /* Transparent tree artwork, centered on the existing planting position. */
 .town-urban-tree {
     position: absolute;
     bottom: 0;
     width: 240px;
     height: 265.26px;
-    transform: translateX(-90px);
     pointer-events: none;
 }
 
@@ -70,6 +80,7 @@
 /* Direction Signs */
 .town-direction-sign {
     position: absolute;
+    width: 220px;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -95,7 +106,7 @@
     border-radius: 1px;
 }
 
-/* Ground Platform (Sidewalk & Road) */
+/* Side-scrolling ground artwork: same 130px baseline as the player and props. */
 .town-ground-platform {
     position: absolute;
     bottom: 0;
@@ -103,71 +114,30 @@
     width: 100%;
     height: 130px;
     z-index: 20;
-    display: flex;
-    flex-direction: column;
+    pointer-events: none;
+    background: url('../../../assets/ground/TownSidewalkRoad.png') left top / 768px 130px repeat-x;
+    transition: filter 2.2s ease;
 }
 
-.ground-sidewalk-top {
-    height: 38px;
-    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
-    border-top: 3px solid #607d8b;
-    border-bottom: 2px solid #1c252a;
-    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
-}
-
-.ground-pavement-body {
-    flex: 1;
-    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
-}
-
-.road-dashed-line {
-    width: 100%;
-    height: 6px;
-    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
-    opacity: 0.85;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-}
-
-
-/* Ground Platform */
-.town-ground-platform {
+/* Repeat the sidewalk at its original aspect ratio, independently of the road.
+   The top 352 source pixels contain the paving and curb (44.7px on screen). */
+.town-ground-platform::before {
+    content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 130px;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
+    inset: 0 0 auto;
+    height: 44.7px;
+    background: url('../../../assets/ground/TownSidewalkRoad.png') left top / 195px 130px repeat-x;
+    pointer-events: none;
 }
 
-.ground-sidewalk-top {
-    height: 38px;
-    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
-    border-top: 3px solid #607d8b;
-    border-bottom: 2px solid #1c252a;
-    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.3) 40px, rgba(0, 0, 0, 0.3) 42px);
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+.town-stage-container:has(.time-night) .town-ground-platform {
+    filter: brightness(0.72) saturate(0.85);
 }
 
-.ground-pavement-body {
-    flex: 1;
-    background: linear-gradient(180deg, #182026 0%, #10151a 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.6);
+.town-stage-container:has(.time-sunset) .town-ground-platform {
+    filter: brightness(0.9) sepia(0.12);
 }
 
-.road-dashed-line {
-    width: 100%;
-    height: 6px;
-    background-image: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 50px, transparent 50px, transparent 100px);
-    opacity: 0.85;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+@media (prefers-reduced-motion: reduce) {
+    .town-ground-platform { transition: none; }
 }

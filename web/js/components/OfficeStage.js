@@ -7,6 +7,7 @@
 
 import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js';
 import { SkyBackground } from './sky/SkyBackground.js';
+import { OfficeAnna } from './office/OfficeAnna.js';
 
 export class OfficeStage {
     constructor(container, callbacks = {}) {
@@ -36,6 +37,7 @@ export class OfficeStage {
 
         this.render();
         this.initDOM();
+        this.anna = new OfficeAnna(this.actorLayer);
         this.initFloorTiles();
         this.initEventListeners();
         this.startLoop();
@@ -50,6 +52,7 @@ export class OfficeStage {
         this.svgStage = document.getElementById('isoSvgStage');
         this.floorTilesGroup = document.getElementById('isoFloorTilesGroup');
         this.playerChar = document.getElementById('isoPlayerCharacter');
+        this.actorLayer = document.getElementById('isoOfficeActors');
         this.charBody = document.getElementById('isoCharBody');
         this.charShadow = document.getElementById('isoCharShadow');
         this.charNametag = document.getElementById('isoCharNametag');
@@ -250,6 +253,18 @@ export class OfficeStage {
         }
 
         this.renderCharacterFrame();
+        this.anna.updateAvailability(new Date().getHours(), this.callbacks.isAnnaMarriageCompleted?.());
+        // Tutorial activity persists even while its dialogue is temporarily hidden.
+        const tutorialActive = !!this.callbacks.isTutorialActive?.();
+        if (tutorialActive) this.anna.direction = 'down';
+        const annaPaused = tutorialActive || document.hidden || document.body.classList.contains('phone-view-active')
+            || document.body.classList.contains('modal-active')
+            || !!document.querySelector('#titleScreen:not(.hidden), #characterCreationModal:not(.hidden), .modal-overlay:not(.hidden), .vn-tutorial-overlay:not(.hidden)');
+        this.anna.update(dt, { x: this.posX, y: this.posY }, annaPaused);
+        // SVG paints later siblings in front; sort the two actors by floor depth.
+        const frontActor = this.posX + this.posY >= this.anna.x + this.anna.y
+            ? this.playerChar : this.anna.element;
+        if (this.actorLayer.lastElementChild !== frontActor) this.actorLayer.appendChild(frontActor);
     }
 
     renderCharacterFrame() {

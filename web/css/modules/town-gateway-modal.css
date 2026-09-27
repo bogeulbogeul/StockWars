@@ -348,6 +348,8 @@
 .channel-index-dot.dot-busy { background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red); }
 .channel-index-dot.dot-normal { background: var(--accent-yellow); box-shadow: 0 0 6px var(--accent-yellow); }
 .channel-index-dot.dot-smooth { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+.channel-index-dot.dot-unknown { background: #94a3b8; box-shadow: none; }
+.traffic-tag.status-unknown { background: #1e293b; color: #cbd5e1; border: 1px solid #475569; }
 
 .town-channel-card .channel-name {
     font-size: 14px;

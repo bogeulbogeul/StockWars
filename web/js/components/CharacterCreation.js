@@ -131,7 +131,7 @@ export class CharacterCreation {
                     <div class="char-step-view hidden" id="charStep3">
                         <div class="id-ceremony-container">
                             <div class="ceremony-anna-bubble">
-                                <div class="anna-mini-avatar">👩‍💼</div>
+                                <div class="anna-mini-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="미소 짓는 안나"></span></div>
                                 <div class="anna-speech-txt" id="ceremonyAnnaSpeech">
                                     "축하합니다! 사이퍼 증권 트레이더 출입증 발급이 완료되었습니다."
                                 </div>
