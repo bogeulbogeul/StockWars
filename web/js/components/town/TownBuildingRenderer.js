@@ -3,7 +3,7 @@
  * Renders town buildings, mock windows, interactive props (benches, billboard), street lamps, and modal popups.
  */
 
-import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES, TOWN_DIRECTION_SIGNS } from '../../data/townWorldData.js';
+import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES } from '../../data/townWorldData.js';
 
 export class TownBuildingRenderer {
     static renderBuildingsHTML() {
@@ -95,14 +95,6 @@ export class TownBuildingRenderer {
                     <svg class="town-prop-art" viewBox="30 25 1140 1260" aria-hidden="true" focusable="false">
                         <image href="${new URL('../../../assets/props/Tree.png', import.meta.url).href}" width="1189" height="1323" />
                     </svg>
-                </div>
-            `;
-        });
-        TOWN_DIRECTION_SIGNS.forEach(sign => {
-            html += `
-                <div class="town-direction-sign" style="left: ${sign.x}px;">
-                    <div class="sign-plate">${sign.text}</div>
-                    <div class="sign-pole"></div>
                 </div>
             `;
         });

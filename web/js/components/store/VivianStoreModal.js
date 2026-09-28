@@ -8,6 +8,7 @@ import { VIVIAN_TABS, VIVIAN_SHOP_CATALOG, VIVIAN_DIALOGUES } from '../../data/v
 import { ITEM_RARITIES } from '../../data/inventoryData.js';
 import { getVivianStoreHtml } from './VivianStoreTemplate.js';
 import { toastManager } from '../ToastManager.js';
+import { StorePlayerController, STORE_PLACES } from './StorePlayerController.js';
 
 export class VivianStoreModal {
     constructor(container, callbacks = {}) {
@@ -25,6 +26,7 @@ export class VivianStoreModal {
         this.affinityMax = 100;
 
         this.typewriterTimer = null;
+        this.player = new StorePlayerController();
 
         this.render();
         this.initDOM();
@@ -40,6 +42,10 @@ export class VivianStoreModal {
     initDOM() {
         this.modalEl = document.getElementById('vivianStoreModal');
         this.btnClose = document.getElementById('btnVivianClose');
+        this.interiorEl = document.getElementById('vivianInterior');
+        this.shopPanel = document.getElementById('vivianShopPanel');
+        this.playerEl = document.getElementById('vivianPlayer');
+        this.doorPrompt = document.getElementById('vivianDoorPrompt');
         this.userCashEl = document.getElementById('vivianUserCash');
         this.affinityBadgeEl = document.getElementById('vivianAffinityBadge');
         this.moodTagEl = document.getElementById('vivianMoodTag');
@@ -72,9 +78,27 @@ export class VivianStoreModal {
     }
 
     initEventListeners() {
-        this.btnClose?.addEventListener('click', () => this.close());
+        document.getElementById('vivianWalkway').addEventListener('click', e => {
+            if (this.isShopping) return;
+            const rect = this.interiorEl.getBoundingClientRect();
+            this.player.moveTo((e.clientX - rect.left) / rect.width * 1536, (e.clientY - rect.top) / rect.height * 1024);
+        });
+        window.addEventListener('keyup', e => this.player.keys.delete(e.key.toLowerCase()));
+        window.addEventListener('blur', () => this.player.stop());
+        document.addEventListener('visibilitychange', () => this.player.stop());
+        this.btnClose?.addEventListener('click', () => this.showInterior());
+        document.getElementById('btnVivianDoor')?.addEventListener('click', () => {
+            if (this.player.nearby()?.action === 'exit') this.close();
+            else this.player.moveTo(STORE_PLACES[0].x, STORE_PLACES[0].y);
+        });
+        this.interiorEl?.querySelectorAll('[data-store-browse]').forEach(button => {
+            button.addEventListener('click', () => {
+                this.lastInteriorControl = button;
+                this.showShop(button.dataset.storeBrowse);
+            });
+        });
         this.modalEl?.addEventListener('click', (e) => {
-            if (e.target === this.modalEl) this.close();
+            if (e.target === this.modalEl && this.isShopping) this.showInterior();
         });
 
         // Tab switching
@@ -117,8 +141,28 @@ export class VivianStoreModal {
         // Global Keydown
         window.addEventListener('keydown', (e) => {
             if (!this.isOpen) return;
+            // Closing the store must not pass the same F press to the town
+            // listener, which would immediately reopen the entrance.
+            e.stopImmediatePropagation();
+            if (!this.isShopping) {
+                const key = e.key.toLowerCase();
+                if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift'].includes(key)) {
+                    e.preventDefault();
+                    this.player.keys.add(key);
+                }
+                if (key === 'f' && !e.repeat) {
+                    e.preventDefault();
+                    this.interactNearby();
+                    return;
+                }
+            }
             if (e.key === 'Escape') {
-                this.close();
+                e.preventDefault();
+                if (e.repeat) return;
+                if (this.isShopping) this.showInterior();
+                else this.close();
+            } else if (!this.isShopping) {
+                return;
             } else if (e.key === '1') this.switchTab('daily');
             else if (e.key === '2') this.switchTab('weekly');
             else if (e.key === '3') this.switchTab('secret');
@@ -131,15 +175,61 @@ export class VivianStoreModal {
     }
 
     open() {
+        if (this.isOpen) return;
+        this.player.reset();
         this.isOpen = true;
         this.modalEl?.classList.remove('hidden');
+        this.showInterior();
         this.updateHeaderInfo();
         this.switchTab(this.activeTab);
         this.triggerDialogue('greet');
+        this.lastFrame = performance.now();
+        this.animatePlayer(this.lastFrame);
+    }
+
+    animatePlayer(now) {
+        if (!this.isOpen) return;
+        if (!this.isShopping) this.player.update((now - this.lastFrame) / 1000);
+        this.lastFrame = now;
+        this.playerEl.style.left = `${this.player.x / 1536 * 100}%`;
+        this.playerEl.style.top = `${this.player.y / 1024 * 100}%`;
+        const body = this.playerEl.querySelector('.town-char-body');
+        body.style.transform = `scaleX(${this.player.facing}) translateY(${-Math.sin(this.player.phase) * 5}px)`;
+        this.doorPrompt.hidden = this.isShopping || this.player.nearby()?.action !== 'exit';
+        this.playerFrame = requestAnimationFrame(time => this.animatePlayer(time));
+    }
+
+    interactNearby() {
+        if (!this.isOpen || this.isShopping) return;
+        const nearby = this.player.nearby();
+        if (nearby?.action === 'exit') this.close();
+        else if (nearby) this.showShop();
+    }
+
+    showInterior() {
+        this.isShopping = false;
+        this.shopPanel?.classList.add('hidden');
+        this.interiorEl.inert = false;
+        this.interiorEl.focus({ preventScroll: true });
+    }
+
+    showShop(tabId = 'daily') {
+        if (!this.isOpen || this.player.nearby()?.action !== 'shop') return;
+        this.player.stop();
+        this.isShopping = true;
+        this.interiorEl.inert = true;
+        this.shopPanel?.classList.remove('hidden');
+        this.updateHeaderInfo();
+        this.switchTab(tabId);
+        this.btnClose?.focus();
     }
 
     close() {
+        this.player.stop();
+        cancelAnimationFrame(this.playerFrame);
         this.isOpen = false;
+        this.isShopping = false;
+        clearInterval(this.typewriterTimer);
         this.modalEl?.classList.add('hidden');
         if (this.callbacks.onClose) this.callbacks.onClose();
     }

@@ -715,3 +715,151 @@
     from { opacity: 0; transform: scale(0.97); }
     to { opacity: 1; transform: scale(1); }
 }
+
+/* Front-view interior stays independent of the purchase and character UI. */
+.vivian-store-overlay {
+    padding: 0;
+    background: #17232c;
+    backdrop-filter: none;
+}
+.vivian-interior {
+    position: relative;
+    width: min(100vw, 150dvh);
+    aspect-ratio: 3 / 2;
+    flex-shrink: 0;
+}
+.vivian-interior-art { display: block; width: 100%; height: 100%; }
+.vivian-interior-heading, .vivian-interior-exit {
+    position: absolute;
+    top: 2%;
+    padding: 10px 16px;
+    border: 1px solid #e4d5b4;
+    border-radius: 8px;
+    background: #173d43;
+    color: #fff3db;
+    font: 700 14px var(--font-sans, sans-serif);
+}
+.vivian-interior-heading { left: 2%; }
+.vivian-interior-exit { right: 2%; cursor: pointer; }
+.vivian-interior-hotspot {
+    position: absolute;
+    top: 22%;
+    height: 53%;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 8px;
+}
+.vivian-interior-hotspot span {
+    padding: 7px 12px;
+    border-radius: 6px;
+    background: #173d43ed;
+    color: #fff3db;
+    font: 700 13px var(--font-sans, sans-serif);
+    white-space: nowrap;
+}
+.vivian-interior-hotspot:hover, .vivian-interior-hotspot:focus-visible {
+    border-color: #ffe1a0;
+    background: #ffe1a014;
+    outline: 2px solid #173d43;
+}
+.vivian-door-hotspot { left: 9%; width: 18%; }
+.vivian-shelf-hotspot { left: 35%; width: 18%; }
+.vivian-fridge-hotspot { left: 54%; width: 16%; }
+.vivian-counter-hotspot { left: 70%; width: 29%; top: 54%; height: 21%; }
+.vivian-store-overlay > .vivian-store-card {
+    position: absolute;
+    z-index: 2;
+    width: calc(100% - 32px);
+    box-shadow: 0 0 0 100vmax #081018b8;
+}
+@media (max-width: 600px) {
+    .vivian-interior-heading, .vivian-interior-exit { font-size: 11px; padding: 6px 8px; }
+    .vivian-interior-hotspot span { font-size: 10px; padding: 5px; }
+}
+.vivian-store-overlay > .vivian-store-card.hidden { display: none; }
+.vivian-interior { container-type: inline-size; }
+.vivian-player.town-player-character {
+    bottom: 15%;
+    left: 18.2%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transform-origin: bottom center;
+}
+.vivian-player .town-char-body { transition: none; }
+.vivian-walkway {
+    position: absolute; left: 0; top: 76%; width: 100%; height: 13%;
+    border: 0; background: transparent; cursor: crosshair;
+}
+.vivian-walkway:focus-visible { outline: 2px dashed #fff3db; outline-offset: -4px; }
+.vivian-walk-hint, .vivian-nearby-action {
+    position: absolute; bottom: 2%; border-radius: 6px; padding: 8px 12px;
+    background: #173d43; color: #fff3db; font: 600 12px var(--font-sans, sans-serif);
+}
+.vivian-walk-hint { left: 2%; }
+.vivian-nearby-action { right: 2%; border: 1px solid #e4d5b4; cursor: pointer; }
+.vivian-nearby-action[hidden] { display: none; }
+@container (max-width: 650px) {
+    .vivian-player.town-player-character { transform: translateX(-50%) scale(.7); }
+    .vivian-walk-hint, .vivian-nearby-action { font-size: 9px; padding: 5px; }
+}
+/* Keep the invisible entrance hit area from outlining the whole door. */
+.vivian-interior:focus { outline: none; }
+.vivian-door-hotspot:hover, .vivian-door-hotspot:focus-visible {
+    border-color: transparent;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+}
+.vivian-player.town-player-character { transform: translateX(-50%) scale(2); }
+.vivian-door-prompt {
+    position: absolute;
+    left: 18%; top: 69%;
+    transform: translateX(-50%);
+    padding: 7px 12px;
+    border-radius: 6px;
+    color: #fff3db;
+    background: #173d43;
+    font: 700 13px var(--font-sans, sans-serif);
+    pointer-events: none;
+}
+.vivian-door-prompt[hidden] { display: none; }
+@container (max-width: 650px) {
+    .vivian-player.town-player-character { transform: translateX(-50%) scale(1.4); }
+    .vivian-door-prompt { font-size: 10px; padding: 5px 8px; }
+}
+/* Isometric room: collision polygon matches the unobstructed central floor. */
+.vivian-player.town-player-character {
+    top: 60.55%; bottom: auto;
+    transform: translate(-50%, -100%) scale(2);
+}
+.vivian-walkway {
+    inset: 0; width: 100%; height: 100%;
+    clip-path: polygon(11.71875% 63.47656%, 49.47917% 41.01563%, 81.38021% 67.87109%, 50% 89.84375%);
+}
+.vivian-door-hotspot {
+    left: 11%; top: 23%; width: 14%; height: 36%;
+    clip-path: polygon(0 19%, 82% 0, 82% 82%, 0 100%);
+}
+.vivian-counter-hotspot {
+    left: 72%; top: 39%; width: 21%; height: 26%;
+    clip-path: polygon(0 0, 100% 42%, 100% 100%, 0 57%);
+}
+.vivian-counter-hotspot:hover, .vivian-counter-hotspot:focus-visible {
+    border-color: transparent; background: transparent; outline: none;
+}
+.vivian-door-prompt { left: 18%; top: 50%; }
+@container (max-width: 650px) {
+    .vivian-player.town-player-character { transform: translate(-50%, -100%) scale(1.4); }
+}
+.vivian-door-prompt { top: 40%; z-index: 1; }
+/* The storefront wall now has a central automatic door between two windows. */
+.vivian-door-hotspot {
+    left: 19%; top: 18%; width: 12%; height: 34%;
+    clip-path: polygon(0 22%, 100% 0, 100% 79%, 0 100%);
+}
+.vivian-door-prompt { left: 25%; top: 34%; }

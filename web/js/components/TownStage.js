@@ -154,6 +154,7 @@ export class TownStage {
             if (this.callbacks.isInputBlocked?.()) return;
             const key = e.key.toLowerCase();
             if (key === 'f') {
+                if (e.repeat || e.defaultPrevented) return;
                 if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
             } else if (key === 'escape') {
                 if (this.billboardModal && !this.billboardModal.classList.contains('hidden')) {

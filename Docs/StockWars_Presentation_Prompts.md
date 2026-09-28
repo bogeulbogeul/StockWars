@@ -1,5 +1,7 @@
 # StockWars (사이퍼M) AI 슬라이드 자동 생성/수정 프롬프트 (Gamma / ChatPPT / Copilot / ChatGPT)
 
+> **2026-09-28 시각 기획 변경:** 현재 목표는 픽셀아트 + 비스듬한 탑다운 통일입니다. 아래 이전 시점·에셋 설명과 완료 기록은 당시 구현 기준이며 새 그래픽 전환 완료를 뜻하지 않습니다. 새 제작 및 전환 검증에는 [아트 가이드](ART_STYLE_GUIDE.md)와 [전환 계획](VISUAL_TRANSITION_PLAN.md)을 적용합니다.
+
 > **문서 목적**: Gamma, ChatPPT, PowerPoint Copilot, ChatGPT 등 AI 슬라이드 제작 툴에 **그대로 복사/붙여넣기**하여 슬라이드를 생성할 수 있는 **슬라이드 전용 AI 프롬프트 (Slide Generation Prompts)** 가이드입니다.
 > 
 > **핵심 수정 반영**:

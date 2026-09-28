@@ -1,73 +1,90 @@
-# 🎨 StockWars 에셋 제작 마스터 아트 스타일 가이드 (ART_STYLE_GUIDE.md)
-> **최종 개정:** 2026-09-26  
-> **적용 대상:** StockWars 프로젝트 내 모든 생성형 AI 에셋 (DALL-E 3 / GPT-4o / Midjourney 등)
+# StockWars 아트 스타일 가이드
 
-본 문서는 StockWars의 모든 시각적 에셋(배경, 날씨, 오브젝트, UI, NPC, 아이템 등)이 **단일한 통일감과 감성을 유지**하도록 규정한 **아트 스타일 표준서**입니다. AI 프롬프트 작성 시 본 가이드의 키워드 및 네거티브 규칙을 필수 준수합니다.
+> **최종 개정:** 2026-09-28
+> **상태:** 화풍 확정 / 구현 전환 및 해상도 검증 예정
+> **적용 대상:** 신규 제작 및 교체하는 월드 배경, 건물, 가구, 캐릭터, 아이콘과 이미지 생성 프롬프트
 
----
+## 1. 확정된 방향
 
-## 🌟 1. 핵심 비주얼 아이덴티티 (Core Visual Identity)
+StockWars는 **픽셀아트 기반의 비스듬한 탑다운(3/4 시점)**으로 공간 화면을 통일한다. 홈 오피스, 마을, 건물 내부가 같은 세계처럼 이어지는 것을 목표로 한다. 기존 일반 2D 벡터·과슈 화풍과 장소별 아이소메트릭·횡스크롤 혼용 규칙은 본 개정으로 대체한다.
 
-* **테마/장르:** **깔끔하고 따뜻한 2D 캐주얼/인디 게임 그래픽 (Clean 2D Casual Game Art)**
-* **질감(Texture):** **깨끗한 디지털 2D 벡터 & 부드러운 셀 셰이딩 (Clean Digital Vector / Soft Cel-shaded, No blotchy canvas/paper noise)**
-* **형태(Shape):** 깔끔하고 선명한 2D 게임 에셋 실루엣 (Crisp outlines, smooth clean gradients)
-* **색채(Palette):** 화사하고 따뜻한 2D 게임 컬러 (Clean Sky Blue, Warm Pastel Peach/Cream, Honey Yellow)
+- **시점:** 바닥과 가구 상판을 내려다보면서 캐릭터의 얼굴·몸과 가구 앞면도 보인다.
+- **공간 축:** 방과 길은 화면의 가로·세로 축을 따른다. 마름모 바닥의 아이소메트릭이나 정수리만 보이는 수직 탑다운이 아니다.
+- **화풍:** 선명한 픽셀 실루엣과 일관된 픽셀 밀도. 따뜻하고 아늑한 생활 공간에 현대적인 금융 소품을 결합한다.
+- **일관성:** 같은 캐릭터와 가구는 실내외에서 같은 기본 비율을 사용한다. 장소의 차이는 배치, 색감, 공간 크기로 표현한다.
 
----
+### 1.1. 확정 화풍: 코지 SD 픽셀아트
 
-## 🚫 2. 절대 금지 요소 (Banned & Negative Attributes)
+**큰 머리와 작은 몸의 SD 캐릭터, 어두운 유색 외곽선, 파스텔 바탕과 선명한 포인트색, 단계가 보이는 픽셀 명암**을 StockWars의 공통 화풍으로 확정한다. 캐릭터는 귀엽고 장식적이며, 배경은 캐릭터보다 차분하고 단순하게 표현한다.
 
-| ❌ 절대 금지 (Banned) | 💡 대체 지향점 (Recommended) |
+캐릭터 기준 이미지는 사용자가 제공한 [캐릭터 디자인 샘플](References/player-character-style-reference.png)이다. 원본을 보존하며, 이미지의 회색 배경·프레임·문구는 게임 화풍에 포함하지 않는다. 의상이나 동물 귀를 모든 캐릭터에 복제하지 않고 비율·윤곽·눈·픽셀 명암을 참고한다.
+
+![캐릭터 화풍 기준](References/player-character-style-reference.png)
+
+| 요소 | 확정 규칙 |
 | :--- | :--- |
-| **지저분한 수채화 종이/스펀지 노이즈 (Blotchy watercolor paper noise)** | **매끈하고 깔끔한 디지털 2D 그라디언트 (Smooth clean 2D digital gradient)** |
-| **플라스틱/유리구슬 반사광 (Glossy 3D reflections)** | **깔끔한 2D 평면 셀 셰이딩 (Clean flat/cel 2D sprite)** |
-| **3D 구체/입체 CGI 셰이딩 (3D sphere/CGI shading)** | **선명하고 직관적인 2D 게임 스프라이트 (Crisp 2D vector game sprite)** |
-| **날카로운 기하학적 메탈 광선 (Sharp metallic spikes)** | **귀엽고 둥근 2D 게임 실루엣 (Cute rounded 2D game silhouettes)** |
+| 캐릭터 비율 | 기본 몸체는 약 2등신 SD. 머리카락을 포함한 머리 덩어리가 크게 읽히고 몸통·팔다리는 짧다. 모자·귀·꼬리는 기본 등신 계산에서 제외한다. |
+| 얼굴 | 얼굴 면적 대비 큰 눈, 작은 입, 최소한의 코 표현. 눈·앞머리 실루엣으로 인상을 구분한다. |
+| 외곽선 | 원본 픽셀 기준 1px 선을 기본으로 하되 모서리 연결은 픽셀 덩어리로 정리한다. 순검정보다 어두운 남보라·갈색 등 대상에 맞는 유색 윤곽선을 사용한다. |
+| 명암 | 소재별 기본색·그림자·하이라이트의 3단계를 기본으로 한다. 눈과 장식은 소량의 추가 강조색을 허용한다. 부드러운 그라디언트·에어브러시·상시 디더링은 사용하지 않는다. |
+| 색감 | 크림·피치·연청·라벤더·민트 계열을 바탕으로 사용한다. 눈·리본·작은 장식에는 선명한 청록·분홍·금색 포인트를 허용한다. 화면 전체를 고채도나 네온으로 채우지 않는다. |
+| 광원 | 기본 에셋은 화면 좌상단의 부드러운 빛으로 통일한다. 명암 경계는 픽셀 단위로 선명하게 유지한다. |
+| 디테일 | 머리카락은 굵은 묶음으로, 옷은 큰 면과 주요 장식으로 읽히게 한다. 모든 면을 잔선과 작은 점으로 채우지 않는다. |
+| 배경·가구 | 같은 유색 윤곽선과 단계형 명암을 사용하되 캐릭터보다 채도·세부 대비를 낮춘다. 큰 가구의 형태와 이동 가능한 바닥을 먼저 읽을 수 있어야 한다. |
+| 금융 소품 | 모니터·전광판·현대 의상도 같은 픽셀 화풍으로 표현한다. 화면 광원은 국소적인 포인트로 제한한다. |
 
----
+약 2등신은 확정된 디자인 목표다. 정확한 머리·몸 픽셀 수와 캔버스 해상도는 실제 화면 검증 후 결정한다. 부드러운 HD 일러스트, 벡터 캐릭터, 과슈 붓터치, 3D 렌더 위에 픽셀 필터만 적용한 표현은 사용하지 않는다.
 
-## 🧩 3. 마스터 프롬프트 뼈대 (Master Prompt Blueprint)
+### 1.2. 이미지 생성 전 필수 절차
 
-모든 프롬프트는 아래 5단 구조를 기본으로 조립합니다.
+1. StockWars용 이미지 생성·편집·변형 또는 프롬프트 작성을 시작할 때 이 문서의 최신 내용을 읽는다. 문서가 바뀌면 다음 생성 전에 다시 읽는다.
+2. 캐릭터 관련 작업은 [파츠 가이드](part_separation_guide_512.md)도 읽고 위 기준 이미지를 열어 확인한다. 관련 참고 이미지는 생성 도구에도 전달한다.
+3. 요청 대상에 맞는 화풍·시점·비율·명암·색감·금지 사항을 프롬프트에 명시한다. 이전 생성 프롬프트의 일반 2D·아이소메트릭 규칙을 복사하지 않는다.
+4. 생성 결과를 기준 이미지와 실제 표시 크기로 검토한다. 흐릿한 픽셀, 비율 변화, 화풍 이탈이 있으면 수정하거나 참고용으로만 분류한다.
+
+사용자가 명시적으로 다른 스타일을 요청하면 그 요청을 우선한다. 가이드나 필수 참고 자료가 누락되면 이를 알리고 기억만으로 제작하지 않는다. 이 절차는 프로젝트 이미지 작업에 적용하며 별도의 반복 승인 절차를 요구하지 않는다.
+
+## 2. 장소별 적용
+
+| 장소 | 표현 기준 |
+| :--- | :--- |
+| 홈 오피스 | 책상 상판·앞면과 캐릭터가 함께 보이는 실내. 기존 가구 배치 기능을 같은 시점으로 표현한다. |
+| 마을 | 상하좌우로 이동하는 탑다운 거리. 가로로 긴 동선은 가능하지만 횡스크롤 전용 시점은 사용하지 않는다. |
+| 상점·은행·증권사 내부 | 홈 오피스와 같은 시점, 캐릭터 비율, 공간 읽기 규칙을 사용한다. |
+
+건물은 정면만 보이는 납작한 파사드 규칙을 폐기하고 공통 시점에 맞게 지붕 윗면과 전면을 표현한다. 벽과 가구의 가림 처리는 검증 구간에서 확인한다.
+
+## 3. 픽셀 제작 및 UI 원칙
+
+- 배경, 캐릭터, 가구 사이의 픽셀 밀도를 맞춘다.
+- 흐릿한 확대·축소, 회화적 붓터치, 벡터 그라디언트, 실사·광택 3D 표현을 월드 에셋의 기본 화풍으로 사용하지 않는다.
+- 분리형 캐릭터와 소품은 투명 배경을 사용한다. 완성 장면은 배경을 포함한다.
+- 주식 거래 UI의 숫자, 글자, 차트는 **가독성 우선**이다. 픽셀 폰트나 픽셀 차트를 강제하지 않는다.
+- 대화 초상화와 아이콘은 월드의 색감·캐릭터 디자인에 맞춘다. 세부 해상도와 제작 방식은 검증 후 정한다.
+
+## 4. 이미지 생성 프롬프트 기준
 
 ```text
-[1. 대상 및 용도] 2D game sprite asset of [Subject], isolated on a pure solid white background.
-[2. 마스터 화풍] Warm cozy 2D indie game art, soft hand-drawn storybook gouache style, matte painterly finish.
-[3. 색감 및 형태] [Color palette: honey-yellow, peach, cream, soft pastel], rounded friendly organic shapes.
-[4. 분위기] Wholesome, peaceful, and healing game aesthetic, soft warm ambient lighting.
-[5. 필수 네거티브] NO glossy reflections, NO plastic shine, NO 3D CGI sphere effects, NO harsh metallic spikes, NO text, NO watermark.
+[Subject and purpose], cozy SD pixel art for a modern life-and-stock-trading game,
+crisp pixel clusters, consistent pixel density, one-source-pixel dark colored outlines,
+three-tone shading per material, upper-left soft lighting rendered with hard pixel steps,
+pastel base colors with small saturated accents, readable silhouettes, restrained detail.
+For world scenes: three-quarter top-down 2D RPG view, axis-aligned rectangular floor,
+visible top surfaces and front faces, backgrounds quieter than characters.
+For characters: approximately two-head-tall chibi proportions excluding accessories,
+large expressive eyes, tiny mouth, minimal nose, short limbs, chunky hair locks;
+match the supplied character style reference; keep body template and requested direction.
+For separate sprites: transparent background.
+No isometric diamond grid, no side-scroller elevation, no strict overhead view,
+no painterly brushwork, no smooth vector gradients, no glossy 3D rendering,
+no airbrushed shading, no noisy dithering, no pixel-filtered 3D render,
+no watermark. No text unless explicitly requested.
 ```
 
----
+위 템플릿에서 대상과 관련된 문장만 선택한다. 얼굴 초상화와 UI 아이콘에 바닥 그리드를 강제하지 않는다. 생성 이미지도 실제 게임 크기에서 픽셀 밀도와 시점 일관성을 검토한다. 이전에 생성한 세 가지 시점 비교 이미지는 **시점 설명용**이다. 캐릭터 화풍의 기준은 1.1절의 사용자 제공 이미지다.
 
-## 📂 4. 카테고리별 제작 규격 & 예시
+## 5. 미정 항목과 다음 검증
 
-### 1) 하늘 및 날씨 에셋 (Sky & Weather)
-* **공통 규칙:** 부드러운 대기감, 자극적이지 않은 자연스러운 톤
-* **하늘 배경:** 16:9 파노라마, 아무 오브젝트 없는 부드러운 세룰리안 블루 → 피치 크림 그라디언트
-* **태양:** 둥근 꽃잎/과슈 붓터치 형태의 웜 허니 옐로우 태양
-* **구름:** 솜사탕/마시멜로 질감의 몽글몽글한 구름 팩 (먹구름은 차분한 슬레이트 그레이 톤)
+캐릭터는 [픽셀 캐릭터 파츠 가이드](part_separation_guide_512.md)의 공통 몸체와 교체 파츠를 사용하며, 프레임별 픽셀 스프라이트를 기본 제작 방식으로 삼는다. 화풍과 약 2등신 디자인 목표는 확정했다. 기본 타일 픽셀 크기, 캐릭터 해상도와 정확한 머리·몸 픽셀 수, 애니메이션 프레임 수·속도, 기준 화면 해상도, 확대 배율, 팔레트 HEX 값, 월드 가림 처리 방식은 검증 후 정한다. 파츠 가이드의 64×64와 걷기 4프레임은 검증용 시작안이다.
 
-### 2) 마을/오피스 건물 및 시설 파사드 (Buildings & Facades)
-* **시점 규칙 (필수):** **완전한 정면 직각 투시 (Strict Orthographic 2D Front View / 0-degree Flat Elevation)**
-* **배제 요소:** 3D 원근 투시(Perspective), 측면 벽면 노출(Side walls), 옥상 각도(Roof depth angle), 아이소메트릭(Isometric) **완전 금지**
-* **하단 기준선:** 지면 접지를 위한 완벽한 수평 바닥선 (`Flat straight horizontal bottom baseline`)
-* **키워드:** `Strict orthographic 2D front view elevation, 0 degree perspective, perfectly flat facade, 2D side-scroller game building asset, horizontal flat bottom baseline, isolated on pure solid white background`
-
-### 3) 환경 및 가구 소품 (Props & Furniture)
-
-### 3) NPC & 캐릭터 포트레이트 (Characters & NPCs)
-* **공통 규칙:** 2.5등신 치비(SD) 또는 부드러운 동화책 삽화 스타일, 따스한 표정
-* **키워드:** `charming chibi character, cozy indie game portrait, soft warm pastel clothing, friendly gentle expression, storybook illustration`
-
-### 4) 아이템 & UI 아이콘 (Items & Icons)
-* **공통 규칙:** 외곽선이 깔끔하여 64x64~128x128 리사이징 시에도 시인성이 확보되는 디자인
-* **키워드:** `cute stylized 2D item icon, clean readable silhouette, matte gouache coloring, charming cozy game asset`
-
----
-
-## 📋 5. 프롬프트 작성 전 점검 체크리스트
-- [ ] `isolated on a pure solid white background`가 포함되어 누끼 작업이 용이한가?
-- [ ] `storybook gouache style, matte texture`가 명시되어 3D 플라스틱 광택이 차단되었는가?
-- [ ] 색감이 `Warm pastel / earthy tones`로 지정되어 있는가?
-- [ ] 네거티브 키워드(`NO plastic shine, NO 3D sphere reflections, NO text`)가 누락되지 않았는가?
+**홈 오피스 → 문 → 짧은 마을 거리**를 먼저 검증한다. 이동, 실내외 전환, 가구·출입구 구분, 거래 UI 가독성을 확인한 뒤 제작 규격을 확정한다. 단계와 확인 항목은 [전환 계획](VISUAL_TRANSITION_PLAN.md)을 따른다.

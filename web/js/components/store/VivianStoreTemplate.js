@@ -15,7 +15,18 @@ export function getVivianStoreHtml() {
 
     return `
         <div id="vivianStoreModal" class="modal-overlay hidden vivian-store-overlay">
-            <div class="modal-card vivian-store-card">
+            <section class="vivian-interior" id="vivianInterior" tabindex="-1" aria-label="비비안 잡화점 내부">
+                <img class="vivian-interior-art" src="${new URL('../../../assets/interiors/VivianStoreInterior-isometric-v2.png', import.meta.url).href}" alt="왼쪽 자동 유리문과 쇼윈도, 뒤쪽 냉장고, 오른쪽 계산대와 넓은 바닥이 있는 아이소메트릭 잡화점 내부" draggable="false">
+                <div class="town-player-character vivian-player" id="vivianPlayer" aria-label="플레이어 캐릭터">
+                    <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
+                    <div class="town-char-shadow"></div>
+                </div>
+                <button class="vivian-walkway" id="vivianWalkway" aria-label="바닥을 클릭해 이동"></button>
+                <button class="vivian-interior-hotspot vivian-door-hotspot" id="btnVivianDoor" aria-label="출입문으로 나가기"></button>
+                <span class="vivian-door-prompt" id="vivianDoorPrompt" hidden>F · 나가기</span>
+                <button class="vivian-interior-hotspot vivian-counter-hotspot" data-store-browse="daily" aria-label="계산대 이용하기"></button>
+            </section>
+            <div class="modal-card vivian-store-card hidden" id="vivianShopPanel" role="dialog" aria-label="비비안 잡화점 상품 구매">
                 <!-- Top Neon Ambient Header -->
                 <div class="vivian-store-header">
                     <div class="vivian-header-brand">
@@ -24,7 +35,6 @@ export function getVivianStoreHtml() {
                             <div class="vivian-header-title-row">
                                 <span class="vivian-store-title">비비안 잡화점</span>
                                 <span class="vivian-badge-online">OPEN 24H</span>
-                                <span class="vivian-badge-sub">MOD_GDD_03_1</span>
                             </div>
                             <div class="vivian-header-desc">증시 생존을 위한 필수 소모품 및 특수 전술 장비 보급소</div>
                         </div>
@@ -39,7 +49,7 @@ export function getVivianStoreHtml() {
                             <span class="meta-label">비비안 신뢰도</span>
                             <span class="meta-val affinity" id="vivianAffinityBadge">Lv.1 💖 (0/100)</span>
                         </div>
-                        <button class="vivian-close-btn" id="btnVivianClose" title="상점 나가기 (ESC)">✕</button>
+                        <button class="vivian-close-btn" id="btnVivianClose" title="상점 내부로 돌아가기 (ESC)" aria-label="구매창 닫기">✕</button>
                     </div>
                 </div>
 
@@ -158,8 +168,8 @@ export function getVivianStoreHtml() {
                 <div class="vivian-store-footer">
                     <div class="footer-tips">
                         <span class="key-badge">1~3</span> 탭 전환 &nbsp;|&nbsp;
-                        <span class="key-badge">E / ENTER</span> 구매 &nbsp;|&nbsp;
-                        <span class="key-badge">ESC</span> 마을로 나가기
+                        <span class="key-badge">E</span> 구매 &nbsp;|&nbsp;
+                        <span class="key-badge">ESC</span> 상점 내부로 돌아가기
                     </div>
                     <div class="footer-actions">
                         <button class="footer-inv-btn" id="btnVivianOpenBag">🎒 소지품 가방 열기</button>

@@ -1,5 +1,7 @@
 # INDEX_GDD_00: StockWars GDD 마스터 인덱스 (Master Index)
 
+> **2026-09-28 시각 기획 기준:** [아트 스타일 가이드](ART_STYLE_GUIDE.md)와 [그래픽·시점 전환 계획](VISUAL_TRANSITION_PLAN.md)을 우선 참조합니다. 픽셀아트 + 비스듬한 탑다운 방향은 확정되었으며 구현 전환은 예정 상태입니다.
+
 **버전:** v5.0.0 (원복 및 복구본)  
 **상태:** 활성 (Active)
 

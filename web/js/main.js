@@ -217,7 +217,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.logisticsMiniGame?.isOpen === true,
+            isInputBlocked: () => this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {

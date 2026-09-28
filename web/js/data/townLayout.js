@@ -11,4 +11,3 @@ export const TOWN_LAMP_POSITIONS = [
     4525, 5985, 8090, 9890
 ];
 export const TOWN_TREE_POSITIONS = [900, 2905, 3755, 4595, 7200, 9050];
-export const TOWN_SIGN_POSITIONS = [1865, 8150];
