@@ -1,0 +1,11 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>회색 마네킹 걷기 테스트</title><style>body{font:16px system-ui;background:#f4f0e7;color:#252529;margin:32px}h1{font-size:24px}.grid{display:flex;flex-wrap:wrap;gap:18px}article{background:white;border-radius:16px;padding:16px;text-align:center}.sprite{width:256px;height:256px;background-image:url('mannequin-walk-4direction-v1.png');background-size:1024px 1024px;image-rendering:pixelated}button,input{margin:12px}p{max-width:850px;line-height:1.6}</style><h1>회색 마네킹 · 4방향 걷기 테스트</h1><p>생성 시트의 각 행을 4프레임으로 반복 재생합니다. 일부 자세 반복과 미세한 정렬·윤곽 차이가 남은 모션 시안입니다.</p><button id="play">일시정지</button><label>속도 <input id="fps" type="range" min="2" max="12" value="6"><span id="rate">6</span> fps</label><label>프레임 <input id="frame" type="range" min="0" max="3" value="0"><span id="index">1</span> / 4</label><div class="grid"></div><p><a href="mannequin-walk-4direction-v1.png">전체 PNG 시트</a> · 행 순서: 앞 / 왼쪽 / 오른쪽 / 뒤</p><script>
+const labels=['앞 · down','왼쪽 · left','오른쪽 · right','뒤 · up'];
+const grid=document.querySelector('.grid');
+labels.forEach((name,row)=>{const box=document.createElement('article');const title=document.createElement('h2');title.textContent=name;const sprite=document.createElement('div');sprite.className='sprite';sprite.dataset.row=row;box.append(title,sprite);grid.append(box)});
+let frame=0,playing=true,last=0;const slider=document.querySelector('#frame'),fps=document.querySelector('#fps'),button=document.querySelector('#play');
+function draw(){document.querySelectorAll('.sprite').forEach(s=>s.style.backgroundPosition=(-256*frame)+'px '+(-256*Number(s.dataset.row))+'px');slider.value=frame;document.querySelector('#index').textContent=frame+1}
+button.onclick=()=>{playing=!playing;button.textContent=playing?'일시정지':'재생';last=performance.now()};
+fps.oninput=()=>document.querySelector('#rate').textContent=fps.value;
+slider.oninput=()=>{playing=false;button.textContent='재생';frame=Number(slider.value);draw()};
+function tick(now){if(playing&&now-last>=1000/Number(fps.value)){frame=(frame+1)%4;last=now;draw()}requestAnimationFrame(tick)}draw();requestAnimationFrame(tick);
+</script></html>

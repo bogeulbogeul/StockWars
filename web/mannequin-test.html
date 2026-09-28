@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>StockWars · 마네킹 모션 테스트</title>
+  <link rel="stylesheet" href="css/modules/mannequin-test.css">
+  <script src="js/mannequin-test.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span>STOCKWARS · MOTION LAB</span><h1>회색 마네킹 걷기</h1><p>바닥을 클릭한 뒤 방향키 또는 WASD로 움직여 보세요.</p></header>
+    <section id="stage" tabindex="0" aria-label="캐릭터 이동 영역. 방향키 또는 WASD로 조작">
+      <div class="floor-label">WALK TEST</div><div id="player"></div>
+    </section>
+    <p id="status" role="status">이미지 불러오는 중…</p>
+    <section class="controls">
+      <label>재생 속도 <input id="fps" type="range" min="2" max="12" value="6"><output id="fps-value">6 fps</output></label>
+      <label>이동 속도 <input id="speed" type="range" min="40" max="240" value="120"><output id="speed-value">120 px/s</output></label>
+      <label>캐릭터 크기 <select id="size"><option value="80">작게</option><option value="128" selected>보통</option><option value="192">크게</option></select></label>
+      <label><input id="loop" type="checkbox"> 제자리 걷기</label>
+      <button id="reset">중앙으로</button>
+    </section>
+    <nav aria-label="이동 버튼"><button data-direction="up" aria-label="위로 이동">↑</button><div><button data-direction="left" aria-label="왼쪽으로 이동">←</button><button data-direction="down" aria-label="아래로 이동">↓</button><button data-direction="right" aria-label="오른쪽으로 이동">→</button></div></nav>
+    <details><summary>시안 정보</summary><p>4행 × 4열 시트 · 앞 / 왼쪽 / 오른쪽 / 뒤. 전용 정지 프레임이 없어 멈추면 첫 걸음 프레임을 표시합니다. 일부 자세 반복과 정렬 차이가 남은 테스트용 에셋입니다.</p><a href="assets/characters/mannequin/walk-4direction-v1.png">원본 시트 보기</a> · <a href="index.html">게임으로</a></details>
+  </main>
+</body>
+</html>

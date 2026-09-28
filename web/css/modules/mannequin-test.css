@@ -1,0 +1,21 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #eee9df; color: #303c36; font: 15px system-ui, sans-serif; }
+main { max-width: 1100px; margin: 28px auto; padding: 0 22px; }
+header span { font-size: 12px; letter-spacing: .16em; color: #637869; }
+h1 { margin: 8px 0; font-size: 28px; }
+p { line-height: 1.6; }
+#stage { position: relative; height: min(52vh, 480px); min-height: 290px; overflow: hidden; border: 2px solid #a5b59c; border-radius: 16px; background-color: #dce4ce; background-image: linear-gradient(#82927520 1px, transparent 1px),linear-gradient(90deg,#82927520 1px,transparent 1px); background-size: 32px 32px; outline-offset: 4px; touch-action: none; }
+.floor-label { position: absolute; inset: 20px auto auto 24px; color: #65755f; letter-spacing: .2em; font-size: 11px; }
+#player { position: absolute; top: 0; left: 0; width: 128px; height: 128px; image-rendering: pixelated; background-image: url('../../assets/characters/mannequin/walk-4direction-v1.png'); background-repeat: no-repeat; pointer-events: none; }
+.controls { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; padding: 18px; background: #fffcf6; border-radius: 12px; }
+.controls label { display: flex; align-items: center; gap: 8px; }
+input[type=range] { width: 110px; accent-color: #51705b; }
+button, select { border: 1px solid #a9b5a8; background: #fffdf7; color: inherit; border-radius: 8px; padding: 9px 14px; font: inherit; }
+button { cursor: pointer; touch-action: none; }
+button:active { background: #bfd0b6; }
+nav { text-align: center; margin: 18px auto; }
+nav button { width: 55px; height: 44px; margin: 3px; }
+#status { min-height: 24px; }
+details { margin: 20px 0; color: #59655e; }
+a { color: #305f49; }
+@media(max-width:600px) { main { padding: 0 12px; } .controls { gap: 12px; } }
