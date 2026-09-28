@@ -39,10 +39,10 @@
 ## 🎨 4. 에셋 생성 및 아트 스타일 규칙 (Art Style Consistency)
 
 - **생성 전 필수 읽기:** StockWars 이미지 생성·편집·변형·프롬프트 작성 작업마다 [ART_STYLE_GUIDE.md](Docs/ART_STYLE_GUIDE.md)의 최신 내용을 먼저 읽는다. 작업 중 개정되면 다음 생성 전에 재확인한다.
-- 캐릭터 작업은 [파츠 가이드](Docs/part_separation_guide_512.md)도 읽고 [사용자 제공 화풍 기준 이미지](Docs/References/player-character-style-reference.png)를 열어 확인한다. 관련 이미지를 생성 도구에 전달하고, 생성 후 기준과 비교한다.
+- 캐릭터 작업은 [완성형 스타일 제작 가이드](Docs/part_separation_guide_512.md)도 읽고 [사용자 제공 화풍 기준 이미지](Docs/References/player-compact-pixel-style-reference.png)를 열어 확인한다. 관련 이미지를 생성 도구에 전달하고, 생성 후 기준과 비교한다.
 - 상세 절차는 [AGENTS.md](AGENTS.md)와 아트 가이드 1.2절을 따른다. 사용자 명시 요청은 우선하며, 일회성 스타일 실험으로 프로젝트 기준을 자동 변경하지 않는다.
 
-- 모든 생성형 AI 에셋 프롬프트 작성 시 [ART_STYLE_GUIDE.md](Docs/ART_STYLE_GUIDE.md)의 **마스터 스타일 공식(2026-09-28: 코지 SD 픽셀아트, 약 2등신 캐릭터, 유색 외곽선과 3단계 명암, 파스텔 바탕과 포인트색, 비스듬한 탑다운)**을 100% 필수 적용한다.
+- 모든 생성형 AI 에셋 프롬프트 작성 시 [ART_STYLE_GUIDE.md](Docs/ART_STYLE_GUIDE.md)의 **마스터 스타일 공식(2026-09-28: 코지 SD 픽셀아트, 작은 고정 얼굴과 의상이 읽히는 SD 캐릭터, 유색 외곽선과 3단계 명암, 파스텔 바탕과 포인트색, 비스듬한 탑다운)**을 100% 필수 적용한다.
 - **금지 요소**: 플라스틱 반사광, 3D 구체 입체 셰이딩, 날카로운 기하학적 스파이크, 자극적인 네온 컬러 배제.
 
 

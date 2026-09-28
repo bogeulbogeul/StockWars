@@ -30,7 +30,7 @@
 - [MOD_GDD_02: 노동 및 미니게임 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_02_LaborJobs.md)
 - [MOD_GDD_03_3] 의상 상점 (Apparel) [Claire Apparel](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_3_ClaireApparel.md)
 - [MOD_GDD_03_4] 데이터 잉크 서점 (Data Ink Bookstore) [Data Ink Bookstore](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_4_Bookstore.md)
-- [MOD_GDD_03_5] 럭키 캡슐 및 마일리지 (Capsule & Mileage) [Lucky Capsule & Mileage](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_5_LuckyCapsuleGacha.md)
+- [MOD_GDD_03_5: 럭키 캡슐 폐기 및 직접 구매 이관 정책 — 2026-09-28, 신규 구현 제외](MOD_GDD_03_5_LuckyCapsuleGacha.md)
 - [MOD_GDD_18] 세미나 퀴즈 시스템 (Quiz System) [Quiz System](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_18_QuizSystem.md)
 - [MOD_GDD_03: 아이템 상점 및 리스트](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_0_ShopIndex.md)
 - [MOD_GDD_05: 라이프스타일 및 사교](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_05_LifestyleSocial.md)

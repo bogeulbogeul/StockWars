@@ -20,9 +20,9 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **03-1** | **비비안 잡화점** | **비비안** | 소모품, 찌라시, 전술 도구 | [MOD_GDD_03_1_VivianStore.md](MOD_GDD_03_1_VivianStore.md) |
 | **03-2** | **가구 상점** | **줄리안** | 일일 테마 로테이션 가구, 오피스 인테리어 | [MOD_GDD_03_2_JulianFurniture.md](MOD_GDD_03_2_JulianFurniture.md) |
-| **03-3** | **의상 상점** | **클레어** | 아바타 의상, 코스튬 | [MOD_GDD_03_3_ClaireApparel.md](MOD_GDD_03_3_ClaireApparel.md) |
+| **03-3** | **의상 상점** | **클레어** | 완성형 캐릭터 스타일 (전체 외형 교체) | [MOD_GDD_03_3_ClaireApparel.md](MOD_GDD_03_3_ClaireApparel.md) |
 | **03-4** | **데이터 잉크 서점** | **사서 소피아** | 영구 스탯 강화 도서, 섹터 리포트 | [MOD_GDD_03_4_Bookstore.md](MOD_GDD_03_4_Bookstore.md) |
-| **03-5** | **럭키 캡슐 & 마일리지** | **사이퍼몰 / 백화점 머신** | 2주 한정 테마 의상/가구, 마일리지 교환 | [MOD_GDD_03_5_LuckyCapsuleGacha.md](MOD_GDD_03_5_LuckyCapsuleGacha.md) |
+| **03-5 (폐기)** | 럭키 캡슐 폐기 기록 | 해당 없음 | 의상·가구 뽑기 및 마일리지 제거, 직접 구매로 이관 | [폐기 및 획득 정책](MOD_GDD_03_5_LuckyCapsuleGacha.md) |
 
 ---
 

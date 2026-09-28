@@ -1,0 +1,12 @@
+hair_short_back: 1222x1287 bounds=312,312,911,751 partial=0 opaque128=185280
+base_skin: 1222x1287 bounds=320,240,903,1079 partial=0 opaque128=326336
+bottom_shorts_black: 1222x1287 bounds=480,872,743,983 partial=0 opaque128=25280
+shoes_basic_black: 1222x1287 bounds=472,1000,751,1087 partial=0 opaque128=17536
+top_tshirt_white: 1222x1287 bounds=424,744,799,927 partial=0 opaque128=49408
+face_default: 1222x1287 bounds=416,480,807,719 partial=0 opaque128=32256
+hair_short_front: 1222x1287 bounds=280,96,943,607 partial=0 opaque128=155840
+face covered by hair: 0/32256 = 0.0%
+shorts covered by shirt: 11264/25280 = 44.6%
+feet covered by shoes (below y1024): 10816/12416 = 87.1%
+shoe mask: 1222x1287 bounds=0,1024,1221,1286 partial=0 opaque128=321386
+feet covered by hide mask (below y1024): 12416/12416 = 100.0%

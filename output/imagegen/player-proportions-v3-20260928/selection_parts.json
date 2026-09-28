@@ -1,0 +1,98 @@
+{
+  "bodyTemplateVersion": "user-base-proportions-v3",
+  "status": "front-idle-assembly-reviewed; game-display-size-unconfirmed",
+  "cellSize": [
+    1222,
+    1287
+  ],
+  "cleanupGridPixels": 8,
+  "gridNote": "This is the cleanup grid in the supplied large PNG, not a finalized game resolution.",
+  "origin": [
+    0,
+    0
+  ],
+  "groundAnchor": [
+    611,
+    1080
+  ],
+  "direction": "down",
+  "action": "idle",
+  "frameCount": 1,
+  "alpha": "binary-0-or-255",
+  "filter": "nearest",
+  "trim": false,
+  "layersBackToFront": [
+    "parts/hair_short_back_idle_down.png",
+    "parts/base_skin_idle_down.png",
+    "parts/bottom_shorts_black_idle_down.png",
+    "parts/shoes_basic_black_idle_down.png",
+    "parts/top_tshirt_white_idle_down.png",
+    "parts/face_default_idle_down.png",
+    "parts/hair_short_front_idle_down.png"
+  ],
+  "bodyHideMasks": [
+    {
+      "whenEquipped": "shoes_basic_black",
+      "file": "parts/shoes_body_hide_mask_idle_down.png",
+      "operation": "body.alpha = body.alpha * (1 - mask.alpha/255)",
+      "applyBefore": "compositing base_skin"
+    }
+  ],
+  "paletteHex": {
+    "skin": [
+      "#291623",
+      "#eda58f",
+      "#ffd2b9",
+      "#ffe7cf"
+    ],
+    "hair": [
+      "#291623",
+      "#202023",
+      "#414144",
+      "#7a7a7d"
+    ],
+    "darkClothing": [
+      "#291623",
+      "#202126",
+      "#32343b",
+      "#50525a",
+      "#26232d",
+      "#3b3d45"
+    ],
+    "shirt": [
+      "#291623",
+      "#bfc0ce",
+      "#e1e2ea",
+      "#fffcf7"
+    ],
+    "face": [
+      "#26232d",
+      "#202126",
+      "#4b4d55",
+      "#fffaf1",
+      "#b96155"
+    ]
+  },
+  "scope": "black short hair, black eyes, white short sleeve tee, black shorts, black shoes",
+  "notIncluded": [
+    "other directions",
+    "walk frames",
+    "skin variants",
+    "other hairstyles",
+    "engine integration"
+  ],
+  "proportionTransform": {
+    "note": "Relative to v2; resampled on 8px editing grid. Crown-to-chin, excluding cowlick, is approximately half of total height.",
+    "bodyScaleY": 1.1,
+    "headScale": 0.72,
+    "headAnchor": [
+      608,
+      710.4
+    ],
+    "bodyScaleX": 0.86,
+    "bodyGroundAnchor": [
+      608,
+      1080
+    ]
+  }
+}

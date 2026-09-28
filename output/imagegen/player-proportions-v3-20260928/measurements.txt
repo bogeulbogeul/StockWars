@@ -1,0 +1,10 @@
+base_skin_idle_down.png: 1222x1287 bounds=400,344,823,1079 partial=0 opaque128=210688
+bottom_shorts_black_idle_down.png: 1222x1287 bounds=496,848,727,975 partial=0 opaque128=25280
+face_default_idle_down.png: 1222x1287 bounds=472,520,751,687 partial=0 opaque128=18176
+hair_short_back_idle_down.png: 1222x1287 bounds=392,400,823,719 partial=0 opaque128=95744
+hair_short_front_idle_down.png: 1222x1287 bounds=368,240,847,663 partial=0 opaque128=94720
+shoes_basic_black_idle_down.png: 1222x1287 bounds=512,1008,711,1079 partial=0 opaque128=11136
+shoes_body_hide_mask_idle_down.png: 1222x1287 bounds=88,1008,1135,1279 partial=0 opaque128=285056
+top_tshirt_white_idle_down.png: 1222x1287 bounds=448,712,775,911 partial=0 opaque128=46400
+left eye hair overlap: 0/8128 = 0.0%
+right eye hair overlap: 0/8000 = 0.0%

@@ -1,0 +1,14 @@
+hair_back: 1222x1287 bounds=312,309,909,753 partial=187791 opaque128=182526
+body: 1222x1287 bounds=320,243,902,1080 partial=334873 opaque128=325640
+shorts: 1221x1288 bounds=480,871,739,1026 partial=36136 opaque128=33863
+shoes: 1222x1287 bounds=471,1007,750,1129 partial=26041 opaque128=24611
+shirt: 1222x1287 bounds=439,770,783,987 partial=54263 opaque128=52677
+face: 1222x1287 bounds=417,479,804,718 partial=34910 opaque128=31275
+hair_front_v2: 1221x1288 bounds=278,96,945,606 partial=159055 opaque128=153232
+hair_front_original: 1222x1287 bounds=280,200,946,736 partial=208512 opaque128=201692
+face covered by hair: 0/31275 = 0.0%
+left eye covered by hair: 0/13538 = 0.0%
+right eye covered by hair: 0/13574 = 0.0%
+shorts covered by shirt: 23621/33863 = 69.8%
+upper scalp covered by new hair: 70794/73458 = 96.4%
+upper scalp covered by old hair: 65288/73458 = 88.9%

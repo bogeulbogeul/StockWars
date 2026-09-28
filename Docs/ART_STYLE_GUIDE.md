@@ -15,16 +15,16 @@ StockWars는 **픽셀아트 기반의 비스듬한 탑다운(3/4 시점)**으로
 
 ### 1.1. 확정 화풍: 코지 SD 픽셀아트
 
-**큰 머리와 작은 몸의 SD 캐릭터, 어두운 유색 외곽선, 파스텔 바탕과 선명한 포인트색, 단계가 보이는 픽셀 명암**을 StockWars의 공통 화풍으로 확정한다. 캐릭터는 귀엽고 장식적이며, 배경은 캐릭터보다 차분하고 단순하게 표현한다.
+**작은 얼굴과 간결한 눈·입, 의상이 읽히는 몸체, 어두운 유색 외곽선, 차분한 바탕과 포인트색, 단계가 보이는 픽셀 명암**을 StockWars의 공통 화풍으로 확정한다. 캐릭터는 귀엽고 장식적이며, 배경은 캐릭터보다 차분하고 단순하게 표현한다.
 
-캐릭터 기준 이미지는 사용자가 제공한 [캐릭터 디자인 샘플](References/player-character-style-reference.png)이다. 원본을 보존하며, 이미지의 회색 배경·프레임·문구는 게임 화풍에 포함하지 않는다. 의상이나 동물 귀를 모든 캐릭터에 복제하지 않고 비율·윤곽·눈·픽셀 명암을 참고한다.
+현재 기준 이미지는 사용자가 제공한 [간결한 픽셀 캐릭터 샘플](References/player-compact-pixel-style-reference.png)이다. 2026-09-28 얼굴 파츠 제외 결정에 따라 이전 큰 눈 중심 샘플을 대체한다. 그림의 밀도·몸체 대비 얼굴 비중·의상 실루엣을 참고하며 판타지 복장, 배경, 화면 버튼은 복제하지 않는다. 샘플의 대각선 자세를 고정 시점으로 채택하지 않고 기존 탑다운의 앞·뒤·좌·우 이동을 유지한다. 이전 샘플과 기본형 PNG는 이력 참고용이다.
 
-![캐릭터 화풍 기준](References/player-character-style-reference.png)
+![현재 캐릭터 화풍 기준](References/player-compact-pixel-style-reference.png)
 
 | 요소 | 확정 규칙 |
 | :--- | :--- |
-| 캐릭터 비율 | 기본 몸체는 약 2등신 SD. 머리카락을 포함한 머리 덩어리가 크게 읽히고 몸통·팔다리는 짧다. 모자·귀·꼬리는 기본 등신 계산에서 제외한다. |
-| 얼굴 | 얼굴 면적 대비 큰 눈, 작은 입, 최소한의 코 표현. 눈·앞머리 실루엣으로 인상을 구분한다. |
+| 캐릭터 비율 | 이전 큰 머리 중심 기본형보다 얼굴 비중을 줄이고 몸통·의상 면적을 확보한다. 새 참고 이미지처럼 간결한 SD 비율을 사용하며 정확한 등신은 공통 몸체 검증에서 결정한다. 모자·귀·꼬리는 기본 등신 계산에서 제외한다. |
+| 얼굴 | 작은 점·짧은 선으로 읽히는 눈, 최소한의 입과 코 표현. 얼굴 디자인은 몸체에 포함해 고정하고 독립 선택·판매·조립 파츠로 만들지 않는다. 헤어·의상·신발·장식을 합친 완성형 스타일로 개성을 표현하고 전체 외형을 교체한다. |
 | 외곽선 | 원본 픽셀 기준 1px 선을 기본으로 하되 모서리 연결은 픽셀 덩어리로 정리한다. 순검정보다 어두운 남보라·갈색 등 대상에 맞는 유색 윤곽선을 사용한다. |
 | 명암 | 소재별 기본색·그림자·하이라이트의 3단계를 기본으로 한다. 눈과 장식은 소량의 추가 강조색을 허용한다. 부드러운 그라디언트·에어브러시·상시 디더링은 사용하지 않는다. |
 | 색감 | 크림·피치·연청·라벤더·민트 계열을 바탕으로 사용한다. 눈·리본·작은 장식에는 선명한 청록·분홍·금색 포인트를 허용한다. 화면 전체를 고채도나 네온으로 채우지 않는다. |
@@ -33,12 +33,12 @@ StockWars는 **픽셀아트 기반의 비스듬한 탑다운(3/4 시점)**으로
 | 배경·가구 | 같은 유색 윤곽선과 단계형 명암을 사용하되 캐릭터보다 채도·세부 대비를 낮춘다. 큰 가구의 형태와 이동 가능한 바닥을 먼저 읽을 수 있어야 한다. |
 | 금융 소품 | 모니터·전광판·현대 의상도 같은 픽셀 화풍으로 표현한다. 화면 광원은 국소적인 포인트로 제한한다. |
 
-약 2등신은 확정된 디자인 목표다. 정확한 머리·몸 픽셀 수와 캔버스 해상도는 실제 화면 검증 후 결정한다. 부드러운 HD 일러스트, 벡터 캐릭터, 과슈 붓터치, 3D 렌더 위에 픽셀 필터만 적용한 표현은 사용하지 않는다.
+이전 약 2등신 고정 목표는 새 참고 이미지에 맞는 몸체 비율 검증으로 대체한다. 작은 얼굴과 의상이 읽히는 몸체라는 방향은 확정하며, 정확한 등신·머리와 몸의 픽셀 수·캔버스 해상도는 검증 후 결정한다. 부드러운 HD 일러스트, 벡터 캐릭터, 과슈 붓터치, 3D 렌더 위에 픽셀 필터만 적용한 표현은 사용하지 않는다.
 
 ### 1.2. 이미지 생성 전 필수 절차
 
 1. StockWars용 이미지 생성·편집·변형 또는 프롬프트 작성을 시작할 때 이 문서의 최신 내용을 읽는다. 문서가 바뀌면 다음 생성 전에 다시 읽는다.
-2. 캐릭터 관련 작업은 [파츠 가이드](part_separation_guide_512.md)도 읽고 위 기준 이미지를 열어 확인한다. 관련 참고 이미지는 생성 도구에도 전달한다.
+2. 캐릭터 관련 작업은 [완성형 스타일 제작 가이드](part_separation_guide_512.md)도 읽고 위 기준 이미지를 열어 확인한다. 관련 참고 이미지는 생성 도구에도 전달한다.
 3. 요청 대상에 맞는 화풍·시점·비율·명암·색감·금지 사항을 프롬프트에 명시한다. 이전 생성 프롬프트의 일반 2D·아이소메트릭 규칙을 복사하지 않는다.
 4. 생성 결과를 기준 이미지와 실제 표시 크기로 검토한다. 흐릿한 픽셀, 비율 변화, 화풍 이탈이 있으면 수정하거나 참고용으로만 분류한다.
 
@@ -71,9 +71,9 @@ three-tone shading per material, upper-left soft lighting rendered with hard pix
 pastel base colors with small saturated accents, readable silhouettes, restrained detail.
 For world scenes: three-quarter top-down 2D RPG view, axis-aligned rectangular floor,
 visible top surfaces and front faces, backgrounds quieter than characters.
-For characters: approximately two-head-tall chibi proportions excluding accessories,
-large expressive eyes, tiny mouth, minimal nose, short limbs, chunky hair locks;
-match the supplied character style reference; keep body template and requested direction.
+For characters: compact SD proportions matching the current reference, smaller face area, readable torso and clothing,
+simple dot or short-line eyes, minimal mouth and nose, a fixed face integrated into the body, chunky hair locks;
+match the supplied character style reference; keep the common animation template and requested direction; one complete appearance, not interchangeable part sheets.
 For separate sprites: transparent background.
 No isometric diamond grid, no side-scroller elevation, no strict overhead view,
 no painterly brushwork, no smooth vector gradients, no glossy 3D rendering,
@@ -85,6 +85,6 @@ no watermark. No text unless explicitly requested.
 
 ## 5. 미정 항목과 다음 검증
 
-캐릭터는 [픽셀 캐릭터 파츠 가이드](part_separation_guide_512.md)의 공통 몸체와 교체 파츠를 사용하며, 프레임별 픽셀 스프라이트를 기본 제작 방식으로 삼는다. 화풍과 약 2등신 디자인 목표는 확정했다. 기본 타일 픽셀 크기, 캐릭터 해상도와 정확한 머리·몸 픽셀 수, 애니메이션 프레임 수·속도, 기준 화면 해상도, 확대 배율, 팔레트 HEX 값, 월드 가림 처리 방식은 검증 후 정한다. 파츠 가이드의 64×64와 걷기 4프레임은 검증용 시작안이다.
+캐릭터는 [완성형 스타일 제작 가이드](part_separation_guide_512.md)에 따라 전체 외형을 하나의 스타일로 제작한다. 피부색·헤어·의상·신발은 독립 선택하지 않는다. 편집 원본 레이어는 허용하되 게임에는 합성된 프레임별 스프라이트를 내보낸다. 얼굴 고정과 간결한 픽셀 화풍은 확정했다. 정확한 등신은 새 참고 이미지에 맞춰 검증한다. 기본 타일 픽셀 크기, 캐릭터 해상도와 정확한 머리·몸 픽셀 수, 애니메이션 프레임 수·속도, 기준 화면 해상도, 확대 배율, 팔레트 HEX 값, 월드 가림 처리 방식은 검증 후 정한다. 스타일 제작 가이드의 64×64와 걷기 4프레임은 검증용 시작안이다.
 
 **홈 오피스 → 문 → 짧은 마을 거리**를 먼저 검증한다. 이동, 실내외 전환, 가구·출입구 구분, 거래 UI 가독성을 확인한 뒤 제작 규격을 확정한다. 단계와 확인 항목은 [전환 계획](VISUAL_TRANSITION_PLAN.md)을 따른다.

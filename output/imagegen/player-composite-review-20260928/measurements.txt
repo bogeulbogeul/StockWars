@@ -1,0 +1,11 @@
+hair_back: 1222x1287 bounds=312,309,909,753 partial=187791 opaque128=182526
+body: 1222x1287 bounds=320,243,902,1080 partial=334873 opaque128=325640
+shorts: 1221x1288 bounds=480,871,739,1026 partial=36136 opaque128=33863
+shoes: 1222x1287 bounds=471,1007,750,1129 partial=26041 opaque128=24611
+shirt: 1222x1287 bounds=439,770,783,987 partial=54263 opaque128=52677
+face: 1222x1287 bounds=417,479,804,718 partial=34910 opaque128=31275
+hair_front: 1222x1287 bounds=280,200,946,736 partial=208512 opaque128=201692
+face covered by hair: 18872/31275 = 60.3%
+left eye covered by hair: 7559/13538 = 55.8%
+right eye covered by hair: 7936/13574 = 58.5%
+shorts covered by shirt: 23621/33863 = 69.8%
