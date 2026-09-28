@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <base href="../">
+  <title>비비안 아이템 적용 확인</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <button id="showStore" style="position:fixed;top:8px;left:8px;z-index:99999">상점으로 돌아가기</button>
+  <script type="module">
+    import { VivianStoreModal } from './js/components/store/VivianStoreModal.js';
+    import { InventoryModal } from './js/components/InventoryModal.js';
+    import { VIVIAN_SHOP_CATALOG } from './js/data/vivianStoreData.js';
+    const bag = new InventoryModal(document.body);
+    let cash = 100000;
+    const store = new VivianStoreModal(document.body, {
+      getCash: () => cash,
+      onDeductCash: value => { cash -= value; },
+      onInventoryAdd: item => bag.addItem(item),
+      onOpenInventory: () => { store.close(); bag.open(); }
+    });
+    // Isolated visual test: bypass walking only; use the real shop and bag UI.
+    store.player.nearby = () => ({ action: 'shop' });
+    function openShop() { bag.close(); store.open(); store.showShop(); }
+    document.getElementById('showStore').addEventListener('click', openShop);
+    openShop();
+    const view = new URLSearchParams(location.search).get('view');
+    if (view === 'weekly' || view === 'secret') store.switchTab(view);
+    if (view === 'bag') {
+      for (const item of VIVIAN_SHOP_CATALOG) bag.addItem({ ...item, quantity: 1, maxStack: 99 });
+      store.close();
+      bag.open();
+    }
+  </script>
+</body>
+</html>

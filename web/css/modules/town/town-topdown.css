@@ -27,6 +27,8 @@
 .town-player-character.resting-bench .town-char-body { border-radius: 14px; }
 .town-building-prompt { z-index: 3000; }
 .town-landscape { position: absolute; pointer-events: none; }
+.town-landscape-bench { pointer-events: auto; cursor: pointer; }
+.town-landscape-bench:focus-visible { outline: 3px solid #61d9db; outline-offset: 5px; border-radius: 8px; }
 .town-landscape-ground { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .town-floor-tone-top { stop-color: #e9dfc8; }
 .town-floor-tone-bottom { stop-color: #dfd3b9; }

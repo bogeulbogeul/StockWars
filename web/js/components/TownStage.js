@@ -10,7 +10,7 @@ import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../
 import { townEntrance, TOWN_VIEW_SCALE, TOWN_SCENERY_ENABLED } from '../data/townLayout.js';
 import { TownBuildingRenderer } from './town/TownBuildingRenderer.js';
 import { TownPlayerController } from './town/TownPlayerController.js';
-import { TOWN_LANDSCAPE } from '../data/townLandscape.js';
+import { TOWN_LANDSCAPE, TOWN_LANDSCAPE_BENCHES } from '../data/townLandscape.js';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
@@ -203,6 +203,11 @@ export class TownStage {
             if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
             const key = e.key.toLowerCase();
             if (!this.billboardModal.classList.contains('hidden') && key !== 'escape') return;
+            if ((key === 'enter' || key === ' ') && e.target?.closest?.('.town-landscape-bench')) {
+                e.preventDefault();
+                if (!e.repeat) e.target.closest('.town-landscape-bench').click();
+                return;
+            }
             if (key === 'f') {
                 if (e.repeat || e.defaultPrevented) return;
                 if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
@@ -256,10 +261,10 @@ export class TownStage {
                 return;
             }
 
-            const targetProp = e.target.closest('.town-bench-prop, .town-billboard-prop');
+            const targetProp = e.target.closest('.town-bench-prop, .town-billboard-prop, .town-landscape-bench');
             if (targetProp) {
                 const pId = targetProp.dataset.propId;
-                const prop = TOWN_INTERACTIVE_PROPS.find(p => p.id === pId);
+                const prop = [...TOWN_INTERACTIVE_PROPS, ...TOWN_LANDSCAPE_BENCHES].find(p => p.id === pId);
                 if (prop) {
                     this.playerController.placeAt(prop);
                     this.checkProximity();
@@ -379,7 +384,8 @@ export class TownStage {
         const { charPosX, charPosY } = this.playerController;
         const candidates = [
             ...TOWN_BUILDINGS.filter(b => b.available !== false).map(b => ({ ...b, kind: 'building' })),
-            ...TOWN_INTERACTIVE_PROPS.map(p => ({ ...p, kind: 'prop' }))
+            ...TOWN_INTERACTIVE_PROPS.map(p => ({ ...p, kind: 'prop' })),
+            ...TOWN_LANDSCAPE_BENCHES
         ];
         const nearby = candidates.map(object => {
             const entry = townEntrance(object);

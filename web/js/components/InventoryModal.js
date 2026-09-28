@@ -6,6 +6,7 @@
 
 import { ITEM_CATEGORIES, ITEM_RARITIES, DEFAULT_INVENTORY_ITEMS } from '../data/inventoryData.js';
 import { RumorPopup } from './inventory/RumorPopup.js';
+import { itemIconHtml } from '../data/itemArtwork.js';
 
 export class InventoryModal {
     constructor(container, callbacks = {}) {
@@ -149,7 +150,7 @@ export class InventoryModal {
             const isSelected = item.id === this.selectedItemId;
             gridHtml += `
                 <div class="inv-slot ${isSelected ? 'active' : ''}" data-id="${item.id}" data-rarity="${item.rarity}" title="${item.name}">
-                    <span class="inv-item-icon">${item.icon}</span>
+                    <span class="inv-item-icon">${itemIconHtml(item)}</span>
                     ${item.quantity > 1 ? `<span class="inv-qty-badge">x${item.quantity}</span>` : ''}
                     ${item.isEquipped ? `<span class="inv-equipped-badge">장착</span>` : ''}
                 </div>
@@ -221,7 +222,7 @@ export class InventoryModal {
         this.detailContainer.innerHTML = `
             <div class="inv-detail-preview">
                 <div class="inv-preview-box" style="border-color: ${rarity.color}; box-shadow: 0 0 20px ${rarity.glow}">
-                    <span>${item.icon}</span>
+                    <span>${itemIconHtml(item)}</span>
                 </div>
                 <div class="inv-detail-name">${item.name}</div>
                 <div class="inv-detail-tags">
@@ -261,6 +262,10 @@ export class InventoryModal {
     }
 
     handleItemAction(item) {
+        if (item.actionType === 'inspect') {
+            this.callbacks.onShowToast?.(item.desc, true);
+            return;
+        }
         if (item.category === 'consumable') {
             this.useConsumable(item);
         } else if (item.category === 'apparel') {

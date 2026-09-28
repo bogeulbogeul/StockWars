@@ -61,7 +61,8 @@ export class TownBuildingRenderer {
     }
     static renderLandscapeHTML() {
         return TOWN_LANDSCAPE.map(p => `
-            <div id="landscape_${p.id}" class="town-landscape" aria-hidden="true"
+            <div id="landscape_${p.id}" class="town-landscape${p.type === 'bench' ? ' town-landscape-bench' : ''}"
+                 ${p.type === 'bench' ? `role="button" tabindex="0" data-prop-id="${p.id}" aria-label="벤치에서 기력 회복"` : 'aria-hidden="true"'}
                  style="left:${p.x}px;top:${p.y - p.height}px;width:${p.width}px;height:${p.height}px;z-index:${p.y}">
                 <svg width="100%" height="100%" viewBox="${p.viewBox}" focusable="false">
                     <image href="${p.src}" width="${p.imageWidth}" height="${p.imageHeight}" />

@@ -28,9 +28,17 @@ test('click navigation reaches the counter and door; outside clicks clamp', () =
 });
 test('shop proximity includes depth, not just horizontal position', () => {
     const p=new StorePlayerController();
-    p.x=1150;p.y=675;assert.equal(p.nearby().action,'shop');
-    p.y=850;assert.equal(p.nearby(),null);
+    p.x=STORE_PLACES[1].x;p.y=STORE_PLACES[1].y;assert.equal(p.nearby().action,'shop');
+    p.y=850;assert.notEqual(p.nearby()?.action,'shop');
     p.x=700;p.y=600;assert.equal(p.nearby(),null);
+});
+test('foreground carpet is the exit and the former wall door is inactive', () => {
+    const p = new StorePlayerController();
+    assert.equal(p.nearby().action, 'exit');
+    assert(p.x > 900 && p.y > 780);
+    p.x = 455; p.y = 560; assert.equal(p.nearby(), null);
+    p.x = 630; p.y = 730; assert.equal(p.nearby().action, 'shop');
+    p.x = 1020; p.y = 790; assert.equal(p.nearby().action, 'exit');
 });
 test('keyboard overrides click and pause clears all movement', () => {
     const p=new StorePlayerController();p.moveTo(1150,675);p.keys.add('d');p.update(.05);

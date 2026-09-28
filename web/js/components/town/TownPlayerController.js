@@ -117,7 +117,7 @@ export class TownPlayerController {
         effect.style.top = `${bench.y - 80}px`;
         effect.style.bottom = 'auto';
         effect.style.zIndex = '3000';
-        effect.textContent = '✨ HP & 기력 100% 회복! 💖';
+        effect.textContent = '✨ 기력 100% 회복! 💖';
         containerElement.appendChild(effect);
         setTimeout(() => effect.remove(), 1600);
     }

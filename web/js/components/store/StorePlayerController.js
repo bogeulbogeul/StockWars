@@ -1,12 +1,13 @@
 // Background-space coordinates (1536 x 1024). This convex floor stays clear
 // of the rear shelves, fridge, counter, plants, and the cutaway floor edges.
 export const STORE_FLOOR = [
-    { x: 180, y: 650 }, { x: 760, y: 420 },
-    { x: 1250, y: 695 }, { x: 768, y: 920 }
+    { x: 520, y: 650 }, { x: 760, y: 470 },
+    { x: 1100, y: 610 }, { x: 1200, y: 750 },
+    { x: 990, y: 890 }, { x: 800, y: 890 }
 ];
 export const STORE_PLACES = [
-    { x: 455, y: 560, action: 'exit', label: '나가기' },
-    { x: 1150, y: 675, action: 'shop', label: '계산대' }
+    { x: 1040, y: 820, action: 'exit', label: '나가기' },
+    { x: 630, y: 730, action: 'shop', label: '계산대' }
 ];
 
 export function isOnStoreFloor(x, y) {
@@ -32,36 +33,63 @@ export function clampToStoreFloor(x, y) {
 
 export class StorePlayerController {
     constructor() { this.reset(); }
+    configureRoom(navigation) { this.navigation = navigation; this.reset(); }
+    get places() { return this.navigation?.places || STORE_PLACES; }
     reset() {
-        this.x = STORE_PLACES[0].x;
-        this.y = STORE_PLACES[0].y;
+        this.x = this.places[0].x;
+        this.y = this.places[0].y;
         this.facing = 1;
         this.phase = 0;
         this.target = null;
+        this.waypoints = [];
         this.moving = false;
         this.keys = new Set();
     }
-    stop() { this.keys.clear(); this.target = null; this.phase = 0; this.moving = false; }
+    stop() { this.keys.clear(); this.target = null; this.waypoints = []; this.phase = 0; this.moving = false; }
     moveTo(x, y) {
-        if (Number.isFinite(x) && Number.isFinite(y)) this.target = clampToStoreFloor(x, y);
+        if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+        const target = (this.navigation?.clamp || clampToStoreFloor)(x,y);
+        if (this.navigation) {
+            this.waypoints = this.navigation.route(this,target);
+            this.target = this.waypoints.shift() || null;
+        } else this.target = target;
     }
     update(dt) {
         dt = Math.max(0, Math.min(dt, 0.05));
         let dx = Number(this.keys.has('d') || this.keys.has('arrowright')) - Number(this.keys.has('a') || this.keys.has('arrowleft'));
         let dy = Number(this.keys.has('s') || this.keys.has('arrowdown')) - Number(this.keys.has('w') || this.keys.has('arrowup'));
         const speed = this.keys.has('shift') ? 504 : 280;
-        if (dx || dy) this.target = null;
+        if (dx || dy) { this.target = null; this.waypoints = []; }
         else if (this.target) { dx = this.target.x - this.x; dy = this.target.y - this.y; }
         const length = Math.hypot(dx, dy);
         const distance = Math.min(speed * dt, this.target ? length : Infinity);
         const before = { x: this.x, y: this.y };
-        if (length) Object.assign(this, clampToStoreFloor(this.x + dx / length * distance, this.y + dy / length * distance));
+        if (length) {
+            const nx=this.x+dx/length*distance, ny=this.y+dy/length*distance;
+            if (!this.navigation) Object.assign(this,clampToStoreFloor(nx,ny));
+            else {
+                // Substeps prevent crossing a blocked tile on a single fast frame.
+                const steps=Math.ceil(distance/3);
+                for(let i=0;i<steps;i++) {
+                    const sx=this.x+dx/length*distance/steps, sy=this.y+dy/length*distance/steps;
+                    if(this.navigation.isWalkable(sx,sy)) { this.x=sx; this.y=sy; }
+                    else if(this.navigation.isWalkable(sx,this.y)) this.x=sx;
+                    else if(this.navigation.isWalkable(this.x,sy)) this.y=sy;
+                }
+            }
+        }
         if (dx) this.facing = Math.sign(dx);
-        if (this.target && Math.hypot(this.target.x - this.x, this.target.y - this.y) < 0.1) this.target = null;
+        if (this.target && Math.hypot(this.target.x - this.x, this.target.y - this.y) < 0.1) this.target = this.waypoints.shift() || null;
         this.moving = Math.hypot(this.x - before.x, this.y - before.y) > 0.001;
         this.phase = this.moving ? this.phase + dt * (speed > 280 ? 15 : 9.5) : 0;
     }
     nearby() {
-        return STORE_PLACES.find(place => Math.hypot(place.x - this.x, place.y - this.y) < 90) || null;
+        // The foreground exit is close to checkout; choose the nearest action.
+        let nearest = null, distance = 90;
+        for (const place of this.places) {
+            const d = Math.hypot(place.x - this.x, place.y - this.y);
+            if (d < distance) { nearest = place; distance = d; }
+        }
+        return nearest;
     }
 }

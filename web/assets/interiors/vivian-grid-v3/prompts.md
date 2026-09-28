@@ -1,0 +1,26 @@
+# Grid-parallel furniture — built-in imagegen, 2026-09-29
+
+## fridge
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+Tall drinks fridge with glass front, neat colorful bottles, front facing lower-left and right side visible. Square 1x1 footprint, equal diagonal directions. Keep small modest roof.
+
+## counter
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+Checkout counter with orange basket pictogram and one POS terminal. LONG axis bottom-left to top-right (slope -41/85). Front faces lower-right, short LEFT end visible. Base rectangular 1x2, exact long to short edge length 2:1, NOT skinny 4:1. Counter itself 1x2; staff space behind is kept empty in game, do not include person.
+
+## goods
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+Stocked three-tier general goods cabinet with neat jars and boxes, long axis LOWER LEFT to UPPER RIGHT slope -41/85, front faces lower-right and left end visible. 1x2 grid footprint. Parallel shelf rails, enough depth, no labels.
+
+## papers
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+Low two-tier book rack with colorful books without lettering, long axis UPPER LEFT to LOWER RIGHT slope +41/85, front faces lower-left and right end visible. 2x1 footprint. Geometrically parallel rails and base.
+
+## baskets
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+Three stacked orange shopping baskets with teal handles, compact 1x1 square footprint, visible front faces lower-left and right side visible, base edges exactly +/-25.75 degrees.
+
+## wallShelf
+Redraw the referenced asset, preserving its identity, teal/cream/yellow palette and crisp navy outlines. Correct its camera to the FLOOR TILE axes: orthographic dimetric projection, all edges parallel to ground X slope +41/85 and Y slope -41/85 on screen, i.e. +/-25.75 degrees, vertical edges remain vertical. No perspective convergence. No watercolor or grain. ONE isolated game prop on truly transparent background. Complete silhouette entirely inside frame with generous 15% transparent safety margin ON ALL SIDES. No floor, contact shadow, glow, room, guides or text. Do not crop any pixels of object. Square canvas.
+One cream wood wall shelf with teal brackets and three jars. Attached to RIGHT wall, long axis slope +41/85, short shelf depth axis slope -41/85. All horizontal shelf edges parallel these axes. Entire brackets visible. Width two grid units, no wall.
+

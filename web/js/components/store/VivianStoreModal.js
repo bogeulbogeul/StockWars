@@ -6,12 +6,15 @@
 
 import { VIVIAN_TABS, VIVIAN_SHOP_CATALOG, VIVIAN_DIALOGUES } from '../../data/vivianStoreData.js';
 import { ITEM_RARITIES } from '../../data/inventoryData.js';
+import { itemIconHtml } from '../../data/itemArtwork.js';
 import { getVivianStoreHtml } from './VivianStoreTemplate.js';
 import { toastManager } from '../ToastManager.js';
-import { StorePlayerController, STORE_PLACES } from './StorePlayerController.js';
+import { StorePlayerController } from './StorePlayerController.js';
+import { VivianRoomEditor } from './VivianRoomEditor.js';
 
 export class VivianStoreModal {
-    constructor(container, callbacks = {}) {
+    constructor(container, callbacks = {}, {allowLayoutEditing=false} = {}) {
+        this.allowLayoutEditing = allowLayoutEditing;
         this.container = container;
         this.callbacks = callbacks; // { onCashChanged, onInventoryAdd, onStaminaHeal, onOpenInventory, onClose }
 
@@ -30,12 +33,15 @@ export class VivianStoreModal {
 
         this.render();
         this.initDOM();
+        this.roomEditor = new VivianRoomEditor(this.interiorEl,
+            navigation => this.player.configureRoom(navigation),
+            () => this.player.stop(), {enabled:this.allowLayoutEditing});
         this.initEventListeners();
     }
 
     render() {
         const div = document.createElement('div');
-        div.innerHTML = getVivianStoreHtml();
+        div.innerHTML = getVivianStoreHtml({allowLayoutEditing:this.allowLayoutEditing});
         this.container.appendChild(div.firstElementChild);
     }
 
@@ -45,7 +51,7 @@ export class VivianStoreModal {
         this.interiorEl = document.getElementById('vivianInterior');
         this.shopPanel = document.getElementById('vivianShopPanel');
         this.playerEl = document.getElementById('vivianPlayer');
-        this.doorPrompt = document.getElementById('vivianDoorPrompt');
+        this.exitAction = document.getElementById('btnVivianExitAction');
         this.userCashEl = document.getElementById('vivianUserCash');
         this.affinityBadgeEl = document.getElementById('vivianAffinityBadge');
         this.moodTagEl = document.getElementById('vivianMoodTag');
@@ -78,8 +84,11 @@ export class VivianStoreModal {
     }
 
     initEventListeners() {
+        this.exitAction?.addEventListener('click', () => {
+            if (!this.isShopping && !this.roomEditor?.active && this.player.nearby()?.action==='exit') this.close();
+        });
         document.getElementById('vivianWalkway').addEventListener('click', e => {
-            if (this.isShopping) return;
+            if (this.isShopping || this.roomEditor?.active) return;
             const rect = this.interiorEl.getBoundingClientRect();
             this.player.moveTo((e.clientX - rect.left) / rect.width * 1536, (e.clientY - rect.top) / rect.height * 1024);
         });
@@ -88,13 +97,19 @@ export class VivianStoreModal {
         document.addEventListener('visibilitychange', () => this.player.stop());
         this.btnClose?.addEventListener('click', () => this.showInterior());
         document.getElementById('btnVivianDoor')?.addEventListener('click', () => {
+            if (this.roomEditor?.active) return;
             if (this.player.nearby()?.action === 'exit') this.close();
-            else this.player.moveTo(STORE_PLACES[0].x, STORE_PLACES[0].y);
+            else this.player.moveTo(this.player.places[0].x, this.player.places[0].y);
         });
         this.interiorEl?.querySelectorAll('[data-store-browse]').forEach(button => {
             button.addEventListener('click', () => {
+                if (this.roomEditor?.active) return;
                 this.lastInteriorControl = button;
-                this.showShop(button.dataset.storeBrowse);
+                if (this.player.nearby()?.action === 'shop') this.showShop(button.dataset.storeBrowse);
+                else {
+                    const counter = this.player.places.find(place => place.action === 'shop');
+                    this.player.moveTo(counter.x,counter.y);
+                }
             });
         });
         this.modalEl?.addEventListener('click', (e) => {
@@ -144,6 +159,10 @@ export class VivianStoreModal {
             // Closing the store must not pass the same F press to the town
             // listener, which would immediately reopen the entrance.
             e.stopImmediatePropagation();
+            if (this.roomEditor?.active) {
+                if (e.key === 'Escape') { e.preventDefault(); this.roomEditor.cancel(); }
+                return;
+            }
             if (!this.isShopping) {
                 const key = e.key.toLowerCase();
                 if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift'].includes(key)) {
@@ -189,18 +208,29 @@ export class VivianStoreModal {
 
     animatePlayer(now) {
         if (!this.isOpen) return;
-        if (!this.isShopping) this.player.update((now - this.lastFrame) / 1000);
+        if (!this.isShopping && !this.roomEditor?.active) this.player.update((now - this.lastFrame) / 1000);
         this.lastFrame = now;
         this.playerEl.style.left = `${this.player.x / 1536 * 100}%`;
         this.playerEl.style.top = `${this.player.y / 1024 * 100}%`;
+        this.playerEl.style.zIndex = Math.round(100 + this.player.y);
         const body = this.playerEl.querySelector('.town-char-body');
         body.style.transform = `scaleX(${this.player.facing}) translateY(${-Math.sin(this.player.phase) * 5}px)`;
-        this.doorPrompt.hidden = this.isShopping || this.player.nearby()?.action !== 'exit';
+        this.updateExitAction();
         this.playerFrame = requestAnimationFrame(time => this.animatePlayer(time));
     }
 
+    updateExitAction() {
+        if (!this.exitAction) return;
+        const exit=this.player.places.find(place=>place.action==='exit');
+        this.exitAction.hidden=!this.isOpen || this.isShopping || Boolean(this.roomEditor?.active) || this.player.nearby()?.action!=='exit';
+        if(exit) {
+            this.exitAction.style.left=`${exit.x/1536*100}%`;
+            this.exitAction.style.top=`${(exit.y+35)/1024*100}%`;
+        }
+    }
+
     interactNearby() {
-        if (!this.isOpen || this.isShopping) return;
+        if (!this.isOpen || this.isShopping || this.roomEditor?.active) return;
         const nearby = this.player.nearby();
         if (nearby?.action === 'exit') this.close();
         else if (nearby) this.showShop();
@@ -214,7 +244,7 @@ export class VivianStoreModal {
     }
 
     showShop(tabId = 'daily') {
-        if (!this.isOpen || this.player.nearby()?.action !== 'shop') return;
+        if (!this.isOpen || this.roomEditor?.active || this.player.nearby()?.action !== 'shop') return;
         this.player.stop();
         this.isShopping = true;
         this.interiorEl.inert = true;
@@ -225,6 +255,7 @@ export class VivianStoreModal {
     }
 
     close() {
+        this.roomEditor?.cancel();
         this.player.stop();
         cancelAnimationFrame(this.playerFrame);
         this.isOpen = false;
@@ -279,7 +310,7 @@ export class VivianStoreModal {
             const purchased = this.purchasedCounts[item.id] || 0;
             const isSoldOut = item.dailyLimit && purchased >= item.dailyLimit;
             const isSelected = item.id === this.selectedItemId;
-            const isSecretLocked = item.tab === 'secret' && item.reqUnlock && this.affinity < 50;
+            const isSecretLocked = this.isItemLocked(item);
 
             const stockText = isSoldOut ? '품절' : (item.dailyLimit ? `잔여 ${item.dailyLimit - purchased}개` : '재고 충분');
 
@@ -288,7 +319,7 @@ export class VivianStoreModal {
                      data-id="${item.id}" style="--rarity-glow: ${rarity.glow}; --rarity-color: ${rarity.color};">
                     ${isSecretLocked ? `<div class="locked-overlay">🔒 <span>${item.reqUnlock.conditionDesc}</span></div>` : ''}
                     <div class="card-icon-area">
-                        <span class="card-item-icon">${item.icon}</span>
+                        <span class="card-item-icon">${itemIconHtml(item)}</span>
                         <span class="card-rarity-pill" style="color: ${rarity.color};">${rarity.name}</span>
                     </div>
                     <div class="card-info-area">
@@ -317,7 +348,7 @@ export class VivianStoreModal {
 
         // Update Drawer UI
         const rarity = ITEM_RARITIES[item.rarity] || ITEM_RARITIES.common;
-        if (this.drawerItemIcon) this.drawerItemIcon.textContent = item.icon;
+        if (this.drawerItemIcon) this.drawerItemIcon.innerHTML = itemIconHtml(item);
         if (this.drawerItemName) this.drawerItemName.textContent = item.name;
         if (this.drawerRarityBadge) {
             this.drawerRarityBadge.textContent = rarity.name;
@@ -375,11 +406,29 @@ export class VivianStoreModal {
 
         const total = item.price * this.quantity;
         if (this.totalPriceEl) this.totalPriceEl.textContent = `${total.toLocaleString()} G`;
+        const locked = this.isItemLocked(item);
+        if (this.btnBuy) this.btnBuy.disabled = locked;
+        if (this.btnConsume) this.btnConsume.disabled = locked;
+    }
+
+    isItemLocked(item) {
+        if (!item.reqUnlock) return false;
+        // Achievement values must come from gameplay; affinity alone cannot unlock these items.
+        const progress = {
+            ...this.callbacks.getShopProgress?.(),
+            trustLevel: this.affinity >= 200 ? 3 : (this.affinity >= 100 ? 2 : 1)
+        };
+        return Object.entries(item.reqUnlock).some(([key, required]) =>
+            key !== 'conditionDesc' && (!Number.isFinite(progress[key]) || progress[key] < required));
     }
 
     executePurchase(isConsume = false) {
         const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
         if (!item) return;
+        if (this.isItemLocked(item)) {
+            toastManager.show(`🔒 ${item.reqUnlock.conditionDesc}`, false);
+            return;
+        }
 
         const purchased = this.purchasedCounts[item.id] || 0;
         if (item.dailyLimit && purchased + this.quantity > item.dailyLimit) {
@@ -408,7 +457,7 @@ export class VivianStoreModal {
         // Instant Consumption vs Inventory Storage
         if (isConsume && item.instantUsable) {
             if (item.id === 'item_energy_drink' || item.id === 'item_caffeine_shot') {
-                const healAmount = item.id === 'item_caffeine_shot' ? 2 : 1;
+                const healAmount = this.quantity;
                 if (this.callbacks.onStaminaHeal) this.callbacks.onStaminaHeal(healAmount);
             }
             this.triggerDialogue('consume');
@@ -426,8 +475,8 @@ export class VivianStoreModal {
                     price: item.price,
                     desc: item.desc,
                     effects: item.effects,
-                    actionType: item.category === 'consumable' ? 'use' : 'equip',
-                    actionLabel: item.category === 'consumable' ? '사용하기' : '장착하기'
+                    actionType: item.actionType || (item.category === 'consumable' ? 'use' : 'equip'),
+                    actionLabel: item.actionLabel || (item.category === 'consumable' ? '사용하기' : '장착하기')
                 });
             }
             this.triggerDialogue('done');

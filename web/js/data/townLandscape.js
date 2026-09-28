@@ -75,3 +75,8 @@ export const TOWN_LANDSCAPE = [
         src: new URL(`../../assets/props/topdown-v1/${file}.png`, import.meta.url).href,
         imageWidth, imageHeight, viewBox: `${cropX} ${cropY} ${cropWidth} ${cropHeight}` };
 });
+
+// Interactions use the same positions as the visible replacement benches.
+export const TOWN_LANDSCAPE_BENCHES = TOWN_LANDSCAPE.filter(p => p.type === 'bench').map(p => ({
+    ...p, kind: 'prop', name: '휴식 벤치', icon: '🪑', actionText: '앉아서 기력 회복 [F]'
+}));

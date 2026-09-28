@@ -5,8 +5,29 @@ import { TownPlayerController } from '../js/components/town/TownPlayerController
 import { TownStage } from '../js/components/TownStage.js';
 import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_PROP_DEFINITIONS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES } from '../js/data/townWorldData.js';
 import { townEntrance } from '../js/data/townLayout.js';
+import { TOWN_LANDSCAPE_BENCHES } from '../js/data/townLandscape.js';
 const tick = p => p.update(0.1, 1200, 900);
 const player = () => { const p = new TownPlayerController(); p.charPosX = 2000; p.charPosY = 1600; return p; };
+
+test('visible landscape benches expose reachable recovery actions', () => {
+    assert.equal(TOWN_LANDSCAPE_BENCHES.length, 7);
+    for (const bench of TOWN_LANDSCAPE_BENCHES) {
+        let heals = 0;
+        const controller = new TownPlayerController({ onHeal: () => heals++ });
+        const stage = { playerController: controller, callbacks: {} };
+        controller.placeAt(bench);
+        assert.ok(controller.canStand(controller.charPosX, controller.charPosY), bench.id);
+        TownStage.prototype.checkProximity.call(stage);
+        assert.equal(stage.activeNearbyObject?.id, bench.id);
+        TownStage.prototype.triggerAction.call(stage, stage.activeNearbyObject);
+        assert.equal(heals, 1);
+        assert.equal(controller.isResting, true);
+        controller.handleKeyDown({ key: 's', shiftKey: false });
+        tick(controller);
+        assert.equal(controller.isResting, false);
+        assert.ok(controller.charPosY > townEntrance(bench).y);
+    }
+});
 
 test('screen directions, normalized diagonal speed and running', () => {
     for (const [keys, dx, dy, distance] of [

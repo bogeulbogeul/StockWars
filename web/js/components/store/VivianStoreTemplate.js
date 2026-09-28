@@ -4,8 +4,9 @@
  */
 
 import { VIVIAN_TABS } from '../../data/vivianStoreData.js';
+import { getVivianRoomHtml, getVivianInteriorPropsHtml, getRoomGridHtml, getVivianStaffHtml } from './VivianInteriorScene.js';
 
-export function getVivianStoreHtml() {
+export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
     const tabsHtml = Object.values(VIVIAN_TABS).map(tab => `
         <button class="vivian-tab-btn" data-tab="${tab.id}">
             <span class="vivian-tab-icon">${tab.icon}</span>
@@ -16,14 +17,17 @@ export function getVivianStoreHtml() {
     return `
         <div id="vivianStoreModal" class="modal-overlay hidden vivian-store-overlay">
             <section class="vivian-interior" id="vivianInterior" tabindex="-1" aria-label="비비안 잡화점 내부">
-                <img class="vivian-interior-art" src="${new URL('../../../assets/interiors/VivianStoreInterior-isometric-v2.png', import.meta.url).href}" alt="왼쪽 자동 유리문과 쇼윈도, 뒤쪽 냉장고, 오른쪽 계산대와 넓은 바닥이 있는 아이소메트릭 잡화점 내부" draggable="false">
+                ${getVivianRoomHtml()}
+                ${getVivianInteriorPropsHtml()}
+                ${getVivianStaffHtml()}
+                ${getRoomGridHtml({editable:allowLayoutEditing})}
                 <div class="town-player-character vivian-player" id="vivianPlayer" aria-label="플레이어 캐릭터">
                     <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
                     <div class="town-char-shadow"></div>
                 </div>
                 <button class="vivian-walkway" id="vivianWalkway" aria-label="바닥을 클릭해 이동"></button>
-                <button class="vivian-interior-hotspot vivian-door-hotspot" id="btnVivianDoor" aria-label="출입문으로 나가기"></button>
-                <span class="vivian-door-prompt" id="vivianDoorPrompt" hidden>F · 나가기</span>
+                <button class="vivian-interior-hotspot vivian-door-hotspot" id="btnVivianDoor" aria-label="카펫 출입구로 나가기"></button>
+                <button class="vivian-exit-action" id="btnVivianExitAction" type="button" hidden>나가기 <kbd>F</kbd></button>
                 <button class="vivian-interior-hotspot vivian-counter-hotspot" data-store-browse="daily" aria-label="계산대 이용하기"></button>
             </section>
             <div class="modal-card vivian-store-card hidden" id="vivianShopPanel" role="dialog" aria-label="비비안 잡화점 상품 구매">

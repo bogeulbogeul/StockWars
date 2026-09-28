@@ -291,6 +291,20 @@
     margin-bottom: 20px;
 }
 
+.inv-item-icon .item-artwork {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.inv-preview-box .item-artwork {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
 .inv-preview-box {
     width: 88px;
     height: 88px;

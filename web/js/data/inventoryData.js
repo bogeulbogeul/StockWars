@@ -26,7 +26,7 @@ export const DEFAULT_INVENTORY_ITEMS = [];
 export const ITEM_CATALOG_DB = [
     {
         id: 'item_energy_drink',
-        name: '몬스터 에너지 드링크',
+        name: '에너지 드링크',
         category: 'consumable',
         rarity: 'common',
         icon: '🥤',
@@ -40,21 +40,21 @@ export const ITEM_CATALOG_DB = [
     },
     {
         id: 'item_caffeine_shot',
-        name: '초고농축 카페인 앰플',
+        name: '초고농축 카페인',
         category: 'consumable',
-        rarity: 'rare',
+        rarity: 'epic',
         icon: '🧪',
         quantity: 1,
         maxStack: 10,
         price: 2500,
         desc: '비비안 잡화점의 히든 레시피로 제조된 농축 앰플. 마시는 즉시 극도의 집중력과 활력을 제공합니다.',
-        effects: ['❤️ 스테미너 하트 2칸 즉시 회복', '🎯 당일 거래 수수료 10% 감면'],
+        effects: ['❤️ 스테미너 하트 1칸 즉시 회복 (일일 1회)'],
         actionType: 'use',
         actionLabel: '사용하기'
     },
     {
         id: 'item_vitamin_complex',
-        name: '비타민 컴플렉스 U',
+        name: '비타민 컴플렉스',
         category: 'consumable',
         rarity: 'uncommon',
         icon: '💊',
@@ -62,7 +62,7 @@ export const ITEM_CATALOG_DB = [
         maxStack: 50,
         price: 1000,
         desc: '필수 비타민과 미네랄이 집약된 영양제. [회복력] 보너스와 함께 스테미너 소모량을 줄여줍니다.',
-        effects: ['🛡️ 스테미너 소모량 -15%', '⚡ 당일 피로도 완화'],
+        effects: ['🛡️ 120분간 [회복력] +2 Bonus', '⚡ 스테미너 소모량 감소'],
         actionType: 'use',
         actionLabel: '사용하기'
     },

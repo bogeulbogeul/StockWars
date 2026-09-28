@@ -23,9 +23,9 @@ import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
-import { InventoryModal } from './components/InventoryModal.js';
+import { InventoryModal } from './components/InventoryModal.js?v=vivian-items-1';
 import { FurnitureEditModal } from './components/FurnitureEditModal.js';
-import { VivianStoreModal } from './components/store/VivianStoreModal.js';
+import { VivianStoreModal } from './components/store/VivianStoreModal.js?v=vivian-items-1';
 
 class StockWarsApplication {
     constructor() {
@@ -141,7 +141,7 @@ class StockWarsApplication {
             onOpen: () => this.annaTutorial?.notifyInventoryOpened(),
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
             onUseConsumable: (item) => {
-                const addStamina = item.id === 'item_caffeine_shot' ? 2 : (item.id === 'item_energy_drink' ? 1 : 0);
+                const addStamina = ['item_caffeine_shot', 'item_energy_drink'].includes(item.id) ? 1 : 0;
                 if (addStamina > 0) {
                     const max = this.mainHUD.stamina.max;
                     const next = Math.min(max, this.mainHUD.stamina.current + addStamina);

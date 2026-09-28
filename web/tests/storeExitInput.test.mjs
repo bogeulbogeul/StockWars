@@ -24,6 +24,7 @@ test('F exits the store without reopening it in the town listener', async () => 
     store.initEventListeners();
     const town = Object.assign(Object.create(TownStage.prototype), {
         callbacks: { isInputBlocked: () => store.isOpen }, activeNearbyObject: {},
+        billboardModal: Object.assign(new EventTarget(), { classList: { contains: () => true } }),
         playerController: { handleKeyDown() {}, handleKeyUp() {}, keysHeld: new Set() },
         triggerAction() { reopens++; }
     });
