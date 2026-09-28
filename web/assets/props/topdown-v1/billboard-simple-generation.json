@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-29",
+  "file": "BillboardSimple.png",
+  "status": "Standalone asset; not placed in town",
+  "prompt": "Use case: stylized-concept. Asset type: one standalone outdoor electronic town information BILLBOARD for StockWars 2D RPG. Clean simplified illustrated sprite matching cozy cream buildings, warm wooden benches, and dark desaturated blue-gray metal street lamps. Camera: elevated RPG top-down, see a narrow top surface of the enclosure and tops of support feet, large front display visible. Horizontal and vertical screen axes, symmetric straight-on facing screen-bottom, NOT diagonally rotated/isometric, no perspective vanishing point. One broad landscape rectangular display with restrained dark blue-gray metal frame, subtle beveled edges, two short sturdy supporting legs and small rectangular metal feet. Large blank dark navy opaque screen, perfectly plain and rectangular, ready for live game UI overlay. No words, numbers, charts, logos, icons, LED dot grid, reflections or baked-in news. Screen roughly 16:9, frame modest thickness, support legs around one quarter of total object height. Few large clean shading planes, restrained thin dark outline, NO ornate trim, bolts, scratches, gritty textures or tiny details. Entire object centered, fully visible, transparent margin on all sides, landscape canvas. TRUE transparent background outside silhouette and between legs; no floor tile, plants, scene, shadow, glow or haze. No other objects or alternative views. Temporary style-matching asset, not a permanent global art-style rule.",
+  "source": "exec-ef2da857-04e9-499e-8b55-9254bccf0148.png"
+}

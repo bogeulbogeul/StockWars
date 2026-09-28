@@ -7,17 +7,66 @@
 <style>body{margin:0;background:#f6ecd8;font-family:sans-serif}#preview{height:100vh}.hidden{display:none!important}</style>
 <div id="preview"></div>
 <div style="position:fixed;top:12px;left:12px;z-index:10000">
-<button id="previewDay">낮 확인</button><button id="previewNight">밤 확인</button>
+<button id="previewOverview">전체 배치</button>
+<select id="previewBuilding" aria-label="크기를 비교할 건물"></select>
+<button id="previewCompare">캐릭터와 크기 비교</button><button id="previewDay">낮 확인</button><button id="previewNight">밤 확인</button>
 </div>
 <script type="module">
 import { timeOfDayService } from '/web/js/engine/timeOfDayService.js';
 document.querySelector('#previewDay').onclick = () => timeOfDayService.setTimeOfDay('day');
 document.querySelector('#previewNight').onclick = () => timeOfDayService.setTimeOfDay('night');
+import { TOWN_BUILDINGS } from '/web/js/data/townWorldData.js';
+import { TOWN_VIEW_SCALE } from '/web/js/data/townLayout.js';
 import { TownStage } from '/web/js/components/TownStage.js';
 const stage = new TownStage(document.querySelector('#preview'), {
     onOpenLogistics: () => alert('물류센터 입장 연결 확인'),
     onOpenStore: () => alert('잡화점 입장 연결 확인')
 });
 stage.show(undefined, Number(new URLSearchParams(location.search).get('x')) || null);
+const previewY = Number(new URLSearchParams(location.search).get('y'));
+if (previewY && stage.playerController.canStand(stage.playerController.charPosX, previewY)) {
+    stage.playerController.charPosY = previewY;
+    stage.playerController.updateCamera(innerWidth / TOWN_VIEW_SCALE, innerHeight / TOWN_VIEW_SCALE, 0, true);
+    stage.update(0);
+}
+
+const overviewStyle = document.createElement('style');
+overviewStyle.textContent = '.town-overview .town-world-track{transform:translate(var(--overview-x),90px) scale(var(--overview-scale))!important}.town-overview .town-building-box::after{content:none}.town-overview .town-entry-marker,.town-overview .town-building-prompt,.town-overview .town-controls-hint{display:none!important}';
+overviewStyle.textContent += '.town-overview .town-char-nametag{font-size:36px;padding:8px 16px}.town-overview .town-player-character::after{content:"";position:absolute;bottom:-12px;width:76px;height:30px;border:4px solid #007b83;border-radius:50%}.town-size-check .town-building-prompt,.town-overview .size-comparison-target::after{display:none!important}';
+document.head.appendChild(overviewStyle);
+function frameOverview() {
+    const scale = Math.min((innerWidth-24)/stage.playerController.worldWidth,(innerHeight-140)/stage.playerController.worldHeight);
+    stage.containerEl.style.setProperty('--overview-scale', scale);
+    stage.containerEl.style.setProperty('--overview-x', ((innerWidth-stage.playerController.worldWidth*scale)/2)+'px');
+}
+document.querySelector('#previewOverview').onclick = () => { stage.containerEl.classList.toggle('town-overview'); frameOverview(); };
+window.addEventListener('resize', frameOverview);
+if (new URLSearchParams(location.search).has('overview')) { stage.containerEl.classList.add('town-overview'); frameOverview(); }
+
+const buildingSelect = document.querySelector('#previewBuilding');
+for (const building of TOWN_BUILDINGS) {
+    const option = document.createElement('option');
+    option.value = building.id;
+    option.textContent = building.name + (building.layoutScale > 1 ? ' (1.5배)' : '');
+    buildingSelect.appendChild(option);
+}
+function compareBuilding(id) {
+    const building = TOWN_BUILDINGS.find(item => item.id === id);
+    if (!building) return;
+    buildingSelect.value = id;
+    stage.worldTrackEl.querySelectorAll('.town-building-box').forEach(element => element.classList.toggle('size-comparison-target', element.dataset.buildingId === id));
+    stage.playerController.placeAt(building);
+    stage.playerController.charPosY += 48;
+    stage.updateUserProfile({nickname: '크기 비교 · 임시 캐릭터'});
+    stage.containerEl.classList.add('town-size-check');
+    stage.playerController.updateCamera(innerWidth / TOWN_VIEW_SCALE, innerHeight / TOWN_VIEW_SCALE, 0, true);
+    stage.update(0);
+}
+document.querySelector('#previewCompare').onclick = () => {
+    stage.containerEl.classList.remove('town-overview');
+    compareBuilding(buildingSelect.value);
+};
+buildingSelect.onchange = () => compareBuilding(buildingSelect.value);
+compareBuilding(new URLSearchParams(location.search).get('compare') || 'bit_logistics');
 </script>
 </html>

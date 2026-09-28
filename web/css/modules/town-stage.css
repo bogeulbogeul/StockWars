@@ -9,3 +9,5 @@
 @import './town/town-props.css';
 @import './town/town-character.css';
 @import './town/town-modal.css';
+
+@import './town/town-topdown.css';

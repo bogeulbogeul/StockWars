@@ -1,0 +1,6 @@
+{
+  "mode": "built-in image_gen edit",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-eb19f290-52da-4d2e-8779-a74d72bf5ae9.png",
+  "prompt": "Edit this sidewalk asset into a large square seamless paving texture for StockWars RPG top-down town. Preserve warm cream beige stone color, clean softly shaded illustrated style and restrained texture. Replace the narrow strip with a square canvas filled edge to edge with a regular grid of large square paving slabs, 8 by 8 slabs. Remove curb, front lip and all transparency/margins: the ENTIRE square image is paving. Ground axes perfectly horizontal and vertical, no isometric diamond, no perspective convergence, no thickness, no cast shadows or border. Thin taupe joints, subtle consistent ambient shading. All four edges should repeat seamlessly. No road, props, text, buildings or decoration. This is a provisional tile for the current town visual, not a new final art specification.",
+  "usage": "Town paving, repeat at 512 world pixels; provisional visual scale"
+}

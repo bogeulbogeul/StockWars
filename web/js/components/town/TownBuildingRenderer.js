@@ -4,8 +4,84 @@
  */
 
 import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES } from '../../data/townWorldData.js';
+import { TOWN_LANDSCAPE } from '../../data/townLandscape.js';
 
 export class TownBuildingRenderer {
+    static renderLandscapeGroundHTML() {
+        // A single union mask prevents internal borders and overlapping texture layers.
+        const lanes = 'M1280 140V420H1195V1030H1840V2460 M240 1030H3460 M240 1620H3460 M240 2360H3460 M3020 2240V2360';
+        // Use the artwork's door position, rather than the building's center.
+        const entrances = TOWN_BUILDINGS.map(b => {
+            const laneY = b.y < 1100 ? 1030 : b.y < 1800 ? 1620 : 2360;
+            return `M${b.entranceX} ${b.y - 2}V${laneY}`;
+        }).join(' ');
+        return `<svg class="town-landscape-ground" viewBox="0 0 3700 2600" aria-hidden="true" focusable="false">
+            <defs>
+                <g id="townWalkShape" fill="none" stroke-linejoin="round">
+                    <path d="${lanes}" stroke-width="80" />
+                    <path d="${entrances}" stroke-width="64" />
+                </g>
+                <g id="townFloorShape" fill="white" stroke="white">
+                    <use href="#townWalkShape" />
+                    <rect x="1344" y="1144" width="1012" height="562" rx="96" stroke="none" />
+                    <rect x="2570" y="1850" width="900" height="440" rx="65" stroke="none" />
+                    <rect x="940" y="480" width="510" height="470" rx="50" stroke="none" />
+                </g>
+                <filter id="townFloorExpand" filterUnits="userSpaceOnUse" x="130" y="130" width="3440" height="2340">
+                    <feMorphology operator="dilate" radius="7" />
+                </filter>
+                <mask id="townFloorMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
+                    <use href="#townFloorShape" />
+                </mask>
+                <mask id="townFloorEdgeMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
+                    <use href="#townFloorShape" filter="url(#townFloorExpand)" />
+                </mask>
+                <mask id="townGardenRimMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
+                    <rect x="140" y="140" width="3420" height="2320" fill="white" />
+                    <use href="#townWalkShape" stroke="black" />
+                </mask>
+                <linearGradient id="townFloorTone" gradientUnits="userSpaceOnUse" x1="0" y1="140" x2="0" y2="2460">
+                    <stop class="town-floor-tone-top" />
+                    <stop offset="1" class="town-floor-tone-bottom" />
+                </linearGradient>
+            </defs>
+            <rect class="town-floor-edge" width="3700" height="2600" mask="url(#townFloorEdgeMask)" />
+            <g mask="url(#townFloorMask)">
+                <rect width="3700" height="2600" fill="url(#townFloorTone)" />
+                <image class="town-floor-texture" href="${new URL('../../../assets/ground/topdown-v1/SidewalkMaterial.png', import.meta.url).href}"
+                       width="3700" height="2600" preserveAspectRatio="none" />
+            </g>
+            <!-- Garden rims open wherever a pedestrian lane enters. -->
+            <g class="town-garden-rim" mask="url(#townGardenRimMask)">
+                <rect x="2585" y="1865" width="870" height="410" rx="52" />
+                <rect x="953" y="493" width="484" height="444" rx="39" />
+            </g>
+            <ellipse class="town-fountain-inlay" cx="1840" cy="1380" rx="250" ry="185" />
+        </svg>`;
+    }
+    static renderLandscapeHTML() {
+        return TOWN_LANDSCAPE.map(p => `
+            <div id="landscape_${p.id}" class="town-landscape" aria-hidden="true"
+                 style="left:${p.x}px;top:${p.y - p.height}px;width:${p.width}px;height:${p.height}px;z-index:${p.y}">
+                <svg width="100%" height="100%" viewBox="${p.viewBox}" focusable="false">
+                    <image href="${p.src}" width="${p.imageWidth}" height="${p.imageHeight}" />
+                    ${p.type === 'fountain' ? `
+                    <g class="town-water" fill="none" stroke-linecap="round">
+                        <path class="town-water-stream" d="M440 451Q410 565 398 752 M820 451Q850 565 866 752 M630 527Q636 672 630 822" />
+                        <path class="town-water-spark" d="M440 451Q410 565 398 752 M820 451Q850 565 866 752 M630 527Q636 672 630 822" />
+                        <path class="town-water-jet" d="M630 365Q606 275 579 358 M630 365Q651 275 678 358" />
+                        ${[[398,752],[866,752],[630,822]].map(([x,y],i)=>`<ellipse class="town-water-ripple" cx="${x}" cy="${y}" rx="42" ry="15" style="transform-origin:${x}px ${y}px;animation-delay:-${i * .6}s" />`).join('')}
+                    </g>` : ''}
+                </svg>
+                ${p.type === 'billboard' ? `
+                <div class="billboard-screen-frame town-information-screen">
+                    <div class="town-board-heading"><span class="town-board-dot"></span><span class="live-title">TOWN LIVE</span></div>
+                    <div class="news-badge">마을 안내</div>
+                    <div class="news-body-text">오늘의 소식을 확인하세요</div>
+                    <div class="town-board-ticker"><span class="cipher-index-value">시세 연결 대기</span></div>
+                </div>` : ''}
+            </div>`).join('');
+    }
     static renderBuildingsHTML() {
         return TOWN_BUILDINGS.map(b => `
             <div class="town-building-box building-with-asset ${b.isMainLandmark ? 'landmark-main' : ''}"
@@ -16,7 +92,7 @@ export class TownBuildingRenderer {
                  data-action-text="${b.actionText}"
                  aria-label="${b.name}${b.available === false ? ' · 개점 준비 중' : ''}"
                  ${b.available === false ? 'aria-disabled="true"' : ''}
-                 style="left: ${b.x}px; width: ${b.width}px; height: ${b.height}px;">
+                 style="left: ${b.x}px; width: ${b.width}px; height: ${b.height}px; top: ${b.y - b.height}px; z-index: ${b.y};">
                 <svg class="building-artwork" width="${b.asset.displayWidth}" height="${b.height}"
                      viewBox="${b.asset.x} ${b.asset.y} ${b.asset.cropWidth} ${b.asset.cropHeight}"
                      aria-hidden="true" focusable="false">
@@ -29,7 +105,7 @@ export class TownBuildingRenderer {
         return TOWN_INTERACTIVE_PROPS.map(p => {
             if (p.type === 'bench') {
                 return `
-                    <div class="town-bench-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px;">
+                    <div class="town-bench-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px; top: ${p.y - p.height}px; z-index: ${p.y};">
                         <svg class="town-prop-art" viewBox="154 136 1468 620" aria-hidden="true" focusable="false">
                             <image href="${new URL('../../../assets/props/Banch.png', import.meta.url).href}" width="1774" height="887" />
                         </svg>
@@ -37,7 +113,7 @@ export class TownBuildingRenderer {
                 `;
             } else if (p.type === 'billboard') {
                 return `
-                    <div class="town-billboard-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px; height: ${p.height}px;">
+                    <div class="town-billboard-prop" id="prop_${p.id}" data-prop-id="${p.id}" style="left: ${p.x}px; width: ${p.width}px; height: ${p.height}px; top: ${p.y - p.height}px; z-index: ${p.y};">
                         <svg class="billboard-frame-art" viewBox="96 54 1344 916" aria-hidden="true" focusable="false">
                             <image href="${new URL('../../../assets/props/BillboardFrame.png', import.meta.url).href}" width="1536" height="1024" />
                         </svg>
@@ -79,7 +155,7 @@ export class TownBuildingRenderer {
         let html = '';
         TOWN_STREET_LAMPS.forEach(x => {
             html += `
-                <div class="street-lamp" style="left: ${x}px;">
+                <div class="street-lamp" style="left: ${x}px; top: 1010px; z-index: 1250;">
                     <svg class="lamp-art" viewBox="360 20 310 1495" aria-hidden="true" focusable="false">
                         <image href="${new URL('../../../assets/props/StreetLamp-off.png', import.meta.url).href}" width="1024" height="1536" />
                     </svg>
@@ -91,7 +167,7 @@ export class TownBuildingRenderer {
         });
         TOWN_URBAN_TREES.forEach(x => {
             html += `
-                <div class="town-urban-tree" style="left: ${x}px;">
+                <div class="town-urban-tree" style="left: ${x}px; top: 974.74px; z-index: 1240;">
                     <svg class="town-prop-art" viewBox="30 25 1140 1260" aria-hidden="true" focusable="false">
                         <image href="${new URL('../../../assets/props/Tree.png', import.meta.url).href}" width="1189" height="1323" />
                     </svg>

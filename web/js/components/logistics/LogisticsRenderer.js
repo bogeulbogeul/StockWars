@@ -12,11 +12,15 @@ export class LogisticsRenderer {
         for (let i = 0; i < count; i++) {
             const col = i % 4;
             const row = Math.floor(i / 4);
-            // Match the empty loading bay in the truck's 1478 x 1064 artwork.
-            const bx = 610 + col * 175;
-            const by = 560 - row * 90;
+            // Pack visible parcel faces, excluding the PNG's transparent margins.
+            // The bottom row rests on the cargo floor in the 1478 x 1064 truck.
+            const bx = 610 + col * 100;
+            const by = 564 - row * 96;
             boxesSvg += `
-                <image href="${LOGISTICS_ASSETS.parcel}" x="${bx}" y="${by}" width="140" height="100" />
+                <svg x="${bx}" y="${by}" width="100" height="96"
+                     viewBox="100 130 1055 1010" preserveAspectRatio="none" overflow="hidden">
+                    <image href="${LOGISTICS_ASSETS.parcel}" width="1254" height="1254" />
+                </svg>
             `;
         }
         containerGroup.innerHTML = boxesSvg;

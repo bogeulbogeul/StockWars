@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>트럭 적재 간격 확인</title>
+<style>body{margin:24px;background:#f1e4cd;color:#263c50;font:16px sans-serif}main{display:flex;gap:24px;flex-wrap:wrap}figure{margin:0}svg{width:440px;height:auto}figcaption{text-align:center;font-weight:bold}</style>
+<h1>트럭 적재 간격 확인</h1><main></main>
+<script type="module">
+import {LogisticsRenderer} from '/web/js/components/logistics/LogisticsRenderer.js';
+import {LOGISTICS_ASSETS} from '/web/js/components/logistics/LogisticsAssets.js';
+for(const count of [3,8,12]) {
+ const figure=document.createElement('figure');
+ figure.innerHTML=`<svg viewBox="0 0 1478 1064"><image href="${LOGISTICS_ASSETS.truck}" width="1478" height="1064"/><g></g></svg><figcaption>${count}개 적재</figcaption>`;
+ document.querySelector('main').append(figure);
+ LogisticsRenderer.updateTruckBoxesGraphic(figure.querySelector('g'),count);
+}
+</script></html>

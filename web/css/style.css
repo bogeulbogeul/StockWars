@@ -46,6 +46,7 @@
 @import './modules/town/town-billboard.css';
 @import './modules/town/town-props.css';
 @import './modules/town/town-character.css';
+@import './modules/town/town-topdown.css';
 @import './modules/town/town-modal.css';
 @import './modules/logistics/logistics-arena.css';
 @import './modules/logistics/logistics-settlement.css';

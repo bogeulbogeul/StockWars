@@ -1,0 +1,20 @@
+{
+  "mode": "built-in image_gen",
+  "status": "Standalone provisional tree assets, not placed in town",
+  "references": [
+    "web/assets/props/Tree.png",
+    "web/assets/buildings/topdown-v1/VivianStore.png"
+  ],
+  "assets": [
+    {
+      "file": "TreeLow.png",
+      "prompt": "Create a single isolated tree sprite for StockWars town. Use the recently viewed teal shop as the reference for clean outlined softly shaded 2D illustration quality, and the recently viewed old tree for muted olive/sage foliage and warm brown bark palette ONLY, not its side-on camera. RPG elevated top-down camera matching the town buildings: see a broad upper canopy surface with a short visible trunk below, screen horizontal/vertical world axes, no isometric diamond, no side elevation. Clean readable rounded foliage masses, restrained leaf detail, crisp dark green outlines, soft controlled highlights upper left. True transparent background. Whole tree including trunk base fully inside canvas with clear padding, centered, one sprite only. No paving, soil patch, grass tuft, planter, scenery, text, flowers, fruit, border or cast ground shadow. Current style experiment, not final project art standard. Subject: a LOW compact ornamental tree, broad softly rounded low dome canopy, only a tiny stout trunk visible underneath; distinctly squat silhouette, canopy width about 1.4 times total tree height. Three to five large gently overlapping foliage lobes, not a tall sapling. Clean small-scale town landscaping asset.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-377a3cac-e615-433a-81d6-0cb364071662.png"
+    },
+    {
+      "file": "TreeTall.png",
+      "prompt": "Create a single isolated tree sprite for StockWars town. Use the recently viewed teal shop as the reference for clean outlined softly shaded 2D illustration quality, and the recently viewed old tree for muted olive/sage foliage and warm brown bark palette ONLY, not its side-on camera. RPG elevated top-down camera matching the town buildings: see a broad upper canopy surface with a short visible trunk below, screen horizontal/vertical world axes, no isometric diamond, no side elevation. Clean readable rounded foliage masses, restrained leaf detail, crisp dark green outlines, soft controlled highlights upper left. True transparent background. Whole tree including trunk base fully inside canvas with clear padding, centered, one sprite only. No paving, soil patch, grass tuft, planter, scenery, text, flowers, fruit, border or cast ground shadow. Current style experiment, not final project art standard. Subject: a mature ordinary street tree, taller silhouette with a broad rounded layered crown, short visible solid trunk and restrained branching just beneath the canopy. Total tree height about 1.2 times canopy width, canopy occupies upper three quarters of height. Full lush dome-like crown clearly viewed from above; not a narrow upright side-view tree. Same botanical family and muted colors as the low ornamental tree.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-6b2e83e2-e888-498d-aa0f-eded6e18eded.png"
+    }
+  ]
+}

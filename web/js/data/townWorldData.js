@@ -4,7 +4,7 @@
  */
 
 import { applyBuildingAsset } from './townBuildingAssets.js';
-import { TOWN_PROP_POSITIONS, TOWN_LAMP_POSITIONS, TOWN_TREE_POSITIONS } from './townLayout.js';
+import { TOWN_PROP_POSITIONS, TOWN_LAMP_POSITIONS, TOWN_TREE_POSITIONS, TOWN_BUILDING_DEPTH, TOWN_PROP_BASE_Y, TOWN_SCENERY_ENABLED } from './townLayout.js';
 
 export const TOWN_BUILDINGS = [
     {
@@ -13,7 +13,6 @@ export const TOWN_BUILDINGS = [
         sign: '홈 오피스텔',
         category: '레지던스',
         icon: '🏢',
-        x: 150,
         width: 280,
         height: 350,
         colorTheme: 'home-officetel',
@@ -27,7 +26,6 @@ export const TOWN_BUILDINGS = [
         sign: '비트 물류',
         category: '물류 / 노동',
         icon: '📦',
-        x: 720,
         width: 280,
         height: 230,
         colorTheme: 'yellow',
@@ -40,7 +38,6 @@ export const TOWN_BUILDINGS = [
         sign: '비비안 잡화점',
         category: '잡화 / 소모품',
         icon: '🏪',
-        x: 1280,
         width: 240,
         height: 210,
         colorTheme: 'green',
@@ -53,7 +50,6 @@ export const TOWN_BUILDINGS = [
         sign: '모던 프레임',
         category: '가구 / 인테리어',
         icon: '🛋️',
-        x: 1860,
         width: 250,
         height: 230,
         colorTheme: 'amber',
@@ -66,7 +62,6 @@ export const TOWN_BUILDINGS = [
         sign: '테일러드',
         category: '의상 / 스타일',
         icon: '👗',
-        x: 2370,
         width: 240,
         height: 230,
         colorTheme: 'magenta',
@@ -79,7 +74,6 @@ export const TOWN_BUILDINGS = [
         sign: '데이터 잉크',
         category: '서점 / 지식',
         icon: '📚',
-        x: 2870,
         width: 240,
         height: 220,
         colorTheme: 'indigo',
@@ -92,7 +86,6 @@ export const TOWN_BUILDINGS = [
         sign: '사이퍼 증권',
         category: '금융 / 트레이딩',
         icon: '🏛️',
-        x: 3570,
         width: 440,
         height: 360,
         isMainLandmark: true,
@@ -106,7 +99,6 @@ export const TOWN_BUILDINGS = [
         sign: '노드 파이낸스',
         category: '은행 / 금융',
         icon: '🏦',
-        x: 4390,
         width: 300,
         height: 260,
         colorTheme: 'blue',
@@ -119,7 +111,6 @@ export const TOWN_BUILDINGS = [
         sign: '미드나잇 펍',
         category: '사교 / 정보',
         icon: '🍸',
-        x: 4970,
         width: 260,
         height: 230,
         colorTheme: 'purple',
@@ -132,7 +123,6 @@ export const TOWN_BUILDINGS = [
         sign: '바터 전당포',
         category: '전당포 / 교환',
         icon: '🪙',
-        x: 5500,
         width: 240,
         height: 280,
         colorTheme: 'amber',
@@ -140,9 +130,11 @@ export const TOWN_BUILDINGS = [
         actionText: '개점 준비 중',
         available: false
     }
-].map(applyBuildingAsset);
+].map(applyBuildingAsset).map(building => ({
+    ...building, depth: TOWN_BUILDING_DEPTH * building.layoutScale
+}));
 
-export const TOWN_INTERACTIVE_PROPS = [
+export const TOWN_PROP_DEFINITIONS = [
     {
         id: 'bench_west',
         type: 'bench',
@@ -176,10 +168,11 @@ export const TOWN_INTERACTIVE_PROPS = [
         desc: '증권가와 은행가 사이 위치한 휴식 벤치입니다. 지친 트레이더들의 체력과 기력을 빠르게 회복시킵니다.',
         actionText: '벤치에 앉아 체력 회복'
     }
-].map(prop => ({ ...prop, x: TOWN_PROP_POSITIONS[prop.id] }));
+].map(prop => ({ ...prop, x: TOWN_PROP_POSITIONS[prop.id], y: TOWN_PROP_BASE_Y }));
 
-export const TOWN_STREET_LAMPS = TOWN_LAMP_POSITIONS;
-export const TOWN_URBAN_TREES = TOWN_TREE_POSITIONS;
+export const TOWN_INTERACTIVE_PROPS = TOWN_SCENERY_ENABLED ? TOWN_PROP_DEFINITIONS : [];
+export const TOWN_STREET_LAMPS = TOWN_SCENERY_ENABLED ? TOWN_LAMP_POSITIONS : [];
+export const TOWN_URBAN_TREES = TOWN_SCENERY_ENABLED ? TOWN_TREE_POSITIONS : [];
 
 export const TOWN_BILLBOARD_NEWS = [
     { badge: '🔥 긴급 속보', type: 'breaking', text: '바이오닉스, 차세대 AI 신약 임상 3상 돌파 루머에 거래량 폭증!' },

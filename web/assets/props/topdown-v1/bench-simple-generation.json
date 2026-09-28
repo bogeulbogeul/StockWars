@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-29",
+  "file": "BenchSimple.png",
+  "status": "Standalone asset; not placed in town",
+  "prompts": [
+    "Use case: stylized-concept. Asset type: standalone transparent 2D game prop for StockWars town. Generate ONE simple park BENCH, centered, fully visible with clear margin, wide landscape canvas. RPG elevated top-down view: viewer sees the broad seat top, upper edge and front face of the backrest, front legs. Bench faces screen-bottom, long axis exactly screen-horizontal, symmetric left and right; NO isometric diagonal rotation, NO side view, NO vanishing-point perspective. Cozy clean illustrated game sprite matching cream stone plazas, simple green landscaping and outlined town buildings. Warm honey-brown wooden seat with only 3 broad slats, backrest with 2 broad slats; dark desaturated blue-gray metal legs and simple armrests, sturdy compact proportions. Thin restrained dark contour, large flat color areas with only a few clear shading planes. User specifically requests low detail: NO wood grain, scratches, rust, bolts, ornate scrollwork, noisy texture, photorealism, fine hatching. Readable as a small town prop. Transparent alpha background including gaps between supports; no ground patch, floor tile, background scene, people, plants, text, watermark, multiple views or extra objects. Small subtle contact shading directly under feet only. This is a temporary style-matching asset, not a permanent global art-style decision.",
+    "Use case: background-extraction. Edit this bench asset ONLY to clean its transparency. Preserve the exact bench wood, metal, silhouette, perspective, colors and simple illustrated rendering. Remove ALL surrounding glow, haze, blurred color bleed, aura, background shading and ground shadow. Every pixel outside the physical bench silhouette must be fully transparent alpha=0. Gaps between backrest slats, below seat, between legs and through arm supports must also be transparent. Clean crisp antialiased cutout edges, NO matte, no black background, no colored halo. Return same single bench centered on true transparent background. No added detail."
+  ],
+  "source": "exec-6e795cec-2da7-4d48-8b35-b759f0737021.png",
+  "verification": "Visual inspection; sampled exterior alpha is zero."
+}

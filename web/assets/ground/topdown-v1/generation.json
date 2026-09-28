@@ -1,0 +1,21 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-09-28",
+  "status": "Generated provisional standalone assets; not placed in town. Seamless repetition is not yet validated.",
+  "references": [
+    "web/assets/ground/TownSidewalkRoad.png",
+    "web/assets/buildings/topdown-v1/VivianStore.png"
+  ],
+  "assets": [
+    {
+      "file": "RoadStraight.png",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-b176a73b-2d47-47f9-add6-5f90a9bc23aa.png",
+      "prompt": "Create a standalone road-only ground sprite for the StockWars town, using the road in the recently viewed combined road/sidewalk image as material and color reference, and the recently viewed teal shop as clean illustrative style reference only. Do not include the shop. RPG elevated top-down town ground with screen-horizontal and vertical axes, not isometric, not perspective convergence. A single straight horizontal rectangular strip of dark slate blue-gray asphalt, four equally spaced muted warm yellow centerline dashes, subtle restrained fine texture, clean readable softly shaded cartoon 2D game art matching the shop. Road surface only, no sidewalk, no curb, no grass, buildings, props, cars or text. Wide landscape canvas. The road spans the full canvas width edge to edge so the left/right cuts can be joined, perfectly straight horizontal upper and lower boundaries, genuine transparent margin above and below. No end caps, thick 3D slab, bevel, outline around cut ends or cast shadow. Uniform material lighting and width. This is a provisional ground asset, not a change to the project's final art specification."
+    },
+    {
+      "file": "SidewalkStraight.png",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-a744fe0b-20dc-48b4-8111-e2de880eb3e2.png",
+      "prompt": "Create a standalone sidewalk-only ground sprite for the StockWars town, using the warm beige paving from the recently viewed combined road/sidewalk image as material and color reference, and the recently viewed teal shop as clean illustrative style reference only. Do not include the shop. RPG elevated top-down town ground with screen-horizontal and vertical axes, not isometric, not perspective convergence. A single straight horizontal rectangular strip of warm cream-beige rectangular paving slabs in three staggered rows with thin taupe joints and gentle restrained shading, plus a narrow neatly segmented pale stone curb along the bottom long edge with a very shallow darker front lip. Clean readable softly shaded cartoon 2D game art matching the shop, minimal grain. Sidewalk only: no asphalt, road paint, soil, grass, buildings, people, props or text. Wide landscape canvas. Paving spans full canvas width edge to edge so left/right cuts can be joined, horizontal parallel upper/lower boundaries, genuine transparent margin above and below. No end caps, no thick floating 3D slab, no isometric diamond, no cast shadow outside asset. Uniform lighting and paving scale. This is a provisional ground asset, not a change to the project's final art specification."
+    }
+  ]
+}

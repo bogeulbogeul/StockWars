@@ -1,0 +1,188 @@
+{
+  "method": "Built-in image_gen edit, transparent_background=true",
+  "date": "2026-09-28",
+  "guide": "Docs/ART_STYLE_GUIDE.md",
+  "status": "User-requested top-down regeneration preserving current building style. Not a final global art specification.",
+  "assets": [
+    {
+      "id": "home_office_tower",
+      "file": "OfficeBuilding.png",
+      "reference": "../OfficeBuilding.png",
+      "entryRatio": 0.325,
+      "metadata": {
+        "width": 1060,
+        "height": 1484,
+        "x": 231,
+        "y": 62,
+        "cropWidth": 599,
+        "cropHeight": 1349,
+        "clear": 791902,
+        "solid": 837,
+        "partial": 780301
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Cream and teal narrow seven-story home office apartment tower with peach floor bands, blue windows in three columns, one warm window. Preserve its tall residential identity and floor count. Add a clearly visible flat roof top surface with parapet in the upper portion; show foreshortened facade under it. No detached planters."
+    },
+    {
+      "id": "bit_logistics",
+      "file": "Bit.png",
+      "reference": "../Bit.png",
+      "entryRatio": 0.93,
+      "metadata": {
+        "width": 1774,
+        "height": 887,
+        "x": 80,
+        "y": 124,
+        "cropWidth": 1614,
+        "cropHeight": 651,
+        "clear": 552075,
+        "solid": 1034,
+        "partial": 1020429
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Very wide single-story logistics warehouse, off-white walls, gray-blue roll-up loading doors, orange cornice, central parcel and arrow emblem. Add a broad simple gray corrugated roof seen from above, same orange trim. Preserve the two wide shutter entrances and smaller right pedestrian door."
+    },
+    {
+      "id": "vivian_store",
+      "file": "VivianStore.png",
+      "reference": "../VivianStore.png",
+      "entryRatio": 0.493,
+      "metadata": {
+        "width": 1774,
+        "height": 887,
+        "x": 231,
+        "y": 85,
+        "cropWidth": 1338,
+        "cropHeight": 718,
+        "clear": 644584,
+        "solid": 1336,
+        "partial": 927618
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Vivian convenience shop, single story wide cream building, teal rounded fascia with yellow stripe, orange shopping basket emblem above middle glass sliding entrance, blue display windows with colorful bottles and boxes. Preserve facade proportions horizontally. Add a simple teal-gray flat roof seen from above, minimal roof detail."
+    },
+    {
+      "id": "julian_furniture",
+      "file": "MordenFrame.png",
+      "reference": "../MordenFrame.png",
+      "entryRatio": 0.755,
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "x": 230,
+        "y": 51,
+        "cropWidth": 1076,
+        "cropHeight": 894,
+        "clear": 670037,
+        "solid": 0,
+        "partial": 902827
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Two-story modern furniture showroom, asymmetric stepped cream facade, honey wood cladding, sage glass, large green armchair logo on the left wall, floor lamp silhouette in left display window, double-door entrance on right. Preserve these exact facade features. Roof top planes clearly visible on each stepped volume. Remove detached external planters."
+    },
+    {
+      "id": "claire_apparel",
+      "file": "TailerShop.png",
+      "reference": "../TailerShop.png",
+      "entryRatio": 0.793,
+      "metadata": {
+        "width": 1215,
+        "height": 1295,
+        "x": 222,
+        "y": 85,
+        "cropWidth": 773,
+        "cropHeight": 1110,
+        "clear": 750496,
+        "solid": 488,
+        "partial": 822441
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Two-story narrow pink and plum tailor boutique, cream trim, two upstairs blue windows, hanger and ribbon emblem on upper right panel, scalloped cream awning over lower-left display window, plum entry door on right. Keep identity, add broad flat plum/gray roof visible from above. Remove detached planters and external standing sign."
+    },
+    {
+      "id": "data_ink_bookstore",
+      "file": "BookStore.png",
+      "reference": "../BookStore.png",
+      "entryRatio": 0.162,
+      "metadata": {
+        "width": 1226,
+        "height": 1283,
+        "x": 110,
+        "y": 86,
+        "cropWidth": 1008,
+        "cropHeight": 1098,
+        "clear": 534223,
+        "solid": 1593,
+        "partial": 1037142
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Two-story cream and terracotta bookstore, book-and-inkdrop emblem upper left, two upper right windows with attached flowerbox, cream/brown striped awning over right display windows, wooden entry door on left. Preserve features, add terracotta edged flat roof seen from above. Remove detached ground-level planter."
+    },
+    {
+      "id": "cipher_securities",
+      "file": "CipherBuilding.png",
+      "reference": "../CipherBuilding.png",
+      "entryRatio": 0.5,
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "x": 32,
+        "y": 40,
+        "cropWidth": 960,
+        "cropHeight": 1376,
+        "clear": 576469,
+        "solid": 0,
+        "partial": 996395
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Tall symmetrical navy and cream Art Deco securities tower, blue glass, central rising chart emblem at crown, low stepped side wings, central glass entrance and small stock candlestick display on right wing. Preserve recognizable tall landmark, show broad rooftop surfaces on tower and wings from elevated frontal camera. IMPORTANT remove all surrounding glow from reference; outside building silhouette must be completely empty transparent alpha with no halo or shadows."
+    },
+    {
+      "id": "node_finance",
+      "file": "BankBuilding.png",
+      "reference": "../BankBuilding.png",
+      "entryRatio": 0.5,
+      "metadata": {
+        "width": 1402,
+        "height": 1122,
+        "x": 186,
+        "y": 50,
+        "cropWidth": 1031,
+        "cropHeight": 993,
+        "clear": 622198,
+        "solid": 1462,
+        "partial": 949384
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Three-story classical cream stone bank with pilasters, blue windows, arched ground-floor windows, center wood double doors, olive three-connected-nodes circular emblem at top, small ATM by entry. Preserve details, add clear substantial gray flat rooftop behind front balustrade. No detached decor."
+    },
+    {
+      "id": "midnight_pub",
+      "file": "MidnightPub.png",
+      "reference": "../MidnightPub.png",
+      "entryRatio": 0.178,
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "x": 165,
+        "y": 52,
+        "cropWidth": 1204,
+        "cropHeight": 902,
+        "clear": 515510,
+        "solid": 0,
+        "partial": 1057354
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Two-story wide navy and muted plum pub with cream trim, moon and cocktail-glass symbols on stepped center sign, three upper blue window pairs, left lower entry door, wide lower-right window. Preserve built-in warm sconces but remove EVERY background glow or ambient halo from original reference. Add clear simple deep navy-gray flat roof visible from above behind original sign. Exterior silhouette must end crisply against true transparent alpha."
+    },
+    {
+      "id": "barter_pawn_shop",
+      "file": "BarterPawnShop.png",
+      "reference": "../BarterPawnShop.png",
+      "entryRatio": 0.203,
+      "metadata": {
+        "width": 1145,
+        "height": 1374,
+        "x": 159,
+        "y": 103,
+        "cropWidth": 828,
+        "cropHeight": 1148,
+        "clear": 668696,
+        "solid": 2240,
+        "partial": 902294
+      },
+      "prompt": "Edit the attached original StockWars building asset into a usable RPG TOP-DOWN building sprite. The attachment is the exact appearance/style identity reference and the edit target, NOT a camera reference. Preserve its clean smooth 2D cartoon illustration, dark navy outlines, soft simple shading, original colors, facade motifs, recognizable silhouette and storefront identity. Change camera to an elevated FRONT-facing RPG orthographic view: roof top plane clearly visible occupying roughly the upper third, facade foreshortened vertically beneath it, front wall horizontal across the screen, vertical wall edges upright, depth recedes straight toward screen top. No yaw rotation, no diamond/isometric view, no vanishing point. This camera choice is for these experimental assets only. Render ONE entire building, isolated centered on truly transparent alpha, with 4-6% transparent margin, no clipped edges. No ground tile, no road, no sidewalk, no trees, no lamps, no detached decorative props, no characters, no background glow, no cast shadow outside the building, no text labels. Preserve built-in signs and symbol icons, but add no words. Roof must be a coherent part of the structure, not an added slab standing vertically behind its sign. Clearly visible entrance at bottom of front facade. Do not redesign architecture or switch to painterly, pixel, realistic, or 3D render style. Specific building: Two-story narrow olive and amber pawnshop, cream cornices, gold coin exchange arrows between two upstairs windows, broad amber blank fascia, left wooden entry door, large right blue window with security grille, small attached CCTV at upper right. Preserve exact features and colors; add broad flat roof with olive-gray top plane seen from above."
+    }
+  ]
+}

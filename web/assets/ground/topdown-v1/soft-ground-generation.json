@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-29",
+  "status": "Generated standalone assets; placement and seam verification pending",
+  "assets": [
+    {
+      "name": "PedestrianPathSoft",
+      "prompt": "Use case: stylized-concept. Create a standalone StockWars 2D game ground asset, clean restrained illustrated RPG town style. Elevated RPG top-down world with screen-horizontal and screen-vertical ground axes, NOT isometric, NOT a perspective trapezoid. Warm cream limestone, muted taupe edging, soft simple shading and very subtle broad stone color variation. Match a cozy town with cream buildings and simplified green landscaping. User explicitly dislikes grid patterns and excessive detail: absolutely NO tile grid, NO brick joints, NO cobblestones, NO cracks, NO grainy noise, NO small decorative marks. Broad calm empty surface. Thin readable bevel/edge, ground flush, not a raised platform or floating object. True transparent background. No text, watermark, buildings, people, trees, benches, fountain or other props. Temporary visual asset, does not establish permanent project art rules. A single straight HORIZONTAL WALKABLE PEDESTRIAN PATH strip, landscape canvas roughly 3:1. Cream stone center, slim continuous taupe borders along TOP and BOTTOM only. The road extends exactly to LEFT and RIGHT canvas edges, uncapped, same colors and height at both ends so it can repeat horizontally without gaps. Transparent space above and below only. Not asphalt, no traffic markings. Completely unbroken surface.",
+      "file": "PedestrianPathSoft.png",
+      "source": "exec-d5c40b41-8cb4-49bb-9878-9cecc85231f6.png"
+    },
+    {
+      "name": "FountainFloorSoft",
+      "prompt": "Use case: stylized-concept. Create a standalone StockWars 2D game ground asset, clean restrained illustrated RPG town style. Elevated RPG top-down world with screen-horizontal and screen-vertical ground axes, NOT isometric, NOT a perspective trapezoid. Warm cream limestone, muted taupe edging, soft simple shading and very subtle broad stone color variation. Match a cozy town with cream buildings and simplified green landscaping. User explicitly dislikes grid patterns and excessive detail: absolutely NO tile grid, NO brick joints, NO cobblestones, NO cracks, NO grainy noise, NO small decorative marks. Broad calm empty surface. Thin readable bevel/edge, ground flush, not a raised platform or floating object. True transparent background. No text, watermark, buildings, people, trees, benches, fountain or other props. Temporary visual asset, does not establish permanent project art rules. A single ROUND fountain plaza ground pad seen in elevated RPG view, a broad horizontal ellipse on a square transparent canvas, centered with safe margin. Large completely empty cream center to place a separate fountain later. One simple taupe outer band and one thin cream inset rim. Quiet elegant shape, no radial lines, no spokes, no segmented ring, no mosaic. Only the empty flat floor pad.",
+      "file": "FountainFloorSoft.png",
+      "source": "exec-cbdb884c-26ce-4a40-9b87-bf92bd7ede04.png"
+    },
+    {
+      "name": "MiniParkFloorSoft",
+      "prompt": "Use case: stylized-concept. Create a standalone StockWars 2D game ground asset, clean restrained illustrated RPG town style. Elevated RPG top-down world with screen-horizontal and screen-vertical ground axes, NOT isometric, NOT a perspective trapezoid. Warm cream limestone, muted taupe edging, soft simple shading and very subtle broad stone color variation. Match a cozy town with cream buildings and simplified green landscaping. User explicitly dislikes grid patterns and excessive detail: absolutely NO tile grid, NO brick joints, NO cobblestones, NO cracks, NO grainy noise, NO small decorative marks. Broad calm empty surface. Thin readable bevel/edge, ground flush, not a raised platform or floating object. True transparent background. No text, watermark, buildings, people, trees, benches, fountain or other props. Temporary visual asset, does not establish permanent project art rules. A single SQUARE mini park floor pad with subtly rounded corners. Screen-aligned rectangle almost square, no diamond/isometric rotation. Centered on square transparent canvas with small safe margins. Large empty cream limestone interior, surrounded by a narrow muted sage green inset band and a slim taupe stone outer rim. No vegetation or fixtures; these will be separate assets. Simple continuous border without segmented blocks or grid. Only the empty flat ground pad.",
+      "file": "MiniParkFloorSoft.png",
+      "source": "exec-0e37c6ad-cf5d-4be9-9965-0465d5d732ff.png"
+    }
+  ]
+}

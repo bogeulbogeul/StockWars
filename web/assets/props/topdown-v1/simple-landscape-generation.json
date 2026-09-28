@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen edit",
+  "status": "Simplified standalone assets; fountain static base excludes moving water; animation not implemented",
+  "assets": [
+    {
+      "name": "LandscapeHedgeBedSimple",
+      "source": "LandscapeHedgeBed",
+      "prompt": "Edit this game asset into a MUCH SIMPLER clean 2D cartoon sprite for StockWars. Keep recognizable design, warm cream stone and green/turquoise palette, RPG elevated top-down camera showing broad top surfaces and shallow fronts, horizontal/vertical ground axes, transparent background, complete object with padding. User explicitly rejects excessive detail. Use large smooth color shapes, clean medium outlines and only 2-3 broad shading tones per material. ABSOLUTELY NO fine texture, grain, stone mottling, tiny veins, individual leaf rendering, realistic reflections or busy highlights. Readable at 150px display size. No scene, text, ground plane or cast shadow outside footprint. Retain low long stone-edged hedge planter. Simplify foliage into 6-8 broad rounded green masses with a few large highlight shapes, not hundreds of leaves. Only three tiny simple flower clusters total. Stone border has only a few joints and flat smooth faces.",
+      "file": "LandscapeHedgeBedSimple.png",
+      "generatedSource": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-21484e00-b7c1-4d38-92db-b5971716addc.png"
+    },
+    {
+      "name": "LandscapeTreeBedSimple",
+      "source": "LandscapeTreeBed",
+      "prompt": "Edit this game asset into a MUCH SIMPLER clean 2D cartoon sprite for StockWars. Keep recognizable design, warm cream stone and green/turquoise palette, RPG elevated top-down camera showing broad top surfaces and shallow fronts, horizontal/vertical ground axes, transparent background, complete object with padding. User explicitly rejects excessive detail. Use large smooth color shapes, clean medium outlines and only 2-3 broad shading tones per material. ABSOLUTELY NO fine texture, grain, stone mottling, tiny veins, individual leaf rendering, realistic reflections or busy highlights. Readable at 150px display size. No scene, text, ground plane or cast shadow outside footprint. Retain square low stone-edged garden bed with one short-trunk round tree and low shrubs. Tree crown is 4-6 large rounded lobes, no individual leaves at all. Shrubs are 4 simple rounded masses. Only two small simple flower clusters. Stone border has few joints. Very simple friendly game prop.",
+      "file": "LandscapeTreeBedSimple.png",
+      "generatedSource": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-1291d686-bed2-489c-aab9-bb397f2be2f0.png"
+    },
+    {
+      "name": "FountainBaseSimple",
+      "source": "Fountain",
+      "prompt": "Edit this game asset into a MUCH SIMPLER clean 2D cartoon sprite for StockWars. Keep recognizable design, warm cream stone and green/turquoise palette, RPG elevated top-down camera showing broad top surfaces and shallow fronts, horizontal/vertical ground axes, transparent background, complete object with padding. User explicitly rejects excessive detail. Use large smooth color shapes, clean medium outlines and only 2-3 broad shading tones per material. ABSOLUTELY NO fine texture, grain, stone mottling, tiny veins, individual leaf rendering, realistic reflections or busy highlights. Readable at 150px display size. No scene, text, ground plane or cast shadow outside footprint. Retain two-tier round stone fountain but prepare a STATIC ANIMATION BASE. Remove ALL upward water jets, falling streams, splashes, foam and ripple rings completely. Keep two calm flat turquoise water surfaces inside bowls, each with only one broad darker area, no detailed reflections. Keep a tiny visible central nozzle and three simple spillway notches at left, front center and right of the upper bowl for adding animated water later. Smooth simple pedestal, no stone texture, only a few stone joints. Fountain stone structure must remain perfectly still in future animation. Do not draw any moving water effect into this base.",
+      "file": "FountainBaseSimple.png",
+      "generatedSource": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-3150ab4a-218f-4fef-8290-78c7281cb6d0.png"
+    }
+  ]
+}

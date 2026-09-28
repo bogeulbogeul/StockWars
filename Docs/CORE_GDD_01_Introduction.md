@@ -1,6 +1,6 @@
 # StockWars GDD: CORE_GDD_01. 프로젝트 소개 및 디자인 철학 (Project Introduction)
 
-> **2026-09-28 비주얼 방향:** 홈 오피스·마을·건물 내부를 픽셀아트 기반 비스듬한 탑다운으로 통일합니다. [아트 가이드](ART_STYLE_GUIDE.md) / [전환 계획](VISUAL_TRANSITION_PLAN.md).
+> **2026-09-28 비주얼 방향:** 마을은 RPG식 탑다운, 홈 오피스·일반 건물 내부는 아이소메트릭으로 구성합니다. 픽셀아트는 필수 조건이 아니며 실내외 연결을 임시 에셋으로 검증합니다. [아트 가이드](ART_STYLE_GUIDE.md) / [전환 계획](VISUAL_TRANSITION_PLAN.md).
 
 **버전:** v5.0.0 (2026.05.01 구조 재편 및 통합 완결본)  
 **상태:** 활성 (Active)  

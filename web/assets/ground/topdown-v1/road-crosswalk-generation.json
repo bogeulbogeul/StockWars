@@ -1,0 +1,7 @@
+{
+  "mode": "built-in image_gen edit",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-d15a1e6a-bc6f-46f2-9e80-4b0c078f91a8.png",
+  "reference": "RoadStraight.png",
+  "prompt": "Edit the supplied straight road sprite to make ONE additional matching version with a single zebra pedestrian crossing at the horizontal center. Preserve the exact wide canvas, straight horizontal asphalt strip placement, blue-gray asphalt color and subdued texture, clean illustrated style, left and right ends, transparent top and bottom margins, RPG top-down axis alignment with no perspective convergence or isometric angle. Add a compact off-white zebra crossing for pedestrians walking vertically from the upper road edge to the lower road edge: SIX horizontal white rectangular bars stacked vertically with equal dark gaps, forming a vertical band centered on the road. Each white bar runs horizontally, approximately 180 pixels wide in this 2172-pixel-wide asset. The stack spans almost the full road height with small asphalt margins. Yellow dashed centerline continues on both sides but is absent within the crossing. Do not add sidewalks, curb, signs, cars, people, arrows, text, shadows, decorative borders or any other objects. Keep genuine transparent background.",
+  "status": "Standalone additional asset; not placed in town"
+}

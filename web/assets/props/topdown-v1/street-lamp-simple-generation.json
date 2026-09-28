@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-29",
+  "file": "StreetLampSimple.png",
+  "status": "Standalone generated asset; not placed in town",
+  "prompt": "Use case: stylized-concept. Create ONE standalone simple outdoor street lamp game prop for StockWars town. Clean 2D illustrated RPG elevated top-down camera: visible top of lantern cap and base, front of lamp and upright pole visible; screen-vertical pole, screen-horizontal features, not isometric diagonal projection and not straight overhead. Full object centered on portrait canvas with generous transparent margins. A compact single warm ivory-yellow lantern mounted directly atop a slender dark desaturated blue-gray metal post, simple gently tapered square lantern body, small plain hipped cap, sturdy modest stepped foot. Match simple honey-wood benches with dark blue-gray metal frames in a cream-stone cozy town. Quiet practical design, no ornate Victorian filigree, no curled arms, no multiple lamps, no signs. Low detail: broad flat shading planes, restrained dark outline, no noisy metal texture, rust, screws, scratches or intricate glass reflections. Warm light color stays inside lantern panes; no external glow, light pool, aura, bloom or cast shadow because lighting will be handled in game. True transparent alpha everywhere outside the physical lamp silhouette. No ground tile, scene, buildings, bench, people, text, watermark or alternate views. Readable at small game scale. This is a provisional matching asset, not a permanent global art-style specification.",
+  "source": "exec-33190de0-4f7a-4333-a1b5-7afb8038263b.png"
+}

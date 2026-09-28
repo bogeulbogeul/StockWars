@@ -1,0 +1,6 @@
+{
+  "mode": "built-in image_gen edit",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-670a1580-c5f2-4503-8289-68466fe3240b.png",
+  "prompt": "Edit this beige sidewalk paving image into ONLY its continuous stone surface material. Remove every grid joint, every slab edge, every bevel, white highlight border, dark line, and all directional gradients. Preserve the warm muted beige palette and very subtle clean illustrated stone mottling from the slab interiors. Flat uniform opaque square surface filled edge to edge, tiny low-contrast texture, no distinct marks, no tiles, no lines, no margins, no shadows, no text. Seamlessly repeatable across all four edges, same average color near every edge, no vignette. For RPG top-down town paving: the renderer will add perfectly aligned grout lines separately. Do not draw grout in this image.",
+  "usage": "Continuous town material; 64px grout grid drawn independently in CSS, no image repetition seams."
+}

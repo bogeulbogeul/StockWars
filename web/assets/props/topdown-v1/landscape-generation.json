@@ -1,0 +1,17 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "User attached urban pocket garden, codex-clipboard-cac577bc-912f-4d84-a528-b20b725e849a.png",
+  "status": "Corrected landscaping interpretation; standalone assets not yet placed",
+  "assets": [
+    {
+      "file": "LandscapeHedgeBed.png",
+      "prompt": "Create a standalone StockWars town landscaping game sprite. The user-attached small urban garden image is the PRIMARY reference for the planting design and elevated RPG top-down camera: tidy municipal landscaping, compact manicured rich green shrubs, light beige stone planting-bed edging, small restrained yellow and cream flowers. Current teal town shop illustration is the style reference: clean readable softly shaded outlined 2D art, not photoreal, not mandatory pixel art. Camera shows broad top surfaces and shallow front faces, horizontal/vertical footprint axes, NOT isometric diamonds. True transparent background. One isolated modular planting bed only, centered with padding, entirely visible. No surrounding pavement, roads, buildings, benches, lamps, people, text, extra scene, thick planter box or ground shadow beyond footprint. Low stone border, planted soil concealed by foliage. Make a LOW rectangular hedge bed as seen along the bottom of the attached garden image: a long horizontal strip of densely planted neatly clipped rounded small shrubs merging into a low hedge, no visible tree trunks, subtle small yellow flowers nestled in foliage, low pale stone perimeter edging. Clearly shallow squat landscaping, width around three times image-visible height; top planting surface clearly visible. This replaces the mistaken low-trunk-tree interpretation.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-fb2db851-9b46-4200-b2d7-b4ea5efa0d63.png"
+    },
+    {
+      "file": "LandscapeTreeBed.png",
+      "prompt": "Create a standalone StockWars town landscaping game sprite. The user-attached small urban garden image is the PRIMARY reference for the planting design and elevated RPG top-down camera: tidy municipal landscaping, compact manicured rich green shrubs, light beige stone planting-bed edging, small restrained yellow and cream flowers. Current teal town shop illustration is the style reference: clean readable softly shaded outlined 2D art, not photoreal, not mandatory pixel art. Camera shows broad top surfaces and shallow front faces, horizontal/vertical footprint axes, NOT isometric diamonds. True transparent background. One isolated modular planting bed only, centered with padding, entirely visible. No surrounding pavement, roads, buildings, benches, lamps, people, text, extra scene, thick planter box or ground shadow beyond footprint. Low stone border, planted soil concealed by foliage. Make a compact approximately square garden island with ONE modest ornamental street tree with a round pruned green crown, a very short partly obscured trunk, and low manicured shrubs plus a few tiny yellow/cream flowers surrounding its base inside a low pale stone perimeter border. Similar to the small trees within the attached landscaped pocket park, not a wild forest tree. Keep tree canopy compact within bed width, clear top-down leafy crown surface and shallow front border; no sprawling exposed branches. It should pair with the low rectangular hedge bed as the same landscape family.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a0e827-c8d7-71e1-af4b-63dd515c5598\\exec-917ca900-c59d-43d4-85f3-b522cb0d26ab.png"
+    }
+  ]
+}

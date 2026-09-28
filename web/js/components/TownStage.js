@@ -1,14 +1,16 @@
 /**
- * TownStage Component (2D 횡스크롤 마을 무대 컨트롤러)
+ * TownStage Component (RPG 탑다운 마을 무대 컨트롤러)
  * Modular architecture:
  * - TownBuildingRenderer: HTML markup for buildings, props, and modals
- * - TownPlayerController: 2D side-view physics, inputs, and camera tracking
+ * - TownPlayerController: 2D ground-plane movement, inputs, and camera tracking
  * - townWorldData: Canonical world layout definitions
  */
 
 import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../data/townWorldData.js';
+import { townEntrance, TOWN_VIEW_SCALE, TOWN_SCENERY_ENABLED } from '../data/townLayout.js';
 import { TownBuildingRenderer } from './town/TownBuildingRenderer.js';
 import { TownPlayerController } from './town/TownPlayerController.js';
+import { TOWN_LANDSCAPE } from '../data/townLandscape.js';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
@@ -43,7 +45,7 @@ export class TownStage {
 
     render() {
         const html = `
-            <div id="townStageContainer" class="town-stage-container hidden">
+            <div id="townStageContainer" class="town-stage-container hidden ${TOWN_SCENERY_ENABLED ? '' : 'town-scenery-paused'}">
                 <!-- Town Top Info Header -->
                 <div class="town-channel-header-hud">
                     <div class="town-hud-left">
@@ -57,10 +59,10 @@ export class TownStage {
                     </div>
                 </div>
 
-                <!-- Town Side-Scrolling Controls Hint -->
+                <!-- Town Movement Controls Hint -->
                 <div class="town-controls-hint" id="townControlsHint">
                     <span class="hint-icon">🎮</span>
-                    <span class="hint-text">마을 탐색: <b>A, D / 방향키</b> 이동 | <b>Shift</b> 달리기 | <b>F 키 / 클릭</b> 상호작용</span>
+                    <span class="hint-text">마을 탐색: <b>W A S D / 방향키</b> 이동 | <b>Shift</b> 달리기 | <b>F 키 / 클릭</b> 상호작용</span>
                 </div>
 
                 <!-- Main Town Viewport & Camera Stage -->
@@ -72,8 +74,54 @@ export class TownStage {
                     </div>
 
                     <!-- Town World Scroll Track -->
-                    <div class="town-world-track" id="townWorldTrack" style="width: ${this.playerController.worldWidth}px;">
+                    <div class="town-world-track" id="townWorldTrack" style="width: ${this.playerController.worldWidth}px; height: ${this.playerController.worldHeight}px;">
+                        <div class="town-surroundings" aria-hidden="true"></div>
+                        <svg class="town-outer-road" viewBox="-140 -140 3980 2880" aria-hidden="true" focusable="false">
+                            <defs>
+                                <pattern id="townOuterRoadTexture" width="512" height="128" patternUnits="userSpaceOnUse">
+                                    <rect width="512" height="128" fill="#43576b" />
+                                    <svg width="512" height="128" viewBox="0 232 2172 100" preserveAspectRatio="none">
+                                        <image href="${new URL('../../assets/ground/topdown-v1/RoadStraight.png', import.meta.url).href}" width="2172" height="724" />
+                                    </svg>
+                                </pattern>
+                            </defs>
+                            <path fill="url(#townOuterRoadTexture)" fill-rule="evenodd" d="M-140 -140H3840V2740H-140Z M0 0H3700V2600H0Z" />
+                            <rect x="-10000" y="-10000" width="10140" height="22600" fill="url(#townOuterRoadTexture)" />
+                            <rect x="3560" y="-10000" width="10000" height="22600" fill="url(#townOuterRoadTexture)" />
+                            <!-- Opposite sidewalks align with the central block, including side curbs. -->
+                            <path class="town-road-curb" d="M140 -10000V-140H3560V-10000 M140 12600V2740H3560V12600" />
+                            ${[ { x: 1221, y: -128 }, { x: 1781, y: 2612 } ].map(({ x, y }) => `
+                                <svg x="${x}" y="${y}" width="118" height="116" viewBox="966 220 240 284" preserveAspectRatio="none" overflow="hidden">
+                                    <rect x="966" y="220" width="240" height="284" fill="#43576b" />
+                                    <image href="${new URL('../../assets/ground/topdown-v1/RoadCrosswalk.png', import.meta.url).href}" width="2172" height="724" />
+                                </svg>
+                            `).join('')}
+                        </svg>
+                        <!-- Roads are walkable ground; props remain independently paused. -->
+                        <svg class="town-road-network" viewBox="0 0 3700 2600" aria-hidden="true" focusable="false">
+                            <defs>
+                                <pattern id="townAsphalt" width="512" height="128" patternUnits="userSpaceOnUse">
+                                    <rect width="512" height="128" fill="#43576b" />
+                                    <svg width="512" height="128" viewBox="0 232 2172 100" preserveAspectRatio="none">
+                                        <image href="${new URL('../../assets/ground/topdown-v1/RoadStraight.png', import.meta.url).href}" width="2172" height="724" />
+                                    </svg>
+                                </pattern>
+                            </defs>
+                            <path fill="url(#townAsphalt)" fill-rule="evenodd" d="M0 0H3700V2600H0Z M140 140H3560V2460H140Z" />
+                            <path class="town-road-curb" d="M140 140H3560V2460H140Z" />
+                            <path class="town-road-centerline" d="M0 0H3700V2600H0Z" />
+                            <!-- Crop the crossing section of the matching road asset.
+                                 North: gap between office and securities; south: central walkway. -->
+                            ${[ { x: 1221, y: 12 }, { x: 1781, y: 2472 } ].map(({ x, y }) => `
+                                <svg x="${x}" y="${y}" width="118" height="116" viewBox="966 220 240 284" preserveAspectRatio="none" overflow="hidden">
+                                    <rect x="966" y="220" width="240" height="284" fill="#43576b" />
+                                    <image href="${new URL('../../assets/ground/topdown-v1/RoadCrosswalk.png', import.meta.url).href}" width="2172" height="724" />
+                                </svg>
+                            `).join('')}
+                        </svg>
                         <!-- Buildings Row Layer -->
+                        ${TownBuildingRenderer.renderLandscapeGroundHTML()}
+                        ${TownBuildingRenderer.renderLandscapeHTML()}
                         <div class="town-buildings-layer" id="townBuildingsLayer">
                             ${TownBuildingRenderer.renderBuildingsHTML()}
                         </div>
@@ -88,7 +136,7 @@ export class TownStage {
                             ${TownBuildingRenderer.renderStreetPropsHTML()}
                         </div>
 
-                        <!-- 2D Side-View Player Character -->
+                        <!-- RPG Player Character -->
                         <div class="town-player-character" id="townPlayerChar" style="left: ${this.playerController.charPosX}px;">
                             <div class="town-char-nametag" id="townPlayerNametag">${this.nickname}</div>
                             <!-- 3D/2D Character Body -->
@@ -103,7 +151,7 @@ export class TownStage {
                             <div class="town-char-shadow"></div>
                         </div>
 
-                        <!-- Ground Platform (Sidewalk & Asphalt Road) -->
+                        <!-- Ground Plane (Sidewalk & Asphalt Road) -->
                         <div class="town-ground-platform" id="townGroundPlatform" aria-hidden="true"></div>
 
                         <!-- Proximity Action Prompt Overlay (Positioned above Building Roof) -->
@@ -152,7 +200,9 @@ export class TownStage {
         window.addEventListener('keydown', (e) => {
             if (this.containerEl?.classList.contains('hidden')) return;
             if (this.callbacks.isInputBlocked?.()) return;
+            if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
             const key = e.key.toLowerCase();
+            if (!this.billboardModal.classList.contains('hidden') && key !== 'escape') return;
             if (key === 'f') {
                 if (e.repeat || e.defaultPrevented) return;
                 if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
@@ -173,6 +223,7 @@ export class TownStage {
 
         this.btnReturnOffice?.addEventListener('click', () => {
             if (this.callbacks.isInputBlocked?.()) return;
+            this.playerController.placeAt(TOWN_BUILDINGS.find(b => b.id === 'home_office_tower'));
             if (this.callbacks.onReturnOffice) this.callbacks.onReturnOffice();
         });
 
@@ -198,7 +249,7 @@ export class TownStage {
                 const bId = targetBuilding.dataset.buildingId;
                 const building = TOWN_BUILDINGS.find(b => b.id === bId);
                 if (building && building.available !== false) {
-                    this.playerController.charPosX = building.x + building.width / 2;
+                    this.playerController.placeAt(building);
                     this.checkProximity();
                     this.triggerAction(building);
                 }
@@ -210,7 +261,7 @@ export class TownStage {
                 const pId = targetProp.dataset.propId;
                 const prop = TOWN_INTERACTIVE_PROPS.find(p => p.id === pId);
                 if (prop) {
-                    this.playerController.charPosX = prop.x + prop.width / 2;
+                    this.playerController.placeAt(prop);
                     this.checkProximity();
                     this.triggerAction(prop);
                 }
@@ -247,7 +298,26 @@ export class TownStage {
         const badge = screen.querySelector('.news-badge');
         badge.className = `news-badge badge-${broadcast.type}`;
         badge.textContent = broadcast.badge;
-        screen.querySelector('.news-body-text').textContent = broadcast.text;
+        const body = screen.querySelector('.news-body-text');
+        if (screen.classList.contains('town-information-screen')) {
+            let copy = body.querySelector('.town-board-copy');
+            if (!copy) {
+                copy = document.createElement('span');
+                copy.className = 'town-board-copy';
+                body.replaceChildren(copy);
+            }
+            if (copy.textContent !== broadcast.text) {
+                copy.textContent = broadcast.text;
+                copy.classList.remove('is-scrolling');
+            }
+            // Keep header/ticker fixed; unusually long broadcasts reveal their full text.
+            const overflow = Math.max(0, copy.scrollHeight - body.clientHeight);
+            copy.style.setProperty('--board-scroll-distance', `-${overflow}px`);
+            copy.style.setProperty('--board-scroll-duration', `${Math.max(10, overflow / 12 + 6)}s`);
+            copy.classList.toggle('is-scrolling', overflow > 1);
+        } else {
+            body.textContent = broadcast.text;
+        }
         screen.querySelector('.live-title').textContent = broadcast.title;
         if (state.cipherIndex) {
             const text = formatCipherIndex(state.cipherIndex);
@@ -258,18 +328,18 @@ export class TownStage {
     }
 
     update(dt) {
-        if (this.callbacks.isInputBlocked?.()) {
+        if (this.callbacks.isInputBlocked?.() || !this.billboardModal.classList.contains('hidden')) {
             // Release movement held before entering the mini-game as well.
             this.playerController.keysHeld.clear();
             this.playerController.isMoving = false;
             this.playerController.walkPhase = 0;
         } else {
-            this.playerController.update(dt);
+            this.playerController.update(dt, this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE);
         }
 
         // Apply World & Camera Transforms
         if (this.worldTrackEl) {
-            this.worldTrackEl.style.transform = `translateX(${-this.playerController.cameraX}px)`;
+            this.worldTrackEl.style.transform = `translate(${-this.playerController.cameraX * TOWN_VIEW_SCALE}px, ${-this.playerController.cameraY * TOWN_VIEW_SCALE}px) scale(${TOWN_VIEW_SCALE})`;
         }
         if (this.parallaxBgEl) {
             this.parallaxBgEl.style.width = `calc(100% + ${this.playerController.worldWidth * 0.25}px)`;
@@ -277,6 +347,9 @@ export class TownStage {
         }
         if (this.townChar) {
             this.townChar.style.left = `${this.playerController.charPosX}px`;
+            this.townChar.style.top = `${this.playerController.charPosY}px`;
+            this.townChar.style.zIndex = `${Math.round(this.playerController.charPosY)}`;
+            this.townChar.dataset.facing = this.playerController.facing;
             const flip = this.playerController.charFacing < 0 ? 'scaleX(-1)' : 'scaleX(1)';
             const bounce = this.playerController.isMoving ? Math.sin(this.playerController.walkPhase) * 6 : 0;
             if (this.charBody) {
@@ -284,43 +357,42 @@ export class TownStage {
             }
         }
 
+        for (const p of TOWN_LANDSCAPE) {
+            const obscured = this.playerController.charPosY < p.y && this.playerController.charPosY > p.y - p.height &&
+                this.playerController.charPosX > p.x - 16 && this.playerController.charPosX < p.x + p.width + 16;
+            document.getElementById(`landscape_${p.id}`)?.classList.toggle('player-behind', obscured);
+        }
+        for (const b of TOWN_BUILDINGS) {
+            const obscured = this.playerController.charPosY < b.y && this.playerController.charPosY > b.y - b.height - 100 &&
+                Math.abs(this.playerController.charPosX - (b.x + b.width / 2)) < b.asset.displayWidth / 2 + 24;
+            document.getElementById(`building_${b.id}`)?.classList.toggle('player-behind', obscured);
+        }
+        this.worldTrackEl.querySelectorAll('.town-urban-tree').forEach(tree => {
+            const behind = this.playerController.charPosY < 1240 && this.playerController.charPosY > 960 &&
+                Math.abs(this.playerController.charPosX - parseFloat(tree.style.left) - 120) < 130;
+            tree.classList.toggle('player-behind', behind);
+        });
         this.checkProximity();
     }
 
     checkProximity() {
-        const charX = this.playerController.charPosX;
-        let nearby = null;
-
-        for (const b of TOWN_BUILDINGS) {
-            if (b.available === false) continue;
-            const center = b.x + b.width / 2;
-            if (Math.abs(charX - center) <= b.width / 2 + 30) {
-                nearby = { ...b, kind: 'building' };
-                break;
-            }
-        }
-
-        if (!nearby) {
-            for (const p of TOWN_INTERACTIVE_PROPS) {
-                const center = p.x + p.width / 2;
-                if (Math.abs(charX - center) <= p.width / 2 + 25) {
-                    nearby = { ...p, kind: 'prop' };
-                    break;
-                }
-            }
-        }
+        const { charPosX, charPosY } = this.playerController;
+        const candidates = [
+            ...TOWN_BUILDINGS.filter(b => b.available !== false).map(b => ({ ...b, kind: 'building' })),
+            ...TOWN_INTERACTIVE_PROPS.map(p => ({ ...p, kind: 'prop' }))
+        ];
+        const nearby = candidates.map(object => {
+            const entry = townEntrance(object);
+            return { object, distance: Math.hypot(charPosX - entry.x, charPosY - entry.y) };
+        }).filter(item => item.distance <= 90).sort((a, b) => a.distance - b.distance)[0]?.object;
 
         this.activeNearbyObject = nearby;
         if (nearby && this.promptEl) {
             this.promptEl.classList.remove('hidden');
-            this.promptEl.style.left = `${nearby.x + nearby.width / 2}px`;
+            this.promptEl.style.left = `${townEntrance(nearby).x}px`;
             
-            // 건물 상단(지붕 위) 또는 프랍 상단에 위치하도록 높이 동적 계산
-            let promptBottom = 130 + (nearby.height || 230) + 16;
-            if (nearby.kind === 'prop' && nearby.type === 'bench') {
-                promptBottom = 130 + (nearby.height || 52) + 75;
-            }
-            this.promptEl.style.bottom = `${Math.min(promptBottom, this.viewportEl.clientHeight - 110)}px`;
+            this.promptEl.style.top = `${nearby.y - 150}px`;
+            this.promptEl.style.bottom = "auto";
 
             if (this.promptIcon) this.promptIcon.textContent = nearby.icon || '🏢';
             if (this.promptTitle) this.promptTitle.textContent = nearby.name || '';
@@ -362,43 +434,19 @@ export class TownStage {
             ? `채널: ${channel.name}`
             : `채널: ${channel.name} (원활 • ${channel.ping}ms)`;
 
-        if (spawnLocation === 'bit_logistics' || spawnLocation === 'logistics') {
-            const building = TOWN_BUILDINGS.find(b => b.id === 'bit_logistics');
-            const center = building.x + building.width / 2;
-            this.playerController.charPosX = center;
-            this.playerController.charFacing = 1;
-            const vpWidth = window.innerWidth;
-            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, center - vpWidth / 2));
-            this.playerController.targetCameraX = this.playerController.cameraX;
-        } else if (spawnLocation === 'vivian_store' || spawnLocation === 'vivian') {
-            const building = TOWN_BUILDINGS.find(b => b.id === 'vivian_store');
-            const center = building.x + building.width / 2;
-            this.playerController.charPosX = center;
-            this.playerController.charFacing = 1;
-            const vpWidth = window.innerWidth;
-            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, center - vpWidth / 2));
-            this.playerController.targetCameraX = this.playerController.cameraX;
-        } else if (typeof spawnLocation === 'number') {
-            this.playerController.charPosX = spawnLocation;
-            const vpWidth = window.innerWidth;
-            this.playerController.cameraX = Math.max(0, Math.min(this.playerController.worldWidth - vpWidth, spawnLocation - vpWidth / 2));
-            this.playerController.targetCameraX = this.playerController.cameraX;
-        } else {
-            const home = TOWN_BUILDINGS.find(b => b.id === 'home_office_tower');
-            this.playerController.charPosX = home.x + home.width / 2;
-            this.playerController.cameraX = 0;
-            this.playerController.targetCameraX = 0;
+        const aliases = { logistics: 'bit_logistics', vivian: 'vivian_store' };
+        const destination = TOWN_BUILDINGS.find(b => b.id === (aliases[spawnLocation] || spawnLocation));
+        if (destination) this.playerController.placeAt(destination);
+        else if (typeof spawnLocation === 'number') {
+            this.playerController.placeAt({ x: Math.max(60, Math.min(this.playerController.worldWidth - 60, spawnLocation)), width: 0, y: 1000 });
+        } else if (!this.hasVisited) {
+            this.playerController.placeAt(TOWN_BUILDINGS.find(b => b.id === 'home_office_tower'));
         }
-
-        if (this.worldTrackEl) {
-            this.worldTrackEl.style.transform = `translateX(${-this.playerController.cameraX}px)`;
-        }
-        if (this.townChar) {
-            this.townChar.style.left = `${this.playerController.charPosX}px`;
-        }
-
-        this.playerController.isResting = false;
+        this.hasVisited = true;
+        this.playerController.stopResting();
         this.playerController.keysHeld.clear();
+        this.playerController.updateCamera(this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE, 0, true);
+        this.update(0);
         this.checkProximity();
     }
 
