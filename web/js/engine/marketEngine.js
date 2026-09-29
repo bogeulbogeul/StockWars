@@ -8,7 +8,7 @@
 
 import { INITIAL_STOCKS, INITIAL_NEWS } from '../data/stocksData.js';
 
-class MarketEngine {
+export class MarketEngine {
     constructor() {
         this.stocks = new Map();
         this.news = [...INITIAL_NEWS];
@@ -267,6 +267,7 @@ class MarketEngine {
 
     buyStock(stockId, qty, leverage = 1) {
         qty = Math.max(1, parseInt(qty) || 1);
+        if (this.itemEngine && qty > this.itemEngine.orderLimit()) return { success: false, msg: `1회 매수 한도는 ${this.itemEngine.orderLimit()}주입니다. 안정제로 한도를 늘릴 수 있습니다.` };
         leverage = Math.max(1, parseInt(leverage) || 1);
         const stock = this.stocks.get(stockId);
         if (!stock) return { success: false, msg: '존재하지 않는 종목입니다.' };
@@ -316,6 +317,7 @@ class MarketEngine {
         // Find matching long positions
         let totalSold = 0;
         let totalRecoveredCash = 0;
+        let realizedProfit = 0;
 
         for (const [key, pos] of this.portfolio.entries()) {
             if (pos.id === stockId && !pos.isShort) {
@@ -324,6 +326,7 @@ class MarketEngine {
                 const portionCollateral = pos.collateral * ratio;
                 const priceDiff = (stock.price - pos.avgPrice) * sellQty * pos.leverage;
                 const returnedCash = Math.max(0, portionCollateral + priceDiff);
+                realizedProfit += returnedCash - portionCollateral;
 
                 pos.qty -= sellQty;
                 pos.collateral -= portionCollateral;
@@ -342,6 +345,7 @@ class MarketEngine {
         }
 
         this.cash += Math.round(totalRecoveredCash);
+        if (this.itemEngine) this.itemEngine.state.profit += Math.round(realizedProfit);
         this.notify();
         return {
             success: true,
@@ -394,6 +398,21 @@ class MarketEngine {
             success: true,
             msg: `[공매도 진입] ${stock.name} ${qty}주 (${leverage}x 숏 포지션) 진입 완료! (증거금: ${requiredMargin.toLocaleString()}G)`
         };
+    }
+
+    liquidateForEscape() {
+        let recovered = 0, profit = 0;
+        for (const pos of this.portfolio.values()) {
+            const stock = this.stocks.get(pos.id);
+            if (!stock) continue;
+            const diff = (stock.price - pos.avgPrice) * pos.qty * pos.leverage * (pos.isShort ? -1 : 1);
+            const payout = Math.max(0, pos.collateral + diff);
+            recovered += payout;
+            profit += payout - pos.collateral;
+        }
+        this.cash += Math.round(recovered);
+        this.portfolio.clear();
+        if (this.itemEngine) this.itemEngine.state.profit += Math.round(profit);
     }
 
     getOrderBook(stockId) {

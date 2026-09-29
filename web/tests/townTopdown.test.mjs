@@ -10,7 +10,7 @@ const tick = p => p.update(0.1, 1200, 900);
 const player = () => { const p = new TownPlayerController(); p.charPosX = 2000; p.charPosY = 1600; return p; };
 
 test('visible landscape benches expose reachable recovery actions', () => {
-    assert.equal(TOWN_LANDSCAPE_BENCHES.length, 7);
+    assert.equal(TOWN_LANDSCAPE_BENCHES.length, 8);
     for (const bench of TOWN_LANDSCAPE_BENCHES) {
         let heals = 0;
         const controller = new TownPlayerController({ onHeal: () => heals++ });

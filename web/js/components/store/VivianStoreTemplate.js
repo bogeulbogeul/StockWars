@@ -28,6 +28,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                 <button class="vivian-walkway" id="vivianWalkway" aria-label="바닥을 클릭해 이동"></button>
                 <button class="vivian-interior-hotspot vivian-door-hotspot" id="btnVivianDoor" aria-label="카펫 출입구로 나가기"></button>
                 <button class="vivian-exit-action" id="btnVivianExitAction" type="button" hidden>나가기 <kbd>F</kbd></button>
+                <button class="vivian-exit-action vivian-shop-action" id="btnVivianShopAction" data-store-browse="daily" type="button" hidden>상품 구매하기 <kbd>F</kbd></button>
                 <button class="vivian-interior-hotspot vivian-counter-hotspot" data-store-browse="daily" aria-label="계산대 이용하기"></button>
             </section>
             <div class="modal-card vivian-store-card hidden" id="vivianShopPanel" role="dialog" aria-label="비비안 잡화점 상품 구매">
@@ -179,6 +180,21 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                         <button class="footer-inv-btn" id="btnVivianOpenBag">🎒 소지품 가방 열기</button>
                     </div>
                 </div>
+            </div>
+            <div class="vivian-receipt-overlay" id="vivianReceipt" hidden>
+                <section class="vivian-receipt" role="dialog" aria-modal="true" aria-labelledby="vivianReceiptTitle">
+                    <p class="vivian-receipt-brand">비비안 잡화점</p>
+                    <h2 id="vivianReceiptTitle">구매 완료</h2>
+                    <p class="vivian-receipt-date" id="vivianReceiptDate"></p>
+                    <dl>
+                        <div><dt>상품</dt><dd id="vivianReceiptItem"></dd></div>
+                        <div><dt>수량</dt><dd id="vivianReceiptQuantity"></dd></div>
+                        <div><dt>개당 가격</dt><dd id="vivianReceiptPrice"></dd></div>
+                        <div class="vivian-receipt-total"><dt>결제 금액</dt><dd id="vivianReceiptTotal"></dd></div>
+                    </dl>
+                    <p id="vivianReceiptDelivery" role="status"></p>
+                    <button type="button" id="btnVivianReceiptClose">확인 · 계속 쇼핑하기</button>
+                </section>
             </div>
         </div>
     `;

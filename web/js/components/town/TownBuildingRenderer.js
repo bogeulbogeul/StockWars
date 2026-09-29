@@ -9,7 +9,8 @@ import { TOWN_LANDSCAPE } from '../../data/townLandscape.js';
 export class TownBuildingRenderer {
     static renderLandscapeGroundHTML() {
         // A single union mask prevents internal borders and overlapping texture layers.
-        const lanes = 'M1280 140V420H1195V1030H1840V2460 M240 1030H3460 M240 1620H3460 M240 2360H3460 M3020 2240V2360';
+        // Keep the west-side walks straight and equally inset from the expanded curb.
+        const lanes = 'M1280 140V420H1195V1030H1840V2460 M115 1030H3460 M115 1620H3460 M115 2360H3460 M3020 2240V2360';
         // Use the artwork's door position, rather than the building's center.
         const entrances = TOWN_BUILDINGS.map(b => {
             const laneY = b.y < 1100 ? 1030 : b.y < 1800 ? 1620 : 2360;
@@ -27,13 +28,13 @@ export class TownBuildingRenderer {
                     <rect x="2570" y="1850" width="900" height="440" rx="65" stroke="none" />
                     <rect x="940" y="480" width="510" height="470" rx="50" stroke="none" />
                 </g>
-                <filter id="townFloorExpand" filterUnits="userSpaceOnUse" x="130" y="130" width="3440" height="2340">
+                <filter id="townFloorExpand" filterUnits="userSpaceOnUse" x="10" y="130" width="3560" height="2340">
                     <feMorphology operator="dilate" radius="7" />
                 </filter>
-                <mask id="townFloorMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
+                <mask id="townFloorMask" maskUnits="userSpaceOnUse" x="20" y="140" width="3540" height="2320">
                     <use href="#townFloorShape" />
                 </mask>
-                <mask id="townFloorEdgeMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
+                <mask id="townFloorEdgeMask" maskUnits="userSpaceOnUse" x="20" y="140" width="3540" height="2320">
                     <use href="#townFloorShape" filter="url(#townFloorExpand)" />
                 </mask>
                 <mask id="townGardenRimMask" maskUnits="userSpaceOnUse" x="140" y="140" width="3420" height="2320">
@@ -61,8 +62,8 @@ export class TownBuildingRenderer {
     }
     static renderLandscapeHTML() {
         return TOWN_LANDSCAPE.map(p => `
-            <div id="landscape_${p.id}" class="town-landscape${p.type === 'bench' ? ' town-landscape-bench' : ''}"
-                 ${p.type === 'bench' ? `role="button" tabindex="0" data-prop-id="${p.id}" aria-label="벤치에서 기력 회복"` : 'aria-hidden="true"'}
+            <div id="landscape_${p.id}" class="town-landscape${['bench', 'vending'].includes(p.type) ? ' town-landscape-bench' : ''}"
+                 ${['bench', 'vending'].includes(p.type) ? `role="button" tabindex="0" data-prop-id="${p.id}" aria-label="${p.type === 'vending' ? '에너지 드링크 자판기' : '벤치에 앉기 · 기력 회복 하루 1회'}"` : 'aria-hidden="true"'}
                  style="left:${p.x}px;top:${p.y - p.height}px;width:${p.width}px;height:${p.height}px;z-index:${p.y}">
                 <svg width="100%" height="100%" viewBox="${p.viewBox}" focusable="false">
                     <image href="${p.src}" width="${p.imageWidth}" height="${p.imageHeight}" />

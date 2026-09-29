@@ -10,15 +10,19 @@ import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../
 import { townEntrance, TOWN_VIEW_SCALE, TOWN_SCENERY_ENABLED } from '../data/townLayout.js';
 import { TownBuildingRenderer } from './town/TownBuildingRenderer.js';
 import { TownPlayerController } from './town/TownPlayerController.js';
-import { TOWN_LANDSCAPE, TOWN_LANDSCAPE_BENCHES } from '../data/townLandscape.js';
+import { TOWN_LANDSCAPE_INTERACTIVE } from '../data/townLandscape.js';
+import { TownVendingModal } from './town/TownVendingModal.js';
+import { TOWN_OCCLUDERS, getTownVisibility } from './town/TownOcclusion.js';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
 export class TownStage {
     constructor(container, callbacks = {}) {
         this.container = container;
-        this.callbacks = callbacks;
+        this.callbacks = { ...callbacks, isInputBlocked: () => this.vendingModal?.isOpen || callbacks.isInputBlocked?.() };
+        this.vendingModal = new TownVendingModal(container, callbacks);
         this.nickname = '사이퍼 트레이더';
+        this.remotePlayers = new Map();
         this.activeChannel = '타운 2';
         this.activeNearbyObject = null;
         this.animFrameId = null;
@@ -32,7 +36,7 @@ export class TownStage {
                 this.townChar?.classList.toggle('resting-bench', resting);
             },
             onHeal: () => {
-                if (this.callbacks.onHeal) this.callbacks.onHeal();
+                return this.callbacks.onHeal?.();
             }
         });
 
@@ -85,11 +89,11 @@ export class TownStage {
                                     </svg>
                                 </pattern>
                             </defs>
-                            <path fill="url(#townOuterRoadTexture)" fill-rule="evenodd" d="M-140 -140H3840V2740H-140Z M0 0H3700V2600H0Z" />
-                            <rect x="-10000" y="-10000" width="10140" height="22600" fill="url(#townOuterRoadTexture)" />
+                            <path fill="url(#townOuterRoadTexture)" fill-rule="evenodd" d="M-260 -140H3840V2740H-260Z M-120 0H3700V2600H-120Z" />
+                            <rect x="-10000" y="-10000" width="10020" height="22600" fill="url(#townOuterRoadTexture)" />
                             <rect x="3560" y="-10000" width="10000" height="22600" fill="url(#townOuterRoadTexture)" />
                             <!-- Opposite sidewalks align with the central block, including side curbs. -->
-                            <path class="town-road-curb" d="M140 -10000V-140H3560V-10000 M140 12600V2740H3560V12600" />
+                            <path class="town-road-curb" d="M20 -10000V-140H3560V-10000 M20 12600V2740H3560V12600" />
                             ${[ { x: 1221, y: -128 }, { x: 1781, y: 2612 } ].map(({ x, y }) => `
                                 <svg x="${x}" y="${y}" width="118" height="116" viewBox="966 220 240 284" preserveAspectRatio="none" overflow="hidden">
                                     <rect x="966" y="220" width="240" height="284" fill="#43576b" />
@@ -107,9 +111,9 @@ export class TownStage {
                                     </svg>
                                 </pattern>
                             </defs>
-                            <path fill="url(#townAsphalt)" fill-rule="evenodd" d="M0 0H3700V2600H0Z M140 140H3560V2460H140Z" />
-                            <path class="town-road-curb" d="M140 140H3560V2460H140Z" />
-                            <path class="town-road-centerline" d="M0 0H3700V2600H0Z" />
+                            <path fill="url(#townAsphalt)" fill-rule="evenodd" d="M-120 0H3700V2600H-120Z M20 140H3560V2460H20Z" />
+                            <path class="town-road-curb" d="M20 140H3560V2460H20Z" />
+                            <path class="town-road-centerline" d="M-120 0H3700V2600H-120Z" />
                             <!-- Crop the crossing section of the matching road asset.
                                  North: gap between office and securities; south: central walkway. -->
                             ${[ { x: 1221, y: 12 }, { x: 1781, y: 2472 } ].map(({ x, y }) => `
@@ -264,7 +268,7 @@ export class TownStage {
             const targetProp = e.target.closest('.town-bench-prop, .town-billboard-prop, .town-landscape-bench');
             if (targetProp) {
                 const pId = targetProp.dataset.propId;
-                const prop = [...TOWN_INTERACTIVE_PROPS, ...TOWN_LANDSCAPE_BENCHES].find(p => p.id === pId);
+                const prop = [...TOWN_INTERACTIVE_PROPS, ...TOWN_LANDSCAPE_INTERACTIVE].find(p => p.id === pId);
                 if (prop) {
                     this.playerController.placeAt(prop);
                     this.checkProximity();
@@ -351,9 +355,10 @@ export class TownStage {
             this.parallaxBgEl.style.transform = `translateX(${-this.playerController.cameraX * 0.25}px)`;
         }
         if (this.townChar) {
-            this.townChar.style.left = `${this.playerController.charPosX}px`;
-            this.townChar.style.top = `${this.playerController.charPosY}px`;
-            this.townChar.style.zIndex = `${Math.round(this.playerController.charPosY)}`;
+            const position = this.playerController.renderPosition;
+            this.townChar.style.left = `${position.x}px`;
+            this.townChar.style.top = `${position.y}px`;
+            this.townChar.style.zIndex = `${position.z}`;
             this.townChar.dataset.facing = this.playerController.facing;
             const flip = this.playerController.charFacing < 0 ? 'scaleX(-1)' : 'scaleX(1)';
             const bounce = this.playerController.isMoving ? Math.sin(this.playerController.walkPhase) * 6 : 0;
@@ -362,16 +367,7 @@ export class TownStage {
             }
         }
 
-        for (const p of TOWN_LANDSCAPE) {
-            const obscured = this.playerController.charPosY < p.y && this.playerController.charPosY > p.y - p.height &&
-                this.playerController.charPosX > p.x - 16 && this.playerController.charPosX < p.x + p.width + 16;
-            document.getElementById(`landscape_${p.id}`)?.classList.toggle('player-behind', obscured);
-        }
-        for (const b of TOWN_BUILDINGS) {
-            const obscured = this.playerController.charPosY < b.y && this.playerController.charPosY > b.y - b.height - 100 &&
-                Math.abs(this.playerController.charPosX - (b.x + b.width / 2)) < b.asset.displayWidth / 2 + 24;
-            document.getElementById(`building_${b.id}`)?.classList.toggle('player-behind', obscured);
-        }
+        this.updatePlayerOcclusion();
         this.worldTrackEl.querySelectorAll('.town-urban-tree').forEach(tree => {
             const behind = this.playerController.charPosY < 1240 && this.playerController.charPosY > 960 &&
                 Math.abs(this.playerController.charPosX - parseFloat(tree.style.left) - 120) < 130;
@@ -380,12 +376,59 @@ export class TownStage {
         this.checkProximity();
     }
 
+    // Complete remote snapshot for the active channel; coordinates use the town ground plane.
+    setRemotePlayers(players = []) {
+        const seen = new Set();
+        for (const player of players) {
+            if (!player.id || player.isLocal || !Number.isFinite(player.x) || !Number.isFinite(player.y)) continue;
+            seen.add(player.id);
+            let entry = this.remotePlayers.get(player.id);
+            if (!entry) {
+                const element = this.townChar.cloneNode(true);
+                element.removeAttribute('id');
+                element.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+                element.classList.remove('resting-bench');
+                element.classList.add('town-remote-player');
+                element.style.pointerEvents = 'none';
+                this.worldTrackEl.appendChild(element);
+                entry = { element };
+                this.remotePlayers.set(player.id, entry);
+            }
+            Object.assign(entry, { id: player.id, x: player.x, y: player.y });
+            entry.element.querySelector('.town-char-nametag').textContent = player.nickname || '플레이어';
+            entry.element.style.left = `${player.x}px`;
+            entry.element.style.top = `${player.y}px`;
+            entry.element.style.zIndex = `${Math.round(player.y)}`;
+            entry.element.dataset.facing = player.facing || 'down';
+            entry.element.classList.toggle('resting-bench', !!player.resting);
+            entry.element.querySelector('.town-char-body').style.transform = '';
+        }
+        for (const [id, entry] of this.remotePlayers) {
+            if (!seen.has(id)) { entry.element.remove(); this.remotePlayers.delete(id); }
+        }
+        this.updatePlayerOcclusion();
+    }
+
+    updatePlayerOcclusion() {
+        const visibility = getTownVisibility(
+            { x: this.playerController.charPosX, y: this.playerController.charPosY },
+            [...this.remotePlayers.values()]);
+        for (const object of TOWN_OCCLUDERS) {
+            this.worldTrackEl.querySelector(`#${object.elementId}`)?.classList.toggle('player-behind', visibility.fadedObjects.has(object.elementId));
+        }
+        for (const [id, entry] of this.remotePlayers) {
+            // Hide the whole remote avatar, including name and shadow; opacity on the
+            // foreground artwork must never reveal it through a locally faded object.
+            entry.element.style.display = visibility.hiddenPlayers.has(id) ? 'none' : '';
+        }
+    }
+
     checkProximity() {
         const { charPosX, charPosY } = this.playerController;
         const candidates = [
             ...TOWN_BUILDINGS.filter(b => b.available !== false).map(b => ({ ...b, kind: 'building' })),
             ...TOWN_INTERACTIVE_PROPS.map(p => ({ ...p, kind: 'prop' })),
-            ...TOWN_LANDSCAPE_BENCHES
+            ...TOWN_LANDSCAPE_INTERACTIVE
         ];
         const nearby = candidates.map(object => {
             const entry = townEntrance(object);
@@ -416,6 +459,9 @@ export class TownStage {
                 this.playerController.restOnBench(obj, this.townChar, this.worldTrackEl);
             } else if (obj.type === 'billboard') {
                 this.billboardModal?.classList.remove('hidden');
+            } else if (obj.type === 'vending') {
+                this.playerController.keysHeld.clear();
+                this.vendingModal.open();
             }
         } else {
             switch (obj.id) {
@@ -457,6 +503,7 @@ export class TownStage {
     }
 
     hide() {
+        this.setRemotePlayers([]);
         this.containerEl?.classList.add('hidden');
         document.body.classList.remove('town-mode-active');
         this.playerController.keysHeld.clear();

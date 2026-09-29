@@ -131,7 +131,7 @@ export class MainHUD {
 
     initClock() {
         const update = () => {
-            const now = new Date();
+            const now = new Date(this.callbacks.getTime?.() || Date.now());
             const hours24 = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
@@ -189,8 +189,8 @@ export class MainHUD {
         if (!this.hudHeartContainer) return;
         let html = '';
         for (let i = 1; i <= max; i++) {
-            const isFilled = i <= current;
-            html += this.getHeartSVG(isFilled);
+            const fraction = Math.max(0, Math.min(1, current - i + 1));
+            html += `<span style="position:relative;display:inline-flex">${this.getHeartSVG(false)}<span style="position:absolute;left:0;top:0;width:${fraction * 100}%;overflow:hidden">${this.getHeartSVG(true)}</span></span>`;
         }
         this.hudHeartContainer.innerHTML = html;
         if (this.hudStaminaItem) {

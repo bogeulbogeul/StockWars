@@ -24,7 +24,12 @@
 .town-bench-prop, .town-billboard-prop, .street-lamp, .town-urban-tree { bottom: auto; }
 .town-player-character { bottom: auto; transform: translate(-50%, -100%); }
 .town-player-character[data-facing="up"] .char-face-front { visibility: hidden; }
-.town-player-character.resting-bench .town-char-body { border-radius: 14px; }
+.town-player-character.resting-bench .town-char-body { height: 36px; border-radius: 12px 12px 9px 9px; box-shadow: 0 4px 5px #182c3933; }
+.town-player-character.resting-bench .town-char-shadow { display: none; }
+.town-player-character.resting-bench .town-char-body::after {
+    content: ''; position: absolute; left: 6px; bottom: -7px; width: 12px; height: 9px;
+    border-radius: 3px 3px 5px 5px; background: #2c3e50; box-shadow: 17px 0 #2c3e50;
+}
 .town-building-prompt { z-index: 3000; }
 .town-landscape { position: absolute; pointer-events: none; }
 .town-landscape-bench { pointer-events: auto; cursor: pointer; }

@@ -142,10 +142,10 @@ export const VIVIAN_SHOP_CATALOG = [
         icon: '🎟️',
         price: 1000, // Temporary demo price; not specified by the Lotto GDD.
         instantUsable: false,
-        actionType: 'inspect',
-        actionLabel: '안내 보기',
-        desc: '매주 토요일 밤을 기다리는 로또 복권. 현재 데모에서는 보관용 상품이며 번호 선택·추첨·당첨금 지급은 아직 지원하지 않습니다. 가격은 임시 1,000G입니다.',
-        effects: ['🎲 기획: 1~45 중 6개 번호 직접 선택 또는 자동 선택', '📅 기획: 매주 토요일 21:00 서버 추첨', '🏆 기획: 6개 일치 시 1등, 미당첨 시 당첨금 무제한 이월'],
+        actionType: 'lotto',
+        actionLabel: '번호·당첨 확인',
+        desc: '구매 즉시 자동 번호 발급. 아이템 센터에서 판매 마감 전 번호를 직접 변경할 수 있습니다. 현재는 저장 파일별 로컬 데모 추첨이며 가격은 임시 1,000G입니다.',
+        effects: ['🎲 1~45 중 서로 다른 6개 번호', '📅 토요일 21:00 추첨 (데모 시각 KST)', '🏆 6개 일치 시 1등, 미당첨 시 이월 · 토요일 19:00~21:05 판매 중지'],
         linkedStock: null
     },
 

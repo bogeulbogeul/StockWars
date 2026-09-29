@@ -16,11 +16,18 @@ for (const [id, geometry] of Object.entries(regenerated)) {
 for (const id of ['fridge','goods','papers','counter','wallShelf']) {
     SPRITES[id].directory='../../../assets/interiors/vivian-grid-v4/';
 }
-// v8 edits the lower plinth of the original enclosed cabinet.
-// Full square canvas and equal display dimensions: no shear or vertical compression.
-SPRITES.goods={source:[1254,1254],crop:[0,0,1254,1254],size:[285,285],
-    anchor:[635/1254,945/1254],matrix:[1,0,0,1,0,0],
-    directory:'../../../assets/interiors/vivian-grid-v8/'};
+// Rigid rotation (~0.58°) aligns the measured base; uniform sizing joins two
+// neighboring shelves across their two-cell span. No shear or compression.
+SPRITES.goods=(()=>{
+    const angle=Math.atan(.495)-Math.atan(41/85);
+    const a=Math.cos(angle), b=Math.sin(angle), n=1254;
+    const minX=-b*n, extent=(a+b)*n;
+    const scale=170/(730*(a+.495*b));
+    return {source:[n,n],crop:[minX,0,extent,extent],size:[extent*scale,extent*scale],
+        anchor:[(a*635-b*945-minX)/extent,(b*635+a*945)/extent],
+        matrix:[a,b,-b,a,0,0],transform:`matrix(${a} ${b} ${-b} ${a} 0 0)`,
+        directory:'../../../assets/interiors/vivian-grid-v8/'};
+})();
 // Keep the round decorations intact, including all transparent padding.
 SPRITES.plant = {source:[1254,1254],crop:[0,0,1254,1254],size:[142,142],anchor:[.49,.875]};
 SPRITES.clock = {source:[1254,1254],crop:[0,0,1254,1254],size:[112,112],anchor:[.51,.49],
@@ -36,13 +43,13 @@ export function vivianStaffRectangle(items = defaultRoomLayout()) {
     // Stand at the front of the reserved staff row, close to the worktop.
     const anchor=gridToScreen(c.u+.95,c.v+1);
     // Square source canvas, measured foot midpoint; uniform scaling only.
-    const size = 200;
-    return {x:anchor.x-size*.53, y:anchor.y-size*.945, width:size, height:size,
+    const size = 170;
+    return {x:anchor.x-size*.52, y:anchor.y-size*.91, width:size, height:size,
         groundY:anchor.y, zIndex:Math.round(100+anchor.y)};
 }
 export function getVivianStaffHtml() {
     const r=vivianStaffRectangle();
-    const url=new URL('../../../assets/characters/vivian/vivian-chibi-isometric-v2.png',import.meta.url).href;
+    const url=new URL('../../../assets/characters/vivian/vivian-chibi-isometric-v3.png',import.meta.url).href;
     return `<img class="vivian-room-staff" src="${url}" alt="계산대 뒤의 비비안" draggable="false"
         style="left:${r.x/1536*100}%;top:${r.y/1024*100}%;width:${r.width/1536*100}%;height:${r.height/1024*100}%;z-index:${r.zIndex}">`;
 }

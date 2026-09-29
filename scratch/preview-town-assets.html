@@ -18,7 +18,18 @@ document.querySelector('#previewNight').onclick = () => timeOfDayService.setTime
 import { TOWN_BUILDINGS } from '/web/js/data/townWorldData.js';
 import { TOWN_VIEW_SCALE } from '/web/js/data/townLayout.js';
 import { TownStage } from '/web/js/components/TownStage.js';
+import { ItemEngine } from '/web/js/engine/ItemEngine.js';
+// Isolated preview wallet: purchases here never alter the saved game.
+const vendingPreviewMarket = { cash: 2000, stocks: new Map() };
+const vendingPreviewEngine = new ItemEngine({ market: vendingPreviewMarket });
 const stage = new TownStage(document.querySelector('#preview'), {
+    getVendingState: () => {
+        vendingPreviewEngine.tick();
+        return { cash: vendingPreviewMarket.cash, purchased: vendingPreviewEngine.state.purchases.item_energy_drink || 0,
+            owned: vendingPreviewEngine.state.inventory.find(item => item.id === 'item_energy_drink')?.quantity || 0 };
+    },
+    onPurchaseDrink: instant => vendingPreviewEngine.purchase('item_energy_drink', 1, instant),
+    onHeal: () => vendingPreviewEngine.restOnBench(),
     onOpenLogistics: () => alert('물류센터 입장 연결 확인'),
     onOpenStore: () => alert('잡화점 입장 연결 확인')
 });

@@ -50,8 +50,11 @@ export class VivianStoreModal {
         this.btnClose = document.getElementById('btnVivianClose');
         this.interiorEl = document.getElementById('vivianInterior');
         this.shopPanel = document.getElementById('vivianShopPanel');
+        this.receiptEl = document.getElementById('vivianReceipt');
+        this.receiptClose = document.getElementById('btnVivianReceiptClose');
         this.playerEl = document.getElementById('vivianPlayer');
         this.exitAction = document.getElementById('btnVivianExitAction');
+        this.shopAction = document.getElementById('btnVivianShopAction');
         this.userCashEl = document.getElementById('vivianUserCash');
         this.affinityBadgeEl = document.getElementById('vivianAffinityBadge');
         this.moodTagEl = document.getElementById('vivianMoodTag');
@@ -84,6 +87,7 @@ export class VivianStoreModal {
     }
 
     initEventListeners() {
+        this.receiptClose?.addEventListener('click', () => this.hideReceipt());
         this.exitAction?.addEventListener('click', () => {
             if (!this.isShopping && !this.roomEditor?.active && this.player.nearby()?.action==='exit') this.close();
         });
@@ -159,6 +163,11 @@ export class VivianStoreModal {
             // Closing the store must not pass the same F press to the town
             // listener, which would immediately reopen the entrance.
             e.stopImmediatePropagation();
+            if (this.receiptEl && !this.receiptEl.hidden) {
+                e.preventDefault();
+                if (!e.repeat && ['Escape','Enter',' '].includes(e.key)) this.hideReceipt();
+                return;
+            }
             if (this.roomEditor?.active) {
                 if (e.key === 'Escape') { e.preventDefault(); this.roomEditor.cancel(); }
                 return;
@@ -216,6 +225,7 @@ export class VivianStoreModal {
         const body = this.playerEl.querySelector('.town-char-body');
         body.style.transform = `scaleX(${this.player.facing}) translateY(${-Math.sin(this.player.phase) * 5}px)`;
         this.updateExitAction();
+        this.updateShopAction();
         this.playerFrame = requestAnimationFrame(time => this.animatePlayer(time));
     }
 
@@ -229,6 +239,16 @@ export class VivianStoreModal {
         }
     }
 
+    updateShopAction() {
+        if (!this.shopAction) return;
+        const shop=this.player.places.find(place=>place.action==='shop');
+        this.shopAction.hidden=!this.isOpen || this.isShopping || Boolean(this.roomEditor?.active) || this.player.nearby()?.action!=='shop';
+        if(shop) {
+            this.shopAction.style.left=`${shop.x/1536*100}%`;
+            this.shopAction.style.top=`${(shop.y-135)/1024*100}%`;
+        }
+    }
+
     interactNearby() {
         if (!this.isOpen || this.isShopping || this.roomEditor?.active) return;
         const nearby = this.player.nearby();
@@ -237,6 +257,7 @@ export class VivianStoreModal {
     }
 
     showInterior() {
+        this.hideReceipt(false);
         this.isShopping = false;
         this.shopPanel?.classList.add('hidden');
         this.interiorEl.inert = false;
@@ -255,6 +276,7 @@ export class VivianStoreModal {
     }
 
     close() {
+        this.hideReceipt(false);
         this.roomEditor?.cancel();
         this.player.stop();
         cancelAnimationFrame(this.playerFrame);
@@ -266,6 +288,8 @@ export class VivianStoreModal {
     }
 
     updateHeaderInfo() {
+        const shopState = this.callbacks.getShopState?.();
+        if (shopState) { this.affinity = shopState.affinity; this.purchasedCounts = shopState.purchases; }
         const cash = this.callbacks.getCash ? this.callbacks.getCash() : 0;
         if (this.userCashEl) this.userCashEl.textContent = `${cash.toLocaleString()} G`;
         
@@ -423,8 +447,18 @@ export class VivianStoreModal {
     }
 
     executePurchase(isConsume = false) {
+        if (this.receiptEl && !this.receiptEl.hidden) return;
         const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
         if (!item) return;
+        if (this.callbacks.onPurchaseItem) {
+            const result = this.callbacks.onPurchaseItem(item.id, this.quantity, isConsume);
+            toastManager.show(result.message, result.success);
+            if (result.success) this.showReceipt(item, this.quantity, isConsume);
+            this.updateHeaderInfo();
+            this.renderItemsGrid();
+            this.selectItem(item.id);
+            return;
+        }
         if (this.isItemLocked(item)) {
             toastManager.show(`🔒 ${item.reqUnlock.conditionDesc}`, false);
             return;
@@ -483,6 +517,8 @@ export class VivianStoreModal {
             toastManager.show(`🛍️ [구매 완료] ${item.name} x${this.quantity}개가 소지품 인벤토리에 보관되었습니다. (-${totalPrice.toLocaleString()}G)`, true);
         }
 
+        this.showReceipt(item, this.quantity, isConsume && item.instantUsable);
+
         // Brand-Linked Consumption Callback
         if (item.linkedStock && this.callbacks.onStockBoost) {
             this.callbacks.onStockBoost(item.linkedStock.id, totalPrice);
@@ -491,6 +527,29 @@ export class VivianStoreModal {
         this.updateHeaderInfo();
         this.renderItemsGrid();
         this.selectItem(item.id);
+    }
+
+    showReceipt(item, quantity, consumed) {
+        if (!this.receiptEl) return;
+        const fields = {
+            vivianReceiptDate: new Date().toLocaleString('ko-KR'),
+            vivianReceiptItem: item.name,
+            vivianReceiptQuantity: `${quantity}개`,
+            vivianReceiptPrice: `${item.price.toLocaleString()} G`,
+            vivianReceiptTotal: `${(item.price*quantity).toLocaleString()} G`,
+            vivianReceiptDelivery: consumed ? '구매한 상품을 즉시 사용했습니다.' : '구매한 상품을 소지품에 넣었습니다.'
+        };
+        for (const [id,text] of Object.entries(fields)) this.receiptEl.querySelector(`#${id}`).textContent=text;
+        this.receiptEl.hidden=false;
+        this.shopPanel.inert=true;
+        this.receiptClose.focus();
+    }
+
+    hideReceipt(restoreFocus=true) {
+        if (!this.receiptEl || this.receiptEl.hidden) return;
+        this.receiptEl.hidden=true;
+        this.shopPanel.inert=false;
+        if (restoreFocus) this.btnBuy?.focus();
     }
 
     triggerDialogue(type = 'greet', fixedIdx = null) {

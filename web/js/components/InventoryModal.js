@@ -262,6 +262,10 @@ export class InventoryModal {
     }
 
     handleItemAction(item) {
+        if (this.callbacks.onActivateItem?.(item) === true) {
+            this.renderGrid();
+            return;
+        }
         if (item.actionType === 'inspect') {
             this.callbacks.onShowToast?.(item.desc, true);
             return;
@@ -297,7 +301,10 @@ export class InventoryModal {
 
     useConsumable(item) {
         if (this.callbacks.onUseConsumable) {
-            this.callbacks.onUseConsumable(item);
+            if (this.callbacks.onUseConsumable(item) === false) return;
+        } else {
+            this.callbacks.onShowToast?.('이 아이템은 아직 사용할 수 없습니다.', false);
+            return;
         }
         
         // Decrement or remove item

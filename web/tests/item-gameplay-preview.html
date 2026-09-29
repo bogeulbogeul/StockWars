@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><base href="../"><title>상품 기능 검증</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<p>독립 검증 화면 · 상품 지급 후 사용 및 새로고침 복원 확인</p>
+<button id="seed">검증 상품 지급</button>
+<script type="module">
+import { installItemGameplay } from './js/app/ItemGameplay.js';
+import { marketEngine as market } from './js/engine/marketEngine.js';
+import { InventoryModal } from './js/components/InventoryModal.js';
+import { VIVIAN_SHOP_CATALOG } from './js/data/vivianStoreData.js';
+market.stopEngine();
+const app = {
+  userProfile: {},
+  mainHUD: { callbacks: {}, updateStamina() {} },
+  inventoryModal: new InventoryModal(document.body),
+  vivianStoreModal: { isShopping: false }
+};
+installItemGameplay(app, market, { saveKey: 'stockwars-item-gameplay-test-only' });
+document.querySelector('#seed').onclick = () => {
+  app.itemGameplay.reset();
+  app.itemEngine.state.stamina = 1;
+  for (const item of VIVIAN_SHOP_CATALOG) {
+    if (item.id !== 'item_lotto_ticket') app.itemEngine.add(item.id);
+  }
+  market.cash = 100000;
+  app.itemEngine.purchase('item_lotto_ticket');
+  app.itemGameplay.sync();
+  app.itemCenter.open();
+};
+</script>
+</body>
+</html>

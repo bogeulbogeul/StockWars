@@ -38,7 +38,15 @@ export class TownPlayerController {
 
     stopResting() {
         this.isResting = false;
+        this.restingBench = null;
         this.callbacks.onRestStateChange?.(false);
+    }
+
+    get renderPosition() {
+        const bench = this.isResting && this.restingBench;
+        if (bench) return { x: bench.x + bench.width / 2,
+            y: bench.y - (bench.height || 86) * 0.24, z: Math.ceil(bench.y) + 1 };
+        return { x: this.charPosX, y: this.charPosY, z: Math.round(this.charPosY) };
     }
 
     canStand(x, y) {
@@ -104,9 +112,10 @@ export class TownPlayerController {
     restOnBench(bench, characterElement, containerElement) {
         this.placeAt(bench);
         this.isResting = true;
+        this.restingBench = bench;
         this.callbacks.onRestStateChange?.(true);
-        this.spawnHealEffect(bench, containerElement);
-        this.callbacks.onHeal?.();
+        const result = this.callbacks.onHeal?.();
+        if (result?.success) this.spawnHealEffect(bench, containerElement);
     }
 
     spawnHealEffect(bench, containerElement) {

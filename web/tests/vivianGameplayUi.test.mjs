@@ -5,6 +5,19 @@ const {VivianStoreModal}=await import('../js/components/store/VivianStoreModal.j
 import {VivianRoomEditor} from '../js/components/store/VivianRoomEditor.js';
 import {getVivianStoreHtml} from '../js/components/store/VivianStoreTemplate.js';
 
+test('purchase prompt appears near Vivian and hides away, while shopping or editing',()=>{
+    let nearby={action:'shop'};
+    const room={isOpen:true,isShopping:false,roomEditor:{active:false},shopAction:{hidden:true,style:{}},
+        player:{places:[{action:'shop',x:400,y:700}],nearby:()=>nearby}};
+    const update=()=>VivianStoreModal.prototype.updateShopAction.call(room);
+    update(); assert.equal(room.shopAction.hidden,false);
+    assert.equal(room.shopAction.style.top,`${565/1024*100}%`);
+    nearby=null;update();assert.equal(room.shopAction.hidden,true);
+    nearby={action:'shop'};room.isShopping=true;update();assert.equal(room.shopAction.hidden,true);
+    room.isShopping=false;room.roomEditor.active=true;update();assert.equal(room.shopAction.hidden,true);
+    room.roomEditor.active=false;room.isOpen=false;update();assert.equal(room.shopAction.hidden,true);
+});
+
 test('gameplay hides editing controls by default, explicit authoring option enables them',()=>{
     assert.match(getVivianStoreHtml(),/class="vivian-layout-toolbar" hidden/);
     assert.doesNotMatch(getVivianStoreHtml({allowLayoutEditing:true}),/class="vivian-layout-toolbar" hidden/);

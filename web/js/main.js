@@ -1,4 +1,6 @@
 import { worldNavigation } from './app/WorldNavigation.js';
+import { installItemGameplay } from './app/ItemGameplay.js';
+import { VIVIAN_SHOP_CATALOG } from './data/vivianStoreData.js';
 /**
  * StockWars Web App Main Bootstrap & Orchestrator
  * Unity equivalent: GameManager.cs / SceneManager.cs
@@ -23,15 +25,16 @@ import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
-import { InventoryModal } from './components/InventoryModal.js?v=vivian-items-1';
+import { InventoryModal } from './components/InventoryModal.js?v=vivian-effects-1';
 import { FurnitureEditModal } from './components/FurnitureEditModal.js';
-import { VivianStoreModal } from './components/store/VivianStoreModal.js?v=vivian-items-1';
+import { VivianStoreModal } from './components/store/VivianStoreModal.js?v=vivian-effects-1';
 
 class StockWarsApplication {
     constructor() {
         this.appContainer = document.getElementById('app') || document.body;
         this.userProfile = null;
         this.initComponents();
+        installItemGameplay(this, marketEngine);
         this.bindEngine();
     }
 
@@ -107,7 +110,7 @@ class StockWarsApplication {
             getMaxQty: (id, lev) => {
                 const s = marketEngine.stocks.get(id);
                 if (!s || s.price <= 0) return 1;
-                return Math.max(1, Math.floor((marketEngine.cash * lev) / s.price));
+                return Math.max(1, Math.min(this.itemEngine?.orderLimit() || Infinity, Math.floor((marketEngine.cash * lev) / s.price)));
             },
             onBuy: (id, qty, lev) => {
                 const res = marketEngine.buyStock(id, qty, lev);
@@ -138,6 +141,11 @@ class StockWarsApplication {
 
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
+            onActivateItem: item => {
+                if (!VIVIAN_SHOP_CATALOG.some(product => product.id === item.id)) return false;
+                this.itemGameplay.activate(item.id);
+                return true;
+            },
             onOpen: () => this.annaTutorial?.notifyInventoryOpened(),
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
             onUseConsumable: (item) => {
@@ -167,11 +175,9 @@ class StockWarsApplication {
         // Logistics Mini-Game (Bit Logistics 60-second delivery)
         this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
             onComplete: (result) => {
-                marketEngine.cash += result.goldReward;
-                marketEngine.notify();
-                const nextStamina = Math.max(0, (this.mainHUD?.stamina?.current ?? 3) - 1);
-                this.mainHUD?.updateStamina(nextStamina);
-                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP 지급! (체력 -1: ${nextStamina}/${this.mainHUD?.stamina?.max ?? 3})`);
+                this.itemEngine.finishLabor(result.goldReward, result.expReward);
+                this.itemGameplay.sync();
+                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${this.itemEngine.laborCost()}: ${this.itemEngine.state.stamina}/3)`);
                 
                 if (result.hasRumor) {
                     this.inventoryModal?.addItem({
@@ -194,6 +200,9 @@ class StockWarsApplication {
 
         // Vivian Store Modal (MOD_GDD_03_1)
         this.vivianStoreModal = new VivianStoreModal(this.appContainer, {
+            onPurchaseItem: (id, qty, instant) => this.itemGameplay.purchase(id, qty, instant),
+            getShopState: () => this.itemEngine?.state,
+            getShopProgress: () => this.itemEngine?.progress(),
             getCash: () => marketEngine.cash,
             onDeductCash: (amt) => { marketEngine.cash = Math.max(0, marketEngine.cash - amt); marketEngine.notify(); },
             onInventoryAdd: (item) => this.inventoryModal?.addItem(item),
@@ -213,6 +222,12 @@ class StockWarsApplication {
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            getVendingState: () => {
+                this.itemEngine.tick();
+                return { cash: marketEngine.cash, purchased: this.itemEngine.state.purchases.item_energy_drink || 0,
+                    owned: this.itemEngine.state.inventory.find(item => item.id === 'item_energy_drink')?.quantity || 0 };
+            },
+            onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant),
             getBillboardState: () => ({
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
@@ -221,9 +236,9 @@ class StockWarsApplication {
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
-                const maxStamina = this.mainHUD?.stamina?.max || 3;
-                this.mainHUD?.updateStamina(maxStamina);
-                toastManager.show(`💖 [벤치 휴식] 스테미너 하트가 완충되었습니다! (${maxStamina}/${maxStamina})`, true);
+                const result = this.itemGameplay.restOnBench();
+                if (result.success) toastManager.show('💖 기력 완충! 오늘의 벤치 회복을 사용했습니다.', true);
+                return result;
             },
             onOpenStore: () => this.openVivianStore(),
             onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 줄리안: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
@@ -323,6 +338,7 @@ class StockWarsApplication {
     }
 
     startGame(mode) {
+        if (mode !== 'CONTINUE') this.itemGameplay.reset();
         this.officeStage?.anna?.resetForGameStart();
         if (mode === 'DEMO' || mode === 'DEV') {
             marketEngine.cash = 5000000;
@@ -367,6 +383,7 @@ class StockWarsApplication {
             }
             toastManager.show('💾 저장된 게임 데이터를 불러왔습니다.');
         }
+        this.itemGameplay.sync();
     }
 
     showTitleScreen() {
@@ -409,16 +426,25 @@ class StockWarsApplication {
 
     openLogisticsJob() {
         const curStamina = this.mainHUD?.stamina?.current ?? 3;
-        if (curStamina <= 0) {
+        if (curStamina < this.itemEngine.laborCost()) {
             toastManager.show('💔 [체력 고갈] 스테미너 하트가 부족하여 알바를 할 수 없습니다! 잡화점 에너지 드링크를 마시거나 마을 벤치에서 휴식하세요.');
             return;
         }
         this.annaTutorial?.notifyLogisticsOpened();
+        if (this.itemEngine.state.passUntil > this.itemEngine.now() && confirm('퀵-패스로 비트 물류를 즉시 완료할까요? (수수료 0%, 체력 소모)\n취소하면 미니게임을 직접 진행합니다.')) {
+            const result = this.itemEngine.quickJob();
+            this.itemGameplay.sync();
+            toastManager.show(result.message, result.success);
+            if (result.success) this.annaTutorial?.notifyLogisticsJobCompleted(result);
+            return;
+        }
         this.logisticsMiniGame?.open({ userNickname: this.userProfile?.nickname || '신입' });
     }
 
     nextDay() {
         marketEngine.nextDay();
+        this.itemEngine.advanceDay();
+        this.itemGameplay.sync();
         const maxStamina = this.mainHUD?.stamina?.max || 3;
         this.mainHUD?.updateStamina(maxStamina);
         toastManager.show(`📅 Day ${marketEngine.day} 일차가 시작되었습니다. (💖 체력 완충)`);
@@ -430,6 +456,7 @@ class StockWarsApplication {
 
     reset() {
         marketEngine.reset();
+        this.itemGameplay.reset();
         this.mainHUD?.updateStamina(3);
         if (this.logisticsMiniGame) this.logisticsMiniGame.completedJobsCount = 0;
         this.smartphoneUI?.favorites?.clear();

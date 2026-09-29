@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>마을 가림 비교</title>
+<base href="/web/"><link rel="stylesheet" href="/web/css/style.css">
+<style>body{margin:0}#preview{height:100vh}.hidden{display:none!important}.test-controls{position:fixed;z-index:10000;top:10px;left:10px;background:#fff;padding:12px;border-radius:8px;color:#222}.test-controls button{padding:8px}</style>
+<div id="preview"></div><div class="test-controls">가림 검증용 캐릭터 · 실제 접속자 아님<br>
+<button id="local">내가 건물 뒤</button><button id="observer">다른 플레이어 시점</button></div>
+<script type="module">
+import { TownStage } from '/web/js/components/TownStage.js';
+const stage = new TownStage(document.querySelector('#preview'));
+stage.show();
+function view(isBehind) {
+    stage.playerController.charPosX = isBehind ? 700 : 1000;
+    stage.playerController.charPosY = isBehind ? 480 : 1030;
+    stage.updateUserProfile({nickname: isBehind ? '나 · 건물 뒤에서도 보임' : '관찰자'});
+    stage.setRemotePlayers([
+        {id:'behind',nickname:'뒤의 다른 캐릭터 · 숨김',x:700,y:480},
+        {id:'front',nickname:'앞의 다른 캐릭터 · 보임',x:700,y:960}
+    ]);
+    stage.playerController.updateCamera(innerWidth / .72, innerHeight / .72, 0, true);
+    stage.update(0);
+}
+document.querySelector('#local').onclick=()=>view(true);
+document.querySelector('#observer').onclick=()=>view(false);
+view(true);
+</script></html>

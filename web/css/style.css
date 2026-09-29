@@ -57,6 +57,7 @@
 
 /* 9. Inventory & Item Systems */
 @import './modules/inventory-modal.css?v=vivian-items-1';
+@import './modules/item-center.css';
 @import './modules/rumor-popup.css';
 @import './modules/furniture-edit.css';
 @import './modules/vivian-store.css?v=vivian-items-1';
