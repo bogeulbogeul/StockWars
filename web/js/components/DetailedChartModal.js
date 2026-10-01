@@ -4,7 +4,7 @@
  * Full-screen expanded horizontal scrollable canvas stock chart with crosshair tooltips.
  */
 
-import { SECTORS } from '../data/stocksData.js';
+import { SECTORS } from '../data/stocksData.js?v=v72';
 
 export class DetailedChartModal {
     constructor(container, callbacks = {}) {

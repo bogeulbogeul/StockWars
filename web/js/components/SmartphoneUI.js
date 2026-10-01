@@ -132,9 +132,15 @@ export class SmartphoneUI {
 
         this.bubbleAppModule = new BubbleApp({
             bubbleApp: document.getElementById('bubbleApp'),
+            kakaotalkListView: document.getElementById('kakaotalkListView'),
+            kakaotalkRoomView: document.getElementById('kakaotalkRoomView'),
+            ktRoomList: document.getElementById('ktRoomList'),
+            ktFilterBar: document.getElementById('ktFilterBar'),
+            ktRoomTitle: document.getElementById('ktRoomTitle'),
+            ktRoomSub: document.getElementById('ktRoomSub'),
+            btnKtRoomBack: document.getElementById('btnKtRoomBack'),
             btnBubbleBack: document.getElementById('btnBubbleBack'),
             btnBubbleRefresh: document.getElementById('btnBubbleRefresh'),
-            bubbleActiveChannelName: document.getElementById('bubbleActiveChannelName'),
             bubbleChatFeed: document.getElementById('bubbleChatFeed'),
             bubbleMsgInput: document.getElementById('bubbleMsgInput'),
             btnBubbleSend: document.getElementById('btnBubbleSend'),
@@ -248,26 +254,8 @@ export class SmartphoneUI {
             tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
         });
 
-        const minimizePhone = (e) => {
-            if (e) e.stopPropagation();
-            document.body.classList.add('phone-minimized');
-            document.body.classList.remove('phone-view-active');
-            const toggleTxt = document.getElementById('txtFrameToggle');
-            if (toggleTxt) toggleTxt.textContent = '스마트폰 열기';
-        };
-
-        const restorePhone = (e) => {
-            if (e) e.stopPropagation();
-            this.showHomeScreen();
-            document.body.classList.remove('phone-minimized');
-            document.body.classList.add('phone-view-active');
-            const toggleTxt = document.getElementById('txtFrameToggle');
-            if (toggleTxt) toggleTxt.textContent = '스마트폰 최소화';
-            if (this.callbacks.onPhoneOpened) this.callbacks.onPhoneOpened();
-        };
-
-        this.floatingPhoneBtn?.addEventListener('click', restorePhone);
-        this.btnMinimizeHeader?.addEventListener('click', minimizePhone);
+        this.floatingPhoneBtn?.addEventListener('click', (e) => this.showPhone(e));
+        this.btnMinimizeHeader?.addEventListener('click', (e) => this.minimizePhone(e));
 
         const deviceContainer = document.querySelector('.device-container');
         const phoneShell = document.querySelector('.phone-shell');
@@ -278,9 +266,53 @@ export class SmartphoneUI {
                     !e.target.closest('.modal-overlay') && 
                     !e.target.closest('.demo-top-bar') &&
                     !e.target.closest('.vn-tutorial-overlay')) {
-                    minimizePhone(e);
+                    this.minimizePhone(e);
                 }
             });
+        }
+
+        // Keyboard Shortcuts: P or M to toggle Smartphone, ESC to minimize
+        window.addEventListener('keydown', (e) => {
+            if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+                return;
+            }
+
+            const key = e.key.toUpperCase();
+            if (key === 'P' || key === 'M') {
+                e.preventDefault();
+                this.togglePhone();
+            } else if (e.key === 'Escape') {
+                if (document.body.classList.contains('phone-view-active')) {
+                    e.preventDefault();
+                    this.minimizePhone();
+                }
+            }
+        });
+    }
+
+    minimizePhone(e) {
+        if (e) e.stopPropagation();
+        document.body.classList.add('phone-minimized');
+        document.body.classList.remove('phone-view-active');
+        const toggleTxt = document.getElementById('txtFrameToggle');
+        if (toggleTxt) toggleTxt.textContent = '스마트폰 열기';
+    }
+
+    showPhone(e) {
+        if (e) e.stopPropagation();
+        this.showHomeScreen();
+        document.body.classList.remove('phone-minimized');
+        document.body.classList.add('phone-view-active');
+        const toggleTxt = document.getElementById('txtFrameToggle');
+        if (toggleTxt) toggleTxt.textContent = '스마트폰 최소화';
+        if (this.callbacks.onPhoneOpened) this.callbacks.onPhoneOpened();
+    }
+
+    togglePhone() {
+        if (document.body.classList.contains('phone-minimized')) {
+            this.showPhone();
+        } else {
+            this.minimizePhone();
         }
     }
 
@@ -321,5 +353,13 @@ export class SmartphoneUI {
         this.newsTab?.updateState(state);
         this.portfolioTab?.updateState(state);
         this.bubbleAppModule?.updateState(state);
+    }
+
+    openBubbleAppWithFriend(friend) {
+        this.showPhone();
+        this.showBubbleApp();
+        if (this.bubbleAppModule && friend) {
+            this.bubbleAppModule.openDirectMessageWithFriend(friend);
+        }
     }
 }

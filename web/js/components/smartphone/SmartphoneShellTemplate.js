@@ -25,14 +25,13 @@ export function getSmartphoneShellHtml() {
                             <div class="app-icon-item" id="iconStockApp">
                                 <div class="app-icon stock-app-bg">
                                     <span class="app-emoji">📈</span>
-                                    <span class="app-badge">HTS</span>
                                 </div>
                                 <div class="app-label">사이퍼M</div>
                             </div>
                             <div class="app-icon-item" id="iconBubbleApp">
                                 <div class="app-icon bubble-app-bg">
                                     <span class="app-emoji">💬</span>
-                                    <span class="app-badge">3</span>
+                                    <span class="app-badge" style="display: none;">0</span>
                                 </div>
                                 <div class="app-label">Bubble</div>
                             </div>
@@ -220,47 +219,90 @@ export function getSmartphoneShellHtml() {
                         </div>
                     </div>
 
-                    <!-- 3. Bubble Messenger Application -->
+                    <!-- 3. KakaoTalk-Style Messenger Application -->
                     <div id="bubbleApp" class="os-screen hidden">
-                        <div class="bubble-header">
-                            <button class="bubble-back-btn" id="btnBubbleBack" title="OS 홈 화면으로">
-                                <span class="back-arrow">←</span>
-                            </button>
-                            <div class="bubble-header-info">
-                                <div class="bubble-title-row">
-                                    <span class="bubble-logo-icon">💬</span>
-                                    <span class="bubble-title">Bubble</span>
-                                    <span class="bubble-verified-tag">SECRET</span>
+                        <!-- Top Navigation Bar inside Bubble App -->
+                        <div class="bubble-nav-bar" id="bubbleNavBar">
+                            <button class="bubble-nav-tab active" data-tab="chats">💬 채팅</button>
+                            <button class="bubble-nav-tab" data-tab="friends">👥 친구</button>
+                            <button class="bubble-nav-tab" data-tab="add">➕ 추가</button>
+                            <button class="bubble-nav-tab" data-tab="envy">⚡ 배아픈알림</button>
+                        </div>
+
+                        <!-- VIEW A: CHAT ROOM LIST (카카오톡 채팅 목록) -->
+                        <div id="kakaotalkListView" class="kakaotalk-view active">
+                            <div class="kt-header">
+                                <button class="kt-back-home-btn" id="btnBubbleBack" title="OS 홈 화면으로">←</button>
+                                <span class="kt-title" id="ktHeaderTitle">채팅</span>
+                                <div class="kt-header-actions">
+                                    <button class="kt-icon-btn" title="검색">🔍</button>
+                                    <button class="kt-icon-btn" id="btnBubbleRefresh" title="새로고침">🔄</button>
                                 </div>
-                                <div class="bubble-status-sub" id="bubbleActiveChannelName">🔥 여의도 참새방앗간 (익명 찌라시 룸)</div>
                             </div>
-                            <button class="bubble-action-btn" id="btnBubbleRefresh" title="메시지 새로고침">
-                                <span>🔄</span>
-                            </button>
+
+                            <!-- Sub View: Chats List -->
+                            <div id="bubbleSubViewChats" class="bubble-sub-view active">
+                                <div class="kt-filter-bar" id="ktFilterBar">
+                                    <button class="kt-filter-tab active" data-filter="all">전체</button>
+                                    <button class="kt-filter-tab" data-filter="open">🌐 오픈채팅</button>
+                                    <button class="kt-filter-tab" data-filter="direct">👤 개인 1:1</button>
+                                </div>
+                                <div class="kt-room-list" id="ktRoomList"></div>
+                            </div>
+
+                            <!-- Sub View: Friends List -->
+                            <div id="bubbleSubViewFriends" class="bubble-sub-view hidden">
+                                <div class="kt-friends-container" id="ktFriendsContainer"></div>
+                            </div>
+
+                            <!-- Sub View: Add Friend -->
+                            <div id="bubbleSubViewAdd" class="bubble-sub-view hidden">
+                                <div class="kt-add-box">
+                                    <div class="search-input-group">
+                                        <input type="text" id="inputKtFriendSearch" placeholder="트레이더 닉네임 입력..." />
+                                        <button id="btnKtAddFriendSubmit" class="btn-primary-sm">신청</button>
+                                    </div>
+                                    <div class="recommended-title">💡 추천 매너 트레이더</div>
+                                    <div class="kt-friends-container" id="ktRecommendedContainer"></div>
+                                </div>
+                            </div>
+
+                            <!-- Sub View: Envy Feed -->
+                            <div id="bubbleSubViewEnvy" class="bubble-sub-view hidden">
+                                <div class="envy-feed-header">
+                                    <span class="feed-desc">친구가 대박을 터뜨렸을 때 🥳/😒/😡 이모지로 반응하여 우호도(FP)를 쌓으세요.</span>
+                                </div>
+                                <div class="envy-feed-list" id="ktEnvyFeedContainer"></div>
+                            </div>
                         </div>
 
-                        <div class="bubble-channel-bar">
-                            <button class="bubble-chan-tab active" data-channel="rumor">
-                                <span class="chan-icon">🔥</span>
-                                <span class="chan-name">참새방앗간</span>
-                                <span class="chan-badge" id="badgeRumorCount">2</span>
-                            </button>
-                            <button class="bubble-chan-tab" data-channel="anna">
-                                <span class="chan-icon">💼</span>
-                                <span class="chan-name">매니저 안나</span>
-                                <span class="chan-badge dot"></span>
-                            </button>
-                            <button class="bubble-chan-tab" data-channel="quant">
-                                <span class="chan-icon">⚡</span>
-                                <span class="chan-name">퀀트 AI</span>
-                            </button>
-                        </div>
+                        <!-- VIEW B: CHAT ROOM DETAIL (카카오톡 대화방 내부) -->
+                        <div id="kakaotalkRoomView" class="kakaotalk-view hidden">
+                            <div class="kt-room-header">
+                                <button class="kt-room-back-btn" id="btnKtRoomBack" title="채팅 목록으로">←</button>
+                                <div class="kt-room-header-info">
+                                    <div class="kt-room-title" id="ktRoomTitle">여의도 참새방앗간</div>
+                                    <div class="kt-room-sub" id="ktRoomSub">오픈채팅 1,420명</div>
+                                </div>
+                                <div class="kt-header-actions">
+                                    <button class="kt-icon-btn" title="대화 검색">🔍</button>
+                                    <button class="kt-icon-btn" title="메뉴">☰</button>
+                                </div>
+                            </div>
 
-                        <div class="bubble-chat-feed" id="bubbleChatFeed"></div>
+                            <div class="bubble-chat-feed" id="bubbleChatFeed"></div>
 
-                        <div class="bubble-input-bar">
-                            <input type="text" class="bubble-input" id="bubbleMsgInput" placeholder="익명 메시지 입력..." maxlength="60">
-                            <button class="bubble-send-btn" id="btnBubbleSend">전송</button>
+                            <div class="bubble-input-bar">
+                                <button class="bubble-attach-btn" title="첨부">＋</button>
+                                <div class="bubble-input-wrapper">
+                                    <input type="text" class="bubble-input" id="bubbleMsgInput" placeholder="메시지 입력..." maxlength="60">
+                                    <div class="bubble-input-actions">
+                                        <button class="bubble-input-icon-btn" id="btnKtEmoticon" title="이모티콘">😊</button>
+                                        <button class="bubble-input-icon-btn" id="btnKtHash" title="검색">＃</button>
+                                    </div>
+                                </div>
+                                <button class="bubble-send-btn" id="btnBubbleSend">전송</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,7 +317,7 @@ export function getSmartphoneShellHtml() {
             </div>
         </div>
 
-        <button id="floatingPhoneBtn" class="floating-phone-btn" title="스마트폰 HTS 열기">
+        <button id="floatingPhoneBtn" class="floating-phone-btn" title="스마트폰 HTS 열기 (단축키: P / M / ESC)">
             <div class="mini-phone-shell">
                 <div class="mini-phone-speaker"></div>
                 <div class="mini-phone-screen"></div>

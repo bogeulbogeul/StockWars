@@ -133,6 +133,7 @@ export class InventoryModal {
 
     getFilteredItems() {
         return this.items.filter(item => {
+            if (item.category === 'apparel') return false;
             const matchesCat = this.activeCategory === 'all' || item.category === this.activeCategory;
             const matchesSearch = !this.searchQuery || 
                 item.name.toLowerCase().includes(this.searchQuery) ||
@@ -344,7 +345,8 @@ export class InventoryModal {
 
     updateCapacityBadge() {
         if (this.capacityBadge) {
-            this.capacityBadge.textContent = `보관함 ${this.items.length} / ${this.maxSlots}`;
+            const count = this.items.filter(i => i.category !== 'apparel').length;
+            this.capacityBadge.textContent = `보관함 ${count} / ${this.maxSlots}`;
         }
     }
 

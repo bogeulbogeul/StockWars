@@ -5,6 +5,7 @@
  */
 
 import { timeOfDayService } from '../engine/timeOfDayService.js';
+import { weatherService } from '../engine/weatherService.js';
 
 export class TopDemoBar {
     constructor(container, callbacks = {}) {
@@ -27,6 +28,9 @@ export class TopDemoBar {
                     </button>
                     <button id="btnCycleTime" class="demo-btn special-btn" title="하늘 시간대 전환 (새벽 🌅 -> 낮 ☀️ -> 노을 🌇 -> 밤 🌙)">
                         <span class="btn-icon" id="iconDemoTime">☀️</span> <span id="txtDemoTime">낮</span>
+                    </button>
+                    <button id="btnCycleWeather" class="demo-btn special-btn" title="날씨 시뮬레이션 (맑음 ☀️ -> 구름조금 ⛅ -> 흐림 ☁️ -> 비 🌧️ -> 눈 ❄️ -> 뇌우 ⛈️ -> 블랙스완 🚨)">
+                        <span class="btn-icon" id="iconDemoWeather">☀️</span> <span id="txtDemoWeather">맑음</span>
                     </button>
                     <button id="btnToggleStage" class="demo-btn special-btn" title="오피스 ↔ 타운 맵 전환">
                         <span class="btn-icon">🏙️</span> <span id="txtStageToggle">타운으로 이동</span>
@@ -59,6 +63,9 @@ export class TopDemoBar {
         this.btnCycleTime = document.getElementById('btnCycleTime');
         this.iconDemoTime = document.getElementById('iconDemoTime');
         this.txtDemoTime = document.getElementById('txtDemoTime');
+        this.btnCycleWeather = document.getElementById('btnCycleWeather');
+        this.iconDemoWeather = document.getElementById('iconDemoWeather');
+        this.txtDemoWeather = document.getElementById('txtDemoWeather');
         this.btnToggleStage = document.getElementById('btnToggleStage');
         this.txtStageToggle = document.getElementById('txtStageToggle');
         this.btnToggleFrame = document.getElementById('btnToggleFrame');
@@ -83,6 +90,15 @@ export class TopDemoBar {
         timeOfDayService.subscribe((_timeKey, meta) => {
             if (this.iconDemoTime) this.iconDemoTime.textContent = meta.icon;
             if (this.txtDemoTime) this.txtDemoTime.textContent = meta.label.split('/')[0].trim();
+        });
+
+        this.btnCycleWeather?.addEventListener('click', () => {
+            weatherService.cycleWeather();
+        });
+
+        weatherService.subscribe((weather) => {
+            if (this.iconDemoWeather) this.iconDemoWeather.textContent = weather.icon;
+            if (this.txtDemoWeather) this.txtDemoWeather.textContent = weather.text;
         });
 
         this.btnToggleStage?.addEventListener('click', () => {

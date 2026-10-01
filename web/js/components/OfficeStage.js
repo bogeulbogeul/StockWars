@@ -38,6 +38,9 @@ export class OfficeStage {
         this.render();
         this.initDOM();
         this.anna = new OfficeAnna(this.actorLayer);
+        this.anna.onTalkToAnna = () => {
+            if (this.callbacks.onTalkToAnna) this.callbacks.onTalkToAnna();
+        };
         this.initFloorTiles();
         this.initEventListeners();
         this.startLoop();
@@ -62,6 +65,9 @@ export class OfficeStage {
         this.officeDoor = document.getElementById('isoOfficeDoor');
         this.doorPrompt = document.getElementById('isoDoorPrompt');
         this.doorFloatingBtn = document.getElementById('officeDoorFloatingBtn');
+        this.annaPrompt = document.getElementById('isoAnnaPrompt');
+        this.annaFloatingBtn = document.getElementById('officeAnnaFloatingBtn');
+        this.isNearAnna = false;
 
         // Dynamic Atmospheric Sky System
         if (this.stageContainer) {
@@ -115,6 +121,23 @@ export class OfficeStage {
             triggerDoorInteraction();
         });
 
+        const triggerAnnaInteraction = () => {
+            if (this.stageContainer?.classList.contains('hidden')) return;
+            if (this.callbacks.onTalkToAnna) {
+                this.callbacks.onTalkToAnna();
+            }
+        };
+
+        this.annaPrompt?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            triggerAnnaInteraction();
+        });
+
+        this.annaFloatingBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            triggerAnnaInteraction();
+        });
+
         // 3. Continuous Keyboard Tracking (WASD / Arrow Keys & F Key for Door Interaction)
         window.addEventListener('keydown', (e) => {
             if (this.stageContainer?.classList.contains('hidden')) return;
@@ -132,6 +155,9 @@ export class OfficeStage {
                 if (this.isNearDoor) {
                     e.preventDefault();
                     triggerDoorInteraction();
+                } else if (this.isNearAnna) {
+                    e.preventDefault();
+                    triggerAnnaInteraction();
                 }
             }
         });
@@ -261,6 +287,35 @@ export class OfficeStage {
             || document.body.classList.contains('modal-active')
             || !!document.querySelector('#titleScreen:not(.hidden), #characterCreationModal:not(.hidden), .modal-overlay:not(.hidden), .vn-tutorial-overlay:not(.hidden)');
         this.anna.update(dt, { x: this.posX, y: this.posY }, annaPaused);
+
+        // Check Proximity to Anna (this.anna.x, this.anna.y)
+        const distToAnna = Math.hypot(this.posX - this.anna.x, this.posY - this.anna.y);
+        const nearAnna = distToAnna <= 2.2 && this.anna.visible;
+
+        if (nearAnna !== this.isNearAnna) {
+            this.isNearAnna = nearAnna;
+            if (this.annaPrompt) {
+                if (nearAnna) {
+                    this.annaPrompt.classList.remove('hidden');
+                } else {
+                    this.annaPrompt.classList.add('hidden');
+                }
+            }
+            if (this.annaFloatingBtn) {
+                if (nearAnna) {
+                    this.annaFloatingBtn.classList.remove('hidden');
+                } else {
+                    this.annaFloatingBtn.classList.add('hidden');
+                }
+            }
+        }
+
+        if (this.isNearAnna && this.annaPrompt) {
+            const annaScreenX = 500 + (this.anna.y - this.anna.x) * 33.75;
+            const floatBob = Math.sin(now / 250) * 3;
+            const annaScreenY = 320 + (this.anna.x + this.anna.y + 1) * 19.1 - 92 + floatBob;
+            this.annaPrompt.setAttribute('transform', `translate(${annaScreenX.toFixed(2)}, ${annaScreenY.toFixed(2)})`);
+        }
         // SVG paints later siblings in front; sort the two actors by floor depth.
         const frontActor = this.posX + this.posY >= this.anna.x + this.anna.y
             ? this.playerChar : this.anna.element;
@@ -280,7 +335,7 @@ export class OfficeStage {
 
         if (this.isMoving) {
             bobY = -Math.abs(Math.sin(this.walkPhase)) * 7;
-            tiltDeg = Math.sin(this.walkPhase) * 3.5 * this.facing;
+            tiltDeg = Math.sin(this.walkPhase) * 3.5 * (this.facing < 0 ? -1 : 1);
             shadowScale = 0.92 + Math.abs(Math.sin(this.walkPhase)) * 0.12;
         } else {
             bobY = Math.sin(this.idlePhase) * 1.5;
@@ -291,7 +346,7 @@ export class OfficeStage {
         this.playerChar.setAttribute('transform', `translate(${screenX.toFixed(2)}, ${(screenY + bobY).toFixed(2)})`);
 
         if (this.charBody) {
-            this.charBody.setAttribute('transform', `scale(${this.facing}, 1) rotate(${tiltDeg.toFixed(2)})`);
+            this.charBody.setAttribute('transform', `rotate(${tiltDeg.toFixed(2)})`);
         }
 
         if (this.charShadow) {

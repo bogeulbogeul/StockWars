@@ -40,6 +40,9 @@ export class FurnitureEditModal {
                             <span class="furn-stat-badge" id="furnOccupancyBadge">점유 타일: 11 / 64 (17.2%)</span>
                         </div>
                         <div class="furn-actions-top">
+                            <button class="furn-tool-btn" id="btnFurnOpenWardrobe" title="보유 의상 룩북 & 드레스룸 열기">
+                                <span>👗</span> <span>옷장 열기</span>
+                            </button>
                             <button class="furn-tool-btn" id="btnFurnRotate" title="선택 가구 90도 회전 (R)">
                                 <span>🔄</span> <span>90° 회전</span>
                             </button>
@@ -100,6 +103,7 @@ export class FurnitureEditModal {
         this.btnRotate = document.getElementById('btnFurnRotate');
         this.btnClearAll = document.getElementById('btnFurnClearAll');
         this.btnSaveClose = document.getElementById('btnFurnSaveClose');
+        this.btnOpenWardrobe = document.getElementById('btnFurnOpenWardrobe');
         this.gridContainer = document.getElementById('furn8x8Grid');
         this.tabsContainer = document.getElementById('furnTabsContainer');
         this.itemsList = document.getElementById('furnItemsList');
@@ -107,6 +111,9 @@ export class FurnitureEditModal {
 
     initEventListeners() {
         this.btnSaveClose?.addEventListener('click', () => this.close());
+        this.btnOpenWardrobe?.addEventListener('click', () => {
+            if (this.callbacks.onOpenWardrobe) this.callbacks.onOpenWardrobe();
+        });
         this.btnRotate?.addEventListener('click', () => this.rotateSelectedFurniture());
         this.btnClearAll?.addEventListener('click', () => this.clearAllFurniture());
 

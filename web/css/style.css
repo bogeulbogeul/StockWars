@@ -24,7 +24,9 @@
 @import './modules/news.css';
 
 /* 5. In-Game SNS & Communication */
-@import './modules/bubble-messenger.css';
+@import './modules/bubble-messenger.css?v=kakaotalk-input-pin-v9';
+@import './modules/friend-modal.css';
+@import './modules/ranking-modal.css';
 
 /* 6. Narrative, Tutorial & Intro */
 @import './modules/title-screen.css';
@@ -34,6 +36,7 @@
 @import './modules/character/id-card.css';
 @import './modules/visual-novel.css';
 @import './modules/anna-portrait.css';
+@import './modules/anna-dialogue.css';
 
 /* 7. World Environments & Stages */
 @import './modules/sky-background.css';
@@ -60,4 +63,5 @@
 @import './modules/item-center.css';
 @import './modules/rumor-popup.css';
 @import './modules/furniture-edit.css';
+@import './modules/wardrobe-modal.css';
 @import './modules/vivian-store.css?v=vivian-items-1';

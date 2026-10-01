@@ -6,7 +6,7 @@
  * Global Cipher Index, 7-Day Settlement math.
  */
 
-import { INITIAL_STOCKS, INITIAL_NEWS } from '../data/stocksData.js';
+import { INITIAL_STOCKS, INITIAL_NEWS } from '../data/stocksData.js?v=v72';
 
 export class MarketEngine {
     constructor() {
@@ -149,6 +149,21 @@ export class MarketEngine {
     setTutorialActive(isActive) {
         this.isTutorialActive = isActive;
     }
+
+
+    ensureTutorialAffordability(stockId) {
+        const stock = this.stocks.get(stockId);
+        if (!stock) return 0;
+        if (this.cash < stock.price) {
+            const subsidy = Math.ceil(stock.price - this.cash + 1000);
+            this.cash += subsidy;
+            this.notify();
+            return subsidy;
+        }
+        return 0;
+    }
+
+
 
     subscribe(listener) {
         this.listeners.add(listener);

@@ -1,404 +1,487 @@
 /* ==========================================================================
-   Bubble Messenger Application (익명 찌라시 & 실시간 메신저) Styles
+   KakaoTalk Mobile Messenger Stylesheet
+   Features KakaoTalk Speech Bubbles Harmonized with Smartphone Dark OS Theme
    ========================================================================== */
+
 #bubbleApp {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: #0f1422;
-    color: var(--text-main);
+    background: #141824;
+    color: #f1f5f9;
     overflow: hidden;
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
-#bubbleApp.hidden {
-    display: none !important;
+#bubbleApp.hidden { display: none !important; }
+
+/* Sub-Navigation Bar inside Bubble App */
+.bubble-nav-bar {
+    display: flex;
+    background: #101420;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+.bubble-nav-tab {
+    flex: 1;
+    padding: 9px 4px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.bubble-nav-tab:hover { color: #cbd5e1; }
+.bubble-nav-tab.active {
+    color: #fee500;
+    border-bottom-color: #fee500;
+    background: rgba(254, 229, 0, 0.08);
 }
 
-.bubble-header {
-    height: 52px;
+.bubble-sub-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+.bubble-sub-view.hidden { display: none !important; }
+
+.kt-friends-container { display: flex; flex-direction: column; gap: 8px; }
+.kakaotalk-view { display: flex; flex-direction: column; flex: 1 1 0%; height: 100%; min-height: 0; max-height: 100%; width: 100%; overflow: hidden; }
+.kakaotalk-view.hidden { display: none !important; }
+.bubble-nav-bar.hidden { display: none !important; }
+
+/* ==========================================================================
+   1. VIEW A: KakaoTalk Chat Room List (채팅 목록)
+   ========================================================================== */
+.kt-header {
+    height: 46px;
     padding: 0 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #141b2d;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #141824;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     flex-shrink: 0;
 }
-
-.bubble-back-btn {
+.kt-back-home-btn {
     background: rgba(255, 255, 255, 0.08);
     border: none;
-    color: #fff;
-    width: 32px;
-    height: 32px;
+    color: #fee500;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.bubble-back-btn:hover {
-    background: rgba(0, 229, 255, 0.2);
-    color: var(--accent-cyan);
-}
-
-.bubble-header-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.bubble-title-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.bubble-logo-icon {
-    font-size: 16px;
-}
-
-.bubble-title {
     font-size: 15px;
-    font-weight: 800;
-    letter-spacing: -0.3px;
-    background: linear-gradient(135deg, #f857a6, #ff5858);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.bubble-verified-tag {
-    font-size: 9px;
-    font-weight: 800;
-    background: rgba(248, 87, 166, 0.2);
-    color: #f857a6;
-    border: 1px solid rgba(248, 87, 166, 0.4);
-    padding: 1px 5px;
-    border-radius: 4px;
-}
-
-.bubble-status-sub {
-    font-size: 10.5px;
-    color: var(--text-muted);
-    margin-top: 1px;
-}
-
-.bubble-action-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 16px;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-.bubble-action-btn:hover {
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Bubble Channel Tabs */
-.bubble-channel-bar {
-    display: flex;
-    background: #111728;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 4px 8px;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-.bubble-chan-tab {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    padding: 8px 6px;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    color: var(--text-muted);
-    font-size: 11.5px;
     font-weight: 700;
     cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.kt-back-home-btn:hover { background: rgba(254, 229, 0, 0.2); }
+.kt-title { font-size: 16px; font-weight: 800; color: #ffffff; }
+.kt-header-actions { display: flex; align-items: center; gap: 6px; }
+.kt-icon-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px;
+}
+.kt-icon-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
 
-.bubble-chan-tab:hover {
-    color: var(--text-main);
+/* Filter Bar */
+.kt-filter-bar {
+    display: flex;
+    padding: 6px 8px;
+    gap: 6px;
+    background: #101420;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+.kt-filter-tab {
+    padding: 4px 10px;
     background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.kt-filter-tab.active {
+    background: rgba(254, 229, 0, 0.18);
+    color: #fee500;
+    border-color: rgba(254, 229, 0, 0.4);
+    font-weight: 700;
 }
 
-.bubble-chan-tab.active {
-    background: rgba(248, 87, 166, 0.14);
-    color: #ff7597;
-    border-color: rgba(248, 87, 166, 0.35);
+.kt-room-list { flex: 1 1 0%; height: 0; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; }
+.kt-room-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: background 0.15s ease;
 }
-
-.bubble-chan-tab .chan-badge {
-    background: var(--accent-red);
-    color: #fff;
-    font-size: 9.5px;
-    font-weight: 800;
-    padding: 1px 5px;
-    border-radius: 10px;
-    min-width: 14px;
-    text-align: center;
+.kt-room-item:hover { background: rgba(255, 255, 255, 0.04); }
+.kt-room-avatar {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
 }
+.kt-room-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.kt-room-top-row { display: flex; align-items: center; gap: 6px; }
+.kt-room-name { font-size: 13px; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kt-room-badge { font-size: 9.5px; padding: 1px 5px; border-radius: 4px; font-weight: 600; }
+.kt-room-badge.open { background: rgba(0, 229, 255, 0.15); color: #00e5ff; }
+.kt-room-badge.direct { background: rgba(248, 87, 166, 0.15); color: #ff7597; }
+.kt-room-last-msg { font-size: 11.5px; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kt-room-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.kt-room-time { font-size: 10px; color: #64748b; }
+.kt-unread-pill { background: #ef4444; color: #ffffff; font-size: 9.5px; font-weight: 800; padding: 1px 6px; border-radius: 10px; }
 
-.bubble-chan-tab .chan-badge.dot {
-    width: 6px;
-    height: 6px;
-    padding: 0;
-    min-width: 6px;
-    border-radius: 50%;
-    background: var(--accent-cyan);
-}
-
-/* Chat Feed */
-.bubble-chat-feed {
-    flex: 1;
-    padding: 12px 14px;
-    overflow-y: auto;
+/* ==========================================================================
+   2. VIEW B: KAKAOTALK CHAT ROOM DETAIL (SMARTPHONE DARK THEME HARMONY)
+   ========================================================================== */
+#kakaotalkRoomView {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
-.bubble-date-divider {
-    text-align: center;
-    margin: 4px 0 8px 0;
-}
-
-.bubble-date-divider span {
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 3px 10px;
-    border-radius: 12px;
-}
-
-.bubble-system-notice {
-    font-size: 11px;
-    color: #ffd166;
-    background: rgba(255, 209, 102, 0.1);
-    border: 1px solid rgba(255, 209, 102, 0.25);
-    border-radius: 8px;
-    padding: 8px 10px;
-    line-height: 1.4;
-    text-align: center;
-}
-
-.bubble-msg-row {
+.kt-room-header {
+    height: 46px;
+    min-height: 46px;
+    max-height: 46px;
+    padding: 0 12px;
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    background: #141824;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
-
-.bubble-msg-row.user-row {
-    justify-content: flex-end;
-}
-
-.bubble-avatar {
-    width: 34px;
-    height: 34px;
+.kt-room-back-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fee500;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: #1c253b;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kt-room-back-btn:hover { background: rgba(254, 229, 0, 0.18); }
+.kt-room-header-info { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.kt-room-title { font-size: 14px; font-weight: 800; color: #ffffff; }
+.kt-room-sub { font-size: 10px; color: #94a3b8; }
+.kt-room-header .kt-icon-btn { color: #94a3b8; }
+.kt-room-header .kt-icon-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.08); }
+
+/* Chat Feed Background (Dark Navy Matching Smartphone OS) */
+.bubble-chat-feed {
+    flex: 1 1 0%;
+    height: 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #1a2232;
+    scroll-behavior: smooth;
+}
+
+.chat-date-header { display: flex; justify-content: center; margin: 2px 0 4px 0; }
+.chat-date-pill {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    font-size: 10px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.chat-system-banner {
+    background: rgba(254, 229, 0, 0.08);
+    border: 1px solid rgba(254, 229, 0, 0.25);
+    color: #fef08a;
+    font-size: 11px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 3. KakaoTalk Message Row Layout */
+.chat-row { display: flex; gap: 8px; width: 100%; align-items: flex-start; }
+.chat-row.incoming { justify-content: flex-start; }
+.chat-row.outgoing { justify-content: flex-end; }
+.chat-avatar-col { flex-shrink: 0; }
+.chat-avatar {
+    width: 36px;
+    height: 36px;
+    background: #242e42;
     border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 42%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 
-.bubble-msg-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    max-width: 82%;
+.chat-avatar.anna-avatar {
+    background: rgba(248, 87, 166, 0.15);
+    border-color: rgba(248, 87, 166, 0.35);
+    overflow: hidden;
 }
 
-.bubble-msg-content.user-content {
-    align-items: flex-end;
-}
+.chat-bubble-col { display: flex; flex-direction: column; max-width: 82%; }
+.chat-bubble-col.outgoing-col { align-items: flex-end; }
 
-.bubble-msg-author {
+.chat-sender-meta {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11px;
+    gap: 5px;
+    margin-bottom: 3px;
+    padding-left: 2px;
 }
-
-.bubble-msg-author .author-name {
-    font-weight: 700;
-    color: #e2e8f0;
-}
-
-.bubble-msg-author .author-role {
-    font-size: 9.5px;
-    color: #a0aec0;
+.sender-name { font-size: 11.5px; font-weight: 700; color: #e2e8f0; }
+.sender-role-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 4px;
     background: rgba(255, 255, 255, 0.08);
-    padding: 1px 4px;
-    border-radius: 3px;
+    color: #94a3b8;
 }
+.sender-role-badge.anna { background: rgba(248, 87, 166, 0.18); color: #ff7597; }
+.sender-role-badge.quant { background: rgba(0, 229, 255, 0.18); color: #00e5ff; }
 
-.bubble-msg-author .msg-time {
-    font-size: 10px;
-    color: var(--text-muted);
+.chat-bubble-wrap { display: flex; align-items: flex-end; gap: 4px; }
+.chat-bubble-wrap.outgoing-wrap { justify-content: flex-end; }
+
+.chat-time {
+    font-size: 9.5px;
+    color: #64748b;
+    white-space: nowrap;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
+.read-receipt { font-size: 10px; color: #fee500; font-weight: 800; margin-bottom: 1px; }
 
-.bubble-bubble {
-    background: #1a2236;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 4px 14px 14px 14px;
-    padding: 10px 12px;
+/* Incoming Bubble (Sleek Dark Slate Card with left tail tip) */
+.chat-bubble.incoming-bubble {
+    background: #232c3d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+    border-radius: 2px 14px 14px 14px;
+    padding: 8px 12px;
     font-size: 12.5px;
     line-height: 1.45;
-    color: var(--text-main);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    position: relative;
+    word-break: break-word;
 }
 
-.bubble-bubble.user-bubble {
-    background: linear-gradient(135deg, #00b4db, #0083b0);
-    color: #ffffff;
-    border-radius: 14px 4px 14px 14px;
-    border: none;
-    font-weight: 500;
+/* Outgoing Bubble (Signature Gold Accent with right tail tip) */
+.chat-bubble.outgoing-bubble {
+    background: #fee500;
+    color: #141824;
+    border-radius: 14px 2px 14px 14px;
+    padding: 8px 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.45;
+    box-shadow: 0 2px 8px rgba(254, 229, 0, 0.25);
+    position: relative;
+    word-break: break-word;
 }
 
-.bubble-msg-content .user-time {
-    font-size: 9.5px;
-    color: var(--text-muted);
-    margin-top: 2px;
-}
-
-.bubble-bubble.anna-bubble {
-    border-color: rgba(0, 229, 255, 0.25);
-    background: #14243b;
-}
-
-.bubble-bubble.quant-bubble {
-    border-color: rgba(255, 214, 0, 0.25);
-    background: #232219;
-}
-
-.bubble-bubble.rumor-bubble {
-    border-color: rgba(248, 87, 166, 0.3);
-    background: #201625;
-}
-
-.rumor-headline {
+/* Rumor & Stock Cards Inside Chat Bubble */
+.chat-rumor-tag {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 6px;
-    padding-bottom: 4px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-}
-
-.rumor-badge {
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-bottom: 5px;
     font-size: 10.5px;
-    font-weight: 800;
-    color: #ff7597;
+    font-weight: 700;
 }
+.chat-rumor-tag.gainer { color: #f87171; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.25); }
+.chat-rumor-tag.loser { color: #60a5fa; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.25); }
+.tag-impact { font-weight: 800; }
 
-.rumor-impact {
-    font-size: 11px;
-    font-weight: 800;
-    font-family: var(--font-mono);
+.chat-bubble-title { font-weight: 700; font-size: 12.5px; color: #ffffff; margin-bottom: 3px; }
+.chat-bubble-text { font-size: 12.5px; line-height: 1.45; color: #cbd5e1; }
+
+.chat-stock-card {
+    background: #171f2d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    padding: 7px 9px;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
-
-.rumor-text {
-    font-size: 12px;
-    color: #cbd5e1;
-    margin-bottom: 8px;
-}
-
-.rumor-meta {
-    font-size: 10px;
-    color: #a0aec0;
-    margin-bottom: 8px;
-}
-
-.bubble-trade-btn {
-    width: 100%;
-    padding: 7px 10px;
-    background: rgba(0, 229, 255, 0.12);
-    border: 1px solid rgba(0, 229, 255, 0.4);
-    border-radius: 6px;
-    color: var(--accent-cyan);
+.chat-stock-info { display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; }
+.chat-stock-name { font-weight: 700; color: #ffffff; }
+.chat-stock-price { font-weight: 700; color: #60a5fa; }
+.chat-inline-stock-btn {
+    background: #fee500;
+    border: none;
+    color: #141824;
+    padding: 5px 10px;
+    border-radius: 5px;
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
+.chat-inline-stock-btn:hover { background: #fada00; }
 
-.bubble-trade-btn:hover {
-    background: rgba(0, 229, 255, 0.25);
-    border-color: var(--accent-cyan);
-    transform: translateY(-1px);
-}
-
-/* Bottom Input Bar */
+/* 4. KAKAOTALK BOTTOM INPUT BAR (DARK HARMONY MATCHING REF IMAGE 2) */
 .bubble-input-bar {
-    height: 52px;
-    padding: 6px 10px;
-    background: #141b2d;
+    padding: 7px 10px;
+    background: #141824;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    box-sizing: border-box;
+}
+.bubble-attach-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+}
+.bubble-attach-btn:hover { color: #fee500; }
+
+.bubble-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #1c2332;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 0 8px 0 12px;
+    height: 36px;
+    box-sizing: border-box;
+}
+.bubble-input-wrapper:focus-within {
+    border-color: #fee500;
+    background: #20283a;
+    box-shadow: 0 0 8px rgba(254, 229, 0, 0.15);
 }
 
 .bubble-input {
     flex: 1;
-    height: 38px;
-    background: #0b0f19;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 19px;
-    padding: 0 14px;
-    font-size: 12px;
+    background: transparent;
+    border: none;
     color: #ffffff;
+    font-size: 12px;
     outline: none;
-    transition: border-color 0.2s ease;
+    width: 100%;
 }
+.bubble-input::placeholder { color: #64748b; }
 
-.bubble-input:focus {
-    border-color: #f857a6;
+.bubble-input-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
 }
+.bubble-input-icon-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.15s ease;
+}
+.bubble-input-icon-btn:hover { color: #fee500; }
 
 .bubble-send-btn {
-    height: 38px;
-    padding: 0 16px;
-    background: linear-gradient(135deg, #f857a6, #ff5858);
+    background: #fee500;
     border: none;
-    border-radius: 19px;
-    color: #fff;
-    font-size: 12px;
+    color: #141824;
+    padding: 7px 12px;
+    border-radius: 18px;
+    font-size: 11.5px;
     font-weight: 800;
     cursor: pointer;
-    transition: opacity 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+    transition: transform 0.15s ease, background 0.15s ease;
 }
+.bubble-send-btn:hover { background: #fada00; transform: scale(1.02); }
 
-.bubble-send-btn:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-}
+/* Friend list & social styles */
+.friend-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.friend-card-top { display: flex; align-items: center; gap: 10px; }
+.friend-avatar { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.friend-info { flex: 1; }
+.friend-name-row { display: flex; align-items: center; gap: 6px; }
+.friend-name { font-size: 13px; font-weight: 700; color: #ffffff; }
+.friend-badge { font-size: 10px; background: rgba(254, 229, 0, 0.15); color: #fee500; padding: 1px 5px; border-radius: 4px; }
+.friend-sub-info { font-size: 10.5px; color: #94a3b8; }
+.fp-progress-box { background: rgba(0, 0, 0, 0.2); padding: 6px 8px; border-radius: 6px; }
+.fp-label-row { display: flex; justify-content: space-between; font-size: 10px; color: #cbd5e1; margin-bottom: 4px; }
+.fp-benefit-tag { color: #00e5ff; font-weight: 600; }
+.fp-bar-bg { height: 5px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
+.fp-bar-fill { height: 100%; background: linear-gradient(90deg, #fee500, #ff9800); border-radius: 3px; }
+.friend-actions { display: flex; gap: 6px; }
+.btn-action { flex: 1; padding: 5px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; color: #e2e8f0; font-size: 10.5px; font-weight: 600; cursor: pointer; }
+.btn-action:hover { background: rgba(254, 229, 0, 0.15); color: #fee500; border-color: rgba(254, 229, 0, 0.3); }
 
-.bubble-send-btn:active {
-    transform: scale(0.96);
-}
+.envy-feed-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.envy-feed-top { display: flex; gap: 10px; }
+.envy-icon { font-size: 20px; }
+.envy-title { font-size: 11px; color: #94a3b8; }
+.envy-msg { font-size: 12px; color: #ffffff; font-weight: 600; margin-top: 2px; }
+.envy-reactions { display: flex; gap: 6px; }
+.btn-envy { flex: 1; padding: 5px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #ffffff; font-size: 11px; cursor: pointer; }
+.btn-envy:hover { background: rgba(254, 229, 0, 0.2); }
+.empty-state { text-align: center; color: #64748b; font-size: 12px; padding: 20px 0; }
+

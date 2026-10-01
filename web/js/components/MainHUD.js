@@ -63,6 +63,7 @@ export class MainHUD {
                         <span class="nav-icon">🎒</span>
                         <span class="nav-label">소지품</span>
                     </button>
+
                     <button class="hud-nav-btn" id="btnHudRanking" title="랭킹">
                         <span class="nav-icon">🏆</span>
                         <span class="nav-label">랭킹</span>
@@ -95,6 +96,7 @@ export class MainHUD {
         this.hudHeartContainer = document.getElementById('hudHeartContainer');
 
         this.btnHudInventory = document.getElementById('btnHudInventory');
+        this.btnHudFriends = document.getElementById('btnHudFriends');
         this.btnHudRanking = document.getElementById('btnHudRanking');
         this.btnHudHelp = document.getElementById('btnHudHelp');
         this.btnHudSettings = document.getElementById('btnHudSettings');
@@ -118,6 +120,7 @@ export class MainHUD {
         this.btnHudInventory?.addEventListener('click', () => {
             if (this.callbacks.onInventory) this.callbacks.onInventory();
         });
+
         this.btnHudRanking?.addEventListener('click', () => {
             if (this.callbacks.onRanking) this.callbacks.onRanking();
         });

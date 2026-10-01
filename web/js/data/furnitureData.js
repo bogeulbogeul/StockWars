@@ -89,6 +89,24 @@ export const DEFAULT_FURNITURE_CATALOG = [
         rotation: 0
     },
     {
+        id: 'furn_stylish_wardrobe',
+        name: '스타일리시 드레스 옷장',
+        category: 'storage_wall',
+        theme: 'ModernDark',
+        scale: 'M',
+        sizeW: 2,
+        sizeH: 1,
+        icon: '👗',
+        price: 12000,
+        desc: '보유한 의상과 코스튬을 보관하고 착용 및 변경을 관리할 수 있는 맞춤형 스타일 옷장.',
+        buffs: ['👗 보유 의상 룩북 확인 및 장착 가능', '✨ 착장 어필 점수 보너스'],
+        placed: true,
+        gridX: 0,
+        gridY: 4,
+        rotation: 0,
+        isWardrobe: true
+    },
+    {
         id: 'furn_storage_cabinet',
         name: '시공 대형 데이터 수납장',
         category: 'storage_wall',

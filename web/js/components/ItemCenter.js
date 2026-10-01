@@ -17,6 +17,7 @@ export class ItemCenter {
         this.dialog.addEventListener('click', e => this.handle(e));
         const button = document.createElement('button');
         button.className = 'item-center-launch';
+        button.style.display = 'none';
         button.textContent = '🎒 효과 · 정보 · 우편 · 로또';
         button.onclick = () => this.open();
         document.body.appendChild(button);

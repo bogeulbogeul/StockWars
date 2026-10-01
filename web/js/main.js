@@ -1,6 +1,7 @@
 import { worldNavigation } from './app/WorldNavigation.js';
 import { installItemGameplay } from './app/ItemGameplay.js';
 import { VIVIAN_SHOP_CATALOG } from './data/vivianStoreData.js';
+import { getRandomRumorItem } from './data/inventoryData.js';
 /**
  * StockWars Web App Main Bootstrap & Orchestrator
  * Unity equivalent: GameManager.cs / SceneManager.cs
@@ -27,7 +28,11 @@ import { AnnaTutorial } from './components/AnnaTutorial.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
 import { InventoryModal } from './components/InventoryModal.js?v=vivian-effects-1';
 import { FurnitureEditModal } from './components/FurnitureEditModal.js';
+import { WardrobeModal } from './components/WardrobeModal.js';
 import { VivianStoreModal } from './components/store/VivianStoreModal.js?v=vivian-effects-1';
+import { FriendModal } from './components/FriendModal.js';
+import { RankingModal } from './components/RankingModal.js';
+import { AnnaDialogueModal } from './components/AnnaDialogueModal.js';
 
 class StockWarsApplication {
     constructor() {
@@ -58,19 +63,13 @@ class StockWarsApplication {
                 toastManager.show(`⏱️ 하늘 시간대 전환: ${nextMeta.icon} ${nextMeta.label} - ${nextMeta.desc}`);
             },
             onWeatherClick: () => {
-                const isDev = new URLSearchParams(window.location.search).get('dev') === 'true';
-                if (isDev) {
-                    const w = weatherService.cycleWeather();
-                    toastManager.show(`🛠️ [DEV] 날씨 시뮬레이션: ${w.icon} ${w.text} ${w.temp}°C (태양/구름 연동)`);
-                } else {
-                    const w = weatherService.currentWeather;
-                    toastManager.show(`📍 실시간 로컬 날씨 (${w.city}): ${w.icon} ${w.text} ${w.temp}°C (습도: ${w.humidity}%)`);
-                }
+                const w = weatherService.cycleWeather();
+                toastManager.show(`🌦️ 날씨 시뮬레이션 전환: ${w.icon} ${w.text} (${w.temp}°C)`);
             },
             onStaminaClick: (s) => toastManager.show(`❤️ 체력 (스테미너): ${s.current} / ${s.max} | 알바, 속독 등에 소모`),
             onInventory: () => this.inventoryModal.toggle(),
             onFurnitureEdit: () => this.furnitureEditModal.toggle(),
-            onRanking: () => toastManager.show('🏆 랭킹 시스템: 데모 버전 준비중입니다.'),
+            onRanking: () => this.rankingModal.show(),
             onHelp: () => toastManager.show('❓ 도움말: 7일 동안 주식 투자로 수익을 극대화하여 월세를 지불하세요!'),
             onSettings: () => toastManager.show('⚙️ 환경 설정: 데모 옵션')
         });
@@ -79,7 +78,8 @@ class StockWarsApplication {
         this.officeStage = new OfficeStage(this.appContainer, {
             isTutorialActive: () => !!this.annaTutorial?.isActive,
             isAnnaMarriageCompleted: () => this.userProfile?.annaMarriageCompleted === true,
-            onOpenServerSelect: () => this.openServerSelect()
+            onOpenServerSelect: () => this.openServerSelect(),
+            onTalkToAnna: () => this.annaDialogueModal?.show()
         });
 
         // 4. Smartphone Shell & CyberM HTS App
@@ -139,6 +139,25 @@ class StockWarsApplication {
             onClose: () => toastManager.show('7일차 정산 보고서 확인 완료')
         });
 
+        // Friend & Social System Modal (MOD_GDD_09)
+        this.friendModal = new FriendModal(this.appContainer, {
+            onOpenBubbleChat: (friend) => {
+                this.smartphoneUI.openBubbleAppWithFriend(friend);
+            }
+        });
+
+        // Dedicated Social Ranking Leaderboard Modal
+        this.rankingModal = new RankingModal(this.appContainer);
+
+        // Manager Anna Interactive Dialogue Modal (MOD_GDD_07_1)
+        this.annaDialogueModal = new AnnaDialogueModal(this.appContainer, {
+            onGainStamina: (amount) => {
+                const max = this.mainHUD.stamina.max;
+                const next = Math.min(max, this.mainHUD.stamina.current + amount);
+                this.mainHUD.updateStamina(next);
+            }
+        });
+
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
             onActivateItem: item => {
@@ -161,9 +180,19 @@ class StockWarsApplication {
             }
         });
 
+        // Wardrobe & Dressing Room Modal (Owned Apparel Management)
+        this.wardrobeModal = new WardrobeModal(this.appContainer, {
+            onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
+            onEquipChange: (item) => {
+                const invItem = this.inventoryModal.items.find(i => i.id === item.id);
+                if (invItem) invItem.isEquipped = item.isEquipped;
+            }
+        });
+
         // Furniture Edit Modal (Dedicated 8x8 Office Customizer)
         this.furnitureEditModal = new FurnitureEditModal(this.appContainer, {
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
+            onOpenWardrobe: () => this.wardrobeModal.open(this.inventoryModal.items),
             onSaveLayout: (list) => toastManager.show(`💾 [오피스 인테리어] 총 ${list.filter(f => f.placed).length}개 가구 저장 완료!`, true)
         });
 
@@ -180,17 +209,9 @@ class StockWarsApplication {
                 toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${this.itemEngine.laborCost()}: ${this.itemEngine.state.stamina}/3)`);
                 
                 if (result.hasRumor) {
-                    this.inventoryModal?.addItem({
-                        id: 'item_bit_logistics_rumor', name: '비트 물류 현장 찌라시', category: 'intel', rarity: 'rare',
-                        icon: '📜', quantity: 1, maxStack: 5, price: 2000,
-                        targetStockId: 'CLOUDBERRY', targetStockName: '클라우드 베리', targetSector: 'IT/기술',
-                        targetChange: '+18.5% ~ +25.0% 급등 예상', targetTimeframe: '내일(Day +1) 장중 공시 반영',
-                        intelReport: '비트 물류 3번 허브에서 [클라우드 베리]의 차세대 분산 데이터 서버 부품이 전량 독점 출하되는 현장을 포착했습니다. 정부 스마트시티 인프라 단독 납품 계약이 확정적이며, 내일 공시 발표와 함께 주가가 +20% 이상 폭등할 것이 확실시됩니다!',
-                        desc: '[클라우드 베리] IT 부품 독점 출하 포착. 정부 스마트시티 수주 공시 임박 및 주가 급등 복선.',
-                        effects: ['🎯 대상 기업: 클라우드 베리 (CLOUDBERRY • IT/기술)', '📈 주가 예측: 단기 +20% 상승 탄력 (목표가 1,020G 돌파)', '💡 추천 전략: 내일 장 개장 즉시 적극 매수(BUY) 권장'],
-                        actionType: 'read', actionLabel: '확인하기'
-                    });
-                    setTimeout(() => toastManager.show('💌 [찌라시 알림] 비트 물류 동료가 보낸 주가 복선 정보가 가방에 도착했습니다!'), 1200);
+                    const rumorItem = getRandomRumorItem();
+                    this.inventoryModal?.addItem(rumorItem);
+                    setTimeout(() => toastManager.show(`💌 [찌라시 수신] 비트 물류 동료가 보낸 [${rumorItem.name}] 찌라시가 가방에 도착했습니다!`), 1200);
                 }
                 this.enterTown(null, 'bit_logistics');
                 this.annaTutorial?.notifyLogisticsJobCompleted(result);
@@ -278,6 +299,12 @@ class StockWarsApplication {
                     marketEngine.initialCash = amount;
                     marketEngine.notify();
                     toastManager.show(`💰 [입금 완료] 초기 지원금 +${amount.toLocaleString()} Gold가 계좌로 입금되었습니다!`, true);
+                }
+            },
+            onCheckTutorialBuyAffordability: (stockId) => {
+                const subsidy = marketEngine.ensureTutorialAffordability(stockId);
+                if (subsidy > 0) {
+                    toastManager.show(`🎁 안나 매니저의 추천주 수급 지원금 +${subsidy.toLocaleString()} Gold가 추가 입금되었습니다!`, 'info');
                 }
             },
             onOpenPhone: () => {

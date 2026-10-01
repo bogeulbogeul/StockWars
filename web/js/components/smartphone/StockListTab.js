@@ -3,7 +3,7 @@
  * Handles search query, sector filter chips, sorting (인기순/변동률순/가격순/이름순), favorite starring, and live list rendering.
  */
 
-import { SECTORS } from '../../data/stocksData.js';
+import { SECTORS } from '../../data/stocksData.js?v=v72';
 
 export class StockListTab {
     constructor(domElements, callbacks = {}) {
@@ -69,6 +69,51 @@ export class StockListTab {
         this.dom.marketSortSelect?.addEventListener('change', (e) => {
             this.selectedSortMode = e.target.value;
             this.renderStockList(this.latestStocks);
+        });
+
+        this.initSectorChipsScroll();
+    }
+
+    initSectorChipsScroll() {
+        const chipsContainer = this.dom.sectorChips;
+        if (!chipsContainer) return;
+
+        // 1. Mouse Wheel -> Horizontal Scroll
+        chipsContainer.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                chipsContainer.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+
+        // 2. Mouse Drag to Scroll
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        chipsContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            chipsContainer.classList.add('dragging');
+            startX = e.pageX - chipsContainer.offsetLeft;
+            scrollLeft = chipsContainer.scrollLeft;
+        });
+
+        chipsContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            chipsContainer.classList.remove('dragging');
+        });
+
+        chipsContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            chipsContainer.classList.remove('dragging');
+        });
+
+        chipsContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - chipsContainer.offsetLeft;
+            const walk = (x - startX) * 1.8;
+            chipsContainer.scrollLeft = scrollLeft - walk;
         });
     }
 

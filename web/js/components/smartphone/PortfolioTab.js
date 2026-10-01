@@ -3,7 +3,7 @@
  * Handles user profile, holding stock cards, and sector allocation donut chart rendering.
  */
 
-import { SECTORS } from '../../data/stocksData.js';
+import { SECTORS } from '../../data/stocksData.js?v=v72';
 
 export class PortfolioTab {
     constructor(domElements, callbacks = {}) {

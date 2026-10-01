@@ -53,7 +53,7 @@ export function buildAnnaScenario({
             id: 'open_phone',
             expression: 'Smile',
             speaker: "전담 매니저 안나",
-            text: `본격적인 주식 매매를 위해 우측 하단의 [스마트폰] 버튼을 눌러 화면을 켜볼까요?`,
+            text: `본격적인 주식 매매를 위해 우측 하단의 [스마트폰] 버튼을 눌러 화면을 켜볼까요? (키보드의 **P** 또는 **M** 키로도 손쉽게 켜고 닫을 수 있답니다!)`,
             tracker: "2/4 • 스마트폰 화면 켜기",
             requiresManualAction: true,
             interactionHint: "우측 하단의 [스마트폰] 버튼을 클릭해 화면을 켜주세요!",
@@ -121,6 +121,7 @@ export function buildAnnaScenario({
             targetSelector: '#btnBuyExecute',
             onEnter: () => {
                 highlightElement('#btnBuyExecute', true);
+                callbacks.onCheckTutorialBuyAffordability?.(stockId);
             }
         },
 
@@ -147,6 +148,17 @@ export function buildAnnaScenario({
             targetSelector: '.nav-tab[data-tab="Profile"]',
             onEnter: () => {
                 highlightElement('.nav-tab[data-tab="Profile"]', true);
+            }
+        },
+        {
+            id: 'social_and_ranking_guide',
+            expression: 'Happy',
+            speaker: "전담 매니저 안나",
+            text: `참, 스마트폰의 [💬 Bubble] 앱에서 친구들과 에너지 선물과 찌라시를 주고받고, 상단 메뉴의 [🏆 랭킹] 버튼을 눌러 전 세계 세력들과 자산 순위를 겨뤄보실 수도 있답니다!`,
+            tracker: "2/4 • 소셜 네트워크 & 랭킹 안내",
+            requiresManualAction: false,
+            onEnter: () => {
+                cleanupHighlights();
             }
         },
 

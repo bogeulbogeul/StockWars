@@ -1,5 +1,6 @@
 import { ItemEngine } from '../engine/ItemEngine.js';
 import { ItemCenter } from '../components/ItemCenter.js';
+import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
 
 const SAVE_KEY = 'stockwars-item-gameplay-v1';
 
@@ -16,6 +17,27 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         market.priceHistory = new Map(saved.market.history);
         app.userProfile = saved.profile;
     }
+
+    // Ensure all 72 stocks from INITIAL_STOCKS are present in market.stocks & metadata is updated
+    INITIAL_STOCKS.forEach(stock => {
+        const existing = market.stocks.get(stock.id);
+        if (!existing) {
+            market.stocks.set(stock.id, { ...stock, history: [stock.prevPrice, stock.price] });
+        } else {
+            existing.name = stock.name;
+            existing.desc = stock.desc;
+            existing.richDesc = stock.richDesc;
+            existing.sector = stock.sector;
+            existing.risk = stock.risk;
+            existing.tier = stock.tier;
+        }
+        if (!market.priceHistory.has(stock.id)) {
+            const hist = typeof market.generateInitialHistory === 'function'
+                ? market.generateInitialHistory(stock.price)
+                : [stock.prevPrice, stock.price];
+            market.priceHistory.set(stock.id, hist);
+        }
+    });
     const engine = new ItemEngine({ market, state: saved?.items });
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();

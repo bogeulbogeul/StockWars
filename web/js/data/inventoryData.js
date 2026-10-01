@@ -8,6 +8,7 @@ export const ITEM_CATEGORIES = {
     all: { key: 'all', name: '전체', icon: '📦' },
     consumable: { key: 'consumable', name: '소모품', icon: '🥤' },
     apparel: { key: 'apparel', name: '의상 / 코스튬', icon: '👗' },
+
     book: { key: 'book', name: '도서 / 지식', icon: '📚' },
     intel: { key: 'intel', name: '정보 / 찌라시', icon: '📜' },
     etc: { key: 'etc', name: '기타 / 재료', icon: '💎' }
@@ -160,6 +161,78 @@ export const ITEM_CATALOG_DB = [
         actionLabel: '확인하기'
     },
     {
+        id: 'item_ecobattery_rumor',
+        name: '에코 배터리 수주 찌라시',
+        category: 'intel',
+        rarity: 'rare',
+        icon: '📜',
+        quantity: 1,
+        maxStack: 5,
+        price: 2200,
+        targetStockId: 'ECOBATTERY',
+        targetStockName: '에코 배터리',
+        targetSector: '에너지/친환경',
+        targetChange: '+15.0% ~ +22.0% 상승 예상',
+        targetTimeframe: '2일 뒤 글로벌 모빌리티 엑스포',
+        intelReport: '글로벌 완성차 메이커 1위 업체와의 차세대 전고체 배터리 5조 원 독점 공급 계약 비공개 체결 소식 포착! 엑스포 개막 발표와 함께 강력한 주가 상승 탄력이 예상됩니다.',
+        desc: '[에코 배터리] 전고체 배터리 5조 원 납품 계약 체결 임박. 친환경 에너지 대장주 급등 복선.',
+        effects: [
+            '🎯 대상 기업: 에코 배터리 (ECOBATTERY • 에너지/친환경)',
+            '📈 주가 예측: 2일 내 +20% 가파른 상승 탄력',
+            '💡 추천 전략: 조정 눌림목 시 저점 매수 권장'
+        ],
+        actionType: 'read',
+        actionLabel: '확인하기'
+    },
+    {
+        id: 'item_studioluna_rumor',
+        name: '스튜디오 루나 사전예약 찌라시',
+        category: 'intel',
+        rarity: 'rare',
+        icon: '📜',
+        quantity: 1,
+        maxStack: 5,
+        price: 2500,
+        targetStockId: 'STUDIOLUNA',
+        targetStockName: '스튜디오 루나',
+        targetSector: '엔터/미디어',
+        targetChange: '+20.0% ~ +28.0% 폭등 예상',
+        targetTimeframe: '내일 신작 글로벌 출시일',
+        intelReport: '비공개 신작 서브컬처 RPG 사전 예약자가 350만 명을 돌파했습니다! 구글/스토어 글로벌 매출 1위 랭크가 유력하여 출시 당일 급폭등 모멘텀이 기대됩니다.',
+        desc: '[스튜디오 루나] 신작 글로벌 사전예약 350만 돌파. 스토어 1위 및 어닝 서프라이즈 복선.',
+        effects: [
+            '🎯 대상 기업: 스튜디오 루나 (STUDIOLUNA • 엔터/미디어)',
+            '📈 주가 예측: 신작 출시 당일 +25% 급등 모멘텀',
+            '💡 추천 전략: 출시 전 장 초반 강력 매수 권장'
+        ],
+        actionType: 'read',
+        actionLabel: '확인하기'
+    },
+    {
+        id: 'item_cozypay_rumor',
+        name: '코지 페이 지분 교환 찌라시',
+        category: 'intel',
+        rarity: 'epic',
+        icon: '📜',
+        quantity: 1,
+        maxStack: 5,
+        price: 3500,
+        targetStockId: 'COZYPAY',
+        targetStockName: '코지 페이',
+        targetSector: '금융/핀테크',
+        targetChange: '+25.0% 이상 폭등 예상',
+        targetTimeframe: '3일 뒤 금융위원회 발표',
+        intelReport: '상업 은행 1위 세이프 뱅크와의 메가 핀테크 지분 교환 합작법인 출범 비공개 합의! 양사 인프라 통합으로 간편결제 시장 점유율 60%를 독점할 것이 확실시됩니다.',
+        desc: '[코지 페이] 상업 은행 1위와의 지분 교환 및 핀테크 유니콘 결성 극비 첩보.',
+        effects: [
+            '🎯 대상 기업: 코지 페이 (COZYPAY • 금융/핀테크)',
+            '📈 주가 예측: 3일 내 +25% 이상 강한 폭등 탄력',
+            '💡 추천 전략: 공시 발표 전 물량 매집 권장'
+        ],
+        actionType: 'read',
+        actionLabel: '확인하기'
+    },
+    {
         id: 'item_chart_book',
         name: '실전 차트 패턴 분석 101',
         category: 'book',
@@ -174,3 +247,15 @@ export const ITEM_CATALOG_DB = [
         actionLabel: '사용하기'
     }
 ];
+
+export function getRandomRumorItem() {
+    const rumors = ITEM_CATALOG_DB.filter(i => i.category === 'intel');
+    const idx = Math.floor(Math.random() * rumors.length);
+    const item = rumors[idx] || ITEM_CATALOG_DB.find(i => i.id === 'item_bit_logistics_rumor');
+    return {
+        ...item,
+        quantity: 1,
+        actionType: 'read',
+        actionLabel: '확인하기'
+    };
+}

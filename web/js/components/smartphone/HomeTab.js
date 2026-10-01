@@ -3,7 +3,7 @@
  * Handles Net Worth summary, 7-day rent goal progress, Cipher Index banner, and Recently Viewed stocks grid.
  */
 
-import { SECTORS } from '../../data/stocksData.js';
+import { SECTORS } from '../../data/stocksData.js?v=v72';
 
 export class HomeTab {
     constructor(domElements, callbacks = {}) {

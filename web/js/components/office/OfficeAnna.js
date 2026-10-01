@@ -22,7 +22,8 @@ export class OfficeAnna {
         const atlas = new URL('../../../assets/characters/anna/anna-walk-4direction-v7.png', import.meta.url).href;
         this.element = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         this.element.id = 'isoAnnaCharacter';
-        this.element.setAttribute('pointer-events', 'none');
+        this.element.setAttribute('pointer-events', 'all');
+        this.element.setAttribute('cursor', 'pointer');
         this.element.setAttribute('role', 'img');
         this.element.setAttribute('aria-label', '오피스 매니저 안나');
         this.element.innerHTML = `
@@ -31,6 +32,10 @@ export class OfficeAnna {
                 <image href="${atlas}" width="1086" height="1448" />
             </svg>`;
         this.sprite = this.element.querySelector('.office-anna-sprite');
+        this.element.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (this.onTalkToAnna) this.onTalkToAnna();
+        });
         this.updateAvailability(new Date().getHours());
         layer.appendChild(this.element);
         this.render();

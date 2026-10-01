@@ -5,7 +5,7 @@
  * Long/Short order types, Leverage selector (1x-5x), and Company Info panel.
  */
 
-import { SECTORS } from '../data/stocksData.js';
+import { SECTORS } from '../data/stocksData.js?v=v72';
 import { StockChartRenderer } from './chart.js';
 import { getTradeModalHtml } from './trade/TradeModalTemplate.js';
 

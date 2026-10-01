@@ -18,18 +18,19 @@ const WMO_CODES = {
     61: { text: '약한 비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
     63: { text: '비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
     65: { text: '강한 비', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
-    71: { text: '약한 눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
-    73: { text: '눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
-    75: { text: '폭설', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
-    77: { text: '싸락눈', category: 'rain', dayIcon: '❄️', nightIcon: '❄️' },
+    71: { text: '약한 눈', category: 'snow', dayIcon: '❄️', nightIcon: '❄️' },
+    73: { text: '눈', category: 'snow', dayIcon: '❄️', nightIcon: '❄️' },
+    75: { text: '폭설', category: 'snow', dayIcon: '❄️', nightIcon: '❄️' },
+    77: { text: '싸락눈', category: 'snow', dayIcon: '❄️', nightIcon: '❄️' },
     80: { text: '소나기', category: 'rain', dayIcon: '🌦️', nightIcon: '🌦️' },
     81: { text: '강한 소나기', category: 'rain', dayIcon: '🌧️', nightIcon: '🌧️' },
     82: { text: '폭우', category: 'rain', dayIcon: '⛈️', nightIcon: '⛈️' },
-    85: { text: '약한 눈보라', category: 'rain', dayIcon: '🌨️', nightIcon: '🌨️' },
-    86: { text: '강한 눈보라', category: 'rain', dayIcon: '🌨️', nightIcon: '🌨️' },
+    85: { text: '약한 눈보라', category: 'snow', dayIcon: '🌨️', nightIcon: '🌨️' },
+    86: { text: '강한 눈보라', category: 'snow', dayIcon: '🌨️', nightIcon: '🌨️' },
     95: { text: '뇌우', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' },
     96: { text: '뇌우 및 우박', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' },
-    99: { text: '강한 뇌우', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' }
+    99: { text: '강한 뇌우', category: 'thunderstorm', dayIcon: '⛈️', nightIcon: '⛈️' },
+    999: { text: '🚨 블랙스완 경보', category: 'black_swan', dayIcon: '🚨', nightIcon: '🚨' }
 };
 
 class WeatherService {
@@ -114,7 +115,7 @@ class WeatherService {
 
     cycleWeather() {
         this.isManual = true;
-        const testCodes = [0, 2, 3, 63, 95]; // 맑음 -> 구름조금 -> 흐림 -> 비 -> 뇌우
+        const testCodes = [0, 2, 3, 63, 73, 95, 999]; // 맑음 -> 구름조금 -> 흐림 -> 비 -> 눈 -> 뇌우 -> 블랙스완 🚨
         const currentIdx = testCodes.indexOf(this.currentWeather.weatherCode);
         const nextCode = testCodes[(currentIdx + 1) % testCodes.length];
         const wmo = WMO_CODES[nextCode];

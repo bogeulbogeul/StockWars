@@ -26,12 +26,35 @@
     display: flex;
     gap: 6px;
     overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 229, 255, 0.4) transparent;
     cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
 }
-.sector-chips::-webkit-scrollbar { display: none; }
+
+.sector-chips.dragging {
+    cursor: grabbing;
+}
+
+.sector-chips::-webkit-scrollbar {
+    height: 4px;
+}
+
+.sector-chips::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+.sector-chips::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.4);
+    border-radius: 2px;
+}
+
+.sector-chips::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 255, 0.8);
+}
 .chip-btn {
     background: var(--bg-surface);
     border: 1px solid var(--border-light);

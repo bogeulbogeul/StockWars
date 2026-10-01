@@ -23,7 +23,7 @@ export function getOfficeStageHtml() {
 
             <!-- Isometric Building & Room Vector Stage (Centered Framing) -->
             <div class="iso-stage-wrapper">
-                <svg class="iso-svg" id="isoSvgStage" viewBox="160 -10 680 760" preserveAspectRatio="xMidYMid meet">
+                <svg class="iso-svg" id="isoSvgStage" viewBox="160 -10 680 760" preserveAspectRatio="xMidYMin meet">
                     <!-- Original artwork: the room floor sits on the building roof. -->
                     <image class="office-building-art" href="${new URL('../../../assets/office/IsomatricBuilding.png', import.meta.url).href}"
                            x="60.1" y="229.7" width="879.8" height="1231.72" pointer-events="none" />
@@ -47,6 +47,15 @@ export function getOfficeStageHtml() {
                         <text x="-12" y="4.5" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" font-family="'Inter', sans-serif">🚪 마을로 나가기</text>
                         <rect x="42" y="-9" width="22" height="18" rx="5" fill="#00e5ff" />
                         <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#0b0f1a" font-family="'JetBrains Mono', monospace">F</text>
+                    </g>
+
+                    <!-- Anna Proximity Floating Interaction Prompt in SVG -->
+                    <g id="isoAnnaPrompt" class="iso-anna-prompt hidden" transform="translate(500, 360)" cursor="pointer">
+                        <rect x="-78" y="-17" width="156" height="34" rx="17" fill="rgba(11,15,26,0.94)" stroke="#6366f1" stroke-width="1.8" />
+                        <rect x="-74" y="-13" width="148" height="26" rx="13" fill="none" stroke="rgba(99,102,241,0.25)" stroke-width="1" />
+                        <text x="-12" y="4.5" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" font-family="'Inter', sans-serif">💼 안나와 대화하기</text>
+                        <rect x="42" y="-9" width="22" height="18" rx="5" fill="#6366f1" />
+                        <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#ffffff" font-family="'JetBrains Mono', monospace">F</text>
                     </g>
 
                     <!-- Interactive 8x8 Isometric Floor Grid Tiles -->

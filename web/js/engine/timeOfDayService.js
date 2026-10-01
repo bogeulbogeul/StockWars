@@ -48,6 +48,8 @@ export const TIME_METADATA = {
 
 class TimeOfDayService {
     constructor() {
+        // Default location: Seoul, South Korea (lat: 37.5665, lng: 126.9780)
+        this.coords = { lat: 37.5665, lng: 126.9780 };
         this.currentTime = this.calculateTimeOfDay(new Date());
         this.isManual = false;
         this.listeners = new Set();
@@ -55,6 +57,25 @@ class TimeOfDayService {
     }
 
     init() {
+        // Request user location if available for precise regional sun calculations
+        if (typeof navigator !== 'undefined' && navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    this.coords = {
+                        lat: pos.coords.latitude,
+                        lng: pos.coords.longitude
+                    };
+                    if (!this.isManual) {
+                        this.setTimeOfDay(this.calculateTimeOfDay(new Date()), false);
+                    }
+                },
+                (_err) => {
+                    // Fallback to default location (Seoul) silently
+                },
+                { timeout: 5000 }
+            );
+        }
+
         if (!this.isManual) {
             this.currentTime = this.calculateTimeOfDay(new Date());
         }
@@ -73,12 +94,60 @@ class TimeOfDayService {
         this.notify();
     }
 
+    /**
+     * Calculates astronomical sunrise & sunset times based on location & day of year.
+     */
+    getSunTimes(date = new Date(), lat = this.coords.lat, lng = this.coords.lng) {
+        const startYear = new Date(date.getFullYear(), 0, 0);
+        const diff = date - startYear;
+        const oneDay = 1000 * 60 * 60 * 24;
+        const dayOfYear = Math.floor(diff / oneDay); // 1~365
+
+        // Solar Declination in radians
+        const declination = 0.409 * Math.sin((2 * Math.PI / 365) * (dayOfYear - 81));
+        const latRad = lat * (Math.PI / 180);
+
+        // Hour angle of sunrise/sunset
+        const cosHourAngle = -Math.tan(latRad) * Math.tan(declination);
+        const clampedCos = Math.max(-1, Math.min(1, cosHourAngle));
+        const hourAngle = Math.acos(clampedCos);
+
+        const sunHours = (hourAngle * 180 / Math.PI) / 15; // half-day duration in hours
+
+        // Local solar noon estimation using longitude & local timezone offset
+        const timezoneOffsetHours = -date.getTimezoneOffset() / 60;
+        const solarNoon = 12 - (lng / 15 - timezoneOffsetHours);
+
+        const sunrise = solarNoon - sunHours;
+        const sunset = solarNoon + sunHours;
+
+        return { sunrise, sunset };
+    }
+
+    /**
+     * Determines current atmospheric stage based on real regional time & seasonal solar angle.
+     */
     calculateTimeOfDay(date = new Date()) {
-        const hour = date.getHours();
-        if (hour >= 5 && hour < 9) return TIME_OF_DAY.DAWN;
-        if (hour >= 9 && hour < 18) return TIME_OF_DAY.DAY;
-        if (hour >= 18 && hour < 21) return TIME_OF_DAY.SUNSET;
-        return TIME_OF_DAY.NIGHT;
+        const { sunrise, sunset } = this.getSunTimes(date);
+        const currentHour = date.getHours() + date.getMinutes() / 60 + date.getSeconds() / 3600;
+
+        // Dawn: 45 mins before sunrise ~ 30 mins after sunrise
+        const dawnStart = sunrise - 0.75;
+        const dayStart = sunrise + 0.5;
+
+        // Sunset: 30 mins before sunset ~ 45 mins after sunset (Twilight window)
+        const sunsetStart = sunset - 0.5;
+        const nightStart = sunset + 0.75;
+
+        if (currentHour >= dawnStart && currentHour < dayStart) {
+            return TIME_OF_DAY.DAWN;
+        } else if (currentHour >= dayStart && currentHour < sunsetStart) {
+            return TIME_OF_DAY.DAY;
+        } else if (currentHour >= sunsetStart && currentHour < nightStart) {
+            return TIME_OF_DAY.SUNSET;
+        } else {
+            return TIME_OF_DAY.NIGHT;
+        }
     }
 
     getCurrentTime() {
