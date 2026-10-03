@@ -225,8 +225,7 @@ export function getSmartphoneShellHtml() {
                         <div class="bubble-nav-bar" id="bubbleNavBar">
                             <button class="bubble-nav-tab active" data-tab="chats">💬 채팅</button>
                             <button class="bubble-nav-tab" data-tab="friends">👥 친구</button>
-                            <button class="bubble-nav-tab" data-tab="add">➕ 추가</button>
-                            <button class="bubble-nav-tab" data-tab="envy">⚡ 배아픈알림</button>
+                            <button class="bubble-nav-tab" data-tab="envy">✨ 소식<span id="bubbleNewsDot" class="bubble-news-dot" hidden></span></button>
                         </div>
 
                         <!-- VIEW A: CHAT ROOM LIST (카카오톡 채팅 목록) -->
@@ -235,13 +234,19 @@ export function getSmartphoneShellHtml() {
                                 <button class="kt-back-home-btn" id="btnBubbleBack" title="OS 홈 화면으로">←</button>
                                 <span class="kt-title" id="ktHeaderTitle">채팅</span>
                                 <div class="kt-header-actions">
-                                    <button class="kt-icon-btn" title="검색">🔍</button>
-                                    <button class="kt-icon-btn" id="btnBubbleRefresh" title="새로고침">🔄</button>
                                 </div>
                             </div>
 
                             <!-- Sub View: Chats List -->
                             <div id="bubbleSubViewChats" class="bubble-sub-view active">
+                                <button type="button" id="btnBubbleCreateRoom" class="bubble-add-friend-btn">+ 오픈채팅방 만들기</button>
+                                <section id="bubbleCreateRoomPanel" class="kt-add-box bubble-create-room hidden" hidden>
+                                    <div class="bubble-section-heading"><strong>새 오픈채팅방</strong><button type="button" id="btnBubbleCreateCancel" class="bubble-add-friend-btn">닫기</button></div>
+                                    <label for="bubbleRoomName">채팅방 이름</label>
+                                    <input id="bubbleRoomName" maxlength="40" placeholder="예: 오늘의 투자 이야기" />
+                                    <p class="bubble-add-hint">방을 만든 뒤 안에서 친구를 추가할 수 있어요.</p>
+                                    <button type="button" id="btnBubbleCreateSubmit" class="bubble-add-friend-btn">방 만들기</button>
+                                </section>
                                 <div class="kt-filter-bar" id="ktFilterBar">
                                     <button class="kt-filter-tab active" data-filter="all">전체</button>
                                     <button class="kt-filter-tab" data-filter="open">🌐 오픈채팅</button>
@@ -252,25 +257,32 @@ export function getSmartphoneShellHtml() {
 
                             <!-- Sub View: Friends List -->
                             <div id="bubbleSubViewFriends" class="bubble-sub-view hidden">
+                                <div class="bubble-section-heading"><span>내 친구</span><button type="button" id="btnBubbleAddFriend" class="bubble-add-friend-btn" aria-label="친구 추가">+ 친구 추가</button></div>
                                 <div class="kt-friends-container" id="ktFriendsContainer"></div>
                             </div>
 
                             <!-- Sub View: Add Friend -->
                             <div id="bubbleSubViewAdd" class="bubble-sub-view hidden">
+                                <div class="bubble-section-heading"><span>닉네임으로 추가</span><button type="button" id="btnBubbleAddBack" class="bubble-add-friend-btn">친구 목록</button></div>
                                 <div class="kt-add-box">
-                                    <div class="search-input-group">
-                                        <input type="text" id="inputKtFriendSearch" placeholder="트레이더 닉네임 입력..." />
-                                        <button id="btnKtAddFriendSubmit" class="btn-primary-sm">신청</button>
+                                    <div class="bubble-add-hero">
+                                        <span class="bubble-add-avatar" aria-hidden="true">＋</span>
+                                        <h3>함께할 트레이더를 찾아보세요</h3>
+                                        <p>친구의 닉네임을 입력해 내 친구 목록에 추가하세요.</p>
                                     </div>
-                                    <div class="recommended-title">💡 추천 매너 트레이더</div>
+                                    <label class="bubble-add-label" for="inputKtFriendSearch">트레이더 닉네임</label>
+                                    <div class="search-input-group">
+                                        <input type="text" id="inputKtFriendSearch" placeholder="닉네임을 입력하세요" maxlength="40" autocomplete="off" />
+                                        <button type="button" id="btnKtAddFriendSubmit" class="btn-primary-sm">+ 추가</button>
+                                    </div>
                                     <div class="kt-friends-container" id="ktRecommendedContainer"></div>
                                 </div>
                             </div>
 
                             <!-- Sub View: Envy Feed -->
                             <div id="bubbleSubViewEnvy" class="bubble-sub-view hidden">
-                                <div class="envy-feed-header">
-                                    <span class="feed-desc">친구가 대박을 터뜨렸을 때 🥳/😒/😡 이모지로 반응하여 우호도(FP)를 쌓으세요.</span>
+                                <div id="bubbleNewsIntro" class="bubble-news-intro" hidden>
+                                    친구 소식에 반응하면 우호도가 올라갑니다.
                                 </div>
                                 <div class="envy-feed-list" id="ktEnvyFeedContainer"></div>
                             </div>
@@ -285,20 +297,33 @@ export function getSmartphoneShellHtml() {
                                     <div class="kt-room-sub" id="ktRoomSub">오픈채팅 1,420명</div>
                                 </div>
                                 <div class="kt-header-actions">
-                                    <button class="kt-icon-btn" title="대화 검색">🔍</button>
-                                    <button class="kt-icon-btn" title="메뉴">☰</button>
+                                    <button type="button" id="btnBubbleInviteFriends" class="bubble-add-friend-btn" aria-label="참여자 및 친구 추가 메뉴" hidden>☰ 참여자</button>
                                 </div>
                             </div>
 
                             <div class="bubble-chat-feed" id="bubbleChatFeed"></div>
 
-                            <div class="bubble-input-bar">
+                            <section id="bubbleEmoticonPanel" class="bubble-emoticon-panel hidden" aria-label="이모티콘 선택" hidden>
+                                <div class="bubble-emoticon-header">
+                                    <div><strong>이모티콘</strong><span>나만의 감정을 담을 공간</span></div>
+                                    <button type="button" id="btnBubbleEmoticonClose" aria-label="이모티콘 패널 닫기">×</button>
+                                </div>
+                                <div class="bubble-emoticon-tabs" aria-label="이모티콘 분류">
+                                    <button type="button" disabled>최근 사용</button>
+                                    <button type="button" disabled>내 이모티콘</button>
+                                </div>
+                                <div class="bubble-emoticon-grid" aria-hidden="true">
+                                    ${Array.from({ length: 8 }, () => '<div class="bubble-emoticon-slot"><span>◇</span></div>').join('')}
+                                </div>
+                                <p class="bubble-emoticon-note">이모티콘 기능을 준비 중이에요.</p>
+                            </section>
+                            <div id="bubbleReadOnlyNotice" class="bubble-read-only-notice" hidden>홍보 알림은 수신 전용입니다. 답장을 보낼 수 없습니다.</div>
+                            <div id="bubbleInputBar" class="bubble-input-bar">
                                 <button class="bubble-attach-btn" title="첨부">＋</button>
                                 <div class="bubble-input-wrapper">
-                                    <input type="text" class="bubble-input" id="bubbleMsgInput" placeholder="메시지 입력..." maxlength="60">
+                                    <input type="text" class="bubble-input" id="bubbleMsgInput" aria-label="채팅 메시지" placeholder="메시지 입력..." maxlength="500">
                                     <div class="bubble-input-actions">
-                                        <button class="bubble-input-icon-btn" id="btnKtEmoticon" title="이모티콘">😊</button>
-                                        <button class="bubble-input-icon-btn" id="btnKtHash" title="검색">＃</button>
+                                        <button type="button" class="bubble-input-icon-btn" id="btnKtEmoticon" title="이모티콘" aria-label="이모티콘 선택" aria-controls="bubbleEmoticonPanel" aria-expanded="false">☺</button>
                                     </div>
                                 </div>
                                 <button class="bubble-send-btn" id="btnBubbleSend">전송</button>

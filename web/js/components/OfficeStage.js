@@ -192,6 +192,10 @@ export class OfficeStage {
         const dt = Math.min(0.06, (now - this.lastTimestamp) / 1000);
         this.lastTimestamp = now;
         if (this.stageContainer?.classList.contains('hidden')) return;
+        if (document.querySelector('.player-profile-dialog[open]')) {
+            this.keysHeld.clear();
+            return;
+        }
 
         let inputScreenX = 0;
         let inputScreenY = 0;

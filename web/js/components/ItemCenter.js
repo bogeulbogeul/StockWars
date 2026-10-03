@@ -1,5 +1,7 @@
-import { dayKey, nextDraw, lottoClosed } from '../engine/ItemEngine.js';
+import { dayKey } from '../engine/ItemEngine.js';
 import { getItemArtwork } from '../data/itemArtwork.js';
+import { rumorDecryption } from './inventory/RumorPopup.js';
+import { LottoPanel } from './LottoPanel.js';
 const statNames = { analysis: '분석', management: '운용', recovery: '회복' };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 const time = ms => new Date(ms).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
@@ -7,6 +9,7 @@ const time = ms => new Date(ms).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul'
 export class ItemCenter {
     constructor(engine, onChange) {
         this.engine = engine;
+        this.lotto = new LottoPanel(engine);
         this.onChange = onChange;
         this.dialog = document.createElement('dialog');
         this.dialog.className = 'item-center';
@@ -15,6 +18,7 @@ export class ItemCenter {
         this.dialog.querySelector('[data-close]').onclick = () => this.dialog.close();
         this.dialog.addEventListener('keydown', e => e.stopPropagation());
         this.dialog.addEventListener('click', e => this.handle(e));
+        this.dialog.addEventListener('close', () => { this.lotto.drafts.clear(); this.lotto.messages.clear(); });
         const button = document.createElement('button');
         button.className = 'item-center-launch';
         button.style.display = 'none';
@@ -27,7 +31,13 @@ export class ItemCenter {
         this.banner.setAttribute('role', 'status');
         document.body.appendChild(this.banner);
     }
-    open(message = '') { this.render(); this.feedback(message); if (!this.dialog.open) this.dialog.showModal(); }
+    open(message = '', section = '') {
+        this.dialog.classList.toggle('lotto-only', section === 'lotto');
+        this.dialog.querySelector('h2').textContent = section === 'lotto' ? '주간 로또' : '아이템 센터';
+        this.render(); this.feedback(message);
+        if (!this.dialog.open) this.dialog.showModal();
+        if (section === 'lotto') this.dialog.scrollTop = 0;
+    }
     feedback(message) { this.dialog.querySelector('[role=status]').textContent = message; }
     refreshStatus() {
         const e = this.engine, s = e.state, stats = e.stats();
@@ -42,7 +52,14 @@ export class ItemCenter {
     }
     render() {
         const e = this.engine, s = e.state, now = e.now(), stats = e.stats();
-        const reports = s.reports.map(r => `<article><h4>${escape(r.id)} · ${Math.round(r.revealed/r.parts.length*100)}% 해독${r.resolved?' · 시장 반영 완료':''}</h4><p>${r.parts.map((part,i) => escape(i < r.revealed ? part : '[REDACTED]')).join('<br>')}</p></article>`).join('');
+        const reports = s.reports.map(r => {
+            const rumor = s.inventory.find(item => item.id === r.id && item.targetStockId);
+            if (rumor) {
+                const decoded = rumorDecryption(rumor.intelReport, rumor, stats.analysis);
+                return `<article><h4>유료 정보원의 찌라시 · 해석 ${decoded.level}단계</h4><p>${escape(decoded.text)}</p></article>`;
+            }
+            return `<article><h4>${escape(r.id)} · ${Math.round(r.revealed/r.parts.length*100)}% 해독${r.resolved?' · 시장 반영 완료':''}</h4><p>${r.parts.map((part,i) => escape(i < r.revealed ? part : '[REDACTED]')).join('<br>')}</p></article>`;
+        }).join('');
         const reportOptions = s.reports.filter(r => r.revealed < r.parts.length).map(r => `<option value="${r.id}">${escape(r.id)} (${r.revealed}/${r.parts.length})</option>`).join('');
         const goods = s.inventory.filter(i => getItemArtwork(i.id)).map(i => `<button data-use="${escape(i.id)}"><img src="${getItemArtwork(i.id)}" alt="">${escape(i.name)} ×${i.quantity} ${i.isEquipped ? '해제' : '사용'}</button>`).join('');
         this.dialog.querySelector('main').innerHTML = `
@@ -53,23 +70,32 @@ export class ItemCenter {
           <p>보유 상품 사용</p><div class="item-center-actions">${goods || '가방이 비어 있습니다.'}</div></section>
           <section><h3>정보 · 해독</h3><label>해독 대상 <select id="itemReportTarget">${reportOptions || '<option value="">대상 없음</option>'}</select></label>${reports || '<p>유료 찌라시를 사용하면 보고서가 도착합니다.</p>'}</section>
           <section><h3>우편</h3><p>앞으로 받을 드링크 ${s.deliveries.length}개</p>${s.mail.map(m=>`<p>${time(m.due)} 드링크 1개 <button data-mail="${m.id}" ${m.claimed?'disabled':''}>${m.claimed?'수령 완료':'받기'}</button></p>`).join('') || '도착한 우편 없음'}</section>
-          <section><h3>주간 로또 — 로컬 데모 추첨</h3><p>추첨: ${time(nextDraw(now))} · ${lottoClosed(now)?'판매 중지':'판매 중'}<br>판매액 50% 적립, 1등에 풀의 75% 배분. 이월 ${s.rollover.toLocaleString()}G. 서버 공용 추첨이 아닌 이 저장 파일 내 추첨입니다.</p>
-          ${s.tickets.map(t=>`<article><p>${escape(t.id)} · ${time(t.round)}<br>번호: ${t.numbers.join(' · ')}${t.prize?' · 당첨 '+t.prize.toLocaleString()+'G':''}</p>
-          ${now<t.round-7200000?`<input aria-label="${t.id} 번호" id="numbers-${t.id}" value="${t.numbers.join(', ')}"><button data-numbers="${t.id}">번호 변경</button><button data-auto="${t.id}">자동 선택</button>`:''}
-          ${t.prize?`<button data-prize="${t.id}" ${t.claimed?'disabled':''}>${t.claimed?'수령 완료':'당첨금 받기'}</button>`:''}</article>`).join('') || '<p>상점에서 구매하면 자동 번호가 발급됩니다. 판매 마감 전 직접 번호로 변경할 수 있습니다.</p>'}
-          ${s.draws.map(d=>`<p>${time(d.round)} 추첨: ${d.numbers.join(' · ')} / 1등 ${d.winners}장</p>`).join('')}</section>
+          ${this.lotto.render()}
           <section><h3>최근 알림</h3>${s.notices.map(n=>`<p>${escape(n)}</p>`).join('') || '알림 없음'}</section>`;
     }
     handle(event) {
         const button = event.target.closest('button');
         if (!button || button.disabled) return;
         const d = button.dataset, e = this.engine;
+        if (d.lotto) {
+            const result = this.lotto.act(d.lotto, d.ticketId, Number(d.number));
+            this.lotto.messages.set(d.ticketId, result.message);
+            if (d.lotto === 'save' && result.success) this.onChange();
+            const scroll = this.dialog.scrollTop;
+            this.dialog.querySelector('#item-lotto').outerHTML = this.lotto.render();
+            this.dialog.scrollTop = scroll;
+            const replacement = [...this.dialog.querySelectorAll('[data-lotto]')].find(el => el.dataset.lotto === d.lotto && el.dataset.ticketId === d.ticketId && el.dataset.number === d.number);
+            replacement?.focus({ preventScroll:true });
+            return;
+        }
         let result;
         if (d.use) result = e.use(d.use, { reportId: this.dialog.querySelector('#itemReportTarget')?.value });
         if (d.mail) result = e.claimMail(d.mail);
         if (d.prize) result = e.claimPrize(d.prize);
-        if (d.numbers) result = e.changeTicket(d.numbers, this.dialog.querySelector(`#numbers-${d.numbers}`).value.split(/[\s,]+/).filter(Boolean).map(Number));
-        if (d.auto) result = e.changeTicket(d.auto, e.numbers());
-        if (result) { this.onChange(); this.render(); this.feedback(result.message); }
+        if (result) {
+            this.onChange();
+            if (d.use === 'item_lotto_ticket') this.open(result.message, 'lotto');
+            else { this.render(); this.feedback(result.message); }
+        }
     }
 }

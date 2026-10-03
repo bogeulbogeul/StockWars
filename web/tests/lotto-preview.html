@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>주간 로또 번호 선택 검증</title><link rel="stylesheet" href="css/style.css"></head><body>
+<script type="module">
+import {ItemEngine} from './js/engine/ItemEngine.js';
+import {ItemCenter} from './js/components/ItemCenter.js';
+const engine = new ItemEngine({clock:()=>Date.parse('2026-10-04T12:00:00+09:00'),market:{cash:10000,stocks:new Map()}});
+engine.purchase('item_lotto_ticket');
+const center = new ItemCenter(engine,()=>{});
+center.open('', 'lotto');
+</script></body></html>

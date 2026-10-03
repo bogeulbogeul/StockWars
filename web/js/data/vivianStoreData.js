@@ -48,8 +48,8 @@ export const VIVIAN_SHOP_CATALOG = [
         icon: '💻',
         price: 1200,
         instantUsable: true,
-        desc: '모자이크 처리된 [REDACTED] 텍스트를 실시간으로 브루트포스 해독하는 소형 포터블 툴.',
-        effects: ['🔓 [REDACTED] 텍스트 1개 추가 확정 해독'],
+        desc: '찌라시의 비유와 은어를 더 구체적인 단서로 풀어주는 소형 도구. 보관함에서 확인하기를 눌러 열람한 찌라시 한 건을 선택하면 해석 단계가 1 올라가며 해당 정보에 유지됩니다. 분석력 자체와 정보의 진위는 바뀌지 않습니다.',
+        effects: ['🔎 열람 찌라시 1건 해석 +1단계 (최대 5)', '📌 해당 정보에 유지 · 진위 보장 없음'],
         linkedStock: { id: 'CLOUDBERRY', name: '클라우드 베리', note: '분산 암호 인프라 부품 사용' }
     },
     {

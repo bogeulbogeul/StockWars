@@ -16,6 +16,7 @@ import { TitleScreen } from './components/TitleScreen.js';
 import { CharacterCreation } from './components/CharacterCreation.js';
 import { TopDemoBar } from './components/TopDemoBar.js';
 import { MainHUD } from './components/MainHUD.js';
+import { PlayerProfileModal } from './components/PlayerProfileModal.js';
 import { OfficeStage } from './components/OfficeStage.js';
 import { SmartphoneUI } from './components/SmartphoneUI.js';
 import { TradeModal } from './components/TradeModal.js';
@@ -58,6 +59,7 @@ class StockWarsApplication {
 
         // 2. Main Top Financial HUD Bar
         this.mainHUD = new MainHUD(this.appContainer, {
+            onProfile: () => this.playerProfileModal.open(),
             onTimeClick: () => {
                 const nextMeta = timeOfDayService.cycleNext();
                 toastManager.show(`⏱️ 하늘 시간대 전환: ${nextMeta.icon} ${nextMeta.label} - ${nextMeta.desc}`);
@@ -121,6 +123,7 @@ class StockWarsApplication {
                 const res = marketEngine.sellStock(id, qty);
                 toastManager.show(res.msg, res.success);
                 if (res.success) this.tradeModal.updateContent();
+                if (res.achievement) this.smartphoneUI.bubbleAppModule.offerAchievementShare(res.achievement, this.userProfile?.name || '나');
             },
             onShort: (id, qty, lev) => {
                 const res = marketEngine.shortStock(id, qty, lev);
@@ -146,6 +149,13 @@ class StockWarsApplication {
             }
         });
 
+        this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
+            getProfile: () => this.userProfile,
+            getMarketState: () => marketEngine.getState(),
+            getStats: () => this.itemEngine?.stats(),
+            getStamina: () => this.mainHUD.stamina
+        });
+
         // Dedicated Social Ranking Leaderboard Modal
         this.rankingModal = new RankingModal(this.appContainer);
 
@@ -160,6 +170,13 @@ class StockWarsApplication {
 
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
+            getAnalysisLevel: () => this.itemEngine?.stats().analysis ?? 1,
+            getDecoderTargets: () => this.itemEngine?.decoderTargets() ?? [],
+            decodeRumor: rumorId => {
+                const result = this.itemEngine.use('item_crypto_decoder', { rumorId });
+                this.itemGameplay.sync();
+                return result;
+            },
             onActivateItem: item => {
                 if (!VIVIAN_SHOP_CATALOG.some(product => product.id === item.id)) return false;
                 this.itemGameplay.activate(item.id);
@@ -253,7 +270,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {

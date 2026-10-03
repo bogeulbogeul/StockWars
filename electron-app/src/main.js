@@ -32,6 +32,11 @@ if (hasLock) app.whenReady().then(() => {
   ipcMain.handle('presence:join', (event, id) => trusted(event) && id === 'town-1'
     ? presence.command('join', id) : { error: '잘못된 채널입니다.' });
   ipcMain.handle('presence:leave', (event) => trusted(event) ? presence.command('leave') : { error: '접근 불가' });
+  ipcMain.handle('chat:list', (event) => trusted(event) ? presence.chat('list') : { error: '접근 불가' });
+  ipcMain.handle('chat:room', (event, action, options) => trusted(event) && ['create', 'invite', 'leaveRoom', 'list', 'send', 'newsPublish', 'news', 'newsReact'].includes(action) && options && typeof options === 'object'
+    ? presence.chat(action, options.text, { roomId: options.roomId, title: options.title, members: options.members, achievement: options.achievement, comment: options.comment, postId: options.postId, reaction: options.reaction }) : { error: '잘못된 요청입니다.' });
+  ipcMain.handle('chat:send', (event, text) => trusted(event) && typeof text === 'string' && text.trim().length > 0 && text.length <= 500
+    ? presence.chat('send', text) : { error: '메시지는 1~500자로 입력해 주세요.' });
   win.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
   win.webContents.on('will-navigate', event => event.preventDefault());
   win.loadFile(path.join(webRoot, 'index.html'));

@@ -333,12 +333,14 @@ export class MarketEngine {
         let totalSold = 0;
         let totalRecoveredCash = 0;
         let realizedProfit = 0;
+        let soldCollateral = 0;
 
         for (const [key, pos] of this.portfolio.entries()) {
             if (pos.id === stockId && !pos.isShort) {
                 const sellQty = Math.min(qty - totalSold, pos.qty);
                 const ratio = sellQty / pos.qty;
                 const portionCollateral = pos.collateral * ratio;
+                soldCollateral += portionCollateral;
                 const priceDiff = (stock.price - pos.avgPrice) * sellQty * pos.leverage;
                 const returnedCash = Math.max(0, portionCollateral + priceDiff);
                 realizedProfit += returnedCash - portionCollateral;
@@ -364,6 +366,8 @@ export class MarketEngine {
         this.notify();
         return {
             success: true,
+            achievement: realizedProfit > 0 ? { id: globalThis.crypto?.randomUUID?.() || `${Date.now()}_${Math.random()}`, stockId, stockName: stock.name,
+                quantity: totalSold, profit: Math.round(realizedProfit), returnRate: soldCollateral > 0 ? realizedProfit / soldCollateral * 100 : 0 } : null,
             msg: `[매도 완료] ${stock.name} ${totalSold}주를 매도하여 ${Math.round(totalRecoveredCash).toLocaleString()}G를 정산받았습니다.`
         };
     }

@@ -9,6 +9,7 @@
 /* 2. Global Presentation & Financial HUD */
 @import './modules/top-demo-bar.css';
 @import './modules/main-hud.css';
+@import './modules/player-profile.css';
 @import './modules/toasts.css';
 
 /* 3. Smartphone OS Hardware & Navigation */
@@ -24,7 +25,7 @@
 @import './modules/news.css';
 
 /* 5. In-Game SNS & Communication */
-@import './modules/bubble-messenger.css?v=kakaotalk-input-pin-v9';
+@import './modules/bubble-messenger.css?v=bubble-group-chat-v14';
 @import './modules/friend-modal.css';
 @import './modules/ranking-modal.css';
 
@@ -61,6 +62,7 @@
 /* 9. Inventory & Item Systems */
 @import './modules/inventory-modal.css?v=vivian-items-1';
 @import './modules/item-center.css';
+@import './modules/lotto-panel.css';
 @import './modules/rumor-popup.css';
 @import './modules/furniture-edit.css';
 @import './modules/wardrobe-modal.css';

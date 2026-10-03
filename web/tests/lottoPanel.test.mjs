@@ -1,0 +1,57 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { LottoPanel } from '../js/components/LottoPanel.js';
+import { ItemEngine } from '../js/engine/ItemEngine.js';
+
+test('round labels follow draw weeks, not ticket order, and survive reload and legacy saves', () => {
+    let now = Date.parse('2026-10-04T12:00:00+09:00');
+    const market = {cash:10000,stocks:new Map()};
+    const engine = new ItemEngine({clock:()=>now,market});
+    engine.purchase('item_lotto_ticket',2);
+    const [a,b] = engine.state.tickets;
+    const panel = new LottoPanel(engine);
+    assert.match(panel.ticket(a), /제 1회/);
+    assert.match(panel.ticket(b), /제 1회/);
+    now += 14 * 86400000;
+    engine.purchase('item_lotto_ticket');
+    const c = engine.state.tickets.at(-1);
+    assert.match(panel.ticket(c), /제 3회/);
+    const saved = JSON.parse(JSON.stringify(engine.state));
+    const restored = new ItemEngine({clock:()=>now,market,state:saved});
+    assert.equal(restored.lottoRoundNumber(c.round),3);
+    delete saved.lottoFirstRound;
+    const legacy = new ItemEngine({clock:()=>now,market,state:saved});
+    assert.equal(legacy.lottoRoundNumber(a.round),1);
+    assert.equal(legacy.lottoRoundNumber(c.round),3);
+});
+
+test('number picker keeps drafts separate, caps six, confirms valid choices and respects closing time', () => {
+    let now = Date.parse('2026-10-04T12:00:00+09:00');
+    const engine = new ItemEngine({clock:()=>now, market:{cash:10000,stocks:new Map()}, random:()=>0});
+    engine.purchase('item_lotto_ticket',2);
+    const panel = new LottoPanel(engine), [a,b] = engine.state.tickets;
+    const issued = [...a.numbers];
+    panel.act('clear',a.id);
+    assert.equal(panel.act('save',a.id).success,false);
+    for (let n=10;n<16;n++) panel.act('pick',a.id,n);
+    assert.equal(panel.act('pick',a.id,16).success,false);
+    assert.deepEqual(a.numbers,issued);
+    assert.deepEqual(panel.selection(b),b.numbers);
+    assert.equal(panel.act('save',a.id).success,true);
+    assert.deepEqual(a.numbers,[10,11,12,13,14,15]);
+    for (const action of ['auto','clear','pick','save']) assert.equal(panel.act(action,a.id,10).success,false);
+    assert.deepEqual(a.numbers,[10,11,12,13,14,15]);
+    assert.equal(a.confirmed,true);
+    assert.equal(panel.ticket(a,0).includes('data-lotto='),false);
+    const restored = new ItemEngine({clock:()=>now,market:engine.market,state:JSON.parse(JSON.stringify(engine.state))});
+    assert.equal(restored.changeTicket(a.id,[1,2,3,4,5,6]).success,false);
+    assert.deepEqual(restored.state.tickets[0].numbers,[10,11,12,13,14,15]);
+    assert.equal(new LottoPanel(restored).ticket(restored.state.tickets[0],0).includes('번호 확정 완료'),true);
+    panel.act('clear',b.id);
+    assert.equal(panel.act('save',b.id).success,false);
+    assert.equal(Boolean(b.confirmed),false);
+    now = a.round - 7200000;
+    assert.equal(panel.act('save',a.id).success,false);
+    assert.equal(panel.drafts.has(a.id),false);
+    assert.equal(panel.render().includes('data-lotto="pick"'),false);
+});

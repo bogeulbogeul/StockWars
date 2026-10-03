@@ -1,5 +1,6 @@
 import { ItemEngine } from '../engine/ItemEngine.js';
 import { ItemCenter } from '../components/ItemCenter.js';
+import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
 
 const SAVE_KEY = 'stockwars-item-gameplay-v1';
@@ -72,10 +73,31 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         save();
     }
     app.itemCenter = new ItemCenter(engine, sync);
+    const bubble = app.smartphoneUI.bubbleAppModule;
+    bubble.callbacks.getShareItems = () => engine.state.inventory;
+    bubble.callbacks.shareInventoryItem = (friendId, kind, itemId) => {
+        const item = engine.state.inventory.find(entry => entry.id === itemId && entry.quantity > 0);
+        if (!item || item.isEquipped || (kind === 'rumor' ? item.category !== 'intel' : item.category === 'intel')) {
+            return { success: false, message: '선택한 아이템을 보낼 수 없습니다.' };
+        }
+        const result = kind === 'rumor' ? friendManager.shareRumor(friendId, item.name, market.day)
+            : friendManager.sendEnergyGift(friendId, market.day);
+        if (result.success) {
+            if (kind === 'gift') engine.consume(item.id, 1);
+            sync();
+            result.message = kind === 'gift' ? `${item.name} 1개를 선물했습니다. (우호도 +10)` : `${item.name} 정보를 공유했습니다. (원본 유지 · 우호도 +20)`;
+        }
+        return result;
+    };
     const activate = id => {
         const result = engine.use(id);
         sync();
-        app.itemCenter.open(result.message);
+        if (result.success && result.rumorId) {
+            const rumor = engine.state.inventory.find(item => item.id === result.rumorId);
+            app.inventoryModal.rumorPopup.open(rumor, () => sync());
+            return result;
+        }
+        app.itemCenter.open(result.message, id === 'item_lotto_ticket' ? 'lotto' : '');
         return result;
     };
     app.itemGameplay = {

@@ -1,12 +1,13 @@
 /* ==========================================================================
-   KakaoTalk Mobile Messenger Stylesheet
+   StockWars Bubble Messenger Stylesheet
    Features KakaoTalk Speech Bubbles Harmonized with Smartphone Dark OS Theme
    ========================================================================== */
 
 #bubbleApp {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 44px);
+    min-height: 0;
     background: #141824;
     color: #f1f5f9;
     overflow: hidden;
@@ -24,6 +25,7 @@
     flex-shrink: 0;
 }
 .bubble-nav-tab {
+    position: relative;
     flex: 1;
     padding: 9px 4px;
     background: transparent;
@@ -37,9 +39,9 @@
 }
 .bubble-nav-tab:hover { color: #cbd5e1; }
 .bubble-nav-tab.active {
-    color: #fee500;
-    border-bottom-color: #fee500;
-    background: rgba(254, 229, 0, 0.08);
+    color: #b7a4ff;
+    border-bottom-color: #b7a4ff;
+    background: rgba(155, 124, 255, 0.08);
 }
 
 .bubble-sub-view {
@@ -72,7 +74,7 @@
 .kt-back-home-btn {
     background: rgba(255, 255, 255, 0.08);
     border: none;
-    color: #fee500;
+    color: #b7a4ff;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -83,7 +85,7 @@
     align-items: center;
     justify-content: center;
 }
-.kt-back-home-btn:hover { background: rgba(254, 229, 0, 0.2); }
+.kt-back-home-btn:hover { background: rgba(155, 124, 255, 0.2); }
 .kt-title { font-size: 16px; font-weight: 800; color: #ffffff; }
 .kt-header-actions { display: flex; align-items: center; gap: 6px; }
 .kt-icon-btn {
@@ -117,9 +119,9 @@
     cursor: pointer;
 }
 .kt-filter-tab.active {
-    background: rgba(254, 229, 0, 0.18);
-    color: #fee500;
-    border-color: rgba(254, 229, 0, 0.4);
+    background: rgba(155, 124, 255, 0.18);
+    color: #b7a4ff;
+    border-color: rgba(155, 124, 255, 0.4);
     font-weight: 700;
 }
 
@@ -163,7 +165,9 @@
 #kakaotalkRoomView {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1 1 0%;
+    min-height: 0;
+    height: auto;
     width: 100%;
     overflow: hidden;
 }
@@ -184,7 +188,7 @@
 .kt-room-back-btn {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fee500;
+    color: #b7a4ff;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -195,7 +199,7 @@
     align-items: center;
     justify-content: center;
 }
-.kt-room-back-btn:hover { background: rgba(254, 229, 0, 0.18); }
+.kt-room-back-btn:hover { background: rgba(155, 124, 255, 0.18); }
 .kt-room-header-info { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .kt-room-title { font-size: 14px; font-weight: 800; color: #ffffff; }
 .kt-room-sub { font-size: 10px; color: #94a3b8; }
@@ -228,8 +232,8 @@
 }
 
 .chat-system-banner {
-    background: rgba(254, 229, 0, 0.08);
-    border: 1px solid rgba(254, 229, 0, 0.25);
+    background: rgba(155, 124, 255, 0.08);
+    border: 1px solid rgba(155, 124, 255, 0.25);
     color: #fef08a;
     font-size: 11px;
     padding: 7px 10px;
@@ -294,7 +298,7 @@
     flex-direction: column;
     align-items: flex-end;
 }
-.read-receipt { font-size: 10px; color: #fee500; font-weight: 800; margin-bottom: 1px; }
+.read-receipt { font-size: 10px; color: #b7a4ff; font-weight: 800; margin-bottom: 1px; }
 
 /* Incoming Bubble (Sleek Dark Slate Card with left tail tip) */
 .chat-bubble.incoming-bubble {
@@ -310,16 +314,16 @@
     word-break: break-word;
 }
 
-/* Outgoing Bubble (Signature Gold Accent with right tail tip) */
+/* Outgoing Bubble (Violet Accent with right tail tip) */
 .chat-bubble.outgoing-bubble {
-    background: #fee500;
+    background: #b7a4ff;
     color: #141824;
     border-radius: 14px 2px 14px 14px;
     padding: 8px 12px;
     font-size: 12.5px;
     font-weight: 600;
     line-height: 1.45;
-    box-shadow: 0 2px 8px rgba(254, 229, 0, 0.25);
+    box-shadow: 0 2px 8px rgba(155, 124, 255, 0.25);
     position: relative;
     word-break: break-word;
 }
@@ -341,6 +345,7 @@
 
 .chat-bubble-title { font-weight: 700; font-size: 12.5px; color: #ffffff; margin-bottom: 3px; }
 .chat-bubble-text { font-size: 12.5px; line-height: 1.45; color: #cbd5e1; }
+.outgoing-bubble .chat-bubble-text { color: #141824; }
 
 .chat-stock-card {
     background: #171f2d;
@@ -356,7 +361,7 @@
 .chat-stock-name { font-weight: 700; color: #ffffff; }
 .chat-stock-price { font-weight: 700; color: #60a5fa; }
 .chat-inline-stock-btn {
-    background: #fee500;
+    background: #b7a4ff;
     border: none;
     color: #141824;
     padding: 5px 10px;
@@ -367,7 +372,7 @@
     text-align: center;
     width: 100%;
 }
-.chat-inline-stock-btn:hover { background: #fada00; }
+.chat-inline-stock-btn:hover { background: #c8b8ff; }
 
 /* 4. KAKAOTALK BOTTOM INPUT BAR (DARK HARMONY MATCHING REF IMAGE 2) */
 .bubble-input-bar {
@@ -379,6 +384,17 @@
     gap: 8px;
     flex-shrink: 0;
     box-sizing: border-box;
+}
+.bubble-input-bar[hidden], .bubble-read-only-notice[hidden] { display: none; }
+.bubble-read-only-notice {
+    flex-shrink: 0;
+    padding: 15px 12px;
+    border-top: 1px solid rgba(183, 164, 255, 0.16);
+    background: #141824;
+    color: #aaa1be;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
 }
 .bubble-attach-btn {
     background: transparent;
@@ -395,27 +411,29 @@
     flex-shrink: 0;
     transition: color 0.15s ease;
 }
-.bubble-attach-btn:hover { color: #fee500; }
+.bubble-attach-btn:hover { color: #b7a4ff; }
 
 .bubble-input-wrapper {
     flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
     background: #1c2332;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 0 8px 0 12px;
     height: 36px;
     box-sizing: border-box;
 }
 .bubble-input-wrapper:focus-within {
-    border-color: #fee500;
+    border-color: #b7a4ff;
     background: #20283a;
-    box-shadow: 0 0 8px rgba(254, 229, 0, 0.15);
+    box-shadow: 0 0 8px rgba(155, 124, 255, 0.15);
 }
 
 .bubble-input {
     flex: 1;
+    min-width: 0;
     background: transparent;
     border: none;
     color: #ffffff;
@@ -430,32 +448,34 @@
     align-items: center;
     gap: 4px;
     flex-shrink: 0;
+    padding-left: 6px;
+    border-left: 1px solid rgba(183, 164, 255, 0.18);
 }
 .bubble-input-icon-btn {
     background: transparent;
     border: none;
-    color: #94a3b8;
+    color: #b7a4ff;
     font-size: 15px;
     cursor: pointer;
     padding: 2px 4px;
     border-radius: 4px;
     transition: color 0.15s ease;
 }
-.bubble-input-icon-btn:hover { color: #fee500; }
+.bubble-input-icon-btn:hover { color: #b7a4ff; }
 
 .bubble-send-btn {
-    background: #fee500;
+    background: linear-gradient(135deg, #a58aff, #f278b0);
     border: none;
     color: #141824;
     padding: 7px 12px;
-    border-radius: 18px;
+    border-radius: 10px;
     font-size: 11.5px;
     font-weight: 800;
     cursor: pointer;
     flex-shrink: 0;
     transition: transform 0.15s ease, background 0.15s ease;
 }
-.bubble-send-btn:hover { background: #fada00; transform: scale(1.02); }
+.bubble-send-btn:hover { background: #c8b8ff; transform: scale(1.02); }
 
 /* Friend list & social styles */
 .friend-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
@@ -464,16 +484,16 @@
 .friend-info { flex: 1; }
 .friend-name-row { display: flex; align-items: center; gap: 6px; }
 .friend-name { font-size: 13px; font-weight: 700; color: #ffffff; }
-.friend-badge { font-size: 10px; background: rgba(254, 229, 0, 0.15); color: #fee500; padding: 1px 5px; border-radius: 4px; }
+.friend-badge { font-size: 10px; background: rgba(155, 124, 255, 0.15); color: #b7a4ff; padding: 1px 5px; border-radius: 4px; }
 .friend-sub-info { font-size: 10.5px; color: #94a3b8; }
 .fp-progress-box { background: rgba(0, 0, 0, 0.2); padding: 6px 8px; border-radius: 6px; }
 .fp-label-row { display: flex; justify-content: space-between; font-size: 10px; color: #cbd5e1; margin-bottom: 4px; }
 .fp-benefit-tag { color: #00e5ff; font-weight: 600; }
 .fp-bar-bg { height: 5px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
-.fp-bar-fill { height: 100%; background: linear-gradient(90deg, #fee500, #ff9800); border-radius: 3px; }
+.fp-bar-fill { height: 100%; background: linear-gradient(90deg, #b7a4ff, #f278b0); border-radius: 3px; }
 .friend-actions { display: flex; gap: 6px; }
 .btn-action { flex: 1; padding: 5px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; color: #e2e8f0; font-size: 10.5px; font-weight: 600; cursor: pointer; }
-.btn-action:hover { background: rgba(254, 229, 0, 0.15); color: #fee500; border-color: rgba(254, 229, 0, 0.3); }
+.btn-action:hover { background: rgba(155, 124, 255, 0.15); color: #b7a4ff; border-color: rgba(155, 124, 255, 0.3); }
 
 .envy-feed-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
 .envy-feed-top { display: flex; gap: 10px; }
@@ -482,6 +502,100 @@
 .envy-msg { font-size: 12px; color: #ffffff; font-weight: 600; margin-top: 2px; }
 .envy-reactions { display: flex; gap: 6px; }
 .btn-envy { flex: 1; padding: 5px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #ffffff; font-size: 11px; cursor: pointer; }
-.btn-envy:hover { background: rgba(254, 229, 0, 0.2); }
+.btn-envy:hover { background: rgba(155, 124, 255, 0.2); }
 .empty-state { text-align: center; color: #64748b; font-size: 12px; padding: 20px 0; }
 
+/* Reserved for future sticker packs; only panel navigation is active. */
+.bubble-emoticon-panel {
+    flex: 0 0 auto;
+    padding: 12px;
+    background: linear-gradient(150deg, #212138, #171c2b);
+    border-top: 1px solid rgba(183, 164, 255, 0.22);
+    max-height: 42%;
+    overflow-y: auto;
+}
+.bubble-emoticon-panel[hidden], .bubble-emoticon-panel.hidden { display: none; }
+.bubble-emoticon-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.bubble-emoticon-header strong { color: #eee9ff; font-size: 13px; }
+.bubble-emoticon-header span { display: block; margin-top: 3px; color: #9c9db5; font-size: 10px; }
+.bubble-emoticon-header button { border: 1px solid #3c3656; background: #2a253c; color: #c8b8ff; border-radius: 8px; width: 28px; height: 28px; font-size: 19px; cursor: pointer; }
+.bubble-emoticon-tabs { display: flex; gap: 6px; margin: 10px 0; }
+.bubble-emoticon-tabs button { padding: 5px 9px; border: 1px solid #39354d; border-radius: 7px; background: #282538; color: #9994ae; font-size: 10px; }
+.bubble-emoticon-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.bubble-emoticon-slot { display: grid; place-items: center; height: 44px; border: 1px dashed #423b5b; border-radius: 10px; background: rgba(155, 124, 255, 0.04); color: #65577e; font-size: 20px; }
+.bubble-emoticon-note { margin: 10px 0 0; text-align: center; color: #aaa1be; font-size: 11px; }
+#bubbleApp button:focus-visible { outline: 2px solid #c8b8ff; outline-offset: 2px; }
+
+.bubble-news-dot { display: inline-block; width: 5px; height: 5px; margin-left: 5px; vertical-align: top; border-radius: 50%; background: #f278b0; box-shadow: 0 0 6px rgba(242, 120, 176, 0.4); }
+.bubble-news-dot[hidden], .bubble-news-intro[hidden] { display: none; }
+.bubble-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; color: #bcb7cc; font-size: 12px; }
+.bubble-add-friend-btn { padding: 6px 10px; border: 1px solid #4b4069; border-radius: 8px; background: #2a243c; color: #d0bdff; font-size: 11px; cursor: pointer; }
+.bubble-news-intro { margin-bottom: 12px; padding: 9px 11px; border-radius: 9px; background: rgba(155, 124, 255, 0.08); color: #bcb0d8; font-size: 11px; line-height: 1.5; }
+#ktEnvyFeedContainer { display: flex; flex-direction: column; gap: 12px; }
+#bubbleApp .envy-feed-card { gap: 12px; padding: 14px; border-color: #363248; background: linear-gradient(145deg, #222638, #1a1f2d); border-radius: 14px; }
+.bubble-news-avatar { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border: 1px solid #50416c; border-radius: 12px; background: #342c4a; font-size: 20px; }
+.bubble-news-profile { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 4px; }
+.bubble-news-profile strong { color: #f1ecff; font-size: 12px; overflow-wrap: anywhere; }
+.bubble-news-profile span { color: #8b879e; font-size: 10px; }
+.bubble-news-achievement { color: #c6b4ed; font-size: 11px; }
+#bubbleApp .envy-msg { font-size: 13px; line-height: 1.6; font-weight: 500; color: #e3dfed; }
+#bubbleApp .envy-reactions { display: flex; gap: 6px; }
+#bubbleApp .btn-envy { flex: 1; padding: 8px 3px; border: 1px solid #474057; border-radius: 9px; background: #282636; color: #bfb7cc; font-size: 11px; cursor: pointer; }
+#bubbleApp .btn-envy:hover:not(:disabled) { background: #39304c; border-color: #9172ba; color: #f1eaff; }
+#bubbleApp .btn-envy.selected { background: #493260; border-color: #ba8be1; color: #f3ddff; }
+#bubbleApp .btn-envy:disabled { cursor: default; }
+
+#bubbleSubViewAdd { padding: 16px 14px; }
+#bubbleSubViewAdd .bubble-section-heading { margin-bottom: 18px; }
+#bubbleSubViewAdd .kt-add-box {
+    padding: 22px 16px 16px;
+    border: 1px solid rgba(183, 164, 255, 0.2);
+    border-radius: 18px;
+    background: radial-gradient(ellipse at top, rgba(155, 124, 255, 0.13), transparent 70%), #1b2030;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.bubble-add-hero { text-align: center; margin-bottom: 24px; }
+.bubble-add-avatar { display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 18px; border: 1px solid #665184; color: #e2caff; background: linear-gradient(135deg, #44305c, #2d2946); box-shadow: 0 0 24px rgba(155, 124, 255, 0.1); font-size: 27px; }
+.bubble-add-hero h3 { margin: 16px 0 8px; color: #f0eaff; font-size: 15px; line-height: 1.5; }
+.bubble-add-hero p { margin: 0; color: #a8a0bd; font-size: 11px; line-height: 1.7; }
+.bubble-add-label { display: block; margin-bottom: 8px; color: #c6b9dd; font-size: 11px; font-weight: 600; }
+#bubbleSubViewAdd .search-input-group { display: flex; align-items: stretch; gap: 8px; }
+#inputKtFriendSearch { flex: 1; min-width: 0; width: 100%; height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid #474057; border-radius: 10px; background: #131826; color: #f2edff; font: inherit; font-size: 12px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+#inputKtFriendSearch::placeholder { color: #80788f; }
+#inputKtFriendSearch:focus { border-color: #aa8bdf; box-shadow: 0 0 0 3px rgba(155, 124, 255, 0.12); }
+#btnKtAddFriendSubmit { flex-shrink: 0; padding: 0 14px; border: 1px solid rgba(231, 204, 255, 0.2); border-radius: 10px; background: linear-gradient(135deg, #aa8be7, #d18ebf); color: #21172e; font-size: 12px; font-weight: 700; cursor: pointer; transition: filter 0.15s; }
+#btnKtAddFriendSubmit:hover { filter: brightness(1.1); }
+.bubble-add-hint { margin: 14px 0 0; padding-top: 14px; border-top: 1px solid rgba(183, 164, 255, 0.1); text-align: center; color: #928aa4; font-size: 10px; line-height: 1.6; }
+.bubble-create-room { margin: 10px 0; padding: 14px; background: #222238; border: 1px solid #534366; border-radius: 14px; flex-shrink: 0; }
+.bubble-create-room[hidden] { display: none; }
+.bubble-create-room > label { color: #c7b6df; font-size: 11px; }
+#bubbleRoomName { box-sizing: border-box; width: 100%; margin: 8px 0 12px; padding: 11px; border: 1px solid #59456f; border-radius: 9px; background: #141824; color: #fff; }
+#bubbleRoomMembers { max-height: 160px; overflow-y: auto; margin-bottom: 12px; }
+.bubble-member-option { display: flex; align-items: center; gap: 10px; padding: 9px 0; color: #e1d6ee; font-size: 12px; }
+.bubble-member-option input { accent-color: #b48de0; }
+.bubble-member-option small { display: block; margin-top: 4px; color: #9686a7; font-size: 10px; }
+.bubble-inventory-picker { width: min(340px, calc(100vw - 48px)); max-height: 70vh; padding: 18px; border: 1px solid #63507e; border-radius: 18px; background: #1b2030; color: #eee7fa; box-shadow: 0 20px 60px #0008; }
+.bubble-inventory-picker::backdrop { background: #080b16b3; }
+.bubble-inventory-picker > p { font-size: 12px; line-height: 1.6; }
+.bubble-picker-items { display: grid; gap: 8px; margin-top: 16px; }
+.bubble-picker-item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #443951; border-radius: 10px; background: #262337; color: #ece3fa; text-align: left; cursor: pointer; }
+.bubble-picker-item:hover, .bubble-picker-item:focus-visible { border-color: #b595dc; background: #342a45; }
+.bubble-picker-item small { display: block; margin-top: 5px; color: #a79bb8; }
+.bubble-achievement-comment { box-sizing: border-box; width: 100%; padding: 12px; margin: 10px 0 18px; border: 1px solid #63507e; border-radius: 10px; background: #141824; color: #f2eaff; }
+.bubble-news-comment { padding: 9px 12px; border-left: 2px solid #a283cc; background: #ffffff04; color: #c5b6d8; font-size: 12px; line-height: 1.6; }
+.bubble-room-sidebar { position: fixed; box-sizing: border-box; margin: 0; padding: 0; max-width: none; max-height: none; border: 0; border-left: 1px solid #5e4779; border-radius: 16px 0 0 16px; background: linear-gradient(160deg, #262238, #171c2a); color: #eee7fa; box-shadow: -12px 0 35px #0005; overflow: hidden; }
+.bubble-room-sidebar::backdrop { background: #090b16a6; }
+.bubble-sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-bottom: 1px solid #ffffff12; font-size: 13px; }
+.bubble-sidebar-body { height: calc(100% - 65px); box-sizing: border-box; padding: 16px; overflow-y: auto; }
+.bubble-sidebar-body h3 { margin: 0 0 22px; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+.bubble-sidebar-heading { display: flex; align-items: center; justify-content: space-between; color: #b9a5d1; font-size: 12px; }
+.bubble-sidebar-heading span { font-size: 10px; padding: 4px 7px; border-radius: 7px; background: #a783cd1a; }
+.bubble-sidebar-person { display: flex; align-items: center; gap: 10px; padding: 11px 0; color: #ded5eb; font-size: 12px; overflow-wrap: anywhere; }
+.bubble-sidebar-avatar { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border: 1px solid #4c3e60; border-radius: 10px; background: #342941; }
+.bubble-sidebar-person small { margin-left: auto; color: #d7b6f1; font-size: 10px; }
+.bubble-sidebar-invite { margin-top: 15px; padding-top: 15px; border-top: 1px solid #ffffff12; }
+.bubble-sidebar-invite summary { padding: 10px; border: 1px solid #584269; border-radius: 9px; background: #37293f; color: #d9c2ee; cursor: pointer; font-size: 12px; }
+.bubble-sidebar-invite .bubble-picker-items { margin-top: 8px; }
+.bubble-room-leave { width: 100%; margin-top: 24px; padding: 11px; border: 1px solid #744052; border-radius: 9px; background: #412432; color: #f0a7bd; font-size: 11px; cursor: pointer; }
+.bubble-room-leave:hover { background: #54293c; }
+.bubble-room-leave:disabled { opacity: 0.5; cursor: wait; }

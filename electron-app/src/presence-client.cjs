@@ -69,6 +69,31 @@ class PresenceClient {
     void this.command('heartbeat');
     this.timer = setInterval(() => { void this.command('heartbeat'); }, 10000);
   }
+  chat(action, text, options = {}) {
+    const operation = async () => {
+      if (!this.url) return { error: '테스트 서버 주소 미설정' };
+      try {
+        if (!this.snapshot) await this.request('session');
+        const send = async () => {
+          const response = await this.fetch(new URL('/api/chat', this.url), {
+            method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${this.token}` },
+            body: JSON.stringify({ ...options, action, text }), signal: AbortSignal.timeout(5000)
+          });
+          const data = await response.json();
+          if (!response.ok) throw Object.assign(new Error(data.error || '채팅 연결 실패'), { status: response.status });
+          return data;
+        };
+        try { return await send(); }
+        catch (error) {
+          if (error.status !== 401) throw error;
+          await this.request('session');
+          return await send();
+        }
+      } catch (error) { return { error: error.status ? error.message : '채팅 서버에 연결할 수 없습니다.' }; }
+    };
+    this.queue = this.queue.then(operation, operation);
+    return this.queue;
+  }
   stop() { clearInterval(this.timer); return this.command('disconnect'); }
   state() { return { snapshot: this.snapshot, error: this.error }; }
 }

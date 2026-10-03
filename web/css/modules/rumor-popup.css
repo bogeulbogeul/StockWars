@@ -23,7 +23,8 @@
 }
 
 .rumor-card {
-    width: 540px;
+    width: 680px;
+    max-height: 92dvh;
     max-width: 92vw;
     background: rgba(14, 19, 32, 0.96);
     border: 1.5px solid rgba(255, 171, 0, 0.5);
@@ -48,6 +49,28 @@
 }
 
 /* Header */
+.rumor-decoder-picker {
+    width: min(600px, 90vw);
+    max-height: 85dvh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: #0e1320;
+    color: #eceff1;
+    border: 1px solid #00cfa0;
+    border-radius: 16px;
+    padding: 24px;
+}
+.rumor-decoder-picker::backdrop { background: rgba(4, 8, 16, .85); }
+.rumor-decoder-picker > p { color: #aab9ca; line-height: 1.6; }
+.rumor-decoder-targets { display: grid; gap: 12px; margin: 18px 0; }
+.rumor-decoder-option {
+    display: grid; gap: 8px; width: 100%; text-align: left;
+    padding: 16px; border: 1px solid #344658; border-radius: 8px;
+    background: #142330; color: #eceff1; cursor: pointer; font: inherit;
+}
+.rumor-decoder-option:hover, .rumor-decoder-option:focus-visible { border-color: #00e5b0; }
+.rumor-decoder-option span { font-size: 13px; line-height: 1.7; color: #b7c7d6; }
+
 .rumor-header {
     height: 56px;
     padding: 0 20px;
@@ -235,10 +258,37 @@
 }
 
 .rumor-doc-text {
-    font-size: 13.5px;
-    line-height: 1.6;
+    font-size: 19px;
+    line-height: 2;
+    min-height: 210px;
+    white-space: pre-wrap;
     color: #eceff1;
     word-break: keep-all;
+}
+
+.rumor-body { overflow-y: auto; min-height: 0; }
+.rumor-header, .rumor-footer { flex-shrink: 0; }
+.rumor-doc-header { justify-content: space-between; flex-wrap: wrap; }
+#rumorAnalysisStatus { color: #b8c9db; font-size: 12px; }
+.rumor-noise-meter { height: 4px; border-radius: 4px; background: #263242; overflow: hidden; }
+.rumor-noise-meter > div { height: 100%; background: #ffab00; transition: width .25s; }
+.rumor-redacted {
+    display: inline-block;
+    font-size: .65em;
+    letter-spacing: 1px;
+    color: #8e9aac;
+    padding: 0 5px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(135deg, #27303e 0 2px, #151c28 2px 4px);
+    border: 1px solid #394252;
+    vertical-align: middle;
+    user-select: none;
+}
+.rumor-reliability-note { font-size: 11px; line-height: 1.6; color: #99a5b6; }
+@media (max-width: 600px) {
+    .rumor-doc-text { font-size: 17px; min-height: 180px; }
+    .rumor-stock-highlight { flex-wrap: wrap; gap: 10px; }
+    .rumor-header-title { font-size: 12px; }
 }
 
 /* Market Impact Effects */

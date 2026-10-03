@@ -59,6 +59,10 @@ export class MainHUD {
 
                 <!-- Right Group: Quick Navigation Menu Buttons -->
                 <div class="hud-group hud-menu-group">
+                    <button class="hud-nav-btn" id="btnHudProfile" title="플레이어 프로필">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-label">프로필</span>
+                    </button>
                     <button class="hud-nav-btn" id="btnHudInventory" title="소지품 인벤토리 (TAB / I)">
                         <span class="nav-icon">🎒</span>
                         <span class="nav-label">소지품</span>
@@ -105,6 +109,7 @@ export class MainHUD {
     }
 
     initEventListeners() {
+        document.getElementById('btnHudProfile')?.addEventListener('click', () => this.callbacks.onProfile?.());
         this.hudClockItem?.addEventListener('click', () => {
             if (this.callbacks.onTimeClick) this.callbacks.onTimeClick();
         });

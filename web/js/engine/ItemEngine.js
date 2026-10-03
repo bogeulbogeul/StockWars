@@ -42,6 +42,12 @@ export class ItemEngine {
             swanAt: clock() + 2 * DAY, swanEnd: 0, swanActive: false,
             tickets: [], draws: [], pools: {}, rollover: 0, notices: []
         };
+        // Preserve a local game's weekly numbering, including older saved tickets.
+        this.state.lottoFirstRound ??= [...this.state.tickets, ...this.state.draws]
+            .reduce((first, entry) => Math.min(first, entry.round), nextDraw(this.state.lastNow));
+    }
+    lottoRoundNumber(round = nextDraw(this.now())) {
+        return Math.floor((round - this.state.lottoFirstRound) / (7 * DAY)) + 1;
     }
     now() { return Math.max(this.clock() + this.state.offset, this.state.lastNow); }
     id(prefix) { return `${prefix}_${this.state.nextId++}`; }
@@ -124,6 +130,10 @@ export class ItemEngine {
         if (stock) stock.price = Math.round(stock.price * 1.005);
         return result;
     }
+    decoderTargets() {
+        return this.state.inventory.filter(item => item.category === 'intel' && item.isRead && item.targetStockId
+            && Math.max(this.stats().analysis, item.interpretationLevel || 1) < 5);
+    }
     canUse(id) {
         const s = this.state;
         if (!catalog.has(id)) return fail('사용 기능이 없는 아이템입니다.');
@@ -134,7 +144,8 @@ export class ItemEngine {
         if (buffs[id] && this.active(buffs[id])) return fail('같은 강화 효과가 이미 적용 중입니다.');
         if (id.startsWith('item_logistics_quickpass') && s.passUntil > this.now()) return fail('퀵-패스가 이미 적용 중입니다.');
         if (id === 'item_weekly_drink_ration' && s.deliveries.length) return fail('드링크 배급권이 이미 적용 중입니다.');
-        if (['item_crypto_decoder', 'item_darknet_key'].includes(id) && !this.state.reports.some(r => r.revealed < r.parts.length)) return fail('해독할 보고서가 없습니다. 유료 찌라시를 먼저 사용하세요.');
+        if (id === 'item_crypto_decoder' && !this.decoderTargets().length && !s.reports.some(r => r.revealed < r.parts.length)) return fail('더 풀어볼 정보가 없습니다. 찌라시를 먼저 열람하세요.');
+        if (id === 'item_darknet_key' && !s.reports.some(r => r.revealed < r.parts.length)) return fail('해독할 보고서가 없습니다. 유료 찌라시를 먼저 사용하세요.');
         if (id === 'item_escape_capsule' && s.escape) return fail('탈출 캡슐이 이미 대기 중입니다.');
         return ok('사용 가능');
     }
@@ -145,6 +156,7 @@ export class ItemEngine {
         if (!check.success) return check;
         const s = this.state, now = this.now();
         let message = `${catalog.get(id).name} 사용 완료`;
+        let rumorId;
         let consume = true;
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             s.stamina = Math.min(3, s.stamina + 1);
@@ -167,25 +179,51 @@ export class ItemEngine {
             const report = { id: this.id('report'), stockId: stock.id, name: stock.name, at: now + DAY,
                 parts: [`대상 기업: ${stock.name}`, '촉매: 신규 공급 계약', '방향: 호재', '반영 시점: 24시간 후', '시장 충격: +8%', '정보 신뢰도: 확정된 데모 이벤트'], revealed: this.active('analysis') ? 4 : 3, resolved: false };
             s.reports.push(report);
+            rumorId = report.id;
+            s.inventory.push({
+                id: rumorId, category: 'intel', name: '유료 정보원의 찌라시', icon: '📜', rarity: 'rare',
+                quantity: 1, maxStack: 1, price: 1000, isRead: true, readCount: 1,
+                actionType: 'read', actionLabel: '열람하기',
+                targetStockId: stock.id, targetStockName: stock.name, targetSector: stock.sector || '업종 정보',
+                targetChange: '+8% 상승 예상', interpretationLevel: 3,
+                intelReport: `${stock.name}에 신규 공급 계약 소식이 돌고 있어. 24시간 뒤 발표가 나면 주가가 약 8% 상승할 거라는 제보야. 돈 주고 산 얘기라도 진위는 따로 따져봐.`,
+                desc: '유료 정보원이 전한 신규 공급 계약 소문.',
+                rumorClues: [
+                    '어느 집 문 앞에 새 짐수레가 섰대. 빈손으로 온 손님은 아니라더라. 하루쯤 지나 장부가 펼쳐지면 그 집 간판도 조금 들썩일 수 있겠지. 돈 주고 들은 얘기지만 네 눈으로 확인해 봐.',
+                    `${stock.sector || '한 업종'}에서 새 납품처를 잡았다는 소문이야. 하루 뒤 계약 이야기가 밖으로 나올 거래. 바람은 위쪽이라는데 아직 이름과 숫자는 또렷하지 않아.`,
+                    `${stock.sector || '해당 업종'} 쪽 호재야. 한 업체가 신규 공급 계약을 따냈다는 제보지. 24시간 뒤 발표가 상승의 계기가 될 거라는 얘기야. 기업명과 상승 폭은 더 풀어봐야 해.`,
+                    `${stock.name}이 신규 공급 계약을 따냈다는 소문이야. 24시간 뒤 발표가 예정돼 있고 상승을 기대하는 분위기래. 정확한 폭은 마지막 단서를 더 확인해야 해.`
+                ],
+                effects: ['신규 공급 계약 · 24시간 후 반영 예상', '예상 상승 폭 +8% · 제보의 진위는 별도 확인']
+            });
             s.decryptions++;
             // Demo progression supplies a route to analysis Lv.5 without an unimplemented bookstore.
             s.baseStats.analysis = Math.max(s.baseStats.analysis, 1 + Math.floor(s.decryptions / 10));
-            message += ' · 아이템 센터 정보 탭에 해독률 50% 이상의 보고서 도착';
+            message += ' · 해석 3단계의 찌라시가 보관함에 도착했습니다.';
+        } else if (id === 'item_crypto_decoder' && !options.reportId && this.decoderTargets().length) {
+            const target = options.rumorId ? this.decoderTargets().find(i => i.id === options.rumorId) : this.decoderTargets()[0];
+            if (!target) return fail('해석할 찌라시를 선택하세요.');
+            const before = Math.min(5, Math.max(1, this.stats().analysis, target.interpretationLevel || 1));
+            target.interpretationLevel = before + 1;
+            s.decryptions++;
+            message = `찌라시 한 건의 해석 단계 ${before} → ${target.interpretationLevel} · 해당 정보에 유지됩니다. 진위는 보장하지 않습니다.`;
         } else if (id === 'item_crypto_decoder' || id === 'item_darknet_key') {
             const report = options.reportId ? s.reports.find(r => r.id === options.reportId && r.revealed < r.parts.length) : s.reports.find(r => r.revealed < r.parts.length);
             if (!report) return fail('해독 대상 보고서를 선택하세요.');
             const before = report.revealed;
             report.revealed = id === 'item_darknet_key' ? report.parts.length : before + 1;
+            const linkedRumor = s.inventory.find(item => item.id === report.id && item.targetStockId);
+            if (linkedRumor) linkedRumor.interpretationLevel = id === 'item_darknet_key' ? 5 : Math.min(5, Math.max(this.stats().analysis, linkedRumor.interpretationLevel || 3) + 1);
             s.decryptions += report.revealed - before;
             s.baseStats.analysis = Math.max(s.baseStats.analysis, 1 + Math.floor(s.decryptions / 10));
-            message += ` · ${report.name} ${report.revealed}/${report.parts.length} 해독`;
+            message += ` · 보고서 단서 ${report.revealed}/${report.parts.length} 확인 · 진위 보장 없음`;
         } else if (id === 'item_black_swan_alarm') { s.alarm = !s.alarm; consume = false; message = `조기 경보기 ${s.alarm ? '활성화' : '해제'}`;
         } else if (id === 'item_gas_mask') { s.mask = !s.mask; consume = false; message = `디지털 방독면 ${s.mask ? '장착' : '해제'}`;
         } else if (id === 'item_escape_capsule') { s.escape = true; message += ' · 다음 폭락 직전 자동 청산 대기';
         } else if (id === 'item_lotto_ticket') { consume = false; message = '아이템 센터의 로또 탭에서 번호·결과·당첨금을 확인하세요.'; }
         if (consume) this.consume(id);
         else { const entry = s.inventory.find(i => i.id === id); entry.isEquipped = id === 'item_gas_mask' ? s.mask : id === 'item_black_swan_alarm' ? s.alarm : false; }
-        return ok(message);
+        return { ...ok(message), ...(rumorId ? { rumorId } : {}) };
     }
     discard(id) {
         if (id === 'item_lotto_ticket') return fail('응모권은 추첨 기록과 연결되어 버릴 수 없습니다.');
@@ -207,9 +245,11 @@ export class ItemEngine {
         this.tick();
         const ticket = this.state.tickets.find(t => t.id === id);
         if (!ticket || this.now() >= ticket.round - 2 * 3600000) return fail('번호 변경은 해당 회차 토요일 19:00 전에만 가능합니다.');
+        if (ticket.confirmed) return fail('이미 확정한 번호는 변경할 수 없습니다.');
         if (!validateNumbers(numbers)) return fail('1~45 사이의 서로 다른 정수 6개를 입력하세요.');
         ticket.numbers = [...numbers].sort((a,b) => a-b);
-        return ok('로또 번호를 변경했습니다.');
+        ticket.confirmed = true;
+        return ok('로또 번호가 확정되었습니다. 이후에는 변경할 수 없습니다.');
     }
     claimPrize(id) {
         const ticket = this.state.tickets.find(t => t.id === id && t.prize > 0 && !t.claimed);

@@ -5,7 +5,7 @@
  */
 
 import { ITEM_CATEGORIES, ITEM_RARITIES, DEFAULT_INVENTORY_ITEMS } from '../data/inventoryData.js';
-import { RumorPopup } from './inventory/RumorPopup.js';
+import { RumorPopup, rumorDecryption } from './inventory/RumorPopup.js';
 import { itemIconHtml } from '../data/itemArtwork.js';
 
 export class InventoryModal {
@@ -20,7 +20,7 @@ export class InventoryModal {
 
         this.render();
         this.initDOM();
-        this.rumorPopup = new RumorPopup(this.container);
+        this.rumorPopup = new RumorPopup(this.container, this.callbacks);
         this.initEventListeners();
     }
 
@@ -131,13 +131,27 @@ export class InventoryModal {
         this.renderGrid();
     }
 
+    getItemPresentation(item) {
+        if (item.category !== 'intel' || !item.targetStockId) return item;
+        const decoded = rumorDecryption(item.intelReport || item.desc || '', item, this.callbacks.getAnalysisLevel?.() ?? 1);
+        const detailed = item.isRead && decoded.level === 5;
+        return {
+            ...item,
+            // Titles can contain both the company and the catalyst; use a neutral label.
+            name: detailed ? item.name : '익명의 찌라시',
+            desc: item.isRead ? decoded.text : '봉인된 익명 제보입니다. 열람하면 현재 분석력에 맞는 소문을 읽을 수 있습니다.',
+            effects: detailed ? item.effects : [`분석 LV ${decoded.level} · ${item.isRead ? '소문의 단서를 직접 이어 보세요.' : '내용은 열람 후 확인할 수 있습니다.'}`]
+        };
+    }
+
     getFilteredItems() {
         return this.items.filter(item => {
             if (item.category === 'apparel') return false;
             const matchesCat = this.activeCategory === 'all' || item.category === this.activeCategory;
-            const matchesSearch = !this.searchQuery || 
-                item.name.toLowerCase().includes(this.searchQuery) ||
-                item.desc.toLowerCase().includes(this.searchQuery);
+            const visible = this.getItemPresentation(item);
+            const matchesSearch = !this.searchQuery ||
+                visible.name.toLowerCase().includes(this.searchQuery) ||
+                visible.desc.toLowerCase().includes(this.searchQuery);
             return matchesCat && matchesSearch;
         });
     }
@@ -148,9 +162,10 @@ export class InventoryModal {
 
         let gridHtml = '';
         filtered.forEach(item => {
+            const visible = this.getItemPresentation(item);
             const isSelected = item.id === this.selectedItemId;
             gridHtml += `
-                <div class="inv-slot ${isSelected ? 'active' : ''}" data-id="${item.id}" data-rarity="${item.rarity}" title="${item.name}">
+                <div class="inv-slot ${isSelected ? 'active' : ''}" data-id="${item.id}" data-rarity="${item.rarity}" title="${visible.name}">
                     <span class="inv-item-icon">${itemIconHtml(item)}</span>
                     ${item.quantity > 1 ? `<span class="inv-qty-badge">x${item.quantity}</span>` : ''}
                     ${item.isEquipped ? `<span class="inv-equipped-badge">장착</span>` : ''}
@@ -206,6 +221,7 @@ export class InventoryModal {
 
         const rarity = ITEM_RARITIES[item.rarity] || ITEM_RARITIES.common;
         const category = ITEM_CATEGORIES[item.category] || ITEM_CATEGORIES.etc;
+        const visible = this.getItemPresentation(item);
 
         let actionBtnText = item.actionLabel || '사용하기';
         let actionClass = 'inv-btn-primary';
@@ -225,7 +241,7 @@ export class InventoryModal {
                 <div class="inv-preview-box" style="border-color: ${rarity.color}; box-shadow: 0 0 20px ${rarity.glow}">
                     <span>${itemIconHtml(item)}</span>
                 </div>
-                <div class="inv-detail-name">${item.name}</div>
+                <div class="inv-detail-name">${visible.name}</div>
                 <div class="inv-detail-tags">
                     <span class="inv-rarity-tag" style="background: ${rarity.color}">${rarity.name}</span>
                     <span class="inv-category-tag">${category.icon} ${category.name}</span>
@@ -233,11 +249,11 @@ export class InventoryModal {
                 </div>
             </div>
 
-            <div class="inv-detail-desc">${item.desc}</div>
+            <div class="inv-detail-desc">${visible.desc}</div>
 
-            ${item.effects && item.effects.length > 0 ? `
+            ${visible.effects && visible.effects.length > 0 ? `
                 <div class="inv-detail-effects">
-                    ${item.effects.map(eff => `<div class="inv-effect-item">${eff}</div>`).join('')}
+                    ${visible.effects.map(eff => `<div class="inv-effect-item">${eff}</div>`).join('')}
                 </div>
             ` : ''}
 
@@ -263,6 +279,10 @@ export class InventoryModal {
     }
 
     handleItemAction(item) {
+        if (item.id === 'item_crypto_decoder') {
+            this.openDecoderPicker();
+            return;
+        }
         if (this.callbacks.onActivateItem?.(item) === true) {
             this.renderGrid();
             return;
@@ -285,11 +305,12 @@ export class InventoryModal {
         } else if (item.category === 'intel') {
             this.rumorPopup?.open(item, (_updatedItem, info) => {
                 this.renderGrid();
+                const visible = this.getItemPresentation(item);
                 if (this.callbacks.onShowToast) {
                     if (info.isFirstRead) {
-                        this.callbacks.onShowToast(`📜 [${item.name}] 최초 열람 완료! (가치 하락: ${info.previousPrice.toLocaleString()}G ➔ ${info.newPrice.toLocaleString()}G)`, true);
+                        this.callbacks.onShowToast(`📜 [${visible.name}] 최초 열람 완료! (가치 하락: ${info.previousPrice.toLocaleString()}G ➔ ${info.newPrice.toLocaleString()}G)`, true);
                     } else {
-                        this.callbacks.onShowToast(`📜 [${item.name}] 찌라시 정보 재확인 (가치 유지: ${item.price.toLocaleString()}G)`);
+                        this.callbacks.onShowToast(`📜 [${visible.name}] 찌라시 정보 재확인 (가치 유지: ${item.price.toLocaleString()}G)`);
                     }
                 }
             });
@@ -298,6 +319,45 @@ export class InventoryModal {
                 this.callbacks.onShowToast(`📖 [${item.name}] 열람: "${item.effects?.[0] || item.desc}"`);
             }
         }
+    }
+
+    openDecoderPicker() {
+        this.decoderDialog?.remove();
+        const dialog = document.createElement('dialog');
+        this.decoderDialog = dialog;
+        dialog.className = 'rumor-decoder-picker';
+        dialog.innerHTML = '<h3>해석할 찌라시 선택</h3><p>한 건을 선택하면 해독기 1개를 사용해 해석 단계를 올립니다.</p><div class="rumor-decoder-targets"></div><p role="status"></p><button type="button" class="inv-btn-secondary">취소</button>';
+        const list = dialog.querySelector('.rumor-decoder-targets');
+        const targets = this.callbacks.getDecoderTargets?.() ?? [];
+        targets.forEach((item, index) => {
+            const visible = this.getItemPresentation(item);
+            const decoded = rumorDecryption(item.intelReport || item.desc || '', item, this.callbacks.getAnalysisLevel?.() ?? 1);
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'rumor-decoder-option';
+            const title = document.createElement('strong');
+            title.textContent = `${index + 1}. ${visible.name} · 해석 ${decoded.level} → ${decoded.level + 1}`;
+            const preview = document.createElement('span');
+            preview.textContent = decoded.text;
+            button.append(title, preview);
+            button.onclick = () => {
+                const result = this.callbacks.decodeRumor?.(item.id);
+                if (!result?.success) {
+                    dialog.querySelector('[role=status]').textContent = result?.message || '해독기를 사용할 수 없습니다.';
+                    return;
+                }
+                dialog.close();
+                this.callbacks.onShowToast?.(result.message, true);
+                this.rumorPopup.open(item, () => this.renderGrid());
+            };
+            list.append(button);
+        });
+        if (!targets.length) dialog.querySelector('[role=status]').textContent = '해석 가능한 찌라시가 없습니다. 찌라시를 먼저 열람하세요. 최대 단계의 정보는 목록에서 제외됩니다.';
+        dialog.querySelector('.inv-btn-secondary').onclick = () => dialog.close();
+        dialog.addEventListener('keydown', event => event.stopPropagation());
+        dialog.addEventListener('close', () => dialog.remove(), { once: true });
+        document.body.append(dialog);
+        dialog.showModal();
     }
 
     useConsumable(item) {
