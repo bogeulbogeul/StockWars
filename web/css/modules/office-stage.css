@@ -2,6 +2,36 @@
    3D Isometric Home Office & Player Character Stage
    ========================================================================== */
 
+.office-furniture-edit-btn {
+    position: absolute;
+    left: 28px;
+    bottom: 28px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 20px;
+    border: 1px solid rgba(91, 224, 212, .45);
+    border-radius: 14px;
+    background: rgba(14, 25, 39, .94);
+    color: #eaf7ff;
+    box-shadow: 0 8px 28px #0005;
+    cursor: pointer;
+    pointer-events: auto;
+    font-family: inherit;
+    text-align: left;
+    transition: background .15s, border-color .15s;
+}
+.office-furniture-edit-btn:hover { background: #1b3948; border-color: #5be0d4; }
+.office-furniture-edit-btn:focus-visible { outline: 2px solid #5be0d4; outline-offset: 4px; }
+.office-furniture-edit-icon { font-size: 25px; }
+.office-furniture-edit-btn strong { display: block; font-size: 14px; }
+.office-furniture-edit-btn small { display: block; margin-top: 4px; color: #a1b6c9; font-size: 11px; }
+@media (max-width: 600px) {
+    .office-furniture-edit-btn { left: 12px; bottom: 18px; padding: 12px 14px; gap: 10px; }
+    .office-furniture-edit-btn small { display: none; }
+}
+
 .iso-office-stage {
     position: fixed;
     top: 0;

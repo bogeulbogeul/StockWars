@@ -61,6 +61,8 @@ export class TradeModal {
         this.modalTotalCost = document.getElementById('modalTotalCost');
         this.btnBuyExecute = document.getElementById('btnBuyExecute');
         this.btnSellExecute = document.getElementById('btnSellExecute');
+        this.btnSellExecute?.parentElement?.insertAdjacentHTML('beforebegin', '<p id="sellOrderPreview" aria-live="polite"></p>');
+        this.sellOrderPreview = document.getElementById('sellOrderPreview');
 
         // Info Tab DOM
         this.infoRichDesc = document.getElementById('infoRichDesc');
@@ -113,9 +115,9 @@ export class TradeModal {
         });
 
         this.btnOrderTypeShort?.addEventListener('click', () => {
-            if (this.callbacks.isLevel20Unlocked && !this.callbacks.isLevel20Unlocked()) {
+            if (this.callbacks.isLevel10Unlocked && !this.callbacks.isLevel10Unlocked()) {
                 if (this.callbacks.onShowToast) {
-                    this.callbacks.onShowToast('🔒 공매도 기능은 레벨 20 해금 후 이용 가능합니다!', false);
+                    this.callbacks.onShowToast('🔒 공매도 기능은 레벨 10 해금 후 이용 가능합니다!', false);
                 }
                 return;
             }
@@ -130,9 +132,9 @@ export class TradeModal {
         document.querySelectorAll('.lev-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const lev = parseInt(btn.dataset.lev) || 1;
-                if (lev >= 3 && this.callbacks.isLevel20Unlocked && !this.callbacks.isLevel20Unlocked()) {
+                if (lev >= 2 && this.callbacks.isLevel10Unlocked && !this.callbacks.isLevel10Unlocked()) {
                     if (this.callbacks.onShowToast) {
-                        this.callbacks.onShowToast(`🔒 ${lev}x 고배율 레버리지는 레벨 20 해금 후 이용 가능합니다!`, false);
+                        this.callbacks.onShowToast(`🔒 ${lev}x 고배율 레버리지는 레벨 10 해금 후 이용 가능합니다!`, false);
                     }
                     return;
                 }
@@ -261,8 +263,8 @@ export class TradeModal {
             this.btnFavorite.classList.toggle('active', isFav);
         }
 
-        // Level 20 unlock UI reflection
-        const isUnlocked = this.callbacks.isLevel20Unlocked ? this.callbacks.isLevel20Unlocked() : false;
+        // Level 10 unlock UI reflection
+        const isUnlocked = this.callbacks.isLevel10Unlocked ? this.callbacks.isLevel10Unlocked() : false;
         if (this.btnOrderTypeShort) {
             this.btnOrderTypeShort.classList.toggle('locked', !isUnlocked);
         }
@@ -272,6 +274,8 @@ export class TradeModal {
         if (this.lev3Btn) this.lev3Btn.classList.toggle('locked', !isUnlocked);
         if (this.lev5Btn) this.lev5Btn.classList.toggle('locked', !isUnlocked);
 
+        this.modal.querySelectorAll('.lev-btn').forEach(btn=>btn.classList.toggle('locked',Number(btn.dataset.lev)>=2&&!isUnlocked));
+        if(!isUnlocked){this.selectedLeverage=1;this.isShortMode=false;}
         // Chart
         if (this.chartRenderer && this.callbacks.getPriceHistory) {
             const hist = this.callbacks.getPriceHistory(this.selectedStockId) || [stock.price];
@@ -353,6 +357,12 @@ export class TradeModal {
     }
 
     updateCalculations() {
+        const preview = this.callbacks.getSellPreview?.(this.selectedStockId, this.tradeQty);
+        if (this.sellOrderPreview && preview) {
+            this.sellOrderPreview.textContent = preview.quantity > 0
+                ? `매도 예상: ${preview.quantity}주 · 수령 ${preview.proceeds.toLocaleString()}G · 실현 손익 ${preview.profit >= 0 ? '+' : ''}${preview.profit.toLocaleString()}G (체결 시 시세에 따라 변동)`
+                : '매도할 보유 주식이 없습니다.';
+        }
         if (!this.callbacks.getStock) return;
         const stock = this.callbacks.getStock(this.selectedStockId);
         if (stock && this.modalTotalCost) {
@@ -362,3 +372,4 @@ export class TradeModal {
         }
     }
 }
+

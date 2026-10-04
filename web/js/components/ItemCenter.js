@@ -41,7 +41,7 @@ export class ItemCenter {
     feedback(message) { this.dialog.querySelector('[role=status]').textContent = message; }
     refreshStatus() {
         const e = this.engine, s = e.state, stats = e.stats();
-        this.launch.title = `분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery} · 체력 ${s.stamina.toFixed(1)}/3`;
+        this.launch.title = `분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery} · 체력 ${s.stamina}/${e.maxStamina()}`;
         const countdown = s.alarm && s.swanAt - e.now() <= 86400000 && !s.swanActive ? `블랙 스완까지 ${Math.max(0, Math.ceil((s.swanAt-e.now())/1000))}초` : '';
         this.banner.textContent = s.swanActive ? `블랙 스완 · ${s.mask ? '방독면: 차트 가독성 70% 복구' : '차트 노이즈 발생'}${e.active('analysis') ? ' · 분석 강화: 글리치 감지' : ''}` : countdown;
         this.banner.hidden = !this.banner.textContent;
@@ -64,7 +64,7 @@ export class ItemCenter {
         const goods = s.inventory.filter(i => getItemArtwork(i.id)).map(i => `<button data-use="${escape(i.id)}"><img src="${getItemArtwork(i.id)}" alt="">${escape(i.name)} ×${i.quantity} ${i.isEquipped ? '해제' : '사용'}</button>`).join('');
         this.dialog.querySelector('main').innerHTML = `
           <p>데모 시각(KST): ${time(now)} · 날짜 ${dayKey(now)}</p>
-          <section><h3>현재 효과</h3><p>체력 ${s.stamina.toFixed(1)}/3 · 분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery}<br>1회 매수 한도 ${e.orderLimit()}주 · 노동 체력 ${e.laborCost()}칸 · 누적 실현 수익 ${s.profit.toLocaleString()}G · 해독 ${s.decryptions}회 · 생존 ${s.survivals}회 · EXP ${s.exp}</p>
+          <section><h3>현재 효과</h3><p>체력 ${s.stamina}/${e.maxStamina()} · 분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery}<br>1회 매수 한도 ${e.orderLimit()}주 · 노동 체력 ${e.laborCost()}칸 · 드링크/카페인 회복 ${e.recoveryAmount()}칸<br>누적 실현 수익 ${s.profit.toLocaleString()}G · 해독 ${s.decryptions}회 · 생존 ${s.survivals}회 · EXP ${s.exp}</p>
           <p>${Object.entries(s.buffs).filter(([,end])=>end>now).map(([key,end])=>`${escape(statNames[key] || key)} +2: ${Math.ceil((end-now)/60000)}분 남음`).join(' / ') || '적용 중인 스탯 강화 없음'}</p>
           <p>퀵-패스: ${s.passUntil>now?time(s.passUntil)+'까지':'없음'} · 탈출 캡슐: ${s.escape?'대기 중':'없음'} · 경보기: ${s.alarm?'켜짐':'꺼짐'} · 방독면: ${s.mask?'장착':'해제'}</p>
           <p>보유 상품 사용</p><div class="item-center-actions">${goods || '가방이 비어 있습니다.'}</div></section>

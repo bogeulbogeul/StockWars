@@ -16,6 +16,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         market.portfolio = new Map(saved.market.portfolio);
         market.stocks = new Map(saved.market.stocks);
         market.priceHistory = new Map(saved.market.history);
+        market.firstTradeLesson = saved.market.firstTradeLesson || null;
         app.userProfile = saved.profile;
     }
 
@@ -50,7 +51,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         try {
             localStorage.setItem(saveKey, JSON.stringify({ items: engine.state, profile: app.userProfile,
                 market: { cash: market.cash, initialCash: market.initialCash, day: market.day,
-                    portfolio: [...market.portfolio], stocks: [...market.stocks], history: [...market.priceHistory] } }));
+                    portfolio: [...market.portfolio], stocks: [...market.stocks], history: [...market.priceHistory], firstTradeLesson: market.firstTradeLesson } }));
             lastSaved = Date.now();
         } catch {
             if (!storageWarning) engine.notice('저장 공간을 사용할 수 없습니다. 현재 세션에서만 유지됩니다.');
@@ -109,14 +110,16 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             engine.state = new ItemEngine({ market }).state;
             const trait = app.userProfile?.trait?.key;
             if (trait in engine.state.baseStats) engine.state.baseStats[trait]++;
+            engine.state.stamina = engine.maxStamina();
             app.itemCenter.dialog.close();
             sync();
         }
     };
     const baseUpdateStamina = app.mainHUD.updateStamina.bind(app.mainHUD);
-    app.mainHUD.updateStamina = (value, max = 3) => {
-        engine.state.stamina = Math.max(0, Math.min(max, value));
-        baseUpdateStamina(value, max);
+    app.mainHUD.updateStamina = value => {
+        engine.state.stamina = value;
+        engine.normalizeStamina();
+        baseUpdateStamina(engine.state.stamina, engine.maxStamina());
     };
     const oldAdd = app.inventoryModal.addItem.bind(app.inventoryModal);
     app.inventoryModal.addItem = item => { const r = oldAdd(item); engine.state.inventory = app.inventoryModal.items; save(); return r; };
@@ -138,7 +141,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     app.itemTimer = setInterval(() => {
         const day = engine.state.purchaseDay, cash = market.cash, active = engine.state.swanActive;
         engine.tick();
-        if (day !== engine.state.purchaseDay || cash !== market.cash || active !== engine.state.swanActive) sync();
+        if (day !== engine.state.purchaseDay || cash !== market.cash || active !== engine.state.swanActive || app.mainHUD.stamina?.current !== engine.state.stamina || app.mainHUD.stamina?.max !== engine.maxStamina()) sync();
         app.itemCenter.refreshStatus();
         save(false);
     }, 1000);

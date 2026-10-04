@@ -53,7 +53,7 @@ export function getTradeModalHtml() {
                                 <div class="order-type-selector">
                                     <button class="order-type-btn active" id="btnOrderTypeLong">📈 현물 매수 (Long)</button>
                                     <button class="order-type-btn locked" id="btnOrderTypeShort">
-                                        📉 공매도 (Short) <span class="lock-tag" id="shortLockTag">🔒 Lv.20</span>
+                                        📉 공매도 (Short) <span class="lock-tag" id="shortLockTag">🔒 Lv.10</span>
                                     </button>
                                 </div>
 
@@ -156,3 +156,4 @@ export function getTradeModalHtml() {
         </div>
     `;
 }
+

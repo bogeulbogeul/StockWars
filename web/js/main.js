@@ -17,6 +17,7 @@ import { CharacterCreation } from './components/CharacterCreation.js';
 import { TopDemoBar } from './components/TopDemoBar.js';
 import { MainHUD } from './components/MainHUD.js';
 import { PlayerProfileModal } from './components/PlayerProfileModal.js';
+import { SettingsModal } from './components/SettingsModal.js';
 import { OfficeStage } from './components/OfficeStage.js';
 import { SmartphoneUI } from './components/SmartphoneUI.js';
 import { TradeModal } from './components/TradeModal.js';
@@ -25,6 +26,7 @@ import { NewsDetailModal } from './components/NewsDetailModal.js';
 import { SettlementModal } from './components/SettlementModal.js';
 import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
+import { CipherLobby } from './components/CipherCanvasLobby.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
 import { InventoryModal } from './components/InventoryModal.js?v=vivian-effects-1';
@@ -64,20 +66,17 @@ class StockWarsApplication {
                 const nextMeta = timeOfDayService.cycleNext();
                 toastManager.show(`⏱️ 하늘 시간대 전환: ${nextMeta.icon} ${nextMeta.label} - ${nextMeta.desc}`);
             },
-            onWeatherClick: () => {
-                const w = weatherService.cycleWeather();
-                toastManager.show(`🌦️ 날씨 시뮬레이션 전환: ${w.icon} ${w.text} (${w.temp}°C)`);
-            },
             onStaminaClick: (s) => toastManager.show(`❤️ 체력 (스테미너): ${s.current} / ${s.max} | 알바, 속독 등에 소모`),
             onInventory: () => this.inventoryModal.toggle(),
             onFurnitureEdit: () => this.furnitureEditModal.toggle(),
             onRanking: () => this.rankingModal.show(),
             onHelp: () => toastManager.show('❓ 도움말: 7일 동안 주식 투자로 수익을 극대화하여 월세를 지불하세요!'),
-            onSettings: () => toastManager.show('⚙️ 환경 설정: 데모 옵션')
+            onSettings: () => this.settingsModal.open()
         });
 
         // 3. 3D Isometric Rooftop Office Stage Background
         this.officeStage = new OfficeStage(this.appContainer, {
+            onFurnitureEdit: () => this.furnitureEditModal.open(),
             isTutorialActive: () => !!this.annaTutorial?.isActive,
             isAnnaMarriageCompleted: () => this.userProfile?.annaMarriageCompleted === true,
             onOpenServerSelect: () => this.openServerSelect(),
@@ -100,11 +99,12 @@ class StockWarsApplication {
         // 5. Modals (Trade, Detailed Chart, News Detail, Settlement)
         this.tradeModal = new TradeModal(this.appContainer, {
             getStock: (id) => marketEngine.stocks.get(id),
+            getSellPreview: (id, qty) => marketEngine.getSellPreview(id, qty),
             getPriceHistory: (id) => marketEngine.priceHistory.get(id),
             getOrderBook: (id) => marketEngine.getOrderBook(id),
             getNews: () => marketEngine.news,
             isFavorite: (id) => this.smartphoneUI.favorites.has(id),
-            isLevel20Unlocked: () => marketEngine.isLevel20Unlocked,
+            isLevel10Unlocked: () => marketEngine.isLevel10Unlocked,
             onToggleFavorite: (id) => this.smartphoneUI.toggleFavorite(id),
             onOpenDetailedChart: (id) => this.openDetailedChart(id),
             onOpenNewsDetailModal: (newsId) => this.openNewsDetailModal(newsId),
@@ -149,6 +149,9 @@ class StockWarsApplication {
             }
         });
 
+        this.settingsModal = new SettingsModal(this.appContainer, {
+            onExit: () => this.showTitleScreen()
+        });
         this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
             getProfile: () => this.userProfile,
             getMarketState: () => marketEngine.getState(),
@@ -208,8 +211,8 @@ class StockWarsApplication {
 
         // Furniture Edit Modal (Dedicated 8x8 Office Customizer)
         this.furnitureEditModal = new FurnitureEditModal(this.appContainer, {
+            stage: this.officeStage,
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
-            onOpenWardrobe: () => this.wardrobeModal.open(this.inventoryModal.items),
             onSaveLayout: (list) => toastManager.show(`💾 [오피스 인테리어] 총 ${list.filter(f => f.placed).length}개 가구 저장 완료!`, true)
         });
 
@@ -223,7 +226,7 @@ class StockWarsApplication {
             onComplete: (result) => {
                 this.itemEngine.finishLabor(result.goldReward, result.expReward);
                 this.itemGameplay.sync();
-                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${this.itemEngine.laborCost()}: ${this.itemEngine.state.stamina}/3)`);
+                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${this.itemEngine.laborCost()}: ${this.itemEngine.state.stamina}/${this.itemEngine.maxStamina()})`);
                 
                 if (result.hasRumor) {
                     const rumorItem = getRandomRumorItem();
@@ -258,6 +261,17 @@ class StockWarsApplication {
             }
         });
 
+        this.cipherLobby = new CipherLobby(this.appContainer);
+        this.cipherLobby.trainingRoom.onAnalyze=(stockId)=>{
+            // Keep the shared analysis overlay inside the active modal's top layer.
+            this.cipherLobby.trainingRoom.dialog.append(this.detailedChartModal.modal);
+            this.openDetailedChart(stockId);
+        };
+        this.cipherLobby.trainingRoom.dialog.addEventListener('close',()=>{
+            this.detailedChartModal.close();
+            this.appContainer.append(this.detailedChartModal.modal);
+        });
+
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
             getVendingState: () => {
@@ -270,7 +284,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.cipherLobby?.isOpen === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
@@ -283,8 +297,7 @@ class StockWarsApplication {
             onOpenApparel: () => toastManager.show('👗 [테일러드 의상실] 클레어: "트레이더의 신뢰도를 높여주는 명품 수트와 커스텀 코스튬 쇼룸입니다."'),
             onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소피아: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
             onOpenSecurities: () => {
-                toastManager.show('🏛️ [사이퍼 증권 본점] 에이전트 K: "중앙 트레이딩 플로어와 아레나 배틀룸에 오신 것을 환영합니다."');
-                this.switchTab('exchange');
+                this.cipherLobby.open();
             },
             onOpenBank: () => toastManager.show('🏦 [노드 파이낸스 은행] 지점장 샤일록: "4주 정기 적금과 긴급 신용 대출 상담 창구입니다. 연체는 용납하지 않습니다."'),
             onOpenPub: () => toastManager.show('🍸 [미드나잇 펍] 브로커 안드레: "5% 노이즈가 제거된 확정형 찌라시 거래와 지하 블랙잭 테이블을 취급하지."'),
@@ -310,6 +323,16 @@ class StockWarsApplication {
 
         // 8. Anna Visual Novel Tutorial System (GDD CORE_GDD_10)
         this.annaTutorial = new AnnaTutorial(this.appContainer, {
+            getMarketState: () => marketEngine.getState(),
+            getFirstTradeLesson: () => marketEngine.firstTradeLesson,
+            onSaveLesson: () => this.itemGameplay?.save(),
+            onOpenSellGuide: (stockId) => {
+                this.smartphoneUI.showStockApp();
+                document.body.classList.remove('phone-minimized');
+                document.body.classList.add('phone-view-active');
+                this.smartphoneUI.switchTab('Profile');
+                this.openTradeModal(stockId);
+            },
             onGrantInitialFunds: (amount = 5000) => {
                 if (marketEngine.cash === 0) {
                     marketEngine.cash = amount;
@@ -356,6 +379,7 @@ class StockWarsApplication {
     }
 
     updateAll(state) {
+        this.annaTutorial?.notifyMarketUpdated(state);
         this.topDemoBar.updateState(state);
         this.mainHUD.updateState(state);
         this.smartphoneUI.updateState(state);
@@ -382,6 +406,8 @@ class StockWarsApplication {
     }
 
     startGame(mode) {
+        if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE';
+        if (mode !== 'CONTINUE') marketEngine.firstTradeLesson = null;
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
         this.officeStage?.anna?.resetForGameStart();
         if (mode === 'DEMO' || mode === 'DEV') {
@@ -462,9 +488,9 @@ class StockWarsApplication {
     toggleLevel20() {
         const isUnlocked = marketEngine.toggleLevel20Unlock();
         if (isUnlocked) {
-            toastManager.show('🔓 [레벨 20 해금] 공매도 및 3x/5x 고배율 마진 레버리지가 활성화되었습니다!');
+            toastManager.show('🔓 [레벨 10 해금] 공매도 및 3x/5x 고배율 마진 레버리지가 활성화되었습니다!');
         } else {
-            toastManager.show('🔒 [레벨 20 잠금] 초보자 모드로 복구되었습니다.');
+            toastManager.show('🔒 [레벨 10 잠금] 초보자 모드로 복구되었습니다.');
         }
     }
 
@@ -501,7 +527,7 @@ class StockWarsApplication {
     reset() {
         marketEngine.reset();
         this.itemGameplay.reset();
-        this.mainHUD?.updateStamina(3);
+        this.mainHUD?.updateStamina(this.itemEngine.maxStamina());
         if (this.logisticsMiniGame) this.logisticsMiniGame.completedJobsCount = 0;
         this.smartphoneUI?.favorites?.clear();
         this.smartphoneUI?.saveFavorites();
@@ -537,3 +563,4 @@ Object.assign(StockWarsApplication.prototype, worldNavigation);
 document.addEventListener('DOMContentLoaded', () => {
     window.stockWarsApp = new StockWarsApplication();
 });
+

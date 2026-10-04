@@ -1,0 +1,12 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>Agent K placement preview</title>
+<link rel="stylesheet" href="../web/css/modules/cipher-lobby.css">
+<style>body{margin:0;background:#15232c}</style><body><script type="module">
+import { CipherLobby } from '../web/js/components/CipherCanvasLobby.js';
+const lobby = new CipherLobby(document.body);
+lobby.wall.src = '../web/assets/interiors/cipher/cipher-room-unified-v1.png';
+// Preview only: do not save or replace the user's furniture layout.
+if (!lobby.editor.items.some(i => i.asset === 'counter')) lobby.editor.add('counter');
+lobby.open();
+lobby.startAgentIntroduction();
+lobby.notice.hidden=false;
+</script></body></html>

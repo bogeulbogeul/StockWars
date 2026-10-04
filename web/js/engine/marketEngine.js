@@ -23,9 +23,10 @@ export class MarketEngine {
         this.priceHistory = new Map(); // stockId -> array of numbers
         this.listeners = new Set();
         this.tickTimer = null;
-        this.isLevel20Unlocked = false;
+        this.isLevel10Unlocked = false;
         this.tutorialStockId = null;
         this.isTutorialActive = false;
+        this.firstTradeLesson = null;
 
         this.init();
     }
@@ -74,7 +75,8 @@ export class MarketEngine {
             else if (stock.tier === 'B') volatility = 0.025;
 
             let changePct;
-            if (this.isTutorialActive && stock.id === this.tutorialStockId) {
+            if (this.isTutorialActive && stock.id === (this.firstTradeLesson?.stockId || this.tutorialStockId)
+                && (!this.firstTradeLesson || this.firstTradeLesson.status === 'watching')) {
                 // Guaranteed positive upward momentum during tutorial! (+1.2% to +3.6% steady tick increase)
                 changePct = 0.012 + Math.random() * 0.024;
             } else {
@@ -171,14 +173,19 @@ export class MarketEngine {
     }
 
     notify() {
+        const lesson = this.firstTradeLesson;
+        if (lesson?.status === 'watching') {
+            const stock = this.stocks.get(lesson.stockId);
+            if (stock && stock.price >= Math.ceil(lesson.buyPrice * 1.05)) lesson.status = 'ready';
+        }
         const state = this.getState();
         this.listeners.forEach(fn => fn(state));
     }
 
     toggleLevel20Unlock() {
-        this.isLevel20Unlocked = !this.isLevel20Unlocked;
+        this.isLevel10Unlocked = !this.isLevel10Unlocked;
         this.notify();
-        return this.isLevel20Unlocked;
+        return this.isLevel10Unlocked;
     }
 
     getCipherIndex() {
@@ -219,7 +226,7 @@ export class MarketEngine {
             totalNetWorth: totalNetWorth,
             totalProfitLoss: totalProfitLoss,
             cipherIndex: this.getCipherIndex(),
-            isLevel20Unlocked: this.isLevel20Unlocked
+            isLevel10Unlocked: this.isLevel10Unlocked
         };
     }
 
@@ -284,6 +291,7 @@ export class MarketEngine {
         qty = Math.max(1, parseInt(qty) || 1);
         if (this.itemEngine && qty > this.itemEngine.orderLimit()) return { success: false, msg: `1회 매수 한도는 ${this.itemEngine.orderLimit()}주입니다. 안정제로 한도를 늘릴 수 있습니다.` };
         leverage = Math.max(1, parseInt(leverage) || 1);
+        if(leverage>=2&&!this.isLevel10Unlocked)return {success:false,msg:'레버리지는 레벨 10 해금 후 이용 가능합니다!'};
         const stock = this.stocks.get(stockId);
         if (!stock) return { success: false, msg: '존재하지 않는 종목입니다.' };
 
@@ -296,6 +304,9 @@ export class MarketEngine {
         }
 
         this.cash -= requiredCash;
+        if (this.isTutorialActive && !this.firstTradeLesson) {
+            this.firstTradeLesson = { stockId, buyPrice: stock.price, status: 'watching' };
+        }
         const posKey = `${stockId}_LONG_${leverage}`;
         const existing = this.portfolio.get(posKey);
 
@@ -362,10 +373,16 @@ export class MarketEngine {
         }
 
         this.cash += Math.round(totalRecoveredCash);
+        const lesson = this.firstTradeLesson;
+        if (lesson?.stockId === stockId && lesson.status !== 'done') {
+            lesson.sale = { quantity: totalSold, sellPrice: stock.price, profit: Math.round(realizedProfit), proceeds: Math.round(totalRecoveredCash) };
+            lesson.status = 'sold';
+        }
         if (this.itemEngine) this.itemEngine.state.profit += Math.round(realizedProfit);
         this.notify();
         return {
             success: true,
+            trade: { stockId, quantity: totalSold, sellPrice: stock.price, profit: Math.round(realizedProfit), proceeds: Math.round(totalRecoveredCash) },
             achievement: realizedProfit > 0 ? { id: globalThis.crypto?.randomUUID?.() || `${Date.now()}_${Math.random()}`, stockId, stockName: stock.name,
                 quantity: totalSold, profit: Math.round(realizedProfit), returnRate: soldCollateral > 0 ? realizedProfit / soldCollateral * 100 : 0 } : null,
             msg: `[매도 완료] ${stock.name} ${totalSold}주를 매도하여 ${Math.round(totalRecoveredCash).toLocaleString()}G를 정산받았습니다.`
@@ -373,12 +390,13 @@ export class MarketEngine {
     }
 
     shortStock(stockId, qty, leverage = 1) {
-        if (!this.isLevel20Unlocked) {
-            return { success: false, msg: '공매도는 레벨 20 해금 후 이용 가능합니다!' };
+        if (!this.isLevel10Unlocked) {
+            return { success: false, msg: '공매도는 레벨 10 해금 후 이용 가능합니다!' };
         }
 
         qty = Math.max(1, parseInt(qty) || 1);
         leverage = Math.max(1, parseInt(leverage) || 1);
+        if(leverage>=2&&!this.isLevel10Unlocked)return {success:false,msg:'레버리지는 레벨 10 해금 후 이용 가능합니다!'};
         const stock = this.stocks.get(stockId);
         if (!stock) return { success: false, msg: '존재하지 않는 종목입니다.' };
 
@@ -432,6 +450,23 @@ export class MarketEngine {
         this.cash += Math.round(recovered);
         this.portfolio.clear();
         if (this.itemEngine) this.itemEngine.state.profit += Math.round(profit);
+    }
+
+    getSellPreview(stockId, qty) {
+        const stock = this.stocks.get(stockId);
+        let quantity = 0, proceeds = 0, collateral = 0;
+        if (!stock) return { quantity, proceeds, profit: 0 };
+        const requested = Math.max(1, parseInt(qty) || 1);
+        for (const pos of this.portfolio.values()) {
+            if (pos.id !== stockId || pos.isShort) continue;
+            const sold = Math.min(requested - quantity, pos.qty);
+            const margin = pos.collateral * sold / pos.qty;
+            proceeds += Math.max(0, margin + (stock.price - pos.avgPrice) * sold * pos.leverage);
+            collateral += margin;
+            quantity += sold;
+            if (quantity >= requested) break;
+        }
+        return { quantity, proceeds: Math.round(proceeds), profit: Math.round(proceeds - collateral) };
     }
 
     getOrderBook(stockId) {
@@ -488,6 +523,8 @@ export class MarketEngine {
     }
 
     reset() {
+        this.firstTradeLesson = null;
+        this.isTutorialActive = false;
         this.cash = this.initialCash;
         this.day = 1;
         this.portfolio.clear();
@@ -497,3 +534,4 @@ export class MarketEngine {
 }
 
 export const marketEngine = new MarketEngine();
+

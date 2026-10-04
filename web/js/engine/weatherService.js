@@ -45,7 +45,6 @@ class WeatherService {
             isDay: true,
             humidity: 50
         };
-        this.isManual = false;
         this.listeners = new Set();
         this.updateInterval = null;
     }
@@ -111,24 +110,6 @@ class WeatherService {
             };
             this.notify();
         }
-    }
-
-    cycleWeather() {
-        this.isManual = true;
-        const testCodes = [0, 2, 3, 63, 73, 95, 999]; // 맑음 -> 구름조금 -> 흐림 -> 비 -> 눈 -> 뇌우 -> 블랙스완 🚨
-        const currentIdx = testCodes.indexOf(this.currentWeather.weatherCode);
-        const nextCode = testCodes[(currentIdx + 1) % testCodes.length];
-        const wmo = WMO_CODES[nextCode];
-        
-        this.currentWeather = {
-            ...this.currentWeather,
-            weatherCode: nextCode,
-            category: wmo.category,
-            text: wmo.text,
-            icon: this.currentWeather.isDay ? wmo.dayIcon : wmo.nightIcon
-        };
-        this.notify();
-        return this.currentWeather;
     }
 
     getCoordinates() {

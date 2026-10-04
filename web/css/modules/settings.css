@@ -1,0 +1,28 @@
+.settings-dialog { box-sizing: border-box; width: min(480px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); margin: auto; padding: 26px; overflow-y: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
+.settings-dialog::backdrop { background: #030912b8; backdrop-filter: blur(6px); }
+.settings-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.settings-header span { color: #66d9d1; font-size: 10px; letter-spacing: 2px; font-weight: 700; }
+.settings-header h2 { font-size: 21px; margin: 7px 0 0; }
+.settings-dialog button { padding: 9px 12px; border: 1px solid #35475f; border-radius: 10px; background: #1e2c3e; color: #edf2fa; font: inherit; font-size: 12px; cursor: pointer; }
+.settings-dialog button:hover { background: #34475e; }
+.settings-dialog :focus-visible { outline: 2px solid #66d9d1; outline-offset: 4px; }
+.settings-section { border-top: 1px solid #2b3a50; padding-top: 18px; }
+.settings-section h3 { margin: 0 0 16px; font-size: 14px; }
+.settings-volume-label { display: flex; justify-content: space-between; font-size: 13px; }
+.settings-volume-label output { color: #9df1e4; font-weight: 700; }
+.settings-dialog input[type="range"] { box-sizing: border-box; width: 100%; margin: 18px 0 8px; accent-color: #66d9d1; cursor: pointer; }
+.settings-section p, .settings-footer p { color: #a5b3c6; font-size: 12px; line-height: 1.7; }
+.settings-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0 18px; cursor: pointer; }
+.settings-row strong { font-size: 13px; font-weight: 600; }
+.settings-row small { display: block; color: #a5b3c6; font-size: 12px; line-height: 1.6; margin-top: 6px; }
+.settings-row input { flex: 0 0 auto; width: 20px; height: 20px; accent-color: #66d9d1; cursor: pointer; }
+.settings-footer { border-top: 1px solid #2b3a50; margin-top: 6px; padding-top: 12px; }
+.settings-footer p { min-height: 40px; margin: 0 0 8px; }
+.settings-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.settings-navigation { margin-top: 18px; padding-top: 18px; border-top: 1px solid #2b3a50; }
+.settings-navigation button { flex: 1 1 auto; }
+.settings-dialog .settings-exit { border-color: #8b4555; color: #ff9eae; background: #3c222d; }
+.settings-dialog .settings-exit:hover { background: #593040; }
+.settings-dialog button:disabled { opacity: 0.5; cursor: wait; }
+.settings-hide-weather .main-hud-bar .weather-item { display: none; }
+.settings-reduced-motion *, .settings-reduced-motion *::before, .settings-reduced-motion *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }

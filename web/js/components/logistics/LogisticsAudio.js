@@ -3,6 +3,8 @@
  * WebAudio Synthesizer for logistics mini-game sound effects.
  */
 
+import { settingsStore } from '../../engine/SettingsStore.js';
+
 export class LogisticsAudio {
     constructor() {
         this.audioCtx = null;
@@ -18,6 +20,8 @@ export class LogisticsAudio {
     }
 
     playTone(freq, duration = 0.1, type = 'sine', vol = 0.2) {
+        const volume = settingsStore.value.effectsVolume / 100;
+        if (volume === 0) return;
         try {
             if (!this.audioCtx) this.init();
             if (!this.audioCtx || this.audioCtx.state === 'suspended') {
@@ -29,7 +33,7 @@ export class LogisticsAudio {
             const gain = this.audioCtx.createGain();
             osc.type = type;
             osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
-            gain.gain.setValueAtTime(vol, this.audioCtx.currentTime);
+            gain.gain.setValueAtTime(vol * volume, this.audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
             osc.connect(gain);
             gain.connect(this.audioCtx.destination);

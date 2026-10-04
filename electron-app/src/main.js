@@ -28,6 +28,11 @@ if (hasLock) app.whenReady().then(() => {
   });
   const webRoot = app.isPackaged ? path.join(process.resourcesPath, 'web') : path.resolve(__dirname, '../../web');
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
+  ipcMain.handle('app:quit', (event) => {
+    if (!trusted(event)) return { error: '접근 불가' };
+    app.quit();
+    return { success: true };
+  });
   ipcMain.handle('presence:state', (event) => trusted(event) ? presence.state() : { error: '접근 불가' });
   ipcMain.handle('presence:join', (event, id) => trusted(event) && id === 'town-1'
     ? presence.command('join', id) : { error: '잘못된 채널입니다.' });

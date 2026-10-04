@@ -5,7 +5,6 @@
  */
 
 import { timeOfDayService } from '../engine/timeOfDayService.js';
-import { weatherService } from '../engine/weatherService.js';
 
 export class TopDemoBar {
     constructor(container, callbacks = {}) {
@@ -29,9 +28,6 @@ export class TopDemoBar {
                     <button id="btnCycleTime" class="demo-btn special-btn" title="하늘 시간대 전환 (새벽 🌅 -> 낮 ☀️ -> 노을 🌇 -> 밤 🌙)">
                         <span class="btn-icon" id="iconDemoTime">☀️</span> <span id="txtDemoTime">낮</span>
                     </button>
-                    <button id="btnCycleWeather" class="demo-btn special-btn" title="날씨 시뮬레이션 (맑음 ☀️ -> 구름조금 ⛅ -> 흐림 ☁️ -> 비 🌧️ -> 눈 ❄️ -> 뇌우 ⛈️ -> 블랙스완 🚨)">
-                        <span class="btn-icon" id="iconDemoWeather">☀️</span> <span id="txtDemoWeather">맑음</span>
-                    </button>
                     <button id="btnToggleStage" class="demo-btn special-btn" title="오피스 ↔ 타운 맵 전환">
                         <span class="btn-icon">🏙️</span> <span id="txtStageToggle">타운으로 이동</span>
                     </button>
@@ -42,7 +38,7 @@ export class TopDemoBar {
                         <span class="btn-icon">📱</span> <span id="txtFrameToggle">스마트폰 열기</span>
                     </button>
                     <button id="btnUnlockLevel20" class="demo-btn special-btn">
-                        <span class="btn-icon">🔓</span> <span id="txtUnlockToggle">공매도/레버리지 해금 (Lv.20)</span>
+                        <span class="btn-icon">🔓</span> <span id="txtUnlockToggle">공매도/레버리지 해금 (Lv.10)</span>
                     </button>
                     <button id="btnFastForwardDay" class="demo-btn accent-btn">
                         <span class="btn-icon">⚡</span> 다음 날(Day +1)
@@ -63,9 +59,6 @@ export class TopDemoBar {
         this.btnCycleTime = document.getElementById('btnCycleTime');
         this.iconDemoTime = document.getElementById('iconDemoTime');
         this.txtDemoTime = document.getElementById('txtDemoTime');
-        this.btnCycleWeather = document.getElementById('btnCycleWeather');
-        this.iconDemoWeather = document.getElementById('iconDemoWeather');
-        this.txtDemoWeather = document.getElementById('txtDemoWeather');
         this.btnToggleStage = document.getElementById('btnToggleStage');
         this.txtStageToggle = document.getElementById('txtStageToggle');
         this.btnToggleFrame = document.getElementById('btnToggleFrame');
@@ -92,14 +85,6 @@ export class TopDemoBar {
             if (this.txtDemoTime) this.txtDemoTime.textContent = meta.label.split('/')[0].trim();
         });
 
-        this.btnCycleWeather?.addEventListener('click', () => {
-            weatherService.cycleWeather();
-        });
-
-        weatherService.subscribe((weather) => {
-            if (this.iconDemoWeather) this.iconDemoWeather.textContent = weather.icon;
-            if (this.txtDemoWeather) this.txtDemoWeather.textContent = weather.text;
-        });
 
         this.btnToggleStage?.addEventListener('click', () => {
             if (this.callbacks.onToggleStage) this.callbacks.onToggleStage();
@@ -141,12 +126,12 @@ export class TopDemoBar {
 
     updateState(state) {
         if (this.txtUnlockToggle) {
-            this.txtUnlockToggle.textContent = state.isLevel20Unlocked
-                ? '🔒 레벨 20 잠금 활성화'
-                : '🔓 공매도/레버리지 해금 (Lv.20)';
+            this.txtUnlockToggle.textContent = state.isLevel10Unlocked
+                ? '🔒 레벨 10 잠금 활성화'
+                : '🔓 공매도/레버리지 해금 (Lv.10)';
         }
         if (this.btnUnlockLevel20) {
-            if (state.isLevel20Unlocked) {
+            if (state.isLevel10Unlocked) {
                 this.btnUnlockLevel20.classList.add('active-unlocked');
             } else {
                 this.btnUnlockLevel20.classList.remove('active-unlocked');
@@ -166,3 +151,4 @@ export class TopDemoBar {
         return this.element && !this.element.classList.contains('hidden');
     }
 }
+

@@ -1,4 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
+contextBridge.exposeInMainWorld('stockWarsApp', {
+  quit: () => ipcRenderer.invoke('app:quit')
+});
 contextBridge.exposeInMainWorld('stockWarsPresence', {
   state: () => ipcRenderer.invoke('presence:state'),
   join: (channelId) => ipcRenderer.invoke('presence:join', channelId),

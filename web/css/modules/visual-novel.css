@@ -529,6 +529,97 @@ body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) 
     margin-top: 4px;
 }
 
+/* Anna's compact trade guide: keep choices separated from dialogue and controls. */
+#annaTutorialOverlay .vn-action-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#annaTutorialOverlay .vn-action-btn {
+    flex: 1 1 160px;
+    min-width: 0;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 9px;
+    line-height: 1.4;
+    box-shadow: none;
+    animation: none;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+#annaTutorialOverlay .vn-action-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    color: #cbd5e1;
+}
+
+#annaTutorialOverlay .vn-action-secondary:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: #94a3b8;
+    color: #fff;
+}
+
+#annaTutorialOverlay button:focus-visible {
+    outline: 2px solid #f1f5f9;
+    outline-offset: 3px;
+}
+
+#annaTutorialOverlay .hidden {
+    display: none !important;
+}
+
+body.modal-active #annaTutorialOverlay .vn-top-bar,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-top-bar {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+}
+
+body.modal-active #annaTutorialOverlay .vn-controls,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-controls {
+    margin-left: auto;
+    gap: 6px !important;
+}
+
+body.modal-active #annaTutorialOverlay .vn-btn,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-btn {
+    min-height: 28px;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+}
+
+body.modal-active #annaTutorialOverlay .vn-dialogue-body,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-body {
+    padding-right: 0;
+}
+
+body.modal-active #annaTutorialOverlay .vn-dialogue-text,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-text {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+    overflow-wrap: anywhere;
+}
+
+body.modal-active #annaTutorialOverlay .vn-step-tracker,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-step-tracker {
+    font-size: 11px !important;
+    white-space: normal !important;
+}
+
+body.modal-active #annaTutorialOverlay .vn-dialogue-box,
+body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-box {
+    gap: 12px !important;
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    max-width: calc(100vw - 32px) !important;
+}
+
 .vn-action-area.hidden {
     display: none !important;
 }

@@ -5,6 +5,7 @@ export class AnnaTutorial {
         this.container = container;
         this.callbacks = callbacks;
         this.isActive = false;
+        this.lessonEnabled = false;
         this.currentStepIdx = 0;
         this.typewriterTimer = null;
         this.isTyping = false;
@@ -57,7 +58,8 @@ export class AnnaTutorial {
 
                         <!-- Interactive Step Action Button (Shown only on completion step) -->
                         <div class="vn-action-area hidden" id="vnActionArea">
-                            <button class="vn-action-btn pulse-glow" id="btnVnAction"></button>
+                            <button class="vn-action-btn" id="btnVnAction"></button>
+                            <button class="vn-action-btn vn-action-secondary hidden" id="btnVnHold">계속 보유하기</button>
                         </div>
                     </div>
                 </div>
@@ -80,10 +82,19 @@ export class AnnaTutorial {
         this.btnCollapse = document.getElementById('btnVnCollapse');
         this.actionArea = document.getElementById('vnActionArea');
         this.btnAction = document.getElementById('btnVnAction');
+        this.btnHold = document.getElementById('btnVnHold');
         this.isCollapsed = false;
     }
 
     initEventListeners() {
+        this.btnHold?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const lesson = this.callbacks.getFirstTradeLesson?.();
+            if (!lesson || !this.lessonResume) return;
+            lesson.status = 'holding';
+            this.callbacks.onSaveLesson?.();
+            this.finishLesson();
+        });
         // Click dialogue box to advance or speed up text (or expand if collapsed)
         this.dialogueBox?.addEventListener('click', (e) => {
             if (this.isCollapsed) {
@@ -119,6 +130,7 @@ export class AnnaTutorial {
         // Keyboard navigation: Enter / Space / NumpadEnter to advance dialogue
         window.addEventListener('keydown', (e) => {
             if (!this.isActive || this.overlay?.classList.contains('hidden')) return;
+            if (document.activeElement?.tagName === 'BUTTON') return;
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
             if (e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter' || e.key === ' ' || e.code === 'Space') {
@@ -139,6 +151,7 @@ export class AnnaTutorial {
     }
 
     start(userProfile = {}, recommendation = null) {
+        this.lessonEnabled = true;
         this.cleanupHighlights();
         this.userProfile = userProfile;
         this.recommendation = recommendation;
@@ -172,6 +185,11 @@ export class AnnaTutorial {
         this.cleanupHighlights();
 
         const step = this.steps[this.currentStepIdx];
+        this.btnHold?.classList.toggle('hidden', !step.allowHold);
+        const needsChoice = !!step.allowHold;
+        this.dialogueBox?.classList.toggle('has-choice', needsChoice);
+        this.btnNext?.classList.toggle('hidden', needsChoice || !!step.actionBtnText);
+        this.nextIndicator?.classList.toggle('hidden', !!step.requiresManualAction || !!step.actionBtnText);
         this.setExpression(step.expression);
         if (this.speakerName) this.speakerName.textContent = step.speaker;
         if (this.stepTracker) this.stepTracker.textContent = step.tracker;
@@ -281,6 +299,7 @@ export class AnnaTutorial {
 
     nextStep() {
         this.currentStepIdx++;
+        if (!this.lessonResume && this.tryShowLesson()) return;
         if (this.currentStepIdx < this.steps.length) {
             this.showCurrentStep();
         } else {
@@ -337,10 +356,10 @@ export class AnnaTutorial {
         } else if ((tabName === 'Profile' || tabName === 'Account') && (currentStep.id === 'portfolio_guide' || currentStep.id === 'celebrate')) {
             this.highlightElement('.nav-tab[data-tab="Profile"]', false);
             if (currentStep.id === 'celebrate') {
-                const goTownIdx = this.steps.findIndex(s => s.id === 'go_town_proposal');
-                if (goTownIdx !== -1) {
-                    this.currentStepIdx = goTownIdx;
-                    this.showCurrentStep();
+                const portfolioIdx = this.steps.findIndex(s => s.id === 'portfolio_guide');
+                if (portfolioIdx !== -1) {
+                    this.currentStepIdx = portfolioIdx;
+                    this.nextStep();
                     return;
                 }
             }
@@ -427,6 +446,14 @@ export class AnnaTutorial {
     }
 
     complete(isSkipped = false) {
+        if (this.lessonResume) {
+            const lesson = this.callbacks.getFirstTradeLesson?.();
+            if (lesson && lesson.status !== 'sold') lesson.status = 'holding';
+            if (lesson?.status === 'sold') lesson.status = 'done';
+            this.callbacks.onSaveLesson?.();
+            this.finishLesson();
+            return;
+        }
         this.isActive = false;
         if (this.typewriterTimer) {
             clearInterval(this.typewriterTimer);
@@ -438,6 +465,68 @@ export class AnnaTutorial {
         if (this.callbacks.onComplete) {
             this.callbacks.onComplete({ skipped: isSkipped });
         }
+        if (isSkipped) {
+            const lesson = this.callbacks.getFirstTradeLesson?.();
+            if (lesson) lesson.status = 'done';
+            this.callbacks.onSaveLesson?.();
+        } else this.tryShowLesson();
+    }
+
+    notifyMarketUpdated(state) {
+        this.marketState = state;
+        if (this.lessonResume && this.callbacks.getFirstTradeLesson?.()?.status === 'sold'
+            && this.steps[this.currentStepIdx]?.id !== 'first_sale_result') {
+            this.finishLesson();
+            this.tryShowLesson();
+        } else if (!this.isActive) this.tryShowLesson();
+    }
+
+    tryShowLesson() {
+        if (this.lessonEnabled === false) return false;
+        const lesson = this.callbacks.getFirstTradeLesson?.();
+        if (!lesson || this.lessonResume || !['ready', 'sold', 'selling'].includes(lesson.status)) return false;
+        const state = this.marketState || this.callbacks.getMarketState?.();
+        const stock = state?.stocks.find(s => s.id === lesson.stockId);
+        if (!stock) return false;
+        if (lesson.status !== 'sold' && !state.portfolio.some(p => p.id === stock.id && !p.isShort && p.qty > 0)) return false;
+        this.lessonResume = { steps: this.steps, index: this.currentStepIdx, active: this.isActive };
+        const base = { speaker: '전담 매니저 안나', expression: 'Smile', tracker: '첫 투자 • 매도와 보유 선택' };
+        const sellGuide = {
+            ...base, id: 'first_sell_guide', allowHold: true, requiresManualAction: true,
+            text: `'${stock.name}'을 몇 주 팔지 정하고, 예상 손익을 확인해 주세요. [매도 (SELL)]를 누르면 체결돼요. 아직 팔고 싶지 않다면 계속 보유해도 괜찮아요.`,
+            interactionHint: '매도 수량과 예상 손익을 확인한 뒤 직접 매도하거나, 계속 보유하기를 선택하세요.',
+            targetSelector: '#btnSellExecute', actionBtnText: '매도 화면 다시 열기',
+            onEnter: () => { this.callbacks.onOpenSellGuide?.(stock.id); this.highlightElement('#btnSellExecute', true); },
+            onAction: () => this.callbacks.onOpenSellGuide?.(stock.id)
+        };
+        if (lesson.status === 'sold') {
+            const sale = lesson.sale;
+            this.steps = [{ ...base, id: 'first_sale_result', expression: 'Happy',
+                text: `'${stock.name}' ${sale.quantity}주를 매도했어요! 첫 매수가 ${lesson.buyPrice.toLocaleString()}G, 매도 체결가 ${sale.sellPrice.toLocaleString()}G예요. 이번 거래의 실현 손익은 ${sale.profit >= 0 ? '+' : ''}${sale.profit.toLocaleString()}G이며, ${sale.proceeds.toLocaleString()}G가 현금으로 돌아왔어요. 평가 손익은 보유 중의 값이고, 실현 손익은 매도로 확정된 결과랍니다.`,
+                actionBtnText: '확인', onAction: () => this.complete() }];
+        } else if (lesson.status === 'selling') this.steps = [sellGuide];
+        else this.steps = [{ ...base, id: 'first_profit_choice', allowHold: true, requiresManualAction: true,
+            text: `처음 산 '${stock.name}'이 첫 매수가보다 5% 이상 올랐어요! 지금 팔아 수익을 실현하거나, 계속 보유할 수 있어요. 어느 쪽을 골라도 튜토리얼 진행과 보상은 같아요. 계속 보유하면 나중에 매도할 때 다시 안내해 드릴게요.`,
+            actionBtnText: '매도해 보기',
+            onAction: () => { lesson.status = 'selling'; this.callbacks.onSaveLesson?.(); this.steps = [sellGuide]; this.currentStepIdx = 0; this.showCurrentStep(); }
+        }];
+        this.currentStepIdx = 0;
+        this.isActive = true;
+        this.overlay?.classList.remove('hidden');
+        this.showCurrentStep();
+        return true;
+    }
+
+    finishLesson() {
+        const resume = this.lessonResume;
+        this.lessonResume = null;
+        this.finishTyping();
+        this.cleanupHighlights();
+        this.steps = resume.steps;
+        this.currentStepIdx = resume.index;
+        this.isActive = resume.active;
+        if (this.isActive) this.showCurrentStep();
+        else this.overlay?.classList.add('hidden');
     }
 
     cleanupHighlights() {

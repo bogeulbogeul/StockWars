@@ -81,12 +81,21 @@ export class OfficeStage {
     }
 
     initEventListeners() {
+        this.stageContainer?.querySelector('#btnOfficeFurnitureEdit')?.addEventListener('click', () => {
+            this.keysHeld.clear();
+            this.targetTile = null;
+            this.callbacks.onFurnitureEdit?.();
+        });
         // 1. Mouse Click on Floor Tiles
         this.floorTilesGroup?.addEventListener('click', (e) => {
             const tile = e.target.closest('.iso-floor-tile');
             if (tile) {
                 const gx = parseInt(tile.dataset.gx, 10);
                 const gy = parseInt(tile.dataset.gy, 10);
+                if (this.furnitureEditMode) {
+                    this.onFurnitureFloorClick?.(gx, gy);
+                    return;
+                }
                 this.targetTile = { gx, gy };
                 this.showTargetTile(gx, gy);
             }
@@ -94,6 +103,7 @@ export class OfficeStage {
 
         // 2. Door Clicks (SVG Door & Prompts)
         const triggerDoorInteraction = () => {
+            if (this.furnitureEditMode) return;
             if (this.stageContainer?.classList.contains('hidden')) return;
             if (this.callbacks.onOpenServerSelect) {
                 this.callbacks.onOpenServerSelect();
@@ -122,6 +132,7 @@ export class OfficeStage {
         });
 
         const triggerAnnaInteraction = () => {
+            if (this.furnitureEditMode) return;
             if (this.stageContainer?.classList.contains('hidden')) return;
             if (this.callbacks.onTalkToAnna) {
                 this.callbacks.onTalkToAnna();
@@ -140,6 +151,7 @@ export class OfficeStage {
 
         // 3. Continuous Keyboard Tracking (WASD / Arrow Keys & F Key for Door Interaction)
         window.addEventListener('keydown', (e) => {
+            if (this.furnitureEditMode) return;
             if (this.stageContainer?.classList.contains('hidden')) return;
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
@@ -191,8 +203,9 @@ export class OfficeStage {
     update(now) {
         const dt = Math.min(0.06, (now - this.lastTimestamp) / 1000);
         this.lastTimestamp = now;
+        if (this.furnitureEditMode) return;
         if (this.stageContainer?.classList.contains('hidden')) return;
-        if (document.querySelector('.player-profile-dialog[open]')) {
+        if (document.querySelector('.player-profile-dialog[open], .settings-dialog[open]')) {
             this.keysHeld.clear();
             return;
         }
@@ -317,7 +330,7 @@ export class OfficeStage {
         if (this.isNearAnna && this.annaPrompt) {
             const annaScreenX = 500 + (this.anna.y - this.anna.x) * 33.75;
             const floatBob = Math.sin(now / 250) * 3;
-            const annaScreenY = 320 + (this.anna.x + this.anna.y + 1) * 19.1 - 92 + floatBob;
+            const annaScreenY = 320 + (this.anna.x + this.anna.y + 1) * 19.1 - 120 + floatBob;
             this.annaPrompt.setAttribute('transform', `translate(${annaScreenX.toFixed(2)}, ${annaScreenY.toFixed(2)})`);
         }
         // SVG paints later siblings in front; sort the two actors by floor depth.
@@ -386,6 +399,34 @@ export class OfficeStage {
         if (this.stageContainer) {
             this.stageContainer.classList.remove('hidden');
         }
+    }
+
+    setFurnitureEditMode(active, onFloorClick) {
+        this.furnitureEditMode = active;
+        this.onFurnitureFloorClick = active ? onFloorClick : null;
+        this.keysHeld.clear();
+        this.targetTile = null;
+        this.stageContainer.classList.toggle('editing-furniture', active);
+        this.targetGroup?.classList.add('hidden');
+    }
+
+    renderFurniture(items, selectedId) {
+        if (!this.furnitureLayer) {
+            this.furnitureLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            this.furnitureLayer.id = 'isoFurnitureLayer';
+            this.furnitureLayer.style.pointerEvents = 'none';
+            this.floorTilesGroup.after(this.furnitureLayer);
+        }
+        const point = (x, y) => `${500 + (y - x) * 33.75},${320 + (x + y) * 19.1}`;
+        this.furnitureLayer.innerHTML = items.filter(item => item.placed).sort((a, b) => (a.gridX + a.gridY) - (b.gridX + b.gridY)).map(item => {
+            const w = item.rotation % 180 ? item.sizeH : item.sizeW;
+            const h = item.rotation % 180 ? item.sizeW : item.sizeH;
+            const x = item.gridX, y = item.gridY;
+            const cx = 500 + (y + h / 2 - x - w / 2) * 33.75;
+            const cy = 320 + (x + w / 2 + y + h / 2) * 19.1;
+            const selected = this.furnitureEditMode && item.id === selectedId;
+            return `<g><polygon points="${point(x, y)} ${point(x, y + h)} ${point(x + w, y + h)} ${point(x + w, y)}" fill="${selected ? '#facc1544' : '#162b4199'}" stroke="${selected ? '#facc15' : '#72b9c7'}" stroke-width="${selected ? 2.5 : 1}"/><text x="${cx}" y="${cy}" text-anchor="middle" font-size="${Math.min(48, 25 + w * h * 3)}" dominant-baseline="central">${item.icon}</text><text x="${cx}" y="${cy + 26}" text-anchor="middle" font-size="9" fill="#e6f6ff">${item.rotation}°</text></g>`;
+        }).join('');
     }
 
     hide() {

@@ -10,6 +10,7 @@
 @import './modules/top-demo-bar.css';
 @import './modules/main-hud.css';
 @import './modules/player-profile.css';
+@import './modules/settings.css';
 @import './modules/toasts.css';
 
 /* 3. Smartphone OS Hardware & Navigation */
@@ -44,6 +45,7 @@
 @import './modules/sky-weather.css';
 @import './modules/office-stage.css';
 @import './modules/town-gateway-modal.css';
+@import './modules/cipher-lobby.css';
 @import './modules/town/town-base.css';
 @import './modules/town/town-buildings.css';
 @import './modules/town/town-building-assets.css';

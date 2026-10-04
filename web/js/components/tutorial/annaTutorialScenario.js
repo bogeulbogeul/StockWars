@@ -130,7 +130,7 @@ export function buildAnnaScenario({
             id: 'celebrate',
             expression: 'Happy',
             speaker: "전담 매니저 안나",
-            text: `축하합니다! '${stockName}' 1주 매수 주문이 성공적으로 체결되었습니다! 🎉 벌써 주가가 오르며 실시간 수익이 발생하고 있어요.`,
+            text: `축하합니다! '${stockName}' 매수 주문이 성공적으로 체결되었습니다! 🎉 첫 매수가보다 5% 이상 오르면 알려드릴게요. 그때 매도할지 계속 보유할지 직접 선택해 보세요. 기다리는 동안 다른 활동도 배워볼까요?`,
             tracker: "2/4 • 첫 매수 체결 성공",
             requiresManualAction: false,
             onEnter: () => {
@@ -141,7 +141,7 @@ export function buildAnnaScenario({
             id: 'portfolio_guide',
             expression: 'Smile',
             speaker: "전담 매니저 안나",
-            text: `매수한 주식은 스마트폰의 [👤 내 계좌] 탭에서 방금 매수한 '${stockName}'의 실시간 플러스(+) 수익률과 평가 손익을 언제든 확인할 수 있답니다.`,
+            text: `스마트폰의 [👤 내 계좌] 탭에서 '${stockName}'의 수익률과 평가 손익을 확인해 보세요. 보유 중인 주식의 가치는 시세에 따라 오르거나 내릴 수 있고, 매도하면 손익이 확정돼요.`,
             tracker: "2/4 • 포트폴리오 관리 안내",
             requiresManualAction: true,
             interactionHint: "스마트폰 하단의 [👤 내 계좌] 탭을 눌러 포트폴리오를 확인해보세요!",
@@ -184,10 +184,10 @@ export function buildAnnaScenario({
             id: 'enter_logistics',
             expression: 'Standard',
             speaker: "전담 매니저 안나",
-            text: `사이퍼 타운 거리에 도착했습니다! 우측으로 이동하여 노란 간판의 [📦 비트 물류센터]로 들어가 관리소장 박씨를 만나보세요!`,
+            text: `사이퍼 타운에 도착했어요! [📦 비트 물류센터]는 마을 남서쪽, 아래쪽 건물 줄의 왼편에 있어요. 길을 따라 내려가 관리소장 박씨를 만나볼까요?`,
             tracker: "3/4 • 비트 물류센터 진입",
             requiresManualAction: true,
-            interactionHint: "타운 우측의 [📦 비트 물류센터]를 클릭하거나 문 앞에서 [F] 키를 눌러 진입하세요!",
+            interactionHint: "마을 남서쪽의 [📦 비트 물류센터]를 클릭하거나, 입구 앞에서 [F] 키를 눌러 들어가세요!",
             targetSelector: '.town-building-slot[data-id="bit_logistics"]',
             onEnter: () => {
                 highlightElement('.town-building-slot[data-id="bit_logistics"]', true);

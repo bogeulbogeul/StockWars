@@ -1,7 +1,7 @@
 import { VIVIAN_SHOP_CATALOG } from '../data/vivianStoreData.js';
 
 export const DAY = 86400000;
-export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, recoveryCost: 0.8, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
+export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
 const catalog = new Map(VIVIAN_SHOP_CATALOG.map(i => [i.id, i]));
 const buffs = { item_focus_pill: 'analysis', item_stabilizer: 'management', item_vitamin_complex: 'recovery' };
 const fail = message => ({ success: false, message });
@@ -45,6 +45,7 @@ export class ItemEngine {
         // Preserve a local game's weekly numbering, including older saved tickets.
         this.state.lottoFirstRound ??= [...this.state.tickets, ...this.state.draws]
             .reduce((first, entry) => Math.min(first, entry.round), nextDraw(this.state.lastNow));
+        this.normalizeStamina();
     }
     lottoRoundNumber(round = nextDraw(this.now())) {
         return Math.floor((round - this.state.lottoFirstRound) / (7 * DAY)) + 1;
@@ -72,18 +73,17 @@ export class ItemEngine {
         const today = dayKey(this.now());
         if (this.state.benchRecoveryDay === today) return fail('오늘의 벤치 회복은 이미 사용했습니다.');
         this.state.benchRecoveryDay = today;
-        this.state.stamina = 3;
-        return ok('벤치에서 기력을 모두 회복했습니다.');
-    }
-    restOnBench() {
-        const today = dayKey(this.now());
-        if (this.state.benchRecoveryDay === today) return fail('오늘의 벤치 회복은 이미 사용했습니다.');
-        this.state.benchRecoveryDay = today;
-        this.state.stamina = 3;
+        this.state.stamina = this.maxStamina();
         return ok('벤치에서 기력을 모두 회복했습니다.');
     }
     orderLimit() { return Math.floor(ITEM_BALANCE.baseOrderLimit * (this.active('management') ? 1 + ITEM_BALANCE.managementBonus : 1)); }
-    laborCost() { return this.active('recovery') ? ITEM_BALANCE.recoveryCost : 1; }
+    maxStamina() { const recovery = this.stats().recovery; return recovery >= 4 ? 5 : recovery >= 2 ? 4 : 3; }
+    normalizeStamina() {
+        // Round old fractional saves up once so the migration does not lose a partial heart.
+        this.state.stamina = Math.max(0, Math.min(this.maxStamina(), Math.ceil(this.state.stamina)));
+    }
+    recoveryAmount() { return 1; }
+    laborCost() { return 1; }
     canAdd(id, qty = 1) {
         const entry = this.state.inventory.find(i => i.id === id);
         return entry ? entry.quantity + qty <= 99 : this.state.inventory.length < 24 && qty <= 99;
@@ -138,7 +138,7 @@ export class ItemEngine {
         const s = this.state;
         if (!catalog.has(id)) return fail('사용 기능이 없는 아이템입니다.');
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
-            if (s.stamina >= 3) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
+            if (s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
             if (id === 'item_caffeine_shot' && s.caffeineDay === dayKey(this.now())) return fail('카페인은 하루 1회만 사용할 수 있습니다.');
         }
         if (buffs[id] && this.active(buffs[id])) return fail('같은 강화 효과가 이미 적용 중입니다.');
@@ -159,9 +159,10 @@ export class ItemEngine {
         let rumorId;
         let consume = true;
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
-            s.stamina = Math.min(3, s.stamina + 1);
+            const before = s.stamina;
+            s.stamina = Math.min(this.maxStamina(), s.stamina + this.recoveryAmount());
             if (id === 'item_caffeine_shot') s.caffeineDay = dayKey(now);
-            message = `체력 1칸 회복 (${s.stamina.toFixed(1)}/3)`;
+            message = `하트 ${s.stamina - before}개 회복 (${s.stamina}/${this.maxStamina()} · 회복력 ${this.stats().recovery})`;
         } else if (buffs[id]) {
             s.buffs[buffs[id]] = now + ITEM_BALANCE.buffMs;
             message += ' · 120분간 스탯 +2';
@@ -280,9 +281,11 @@ export class ItemEngine {
     finishLabor(gold, exp = 0) {
         this.market.cash += gold;
         this.state.exp += exp;
-        this.state.stamina = Math.max(0, Math.round((this.state.stamina - this.laborCost()) * 10) / 10);
+        this.normalizeStamina();
+        this.state.stamina = Math.max(0, this.state.stamina - this.laborCost());
     }
     tick() {
+        this.normalizeStamina();
         const s = this.state, now = this.now();
         this.syncDay();
         for (const due of s.deliveries.filter(t => t <= now)) s.mail.push({ id: this.id('mail'), due, claimed: false });
@@ -310,6 +313,6 @@ export class ItemEngine {
         s.lastNow = now;
     }
     recordPrice(stock) { const h = this.market.priceHistory?.get(stock.id); if (h) { h.push(stock.price); if (h.length > 50) h.shift(); } }
-    advanceDay() { this.state.offset += DAY; this.tick(); this.state.stamina = 3; }
+    advanceDay() { this.state.offset += DAY; this.tick(); this.state.stamina = this.maxStamina(); }
     chartNoise() { return this.state.swanActive ? (this.state.mask ? 0.3 : 1) : 0; }
 }

@@ -41,10 +41,10 @@ test('all three buffs affect stats, trading or labor and expire after 120 minute
     const {engine:e,market:m,advance}=fixture();
     for(const id of ['item_focus_pill','item_stabilizer','item_vitamin_complex']) { purchase(e,id,2); use(e,id); assert.equal(e.use(id).success,false); }
     assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,3); assert.equal(e.stats().recovery,3);
-    assert.equal(e.orderLimit(),110); assert.equal(e.laborCost(),.8);
+    assert.equal(e.orderLimit(),110); assert.equal(e.laborCost(),1);
     assert.equal(m.buyStock('CLOUDBERRY',110).success,true);
     assert.equal(m.buyStock('CLOUDBERRY',111).success,false);
-    e.finishLabor(100); assert.equal(e.state.stamina,2.2);
+    e.finishLabor(100); assert.equal(e.state.stamina,2);
     advance(ITEM_BALANCE.buffMs); assert.equal(e.stats().analysis,5); assert.equal(e.laborCost(),1);
     assert.equal(m.buyStock('CLOUDBERRY',110).success,false);
 });
@@ -56,6 +56,38 @@ test('both passes expire and quick labor charges stamina, not fees', () => {
         assert.equal(e.state.stamina,2); e.state.stamina=0; assert.equal(e.quickJob().success,false);
         advance(days*DAY); e.state.stamina=3; assert.equal(e.quickJob().success,false);
     }
+});
+
+test('recovery grants whole hearts, preserves current health on buffs and clamps expired capacity', () => {
+    const {engine:e,market,advance}=fixture();
+    for (const [level,max] of [[0,3],[1,3],[2,4],[3,4],[4,5],[5,5],[100,5]]) {
+        e.state.baseStats.recovery=level;
+        assert.equal(e.maxStamina(),max);
+        assert.equal(e.recoveryAmount(),1); assert.equal(e.laborCost(),1);
+    }
+    e.state.baseStats.recovery=2; e.state.stamina=3;
+    e.add('item_vitamin_complex',2); use(e,'item_vitamin_complex');
+    assert.equal(e.maxStamina(),5); assert.equal(e.state.stamina,3);
+    e.add('item_energy_drink',3); e.add('item_caffeine_shot');
+    use(e,'item_energy_drink'); assert.equal(e.state.stamina,4);
+    use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,5);
+    assert.equal(e.use('item_energy_drink').success,false);
+    assert.equal(e.state.inventory.find(i=>i.id==='item_energy_drink').quantity,2);
+    const restored = new ItemEngine({market,clock:e.clock,state:JSON.parse(JSON.stringify(e.state))});
+    assert.equal(restored.maxStamina(),5); assert.equal(restored.state.stamina,5);
+    advance(ITEM_BALANCE.buffMs); restored.tick();
+    assert.equal(e.maxStamina(),4); assert.equal(e.state.stamina,4);
+    assert.equal(restored.state.stamina,4);
+    use(e,'item_vitamin_complex'); e.state.stamina=2;
+    advance(ITEM_BALANCE.buffMs); assert.equal(e.state.stamina,2);
+    e.state.passUntil=e.now()+DAY; e.state.stamina=1;
+    assert.equal(e.quickJob().success,true); assert.equal(e.state.stamina,0);
+    assert.equal(e.quickJob().success,false);
+    assert.equal(e.restOnBench().success,true); assert.equal(e.state.stamina,4);
+    assert.equal(e.restOnBench().success,false);
+    e.state.baseStats.recovery=4; e.advanceDay(); assert.equal(e.state.stamina,5);
+    const legacy=JSON.parse(JSON.stringify(e.state)); legacy.stamina=2.2;
+    assert.equal(new ItemEngine({market,clock:e.clock,state:legacy}).state.stamina,3);
 });
 
 test('seven daily mail deliveries survive offline catch-up; claims are idempotent', () => {

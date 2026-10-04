@@ -1,0 +1,60 @@
+.cipher-lobby {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #081221;
+    color: #f5ead6;
+}
+.cipher-lobby[open] { display: flex; flex-direction: column; }
+.cipher-lobby::backdrop { background: #081221; }
+.cipher-lobby-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: #10253e;
+}
+.cipher-lobby-exit {
+    padding: 8px 14px;
+    border: 1px solid #d8bb7b;
+    border-radius: 6px;
+    background: #183553;
+    color: #fff2d4;
+    cursor: pointer;
+}
+.cipher-lobby-exit:focus-visible { outline: 2px solid #75c9ff; outline-offset: 3px; }
+.cipher-lobby-shell { width: 100%; flex: 1; min-height: 0; object-fit: contain; }
+.cipher-lobby-error { padding: 12px; text-align: center; }
+.cipher-editor { padding: 8px 16px; background:#17304b; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.cipher-editor[hidden] { display:none; }
+.cipher-editor p { flex-basis:100%; margin:0; font-size:13px; }
+.cipher-editor button,.cipher-editor select,.cipher-arrange { background:#244869; color:#fff2d4; border:1px solid #8aabc5; border-radius:4px; padding:6px 10px; }
+.cipher-editor button,.cipher-arrange { cursor:pointer; }
+.cipher-lobby-shell.is-arranging { touch-action:none; cursor:grab; }
+
+/* Furnishing tools remain implemented for building interiors, but stay off the normal lobby UI. */
+.cipher-lobby:not(.cipher-furniture-tools) .cipher-arrange,
+.cipher-lobby:not(.cipher-furniture-tools) .cipher-grid-toggle { display: none; }
+
+/* Match the shop's uninterrupted interior presentation. */
+.cipher-lobby:not(.cipher-furniture-tools) .cipher-lobby-header,
+.cipher-lobby:not(.cipher-furniture-tools) .cipher-movement-hint { display:none; }
+.cipher-lobby-shell { display:block; }
+
+/* Use the full-resolution dialogue artwork with smooth downsampling. */
+.cipher-agent-portrait {
+    width: clamp(96px, 16vw, 200px);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    image-rendering: auto;
+    border: 2px solid #e7b737;
+    border-radius: 12px;
+    background: #102b45;
+    flex-shrink: 0;
+}

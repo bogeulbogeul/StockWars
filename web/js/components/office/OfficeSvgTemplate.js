@@ -8,6 +8,11 @@ import { SkyBackground } from '../sky/SkyBackground.js';
 export function getOfficeStageHtml() {
     return `
         <div id="isoOfficeStage" class="iso-office-stage">
+            <button type="button" class="office-furniture-edit-btn" id="btnOfficeFurnitureEdit" aria-haspopup="dialog" aria-controls="furnitureEditModal" title="홈오피스 가구 편집 모드 열기">
+                <span class="office-furniture-edit-icon" aria-hidden="true">🛋️</span>
+                <span><strong>가구 편집</strong><small>나만의 홈오피스 꾸미기</small></span>
+                <span aria-hidden="true">↗</span>
+            </button>
             <!-- Dynamic Time-of-Day Sky Layer Background -->
             ${SkyBackground.getTemplateHtml('officeSkyContainer')}
 

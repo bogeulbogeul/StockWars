@@ -113,9 +113,6 @@ export class MainHUD {
         this.hudClockItem?.addEventListener('click', () => {
             if (this.callbacks.onTimeClick) this.callbacks.onTimeClick();
         });
-        this.hudWeatherItem?.addEventListener('click', () => {
-            if (this.callbacks.onWeatherClick) this.callbacks.onWeatherClick();
-        });
         this.hudStaminaItem?.addEventListener('click', () => {
             if (this.callbacks.onStaminaClick) {
                 this.callbacks.onStaminaClick(this.stamina);
@@ -197,8 +194,7 @@ export class MainHUD {
         if (!this.hudHeartContainer) return;
         let html = '';
         for (let i = 1; i <= max; i++) {
-            const fraction = Math.max(0, Math.min(1, current - i + 1));
-            html += `<span style="position:relative;display:inline-flex">${this.getHeartSVG(false)}<span style="position:absolute;left:0;top:0;width:${fraction * 100}%;overflow:hidden">${this.getHeartSVG(true)}</span></span>`;
+            html += this.getHeartSVG(i <= current);
         }
         this.hudHeartContainer.innerHTML = html;
         if (this.hudStaminaItem) {

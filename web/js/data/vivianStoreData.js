@@ -23,7 +23,7 @@ export const VIVIAN_SHOP_CATALOG = [
         dailyLimit: 2,
         instantUsable: true,
         desc: '고농축 타우린과 카페인이 함유된 국민 에너지 드링크. 찌뿌둥한 피로를 날려버립니다.',
-        effects: ['❤️ 스테미너 하트 1칸 즉시 회복', '⚡ 일일 노동/알바 즉시 재참여 가능'],
+        effects: ['❤️ 하트 1개 즉시 회복', '⚡ 최대 하트 수는 회복력에 따라 3~5개'],
         linkedStock: { id: 'MORNINGBREW', name: '모닝 브루', note: '소비 시 모닝 브루 실적 기여' }
     },
     {
@@ -88,7 +88,7 @@ export const VIVIAN_SHOP_CATALOG = [
         price: 1000,
         instantUsable: true,
         desc: '필수 비타민과 미네랄이 집약된 영양제. 피로 누적을 방지하고 회복력을 끌어올립니다.',
-        effects: ['🛡️ 120분간 [회복력] +2 Bonus', '⚡ 스테미너 소모량 감소'],
+        effects: ['🛡️ 120분간 [회복력] +2 Bonus', '💖 회복력 0~1: 하트 3개 / 2~3: 4개 / 4 이상: 5개', '빈 하트 추가 · 즉시 회복 없음 · 만료 시 초과 체력만 차감'],
         linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '포레스트 랩 정품 납품' }
     },
 
@@ -176,7 +176,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         reqUnlock: { trustLevel: 3, profit: 20000, conditionDesc: '수익 20,000G + 신뢰 Lv.3' },
         desc: '비비안의 개인 비밀 연구실에서 증류된 초고순도 각성 앰플. 즉각적인 폭발력을 냅니다.',
-        effects: ['💖 스테미너 하트 1칸 즉시 회복 (일일 1회)'],
+        effects: ['💖 하트 1개 즉시 회복 (일일 1회)'],
         linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '고순도 농축 바이오 앰플' }
     },
     {

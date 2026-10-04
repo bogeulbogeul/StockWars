@@ -2,6 +2,44 @@
    Furniture Edit Mode Stylesheet (8x8 Office Interior Customizer UI)
    ========================================================================== */
 
+#furnitureEditModal { z-index: 1100; }
+#furnitureEditModal .furniture-edit-card { width: 1180px; height: 760px; }
+#furnitureEditModal .furn-edit-header { height: auto; min-height: 76px; padding: 16px 24px; gap: 16px; flex-wrap: wrap; }
+.furn-edit-title small { display: block; margin-top: 4px; font-size: 12px; font-weight: 500; color: #93a8bb; }
+.furn-room-heading { position: absolute; top: 28px; left: 28px; }
+.furn-room-heading > span { display: block; color: #57d9d2; font-size: 10px; letter-spacing: 3px; margin-bottom: 8px; }
+.furn-room-heading strong { font-size: 22px; }
+.furn-room-heading p { font-size: 12px; color: #93a8bb; }
+#furnitureEditModal .furn-grid-board-wrapper { transform: rotateX(50deg) rotateZ(45deg); border-radius: 8px; border-color: #466877; background: #172936; box-shadow: 12px 12px 0 #0c1722, 22px 22px 40px #0008; margin-top: 68px; }
+#furnitureEditModal .furn-tile-token { transform: rotateZ(-45deg); font-size: 26px; pointer-events: none; }
+#furnitureEditModal .furn-tile { padding: 0; color: white; }
+#furnitureEditModal .furn-grid-legend { margin-top: 36px; font-size: 11px; }
+#furnitureEditModal .furn-catalog-section { width: 350px; flex-shrink: 0; background: #111c2a; }
+.furn-library-heading { padding: 22px 20px 14px; display: flex; justify-content: space-between; align-items: center; }
+.furn-library-heading span { color: #93a8bb; font-size: 11px; }
+.furn-selection-detail { padding: 18px 20px; border-top: 1px solid #ffffff14; background: #0e1723; min-height: 104px; }
+.furn-selection-detail strong { font-size: 13px; }
+.furn-selection-detail p { font-size: 12px; line-height: 1.7; color: #a0b2c3; margin: 10px 0; }
+.furn-selection-detail > span { font-size: 11px; color: #57d9d2; }
+.furn-edit-footer { padding: 16px 24px; background: #0e1723; border-top: 1px solid #ffffff14; display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: #a0b2c3; }
+.furn-edit-footer kbd { border: 1px solid #ffffff26; padding: 2px 5px; border-radius: 4px; }
+#furnitureEditModal .preview-valid { background: #36d8ac66; border-color: #66efc6; }
+#furnitureEditModal .preview-invalid { background: #ef627766; border-color: #ff8291; }
+#furnitureEditModal button:disabled { opacity: .35; cursor: default; }
+#furnitureEditModal button:focus-visible { outline: 2px solid #66efc6; outline-offset: 3px; }
+@media (max-width: 900px) {
+    #furnitureEditModal .furn-edit-workspace { overflow-y: auto; flex-direction: column; }
+    #furnitureEditModal .furn-room-canvas-section { min-height: 400px; padding: 16px; }
+    #furnitureEditModal .furn-catalog-section { width: 100%; min-height: 340px; }
+    #furnitureEditModal .furn-room-heading { top: 16px; left: 20px; }
+    #furnitureEditModal .furn-room-heading strong { font-size: 17px; }
+    #furnitureEditModal .furn-8x8-grid { grid-template-columns: repeat(8, 30px); grid-template-rows: repeat(8, 30px); gap: 3px; }
+    #furnitureEditModal .furn-tile { width: 30px; height: 30px; }
+    #furnitureEditModal .furn-tile-token { font-size: 20px; }
+    #furnitureEditModal .furn-actions-top { flex-wrap: wrap; gap: 6px; }
+    .furn-edit-footer { flex-wrap: wrap; }
+}
+
 .furniture-edit-card {
     width: 1040px;
     max-width: 96vw;
@@ -221,6 +259,12 @@
 }
 .furn-catalog-tabs::-webkit-scrollbar { display: none; }
 
+.furn-category-navigation { display: flex; align-items: center; gap: 6px; padding: 0 10px; min-width: 0; border-bottom: 1px solid #ffffff14; }
+#furnitureEditModal .furn-category-navigation .furn-catalog-tabs { flex: 1; min-width: 0; padding: 10px 0; border-bottom: none; overscroll-behavior-x: contain; }
+#furnitureEditModal .furn-category-navigation .furn-tab-btn { flex-shrink: 0; }
+.furn-category-scroll { flex: 0 0 26px; height: 32px; padding: 0; border: 1px solid #ffffff26; border-radius: 7px; background: #1b2a3d; color: #72e4e0; font-size: 24px; cursor: pointer; }
+.furn-category-scroll:hover { background: #284456; border-color: #5be0d4; }
+
 .furn-tab-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -355,4 +399,37 @@
 .furn-card-action-btn.stored-btn:hover {
     background: #ff5252;
     color: #fff;
+}
+
+/* Edit in the actual office; only the right drawer receives pointer input. */
+.furniture-editor-sidebar { position: fixed; top: 100px; right: 20px; bottom: 20px; width: 350px; z-index: 100; pointer-events: none; }
+.furniture-editor-sidebar.hidden { display: none; }
+#furnitureEditModal .furniture-edit-card { width: 100%; max-width: 100%; height: 100%; max-height: 100%; pointer-events: auto; border-radius: 16px; background: #101b29f5; box-shadow: 0 12px 36px #0006; }
+#furnitureEditModal .furn-edit-header { padding: 16px; gap: 12px; flex-shrink: 0; }
+#furnitureEditModal .furn-edit-title-group { flex: 1; }
+#furnitureEditModal .furn-edit-stats { width: 100%; }
+#furnitureEditModal .furn-stat-badge { font-size: 10px; }
+#furnitureEditModal .furn-actions-top { display: flex; flex-wrap: wrap; gap: 6px; }
+#furnitureEditModal .furn-tool-btn { padding: 7px 10px; }
+#furnitureEditModal .furn-edit-workspace { min-height: 0; overflow: hidden; display: flex; flex: 1; }
+#furnitureEditModal .furn-catalog-section { width: 100%; min-height: 0; flex: 1; }
+#furnitureEditModal .furn-items-list { min-height: 0; }
+#furnitureEditModal .furn-selection-detail { min-height: 0; }
+#furnitureEditModal .furn-edit-footer { flex-direction: column; padding: 12px 16px; line-height: 1.6; flex-shrink: 0; }
+body.furniture-edit-active .iso-stage-wrapper { width: calc(100% - 390px); margin-right: 390px; }
+body.furniture-edit-active .iso-office-stage { opacity: 1; filter: none; pointer-events: auto; }
+.editing-furniture .iso-floor-tile { stroke: #6bbbc966; fill: #162b4118; }
+.editing-furniture .iso-floor-tile.preview-valid { fill: #36d8ac66 !important; stroke: #66efc6 !important; }
+.editing-furniture .iso-floor-tile.preview-invalid { fill: #ef627766 !important; stroke: #ff8291 !important; }
+.editing-furniture #isoOfficeActors { pointer-events: none; opacity: .35; }
+.editing-furniture #isoOfficeDoor, .editing-furniture #isoDoorPrompt, .editing-furniture #isoAnnaPrompt { pointer-events: none; }
+.editing-furniture .office-door-floating-btn, .editing-furniture .office-anna-floating-btn, .editing-furniture .office-furniture-edit-btn { display: none !important; }
+body.furniture-edit-active .device-container { visibility: hidden; pointer-events: none; }
+@media (max-width: 700px) {
+    .furniture-editor-sidebar { top: 100px; right: 8px; bottom: 8px; width: 260px; }
+    body.furniture-edit-active .iso-stage-wrapper { width: calc(100% - 276px); margin-right: 276px; }
+    #furnitureEditModal .furn-card-name { font-size: 11px; }
+    #furnitureEditModal .furn-card-icon { width: 34px; min-width: 34px; }
+    #furnitureEditModal .furn-item-card { padding: 10px; gap: 8px; }
+    #furnitureEditModal .furn-selection-detail p { display: none; }
 }
