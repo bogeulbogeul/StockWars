@@ -5,9 +5,12 @@
  * and the interactive Player Character (기본 하얀색 네모) with continuous free WASD & mouse movement.
  */
 
-import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js';
+import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js?v=window-grid-v1';
+import { OFFICE_OPENINGS, officeWallHeight } from './office/OfficeOpeningSizing.js?v=window-grid-v1';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { OfficeAnna } from './office/OfficeAnna.js';
+import { FURNITURE_THEMES } from '../data/furnitureData.js';
+import { officeGridToScreen, officeFootprintPoints, officeAssetPlacement } from './office/OfficeGrid.js';
 
 export class OfficeStage {
     constructor(container, callbacks = {}) {
@@ -116,8 +119,8 @@ export class OfficeStage {
                 triggerDoorInteraction();
             } else {
                 // Walk closer to the door
-                this.targetTile = { gx: 5.6, gy: 0.5 };
-                this.showTargetTile(5, 0);
+                this.targetTile = { gx: this.doorGridX, gy: this.doorGridY };
+                this.showTargetTile(Math.floor(this.doorGridX), 0);
             }
         });
 
@@ -386,7 +389,7 @@ export class OfficeStage {
         const leftX = 500 + (gy - (gx + 1)) * 33.75;
         const leftY = 320 + (gx + 1 + gy) * 19.1;
 
-        this.targetTilePolygon.setAttribute('points', `${topX},${topY} ${rightX},${rightY} ${botX},${botY} ${leftX},${leftY}`);
+        this.targetTilePolygon.setAttribute('points', officeFootprintPoints(gx, gy));
         this.targetGroup.classList.remove('hidden');
 
         clearTimeout(this.targetTimer);
@@ -407,24 +410,86 @@ export class OfficeStage {
         this.keysHeld.clear();
         this.targetTile = null;
         this.stageContainer.classList.toggle('editing-furniture', active);
+        if (!this.wallGridLayer) {
+            this.wallGridLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            this.wallGridLayer.setAttribute('pointer-events', 'none');
+            this.wallGridLayer.setAttribute('stroke', '#6bbbc977');
+            let lines = '';
+            for (let i = 0; i <= 8; i++) {
+                for (const sign of [-1, 1]) {
+                    const x = 500 + sign * i * 33.75, y = 320 + i * 19.1;
+                    lines += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 270}"/>`;
+                }
+            }
+            for (let height = 38.2; height < 270; height += 38.2) {
+                for (const sign of [-1, 1]) {
+                    lines += `<line x1="500" y1="${320 - height}" x2="${500 + sign * 8 * 33.75}" y2="${320 + 8 * 19.1 - height}"/>`;
+                }
+            }
+            this.wallGridLayer.innerHTML = lines;
+            this.officeDoor.before(this.wallGridLayer);
+        }
+        this.wallGridLayer.style.display = active ? '' : 'none';
         this.targetGroup?.classList.add('hidden');
     }
 
     renderFurniture(items, selectedId) {
+        items.filter(item => item.wallFixture).forEach(item => {
+            const element = document.getElementById(item.wallFixture);
+            if (element) {
+                element.style.display = item.placed ? '' : 'none';
+                element.style.outline = '';
+                let selection = element.querySelector('.wall-fixture-selection');
+                if (!selection) {
+                    selection = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    selection.classList.add('wall-fixture-selection');
+                    selection.setAttribute('fill', 'transparent');
+                    selection.setAttribute('stroke-width', '1.5');
+                    element.append(selection);
+                }
+                const isDoor = item.wallFixture === 'isoOfficeDoor';
+                selection.setAttribute('points', (isDoor ? OFFICE_OPENINGS.door : OFFICE_OPENINGS.window).selectionPoints);
+                selection.setAttribute('stroke', this.furnitureEditMode && item.id === selectedId ? '#facc15' : 'none');
+                selection.style.pointerEvents = this.furnitureEditMode || isDoor ? 'all' : 'none';
+                element.querySelectorAll('image').forEach(image => image.style.pointerEvents = 'none');
+                element.dataset.furnitureId = item.id;
+                if (item.wallFixture) {
+                    const door = item.wallFixture === 'isoOfficeDoor', right = item.gridY === 1 || (item.gridX < 3 && !door);
+                    const index = item.gridX >= 3 ? item.gridX : 6;
+                    const anchor = officeGridToScreen(right ? 0 : index, right ? index : 0);
+                    element.setAttribute('transform', `translate(${anchor.x} ${anchor.y - officeWallHeight(item)}) scale(${right ? -1 : 1} 1)`);
+                    element.style.pointerEvents = '';
+                    if (door) {
+                        this.doorGridX = right ? 0.5 : index - 1;
+                        this.doorGridY = right ? index - 1 : 0.5;
+                        this.doorPrompt?.setAttribute('transform', `translate(${anchor.x + (right ? -1 : 1) * OFFICE_OPENINGS.door.width / 2}, ${anchor.y - OFFICE_OPENINGS.door.height - 30})`);
+                    }
+                }
+            }
+        });
         if (!this.furnitureLayer) {
             this.furnitureLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
             this.furnitureLayer.id = 'isoFurnitureLayer';
             this.furnitureLayer.style.pointerEvents = 'none';
             this.floorTilesGroup.after(this.furnitureLayer);
         }
-        const point = (x, y) => `${500 + (y - x) * 33.75},${320 + (x + y) * 19.1}`;
-        this.furnitureLayer.innerHTML = items.filter(item => item.placed).sort((a, b) => (a.gridX + a.gridY) - (b.gridX + b.gridY)).map(item => {
+        const point = (x, y) => { const p = officeGridToScreen(x, y); return `${p.x},${p.y}`; };
+        this.furnitureLayer.style.pointerEvents = this.furnitureEditMode ? 'auto' : 'none';
+        this.furnitureLayer.innerHTML = items.filter(item => item.placed && !item.wallFixture).sort((a, b) => (a.gridX + a.gridY) - (b.gridX + b.gridY)).map(item => {
             const w = item.rotation % 180 ? item.sizeH : item.sizeW;
             const h = item.rotation % 180 ? item.sizeW : item.sizeH;
             const x = item.gridX, y = item.gridY;
             const cx = 500 + (y + h / 2 - x - w / 2) * 33.75;
             const cy = 320 + (x + w / 2 + y + h / 2) * 19.1;
             const selected = this.furnitureEditMode && item.id === selectedId;
+            if (item.asset) {
+                const a = item.asset;
+                const placement = officeAssetPlacement(item);
+                const footprint = this.furnitureEditMode ? `<polygon points="${point(x, y)} ${point(x, y + h)} ${point(x + w, y + h)} ${point(x + w, y)}" fill="${selected ? '#facc1522' : 'none'}" stroke="${selected ? '#facc15' : '#72b9c7'}" stroke-width="1.5"/>` : '';
+                const filter = FURNITURE_THEMES[item.theme]?.displayFilter || 'none';
+                const transform = placement.mirror ? `translate(${2 * placement.x + placement.width} 0) scale(-1 1)` : '';
+                return `<g data-furniture-id="${item.id}"><image href="${a.url}" x="${placement.x}" y="${placement.y}" width="${placement.width}" height="${placement.height}" transform="${transform}" style="filter:${filter}" preserveAspectRatio="xMidYMid meet"/>${footprint}</g>`;
+            }
             return `<g><polygon points="${point(x, y)} ${point(x, y + h)} ${point(x + w, y + h)} ${point(x + w, y)}" fill="${selected ? '#facc1544' : '#162b4199'}" stroke="${selected ? '#facc15' : '#72b9c7'}" stroke-width="${selected ? 2.5 : 1}"/><text x="${cx}" y="${cy}" text-anchor="middle" font-size="${Math.min(48, 25 + w * h * 3)}" dominant-baseline="central">${item.icon}</text><text x="${cx}" y="${cy + 26}" text-anchor="middle" font-size="9" fill="#e6f6ff">${item.rotation}°</text></g>`;
         }).join('');
     }

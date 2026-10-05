@@ -1,0 +1,5 @@
+# Sofa original style correction
+
+Built-in imagegen; edit source: cipher-sofa-common-grid-v2.png.
+
+Use case: precise-object-edit. Edit target: attached original approved game sofa. Keep EXACT same crisp illustrated art style, smooth cobalt blue and deep navy panels, bold clean dark outlines and thin bright yellow gold piping. Preserve two cushions, arms, feet, orientation and overall appearance. Correct ONLY perspective geometry of lower plinth and seat: long edges of backrest, cushion fronts, top and bottom of the lower base must all be parallel, rising toward the right at 29.50664658 degrees (vertical rise/horizontal run = 0.565925926). Short depth edges slope down-right at same angle. Vertical sides and feet stay vertical. Make lower base a rigid rectangular parallelepiped of constant height across its whole width, never tapered or squashed at left. Keep original smooth graphic shading, no realistic fabric, no grain, no new design. Transparent background, no cast glow or floor shadow, entire object in frame. Original orientation retained (long axis rises right). High resolution raster game asset.

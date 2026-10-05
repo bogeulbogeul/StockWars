@@ -273,6 +273,7 @@ export class SmartphoneUI {
 
         // Keyboard Shortcuts: P or M to toggle Smartphone, ESC to minimize
         window.addEventListener('keydown', (e) => {
+            if (document.body.classList.contains('furniture-edit-active')) return;
             if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
                 return;
             }
@@ -300,6 +301,7 @@ export class SmartphoneUI {
 
     showPhone(e) {
         if (e) e.stopPropagation();
+        if (document.body.classList.contains('furniture-edit-active')) return;
         this.showHomeScreen();
         document.body.classList.remove('phone-minimized');
         document.body.classList.add('phone-view-active');

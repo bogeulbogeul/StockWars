@@ -1,5 +1,6 @@
 import {cipherGridToScreen} from './CipherGrid.js';
-export function cipherScreenToGrid(x,y){const a=(x-724)/65.6,b=(y-375)/33.5;return {u:(a+b)/2,v:(b-a)/2};}
+export {guideGrid as cipherScreenToGrid} from './CipherGuidePreview.js';
+import {guideGrid as cipherScreenToGrid} from './CipherGuidePreview.js';
 export const CIPHER_STAIR_LANDING=cipherGridToScreen(3.5,1.5);
 export function createCipherNavigation(getItems,size){
     let signature='',cachedCells=new Set(),frameCells=null;
@@ -22,3 +23,4 @@ export function createCipherNavigation(getItems,size){
         get places(){const carpet=getItems().find(i=>i.asset==='carpet');if(!carpet)return [{...nav.clamp(724,945),action:'exit'}];const [w,h]=size(carpet);return [{...center(carpet.u+(w-1)/2,carpet.v+(h-1)/2),action:'exit'}];}
     };return nav;
 }
+

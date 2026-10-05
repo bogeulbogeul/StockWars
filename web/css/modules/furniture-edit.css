@@ -421,10 +421,18 @@ body.furniture-edit-active .iso-office-stage { opacity: 1; filter: none; pointer
 .editing-furniture .iso-floor-tile { stroke: #6bbbc966; fill: #162b4118; }
 .editing-furniture .iso-floor-tile.preview-valid { fill: #36d8ac66 !important; stroke: #66efc6 !important; }
 .editing-furniture .iso-floor-tile.preview-invalid { fill: #ef627766 !important; stroke: #ff8291 !important; }
-.editing-furniture #isoOfficeActors { pointer-events: none; opacity: .35; }
+.editing-furniture #isoOfficeActors { display: none; pointer-events: none; }
+.editing-furniture #isoAnnaPrompt { display: none; }
+.editing-furniture #isoSvgStage { touch-action: none; user-select: none; }
+.editing-furniture #isoOfficeDoor { pointer-events: all !important; cursor: grab; }
+.editing-furniture #isoAnnaCharacter, .editing-furniture #isoPlayerCharacter, .editing-furniture #isoPlayerName { pointer-events: none !important; }
+.editing-furniture [data-furniture-id] { cursor: grab; }
+.editing-furniture [data-furniture-id]:active { cursor: grabbing; }
+.editing-furniture [data-furniture-id] polygon { pointer-events: all; }
 .editing-furniture #isoOfficeDoor, .editing-furniture #isoDoorPrompt, .editing-furniture #isoAnnaPrompt { pointer-events: none; }
 .editing-furniture .office-door-floating-btn, .editing-furniture .office-anna-floating-btn, .editing-furniture .office-furniture-edit-btn { display: none !important; }
 body.furniture-edit-active .device-container { visibility: hidden; pointer-events: none; }
+body.furniture-edit-active #floatingPhoneBtn { display: none !important; }
 @media (max-width: 700px) {
     .furniture-editor-sidebar { top: 100px; right: 8px; bottom: 8px; width: 260px; }
     body.furniture-edit-active .iso-stage-wrapper { width: calc(100% - 276px); margin-right: 276px; }

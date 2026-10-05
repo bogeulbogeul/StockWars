@@ -7,6 +7,7 @@ import {StorePlayerController} from './store/StorePlayerController.js';
 import {createCipherNavigation,cipherScreenToGrid,CIPHER_STAIR_LANDING} from './CipherNavigation.js';
 import { CIPHER_FLOOR, CIPHER_GRID_LINES, cipherGridToScreen } from './CipherGrid.js';
 import {cipherDrawOrder} from './CipherDepth.js';
+import {paintGuidePreview,drawCipherRoomImage} from './CipherGuidePreview.js';
 const agentKPortraitUrl = new URL('../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png?portrait=hd1', import.meta.url).href;
 export class CipherLobby {
     constructor(container) {
@@ -24,7 +25,10 @@ export class CipherLobby {
         this.wall=new Image();
         this.wall.onload=()=>this.draw();
         this.wall.onerror=()=>{this.dialog.querySelector('.cipher-lobby-error').hidden=false;};
-        this.wall.src='./assets/interiors/cipher/cipher-room-unified-10x10-v2.svg';
+        this.wall.src='./assets/interiors/cipher/cipher-room-elevator-grid-v5-candidate.png';
+        this.marbleFloor=new Image();
+        this.marbleFloor.onload=()=>{this.roomRaster=null;this.draw();};
+        this.marbleFloor.src='./assets/interiors/cipher/cipher-room-marble-seamless-v2.png';
         this.dialog.querySelector('.cipher-lobby-exit').onclick=()=>this.close();
         this.dialog.querySelector('.cipher-grid-toggle').onclick=e=>{
             this.showGrid=!this.showGrid;
@@ -41,7 +45,7 @@ export class CipherLobby {
         this.canvas.setAttribute('aria-label','증권사 내부 · WASD 또는 방향키 이동, 바닥 클릭 이동, 카펫 근처 F로 퇴장');
         this.hint=document.createElement('p');this.hint.className='cipher-movement-hint';this.hint.style.cssText='position:absolute;bottom:8px;left:16px;color:#fff2d9;pointer-events:none;font-size:13px';this.dialog.append(this.hint);
         this.exitPrompt=document.createElement('button');this.exitPrompt.hidden=true;this.exitPrompt.textContent='마을로 나가기 · F';this.exitPrompt.style.cssText='position:absolute;transform:translate(-50%,-100%);white-space:nowrap;width:max-content;max-width:none;flex-shrink:0;padding:10px 16px;border:1px solid #f0ca65;border-radius:9px;background:#102b45;color:#fff2d9;font-size:14px;font-weight:700;box-shadow:0 4px 14px #0006;cursor:pointer;z-index:5';this.exitPrompt.onclick=()=>{if(this.nearExit())this.close();};this.dialog.append(this.exitPrompt);
-        this.stairPrompt=this.exitPrompt.cloneNode(false);this.stairPrompt.textContent='2층으로 이동 · F';this.stairPrompt.onclick=()=>{if(this.nearStairs()){this.stairAttempt=true;this.player.moveTo(CIPHER_STAIR_LANDING.x,CIPHER_STAIR_LANDING.y);this.canvas.focus();}};this.dialog.append(this.stairPrompt);this.talkPrompt=this.exitPrompt.cloneNode(false);this.talkPrompt.textContent='대화하기 · F';this.talkPrompt.onclick=()=>this.talkToAgentK();this.dialog.append(this.talkPrompt);this.doorPrompt=document.createElement('button');this.doorPrompt.hidden=true;this.doorPrompt.style.cssText=this.exitPrompt.style.cssText+';cursor:pointer';this.doorPrompt.onclick=()=>this.enterTrainingRoom();this.dialog.append(this.doorPrompt);
+        this.stairPrompt=this.exitPrompt.cloneNode(false);this.stairPrompt.textContent='엘리베이터 이용 · F';this.stairPrompt.onclick=()=>{if(this.nearStairs()){this.stairAttempt=true;this.player.moveTo(CIPHER_STAIR_LANDING.x,CIPHER_STAIR_LANDING.y);this.canvas.focus();}};this.dialog.append(this.stairPrompt);this.talkPrompt=this.exitPrompt.cloneNode(false);this.talkPrompt.textContent='대화하기 · F';this.talkPrompt.onclick=()=>this.talkToAgentK();this.dialog.append(this.talkPrompt);this.doorPrompt=document.createElement('button');this.doorPrompt.hidden=true;this.doorPrompt.style.cssText=this.exitPrompt.style.cssText+';cursor:pointer';this.doorPrompt.onclick=()=>this.enterTrainingRoom();this.dialog.append(this.doorPrompt);
         this.notice=document.createElement('div');this.notice.hidden=true;this.notice.setAttribute('role','alert');this.notice.style.cssText='position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);padding:24px;background:#102b45;color:#fff2d9;border:2px solid #e5b838;border-radius:12px;z-index:10;text-align:center';this.notice.innerHTML='<p style="margin:0 0 20px;line-height:1.6">회원이 아닙니다. 2층은 회원 전용 공간입니다.</p><button class="cipher-notice-confirm" style="min-width:112px;padding:10px 28px;border:1px solid #ffe398;border-radius:8px;background:linear-gradient(180deg,#f3cf70,#d9aa38);color:#102b45;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 3px 0 #916d20,0 5px 12px #0004">확인</button>';this.notice.style.maxWidth='min(480px,85vw)';this.noticeHeading=document.createElement('strong');this.noticeHeading.style.cssText='display:block;margin-bottom:12px;color:#f3cf70;font-size:17px';this.noticeHeading.hidden=true;this.notice.prepend(this.noticeHeading);this.notice.querySelector('button').onclick=()=>this.advanceNotice();this.dialog.append(this.notice);this.defaultNoticeHTML=this.notice.innerHTML;this.defaultNoticeStyle=this.notice.style.cssText;
         this.sitPrompt=this.exitPrompt.cloneNode(false);this.sitPrompt.textContent='앉기 · F';this.sitPrompt.onclick=()=>this.toggleSitting();this.dialog.append(this.sitPrompt);
         this.dialog.addEventListener('keydown',e=>{if(!this.isOpen)return;if(!this.notice.hidden){e.preventDefault();e.stopImmediatePropagation();if(!e.repeat&&['Enter','Escape',' '].includes(e.key))this.advanceNotice(e.key==='Escape');return;}e.stopPropagation();if(this.editor.active)return;if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;const key=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright','shift'].includes(key)){e.preventDefault();e.stopImmediatePropagation();this.standUp();this.player.keys.add(key);}else if(['f','enter'].includes(key)&&!e.repeat){if(this.seated||this.nearbySeat()){e.preventDefault();this.toggleSitting();}else if(this.nearAgentK()){e.preventDefault();this.talkToAgentK();}else if(this.nearStairs()){e.preventDefault();this.stairAttempt=true;this.player.moveTo(CIPHER_STAIR_LANDING.x,CIPHER_STAIR_LANDING.y);}else if(this.nearbyRoomDoor()){e.preventDefault();this.enterTrainingRoom();}else if(this.nearExit()){e.preventDefault();this.close();}}});
@@ -54,16 +58,25 @@ export class CipherLobby {
         this.dialog.addEventListener('close',()=>{this.isOpen=false;this.player.stop();cancelAnimationFrame(this.frame);});
         if(new URLSearchParams(location.search).get('cipherGrid')==='1') requestAnimationFrame(()=>{
             this.open();
+            if(new URLSearchParams(location.search).get('furnitureEdit')==='1'){
+                this.dialog.classList.add('cipher-furniture-tools');
+                this.player.stop();this.dialog.querySelector('.cipher-arrange').setAttribute('aria-expanded','true');this.editor.begin();
+            }
         });
     }
     draw(){
         const ctx=this.canvas.getContext('2d');
         ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+        if(this.editor?.active){
+            paintGuidePreview(ctx,this.editor.items,cipherFurnitureSize,this.editor.selected,this.wall,this.marbleFloor,this.showGrid);
+            this.editor.paint(ctx);
+            return;
+        }
         if(!this.wall.complete||!this.wall.naturalWidth)return;
         // The room includes its floor and trim; render once at the original ratio.
         if(!this.roomRaster){
             this.roomRaster=document.createElement('canvas');this.roomRaster.width=this.canvas.width;this.roomRaster.height=this.canvas.height;
-            this.roomRaster.getContext('2d').drawImage(this.wall,0,0);
+            drawCipherRoomImage(this.roomRaster.getContext('2d'),this.wall,this.marbleFloor);
         }
         ctx.drawImage(this.roomRaster,0,0);
         if(!this.showGrid&&!this.editor.active){
@@ -83,7 +96,7 @@ export class CipherLobby {
         ctx.closePath();ctx.clip();
         ctx.strokeStyle='#ff4488';ctx.lineWidth=1;
         for(const lines of CIPHER_GRID_LINES)for(const {m,b} of lines){
-            ctx.beginPath();ctx.moveTo(m*375+b,375);ctx.lineTo(m*1045+b,1045);ctx.stroke();
+            ctx.beginPath();ctx.moveTo(m*350+b,350);ctx.lineTo(m*1037.6+b,1037.6);ctx.stroke();
         }
         ctx.restore();
         this.editor?.paint(ctx);this.paintDialogueHighlight(ctx);
@@ -118,7 +131,7 @@ export class CipherLobby {
     nearExit(){return this.editor.items.some(i=>i.asset==='carpet')&&this.player.nearby()?.action==='exit';}
     beginStairs(){
         this.player.stop();this.stairAttempt=false;
-        this.stairMotion={points:[{x:966,y:517},{x:975,y:499},{x:984,y:481},{x:993,y:463}],step:0,descending:false};
+        this.stairMotion=null;this.showMembershipNotice();
     }
     descendStairs(){
         if(!this.stairMotion)return;
@@ -261,10 +274,11 @@ export class CipherLobby {
         const prompt=seatAvailable?this.sitPrompt:talk?this.talkPrompt:stairs?this.stairPrompt:visible?this.exitPrompt:this.doorPrompt;prompt.style.left=`${canvas.left-dialog.left+(canvas.width-this.canvas.width*scale)/2+this.player.x*scale}px`;
         prompt.style.top=`${canvas.top-dialog.top+(canvas.height-this.canvas.height*scale)/2+(this.player.y-78)*scale}px`;
     }
-    animate(now){if(!this.isOpen)return;if(!this.editor.active&&this.notice.hidden&&this.stairMotion){this.updateStairs(Math.min((now-this.lastFrame)/1000,.05));}else if(!this.editor.active&&this.notice.hidden){if(!this.seated){this.navigation.beginFrame();this.ensurePlayer();this.player.update((now-this.lastFrame)/1000);this.navigation.endFrame();}const d=Math.hypot(this.player.x-CIPHER_STAIR_LANDING.x,this.player.y-CIPHER_STAIR_LANDING.y);if(d>85)this.stairNotified=false;if(this.stairAttempt&&d<8)this.beginStairs();}else this.player.stop();this.lastFrame=now;const g=cipherScreenToGrid(this.player.x,this.player.y);this.canvas.dataset.playerU=g.u.toFixed(3);this.canvas.dataset.playerV=g.v.toFixed(3);const hintText=this.editor.active?'':this.seated?'F · 일어나기':this.nearbySeat()?'F · 앉기':this.nearAgentK()?'F · 에이전트 K와 대화하기':this.nearStairs()?'F · 2층 올라가기':this.nearExit()?'F · 마을로 나가기':'WASD / 방향키 · 바닥 클릭 이동 · Shift 달리기';if(this.hint.textContent!==hintText)this.hint.textContent=hintText;this.updateExitPrompt();this.draw();this.frame=requestAnimationFrame(t=>this.animate(t));}
+    animate(now){if(!this.isOpen)return;if(!this.editor.active&&this.notice.hidden&&this.stairMotion){this.updateStairs(Math.min((now-this.lastFrame)/1000,.05));}else if(!this.editor.active&&this.notice.hidden){if(!this.seated){this.navigation.beginFrame();this.ensurePlayer();this.player.update((now-this.lastFrame)/1000);this.navigation.endFrame();}const d=Math.hypot(this.player.x-CIPHER_STAIR_LANDING.x,this.player.y-CIPHER_STAIR_LANDING.y);if(d>85)this.stairNotified=false;if(this.stairAttempt&&d<8)this.beginStairs();}else this.player.stop();this.lastFrame=now;const g=cipherScreenToGrid(this.player.x,this.player.y);this.canvas.dataset.playerU=g.u.toFixed(3);this.canvas.dataset.playerV=g.v.toFixed(3);const hintText=this.editor.active?'':this.seated?'F · 일어나기':this.nearbySeat()?'F · 앉기':this.nearAgentK()?'F · 에이전트 K와 대화하기':this.nearStairs()?'F · 엘리베이터 이용':this.nearExit()?'F · 마을로 나가기':'WASD / 방향키 · 바닥 클릭 이동 · Shift 달리기';if(this.hint.textContent!==hintText)this.hint.textContent=hintText;this.updateExitPrompt();this.draw();this.frame=requestAnimationFrame(t=>this.animate(t));}
     open(){if(this.isOpen)return;this.dialog.showModal();this.isOpen=true;this.restoreNotice();this.dialoguePage=null;this.notice.hidden=true;this.stairMotion=null;this.stairNotified=false;this.stairAttempt=false;this.seated=null;this.player.reset();this.ensurePlayer();this.lastFrame=performance.now();this.canvas.focus();this.animate(this.lastFrame);}
     close(){if(this.editor.active)this.editor.cancel();this.dialog.close();this.isOpen=false;}
 }
+
 
 
 

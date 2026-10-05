@@ -167,7 +167,7 @@ export class CipherCompetitionRoom{
             const data=new FormData(e.target),name=String(data.get('name')).trim();if(!name)return;
             const stake=Number(data.get('stake'));if(!validArenaStake(Number(data.get('cash')),stake)){validateStake();stakeInput.reportValidity();return;}
             const passwordHash=data.get('access')==='locked'?await arenaPasswordHash(String(data.get('password'))):null;
-            this.rooms.push({passwordHash,stake,id:crypto.randomUUID(),name,minutes:Number(data.get('minutes')),cash:Number(data.get('cash')),invited:[]});this.save();this.render();
+            const room={passwordHash,stake,id:crypto.randomUUID(),name,minutes:Number(data.get('minutes')),cash:Number(data.get('cash')),invited:[]};this.rooms.push(room);this.save();this.join(room);
         };
         this.dialog.querySelector('[data-friend]').onsubmit=e=>{e.preventDefault();const result=this.friends.addFriendByName(new FormData(e.target).get('name'));this.render();this.dialog.querySelector('[data-status]').textContent=result.message;};
         for(const room of this.rooms){
@@ -223,14 +223,19 @@ export class CipherCompetitionRoom{
     }
     join(room){
         this.render();
+        const main=this.dialog.querySelector('.training-workspace>main');main.replaceChildren();
         const waiting=document.createElement('section');waiting.style.cssText='padding:24px;border:1px solid #d5b461;border-radius:14px;background:#152d40;margin-bottom:20px';
-        const title=document.createElement('h3');title.textContent=`${room.name} · 참가 완료`;
+        const title=document.createElement('h3');title.textContent=`${room.name} · 대결 대기실`;
         const details=document.createElement('p');details.textContent=`대결 ${room.minutes}분 · 시작 자금 ${room.cash.toLocaleString()}G · 배팅 ${(room.stake||0).toLocaleString()}G`;
-        const players=document.createElement('p');players.textContent='참가자: 나 · AI 상대 준비 완료';
+        const code=document.createElement('p');code.textContent=`방 코드: ${room.id}`;code.style.cssText='font-size:12px;overflow-wrap:anywhere;user-select:all;color:#a8bfd0';
+        const players=document.createElement('h3');players.textContent='참가 인원 · 2명 (나 + AI)';
+        const roster=document.createElement('div');roster.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:20px 0';
+        for(const [name,role] of [['나','방장 · 준비 완료'],['AI 상대','컴퓨터 참가자 · 준비 완료']]){const card=document.createElement('div');card.style.cssText='padding:24px 16px;background:#0e2031;border:1px solid #3c647b;border-radius:12px;text-align:center';const avatar=document.createElement('div');avatar.textContent=name==='나'?'👤':'🤖';avatar.style.cssText='font-size:30px;margin-bottom:12px';const label=document.createElement('strong');label.textContent=name;const ready=document.createElement('p');ready.textContent=role;ready.style.cssText='font-size:13px;color:#71dccc';card.append(avatar,label,ready);roster.append(card);}
+        const connection=document.createElement('p');connection.textContent='현재는 나와 AI의 로컬 대결입니다. 다른 사용자의 실시간 참가와 준비 상태는 아직 연결되지 않았습니다.';connection.style.cssText='color:#90a8bd;font-size:13px;line-height:1.7';
         const start=document.createElement('button');start.textContent='대결 시작';start.onclick=()=>this.start(room);
         const leave=document.createElement('button');leave.textContent='방 나가기';leave.style.marginLeft='10px';leave.onclick=()=>this.render();
-        waiting.append(title,details,players,start,leave);
-        this.dialog.querySelector('[data-rooms]').prepend(waiting);
+        waiting.append(title,details,code,players,roster,connection,start,leave);
+        main.append(waiting);
         start.focus();
     }
     showResults(match,room,players){
@@ -267,7 +272,12 @@ export class CipherCompetitionRoom{
         match.dialog.querySelector('h2').textContent=room.name;
         match.dialog.querySelector('[data-close]').textContent='대결 포기';
         const status=document.createElement('p');status.style.color='#f5d583';match.dialog.querySelector('header').after(status);
+        status.style.cssText='position:sticky;top:0;z-index:8;margin:0;padding:14px 18px;border:1px solid #45677a;border-radius:12px;background:#142c3ef5;color:#f5d583;box-shadow:0 5px 18px #0005;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center';
+        const rankLabel=document.createElement('strong'),assetLabel=document.createElement('span'),gapLabel=document.createElement('span'),clockLabel=document.createElement('strong'),rankNotice=document.createElement('span');
+        rankNotice.setAttribute('role','status');rankNotice.setAttribute('aria-live','polite');rankNotice.style.cssText='color:#70e1d7;font-size:13px';clockLabel.style.marginLeft='auto';status.append(rankLabel,assetLabel,gapLabel,clockLabel,rankNotice);
+        let previousRank=null,noticeUntil=0;
         const news=this.createNewsPanel(match);
+        const rankResize=new ResizeObserver(()=>{news.latestBar.bar.style.top=`${status.getBoundingClientRect().height+8}px`;});rankResize.observe(status);
         const newsEvents=[
             {title:'대형 공급 계약 체결… 매출 성장 기대',detail:'신규 고객 확보 소식에 매수세가 유입되고 있습니다.',impact:.035},
             {title:'분기 실적 예상 하회… 투자 심리 위축',detail:'비용 증가와 수익성 둔화 우려가 제기됐습니다.',impact:-.035},
@@ -292,8 +302,16 @@ export class CipherCompetitionRoom{
         };
         const deadline=Date.now()+room.minutes*60000;let finished=false;
         const botAssets=()=>bot.cash+[...bot.positions].reduce((sum,[id,qty])=>sum+(engine.stocks.get(id)?.price||0)*qty,0);
+        const updateStandings=remaining=>{
+            const mine=engine.getState().totalNetWorth,other=botAssets(),rank=mine===other?'공동 1위':mine>other?'1위':'2위';
+            rankLabel.textContent=`${rank==='2위'?'':'🏆 '}내 순위 · ${rank}`;assetLabel.textContent=`내 총자산 ${Math.round(mine).toLocaleString()}G`;
+            gapLabel.textContent=mine===other?`${opponent}와 동점`:mine>other?`${opponent}보다 ${Math.round(mine-other).toLocaleString()}G 앞서는 중`:`선두 ${opponent}와 ${Math.round(other-mine).toLocaleString()}G 차이`;
+            clockLabel.textContent=`남은 시간 ${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,'0')}`;clockLabel.style.color=remaining<=30?'#ff8c98':'#f5d583';status.style.borderColor=remaining<=30?'#cf6472':'#45677a';
+            if(previousRank!==null&&previousRank!==rank){rankNotice.textContent=rank==='2위'?`${opponent}가 앞서고 있습니다!`:rank==='1위'?'1위로 올라섰습니다!':'공동 1위 · 접전입니다!';noticeUntil=Date.now()+3000;if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)status.animate([{boxShadow:'0 0 22px #f5d58370'},{boxShadow:'0 5px 18px #0005'}],{duration:900});}
+            if(Date.now()>noticeUntil)rankNotice.textContent='';previousRank=rank;
+        };
         const finish=(quit=false)=>{
-            if(finished)return;finished=true;clearInterval(timer);engine.stopEngine();
+            if(finished)return;finished=true;clearInterval(timer);rankResize.disconnect();engine.stopEngine();
             news.querySelector('[data-news-status]').textContent='대결 종료 · 뉴스 기록을 확인할 수 있습니다.';
             match.dialog.querySelector('[data-buy]').disabled=true;match.dialog.querySelector('[data-sell]').disabled=true;
             const mine=engine.getState().totalNetWorth,other=botAssets();
@@ -306,10 +324,10 @@ export class CipherCompetitionRoom{
         const timer=setInterval(()=>{
             const remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));if(!remaining){finish();return;}
             if(Date.now()>=nextNewsAt)publishNews();
-            status.textContent=`남은 시간 ${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,'0')} · 내 자산 ${Math.round(engine.getState().totalNetWorth).toLocaleString()}G · ${opponent} ${Math.round(botAssets()).toLocaleString()}G${room.opponent?' · 참가비 0G':''}`;
+            updateStandings(remaining);
             if(remaining%5===0){const stocks=[...engine.stocks.values()],stock=stocks[Math.floor(Math.random()*stocks.length)];if(Math.random()<.6){const qty=Math.floor(bot.cash*.15/stock.price);if(qty>0){bot.cash-=qty*stock.price;bot.positions.set(stock.id,(bot.positions.get(stock.id)||0)+qty);}}else{const holding=[...bot.positions][0];if(holding){bot.cash+=engine.stocks.get(holding[0]).price*holding[1];bot.positions.delete(holding[0]);}}}
         },1000);
-        engine.startEngine();match.open();
+        updateStandings(room.minutes*60);engine.startEngine();match.open();
     }
 }
 

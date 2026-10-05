@@ -4,7 +4,9 @@
  * Dedicated 8x8 Office Customizer & Furniture Placement Mode.
  */
 
-import { FURNITURE_CATEGORIES, FURNITURE_THEMES, DEFAULT_FURNITURE_CATALOG } from '../data/furnitureData.js';
+import { FURNITURE_CATEGORIES, FURNITURE_THEMES, DEFAULT_FURNITURE_CATALOG } from '../data/furnitureData.js?v=office-openings-v8';
+import { OFFICE_GRID, officeGridToScreen } from './office/OfficeGrid.js';
+import { officeWallHeight } from './office/OfficeOpeningSizing.js?v=window-grid-v1';
 
 export class FurnitureEditModal {
     constructor(container, callbacks = {}) {
@@ -18,13 +20,16 @@ export class FurnitureEditModal {
         try {
             const saved = JSON.parse(localStorage.getItem('stockwars.officeLayout') || 'null');
             if (Array.isArray(saved)) {
-                this.furnitureList.forEach(item => { item.placed = false; item.gridX = null; item.gridY = null; });
+                this.furnitureList.forEach(item => {
+                    if (saved.some(entry => entry.id === item.id)) { item.placed = false; item.gridX = null; item.gridY = null; }
+                });
                 this.furnitureList.forEach(item => {
                     const state = saved.find(entry => entry.id === item.id);
-                    if (!state || ![0, 90, 180, 270].includes(state.rotation)) return;
+                    if (!state || ![0, 90, 180, 270].includes(state.rotation) || (item.canRotate === false && state.rotation !== 0)) return;
                     const candidate = { ...item, rotation: state.rotation };
                     if (state.placed && this.canPlace(candidate, state.gridX, state.gridY)) {
                         Object.assign(item, { placed: true, rotation: state.rotation, gridX: state.gridX, gridY: state.gridY });
+                        if (item.wallFixture) item.wallHeight = officeWallHeight(item, state.wallHeight);
                     } else if (!state.placed) Object.assign(item, { placed: false, rotation: state.rotation, gridX: null, gridY: null });
                 });
             }
@@ -56,6 +61,7 @@ export class FurnitureEditModal {
                             <span class="furn-stat-badge" id="furnOccupancyBadge">점유 타일: 11 / 64 (17.2%)</span>
                         </div>
                         <div class="furn-actions-top">
+                            <button class="furn-tool-btn" id="btnFurnDefaultLayout">기본 배치</button>
                             <button class="furn-tool-btn" id="btnFurnUndo">↶ 되돌리기</button>
                             <button class="furn-tool-btn" id="btnFurnCancel">취소</button>
                             <button class="furn-tool-btn" id="btnFurnRotate" title="선택 가구 90도 회전 (R)">
@@ -111,6 +117,19 @@ export class FurnitureEditModal {
     }
 
     initEventListeners() {
+        const svg = this.stage.svgStage;
+        svg.addEventListener('pointerdown', e => this.startDrag(e));
+        svg.addEventListener('pointermove', e => this.moveDrag(e));
+        svg.addEventListener('pointerup', e => this.finishDrag(e));
+        svg.addEventListener('pointercancel', () => this.abortDrag());
+        svg.addEventListener('lostpointercapture', () => this.abortDrag());
+        svg.addEventListener('click', e => {
+            if (this.modal.classList.contains('hidden')) return;
+            if (this.suppressDragClick || e.target.closest('[data-furniture-id]')) {
+                this.suppressDragClick = false;
+                e.stopImmediatePropagation();
+            }
+        }, true);
         const scrollCategories = direction => this.tabsContainer.scrollBy({
             left: direction * this.tabsContainer.clientWidth * 0.75,
             behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
@@ -130,6 +149,12 @@ export class FurnitureEditModal {
         this.categoryResizeObserver.observe(this.tabsContainer);
         this.modal.querySelector('#btnFurnCancel').addEventListener('click', () => this.cancel());
         this.modal.querySelector('#btnFurnUndo').addEventListener('click', () => this.undo());
+        this.modal.querySelector('#btnFurnDefaultLayout').addEventListener('click', () => {
+            this.remember();
+            this.furnitureList = JSON.parse(JSON.stringify(DEFAULT_FURNITURE_CATALOG));
+            this.renderGrid(); this.renderCatalog();
+            this.setStatus('기본 가구를 격자 기준으로 정리했습니다. 배치 완료를 눌러 저장하세요.');
+        });
         this.gridContainer.addEventListener('pointerover', e => {
             const tile = e.target.closest('.iso-floor-tile');
             if (tile && !this.modal.classList.contains('hidden')) this.previewAt(Number(tile.dataset.gx), Number(tile.dataset.gy));
@@ -184,7 +209,82 @@ export class FurnitureEditModal {
         this.updateStats();
     }
 
+    pointerGrid(e) {
+        const svg = this.stage.svgStage;
+        const point = new DOMPoint(e.clientX, e.clientY).matrixTransform(svg.getScreenCTM().inverse());
+        const dx = (point.x - OFFICE_GRID.x) / OFFICE_GRID.halfWidth;
+        const dy = (point.y - OFFICE_GRID.y) / OFFICE_GRID.halfHeight;
+        return { x: (dy - dx) / 2, y: (dy + dx) / 2 };
+    }
+
+    startDrag(e) {
+        if (this.modal.classList.contains('hidden') || e.button !== 0 || this.drag) return;
+        const id = e.target.closest('[data-furniture-id]')?.dataset.furnitureId;
+        const item = this.furnitureList.find(f => f.id === id && f.placed);
+        if (!item) return;
+        e.preventDefault();
+        this.suppressDragClick = false;
+        this.selectFurniture(id);
+        this.drag = { id, pointerId: e.pointerId, start: this.pointerGrid(e),
+            clientX: e.clientX, clientY: e.clientY, x: item.gridX, y: item.gridY,
+            targetX: item.gridX, targetY: item.gridY, height: officeWallHeight(item), targetHeight: officeWallHeight(item), moved: false };
+        this.stage.svgStage.setPointerCapture(e.pointerId);
+        this.setStatus(`${item.name} 선택 · 드래그하여 이동하세요.`);
+    }
+
+    moveDrag(e) {
+        const drag = this.drag;
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        if (!drag.moved && Math.hypot(e.clientX - drag.clientX, e.clientY - drag.clientY) < 5) return;
+        drag.moved = true;
+        const point = this.pointerGrid(e);
+        const item = this.furnitureList.find(f => f.id === drag.id);
+        if (item.wallFixture) {
+            const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(this.stage.svgStage.getScreenCTM().inverse());
+            const start = officeGridToScreen(drag.start.x, drag.start.y);
+            const startIndex = drag.x >= 3 ? drag.x : 6;
+            drag.targetY = p.x >= 500 ? 1 : 0;
+            drag.targetX = Math.max(3, Math.min(8, Math.round(startIndex + (Math.abs(p.x - 500) - Math.abs(start.x - 500)) / 33.75)));
+            drag.targetHeight = officeWallHeight(item, drag.height + (drag.targetX - startIndex) * 19.1 - (p.y - start.y));
+            this.stage.renderFurniture(this.furnitureList.map(f => f.id === item.id ? {...f, gridX:drag.targetX, gridY:drag.targetY, wallHeight:drag.targetHeight} : f), item.id);
+            return;
+        }
+        drag.targetX = drag.x + Math.round(point.x - drag.start.x);
+        drag.targetY = drag.y + Math.round(point.y - drag.start.y);
+        this.previewAt(drag.targetX, drag.targetY);
+        const delta = officeGridToScreen(drag.targetX - drag.x, drag.targetY - drag.y);
+        const group = this.stage.furnitureLayer.querySelector(`[data-furniture-id="${drag.id}"]`);
+        group.setAttribute('transform', `translate(${delta.x - OFFICE_GRID.x} ${delta.y - OFFICE_GRID.y})`);
+        group.style.opacity = this.canPlace(item, drag.targetX, drag.targetY) ? '0.8' : '0.4';
+    }
+
+    finishDrag(e) {
+        const drag = this.drag;
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        this.moveDrag(e);
+        this.drag = null;
+        this.suppressDragClick = drag.moved;
+        if (this.stage.svgStage.hasPointerCapture(e.pointerId)) this.stage.svgStage.releasePointerCapture(e.pointerId);
+        if (drag.moved && (drag.targetX !== drag.x || drag.targetY !== drag.y || drag.targetHeight !== drag.height)) {
+            this.placeFurnitureAt(drag.id, drag.targetX, drag.targetY, drag.targetHeight);
+        }
+        this.renderGrid();
+        this.clearPreview();
+    }
+
+    abortDrag() {
+        const drag = this.drag;
+        if (!drag) return;
+        this.drag = null;
+        if (this.stage.svgStage.hasPointerCapture(drag.pointerId)) this.stage.svgStage.releasePointerCapture(drag.pointerId);
+        this.renderGrid();
+        this.clearPreview();
+    }
+
     handleFloorClick(x, y) {
+        if (this.furnitureList.find(item => item.id === this.selectedFurnitureId)?.wallFixture) {
+            this.setStatus('벽 에셋을 직접 드래그하세요. 벽장식은 위아래 이동도 가능합니다.'); return;
+        }
         const occupying = this.furnitureList.find(item => {
             if (!item.placed) return false;
             const w = item.rotation % 180 ? item.sizeH : item.sizeW;
@@ -207,11 +307,11 @@ export class FurnitureEditModal {
 
             listHtml += `
                 <div class="furn-item-card ${isSelected ? 'selected' : ''}" data-id="${item.id}">
-                    <div class="furn-card-icon">${item.icon}</div>
+                    <div class="furn-card-icon">${item.asset ? `<img src="${item.asset.url}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;filter:${theme.displayFilter || 'none'}">` : item.icon}</div>
                     <div class="furn-card-info">
                         <div class="furn-card-name">${item.name}</div>
                         <div class="furn-card-tags">
-                            <span class="furn-size-tag">${item.sizeW}x${item.sizeH}</span>
+                            <span class="furn-size-tag">${item.wallFixture ? '벽 설치' : `${item.sizeW}x${item.sizeH}`}</span>
                             <span class="furn-status-tag ${item.placed ? 'placed' : 'stored'}">
                                 ${item.placed ? '배치중' : '보관중'}
                             </span>
@@ -224,11 +324,16 @@ export class FurnitureEditModal {
             `;
         });
 
-        this.itemsList.innerHTML = listHtml;
+        this.itemsList.innerHTML = listHtml || '<p class="furn-empty-state">등록된 가구가 없습니다.</p>';
         const selected = this.furnitureList.find(item => item.id === this.selectedFurnitureId);
         const detail = this.modal.querySelector('#furnSelectionDetail');
-        detail.innerHTML = selected ? `<strong>${selected.icon} ${selected.name}</strong><p>${selected.desc}</p><span>${selected.sizeW} × ${selected.sizeH} 타일 · ${selected.rotation}° · ${FURNITURE_THEMES[selected.theme]?.name || '기본'}</span>` : '가구를 선택하세요.';
-        this.btnRotate.disabled = !selected;
+        const wallDescription = selected?.wallFixture === 'isoOfficeDoor' ? '벽을 따라 드래그 · 문 하단은 바닥 고정' : '벽 격자에 맞춰 드래그 · 위아래 이동 가능';
+        detail.innerHTML = selected ? `<strong>${selected.icon} ${selected.name}</strong><p>${selected.wallFixture ? wallDescription : selected.desc}</p><span>${selected.wallFixture ? `벽 설치 · 높이 ${Math.round(officeWallHeight(selected) / 38.2)}단` : `${selected.sizeW} × ${selected.sizeH} 타일 · ${selected.rotation}°`} · ${FURNITURE_THEMES[selected.theme]?.name || '기본'}</span>` : '가구를 선택하세요.';
+        this.btnRotate.disabled = !selected || selected.canRotate === false;
+        const mirrorRotation = selected?.asset?.rotationMode === 'mirror';
+        this.btnRotate.innerHTML = `<span>🔄</span> <span>${mirrorRotation ? '방향 전환' : '90° 회전'}</span>`;
+        this.btnRotate.title = mirrorRotation ? '좌우 두 방향 전환 (R)' : '선택 가구 90도 회전 (R)';
+        this.btnClearAll.disabled = !this.furnitureList.some(item => item.placed);
 
         // Card listeners
         this.itemsList.querySelectorAll('.furn-item-card').forEach(card => {
@@ -239,6 +344,8 @@ export class FurnitureEditModal {
                     this.storeFurniture(id);
                 } else {
                     this.selectFurniture(id);
+                    const item = this.furnitureList.find(f => f.id === id);
+                    if (item.wallFixture && !item.placed) this.placeFurnitureAt(id, 0, 0);
                 }
             });
         });
@@ -251,16 +358,22 @@ export class FurnitureEditModal {
     }
 
     rotateSelectedFurniture() {
+        this.abortDrag();
         const item = this.furnitureList.find(f => f.id === this.selectedFurnitureId);
         if (!item) return;
+        if (item.canRotate === false) {
+            this.setStatus('현재 가구는 한 방향 시안입니다. 다른 방향 이미지 제작 후 회전할 수 있습니다.');
+            return;
+        }
 
-        const rotation = (item.rotation + 90) % 360;
+        const rotation = item.asset?.rotationMode === 'mirror' ? (item.rotation === 0 ? 90 : 0) : (item.rotation + 90) % 360;
         if (item.placed && !this.canPlace({ ...item, rotation }, item.gridX, item.gridY)) {
             this.setStatus('회전할 공간이 부족합니다. 가구를 이동하거나 수납하세요.');
             return;
         }
         this.remember();
         item.rotation = rotation;
+        this.setStatus(`${item.name} 방향 전환 완료 · 배치 완료를 눌러 저장하세요.`);
         if (this.callbacks.onShowToast) {
             this.callbacks.onShowToast(`🔄 [${item.name}] 회전: ${item.rotation}°`);
         }
@@ -268,9 +381,14 @@ export class FurnitureEditModal {
         this.renderCatalog();
     }
 
-    placeFurnitureAt(furnitureId, targetX, targetY) {
+    placeFurnitureAt(furnitureId, targetX, targetY, wallHeight) {
         const item = this.furnitureList.find(f => f.id === furnitureId);
         if (!item) return;
+        if (item.wallFixture) {
+            this.remember(); item.placed = true; item.gridX = Math.max(3, Math.min(8, targetX)); item.gridY = targetY === 1 ? 1 : 0;
+            item.wallHeight = officeWallHeight(item, wallHeight);
+            this.renderGrid(); this.renderCatalog(); this.setStatus(`${item.name}을 벽에 설치했습니다.`); return;
+        }
 
         if (!this.canPlace(item, targetX, targetY)) {
             this.setStatus('배치 불가: 다른 가구와 겹치거나 방 경계를 벗어납니다.');
@@ -357,13 +475,14 @@ export class FurnitureEditModal {
         this.updateCategoryScroll();
         this.renderGrid();
         this.renderCatalog();
-        this.setStatus('가구 선택 → 빈 바닥 클릭으로 배치 · R 키로 회전');
+        this.setStatus('가구를 눌러 선택하고 드래그하여 이동 · 빈 바닥 클릭으로도 배치 가능');
         this.btnSaveClose.focus();
     }
 
     close() {
+        this.abortDrag();
         try {
-            localStorage.setItem('stockwars.officeLayout', JSON.stringify(this.furnitureList.map(({ id, placed, gridX, gridY, rotation }) => ({ id, placed, gridX, gridY, rotation }))));
+            localStorage.setItem('stockwars.officeLayout', JSON.stringify(this.furnitureList.map(({ id, placed, gridX, gridY, rotation, wallHeight }) => ({ id, placed, gridX, gridY, rotation, wallHeight }))));
         } catch {
             this.setStatus('저장 공간을 사용할 수 없습니다. 다시 시도해주세요.');
             return;
@@ -388,11 +507,12 @@ export class FurnitureEditModal {
     }
 
     canPlace(item, x, y) {
+        if (item.wallFixture) return true;
         const dimensions = value => value.rotation % 180 ? [value.sizeH, value.sizeW] : [value.sizeW, value.sizeH];
         const [w, h] = dimensions(item);
         if (!Number.isInteger(x) || !Number.isInteger(y) || x < 0 || y < 0 || x + w > this.gridSize || y + h > this.gridSize) return false;
         return !this.furnitureList.some(other => {
-            if (!other.placed || other.id === item.id) return false;
+            if (!other.placed || other.wallFixture || other.id === item.id) return false;
             const [ow, oh] = dimensions(other);
             return x < other.gridX + ow && x + w > other.gridX && y < other.gridY + oh && y + h > other.gridY;
         });
@@ -424,6 +544,7 @@ export class FurnitureEditModal {
     }
 
     cancel() {
+        this.abortDrag();
         if (this.initialLayout) this.furnitureList = JSON.parse(this.initialLayout);
         this.modal.classList.add('hidden');
         document.body.classList.remove('furniture-edit-active');
@@ -440,7 +561,7 @@ export class FurnitureEditModal {
     previewAt(x, y) {
         this.clearPreview();
         const item = this.furnitureList.find(f => f.id === this.selectedFurnitureId);
-        if (!item) return;
+        if (!item || item.wallFixture) return;
         const w = item.rotation % 180 ? item.sizeH : item.sizeW;
         const h = item.rotation % 180 ? item.sizeW : item.sizeH;
         const valid = this.canPlace(item, x, y);

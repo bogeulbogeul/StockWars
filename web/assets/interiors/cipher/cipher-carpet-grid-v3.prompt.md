@@ -1,0 +1,5 @@
+# Carpet grid correction
+
+Built-in imagegen edit of cipher-carpet-common-grid-v2.png.
+
+Precise-object-edit: correct attached carpet geometry only, preserve navy woven carpet, double gold border and centered gold rising financial chart logo. Transparent high-resolution raster game asset. Orthographic isometric rectangle occupying 1 by 2 square floor cells, long axis descends right. BOTH diagonal edge families must have equal absolute slope 0.5659259259 (29.50664658 degrees), unlike original short edges too shallow. Opposite edges strictly parallel; inset double gold borders parallel to outer edge. On a 1536x1024 canvas target four corners approximately LEFT(168,390), TOP(568,164), RIGHT(1368,617), BOTTOM(968,843). These four vertices form the intended flat 1x2 rectangle. Follow these coordinates closely, no perspective convergence, no rounded corners, no thick raised platform. Logo drawn on same plane. Keep original palette and art style. Actual transparent outside, no glow, no floor, no shadow, no grid lines or text.

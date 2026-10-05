@@ -55,6 +55,23 @@ export class StorePlayerController {
         } else this.target = target;
     }
     update(dt) {
+        // Spend the remaining frame time on the next waypoint instead of
+        // dropping it at every tile centre, which makes click movement stutter.
+        dt = Math.max(0, Math.min(dt, 0.05));
+        const keyboard=['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].some(key=>this.keys.has(key));
+        if(keyboard||!this.target){this.updateStep(dt);return;}
+        const speed=this.keys.has('shift')?504:280;
+        let remaining=dt,moved=false;
+        for(let n=0;n<128&&this.target&&remaining>0;n++){
+            const duration=Math.min(remaining,Math.hypot(this.target.x-this.x,this.target.y-this.y)/speed);
+            const previousTarget=this.target;
+            this.updateStep(duration);moved||=this.moving;
+            remaining-=duration;
+            if(this.target===previousTarget)break;
+        }
+        this.moving=moved;
+    }
+    updateStep(dt) {
         dt = Math.max(0, Math.min(dt, 0.05));
         let dx = Number(this.keys.has('d') || this.keys.has('arrowright')) - Number(this.keys.has('a') || this.keys.has('arrowleft'));
         let dy = Number(this.keys.has('s') || this.keys.has('arrowdown')) - Number(this.keys.has('w') || this.keys.has('arrowup'));

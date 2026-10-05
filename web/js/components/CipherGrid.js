@@ -1,8 +1,9 @@
-// Uniform 10×10 square floor, projected with the existing room's two axes.
+import {guidePoint, GUIDE_TILE} from './CipherGuidePreview.js';
 export const CIPHER_GRID_SIZE=10;
-export function cipherGridToScreen(u,v){return {x:724+(u-v)*65.6,y:375+(u+v)*33.5};}
-export const CIPHER_FLOOR=[[724,375],[1380,710],[724,1045],[68,710]];
+export const cipherGridToScreen=guidePoint;
+export const CIPHER_FLOOR=[[0,0],[10,0],[10,10],[0,10]].map(([u,v])=>{const p=guidePoint(u,v);return [p.x,p.y];});
+const slope=GUIDE_TILE.halfWidth/GUIDE_TILE.halfHeight;
 export const CIPHER_GRID_LINES=[
- Array.from({length:11},(_,k)=>({m:65.6/33.5,b:724-375*65.6/33.5-131.2*k})),
- Array.from({length:11},(_,k)=>({m:-65.6/33.5,b:724+375*65.6/33.5+131.2*k}))
+ Array.from({length:11},(_,k)=>{const p=guidePoint(0,k);return {m:slope,b:p.x-p.y*slope};}),
+ Array.from({length:11},(_,k)=>{const p=guidePoint(k,0);return {m:-slope,b:p.x+p.y*slope};})
 ];

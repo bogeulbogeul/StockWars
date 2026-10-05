@@ -43,8 +43,11 @@ export function vivianStaffRectangle(items = defaultRoomLayout()) {
     // Stand at the front of the reserved staff row, close to the worktop.
     const anchor=gridToScreen(c.u+.95,c.v+1);
     // Square source canvas, measured foot midpoint; uniform scaling only.
-    const size = 170;
-    return {x:anchor.x-size*.52, y:anchor.y-size*.91, width:size, height:size,
+    // Convert common 90-unit height to this room's 170-unit tile width.
+    // Visible source extent is y112..1147, excluding transparent padding.
+    const scale = (90 * 170 / 67.5) / (1147 - 112);
+    const size = 1254 * scale;
+    return {x:anchor.x-652*scale, y:anchor.y-1147*scale, width:size, height:size,
         groundY:anchor.y, zIndex:Math.round(100+anchor.y)};
 }
 export function getVivianStaffHtml() {

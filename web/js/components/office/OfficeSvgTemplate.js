@@ -4,6 +4,9 @@
  */
 
 import { SkyBackground } from '../sky/SkyBackground.js';
+import { officeFootprintPoints } from './OfficeGrid.js';
+import { OFFICE_OPENINGS } from './OfficeOpeningSizing.js?v=window-grid-v1';
+import { FURNITURE_THEMES } from '../../data/furnitureData.js';
 
 export function getOfficeStageHtml() {
     return `
@@ -35,14 +38,12 @@ export function getOfficeStageHtml() {
                     <image class="office-room-art" href="${new URL('../../../assets/office/BasicRoom.png', import.meta.url).href}"
                            x="140.96" y="-27.55" width="720.38" height="720.38" pointer-events="none" />
                     <!-- Door on Left Wall (Interactive Office Exit Gate) -->
-                    <g id="isoOfficeDoor" class="iso-office-door" transform="translate(0, 12)" cursor="pointer">
-                        <polygon points="275,432.5 356,392 356,245 275,285.5" fill="#5d4037" stroke="#3e2723" stroke-width="2.5" stroke-linejoin="round" class="door-frame" />
-                        <polygon points="280,430 351,394.5 351,249.5 280,285" fill="#8d6e63" stroke="#4e342e" stroke-width="2" stroke-linejoin="round" class="door-panel" />
-                        <polygon points="286,421.5 345,392 345,258 286,287.5" fill="#6d4c41" stroke="#3e2d20" stroke-width="1.2" stroke-linejoin="round" />
-                        <circle cx="338" cy="336" r="4.5" fill="#ffd54f" stroke="#ffb300" stroke-width="1.5" />
-                        <line x1="338" y1="336" x2="327" y2="341.5" stroke="#ffd54f" stroke-width="3" stroke-linecap="round" />
+                    <defs><clipPath id="officeDoorArtworkClip"><polygon points="288,248 702,22 738,42 738,1224 696,1244 356,1398 320,1426 288,1410"/></clipPath></defs>
+                    <g id="isoOfficeDoor" class="iso-office-door" cursor="pointer" role="button" aria-label="마을로 나가기">
+                        <g transform="${OFFICE_OPENINGS.door.artworkTransform}">
+                            <image href="${new URL('../../../assets/office/basic-openings-v1/door-oak-v2.png', import.meta.url).href}" width="1024" height="1536" clip-path="url(#officeDoorArtworkClip)" style="filter:${FURNITURE_THEMES.NaturalWood.displayFilter}" />
+                        </g>
                         <!-- Subtle Door Exit Light Indicator -->
-                        <ellipse cx="315.5" cy="254" rx="14" ry="4" fill="rgba(0,229,255,0.6)" filter="drop-shadow(0 0 6px rgba(0,229,255,0.9))" />
                     </g>
 
                     <!-- Door Proximity Floating Interaction Prompt in SVG -->
@@ -54,6 +55,11 @@ export function getOfficeStageHtml() {
                         <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#0b0f1a" font-family="'JetBrains Mono', monospace">F</text>
                     </g>
 
+                    <g id="isoOfficeWindow" pointer-events="none"><g transform="${OFFICE_OPENINGS.window.artworkTransform}">
+                        <image href="${new URL('../../../assets/office/basic-openings-v1/window-oak-v3.png', import.meta.url).href}" width="1448" height="1086" style="filter:${FURNITURE_THEMES.NaturalWood.displayFilter}" />
+                    </g>
+
+                    </g>
                     <!-- Anna Proximity Floating Interaction Prompt in SVG -->
                     <g id="isoAnnaPrompt" class="iso-anna-prompt hidden" transform="translate(500, 360)" cursor="pointer">
                         <rect x="-78" y="-17" width="156" height="34" rx="17" fill="rgba(11,15,26,0.94)" stroke="#6366f1" stroke-width="1.8" />
@@ -141,7 +147,7 @@ export function generateFloorTilesSvg(gridSize = 8) {
                     id="isoTile_${gx}_${gy}"
                     data-gx="${gx}" 
                     data-gy="${gy}" 
-                    points="${topX},${topY} ${rightX},${rightY} ${botX},${botY} ${leftX},${leftY}"
+                    points="${officeFootprintPoints(gx, gy)}"
                     fill="rgba(255,255,255,0.001)"
                     stroke="transparent"
                     stroke-width="1"
