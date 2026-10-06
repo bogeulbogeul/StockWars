@@ -1,4 +1,5 @@
 import http from 'node:http';
+import fs from 'node:fs';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { PresenceRegistry } from './registry.mjs';
 
@@ -8,7 +9,7 @@ export function createPresenceServer({ registry = new PresenceRegistry() } = {})
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
         const reply = (status, body) => { res.writeHead(status); res.end(JSON.stringify(body)); };
-        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok' });
+        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1' });
         if (req.method !== 'POST' || !['/api/presence', '/api/chat','/api/arena'].includes(req.url)) return reply(404, { error: 'Not found' });
         try {
             let body = '';
@@ -56,7 +57,9 @@ export function createPresenceServer({ registry = new PresenceRegistry() } = {})
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-    const server = createPresenceServer({ registry: new PresenceRegistry({ nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names.json', import.meta.url)) }) });
+    const oldNameFile = fileURLToPath(new URL('./data/player-names.json', import.meta.url));
+    for (const file of [oldNameFile, `${oldNameFile}.social`]) fs.rmSync(file, { force: true });
+    const server = createPresenceServer({ registry: new PresenceRegistry({ nameFile: fileURLToPath(new URL('./data/player-names-alpha-reset-v1.json', import.meta.url)) }) });
     const port = Number(process.env.PORT || 8080);
     server.listen(port, process.env.HOST || '127.0.0.1', () => console.log(`Presence server listening on ${port}`));
     const shutdown = () => server.close(() => process.exit(0));
