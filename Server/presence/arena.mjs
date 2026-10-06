@@ -4,7 +4,7 @@ import path from 'node:path';
 const initialStocks = JSON.parse(fs.readFileSync(new URL('./arena-stocks.json', import.meta.url), 'utf8'));
 const fail = (message, status = 400) => { throw Object.assign(new Error(message), { status }); };
 export class OnlineArena {
-    constructor(registry) { this.registry = registry; this.rooms = new Map(); }
+    constructor(registry) { this.registry = registry; this.rooms = new Map(); this.completed = new Map(); }
     name(token) { return [...this.registry.names.values()].find(n => n.token === token)?.nickname || '트레이더'; }
     online(token) { const s = this.registry.sessions.get(token); return !!s?.active && this.registry.now() - s.seen < this.registry.timeoutMs; }
     persistResults(room) {
@@ -29,8 +29,9 @@ export class OnlineArena {
                 room.news.unshift(event);room.news=room.news.slice(0,20);
             }
         }
-        if(this.registry.now()>=room.deadline) { room.phase='finished';this.persistResults(room); }
+        if(this.registry.now()>=room.deadline) { room.phase='finished';this.persistResults(room); const snapshots=new Map([...room.members.keys()].map(token=>[token,this.state(room,token)])); this.completed.set(room.id,{snapshots,expires:this.registry.now()+300000}); this.rooms.delete(room.id); }
     }
+    sweep() { for(const [id,r] of this.rooms) {this.advance(r);if(this.registry.now()-r.updated>1800000)this.rooms.delete(id);} for(const [id,r] of this.completed)if(this.registry.now()>=r.expires)this.completed.delete(id); }
     assets(room,p) { return p.cash + [...p.positions].reduce((sum,[id,v])=>sum+(room.stocks.find(s=>s.id===id)?.price||0)*v.qty,0); }
     publicRoom(room) { return { id:room.id,name:room.name,host:this.name(room.owner),minutes:room.minutes,cash:room.cash,stake:room.stake,locked:!!room.passwordHash,online:true,phase:room.phase,count:room.members.size }; }
     state(room,token) {
@@ -43,7 +44,7 @@ export class OnlineArena {
     }
     handle(token,input) {
         const session=this.registry.sessions.get(token);if(!session)fail('세션을 다시 연결해 주세요.',401);session.seen=this.registry.now();session.active=true;
-        for(const [id,r] of this.rooms) {this.advance(r);if(this.registry.now()-r.updated>1800000)this.rooms.delete(id);}
+        this.sweep();
         const action=input.action;
         if(action==='list'||action==='find') {
             const query=String(input.query||'').trim().toLowerCase();if(action==='find'&&!query)fail('방 이름이나 코드를 입력해 주세요.');
@@ -55,7 +56,7 @@ export class OnlineArena {
             if(this.rooms.size>=100||[...this.rooms.values()].filter(r=>r.owner===token&&r.phase==='waiting').length>=3)fail('만들 수 있는 방 수를 초과했습니다.');
             const room={...r,id:randomUUID(),name:r.name.trim(),owner:token,members:new Map([[token,{cash:r.cash,positions:new Map(),ready:false,fills:new Map()}]]),invited:new Set(),phase:'waiting',updated:this.registry.now(),stocks:initialStocks.map(s=>({...s})),histories:Object.fromEntries(initialStocks.map(s=>[s.id,[s.price]])),news:[],step:0,seed:Math.random()*100};this.rooms.set(room.id,room);return this.state(room,token);
         }
-        const room=this.rooms.get(input.id);if(!room)fail('방이 종료되었거나 서버가 재시작됐습니다.',404);room.updated=this.registry.now();
+        const completed=this.completed.get(input.id);if(completed){if(!completed.snapshots.has(token))fail('참가 중인 방이 아닙니다.',403);if(action==='state')return completed.snapshots.get(token);if(action==='leave'){completed.snapshots.delete(token);if(!completed.snapshots.size)this.completed.delete(input.id);return {success:true};}fail('거래 가능한 대결이 아닙니다.');} const room=this.rooms.get(input.id);if(!room)fail('방이 종료되었거나 서버가 재시작됐습니다.',404);room.updated=this.registry.now();
         if(action==='join') {
             if(room.members.has(token))return this.state(room,token);
             if(room.phase!=='waiting'||room.members.size>=8)fail('입장할 수 없는 방입니다.');

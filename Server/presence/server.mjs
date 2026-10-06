@@ -7,11 +7,11 @@ import { configuredPlayerStore } from './player-store.mjs';
 
 export function createPresenceServer({ registry = new PresenceRegistry(), durable = null } = {}) {
     const arena = new OnlineArena(registry);
-    return http.createServer(async (req, res) => {
+    const server = http.createServer(async (req, res) => {
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
         const reply = async (status, body) => { if (durable && status < 400 && req.method === 'POST') await durable.flush(registry); res.writeHead(status); res.end(JSON.stringify(body)); };
-        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, durableStorage: durable ? 'supabase' : 'local' });
+        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, arenaRoomCleanup: true, durableStorage: durable ? 'supabase' : 'local' });
         if (req.method !== 'POST' || !['/api/presence', '/api/chat','/api/arena'].includes(req.url)) return reply(404, { error: 'Not found' });
         try {
             let body = '';
@@ -34,6 +34,9 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
             });
         }
     });
+    const cleanup = setInterval(() => { arena.sweep(); if(durable)durable.flush(registry).catch(error=>console.error('Arena storage flush failed',error.message)); }, 1000);
+    cleanup.unref();server.on('close',()=>clearInterval(cleanup));
+    return server;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

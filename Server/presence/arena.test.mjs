@@ -31,3 +31,17 @@ test('shared server prices, isolated ledgers, idempotent orders, deadline and ra
     advance(180000);const end=arena.handle(a.token,{action:'state',id});assert.equal(end.phase,'finished');assert.equal(end.results.length,2);
     assert.equal(end.results[0].rank,1);assert.throws(()=>arena.handle(a.token,{...order,requestId:'order-after-end'}),/거래 가능한/);
 });
+test('ended rooms are destroyed while participants can briefly read their results',()=>{
+    const {arena,registry,a,b,c,advance}=setup();const id=arena.handle(a.token,{action:'create',room:{...config,passwordHash:null}}).room.id;
+    arena.handle(b.token,{action:'join',id});for(const s of [a,b])arena.handle(s.token,{action:'ready',id,ready:true});arena.handle(a.token,{action:'start',id});
+    advance(180000);arena.sweep();
+    assert.equal(arena.rooms.has(id),false);
+    const list=arena.handle(a.token,{action:'list'});assert.equal(list.rooms.length,0);assert.equal(list.ownRooms.length,0);
+    const results=arena.handle(a.token,{action:'state',id});assert.equal(results.phase,'finished');assert.equal(results.results.length,2);
+    assert.equal(arena.handle(b.token,{action:'state',id}).results.filter(r=>r.isOwn).length,1);
+    assert.throws(()=>arena.handle(c.token,{action:'state',id}),/참가 중/);
+    assert.throws(()=>arena.handle(a.token,{action:'join',id}),/거래 가능한/);
+    arena.sweep();assert.equal(registry.social.arenaResults.length,1);
+    arena.handle(a.token,{action:'leave',id});assert.equal(arena.completed.get(id).snapshots.size,1);
+    advance(300000);arena.sweep();assert.equal(arena.completed.has(id),false);assert.equal(registry.social.arenaResults.length,1);
+});
