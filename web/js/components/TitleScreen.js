@@ -56,7 +56,7 @@ export class TitleScreen {
                     <div class="title-bottom-row">
                         <span class="title-copyright">© 2026 StockWars</span>
                         <button type="button" class="title-dev-btn" id="btnTitleStartDemo" aria-describedby="titleDevHint"><span aria-hidden="true">⌘</span> 개발자 모드 <span aria-hidden="true">↗</span></button>
-                        <span class="title-dev-hint" id="titleDevHint">디버그 툴바 · 5,000,000G</span>
+                        <span class="title-dev-hint" id="titleDevHint">새 게임 진행 · 디버그 툴바</span>
                     </div>
                 </footer>
             </section>

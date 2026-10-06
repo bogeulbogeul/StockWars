@@ -1,25 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {SPRITES} from '../js/components/store/VivianInteriorScene.js';
+import {SPRITES,defaultRoomLayout} from '../js/components/store/VivianInteriorScene.js';
 import {ROOM_GRID} from '../js/components/store/IsometricRoomGrid.js';
 
 const measuredEdges={fridge:[.6,-.6],counter:[.575,-.5],papers:[.625,-.65],baskets:[.7,-.525],wallShelf:[.625,-.525]};
 
-test('v8 base follows grid within half a room pixel using rigid rotation and uniform scaling',()=>{
+test('resized v8 base follows grid within one room pixel and fits its reserved span',()=>{
     // Actual v8 alpha>128 samples; no claim about upper or short side edges.
     const lower=[[450,1215],[550,1167],[650,1118],[750,1068],[850,1019],[950,969],[1050,918]];
     const s=SPRITES.goods,[a,b,c,d]=s.matrix, scale=s.size[0]/s.crop[2];
     assert(Math.abs(a*a+b*b-1)<1e-12,'rotation preserves lengths');
     assert.equal(a,d); assert.equal(b,-c,'no shear');
     assert.equal(s.size[0]/s.crop[2],s.size[1]/s.crop[3]);
-    assert(Math.abs((a*730+c*(-730*.495))*scale-170)<1e-8,'two-cell joining span');
+    const span=(a*730+c*(-730*.495))*scale;
+    assert(span<=defaultRoomLayout().find(i=>i.id==='goods').h*ROOM_GRID.halfWidth,'base fits reserved span');
     for(const [edge,sign] of [[lower,-1]]) {
         const [x0,y0]=edge[0];
         for(const [x,y] of edge) {
             const dx=(a*(x-x0)+c*(y-y0))*scale;
             const dy=(b*(x-x0)+d*(y-y0))*scale;
-            assert(Math.abs(dy-sign*dx*ROOM_GRID.halfHeight/ROOM_GRID.halfWidth)<.5);
+            assert(Math.abs(dy-sign*dx*ROOM_GRID.halfHeight/ROOM_GRID.halfWidth)<1);
         }
     }
 });

@@ -13,6 +13,7 @@ import { TownPlayerController } from './town/TownPlayerController.js';
 import { TOWN_LANDSCAPE_INTERACTIVE } from '../data/townLandscape.js';
 import { TownVendingModal } from './town/TownVendingModal.js';
 import { TOWN_OCCLUDERS, getTownVisibility } from './town/TownOcclusion.js';
+import { TownPresenceSync } from './town/TownPresenceSync.js';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
@@ -23,6 +24,7 @@ export class TownStage {
         this.vendingModal = new TownVendingModal(container, callbacks);
         this.nickname = '사이퍼 트레이더';
         this.remotePlayers = new Map();
+        this.presenceSync = new TownPresenceSync(this, window.stockWarsPresence);
         this.activeChannel = '타운 2';
         this.activeNearbyObject = null;
         this.animFrameId = null;
@@ -389,16 +391,27 @@ export class TownStage {
                 element.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
                 element.classList.remove('resting-bench');
                 element.classList.add('town-remote-player');
-                element.style.pointerEvents = 'none';
+                element.style.pointerEvents = 'auto';
+                element.style.cursor = 'pointer';
+                element.setAttribute('role', 'button');
+                element.tabIndex = 0;
+                element.addEventListener('click', event => { event.stopPropagation(); void this.callbacks.onOpenPlayerProfile?.(entry.player); });
+                element.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); element.click(); }
+                });
                 this.worldTrackEl.appendChild(element);
                 entry = { element };
                 this.remotePlayers.set(player.id, entry);
             }
             Object.assign(entry, { id: player.id, x: player.x, y: player.y });
+            entry.player = { ...player };
+            entry.element.setAttribute('aria-label', `${player.nickname || '플레이어'} 프로필 보기`);
             entry.element.querySelector('.town-char-nametag').textContent = player.nickname || '플레이어';
-            entry.element.style.left = `${player.x}px`;
-            entry.element.style.top = `${player.y}px`;
-            entry.element.style.zIndex = `${Math.round(player.y)}`;
+            const seat = player.resting && TOWN_LANDSCAPE_INTERACTIVE.find(p => p.type === 'bench' &&
+                Math.hypot(townEntrance(p).x - player.x, townEntrance(p).y - player.y) < 20);
+            entry.element.style.left = `${seat ? seat.x + seat.width / 2 : player.x}px`;
+            entry.element.style.top = `${seat ? seat.y - seat.height * .24 : player.y}px`;
+            entry.element.style.zIndex = `${seat ? Math.ceil(seat.y) + 1 : Math.round(player.y)}`;
             entry.element.dataset.facing = player.facing || 'down';
             entry.element.classList.toggle('resting-bench', !!player.resting);
             entry.element.querySelector('.town-char-body').style.transform = '';
@@ -500,9 +513,11 @@ export class TownStage {
         this.playerController.updateCamera(this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE, 0, true);
         this.update(0);
         this.checkProximity();
+        this.presenceSync?.start();
     }
 
     hide() {
+        this.presenceSync?.stop();
         this.setRemotePlayers([]);
         this.containerEl?.classList.add('hidden');
         document.body.classList.remove('town-mode-active');

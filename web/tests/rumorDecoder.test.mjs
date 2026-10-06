@@ -13,7 +13,7 @@ engine.state.inventory[1].isRead = true;
 for (let level = 2; level <= 5; level++) {
     assert.equal(engine.use('item_crypto_decoder').success, true);
     assert.equal(engine.state.inventory[1].interpretationLevel, level);
-    assert.equal(engine.stats().analysis, 1);
+    assert.equal(engine.stats().analysis, 0);
 }
 assert.equal(engine.use('item_crypto_decoder').success, false);
 assert.equal(engine.state.inventory[0].quantity, 1);

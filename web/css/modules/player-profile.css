@@ -9,13 +9,14 @@
 .player-profile-identity { display: flex; align-items: center; gap: 17px; padding: 24px 0; overflow-wrap: anywhere; }
 .player-profile-monogram { flex: 0 0 64px; height: 64px; display: grid; place-items: center; border-radius: 18px; border: 1px solid #43827f; background: #173b42; color: #9df1e4; font-size: 28px; font-weight: 800; }
 .player-profile-identity h3 { margin: 0 0 6px; font-size: 22px; }
+.player-profile-level { display: inline-block; margin-bottom: 9px; padding: 4px 9px; border: 1px solid #43827f; border-radius: 7px; background: #173b42; color: #9df1e4; font-size: 12px; font-weight: 700; }
 .player-profile-identity p { margin: 0 0 8px; color: #9df1e4; font-size: 13px; }
 .player-profile-identity code { font-size: 11px; color: #a5b3c6; }
 .player-profile-section { border-top: 1px solid #2b3a50; padding-top: 18px; margin-top: 4px; }
 .player-profile-section h3 { display: flex; justify-content: space-between; margin: 0 0 14px; font-size: 14px; }
 .player-profile-section h3 span { color: #a5b3c6; font-size: 11px; }
 .player-profile-section p { font-size: 13px; line-height: 1.7; color: #c3cddd; margin: 0 0 18px; }
-.player-profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0 0 10px; }
+.player-profile-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0 0 10px; }
 .player-profile-stats div { background: #1b283a; padding: 13px 8px; border-radius: 10px; text-align: center; }
 .player-profile-dialog dt { font-size: 12px; color: #a5b3c6; }
 .player-profile-dialog dd { margin: 8px 0 0; font-size: 19px; font-weight: 700; }

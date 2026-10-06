@@ -59,7 +59,7 @@ export const VIVIAN_SHOP_CATALOG = [
         category: 'consumable',
         rarity: 'uncommon',
         icon: '💊',
-        price: 1000,
+        price: 3000,
         instantUsable: true,
         desc: '뇌세포의 집중도를 극대화하여 차트의 글리치와 미세 체결 틱을 감지하는 알약.',
         effects: ['🧠 120분간 [분석력] +2 Bonus', '👁️ 글리치 감지 강화'],

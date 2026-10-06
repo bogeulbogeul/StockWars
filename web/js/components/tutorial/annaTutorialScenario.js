@@ -175,7 +175,6 @@ export function buildAnnaScenario({
             onEnter: () => {
                 highlightElement('#isoOfficeDoor', true);
                 highlightElement('#isoDoorPrompt', true);
-                highlightElement('#officeDoorFloatingBtn', true);
             }
         },
 
@@ -241,7 +240,7 @@ export function buildAnnaScenario({
             id: 'logistics_completed',
             expression: 'Happy',
             speaker: "전담 매니저 안나",
-            text: `모든 기본 준비가 끝났습니다, ${nickname} 파트너님! 🎉 정착 보너스 지원금(2,000G)을 추가로 입금해 드렸어요. 이제 7일 동안 다양한 종목 분석과 찌라시를 총동원해 **7일 차 월세(5,000G)**를 갚고 최고의 펀드 매니저로 도약해 보세요!`,
+            text: `모든 기본 준비가 끝났습니다, ${nickname} 파트너님! 🎉 아래 [자립 트레이딩 시작하기] 버튼을 누르면 정착 보너스 지원금(2,000G)을 추가로 입금해 드릴게요. 이제 7일 동안 다양한 종목 분석과 찌라시를 총동원해 **7일 차 월세(5,000G)**를 갚고 최고의 펀드 매니저로 도약해 보세요!`,
             tracker: "4/4 • 튜토리얼 완료 (자립 시작)",
             actionBtnText: "🚀 자립 트레이딩 시작하기!",
             requiresManualAction: false,

@@ -1,4 +1,6 @@
 import { ItemEngine } from '../engine/ItemEngine.js';
+import { applyPlayerTrait } from '../engine/PlayerTrait.js';
+import { LevelUpNotice } from '../components/LevelUpNotice.js';
 import { ItemCenter } from '../components/ItemCenter.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
@@ -41,6 +43,9 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     });
     const engine = new ItemEngine({ market, state: saved?.items });
+    applyPlayerTrait(engine.state, app.userProfile);
+    const levelUpNotice = new LevelUpNotice(app.appContainer);
+    let lastLevel = engine.playerLevel();
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
     market.itemEngine = engine;
@@ -53,12 +58,17 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
                 market: { cash: market.cash, initialCash: market.initialCash, day: market.day,
                     portfolio: [...market.portfolio], stocks: [...market.stocks], history: [...market.priceHistory], firstTradeLesson: market.firstTradeLesson } }));
             lastSaved = Date.now();
+            return true;
         } catch {
             if (!storageWarning) engine.notice('저장 공간을 사용할 수 없습니다. 현재 세션에서만 유지됩니다.');
             storageWarning = true;
+            return false;
         }
     }
     function sync() {
+        const level = engine.playerLevel();
+        if (level > lastLevel) levelUpNotice.show(lastLevel, level);
+        lastLevel = level;
         app.inventoryModal.items = engine.state.inventory;
         app.mainHUD.updateStamina(engine.state.stamina);
         app.vivianStoreModal.affinity = engine.state.affinity;
@@ -108,8 +118,9 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         activate,
         reset() {
             engine.state = new ItemEngine({ market }).state;
-            const trait = app.userProfile?.trait?.key;
-            if (trait in engine.state.baseStats) engine.state.baseStats[trait]++;
+            applyPlayerTrait(engine.state, app.userProfile);
+            lastLevel = engine.playerLevel();
+            levelUpNotice.close();
             engine.state.stamina = engine.maxStamina();
             app.itemCenter.dialog.close();
             sync();

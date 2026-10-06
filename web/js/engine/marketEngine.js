@@ -493,10 +493,8 @@ export class MarketEngine {
     }
 
     nextDay() {
+        if (this.day >= this.maxDays) return;
         this.day += 1;
-        if (this.day > this.maxDays) {
-            this.day = 1; // Loop or settlement
-        }
 
         // Daily dividend & interest check
         this.portfolio.forEach(pos => {

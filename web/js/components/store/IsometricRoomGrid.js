@@ -1,5 +1,15 @@
-// Calibrated to the current room illustration, not a global art projection rule.
-export const ROOM_GRID = { size: 8, x: 768, y: 345, halfWidth: 85, halfHeight: 41 };
+// Common interior units; u corresponds to gy, v corresponds to gx.
+export const INTERIOR_CELL = Object.freeze({halfWidth:33.75,halfHeight:19.1});
+// Uniform camera scale into the existing 1536×1024 scene coordinate system.
+export const ROOM_VIEW_SCALE = 2.4;
+export const ROOM_GRID = Object.freeze({size:8,x:768,y:250,
+    halfWidth:INTERIOR_CELL.halfWidth*ROOM_VIEW_SCALE,
+    halfHeight:INTERIOR_CELL.halfHeight*ROOM_VIEW_SCALE});
+export function roomFloorClipPath() {
+    return 'polygon('+[[0,0],[8,0],[8,8],[0,8]].map(([u,v])=>{
+        const p=gridToScreen(u,v);return `${p.x/1536*100}% ${p.y/1024*100}%`;
+    }).join(',')+')';
+}
 export function gridToScreen(u, v) {
     return { x: ROOM_GRID.x + (u - v) * ROOM_GRID.halfWidth,
         y: ROOM_GRID.y + (u + v) * ROOM_GRID.halfHeight };
@@ -84,13 +94,19 @@ export function polygonPoints(u, v, w = 1, h = 1) {
 }
 export function createRoomNavigation(items) {
     const blocked = blockedCells(items);
+    const obstacles=items.filter(item=>item.kind==='floor');
     const free = [];
     for (let u=0; u<8; u++) for (let v=0; v<8; v++) {
         if (!blocked.has(cellKey(u,v))) free.push({u,v,...gridToScreen(u+.5,v+.5)});
     }
     const isWalkable = (x,y) => {
         const {u,v} = screenToGrid(x,y);
-        return insideGrid(u,v) && !blocked.has(cellKey(Math.floor(u),Math.floor(v)));
+        // A small footprint prevents the player's feet from entering furniture
+        // even when their centre is still in the neighboring walkable cell.
+        const radius=.16;
+        return insideGrid(u,v) && !obstacles.some(item=>
+            u>item.u-radius && u<item.u+item.w+radius &&
+            v>item.v-radius && v<item.v+item.h+radius);
     };
     const clamp = (x,y) => {
         if (isWalkable(x,y)) return {x,y};
@@ -108,4 +124,14 @@ export function createRoomNavigation(items) {
     const places = ['exit','shop'].map(action => ({...gridToScreen(cells[action].u+.5,cells[action].v+.5),
         action, label:action === 'exit' ? '나가기' : '계산대'}));
     return {isWalkable,clamp,route,places};
+}
+
+export const ROOM_PLAYER_DEPTH = 1200;
+export function furnitureDepthAtPlayer(item, x, y) {
+    const p=screenToGrid(x,y);
+    // Either front-facing footprint boundary puts the actor in front. A single
+    // screen-Y comparison fails along a long counter's diagonal face.
+    const playerInFront=p.u>=item.u+item.w || p.v>=item.v+item.h;
+    const depth=gridToScreen(item.u+item.w,item.v+item.h).y;
+    return playerInFront ? Math.round(100+depth) : 1250+Math.round(depth/8);
 }

@@ -4,6 +4,6 @@
 <style>body{margin:0;background:#17232c}.hidden{display:none!important}.modal-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}.modal-card{background:#14212b;color:white;max-height:90vh;overflow:auto}</style>
 <script type="module">
 import { VivianStoreModal } from '../web/js/components/store/VivianStoreModal.js';
-const store = new VivianStoreModal(document.body, { getCash: () => 10000 });
+const store = new VivianStoreModal(document.body, { getCash: () => 10000 }, {allowLayoutEditing:true});
 store.open();
 </script></html>

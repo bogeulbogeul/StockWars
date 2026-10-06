@@ -27,6 +27,18 @@ test('ten clients: join, duplicate session, leave, reconnect, disconnect and tim
     assert.equal(registry.snapshot().totalCCU, 10);
     assert.equal(registry.snapshot().channels[0].users, 10);
     assert.ok(!('token' in clients[0].state().snapshot));
+    const pose = { x: 700, y: 1000, facing: 'down', nickname: '테스터 A', resting: false };
+    await clients[0].command('position', undefined, pose);
+    const other = await clients[1].command('position', undefined, { ...pose, x: 900, nickname: '테스터 B' });
+    assert.equal(other.snapshot.players.length, 1);
+    assert.equal(other.snapshot.players[0].nickname, '테스터 A');
+    assert.equal(other.snapshot.players[0].x, 700);
+    const first = await clients[0].command('position', undefined, { ...pose, facing: 'left', resting: true });
+    assert.equal(first.snapshot.players[0].nickname, '테스터 B');
+    assert.ok(!JSON.stringify(first.snapshot.players).includes(clients[1].token));
+    await clients[1].command('leave');
+    assert.equal((await clients[0].command('position', undefined, pose)).snapshot.players.length, 0);
+    await clients[1].command('join', 'town-1');
     await clients[0].command('join', 'town-1');
     assert.equal(registry.snapshot().totalCCU, 10);
     await clients[0].command('leave');

@@ -19,16 +19,6 @@ export function getOfficeStageHtml() {
             <!-- Dynamic Time-of-Day Sky Layer Background -->
             ${SkyBackground.getTemplateHtml('officeSkyContainer')}
 
-            <!-- Office Door Exit Proximity Floating Action Button -->
-            <div class="office-door-floating-btn hidden" id="officeDoorFloatingBtn" title="클릭하거나 [F]키를 눌러 타운으로 이동">
-                <span class="door-btn-icon">🚪</span>
-                <div class="door-btn-content">
-                    <span class="door-btn-title">마을로 나가기</span>
-                    <span class="door-btn-sub">서버 & 채널 선택</span>
-                </div>
-                <span class="door-btn-hotkey">F</span>
-            </div>
-
             <!-- Isometric Building & Room Vector Stage (Centered Framing) -->
             <div class="iso-stage-wrapper">
                 <svg class="iso-svg" id="isoSvgStage" viewBox="160 -10 680 760" preserveAspectRatio="xMidYMin meet">
@@ -37,12 +27,33 @@ export function getOfficeStageHtml() {
                            x="60.1" y="229.7" width="879.8" height="1231.72" pointer-events="none" />
                     <image class="office-room-art" href="${new URL('../../../assets/office/BasicRoom.png', import.meta.url).href}"
                            x="140.96" y="-27.55" width="720.38" height="720.38" pointer-events="none" />
+                    <!-- Material tiles use the same axes as movement and editing. -->
+                    <defs>
+                        <pattern id="officeOakFloor" patternUnits="userSpaceOnUse" width="2" height="2" patternTransform="matrix(-33.75 19.1 33.75 19.1 500 320)">
+                            <image href="${new URL('../../../assets/office/surfaces-v1/flooring-light-oak-v1.png', import.meta.url).href}" width="2" height="2" preserveAspectRatio="none"/>
+                        </pattern>
+                        <pattern id="officeIvoryLeft" patternUnits="userSpaceOnUse" width="2" height="2" patternTransform="matrix(-33.75 19.1 0 -38.2 500 320)">
+                            <image href="${new URL('../../../assets/office/surfaces-v1/wallpaper-ivory-v1.png', import.meta.url).href}" width="2" height="2" preserveAspectRatio="none"/>
+                        </pattern>
+                        <pattern id="officeIvoryRight" patternUnits="userSpaceOnUse" width="2" height="2" patternTransform="matrix(33.75 19.1 0 -38.2 500 320)">
+                            <image href="${new URL('../../../assets/office/surfaces-v1/wallpaper-ivory-v1.png', import.meta.url).href}" width="2" height="2" preserveAspectRatio="none"/>
+                        </pattern>
+                    </defs>
+                    <g id="officeSurfaceMaterials" pointer-events="none">
+                        <polygon points="500.58,34.49 230.58,193.04 230.58,471.66 500.58,320.58" fill="url(#officeIvoryLeft)"/>
+                        <polygon points="500.58,34.49 772.30,193.04 772.30,471.66 500.58,320.58" fill="url(#officeIvoryRight)"/>
+                        <polygon points="500.58,34.49 772.30,193.04 772.30,471.66 500.58,320.58" fill="#6f604d" opacity="0.06"/>
+                        <polygon points="500.58,320.58 230.58,471.66 500.58,626.19 772.30,471.66" fill="url(#officeOakFloor)"/>
+                        <!-- Restore only the brown boundary, not a strip of the old cream fill. -->
+                        <path d="M230.58 193.04 L500.58 34.49 L772.30 193.04 L772.30 471.66 L500.58 320.58 L230.58 471.66 Z M500.58 34.49 L500.58 320.58 M230.58 471.66 L500.58 626.19 L772.30 471.66" fill="none" stroke="#79634b" stroke-width="1.7" stroke-linejoin="round"/>
+                    </g>
                     <!-- Door on Left Wall (Interactive Office Exit Gate) -->
                     <defs><clipPath id="officeDoorArtworkClip"><polygon points="288,248 702,22 738,42 738,1224 696,1244 356,1398 320,1426 288,1410"/></clipPath></defs>
                     <g id="isoOfficeDoor" class="iso-office-door" cursor="pointer" role="button" aria-label="마을로 나가기">
                         <g transform="${OFFICE_OPENINGS.door.artworkTransform}">
                             <image href="${new URL('../../../assets/office/basic-openings-v1/door-oak-v2.png', import.meta.url).href}" width="1024" height="1536" clip-path="url(#officeDoorArtworkClip)" style="filter:${FURNITURE_THEMES.NaturalWood.displayFilter}" />
                         </g>
+                        <polygon class="office-door-tutorial-highlight" points="${OFFICE_OPENINGS.door.selectionPoints}" pointer-events="none" />
                         <!-- Subtle Door Exit Light Indicator -->
                     </g>
 

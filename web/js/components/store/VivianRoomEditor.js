@@ -1,15 +1,50 @@
 import { defaultRoomLayout, propRectangle, getVivianInteriorPropsHtml, vivianStaffRectangle } from './VivianInteriorScene.js';
-import { screenToGrid, polygonPoints, validateLayout, createRoomNavigation } from './IsometricRoomGrid.js';
+import { screenToGrid, polygonPoints, validateLayout, createRoomNavigation, furnitureDepthAtPlayer } from './IsometricRoomGrid.js';
 
 const STORAGE_KEY = 'stockwars.vivian-room-layout.v1';
 const copy = items => items.map(item => ({...item}));
+// Older saves keep their item identities. Repack only when enlarged footprints
+// no longer fit; prefer the saved cells and retain access to the checkout.
+export function reflowRoomLayout(items) {
+    const ordered=[...items].sort((a,b)=>{
+        const priority=i=>i.kind==='carpet'?1000:i.id==='counter'?900:i.kind==='wall'?-1:i.w*i.h;
+        return priority(b)-priority(a);
+    });
+    let budget=20000;
+    const placed=[];
+    function place(index) {
+        if (--budget<0) return false;
+        if(index===ordered.length) return !validateLayout(placed);
+        const item=ordered[index], cells=[];
+        for(let u=0;u<=8-item.w;u++) for(let v=0;v<=8-item.h;v++) {
+            if(item.kind==='carpet' && u+item.w!==8) continue;
+            if(item.kind==='wall' && (item.wall==='left'?u!==0:v!==0)) continue;
+            cells.push({u,v});
+        }
+        cells.sort((a,b)=>Math.abs(a.u-item.u)+Math.abs(a.v-item.v)-Math.abs(b.u-item.u)-Math.abs(b.v-item.v));
+        for(const cell of cells) {
+            const candidate={...item,...cell};
+            if(placed.some(p=> {
+                if((p.kind==='wall')!==(item.kind==='wall')) return false;
+                if(item.kind==='wall'&&p.wall!==item.wall) return false;
+                return candidate.u<p.u+p.w && candidate.u+candidate.w>p.u && candidate.v<p.v+p.h && candidate.v+candidate.h>p.v;
+            })) continue;
+            placed.push(candidate);
+            if(place(index+1)) return true;
+            placed.pop();
+        }
+        return false;
+    }
+    return place(0) ? items.map(i=>placed.find(p=>p.id===i.id)) : null;
+}
 export function restoreRoomLayout(raw) {
     const defaults = defaultRoomLayout();
     try {
         const data = JSON.parse(raw);
-        if (![1,2].includes(data?.version) || !Array.isArray(data.items) || data.items.length < defaults.length || data.items.length > 128) return defaults;
+        if (![1,2,3].includes(data?.version) || !Array.isArray(data.items) || data.items.length < defaults.length || data.items.length > 128) return defaults;
         if (data.version===1 && data.items.length!==defaults.length) return defaults;
         if (new Set(data.items.map(i=>i?.id)).size !== data.items.length) return defaults;
+        if(data.items.some(i=>![i.u,i.v].every(n=>Number.isInteger(n)&&n>=0&&n<8))) return defaults;
         const result = defaults.map(item => {
             const saved = data.items.find(i=>i?.id === item.id);
             if (!saved) throw new Error('Missing item');
@@ -20,7 +55,8 @@ export function restoreRoomLayout(raw) {
             if (!base || base.kind==='carpet' || typeof saved.id!=='string' || !new RegExp(`^${base.id}-copy-[1-9][0-9]{0,5}$`).test(saved.id)) return defaults;
             result.push({...base,id:saved.id,assetId:base.id,name:`${base.name} (복제 ${saved.id.split('-').at(-1)})`,u:saved.u,v:saved.v});
         }
-        return validateLayout(result) ? defaults : result;
+        if (!validateLayout(result)) return result;
+        return data.version<3 ? reflowRoomLayout(result) || defaults : defaults;
     } catch { return defaults; }
 }
 
@@ -42,11 +78,18 @@ export function duplicateRoomItem(items, id) {
     return {error:'복제할 빈 공간이 없습니다. 가구나 통로를 정리해 주세요.'};
 }
 
+export function initialRoomLayout(raw, editingEnabled=false) {
+    return editingEnabled ? restoreRoomLayout(raw) : defaultRoomLayout();
+}
+
 export class VivianRoomEditor {
     constructor(room, onApply, onEditing, {enabled=true} = {}) {
         this.enabled=enabled;
         this.room = room; this.onApply = onApply; this.onEditing = onEditing;
         this.active = false; this.selected = 'carpet';
+        this.gridVisible = false;
+        this.gridToggle = room.querySelector('#btnVivianGrid');
+        this.gridToggle.addEventListener('click', () => this.setGridVisible(!this.gridVisible));
         this.status = room.querySelector('#vivianLayoutStatus');
         this.select = room.querySelector('#vivianLayoutItem');
         this.toggle = room.querySelector('#btnVivianArrange');
@@ -55,8 +98,9 @@ export class VivianRoomEditor {
         this.duplicateButton = room.querySelector('#btnVivianDuplicate');
         this.deleteButton = room.querySelector('#btnVivianDeleteCopy');
         let raw = null;
-        try { raw = localStorage.getItem(STORAGE_KEY); } catch { /* Storage may be unavailable. */ }
-        this.committed = restoreRoomLayout(raw); this.items = copy(this.committed);
+        // Local drafts belong to the authoring preview, not the released room.
+        try { if(enabled) raw = localStorage.getItem(STORAGE_KEY); } catch { /* Storage may be unavailable. */ }
+        this.committed = initialRoomLayout(raw, enabled); this.items = copy(this.committed);
         this.toggle.addEventListener('click', () => this.active ? this.cancel() : this.begin());
         this.select.addEventListener('change', () => this.selectItem(this.select.value));
         this.duplicateButton.addEventListener('click', () => this.duplicate());
@@ -87,6 +131,13 @@ export class VivianRoomEditor {
         }
     }
     current() { return this.items.find(i=>i.id === this.selected); }
+    setGridVisible(visible) {
+        if (!this.enabled) return;
+        this.gridVisible = Boolean(visible);
+        this.room.classList.toggle('is-grid-visible', this.gridVisible);
+        this.gridToggle.setAttribute('aria-pressed', String(this.gridVisible));
+        this.gridToggle.textContent = this.gridVisible ? '그리드 숨기기' : '그리드 보기';
+    }
     describe(message) {
         const i=this.current();
         this.status.textContent = message || `${i.name} · ${i.w}×${i.h}칸 · (${i.u+1}, ${i.v+1})${i.id==='counter' ? ' · 뒤쪽 한 줄은 비비안 자리' : ''}`;
@@ -98,13 +149,15 @@ export class VivianRoomEditor {
         if (!this.enabled) return;
         this.items = copy(this.committed); this.active = true;
         this.room.classList.add('is-arranging'); this.controls.hidden = false;
-        this.toggle.setAttribute('aria-expanded','true'); this.toggle.textContent = '정리 닫기';
+        this.gridToggle.disabled = true;
+        this.toggle.setAttribute('aria-expanded','true'); this.toggle.textContent = '편집 취소';
         this.onEditing(true); this.paint(); this.describe(); this.select.focus();
     }
     finish() {
         this.abortDrag(); this.active = false; this.room.classList.remove('is-arranging');
         this.controls.hidden = true; this.toggle.setAttribute('aria-expanded','false');
-        this.toggle.textContent = '가구 정리'; this.onEditing(false); this.paint(); this.toggle.focus();
+        this.gridToggle.disabled = false;
+        this.toggle.textContent = '가구 편집'; this.onEditing(false); this.paint(); this.toggle.focus();
     }
     cancel() { if (!this.active) return; this.abortDrag(); this.items = copy(this.committed); this.finish(); }
     duplicate() {
@@ -120,11 +173,19 @@ export class VivianRoomEditor {
         const error = validateLayout(this.items);
         if (error) { this.describe(error); return; }
         try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({version:2,items:this.items.map(({id,assetId,u,v})=>({id,assetId,u,v}))}));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({version:3,items:this.items.map(({id,assetId,u,v})=>({id,assetId,u,v}))}));
         } catch { this.describe('브라우저에 저장할 수 없습니다. 저장 공간 설정을 확인하거나 취소하세요.'); return; }
         this.committed = copy(this.items); this.apply(); this.finish();
     }
     apply() { this.onApply(createRoomNavigation(this.items)); }
+    updatePlayerDepth(x,y) {
+        if(this.active) return;
+        for(const item of this.items) {
+            if(item.kind!=='floor') continue;
+            const element=this.room.querySelector(`[data-room-item="${item.id}"]`);
+            if(element) element.style.zIndex=Math.round(furnitureDepthAtPlayer(item,x,y));
+        }
+    }
     paint() {
         if (!this.current()) this.selected='carpet';
         const ids=new Set(this.items.map(i=>i.id));

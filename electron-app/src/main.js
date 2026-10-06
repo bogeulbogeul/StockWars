@@ -18,7 +18,13 @@ function serverUrl() {
   return url.origin;
 }
 
-if (hasLock) app.whenReady().then(() => {
+if (hasLock) app.whenReady().then(async () => {
+  const resetMarker = path.join(app.getPath('userData'), 'alpha-reset-20261006-v1');
+  if (!fs.existsSync(resetMarker)) {
+    await require('electron').session.defaultSession.clearStorageData();
+    fs.rmSync(path.join(app.getPath('userData'), 'presence-session.json'), { force: true });
+    fs.writeFileSync(resetMarker, 'complete');
+  }
   let url = '';
   try { url = serverUrl(); } catch (error) { dialog.showErrorBox('서버 설정 오류', error.message); }
   presence = new PresenceClient({ url, tokenFile: path.join(app.getPath('userData'), 'presence-session.json') });
@@ -28,6 +34,8 @@ if (hasLock) app.whenReady().then(() => {
   });
   const webRoot = app.isPackaged ? path.join(process.resourcesPath, 'web') : path.resolve(__dirname, '../../web');
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
+  ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && nickname.length <= 100
+    ? presence.command('nickname', undefined, { nickname }) : { error: '잘못된 닉네임입니다.' });
   ipcMain.handle('app:quit', (event) => {
     if (!trusted(event)) return { error: '접근 불가' };
     app.quit();
@@ -37,7 +45,12 @@ if (hasLock) app.whenReady().then(() => {
   ipcMain.handle('presence:join', (event, id) => trusted(event) && id === 'town-1'
     ? presence.command('join', id) : { error: '잘못된 채널입니다.' });
   ipcMain.handle('presence:leave', (event) => trusted(event) ? presence.command('leave') : { error: '접근 불가' });
+  ipcMain.handle('presence:position', (event, pose) => trusted(event) && pose && Number.isFinite(pose.x) && Number.isFinite(pose.y)
+    ? presence.command('position', undefined, { x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting, nickname: String(pose.nickname || '').slice(0, 24), level: pose.level, trait: pose.trait })
+    : { error: '잘못된 위치입니다.' });
   ipcMain.handle('chat:list', (event) => trusted(event) ? presence.chat('list') : { error: '접근 불가' });
+  ipcMain.handle('friends:command', (event, operation, targetId, options = {}) => trusted(event) && ['list', 'request', 'accept', 'reject', 'cancel', 'chat', 'gift', 'giftAck', 'search'].includes(operation)
+    ? presence.chat('friends', undefined, { operation, targetId, giftId: options?.giftId, targetName: options?.targetName, query: options?.query, item: options?.item, ids: options?.ids }) : { error: '잘못된 요청입니다.' });
   ipcMain.handle('chat:room', (event, action, options) => trusted(event) && ['create', 'invite', 'leaveRoom', 'list', 'send', 'newsPublish', 'news', 'newsReact'].includes(action) && options && typeof options === 'object'
     ? presence.chat(action, options.text, { roomId: options.roomId, title: options.title, members: options.members, achievement: options.achievement, comment: options.comment, postId: options.postId, reaction: options.reaction }) : { error: '잘못된 요청입니다.' });
   ipcMain.handle('chat:send', (event, text) => trusted(event) && typeof text === 'string' && text.trim().length > 0 && text.length <= 500

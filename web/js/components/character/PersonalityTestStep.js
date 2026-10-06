@@ -128,7 +128,7 @@ export class PersonalityTestStep {
             }
         }
 
-        const chosenTrait = TRAITS_DATA[bestKey];
+        const chosenTrait = { ...TRAITS_DATA[bestKey], key: bestKey };
         if (this.callbacks.onEvaluated) {
             this.callbacks.onEvaluated(chosenTrait);
         }

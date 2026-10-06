@@ -37,11 +37,19 @@ export class ItemEngine {
             version: 1, offset: 0, lastNow: clock(), inventory: [], stamina: 3, affinity: 35,
             purchases: {}, purchaseDay: '', caffeineDay: '', buffs: {}, passUntil: 0,
             deliveries: [], mail: [], reports: [], nextId: 1, decryptions: 0, profit: 0,
-            baseStats: { analysis: 1, management: 1, recovery: 1 }, exp: 0,
+            baseStats: { analysis: 0, negotiation: 0, management: 0, recovery: 0 }, statSchema: 2, exp: 0,
             alarm: false, mask: false, escape: false, survivals: 0,
             swanAt: clock() + 2 * DAY, swanEnd: 0, swanActive: false,
             tickets: [], draws: [], pools: {}, rollover: 0, notices: []
         };
+        if (this.state.statSchema !== 2) {
+            // Remove the old starting point while preserving earned growth and trait bonuses.
+            this.state.baseStats = Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key =>
+                [key, Math.max(0, (Number(this.state.baseStats?.[key]) || 0) - (key === 'negotiation' ? 0 : 1))]));
+            // Reconcile legacy traits after the saved profile becomes available.
+            delete this.state.appliedTrait;
+            this.state.statSchema = 2;
+        }
         // Preserve a local game's weekly numbering, including older saved tickets.
         this.state.lottoFirstRound ??= [...this.state.tickets, ...this.state.draws]
             .reduce((first, entry) => Math.min(first, entry.round), nextDraw(this.state.lastNow));
@@ -61,7 +69,17 @@ export class ItemEngine {
     notice(message) { this.state.notices.unshift(message); this.state.notices.length = Math.min(20, this.state.notices.length); }
     active(stat) { return (this.state.buffs[stat] || 0) > this.now(); }
     stats() {
-        return Object.fromEntries(['analysis', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
+        return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
+    }
+    playerLevel() {
+        let exp = Number(this.state.exp);
+        if (!Number.isFinite(exp) || exp < 0) exp = 0;
+        let level = 1;
+        while (level < 20 && exp >= 100 * level ** 1.5) {
+            exp -= 100 * level ** 1.5;
+            level++;
+        }
+        return level;
     }
     progress() { return { profit: this.state.profit, survivals: this.state.survivals, analysisLevel: this.stats().analysis, decryptions: this.state.decryptions, trustLevel: this.state.affinity >= 200 ? 3 : this.state.affinity >= 100 ? 2 : 1 }; }
     unlocked(item) { const p = this.progress(); return !item.reqUnlock || Object.entries(item.reqUnlock).every(([key, n]) => key === 'conditionDesc' || p[key] >= n); }
@@ -199,7 +217,7 @@ export class ItemEngine {
             });
             s.decryptions++;
             // Demo progression supplies a route to analysis Lv.5 without an unimplemented bookstore.
-            s.baseStats.analysis = Math.max(s.baseStats.analysis, 1 + Math.floor(s.decryptions / 10));
+            s.baseStats.analysis = Math.max(s.baseStats.analysis, (s.appliedTrait === 'analysis' ? 1 : 0) + Math.floor(s.decryptions / 10));
             message += ' · 해석 3단계의 찌라시가 보관함에 도착했습니다.';
         } else if (id === 'item_crypto_decoder' && !options.reportId && this.decoderTargets().length) {
             const target = options.rumorId ? this.decoderTargets().find(i => i.id === options.rumorId) : this.decoderTargets()[0];
@@ -216,7 +234,7 @@ export class ItemEngine {
             const linkedRumor = s.inventory.find(item => item.id === report.id && item.targetStockId);
             if (linkedRumor) linkedRumor.interpretationLevel = id === 'item_darknet_key' ? 5 : Math.min(5, Math.max(this.stats().analysis, linkedRumor.interpretationLevel || 3) + 1);
             s.decryptions += report.revealed - before;
-            s.baseStats.analysis = Math.max(s.baseStats.analysis, 1 + Math.floor(s.decryptions / 10));
+            s.baseStats.analysis = Math.max(s.baseStats.analysis, (s.appliedTrait === 'analysis' ? 1 : 0) + Math.floor(s.decryptions / 10));
             message += ` · 보고서 단서 ${report.revealed}/${report.parts.length} 확인 · 진위 보장 없음`;
         } else if (id === 'item_black_swan_alarm') { s.alarm = !s.alarm; consume = false; message = `조기 경보기 ${s.alarm ? '활성화' : '해제'}`;
         } else if (id === 'item_gas_mask') { s.mask = !s.mask; consume = false; message = `디지털 방독면 ${s.mask ? '장착' : '해제'}`;
@@ -283,6 +301,12 @@ export class ItemEngine {
         this.state.exp += exp;
         this.normalizeStamina();
         this.state.stamina = Math.max(0, this.state.stamina - this.laborCost());
+    }
+    claimTutorialReward(skipped = false) {
+        if (skipped || this.state.tutorialRewardClaimed) return 0;
+        this.state.tutorialRewardClaimed = true;
+        this.market.cash += 2000;
+        return 2000;
     }
     tick() {
         this.normalizeStamina();

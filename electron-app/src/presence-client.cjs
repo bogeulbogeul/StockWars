@@ -11,12 +11,12 @@ class PresenceClient {
     try { this.token = JSON.parse(fs.readFileSync(tokenFile, 'utf8')).token; } catch {}
   }
 
-  async request(action, channelId) {
+  async request(action, channelId, pose) {
     const started = Date.now();
     const response = await this.fetch(new URL('/api/presence', this.url), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}) },
-      body: JSON.stringify({ action, channelId }), signal: AbortSignal.timeout(5000)
+      body: JSON.stringify({ action, channelId, pose }), signal: AbortSignal.timeout(5000)
     });
     const data = await response.json();
     if (!response.ok) throw Object.assign(new Error(data.error || '서버 연결 실패'), { status: response.status });
@@ -25,12 +25,12 @@ class PresenceClient {
       fs.writeFileSync(this.tokenFile, JSON.stringify({ token: this.token }), { mode: 0o600 });
     }
     this.snapshot = { totalCCU: data.totalCCU, capacity: data.capacity, channels: data.channels,
-      currentChannelId: data.currentChannelId, ping: Date.now() - started };
+      currentChannelId: data.currentChannelId, playerId: data.playerId, players: data.players, ping: Date.now() - started };
     this.error = null;
     return this.snapshot;
   }
 
-  command(action, channelId) {
+  command(action, channelId, pose) {
     const operation = async () => {
       if (action === 'leave' || action === 'disconnect') this.desiredChannel = null;
       if (!this.url) return { error: this.error };
@@ -40,12 +40,12 @@ class PresenceClient {
           if (this.desiredChannel && action === 'heartbeat') await this.request('join', this.desiredChannel);
         }
         let result;
-        try { result = await this.request(action, channelId); }
+        try { result = await this.request(action, channelId, pose); }
         catch (error) {
-          if (error.status !== 401) throw error;
+          if (error.status !== 401 && !(action === 'position' && error.status === 409 && this.desiredChannel)) throw error;
           await this.request('session');
-          if (this.desiredChannel && action === 'heartbeat') await this.request('join', this.desiredChannel);
-          result = await this.request(action, channelId);
+          if (this.desiredChannel && ['heartbeat', 'position'].includes(action)) await this.request('join', this.desiredChannel);
+          result = await this.request(action, channelId, pose);
         }
         if (action === 'heartbeat' && this.desiredChannel && result.currentChannelId !== this.desiredChannel) {
           result = await this.request('join', this.desiredChannel);
@@ -58,7 +58,7 @@ class PresenceClient {
       } catch (error) {
         this.snapshot = null;
         this.error = error.status ? error.message : '서버 연결 끊김 · 재연결 중';
-        return { error: this.error };
+        return { error: this.error, status: error.status || null };
       }
     };
     this.queue = this.queue.then(operation, operation);
@@ -80,7 +80,9 @@ class PresenceClient {
             body: JSON.stringify({ ...options, action, text }), signal: AbortSignal.timeout(5000)
           });
           const data = await response.json();
-          if (!response.ok) throw Object.assign(new Error(data.error || '채팅 연결 실패'), { status: response.status });
+          if (!response.ok) throw Object.assign(new Error(response.status === 404
+            ? '서버 업데이트가 필요합니다. 잠시 후 다시 시도해 주세요.'
+            : data.error || '채팅 연결 실패'), { status: response.status });
           return data;
         };
         try { return await send(); }
@@ -89,7 +91,7 @@ class PresenceClient {
           await this.request('session');
           return await send();
         }
-      } catch (error) { return { error: error.status ? error.message : '채팅 서버에 연결할 수 없습니다.' }; }
+      } catch (error) { return { error: error.status ? error.message : '채팅 서버에 연결할 수 없습니다.', retryable: !error.status || error.status >= 500 }; }
     };
     this.queue = this.queue.then(operation, operation);
     return this.queue;

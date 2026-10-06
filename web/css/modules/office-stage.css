@@ -182,6 +182,23 @@ body.phone-view-active .floating-phone-btn {
     stroke-width: 3.5 !important;
 }
 
+.office-door-tutorial-highlight { display: none; }
+#isoOfficeDoor.tutorial-pulse-target,
+#isoOfficeDoor.tutorial-target-shake,
+#isoDoorPrompt.tutorial-pulse-target,
+#isoDoorPrompt.tutorial-target-shake {
+    animation: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+#isoOfficeDoor.tutorial-pulse-target .office-door-tutorial-highlight {
+    display: block;
+    fill: rgba(0, 145, 255, .25);
+    stroke: #00bfff;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 7px rgba(0, 145, 255, .7));
+}
+
 .iso-door-prompt {
     pointer-events: auto;
     cursor: pointer;

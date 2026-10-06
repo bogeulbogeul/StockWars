@@ -26,6 +26,7 @@ test('5% threshold uses first successful execution, not subsequent average or le
     assert.equal(engine.buyStock('TEST', 1).success, false);
     assert.equal(engine.firstTradeLesson, null);
     engine.cash = 10000;
+    engine.isLevel10Unlocked = true;
     engine.buyStock('TEST', 1, 2);
     engine.stocks.get('TEST').price = 1049;
     engine.buyStock('TEST', 1, 2);

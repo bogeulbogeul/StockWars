@@ -5,12 +5,13 @@
  * and the interactive Player Character (기본 하얀색 네모) with continuous free WASD & mouse movement.
  */
 
-import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js?v=window-grid-v1';
+import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js?v=wall-fill-v2';
 import { OFFICE_OPENINGS, officeWallHeight } from './office/OfficeOpeningSizing.js?v=window-grid-v1';
 import { SkyBackground } from './sky/SkyBackground.js';
 import { OfficeAnna } from './office/OfficeAnna.js';
 import { FURNITURE_THEMES } from '../data/furnitureData.js';
 import { officeGridToScreen, officeFootprintPoints, officeAssetPlacement } from './office/OfficeGrid.js';
+import { officeMove, officePositionBlocked } from './office/OfficeCollision.js?v=bed-collision-v2';
 
 export class OfficeStage {
     constructor(container, callbacks = {}) {
@@ -67,7 +68,6 @@ export class OfficeStage {
         this.targetTilePolygon = document.getElementById('isoTargetTilePolygon');
         this.officeDoor = document.getElementById('isoOfficeDoor');
         this.doorPrompt = document.getElementById('isoDoorPrompt');
-        this.doorFloatingBtn = document.getElementById('officeDoorFloatingBtn');
         this.annaPrompt = document.getElementById('isoAnnaPrompt');
         this.annaFloatingBtn = document.getElementById('officeAnnaFloatingBtn');
         this.isNearAnna = false;
@@ -129,10 +129,6 @@ export class OfficeStage {
             triggerDoorInteraction();
         });
 
-        this.doorFloatingBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            triggerDoorInteraction();
-        });
 
         const triggerAnnaInteraction = () => {
             if (this.furnitureEditMode) return;
@@ -247,8 +243,10 @@ export class OfficeStage {
             const dist = Math.hypot(diffX, diffY);
 
             if (dist < 0.08) {
-                this.posX = this.targetTile.gx;
-                this.posY = this.targetTile.gy;
+                if (!officePositionBlocked(this.collisionFurniture || [], this.targetTile.gx, this.targetTile.gy)) {
+                    this.posX = this.targetTile.gx;
+                    this.posY = this.targetTile.gy;
+                }
                 this.targetTile = null;
             } else {
                 moveDirX = diffX / dist;
@@ -262,14 +260,11 @@ export class OfficeStage {
         const speed = 4.8; // Grid units per second (snappy & smooth)
 
         if (isActivelyMoving) {
-            this.posX += moveDirX * speed * dt;
-            this.posY += moveDirY * speed * dt;
-
-            // Clamp smoothly within floor room boundaries [0.1 .. 6.9]
-            this.posX = Math.max(0.1, Math.min(6.9, this.posX));
-            this.posY = Math.max(0.1, Math.min(6.9, this.posY));
-
-            this.isMoving = true;
+            const next = officeMove(this.collisionFurniture || [], this.posX, this.posY, moveDirX * speed * dt, moveDirY * speed * dt);
+            this.isMoving = Math.hypot(next.x - this.posX, next.y - this.posY) > 0.0001;
+            this.posX = next.x;
+            this.posY = next.y;
+            if (!this.isMoving) this.targetTile = null;
             this.walkPhase += dt * 16;
         } else {
             this.isMoving = false;
@@ -287,13 +282,6 @@ export class OfficeStage {
                     this.doorPrompt.classList.remove('hidden');
                 } else {
                     this.doorPrompt.classList.add('hidden');
-                }
-            }
-            if (this.doorFloatingBtn) {
-                if (near) {
-                    this.doorFloatingBtn.classList.remove('hidden');
-                } else {
-                    this.doorFloatingBtn.classList.add('hidden');
                 }
             }
         }
@@ -434,6 +422,18 @@ export class OfficeStage {
     }
 
     renderFurniture(items, selectedId) {
+        this.collisionFurniture = items.filter(item => item.placed && !item.wallFixture);
+        if (!this.furnitureEditMode && officePositionBlocked(this.collisionFurniture, this.posX, this.posY)) {
+            let nearest = null;
+            for (let x = 0.5; x < 8; x++) for (let y = 0.5; y < 8; y++) {
+                if (officePositionBlocked(this.collisionFurniture, x, y)) continue;
+                const distance = Math.hypot(x - this.posX, y - this.posY);
+                if (!nearest || distance < nearest.distance) nearest = { x, y, distance };
+            }
+            if (nearest) { this.posX = nearest.x; this.posY = nearest.y; this.targetTile = null; }
+        }
+        // Interaction labels stay above room furniture and actors.
+        for (const prompt of [this.doorPrompt, this.annaPrompt]) if (prompt) this.svgStage.append(prompt);
         items.filter(item => item.wallFixture).forEach(item => {
             const element = document.getElementById(item.wallFixture);
             if (element) {
@@ -457,7 +457,8 @@ export class OfficeStage {
                     const door = item.wallFixture === 'isoOfficeDoor', right = item.gridY === 1 || (item.gridX < 3 && !door);
                     const index = item.gridX >= 3 ? item.gridX : 6;
                     const anchor = officeGridToScreen(right ? 0 : index, right ? index : 0);
-                    element.setAttribute('transform', `translate(${anchor.x} ${anchor.y - officeWallHeight(item)}) scale(${right ? -1 : 1} 1)`);
+                    // Keep the door threshold just above the brown wall/floor seam.
+                    element.setAttribute('transform', `translate(${anchor.x} ${anchor.y - officeWallHeight(item) - (door ? 1.5 : 0)}) scale(${right ? -1 : 1} 1)`);
                     element.style.pointerEvents = '';
                     if (door) {
                         this.doorGridX = right ? 0.5 : index - 1;

@@ -4,6 +4,14 @@ import { gridToScreen, screenToGrid, validateLayout, createRoomNavigation, route
 import { defaultRoomLayout } from '../js/components/store/VivianInteriorScene.js';
 import { restoreRoomLayout } from '../js/components/store/VivianRoomEditor.js';
 import { StorePlayerController } from '../js/components/store/StorePlayerController.js';
+import { ROOM_GRID, ROOM_VIEW_SCALE, INTERIOR_CELL, roomFloorClipPath } from '../js/components/store/IsometricRoomGrid.js';
+test('Vivian uses common interior cell dimensions with a uniform camera scale',()=>{
+    assert.equal(INTERIOR_CELL.halfWidth,33.75);
+    assert.equal(INTERIOR_CELL.halfHeight,19.1);
+    assert.equal(ROOM_GRID.halfWidth/ROOM_VIEW_SCALE,33.75);
+    assert.equal(ROOM_GRID.halfHeight/ROOM_VIEW_SCALE,19.1);
+    assert.match(roomFloorClipPath(),/^polygon\(/);
+});
 
 test('isometric projection round-trips all tile centres and fractional positions', () => {
     for(let u=.25;u<8;u+=.5) for(let v=.25;v<8;v+=.5) {
@@ -17,12 +25,12 @@ test('placement checks boundaries, occupied tiles, wall attachment and checkout 
     assert.match(validateLayout(changed('fridge',{u:8})),/룸 밖/);
     assert.match(validateLayout(changed('fridge',{u:7,v:3})),/겹칩니다/);
     assert.match(validateLayout(changed('clock',{u:1})),/벽/);
-    assert.match(validateLayout(changed('plant',{u:4,v:6})),/통로/);
+    assert.match(validateLayout(changed('plant',{u:2,v:7})),/통로/);
 });
 test('saved layout restores only validated coordinates and rejects malformed storage', () => {
-    const items=defaultRoomLayout(); items.find(i=>i.id==='plant').u=5;
+    const items=defaultRoomLayout(); items.find(i=>i.id==='plant').u=3;
     const saved=JSON.stringify({version:1,items});
-    assert.equal(restoreRoomLayout(saved).find(i=>i.id==='plant').u,5);
+    assert.equal(restoreRoomLayout(saved).find(i=>i.id==='plant').u,3);
     for(const raw of ['broken','null',JSON.stringify({version:1,items:[...items.slice(1),items[1]]})]) {
         assert.deepEqual(restoreRoomLayout(raw),defaultRoomLayout());
     }

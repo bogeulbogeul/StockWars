@@ -4,6 +4,10 @@
  * (Note: Furniture items are managed separately in furnitureData.js & FurnitureEditModal)
  */
 
+import { ADDITIONAL_RUMORS } from './additionalRumors.js';
+import { ORDINARY_RUMORS } from './ordinaryRumors.js';
+import { RUMOR_BALANCE, RUMOR_RARITY_OVERRIDES } from './rumorBalance.js';
+
 export const ITEM_CATEGORIES = {
     all: { key: 'all', name: '전체', icon: '📦' },
     consumable: { key: 'consumable', name: '소모품', icon: '🥤' },
@@ -25,6 +29,8 @@ export const ITEM_RARITIES = {
 export const DEFAULT_INVENTORY_ITEMS = [];
 
 export const ITEM_CATALOG_DB = [
+    ...ADDITIONAL_RUMORS,
+    ...ORDINARY_RUMORS,
     {
         id: 'item_energy_drink',
         name: '에너지 드링크',
@@ -248,12 +254,23 @@ export const ITEM_CATALOG_DB = [
     }
 ];
 
-export function getRandomRumorItem() {
+for (const item of ITEM_CATALOG_DB.filter(item => item.category === 'intel' && item.targetStockId)) {
+    item.rarity = RUMOR_RARITY_OVERRIDES[item.id] || item.rarity;
+    item.price = RUMOR_BALANCE[item.rarity].price;
+}
+
+export function getRandomRumorItem(random = Math.random) {
     const rumors = ITEM_CATALOG_DB.filter(i => i.category === 'intel');
-    const idx = Math.floor(Math.random() * rumors.length);
-    const item = rumors[idx] || ITEM_CATALOG_DB.find(i => i.id === 'item_bit_logistics_rumor');
+    const roll = random() * 100;
+    let cumulative = 0;
+    const rarity = Object.entries(RUMOR_BALANCE).find(([, balance]) => {
+        cumulative += balance.weight;
+        return roll < cumulative;
+    })?.[0] || 'legendary';
+    const pool = rumors.filter(item => item.rarity === rarity);
+    const item = pool[Math.min(pool.length - 1, Math.floor(random() * pool.length))];
     return {
-        ...item,
+        ...JSON.parse(JSON.stringify(item)),
         quantity: 1,
         actionType: 'read',
         actionLabel: '확인하기'

@@ -23,7 +23,7 @@ test('wall copies stay on their wall; exit cannot be duplicated; full walls repo
     assert.equal(validateLayout(items),'');
 });
 test('restore rejects invalid copies and keeps legacy layout coordinates',()=>{
-    const items=defaultRoomLayout(); items.find(i=>i.id==='plant').u=5;
+    const items=defaultRoomLayout(); items.find(i=>i.id==='plant').u=3;
     assert.deepEqual(restoreRoomLayout(JSON.stringify({version:1,items})),items);
     const clone=duplicateRoomItem(items,'plant').item;
     for(const patch of [{assetId:'unknown'},{id:'bad"id'},{u:-1},{assetId:'carpet'}]) {

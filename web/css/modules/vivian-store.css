@@ -738,11 +738,13 @@
 .vivian-interior {
     position: relative;
     isolation: isolate;
-    width: min(100vw, 150dvh);
+    /* Reserve 80 scene units above the unchanged 1536×1024 placement area. */
+    width: min(100vw, 139dvh);
     aspect-ratio: 3 / 2;
     flex-shrink: 0;
+    transform: translateY(3.90625%);
 }
-.vivian-interior-art { display: block; width: 100%; height: 100%; }
+.vivian-interior-art { display: block; position:absolute; left:0; top:-7.8125%; width:100%; height:107.8125%; }
 .vivian-room-prop { position: absolute; overflow: hidden; pointer-events: none; }
 .vivian-room-staff { position:absolute; object-fit:contain; pointer-events:none; user-select:none; }
 .vivian-interior .vivian-player { z-index: 2; pointer-events: none; }
@@ -910,7 +912,11 @@
 #vivianLayoutControls[hidden] { display:none; }
 #vivianLayoutStatus { flex-basis:100%; margin:0; line-height:1.4; }
 .vivian-grid-arrows { display:flex; gap:3px; }
-.is-arranging .vivian-placement-grid { display:block; }
+.is-arranging .vivian-placement-grid, .is-grid-visible .vivian-placement-grid { display:block; }
+.vivian-placement-grid .selected-footprint { display:none; }
+.is-arranging .vivian-placement-grid .selected-footprint { display:block; }
+.vivian-layout-toolbar button:disabled { opacity:.55; cursor:default; }
+.vivian-layout-toolbar button[aria-pressed="true"] { background:#267b78; border-color:#9aeee0; }
 .is-arranging .vivian-room-prop { pointer-events:auto; touch-action:none; cursor:grab; }
 .is-arranging .vivian-room-prop.is-selected { filter:drop-shadow(0 0 4px #32dbad); }
 .is-arranging .vivian-player, .is-arranging .vivian-walkway, .is-arranging .vivian-interior-hotspot { visibility:hidden; pointer-events:none; }
@@ -951,5 +957,6 @@
     font:700 14px var(--font-sans,sans-serif); cursor:pointer;
 }
 .vivian-exit-action:hover { background:#25636b; }
+.vivian-shop-action { transform:translate(-50%,-100%); white-space:nowrap; }
 .vivian-exit-action:focus-visible { outline:3px solid #ffc73e; outline-offset:3px; }
 .vivian-exit-action kbd { margin-left:7px; padding:2px 5px; border:1px solid #ffffff66; border-radius:4px; font:inherit; font-size:11px; }

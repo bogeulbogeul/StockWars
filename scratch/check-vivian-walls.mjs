@@ -1,0 +1,14 @@
+import {getVivianRoomHtml} from '../web/js/components/store/VivianInteriorScene.js';
+import {readFileSync,writeFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+const sharp=createRequire(import.meta.url)('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const before=readFileSync('scratch/vivian-room-before-wall.svg','utf8');
+const after=getVivianRoomHtml();
+const tiles=s=>s.match(/<polygon[^>]*stroke="#b6a58b"[^>]*\/>/g);
+assert.equal(tiles(after).length,64);
+assert.deepEqual(tiles(after),tiles(before));
+const svg=after.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" ');
+writeFileSync('scratch/vivian-room-wall-preview.svg',svg);
+await sharp(Buffer.from(svg)).resize(1000).flatten({background:'#17232c'}).png().toFile('scratch/vivian-room-wall-preview.png');
+console.log('All 64 floor tiles unchanged; wall preview rendered.');

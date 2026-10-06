@@ -4,6 +4,7 @@
  */
 
 import { VIVIAN_TABS } from '../../data/vivianStoreData.js';
+import { roomFloorClipPath } from './IsometricRoomGrid.js';
 import { getVivianRoomHtml, getVivianInteriorPropsHtml, getRoomGridHtml, getVivianStaffHtml } from './VivianInteriorScene.js';
 
 export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
@@ -25,7 +26,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                     <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
                     <div class="town-char-shadow"></div>
                 </div>
-                <button class="vivian-walkway" id="vivianWalkway" aria-label="바닥을 클릭해 이동"></button>
+                <button class="vivian-walkway" id="vivianWalkway" style="clip-path:${roomFloorClipPath()}" aria-label="바닥을 클릭해 이동"></button>
                 <button class="vivian-interior-hotspot vivian-door-hotspot" id="btnVivianDoor" aria-label="카펫 출입구로 나가기"></button>
                 <button class="vivian-exit-action" id="btnVivianExitAction" type="button" hidden>나가기 <kbd>F</kbd></button>
                 <button class="vivian-exit-action vivian-shop-action" id="btnVivianShopAction" data-store-browse="daily" type="button" hidden>상품 구매하기 <kbd>F</kbd></button>

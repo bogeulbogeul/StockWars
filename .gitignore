@@ -99,6 +99,7 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # Node / Electron
+Server/presence/data/
 node_modules/
 .pnpm-store/
 npm-debug.log*

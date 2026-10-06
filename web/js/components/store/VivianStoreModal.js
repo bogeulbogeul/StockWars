@@ -11,6 +11,8 @@ import { getVivianStoreHtml } from './VivianStoreTemplate.js';
 import { toastManager } from '../ToastManager.js';
 import { StorePlayerController } from './StorePlayerController.js';
 import { VivianRoomEditor } from './VivianRoomEditor.js';
+import { ROOM_PLAYER_DEPTH } from './IsometricRoomGrid.js';
+import { vivianStaffRectangle } from './VivianInteriorScene.js';
 
 export class VivianStoreModal {
     constructor(container, callbacks = {}, {allowLayoutEditing=false} = {}) {
@@ -221,7 +223,8 @@ export class VivianStoreModal {
         this.lastFrame = now;
         this.playerEl.style.left = `${this.player.x / 1536 * 100}%`;
         this.playerEl.style.top = `${this.player.y / 1024 * 100}%`;
-        this.playerEl.style.zIndex = Math.round(100 + this.player.y);
+        this.playerEl.style.zIndex = ROOM_PLAYER_DEPTH;
+        this.roomEditor?.updatePlayerDepth(this.player.x,this.player.y);
         const body = this.playerEl.querySelector('.town-char-body');
         body.style.transform = `scaleX(${this.player.facing}) translateY(${-Math.sin(this.player.phase) * 5}px)`;
         this.updateExitAction();
@@ -241,12 +244,10 @@ export class VivianStoreModal {
 
     updateShopAction() {
         if (!this.shopAction) return;
-        const shop=this.player.places.find(place=>place.action==='shop');
         this.shopAction.hidden=!this.isOpen || this.isShopping || Boolean(this.roomEditor?.active) || this.player.nearby()?.action!=='shop';
-        if(shop) {
-            this.shopAction.style.left=`${shop.x/1536*100}%`;
-            this.shopAction.style.top=`${(shop.y-135)/1024*100}%`;
-        }
+        const staff=vivianStaffRectangle(this.roomEditor?.items);
+        this.shopAction.style.left=`${(staff.x+staff.width*652/1254)/1536*100}%`;
+        this.shopAction.style.top=`${(staff.y+staff.height*112/1254-12)/1024*100}%`;
     }
 
     interactNearby() {

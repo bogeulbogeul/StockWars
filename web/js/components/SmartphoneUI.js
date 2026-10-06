@@ -221,7 +221,7 @@ export class SmartphoneUI {
             this.bubbleApp.classList.remove('hidden');
             this.bubbleApp.classList.add('active');
         }
-        this.bubbleAppModule?.renderBubbleChannel();
+        this.bubbleAppModule?.showChatList();
     }
 
     initEventListeners() {

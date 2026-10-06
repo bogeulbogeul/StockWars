@@ -24,11 +24,12 @@ const basicAsset = (file, width, height, anchorX, anchorY, scale) => ({
     url: new URL(`../../assets/office/basic-furniture-v2/${file}.png`, import.meta.url).href,
     width, height, anchorX, anchorY, scale, insetX: 0.08, insetY: 0.08, rotationMode: 'mirror'
 });
+// Default room layout from the user's 2026-10-06 reference screenshot.
 export const DEFAULT_FURNITURE_CATALOG = [
-    { id: 'basic_oak_desk_v2', name: '기본 오크 책상', category: 'desk_chair', icon: '🪵', sizeW: 2, sizeH: 3, gridX: 1, gridY: 0, asset: basicAsset('desk', 1536, 1024, 995, 976, 0.125) },
-    { id: 'basic_oak_chair_v2', name: '기본 오크 의자', category: 'desk_chair', icon: '🪑', sizeW: 1, sizeH: 1, gridX: 3, gridY: 1, asset: basicAsset('chair', 1231, 1278, 620, 1130, 0.086) },
-    { id: 'basic_oak_bed_v2', name: '기본 오크 침대', category: 'bed_relax', icon: '🛏️', sizeW: 2, sizeH: 4, gridX: 4, gridY: 3, asset: basicAsset('bed-grid-v3', 1536, 1024, 938, 952, 0.16) },
-    { id: 'basic_oak_wardrobe_v2', name: '기본 오크 옷장', category: 'storage_wall', icon: '🚪', sizeW: 1, sizeH: 2, gridX: 0, gridY: 5, asset: basicAsset('wardrobe', 1024, 1536, 620, 1460, 0.108) },
+    { id: 'basic_oak_desk_v2', name: '기본 오크 책상', category: 'desk_chair', icon: '🪵', sizeW: 2, sizeH: 3, gridX: 0, gridY: 0, asset: basicAsset('desk', 1536, 1024, 995, 976, 0.125) },
+    { id: 'basic_oak_chair_v2', name: '기본 오크 의자', category: 'desk_chair', icon: '🪑', sizeW: 1, sizeH: 1, gridX: 2, gridY: 1, asset: basicAsset('chair', 1231, 1278, 620, 1130, 0.086) },
+    { id: 'basic_oak_bed_v2', name: '기본 오크 침대', category: 'bed_relax', icon: '🛏️', sizeW: 2, sizeH: 4, gridX: 6, gridY: 4, asset: basicAsset('bed-grid-v3', 1536, 1024, 938, 952, 0.16) },
+    { id: 'basic_oak_wardrobe_v2', name: '기본 오크 옷장', category: 'storage_wall', icon: '🚪', sizeW: 1, sizeH: 2, gridX: 0, gridY: 6, asset: basicAsset('wardrobe', 1024, 1536, 620, 1460, 0.108) },
     { id: 'office_door_oak', name: '기본 오크 문', category: 'storage_wall', icon: '🚪', sizeW: 0, sizeH: 0, gridX: 0, gridY: 0, wallFixture: 'isoOfficeDoor', asset: { url: new URL('../../assets/office/basic-openings-v1/door-oak-v2.png', import.meta.url).href } },
     { id: 'office_window_oak', name: '기본 오크 창문', category: 'storage_wall', icon: '🪟', sizeW: 0, sizeH: 0, gridX: 0, gridY: 0, wallFixture: 'isoOfficeWindow', asset: { url: new URL('../../assets/office/basic-openings-v1/window-oak-v3.png', import.meta.url).href } }
 ].map(item => ({ ...item, theme: 'NaturalWood', scale: 'M', price: 0, buffs: [],

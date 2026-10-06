@@ -4,9 +4,12 @@
  * Dedicated 8x8 Office Customizer & Furniture Placement Mode.
  */
 
-import { FURNITURE_CATEGORIES, FURNITURE_THEMES, DEFAULT_FURNITURE_CATALOG } from '../data/furnitureData.js?v=office-openings-v8';
+import { FURNITURE_CATEGORIES, FURNITURE_THEMES, DEFAULT_FURNITURE_CATALOG } from '../data/furnitureData.js?v=default-layout-v4';
 import { OFFICE_GRID, officeGridToScreen } from './office/OfficeGrid.js';
 import { officeWallHeight } from './office/OfficeOpeningSizing.js?v=window-grid-v1';
+
+// Keep the old room save intact; this release starts with the approved oak layout.
+const OFFICE_LAYOUT_KEY = 'stockwars.officeLayout.oak-v3';
 
 export class FurnitureEditModal {
     constructor(container, callbacks = {}) {
@@ -18,7 +21,7 @@ export class FurnitureEditModal {
         this.selectedFurnitureId = this.furnitureList[0]?.id || null;
         this.history = [];
         try {
-            const saved = JSON.parse(localStorage.getItem('stockwars.officeLayout') || 'null');
+            const saved = JSON.parse(localStorage.getItem(OFFICE_LAYOUT_KEY) || 'null');
             if (Array.isArray(saved)) {
                 this.furnitureList.forEach(item => {
                     if (saved.some(entry => entry.id === item.id)) { item.placed = false; item.gridX = null; item.gridY = null; }
@@ -482,7 +485,7 @@ export class FurnitureEditModal {
     close() {
         this.abortDrag();
         try {
-            localStorage.setItem('stockwars.officeLayout', JSON.stringify(this.furnitureList.map(({ id, placed, gridX, gridY, rotation, wallHeight }) => ({ id, placed, gridX, gridY, rotation, wallHeight }))));
+            localStorage.setItem(OFFICE_LAYOUT_KEY, JSON.stringify(this.furnitureList.map(({ id, placed, gridX, gridY, rotation, wallHeight }) => ({ id, placed, gridX, gridY, rotation, wallHeight }))));
         } catch {
             this.setStatus('저장 공간을 사용할 수 없습니다. 다시 시도해주세요.');
             return;

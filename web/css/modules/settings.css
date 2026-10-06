@@ -24,5 +24,10 @@
 .settings-dialog .settings-exit { border-color: #8b4555; color: #ff9eae; background: #3c222d; }
 .settings-dialog .settings-exit:hover { background: #593040; }
 .settings-dialog button:disabled { opacity: 0.5; cursor: wait; }
+.player-social-panel { padding: 12px; border-bottom: 1px solid #34475e; }
+.player-social-panel h3 { font-size: 13px; margin: 16px 0 10px; }
+.player-social-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.player-social-row span { flex: 1; overflow-wrap: anywhere; }
+.player-social-row button { padding: 7px 10px; border: 1px solid #446476; border-radius: 8px; background: #1c3341; color: #d3f5f2; cursor: pointer; }
 .settings-hide-weather .main-hud-bar .weather-item { display: none; }
 .settings-reduced-motion *, .settings-reduced-motion *::before, .settings-reduced-motion *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }

@@ -13,9 +13,9 @@ function fixture(bridge) {
     const app = Object.create(context.BubbleApp.prototype);
     Object.assign(app, { currentRoomId: 'players', activeSubTab: 'chats', playerMessages: [], playerChatStatus: '',
         chatRooms: [{ id: 'players', unread: 0 }], updateBadges() {},
-        dom: { bubbleApp: { classList: { contains: () => false } }, bubbleMsgInput: { value: '안녕하세요' },
+        dom: { bubbleApp: { classList: { contains: () => false } }, bubbleMsgInput: { value: '안녕하세요', focus() {} },
             btnBubbleSend: { disabled: false }, bubbleChatFeed: { dataset: {}, scrollHeight: 100, clientHeight: 100, scrollTop: 0 } } });
-    return { app, notices };
+    return { app, notices, context };
 }
 
 test('incoming messages escape HTML, own messages render outgoing, read state clears', () => {
@@ -80,4 +80,26 @@ test('promotional NPC rooms reject sending while friend rooms remain writable', 
     assert.equal(app.dom.bubbleMsgInput.value, '안녕하세요');
     app.setEmoticonPanelOpen(true);
     assert.equal(app.emoticonPanelOpen, false);
+});
+
+test('friend chat opens with nickname even while background chat refresh is busy', async () => {
+    const roomId = 'group_direct';
+    const { app, context } = fixture({
+        friends: async () => ({ roomId }),
+        room: async () => ({ playerId: 1, messages: [], rooms: [{ id: roomId, title: '새벽고래', direct: true, count: 2, members: [1, 2] }] })
+    });
+    const socialSource = fs.readFileSync(new URL('../js/components/PlayerSocial.js', import.meta.url), 'utf8')
+        .replace(/^import .*;\r?\n/gm, '').replace('export class PlayerSocial', 'globalThis.PlayerSocial = class PlayerSocial');
+    vm.runInContext(socialSource, context);
+    app.refreshingPlayerChat = true;
+    let opened;
+    app.openChatRoom = id => { opened = app.chatRooms.find(room => room.id === id); };
+    const social = Object.assign(Object.create(context.PlayerSocial.prototype), {
+        dialog: { close() {} }, app: { smartphoneUI: { showPhone() {}, showBubbleApp() {}, bubbleAppModule: app } }
+    });
+    await social.command('chat', { id: 2 });
+    assert.equal(opened.title, '새벽고래');
+    assert.equal(opened.type, 'direct');
+    assert.equal(opened.sub, '개인 1:1');
+    assert.equal(app.currentRoomId, roomId);
 });

@@ -407,6 +407,7 @@ export class AnnaTutorial {
 
     // Called when player completes Bit Logistics labor job and returns
     notifyLogisticsJobCompleted(result) {
+        if (!this.isActive) return;
         const nextStepIdx = this.steps.findIndex(s => s.id === 'rumor_inventory_guide' || s.id === 'logistics_completed');
         if (nextStepIdx !== -1) {
             this.isActive = true;
@@ -454,6 +455,7 @@ export class AnnaTutorial {
             this.finishLesson();
             return;
         }
+        if (!this.isActive) return;
         this.isActive = false;
         if (this.typewriterTimer) {
             clearInterval(this.typewriterTimer);

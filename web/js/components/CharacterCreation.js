@@ -9,6 +9,7 @@
 import { createGeometricAvatarSVG } from './GeometricAvatar.js';
 import { PersonalityTestStep } from './character/PersonalityTestStep.js';
 import { TraderIDCardStep } from './character/TraderIDCardStep.js';
+import { registerNickname } from '../engine/NicknameRegistration.js';
 
 export class CharacterCreation {
     constructor(container, callbacks = {}) {
@@ -259,9 +260,29 @@ export class CharacterCreation {
             this.nickname = e.target.value.trim() || '사이퍼 트레이더';
         });
 
-        this.btnStep1Next?.addEventListener('click', () => {
-            this.setStep(2);
-            this.personalityStep.reset();
+        this.btnStep1Next?.addEventListener('click', async () => {
+            if (this.btnStep1Next.disabled) return;
+            this.btnStep1Next.disabled = true;
+            let error = this.modal.querySelector('.nickname-validation-error');
+            if (!error) {
+                error = document.createElement('p');
+                error.className = 'nickname-validation-error';
+                error.setAttribute('role', 'alert');
+                error.style.cssText = 'color:#ff9eae;font-size:13px;margin:10px 0;';
+                this.inputNickname.parentElement.append(error);
+            }
+            try {
+                const { nickname, pending } = await registerNickname(this.inputNickname.value, window.stockWarsPresence);
+                this.nicknamePending = pending;
+                this.nickname = nickname;
+                this.inputNickname.value = nickname;
+                error.textContent = '';
+                this.setStep(2);
+                this.personalityStep.reset();
+            } catch (failure) {
+                error.textContent = failure.message;
+                this.inputNickname.focus();
+            } finally { this.btnStep1Next.disabled = false; }
         });
 
         this.btnFinishCreation?.addEventListener('click', () => {
@@ -331,6 +352,7 @@ export class CharacterCreation {
             nickname: this.nickname,
             shape: this.shape,
             gender: this.gender,
+            nicknamePending: this.nicknamePending === true,
             skinTone: this.skinTone,
             hairStyle: this.hairStyle,
             trait: this.chosenTrait,

@@ -40,7 +40,7 @@ test('drinks heal one heart and caffeine enforces daily use across reloads', () 
 test('all three buffs affect stats, trading or labor and expire after 120 minutes', () => {
     const {engine:e,market:m,advance}=fixture();
     for(const id of ['item_focus_pill','item_stabilizer','item_vitamin_complex']) { purchase(e,id,2); use(e,id); assert.equal(e.use(id).success,false); }
-    assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,3); assert.equal(e.stats().recovery,3);
+    assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,2); assert.equal(e.stats().recovery,2);
     assert.equal(e.orderLimit(),110); assert.equal(e.laborCost(),1);
     assert.equal(m.buyStock('CLOUDBERRY',110).success,true);
     assert.equal(m.buyStock('CLOUDBERRY',111).success,false);

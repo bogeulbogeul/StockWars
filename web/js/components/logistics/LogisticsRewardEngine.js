@@ -11,7 +11,12 @@ export function calculateLogisticsGrade(loadedCount) {
     return 'C';
 }
 
-export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTime = false) {
+export function isNightLogistics(time) {
+    const hour = new Date(time + 9 * 60 * 60 * 1000).getUTCHours();
+    return hour >= 22 || hour < 2;
+}
+
+export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTime = false, startedAt = Date.now()) {
     const grade = calculateLogisticsGrade(loadedCount);
     let goldReward = 100;
     let expReward = 10;
@@ -35,6 +40,9 @@ export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTi
         gradeLabel = 'B (보통 / 7~11개)';
     }
 
+    const isNight = isNightLogistics(startedAt);
+    if (isNight) rumorChance *= 2;
+
     let isJackpot = false;
     if (grade === 'S' && Math.random() < 0.00002) {
         goldReward = 8000;
@@ -49,6 +57,8 @@ export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTi
         goldReward,
         expReward,
         hasRumor,
+        rumorChance: isFirstTime ? 1 : rumorChance,
+        isNight,
         isJackpot,
         gradeLabel,
         loadedCount,

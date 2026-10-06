@@ -239,6 +239,7 @@ export class LogisticsMiniGame {
 
     startSession() {
         this.isRunning = true;
+        this.jobStartedAt = this.callbacks.getTime?.() ?? Date.now();
         this.lastTimestamp = performance.now();
 
         // 60-Second Countdown Timer
@@ -450,7 +451,7 @@ export class LogisticsMiniGame {
         if (this.timerInterval) clearInterval(this.timerInterval);
 
         const isFirstTime = this.completedJobsCount === 0;
-        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime);
+        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt);
         this.completedJobsCount++;
         const { grade, goldReward, expReward, hasRumor, isJackpot, gradeLabel } = result;
         const parkExpression = isJackpot || grade === 'S' || grade === 'A'
@@ -476,7 +477,7 @@ export class LogisticsMiniGame {
         this.settlementStamp.textContent = grade;
         this.resLoadedCount.textContent = `${this.loadedCount} 개`;
         this.resBrokenCount.textContent = `${this.brokenCount} 개`;
-        this.resFinalGrade.textContent = gradeLabel;
+        this.resFinalGrade.textContent = `${gradeLabel}${result.isNight ? ' · 야간 찌라시 확률 2배' : ''}`;
         this.resFinalGrade.style.color = grade === 'S' ? '#ec4899' : (grade === 'A' ? '#00e5ff' : (grade === 'B' ? '#10b981' : '#94a3b8'));
         this.resRewardGold.textContent = isJackpot ? `+ ${goldReward.toLocaleString()} G (10배 잭팟!)` : `+ ${goldReward.toLocaleString()} G`;
         this.resRewardExp.textContent = `+ ${expReward} EXP`;

@@ -103,9 +103,14 @@ export class BubbleApp {
             else this.renderActiveSubView();
         });
 
-        this.btnKtAddFriendSubmit?.addEventListener('click', () => {
+        this.btnKtAddFriendSubmit?.addEventListener('click', async () => {
             const val = this.inputKtFriendSearch?.value;
-            const res = friendManager.addFriendByName(val);
+            if (this.addingFriend) return;
+            this.addingFriend = true; this.btnKtAddFriendSubmit.disabled = true;
+            let res;
+            try { res = this.callbacks.addOnlineFriend ? await this.callbacks.addOnlineFriend(val) : friendManager.addFriendByName(val); }
+            catch { res = { success: false, message: '친구 요청을 보내지 못했습니다. 다시 시도해 주세요.' }; }
+            finally { this.addingFriend = false; this.btnKtAddFriendSubmit.disabled = false; }
             toastManager.show(res.message, res.success);
             if (res.success && this.inputKtFriendSearch) {
                 this.inputKtFriendSearch.value = '';
@@ -353,7 +358,7 @@ export class BubbleApp {
         this.dom.kakaotalkListView?.classList.add('hidden');
         this.dom.kakaotalkRoomView?.classList.remove('hidden');
         const inviteButton = document.getElementById('btnBubbleInviteFriends');
-        if (inviteButton) inviteButton.hidden = !roomId.startsWith('local_') && !roomId.startsWith('group_');
+        if (inviteButton) inviteButton.hidden = room.type === 'direct' || (!roomId.startsWith('local_') && !roomId.startsWith('group_'));
         const inputBar = document.getElementById('bubbleInputBar');
         const notice = document.getElementById('bubbleReadOnlyNotice');
         if (inputBar) inputBar.hidden = !!room.readOnly;
@@ -612,9 +617,10 @@ export class BubbleApp {
                 existing = { id: info.id, type: 'open', avatar: '💬', unread: 0, lastMsg: '초대된 친구들과 대화하세요.', time: '' };
                 this.chatRooms.push(existing);
             }
+            existing.type = info.direct ? 'direct' : 'open';
             existing.title = info.title;
             existing.members = info.members || [];
-            existing.sub = `친구 오픈채팅 · ${info.count}명`;
+            existing.sub = info.direct ? '개인 1:1' : `친구 오픈채팅 · ${info.count}명`;
         }
         const room = this.chatRooms.find(r => r.id === (this.currentRoomId?.startsWith('group_') ? this.currentRoomId : 'players'));
         if (room.id === 'players') room.hidden = !result.messages.length;

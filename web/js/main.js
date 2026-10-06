@@ -16,9 +16,10 @@ import { TitleScreen } from './components/TitleScreen.js';
 import { CharacterCreation } from './components/CharacterCreation.js';
 import { TopDemoBar } from './components/TopDemoBar.js';
 import { MainHUD } from './components/MainHUD.js';
+import { PlayerSocial } from './components/PlayerSocial.js';
 import { PlayerProfileModal } from './components/PlayerProfileModal.js';
 import { SettingsModal } from './components/SettingsModal.js';
-import { OfficeStage } from './components/OfficeStage.js?v=window-grid-v1';
+import { OfficeStage } from './components/OfficeStage.js?v=door-seam-v2';
 import { SmartphoneUI } from './components/SmartphoneUI.js';
 import { TradeModal } from './components/TradeModal.js';
 import { DetailedChartModal } from './components/DetailedChartModal.js';
@@ -30,7 +31,7 @@ import { CipherLobby } from './components/CipherCanvasLobby.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
 import { InventoryModal } from './components/InventoryModal.js?v=vivian-effects-1';
-import { FurnitureEditModal } from './components/FurnitureEditModal.js?v=window-grid-v1';
+import { FurnitureEditModal } from './components/FurnitureEditModal.js?v=default-layout-v4';
 import { WardrobeModal } from './components/WardrobeModal.js';
 import { VivianStoreModal } from './components/store/VivianStoreModal.js?v=vivian-effects-1';
 import { FriendModal } from './components/FriendModal.js';
@@ -42,7 +43,9 @@ class StockWarsApplication {
         this.appContainer = document.getElementById('app') || document.body;
         this.userProfile = null;
         this.initComponents();
+        this.playerSocial = new PlayerSocial(this);
         installItemGameplay(this, marketEngine);
+        this.titleScreen.btnContinue.disabled = !this.userProfile?.nickname;
         this.bindEngine();
     }
 
@@ -154,6 +157,7 @@ class StockWarsApplication {
         });
         this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
             getProfile: () => this.userProfile,
+            getPlayerLevel: () => this.itemEngine?.playerLevel() ?? 1,
             getMarketState: () => marketEngine.getState(),
             getStats: () => this.itemEngine?.stats(),
             getStamina: () => this.mainHUD.stamina
@@ -223,6 +227,7 @@ class StockWarsApplication {
 
         // Logistics Mini-Game (Bit Logistics 60-second delivery)
         this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
+            getTime: () => this.itemEngine?.now() ?? Date.now(),
             onComplete: (result) => {
                 this.itemEngine.finishLabor(result.goldReward, result.expReward);
                 this.itemGameplay.sync();
@@ -274,6 +279,8 @@ class StockWarsApplication {
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            onOpenPlayerProfile: player => this.playerSocial?.open(player),
+            getPlayerSocialProfile: () => ({ level: this.itemEngine?.playerLevel() || 1, trait: this.userProfile?.trait?.title || '' }),
             getVendingState: () => {
                 this.itemEngine.tick();
                 return { cash: marketEngine.cash, purchased: this.itemEngine.state.purchases.item_energy_drink || 0,
@@ -284,7 +291,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.cipherLobby?.isOpen === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
@@ -313,6 +320,10 @@ class StockWarsApplication {
         this.titleScreen = new TitleScreen(this.appContainer, {
             onStartGame: (mode) => {
                 if (mode === 'CONTINUE') {
+                    if (!this.userProfile?.nickname) { this.titleScreen.show(); toastManager.show('저장된 플레이어가 없습니다. 새 게임을 시작해 주세요.', false); return; }
+                    this.smartphoneUI.updateUserProfile(this.userProfile);
+                    this.officeStage?.updateUserProfile(this.userProfile);
+                    this.townStage?.updateUserProfile(this.userProfile);
                     this.startGame('CONTINUE');
                 } else {
                     this.characterCreation.open(mode);
@@ -361,7 +372,11 @@ class StockWarsApplication {
                 if (marketEngine.cash === 0) {
                     marketEngine.cash = 5000; marketEngine.initialCash = 5000; marketEngine.notify();
                 }
-                toastManager.show(skipped ? '⏩ 튜토리얼을 건너뛰었습니다. (초기 지원금 5,000G 입금 완료)' : '🎉 안나 매니저와의 첫 실전 매매 튜토리얼을 완수했습니다!');
+                const reward = this.itemEngine.claimTutorialReward(skipped);
+                this.itemGameplay.sync();
+                toastManager.show(skipped ? '⏩ 튜토리얼을 건너뛰었습니다. (초기 지원금 5,000G 입금 완료)' : reward
+                    ? '🎉 튜토리얼 완료! 정착 보너스 +2,000G가 입금되었습니다.'
+                    : '🎉 안나 매니저와의 첫 실전 매매 튜토리얼을 완수했습니다!');
             }
         });
     }
@@ -410,27 +425,17 @@ class StockWarsApplication {
         if (mode !== 'CONTINUE') marketEngine.firstTradeLesson = null;
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
         this.officeStage?.anna?.resetForGameStart();
-        if (mode === 'DEMO' || mode === 'DEV') {
-            marketEngine.cash = 5000000;
-            marketEngine.initialCash = 5000000;
-            marketEngine.day = 1;
-            marketEngine.portfolio.clear();
-            marketEngine.notify();
-            this.topDemoBar?.show();
-            document.body.classList.remove('phone-minimized');
-            document.body.classList.add('phone-view-active');
-            if (this.topDemoBar?.txtFrameToggle) {
-                this.topDemoBar.txtFrameToggle.textContent = '스마트폰 최소화';
-            }
-            toastManager.show('🛠️ 개발자 모드 시작! (디버그 툴바 활성화 / 5,000,000G)');
-        } else if (mode === 'NEW') {
+        if (mode === 'NEW' || mode === 'DEMO' || mode === 'DEV') {
+            const isDeveloperMode = mode === 'DEMO' || mode === 'DEV';
             // Start with 0 Gold before Anna gives the initial grant dialogue
             marketEngine.cash = 0;
             marketEngine.initialCash = 0;
             marketEngine.day = 1;
             marketEngine.portfolio.clear();
+            marketEngine.isLevel10Unlocked = false;
             marketEngine.notify();
-            this.topDemoBar?.hide();
+            if (isDeveloperMode) this.topDemoBar?.show();
+            else this.topDemoBar?.hide();
             if (this.logisticsMiniGame) this.logisticsMiniGame.completedJobsCount = 0;
             this.smartphoneUI?.favorites?.clear();
             this.smartphoneUI?.saveFavorites();
@@ -442,7 +447,9 @@ class StockWarsApplication {
             if (this.topDemoBar?.txtFrameToggle) {
                 this.topDemoBar.txtFrameToggle.textContent = '스마트폰 열기';
             }
-            toastManager.show('🎮 새로운 게임 시작! (Day 1 • 오피스 입장)');
+            toastManager.show(isDeveloperMode
+                ? '🛠️ 개발자 모드 시작! (Day 1 • 새 게임 진행 / 디버그 툴바 활성화)'
+                : '🎮 새로운 게임 시작! (Day 1 • 오피스 입장)');
         } else {
             this.topDemoBar?.hide();
             this.enterOffice();
@@ -457,6 +464,7 @@ class StockWarsApplication {
     }
 
     showTitleScreen() {
+        this.titleScreen.btnContinue.disabled = !this.userProfile?.nickname;
         this.topDemoBar?.hide();
         if (this.titleScreen) {
             this.titleScreen.show();
@@ -512,11 +520,19 @@ class StockWarsApplication {
     }
 
     nextDay() {
+        if (marketEngine.day >= marketEngine.maxDays) {
+            this.openSettlement();
+            return;
+        }
         marketEngine.nextDay();
         this.itemEngine.advanceDay();
         this.itemGameplay.sync();
         const maxStamina = this.mainHUD?.stamina?.max || 3;
         this.mainHUD?.updateStamina(maxStamina);
+        if (marketEngine.day >= marketEngine.maxDays) {
+            this.openSettlement();
+            return;
+        }
         toastManager.show(`📅 Day ${marketEngine.day} 일차가 시작되었습니다. (💖 체력 완충)`);
     }
 

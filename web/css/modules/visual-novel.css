@@ -669,6 +669,17 @@ body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-box {
     }
 }
 
+
+/* SVG fixtures use transform attributes for placement: never shake their transform. */
+svg .tutorial-target-shake {
+    animation: tutorialSvgTargetAttention 0.5s ease-in-out !important;
+}
+
+@keyframes tutorialSvgTargetAttention {
+    0%, 100% { opacity: 1; }
+    20%, 60% { opacity: 0.45; }
+    40%, 80% { opacity: 1; }
+}
 /* Shake Animation when player clicks dialogue instead of target interaction */
 @keyframes targetShake {
     0%, 100% { transform: translateX(0) scale(1); }
