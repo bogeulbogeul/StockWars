@@ -60,7 +60,8 @@ export class PresenceRegistry {
             const nickname = this.claimNickname(token, pose.nickname ?? `플레이어 ${session.playerId}`);
             const location = pose.location || 'town';
             if (!['town', 'cipher', 'vivian', 'logistics', 'arena', 'training'].includes(location)) throw Object.assign(new Error('잘못된 장소입니다.'), { status: 400 });
-            session.pose = { location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true, nickname,
+            session.pose = { location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true,
+                seatId:pose.resting===true&&typeof pose.seatId==='string'?pose.seatId.slice(0,80):null, nickname,
                 level: Number.isInteger(pose.level) ? Math.min(20, Math.max(1, pose.level)) : 1,
                 trait: typeof pose.trait === 'string' ? pose.trait.slice(0, 40) : '' };
             session.poseAt = this.now();
