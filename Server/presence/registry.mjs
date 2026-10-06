@@ -111,7 +111,7 @@ export class PresenceRegistry {
             const a = options.achievement;
             if (!a || typeof a.id !== 'string' || typeof a.stockName !== 'string' || a.stockName.length > 100 || !Number.isFinite(a.profit) || a.profit <= 0 || !Number.isFinite(a.returnRate) || !Number.isInteger(a.quantity) || a.quantity <= 0) fail('잘못된 성과 기록입니다.');
             if (this.news.some(p => p.playerId === session.playerId && p.achievementId === a.id)) fail('이미 게시한 성과입니다.');
-            this.news.unshift({ id: randomUUID(), achievementId: a.id, playerId: session.playerId, friendName: `플레이어 ${session.playerId}`,
+            this.news.unshift({ id: randomUUID(), achievementId: a.id, playerId: session.playerId, friendName: this.playerName(session.playerId),
                 trigger: '주식 매도 수익 실현', icon: '📈', timestamp: new Date(this.now()).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
                 message: `${a.stockName} ${a.quantity}주 매도로 +${Math.round(a.profit).toLocaleString()}G (+${a.returnRate.toFixed(1)}%) 수익을 실현했어요!`,
                 comment: typeof options.comment === 'string' ? options.comment.trim().slice(0, 80) : '', reactions: {} });
@@ -165,16 +165,25 @@ export class PresenceRegistry {
             }
             session.lastMessageAt = this.now();
             messages.push({ id: this.nextMessageId++, playerId: session.playerId,
-                sender: `플레이어 ${session.playerId}`, text: text.trim(), timestamp: this.now() });
+                sender: this.playerName(session.playerId), text: text.trim(), timestamp: this.now() });
             if (messages.length > 100) messages.splice(0, messages.length - 100);
         } else if (action !== 'list') {
             throw Object.assign(new Error('잘못된 요청입니다.'), { status: 400 });
         }
-        return { playerId: session.playerId, messages,
-            players: [...this.sessions.values()].filter(s => s.active).map(s => ({ id: s.playerId, name: `플레이어 ${s.playerId}` })),
-            rooms: [...this.chatRooms.values()].filter(r => r.members.includes(session.playerId)).map(r => ({ id: r.id, title: r.title, count: r.members.length, members: r.members })) };
+        return { playerId: session.playerId, messages: messages.map(message => ({ ...message, sender: this.playerName(message.playerId) })),
+            players: [...this.sessions.values()].filter(s => s.active).map(s => ({ id: s.playerId, name: this.playerName(s.playerId) })),
+            rooms: [...this.chatRooms.values()].filter(r => r.members.includes(session.playerId)).map(r => {
+                const peerId = r.members.find(id => id !== session.playerId);
+                const peer = [...this.sessions.entries()].find(([, value]) => value.playerId === peerId);
+                const name = [...this.names.values()].find(value => value.token === peer?.[0])?.nickname || `플레이어 ${peerId}`;
+                return { id: r.id, title: r.direct ? name : r.title, count: r.members.length, members: r.members, direct: r.direct === true };
+            }) };
     }
 
+    playerName(playerId) {
+        const peer = [...this.sessions.entries()].find(([, value]) => value.playerId === playerId);
+        return [...this.names.values()].find(value => value.token === peer?.[0])?.nickname || `플레이어 ${playerId}`;
+    }
     friends(token, { operation = 'list', targetId } = {}) {
         const peers = [...this.sessions.entries()];
         const peer = peers.find(([, s]) => s.playerId === targetId);

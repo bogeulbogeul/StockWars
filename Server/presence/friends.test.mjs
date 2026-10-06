@@ -20,8 +20,18 @@ test('request persists after leaving town; only recipient accepts and both becom
     call(b, 'accept', a.playerId);
     assert.equal(call(a, 'list').friends[0].name, '새벽고래');
     assert.equal(call(b, 'list').friends[0].name, '황금개미');
+    assert.equal(registry.chatRooms.size, 0);
     const room = call(a, 'chat', b.playerId).roomId;
+    assert.equal(call(a, 'chat', b.playerId).roomId, room);
+    assert.equal(registry.chatRooms.size, 1);
+    const listed = registry.chat(a.token, 'list').rooms[0];
+    assert.equal(listed.direct, true);
+    assert.equal(listed.title, '새벽고래');
+    assert.equal(registry.chat(b.token, 'list').rooms[0].title, '황금개미');
     registry.chat(a.token, 'send', '안녕하세요', { roomId: room });
+    const chatState = registry.chat(b.token, 'list', undefined, { roomId: room });
+    assert.equal(chatState.messages[0].sender, '황금개미');
+    assert.equal(chatState.players.find(player => player.id === a.playerId).name, '황금개미');
     assert.equal(registry.chat(b.token, 'list', undefined, { roomId: room }).messages[0].text, '안녕하세요');
     assert.throws(() => registry.chat(c.token, 'list', undefined, { roomId: room }), /참여 중/);
 });
