@@ -146,7 +146,7 @@ export class InventoryModal {
 
     getFilteredItems() {
         return this.items.filter(item => {
-            if (item.category === 'apparel') return false;
+            if (this.giftMode ? !this.giftMode.eligible(item) : item.category === 'apparel') return false;
             const matchesCat = this.activeCategory === 'all' || item.category === this.activeCategory;
             const visible = this.getItemPresentation(item);
             const matchesSearch = !this.searchQuery ||
@@ -213,7 +213,7 @@ export class InventoryModal {
             this.detailContainer.innerHTML = `
                 <div class="inv-detail-empty">
                     <div class="empty-icon">🎒</div>
-                    <div>선택된 아이템이 없습니다.</div>
+                    <div>${this.giftMode?'보낼 수 있는 아이템이 없습니다.':'선택된 아이템이 없습니다.'}</div>
                 </div>
             `;
             return;
@@ -269,6 +269,15 @@ export class InventoryModal {
         `;
 
         // Action button event handlers
+        if(this.giftMode){
+            const mode=this.giftMode,actions=this.detailContainer.querySelector('.inv-actions');actions.replaceChildren();
+            const info=document.createElement('p');info.style.cssText='font-size:12px;color:#9bdfe8;line-height:1.5';info.textContent=`보유 ${item.quantity}개 · 오늘 남은 선물 ${mode.remaining()}/3개 · 찌라시 포함 하루 총 3개 · 1회 1개 전달 · 원본 1개 소모`;
+            actions.before(info);
+            if(item.category==='intel'){const read=document.createElement('button');read.className='inv-btn-secondary';read.textContent=item.isRead?'찌라시 다시 보기':'찌라시 열람';read.disabled=!!mode.busy;read.onclick=()=>this.handleItemAction(item);actions.append(read);}
+            const send=document.createElement('button');send.className='inv-btn-primary';send.dataset.giftSend='';send.textContent=`선택한 아이템 1개 선물하기`;send.disabled=!!mode.busy||mode.remaining()<=0;
+            send.onclick=async()=>{if(mode.busy)return;mode.busy=true;this.renderDetail(item);try{await mode.send(item);}finally{mode.busy=false;if(this.giftMode===mode)this.renderGrid();}};actions.append(send);
+            return;
+        }
         document.getElementById('btnInvActionPrimary')?.addEventListener('click', () => {
             this.handleItemAction(item);
         });
@@ -417,8 +426,23 @@ export class InventoryModal {
         if (this.callbacks.onOpen) this.callbacks.onOpen();
     }
 
+    openGift(player,options){
+        if(this.giftMode)this.close();
+        this.giftMode={...options,player};this.activeCategory='all';this.searchQuery='';this.searchInput.value='';
+        this.tabsContainer.querySelectorAll('.inv-tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));
+        const title=this.modal.querySelector('.inventory-title-text');this.normalTitleHtml=title.innerHTML;title.textContent=`${player.name||player.nickname}님에게 선물하기`;
+        const host=document.createElement('dialog');host.className='inventory-gift-host';host.setAttribute('aria-label','선물 인벤토리');host.style.cssText='position:fixed;inset:0;margin:0;padding:0;border:0;max-width:none;max-height:none;width:100vw;height:100dvh;background:transparent';
+        host.addEventListener('cancel',e=>{e.preventDefault();if(!this.rumorPopup.modal.classList.contains('hidden'))this.rumorPopup.close();else this.close();});host.addEventListener('keydown',e=>e.stopPropagation());
+        document.body.append(host);host.append(this.modal,this.rumorPopup.modal);this.giftHost=host;host.showModal();this.open();
+    }
+
     close() {
         this.modal.classList.add('hidden');
+        if(this.giftHost){
+            this.rumorPopup.close();this.container.append(this.modal,this.rumorPopup.modal);
+            this.giftHost.close();this.giftHost.remove();this.giftHost=null;this.giftMode=null;
+            this.modal.querySelector('.inventory-title-text').innerHTML=this.normalTitleHtml;
+        }
         document.body.classList.remove('modal-active');
         if (this.callbacks.onClose) this.callbacks.onClose();
     }

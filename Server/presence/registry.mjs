@@ -58,7 +58,10 @@ export class PresenceRegistry {
                 throw Object.assign(new Error('잘못된 플레이어 좌표입니다.'), { status: 400 });
             }
             const nickname = this.claimNickname(token, pose.nickname ?? `플레이어 ${session.playerId}`);
-            session.pose = { x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true, nickname,
+            const location = pose.location || 'town';
+            if (!['town', 'cipher', 'vivian', 'logistics', 'arena', 'training'].includes(location)) throw Object.assign(new Error('잘못된 장소입니다.'), { status: 400 });
+            session.pose = { location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true,
+                seatId:pose.resting===true&&typeof pose.seatId==='string'?pose.seatId.slice(0,80):null, nickname,
                 level: Number.isInteger(pose.level) ? Math.min(20, Math.max(1, pose.level)) : 1,
                 trait: typeof pose.trait === 'string' ? pose.trait.slice(0, 40) : '' };
             session.poseAt = this.now();
@@ -177,7 +180,8 @@ export class PresenceRegistry {
                 const peerId = r.members.find(id => id !== session.playerId);
                 const peer = [...this.sessions.entries()].find(([, value]) => value.playerId === peerId);
                 const name = [...this.names.values()].find(value => value.token === peer?.[0])?.nickname || `플레이어 ${peerId}`;
-                return { id: r.id, title: r.direct ? name : r.title, count: r.members.length, members: r.members, direct: r.direct === true };
+                return { id: r.id, title: r.direct ? name : r.title, count: r.members.length, members: r.members, direct: r.direct === true,
+                    lastMessage:r.messages.at(-1), incomingIds:r.messages.filter(m=>m.playerId!==session.playerId).map(m=>m.id) };
             }) };
     }
 
@@ -255,7 +259,7 @@ export class PresenceRegistry {
             currentChannelId: session?.channelId || null,
             playerId: session?.playerId,
             players: session?.channelId ? active.filter(s => s !== session && s.channelId === session.channelId && s.pose && this.now() - s.poseAt < 5000)
-                .map(s => ({ ...s.pose, id: s.playerId })) : [],
+                .map(s => ({ ...s.pose, poseAt: s.poseAt, id: s.playerId })) : [],
             channels: [{ id: 'town-1', name: '타운 1', users: active.filter(s => s.channelId === 'town-1').length }]
         };
     }

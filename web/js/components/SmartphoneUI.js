@@ -147,6 +147,7 @@ export class SmartphoneUI {
             badgeRumorCount: document.getElementById('badgeRumorCount'),
             bubbleBadgeHome: document.querySelector('#iconBubbleApp .app-badge')
         }, {
+            onOpenBubble:()=>this.showBubbleApp(),
             onShowHomeScreen: () => this.showHomeScreen(),
             onShowToast: (msg) => {
                 if (this.callbacks.onShowToast) this.callbacks.onShowToast(msg);

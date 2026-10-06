@@ -1,6 +1,7 @@
 import {MarketEngine} from '../engine/marketEngine.js';
 import {FriendManager} from '../engine/FriendManager.js';
 import {CipherTrainingRoom} from './CipherTrainingRoom.js';
+import {installOnlineCompetition} from './OnlineCompetition.js';
 
 export function validArenaStake(cash,stake){
     return Number.isSafeInteger(stake)&&stake%100===0&&(stake===0||(stake>=cash*.01&&stake<=cash*.1));
@@ -246,6 +247,11 @@ export class CipherCompetitionRoom{
         const title=document.createElement('h2');title.textContent='대결 종료 · 최종 순위';
         const subtitle=document.createElement('p');subtitle.textContent=`${room.name} · ${room.minutes}분 · 시작 자금 ${room.cash.toLocaleString()}G`;subtitle.style.color='#a8bfd0';
         const sorted=[...players].sort((a,b)=>b.assets-a.assets);
+        title.textContent=`승자: ${sorted.filter(p=>p.assets===sorted[0].assets).map(p=>p.name).join(', ')}`;
+        const winners=sorted.filter(p=>p.assets===sorted[0].assets),pot=(room.stake||0)*sorted.length;
+        const history=JSON.parse(localStorage.getItem('stockwars.arena.aiHistory')||'[]');
+        history.push({id:room.id,name:room.name,ended:Date.now(),cash:room.cash,stake:room.stake||0,ai:true,results:sorted.map((p,i)=>({...p,isOwn:p.name==='나',rank:p.assets===sorted[0].assets?1:i+1,payout:winners.includes(p)?Math.floor(pot/winners.length):0}))});
+        localStorage.setItem('stockwars.arena.aiHistory',JSON.stringify(history.slice(-100)));
         const table=document.createElement('table');table.style.cssText='width:100%;border-collapse:collapse;margin:24px 0;text-align:left';
         const header=document.createElement('tr');for(const label of ['순위','참가자','총자산','수익률']){const cell=document.createElement('th');cell.textContent=label;cell.style.cssText='padding:12px 6px;color:#9bb6c9;border-bottom:1px solid #345368;font-size:13px';header.append(cell);}const head=document.createElement('thead');head.append(header);table.append(head);
         const body=document.createElement('tbody');let rank=1;
@@ -257,7 +263,7 @@ export class CipherCompetitionRoom{
                 const cell=document.createElement('td');cell.textContent=value;cell.style.cssText='padding:18px 6px;border-bottom:1px solid #294457;font-weight:700';if(column===0)cell.style.color='#f5d583';if(column===3)cell.style.color=rate>=0?'#ff9199':'#7cbdff';row.append(cell);
             }body.append(row);
         });table.append(body);
-        const note=document.createElement('p');note.textContent=room.opponent?'K와 무료 대결 · 참가비 0G · 실제 계좌 변동 없음':'대결 전용 가상 계좌 결과입니다. 보유 계좌와 배팅 금액은 정산되지 않습니다.';note.style.cssText='font-size:13px;color:#9cb5c8;line-height:1.6';
+        const note=document.createElement('p');note.textContent=`가상 배당 ${winners.some(p=>p.name==='나')?Math.floor(pot/winners.length).toLocaleString():0}G · 실제 지급 0G · 모의투자 전용 가상 계좌입니다.`;note.style.cssText='font-size:13px;color:#9cb5c8;line-height:1.6';
         const actions=document.createElement('div');actions.style.cssText='display:flex;gap:12px;flex-wrap:wrap;margin-top:24px';
         const review=document.createElement('button');review.textContent='거래 화면 확인';review.onclick=()=>{popup.close();popup.remove();};
         const back=document.createElement('button');back.textContent='대결 로비로 돌아가기';back.style.cssText='background:#dfb957;color:#102234;font-weight:700';back.onclick=()=>{popup.close();popup.remove();match.close();};actions.append(review,back);
@@ -312,6 +318,7 @@ export class CipherCompetitionRoom{
         };
         const finish=(quit=false)=>{
             if(finished)return;finished=true;clearInterval(timer);rankResize.disconnect();engine.stopEngine();
+            this.rooms=this.rooms.filter(r=>r.id!==room.id);this.save();
             news.querySelector('[data-news-status]').textContent='대결 종료 · 뉴스 기록을 확인할 수 있습니다.';
             match.dialog.querySelector('[data-buy]').disabled=true;match.dialog.querySelector('[data-sell]').disabled=true;
             const mine=engine.getState().totalNetWorth,other=botAssets();
@@ -332,3 +339,5 @@ export class CipherCompetitionRoom{
 }
 
 
+
+installOnlineCompetition(CipherCompetitionRoom);

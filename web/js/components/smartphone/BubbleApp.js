@@ -29,7 +29,7 @@ export class BubbleApp {
         this.playerChatStatus = '연결 확인 중';
         this.playerChatReady = false;
         this.playerChatTimer = setInterval(() => {
-            if (this.dom.bubbleApp && !this.dom.bubbleApp.classList.contains('hidden')) void this.refreshPlayerChat();
+            void this.refreshPlayerChat();
             if (this.dom.bubbleApp && !this.dom.bubbleApp.classList.contains('hidden')) void this.refreshFriendNews();
         }, 2500);
         void this.refreshPlayerChat();
@@ -192,6 +192,9 @@ export class BubbleApp {
             this.dom.bubbleBadgeHome.textContent = totalUnread;
             this.dom.bubbleBadgeHome.style.display = totalUnread > 0 ? 'flex' : 'none';
         }
+        let phoneBadge=document.getElementById('onlineMessageBadge');
+        if(!phoneBadge){phoneBadge=document.createElement('button');phoneBadge.id='onlineMessageBadge';phoneBadge.style.cssText='position:fixed;right:28px;bottom:108px;z-index:11000;background:#e84a67;color:white;border:2px solid white;border-radius:18px;padding:6px 10px;font-weight:bold';phoneBadge.onclick=()=>{document.body.classList.remove('phone-minimized');document.body.classList.add('phone-view-active');this.callbacks.onOpenBubble?.();this.showChatList();};document.body.append(phoneBadge);}
+        phoneBadge.textContent=`💬 ${totalUnread}`;phoneBadge.hidden=totalUnread===0;phoneBadge.setAttribute('aria-label',`읽지 않은 메시지 ${totalUnread}개`);
     }
 
     showChatList() {
@@ -610,6 +613,8 @@ export class BubbleApp {
     }
 
     applyPlayerChat(result) {
+        this.roomLastMessageIds ||= {};
+        const activeVisible=!document.body?.classList?.contains('phone-minimized')&&!this.dom.bubbleApp?.classList.contains('hidden');
         this.availablePlayers = result.players || [];
         for (const info of result.rooms || []) {
             let existing = this.chatRooms.find(r => r.id === info.id);
@@ -621,15 +626,21 @@ export class BubbleApp {
             existing.title = info.title;
             existing.members = info.members || [];
             existing.sub = info.direct ? '개인 1:1' : `친구 오픈채팅 · ${info.count}명`;
+            const latestId=this.roomLastMessageIds[info.id]||0;
+            const incoming=(info.incomingIds||[]).filter(id=>id>latestId);
+            if(activeVisible&&this.currentRoomId===info.id)existing.unread=0;
+            else if(incoming.length){existing.unread+=incoming.length;if(this.playerChatReady&&info.lastMessage?.playerId!==result.playerId)toastManager.show(`💬 ${info.title}: ${info.lastMessage.text}`,true);}
+            if(info.lastMessage){this.roomLastMessageIds[info.id]=Math.max(latestId,info.lastMessage.id);existing.lastMsg=info.lastMessage.text;existing.time=this.playerMessageTime(info.lastMessage.timestamp);}
         }
         const room = this.chatRooms.find(r => r.id === (this.currentRoomId?.startsWith('group_') ? this.currentRoomId : 'players'));
         if (room.id === 'players') room.hidden = !result.messages.length;
-        if (room.id === 'players') room.hidden = !result.messages.length;
         this.roomLastMessageIds ||= {};
         const latestId = this.roomLastMessageIds[room.id] || 0;
-        const visible = (this.currentRoomId === 'players' || this.currentRoomId?.startsWith('group_')) && !this.dom.bubbleApp?.classList.contains('hidden');
+        const visible = (this.currentRoomId === 'players' || this.currentRoomId?.startsWith('group_')) && activeVisible;
         if (this.playerChatReady && !visible) {
-            room.unread += result.messages.filter(m => m.id > latestId && m.playerId !== result.playerId).length;
+            const incoming=result.messages.filter(m => m.id > latestId && m.playerId !== result.playerId);
+            room.unread += incoming.length;
+            if(room.id==='players'&&incoming.length)toastManager.show(`💬 ${incoming.at(-1).sender}: ${incoming.at(-1).text}`,true);
         }
         if (visible) room.unread = 0;
         this.playerChatReady = true;

@@ -382,6 +382,7 @@ export class TownStage {
     setRemotePlayers(players = []) {
         const seen = new Set();
         for (const player of players) {
+            if (player.location && player.location !== 'town') continue;
             if (!player.id || player.isLocal || !Number.isFinite(player.x) || !Number.isFinite(player.y)) continue;
             seen.add(player.id);
             let entry = this.remotePlayers.get(player.id);
@@ -403,14 +404,21 @@ export class TownStage {
                 entry = { element };
                 this.remotePlayers.set(player.id, entry);
             }
-            Object.assign(entry, { id: player.id, x: player.x, y: player.y });
+            const now=performance.now();
+            const duration=Math.min(1000,Math.max(200,now-(entry.receivedAt||now-300)));
+            if(!entry.receivedAt||entry.poseAt!==player.poseAt||entry.targetX!==player.x||entry.targetY!==player.y){
+                entry.fromX=entry.x??player.x;entry.fromY=entry.y??player.y;
+                entry.targetX=player.x;entry.targetY=player.y;entry.receivedAt=now;entry.duration=duration;entry.poseAt=player.poseAt;
+            }
+            Object.assign(entry, { id: player.id });
+            entry.x??=player.x;entry.y??=player.y;
             entry.player = { ...player };
             entry.element.setAttribute('aria-label', `${player.nickname || '플레이어'} 프로필 보기`);
             entry.element.querySelector('.town-char-nametag').textContent = player.nickname || '플레이어';
             const seat = player.resting && TOWN_LANDSCAPE_INTERACTIVE.find(p => p.type === 'bench' &&
                 Math.hypot(townEntrance(p).x - player.x, townEntrance(p).y - player.y) < 20);
-            entry.element.style.left = `${seat ? seat.x + seat.width / 2 : player.x}px`;
-            entry.element.style.top = `${seat ? seat.y - seat.height * .24 : player.y}px`;
+            entry.element.style.left = `${seat ? seat.x + seat.width / 2 : entry.x}px`;
+            entry.element.style.top = `${seat ? seat.y - seat.height * .24 : entry.y}px`;
             entry.element.style.zIndex = `${seat ? Math.ceil(seat.y) + 1 : Math.round(player.y)}`;
             entry.element.dataset.facing = player.facing || 'down';
             entry.element.classList.toggle('resting-bench', !!player.resting);
@@ -420,6 +428,20 @@ export class TownStage {
             if (!seen.has(id)) { entry.element.remove(); this.remotePlayers.delete(id); }
         }
         this.updatePlayerOcclusion();
+        if(!this.remoteFrame&&this.remotePlayers.size)this.animateRemotePlayers();
+    }
+
+    animateRemotePlayers(){
+        const now=performance.now();
+        for(const entry of this.remotePlayers.values()){
+            const t=Math.min(1,(now-entry.receivedAt)/(entry.duration||300));
+            entry.x=entry.fromX+(entry.targetX-entry.fromX)*t;entry.y=entry.fromY+(entry.targetY-entry.fromY)*t;
+            if(!entry.player.resting){entry.element.style.left=`${entry.x}px`;entry.element.style.top=`${entry.y}px`;entry.element.style.zIndex=String(Math.round(entry.y));}
+            const walking=t<1&&Math.hypot(entry.targetX-entry.fromX,entry.targetY-entry.fromY)>1;
+            entry.element.querySelector('.town-char-body').style.transform=`translateY(${walking?-Math.abs(Math.sin(now/100))*4:0}px)`;
+        }
+        this.updatePlayerOcclusion();
+        this.remoteFrame=this.remotePlayers.size?requestAnimationFrame(()=>this.animateRemotePlayers()):null;
     }
 
     updatePlayerOcclusion() {
@@ -513,7 +535,7 @@ export class TownStage {
         this.playerController.updateCamera(this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE, 0, true);
         this.update(0);
         this.checkProximity();
-        this.presenceSync?.start();
+        if(!this.callbacks.externalPresence)this.presenceSync?.start();
     }
 
     hide() {

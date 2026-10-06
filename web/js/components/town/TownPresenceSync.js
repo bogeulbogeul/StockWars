@@ -8,7 +8,7 @@ export class TownPresenceSync {
             try {
                 const p = this.stage.playerController;
                 const result = await this.bridge.position({ x: p.charPosX, y: p.charPosY, facing: p.facing,
-                    resting: p.isResting, nickname: this.stage.nickname, ...this.stage.callbacks.getPlayerSocialProfile?.() });
+                    resting: p.isResting, nickname: this.stage.nickname, ...this.stage.callbacks?.getPlayerSocialProfile?.() });
                 if (generation !== this.generation) return;
                 this.stage.setRemotePlayers(result.snapshot?.players || []);
             } catch {

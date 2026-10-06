@@ -19,12 +19,6 @@ function serverUrl() {
 }
 
 if (hasLock) app.whenReady().then(async () => {
-  const resetMarker = path.join(app.getPath('userData'), 'alpha-reset-20261006-v1');
-  if (!fs.existsSync(resetMarker)) {
-    await require('electron').session.defaultSession.clearStorageData();
-    fs.rmSync(path.join(app.getPath('userData'), 'presence-session.json'), { force: true });
-    fs.writeFileSync(resetMarker, 'complete');
-  }
   let url = '';
   try { url = serverUrl(); } catch (error) { dialog.showErrorBox('서버 설정 오류', error.message); }
   presence = new PresenceClient({ url, tokenFile: path.join(app.getPath('userData'), 'presence-session.json') });
@@ -46,8 +40,9 @@ if (hasLock) app.whenReady().then(async () => {
     ? presence.command('join', id) : { error: '잘못된 채널입니다.' });
   ipcMain.handle('presence:leave', (event) => trusted(event) ? presence.command('leave') : { error: '접근 불가' });
   ipcMain.handle('presence:position', (event, pose) => trusted(event) && pose && Number.isFinite(pose.x) && Number.isFinite(pose.y)
-    ? presence.command('position', undefined, { x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting, nickname: String(pose.nickname || '').slice(0, 24), level: pose.level, trait: pose.trait })
+    ? presence.command('position', undefined, { location: pose.location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting, seatId: typeof pose.seatId==='string'?pose.seatId.slice(0,80):undefined, nickname: String(pose.nickname || '').slice(0, 24), level: pose.level, trait: pose.trait })
     : { error: '잘못된 위치입니다.' });
+  ipcMain.handle('arena:request', (event, input) => trusted(event) && input && typeof input === 'object' && ['create','list','find','join','state','invite','decline','history','ack','ready','start','trade','leave'].includes(input.action) ? presence.arena(input) : { error: '잘못된 대결 요청입니다.' });
   ipcMain.handle('chat:list', (event) => trusted(event) ? presence.chat('list') : { error: '접근 불가' });
   ipcMain.handle('friends:command', (event, operation, targetId, options = {}) => trusted(event) && ['list', 'request', 'accept', 'reject', 'cancel', 'chat', 'gift', 'giftAck', 'search'].includes(operation)
     ? presence.chat('friends', undefined, { operation, targetId, giftId: options?.giftId, targetName: options?.targetName, query: options?.query, item: options?.item, ids: options?.ids }) : { error: '잘못된 요청입니다.' });

@@ -15,3 +15,5 @@ contextBridge.exposeInMainWorld('stockWarsChat', {
   send: (text) => ipcRenderer.invoke('chat:send', text),
   room: (action, options) => ipcRenderer.invoke('chat:room', action, options)
 });
+
+contextBridge.exposeInMainWorld('stockWarsArena', { request: input => ipcRenderer.invoke('arena:request', input) });

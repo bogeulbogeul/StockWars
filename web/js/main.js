@@ -1,4 +1,5 @@
 import { worldNavigation } from './app/WorldNavigation.js';
+import { OnlineSocialSync } from './app/OnlineSocialSync.js';
 import { installItemGameplay } from './app/ItemGameplay.js';
 import { VIVIAN_SHOP_CATALOG } from './data/vivianStoreData.js';
 import { getRandomRumorItem } from './data/inventoryData.js';
@@ -47,6 +48,7 @@ class StockWarsApplication {
         installItemGameplay(this, marketEngine);
         this.titleScreen.btnContinue.disabled = !this.userProfile?.nickname;
         this.bindEngine();
+        this.onlineSocialSync=new OnlineSocialSync(this);
     }
 
     initComponents() {
@@ -279,6 +281,7 @@ class StockWarsApplication {
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            externalPresence:true,
             onOpenPlayerProfile: player => this.playerSocial?.open(player),
             getPlayerSocialProfile: () => ({ level: this.itemEngine?.playerLevel() || 1, trait: this.userProfile?.trait?.title || '' }),
             getVendingState: () => {
@@ -291,7 +294,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {

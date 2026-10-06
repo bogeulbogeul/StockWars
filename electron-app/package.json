@@ -1,6 +1,6 @@
 {
   "name": "stockwars-electron",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "Electron wrapper for StockWars web app",
   "main": "src/main.js",
   "scripts": {

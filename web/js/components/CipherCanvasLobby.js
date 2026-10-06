@@ -6,7 +6,7 @@ import { CipherRoomEditor, cipherFurnitureSize } from './CipherRoomEditor.js';
 import {StorePlayerController} from './store/StorePlayerController.js';
 import {createCipherNavigation,cipherScreenToGrid,CIPHER_STAIR_LANDING} from './CipherNavigation.js';
 import { CIPHER_FLOOR, CIPHER_GRID_LINES, cipherGridToScreen } from './CipherGrid.js';
-import {cipherDrawOrder} from './CipherDepth.js';
+import {cipherDrawOrder,cipherDepthCompare} from './CipherDepth.js';
 import {paintGuidePreview,drawCipherRoomImage,cipherWallPoint} from './CipherGuidePreview.js';
 import {cipherRasterRect,CIPHER_FURNITURE_RASTERS} from './CipherFurnitureRaster.js';
 const agentKPortraitUrl = new URL('../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png?portrait=hd1', import.meta.url).href;
@@ -86,6 +86,13 @@ export class CipherLobby {
             drawCipherRoomImage(this.roomRaster.getContext('2d'),this.wall,this.marbleFloor);
         }
         ctx.drawImage(this.roomRaster,0,0);
+        if(this.remotePlayers?.length&&!this.showGrid){
+            const actors=[{...this.playerItem(),pose:this.player},...this.remotePlayers.map(p=>{const g=cipherScreenToGrid(p.x,p.y),seat=p.resting&&this.editor.items.find(i=>i.asset==='sofa'&&`sofa:${i.u}:${i.v}:${i.rotation||0}`===p.seatId);return {asset:'player',u:g.u,v:g.v,seatedOn:seat?.id,pose:{...p,facing:p.facing==='left'?-1:1,phase:p.walking&&!p.resting?performance.now()/100:0},nickname:p.nickname};})].sort((a,b)=>a.pose.y-b.pose.y);
+            const ordered=cipherDrawOrder(this.editor.items,null,cipherFurnitureSize);
+            for(const actor of actors){const index=ordered.findIndex(item=>item.asset!=='player'&&cipherDepthCompare(actor,item,cipherFurnitureSize)<=0),seatIndex=actor.seatedOn?ordered.findIndex(item=>item.id===actor.seatedOn):-1;ordered.splice(Math.max(index<0?ordered.length:index,seatIndex+1),0,actor);}
+            for(const item of ordered)if(item.asset==='player')this.paintPlayer(ctx,item.pose,item.nickname);else this.editor.paint(ctx,[item]);
+            this.paintDialogueHighlight(ctx);return;
+        }
         if(!this.showGrid&&!this.editor.active){
             const ordered=cipherDrawOrder(this.editor.items,this.playerItem(),cipherFurnitureSize),split=ordered.findIndex(item=>item.asset==='player');
             const key=JSON.stringify(ordered.filter(item=>item.asset!=='player'))+':'+split;
@@ -236,11 +243,11 @@ export class CipherLobby {
     nearStairs(){return Math.hypot(this.player.x-CIPHER_STAIR_LANDING.x,this.player.y-CIPHER_STAIR_LANDING.y)<65;}
     showMembershipNotice(){this.restoreNotice();this.dialoguePage=null;this.noticeHeading.hidden=true;this.notice.querySelector('button').textContent='확인';this.notice.querySelector('p').textContent='회원이 아닙니다. 2층은 회원 전용 공간입니다.';this.player.stop();this.stairAttempt=false;this.stairNotified=true;this.notice.hidden=false;this.notice.querySelector('button').focus();}
     movePlayerTo(p){if(!this.notice.hidden)return;this.standUp();this.stairAttempt=p.x>=927&&p.x<=1105&&p.y>=210&&p.y<=558;const target=this.stairAttempt?CIPHER_STAIR_LANDING:p;this.player.moveTo(target.x,target.y);this.canvas.focus();}
-    paintPlayer(ctx){
-        const p=this.player;
-        ctx.save();ctx.translate(p.x,p.y-(this.seated?24:0));
+    paintPlayer(ctx,pose=this.player,nickname=''){
+        const p=pose,seated=pose===this.player?this.seated:pose.resting;
+        ctx.save();ctx.translate(p.x,p.y-(seated?24:0));
         ctx.fillStyle='#00000055';ctx.beginPath();ctx.ellipse(0,0,24,7,0,0,Math.PI*2);ctx.fill();
-        ctx.translate(0,this.seated?0:-Math.sin(p.phase)*5);ctx.scale(p.facing,1);
+        ctx.translate(0,seated?0:-Math.sin(p.phase)*5);ctx.scale(p.facing,1);
         ctx.shadowColor='#00000066';ctx.shadowBlur=10;ctx.shadowOffsetY=5;
         ctx.fillStyle='#ffffff';ctx.strokeStyle='#2c3e50';ctx.lineWidth=3;
         ctx.beginPath();ctx.roundRect(-28,-58,56,56,10);ctx.fill();ctx.stroke();
@@ -250,6 +257,7 @@ export class CipherLobby {
         ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-7,-25);ctx.bezierCurveTo(-7,-15,8,-15,8,-25);ctx.stroke();
         ctx.fillStyle='#00d8ee';ctx.beginPath();ctx.arc(17,-12,4.5,0,Math.PI*2);ctx.fill();
         ctx.restore();
+        if(nickname){ctx.save();ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.fillStyle='#071e2d';const width=ctx.measureText(nickname).width+18;ctx.fillRect(p.x-width/2,p.y-85,width,22);ctx.fillStyle='#6eeaff';ctx.fillText(nickname,p.x,p.y-68);ctx.restore();}
     }
     playerItem(){const g=cipherScreenToGrid(this.player.x,this.player.y);return {asset:'player',u:g.u,v:g.v,seatedOn:this.seated?.id};}
     nearbySeat(){

@@ -96,6 +96,25 @@ class PresenceClient {
     this.queue = this.queue.then(operation, operation);
     return this.queue;
   }
+  arena(input) {
+    const operation = async () => {
+      if (!this.url) return { error: '온라인 서버 주소가 설정되지 않았습니다.' };
+      try {
+        if (!this.snapshot) await this.request('session');
+        const send = async () => {
+          const response = await this.fetch(new URL('/api/arena', this.url), {
+            method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${this.token}` },
+            body: JSON.stringify(input), signal: AbortSignal.timeout(5000)
+          });
+          const result = await response.json();
+          if (!response.ok) throw Object.assign(new Error(result.error || '대결 서버 연결 실패'), { status: response.status });
+          return result;
+        };
+        try { return await send(); } catch (error) { if (error.status !== 401) throw error; await this.request('session'); return await send(); }
+      } catch (error) { return { error: error.status ? error.message : '온라인 대결 서버에 연결할 수 없습니다.', retryable: !error.status || error.status >= 500 }; }
+    };
+    this.queue = this.queue.then(operation, operation); return this.queue;
+  }
   stop() { clearInterval(this.timer); return this.command('disconnect'); }
   state() { return { snapshot: this.snapshot, error: this.error }; }
 }
