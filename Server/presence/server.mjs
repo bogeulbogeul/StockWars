@@ -1,5 +1,5 @@
 import http from 'node:http';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { PresenceRegistry } from './registry.mjs';
 
 export function createPresenceServer({ registry = new PresenceRegistry() } = {}) {
@@ -45,7 +45,7 @@ export function createPresenceServer({ registry = new PresenceRegistry() } = {})
             if (req.url === '/api/chat') return reply(200, registry.chat(token, input.action, input.text, input));
             const result = input.action === 'session'
                 ? registry.session(token)
-                : registry.update(token, input.action, input.channelId);
+                : registry.update(token, input.action, input.channelId, input.pose);
             reply(200, result);
         } catch (error) {
             reply(error.status || (error instanceof SyntaxError ? 400 : 500), {
@@ -56,7 +56,7 @@ export function createPresenceServer({ registry = new PresenceRegistry() } = {})
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-    const server = createPresenceServer();
+    const server = createPresenceServer({ registry: new PresenceRegistry({ nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names.json', import.meta.url)) }) });
     const port = Number(process.env.PORT || 8080);
     server.listen(port, process.env.HOST || '127.0.0.1', () => console.log(`Presence server listening on ${port}`));
     const shutdown = () => server.close(() => process.exit(0));
