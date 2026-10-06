@@ -4,6 +4,16 @@ import { PresenceRegistry } from './registry.mjs';
 import { OnlineArena } from './arena.mjs';
 function setup(){let now=1000000;const registry=new PresenceRegistry({now:()=>now});const a=registry.session(),b=registry.session(),c=registry.session();for(const [s,n] of [[a,'방장'],[b,'친구'],[c,'외부인']])registry.update(s.token,'nickname',undefined,{nickname:n});registry.friends(a.token,{operation:'request',targetId:b.playerId});registry.friends(b.token,{operation:'accept',targetId:a.playerId});return {registry,a,b,c,arena:new OnlineArena(registry),advance:ms=>now+=ms};}
 const config={name:'같은 시장 대결',minutes:3,cash:100000,stake:0,passwordHash:'a'.repeat(64)};
+test('history is private, payouts use virtual stakes, confirmations wait for all participants',()=>{
+    const {arena,registry,a,b,c,advance}=setup();const id=arena.handle(a.token,{action:'create',room:{...config,stake:1000,passwordHash:null}}).room.id;
+    arena.handle(b.token,{action:'join',id});for(const s of [a,b])arena.handle(s.token,{action:'ready',id,ready:true});arena.handle(a.token,{action:'start',id});advance(180000);for(const s of [a,b])registry.session(s.token);
+    const end=arena.handle(a.token,{action:'state',id});assert.equal(end.results.reduce((n,p)=>n+p.payout,0),2000);assert.ok(end.results.every(p=>p.realPayout===0));
+    assert.equal(arena.handle(a.token,{action:'ack',id}).allConfirmed,false);assert.equal(arena.handle(b.token,{action:'ack',id}).allConfirmed,true);assert.equal(arena.handle(a.token,{action:'state',id}).allConfirmed,true);
+    const history=arena.handle(a.token,{action:'history'}).records;assert.equal(history.length,1);assert.equal(history[0].results.filter(p=>p.isOwn).length,1);assert.ok(history[0].results.every(p=>!('owner' in p)));assert.equal(arena.handle(c.token,{action:'history'}).records.length,0);
+});
+test('declining an invitation removes it without joining the room',()=>{
+    const {arena,a,b}=setup();const id=arena.handle(a.token,{action:'create',room:config}).room.id;arena.handle(a.token,{action:'invite',id,targetName:'친구'});arena.handle(b.token,{action:'decline',id});assert.equal(arena.handle(b.token,{action:'list'}).invitations.length,0);assert.equal(arena.rooms.get(id).members.size,1);
+});
 test('private room invitation, actual membership, readiness and host-only start',()=>{
     const {registry,arena,a,b,c}=setup();const created=arena.handle(a.token,{action:'create',room:config});const id=created.room.id;
     assert.equal(arena.handle(b.token,{action:'list'}).rooms.length,0);
