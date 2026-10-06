@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { giftState, handleGift } from './gifts.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -184,7 +185,9 @@ export class PresenceRegistry {
         const peer = [...this.sessions.entries()].find(([, value]) => value.playerId === playerId);
         return [...this.names.values()].find(value => value.token === peer?.[0])?.nickname || `플레이어 ${playerId}`;
     }
-    friends(token, { operation = 'list', targetId } = {}) {
+    friends(token, options = {}) {
+        const { operation = 'list', targetId } = options;
+        if (operation === 'gift' || operation === 'giftAck') return handleGift(this, token, options);
         const peers = [...this.sessions.entries()];
         const peer = peers.find(([, s]) => s.playerId === targetId);
         const target = peer?.[0];
@@ -226,6 +229,7 @@ export class PresenceRegistry {
             return { id: entry?.[1].playerId, name: registered?.nickname || `플레이어 ${entry?.[1].playerId || ''}`, online: !!entry?.[1].active };
         };
         return {
+            ...giftState(this, token),
             friends: this.social.friendships.filter(pair => pair.includes(token)).map(pair => describe(pair.find(owner => owner !== token))),
             incoming: this.social.requests.filter(r => r.to === token).map(r => describe(r.from)),
             outgoing: this.social.requests.filter(r => r.from === token).map(r => describe(r.to))
