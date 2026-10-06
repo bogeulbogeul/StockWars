@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import { configuredPlayerStore } from './player-store.mjs';
+import { PresenceRegistry } from './registry.mjs';
+const filename=process.argv[2];
+if(!filename||!fs.existsSync(filename)||!fs.existsSync(`${filename}.social`))throw new Error('기존 닉네임 파일과 친구/선물 파일을 모두 확보해야 합니다.');
+const store=configuredPlayerStore();if(!store)throw new Error('무료 저장소 환경 변수를 먼저 설정해 주세요.');
+const registry=new PresenceRegistry({nameFile:filename});
+const localNames=[...registry.names],localSocial=structuredClone(registry.social);
+const response=await store.fetch(new URL('?id=eq.primary&select=payload',store.url),{headers:store.headers,signal:AbortSignal.timeout(10000)});
+if(!response.ok)throw new Error('저장소를 확인하지 못했습니다. 이관하지 않았습니다.');
+const rows=await response.json();
+if(rows.length&&((rows[0].payload.names||[]).length||(rows[0].payload.social?.friendships||[]).length))throw new Error('이미 유저 기록이 있는 DB입니다. 덮어쓰지 않았습니다.');
+registry.names=new Map(localNames);registry.social=localSocial;await store.flush(registry);
+console.log('닉네임·친구·선물 기록 이관 완료. 비밀 키와 유저 기록은 출력하지 않았습니다.');
