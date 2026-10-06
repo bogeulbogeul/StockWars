@@ -188,9 +188,18 @@ export class PresenceRegistry {
     friends(token, options = {}) {
         const { operation = 'list', targetId } = options;
         if (operation === 'gift' || operation === 'giftAck') return handleGift(this, token, options);
+        if (operation === 'search') {
+            const query = typeof options.query === 'string' ? options.query.normalize('NFKC').trim().replace(/\s/g, '').toLowerCase() : '';
+            if (!query || query.length > 100) throw Object.assign(new Error('찾을 친구의 닉네임을 입력해 주세요.'), { status: 400 });
+            const players = [...this.names.values()].filter(n => n.token !== token && n.nickname.replace(/\s/g, '').toLowerCase() === query).map(n => {
+                const peer = [...this.sessions.values()].find(s => this.sessions.get(n.token) === s);
+                return { id: peer?.playerId, name: n.nickname, online: !!peer?.active };
+            });
+            return { players };
+        }
         const peers = [...this.sessions.entries()];
         const peer = peers.find(([, s]) => s.playerId === targetId);
-        const target = peer?.[0];
+        const target = peer?.[0] || [...this.names.values()].find(n => n.nickname === options.targetName)?.token;
         const fail = message => { throw Object.assign(new Error(message), { status: 409 }); };
         const connected = this.social.friendships.find(pair => pair.includes(token) && pair.includes(target));
         if (operation !== 'list') {

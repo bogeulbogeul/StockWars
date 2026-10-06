@@ -64,3 +64,21 @@ test('received requests and accepted friendships survive server restart', () => 
         assert.equal(registry.chat(a.token, 'friends', undefined, {}).friends[0].name, '고래');
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
+
+test('nickname search sends an offline request and both request lists reflect it', () => {
+    const registry = new PresenceRegistry();
+    const a = registry.session(), b = registry.session();
+    registry.update(a.token, 'nickname', undefined, { nickname: '보내는친구' });
+    registry.update(b.token, 'nickname', undefined, { nickname: 'Trader Kim' });
+    registry.sessions.delete(b.token);
+    const found = registry.friends(a.token, { operation: 'search', query: 'ＴＲＡＤＥＲkim' });
+    assert.equal(found.players[0].name, 'Trader Kim');
+    assert.equal(found.players[0].online, false);
+    registry.friends(a.token, { operation: 'request', targetName: found.players[0].name });
+    assert.equal(registry.friends(a.token).outgoing[0].name, 'Trader Kim');
+    registry.session(b.token);
+    assert.equal(registry.friends(b.token).incoming[0].name, '보내는친구');
+    registry.friends(b.token, { operation: 'accept', targetName: '보내는친구' });
+    assert.equal(registry.friends(a.token).friends[0].name, 'Trader Kim');
+    assert.equal(registry.friends(a.token, { operation: 'search', query: '없는이름' }).players.length, 0);
+});
