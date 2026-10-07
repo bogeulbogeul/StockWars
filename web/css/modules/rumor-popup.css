@@ -6,8 +6,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     background: rgba(4, 8, 16, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -24,8 +24,8 @@
 
 .rumor-card {
     width: 680px;
-    max-height: 92dvh;
-    max-width: 92vw;
+    max-height: calc(92 * var(--game-vh));
+    max-width: calc(92 * var(--game-vw));
     background: rgba(14, 19, 32, 0.96);
     border: 1.5px solid rgba(255, 171, 0, 0.5);
     border-radius: 18px;
@@ -50,8 +50,8 @@
 
 /* Header */
 .rumor-decoder-picker {
-    width: min(600px, 90vw);
-    max-height: 85dvh;
+    width: min(600px, calc(90 * var(--game-vw)));
+    max-height: calc(85 * var(--game-vh));
     overflow-y: auto;
     box-sizing: border-box;
     background: #0e1320;
@@ -285,7 +285,7 @@
     user-select: none;
 }
 .rumor-reliability-note { font-size: 11px; line-height: 1.6; color: #99a5b6; }
-@media (max-width: 600px) {
+@container game-viewport (max-width: 600px) {
     .rumor-doc-text { font-size: 17px; min-height: 180px; }
     .rumor-stock-highlight { flex-wrap: wrap; gap: 10px; }
     .rumor-header-title { font-size: 12px; }

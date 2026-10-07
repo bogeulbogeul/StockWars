@@ -6,6 +6,8 @@ marketEngine.stopEngine();
 function market() {
     const engine = new MarketEngine();
     engine.stopEngine();
+    engine.stocks.clear();
+    engine.tutorialStockId = 'TEST';
     engine.stocks.set('TEST', { id: 'TEST', name: '테스트', price: 1000, prevPrice: 1000 });
     engine.isTutorialActive = true;
     return engine;

@@ -59,6 +59,9 @@ export class TradeModal {
         this.btnQtyPlus = document.getElementById('btnQtyPlus');
         this.btnQtyMax = document.getElementById('btnQtyMax');
         this.modalTotalCost = document.getElementById('modalTotalCost');
+        this.orderTypeInput = document.getElementById('tradeOrderType');
+        this.limitPriceInput = document.getElementById('tradeLimitPrice');
+        this.pendingOrdersElement = document.getElementById('tradePendingOrders');
         this.btnBuyExecute = document.getElementById('btnBuyExecute');
         this.btnSellExecute = document.getElementById('btnSellExecute');
         this.btnSellExecute?.parentElement?.insertAdjacentHTML('beforebegin', '<p id="sellOrderPreview" aria-live="polite"></p>');
@@ -82,6 +85,12 @@ export class TradeModal {
     }
 
     initEventListeners() {
+        this.orderTypeInput.addEventListener('change', () => {
+            this.limitPriceInput.disabled = this.orderTypeInput.value !== 'limit';
+            if (!this.limitPriceInput.value) this.limitPriceInput.value = this.callbacks.getStock?.(this.selectedStockId)?.price || '';
+            this.updateCalculations();
+        });
+        this.limitPriceInput.addEventListener('input', () => this.updateCalculations());
         this.btnClose?.addEventListener('click', () => this.close());
 
         this.modal?.addEventListener('click', (e) => {
@@ -182,18 +191,18 @@ export class TradeModal {
         this.btnBuyExecute?.addEventListener('click', () => {
             if (this.isShortMode) {
                 if (this.callbacks.onShort) {
-                    this.callbacks.onShort(this.selectedStockId, this.tradeQty, this.selectedLeverage);
+                    this.callbacks.onShort(this.selectedStockId, this.tradeQty, this.selectedLeverage, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null);
                 }
             } else {
                 if (this.callbacks.onBuy) {
-                    this.callbacks.onBuy(this.selectedStockId, this.tradeQty, this.selectedLeverage);
+                    this.callbacks.onBuy(this.selectedStockId, this.tradeQty, this.selectedLeverage, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null);
                 }
             }
         });
 
         this.btnSellExecute?.addEventListener('click', () => {
             if (this.callbacks.onSell) {
-                this.callbacks.onSell(this.selectedStockId, this.tradeQty);
+                this.callbacks.onSell(this.selectedStockId, this.tradeQty, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null);
             }
         });
     }
@@ -220,6 +229,7 @@ export class TradeModal {
     open(stockId) {
         this.selectedStockId = stockId || 'CLOUDBERRY';
         this.tradeQty = 1;
+        this.orderTypeInput.value = 'market'; this.limitPriceInput.value = ''; this.limitPriceInput.disabled = true;
         if (this.tradeQtyInput) this.tradeQtyInput.value = 1;
         this.modal?.classList.remove('hidden');
         this.updateContent();
@@ -326,6 +336,15 @@ export class TradeModal {
             }
         }
 
+        const pending = this.callbacks.getPendingOrders?.(this.selectedStockId) || [];
+        this.pendingOrdersElement.replaceChildren();
+        for (const order of pending) {
+            const row = document.createElement('div');
+            row.textContent = (order.side === 'buy' ? '매수' : order.side === 'sell' ? '매도' : '공매도') + ' ' + order.qty + '주 · ' + order.price.toLocaleString() + 'G 대기 ';
+            const cancel = document.createElement('button'); cancel.type = 'button'; cancel.textContent = '취소';
+            cancel.onclick = () => { this.callbacks.onCancelOrder?.(order.id); this.updateContent(); };
+            row.append(cancel); this.pendingOrdersElement.append(row);
+        }
         this.updateCalculations();
     }
 
@@ -357,6 +376,12 @@ export class TradeModal {
     }
 
     updateCalculations() {
+        const tutorialError = this.callbacks.getTutorialOrderError?.(this.selectedStockId, this.isShortMode);
+        if (this.btnBuyExecute) {
+            this.btnBuyExecute.disabled = !!tutorialError;
+            this.btnBuyExecute.title = tutorialError || '';
+            this.btnBuyExecute.textContent = tutorialError ? '안나 추천 종목을 선택해 주세요' : this.isShortMode ? '공매도 진입 (SHORT)' : '매수 (BUY)';
+        }
         const preview = this.callbacks.getSellPreview?.(this.selectedStockId, this.tradeQty);
         if (this.sellOrderPreview && preview) {
             this.sellOrderPreview.textContent = preview.quantity > 0
@@ -366,7 +391,7 @@ export class TradeModal {
         if (!this.callbacks.getStock) return;
         const stock = this.callbacks.getStock(this.selectedStockId);
         if (stock && this.modalTotalCost) {
-            const totalMargin = Math.round((stock.price * this.tradeQty) / this.selectedLeverage);
+            const totalMargin = Math.round(((this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) || 0 : stock.price) * this.tradeQty) / this.selectedLeverage);
             const modeStr = this.isShortMode ? '공매도' : '현물 매수';
             this.modalTotalCost.textContent = `${totalMargin.toLocaleString()} Gold (${modeStr} ${this.selectedLeverage}x)`;
         }

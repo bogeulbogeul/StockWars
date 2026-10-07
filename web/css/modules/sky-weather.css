@@ -144,7 +144,7 @@
         transform: translateX(-350px);
     }
     to {
-        transform: translateX(calc(100vw + 350px));
+        transform: translateX(calc(calc(100 * var(--game-vw)) + 350px));
     }
 }
 
@@ -191,7 +191,7 @@
         opacity: 1;
     }
     100% {
-        transform: translateY(calc(100vh + 60px)) rotate(-12deg);
+        transform: translateY(calc(calc(100 * var(--game-vh)) + 60px)) rotate(-12deg);
         opacity: 0;
     }
 }
@@ -235,13 +235,13 @@
         opacity: 0.9;
     }
     50% {
-        transform: translateY(50vh) translateX(25px) rotate(180deg);
+        transform: translateY(calc(50 * var(--game-vh))) translateX(25px) rotate(180deg);
     }
     85% {
         opacity: 0.9;
     }
     100% {
-        transform: translateY(calc(100vh + 30px)) translateX(-15px) rotate(360deg);
+        transform: translateY(calc(calc(100 * var(--game-vh)) + 30px)) translateX(-15px) rotate(360deg);
         opacity: 0;
     }
 }

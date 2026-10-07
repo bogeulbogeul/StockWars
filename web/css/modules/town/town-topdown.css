@@ -84,7 +84,7 @@
     content: ''; position: absolute; top: -1270px; left: 0; right: 0; height: 120px;
     background: #abb99a; border-bottom: 10px solid #b8c2a6;
 }
-@media (max-width: 700px) {
+@container game-viewport (max-width: 700px) {
     .town-channel-header-hud { left: 12px; right: 12px; gap: 8px; }
     .town-hud-badge { display: none; }
     .town-hud-left { padding: 8px; }
@@ -93,3 +93,9 @@
 
 /* Pause scenery without deleting the original assets or layout data. */
 .town-scenery-paused .town-ground-platform { display: none; }
+
+.town-tutorial-direction, .town-tutorial-destination { position: absolute; transform: translate(-50%, -100%); z-index: 12000; pointer-events: none; color: #fff4b1; background: #172331ed; border: 2px solid #f5cd55; border-radius: 12px; padding: 8px 12px; white-space: nowrap; font-size: 18px; font-weight: 700; box-shadow: 0 3px 14px #0008; }
+.town-tutorial-direction { display: flex; align-items: center; gap: 12px; }
+.town-tutorial-direction[hidden], .town-tutorial-destination[hidden] { display: none; }
+.town-tutorial-arrow { display: inline-block; font-size: 32px; line-height: 1; color: #ffdf64; }
+.town-tutorial-arrow[hidden] { display: none; }

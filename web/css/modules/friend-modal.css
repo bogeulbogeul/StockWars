@@ -4,8 +4,8 @@
 
 .friend-modal-container {
     width: 680px;
-    max-width: 95vw;
-    max-height: 85vh;
+    max-width: calc(95 * var(--game-vw));
+    max-height: calc(85 * var(--game-vh));
     background: rgba(18, 22, 32, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
@@ -401,7 +401,7 @@
 /* Rumor Share Selector Modal */
 .rumor-share-box {
     width: 480px;
-    max-width: 90vw;
+    max-width: calc(90 * var(--game-vw));
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;

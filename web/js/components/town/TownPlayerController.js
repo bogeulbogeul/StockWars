@@ -1,8 +1,9 @@
+import { gameKey } from '../../app/GameKeys.js';
 import { TOWN_WORLD_WIDTH, TOWN_WORLD_HEIGHT, townEntrance } from '../../data/townLayout.js';
 import { TOWN_LANDSCAPE } from '../../data/townLandscape.js';
 import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES } from '../../data/townWorldData.js';
 
-const MOVE_KEYS = ['arrowleft', 'arrowright', 'arrowup', 'arrowdown', 'a', 'd', 'w', 's'];
+const MOVE_KEYS = ['a', 'd', 'w', 's'];
 
 // Screen-aligned RPG movement. Positions refer to the player's feet.
 export class TownPlayerController {
@@ -23,7 +24,7 @@ export class TownPlayerController {
 
     handleKeyDown(e) {
         if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
-        const key = e.key.toLowerCase();
+        const key = gameKey(e);
         if (key === 'shift') this.keysHeld.add(key);
         if (MOVE_KEYS.includes(key)) {
             e.preventDefault?.();
@@ -34,7 +35,7 @@ export class TownPlayerController {
         }
     }
 
-    handleKeyUp(e) { this.keysHeld.delete(e.key.toLowerCase()); }
+    handleKeyUp(e) { this.keysHeld.delete(gameKey(e)); }
 
     stopResting() {
         this.isResting = false;
@@ -78,10 +79,10 @@ export class TownPlayerController {
     update(dt, width = window.innerWidth, height = window.innerHeight) {
         let dx = 0, dy = 0;
         if (!this.isResting) {
-            if (this.keysHeld.has('a') || this.keysHeld.has('arrowleft')) dx--;
-            if (this.keysHeld.has('d') || this.keysHeld.has('arrowright')) dx++;
-            if (this.keysHeld.has('w') || this.keysHeld.has('arrowup')) dy--;
-            if (this.keysHeld.has('s') || this.keysHeld.has('arrowdown')) dy++;
+            if (this.keysHeld.has('a')) dx--;
+            if (this.keysHeld.has('d')) dx++;
+            if (this.keysHeld.has('w')) dy--;
+            if (this.keysHeld.has('s')) dy++;
         }
         const oldX = this.charPosX, oldY = this.charPosY;
         const running = this.keysHeld.has('shift');

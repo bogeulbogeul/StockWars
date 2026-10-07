@@ -574,7 +574,7 @@
 .bubble-member-option { display: flex; align-items: center; gap: 10px; padding: 9px 0; color: #e1d6ee; font-size: 12px; }
 .bubble-member-option input { accent-color: #b48de0; }
 .bubble-member-option small { display: block; margin-top: 4px; color: #9686a7; font-size: 10px; }
-.bubble-inventory-picker { width: min(340px, calc(100vw - 48px)); max-height: 70vh; padding: 18px; border: 1px solid #63507e; border-radius: 18px; background: #1b2030; color: #eee7fa; box-shadow: 0 20px 60px #0008; }
+.bubble-inventory-picker { width: min(340px, calc(calc(100 * var(--game-vw)) - 48px)); max-height: calc(70 * var(--game-vh)); padding: 18px; border: 1px solid #63507e; border-radius: 18px; background: #1b2030; color: #eee7fa; box-shadow: 0 20px 60px #0008; }
 .bubble-inventory-picker::backdrop { background: #080b16b3; }
 .bubble-inventory-picker > p { font-size: 12px; line-height: 1.6; }
 .bubble-picker-items { display: grid; gap: 8px; margin-top: 16px; }

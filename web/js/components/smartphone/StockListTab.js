@@ -118,6 +118,7 @@ export class StockListTab {
     }
 
     updateState(state) {
+        this.tutorialStockId = state.tutorialStockId;
         if (!state) return;
         this.renderTickerMarquee(state.cipherIndex);
         this.renderStockList(state.stocks);
@@ -140,6 +141,7 @@ export class StockListTab {
 
     renderStockList(stocks, recentlyViewedIds = []) {
         this.latestStocks = stocks || [];
+        const tutorialId = this.tutorialStockId;
         if (!this.dom.stockListContainer) return;
         const query = (this.dom.searchInput?.value || '').toLowerCase().trim();
 
@@ -172,6 +174,13 @@ export class StockListTab {
             return 0;
         });
 
+        // Keep Anna's recommendation visible even under search/sector/favorite filters.
+        const recommended = this.latestStocks.find(s => s.id === tutorialId);
+        if (recommended) {
+            const index = filtered.findIndex(s => s.id === tutorialId);
+            if (index >= 0) filtered.splice(index, 1);
+            filtered.unshift(recommended);
+        }
         if (filtered.length === 0) {
             this.dom.stockListContainer.innerHTML = `
                 <div class="empty-list-msg">
@@ -190,11 +199,12 @@ export class StockListTab {
             const isFav = this.favorites && this.favorites.has(s.id);
 
             return `
-                <div class="stock-item-row" data-id="${s.id}">
+                <div class="stock-item-row ${s.id === tutorialId ? 'tutorial-recommended-stock' : ''}" data-id="${s.id}">
                     <div class="item-left">
                         <div class="item-name-area">
                             <button class="item-fav-btn ${isFav ? 'active' : ''}" data-fav-id="${s.id}" title="관심 종목 토글">⭐</button>
                             <span class="item-name">${s.name}</span>
+                            ${s.id === tutorialId ? '<span class="tutorial-stock-badge">안나 추천</span>' : ''}
                             <span class="item-code">${s.id}</span>
                             <span class="sector-tag" style="background:${sec.bg}; color:${sec.color}">${sec.name}</span>
                         </div>

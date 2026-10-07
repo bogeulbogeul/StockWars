@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * InventoryModal Component
  * Unity equivalent: UIInventoryModal.cs / ItemStorageKernel.cs
@@ -38,11 +39,11 @@ export class InventoryModal {
                     <div class="inventory-header">
                         <div class="inventory-title-group">
                             <span class="inventory-header-icon">🎒</span>
-                            <span class="inventory-title-text">소지품 인벤토리 <span style="font-size: 11px; opacity: 0.7; font-family: var(--font-mono); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-left: 6px;">TAB</span></span>
+                            <span class="inventory-title-text">소지품 인벤토리 <span style="font-size: 11px; opacity: 0.7; font-family: var(--font-mono); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-left: 6px;">I</span></span>
                         </div>
                         <div class="inventory-meta-group">
                             <span class="inventory-capacity-badge" id="invCapacityBadge">보관함 8 / 24</span>
-                            <button class="inventory-close-btn" id="btnCloseInventory" title="닫기 (ESC / TAB)">✕</button>
+                            <button class="inventory-close-btn" id="btnCloseInventory" title="닫기 (I)">✕</button>
                         </div>
                     </div>
 
@@ -108,18 +109,10 @@ export class InventoryModal {
             this.renderGrid();
         });
 
-        // Global hotkeys (Tab to toggle, ESC to close, I to toggle)
+        // I is the sole inventory shortcut; Tab retains normal focus navigation.
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                if (!e.target.matches('input, textarea')) {
-                    e.preventDefault();
-                    this.toggle();
-                }
-            } else if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) {
-                this.close();
-            } else if ((e.key === 'i' || e.key === 'I') && !e.target.matches('input, textarea')) {
-                this.toggle();
-            }
+            if (gameKey(e) !== 'i' || e.repeat || e.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+            e.preventDefault(); this.toggle();
         });
     }
 

@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * ParkLogisticsTutorial Component
  * Manager Park (비트 물류 관리소장 박씨) Visual Novel Onboarding Guide for Logistics Mini-Game
@@ -53,7 +54,7 @@ export class ParkLogisticsTutorial {
                         <div class="vn-dialogue-body">
                             <div class="vn-dialogue-text" id="vnParkDialogueText">대사를 불러오는 중...</div>
                             <div class="vn-indicator-row">
-                                <div class="vn-step-tracker" id="vnParkStepTracker">물류 현장 가이드 (1/5)</div>
+                                <div class="vn-step-tracker" id="vnParkStepTracker">물류 현장 가이드</div>
                                 <span class="vn-next-indicator" id="vnParkNextIndicator">▼</span>
                             </div>
                         </div>
@@ -119,12 +120,12 @@ export class ParkLogisticsTutorial {
             this.finish();
         });
 
-        // Keyboard navigation: Enter / Space / NumpadEnter to advance dialogue
+        // Keyboard navigation: Enter to advance dialogue
         window.addEventListener('keydown', (e) => {
             if (!this.isActive || this.overlay?.classList.contains('hidden')) return;
-            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+            if (['BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
-            if (e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter' || e.key === ' ' || e.code === 'Space') {
+            if (gameKey(e) === 'enter' && !e.repeat) {
                 e.preventDefault();
                 e.stopPropagation();
                 this.handleAdvance();
@@ -142,79 +143,41 @@ export class ParkLogisticsTutorial {
     }
 
     buildScenario(nickname = '신입') {
-        return [
-            // STEP 1: 박씨의 현장 오리엔테이션
-            {
-                id: 'park_intro',
-                expression: 'neutral',
-                speaker: "관리소장 박씨",
-                text: `어이, ${nickname}! 증시에서 제대로 털리고 땡전 한 푼 없어서 찾아온 거냐? 쯧쯧... 여기선 차트 속 가짜 숫자 말고 네 몸뚱이로 정직하게 뛰어 번 돈이 최고다. 장갑 단단히 껴라!`,
-                tracker: "1/5 • 현장 오리엔테이션",
-                targetSelector: null,
-                onEnter: () => {
-                    this.cleanupHighlights();
-                }
-            },
+        const base = { speaker: '관리소장 박씨', expression: 'neutral' };
+        const steps = [{ ...base, id: 'park_intro', tracker: '준비 • 운반 연습',
+            text: nickname + '! 처음엔 상자 하나부터 옮겨 보자. 네 번 왕복하며 익힐 거다. 연습 중엔 시간이 줄지 않고, 연습 물량은 실전 점수에 들어가지 않아. [다음 ▶]을 눌러 시작해.' }];
+        for (const [index, count] of [1, 2, 3, 4].entries()) {
+            steps.push({ ...base, id: 'practice_pickup_' + index, tracker: (index + 1) + '/4 • 상자 ' + count + '개 싣기',
+                practice: 'pickup', count,
+                text: (index === 0 ? '오른쪽 상자 앞에 서 있어. ' : '잘 내렸다! [D] 키로 오른쪽 상자까지 돌아가. ')
+                    + '[W] 키를 ' + count + '번 눌러 상자 ' + count + '개를 실어 봐. 한 번 누르면 하나씩 올라간다.',
+                targetSelector: '#logisticsBoxesZone' });
+            steps.push({ ...base, id: 'practice_deliver_' + index, tracker: (index + 1) + '/4 • 트럭까지 운반',
+                practice: 'deliver', count,
+                text: count + '개 실었군! [A] 키로 왼쪽 트럭까지 옮겨. 트럭 앞에 닿으면 자동으로 내려놓는다. '
+                    + (count === 4 ? '4개가 최대 적재량이다. 가장 많이 옮기지만 가장 잘 흔들리지. Shift 없이 천천히 가고, 위험 게이지가 높으면 멈춰서 낮춰.' : count >= 2 ? '많이 쌓을수록 흔들리니 [파손 위험] 게이지를 봐. 처음엔 Shift 없이 천천히 가.' : '처음엔 Shift를 누르지 말고 천천히 가 봐.'),
+                targetSelector: '#logisticsTruckZone' });
+        }
+        steps.push({ ...base, expression: 'smile', id: 'park_ready', tracker: '연습 완료 • 실전 준비',
+            text: '이제 실전이다! 많이 실어 안전하게 옮길수록 높은 점수를 받는다. 흔들리면 잠깐 멈춰. 준비됐으면 아래 버튼을 눌러 60초 작업을 시작해!',
+            actionBtnText: '🚀 60초 실전 상하차 시작!' });
+        return steps;
+    }
 
-            // STEP 2: 상자 집기 및 최대 4단 스택 조작
-            {
-                id: 'park_box_stack',
-                expression: 'neutral',
-                speaker: "관리소장 박씨",
-                text: `우선 [D] 키로 우측 끝 파렛트까지 가라! 상자 앞에서 [W] 키나 [상자 더 쌓기] 버튼을 누르면 최대 4단까지 실을 수 있어. 많이 질수록 효율은 좋지만 무게 때문에 휘청거리니 명심해!`,
-                tracker: "2/5 • 상자 집기 & 다중 적재",
-                targetSelector: '#logisticsBoxesZone',
-                onEnter: () => {
-                    this.cleanupHighlights();
-                    this.highlightElement('#logisticsBoxesZone');
-                    this.highlightElement('#boxesTargetIndicator');
-                }
-            },
-
-            // STEP 3: 이동 및 파손 위험 게이지 관리
-            {
-                id: 'park_balance_damage',
-                expression: 'angry',
-                speaker: "관리소장 박씨",
-                text: `상자를 들었으면 [A] 키로 좌측 트럭을 향해 달려! [Shift]로 질주할 수 있지만, 급커브를 돌거나 너무 빠르면 [파손 위험] 게이지가 치솟아 박스가 와장창 깨지니까 완급 조절 잘해라!`,
-                tracker: "3/5 • 운반 & 파손 게이지 관리",
-                targetSelector: '#sensitivityGaugeContainer',
-                onEnter: () => {
-                    this.cleanupHighlights();
-                    this.highlightElement('#sensitivityGaugeContainer');
-                }
-            },
-
-            // STEP 4: 트럭 하차 및 루프
-            {
-                id: 'park_truck_unload',
-                expression: 'neutral',
-                speaker: "관리소장 박씨",
-                text: `좌측 화물 트럭 적재함 앞에 도착하면 자동으로 하차 완료다! 짐을 내리고 빈손이 되면 다시 오른쪽으로 쏜살같이 뛰어가서 새 상자를 채워오는 걸 반복하는 거지!`,
-                tracker: "4/5 • 트럭 하차 & 적재",
-                targetSelector: '#logisticsTruckZone',
-                onEnter: () => {
-                    this.cleanupHighlights();
-                    this.highlightElement('#logisticsTruckZone');
-                    this.highlightElement('#truckTargetIndicator');
-                }
-            },
-
-            // STEP 5: 정산 등급 및 특급 찌라시 보상
-            {
-                id: 'park_reward_rumor',
-                expression: 'smile',
-                speaker: "관리소장 박씨",
-                text: `제한 시간은 딱 60초다! S등급을 찍으면 일당 800 Gold에 듬뿍 얹어주고, 가끔 화물 상자 속에 숨겨진 '시장 특급 찌라시'도 건질 수 있다. 자, 실력 한번 보여봐라!`,
-                tracker: "5/5 • 정산 등급 & 찌라시 보너스",
-                actionBtnText: "🚀 60초 실전 상하차 시작!",
-                targetSelector: '#logisticsTimerText',
-                onEnter: () => {
-                    this.cleanupHighlights();
-                    this.highlightElement('.logistics-stats-group');
-                }
-            }
-        ];
+    get isPracticeStep() { return this.isActive && !!this.steps[this.currentStepIdx]?.practice; }
+    get practiceCount() { return this.steps[this.currentStepIdx]?.count || 1; }
+    observePractice(carriedCount) {
+        const step = this.steps[this.currentStepIdx];
+        if (this.isActive && step?.practice === 'pickup' && carriedCount === step.count) this.nextStep();
+    }
+    notifyDelivery(count) {
+        const step = this.steps[this.currentStepIdx];
+        if (!this.isActive || step?.practice !== 'deliver') return;
+        if (count === step.count) this.nextStep();
+        else this.showStep(this.currentStepIdx - 1);
+    }
+    notifyCrash() {
+        if (this.isPracticeStep && this.steps[this.currentStepIdx].practice === 'deliver') this.showStep(this.currentStepIdx - 1);
     }
 
     start(nickname = '신입') {
@@ -237,6 +200,9 @@ export class ParkLogisticsTutorial {
 
         this.currentStepIdx = idx;
         const step = this.steps[idx];
+        this.cleanupHighlights();
+        this.callbacks.onStepChanged?.(step);
+        if (step.targetSelector) this.highlightElement(step.targetSelector, false);
         if (this.portraitImage) {
             const expression = step.expression || 'neutral';
             this.portraitImage.src = `assets/characters/manager-park/park-dialogue-${expression}-v1.png`;
@@ -260,6 +226,11 @@ export class ParkLogisticsTutorial {
             if (this.nextIndicator) this.nextIndicator.classList.remove('hidden');
             if (this.btnNext) this.btnNext.classList.remove('hidden');
         }
+
+        if (step.practice) {
+            if (this.btnNext) this.btnNext.disabled = true;
+            this.nextIndicator?.classList.add('hidden');
+        } else if (this.btnNext) this.btnNext.disabled = false;
 
         // Trigger onEnter hook
         if (step.onEnter) {
@@ -314,6 +285,7 @@ export class ParkLogisticsTutorial {
         }
 
         const step = this.steps[this.currentStepIdx];
+        if (step?.practice) return;
         if (step?.actionBtnText) {
             this.finish();
             return;

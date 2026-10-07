@@ -4,8 +4,8 @@
 
 .ranking-modal-container {
     width: 640px;
-    max-width: 95vw;
-    max-height: 80vh;
+    max-width: calc(95 * var(--game-vw));
+    max-height: calc(80 * var(--game-vh));
     background: rgba(15, 23, 42, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;

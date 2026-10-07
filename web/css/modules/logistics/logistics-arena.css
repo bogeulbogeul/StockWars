@@ -6,8 +6,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     background: rgba(4, 8, 16, 0.88);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -27,9 +27,9 @@
 
 .logistics-game-window {
     width: 1080px;
-    max-width: 95vw;
+    max-width: calc(95 * var(--game-vw));
     height: 640px;
-    max-height: 92vh;
+    max-height: calc(92 * var(--game-vh));
     background: #090e17;
     border: 2px solid rgba(0, 229, 255, 0.35);
     border-radius: 18px;

@@ -1,5 +1,5 @@
 /* Paper number slip inside the existing dark inventory shell. */
-.item-center.lotto-only { max-height:94vh; }
+.item-center.lotto-only { max-height:calc(94 * var(--game-vh)); }
 .item-center.lotto-only main > :not(#item-lotto),.item-center.lotto-only > .item-center-feedback { display:none; }
 .item-center.lotto-only > header { position:sticky; top:-22px; z-index:2; padding:10px 0; background:#101b27; }
 .item-center.lotto-only > header h2 { font-size:18px; }
@@ -44,8 +44,8 @@
 .lotto-prize { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; }
 .lotto-history { margin:20px 0; padding:16px; border:1px solid #39505e; border-radius:8px; }.lotto-history summary { cursor:pointer; font-size:13px; }.lotto-history > div { padding-top:14px; }
 .item-center .lotto-footnote { color:#8ea4b3; font-size:11px; }.lotto-empty { padding:35px 20px; border:1px dashed #526778; border-radius:10px; text-align:center; line-height:2; }
-@media(max-width:540px) {
- .item-center { padding:14px; width:96vw; max-height:94dvh; }
+@container game-viewport (max-width:540px) {
+ .item-center { padding:14px; width:calc(96 * var(--game-vw)); max-height:calc(94 * var(--game-vh)); }
  .lotto-hero h3 { font-size:21px; }.lotto-hero img { width:45px; }
  .lotto-meta { flex-direction:column; gap:6px; }
  .lotto-ticket-head,.lotto-ticket-body { padding:16px 12px; }

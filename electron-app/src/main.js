@@ -1,11 +1,18 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, session } = require('electron');
+const { resetTestStorage } = require('./test-reset.cjs');
 const path = require('node:path');
 const fs = require('node:fs');
 const { PresenceClient } = require('./presence-client.cjs');
 let win, presence;
 let quitting = false;
+let tutorialActive = false;
 const hasLock = app.requestSingleInstanceLock();
 if (!hasLock) app.quit();
+
+function serverConfig() {
+  const configRoot = app.isPackaged ? process.resourcesPath : app.getAppPath();
+  return JSON.parse(fs.readFileSync(path.join(configRoot, 'server-config.json'), 'utf8'));
+}
 
 function serverUrl() {
   const configRoot = app.isPackaged ? process.resourcesPath : app.getAppPath();
@@ -19,9 +26,18 @@ function serverUrl() {
 }
 
 if (hasLock) app.whenReady().then(async () => {
+  // Testing starts clean on every process launch, while in-session refresh preserves progress.
+  if (serverConfig().resetGameplayOnLaunch === true) {
+    try { await resetTestStorage(session.defaultSession); }
+    catch (error) { dialog.showErrorBox('테스트 초기화 실패', '기존 데이터 초기화를 확인하지 못해 실행을 중단합니다.'); app.quit(); return; }
+  }
   let url = '';
   try { url = serverUrl(); } catch (error) { dialog.showErrorBox('서버 설정 오류', error.message); }
   presence = new PresenceClient({ url, tokenFile: path.join(app.getPath('userData'), 'presence-session.json') });
+  if (serverConfig().deleteTestUserOnExit === true && presence.token) {
+    try { await presence.stop({ deleteUser: true }); }
+    catch (error) { dialog.showErrorBox('온라인 테스트 초기화 실패', error.message); quitting = true; app.quit(); return; }
+  }
   // Stay offline at the title screen until the player selects a game mode.
   presence.localMode = true;
   presence.start();
@@ -34,8 +50,14 @@ if (hasLock) app.whenReady().then(async () => {
     ? presence.setLocalMode(enabled) : { error: '잘못된 모드입니다.' });
   ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && nickname.length <= 100
     ? presence.command('nickname', undefined, { nickname }) : { error: '잘못된 닉네임입니다.' });
+  ipcMain.handle('app:tutorial-active', (event, active) => {
+    if (!trusted(event) || typeof active !== 'boolean') return { error: '접근 불가' };
+    tutorialActive = active;
+    return { success: true };
+  });
   ipcMain.handle('app:quit', (event) => {
     if (!trusted(event)) return { error: '접근 불가' };
+    if (tutorialActive) return { error: '튜토리얼 완료 후 게임을 종료할 수 있어요.' };
     app.quit();
     return { success: true };
   });
@@ -64,5 +86,12 @@ app.on('before-quit', event => {
   if (!presence || quitting) return;
   event.preventDefault();
   quitting = true;
-  Promise.race([presence.stop(), new Promise(resolve => setTimeout(resolve, 1500))]).finally(() => app.quit());
+  const cleanup = async () => {
+    // Stop renderer writes before clearing its storage.
+    if (win && !win.isDestroyed()) win.destroy();
+    try { await presence.stop({ deleteUser: serverConfig().deleteTestUserOnExit === true }); }
+    catch (error) { dialog.showErrorBox('온라인 테스트 기록 삭제 실패', error.message + '\n다음 실행 시 다시 삭제를 시도합니다.'); }
+    if (serverConfig().resetGameplayOnLaunch === true) await resetTestStorage(session.defaultSession);
+  };
+  cleanup().catch(error => dialog.showErrorBox('테스트 초기화 실패', error.message)).finally(() => app.quit());
 });

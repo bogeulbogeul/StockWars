@@ -1,4 +1,4 @@
-.item-center { color:#eaf3f3; background:#101b27; border:1px solid #397c82; border-radius:16px; width:min(860px,92vw); max-height:88vh; padding:22px; margin:auto; }
+.item-center { color:#eaf3f3; background:#101b27; border:1px solid #397c82; border-radius:16px; width:min(860px,calc(92 * var(--game-vw))); max-height:calc(88 * var(--game-vh)); padding:22px; margin:auto; }
 .item-center::backdrop { background:#000b; }
 .item-center header { display:flex; align-items:center; justify-content:space-between; }
 .item-center section { border-top:1px solid #39505e; padding:16px 0; }

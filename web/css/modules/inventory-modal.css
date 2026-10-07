@@ -4,9 +4,9 @@
 
 .inventory-card {
     width: 920px;
-    max-width: 95vw;
+    max-width: calc(95 * var(--game-vw));
     height: 640px;
-    max-height: 90vh;
+    max-height: calc(90 * var(--game-vh));
     background: rgba(14, 18, 28, 0.94);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);

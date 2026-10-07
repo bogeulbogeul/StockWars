@@ -1,4 +1,4 @@
-.settings-dialog { box-sizing: border-box; width: min(480px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); margin: auto; padding: 26px; overflow-y: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
+.settings-dialog { box-sizing: border-box; width: min(480px, calc(calc(100 * var(--game-vw)) - 32px)); max-height: calc(calc(100 * var(--game-vh)) - 40px); margin: auto; padding: 26px; overflow-y: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
 .settings-dialog::backdrop { background: #030912b8; backdrop-filter: blur(6px); }
 .settings-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
 .settings-header span { color: #66d9d1; font-size: 10px; letter-spacing: 2px; font-weight: 700; }

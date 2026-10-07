@@ -47,7 +47,7 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-main);
     font-family: var(--font-sans);
-    min-height: 100vh;
+    min-height: calc(100 * var(--game-vh));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +57,7 @@ body {
 
 #app {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100 * var(--game-vh));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,3 +79,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-cyan);
 }
+
+/* Logical viewport shared by fixed overlays, dialogs and in-world HUD. */
+html { container-name: game-viewport; container-type: size; overflow: hidden;
+    --game-vw: 1vw; --game-vh: 1vh; --game-vmin: 1vmin; --game-vmax: 1vmax; --game-ui-scale: 1;
+}
+body, #app { height: 100%; min-height: 100%; }
+body { overflow: hidden; }

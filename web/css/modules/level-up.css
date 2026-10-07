@@ -1,6 +1,6 @@
-.level-up-notice { margin: auto; padding: 0; border: 0; max-width: calc(100vw - 24px); max-height: calc(100dvh - 32px); background: transparent; color: #fff; font-family: inherit; overflow-y: auto; border-radius: 24px; }
+.level-up-notice { margin: auto; padding: 0; border: 0; max-width: calc(calc(100 * var(--game-vw)) - 24px); max-height: calc(calc(100 * var(--game-vh)) - 32px); background: transparent; color: #fff; font-family: inherit; overflow-y: auto; border-radius: 24px; }
 .level-up-notice::backdrop { background: #030912ba; backdrop-filter: blur(5px); }
-.level-up-card { position: relative; text-align: center; width: min(420px, calc(100vw - 40px)); box-sizing: border-box; padding: 36px 24px; border: 2px solid #ffd76a; border-radius: 24px; background: linear-gradient(145deg, #263747f5, #101827fa); box-shadow: 0 0 70px #ffc64077, 0 24px 80px #0009; animation: level-up-arrive 500ms ease-out; }
+.level-up-card { position: relative; text-align: center; width: min(420px, calc(calc(100 * var(--game-vw)) - 40px)); box-sizing: border-box; padding: 36px 24px; border: 2px solid #ffd76a; border-radius: 24px; background: linear-gradient(145deg, #263747f5, #101827fa); box-shadow: 0 0 70px #ffc64077, 0 24px 80px #0009; animation: level-up-arrive 500ms ease-out; }
 .level-up-heading { color: #ffd76a; letter-spacing: 6px; font-size: 15px; font-weight: 800; }
 .level-up-card h2 { margin: 14px 0; font-size: 36px; color: #fff3ba; }
 .level-up-card .level-up-number { font-size: 32px; font-weight: 800; color: #ffd76a; margin: 14px 0; }
@@ -15,6 +15,6 @@
 .level-up-card .level-up-confirm { width: 100%; }
 .level-up-confirm:disabled { opacity: .45; cursor: default; }
 @media (prefers-reduced-motion: reduce) { .level-up-card { animation: none; } }
-.level-up-burst { position: absolute; font-size: min(85vw, 700px); color: #ffd76a33; animation: level-up-glow 2s ease-in-out infinite; }
+.level-up-burst { position: absolute; font-size: min(calc(85 * var(--game-vw)), 700px); color: #ffd76a33; animation: level-up-glow 2s ease-in-out infinite; }
 @keyframes level-up-arrive { from { opacity: 0; transform: scale(.7) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 @keyframes level-up-glow { 50% { transform: rotate(15deg) scale(1.1); opacity: .5; } }

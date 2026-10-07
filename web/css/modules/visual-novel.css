@@ -6,8 +6,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     pointer-events: none;
     z-index: 11000;
     display: flex;
@@ -275,7 +275,7 @@ body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) 
 }
 
 /* Side-docked Companion Layout when Smartphone is Active (prevents covering bottom navigation bar) */
-@media (min-width: 920px) {
+@container game-viewport (min-width: 920px) {
     body.phone-view-active .vn-tutorial-overlay {
         align-items: flex-end;
         justify-content: flex-start;
@@ -323,7 +323,7 @@ body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) 
     }
 }
 
-@media (max-width: 919px) {
+@container game-viewport (max-width: 919px) {
     body.phone-view-active .vn-tutorial-overlay {
         align-items: flex-start;
         justify-content: center;
@@ -614,10 +614,10 @@ body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-step-tracker {
 body.modal-active #annaTutorialOverlay .vn-dialogue-box,
 body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-box {
     gap: 12px !important;
-    max-height: calc(100dvh - 100px);
+    max-height: calc(calc(100 * var(--game-vh)) - 100px);
     overflow-y: auto;
     box-sizing: border-box;
-    max-width: calc(100vw - 32px) !important;
+    max-width: calc(calc(100 * var(--game-vw)) - 32px) !important;
 }
 
 .vn-action-area.hidden {
@@ -707,7 +707,7 @@ svg .tutorial-target-shake {
 
 .vn-theme-park .vn-dialogue-box {
     width: 1040px !important;
-    max-width: 93vw !important;
+    max-width: calc(93 * var(--game-vw)) !important;
     min-height: 60px !important;
     padding: 10px 20px !important;
     gap: 16px !important;
@@ -736,8 +736,8 @@ svg .tutorial-target-shake {
 }
 
 #parkTutorialOverlay .vn-portrait-avatar {
-    width: clamp(80px, 12vw, 144px) !important;
-    height: clamp(80px, 12vw, 144px) !important;
+    width: clamp(80px, calc(12 * var(--game-vw)), 144px) !important;
+    height: clamp(80px, calc(12 * var(--game-vw)), 144px) !important;
     overflow: hidden;
     border-radius: 12px;
     background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(45, 25, 5, 0.9) 70%) !important;

@@ -1,3 +1,4 @@
+import { gameKey } from '../../app/GameKeys.js';
 /**
  * VivianStoreModal Component
  * Controller for Vivian's General Store (비비안 잡화점 내부)
@@ -98,7 +99,7 @@ export class VivianStoreModal {
             const rect = this.interiorEl.getBoundingClientRect();
             this.player.moveTo((e.clientX - rect.left) / rect.width * 1536, (e.clientY - rect.top) / rect.height * 1024);
         });
-        window.addEventListener('keyup', e => this.player.keys.delete(e.key.toLowerCase()));
+        window.addEventListener('keyup', e => this.player.keys.delete(gameKey(e)));
         window.addEventListener('blur', () => this.player.stop());
         document.addEventListener('visibilitychange', () => this.player.stop());
         this.btnClose?.addEventListener('click', () => this.showInterior());
@@ -167,7 +168,7 @@ export class VivianStoreModal {
             e.stopImmediatePropagation();
             if (this.receiptEl && !this.receiptEl.hidden) {
                 e.preventDefault();
-                if (!e.repeat && ['Escape','Enter',' '].includes(e.key)) this.hideReceipt();
+                if (!e.repeat && gameKey(e)==='enter') this.hideReceipt();
                 return;
             }
             if (this.roomEditor?.active) {
@@ -175,8 +176,8 @@ export class VivianStoreModal {
                 return;
             }
             if (!this.isShopping) {
-                const key = e.key.toLowerCase();
-                if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift'].includes(key)) {
+                const key = gameKey(e);
+                if (['w', 'a', 's', 'd', 'shift'].includes(key)) {
                     e.preventDefault();
                     this.player.keys.add(key);
                 }

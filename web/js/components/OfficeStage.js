@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * OfficeStage Component
  * Web rooftop office with layered room and building artwork.
@@ -148,20 +149,20 @@ export class OfficeStage {
             triggerAnnaInteraction();
         });
 
-        // 3. Continuous Keyboard Tracking (WASD / Arrow Keys & F Key for Door Interaction)
+        // 3. Continuous Keyboard Tracking (WASD & F Key for Door Interaction)
         window.addEventListener('keydown', (e) => {
             if (this.furnitureEditMode) return;
             if (this.stageContainer?.classList.contains('hidden')) return;
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
-            const key = e.key.toLowerCase();
-            const validMovementKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'];
+            const key = gameKey(e);
+            const validMovementKeys = ['w', 'a', 's', 'd'];
 
             if (validMovementKeys.includes(key)) {
                 e.preventDefault();
                 this.keysHeld.add(key);
                 this.targetTile = null; // Keyboard immediately overrides mouse path
-            } else if (key === 'f' || key === 'enter') {
+            } else if (key === 'f') {
                 if (e.repeat) return;
                 if (this.isNearDoor) {
                     e.preventDefault();
@@ -174,7 +175,7 @@ export class OfficeStage {
         });
 
         window.addEventListener('keyup', (e) => {
-            const key = e.key.toLowerCase();
+            const key = gameKey(e);
             this.keysHeld.delete(key);
         });
 
@@ -212,10 +213,10 @@ export class OfficeStage {
         let inputScreenX = 0;
         let inputScreenY = 0;
 
-        if (this.keysHeld.has('w') || this.keysHeld.has('arrowup')) inputScreenY -= 1;
-        if (this.keysHeld.has('s') || this.keysHeld.has('arrowdown')) inputScreenY += 1;
-        if (this.keysHeld.has('a') || this.keysHeld.has('arrowleft')) inputScreenX -= 1;
-        if (this.keysHeld.has('d') || this.keysHeld.has('arrowright')) inputScreenX += 1;
+        if (this.keysHeld.has('w')) inputScreenY -= 1;
+        if (this.keysHeld.has('s')) inputScreenY += 1;
+        if (this.keysHeld.has('a')) inputScreenX -= 1;
+        if (this.keysHeld.has('d')) inputScreenX += 1;
 
         let moveDirX = 0;
         let moveDirY = 0;

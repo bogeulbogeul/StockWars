@@ -342,7 +342,7 @@ export function getSmartphoneShellHtml() {
             </div>
         </div>
 
-        <button id="floatingPhoneBtn" class="floating-phone-btn" title="스마트폰 HTS 열기 (단축키: P / M / ESC)">
+        <button id="floatingPhoneBtn" class="floating-phone-btn" title="스마트폰 HTS 열기 (단축키: P)">
             <div class="mini-phone-shell">
                 <div class="mini-phone-speaker"></div>
                 <div class="mini-phone-screen"></div>

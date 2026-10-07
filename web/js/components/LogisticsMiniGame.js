@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * LogisticsMiniGame Component
  * 2D Side-View Bit Logistics Cargo Delivery Mini-Game
@@ -10,7 +11,7 @@
  */
 
 import { getLogisticsModalHtml } from './logistics/LogisticsTemplate.js?v=art-2';
-import { calculateLogisticsGrade, calculateLogisticsSettlement } from './logistics/LogisticsRewardEngine.js';
+import { deliveryScore, calculateLogisticsGrade, calculateLogisticsSettlement } from './logistics/LogisticsRewardEngine.js';
 import { LogisticsAudio } from './logistics/LogisticsAudio.js';
 import { LogisticsPhysicsEngine } from './logistics/LogisticsPhysicsEngine.js';
 import { LogisticsRenderer } from './logistics/LogisticsRenderer.js?v=art-2';
@@ -32,7 +33,7 @@ export class LogisticsMiniGame {
         // Session Specs (GDD)
         this.sessionDuration = 60; // 60 seconds
         this.timeLeft = this.sessionDuration;
-        this.loadedCount = 0;
+        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0;
         this.brokenCount = 0;
 
         // Player Physical Position & Movement
@@ -121,13 +122,20 @@ export class LogisticsMiniGame {
 
         // Initialize Manager Park Visual Novel Tutorial
         this.parkTutorial = new ParkLogisticsTutorial(this.container, {
+            onStepChanged: step => {
+                this.isRunning = !!step.practice;
+                this.keysHeld.clear(); this.velocityX = 0;
+                this.updateHUD();
+            },
             onComplete: () => {
+                this.resetPracticeCargo();
                 this.hasSeenTutorial = true;
-                this.startSession();
+                if (this.isOpen) this.startSession();
             },
             onSkip: () => {
+                this.resetPracticeCargo();
                 this.hasSeenTutorial = true;
-                this.startSession();
+                if (this.isOpen) this.startSession();
             }
         });
     }
@@ -141,15 +149,13 @@ export class LogisticsMiniGame {
         this.btnBottomStackMore?.addEventListener('click', () => this.tryStackBox());
 
         window.addEventListener('keydown', (e) => {
-            if (!this.isOpen || this.isGameOver || this.parkTutorial?.isActive) return;
-            const code = e.code || '';
-            const k = (e.key || '').toLowerCase();
+            if (!this.isOpen || this.isGameOver || this.parkTutorial?.isActive && !this.parkTutorial.isPracticeStep) return;
 
-            const isLeft = code === 'KeyA' || code === 'ArrowLeft' || k === 'a' || k === 'ㅁ' || k === 'arrowleft';
-            const isRight = code === 'KeyD' || code === 'ArrowRight' || k === 'd' || k === 'ㅇ' || k === 'arrowright';
-            const isShift = code === 'ShiftLeft' || code === 'ShiftRight' || e.shiftKey || k === 'shift';
-            const isStack = code === 'KeyW' || code === 'KeyE' || code === 'KeyF' || code === 'Space' || code === 'ArrowUp' ||
-                            k === 'w' || k === 'e' || k === 'f' || k === ' ' || k === 'ㅈ' || k === 'ㄷ' || k === 'ㄹ' || k === 'arrowup';
+            if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+            const isLeft = gameKey(e) === 'a';
+            const isRight = gameKey(e) === 'd';
+            const isShift = gameKey(e) === 'shift';
+            const isStack = gameKey(e) === 'w' && !e.repeat;
 
             if (isLeft) {
                 this.keysHeld.add('left');
@@ -169,9 +175,9 @@ export class LogisticsMiniGame {
             const code = e.code || '';
             const k = (e.key || '').toLowerCase();
 
-            const isLeft = code === 'KeyA' || code === 'ArrowLeft' || k === 'a' || k === 'ㅁ' || k === 'arrowleft';
-            const isRight = code === 'KeyD' || code === 'ArrowRight' || k === 'd' || k === 'ㅇ' || k === 'arrowright';
-            const isShift = code === 'ShiftLeft' || code === 'ShiftRight' || !e.shiftKey || k === 'shift';
+            const isLeft = gameKey(e) === 'a';
+            const isRight = gameKey(e) === 'd';
+            const isShift = gameKey(e) === 'shift';
 
             if (isLeft) {
                 this.keysHeld.delete('left');
@@ -185,12 +191,23 @@ export class LogisticsMiniGame {
         });
     }
 
+    resetPracticeCargo() {
+        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0; this.brokenCount = 0; this.damageGauge = 0;
+        this.charX = 780; this.velocityX = 0; this.carriedCount = 1; this.hasBox = true;
+        this.stackCooldown = 0; this.timeLeft = this.sessionDuration;
+        this.updateHUD(); this.updateCharacterVisual(); this.updateTruckBoxesGraphic();
+    }
+
     startTutorial() {
         // Pause timer & game physics
         this.isRunning = false;
         if (this.timerInterval) clearInterval(this.timerInterval);
         this.keysHeld.clear();
+        if (this.animFrameId) cancelAnimationFrame(this.animFrameId);
+        this.resetPracticeCargo(); this.carriedCount = 0; this.hasBox = false;
+        this.updateCharacterVisual(); this.lastTimestamp = performance.now();
         this.parkTutorial?.start(this.userNickname || '신입');
+        this.animFrameId = requestAnimationFrame(this.gameLoop.bind(this));
     }
 
     open(options = {}) {
@@ -200,7 +217,7 @@ export class LogisticsMiniGame {
         this.isOpen = true;
         this.isGameOver = false;
         this.timeLeft = this.sessionDuration;
-        this.loadedCount = 0;
+        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0;
         this.brokenCount = 0;
         this.damageGauge = 0;
         this.charX = 780; // Start at box pallet
@@ -255,6 +272,7 @@ export class LogisticsMiniGame {
             }
         }, 1000);
 
+        if (this.animFrameId) cancelAnimationFrame(this.animFrameId);
         // Game Loop Animation Frame
         this.animFrameId = requestAnimationFrame(this.gameLoop.bind(this));
     }
@@ -270,6 +288,7 @@ export class LogisticsMiniGame {
             this.updateSensitivity(dt);
             this.checkTriggers();
             this.updateCharacterVisual();
+            this.parkTutorial?.observePractice(this.carriedCount);
         }
 
         this.animFrameId = requestAnimationFrame(this.gameLoop.bind(this));
@@ -301,6 +320,7 @@ export class LogisticsMiniGame {
         this.hasBox = false;
         this.carriedCount = 0;
         this.brokenCount += lost;
+        this.parkTutorial?.notifyCrash();
         this.damageGauge = 0;
 
         this.playTone(110, 0.4, 'sawtooth', 0.45);
@@ -321,6 +341,7 @@ export class LogisticsMiniGame {
     tryStackBox() {
         if (!this.isOpen || this.isGameOver || !this.isRunning) return;
         if (this.stackCooldown > 0) return;
+        if (this.parkTutorial?.isActive && (!this.parkTutorial.isPracticeStep || this.carriedCount >= this.parkTutorial.practiceCount)) return;
 
         // Expanded generous hitbox: Right side warehouse pallet area
         if (this.charX >= this.boxesZoneX - 100) {
@@ -381,7 +402,7 @@ export class LogisticsMiniGame {
             this.playTone(220, 0.08, 'sine', 0.15);
             const pop = document.createElement('div');
             pop.className = 'logistics-success-fx';
-            pop.textContent = '📍 우측 파렛트로 이동 후 [W / Space] 키를 누르세요!';
+            pop.textContent = '📍 우측 파렛트로 이동 후 [W] 키를 누르세요!';
             pop.style.color = '#94a3b8';
             pop.style.fontSize = '12px';
             pop.style.left = `${this.charX - 40}px`;
@@ -396,10 +417,13 @@ export class LogisticsMiniGame {
         if (this.hasBox && this.carriedCount > 0 && this.charX <= this.truckZoneX) {
             const delivered = this.carriedCount;
             this.loadedCount += delivered;
+            this.deliveryPoints += deliveryScore(delivered);
+            if (delivered >= 3) this.highStackDeliveries++;
             this.hasBox = false;
             this.carriedCount = 0;
             this.damageGauge = 0;
 
+            this.parkTutorial?.notifyDelivery(delivered);
             // Arpeggio audio fanfare based on delivered count!
             this.playTone(659, 0.12, 'sine', 0.3);
             setTimeout(() => this.playTone(784, 0.15, 'sine', 0.35), 80);
@@ -411,8 +435,8 @@ export class LogisticsMiniGame {
             const pop = document.createElement('div');
             pop.className = 'logistics-success-fx';
             pop.textContent = delivered > 1 
-                ? `🚛 대량 하차 성공! (+${delivered}개 적재, 총 ${this.loadedCount}개)`
-                : `🚛 적재 성공! (${this.loadedCount}개)`;
+                ? `🚛 대량 하차 성공! (+${delivered}개 적재, 총 ${this.loadedCount}개, +${deliveryScore(delivered)}점)`
+                : `🚛 적재 성공! (+1점, 총 ${this.loadedCount}개)`;
             pop.style.left = `${this.charX - 20}px`;
             pop.style.bottom = `180px`;
             this.canvasArea.appendChild(pop);
@@ -433,16 +457,17 @@ export class LogisticsMiniGame {
     }
 
     updateHUD() {
-        this.timerText.textContent = `${this.timeLeft}s`;
-        this.loadedText.textContent = `${this.loadedCount} / 18`;
+        this.timerText.textContent = this.parkTutorial?.isActive ? '연습 · 시간 제한 없음' : `${this.timeLeft}s`;
+        this.loadedText.textContent = `${this.deliveryPoints} / 26점 · 3개 이상 배송 ${this.highStackDeliveries}/2회`;
         this.brokenText.textContent = `${this.brokenCount}`;
 
-        const currentGrade = calculateLogisticsGrade(this.loadedCount);
+        const currentGrade = calculateLogisticsGrade(this.deliveryPoints, this.highStackDeliveries);
         this.gradeText.textContent = currentGrade;
         if (currentGrade === 'S') this.gradeText.style.color = '#ec4899';
         else if (currentGrade === 'A') this.gradeText.style.color = '#00e5ff';
         else if (currentGrade === 'B') this.gradeText.style.color = '#10b981';
         else this.gradeText.style.color = '#94a3b8';
+        if (this.parkTutorial?.isActive) { this.gradeText.textContent = '연습'; this.loadedText.textContent = '연습 ' + this.loadedCount + '개'; }
     }
 
     endSession() {
@@ -451,7 +476,7 @@ export class LogisticsMiniGame {
         if (this.timerInterval) clearInterval(this.timerInterval);
 
         const isFirstTime = this.completedJobsCount === 0;
-        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt);
+        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt, this.deliveryPoints, this.highStackDeliveries);
         this.completedJobsCount++;
         const { grade, goldReward, expReward, hasRumor, isJackpot, gradeLabel } = result;
         const parkExpression = isJackpot || grade === 'S' || grade === 'A'
@@ -475,7 +500,7 @@ export class LogisticsMiniGame {
         // Update Settlement Card
         this.settlementStamp.className = `settlement-stamp grade-${grade}`;
         this.settlementStamp.textContent = grade;
-        this.resLoadedCount.textContent = `${this.loadedCount} 개`;
+        this.resLoadedCount.textContent = `${this.loadedCount}개 · ${this.deliveryPoints}점 · 3개 이상 배송 ${this.highStackDeliveries}회`;
         this.resBrokenCount.textContent = `${this.brokenCount} 개`;
         this.resFinalGrade.textContent = `${gradeLabel}${result.isNight ? ' · 야간 찌라시 확률 2배' : ''}`;
         this.resFinalGrade.style.color = grade === 'S' ? '#ec4899' : (grade === 'A' ? '#00e5ff' : (grade === 'B' ? '#10b981' : '#94a3b8'));

@@ -75,7 +75,7 @@ export class LogisticsRenderer {
                     }
                     if (boxesTargetIndicator) {
                         boxesTargetIndicator.style.opacity = '1';
-                        boxesTargetIndicator.innerHTML = `<span>📦 [W • Space] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`;
+                        boxesTargetIndicator.innerHTML = `<span>📦 [W] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`;
                     }
                 } else {
                     if (charStateBadge) {
@@ -89,7 +89,7 @@ export class LogisticsRenderer {
                 }
                 if (btnBottomStackMore) {
                     btnBottomStackMore.disabled = false;
-                    btnBottomStackMore.innerHTML = `<span>📦 상자 +1단 쌓기 [W / Space] (${game.carriedCount}/${game.maxStack})</span>`;
+                    btnBottomStackMore.innerHTML = `<span>📦 상자 +1단 쌓기 [W] (${game.carriedCount}/${game.maxStack})</span>`;
                 }
             } else {
                 if (charStateBadge) {
@@ -116,11 +116,11 @@ export class LogisticsRenderer {
             if (isNearPallet) {
                 if (charStateBadge) {
                     charStateBadge.className = 'logistics-current-state-badge empty';
-                    charStateBadge.innerHTML = '<span>📦 파렛트 도착! ➔ [W / Space] 키로 상자를 집으세요!</span>';
+                    charStateBadge.innerHTML = '<span>📦 파렛트 도착! ➔ [W] 키로 상자를 집으세요!</span>';
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '1';
-                    boxesTargetIndicator.innerHTML = '<span>📦 [W • Space] 상자 집기!</span>';
+                    boxesTargetIndicator.innerHTML = '<span>📦 [W] 상자 집기!</span>';
                 }
             } else {
                 if (charStateBadge) {
@@ -134,7 +134,7 @@ export class LogisticsRenderer {
             }
             if (btnBottomStackMore) {
                 btnBottomStackMore.disabled = false;
-                btnBottomStackMore.innerHTML = `<span>📦 상자 집기 [W / Space]</span>`;
+                btnBottomStackMore.innerHTML = `<span>📦 상자 집기 [W]</span>`;
             }
         }
     }

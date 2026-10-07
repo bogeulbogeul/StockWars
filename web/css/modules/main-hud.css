@@ -346,21 +346,27 @@
     letter-spacing: -0.2px;
 }
 
-@media (max-width: 1350px) {
+@container game-viewport (max-width: 1350px) {
     .main-hud-bar { padding-inline: 12px; }
     .hud-group { gap: 8px; }
     .hud-nav-btn { padding-inline: 9px; }
 }
 
-@media (max-width: 1100px) {
+@container game-viewport (max-width: 1100px) {
     .main-hud-bar { justify-content: center; }
     .hud-menu-group { justify-content: center; }
 }
 
-@media (max-width: 600px) {
+@container game-viewport (max-width: 600px) {
     .main-hud-bar { width: calc(100% - 16px); margin-top: 8px; }
     .hud-time-group, .hud-asset-group { justify-content: center; }
     .hud-item { padding-inline: 8px; }
     .hud-asset-group { border-radius: var(--radius-md); }
     .hud-asset-item .asset-val { font-size: 12px; }
 }
+
+.detail-chart-crosshair { position: absolute; inset: 0; pointer-events: none; z-index: 90; }
+.chart-guide-vertical, .chart-guide-horizontal, .chart-guide-point { position: absolute; display: block; pointer-events: none; }
+.chart-guide-vertical { width: 0; border-left: 1.5px dashed #e2efff; }
+.chart-guide-horizontal { height: 0; border-top: 1.5px dashed #e2efff; }
+.chart-guide-point { width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid #00e5ff; transform: translate(-50%, -50%); box-shadow: 0 0 7px #00e5ff; }

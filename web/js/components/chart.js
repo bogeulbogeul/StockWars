@@ -15,7 +15,7 @@ export class StockChartRenderer {
 
     resize() {
         if (!this.canvas || !this.canvas.parentElement) return;
-        const rect = this.canvas.parentElement.getBoundingClientRect();
+        const rect = { width: this.canvas.parentElement.clientWidth, height: this.canvas.parentElement.clientHeight };
         this.canvas.width = rect.width * (window.devicePixelRatio || 1);
         this.canvas.height = rect.height * (window.devicePixelRatio || 1);
         this.canvas.style.width = `${rect.width}px`;

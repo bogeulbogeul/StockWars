@@ -58,7 +58,7 @@ export class StorePlayerController {
         // Spend the remaining frame time on the next waypoint instead of
         // dropping it at every tile centre, which makes click movement stutter.
         dt = Math.max(0, Math.min(dt, 0.05));
-        const keyboard=['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].some(key=>this.keys.has(key));
+        const keyboard=['w','a','s','d'].some(key=>this.keys.has(key));
         if(keyboard||!this.target){this.updateStep(dt);return;}
         const speed=this.keys.has('shift')?504:280;
         let remaining=dt,moved=false;
@@ -73,8 +73,8 @@ export class StorePlayerController {
     }
     updateStep(dt) {
         dt = Math.max(0, Math.min(dt, 0.05));
-        let dx = Number(this.keys.has('d') || this.keys.has('arrowright')) - Number(this.keys.has('a') || this.keys.has('arrowleft'));
-        let dy = Number(this.keys.has('s') || this.keys.has('arrowdown')) - Number(this.keys.has('w') || this.keys.has('arrowup'));
+        let dx = Number(this.keys.has('d')) - Number(this.keys.has('a'));
+        let dy = Number(this.keys.has('s')) - Number(this.keys.has('w'));
         const speed = this.keys.has('shift') ? 504 : 280;
         if (dx || dy) { this.target = null; this.waypoints = []; }
         else if (this.target) { dx = this.target.x - this.x; dy = this.target.y - this.y; }

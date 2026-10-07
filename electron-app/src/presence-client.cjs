@@ -16,7 +16,7 @@ class PresenceClient {
     const response = await this.fetch(new URL('/api/presence', this.url), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}) },
-      body: JSON.stringify({ action, channelId, pose }), signal: AbortSignal.timeout(5000)
+      body: JSON.stringify({ action, channelId, pose }), signal: AbortSignal.timeout(action === 'forget' ? 20000 : 5000)
     });
     const data = await response.json();
     if (!response.ok) throw Object.assign(new Error(data.error || '서버 연결 실패'), { status: response.status });
@@ -24,6 +24,7 @@ class PresenceClient {
       this.token = data.token;
       fs.writeFileSync(this.tokenFile, JSON.stringify({ token: this.token }), { mode: 0o600 });
     }
+    if (action === 'forget') return data;
     this.snapshot = { totalCCU: data.totalCCU, capacity: data.capacity, channels: data.channels,
       currentChannelId: data.currentChannelId, playerId: data.playerId, players: data.players, ping: Date.now() - started };
     this.error = null;
@@ -122,7 +123,18 @@ class PresenceClient {
     };
     this.queue = this.queue.then(operation, operation); return this.queue;
   }
-  stop() { clearInterval(this.timer); return this.command('disconnect'); }
+  async stop({ deleteUser = false } = {}) {
+    clearInterval(this.timer);
+    if (!deleteUser) return this.command('disconnect');
+    // Drain pending writes before deleting, without creating a replacement session.
+    await this.queue;
+    if (!this.token || !this.url) return { success: true };
+    const result = await this.request('forget');
+    if (!result.deleted) throw new Error('서버 업데이트가 필요합니다. 유저 기록 삭제를 확인하지 못했습니다.');
+    fs.rmSync(this.tokenFile, { force: true });
+    this.token = null; this.snapshot = null;
+    return { success: true };
+  }
   localState() {
     return { snapshot: { local: true, totalCCU: 1, capacity: 1,
       channels: [{ id: 'town-1', name: '로컬 개발자 마을', users: this.desiredChannel ? 1 : 0 }],

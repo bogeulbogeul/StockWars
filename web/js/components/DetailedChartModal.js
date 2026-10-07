@@ -1,3 +1,5 @@
+import { chartPeriod, chartTimeLabel, createChartHistory } from '../engine/ChartTimeframes.js';
+import { elementScale } from '../app/GameViewport.js';
 /**
  * DetailedChartModal Component
  * Unity equivalent: UIDetailedChartModal.cs
@@ -13,6 +15,7 @@ export class DetailedChartModal {
         this.selectedStockId = 'CLOUDBERRY';
         this.selectedTimeframe = '1D';
         this.points = [];
+        this.fallbackHistory = new Map();
 
         this.render();
         this.initDOM();
@@ -56,6 +59,7 @@ export class DetailedChartModal {
                         </div>
                     </div>
 
+                    <p class="chart-color-guide">미국 시장 방식 · <span style="color:#00e5ff">▲ 상승</span> / <span style="color:#ff3b5c">▼ 하락</span></p>
                     <!-- Main Horizontal Scrollable Canvas Container -->
                     <div class="detailed-chart-scroll-wrapper" id="detailedChartScrollWrapper">
                         <div class="detailed-canvas-inner" id="detailedCanvasInner">
@@ -75,10 +79,10 @@ export class DetailedChartModal {
                     <!-- Bottom Pill Controls: Timeframe (1D, 1W, 1M, 1Y) -->
                     <div class="chart-controls-bar bottom-controls">
                         <div class="timeframe-selector pill-selector" id="timeframeSelector">
-                            <button class="tf-btn pill-btn active" data-tf="1D">1D</button>
-                            <button class="tf-btn pill-btn" data-tf="1W">1W</button>
-                            <button class="tf-btn pill-btn" data-tf="1M">1M</button>
-                            <button class="tf-btn pill-btn" data-tf="1Y">1Y</button>
+                            <button class="tf-btn pill-btn active" data-tf="1D">1일</button>
+                            <button class="tf-btn pill-btn" data-tf="1W">1주</button>
+                            <button class="tf-btn pill-btn" data-tf="1M">1달</button>
+                            <button class="tf-btn pill-btn" data-tf="1Y">1년</button>
                         </div>
                     </div>
                 </div>
@@ -107,12 +111,20 @@ export class DetailedChartModal {
         this.ttTime = document.getElementById('ttTime');
         this.ttPrice = document.getElementById('ttPrice');
         this.ttChange = document.getElementById('ttChange');
+        this.crosshair = document.createElement('div');
+        this.crosshair.className = 'detail-chart-crosshair hidden';
+        this.crosshair.innerHTML = '<span class="chart-guide-vertical"></span><span class="chart-guide-horizontal"></span><span class="chart-guide-point"></span>';
+        this.canvas.parentElement.append(this.crosshair);
     }
 
     initEventListeners() {
         this.btnClose?.addEventListener('click', () => this.close());
         this.modal?.addEventListener('click', (e) => {
             if (e.target === this.modal) this.close();
+        });
+
+        window.addEventListener('resize', () => {
+            if (!this.modal?.classList.contains('hidden')) this.renderCanvasChart();
         });
 
         // Timeframe selector
@@ -135,14 +147,14 @@ export class DetailedChartModal {
             const onStart = (clientX) => {
                 isDragging = true;
                 wrapper.classList.add('active-drag');
-                startX = clientX - wrapper.offsetLeft;
+                startX = clientX;
                 scrollLeft = wrapper.scrollLeft;
             };
 
             const onMove = (clientX) => {
                 if (!isDragging) return;
-                const x = clientX - wrapper.offsetLeft;
-                wrapper.scrollLeft = scrollLeft - (x - startX) * 1.5;
+                const x = clientX;
+                wrapper.scrollLeft = scrollLeft - (x - startX) / elementScale(wrapper) * 1.5;
             };
 
             const onEnd = () => {
@@ -163,8 +175,14 @@ export class DetailedChartModal {
         if (this.canvas) {
             const handleHover = (e) => {
                 if (!this.points || this.points.length === 0) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const view = this.scrollWrapper.getBoundingClientRect();
+                if (clientX < view.left || clientX > view.right || clientY < view.top || clientY > view.bottom) return;
+                this.lastChartPointer = { clientX, clientY };
                 const rect = this.canvas.getBoundingClientRect();
-                const mouseX = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                const mouseX = (clientX - rect.left) / rect.width * this.canvas.clientWidth;
+                const pixelTolerance = this.canvas.clientWidth / rect.width * 0.5;
 
                 let closest = this.points[0];
                 let minDist = Math.abs(mouseX - closest.x);
@@ -177,10 +195,25 @@ export class DetailedChartModal {
                     }
                 });
 
+                for (const point of this.points) {
+                    if (Math.abs(mouseX - point.x) <= minDist + pixelTolerance) closest = point;
+                }
+                const latest = this.points.at(-1);
+                if (mouseX >= latest.x - pixelTolerance) closest = latest;
                 if (closest && this.tooltip) {
                     this.tooltip.classList.remove('hidden');
-                    this.tooltip.style.left = `${closest.x}px`;
-                    this.tooltip.style.top = `${closest.y - 45}px`;
+                    const plot = this.plotBounds;
+                    this.crosshair.classList.remove('hidden');
+                    const vertical = this.crosshair.querySelector('.chart-guide-vertical');
+                    const horizontal = this.crosshair.querySelector('.chart-guide-horizontal');
+                    const point = this.crosshair.querySelector('.chart-guide-point');
+                    Object.assign(vertical.style, { left: closest.x + 'px', top: plot.top + 'px', height: (plot.bottom - plot.top + 25) + 'px' });
+                    Object.assign(horizontal.style, { left: plot.left + 'px', top: closest.y + 'px', width: (plot.right - plot.left) + 'px' });
+                    Object.assign(point.style, { left: closest.x + 'px', top: closest.y + 'px' });
+                    const left = this.scrollWrapper.scrollLeft + 12;
+                    const right = this.scrollWrapper.scrollLeft + this.scrollWrapper.clientWidth - this.tooltip.offsetWidth - 12;
+                    this.tooltip.style.left = Math.max(left, Math.min(right, closest.x + 16)) + 'px';
+                    this.tooltip.style.top = Math.max(8, closest.y - this.tooltip.offsetHeight - 16) + 'px';
 
                     if (this.ttTime) this.ttTime.textContent = closest.time || '시간';
                     if (this.ttPrice) this.ttPrice.textContent = `${closest.price.toLocaleString()} G`;
@@ -192,9 +225,15 @@ export class DetailedChartModal {
                 }
             };
 
-            this.canvas.addEventListener('mousemove', handleHover);
-            this.canvas.addEventListener('mouseleave', () => {
-                this.tooltip?.classList.add('hidden');
+            this.handleChartHover = handleHover;
+            this.scrollWrapper.addEventListener('mousemove', handleHover);
+            this.scrollWrapper.addEventListener('touchmove', handleHover, { passive: true });
+            this.scrollWrapper.addEventListener('scroll', () => {
+                if (this.lastChartPointer) handleHover(this.lastChartPointer);
+            });
+            this.scrollWrapper.addEventListener('mouseleave', () => {
+                this.lastChartPointer = null;
+                this.hideCrosshair();
             });
         }
     }
@@ -212,7 +251,14 @@ export class DetailedChartModal {
         }, 50);
     }
 
+    hideCrosshair() {
+        this.tooltip?.classList.add('hidden');
+        this.crosshair?.classList.add('hidden');
+    }
+
     close() {
+        this.hideCrosshair();
+        this.lastChartPointer = null;
         this.modal?.classList.add('hidden');
     }
 
@@ -259,40 +305,51 @@ export class DetailedChartModal {
 
         const hist = this.callbacks.getPriceHistory ? (this.callbacks.getPriceHistory(this.selectedStockId) || [stock.price]) : [stock.price];
         const ctx = this.canvas.getContext('2d');
-        const width = 2800;
+        const width = this.canvas.clientWidth || 1400;
         const height = 320;
-        this.canvas.width = width;
-        this.canvas.height = height;
+        const density = Math.max(2, window.devicePixelRatio || 1);
+        this.canvas.width = Math.round(width * density);
+        this.canvas.height = Math.round(height * density);
+        ctx.setTransform(density, 0, 0, density, 0, 0);
+        const scale = parseFloat(document.documentElement.style.zoom) || 1;
+        const axisFontSize = Math.max(16, Math.ceil(12 / scale));
 
         ctx.clearRect(0, 0, width, height);
 
-        const padding = { top: 40, right: 80, bottom: 45, left: 40 };
+        const padding = { top: 32, right: Math.max(110, axisFontSize * 6), bottom: 55, left: 50 };
         const chartW = width - padding.left - padding.right;
         const chartH = height - padding.top - padding.bottom;
+        this.plotBounds = { left: padding.left, right: width - padding.right, top: padding.top, bottom: height - padding.bottom };
 
-        // Expanded dataset for rich wide scrolling
-        let expandedPrices = [];
-        let timeLabels = [];
-
-        const totalBars = 80;
-        const base = stock.price;
-
-        for (let i = 0; i < totalBars; i++) {
-            const histIdx = Math.floor((i / totalBars) * hist.length);
-            const val = hist[histIdx] || base;
-            const noise = (Math.sin(i * 0.4) + Math.cos(i * 0.7)) * (base * 0.015);
-            const p = Math.max(10, Math.round(val + noise));
-            expandedPrices.push(p);
-
-            const minOffset = (totalBars - i) * 3;
-            const t = new Date(Date.now() - minOffset * 60 * 1000);
-            timeLabels.push(`${String(t.getHours()).padStart(2, '0')}:${String(t.getMinutes()).padStart(2, '0')}`);
+        if (!this.fallbackHistory.has(stock.id) && !this.callbacks.getChartHistory) this.fallbackHistory.set(stock.id, createChartHistory(stock));
+        const history = this.callbacks.getChartHistory?.(stock.id) || this.fallbackHistory.get(stock.id);
+        const selected = chartPeriod(history, this.selectedTimeframe);
+        if (!selected.samples.length) return;
+        this.visibleHistory = selected.samples;
+        this.hideCrosshair();
+        const expandedPrices = selected.samples.map(p => p.price);
+        const totalBars = expandedPrices.length;
+        const periodDiff = expandedPrices.at(-1) - expandedPrices[0];
+        const periodPct = expandedPrices[0] > 0 ? periodDiff / expandedPrices[0] * 100 : 0;
+        if (this.modalChange) {
+            this.modalChange.textContent = (periodPct >= 0 ? '+' : '') + periodPct.toFixed(2) + '% (' + (periodDiff >= 0 ? '+' : '') + periodDiff + 'G)';
+            this.modalChange.className = 'detail-price-change ' + (periodDiff >= 0 ? 'gainer' : 'loser');
         }
+        if (this.modalHigh) this.modalHigh.textContent = selected.high.toLocaleString() + 'G';
+        if (this.modalLow) this.modalLow.textContent = selected.low.toLocaleString() + 'G';
+        if (this.modalAvg) this.modalAvg.textContent = selected.average.toLocaleString() + 'G';
+        if (this.modalDate) this.modalDate.textContent = '모의 시세 · 최근 ' + selected.period.label;
+        const hint = this.modal?.querySelector('.scroll-navigation-hint span');
+        if (hint) hint.textContent = '◀ 좌우로 이동해 최근 ' + selected.period.label + '의 주가 흐름을 확인하세요 ▶';
 
         const minPrice = Math.min(...expandedPrices) * 0.96;
         const maxPrice = Math.max(...expandedPrices) * 1.04;
         const range = maxPrice - minPrice || 1;
 
+        const firstTime = selected.samples[0].time;
+        const lastTime = selected.samples.at(-1).time;
+        const timeSpan = Math.max(1, lastTime - firstTime);
+        const xForTime = time => padding.left + (time - firstTime) / timeSpan * chartW;
         // Grid Lines
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
         ctx.lineWidth = 1;
@@ -306,36 +363,37 @@ export class DetailedChartModal {
             ctx.lineTo(width - padding.right, y);
             ctx.stroke();
 
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.font = '600 12px "JetBrains Mono", sans-serif';
+            ctx.fillStyle = '#e6edf5';
+            ctx.font = `700 ${axisFontSize}px "JetBrains Mono", monospace`;
             ctx.textAlign = 'right';
             ctx.fillText(`${price.toLocaleString()}G`, width - 15, y + 4);
         }
 
-        for (let i = 0; i < totalBars; i += 6) {
-            const x = padding.left + (i / (totalBars - 1)) * chartW;
+        for (let i = 0; i <= 8; i++) {
+            const time = firstTime + timeSpan * i / 8;
+            const x = xForTime(time);
             ctx.beginPath();
             ctx.moveTo(x, padding.top);
             ctx.lineTo(x, height - padding.bottom);
             ctx.stroke();
 
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.font = '600 11px "JetBrains Mono", sans-serif';
+            ctx.fillStyle = '#e6edf5';
+            ctx.font = `700 ${axisFontSize}px "JetBrains Mono", monospace`;
             ctx.textAlign = 'center';
-            ctx.fillText(timeLabels[i] || '', x, height - 15);
+            ctx.fillText(chartTimeLabel(time, this.selectedTimeframe), x, height - 15);
         }
         ctx.setLineDash([]);
 
         // Points
         this.points = expandedPrices.map((price, idx) => {
-            const x = padding.left + (idx / (totalBars - 1)) * chartW;
+            const x = xForTime(selected.samples[idx].time);
             const y = padding.top + chartH - ((price - minPrice) / range) * chartH;
             const firstPrice = expandedPrices[0];
             const diffPct = firstPrice > 0 ? ((price - firstPrice) / firstPrice) * 100 : 0;
-            return { x, y, price, diffPct, time: timeLabels[idx] };
+            return { x, y, price, diffPct, time: chartTimeLabel(selected.samples[idx].time, this.selectedTimeframe, true) };
         });
 
-        const isPositive = stock.price >= stock.prevPrice;
+        const isPositive = periodDiff >= 0;
         const lineColor = isPositive ? '#00e5ff' : '#ff3b5c';
         const gradTop = isPositive ? 'rgba(0, 229, 255, 0.35)' : 'rgba(255, 59, 92, 0.35)';
 
@@ -364,5 +422,6 @@ export class DetailedChartModal {
         });
         ctx.stroke();
         ctx.shadowBlur = 0;
+        if (this.lastChartPointer) this.handleChartHover?.(this.lastChartPointer);
     }
 }

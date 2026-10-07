@@ -3,8 +3,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     background: rgba(4, 8, 16, 0.85);
     backdrop-filter: blur(12px);
     display: flex;
@@ -20,8 +20,8 @@
 
 .town-billboard-modal-dialog {
     width: 680px;
-    max-width: 92vw;
-    max-height: 85vh;
+    max-width: calc(92 * var(--game-vw));
+    max-height: calc(85 * var(--game-vh));
     background: linear-gradient(180deg, #0e1726 0%, #090e18 100%);
     border: 2px solid var(--accent-cyan);
     border-radius: var(--radius-lg);

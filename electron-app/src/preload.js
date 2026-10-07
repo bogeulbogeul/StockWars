@@ -1,5 +1,6 @@
 const { contextBridge, ipcRenderer } = require('electron');
-contextBridge.exposeInMainWorld('stockWarsApp', {
+contextBridge.exposeInMainWorld('stockWarsDesktop', {
+  setTutorialActive: active => ipcRenderer.invoke('app:tutorial-active', active),
   quit: () => ipcRenderer.invoke('app:quit')
 });
 contextBridge.exposeInMainWorld('stockWarsPresence', {

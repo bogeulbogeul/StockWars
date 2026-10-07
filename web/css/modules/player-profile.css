@@ -1,4 +1,4 @@
-.player-profile-dialog { width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); box-sizing: border-box; margin: auto; padding: 26px; overflow-y: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
+.player-profile-dialog { width: min(520px, calc(calc(100 * var(--game-vw)) - 32px)); max-height: calc(calc(100 * var(--game-vh)) - 40px); box-sizing: border-box; margin: auto; padding: 26px; overflow-y: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
 .player-profile-dialog::backdrop { background: #030912b8; backdrop-filter: blur(6px); }
 .player-profile-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .player-profile-eyebrow { color: #66d9d1; font-size: 10px; letter-spacing: 2px; font-weight: 700; }
@@ -36,4 +36,4 @@
 .player-profile-finances div:first-child dd { color: #9df1e4; font-size: 22px; }
 .player-profile-finances [data-direction="positive"] { color: #ff8196; }
 .player-profile-finances [data-direction="negative"] { color: #7caeff; }
-@media (max-width: 400px) { .player-profile-dialog { padding: 20px; } .player-profile-stats { grid-template-columns: repeat(2, 1fr); } }
+@container game-viewport (max-width: 400px) { .player-profile-dialog { padding: 20px; } .player-profile-stats { grid-template-columns: repeat(2, 1fr); } }

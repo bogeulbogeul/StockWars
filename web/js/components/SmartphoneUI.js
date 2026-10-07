@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * SmartphoneUI Component (스마트폰 OS 쉘 & HTS 마스터 컨트롤러)
  * Unity equivalent: SmartphoneOSController.cs / UIHTSManager.cs
@@ -272,22 +273,17 @@ export class SmartphoneUI {
             });
         }
 
-        // Keyboard Shortcuts: P or M to toggle Smartphone, ESC to minimize
+        // Keyboard Shortcuts: P to toggle Smartphone
         window.addEventListener('keydown', (e) => {
             if (document.body.classList.contains('furniture-edit-active')) return;
-            if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+            if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) {
                 return;
             }
 
-            const key = e.key.toUpperCase();
-            if (key === 'P' || key === 'M') {
+            const key = gameKey(e);
+            if (key === 'p' && !e.repeat) {
                 e.preventDefault();
                 this.togglePhone();
-            } else if (e.key === 'Escape') {
-                if (document.body.classList.contains('phone-view-active')) {
-                    e.preventDefault();
-                    this.minimizePhone();
-                }
             }
         });
     }

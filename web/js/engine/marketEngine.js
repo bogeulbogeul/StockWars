@@ -1,3 +1,4 @@
+import { createChartHistory } from './ChartTimeframes.js';
 /**
  * StockWars Market Engine & Simulation State
  * Unity equivalent: MarketManager.cs / TradeKernel.cs
@@ -20,6 +21,8 @@ export class MarketEngine {
         
         // Portfolio: stockId -> { id, stock, qty, avgPrice, leverage, isShort, collateral, currentVal, profitLoss, profitLossPct }
         this.portfolio = new Map();
+        this.limitOrders = [];
+        this.chartHistory = new Map();
         this.priceHistory = new Map(); // stockId -> array of numbers
         this.listeners = new Set();
         this.tickTimer = null;
@@ -74,15 +77,8 @@ export class MarketEngine {
             else if (stock.tier === 'A') volatility = 0.04;
             else if (stock.tier === 'B') volatility = 0.025;
 
-            let changePct;
-            if (this.isTutorialActive && stock.id === (this.firstTradeLesson?.stockId || this.tutorialStockId)
-                && (!this.firstTradeLesson || this.firstTradeLesson.status === 'watching')) {
-                // Guaranteed positive upward momentum during tutorial! (+1.2% to +3.6% steady tick increase)
-                changePct = 0.012 + Math.random() * 0.024;
-            } else {
-                changePct = (Math.random() - 0.49) * volatility;
-            }
-
+            // Market prices never depend on tutorial progress or recommendation.
+            const changePct = (Math.random() - 0.49) * volatility;
             const newPrice = Math.max(10, Math.round(stock.price * (1 + changePct)));
 
             if (newPrice !== stock.price) {
@@ -105,74 +101,104 @@ export class MarketEngine {
     /**
      * Dynamically determines the most appropriate onboarding tutorial stock based on
      * user profile traits, sector affinity, and Day 1 momentum.
-     * Guarantees positive upward return during the tutorial period.
+     * Recommendation follows current prices; never changes the market.
      */
-    getRecommendedTutorialStock(userProfile = {}) {
-        const traitKey = userProfile?.trait?.key;
-        let candidateId = 'CLOUDBERRY';
-        let recommendationReason = '개장 직후 가장 높은 시장 안정성과 지속적인 상승 모멘텀을 보유한 대표 우량주';
-
-        if (traitKey === 'analysis') {
-            candidateId = 'SYNAPSENET';
-            recommendationReason = '예리한 기술적 분석 지표와 저지연 통신망 특허를 바탕으로 탄탄한 펀더멘털을 갖춘 종목';
-        } else if (traitKey === 'negotiation') {
-            candidateId = 'COZYPAY';
-            recommendationReason = '간편 결제 점유율 1위 및 막대한 수수료 현금 유입을 자랑하는 안정적 핀테크 대장주';
-        } else if (traitKey === 'management') {
-            candidateId = 'STUDIOLUNA';
-            recommendationReason = '신작 글로벌 흥행 기대감과 가파른 영업이익 성장 모멘텀이 돋보이는 중형 유망주';
-        } else if (traitKey === 'recovery') {
-            candidateId = 'FORESTLAB';
-            recommendationReason = '천연 추출 의약품 특허와 안정적인 방어력을 겸비한 지속 성장형 바이오 우량주';
-        } else {
-            // Fallback: choose the stock with the best risk-adjusted price under 1,000G
-            const affordableStocks = Array.from(this.stocks.values()).filter(s => s.price > 100 && s.price <= 1000);
-            if (affordableStocks.length > 0) {
-                candidateId = affordableStocks[0].id;
-                recommendationReason = `${affordableStocks[0].name}의 실시간 수급 동향과 초기 자금(5,000G) 대비 최적의 상승 잠재력`;
-            }
-        }
-
-        const stock = this.stocks.get(candidateId) || Array.from(this.stocks.values())[0];
-        this.tutorialStockId = stock.id;
+    getRecommendedTutorialStock(userProfile = {}, budget = 5000) {
+        this.tutorialProfile = userProfile;
         this.isTutorialActive = true;
+        return this.chooseTutorialStock(budget);
+    }
 
-        // Ensure stock has positive initial momentum
-        if (stock.price <= stock.prevPrice) {
-            stock.prevPrice = Math.round(stock.price * 0.98);
-        }
+    chooseTutorialStock(budget) {
+        const preferred = { analysis: 'SYNAPSENET', negotiation: 'COZYPAY', management: 'STUDIOLUNA', recovery: 'FORESTLAB' }[this.tutorialProfile?.trait?.key] || 'CLOUDBERRY';
+        const affordable = Array.from(this.stocks.values()).filter(s => s.price > 0 && s.price <= budget);
+        const withRoom = affordable.filter(s => s.price <= budget * 0.8);
+        const candidates = withRoom.length ? withRoom : affordable;
+        candidates.sort((a, b) => (b.id === preferred) - (a.id === preferred)
+            || ((b.price - b.prevPrice) / (b.prevPrice || b.price)) - ((a.price - a.prevPrice) / (a.prevPrice || a.price))
+            || a.price - b.price);
+        const stock = candidates[0] || null;
+        this.tutorialStockId = stock?.id || null;
+        return { stock, reason: '현재 시세와 투자 성향을 고려하고 보유 현금으로 1주를 구매할 수 있는 종목' };
+    }
 
-        return {
-            stock: stock,
-            reason: recommendationReason
-        };
+    refreshTutorialRecommendation() {
+        if (!this.isTutorialActive || this.firstTradeLesson) return null;
+        const current = this.stocks.get(this.tutorialStockId);
+        if (current && current.price > 0 && current.price <= this.cash) return null;
+        const oldId = this.tutorialStockId;
+        const recommendation = this.chooseTutorialStock(this.cash);
+        return oldId !== this.tutorialStockId ? recommendation : null;
+    }
+
+    tutorialOrderError(stockId, isShort = false) {
+        if (!this.isTutorialActive) return null;
+        if (!this.tutorialStockId) return '현재 현금으로 구매 가능한 추천 종목을 찾고 있어요. 시세를 다시 확인할 때까지 기다려 주세요.';
+        if (stockId !== this.tutorialStockId) return '튜토리얼 중에는 안나가 추천한 종목만 매수할 수 있어요. 목록의 [안나 추천] 종목을 선택해 주세요.';
+        if (isShort && !this.firstTradeLesson) return '첫 거래는 안나가 추천한 종목의 매수로 진행해 주세요.';
+        return null;
     }
 
     setTutorialActive(isActive) {
         this.isTutorialActive = isActive;
+        if (!isActive) this.tutorialStockId = null;
     }
-
-
-    ensureTutorialAffordability(stockId) {
-        const stock = this.stocks.get(stockId);
-        if (!stock) return 0;
-        if (this.cash < stock.price) {
-            const subsidy = Math.ceil(stock.price - this.cash + 1000);
-            this.cash += subsidy;
-            this.notify();
-            return subsidy;
-        }
-        return 0;
-    }
-
-
 
     subscribe(listener) {
         this.listeners.add(listener);
         return () => this.listeners.delete(listener);
     }
 
+    placeLimitOrder(side, stockId, qty, leverage, price) {
+        const stock = this.stocks.get(stockId);
+        if (!stock || !['buy','sell','short'].includes(side) || !Number.isInteger(qty) || qty < 1 || !Number.isInteger(price) || price < 1 || ![1,2,3,5].includes(leverage))
+            return { success: false, msg: '수량과 지정가는 1 이상의 정수로 입력해 주세요.' };
+        const tutorialError = this.tutorialOrderError(stockId, side === 'short');
+        if (side !== 'sell' && tutorialError) return { success: false, msg: tutorialError };
+        if ((leverage >= 2 || side === 'short') && !this.isLevel10Unlocked) return { success: false, msg: '레벨 10 해금 후 이용 가능합니다.' };
+        if (side !== 'sell' && this.itemEngine && qty > this.itemEngine.orderLimit()) return { success: false, msg: '1회 매수 한도를 초과했습니다.' };
+        if (side === 'sell' && this.getSellPreview(stockId, qty).quantity < qty) return { success: false, msg: '매도할 보유 수량이 부족합니다.' };
+        if (side !== 'sell' && Math.round(price * qty / leverage) > this.cash) return { success: false, msg: '지정가 주문에 필요한 현금이 부족합니다.' };
+        const execute = () => side === 'buy' ? this.buyStock(stockId, qty, leverage) : side === 'short' ? this.shortStock(stockId, qty, leverage) : this.sellStock(stockId, qty);
+        if (side === 'buy' ? stock.price <= price : stock.price >= price) return execute();
+        if (this.limitOrders.length >= 50) return { success: false, msg: '대기 주문은 최대 50개까지 등록할 수 있습니다.' };
+        this.limitOrders.push({ id: crypto.randomUUID(), side, stockId, qty, leverage, price });
+        this.notify();
+        return { success: true, queued: true, msg: '지정가 주문을 등록했습니다. 가격 조건에 도달하면 체결합니다.' };
+    }
+    cancelLimitOrder(id) {
+        this.limitOrders = this.limitOrders.filter(order => order.id !== id);
+        this.notify();
+    }
+    processLimitOrders() {
+        if (this.processingLimits || !this.limitOrders?.length) return;
+        this.processingLimits = true;
+        try {
+            for (const order of [...this.limitOrders]) {
+                const stock = this.stocks.get(order.stockId);
+                if (!stock || !(order.side === 'buy' ? stock.price <= order.price : stock.price >= order.price)) continue;
+                this.limitOrders = this.limitOrders.filter(p => p.id !== order.id);
+                const result = order.side === 'sell' && this.getSellPreview(order.stockId, order.qty).quantity < order.qty
+                    ? { success: false, msg: '매도할 보유 수량이 부족합니다.' }
+                    : order.side === 'buy' ? this.buyStock(order.stockId, order.qty, order.leverage)
+                    : order.side === 'short' ? this.shortStock(order.stockId, order.qty, order.leverage) : this.sellStock(order.stockId, order.qty);
+                this.onLimitOrderResult?.(order, result);
+            }
+        } finally { this.processingLimits = false; }
+    }
+
+    getChartHistory(id) {
+        const stock = this.stocks.get(id);
+        if (!stock) return [];
+        if (!this.chartHistory.has(id)) this.chartHistory.set(id, createChartHistory(stock));
+        const history = this.chartHistory.get(id), last = history.at(-1);
+        if (last.price !== stock.price) history.push({ time: Date.now(), price: stock.price });
+        return history;
+    }
+
     notify() {
+        this.processLimitOrders();
+        for (const id of this.chartHistory.keys()) this.getChartHistory(id);
         const lesson = this.firstTradeLesson;
         if (lesson?.status === 'watching') {
             const stock = this.stocks.get(lesson.stockId);
@@ -226,6 +252,7 @@ export class MarketEngine {
             totalNetWorth: totalNetWorth,
             totalProfitLoss: totalProfitLoss,
             cipherIndex: this.getCipherIndex(),
+            tutorialStockId: this.isTutorialActive ? this.tutorialStockId : null,
             isLevel10Unlocked: this.isLevel10Unlocked
         };
     }
@@ -288,6 +315,9 @@ export class MarketEngine {
     }
 
     buyStock(stockId, qty, leverage = 1) {
+        this.refreshTutorialRecommendation();
+        const tutorialError = this.tutorialOrderError(stockId);
+        if (tutorialError) return { success: false, msg: tutorialError };
         qty = Math.max(1, parseInt(qty) || 1);
         if (this.itemEngine && qty > this.itemEngine.orderLimit()) return { success: false, msg: `1회 매수 한도는 ${this.itemEngine.orderLimit()}주입니다. 안정제로 한도를 늘릴 수 있습니다.` };
         leverage = Math.max(1, parseInt(leverage) || 1);
@@ -390,6 +420,9 @@ export class MarketEngine {
     }
 
     shortStock(stockId, qty, leverage = 1) {
+        this.refreshTutorialRecommendation();
+        const tutorialError = this.tutorialOrderError(stockId, true);
+        if (tutorialError) return { success: false, msg: tutorialError };
         if (!this.isLevel10Unlocked) {
             return { success: false, msg: '공매도는 레벨 10 해금 후 이용 가능합니다!' };
         }

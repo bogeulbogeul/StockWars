@@ -26,7 +26,7 @@ export class TownVendingModal {
         this.dialog.setAttribute('aria-label', '에너지 드링크 자판기');
         const can = new URL('../../../assets/items/vivian-front-v1/item_energy_drink.png', import.meta.url).href;
         this.dialog.innerHTML = `<style>
-        .town-vending-dialog{margin:auto;max-height:calc(100dvh - 24px);overflow:auto;width:min(390px,calc(100vw - 24px));box-sizing:border-box;border:3px solid #397e7c;border-radius:24px;padding:22px;background:#f3ebd5;color:#243c43;box-shadow:inset 0 0 0 6px #d7cbb0,0 20px 80px #0008;font-family:inherit}
+        .town-vending-dialog{margin:auto;max-height:calc(calc(100 * var(--game-vh)) - 24px);overflow:auto;width:min(390px,calc(calc(100 * var(--game-vw)) - 24px));box-sizing:border-box;border:3px solid #397e7c;border-radius:24px;padding:22px;background:#f3ebd5;color:#243c43;box-shadow:inset 0 0 0 6px #d7cbb0,0 20px 80px #0008;font-family:inherit}
         .town-vending-dialog::backdrop{background:#10232aaa}.town-vending-dialog *{box-sizing:border-box}
         .town-vending-dialog h2{margin:4px 0 16px;font-size:21px}.vending-label{font-size:11px;color:#267870;letter-spacing:2px;font-weight:bold}
         .vending-display{padding:10px 14px;border:3px solid #4d6667;border-radius:9px;background:#102d31;color:#9be4c8;font-size:13px;line-height:1.6}

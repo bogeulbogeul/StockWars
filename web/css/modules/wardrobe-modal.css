@@ -3,8 +3,8 @@
    ========================================================================== */
 
 .wardrobe-card {
-    width: min(840px, 94vw);
-    max-height: 88vh;
+    width: min(840px, calc(94 * var(--game-vw)));
+    max-height: calc(88 * var(--game-vh));
     background: linear-gradient(145deg, #0e1520 0%, #151f2e 100%);
     border: 1px solid rgba(0, 229, 255, 0.25);
     border-radius: 16px;
@@ -62,13 +62,13 @@
     display: grid;
     grid-template-columns: 1fr 340px;
     min-height: 480px;
-    max-height: 72vh;
+    max-height: calc(72 * var(--game-vh));
 }
 
-@media (max-width: 768px) {
+@container game-viewport (max-width: 768px) {
     .wardrobe-body {
         grid-template-columns: 1fr;
-        max-height: 80vh;
+        max-height: calc(80 * var(--game-vh));
         overflow-y: auto;
     }
 }

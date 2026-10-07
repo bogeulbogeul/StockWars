@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 /**
  * TownStage Component (RPG 탑다운 마을 무대 컨트롤러)
  * Modular architecture:
@@ -207,7 +208,7 @@ export class TownStage {
             if (this.containerEl?.classList.contains('hidden')) return;
             if (this.callbacks.isInputBlocked?.()) return;
             if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
-            const key = e.key.toLowerCase();
+            const key = gameKey(e);
             if (!this.billboardModal.classList.contains('hidden') && key !== 'escape') return;
             if ((key === 'enter' || key === ' ') && e.target?.closest?.('.town-landscape-bench')) {
                 e.preventDefault();
@@ -376,6 +377,37 @@ export class TownStage {
             tree.classList.toggle('player-behind', behind);
         });
         this.checkProximity();
+        this.updateTutorialDirection();
+    }
+
+    updateTutorialDirection() {
+        const building = TOWN_BUILDINGS.find(b => b.id === this.callbacks.getTutorialDestination?.());
+        if (!building) {
+            if (this.tutorialDirection) this.tutorialDirection.hidden = true;
+            if (this.tutorialDestination) this.tutorialDestination.hidden = true;
+            return;
+        }
+        if (!this.tutorialDirection) {
+            this.tutorialDirection = document.createElement('div');
+            this.tutorialDirection.className = 'town-tutorial-direction';
+            this.tutorialDirection.innerHTML = '<span class="town-tutorial-arrow" aria-hidden="true">➤</span><span class="town-tutorial-direction-text"></span>';
+            this.tutorialDestination = document.createElement('div');
+            this.tutorialDestination.className = 'town-tutorial-destination';
+            this.tutorialDestination.textContent = '📦 비트 물류센터 입구 ▼';
+            this.worldTrackEl.append(this.tutorialDirection, this.tutorialDestination);
+        }
+        const target = townEntrance(building), player = this.playerController;
+        const dx = target.x - player.charPosX, dy = target.y - player.charPosY;
+        const nearby = Math.hypot(dx, dy) <= 90;
+        this.tutorialDirection.hidden = this.tutorialDestination.hidden = nearby;
+        if (nearby) return;
+        this.tutorialDirection.style.left = player.charPosX + 'px';
+        this.tutorialDirection.style.top = (player.charPosY - 120) + 'px';
+        this.tutorialDirection.querySelector('.town-tutorial-arrow').style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
+        this.tutorialDirection.querySelector('.town-tutorial-arrow').hidden = false;
+        this.tutorialDirection.querySelector('.town-tutorial-direction-text').textContent = '물류센터는 이 방향이에요';
+        this.tutorialDestination.style.left = target.x + 'px';
+        this.tutorialDestination.style.top = (target.y - 55) + 'px';
     }
 
     // Complete remote snapshot for the active channel; coordinates use the town ground plane.

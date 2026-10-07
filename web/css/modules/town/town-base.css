@@ -6,8 +6,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     z-index: 1;
     overflow: hidden;
     background: #080c14;
@@ -124,8 +124,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
     overflow: hidden;
     cursor: grab;
 }
@@ -152,7 +152,7 @@
     bottom: 130px;
     left: 0;
     width: 100%;
-    height: clamp(340px, 58vh, 620px);
+    height: clamp(340px, calc(58 * var(--game-vh)), 620px);
     background-image: url('../../../assets/backgrounds/CityBackground.png');
     background-repeat: repeat-x;
     background-position: left bottom;

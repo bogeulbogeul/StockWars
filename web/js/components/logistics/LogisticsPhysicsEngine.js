@@ -35,7 +35,7 @@ export class LogisticsPhysicsEngine {
             const oldFacing = state.charFacing;
             state.charFacing = moveDir;
             if (state.hasBox && oldFacing !== moveDir && Math.abs(state.velocityX) > 80) {
-                const turnShock = 16 + (state.carriedCount * 8);
+                const turnShock = [0, 8, 16, 26, 38][state.carriedCount];
                 state.damageGauge = Math.min(100, state.damageGauge + turnShock);
                 this.onTurnShock();
             }
@@ -60,17 +60,18 @@ export class LogisticsPhysicsEngine {
             state.damageGauge = Math.max(0, state.damageGauge - dt * 100);
             state.wobbleAngle = 0;
         } else {
-            const stackFactor = 1.0 + (state.carriedCount - 1) * 0.9;
+            const dashRisk = [0, 30, 60, 95, 135][state.carriedCount];
+            const walkRisk = [0, 3, 8, 16, 26][state.carriedCount];
             const isMoving = Math.abs(state.velocityX) > 20;
             const isDashing = state.keysHeld.has('shift');
 
             if (isDashing && isMoving) {
-                // Dash buildup: 1 box = 78/s, 2 boxes = 148/s, 3 boxes = 218/s, 4 boxes = 288/s
-                state.damageGauge += dt * 78 * stackFactor;
+                // Higher stacks tolerate less sustained sprinting.
+                state.damageGauge += dt * dashRisk;
                 state.wobbleAngle = Math.sin(performance.now() * 0.025) * (12 + state.carriedCount * 8);
             } else if (isMoving) {
-                // Safe walk buildup
-                state.damageGauge += dt * 18 * stackFactor;
+                // A full normal-speed trip remains safe even with four boxes.
+                state.damageGauge += dt * walkRisk;
                 state.wobbleAngle = Math.sin(performance.now() * 0.015) * (5 + state.carriedCount * 5);
             } else {
                 // Standing still cooldown to stabilize

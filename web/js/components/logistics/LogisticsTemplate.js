@@ -26,8 +26,8 @@ export function getLogisticsModalHtml() {
                             <span class="logistics-stat-value logistics-timer-value" id="logisticsTimerText">60s</span>
                         </div>
                         <div class="logistics-stat-item">
-                            <span class="logistics-stat-label">적재 화물:</span>
-                            <span class="logistics-stat-value" id="logisticsLoadedText">0 / 18</span>
+                            <span class="logistics-stat-label">배송 점수:</span>
+                            <span class="logistics-stat-value" id="logisticsLoadedText">0 / 26점 · 3개 이상 배송 0/2회</span>
                         </div>
                         <div class="logistics-stat-item">
                             <span class="logistics-stat-label">예상 등급:</span>
@@ -83,7 +83,7 @@ export function getLogisticsModalHtml() {
                     <!-- Right Zone: Stacked Package Boxes Pallet -->
                     <div class="logistics-boxes-zone" id="logisticsBoxesZone">
                         <div class="logistics-boxes-target-indicator" id="boxesTargetIndicator">
-                            <span>📦 상자 집기 / 더 쌓기 [W • Space]</span>
+                            <span>📦 상자 집기 / 더 쌓기 [W]</span>
                         </div>
                         <!-- Generated parcel pallet. -->
                         <img class="logistics-boxes-svg" src="${LOGISTICS_ASSETS.pallet}" width="200" height="220" alt="운반할 택배 상자 팔레트" draggable="false" />
@@ -111,7 +111,7 @@ export function getLogisticsModalHtml() {
                     <div class="logistics-controls-guide">
                         <span>🎮 <span class="logistics-key-chip">A</span> (트럭) / <span class="logistics-key-chip">D</span> (상자)</span>
                         <button class="btn-bottom-stack-more" id="btnBottomStackMore" title="상자 집기 / 더 쌓기">
-                            <span>📦 상자 집기 / 쌓기 [W / Space]</span>
+                            <span>📦 상자 집기 / 쌓기 [W]</span>
                         </button>
                         <span>⚡ 질주: <span class="logistics-key-chip">Shift</span></span>
                     </div>

@@ -73,6 +73,34 @@ export class PresenceRegistry {
         return this.snapshot(token);
     }
 
+    forget(token) {
+        if (typeof token !== 'string' || !token)
+            throw Object.assign(new Error('세션을 다시 연결해 주세요.'), { status: 401 });
+        const id = this.sessions.get(token)?.playerId;
+        this.names = new Map([...this.names].filter(([, n]) => n.token !== token));
+        this.social.requests = this.social.requests.filter(r => r.from !== token && r.to !== token);
+        this.social.friendships = this.social.friendships.filter(pair => !pair.includes(token));
+        if (this.social.gifts) this.social.gifts = this.social.gifts.filter(g => g.from !== token && g.to !== token);
+        if (this.social.arenaResults) this.social.arenaResults = this.social.arenaResults.map(r => ({ ...r, results: r.results.filter(p => p.owner !== token) })).filter(r => r.results.length);
+        this.sessions.delete(token);
+        if (id !== undefined) {
+            this.news = this.news.filter(n => n.playerId !== id);
+            for (const post of this.news) delete post.reactions?.[id];
+            this.messages = this.messages.filter(m => m.playerId !== id && m.senderId !== id);
+            for (const [key, room] of this.chatRooms) {
+                room.members = room.members.filter(member => member !== id);
+                room.messages = room.messages.filter(m => m.playerId !== id && m.senderId !== id);
+                if (!room.members.length) this.chatRooms.delete(key);
+            }
+        }
+        if (this.nameFile) {
+            fs.mkdirSync(path.dirname(this.nameFile), { recursive: true });
+            fs.writeFileSync(this.nameFile, JSON.stringify([...this.names]), { mode: 0o600 });
+            fs.writeFileSync(this.nameFile + '.social', JSON.stringify(this.social), { mode: 0o600 });
+        }
+        return { success: true, deleted: true };
+    }
+
     prune() {
         for (const [token, session] of this.sessions) {
             if (this.now() - session.seen >= this.timeoutMs) {

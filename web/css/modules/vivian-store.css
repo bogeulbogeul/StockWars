@@ -20,7 +20,7 @@
 .vivian-store-card {
     width: 100%;
     max-width: 1100px;
-    height: 88vh;
+    height: calc(88 * var(--game-vh));
     max-height: 780px;
     background: linear-gradient(135deg, rgba(16, 24, 34, 0.96) 0%, rgba(10, 16, 24, 0.98) 100%);
     border: 1px solid rgba(0, 230, 118, 0.3);
@@ -739,7 +739,7 @@
     position: relative;
     isolation: isolate;
     /* Reserve 80 scene units above the unchanged 1536×1024 placement area. */
-    width: min(100vw, 139dvh);
+    width: min(calc(100 * var(--game-vw)), calc(139 * var(--game-vh)));
     aspect-ratio: 3 / 2;
     flex-shrink: 0;
     transform: translateY(3.90625%);
@@ -796,9 +796,9 @@
     position: absolute;
     z-index: 2;
     width: calc(100% - 32px);
-    box-shadow: 0 0 0 100vmax #081018b8;
+    box-shadow: 0 0 0 calc(100 * var(--game-vmax)) #081018b8;
 }
-@media (max-width: 600px) {
+@container game-viewport (max-width: 600px) {
     .vivian-interior-heading, .vivian-interior-exit { font-size: 11px; padding: 6px 8px; }
     .vivian-interior-hotspot span { font-size: 10px; padding: 5px; }
 }
@@ -933,7 +933,7 @@
     padding:20px; background:#08171dbb; backdrop-filter:blur(4px);
 }
 .vivian-receipt {
-    box-sizing:border-box; width:min(100%,370px); max-height:calc(100dvh - 40px); overflow:auto;
+    box-sizing:border-box; width:min(100%,370px); max-height:calc(calc(100 * var(--game-vh)) - 40px); overflow:auto;
     padding:30px 26px; color:#234047; background:#fff8e8;
     border-top:6px solid #238c91; border-bottom:6px solid #e9c87c;
     border-radius:5px; box-shadow:0 16px 60px #0007; text-align:center;

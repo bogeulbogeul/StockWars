@@ -1,3 +1,4 @@
+import { gameKey } from '../app/GameKeys.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
 
 export class AnnaTutorial {
@@ -12,6 +13,8 @@ export class AnnaTutorial {
         this.currentText = '';
         this.userProfile = { nickname: '파트너' };
 
+        this.dialogueHistory = [];
+        this.historyCursor = null;
         this.steps = [];
         this.render();
         this.initDOM();
@@ -41,8 +44,8 @@ export class AnnaTutorial {
                                 <span class="vn-speaker-title">Cipher Securities</span>
                             </div>
                             <div class="vn-controls">
-                                <button class="vn-btn vn-collapse-btn" id="btnVnCollapse" title="대화창 접기/펼치기">➖</button>
                                 <button class="vn-btn vn-skip-btn" id="btnVnSkip" title="튜토리얼 건너뛰기">⏩ 스킵</button>
+                                <button class="vn-btn vn-prev-btn" id="btnVnPrevious" title="이전 대사 다시 보기" disabled>◀ 이전</button>
                                 <button class="vn-btn vn-next-btn" id="btnVnNext" title="다음 대사">다음 ▶</button>
                             </div>
                         </div>
@@ -78,12 +81,11 @@ export class AnnaTutorial {
         this.stepTracker = document.getElementById('vnStepTracker');
         this.nextIndicator = document.getElementById('vnNextIndicator');
         this.btnNext = document.getElementById('btnVnNext');
+        this.btnPrevious = document.getElementById('btnVnPrevious');
         this.btnSkip = document.getElementById('btnVnSkip');
-        this.btnCollapse = document.getElementById('btnVnCollapse');
         this.actionArea = document.getElementById('vnActionArea');
         this.btnAction = document.getElementById('btnVnAction');
         this.btnHold = document.getElementById('btnVnHold');
-        this.isCollapsed = false;
     }
 
     initEventListeners() {
@@ -95,21 +97,17 @@ export class AnnaTutorial {
             this.callbacks.onSaveLesson?.();
             this.finishLesson();
         });
-        // Click dialogue box to advance or speed up text (or expand if collapsed)
+        // Click dialogue box to advance or speed up text
         this.dialogueBox?.addEventListener('click', (e) => {
-            if (this.isCollapsed) {
-                this.toggleCollapse();
-                return;
-            }
-            if (e.target.closest('#btnVnSkip') || e.target.closest('#btnVnAction') || e.target.closest('#btnVnCollapse')) {
+            if (e.target.closest('#btnVnSkip') || e.target.closest('#btnVnAction')) {
                 return;
             }
             this.handleAdvance();
         });
 
-        this.btnCollapse?.addEventListener('click', (e) => {
+        this.btnPrevious?.addEventListener('click', (e) => {
             e.stopPropagation();
-            this.toggleCollapse();
+            this.showPreviousDialogue();
         });
 
         this.btnNext?.addEventListener('click', (e) => {
@@ -127,13 +125,13 @@ export class AnnaTutorial {
             this.handleActionClick();
         });
 
-        // Keyboard navigation: Enter / Space / NumpadEnter to advance dialogue
+        // Keyboard navigation: Enter to advance dialogue
         window.addEventListener('keydown', (e) => {
             if (!this.isActive || this.overlay?.classList.contains('hidden')) return;
             if (document.activeElement?.tagName === 'BUTTON') return;
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
-            if (e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter' || e.key === ' ' || e.code === 'Space') {
+            if (gameKey(e) === 'enter' && !e.repeat) {
                 e.preventDefault();
                 e.stopPropagation();
                 this.handleAdvance();
@@ -141,21 +139,17 @@ export class AnnaTutorial {
         });
     }
 
-    toggleCollapse() {
-        this.isCollapsed = !this.isCollapsed;
-        this.dialogueBox?.classList.toggle('collapsed', this.isCollapsed);
-        if (this.btnCollapse) {
-            this.btnCollapse.textContent = this.isCollapsed ? '➕' : '➖';
-            this.btnCollapse.title = this.isCollapsed ? '대화창 펼치기' : '대화창 접기';
-        }
-    }
-
     start(userProfile = {}, recommendation = null) {
+        this.dialogueHistory = [];
+        this.historyCursor = null;
         this.lessonEnabled = true;
         this.cleanupHighlights();
         this.userProfile = userProfile;
         this.recommendation = recommendation;
-        this.targetStock = recommendation?.stock || { id: 'CLOUDBERRY', name: '클라우드 베리', price: 850 };
+        this.targetStock = recommendation?.stock || { id: null, name: '구매 가능한 종목' };
+        this.stopRecommendationReview();
+        this.firstPurchaseDone = false;
+        this.recommendationTimer = setInterval(() => this.reviewRecommendation(), 10000);
         const nickname = userProfile.nickname || '파트너';
         
         this.steps = buildAnnaScenario({
@@ -173,9 +167,53 @@ export class AnnaTutorial {
         this.isActive = true;
         this.overlay?.classList.remove('hidden');
         this.showCurrentStep();
+        this.callbacks.onRecommendationChanged?.();
+    }
+
+    stopRecommendationReview() {
+        if (this.recommendationTimer) clearInterval(this.recommendationTimer);
+        this.recommendationTimer = null;
+    }
+
+    reviewRecommendation() {
+        if (!this.isActive || this.firstPurchaseDone || this.lessonResume) return;
+        // Initial grant is delivered by welcome_2, not by recommendation recovery.
+        if (this.steps[this.currentStepIdx]?.id === 'welcome_1') return;
+        const recommendation = this.callbacks.onRefreshRecommendation?.();
+        if (recommendation) this.applyRecommendation(recommendation);
+    }
+
+    syncRecommendation() {
+        if (!this.isActive || this.firstPurchaseDone) return;
+        const id = this.callbacks.getTutorialTargetId?.();
+        if (id === undefined || id === this.targetStock?.id) return;
+        const state = this.callbacks.getMarketState?.();
+        this.applyRecommendation({ stock: state?.stocks.find(s => s.id === id) || null });
+    }
+
+    applyRecommendation(recommendation) {
+        const stepId = this.steps[this.currentStepIdx]?.id;
+        this.recommendation = recommendation;
+        this.targetStock = recommendation.stock || { id: null, name: '구매 가능한 종목' };
+        const next = buildAnnaScenario({ nickname: this.userProfile.nickname || '파트너', targetStock: this.targetStock,
+            reason: recommendation.reason, callbacks: this.callbacks,
+            highlightElement: (sel, en) => this.highlightElement(sel, en),
+            highlightStock: (id, en) => this.highlightStock(id, en),
+            cleanupHighlights: () => this.cleanupHighlights(), overlay: this.overlay });
+        this.steps = next;
+        this.currentStepIdx = Math.max(0, next.findIndex(s => s.id === stepId));
+        if (['select_stock', 'buy_stock'].includes(stepId)) {
+            const step = next[this.currentStepIdx];
+            step.text = recommendation.stock
+                ? `그사이 시세가 변했네요. 지금 현금으로 구매할 수 있는 '${this.targetStock.name}'을 새로 추천할게요. 목록 맨 위의 [안나 추천] 종목을 눌러 주세요.`
+                : '현재 현금으로 살 수 있는 종목이 없어요. 시장을 계속 확인할게요. 구매 가능한 종목이 생기면 다시 추천해 드릴게요.';
+            this.showCurrentStep();
+        }
+        this.callbacks.onRecommendationChanged?.();
     }
 
     showCurrentStep() {
+        this.callbacks.onActivityChanged?.();
         if (!this.isActive || this.currentStepIdx >= this.steps.length) {
             this.complete();
             return;
@@ -185,6 +223,23 @@ export class AnnaTutorial {
         this.cleanupHighlights();
 
         const step = this.steps[this.currentStepIdx];
+        if (step.id === 'celebrate') {
+            const state = this.callbacks.getMarketState?.();
+            const lesson = this.callbacks.getFirstTradeLesson?.();
+            const holding = state?.portfolio.find(p => p.id === this.targetStock?.id && !p.isShort);
+            if (holding && lesson) step.text = "'" + this.targetStock.name + "'을 " + lesson.buyPrice.toLocaleString() + 'G에 샀어요! 내 계좌에 ' + holding.qty + '주가 생겼고, 현금은 ' + state.cash.toLocaleString() + 'G 남았어요. 다음에는 산 주식을 확인해 볼게요.';
+        }
+        this.historyCursor = null;
+        const snapshot = { ...step };
+        const last = this.dialogueHistory?.at(-1);
+        if (!this.dialogueHistory) this.dialogueHistory = [];
+        if (last?.id === step.id) this.dialogueHistory[this.dialogueHistory.length - 1] = snapshot;
+        else this.dialogueHistory.push(snapshot);
+        this.renderDialogue(step);
+        if (step.onEnter) step.onEnter();
+    }
+
+    renderDialogue(step, reviewing = false) {
         this.btnHold?.classList.toggle('hidden', !step.allowHold);
         const needsChoice = !!step.allowHold;
         this.dialogueBox?.classList.toggle('has-choice', needsChoice);
@@ -202,14 +257,25 @@ export class AnnaTutorial {
             this.actionArea.classList.add('hidden');
         }
 
-        // Execute step enter hook
-        if (step.onEnter) {
-            step.onEnter();
+        if (reviewing) {
+            this.btnHold?.classList.add('hidden');
+            this.actionArea?.classList.add('hidden');
+            this.btnNext?.classList.remove('hidden');
+            this.nextIndicator?.classList.remove('hidden');
+            this.dialogueBox?.classList.remove('has-choice');
         }
-
-        // Typewriter animation
+        if (this.btnPrevious) this.btnPrevious.disabled = (this.historyCursor ?? this.dialogueHistory.length - 1) <= 0;
         this.typeText(step.text);
     }
+
+    showPreviousDialogue() {
+        if (!this.isActive) return;
+        const cursor = this.historyCursor ?? this.dialogueHistory.length - 1;
+        if (cursor <= 0) return;
+        this.historyCursor = cursor - 1;
+        this.renderDialogue(this.dialogueHistory[this.historyCursor], true);
+    }
+
 
     setExpression(expression = 'Standard') {
         const labels = { Standard: '기본', Smile: '미소', Happy: '기쁨', Pain: '걱정', Angry: '분노' };
@@ -261,6 +327,14 @@ export class AnnaTutorial {
             return;
         }
 
+        if (this.historyCursor !== null && this.historyCursor !== undefined) {
+            this.historyCursor++;
+            if (this.historyCursor >= this.dialogueHistory.length - 1) {
+                this.historyCursor = null;
+                this.renderDialogue(this.steps[this.currentStepIdx]);
+            } else this.renderDialogue(this.dialogueHistory[this.historyCursor], true);
+            return;
+        }
         const step = this.steps[this.currentStepIdx];
         if (!step) return;
 
@@ -289,6 +363,7 @@ export class AnnaTutorial {
     }
 
     handleActionClick() {
+        if (this.historyCursor != null) return;
         const step = this.steps[this.currentStepIdx];
         if (step && step.onAction) {
             step.onAction(this);
@@ -309,10 +384,12 @@ export class AnnaTutorial {
 
     // Called when player buys first stock during tutorial
     notifyStockPurchased(stockId) {
-        if (!this.isActive) return;
+        if (!this.isActive || stockId !== this.targetStock?.id) return;
+        this.firstPurchaseDone = true;
+        this.stopRecommendationReview();
         this.highlightElement('#btnBuyExecute', false);
         const currentStep = this.steps[this.currentStepIdx];
-        if (currentStep && (currentStep.id === 'buy_stock' || currentStep.id === 'select_stock')) {
+        if (currentStep && (currentStep.id === 'buy_stock' || currentStep.id === 'select_stock' || currentStep.id === 'chart_colors' || currentStep.id === 'chart_detail')) {
             const celebIdx = this.steps.findIndex(s => s.id === 'celebrate');
             if (celebIdx !== -1) {
                 this.currentStepIdx = celebIdx;
@@ -457,6 +534,8 @@ export class AnnaTutorial {
         }
         if (!this.isActive) return;
         this.isActive = false;
+        this.callbacks.onActivityChanged?.();
+        this.stopRecommendationReview();
         if (this.typewriterTimer) {
             clearInterval(this.typewriterTimer);
             this.typewriterTimer = null;
@@ -527,6 +606,7 @@ export class AnnaTutorial {
         this.steps = resume.steps;
         this.currentStepIdx = resume.index;
         this.isActive = resume.active;
+        this.callbacks.onActivityChanged?.();
         if (this.isActive) this.showCurrentStep();
         else this.overlay?.classList.add('hidden');
     }

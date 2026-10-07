@@ -27,7 +27,7 @@
 #furnitureEditModal .preview-invalid { background: #ef627766; border-color: #ff8291; }
 #furnitureEditModal button:disabled { opacity: .35; cursor: default; }
 #furnitureEditModal button:focus-visible { outline: 2px solid #66efc6; outline-offset: 3px; }
-@media (max-width: 900px) {
+@container game-viewport (max-width: 900px) {
     #furnitureEditModal .furn-edit-workspace { overflow-y: auto; flex-direction: column; }
     #furnitureEditModal .furn-room-canvas-section { min-height: 400px; padding: 16px; }
     #furnitureEditModal .furn-catalog-section { width: 100%; min-height: 340px; }
@@ -42,9 +42,9 @@
 
 .furniture-edit-card {
     width: 1040px;
-    max-width: 96vw;
+    max-width: calc(96 * var(--game-vw));
     height: 680px;
-    max-height: 92vh;
+    max-height: calc(92 * var(--game-vh));
     background: rgba(12, 16, 26, 0.95);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -433,7 +433,7 @@ body.furniture-edit-active .iso-office-stage { opacity: 1; filter: none; pointer
 .editing-furniture .office-door-floating-btn, .editing-furniture .office-anna-floating-btn, .editing-furniture .office-furniture-edit-btn { display: none !important; }
 body.furniture-edit-active .device-container { visibility: hidden; pointer-events: none; }
 body.furniture-edit-active #floatingPhoneBtn { display: none !important; }
-@media (max-width: 700px) {
+@container game-viewport (max-width: 700px) {
     .furniture-editor-sidebar { top: 100px; right: 8px; bottom: 8px; width: 260px; }
     body.furniture-edit-active .iso-stage-wrapper { width: calc(100% - 276px); margin-right: 276px; }
     #furnitureEditModal .furn-card-name { font-size: 11px; }
