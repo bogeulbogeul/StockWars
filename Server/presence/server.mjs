@@ -11,7 +11,7 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
         const reply = async (status, body) => { if (durable && status < 400 && req.method === 'POST') await durable.flush(registry); res.writeHead(status); res.end(JSON.stringify(body)); };
-        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, arenaRoomCleanup: true, socialFeatures: 2, seatingSync: true, durableStorage: durable ? 'supabase' : 'local' });
+        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, arenaRoomCleanup: true, guestDeletion: true, socialFeatures: 2, seatingSync: true, durableStorage: durable ? 'supabase' : 'local' });
         if (req.method !== 'POST' || !['/api/presence', '/api/chat','/api/arena'].includes(req.url)) return reply(404, { error: 'Not found' });
         try {
             let body = '';
@@ -24,6 +24,22 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
             const token = req.headers.authorization?.replace(/^Bearer /, '');
             if (req.url === '/api/arena') return await reply(200, arena.handle(token, input));
             if (req.url === '/api/chat') return await reply(200, registry.chat(token, input.action, input.text, input));
+            if (input.action === 'forget') {
+                // The bearer token can remove only its own guest record.
+                const result = registry.forget(token);
+                for (const [id, room] of arena.rooms) {
+                    room.members.delete(token);
+                    if (room.invited) room.invited.delete?.(token);
+                    if (!room.members.size) arena.rooms.delete(id);
+                    else if (room.owner === token) room.owner = room.members.keys().next().value;
+                }
+                for (const [id, room] of arena.completed) {
+                    room.snapshots.delete(token);
+                    room.acknowledged.delete(token);
+                    if (!room.snapshots.size) arena.completed.delete(id);
+                }
+                return await reply(200, result);
+            }
             const result = input.action === 'session'
                 ? registry.session(token)
                 : registry.update(token, input.action, input.channelId, input.pose);
