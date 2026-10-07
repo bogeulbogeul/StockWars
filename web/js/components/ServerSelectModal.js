@@ -243,7 +243,7 @@ export class ServerSelectModal {
             this.currentChannel = current
                 ? { ...current, statusLabel: this.getChannelStatus(current.users).label }
                 : { id: null, name: '오피스 / 대기', ping: null, statusLabel: '마을 미입장' };
-            if (status) status.textContent = '실제 앱 접속 기준 · 채널 인원은 마을 입장자 · 연결 종료 시 자동 갱신';
+            if (status) status.textContent = snapshot.local ? '로컬 개발자 모드 · 나만 입장하는 마을입니다.' : '실제 앱 접속 기준 · 채널 인원은 마을 입장자 · 연결 종료 시 자동 갱신';
         } else {
             this.totalCCU = null;
             this.townChannels = this.townChannels.map(ch => ({ ...ch, users: null, ping: null }));

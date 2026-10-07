@@ -272,7 +272,8 @@ export class CharacterCreation {
                 this.inputNickname.parentElement.append(error);
             }
             try {
-                const { nickname, pending } = await registerNickname(this.inputNickname.value, window.stockWarsPresence);
+                const local = this.initialMode === 'DEMO' || this.initialMode === 'DEV';
+                const { nickname, pending } = await registerNickname(this.inputNickname.value, local ? null : window.stockWarsPresence);
                 this.nicknamePending = pending;
                 this.nickname = nickname;
                 this.inputNickname.value = nickname;

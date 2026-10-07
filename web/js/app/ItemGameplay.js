@@ -44,8 +44,15 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     });
     const engine = new ItemEngine({ market, state: saved?.items });
     applyPlayerTrait(engine.state, app.userProfile);
-    const levelUpNotice = new LevelUpNotice(app.appContainer);
-    let lastLevel = engine.playerLevel();
+    const levelUpNotice = new LevelUpNotice(app.appContainer, {
+        getState: () => ({ level: engine.playerLevel(), points: engine.pendingStatPoints(), stats: engine.state.baseStats }),
+        onConfirm: key => {
+            const result = engine.allocateLevelStat(key);
+            if (result.success) sync();
+            return result;
+        }
+    });
+    let gameStarted = false;
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
     market.itemEngine = engine;
@@ -66,9 +73,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     }
     function sync() {
-        const level = engine.playerLevel();
-        if (level > lastLevel) levelUpNotice.show(lastLevel, level);
-        lastLevel = level;
+        if (gameStarted && engine.pendingStatPoints() > 0) levelUpNotice.show();
         app.inventoryModal.items = engine.state.inventory;
         app.mainHUD.updateStamina(engine.state.stamina);
         app.vivianStoreModal.affinity = engine.state.affinity;
@@ -113,13 +118,14 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     };
     app.itemGameplay = {
         sync, save,
+        start() { gameStarted = true; sync(); },
+        pause() { gameStarted = false; levelUpNotice.close(); },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
         purchase(id, quantity, instant) { const r = engine.purchase(id, quantity, instant); sync(); return r; },
         activate,
         reset() {
             engine.state = new ItemEngine({ market }).state;
             applyPlayerTrait(engine.state, app.userProfile);
-            lastLevel = engine.playerLevel();
             levelUpNotice.close();
             engine.state.stamina = engine.maxStamina();
             app.itemCenter.dialog.close();

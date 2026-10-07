@@ -43,6 +43,9 @@ export class TopDemoBar {
                     <button id="btnFastForwardDay" class="demo-btn accent-btn">
                         <span class="btn-icon">⚡</span> 다음 날(Day +1)
                     </button>
+                    <button id="btnAddPlayerLevel" class="demo-btn accent-btn" title="다음 레벨까지 경험치를 추가하고 능력치 선택 창 열기">
+                        <span class="btn-icon">⬆️</span> 레벨 +1
+                    </button>
                     <button id="btnTriggerSettlement" class="demo-btn warning-btn">
                         <span class="btn-icon">🧾</span> 7일차 정산 시연
                     </button>
@@ -66,12 +69,14 @@ export class TopDemoBar {
         this.btnUnlockLevel20 = document.getElementById('btnUnlockLevel20');
         this.txtUnlockToggle = document.getElementById('txtUnlockToggle');
         this.btnFastForwardDay = document.getElementById('btnFastForwardDay');
+        this.btnAddPlayerLevel = document.getElementById('btnAddPlayerLevel');
         this.btnTriggerSettlement = document.getElementById('btnTriggerSettlement');
         this.btnResetDemo = document.getElementById('btnResetDemo');
         this.btnLogisticsDemo = document.getElementById('btnLogisticsDemo');
     }
 
     initEventListeners() {
+        this.btnAddPlayerLevel?.addEventListener('click', () => this.callbacks.onAddPlayerLevel?.());
         this.btnTitleScreen?.addEventListener('click', () => {
             if (this.callbacks.onShowTitle) this.callbacks.onShowTitle();
         });

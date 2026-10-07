@@ -2,6 +2,7 @@ export class OnlineSocialSync {
     constructor(app){this.app=app;this.remotes=new Map();this.start();}
     start(){this.poll();this.socialTimer=setInterval(()=>void this.checkInvites(),2500);this.animate();}
     currentScene(){
+        if(this.app.isLocalSession)return null;
         const a=this.app,c=a.cipherLobby;
         if(c.competitionRoom.dialog.open)return {location:'arena',player:c.player};
         if(c.trainingRoom.dialog.open)return {location:'training',player:c.player};
@@ -20,7 +21,7 @@ export class OnlineSocialSync {
                 const sofa=scene.location==='cipher'&&seat?a.cipherLobby.editor.items.find(i=>i.id===seat.id):null;
                 const seatId=sofa?`sofa:${sofa.u}:${sofa.v}:${sofa.rotation||0}`:seat?.id;
                 const result=await window.stockWarsPresence.position({location:scene.location,x:p.charPosX??p.x,y:p.charPosY??p.y,facing:typeof p.facing==='string'?p.facing:p.facing===-1?'left':'right',resting:!!seat||p.isResting||false,seatId,nickname:a.userProfile.nickname,level:a.itemEngine?.playerLevel()||1,trait:a.userProfile.trait?.title||''});
-                if(!result.error&&this.currentScene()?.location===scene.location)this.receive(result.snapshot?.players||[],scene.location);
+                if(!a.isLocalSession&&!result.error&&this.currentScene()?.location===scene.location)this.receive(result.snapshot?.players||[],scene.location);
             }catch{}
         }else this.receive([],null);
         this.positionTimer=setTimeout(()=>this.poll(),100);
@@ -50,10 +51,10 @@ export class OnlineSocialSync {
         this.frame=requestAnimationFrame(()=>this.animate());
     }
     async checkInvites(){
-        if(this.checking||!this.app.userProfile?.nickname||!window.stockWarsArena)return;
+        if(this.app.isLocalSession||this.checking||!this.app.userProfile?.nickname||!window.stockWarsArena)return;
         this.checking=true;
         try{
-            const result=await window.stockWarsArena.request({action:'list'});if(result.error)return;
+            const result=await window.stockWarsArena.request({action:'list'});if(result.error||this.app.isLocalSession)return;
             const a=this.app,c=a.cipherLobby.competitionRoom;
             if(this.inviteDialog&&!result.invitations?.some(r=>r.id===this.inviteId)){this.inviteDialog.close();this.inviteDialog.remove();this.inviteDialog=null;}
             if(this.inviteDialog||a.annaTutorial?.isActive||a.cipherLobby.notice&&!a.cipherLobby.notice.hidden||document.body.classList.contains('phone-view-active')||c.onlineState||c.dialog.open||a.cipherLobby.trainingRoom.dialog.open||document.querySelector('dialog[open]:not(.cipher-lobby)')||!document.querySelector('#titleScreen')?.classList.contains('hidden'))return;

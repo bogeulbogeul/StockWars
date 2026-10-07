@@ -72,6 +72,21 @@ export class ItemEngine {
         return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
     }
     playerLevel() { return this.playerLevelProgress().level; }
+    addDeveloperLevel() {
+        const { level, currentExp, maxExp } = this.playerLevelProgress();
+        if (maxExp === null) return fail('이미 최고 레벨(Lv. 20)입니다.');
+        // Add only the remaining EXP; rounding up safely crosses fractional thresholds.
+        this.state.exp = Math.max(0, Number(this.state.exp) || 0) + Math.ceil(maxExp - currentExp);
+        return ok(`개발자 모드 · Lv. ${level} → Lv. ${this.playerLevel()}`);
+    }
+    pendingStatPoints() { return Math.max(0, this.playerLevel() - 1 - (this.state.spentLevelPoints || 0)); }
+    allocateLevelStat(key) {
+        if (!['analysis', 'negotiation', 'management', 'recovery'].includes(key)) return fail('능력치를 선택해 주세요.');
+        if (this.pendingStatPoints() < 1) return fail('사용할 성장 포인트가 없습니다.');
+        this.state.baseStats[key] += 1;
+        this.state.spentLevelPoints = (this.state.spentLevelPoints || 0) + 1;
+        return ok('능력치가 1 증가했습니다.');
+    }
     playerLevelProgress() {
         let exp = Number(this.state.exp);
         if (!Number.isFinite(exp) || exp < 0) exp = 0;

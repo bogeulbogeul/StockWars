@@ -2,7 +2,8 @@ import { toastManager } from '../components/ToastManager.js';
 
 export const worldNavigation = {
     async enterTown(server = null, spawnLocation = null) {
-        const bridge = window.stockWarsPresence;
+        const bridge = this.isLocalSession ? null : window.stockWarsPresence;
+        if (this.isLocalSession) server = { id: 'local', name: '로컬 개발자 마을', ping: 0 };
         if (bridge) {
             if (!bridge.claimNickname) {
                 toastManager.show('온라인 마을 입장 전 닉네임 확인이 필요합니다. 게임 앱을 재실행해 주세요.', false);

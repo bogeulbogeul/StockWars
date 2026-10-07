@@ -27,15 +27,22 @@ test('aggressive test result includes stat key; legacy saves are repaired once',
     assert.equal(previouslyCorrect.stats().management, 2);
 });
 
-test('level notice displays actual gained levels and plays celebration sound', () => {
+test('level choice opens once with celebration and remains open until confirmation', () => {
     const notice = Object.create(LevelUpNotice.prototype);
-    const label = {};
+    const labels = new Map();
     let shown = 0, sounds = 0;
-    notice.element = { querySelector: () => label, hidePopover() {}, showPopover() { shown++; } };
+    notice.getState = () => ({ level: 3, points: 2, stats: {} });
+    notice.element = { open: false, querySelector(selector) {
+        if (!labels.has(selector)) labels.set(selector, {});
+        return labels.get(selector);
+    }, querySelectorAll: () => [], close() { this.open = false; }, showModal() { this.open = true; shown++; } };
     notice.audio = { playWin() { sounds++; } };
     try {
-        notice.show(1, 3);
-        assert.equal(label.textContent, 'Lv. 1 → Lv. 3');
+        notice.show();
+        notice.show();
+        assert.equal(labels.get('.level-up-number').textContent, 'Lv. 3');
+        assert.match(labels.get('.level-up-points').textContent, /남은 포인트 2/);
+        assert.equal(notice.element.open, true);
         assert.equal(shown, 1);
         assert.equal(sounds, 1);
     } finally { notice.close(); }

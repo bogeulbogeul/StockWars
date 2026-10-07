@@ -32,6 +32,11 @@ class PresenceClient {
 
   command(action, channelId, pose) {
     const operation = async () => {
+      if (this.localMode) {
+        if (action === 'join') this.desiredChannel = 'town-1';
+        if (action === 'leave' || action === 'disconnect') this.desiredChannel = null;
+        return this.localState();
+      }
       if (action === 'leave' || action === 'disconnect') this.desiredChannel = null;
       if (!this.url) return { error: this.error };
       try {
@@ -71,6 +76,7 @@ class PresenceClient {
   }
   chat(action, text, options = {}) {
     const operation = async () => {
+      if (this.localMode) return { error: '로컬 개발자 모드에서는 온라인 소셜 기능을 사용할 수 없습니다.' };
       if (!this.url) return { error: '테스트 서버 주소 미설정' };
       try {
         if (!this.snapshot) await this.request('session');
@@ -98,6 +104,7 @@ class PresenceClient {
   }
   arena(input) {
     const operation = async () => {
+      if (this.localMode) return { error: '로컬 개발자 모드에서는 온라인 대결을 사용할 수 없습니다.' };
       if (!this.url) return { error: '온라인 서버 주소가 설정되지 않았습니다.' };
       try {
         if (!this.snapshot) await this.request('session');
@@ -116,6 +123,26 @@ class PresenceClient {
     this.queue = this.queue.then(operation, operation); return this.queue;
   }
   stop() { clearInterval(this.timer); return this.command('disconnect'); }
-  state() { return { snapshot: this.snapshot, error: this.error }; }
+  localState() {
+    return { snapshot: { local: true, totalCCU: 1, capacity: 1,
+      channels: [{ id: 'town-1', name: '로컬 개발자 마을', users: this.desiredChannel ? 1 : 0 }],
+      currentChannelId: this.desiredChannel, playerId: 'local-player', players: [], ping: 0 }, error: null };
+  }
+  setLocalMode(enabled) {
+    const operation = async () => {
+      if (enabled === !!this.localMode) return this.state();
+      if (enabled && this.snapshot && this.url) {
+        try { await this.request('disconnect'); } catch { /* Server expires disconnected sessions. */ }
+      }
+      this.localMode = enabled;
+      this.desiredChannel = null;
+      this.snapshot = null;
+      this.error = null;
+      return this.state();
+    };
+    this.queue = this.queue.then(operation, operation);
+    return this.queue;
+  }
+  state() { return this.localMode ? this.localState() : { snapshot: this.snapshot, error: this.error }; }
 }
 module.exports = { PresenceClient };

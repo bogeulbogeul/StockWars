@@ -60,6 +60,12 @@ class StockWarsApplication {
             onOpenLogistics: () => this.openLogisticsJob(),
             onUnlockLevel20: () => this.toggleLevel20(),
             onNextDay: () => this.nextDay(),
+            onAddPlayerLevel: () => {
+                if (!this.isLocalSession || !this.topDemoBar.isVisible()) return;
+                const result = this.itemEngine.addDeveloperLevel();
+                if (result.success) this.itemGameplay.sync();
+                toastManager.show(result.message);
+            },
             onTriggerSettlement: () => this.openSettlement(),
             onReset: () => this.reset()
         });
@@ -322,7 +328,16 @@ class StockWarsApplication {
 
         // 7. Title Screen (Game Entry / Main Menu)
         this.titleScreen = new TitleScreen(this.appContainer, {
-            onStartGame: (mode) => {
+            onStartGame: async (mode) => {
+                const sessionMode = mode === 'CONTINUE' ? this.userProfile?.mode : mode;
+                this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
+                await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
+                this.onlineSocialSync?.receive([], null);
+                if (this.onlineSocialSync?.inviteDialog) {
+                    this.onlineSocialSync.inviteDialog.close();
+                    this.onlineSocialSync.inviteDialog.remove();
+                    this.onlineSocialSync.inviteDialog = null;
+                }
                 if (mode === 'CONTINUE') {
                     if (!this.userProfile?.nickname) { this.titleScreen.show(); toastManager.show('저장된 플레이어가 없습니다. 새 게임을 시작해 주세요.', false); return; }
                     this.smartphoneUI.updateUserProfile(this.userProfile);
@@ -424,7 +439,10 @@ class StockWarsApplication {
         toastManager.show(`🎉 [출입증 발급 완료] ${userProfile.nickname} (${userProfile.trait.title}) 트레이더님 환영합니다!`);
     }
 
-    startGame(mode) {
+    async startGame(mode) {
+        const sessionMode = mode === 'CONTINUE' ? this.userProfile?.mode : mode;
+        this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
+        await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
         if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE';
         if (mode !== 'CONTINUE') marketEngine.firstTradeLesson = null;
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
@@ -455,7 +473,8 @@ class StockWarsApplication {
                 ? '🛠️ 개발자 모드 시작! (Day 1 • 새 게임 진행 / 디버그 툴바 활성화)'
                 : '🎮 새로운 게임 시작! (Day 1 • 오피스 입장)');
         } else {
-            this.topDemoBar?.hide();
+            if (this.isLocalSession) this.topDemoBar?.show();
+            else this.topDemoBar?.hide();
             this.enterOffice();
             document.body.classList.remove('phone-view-active');
             document.body.classList.add('phone-minimized');
@@ -464,10 +483,11 @@ class StockWarsApplication {
             }
             toastManager.show('💾 저장된 게임 데이터를 불러왔습니다.');
         }
-        this.itemGameplay.sync();
+        this.itemGameplay.start();
     }
 
     showTitleScreen() {
+        this.itemGameplay?.pause();
         this.titleScreen.btnContinue.disabled = !this.userProfile?.nickname;
         this.topDemoBar?.hide();
         if (this.titleScreen) {
@@ -569,6 +589,7 @@ class StockWarsApplication {
     }
 
     openServerSelect() {
+        if (this.isLocalSession) { void this.enterTown(); return; }
         this.serverSelectModal?.open();
     }
 

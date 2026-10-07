@@ -3,6 +3,7 @@ contextBridge.exposeInMainWorld('stockWarsApp', {
   quit: () => ipcRenderer.invoke('app:quit')
 });
 contextBridge.exposeInMainWorld('stockWarsPresence', {
+  setLocalMode: enabled => ipcRenderer.invoke('presence:local-mode', enabled),
   claimNickname: nickname => ipcRenderer.invoke('presence:nickname', nickname),
   state: () => ipcRenderer.invoke('presence:state'),
   join: (channelId) => ipcRenderer.invoke('presence:join', channelId),

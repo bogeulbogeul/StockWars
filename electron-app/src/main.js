@@ -22,12 +22,16 @@ if (hasLock) app.whenReady().then(async () => {
   let url = '';
   try { url = serverUrl(); } catch (error) { dialog.showErrorBox('서버 설정 오류', error.message); }
   presence = new PresenceClient({ url, tokenFile: path.join(app.getPath('userData'), 'presence-session.json') });
+  // Stay offline at the title screen until the player selects a game mode.
+  presence.localMode = true;
   presence.start();
   win = new BrowserWindow({ width: 1280, height: 800,
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
   const webRoot = app.isPackaged ? path.join(process.resourcesPath, 'web') : path.resolve(__dirname, '../../web');
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
+  ipcMain.handle('presence:local-mode', (event, enabled) => trusted(event) && typeof enabled === 'boolean'
+    ? presence.setLocalMode(enabled) : { error: '잘못된 모드입니다.' });
   ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && nickname.length <= 100
     ? presence.command('nickname', undefined, { nickname }) : { error: '잘못된 닉네임입니다.' });
   ipcMain.handle('app:quit', (event) => {
