@@ -71,7 +71,8 @@ export class ItemEngine {
     stats() {
         return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
     }
-    playerLevel() {
+    playerLevel() { return this.playerLevelProgress().level; }
+    playerLevelProgress() {
         let exp = Number(this.state.exp);
         if (!Number.isFinite(exp) || exp < 0) exp = 0;
         let level = 1;
@@ -79,7 +80,7 @@ export class ItemEngine {
             exp -= 100 * level ** 1.5;
             level++;
         }
-        return level;
+        return { level, currentExp: exp, maxExp: level < 20 ? 100 * level ** 1.5 : null };
     }
     progress() { return { profit: this.state.profit, survivals: this.state.survivals, analysisLevel: this.stats().analysis, decryptions: this.state.decryptions, trustLevel: this.state.affinity >= 200 ? 3 : this.state.affinity >= 100 ? 2 : 1 }; }
     unlocked(item) { const p = this.progress(); return !item.reqUnlock || Object.entries(item.reqUnlock).every(([key, n]) => key === 'conditionDesc' || p[key] >= n); }

@@ -160,6 +160,7 @@ class StockWarsApplication {
         this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
             getProfile: () => this.userProfile,
             getPlayerLevel: () => this.itemEngine?.playerLevel() ?? 1,
+            getLevelProgress: () => this.itemEngine?.playerLevelProgress(),
             getMarketState: () => marketEngine.getState(),
             getStats: () => this.itemEngine?.stats(),
             getStamina: () => this.mainHUD.stamina

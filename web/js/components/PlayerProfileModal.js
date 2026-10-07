@@ -2,14 +2,14 @@ const number = value => (Number.isFinite(Number(value)) ? Number(value) : 0);
 const gold = value => `${number(value).toLocaleString('ko-KR', { maximumFractionDigits: 0 })} G`;
 
 export class PlayerProfileModal {
-    constructor(container, { getProfile, getMarketState, getStats, getStamina, getPlayerLevel } = {}) {
-        this.sources = { getProfile, getMarketState, getStats, getStamina, getPlayerLevel };
+    constructor(container, { getProfile, getMarketState, getStats, getStamina, getPlayerLevel, getLevelProgress } = {}) {
+        this.sources = { getProfile, getMarketState, getStats, getStamina, getPlayerLevel, getLevelProgress };
         this.dialog = document.createElement('dialog');
         this.dialog.className = 'player-profile-dialog';
         this.dialog.setAttribute('aria-labelledby', 'playerProfileTitle');
         this.dialog.innerHTML = `
             <header class="player-profile-header"><div><span class="player-profile-eyebrow">CIPHER SECURITIES</span><h2 id="playerProfileTitle">플레이어 프로필</h2></div><button type="button" class="player-profile-close" aria-label="프로필 닫기" autofocus>✕</button></header>
-            <section class="player-profile-identity"><div class="player-profile-monogram" aria-hidden="true"></div><div><h3 data-field="nickname"></h3><span class="player-profile-level" data-field="level"></span><p data-field="trait"></p><code data-field="traderCode"></code></div></section>
+            <section class="player-profile-identity"><div class="player-profile-monogram" aria-hidden="true"></div><div class="player-profile-details"><h3 data-field="nickname"></h3><div class="player-profile-level"><div class="player-profile-level-heading"><span data-field="level"></span><span class="player-profile-exp-current" data-field="currentExp"></span></div><div class="player-profile-exp-row"><progress class="player-profile-exp-bar" aria-label="현재 레벨 경험치" max="100" value="0"></progress><span class="player-profile-exp-max" data-field="maxExp"></span></div></div><p data-field="trait"></p><code data-field="traderCode"></code></div></section>
             <section class="player-profile-section"><h3>투자 성향</h3><p data-field="bonus"></p></section>
             <section class="player-profile-section"><h3>현재 능력치</h3><dl class="player-profile-stats"><div><dt>분석력</dt><dd data-field="analysis"></dd></div><div><dt>협상력</dt><dd data-field="negotiation"></dd></div><div><dt>운용력</dt><dd data-field="management"></dd></div><div><dt>회복력</dt><dd data-field="recovery"></dd></div><div><dt>체력</dt><dd data-field="stamina"></dd></div></dl><p class="player-profile-note">능력치는 현재 적용 중인 아이템 효과를 포함합니다.</p></section>
             <section class="player-profile-section"><h3>자산 현황 <span data-field="day"></span></h3><dl class="player-profile-finances"><div><dt>총 평가 자산</dt><dd data-field="totalNetWorth"></dd></div><div><dt>보유 현금</dt><dd data-field="cash"></dd></div><div><dt>포트폴리오 평가액</dt><dd data-field="portfolioValue"></dd></div><div><dt>보유 포지션</dt><dd data-field="positions"></dd></div><div><dt>보유 포지션 평가 손익</dt><dd data-field="profitLoss"></dd></div></dl></section>`;
@@ -32,9 +32,20 @@ export class PlayerProfileModal {
         const stats = this.sources.getStats?.() || {};
         const stamina = this.sources.getStamina?.() || {};
         const nickname = profile.nickname || '사이퍼 트레이더';
+        const progress = this.sources.getLevelProgress?.() || { level: this.sources.getPlayerLevel?.() ?? 1, currentExp: 0, maxExp: 100 };
+        const isMaxLevel = progress.maxExp === null;
+        const maxExp = Math.max(1, number(progress.maxExp));
+        const currentExp = Math.min(maxExp, Math.max(0, number(progress.currentExp)));
+        const gauge = this.dialog.querySelector('.player-profile-exp-bar');
+        gauge.max = maxExp;
+        gauge.value = isMaxLevel ? maxExp : currentExp;
+        gauge.title = isMaxLevel ? '최고 레벨 달성' : `${Math.floor(currentExp).toLocaleString('ko-KR')} / ${Math.ceil(maxExp).toLocaleString('ko-KR')} EXP`;
+        gauge.ariaValueText = gauge.title;
         const values = {
             nickname,
-            level: `플레이어 레벨 · Lv. ${this.sources.getPlayerLevel?.() ?? 1}`,
+            level: `Lv. ${progress.level}`,
+            currentExp: isMaxLevel ? '최고 레벨' : `${Math.floor(currentExp).toLocaleString('ko-KR')} EXP`,
+            maxExp: isMaxLevel ? 'MAX' : `${Math.ceil(maxExp).toLocaleString('ko-KR')} EXP`,
             trait: profile.trait?.title || '투자 성향 미등록',
             traderCode: profile.traderCode || '출입증 발급 전',
             bonus: profile.trait?.bonusDesc || '캐릭터 생성 시 선택한 투자 성향이 표시됩니다.',
