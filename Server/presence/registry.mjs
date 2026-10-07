@@ -94,6 +94,7 @@ export class PresenceRegistry {
             }
         }
         if (this.nameFile) {
+            fs.mkdirSync(path.dirname(this.nameFile), { recursive: true });
             fs.writeFileSync(this.nameFile, JSON.stringify([...this.names]), { mode: 0o600 });
             fs.writeFileSync(this.nameFile + '.social', JSON.stringify(this.social), { mode: 0o600 });
         }
