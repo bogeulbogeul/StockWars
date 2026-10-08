@@ -4,6 +4,7 @@ export const DAY = 86400000;
 export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
 const catalog = new Map(VIVIAN_SHOP_CATALOG.map(i => [i.id, i]));
 const buffs = { item_focus_pill: 'analysis', item_stabilizer: 'management', item_vitamin_complex: 'recovery' };
+const statNames = { analysis: '분석력', management: '운용력', recovery: '회복력' };
 const fail = message => ({ success: false, message });
 const ok = message => ({ success: true, message });
 const kst = time => new Date(time + 9 * 3600000);
@@ -116,6 +117,15 @@ export class ItemEngine {
         return ok('벤치에서 기력을 모두 회복했습니다.');
     }
     orderLimit() { return Math.floor(ITEM_BALANCE.baseOrderLimit * (this.active('management') ? 1 + ITEM_BALANCE.managementBonus : 1)); }
+    statLevel(key) { return Math.min(5, Math.max(0, Math.floor(Number(this.state.baseStats[key]) || 0))); }
+    portfolioSlots() { return (5 + 5 * this.statLevel('management')) + (this.state.appliedTrait === 'management' ? 2 : 0); }
+    buyCap() { return [10000, 50000, 200000, 1000000, 10000000, Infinity][this.statLevel('management')] * (this.active('management') ? 1.1 : 1); }
+    feeRate(baseRate) { return Math.max(0, baseRate - this.statLevel('negotiation') * 0.0001) * (this.state.appliedTrait === 'negotiation' ? 0.7 : 1); }
+    laborReward(gold) { return Math.round(gold * (1 + this.statLevel('negotiation') * 0.05)); }
+    logisticsBonuses() {
+        const level = this.statLevel('recovery');
+        return { control: level >= 1 ? 1.1 : 1, damage: level >= 2 ? 0.85 : 1, speed: level >= 4 ? 1.1 : 1, rumor: level >= 3 ? 0.05 : 0 };
+    }
     maxStamina() { const recovery = this.stats().recovery; return recovery >= 4 ? 5 : recovery >= 2 ? 4 : 3; }
     normalizeStamina() {
         // Round old fractional saves up once so the migration does not lose a partial heart.
@@ -196,6 +206,8 @@ export class ItemEngine {
         const s = this.state, now = this.now();
         let message = `${catalog.get(id).name} 사용 완료`;
         let rumorId;
+        let statBoost;
+        let logisticsPass;
         let consume = true;
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             const before = s.stamina;
@@ -203,10 +215,13 @@ export class ItemEngine {
             if (id === 'item_caffeine_shot') s.caffeineDay = dayKey(now);
             message = `하트 ${s.stamina - before}개 회복 (${s.stamina}/${this.maxStamina()} · 회복력 ${this.stats().recovery})`;
         } else if (buffs[id]) {
-            s.buffs[buffs[id]] = now + ITEM_BALANCE.buffMs;
-            message += ' · 120분간 스탯 +2';
+            const stat = buffs[id], before = this.stats()[stat];
+            s.buffs[stat] = now + ITEM_BALANCE.buffMs;
+            statBoost = { stat, name: statNames[stat], before, after: this.stats()[stat], amount: 2, durationMinutes: ITEM_BALANCE.buffMs / 60000 };
+            message = `${statNames[stat]}이 2 올랐습니다! (${before} → ${statBoost.after}) · ${statBoost.durationMinutes}분간 적용`;
         } else if (id.startsWith('item_logistics_quickpass')) {
             s.passUntil = now + (id.endsWith('7d') ? 7 : 1) * DAY;
+            logisticsPass = { until: s.passUntil };
             message += ' · 비트 물류에서 즉시 완료 선택 가능';
         } else if (id === 'item_weekly_drink_ration') {
             const tomorrow = Date.parse(dayKey(now) + 'T00:00:00+09:00') + DAY;
@@ -263,7 +278,7 @@ export class ItemEngine {
         } else if (id === 'item_lotto_ticket') { consume = false; message = '아이템 센터의 로또 탭에서 번호·결과·당첨금을 확인하세요.'; }
         if (consume) this.consume(id);
         else { const entry = s.inventory.find(i => i.id === id); entry.isEquipped = id === 'item_gas_mask' ? s.mask : id === 'item_black_swan_alarm' ? s.alarm : false; }
-        return { ...ok(message), ...(rumorId ? { rumorId } : {}) };
+        return { ...ok(message), ...(rumorId ? { rumorId } : {}), ...(statBoost ? { statBoost } : {}), ...(logisticsPass ? { logisticsPass } : {}) };
     }
     discard(id) {
         if (id === 'item_lotto_ticket') return fail('응모권은 추첨 기록과 연결되어 버릴 수 없습니다.');
@@ -314,14 +329,18 @@ export class ItemEngine {
         this.tick();
         if (this.state.passUntil <= this.now()) return fail('사용 중인 퀵-패스가 없습니다.');
         if (this.state.stamina < this.laborCost()) return fail('노동에 필요한 체력이 부족합니다.');
-        this.finishLabor(ITEM_BALANCE.quickGold, ITEM_BALANCE.quickExp);
-        return { ...ok(`물류 즉시 완료 · ${ITEM_BALANCE.quickGold}G / ${ITEM_BALANCE.quickExp} EXP · 수수료 0%`), goldReward: ITEM_BALANCE.quickGold, expReward: ITEM_BALANCE.quickExp, hasRumor: false };
+        const goldReward = this.laborReward(ITEM_BALANCE.quickGold);
+        this.finishLabor(goldReward, ITEM_BALANCE.quickExp, true);
+        return { ...ok(`물류 즉시 완료 · ${goldReward}G / ${ITEM_BALANCE.quickExp} EXP · 수수료 0%`), goldReward, expReward: ITEM_BALANCE.quickExp, hasRumor: false };
     }
-    finishLabor(gold, exp = 0) {
-        this.market.cash += gold;
+    finishLabor(gold, exp = 0, adjusted = false) {
+        const reward = adjusted ? gold : this.laborReward(gold);
+        this.market.cash += reward;
         this.state.exp += exp;
         this.normalizeStamina();
-        this.state.stamina = Math.max(0, this.state.stamina - this.laborCost());
+        const cost = this.statLevel('recovery') >= 5 && this.random() < 0.1 ? 0 : this.laborCost();
+        this.state.stamina = Math.max(0, this.state.stamina - cost);
+        return { goldReward: reward, staminaCost: cost };
     }
     claimTutorialReward(skipped = false) {
         if (skipped || this.state.tutorialRewardClaimed) return 0;
@@ -332,6 +351,7 @@ export class ItemEngine {
     tick() {
         this.normalizeStamina();
         const s = this.state, now = this.now();
+        delete s.recoveryAt; // Remove obsolete natural-recovery timestamps from saves.
         this.syncDay();
         for (const due of s.deliveries.filter(t => t <= now)) s.mail.push({ id: this.id('mail'), due, claimed: false });
         s.deliveries = s.deliveries.filter(t => t > now);

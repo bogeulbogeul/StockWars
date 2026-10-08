@@ -40,7 +40,7 @@ export function updateGhostLiquidity(book, stock, pressure, revision = 0) {
 
 // Read-only planning: all checks finish before any cash, inventory or depth changes.
 export function matchOrder(book, { side, quantity, referencePrice, limitPrice = null, cash = Infinity,
-    leverage = 1, feeRate = 0.0015 }) {
+    leverage = 1, feeRate = 0.0015, grossLimit = Infinity }) {
     const buying = side === 'buy';
     const levels = (buying ? book.asks : book.bids).map((level, index) => ({ ...level, index }))
         .sort((a,b) => buying ? a.price-b.price : b.price-a.price);
@@ -53,6 +53,10 @@ export function matchOrder(book, { side, quantity, referencePrice, limitPrice = 
         if (level.vol <= 0) continue;
         if (buying ? level.price > bound : level.price < bound) { reason = 'price'; break; }
         let qty = Math.min(level.vol, quantity - filled);
+        if (side !== 'sell' && gross + level.price * qty > grossLimit) {
+            qty = Math.max(0, Math.floor((grossLimit - gross) / level.price));
+            reason = 'buyCap';
+        }
         if (side !== 'sell' && cost(gross + level.price * qty) > cash) {
             let low = 0, high = qty + 1;
             while (low + 1 < high) {
@@ -63,7 +67,7 @@ export function matchOrder(book, { side, quantity, referencePrice, limitPrice = 
             qty = low; reason = 'cash';
         }
         if (qty > 0) { fills.push({ index: level.index, price: level.price, quantity: qty }); filled += qty; gross += level.price * qty; }
-        if (reason === 'cash') break;
+        if (reason === 'cash' || reason === 'buyCap') break;
     }
     const fee = Math.round(gross * feeRate), margin = Math.round(gross / leverage);
     return { quantity: filled, requested: quantity, remaining: quantity-filled, gross, fee, feeRate, margin,

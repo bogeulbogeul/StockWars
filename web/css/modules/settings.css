@@ -31,3 +31,8 @@
 .player-social-row button { padding: 7px 10px; border: 1px solid #446476; border-radius: 8px; background: #1c3341; color: #d3f5f2; cursor: pointer; }
 .settings-hide-weather .main-hud-bar .weather-item { display: none; }
 .settings-reduced-motion *, .settings-reduced-motion *::before, .settings-reduced-motion *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+
+.settings-key-list { margin-bottom: 16px; }
+.settings-key-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 13px; }
+.settings-key-row button { min-width: 88px; }
+.settings-key-row button[aria-pressed="true"] { border-color: #66d9d1; color: #9df1e4; }

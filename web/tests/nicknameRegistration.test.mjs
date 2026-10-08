@@ -16,6 +16,6 @@ test('app advances with pending registration on older servers and connection fai
 
 test('online registration still blocks duplicates and validates input', async () => {
     await assert.rejects(registerNickname('고래', { claimNickname: async () => ({ error: '이미 사용 중인 닉네임입니다.' }) }), /이미 사용 중/);
-    await assert.rejects(registerNickname(' '), /1~24/);
+    await assert.rejects(registerNickname(' '), /1~10/);
     assert.deepEqual(await registerNickname('고래', { claimNickname: async () => ({ snapshot: {} }) }), { nickname: '고래', pending: false });
 });

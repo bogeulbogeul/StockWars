@@ -1,4 +1,4 @@
-import { gameKey } from '../app/GameKeys.js';
+import { gameKey, bindingLabel } from '../app/GameKeys.js';
 /**
  * TownStage Component (RPG 탑다운 마을 무대 컨트롤러)
  * Modular architecture:
@@ -21,7 +21,7 @@ import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBr
 export class TownStage {
     constructor(container, callbacks = {}) {
         this.container = container;
-        this.callbacks = { ...callbacks, isInputBlocked: () => this.vendingModal?.isOpen || callbacks.isInputBlocked?.() };
+        this.callbacks = { ...callbacks, isInputBlocked: () => this.buildingInfoOpen || this.vendingModal?.isOpen || callbacks.isInputBlocked?.() };
         this.vendingModal = new TownVendingModal(container, callbacks);
         this.nickname = '사이퍼 트레이더';
         this.remotePlayers = new Map();
@@ -69,7 +69,7 @@ export class TownStage {
                 <!-- Town Movement Controls Hint -->
                 <div class="town-controls-hint" id="townControlsHint">
                     <span class="hint-icon">🎮</span>
-                    <span class="hint-text">마을 탐색: <b>W A S D / 방향키</b> 이동 | <b>Shift</b> 달리기 | <b>F 키 / 클릭</b> 상호작용</span>
+                    <span class="hint-text">마을 탐색: <b>${['w', 'a', 's', 'd'].map(action => `<span data-game-key="${action}">${bindingLabel(action)}</span>`).join(' ')} / 방향키</b> 이동 | <b data-game-key="shift">${bindingLabel('shift')}</b> 달리기 | <b><span data-game-key="f">${bindingLabel('f')}</span> 키 / 클릭</b> 상호작용</span>
                 </div>
 
                 <!-- Main Town Viewport & Camera Stage -->
@@ -168,13 +168,29 @@ export class TownStage {
                                 <span class="prompt-building-title" id="promptBuildingTitle">사이퍼 증권 본점</span>
                                 <span class="prompt-building-desc" id="promptBuildingDesc">증권사 객장 입장</span>
                             </div>
-                            <span class="prompt-hotkey-btn">F</span>
+                            <span class="prompt-hotkey-btn" data-game-key="f">${bindingLabel('f')}</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Electronic Billboard News & Ad Interactive Modal -->
                 ${TownBuildingRenderer.renderBillboardModalHTML()}
+                <div class="town-billboard-modal-overlay hidden" id="townBuildingInfoModal">
+                    <section class="town-billboard-modal-dialog town-building-info-dialog" role="dialog" aria-modal="true" aria-labelledby="townBuildingInfoTitle" aria-describedby="townBuildingInfoDesc townBuildingInfoStatus">
+                        <div class="billboard-modal-header">
+                            <div class="modal-title-group">
+                                <span class="modal-title-icon" id="townBuildingInfoIcon" aria-hidden="true"></span>
+                                <div><h3 class="modal-title-text" id="townBuildingInfoTitle"></h3><p class="modal-subtitle-text" id="townBuildingInfoCategory"></p></div>
+                            </div>
+                            <button class="modal-close-btn" id="btnBuildingInfoClose" aria-label="건물 설명 닫기">✕</button>
+                        </div>
+                        <div class="town-building-info-body">
+                            <p id="townBuildingInfoDesc"></p>
+                            <span class="town-building-info-status" id="townBuildingInfoStatus">오픈 준비중</span>
+                            <p class="town-building-info-hint">[ESC] 닫기</p>
+                        </div>
+                    </section>
+                </div>
             </div>
         `;
         this.container.insertAdjacentHTML('beforeend', html);
@@ -197,6 +213,9 @@ export class TownStage {
         this.billboardModal = document.getElementById('townBillboardModal');
         this.btnBillboardClose = document.getElementById('btnBillboardClose');
 
+        this.buildingInfoModal = document.getElementById('townBuildingInfoModal');
+        this.btnBuildingInfoClose = document.getElementById('btnBuildingInfoClose');
+
         // Dynamic Atmospheric Sky System
         if (this.parallaxBgEl) {
             this.skyBackground = new SkyBackground(this.parallaxBgEl);
@@ -206,6 +225,14 @@ export class TownStage {
     initEventListeners() {
         window.addEventListener('keydown', (e) => {
             if (this.containerEl?.classList.contains('hidden')) return;
+            if (this.buildingInfoOpen) {
+                if (gameKey(e) === 'escape') { e.preventDefault(); this.closeBuildingInfo(); }
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    this.btnBuildingInfoClose.focus();
+                }
+                return;
+            }
             if (this.callbacks.isInputBlocked?.()) return;
             if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
             const key = gameKey(e);
@@ -253,6 +280,11 @@ export class TownStage {
             }
         });
 
+        this.btnBuildingInfoClose?.addEventListener('click', () => this.closeBuildingInfo());
+        this.buildingInfoModal?.addEventListener('click', (e) => {
+            if (e.target === this.buildingInfoModal) this.closeBuildingInfo();
+        });
+
         // Click on buildings or interactive props
         this.viewportEl?.addEventListener('click', (e) => {
             if (this.callbacks.isInputBlocked?.()) return;
@@ -260,7 +292,7 @@ export class TownStage {
             if (targetBuilding) {
                 const bId = targetBuilding.dataset.buildingId;
                 const building = TOWN_BUILDINGS.find(b => b.id === bId);
-                if (building && building.available !== false) {
+                if (building) {
                     this.playerController.placeAt(building);
                     this.checkProximity();
                     this.triggerAction(building);
@@ -492,8 +524,12 @@ export class TownStage {
 
     checkProximity() {
         const { charPosX, charPosY } = this.playerController;
+        const encounter = [...(this.remotePlayers?.values() || [])]
+            .filter(entry => entry.element.style.display !== 'none' && Math.hypot(charPosX - entry.x, charPosY - entry.y) <= 180)
+            .sort((a,b) => Math.hypot(charPosX-a.x,charPosY-a.y) - Math.hypot(charPosX-b.x,charPosY-b.y))[0];
+        this.callbacks?.onPlayerEncounter?.(encounter?.player || null);
         const candidates = [
-            ...TOWN_BUILDINGS.filter(b => b.available !== false).map(b => ({ ...b, kind: 'building' })),
+            ...TOWN_BUILDINGS.map(b => ({ ...b, kind: 'building' })),
             ...TOWN_INTERACTIVE_PROPS.map(p => ({ ...p, kind: 'prop' })),
             ...TOWN_LANDSCAPE_INTERACTIVE
         ];
@@ -512,15 +548,39 @@ export class TownStage {
 
             if (this.promptIcon) this.promptIcon.textContent = nearby.icon || '🏢';
             if (this.promptTitle) this.promptTitle.textContent = nearby.name || '';
-            if (this.promptDesc) this.promptDesc.textContent = nearby.actionText || nearby.desc || '';
+            if (this.promptDesc) this.promptDesc.textContent = nearby.available === false ? '건물 살펴보기' : nearby.actionText || nearby.desc || '';
         } else if (this.promptEl) {
             this.promptEl.classList.add('hidden');
         }
     }
 
+    openBuildingInfo(building) {
+        this.buildingInfoPreviousFocus = document.activeElement;
+        this.buildingInfoOpen = true;
+        this.playerController.keysHeld.clear();
+        this.playerController.stopResting();
+        const fields = { Title: building.name, Icon: building.icon || '🏢', Category: building.category, Desc: building.desc };
+        for (const [field, value] of Object.entries(fields)) {
+            this.buildingInfoModal.querySelector('#townBuildingInfo' + field).textContent = value || '';
+        }
+        this.buildingInfoModal.classList.remove('hidden');
+        this.btnBuildingInfoClose.focus();
+    }
+
+    closeBuildingInfo() {
+        this.buildingInfoOpen = false;
+        this.buildingInfoModal?.classList.add('hidden');
+        this.playerController.keysHeld.clear();
+        this.buildingInfoPreviousFocus?.focus?.();
+    }
+
     triggerAction(obj) {
         if (this.callbacks.isInputBlocked?.()) return;
-        if (!obj || obj.available === false) return;
+        if (!obj) return;
+        if (obj.available === false) {
+            this.openBuildingInfo(obj);
+            return;
+        }
         if (obj.kind === 'prop' || obj.type === 'bench' || obj.type === 'billboard') {
             if (obj.type === 'bench') {
                 this.playerController.restOnBench(obj, this.townChar, this.worldTrackEl);
@@ -571,6 +631,7 @@ export class TownStage {
     }
 
     hide() {
+        this.closeBuildingInfo();
         this.presenceSync?.stop();
         this.setRemotePlayers([]);
         this.containerEl?.classList.add('hidden');

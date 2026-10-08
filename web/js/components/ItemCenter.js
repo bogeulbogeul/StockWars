@@ -2,6 +2,7 @@ import { dayKey } from '../engine/ItemEngine.js';
 import { getItemArtwork } from '../data/itemArtwork.js';
 import { rumorDecryption } from './inventory/RumorPopup.js';
 import { LottoPanel } from './LottoPanel.js';
+import { LogisticsPassPopup } from './LogisticsPassPopup.js';
 const statNames = { analysis: '분석', management: '운용', recovery: '회복' };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 const time = ms => new Date(ms).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
@@ -9,6 +10,7 @@ const time = ms => new Date(ms).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul'
 export class ItemCenter {
     constructor(engine, onChange) {
         this.engine = engine;
+        this.passPopup = new LogisticsPassPopup(engine);
         this.lotto = new LottoPanel(engine);
         this.onChange = onChange;
         this.dialog = document.createElement('dialog');
@@ -30,6 +32,20 @@ export class ItemCenter {
         this.banner.className = 'item-event-banner';
         this.banner.setAttribute('role', 'status');
         document.body.appendChild(this.banner);
+        this.boostDialog = document.createElement('dialog');
+        this.boostDialog.className = 'item-center item-stat-popup';
+        this.boostDialog.setAttribute('aria-label', '능력 상승');
+        this.boostDialog.innerHTML = '<header><h2>능력 상승!</h2></header><p class="item-stat-message" role="status"></p><button type="button">확인</button>';
+        this.boostDialog.querySelector('button').onclick = () => this.boostDialog.close();
+        this.boostDialog.addEventListener('keydown', e => e.stopPropagation());
+        document.body.appendChild(this.boostDialog);
+    }
+    showStatBoost(result) {
+        if (this.passPopup.showResult(result)) return true;
+        if (!result.success || !result.statBoost) return false;
+        this.boostDialog.querySelector('.item-stat-message').textContent = result.message;
+        if (!this.boostDialog.open) this.boostDialog.showModal();
+        return true;
     }
     open(message = '', section = '') {
         this.dialog.classList.toggle('lotto-only', section === 'lotto');
@@ -97,6 +113,7 @@ export class ItemCenter {
             this.onChange();
             if (d.use === 'item_lotto_ticket') this.open(result.message, 'lotto');
             else { this.render(); this.feedback(result.message); }
+            this.showStatBoost(result);
         }
     }
 }

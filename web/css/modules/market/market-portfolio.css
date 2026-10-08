@@ -233,3 +233,6 @@
 .trade-history-list { max-height: 360px; overflow-y: auto; }
 .trade-history-row { display: grid; gap: 5px; padding: 12px 14px; border-top: 1px solid var(--border-light); font-size: 12px; }
 .trade-history-row small { color: var(--text-muted); font-size: 10px; }
+
+/* Separate holding limits from the first stock card. */
+#portfolioSlotStatus { margin-bottom: 10px; line-height: 1.6; }

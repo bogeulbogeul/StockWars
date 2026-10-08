@@ -92,8 +92,8 @@ export class TownBuildingRenderer {
                  data-building-name="${b.name}"
                  data-building-desc="${b.desc}"
                  data-action-text="${b.actionText}"
-                 aria-label="${b.name}${b.available === false ? ' · 개점 준비 중' : ''}"
-                 ${b.available === false ? 'aria-disabled="true"' : ''}
+                 aria-label="${b.name}${b.available === false ? ' · 오픈 준비중' : ''}"
+
                  style="left: ${b.x}px; width: ${b.width}px; height: ${b.height}px; top: ${b.y - b.height}px; z-index: ${b.y};">
                 <svg class="building-artwork" width="${b.asset.displayWidth}" height="${b.height}"
                      viewBox="${b.asset.x} ${b.asset.y} ${b.asset.cropWidth} ${b.asset.cropHeight}"

@@ -12,8 +12,16 @@ export class OnlineSocialSync {
         if(document.body.classList.contains('town-mode-active'))return {location:'town',player:a.townStage.playerController};
         return null;
     }
+    async syncRanking() {
+        const a = this.app;
+        if (a.isLocalSession || !a.userProfile?.nickname || !window.stockWarsPresence?.leaderboard || this.rankingSyncActive) return;
+        this.rankingSyncActive = true;
+        try { await window.stockWarsPresence.leaderboard(a.rankingModal.callbacks.getProfile()); } catch {}
+        finally { this.rankingSyncActive = false; }
+    }
     async poll(){
         const scene=this.currentScene(),a=this.app;
+        if (!this.lastRankingSync || Date.now() - this.lastRankingSync >= 60000) { this.lastRankingSync = Date.now(); void this.syncRanking(); }
         if(scene&&a.userProfile?.nickname&&window.stockWarsPresence?.position){
             try{
                 const p=scene.player;

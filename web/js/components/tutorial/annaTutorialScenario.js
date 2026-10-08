@@ -96,6 +96,11 @@ export function buildAnnaScenario({
 
         // STEP 5: Select Recommended Stock & Open Trade Modal
         {
+            id: 'stock_basics_ownership', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '주식은 기업의 지분이에요. 1주를 사면 그 기업의 작은 일부를 갖게 되는 거죠. 종목은 거래할 주식의 종류를 뜻해요. 기업마다 사업과 상황이 다르니, 어떤 기업의 주식인지부터 살펴보세요.',
+            tracker: '2/4 • 주식과 종목 알아보기', requiresManualAction: false
+        },
+        {
             id: 'select_stock',
             expression: 'Smile',
             speaker: "전담 매니저 안나",
@@ -109,6 +114,11 @@ export function buildAnnaScenario({
             }
         },
 
+        {
+            id: 'stock_basics_price', expression: 'Standard', speaker: '전담 매니저 안나',
+            text: '주가는 주식 1주가 거래되는 가격이에요. 기업 실적과 앞으로의 기대, 시장 분위기에 따라 사고 싶은 사람과 팔고 싶은 사람이 달라지면서 가격도 움직여요. 가격 그래프는 그동안 주가가 어떻게 변했는지 보여줍니다.',
+            tracker: '2/4 • 주가가 움직이는 이유', requiresManualAction: false
+        },
         {
             id: 'chart_colors', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '가격 그래프는 미국 시장 방식으로 표시해요. 상승은 청록색, 하락은 빨간색이에요. 한국 시장에서 익숙한 색과 반대라 헷갈릴 수 있어요. 색과 함께 가격 옆의 +·− 숫자도 확인해 주세요. 읽었으면 [다음 ▶]을 눌러 주세요.',
@@ -136,6 +146,11 @@ export function buildAnnaScenario({
             }
         },
         // STEP 6: Execute Buy Order
+        {
+            id: 'stock_basics_profit', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '매수는 주식을 사는 것, 매도는 파는 것이에요. 예를 들어 1주를 400G에 사서 450G에 팔면 수수료를 빼기 전 이익은 50G예요. 350G에 팔면 50G 손해고요. 여러 주를 거래하면 주당 가격 차이에 주식 수를 곱하고, 매수·매도 수수료도 빼야 실제 손익을 알 수 있어요.',
+            tracker: '2/4 • 매수·매도와 손익 계산', requiresManualAction: false
+        },
         {
             id: 'buy_stock',
             expression: 'Standard',
@@ -191,7 +206,7 @@ export function buildAnnaScenario({
             id: 'social_and_ranking_guide',
             expression: 'Happy',
             speaker: "전담 매니저 안나",
-            text: `내 계좌의 평가 손익은 지금 팔았을 때 예상되는 이익이나 손해예요. 주가가 변하면 이 숫자도 달라져요. 실제로 매도해야 실현 손익으로 확정됩니다.`,
+            text: `내 계좌의 평가 손익은 보유 주식을 현재 가격으로 계산한 이익이나 손해예요. 주가가 변하면 이 숫자도 달라지고, 실제로 팔리는 가격은 다를 수 있어요. 매도한 주식의 손익은 실현 손익으로 기록되며, 거래 내역에서는 수수료를 반영한 결과를 확인할 수 있어요.`,
             tracker: "2/4 • 평가 손익 확인",
             requiresManualAction: false,
             onEnter: () => {
@@ -199,6 +214,36 @@ export function buildAnnaScenario({
             }
         },
 
+        {
+            id: 'portfolio_slots_guide',
+            expression: 'Smile',
+            speaker: '전담 매니저 안나',
+            text: '종목 보유 슬롯은 서로 다른 종목을 담을 수 있는 자리예요. 같은 종목을 여러 주 보유해도 슬롯은 하나만 사용해요. 예를 들어 A기업 10주와 B기업 1주를 갖고 있다면 2칸을 쓰는 거죠. 주식 수와 종목 수를 구분해 주세요. 기본 슬롯은 5칸이고, 운용력을 한 단계 올릴 때마다 5칸씩 늘어나요.',
+            tracker: '2/4 • 종목 보유 슬롯 알아보기',
+            requiresManualAction: false,
+            onEnter: () => {
+                cleanupHighlights();
+                highlightElement('#portfolioSlotStatus', true);
+                highlightElement('#portfolioListContainer', true);
+            }
+        },
+        {
+            id: 'portfolio_slots_capacity',
+            expression: 'Standard',
+            speaker: '전담 매니저 안나',
+            text: '슬롯 자리가 모두 찼을 때 새로운 종목을 매수하려면 보유 종목 하나를 전량 매도하거나 슬롯을 늘려야 해요. 일부만 팔면 그 종목을 계속 보유하므로 자리가 비지 않아요. 같은 종목의 추가 매수는 새 슬롯을 쓰지 않지만 현금과 매수 한도는 확인해야 해요. 내 계좌에서 사용 중인 슬롯과 최대 슬롯, 종목별 투자 한도를 확인할 수 있어요.',
+            tracker: '2/4 • 슬롯을 비우는 방법',
+            requiresManualAction: false
+        },
+        {
+            id: 'portfolio_slots_trait',
+            expression: 'Smile',
+            speaker: '전담 매니저 안나',
+            text: '공격적 자산가 성향에는 종목 슬롯 +2칸 보너스가 적용돼요. 슬롯이 늘어나도 투자할 현금이 늘어나는 것은 아니니, 여러 종목을 살 때는 생활비와 남은 현금도 함께 살펴보세요.',
+            tracker: '2/4 • 성향과 종목 슬롯',
+            requiresManualAction: false,
+            onEnter: () => cleanupHighlights()
+        },
         {
             id: 'trade_history_guide',
             expression: 'Smile',
@@ -250,6 +295,11 @@ export function buildAnnaScenario({
 
         // STEP 8: Town Exploration Proposal for Seed Money
         {
+            id: 'stock_basics_news_expectations', expression: 'Standard', speaker: '전담 매니저 안나',
+            text: '좋은 뉴스가 나와도 주가가 꼭 오르지는 않아요. 사람들이 이미 그 소식을 예상해서 먼저 샀다면 기대가 가격에 반영되어 있을 수 있어요. 제목만 보고 결정하기보다 실제 내용이 기존 기대보다 좋은지, 발표 이후에도 근거가 유지되는지 살펴보세요.',
+            tracker: '2/4 • 뉴스와 시장의 기대', requiresManualAction: false
+        },
+        {
             id: 'go_town_proposal',
             expression: 'Standard',
             speaker: "전담 매니저 안나",
@@ -300,12 +350,46 @@ export function buildAnnaScenario({
             id: 'rumor_intel_explain',
             expression: 'Standard',
             speaker: "전담 매니저 안나",
-            text: `찌라시는 앞으로 주가가 움직일 수 있다는 단서예요. 반드시 맞는 정보는 아니니, 종목의 뉴스와 함께 살펴보세요.`,
+            text: `소지품에서 찌라시를 선택하면 [찌라시 열람]으로 읽을 수 있어요. 분석력에 따라 같은 사건도 다르게 보입니다. 지금부터 실제 보상과 별개인 연습용 예시로 종목·사건·방향·시간 단서를 찾아볼게요.`,
             tracker: "3/4 • 찌라시 활용법 안내",
             requiresManualAction: false,
             onEnter: () => {
                 cleanupHighlights();
             }
+        },
+
+        {
+            id: 'rumor_time_prediction', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '연습용 소문이에요. “푸른 전기 저장고에 큰 수레꾼이 찾아왔대. 이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.” 이 소문은 언제 시장에 영향을 줄까요? 정답을 맞히지 못해도 불이익은 없어요.',
+            tracker: '3/4 • 시간 단서 예상하기', requiresManualAction: true,
+            choices: [
+                { label: '지금 바로', feedback: '“찾아왔다”는 정황만으로 지금 바로 움직인다고 단정할 수는 없어요.' },
+                { label: '이틀 뒤 발표 전후', feedback: '좋아요! “이틀 뒤 잔치에서 천막이 걷힌다”가 발표 시점의 단서예요.' },
+                { label: '시점은 전혀 알 수 없음', feedback: '정확한 체결 시각은 몰라도 “이틀 뒤”라는 단서로 예상 범위를 잡을 수 있어요.' }
+            ],
+            interactionHint: '아래에서 예상 시점을 하나 선택해 주세요.'
+        },
+        {
+            id: 'rumor_time_feedback', expression: 'Standard', speaker: '전담 매니저 안나',
+            text: '“이틀 뒤 잔치”는 발표 일정의 단서예요. 사건이 발표될 시점과 주가가 반응할 시점은 다를 수 있어요. 기대가 먼저 반영되거나 발표가 늦어질 수도 있으니, 확정 시각으로 읽지 마세요.',
+            tracker: '3/4 • 발표 시점과 시장 반응', requiresManualAction: false,
+            actionBtnText: '분석력별 모습 비교하기', onAction: tutorial => tutorial.nextStep()
+        },
+        ...[
+            ['1', '푸른 전기 저장고에 큰 수레꾼이 찾아왔대. 이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.', '이름과 사건은 비유지만 “이틀 뒤”라는 시간 단서는 남아 있어요.'],
+            ['2', '친환경 에너지 업체가 자동차 큰손에게 새 배터리를 혼자 공급한다는 소문이야. 이틀 뒤 엑스포에서 이야기가 나오면 위로 움직일 듯해.', '업종과 상승 방향이 보이고, 엑스포가 발표 시점의 근거가 돼요.'],
+            ['3', '에너지 섹터 호재야. 전고체 배터리 업체가 글로벌 완성차 1위와 독점 공급 계약을 맺었다는 얘기지. 이틀 뒤 모빌리티 엑스포 발표가 상승 계기가 될 전망이래.', '사건·방향·시점으로 후보 종목을 좁혀 보세요. 기업명과 계약 금액은 아직 알 수 없어요.'],
+            ['4', '에코 배터리가 글로벌 완성차 1위와 전고체 배터리 독점 공급 계약을 체결했다는 첩보야. 이틀 뒤 모빌리티 엑스포에서 발표할 거래. 계약 금액은 더 확인해야 해.', '기업과 구체적인 사건이 드러나도, 발표 전후 상승이 확정되는 것은 아니에요.'],
+            ['5', '에코 배터리가 글로벌 완성차 1위와 5조 원 규모의 전고체 배터리 독점 공급 계약을 체결했다는 첩보야. 이틀 뒤 모빌리티 엑스포에서 발표할 거래.', '원문의 금액·일정까지 읽어도 진위나 수익을 보장하지 않아요.']
+        ].map(([level, example, explanation]) => ({
+            id: `rumor_analysis_example_${level}`, expression: 'Standard', speaker: '전담 매니저 안나',
+            text: `[연습용 · 분석력 ${level}단계] “${example}” ${explanation}`,
+            tracker: `3/4 • 같은 찌라시 비교 (${level}/5)`, requiresManualAction: false
+        })),
+        {
+            id: 'rumor_reading_summary', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '찌라시에서는 어느 종목인지, 어떤 사건인지, 어느 방향인지, 언제 영향을 줄지를 함께 예상해 보세요. 분석력이 높아지면 단서가 구체적으로 보이지만 정답을 보장하지는 않아요. 실제 찌라시는 현재 분석력과 해당 정보의 유지 해석 단계 중 높은 단계로 보여요. 뉴스와 공시로 근거·일정을 확인해 주세요. 예시는 [◀ 이전]으로 다시 비교할 수 있어요.',
+            tracker: '3/4 • 찌라시 해석 정리', requiresManualAction: false
         },
 
         // STEP 12: Stamina Recovery Guide
@@ -322,6 +406,11 @@ export function buildAnnaScenario({
         },
 
         // STEP 13: Graduation after Logistics Labor
+        {
+            id: 'stock_basics_budget', expression: 'Standard', speaker: '전담 매니저 안나',
+            text: '마지막으로 생활비로 쓸 돈은 남겨 두세요. 7일 차 월세 5,000G를 준비해야 하니 가진 현금을 전부 투자하면 곤란할 수 있어요. 한 종목에 돈을 모두 넣으면 그 종목이 떨어질 때 손해도 크게 몰려요. 여러 종목에 나눠 투자하면 한 기업에 대한 의존을 줄일 수 있지만, 함께 하락할 수도 있어요.',
+            tracker: '4/4 • 생활비와 투자금 나누기', requiresManualAction: false
+        },
         {
             id: 'logistics_completed',
             expression: 'Happy',

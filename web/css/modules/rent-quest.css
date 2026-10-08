@@ -33,3 +33,12 @@
     .rent-quest { top: auto; bottom: 90px; left: 12px; width: 230px; padding: 12px; }
     .rent-quest-tip { display: none; }
 }
+
+.rent-quest-heading { align-items: center; }
+.rent-quest-heading-actions { display: flex; align-items: center; gap: 10px; }
+.rent-quest-toggle { pointer-events: auto; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; color: #9daec3; background: #ffffff08; border: 1px solid #ffffff20; border-radius: 7px; cursor: pointer; }
+.rent-quest-toggle:hover { color: #00d5ef; border-color: #00d5ef80; background: #00d5ef12; }
+.rent-quest-toggle:focus-visible { outline: 2px solid #00d5ef; outline-offset: 3px; }
+.rent-quest-details[hidden] { display: none; }
+.rent-quest.is-collapsed h2 { margin-bottom: 0; font-size: 15px; }
+.rent-quest.is-collapsed .rent-quest-toggle svg { transform: rotate(180deg); }

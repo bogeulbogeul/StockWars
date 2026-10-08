@@ -58,3 +58,11 @@
     background: #102b45;
     flex-shrink: 0;
 }
+
+.online-waiting-room .arena-wait-header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px; }
+.arena-wait-eyebrow { color:#70dccc; font-size:10px; letter-spacing:2px; }.online-waiting-room h3.arena-wait-title { margin:8px 0 0; font-size:22px; color:#edf4ff; overflow-wrap:anywhere; }
+.arena-wait-badge { color:#f4d281; background:#f4d28112; border:1px solid #f4d28140; border-radius:999px; padding:6px 12px; font-size:12px; white-space:nowrap; }
+.arena-wait-info { display:grid; grid-template-columns:1fr 1fr; gap:12px; }.arena-wait-info>div { padding:14px 16px; background:#0a1725; border:1px solid #ffffff10; border-radius:10px; }.arena-wait-info span { display:block; color:#91a6bc; font-size:12px; margin-bottom:8px; }.arena-wait-info strong { font-size:17px; color:#edf4ff; }
+.arena-wait-code { margin:16px 0 24px; font-size:12px; color:#91a6bc; }.arena-wait-code summary { cursor:pointer; }.arena-wait-code code { display:block; padding-top:10px; overflow-wrap:anywhere; user-select:all; line-height:1.6; }
+.arena-roster-title { color:#cbd7e6; font-size:13px; margin:0 0 12px; }.arena-wait-roster { display:grid; gap:10px; }.arena-member { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px; background:#142637; border:1px solid #ffffff10; border-radius:12px; }.arena-member-identity { display:flex; align-items:center; gap:12px; min-width:0; }.arena-member-avatar { display:grid; place-items:center; width:38px; height:38px; border-radius:10px; background:#223c4d; flex-shrink:0; }.arena-member-identity strong { color:#edf4ff; font-size:14px; overflow-wrap:anywhere; }.arena-member-identity small { display:block; margin-top:5px; color:#91a6bc; font-size:11px; }.arena-member-state { white-space:nowrap; color:#91a6bc; font-size:12px; }.arena-member-state.ready { color:#70dccc; }
+.arena-wait-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid #ffffff12; }.arena-wait-actions button { border-radius:10px; padding:10px 16px; }.arena-wait-actions .arena-start-button { background:#70dccc; color:#09202b; border-color:#70dccc; font-weight:700; }.arena-wait-actions .arena-leave-button { margin-left:auto; color:#aab9cb; background:transparent; }

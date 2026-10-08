@@ -1,3 +1,4 @@
+@import './modules/help.css';
 /* ==========================================================================
    StockWars Web Demo - Master Modular Stylesheet
    Architecture: Domain-driven modular CSS structure (500-line hard limit per file)
@@ -29,6 +30,7 @@
 /* 5. In-Game SNS & Communication */
 @import './modules/bubble-messenger.css?v=bubble-group-chat-v14';
 @import './modules/friend-modal.css';
+@import './modules/player-social.css';
 @import './modules/ranking-modal.css';
 
 /* 6. Narrative, Tutorial & Intro */

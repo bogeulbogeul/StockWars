@@ -269,11 +269,11 @@
 .qty-selector { display: flex; justify-content: space-between; align-items: center; }
 .qty-lbl { font-size: 12px; color: var(--text-muted); }
 
-.qty-input-group { display: flex; align-items: center; gap: 4px; }
+.qty-input-group { display: flex; align-items: center; gap: 8px; }
 .qty-btn { width: 28px; height: 28px; background: var(--bg-surface-elevated); border: 1px solid var(--border-light); color: var(--text-main); border-radius: 4px; font-weight: 700; cursor: pointer; }
 .qty-input-group input { width: 50px; height: 28px; background: var(--bg-primary); border: 1px solid var(--border-light); color: var(--text-main); text-align: center; font-family: var(--font-mono); border-radius: 4px; font-weight: 700; }
 
-.quick-qty-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.quick-qty-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 8px; }
 .q-btn { background: var(--bg-surface-elevated); border: 1px solid var(--border-light); color: var(--text-muted); font-size: 10px; font-weight: 600; padding: 6px 0; border-radius: 4px; cursor: pointer; }
 .q-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 

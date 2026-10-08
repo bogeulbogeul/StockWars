@@ -16,6 +16,26 @@ function fixture(date = '2026-09-28T12:00:00+09:00') {
 const purchase = (e,id,n=1) => assert.equal(e.purchase(id,n).success,true,id);
 const use = (e,id) => assert.equal(e.use(id).success,true,id);
 
+test('pass activation reports its duration, survives reload and blocks duplicate use', () => {
+    for (const [id, days] of [['item_logistics_quickpass_1d', 1], ['item_logistics_quickpass_7d', 7]]) {
+        const { engine, market, advance } = fixture();
+        const result = engine.purchase(id, 1, true);
+        assert.equal(result.success, true);
+        engine.add(id);
+        assert.equal(result.logisticsPass.until, engine.now() + days * DAY);
+        const restored = new ItemEngine({ market, clock: engine.clock, state: JSON.parse(JSON.stringify(engine.state)) });
+        assert.equal(restored.state.passUntil, result.logisticsPass.until);
+        assert.equal(restored.use(id).success, false);
+        assert.equal(restored.state.inventory.find(item => item.id === id).quantity, 1);
+        advance(days * DAY);
+        const cash = market.cash, exp = restored.state.exp, stamina = restored.state.stamina;
+        assert.equal(restored.quickJob().success, false);
+        assert.equal(market.cash, cash);
+        assert.equal(restored.state.exp, exp);
+        assert.equal(restored.state.stamina, stamina);
+    }
+});
+
 test('failed instant uses and full bags never charge gold or consume an item', () => {
     const { engine:e,market:m }=fixture(); const cash=m.cash;
     assert.equal(e.purchase('item_energy_drink',1,true).success,false);
@@ -39,14 +59,30 @@ test('drinks heal one heart and caffeine enforces daily use across reloads', () 
 
 test('all three buffs affect stats, trading or labor and expire after 120 minutes', () => {
     const {engine:e,market:m,advance}=fixture();
+    e.state.baseStats.management=5;
     for(const id of ['item_focus_pill','item_stabilizer','item_vitamin_complex']) { purchase(e,id,2); use(e,id); assert.equal(e.use(id).success,false); }
-    assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,2); assert.equal(e.stats().recovery,2);
+    assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,7); assert.equal(e.stats().recovery,2);
     assert.equal(e.orderLimit(),110); assert.equal(e.laborCost(),1);
     assert.equal(m.buyStock('CLOUDBERRY',110).success,true);
     assert.equal(m.buyStock('CLOUDBERRY',111).success,false);
     e.finishLabor(100); assert.equal(e.state.stamina,2);
     advance(ITEM_BALANCE.buffMs); assert.equal(e.stats().analysis,5); assert.equal(e.laborCost(),1);
     assert.equal(m.buyStock('CLOUDBERRY',110).success,false);
+});
+
+test('ability items report the specific stat increase for inventory and instant use', () => {
+    for (const instant of [false, true]) {
+        for (const [id, stat, name] of [['item_focus_pill', 'analysis', '분석력'], ['item_stabilizer', 'management', '운용력'], ['item_vitamin_complex', 'recovery', '회복력']]) {
+            const { engine } = fixture();
+            const before = engine.stats()[stat];
+            const bought = engine.purchase(id, 1, instant);
+            const result = instant ? bought : engine.use(id);
+            assert.equal(result.success, true);
+            assert.deepEqual(result.statBoost, { stat, name, before, after: before + 2, amount: 2, durationMinutes: 120 });
+            assert.match(result.message, new RegExp(`${name}이 2 올랐습니다`));
+            assert.equal(engine.use(id).statBoost, undefined);
+        }
+    }
 });
 
 test('both passes expire and quick labor charges stamina, not fees', () => {

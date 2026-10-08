@@ -46,6 +46,7 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'julian_furniture',
+        available: false,
         name: '모던 프레임 가구점',
         sign: '모던 프레임',
         category: '가구 / 인테리어',
@@ -58,6 +59,7 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'claire_apparel',
+        available: false,
         name: '테일러드 의상실',
         sign: '테일러드',
         category: '의상 / 스타일',
@@ -70,6 +72,7 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'data_ink_bookstore',
+        available: false,
         name: '데이터 잉크 서점',
         sign: '데이터 잉크',
         category: '서점 / 지식',
@@ -95,6 +98,7 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'node_finance',
+        available: false,
         name: '노드 파이낸스 은행',
         sign: '노드 파이낸스',
         category: '은행 / 금융',
@@ -107,6 +111,7 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'midnight_pub',
+        available: false,
         name: '미드나잇 펍',
         sign: '미드나잇 펍',
         category: '사교 / 정보',
@@ -126,7 +131,7 @@ export const TOWN_BUILDINGS = [
         width: 240,
         height: 280,
         colorTheme: 'amber',
-        desc: '개점 준비 중인 전당포입니다.',
+        desc: '보유한 가구와 주식의 가치를 상담하고 담보를 통해 필요한 자금을 마련하는 전당포입니다. 전당포주 바터가 거래 공간을 준비하고 있어요.',
         actionText: '개점 준비 중',
         available: false
     }

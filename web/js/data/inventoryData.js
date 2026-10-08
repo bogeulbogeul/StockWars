@@ -67,7 +67,7 @@ export const ITEM_CATALOG_DB = [
         icon: '💊',
         quantity: 3,
         maxStack: 50,
-        price: 1000,
+        price: 3000,
         desc: '필수 비타민과 미네랄이 집약된 영양제. [회복력] 보너스와 함께 스테미너 소모량을 줄여줍니다.',
         effects: ['🛡️ 120분간 [회복력] +2 Bonus', '⚡ 스테미너 소모량 감소'],
         actionType: 'use',

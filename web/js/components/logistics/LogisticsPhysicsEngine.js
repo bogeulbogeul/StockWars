@@ -23,7 +23,7 @@ export class LogisticsPhysicsEngine {
         if (state.keysHeld.has('right')) moveDir += 1;
 
         const isDashing = state.keysHeld.has('shift');
-        let speed = this.baseSpeed * (isDashing ? this.dashMultiplier : 1.0);
+        let speed = this.baseSpeed * (isDashing ? this.dashMultiplier : 1.0) * (state.abilityBonuses?.speed || 1);
 
         if (state.hasBox && state.carriedCount > 0) {
             speed *= Math.max(0.60, 1.0 - (state.carriedCount * 0.09));
@@ -35,14 +35,14 @@ export class LogisticsPhysicsEngine {
             const oldFacing = state.charFacing;
             state.charFacing = moveDir;
             if (state.hasBox && oldFacing !== moveDir && Math.abs(state.velocityX) > 80) {
-                const turnShock = 9.5 * state.carriedCount;
+                const turnShock = 9.5 * state.carriedCount / (state.abilityBonuses?.control || 1);
                 state.damageGauge = Math.min(100, state.damageGauge + turnShock);
                 this.onTurnShock();
             }
         }
 
         const targetVel = moveDir * speed;
-        state.velocityX += (targetVel - state.velocityX) * (dt * 12);
+        state.velocityX += (targetVel - state.velocityX) * Math.min(1, dt * 12 * (state.abilityBonuses?.control || 1));
         state.charX += state.velocityX * dt;
 
         if (state.charX < this.minX) {
@@ -61,8 +61,8 @@ export class LogisticsPhysicsEngine {
             state.wobbleAngle = 0;
         } else {
             // Each extra box adds the same risk; preserve the four-box difficulty.
-            const dashRisk = 42.5 * state.carriedCount;
-            const walkRisk = 17.5 * state.carriedCount;
+            const dashRisk = 42.5 * state.carriedCount * (state.abilityBonuses?.damage || 1);
+            const walkRisk = 17.5 * state.carriedCount * (state.abilityBonuses?.damage || 1);
             const isMoving = Math.abs(state.velocityX) > 20;
             const isDashing = state.keysHeld.has('shift');
 

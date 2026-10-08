@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('stockWarsPresence', {
   setLocalMode: enabled => ipcRenderer.invoke('presence:local-mode', enabled),
   claimNickname: nickname => ipcRenderer.invoke('presence:nickname', nickname),
   state: () => ipcRenderer.invoke('presence:state'),
+  leaderboard: profile => ipcRenderer.invoke('ranking:records', profile),
   join: (channelId) => ipcRenderer.invoke('presence:join', channelId),
   leave: () => ipcRenderer.invoke('presence:leave'),
   position: pose => ipcRenderer.invoke('presence:position', pose)

@@ -14,7 +14,7 @@ import { getLogisticsModalHtml } from './logistics/LogisticsTemplate.js?v=art-2'
 import { deliveryScore, calculateLogisticsGrade, calculateLogisticsSettlement } from './logistics/LogisticsRewardEngine.js';
 import { LogisticsAudio } from './logistics/LogisticsAudio.js';
 import { LogisticsPhysicsEngine } from './logistics/LogisticsPhysicsEngine.js';
-import { LogisticsRenderer } from './logistics/LogisticsRenderer.js?v=art-2';
+import { LogisticsRenderer, isNearBoxPallet } from './logistics/LogisticsRenderer.js?v=art-2';
 import { ParkLogisticsTutorial } from './ParkLogisticsTutorial.js';
 
 export class LogisticsMiniGame {
@@ -295,6 +295,7 @@ export class LogisticsMiniGame {
     }
 
     updatePhysics(dt) {
+        this.abilityBonuses = this.callbacks.getAbilityBonuses?.() || {};
         this.physics.updateMovement(this, dt);
     }
 
@@ -344,7 +345,7 @@ export class LogisticsMiniGame {
         if (this.parkTutorial?.isActive && (!this.parkTutorial.isPracticeStep || this.carriedCount >= this.parkTutorial.practiceCount)) return;
 
         // Expanded generous hitbox: Right side warehouse pallet area
-        if (this.charX >= this.boxesZoneX - 100) {
+        if (isNearBoxPallet(this)) {
             if (!this.hasBox || this.carriedCount === 0) {
                 // First box pickup!
                 this.carriedCount = 1;
@@ -477,6 +478,10 @@ export class LogisticsMiniGame {
 
         const isFirstTime = this.completedJobsCount === 0;
         const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt, this.deliveryPoints, this.highStackDeliveries);
+        result.goldReward = this.callbacks.getLaborReward?.(result.goldReward) ?? result.goldReward;
+        const rumorBonus = this.callbacks.getAbilityBonuses?.().rumor || 0;
+        if (!result.isFirstTime && !result.hasRumor && rumorBonus > 0 && Math.random() < Math.min(1, rumorBonus / (1 - result.rumorChance))) result.hasRumor = true;
+        if (!result.isFirstTime) result.rumorChance = Math.min(1, result.rumorChance + rumorBonus);
         this.completedJobsCount++;
         const { grade, goldReward, expReward, hasRumor, isJackpot, gradeLabel } = result;
         const parkExpression = isJackpot || grade === 'S' || grade === 'A'

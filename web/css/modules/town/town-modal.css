@@ -164,3 +164,9 @@
     color: var(--text-muted);
     line-height: 1.4;
 }
+/* Unopened town building details */
+.town-building-info-dialog { width: 480px; }
+.town-building-info-body { padding: 24px; overflow-y: auto; }
+.town-building-info-body > p:first-child { margin: 0 0 24px; color: #dce5f2; font-size: 15px; line-height: 1.8; }
+.town-building-info-status { display: inline-block; padding: 8px 14px; border: 1px solid #d9b76b; border-radius: 999px; background: rgba(217, 183, 107, .12); color: #f1d595; font-weight: 700; }
+.town-building-info-hint { margin: 24px 0 0; color: #9aaac0; font-size: 12px; }

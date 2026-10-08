@@ -154,3 +154,9 @@
     font-weight: 700;
     color: #fbbf24;
 }
+
+.ranking-close-btn { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; padding: 0; border: 1px solid #ffffff20; border-radius: 50%; color: #cbd5e1; background: #ffffff08; cursor: pointer; transition: color .16s, background .16s, border-color .16s; }
+.ranking-close-btn:hover { color: #fbbf24; background: #fbbf2415; border-color: #fbbf2460; }
+.ranking-close-btn:focus-visible { outline: 2px solid #fbbf24; outline-offset: 3px; }
+.ranking-empty { text-align: center; color: #94a3b8; padding: 28px 12px !important; }
+.ranking-data-status { color: #94a3b8; font-size: 12px; line-height: 1.6; margin: 14px 0 0; }

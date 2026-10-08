@@ -11,7 +11,7 @@ export class FriendModal {
         this.container = container;
         this.callbacks = callbacks; // { onOpenBubbleChat, onGainStamina }
         this.activeTab = 'list'; // 'list' | 'add' | 'envy' | 'ranking'
-        this.rankingCategory = 'asset'; // 'asset' | 'return' | 'style'
+        this.rankingCategory = 'asset'; // 'asset' | 'return'
         this.selectedFriendForRumor = null;
         this.render();
         this.initDOM();
@@ -72,7 +72,6 @@ export class FriendModal {
                             <div class="ranking-sub-tabs">
                                 <button class="rank-sub-btn active" data-cat="asset">💰 자산왕</button>
                                 <button class="rank-sub-btn" data-cat="return">📈 수익왕 (7일)</button>
-                                <button class="rank-sub-btn" data-cat="style">🎨 스타일왕</button>
                             </div>
                             <div class="ranking-table-container" id="rankingTableContainer"></div>
                         </div>
@@ -390,22 +389,14 @@ export class FriendModal {
     }
 
     renderRanking() {
-        const list = friendManager.getLeaderboard(this.rankingCategory, {
-            name: '나 (Player)',
-            title: '개미 트레이더',
-            netWorth: 5000000,
-            weeklyReturn: 18.5,
-            styleScore: 1250
-        });
+        const list = friendManager.getLeaderboard(this.rankingCategory, 'social', this.callbacks.getRankingProfile?.() || {});
 
         let catHeader = '자산';
         let valFormatter = (item) => `${item.netWorth.toLocaleString()} G`;
         if (this.rankingCategory === 'return') {
             catHeader = '주간 수익률';
             valFormatter = (item) => `${item.weeklyReturn > 0 ? '+' : ''}${item.weeklyReturn}%`;
-        } else if (this.rankingCategory === 'style') {
-            catHeader = '스타일 점수';
-            valFormatter = (item) => `${item.styleScore} pt`;
+
         }
 
         this.rankingTableContainer.innerHTML = `

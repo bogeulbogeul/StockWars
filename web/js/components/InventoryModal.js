@@ -1,3 +1,4 @@
+import { bindingLabel } from '../app/GameKeys.js';
 import { gameKey } from '../app/GameKeys.js';
 /**
  * InventoryModal Component
@@ -39,7 +40,7 @@ export class InventoryModal {
                     <div class="inventory-header">
                         <div class="inventory-title-group">
                             <span class="inventory-header-icon">🎒</span>
-                            <span class="inventory-title-text">소지품 인벤토리 <span style="font-size: 11px; opacity: 0.7; font-family: var(--font-mono); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-left: 6px;">I</span></span>
+                            <span class="inventory-title-text">소지품 인벤토리 <span style="font-size: 11px; opacity: 0.7; font-family: var(--font-mono); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-left: 6px;" data-game-key="i">${bindingLabel('i')}</span></span>
                         </div>
                         <div class="inventory-meta-group">
                             <span class="inventory-capacity-badge" id="invCapacityBadge">보관함 8 / 24</span>

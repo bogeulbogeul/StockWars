@@ -420,7 +420,7 @@ export class TradeModal {
             const price = this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) || 0 : stock.price;
             const execution = this.orderTypeInput.value === 'market' ? this.callbacks.getExecutionPreview?.(this.isShortMode ? 'short' : 'buy', this.selectedStockId, this.tradeQty, this.selectedLeverage) : null;
             const quote = execution || this.callbacks.getOrderQuote?.(price, this.tradeQty, this.selectedLeverage);
-            this.modalTotalCost.textContent = `${(quote?.total ?? totalMargin).toLocaleString()} Gold (${modeStr} ${this.selectedLeverage}x)` + (quote ? ` · 수수료 ${quote.fee.toLocaleString()}G (0.15%) 포함` : '') + (execution ? ` · 예상 ${execution.quantity}/${this.tradeQty}주 · 평균 ${execution.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${execution.remaining ? ' · 잔량 취소' : ''}` : '');
+            this.modalTotalCost.textContent = `${(quote?.total ?? totalMargin).toLocaleString()} Gold (${modeStr} ${this.selectedLeverage}x)` + (quote ? ` · 수수료 ${quote.fee.toLocaleString()}G (${(quote.feeRate * 100).toFixed(3)}%) 포함` : '') + (execution ? ` · 예상 ${execution.quantity}/${this.tradeQty}주 · 평균 ${execution.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${execution.remaining ? ' · 잔량 취소' : ''}` : '');
         }
     }
 }

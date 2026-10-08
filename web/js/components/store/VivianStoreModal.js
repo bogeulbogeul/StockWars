@@ -62,6 +62,7 @@ export class VivianStoreModal {
         this.affinityBadgeEl = document.getElementById('vivianAffinityBadge');
         this.moodTagEl = document.getElementById('vivianMoodTag');
         this.portraitEl = document.getElementById('vivianPortrait');
+        this.welcomeBubble = document.getElementById('vivianWelcomeBubble');
         this.speechTextEl = document.getElementById('vivianSpeechText');
         this.tabsContainer = document.getElementById('vivianTabsContainer');
         this.shelfBannerIcon = document.getElementById('shelfBannerIcon');
@@ -214,8 +215,21 @@ export class VivianStoreModal {
         this.updateHeaderInfo();
         this.switchTab(this.activeTab);
         this.triggerDialogue('greet');
+        this.showWelcome();
         this.lastFrame = performance.now();
         this.animatePlayer(this.lastFrame);
+    }
+
+    showWelcome() {
+        clearTimeout(this.welcomeTimer);
+        if (!this.welcomeBubble) return;
+        this.welcomeBubble.hidden = false;
+        this.welcomeTimer = setTimeout(() => this.hideWelcome(), 5000);
+    }
+
+    hideWelcome() {
+        clearTimeout(this.welcomeTimer);
+        if (this.welcomeBubble) this.welcomeBubble.hidden = true;
     }
 
     animatePlayer(now) {

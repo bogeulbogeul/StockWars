@@ -81,9 +81,9 @@ export class CharacterCreation {
 
                             <div class="custom-controls-box">
                                 <div class="control-group">
-                                    <label class="control-label">트레이더 닉네임</label>
+                                    <label class="control-label">트레이더 닉네임 · 최대 10글자</label>
                                     <div class="nickname-input-group">
-                                        <input type="text" id="inputNickname" value="사이퍼 트레이더" maxlength="12" placeholder="닉네임 입력...">
+                                        <input type="text" id="inputNickname" value="사이퍼 트레이더" maxlength="10" placeholder="닉네임 입력 (최대 10글자)">
                                         <button class="random-btn" id="btnRandomNick" title="랜덤 닉네임 생성">🎲</button>
                                     </div>
                                 </div>

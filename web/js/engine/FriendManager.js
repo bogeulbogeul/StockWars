@@ -12,13 +12,7 @@ export class FriendManager {
 
         this.restoreFriends();
 
-        this.globalWhales = [
-            { id: 'g_1', name: '사이퍼_워렌', avatar: '🏛️', title: '전설의 투자가', creditRating: 'VVIP', netWorth: 980000000, weeklyReturn: 412.5, styleScore: 9900 },
-            { id: 'g_2', name: '텐버거_머스크', avatar: '🚀', title: '혁신가', creditRating: 'Diamond', netWorth: 750000000, weeklyReturn: 320.0, styleScore: 8500 },
-            { id: 'g_3', name: '여의도_골드만', avatar: '🏦', title: '월가 세력', creditRating: 'Diamond', netWorth: 520000000, weeklyReturn: 195.4, styleScore: 6400 },
-            { id: 'g_4', name: '퀀트킹_시몬스', avatar: '🤖', title: '알고리즘 신', creditRating: 'Diamond', netWorth: 340000000, weeklyReturn: 142.1, styleScore: 5200 },
-            { id: 'g_5', name: '빅쇼트_버리', avatar: '📉', title: '공매도 대부', creditRating: 'Gold', netWorth: 210000000, weeklyReturn: 88.0, styleScore: 4100 }
-        ];
+        this.leaderboardRecords = [];
 
         this.envyNotifications = [];
 
@@ -53,7 +47,7 @@ export class FriendManager {
                 if (!friend || typeof friend.id !== 'string' || !friend.id.startsWith('added_') ||
                     typeof friend.name !== 'string' || !friend.name.trim() || friend.name.length > 40 || seen.has(friend.name)) continue;
                 this.friends.push({ ...friend, avatar: '👤', title: '추가한 친구', isOnline: false,
-                    netWorth: 0, weeklyReturn: 0, styleScore: 0, fp: Number.isFinite(friend.fp) && friend.fp >= 0 ? friend.fp : 0 });
+                    netWorth: 0, weeklyReturn: 0, fp: Number.isFinite(friend.fp) && friend.fp >= 0 ? friend.fp : 0 });
                 seen.add(friend.name);
             }
         } catch { /* Storage may be unavailable or contain an invalid older value. */ }
@@ -204,34 +198,21 @@ export class FriendManager {
     }
 
     getLeaderboard(category, scope = 'social', userProfile = {}) {
-        const userEntry = {
-            id: 'user_me',
-            name: userProfile.name || '나 (Player)',
-            avatar: '👑',
-            title: userProfile.title || '개미 트레이더',
-            creditRating: userProfile.creditRating || 'Gold',
-            netWorth: userProfile.netWorth || 5000000,
-            weeklyReturn: userProfile.weeklyReturn || 18.5,
-            styleScore: userProfile.styleScore || 1250,
-            isMe: true
-        };
-
-        const baseList = scope === 'global' ? [...this.globalWhales, ...this.friends] : [...this.friends];
-        const allList = [userEntry, ...baseList];
-
-        if (category === 'asset') {
-            allList.sort((a, b) => b.netWorth - a.netWorth);
-        } else if (category === 'return') {
-            allList.sort((a, b) => b.weeklyReturn - a.weeklyReturn);
-        } else if (category === 'style') {
-            allList.sort((a, b) => b.styleScore - a.styleScore);
+        if (typeof scope === 'object') { userProfile = scope; scope = 'social'; }
+        const field = { asset: 'netWorth', return: 'weeklyReturn' }[category];
+        if (!field) return [];
+        const records = [...this.leaderboardRecords];
+        if (userProfile.name && Number.isFinite(userProfile.netWorth)) records.push({ ...records.find(r => r.isMe), ...userProfile, weeklyReturn: Number.isFinite(userProfile.weeklyReturn) ? userProfile.weeklyReturn : records.find(r => r.isMe)?.weeklyReturn, isMe: true, avatar: '👤' });
+        const friends = new Set(this.friends.filter(f => !f.isTest).map(f => f.name));
+        const unique = new Map();
+        for (const record of records) {
+            if (!record?.name || !Number.isFinite(record[field])) continue;
+            if (scope === 'social' && !record.isMe && !record.isFriend && !friends.has(record.name)) continue;
+            unique.set(record.name, record);
         }
-
-        return allList.map((item, index) => ({
-            rank: index + 1,
-            ...item
-        }));
+        return [...unique.values()].sort((a,b) => b[field]-a[field] || a.name.localeCompare(b.name)).map((item,index) => ({ ...item, rank: index+1 }));
     }
+
 }
 
 export const friendManager = new FriendManager();

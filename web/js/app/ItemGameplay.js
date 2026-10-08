@@ -130,7 +130,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             app.inventoryModal.rumorPopup.open(rumor, () => sync());
             return result;
         }
-        app.itemCenter.open(result.message, id === 'item_lotto_ticket' ? 'lotto' : '');
+        if (!app.itemCenter.showStatBoost(result)) app.itemCenter.open(result.message, id === 'item_lotto_ticket' ? 'lotto' : '');
         return result;
     };
     app.itemGameplay = {
@@ -138,7 +138,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         start() { gameStarted = true; sync(); },
         pause() { gameStarted = false; levelUpNotice.close(); updateQuest(); },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
-        purchase(id, quantity, instant) { const r = engine.purchase(id, quantity, instant); sync(); return r; },
+        purchase(id, quantity, instant) { const r = engine.purchase(id, quantity, instant); sync(); app.itemCenter.showStatBoost(r); return r; },
         activate,
         reset() {
             engine.state = new ItemEngine({ market, blackSwanEnabled: engine.blackSwanEnabled }).state;
@@ -146,6 +146,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             levelUpNotice.close();
             engine.state.stamina = engine.maxStamina();
             app.itemCenter.dialog.close();
+            app.itemCenter.boostDialog.close();
+            app.itemCenter.passPopup.close();
             sync();
         }
     };

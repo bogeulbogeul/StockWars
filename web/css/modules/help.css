@@ -1,0 +1,32 @@
+
+.help-dialog { box-sizing: border-box; width: min(700px, calc(100 * var(--game-vw) - 32px)); max-height: calc(100 * var(--game-vh) - 32px); padding: 24px; overflow: auto; margin: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
+.help-dialog::backdrop { background: #030912b8; backdrop-filter: blur(6px); }
+.help-header,.help-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.help-header small { color: #66d9d1; letter-spacing: 2px; font-size: 10px; }
+.help-header h2 { margin: 6px 0 20px; font-size: 22px; }
+.help-dialog button { font: inherit; font-size: 13px; border: 1px solid #35475f; border-radius: 10px; padding: 10px 14px; background: #1e2c3e; color: #edf2fa; cursor: pointer; }
+.help-dialog button:hover { border-color: #66d9d1; }
+.help-dialog button:focus-visible { outline: 2px solid #66d9d1; outline-offset: 3px; }
+.help-dialog button:disabled { opacity: .35; cursor: default; }
+.help-dialog .help-close { border-radius: 50%; width: 36px; height: 36px; padding: 0; align-self: flex-start; }
+.help-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.help-tabs .active { border-color: #66d9d1; color: #9df1e4; background: #173b42; }
+.help-card h3 { font-size: 18px; margin: 22px 0 14px; }
+.help-visual { min-height: 260px; border: 1px solid #35475f; border-radius: 16px; background: radial-gradient(ellipse at 50% 60%, #23404c, #101e2e); padding: 20px; overflow: hidden; }
+.help-description { color: #becbdc; font-size: 14px; line-height: 1.8; min-height: 50px; }
+.help-tip { margin: 16px 0 0; font-size: 12px; color: #91a2b9; line-height: 1.7; }
+.help-count { color: #9df1e4; font-size: 13px; }
+.help-dialog kbd { display: inline-block; min-width: 24px; text-align: center; font-family: inherit; font-size: 14px; font-weight: 700; padding: 5px 9px; color: #d9fff9; background: #152f38; border: 1px solid #66d9d180; border-bottom-width: 3px; border-radius: 7px; }
+.help-move-scene { display: grid; grid-template-columns: 1fr 120px 1fr; grid-template-rows: 38px 145px 38px; align-items: center; justify-items: center; max-width: 430px; margin: auto; }
+.help-move-up { grid-column: 2; }.help-move-left { grid-column: 1; grid-row: 2; }.help-move-scene .help-avatar { grid-column: 2; grid-row: 2; }.help-move-right { grid-column: 3; grid-row: 2; }.help-move-down { grid-column: 2; grid-row: 3; }
+.help-avatar { width: 100px; height: 130px; }
+.help-key-caption { margin-top: 18px; text-align: center; font-size: 14px; }.help-key-caption span { display: block; color: #91a2b9; margin-top: 8px; font-size: 12px; }
+.help-building-scene,.help-recovery-scene { display: flex; justify-content: center; align-items: center; gap: 16px; min-height: 190px; }
+.help-facility { width: 160px; text-align: center; }.help-facility svg { width: 100%; height: 145px; }.help-facility strong,.help-drink strong { display: block; font-size: 12px; margin-top: 10px; }
+.help-arrow { color: #66d9d1; font-size: 26px; }.help-interaction { text-align: center; }.help-interaction .help-avatar { margin: auto; }.help-callout { padding: 9px; border: 1px solid #66d9d1; border-radius: 10px; background: #112832; font-size: 13px; }
+.help-drink { text-align: center; width: 100px; }.help-drink img { width: 88px; height: 100px; object-fit: contain; }.help-hearts { display: flex; flex-direction: column; align-items: center; gap: 10px; white-space: nowrap; }.help-hearts > span:first-child,.help-hearts strong { color: #ff8da4; font-size: 23px; }.help-hearts small { color: #becbdc; }
+.help-trade-steps { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 12px; margin-bottom: 18px; color: #9df1e4; }.help-order-preview { max-width: 380px; margin: auto; pointer-events: none; }.help-order-preview .trade-form-panel { width: auto; }.help-highlight { outline: 2px solid #66d9d1; outline-offset: 2px; }
+@media (max-width: 520px) { .help-dialog { padding: 16px; }.help-visual { padding: 14px; }.help-recovery-scene { flex-wrap: wrap; gap: 10px; }.help-facility { width: 110px; }.help-facility svg { height: 110px; }.help-move-scene { grid-template-columns: 1fr 100px 1fr; }.help-card h3 { font-size: 16px; } }
+
+.help-bench-picture { width: 160px; }.help-bench-picture svg { height: 110px; }
+@media (max-width: 520px) { .help-building-scene { flex-wrap: wrap; gap: 10px; } }

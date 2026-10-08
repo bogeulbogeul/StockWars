@@ -82,6 +82,7 @@ export class PresenceRegistry {
         this.social.friendships = this.social.friendships.filter(pair => !pair.includes(token));
         if (this.social.gifts) this.social.gifts = this.social.gifts.filter(g => g.from !== token && g.to !== token);
         if (this.social.arenaResults) this.social.arenaResults = this.social.arenaResults.map(r => ({ ...r, results: r.results.filter(p => p.owner !== token) })).filter(r => r.results.length);
+        if (this.social.leaderboard) this.social.leaderboard = this.social.leaderboard.filter(r => r.owner !== token);
         this.sessions.delete(token);
         if (id !== undefined) {
             this.news = this.news.filter(n => n.playerId !== id);
@@ -114,8 +115,8 @@ export class PresenceRegistry {
 
     claimNickname(token, input) {
         const nickname = typeof input === 'string' ? input.normalize('NFKC').trim().replace(/\s+/g, ' ') : '';
-        if (!nickname || Array.from(nickname).length > 24 || /[\p{Cc}\p{Cf}]/u.test(nickname)) {
-            throw Object.assign(new Error('닉네임은 1~24자로 입력해 주세요.'), { status: 400 });
+        if (!nickname || Array.from(nickname).length > 10 || /[\p{Cc}\p{Cf}]/u.test(nickname)) {
+            throw Object.assign(new Error('닉네임은 1~10자로 입력해 주세요.'), { status: 400 });
         }
         const key = nickname.replace(/\s/g, '').toLowerCase();
         const existing = this.names.get(key);
@@ -138,6 +139,7 @@ export class PresenceRegistry {
         const session = this.sessions.get(token);
         if (!session || !session.active) throw Object.assign(new Error('세션을 다시 연결해 주세요.'), { status: 401 });
         const fail = (message, status = 400) => { throw Object.assign(new Error(message), { status }); };
+        if (action === 'leaderboard') return this.leaderboard(token, options.profile);
         if (action === 'friends') return this.friends(token, options);
         if (action === 'newsPublish') {
             const a = options.achievement;
@@ -275,6 +277,41 @@ export class PresenceRegistry {
             incoming: this.social.requests.filter(r => r.to === token).map(r => describe(r.from)),
             outgoing: this.social.requests.filter(r => r.from === token).map(r => describe(r.to))
         };
+    }
+
+    leaderboard(token, profile) {
+        const registered = [...this.names.values()].find(n => n.token === token);
+        if (!registered) throw Object.assign(new Error('플레이어 등록 후 랭킹을 이용할 수 있습니다.'), { status: 409 });
+        if (profile) {
+            if (!Number.isFinite(profile.netWorth) || profile.netWorth < 0 || profile.netWorth > Number.MAX_SAFE_INTEGER || typeof profile.title !== 'string' || profile.title.length > 80) throw Object.assign(new Error('잘못된 플레이 기록입니다.'), { status: 400 });
+            const records = this.social.leaderboard || [];
+            let record = records.find(r => r.owner === token);
+            if (!record) { record = { owner: token, history: [] }; records.push(record); }
+            const now = this.now(), day = Math.floor((now + 9 * 3600000) / 86400000);
+            const previous = record.history.find(h => h.day === day);
+            if (previous) previous.netWorth = profile.netWorth;
+            else record.history.push({ day, netWorth: profile.netWorth });
+            record.history = record.history.filter(h => h.day >= day - 8);
+            Object.assign(record, { netWorth: profile.netWorth, title: profile.title, updatedAt: now });
+            this.social.leaderboard = records;
+            if (this.nameFile) {
+                fs.mkdirSync(path.dirname(this.nameFile), { recursive: true });
+                fs.writeFileSync(this.nameFile + '.social.tmp', JSON.stringify(this.social), { mode: 0o600 });
+                fs.renameSync(this.nameFile + '.social.tmp', this.nameFile + '.social');
+            }
+        }
+        const peers = new Set(this.social.friendships.filter(pair => pair.includes(token)).flat());
+        const day = Math.floor((this.now() + 9 * 3600000) / 86400000);
+        const records = (this.social.leaderboard || []).flatMap(record => {
+            const player = [...this.names.values()].find(n => n.token === record.owner);
+            if (!player || !Number.isFinite(record.netWorth)) return [];
+            const baseline = record.history?.find(h => h.day === day - 7);
+            const current = record.history?.find(h => h.day === day);
+            return [{ name: player.nickname, title: record.title, avatar: '👤', netWorth: record.netWorth,
+                weeklyReturn: baseline?.netWorth > 0 && current ? (current.netWorth / baseline.netWorth - 1) * 100 : null,
+                updatedAt: record.updatedAt, isMe: record.owner === token, isFriend: peers.has(record.owner) }];
+        });
+        return { records };
     }
 
     snapshot(token) {

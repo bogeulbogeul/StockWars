@@ -1,3 +1,4 @@
+import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * LogisticsRenderer Module
  * Handles DOM character visual state, stacked boxes tower, and SVG truck cargo box rendering.
@@ -34,7 +35,7 @@ export class LogisticsRenderer {
         const scaleX = game.charFacing === 1 ? -1 : 1;
         characterEl.style.transform = `scaleX(${scaleX})`;
 
-        const isNearPallet = game.charX >= game.boxesZoneX - 100;
+        const isNearPallet = isNearBoxPallet(game);
 
         if (game.hasBox && game.carriedCount > 0) {
             characterEl.classList.add('carrying');
@@ -71,16 +72,16 @@ export class LogisticsRenderer {
                 if (isNearPallet) {
                     if (charStateBadge) {
                         charStateBadge.className = 'logistics-current-state-badge carrying';
-                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 운반 중 ➔ [W/버튼] 더 쌓기 or [A] 트럭 이동</span>`;
+                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 운반 중 ➔ [${bindingLabel('w')}/버튼] 더 쌓기 or [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 이동</span>`;
                     }
                     if (boxesTargetIndicator) {
                         boxesTargetIndicator.style.opacity = '1';
-                        boxesTargetIndicator.innerHTML = `<span>📦 [W] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`;
+                        boxesTargetIndicator.innerHTML = `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`;
                     }
                 } else {
                     if (charStateBadge) {
                         charStateBadge.className = 'logistics-current-state-badge carrying';
-                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 상자 운반 중 ➔ [A] 트럭으로 이동하세요!</span>`;
+                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 상자 운반 중 ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`;
                     }
                     if (boxesTargetIndicator) {
                         boxesTargetIndicator.style.opacity = '0.6';
@@ -88,17 +89,17 @@ export class LogisticsRenderer {
                     }
                 }
                 if (btnBottomStackMore) {
-                    btnBottomStackMore.disabled = false;
-                    btnBottomStackMore.innerHTML = `<span>📦 상자 +1단 쌓기 [W] (${game.carriedCount}/${game.maxStack})</span>`;
+                    btnBottomStackMore.disabled = !isNearPallet;
+                    btnBottomStackMore.innerHTML = `<span>📦 상자 +1단 쌓기 [<span data-game-key="w">${bindingLabel('w')}</span>] (${game.carriedCount}/${game.maxStack})</span>`;
                 }
             } else {
                 if (charStateBadge) {
                     charStateBadge.className = 'logistics-current-state-badge carrying';
-                    charStateBadge.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 운반 중! ➔ [A] 트럭으로 이동하세요!</span>`;
+                    charStateBadge.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 운반 중! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`;
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '0.4';
-                    boxesTargetIndicator.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 완료! ➔ [A] 트럭 하차</span>`;
+                    boxesTargetIndicator.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 완료! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 하차</span>`;
                 }
                 if (btnBottomStackMore) {
                     btnBottomStackMore.disabled = true;
@@ -116,16 +117,16 @@ export class LogisticsRenderer {
             if (isNearPallet) {
                 if (charStateBadge) {
                     charStateBadge.className = 'logistics-current-state-badge empty';
-                    charStateBadge.innerHTML = '<span>📦 파렛트 도착! ➔ [W] 키로 상자를 집으세요!</span>';
+                    charStateBadge.innerHTML = `<span>📦 파렛트 도착! ➔ [<span data-game-key="w">${bindingLabel('w')}</span>] 키로 상자를 집으세요!</span>`;
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '1';
-                    boxesTargetIndicator.innerHTML = '<span>📦 [W] 상자 집기!</span>';
+                    boxesTargetIndicator.innerHTML = `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 집기!</span>`;
                 }
             } else {
                 if (charStateBadge) {
                     charStateBadge.className = 'logistics-current-state-badge empty';
-                    charStateBadge.innerHTML = '<span>🖐️ 빈손 귀환 중 ➔ [D] 우측 파렛트로 이동!</span>';
+                    charStateBadge.innerHTML = `<span>🖐️ 빈손 귀환 중 ➔ [<span data-game-key="d">${bindingLabel('d')}</span>] 우측 파렛트로 이동!</span>`;
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '0.8';
@@ -133,9 +134,20 @@ export class LogisticsRenderer {
                 }
             }
             if (btnBottomStackMore) {
-                btnBottomStackMore.disabled = false;
-                btnBottomStackMore.innerHTML = `<span>📦 상자 집기 [W]</span>`;
+                btnBottomStackMore.disabled = !isNearPallet;
+                btnBottomStackMore.innerHTML = `<span>📦 상자 집기 [<span data-game-key="w">${bindingLabel('w')}</span>]</span>`;
             }
         }
     }
+}
+
+/** Shared pickup range for practice, gameplay, and button hints. */
+export function isNearBoxPallet(game) {
+    const pallet = game.logisticsBoxesZone;
+    const character = game.characterEl;
+    if (!pallet || !character || pallet.offsetWidth === 0) return false;
+    const playerCenter = game.charX + character.offsetWidth / 2;
+    // Only allow pickup within one short reach of the visible pallet.
+    return playerCenter >= pallet.offsetLeft - 30 &&
+        playerCenter <= pallet.offsetLeft + pallet.offsetWidth + 30;
 }

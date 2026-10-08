@@ -15,7 +15,7 @@ test('names are atomic, normalized, owned by session and reserved after disconne
     assert.throws(() => registry.update(b, 'nickname', undefined, { nickname: 'trader kim' }), /이미 사용 중/);
     registry.update(b, 'join', 'town-1');
     assert.throws(() => registry.update(b, 'position', undefined, { x: 100, y: 100, facing: 'down', nickname: 'Trader Kim' }), /이미 사용 중/);
-    assert.throws(() => registry.update(b, 'nickname', undefined, { nickname: ' ' }), /1~24/);
+    assert.throws(() => registry.update(b, 'nickname', undefined, { nickname: ' ' }), /1~10/);
 });
 
 test('reservations survive server restart and original session can reclaim name', () => {

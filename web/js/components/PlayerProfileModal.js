@@ -1,3 +1,5 @@
+import { createGeometricAvatarSVG } from './GeometricAvatar.js';
+
 const number = value => (Number.isFinite(Number(value)) ? Number(value) : 0);
 const gold = value => `${number(value).toLocaleString('ko-KR', { maximumFractionDigits: 0 })} G`;
 
@@ -9,7 +11,7 @@ export class PlayerProfileModal {
         this.dialog.setAttribute('aria-labelledby', 'playerProfileTitle');
         this.dialog.innerHTML = `
             <header class="player-profile-header"><div><span class="player-profile-eyebrow">CIPHER SECURITIES</span><h2 id="playerProfileTitle">플레이어 프로필</h2></div><button type="button" class="player-profile-close" aria-label="프로필 닫기" autofocus>✕</button></header>
-            <section class="player-profile-identity"><div class="player-profile-monogram" aria-hidden="true"></div><div class="player-profile-details"><h3 data-field="nickname"></h3><div class="player-profile-level"><div class="player-profile-level-heading"><span data-field="level"></span><span class="player-profile-exp-current" data-field="currentExp"></span></div><div class="player-profile-exp-row"><progress class="player-profile-exp-bar" aria-label="현재 레벨 경험치" max="100" value="0"></progress><span class="player-profile-exp-max" data-field="maxExp"></span></div></div><p data-field="trait"></p><code data-field="traderCode"></code></div></section>
+            <section class="player-profile-identity"><div class="player-profile-monogram player-profile-portrait" role="img" aria-label="플레이어 얼굴"></div><div class="player-profile-details"><h3 data-field="nickname"></h3><div class="player-profile-level"><div class="player-profile-level-heading"><span data-field="level"></span><span class="player-profile-exp-current" data-field="currentExp"></span></div><div class="player-profile-exp-row"><progress class="player-profile-exp-bar" aria-label="현재 레벨 경험치" max="100" value="0"></progress><span class="player-profile-exp-max" data-field="maxExp"></span></div></div><p data-field="trait"></p><code data-field="traderCode"></code></div></section>
             <section class="player-profile-section"><h3>투자 성향</h3><p data-field="bonus"></p></section>
             <section class="player-profile-section"><h3>현재 능력치</h3><dl class="player-profile-stats"><div><dt>분석력</dt><dd data-field="analysis"></dd></div><div><dt>협상력</dt><dd data-field="negotiation"></dd></div><div><dt>운용력</dt><dd data-field="management"></dd></div><div><dt>회복력</dt><dd data-field="recovery"></dd></div><div><dt>체력</dt><dd data-field="stamina"></dd></div></dl><p class="player-profile-note">능력치는 현재 적용 중인 아이템 효과를 포함합니다.</p></section>
             <section class="player-profile-section"><h3>자산 현황 <span data-field="day"></span></h3><dl class="player-profile-finances"><div><dt>총 평가 자산</dt><dd data-field="totalNetWorth"></dd></div><div><dt>보유 현금</dt><dd data-field="cash"></dd></div><div><dt>포트폴리오 평가액</dt><dd data-field="portfolioValue"></dd></div><div><dt>보유 포지션</dt><dd data-field="positions"></dd></div><div><dt>보유 포지션 평가 손익</dt><dd data-field="profitLoss"></dd></div></dl></section>`;
@@ -57,7 +59,14 @@ export class PlayerProfileModal {
             profitLoss: `${number(market.totalProfitLoss) > 0 ? '+' : ''}${gold(market.totalProfitLoss)}`
         };
         for (const [key, value] of Object.entries(values)) this.dialog.querySelector(`[data-field="${key}"]`).textContent = value;
-        this.dialog.querySelector('.player-profile-monogram').textContent = Array.from(nickname)[0];
+        const portrait = this.dialog.querySelector('.player-profile-portrait');
+        portrait.setAttribute('aria-label', nickname + '의 얼굴');
+        if (!portrait.querySelector('svg')) {
+            portrait.innerHTML = createGeometricAvatarSVG({ direction: 'front' });
+            portrait.querySelector('svg').setAttribute('viewBox', '28 24 144 140');
+            portrait.querySelector('svg').setAttribute('aria-hidden', 'true');
+            portrait.querySelector('svg').setAttribute('focusable', 'false');
+        }
         this.dialog.querySelector('[data-field="profitLoss"]').dataset.direction = number(market.totalProfitLoss) > 0 ? 'positive' : number(market.totalProfitLoss) < 0 ? 'negative' : 'neutral';
     }
 

@@ -1,9 +1,11 @@
-export const DEFAULT_SETTINGS = Object.freeze({ effectsVolume: 70, reducedMotion: false, showWeather: true });
+import { DEFAULT_KEY_BINDINGS, normalizeKeyBindings } from './KeyBindings.js';
+export const DEFAULT_SETTINGS = Object.freeze({ effectsVolume: 70, reducedMotion: false, showWeather: true, keyBindings: DEFAULT_KEY_BINDINGS });
 const KEY = 'stockwars.settings.v1';
 export function normalizeSettings(value = {}) {
     return {
         effectsVolume: typeof value?.effectsVolume === 'number' && Number.isFinite(value.effectsVolume) ? Math.round(Math.min(100, Math.max(0, value.effectsVolume))) : DEFAULT_SETTINGS.effectsVolume,
         reducedMotion: typeof value?.reducedMotion === 'boolean' ? value.reducedMotion : DEFAULT_SETTINGS.reducedMotion,
+        keyBindings: normalizeKeyBindings(value?.keyBindings),
         showWeather: typeof value?.showWeather === 'boolean' ? value.showWeather : DEFAULT_SETTINGS.showWeather
     };
 }
@@ -19,6 +21,7 @@ export class SettingsStore {
     update(patch) {
         this.value = normalizeSettings({ ...this.value, ...patch });
         this.apply();
+        globalThis.dispatchEvent?.(new Event('stockwars-settings-changed'));
         try { globalThis.localStorage?.setItem(KEY, JSON.stringify(this.value)); return !!globalThis.localStorage; } catch { return false; }
     }
 }

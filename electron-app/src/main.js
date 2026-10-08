@@ -48,7 +48,7 @@ if (hasLock) app.whenReady().then(async () => {
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
   ipcMain.handle('presence:local-mode', (event, enabled) => trusted(event) && typeof enabled === 'boolean'
     ? presence.setLocalMode(enabled) : { error: '잘못된 모드입니다.' });
-  ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && nickname.length <= 100
+  ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && Array.from(nickname.normalize('NFKC').trim()).length <= 10
     ? presence.command('nickname', undefined, { nickname }) : { error: '잘못된 닉네임입니다.' });
   ipcMain.handle('app:tutorial-active', (event, active) => {
     if (!trusted(event) || typeof active !== 'boolean') return { error: '접근 불가' };
@@ -61,12 +61,14 @@ if (hasLock) app.whenReady().then(async () => {
     app.quit();
     return { success: true };
   });
+  ipcMain.handle('ranking:records', (event, profile) => trusted(event)
+    ? presence.chat('leaderboard', undefined, { profile: profile && { netWorth: profile.netWorth, title: profile.title } }) : { error: '접근 불가' });
   ipcMain.handle('presence:state', (event) => trusted(event) ? presence.state() : { error: '접근 불가' });
   ipcMain.handle('presence:join', (event, id) => trusted(event) && id === 'town-1'
     ? presence.command('join', id) : { error: '잘못된 채널입니다.' });
   ipcMain.handle('presence:leave', (event) => trusted(event) ? presence.command('leave') : { error: '접근 불가' });
   ipcMain.handle('presence:position', (event, pose) => trusted(event) && pose && Number.isFinite(pose.x) && Number.isFinite(pose.y)
-    ? presence.command('position', undefined, { location: pose.location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting, seatId: typeof pose.seatId==='string'?pose.seatId.slice(0,80):undefined, nickname: String(pose.nickname || '').slice(0, 24), level: pose.level, trait: pose.trait })
+    ? presence.command('position', undefined, { location: pose.location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting, seatId: typeof pose.seatId==='string'?pose.seatId.slice(0,80):undefined, nickname: String(pose.nickname || ''), level: pose.level, trait: pose.trait })
     : { error: '잘못된 위치입니다.' });
   ipcMain.handle('arena:request', (event, input) => trusted(event) && input && typeof input === 'object' && ['create','list','find','join','state','invite','decline','history','ack','ready','start','trade','leave'].includes(input.action) ? presence.arena(input) : { error: '잘못된 대결 요청입니다.' });
   ipcMain.handle('chat:list', (event) => trusted(event) ? presence.chat('list') : { error: '접근 불가' });

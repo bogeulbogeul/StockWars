@@ -168,3 +168,6 @@
     z-index: 5;
     will-change: transform;
 }
+
+/* Keep the movement hint out of the visible companion dialogue area. */
+body:has(#annaTutorialOverlay:not(.hidden) .vn-dialogue-box:not(.collapsed)) .town-controls-hint { display: none; }

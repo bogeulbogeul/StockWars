@@ -164,6 +164,10 @@ export class MarketEngine {
         const error = this.validateOrder(side, stockId, qty, leverage);
         if (error) return { success: false, msg: error };
         if (side === 'sell' && this.heldQuantity(stockId) < qty) return { success: false, msg: '매도할 보유 수량이 부족합니다.' };
+        if (side !== 'sell' && this.itemEngine) {
+            const invested = [...this.portfolio.values()].filter(p => p.id === stockId).reduce((sum,p) => sum + p.qty * p.avgPrice, 0);
+            if (invested + price * qty > this.itemEngine.buyCap()) return { success: false, msg: '종목별 투자 한도를 초과했습니다.' };
+        }
         if (side !== 'sell' && this.getOrderQuote(price, qty, leverage, venue).total > this.cash) return { success: false, msg: '지정가 주문에 필요한 현금이 부족합니다.' };
         if (this.limitOrders.length >= 50) return { success: false, msg: '대기 주문은 최대 50개까지 등록할 수 있습니다.' };
         const result = this.executeOrder(side, stockId, qty, leverage, venue, { limitPrice: price, deferNotify: true });
@@ -184,7 +188,7 @@ export class MarketEngine {
         try {
             for (const order of [...this.limitOrders]) {
                 const preview = this.getExecutionPreview(order.side, order.stockId, order.qty, order.leverage, order.venue, order.price);
-                const resourcesMissing = order.side === 'sell' ? this.heldQuantity(order.stockId) < order.qty : preview.reason === 'cash';
+                const resourcesMissing = order.side === 'sell' ? this.heldQuantity(order.stockId) < order.qty : preview.reason === 'cash' || preview.reason === 'buyCap' || !!this.validateOrder(order.side, order.stockId, order.qty, order.leverage);
                 if (!preview.quantity && !resourcesMissing) continue;
                 const result = this.executeOrder(order.side, order.stockId, order.qty, order.leverage, order.venue,
                     { limitPrice: order.price, deferNotify: true });
@@ -259,6 +263,7 @@ export class MarketEngine {
             stocks: stockList,
             news: this.news,
             portfolio: portfolioList,
+            portfolioSlots: this.itemEngine ? { used: new Set(portfolioList.filter(p => p.qty > 0).map(p => p.id)).size, max: this.itemEngine.portfolioSlots(), buyCap: this.itemEngine.buyCap() } : null,
             tradeHistory: this.tradeHistory,
             portfolioValue: portfolioValue,
             totalNetWorth: totalNetWorth,
@@ -327,7 +332,8 @@ export class MarketEngine {
     }
 
     getOrderQuote(price, quantity, leverage = 1, venue = 'phone') {
-        const feeRate = venue === 'brokerage' ? 0.0001 : 0.0015;
+        const baseRate = venue === 'brokerage' ? 0.0001 : 0.0015;
+        const feeRate = this.itemEngine?.feeRate(baseRate) ?? baseRate;
         // Gold uses whole units: round the fee once per executed order, not per share.
         const fee = Math.round(price * quantity * feeRate);
         const margin = Math.round(price * quantity / leverage);
@@ -363,6 +369,10 @@ export class MarketEngine {
             this.refreshTutorialRecommendation();
             const error = this.tutorialOrderError(stockId, side === 'short');
             if (error) return error;
+            if (this.itemEngine) {
+                const held = new Set([...this.portfolio.values()].filter(p => p.qty > 0).map(p => p.id));
+                if (!held.has(stockId) && held.size >= this.itemEngine.portfolioSlots()) return '종목 보유 슬롯이 가득 찼습니다. 기존 종목을 전량 매도해 주세요.';
+            }
             if (this.itemEngine && qty > this.itemEngine.orderLimit()) return `1회 주문 한도는 ${this.itemEngine.orderLimit()}주입니다.`;
             if ((side === 'short' || leverage >= 2) && !this.isLevel10Unlocked) return '공매도·레버리지는 레벨 10 해금 후 이용 가능합니다!';
         }
@@ -374,8 +384,10 @@ export class MarketEngine {
         if (!stock || !Number.isSafeInteger(qty) || qty < 1) return { quantity: 0, requested: qty, remaining: qty, fills: [], total: 0, fee: 0, averagePrice: 0, reason: 'invalid' };
         const available = side === 'sell' ? Math.min(qty, this.heldQuantity(stockId)) : qty;
         const feeRate = this.getOrderQuote(stock.price, 1, leverage, venue).feeRate;
+        const invested = [...this.portfolio.values()].filter(p => p.id === stockId).reduce((sum, p) => sum + p.qty * p.avgPrice, 0);
+        const grossLimit = this.itemEngine ? Math.max(0, this.itemEngine.buyCap() - invested) : Infinity;
         const plan = matchOrder(this.ensureOrderBook(stockId), { side, quantity: available, referencePrice: stock.price,
-            limitPrice, cash: this.cash, leverage, feeRate });
+            limitPrice, cash: this.cash, leverage, feeRate, grossLimit });
         plan.requested = qty; plan.remaining = qty - plan.quantity;
         if (side === 'sell') {
             const sale = planSale(this.portfolio, stockId, plan.fills);
@@ -401,7 +413,7 @@ export class MarketEngine {
         const stock = this.stocks.get(stockId);
         const plan = this.getExecutionPreview(side, stockId, requested, leverage, venue, options.limitPrice ?? null);
         if (!plan.quantity) return { success: false, quantity: 0, reason: plan.reason,
-            msg: '체결 가능한 물량·현금·보유 수량이 없습니다. 주문은 체결되지 않았습니다.' };
+            msg: plan.reason === 'buyCap' ? '종목별 투자 한도를 초과했습니다. 수량을 줄이거나 운용력을 올려 주세요.' : '체결 가능한 물량·현금·보유 수량이 없습니다. 주문은 체결되지 않았습니다.' };
         const book = this.ensureOrderBook(stockId);
         let profit = null, proceeds = null, collateral = 0;
         if (side === 'sell') {

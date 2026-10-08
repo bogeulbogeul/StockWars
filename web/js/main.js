@@ -1,3 +1,4 @@
+import { HelpModal } from './components/HelpModal.js';
 import './app/GameViewport.js';
 import { worldNavigation } from './app/WorldNavigation.js';
 import { OnlineSocialSync } from './app/OnlineSocialSync.js';
@@ -53,6 +54,7 @@ class StockWarsApplication {
     }
 
     initComponents() {
+        this.helpModal = new HelpModal(this.appContainer);
         // 1. Top Presentation Demo Controls Bar
         this.topDemoBar = new TopDemoBar(this.appContainer, {
             onShowTitle: () => this.showTitleScreen(),
@@ -68,21 +70,12 @@ class StockWarsApplication {
                 toastManager.show(result.message);
             },
             onTriggerSettlement: () => this.openSettlement(),
-            onReset: () => this.reset()
-        });
-
-        // 2. Main Top Financial HUD Bar
-        this.mainHUD = new MainHUD(this.appContainer, {
-            onProfile: () => this.playerProfileModal.open(),
-            onTimeClick: () => {
-                const nextMeta = timeOfDayService.cycleNext();
-                toastManager.show(`⏱️ 하늘 시간대 전환: ${nextMeta.icon} ${nextMeta.label} - ${nextMeta.desc}`);
-            },
+            onReset: () => this.reset(),
             onStaminaClick: (s) => toastManager.show(`❤️ 체력 (스테미너): ${s.current} / ${s.max} | 알바, 속독 등에 소모`),
             onInventory: () => this.inventoryModal.toggle(),
             onFurnitureEdit: () => this.furnitureEditModal.toggle(),
             onRanking: () => this.rankingModal.show(),
-            onHelp: () => toastManager.show('❓ 도움말: 7일 동안 주식 투자로 수익을 극대화하여 월세를 지불하세요!'),
+            onHelp: () => this.helpModal.open(),
             onSettings: () => this.settingsModal.open()
         });
 
@@ -167,6 +160,7 @@ class StockWarsApplication {
 
         // Friend & Social System Modal (MOD_GDD_09)
         this.friendModal = new FriendModal(this.appContainer, {
+            getRankingProfile: () => ({ name: this.userProfile?.nickname, title: this.userProfile?.trait?.title || '트레이더', netWorth: marketEngine.getState().totalNetWorth }),
             onOpenBubbleChat: (friend) => {
                 this.smartphoneUI.openBubbleAppWithFriend(friend);
             }
@@ -187,7 +181,14 @@ class StockWarsApplication {
         });
 
         // Dedicated Social Ranking Leaderboard Modal
-        this.rankingModal = new RankingModal(this.appContainer);
+        this.rankingModal = new RankingModal(this.appContainer, {
+            getProfile: () => ({ name: this.userProfile?.nickname, title: this.userProfile?.trait?.title || '트레이더', netWorth: marketEngine.getState().totalNetWorth, weeklyReturn: null }),
+            getRecords: async () => {
+                if (this.isLocalSession || !window.stockWarsPresence?.leaderboard) return { records: [], error: '내 실제 플레이 기록 · 온라인 전체 랭킹은 서버 연결 후 이용할 수 있습니다.' };
+                const profile = { netWorth: marketEngine.getState().totalNetWorth, title: this.userProfile?.trait?.title || '트레이더' };
+                return window.stockWarsPresence.leaderboard(profile);
+            }
+        });
 
         // Manager Anna Interactive Dialogue Modal (MOD_GDD_07_1)
         this.annaDialogueModal = new AnnaDialogueModal(this.appContainer, {
@@ -251,10 +252,12 @@ class StockWarsApplication {
         // Logistics Mini-Game (Bit Logistics 60-second delivery)
         this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
             getTime: () => this.itemEngine?.now() ?? Date.now(),
+            getAbilityBonuses: () => this.itemEngine?.logisticsBonuses() || {},
+            getLaborReward: gold => this.itemEngine?.laborReward(gold) ?? gold,
             onComplete: (result) => {
-                this.itemEngine.finishLabor(result.goldReward, result.expReward);
+                const settlement = this.itemEngine.finishLabor(result.goldReward, result.expReward, true);
                 this.itemGameplay.sync();
-                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${this.itemEngine.laborCost()}: ${this.itemEngine.state.stamina}/${this.itemEngine.maxStamina()})`);
+                toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${settlement.staminaCost}: ${this.itemEngine.state.stamina}/${this.itemEngine.maxStamina()})`);
                 
                 if (result.hasRumor) {
                     const rumorItem = getRandomRumorItem();
@@ -307,6 +310,7 @@ class StockWarsApplication {
                 && this.annaTutorial.steps[this.annaTutorial.currentStepIdx]?.id === 'enter_logistics'
                 && !this.logisticsMiniGame?.isOpen ? 'bit_logistics' : null,
             onOpenPlayerProfile: player => this.playerSocial?.open(player),
+            onPlayerEncounter: player => this.playerSocial?.encounter(player),
             getPlayerSocialProfile: () => ({ level: this.itemEngine?.playerLevel() || 1, trait: this.userProfile?.trait?.title || '' }),
             getVendingState: () => {
                 this.itemEngine.tick();
@@ -318,7 +322,7 @@ class StockWarsApplication {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
@@ -471,6 +475,7 @@ class StockWarsApplication {
         if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE';
         if (mode !== 'CONTINUE') { marketEngine.firstTradeLesson = null; marketEngine.limitOrders = []; marketEngine.tradeHistory = []; marketEngine.orderBooks.clear(); }
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
+        void this.playerSocial?.refresh();
         this.officeStage?.anna?.resetForGameStart();
         if (mode === 'NEW' || mode === 'DEMO' || mode === 'DEV') {
             const isDeveloperMode = mode === 'DEMO' || mode === 'DEV';
@@ -581,11 +586,16 @@ class StockWarsApplication {
             return;
         }
         this.annaTutorial?.notifyLogisticsOpened();
-        if (this.itemEngine.state.passUntil > this.itemEngine.now() && confirm('퀵-패스로 비트 물류를 즉시 완료할까요? (수수료 0%, 체력 소모)\n취소하면 미니게임을 직접 진행합니다.')) {
-            const result = this.itemEngine.quickJob();
-            this.itemGameplay.sync();
-            toastManager.show(result.message, result.success);
-            if (result.success) this.annaTutorial?.notifyLogisticsJobCompleted(result);
+        if (this.itemEngine.state.passUntil > this.itemEngine.now()) {
+            this.itemCenter.passPopup.open({
+                onQuick: () => {
+                    const result = this.itemEngine.quickJob();
+                    this.itemGameplay.sync();
+                    toastManager.show(result.message, result.success);
+                    if (result.success) this.annaTutorial?.notifyLogisticsJobCompleted(result);
+                },
+                onManual: () => this.logisticsMiniGame?.open({ userNickname: this.userProfile?.nickname || '신입' })
+            });
             return;
         }
         this.logisticsMiniGame?.open({ userNickname: this.userProfile?.nickname || '신입' });

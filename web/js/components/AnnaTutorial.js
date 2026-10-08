@@ -246,10 +246,30 @@ export class AnnaTutorial {
     }
 
     renderDialogue(step, reviewing = false) {
+        this.dialogueBox?.querySelector('.vn-rumor-choices')?.remove();
+        if (step.choices && !reviewing) {
+            const choices = document.createElement('div');
+            choices.className = 'vn-rumor-choices';
+            choices.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px';
+            for (const choice of step.choices) {
+                const button = document.createElement('button');
+                button.className = 'vn-btn';
+                button.textContent = choice.label;
+                button.addEventListener('click', () => {
+                    if (!this.isActive || this.steps[this.currentStepIdx] !== step || this.historyCursor != null) return;
+                    const feedback = this.steps[this.currentStepIdx + 1];
+                    feedback.baseText ??= feedback.text;
+                    feedback.text = `${choice.feedback} ${feedback.baseText}`;
+                    this.nextStep();
+                });
+                choices.append(button);
+            }
+            this.dialogueBox?.querySelector('.vn-dialogue-body')?.append(choices);
+        }
         this.btnHold?.classList.toggle('hidden', !step.allowHold);
         const needsChoice = !!step.allowHold;
         this.dialogueBox?.classList.toggle('has-choice', needsChoice);
-        this.btnNext?.classList.toggle('hidden', needsChoice || !!step.actionBtnText);
+        this.btnNext?.classList.toggle('hidden', needsChoice || !!step.choices || !!step.actionBtnText);
         this.nextIndicator?.classList.toggle('hidden', !!step.requiresManualAction || !!step.actionBtnText);
         this.setExpression(step.expression);
         if (this.speakerName) this.speakerName.textContent = step.speaker;

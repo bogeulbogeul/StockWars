@@ -28,8 +28,6 @@ export class TownPlayerController {
         if (key === 'shift') this.keysHeld.add(key);
         if (MOVE_KEYS.includes(key)) {
             e.preventDefault?.();
-            if (e.shiftKey) this.keysHeld.add('shift');
-            else this.keysHeld.delete('shift');
             this.keysHeld.add(key);
             this.stopResting();
         }

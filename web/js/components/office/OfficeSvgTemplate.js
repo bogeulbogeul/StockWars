@@ -1,3 +1,4 @@
+import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * OfficeSvgTemplate
  * Contains SVG isometric rendering markup and floor tile generators for OfficeStage.
@@ -63,7 +64,7 @@ export function getOfficeStageHtml() {
                         <rect x="-74" y="-13" width="148" height="26" rx="13" fill="none" stroke="rgba(0,229,255,0.25)" stroke-width="1" />
                         <text x="-12" y="4.5" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" font-family="'Inter', sans-serif">🚪 마을로 나가기</text>
                         <rect x="42" y="-9" width="22" height="18" rx="5" fill="#00e5ff" />
-                        <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#0b0f1a" font-family="'JetBrains Mono', monospace">F</text>
+                        <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#0b0f1a" font-family="'JetBrains Mono', monospace" data-game-key="f">${bindingLabel('f')}</text>
                     </g>
 
                     <g id="isoOfficeWindow" pointer-events="none"><g transform="${OFFICE_OPENINGS.window.artworkTransform}">
@@ -77,7 +78,7 @@ export function getOfficeStageHtml() {
                         <rect x="-74" y="-13" width="148" height="26" rx="13" fill="none" stroke="rgba(99,102,241,0.25)" stroke-width="1" />
                         <text x="-12" y="4.5" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff" font-family="'Inter', sans-serif">💼 안나와 대화하기</text>
                         <rect x="42" y="-9" width="22" height="18" rx="5" fill="#6366f1" />
-                        <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#ffffff" font-family="'JetBrains Mono', monospace">F</text>
+                        <text x="53" y="4" text-anchor="middle" font-size="11" font-weight="900" fill="#ffffff" font-family="'JetBrains Mono', monospace" data-game-key="f">${bindingLabel('f')}</text>
                     </g>
 
                     <!-- Interactive 8x8 Isometric Floor Grid Tiles -->

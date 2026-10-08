@@ -186,6 +186,7 @@ export function getSmartphoneShellHtml() {
                                 </div>
 
                                 <div class="section-title">💼 내 주식 포트폴리오</div>
+                                <div class="item-desc" id="portfolioSlotStatus"></div>
                                 <div class="portfolio-list" id="portfolioListContainer"></div>
 
                                 <details class="trade-history-menu">

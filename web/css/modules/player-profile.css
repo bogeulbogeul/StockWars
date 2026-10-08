@@ -37,3 +37,6 @@
 .player-profile-finances [data-direction="positive"] { color: #ff8196; }
 .player-profile-finances [data-direction="negative"] { color: #7caeff; }
 @container game-viewport (max-width: 400px) { .player-profile-dialog { padding: 20px; } .player-profile-stats { grid-template-columns: repeat(2, 1fr); } }
+
+.player-profile-portrait { box-sizing: border-box; padding: 5px; overflow: hidden; background: radial-gradient(circle at 50% 35%, #28535b, #122d36); }
+.player-profile-portrait svg { display: block; width: 100%; height: 100%; }

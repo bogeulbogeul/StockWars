@@ -60,11 +60,11 @@ test('rear passage, world boundaries and camera bounds', () => {
     p.updateCamera(20000,4000,0,true); assert.equal(p.cameraX,0); assert.equal(p.cameraY,0);
 });
 
-test('interaction requires both axes; closed shops cannot be entered', () => {
+test('interaction requires both axes, including unopened building descriptions', () => {
     const stage={playerController:player()};
     for(const b of TOWN_BUILDINGS) {
         stage.playerController.placeAt(b); TownStage.prototype.checkProximity.call(stage);
-        assert.equal(stage.activeNearbyObject?.id,b.available===false?undefined:b.id);
+        assert.equal(stage.activeNearbyObject?.id,b.id);
         stage.playerController.charPosY-=400; TownStage.prototype.checkProximity.call(stage);
         assert.equal(stage.activeNearbyObject,undefined);
     }
@@ -80,7 +80,7 @@ test('rest heals once and releases on vertical input', () => {
 test('all named facility returns, aliases and preserved unqualified return positions', () => {
     globalThis.document={body:{classList:{add(){}}}};
     try {
-        const stage={playerController:player(),viewportEl:{clientWidth:1200,clientHeight:900},update(){},checkProximity(){}};
+        const stage={callbacks:{},playerController:player(),viewportEl:{clientWidth:1200,clientHeight:900},update(){},checkProximity(){}};
         for(const id of [...TOWN_BUILDINGS.map(b=>b.id),'vivian','logistics']) {
             TownStage.prototype.show.call(stage,undefined,id);
             const e=townEntrance(TOWN_BUILDINGS.find(b=>b.id===({vivian:'vivian_store',logistics:'bit_logistics'}[id]||id)));

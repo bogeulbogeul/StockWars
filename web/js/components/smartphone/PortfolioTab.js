@@ -13,6 +13,11 @@ export class PortfolioTab {
 
     updateState(state) {
         if (!state) return;
+        const slotStatus = document.getElementById('portfolioSlotStatus');
+        if (slotStatus && state.portfolioSlots) {
+            const { used, max, buyCap } = state.portfolioSlots;
+            slotStatus.textContent = `종목 보유 슬롯 ${used} / ${max} · 종목별 투자 한도 ${Number.isFinite(buyCap) ? buyCap.toLocaleString() + 'G' : '무제한'}`;
+        }
         this.renderTradeHistory(state.tradeHistory || []);
         this.renderPortfolio(state.portfolio);
         this.renderSectorAllocation(state.portfolio);

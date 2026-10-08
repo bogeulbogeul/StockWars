@@ -101,7 +101,7 @@ export class CipherTrainingRoom {
         if(this.infoBody)this.renderInfo(stock);
         const qty=Math.max(1,Math.floor(Number(this.dialog.querySelector('[type=number]').value)||1));
         const quote=this.usesServerOrders ? null : this.engine.getExecutionPreview?.(this.shortMode?'short':'buy',stock.id,qty,this.leverage,'brokerage');
-        set('[data-total]',quote ? `${quote.total.toLocaleString()}G (수수료 ${quote.fee.toLocaleString()}G · 0.01% 포함) · 예상 ${quote.quantity}/${qty}주 · 평균 ${quote.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${quote.remaining ? " · 잔량 취소" : ""}` : `${Math.round(stock.price*qty/this.leverage).toLocaleString()}G (증거금 · ${this.leverage}배)`);
+        set('[data-total]',quote ? `${quote.total.toLocaleString()}G (수수료 ${quote.fee.toLocaleString()}G · ${(quote.feeRate * 100).toFixed(3)}% 포함) · 예상 ${quote.quantity}/${qty}주 · 평균 ${quote.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${quote.remaining ? " · 잔량 취소" : ""}` : `${Math.round(stock.price*qty/this.leverage).toLocaleString()}G (증거금 · ${this.leverage}배)`);
         this.chart.render(this.engine.priceHistory.get(stock.id)||[]);
         const book=this.dialog.querySelector('.training-book');book.replaceChildren();
         const orders=this.engine.getOrderBook(stock.id);

@@ -205,7 +205,7 @@ export class OfficeStage {
         this.lastTimestamp = now;
         if (this.furnitureEditMode) return;
         if (this.stageContainer?.classList.contains('hidden')) return;
-        if (document.querySelector('.player-profile-dialog[open], .settings-dialog[open]')) {
+        if (document.querySelector('.player-profile-dialog[open], .settings-dialog[open], .help-dialog[open]')) {
             this.keysHeld.clear();
             return;
         }

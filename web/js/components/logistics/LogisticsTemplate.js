@@ -1,3 +1,4 @@
+import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * LogisticsTemplate
  * Generates the HTML markup and SVG scene templates for the Bit Logistics Mini-Game modal.
@@ -63,7 +64,7 @@ export function getLogisticsModalHtml() {
                     <!-- Left Zone: Cargo Delivery Truck -->
                     <div class="logistics-truck-zone" id="logisticsTruckZone">
                         <div class="logistics-truck-target-indicator" id="truckTargetIndicator">
-                            <span>🚛 여기에 하차! [A]</span>
+                            <span>🚛 여기에 하차! [<span data-game-key="a">${bindingLabel('a')}</span>]</span>
                         </div>
                         <!-- Generated truck with a live cargo overlay. -->
                         <svg class="logistics-truck-svg" width="280" height="200" viewBox="0 0 1478 1064" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +86,7 @@ export function getLogisticsModalHtml() {
                     <!-- Right Zone: Stacked Package Boxes Pallet -->
                     <div class="logistics-boxes-zone" id="logisticsBoxesZone">
                         <div class="logistics-boxes-target-indicator" id="boxesTargetIndicator">
-                            <span>📦 상자 집기 / 더 쌓기 [W]</span>
+                            <span>📦 상자 집기 / 더 쌓기 [<span data-game-key="w">${bindingLabel('w')}</span>]</span>
                         </div>
                         <!-- Generated parcel pallet. -->
                         <img class="logistics-boxes-svg" src="${LOGISTICS_ASSETS.pallet}" width="200" height="220" alt="운반할 택배 상자 팔레트" draggable="false" />
@@ -113,9 +114,9 @@ export function getLogisticsModalHtml() {
                     <div class="logistics-controls-guide">
                         <span>🎮 <span class="logistics-key-chip">A</span> (트럭) / <span class="logistics-key-chip">D</span> (상자)</span>
                         <button class="btn-bottom-stack-more" id="btnBottomStackMore" title="상자 집기 / 더 쌓기">
-                            <span>📦 상자 집기 / 쌓기 [W]</span>
+                            <span>📦 상자 집기 / 쌓기 [<span data-game-key="w">${bindingLabel('w')}</span>]</span>
                         </button>
-                        <span>⚡ 질주: <span class="logistics-key-chip">Shift</span></span>
+                        <span>⚡ 질주: <span class="logistics-key-chip" data-game-key="shift">${bindingLabel('shift')}</span></span>
                     </div>
 
                     <div class="logistics-current-state-badge carrying" id="charStateBadge">

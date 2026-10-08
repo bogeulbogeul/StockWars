@@ -40,15 +40,15 @@ export const TRAITS_DATA = {
         statColor: "#00e5ff",
         icon: "📊",
         bonusDesc: "찌라시 해독률 보너스 및 노이즈 필터링 강화",
-        effect: "정보 신뢰도 판별 성공률 +20%"
+        effect: "찌라시 해석 단계 +1 (진위 보증 아님)"
     },
     negotiation: {
         title: "베테랑 협상가",
         statName: "협상력 +1",
         statColor: "#ffd600",
         icon: "🤝",
-        bonusDesc: "대출 이율 감면 및 매매 수수료 할인",
-        effect: "거래 수수료 -30% & 대출 이자 감면"
+        bonusDesc: "매매 수수료 할인 및 물류 보상 증가",
+        effect: "거래 수수료 추가 -30% · 대출 기능 준비 중"
     },
     management: {
         title: "공격적 자산가",
@@ -63,8 +63,8 @@ export const TRAITS_DATA = {
         statName: "회복력 +1",
         statColor: "#00e676",
         icon: "⚡",
-        bonusDesc: "스테미너 회복 속도 보너스 및 알바 보상 상향",
-        effect: "당일 피로도 회복 속도 2배"
+        bonusDesc: "최대 하트 증가 및 물류 효율 향상",
+        effect: "회복력 +1 · 회복력 2단계부터 최대 하트 증가"
     }
 };
 
