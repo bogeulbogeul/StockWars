@@ -188,14 +188,11 @@ export function getSmartphoneShellHtml() {
                                 <div class="section-title">💼 내 주식 포트폴리오</div>
                                 <div class="portfolio-list" id="portfolioListContainer"></div>
 
-                                <div class="profile-actions">
-                                    <button class="action-btn warning" id="btnProfileSettlement">
-                                        🧾 7일차 정산 테스트 실행
-                                    </button>
-                                    <button class="action-btn danger" id="btnProfileReset">
-                                        🔄 데이터 초기화
-                                    </button>
-                                </div>
+                                <details class="trade-history-menu">
+                                    <summary>🧾 거래 내역 <span id="tradeHistoryCount">0건</span></summary>
+                                    <p class="trade-history-note">체결된 거래를 최신순으로 표시합니다.</p>
+                                    <div id="tradeHistoryList" class="trade-history-list"></div>
+                                </details>
                             </div>
                         </div>
 

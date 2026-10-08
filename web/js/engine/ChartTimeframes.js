@@ -1,4 +1,4 @@
-export const CHART_PERIODS = { '1D': { days: 1, label: '1일' }, '1W': { days: 7, label: '1주' }, '1M': { days: 30, label: '1달' }, '1Y': { days: 365, label: '1년' } };
+export const CHART_PERIODS = { 'LIVE': { count: 50, label: '50개 기록' }, '1D': { days: 1, label: '1일' }, '1W': { days: 7, label: '1주' }, '1M': { days: 30, label: '1달' }, '1Y': { days: 365, label: '1년' } };
 const HOUR = 3600000;
 // Deterministic background history for the game's simulated market, independent of live quote RNG.
 export function createChartHistory(stock, now = Date.now()) {
@@ -10,8 +10,9 @@ export function createChartHistory(stock, now = Date.now()) {
 }
 export function chartPeriod(history, timeframe, now = Date.now()) {
     const period = CHART_PERIODS[timeframe] || CHART_PERIODS['1D'];
-    const start = now - period.days * 24 * HOUR;
-    const samples = history.filter(p => p.time >= start && p.time <= now && Number.isFinite(p.price));
+    const start = period.count ? -Infinity : now - period.days * 24 * HOUR;
+    let samples = history.filter(p => p.time >= start && p.time <= now && Number.isFinite(p.price));
+    if (period.count) samples = samples.slice(-period.count);
     if (!samples.length) return { samples: [], period, high: 0, low: 0, average: 0 };
     const prices = samples.map(p => p.price);
     return { samples, period, high: Math.max(...prices), low: Math.min(...prices), average: Math.round(prices.reduce((a,b)=>a+b,0)/prices.length) };
@@ -19,6 +20,13 @@ export function chartPeriod(history, timeframe, now = Date.now()) {
 export function chartTimeLabel(time, timeframe, tooltip = false) {
     const d = new Date(time), pad = n => String(n).padStart(2,'0');
     const date = pad(d.getMonth()+1) + '/' + pad(d.getDate());
-    const clock = pad(d.getHours()) + ':' + pad(d.getMinutes());
-    return tooltip ? d.getFullYear() + '/' + date + ' ' + clock : timeframe === '1D' ? clock : date;
+    const clock = pad(d.getHours()) + ':' + pad(d.getMinutes()) + (timeframe === 'LIVE' ? ':' + pad(d.getSeconds()) : '');
+    return tooltip ? d.getFullYear() + '/' + date + ' ' + clock : (timeframe === '1D' || timeframe === 'LIVE') ? clock : date;
+}
+
+// Fit the actual visible movement, while retaining a minimum span for flat prices.
+export function chartPriceRange(prices) {
+    const low = Math.min(...prices), high = Math.max(...prices);
+    const padding = Math.max((high - low) * 0.15, (high + low) / 2 * 0.005, 1);
+    return { minPrice: low - padding, maxPrice: high + padding };
 }

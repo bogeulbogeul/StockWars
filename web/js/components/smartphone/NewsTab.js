@@ -33,7 +33,7 @@ export class NewsTab {
                 <div class="news-title">${n.title}</div>
                 <div class="news-content">${n.content}</div>
                 <div class="news-footer">
-                    <span class="impact-tag ${n.isPositive ? 'gainer' : 'loser'}">예상 파급력: ${n.impact}</span>
+                    <span class="news-read-link">기사 전문 읽기 ›</span>
                     <button class="news-trade-link" data-id="${n.stockId}">차트 보기 및 거래 ➔</button>
                 </div>
             </div>

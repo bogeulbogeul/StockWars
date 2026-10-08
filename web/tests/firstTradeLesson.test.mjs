@@ -22,7 +22,7 @@ function tutorial(engine, active = true) {
     });
     return ui;
 }
-test('5% threshold uses first successful execution, not subsequent average or leveraged return', () => {
+test('10% threshold uses first successful execution, not subsequent average or leveraged return', () => {
     const engine = market();
     engine.cash = 0;
     assert.equal(engine.buyStock('TEST', 1).success, false);
@@ -36,6 +36,12 @@ test('5% threshold uses first successful execution, not subsequent average or le
     assert.equal(engine.firstTradeLesson.status, 'watching');
     engine.stocks.get('TEST').price = 1050;
     engine.notify();
+    assert.equal(engine.firstTradeLesson.status, 'watching');
+    engine.stocks.get('TEST').price = 1099;
+    engine.notify();
+    assert.equal(engine.firstTradeLesson.status, 'watching');
+    engine.stocks.get('TEST').price = 1100;
+    engine.notify();
     assert.equal(engine.firstTradeLesson.status, 'ready');
     engine.firstTradeLesson.status = 'holding';
     engine.notify();
@@ -45,12 +51,13 @@ test('choice waits for dialogue boundary and holding resumes without rewards or 
     const engine = market();
     engine.buyStock('TEST', 1);
     const ui = tutorial(engine);
-    engine.stocks.get('TEST').price = 1050;
+    engine.stocks.get('TEST').price = 1100;
     engine.notify();
     ui.notifyMarketUpdated(engine.getState());
     assert.equal(ui.steps[0].id, 'original');
     ui.nextStep();
     assert.equal(ui.steps[0].id, 'first_profit_choice');
+    assert.match(ui.steps[0].text, /10% 이상/);
     assert.equal(ui.steps[0].allowHold, true);
     const cash = engine.cash;
     ui.complete(true);
@@ -72,11 +79,11 @@ test('sell choice does not auto-trade; later actual loss is explained once', () 
     engine.firstTradeLesson.status = 'holding';
     ui.finishLesson();
     engine.stocks.get('TEST').price = 900;
-    assert.deepEqual(engine.getSellPreview('TEST', 10), { quantity: 1, proceeds: 900, profit: -100 });
+    assert.deepEqual(engine.getSellPreview('TEST', 10), { quantity: 1, proceeds: 899, profit: -103, fee: 1, feeRate: 0.0015, averagePrice: 900, remaining: 9 });
     engine.sellStock('TEST', 10);
     ui.notifyMarketUpdated(engine.getState());
     assert.equal(ui.steps[0].id, 'first_sale_result');
-    assert.match(ui.steps[0].text, /-100G/);
+    assert.match(ui.steps[0].text, /-103G/);
     ui.complete();
     assert.equal(engine.firstTradeLesson.status, 'done');
     ui.notifyMarketUpdated(engine.getState());

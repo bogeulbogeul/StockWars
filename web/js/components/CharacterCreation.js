@@ -41,7 +41,6 @@ export class CharacterCreation {
                     <div class="kiosk-header">
                         <div class="kiosk-badge">CIPHER SECURITIES • KIOSK</div>
                         <h2 class="kiosk-title">트레이더 자격 등록 & 아바타 설정</h2>
-                        <button class="kiosk-close-btn" id="btnCharCreateClose" title="닫기">✕</button>
                     </div>
 
                     <div class="kiosk-stepper">
@@ -190,7 +189,6 @@ export class CharacterCreation {
 
     initDOM() {
         this.modal = document.getElementById('characterCreationModal');
-        this.btnClose = document.getElementById('btnCharCreateClose');
         this.stepIndicator1 = document.getElementById('stepIndicator1');
         this.stepIndicator2 = document.getElementById('stepIndicator2');
         this.stepIndicator3 = document.getElementById('stepIndicator3');
@@ -232,8 +230,6 @@ export class CharacterCreation {
     }
 
     initEventListeners() {
-        this.btnClose?.addEventListener('click', () => this.close());
-
         this.btnRotLeft?.addEventListener('click', () => {
             const idx = this.directions.indexOf(this.direction);
             this.direction = this.directions[(idx - 1 + this.directions.length) % this.directions.length];

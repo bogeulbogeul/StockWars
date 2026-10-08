@@ -40,6 +40,7 @@
 @import './modules/visual-novel.css';
 @import './modules/anna-portrait.css';
 @import './modules/anna-dialogue.css';
+@import './modules/rent-quest.css';
 
 /* 7. World Environments & Stages */
 @import './modules/sky-background.css';

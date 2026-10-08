@@ -1,0 +1,35 @@
+.rent-quest {
+    position: fixed;
+    left: 22px;
+    top: 210px;
+    width: 268px;
+    box-sizing: border-box;
+    padding: 18px;
+    z-index: 90;
+    color: #edf4ff;
+    background: rgba(15, 23, 34, 0.94);
+    border: 1px solid rgba(0, 213, 239, 0.4);
+    border-left: 3px solid #00d5ef;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px #0005;
+    pointer-events: none;
+}
+.rent-quest[hidden] { display: none; }
+.rent-quest-heading { display: flex; justify-content: space-between; color: #00d5ef; font-size: 10px; font-weight: 800; letter-spacing: 0.6px; }
+.rent-quest-heading [data-deadline] { color: #ffdb78; }
+.rent-quest h2 { margin: 12px 0 7px; font-size: 18px; }
+.rent-quest-objective { margin: 0 0 18px; font-size: 12px; color: #c2cddd; }
+.rent-quest-amount { display: flex; align-items: baseline; gap: 6px; font-variant-numeric: tabular-nums; }
+.rent-quest-amount strong { font-size: 22px; }
+.rent-quest-amount span { font-size: 12px; color: #9daec3; }
+.rent-quest progress { display: block; width: 100%; height: 6px; margin: 10px 0; border: 0; border-radius: 4px; overflow: hidden; background: #2a3647; }
+.rent-quest progress::-webkit-progress-bar { background: #2a3647; }
+.rent-quest progress::-webkit-progress-value { background: #00d5ef; }
+.rent-quest progress::-moz-progress-bar { background: #00d5ef; }
+.rent-quest-status { margin: 0; font-size: 12px; color: #ffdb78; }
+.rent-quest.is-ready .rent-quest-status { color: #70e9b0; }
+.rent-quest-tip { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #ffffff18; font-size: 11px; line-height: 1.7; color: #9daec3; }
+@media (max-width: 700px), (max-height: 650px) {
+    .rent-quest { top: auto; bottom: 90px; left: 12px; width: 230px; padding: 12px; }
+    .rent-quest-tip { display: none; }
+}

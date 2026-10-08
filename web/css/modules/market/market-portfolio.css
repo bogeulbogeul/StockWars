@@ -225,3 +225,11 @@
         background: rgba(255, 214, 0, 0.18);
     }
 }
+
+.trade-history-menu { margin-top: 20px; border: 1px solid var(--border-light); border-radius: 12px; background: var(--bg-surface); }
+.trade-history-menu summary { padding: 14px; cursor: pointer; color: var(--accent-cyan); font-size: 13px; font-weight: 700; }
+.trade-history-menu summary span { float: right; color: var(--text-muted); }
+.trade-history-note { color: var(--text-muted); font-size: 11px; padding: 8px 14px; }
+.trade-history-list { max-height: 360px; overflow-y: auto; }
+.trade-history-row { display: grid; gap: 5px; padding: 12px 14px; border-top: 1px solid var(--border-light); font-size: 12px; }
+.trade-history-row small { color: var(--text-muted); font-size: 10px; }

@@ -39,7 +39,7 @@ export class CipherTrainingRoom {
             this.infoBody=document.createElement('div');this.info.append(infoTitle,this.infoBody);this.dialog.querySelector('.training-chart').before(this.info);
             const infoButton=document.createElement('button');infoButton.textContent='ⓘ 기업 정보';infoButton.onclick=()=>{this.info.open=!this.info.open;if(this.info.open)this.info.scrollIntoView({behavior:'smooth',block:'nearest'});};this.dialog.querySelector('.training-stock-heading').append(infoButton);
             const sizes=document.createElement('div');sizes.className='training-quantity-shortcuts';
-            for(const ratio of [.25,.5,1]){const button=document.createElement('button');button.textContent=ratio===1?'최대':`${ratio*100}%`;button.onclick=()=>{const stock=this.engine.stocks.get(this.selected);if(!stock)return;const capacity=Math.floor(this.engine.cash*this.leverage/stock.price);this.dialog.querySelector('[type=number]').value=Math.max(1,Math.floor(capacity*ratio));this.renderDetails();};sizes.append(button);}this.dialog.querySelector('[type=number]').after(sizes);
+            for(const ratio of [.25,.5,1]){const button=document.createElement('button');button.textContent=ratio===1?'최대':`${ratio*100}%`;button.onclick=()=>{const stock=this.engine.stocks.get(this.selected);if(!stock)return;const capacity=this.engine.getExecutionPreview?.(this.shortMode?'short':'buy',this.selected,Number.MAX_SAFE_INTEGER,this.leverage,'brokerage').quantity ?? Math.floor(this.engine.cash*this.leverage/stock.price);this.dialog.querySelector('[type=number]').value=Math.max(1,Math.floor(capacity*ratio));this.renderDetails();};sizes.append(button);}this.dialog.querySelector('[type=number]').after(sizes);
         }
         if(!document.getElementById('cipher-training-style')){
             const style=document.createElement('style');style.id='cipher-training-style';style.textContent=`
@@ -100,7 +100,8 @@ export class CipherTrainingRoom {
         if(this.desktopMode)set('[data-watch]',this.watchlist.has(stock.id)?'★ 관심 종목':'☆ 관심 등록');
         if(this.infoBody)this.renderInfo(stock);
         const qty=Math.max(1,Math.floor(Number(this.dialog.querySelector('[type=number]').value)||1));
-        set('[data-total]',`${Math.round(stock.price*qty/this.leverage).toLocaleString()}G (증거금 · ${this.leverage}배)`);
+        const quote=this.usesServerOrders ? null : this.engine.getExecutionPreview?.(this.shortMode?'short':'buy',stock.id,qty,this.leverage,'brokerage');
+        set('[data-total]',quote ? `${quote.total.toLocaleString()}G (수수료 ${quote.fee.toLocaleString()}G · 0.01% 포함) · 예상 ${quote.quantity}/${qty}주 · 평균 ${quote.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${quote.remaining ? " · 잔량 취소" : ""}` : `${Math.round(stock.price*qty/this.leverage).toLocaleString()}G (증거금 · ${this.leverage}배)`);
         this.chart.render(this.engine.priceHistory.get(stock.id)||[]);
         const book=this.dialog.querySelector('.training-book');book.replaceChildren();
         const orders=this.engine.getOrderBook(stock.id);
@@ -141,7 +142,7 @@ export class CipherTrainingRoom {
         const input=this.dialog.querySelector('[type=number]');if(!input.reportValidity())return;
         const qty=Number(input.value);if(!Number.isSafeInteger(qty)||qty<1)return;
         if((this.shortMode||this.leverage>=2)&&!this.engine.isLevel10Unlocked){this.dialog.querySelector('.training-result').textContent='레벨 10 해금 후 이용할 수 있습니다.';return;}
-        const result=side==='buy'?(this.shortMode?this.engine.shortStock(this.selected,qty,this.leverage):this.engine.buyStock(this.selected,qty,this.leverage)):this.engine.sellStock(this.selected,qty);
+        const result=side==='buy'?(this.shortMode?this.engine.shortStock(this.selected,qty,this.leverage,'brokerage'):this.engine.buyStock(this.selected,qty,this.leverage,'brokerage')):this.engine.sellStock(this.selected,qty,'brokerage');
         this.dialog.querySelector('.training-result').textContent=result.msg;this.render();
     }
     renderAccount(){

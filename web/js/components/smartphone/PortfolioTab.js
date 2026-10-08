@@ -9,23 +9,65 @@ export class PortfolioTab {
     constructor(domElements, callbacks = {}) {
         this.dom = domElements;
         this.callbacks = callbacks;
-        this.initEventListeners();
-    }
-
-    initEventListeners() {
-        this.dom.btnProfileSettlement?.addEventListener('click', () => {
-            if (this.callbacks.onRunSettlement) this.callbacks.onRunSettlement();
-        });
-
-        this.dom.btnProfileReset?.addEventListener('click', () => {
-            if (this.callbacks.onResetData) this.callbacks.onResetData();
-        });
     }
 
     updateState(state) {
         if (!state) return;
+        this.renderTradeHistory(state.tradeHistory || []);
         this.renderPortfolio(state.portfolio);
         this.renderSectorAllocation(state.portfolio);
+    }
+
+    renderTradeHistory(history) {
+        if (!this.dom.tradeHistoryList) return;
+        if (this.lastHistory === history && this.lastHistoryCount === history.length) return;
+        this.lastHistory = history;
+        this.lastHistoryCount = history.length;
+        if (this.dom.tradeHistoryCount) this.dom.tradeHistoryCount.textContent = `${history.length}건`;
+        const list = this.dom.tradeHistoryList;
+        list.replaceChildren();
+        if (!history.length) {
+            const empty = document.createElement('p');
+            empty.className = 'trade-history-note';
+            empty.textContent = '아직 체결된 거래가 없습니다.';
+            list.append(empty);
+            return;
+        }
+        const labels = { buy: '매수', sell: '매도', short: '공매도', liquidate: '일괄 청산' };
+        for (const trade of [...history].reverse()) {
+            const row = document.createElement('article');
+            row.className = 'trade-history-row';
+            const heading = document.createElement('strong');
+            heading.textContent = `${labels[trade.side] || trade.side} · ${trade.stockName} (${trade.stockId})`;
+            const time = document.createElement('small');
+            time.textContent = `${trade.day}일차 · ${new Date(trade.time).toLocaleString('ko-KR')}`;
+            const price = document.createElement('div');
+            price.textContent = `${trade.quantity.toLocaleString()}주 · 평균 ${trade.price.toLocaleString(undefined,{maximumFractionDigits:2})}G` + (trade.leverage ? ` · ${trade.leverage}x` : '');
+            const amount = document.createElement('div');
+            amount.textContent = `현금 ${trade.cashDelta >= 0 ? '+' : ''}${trade.cashDelta.toLocaleString()}G`;
+            const fee = document.createElement('div');
+            fee.textContent = `수수료 ${(trade.fee ?? 0).toLocaleString()}G` + (trade.feeRate != null ? ` · ${trade.venue === 'brokerage' ? '증권사' : '스마트폰'} ${(trade.feeRate * 100).toFixed(2)}%` : '');
+            row.append(heading, time, price, fee, amount);
+            if (trade.profit != null) {
+                const profit = document.createElement('div');
+                profit.className = trade.profit >= 0 ? 'gainer' : 'loser';
+                profit.textContent = `실현 손익 ${trade.profit >= 0 ? '+' : ''}${trade.profit.toLocaleString()}G`;
+                row.append(profit);
+            }
+            if (trade.fills?.length) {
+                const fills = document.createElement('details');
+                const title = document.createElement('summary');
+                title.textContent = `가격별 체결 ${trade.fills.length}건` + (trade.requested > trade.quantity ? ` · 주문 ${trade.requested}주 중 ${trade.quantity}주 체결` : '');
+                fills.append(title);
+                for (const fill of trade.fills) {
+                    const line = document.createElement('div');
+                    line.textContent = `${fill.quantity.toLocaleString()}주 × ${fill.price.toLocaleString()}G`;
+                    fills.append(line);
+                }
+                row.append(fills);
+            }
+            list.append(row);
+        }
     }
 
     updateUserProfile(profile) {

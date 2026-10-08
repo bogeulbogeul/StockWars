@@ -2,6 +2,7 @@ import { ItemEngine } from '../engine/ItemEngine.js';
 import { applyPlayerTrait } from '../engine/PlayerTrait.js';
 import { LevelUpNotice } from '../components/LevelUpNotice.js';
 import { ItemCenter } from '../components/ItemCenter.js';
+import { RentQuestTracker } from '../components/RentQuestTracker.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
 
@@ -21,11 +22,15 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         market.cash = saved.market.cash;
         market.initialCash = saved.market.initialCash;
         market.day = saved.market.day;
+        market.rentSettlement = saved.market.rentSettlement || null;
         market.portfolio = new Map(saved.market.portfolio);
         market.stocks = new Map(saved.market.stocks);
         market.priceHistory = new Map(saved.market.history);
         market.firstTradeLesson = saved.market.firstTradeLesson || null;
         market.limitOrders = saved.market.limitOrders || [];
+        market.tradeHistory = saved.market.tradeHistory || [];
+        market.orderBooks = new Map(saved.market.orderBooks || []);
+        market.bookRevision = saved.market.bookRevision || 0;
         app.userProfile = saved.profile;
     }
 
@@ -49,7 +54,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             market.priceHistory.set(stock.id, hist);
         }
     });
-    const engine = new ItemEngine({ market, state: saved?.items });
+    // Black Swan events are excluded from the current demo build, including continued saves.
+    const engine = new ItemEngine({ market, state: saved?.items, blackSwanEnabled: false });
     applyPlayerTrait(engine.state, app.userProfile);
     const levelUpNotice = new LevelUpNotice(app.appContainer, {
         getState: () => ({ level: engine.playerLevel(), points: engine.pendingStatPoints(), stats: engine.state.baseStats }),
@@ -60,6 +66,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     });
     let gameStarted = false;
+    const rentQuest = new RentQuestTracker(app.appContainer);
+    const updateQuest = () => rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true);
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
     market.itemEngine = engine;
@@ -70,8 +78,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         if (!force && Date.now() - lastSaved < 1000) return;
         try {
             localStorage.setItem(saveKey, JSON.stringify({ items: engine.state, profile: app.userProfile,
-                market: { cash: market.cash, initialCash: market.initialCash, day: market.day,
-                    portfolio: [...market.portfolio], stocks: [...market.stocks], history: [...market.priceHistory], firstTradeLesson: market.firstTradeLesson, limitOrders: market.limitOrders } }));
+                market: { cash: market.cash, initialCash: market.initialCash, day: market.day, rentSettlement: market.rentSettlement,
+                    portfolio: [...market.portfolio], stocks: [...market.stocks], history: [...market.priceHistory], firstTradeLesson: market.firstTradeLesson, limitOrders: market.limitOrders, tradeHistory: market.tradeHistory, orderBooks: [...market.orderBooks], bookRevision: market.bookRevision } }));
             lastSaved = Date.now();
             return true;
         } catch {
@@ -81,6 +89,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     }
     function sync() {
+        updateQuest();
         if (gameStarted && engine.pendingStatPoints() > 0) levelUpNotice.show();
         app.inventoryModal.items = engine.state.inventory;
         app.mainHUD.updateStamina(engine.state.stamina);
@@ -127,12 +136,12 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     app.itemGameplay = {
         sync, save,
         start() { gameStarted = true; sync(); },
-        pause() { gameStarted = false; levelUpNotice.close(); },
+        pause() { gameStarted = false; levelUpNotice.close(); updateQuest(); },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
         purchase(id, quantity, instant) { const r = engine.purchase(id, quantity, instant); sync(); return r; },
         activate,
         reset() {
-            engine.state = new ItemEngine({ market }).state;
+            engine.state = new ItemEngine({ market, blackSwanEnabled: engine.blackSwanEnabled }).state;
             applyPlayerTrait(engine.state, app.userProfile);
             levelUpNotice.close();
             engine.state.stamina = engine.maxStamina();
@@ -159,7 +168,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
         sync();
     };
-    market.subscribe(() => save(false));
+    market.subscribe(() => { updateQuest(); save(false); });
     window.addEventListener('pagehide', () => save());
     engine.tick();
     sync();

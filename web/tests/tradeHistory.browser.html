@@ -1,0 +1,67 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/style.css">
+<div id="app"></div><pre id="results"></pre>
+<script type="module">
+import { getSmartphoneShellHtml } from '../js/components/smartphone/SmartphoneShellTemplate.js';
+import { PortfolioTab } from '../js/components/smartphone/PortfolioTab.js';
+import { MarketEngine, marketEngine } from '../js/engine/marketEngine.js';
+import { TradeModal } from '../js/components/TradeModal.js';
+import { CipherTrainingRoom } from '../js/components/CipherTrainingRoom.js';
+marketEngine.stopEngine();
+const template = document.createElement('template');
+template.innerHTML = getSmartphoneShellHtml();
+const checks = [];
+const check = (ok,label) => checks.push(`${ok?'PASS':'FAIL'} ${label}`);
+check(!template.content.querySelector('#btnProfileSettlement, #btnProfileReset'), 'test actions removed');
+const view = template.content.querySelector('#tabProfileView');
+view.style.cssText = 'display:block;width:360px';
+document.querySelector('#app').append(view);
+const tab = new PortfolioTab({tradeHistoryList:document.querySelector('#tradeHistoryList'),tradeHistoryCount:document.querySelector('#tradeHistoryCount')});
+const e = new MarketEngine(); e.stopEngine(); e.cash = 10000;
+tab.updateState(e.getState());
+check(document.querySelector('#tradeHistoryList').textContent.includes('아직 체결된 거래'), 'empty state');
+document.querySelector('summary').click();
+check(document.querySelector('details').open, 'history menu opens');
+e.stocks.get('CLOUDBERRY').price=100; e.buyStock('CLOUDBERRY',3);
+e.stocks.get('CLOUDBERRY').price=120; e.sellStock('CLOUDBERRY',2);
+tab.updateState(e.getState());
+const rows = document.querySelectorAll('.trade-history-row');
+check(rows.length===2 && rows[0].textContent.startsWith('매도') && rows[1].textContent.startsWith('매수'), 'newest first');
+check(rows[0].textContent.includes('실현 손익 +40G') && rows[0].textContent.includes('현금 +240G'), 'executed amount and profit');
+check(document.querySelector('#tradeHistoryCount').textContent==='2건', 'count');
+const restored = JSON.parse(JSON.stringify(e.tradeHistory));
+tab.updateState({portfolio:[],tradeHistory:restored});
+check(document.querySelectorAll('.trade-history-row').length===2, 'saved records render after restore');
+e.reset();e.stopEngine();tab.updateState(e.getState());
+check(document.querySelector('#tradeHistoryCount').textContent==='0건','reset clears records');
+tab.updateState({portfolio:[],tradeHistory:restored});
+const feeEngine = new MarketEngine(); feeEngine.stopEngine(); feeEngine.cash=100000;
+feeEngine.stocks.get('CLOUDBERRY').price=10000;
+const phone=new TradeModal(document.querySelector('#app'),{
+ getStock:id=>feeEngine.stocks.get(id),
+ getOrderQuote:(price,qty,lev)=>feeEngine.getOrderQuote(price,qty,lev,'phone'),
+ getExecutionPreview:(side,id,qty,lev)=>feeEngine.getExecutionPreview(side,id,qty,lev,'phone'),
+ onBuy:(id,qty,lev)=>feeEngine.buyStock(id,qty,lev)
+});
+phone.open('CLOUDBERRY');
+check(phone.modalTotalCost.textContent.includes('수수료 15G (0.15%)'), 'phone fee preview');
+phone.btnBuyExecute.click();phone.close();
+check(feeEngine.cash===89985 && feeEngine.tradeHistory.at(-1).fee===15, 'phone actual fee');
+const desktop=new CipherTrainingRoom(document.querySelector('#app'),feeEngine);
+desktop.selected='CLOUDBERRY';desktop.renderDetails();
+check(desktop.dialog.querySelector('[data-total]').textContent.includes('수수료 1G · 0.01%'), 'brokerage fee preview');
+desktop.order('buy');
+check(feeEngine.cash===79984 && feeEngine.tradeHistory.at(-1).fee===1, 'brokerage actual fee');
+tab.updateState(feeEngine.getState());
+check(document.querySelector('.trade-history-row').textContent.includes('증권사 0.01%'), 'history shows venue and rate');
+feeEngine.stocks.get('CLOUDBERRY').price=1000;
+feeEngine.orderBooks.set('CLOUDBERRY',{referencePrice:1000,asks:[{price:1000,vol:2},{price:1010,vol:3}],bids:[]});
+phone.open('CLOUDBERRY');phone.tradeQty=10;phone.updateCalculations();
+check(phone.modalTotalCost.textContent.includes('예상 5/10주') && phone.modalTotalCost.textContent.includes('평균 1,006G'), 'market preview shows depth-based average and partial quantity');
+phone.btnBuyExecute.click();
+check(feeEngine.tradeHistory.at(-1).quantity===5 && feeEngine.tradeHistory.at(-1).fills.length===2, 'UI order consumes displayed depth');
+tab.updateState(feeEngine.getState());
+check(document.querySelector('.trade-history-row').textContent.includes('가격별 체결 2건'), 'history exposes price-level fills');
+document.querySelector('#results').textContent=checks.join('\n');
+</script>

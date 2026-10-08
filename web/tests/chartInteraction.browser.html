@@ -1,0 +1,81 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Chart interaction regression</title>
+<link rel="stylesheet" href="../css/style.css">
+<div id="app"></div>
+<pre id="results" style="position:fixed;top:0;left:0;z-index:100000;background:#111;color:white"></pre>
+<script type="module">
+import { chartViewportRect } from '../js/components/chart/ChartPointer.js';
+import { DetailedChartModal } from '../js/components/DetailedChartModal.js';
+import { TradeModal } from '../js/components/TradeModal.js';
+import { createChartHistory } from '../js/engine/ChartTimeframes.js';
+const stock = { id:'TEST', name:'차트 검증', sector:'IT', price:300, prevPrice:290 };
+const chart = new DetailedChartModal(document.querySelector('#app'), {getStock:()=>stock});
+chart.open('TEST');
+await new Promise(resolve=>setTimeout(resolve,100));
+const results = [];
+const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+const check = (ok, label) => { results.push(`${ok ? 'PASS' : 'FAIL'} ${label}`); };
+const move = (x, type = 'pointermove', extra = {}) => {
+ const rect = chartViewportRect(chart.canvas), view = chartViewportRect(chart.scrollWrapper);
+ chart.scrollWrapper.dispatchEvent(new PointerEvent(type, {
+  bubbles:true, isPrimary:true, pointerId:1, pointerType:'mouse',
+  clientX:rect.left + x / chart.chartWidth * rect.width, clientY:view.top+30, ...extra
+ }));
+};
+for (const zoom of [0.5, 0.75, 1, 1.25]) {
+ document.documentElement.style.zoom = zoom;
+ for (const timeframe of ['LIVE', '1D', '1W', '1M', '1Y']) {
+  chart.selectedTimeframe = timeframe;
+  chart.renderCanvasChart();
+  chart.scrollWrapper.scrollLeft = chart.scrollWrapper.scrollWidth;
+  const latest = chart.points.at(-1);
+  move(latest.x);
+  await frame();
+  check(parseFloat(chart.guideVertical.style.left) === latest.x, `${zoom} / ${timeframe}: latest quote`);
+  const point = chart.points.find(p => p.x > chart.scrollWrapper.scrollLeft + 50);
+  // Multiple moves in the same frame must resolve to the final pointer, not a queued backlog.
+  move(latest.x); move(point.x);
+  await frame();
+  check(Math.abs(parseFloat(chart.guideVertical.style.left) - point.x) < 2, `${zoom} / ${timeframe}: rapid reversal`);
+  chart.scrollWrapper.scrollLeft = 0;
+  move(chart.points[0].x);
+  await frame();
+  check(parseFloat(chart.guideVertical.style.left) === chart.points[0].x, `${zoom} / ${timeframe}: oldest quote`);
+ }
+}
+move(chart.points[0].x);
+chart.close();
+await frame();
+check(chart.lastChartPointer === null && chart.hoverFrame === null && chart.crosshair.classList.contains('hidden'), 'close cancels pending guide update');
+document.documentElement.style.zoom = '0.75';
+const history = createChartHistory(stock, Date.now() - 6000);
+history.push({time:Date.now()-4000, price:270}, {time:Date.now()-2000, price:330}, {time:Date.now(), price:300});
+chart.callbacks.getChartHistory = () => history;
+const trade = new TradeModal(document.querySelector('#app'), {
+ getStock:()=>stock, getChartHistory:()=>history,
+ getPriceHistory:()=>[500,600,700] // Old tick history must not affect the preview.
+});
+const compactPoints = [];
+const ctx = trade.chartRenderer.ctx, lineTo = ctx.lineTo.bind(ctx);
+ctx.lineTo = (x,y) => { if (ctx.shadowBlur === 8) compactPoints.push({x,y}); lineTo(x,y); };
+trade.open('TEST');
+chart.selectedTimeframe = '1Y';
+chart.open('TEST');
+check(chart.selectedTimeframe === 'LIVE', 'expanded preview opens the same LIVE period');
+const compact = trade.chartRenderer;
+const bounds = chart.plotBounds;
+check(compactPoints.length === chart.points.length - 1, 'compact and detailed charts use the same samples');
+check(Math.abs((compactPoints.at(-1).x-compactPoints.at(-2).x)/(compact.width-30) - 1/(chart.points.length-1)) < 1e-8,
+ 'latest live price changes occupy a full record interval instead of a subpixel time interval');
+check(compactPoints.every((point,i) => {
+ const detail = chart.points[i+1];
+ return Math.abs((point.x-15)/(compact.width-30) - (detail.x-bounds.left)/(bounds.right-bounds.left)) < 1e-8
+  && Math.abs((point.y-20)/(compact.height-45) - (detail.y-bounds.top)/(bounds.bottom-bounds.top)) < 1e-8;
+}), 'compact and detailed curves match with irregular live tick timestamps');
+check(ctx.strokeStyle === chart.canvas.getContext('2d').strokeStyle, 'chart trend colors match');
+const failures = results.filter(r=>r.startsWith('FAIL'));
+document.querySelector('#results').textContent = `${results.length - failures.length}/${results.length} PASS` + '\n' + failures.join('\n');
+move(chart.points.at(-1).x);
+window.chartTest = chart;
+</script>

@@ -116,15 +116,9 @@ export class SmartphoneUI {
             sectorDonutChart: document.getElementById('sectorDonutChart'),
             donutCenterVal: document.getElementById('donutCenterVal'),
             allocationLegendList: document.getElementById('allocationLegendList'),
-            btnProfileSettlement: document.getElementById('btnProfileSettlement'),
-            btnProfileReset: document.getElementById('btnProfileReset')
+            tradeHistoryList: document.getElementById('tradeHistoryList'),
+            tradeHistoryCount: document.getElementById('tradeHistoryCount')
         }, {
-            onTriggerSettlement: () => {
-                if (this.callbacks.onTriggerSettlement) this.callbacks.onTriggerSettlement();
-            },
-            onReset: () => {
-                if (this.callbacks.onReset) this.callbacks.onReset();
-            },
             onOpenTradeModal: (stockId) => {
                 this.recordRecentlyViewed(stockId);
                 if (this.callbacks.onOpenTradeModal) this.callbacks.onOpenTradeModal(stockId);

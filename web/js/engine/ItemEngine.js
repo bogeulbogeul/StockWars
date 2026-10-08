@@ -29,8 +29,9 @@ function randomUnit() {
 
 // Local demo simulation. No real-money purchase or server-wide lottery pool.
 export class ItemEngine {
-    constructor({ market, clock = Date.now, random = randomUnit, state } = {}) {
+    constructor({ market, clock = Date.now, random = randomUnit, state, blackSwanEnabled = true } = {}) {
         this.market = market;
+        this.blackSwanEnabled = blackSwanEnabled;
         this.clock = clock;
         this.random = random;
         this.state = state || {
@@ -53,6 +54,10 @@ export class ItemEngine {
         // Preserve a local game's weekly numbering, including older saved tickets.
         this.state.lottoFirstRound ??= [...this.state.tickets, ...this.state.draws]
             .reduce((first, entry) => Math.min(first, entry.round), nextDraw(this.state.lastNow));
+        if (!this.blackSwanEnabled) {
+            this.state.swanActive = false;
+            this.state.swanEnd = 0;
+        }
         this.normalizeStamina();
     }
     lottoRoundNumber(round = nextDraw(this.now())) {
@@ -337,14 +342,14 @@ export class ItemEngine {
             this.notice(`${report.name}: 보고서의 공급 계약 호재 반영`);
         }
         for (const round of [...new Set(s.tickets.filter(t => t.round <= now).map(t => t.round))].sort((a,b)=>a-b)) this.settleRound(round);
-        if (!s.swanActive && now >= s.swanAt) {
+        if (this.blackSwanEnabled && !s.swanActive && now >= s.swanAt) {
             if (s.escape) { this.market.liquidateForEscape?.(); s.escape = false; this.notice('탈출 캡슐: 폭락 충격 직전 보유 포지션 자동 청산'); }
             for (const stock of this.market.stocks.values()) { stock.prevPrice = stock.price; stock.price = Math.max(10, Math.round(stock.price * (1 - ITEM_BALANCE.swanDrop))); this.recordPrice(stock); }
             s.swanActive = true;
             s.swanEnd = now + ITEM_BALANCE.swanDuration;
             this.notice('블랙 스완 발생 · 시장 급락 및 차트 노이즈');
         }
-        if (s.swanActive && now >= s.swanEnd) {
+        if (this.blackSwanEnabled && s.swanActive && now >= s.swanEnd) {
             s.swanActive = false;
             if (this.market.cash + (this.market.getPortfolioValue?.() || 0) > 0) s.survivals++;
             s.swanAt = now + 7 * DAY;
@@ -354,5 +359,5 @@ export class ItemEngine {
     }
     recordPrice(stock) { const h = this.market.priceHistory?.get(stock.id); if (h) { h.push(stock.price); if (h.length > 50) h.shift(); } }
     advanceDay() { this.state.offset += DAY; this.tick(); this.state.stamina = this.maxStamina(); }
-    chartNoise() { return this.state.swanActive ? (this.state.mask ? 0.3 : 1) : 0; }
+    chartNoise() { return this.blackSwanEnabled && this.state.swanActive ? (this.state.mask ? 0.3 : 1) : 0; }
 }

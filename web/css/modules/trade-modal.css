@@ -256,7 +256,8 @@
 .panel-lbl { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
 
 .orderbook-rows { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-mono); font-size: 11px; }
-.ob-row { display: flex; justify-content: space-between; padding: 4px 8px; border-radius: 4px; position: relative; overflow: hidden; }
+.ob-row { display: flex; justify-content: space-between; width: 100%; border: none; font: inherit; text-align: left; cursor: pointer; padding: 4px 8px; border-radius: 4px; position: relative; overflow: hidden; }
+.ob-row:hover, .ob-row:focus-visible { outline: 1px solid currentColor; outline-offset: -1px; }
 .ob-fill { position: absolute; top: 0; right: 0; height: 100%; opacity: 0.2; z-index: 1; }
 .ob-row.ask { color: var(--accent-red); background: rgba(255, 59, 92, 0.08); }
 .ob-row.ask .ob-fill { background: var(--accent-red); }
@@ -315,7 +316,17 @@
 .limit-order-controls { display: grid; gap: 6px; margin: 8px 0; }
 .limit-order-controls label { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--text-muted); font-size: 12px; }
 .limit-order-controls input, .limit-order-controls select { width: 110px; padding: 5px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 4px; color: var(--text-main); }
+/* Keep native menus dark; tutorial glow belongs to the wrapper, not the popup control. */
+#tradeOrderType { color-scheme: dark; }
+#tradeOrderType option { background: var(--bg-surface); color: var(--text-main); }
+#tradeOrderTypeControl { border-radius: 4px; }
 .limit-order-controls small { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
-#tradePendingOrders { font-size: 11px; color: var(--accent-cyan); }
+#tradePendingOrders { display: grid; gap: 6px; font-size: 11px; color: var(--accent-cyan); }
+.pending-order-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 8px; border: 1px solid var(--border-light); border-radius: 6px; background: rgba(255, 255, 255, 0.025); }
+.pending-order-description { min-width: 0; line-height: 1.5; overflow-wrap: anywhere; }
+.pending-order-cancel { appearance: none; flex-shrink: 0; min-height: 28px; padding: 4px 9px; border: 1px solid rgba(255, 59, 92, 0.3); border-radius: 5px; background: rgba(255, 59, 92, 0.08); color: #f4a3b1; font: inherit; font-weight: 600; line-height: 1.3; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease; }
+.pending-order-cancel:hover { background: rgba(255, 59, 92, 0.18); border-color: var(--accent-red); }
+.pending-order-cancel:active { background: rgba(255, 59, 92, 0.25); }
+.pending-order-cancel:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
 
 .lev-btn:not(.locked) .lock-tag { display: none; }

@@ -574,52 +574,6 @@ body.town-mode-active:not(.modal-active):not(:has(.modal-overlay:not(.hidden))) 
     display: none !important;
 }
 
-body.modal-active #annaTutorialOverlay .vn-top-bar,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-top-bar {
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-}
-
-body.modal-active #annaTutorialOverlay .vn-controls,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-controls {
-    margin-left: auto;
-    gap: 6px !important;
-}
-
-body.modal-active #annaTutorialOverlay .vn-btn,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-btn {
-    min-height: 28px;
-    padding: 4px 8px !important;
-    font-size: 11px !important;
-}
-
-body.modal-active #annaTutorialOverlay .vn-dialogue-body,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-body {
-    padding-right: 0;
-}
-
-body.modal-active #annaTutorialOverlay .vn-dialogue-text,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-text {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
-    overflow-wrap: anywhere;
-}
-
-body.modal-active #annaTutorialOverlay .vn-step-tracker,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-step-tracker {
-    font-size: 11px !important;
-    white-space: normal !important;
-}
-
-body.modal-active #annaTutorialOverlay .vn-dialogue-box,
-body:has(.modal-overlay:not(.hidden)) #annaTutorialOverlay .vn-dialogue-box {
-    gap: 12px !important;
-    max-height: calc(calc(100 * var(--game-vh)) - 100px);
-    overflow-y: auto;
-    box-sizing: border-box;
-    max-width: calc(calc(100 * var(--game-vw)) - 32px) !important;
-}
-
 .vn-action-area.hidden {
     display: none !important;
 }
@@ -827,3 +781,51 @@ svg .tutorial-target-shake {
     box-shadow: 0 6px 20px rgba(245, 158, 11, 0.7);
 }
 
+
+/* Anna only: readable companion card, constrained to the space beside live UI. */
+body #annaTutorialOverlay {
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 32px !important;
+    box-sizing: border-box;
+    transition: none;
+}
+body #annaTutorialOverlay .vn-dialogue-box:not(.collapsed) {
+    width: var(--anna-card-width, 500px) !important;
+    max-width: var(--anna-card-width, 500px) !important;
+    max-height: var(--anna-card-height, calc(100 * var(--game-vh) - 180px)) !important;
+    padding: 22px 24px !important;
+    gap: 16px !important;
+    flex-direction: column !important;
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    transition: border-color .2s, box-shadow .2s;
+    /* An opaque single surface avoids a second-looking layer over the office. */
+    background: #101722 !important;
+    border: 1px solid #248a98 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+body #annaTutorialOverlay .vn-portrait-frame {
+    flex-direction: row !important;
+    justify-content: flex-start;
+    width: 100% !important;
+    padding: 0 0 12px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid #ffffff1a;
+    gap: 14px !important;
+}
+body #annaTutorialOverlay .vn-dialogue-box:not(.collapsed) .vn-portrait-avatar { width: 64px !important; height: 64px !important; }
+body #annaTutorialOverlay .vn-top-bar { flex-wrap: wrap !important; gap: 12px !important; }
+body #annaTutorialOverlay .vn-nameplate { flex-shrink: 0 !important; padding: 6px 12px !important; }
+body #annaTutorialOverlay .vn-speaker-name { font-size: 16px !important; white-space: nowrap; }
+body #annaTutorialOverlay .vn-speaker-title { display: none; }
+body #annaTutorialOverlay .vn-controls { flex-wrap: wrap; gap: 8px !important; margin-left: auto; }
+body #annaTutorialOverlay .vn-btn { min-height: 36px; padding: 7px 12px !important; font-size: 13px !important; white-space: nowrap; flex-shrink: 0; }
+body #annaTutorialOverlay .vn-dialogue-body { padding-right: 0; }
+body #annaTutorialOverlay .vn-dialogue-text { font-size: 18px !important; font-weight: 600 !important; line-height: 1.75 !important; word-break: keep-all; overflow-wrap: anywhere; text-shadow: none; }
+body #annaTutorialOverlay .vn-step-tracker { font-size: 13px !important; white-space: normal !important; }
+body #annaTutorialOverlay .vn-action-btn { font-size: 15px; min-height: 46px; }

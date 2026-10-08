@@ -31,7 +31,7 @@ export class SettlementModal {
                             <span>5,000 G</span>
                         </div>
                         <div class="receipt-row">
-                            <span>최종 현금 잔고</span>
+                            <span>정산 전 현금 잔고</span>
                             <span id="settleCash">0 G</span>
                         </div>
                         <div class="receipt-row">
@@ -44,12 +44,12 @@ export class SettlementModal {
                             <span id="settleTotalWorth">0 G</span>
                         </div>
                         <div class="receipt-row rent-deduct">
-                            <span>월세 및 부채 이자 차감</span>
+                            <span>월세 (현금 차감)</span>
                             <span id="settleRentDeduction">-5,000 G</span>
                         </div>
                         <div class="receipt-divider"></div>
                         <div class="receipt-row final-net">
-                            <span>정산 후 순 남은 자산</span>
+                            <span>정산 후 현금 / 부족액</span>
                             <span id="settleFinalRemain">0 G</span>
                         </div>
 
@@ -97,20 +97,20 @@ export class SettlementModal {
 
     open(state) {
         if (!state) return;
-        const finalRemain = state.totalNetWorth - state.targetRent;
+        const finalRemain = state.cash - state.targetRent;
         const isSuccess = finalRemain >= 0;
 
         if (this.settlementDayText) {
-            this.settlementDayText.textContent = `Day ${state.day} / ${state.maxDays} 정산 완료`;
+            this.settlementDayText.textContent = `Day ${state.day} / ${state.maxDays} · ${state.rentPaid ? '월세 납부 완료' : state.day < state.maxDays ? '정산 미리보기' : '현금 부족 · 월세 미납'}`;
         }
         if (this.settleCash) this.settleCash.textContent = `${state.cash.toLocaleString()} G`;
         if (this.settlePortfolio) this.settlePortfolio.textContent = `${state.portfolioValue.toLocaleString()} G`;
         if (this.settleTotalWorth) this.settleTotalWorth.textContent = `${state.totalNetWorth.toLocaleString()} G`;
-        if (this.settleRentDeduction) this.settleRentDeduction.textContent = `-${state.targetRent.toLocaleString()} G`;
+        if (this.settleRentDeduction) this.settleRentDeduction.textContent = `${state.rentPaid ? '-' : '납부 필요 '}${state.targetRent.toLocaleString()} G`;
         if (this.settleFinalRemain) this.settleFinalRemain.textContent = `${finalRemain.toLocaleString()} G`;
 
         if (this.resultStamp) {
-            this.resultStamp.textContent = isSuccess ? 'SUCCESS' : 'BANKRUPT';
+            this.resultStamp.textContent = isSuccess ? (state.rentPaid ? 'PAID' : 'READY') : '현금 부족';
             this.resultStamp.style.color = isSuccess ? 'var(--accent-cyan)' : 'var(--accent-red)';
             this.resultStamp.style.borderColor = isSuccess ? 'var(--accent-cyan)' : 'var(--accent-red)';
         }
@@ -120,12 +120,13 @@ export class SettlementModal {
             if (finalRemain >= 10000) grade = 'Grade S+ (최고 성과)';
             else if (finalRemain >= 5000) grade = 'Grade S (우수 성과)';
             else if (finalRemain >= 2000) grade = 'Grade A (안정적)';
-            else if (!isSuccess) grade = 'Grade F (조기 파산)';
+            else if (!isSuccess) grade = 'Grade F (월세 현금 부족)';
 
             this.resultGrade.textContent = grade;
             this.resultGrade.style.color = isSuccess ? 'var(--accent-yellow)' : 'var(--accent-red)';
         }
 
+        if (this.btnClose) this.btnClose.textContent = state.rentPaid ? '확인 및 데모 클리어' : '확인';
         this.modal?.classList.remove('hidden');
     }
 

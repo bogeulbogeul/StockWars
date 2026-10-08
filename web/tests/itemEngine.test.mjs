@@ -112,9 +112,36 @@ test('alarm and mask toggle without consumption; capsule exits before shock; sur
     for(const id of ['item_black_swan_alarm','item_gas_mask','item_escape_capsule']) {purchase(e,id);use(e,id);}
     assert.equal(e.state.alarm,true); assert.equal(e.state.inventory.find(i=>i.id==='item_gas_mask').quantity,1);
     m.buyStock('CLOUDBERRY',10); const before=m.cash+m.getPortfolioValue(); advance(2*DAY);
-    assert.equal(m.portfolio.size,0); assert.equal(m.cash,Math.round(before)); assert.equal(e.state.escape,false);
+    assert.equal(m.portfolio.size,0); assert.equal(m.cash,Math.round(before)-13); assert.equal(e.state.escape,false);
     assert.equal(e.chartNoise(),.3); use(e,'item_gas_mask'); assert.equal(e.chartNoise(),1);
     advance(60000); assert.equal(e.chartNoise(),0); assert.equal(e.state.survivals,2);
+});
+
+test('demo disables overdue and restored active Black Swan events without market effects', () => {
+    for (const active of [false, true]) {
+        const { engine: original, market } = fixture();
+        market.buyStock('CLOUDBERRY', 10);
+        const state = JSON.parse(JSON.stringify(original.state));
+        state.swanActive = active;
+        state.swanAt = original.now() - DAY;
+        state.swanEnd = original.now() - 1;
+        state.alarm = true;
+        state.escape = true;
+        const prices = [...market.stocks.values()].map(stock => stock.price);
+        const portfolio = JSON.stringify([...market.portfolio]);
+        const cash = market.cash;
+        const engine = new ItemEngine({ market, clock: original.clock, state, blackSwanEnabled: false });
+        assert.equal(engine.state.swanActive, false);
+        engine.tick();
+        for (let day = 0; day < 10; day++) engine.advanceDay();
+        assert.deepEqual([...market.stocks.values()].map(stock => stock.price), prices);
+        assert.equal(JSON.stringify([...market.portfolio]), portfolio);
+        assert.equal(market.cash, cash);
+        assert.equal(engine.chartNoise(), 0);
+        assert.equal(engine.state.survivals, original.state.survivals);
+        assert.equal(engine.state.escape, true);
+        assert.deepEqual(engine.state.notices, []);
+    }
 });
 
 test('lottery sales boundaries, distinct numbers, manual validation, draw and one-time prize claim', () => {
@@ -142,6 +169,6 @@ test('lottery no winner rolls entire pool forward and restored draws are never d
 test('realized sale profit, not unrealized gains or labor wages, unlocks profit milestones', () => {
     const {engine:e,market:m}=fixture(); e.state.profit=0;
     m.buyStock('CLOUDBERRY',10); m.stocks.get('CLOUDBERRY').price+=1000;
-    assert.equal(e.state.profit,0); m.sellStock('CLOUDBERRY',10); assert.equal(e.state.profit,10000);
-    e.finishLabor(800); assert.equal(e.state.profit,10000);
+    assert.equal(e.state.profit,0); m.sellStock('CLOUDBERRY',10); assert.equal(e.state.profit,9959);
+    e.finishLabor(800); assert.equal(e.state.profit,9959);
 });

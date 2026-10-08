@@ -110,12 +110,16 @@ class StockWarsApplication {
 
         // 5. Modals (Trade, Detailed Chart, News Detail, Settlement)
         this.tradeModal = new TradeModal(this.appContainer, {
+            onClose: () => this.annaTutorial?.notifyTradeModalClosed(),
             getStock: (id) => marketEngine.stocks.get(id),
             getPendingOrders: id => marketEngine.limitOrders.filter(order => order.stockId === id),
             onCancelOrder: id => marketEngine.cancelLimitOrder(id),
             getTutorialOrderError: (id, isShort) => marketEngine.tutorialOrderError(id, isShort),
-            getSellPreview: (id, qty) => marketEngine.getSellPreview(id, qty),
+            getSellPreview: (id, qty, limit) => marketEngine.getSellPreview(id, qty, 'phone', limit),
+            getExecutionPreview: (side, id, qty, lev) => marketEngine.getExecutionPreview(side, id, qty, lev, 'phone'),
+            getOrderQuote: (price, qty, lev) => marketEngine.getOrderQuote(price, qty, lev, 'phone'),
             getPriceHistory: (id) => marketEngine.priceHistory.get(id),
+            getChartHistory: id => marketEngine.getChartHistory(id),
             getOrderBook: (id) => marketEngine.getOrderBook(id),
             getNews: () => marketEngine.news,
             isFavorite: (id) => this.smartphoneUI.favorites.has(id),
@@ -124,17 +128,17 @@ class StockWarsApplication {
             onOpenDetailedChart: (id) => this.openDetailedChart(id),
             onOpenNewsDetailModal: (newsId) => this.openNewsDetailModal(newsId),
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
-            getMaxQty: (id, lev) => {
+            getMaxQty: (id, lev, limitPrice, isShort) => {
                 const s = marketEngine.stocks.get(id);
                 if (!s || s.price <= 0) return 1;
-                return Math.max(1, Math.min(this.itemEngine?.orderLimit() || Infinity, Math.floor((marketEngine.cash * lev) / s.price)));
+                return Math.max(1, Math.min(this.itemEngine?.orderLimit() || Infinity, limitPrice ? marketEngine.getMaxOrderQty(limitPrice, lev, 'phone') : marketEngine.getExecutionPreview(isShort ? 'short' : 'buy', id, Number.MAX_SAFE_INTEGER, lev, 'phone').quantity));
             },
             onBuy: (id, qty, lev, limit) => {
                 this.annaTutorial?.reviewRecommendation();
                 const res = limit === null || limit === undefined ? marketEngine.buyStock(id, qty, lev) : marketEngine.placeLimitOrder('buy', id, qty, lev, limit);
                 this.annaTutorial?.syncRecommendation();
                 toastManager.show(res.msg, res.success);
-                if (res.success) { this.tradeModal.updateContent(); if (!res.queued) this.annaTutorial?.notifyStockPurchased(id); }
+                if (res.success) { this.tradeModal.updateContent(); if (res.quantity > 0) this.annaTutorial?.notifyStockPurchased(id); }
             },
             onSell: (id, qty, limit) => {
                 const res = limit === null || limit === undefined ? marketEngine.sellStock(id, qty) : marketEngine.placeLimitOrder('sell', id, qty, 1, limit);
@@ -366,6 +370,7 @@ class StockWarsApplication {
 
         // 8. Anna Visual Novel Tutorial System (GDD CORE_GDD_10)
         this.annaTutorial = new AnnaTutorial(this.appContainer, {
+            isTradeModalOpen: () => this.tradeModal.isOpen(),
             onActivityChanged: () => this.syncTutorialNavigation(),
             getMarketState: () => marketEngine.getState(),
             getFirstTradeLesson: () => marketEngine.firstTradeLesson,
@@ -464,12 +469,13 @@ class StockWarsApplication {
         this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
         await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
         if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE';
-        if (mode !== 'CONTINUE') { marketEngine.firstTradeLesson = null; marketEngine.limitOrders = []; }
+        if (mode !== 'CONTINUE') { marketEngine.firstTradeLesson = null; marketEngine.limitOrders = []; marketEngine.tradeHistory = []; marketEngine.orderBooks.clear(); }
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
         this.officeStage?.anna?.resetForGameStart();
         if (mode === 'NEW' || mode === 'DEMO' || mode === 'DEV') {
             const isDeveloperMode = mode === 'DEMO' || mode === 'DEV';
             // Start with 0 Gold before Anna gives the initial grant dialogue
+            marketEngine.rentSettlement = null;
             marketEngine.cash = 0;
             marketEngine.initialCash = 0;
             marketEngine.day = 1;
@@ -603,7 +609,8 @@ class StockWarsApplication {
     }
 
     openSettlement() {
-        this.settlementModal.open(marketEngine.getState());
+        this.settlementModal.open(marketEngine.settleRent());
+        this.itemGameplay.save();
     }
 
     reset() {

@@ -155,7 +155,7 @@ export class ParkLogisticsTutorial {
             steps.push({ ...base, id: 'practice_deliver_' + index, tracker: (index + 1) + '/4 • 트럭까지 운반',
                 practice: 'deliver', count,
                 text: count + '개 실었군! [A] 키로 왼쪽 트럭까지 옮겨. 트럭 앞에 닿으면 자동으로 내려놓는다. '
-                    + (count === 4 ? '4개가 최대 적재량이다. 가장 많이 옮기지만 가장 잘 흔들리지. Shift 없이 천천히 가고, 위험 게이지가 높으면 멈춰서 낮춰.' : count >= 2 ? '많이 쌓을수록 흔들리니 [파손 위험] 게이지를 봐. 처음엔 Shift 없이 천천히 가.' : '처음엔 Shift를 누르지 말고 천천히 가 봐.'),
+                    + (count >= 3 ? (count === 4 ? '4개가 최대 적재량이다. ' : '') + '그냥 걸어도 계속 움직이면 무너질 수 있다. Shift는 누르지 말고, 게이지가 70%쯤 되면 이동 키를 놓아 30% 아래로 낮춘 뒤 다시 출발해.' : count === 2 ? '많이 쌓을수록 흔들리니 [파손 위험] 게이지를 봐. 처음엔 Shift 없이 천천히 가.' : '처음엔 Shift를 누르지 말고 천천히 가 봐.'),
                 targetSelector: '#logisticsTruckZone' });
         }
         steps.push({ ...base, expression: 'smile', id: 'park_ready', tracker: '연습 완료 • 실전 준비',

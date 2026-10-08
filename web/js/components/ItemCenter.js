@@ -42,10 +42,11 @@ export class ItemCenter {
     refreshStatus() {
         const e = this.engine, s = e.state, stats = e.stats();
         this.launch.title = `분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery} · 체력 ${s.stamina}/${e.maxStamina()}`;
-        const countdown = s.alarm && s.swanAt - e.now() <= 86400000 && !s.swanActive ? `블랙 스완까지 ${Math.max(0, Math.ceil((s.swanAt-e.now())/1000))}초` : '';
-        this.banner.textContent = s.swanActive ? `블랙 스완 · ${s.mask ? '방독면: 차트 가독성 70% 복구' : '차트 노이즈 발생'}${e.active('analysis') ? ' · 분석 강화: 글리치 감지' : ''}` : countdown;
+        const swanActive = e.blackSwanEnabled && s.swanActive;
+        const countdown = e.blackSwanEnabled && s.alarm && s.swanAt - e.now() <= 86400000 && !swanActive ? `블랙 스완까지 ${Math.max(0, Math.ceil((s.swanAt-e.now())/1000))}초` : '';
+        this.banner.textContent = swanActive ? `블랙 스완 · ${s.mask ? '방독면: 차트 가독성 70% 복구' : '차트 노이즈 발생'}${e.active('analysis') ? ' · 분석 강화: 글리치 감지' : ''}` : countdown;
         this.banner.hidden = !this.banner.textContent;
-        document.body.classList.toggle('item-swan-active', s.swanActive);
+        document.body.classList.toggle('item-swan-active', Boolean(swanActive));
         document.body.classList.toggle('item-focus-active', e.active('analysis'));
         document.body.style.setProperty('--item-noise-blur', `${e.chartNoise() * 3}px`);
         document.body.style.setProperty('--item-noise-opacity', `${1 - e.chartNoise() * 0.7}`);

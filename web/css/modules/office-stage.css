@@ -23,6 +23,11 @@
     transition: background .15s, border-color .15s;
 }
 .office-furniture-edit-btn:hover { background: #1b3948; border-color: #5be0d4; }
+/* Both controls occupy the lower-left corner. Hide the whole button, including
+   its shadow and focus target, while Anna's tutorial card occupies that space. */
+body:has(#annaTutorialOverlay:not(.hidden)) .office-furniture-edit-btn {
+    display: none;
+}
 .office-furniture-edit-btn:focus-visible { outline: 2px solid #5be0d4; outline-offset: 4px; }
 .office-furniture-edit-icon { font-size: 25px; }
 .office-furniture-edit-btn strong { display: block; font-size: 14px; }

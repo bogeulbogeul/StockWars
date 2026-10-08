@@ -39,7 +39,7 @@ export function getLogisticsModalHtml() {
                         </div>
                     </div>
 
-                    <div class="logistics-controls-group" style="display: flex; align-items: center; gap: 8px;">
+                    <div class="logistics-controls-group">
                         <button class="logistics-guide-btn" id="btnLogisticsGuide" title="관리소장 박씨 튜토리얼 가이드">💡 박씨 가이드</button>
                         <button class="logistics-close-btn" id="btnLogisticsClose" title="작업 중단 및 나가기">✕</button>
                     </div>
@@ -48,8 +48,10 @@ export function getLogisticsModalHtml() {
                 <!-- News Ticker -->
                 <div class="logistics-ticker-bar">
                     <span class="logistics-ticker-badge">속보 TICKER</span>
-                    <div class="logistics-ticker-text" id="logisticsTickerText">
-                        ⚡ [속보] 글로벌 반도체 공급망 개편 소식에 IT 섹터 강세 지속 • 비트 물류 HUB 야간 화물 물동량 25% 급증 • 비비안 잡화점 에너지 드링크 재입고 완료!
+                    <div class="logistics-ticker-viewport">
+                        <div class="logistics-ticker-text" id="logisticsTickerText">
+                            ⚡ [속보] 글로벌 반도체 공급망 개편 소식에 IT 섹터 강세 지속 • 비트 물류 HUB 야간 화물 물동량 25% 급증 • 비비안 잡화점 에너지 드링크 재입고 완료!
+                        </div>
                     </div>
                 </div>
 

@@ -260,6 +260,8 @@
 
 /* Horizontal Scrollable Canvas Container (With Mouse Drag Support) */
 .detailed-chart-scroll-wrapper {
+    touch-action: pan-y;
+    scroll-behavior: auto;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;

@@ -1,3 +1,4 @@
+import { chartPriceRange } from '../engine/ChartTimeframes.js';
 /**
  * Canvas Stock Chart Renderer
  * Renders smooth high-precision Stock Line & Candlestick charts with gridlines,
@@ -25,8 +26,8 @@ export class StockChartRenderer {
         this.height = rect.height;
     }
 
-    render(priceHistory = [], isPositive = true) {
-        if (!this.ctx || priceHistory.length < 2) return;
+    render(priceHistory = [], isPositive = true, times = null) {
+        if (!this.ctx) return;
         this.resize();
 
         const ctx = this.ctx;
@@ -34,13 +35,14 @@ export class StockChartRenderer {
         const height = this.height;
 
         ctx.clearRect(0, 0, width, height);
+        if (!priceHistory.length) return;
 
         const padding = { top: 20, right: 15, bottom: 25, left: 15 };
         const chartW = width - padding.left - padding.right;
         const chartH = height - padding.top - padding.bottom;
 
-        const minPrice = Math.min(...priceHistory) * 0.98;
-        const maxPrice = Math.max(...priceHistory) * 1.02;
+        const { minPrice, maxPrice } = times ? chartPriceRange(priceHistory)
+            : { minPrice: Math.min(...priceHistory) * 0.98, maxPrice: Math.max(...priceHistory) * 1.02 };
         const range = maxPrice - minPrice || 1;
 
         // Draw Background Grid Lines
@@ -67,7 +69,12 @@ export class StockChartRenderer {
 
         // Points calculation
         const points = priceHistory.map((val, idx) => {
-            const x = padding.left + (idx / (priceHistory.length - 1)) * chartW;
+            // Match the detailed chart's time axis; live ticks must not be
+            // stretched to the same interval as hourly background samples.
+            const position = times
+                ? (times[idx] - times[0]) / Math.max(1, times.at(-1) - times[0])
+                : idx / Math.max(1, priceHistory.length - 1);
+            const x = padding.left + position * chartW;
             const y = padding.top + chartH - ((val - minPrice) / range) * chartH;
             return { x, y, val };
         });

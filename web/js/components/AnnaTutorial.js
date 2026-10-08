@@ -1,4 +1,5 @@
 import { gameKey } from '../app/GameKeys.js';
+import { installAnnaDialogueLayout } from './tutorial/annaDialogueLayout.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
 
 export class AnnaTutorial {
@@ -18,6 +19,7 @@ export class AnnaTutorial {
         this.steps = [];
         this.render();
         this.initDOM();
+        installAnnaDialogueLayout(this.overlay);
         this.initEventListeners();
     }
 
@@ -223,6 +225,10 @@ export class AnnaTutorial {
         this.cleanupHighlights();
 
         const step = this.steps[this.currentStepIdx];
+        if (step.id === 'close_trade_guide' && this.callbacks.isTradeModalOpen?.() === false) {
+            this.nextStep();
+            return;
+        }
         if (step.id === 'celebrate') {
             const state = this.callbacks.getMarketState?.();
             const lesson = this.callbacks.getFirstTradeLesson?.();
@@ -389,7 +395,7 @@ export class AnnaTutorial {
         this.stopRecommendationReview();
         this.highlightElement('#btnBuyExecute', false);
         const currentStep = this.steps[this.currentStepIdx];
-        if (currentStep && (currentStep.id === 'buy_stock' || currentStep.id === 'select_stock' || currentStep.id === 'chart_colors' || currentStep.id === 'chart_detail')) {
+        if (currentStep && ['buy_stock', 'select_stock', 'chart_colors', 'chart_detail', 'market_order_guide', 'limit_order_guide'].includes(currentStep.id)) {
             const celebIdx = this.steps.findIndex(s => s.id === 'celebrate');
             if (celebIdx !== -1) {
                 this.currentStepIdx = celebIdx;
@@ -430,6 +436,9 @@ export class AnnaTutorial {
         if (tabName === 'Market' && currentStep.id === 'market_tab') {
             this.highlightElement('.nav-tab[data-tab="Market"]', false);
             this.nextStep();
+        } else if (tabName === 'News' && currentStep.id === 'news_tab_guide') {
+            this.highlightElement('.nav-tab[data-tab="News"]', false);
+            this.nextStep();
         } else if ((tabName === 'Profile' || tabName === 'Account') && (currentStep.id === 'portfolio_guide' || currentStep.id === 'celebrate')) {
             this.highlightElement('.nav-tab[data-tab="Profile"]', false);
             if (currentStep.id === 'celebrate') {
@@ -442,6 +451,11 @@ export class AnnaTutorial {
             }
             this.nextStep();
         }
+    }
+
+    notifyTradeModalClosed() {
+        if (!this.isActive || this.steps[this.currentStepIdx]?.id !== 'close_trade_guide') return;
+        this.nextStep();
     }
 
     // Called when player manually opens trade modal for recommended stock
@@ -587,7 +601,7 @@ export class AnnaTutorial {
                 actionBtnText: '확인', onAction: () => this.complete() }];
         } else if (lesson.status === 'selling') this.steps = [sellGuide];
         else this.steps = [{ ...base, id: 'first_profit_choice', allowHold: true, requiresManualAction: true,
-            text: `처음 산 '${stock.name}'이 첫 매수가보다 5% 이상 올랐어요! 지금 팔아 수익을 실현하거나, 계속 보유할 수 있어요. 어느 쪽을 골라도 튜토리얼 진행과 보상은 같아요. 계속 보유하면 나중에 매도할 때 다시 안내해 드릴게요.`,
+            text: `처음 산 '${stock.name}'이 첫 매수가보다 10% 이상 올랐어요! 지금 팔아 수익을 실현하거나, 계속 보유할 수 있어요. 어느 쪽을 골라도 나머지 안내는 계속해 드리고, 정착 지원금도 그대로 받을 수 있어요. 계속 보유하면 나중에 매도할 때 다시 안내해 드릴게요.`,
             actionBtnText: '매도해 보기',
             onAction: () => { lesson.status = 'selling'; this.callbacks.onSaveLesson?.(); this.steps = [sellGuide]; this.currentStepIdx = 0; this.showCurrentStep(); }
         }];

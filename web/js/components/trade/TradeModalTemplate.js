@@ -32,7 +32,7 @@ export function getTradeModalHtml() {
 
                     <!-- SUBTAB 1: CHART & ORDERBOOK CONTENT -->
                     <div id="tradeSubtabChartContent" class="subtab-content active">
-                        <p class="chart-color-guide">미국 시장 방식 · <span style="color:#00e5ff">▲ 상승</span> / <span style="color:#ff3b5c">▼ 하락</span></p>
+                        <p class="chart-color-guide">실시간 · 최근 50개 기록 · 미국 시장 방식 · <span style="color:#00e5ff">▲ 상승</span> / <span style="color:#ff3b5c">▼ 하락</span></p>
                         <!-- Canvas Stock Chart -->
                         <div class="chart-container clickable-chart" id="btnExpandChart" title="클릭하여 전체화면 정밀 차트 열기">
                             <canvas id="stockCanvasChart"></canvas>
@@ -70,9 +70,9 @@ export function getTradeModalHtml() {
                                 </div>
 
                                 <div class="limit-order-controls">
-                                    <label>주문 방식 <select id="tradeOrderType"><option value="market">시장가</option><option value="limit">지정가</option></select></label>
+                                    <label id="tradeOrderTypeControl">주문 방식 <select id="tradeOrderType"><option value="market">시장가</option><option value="limit">지정가</option></select></label>
                                     <label>지정가 (G) <input id="tradeLimitPrice" type="number" min="1" step="1" placeholder="가격 입력" disabled></label>
-                                    <small>지정가 매수는 입력 가격 이하, 매도는 이상에서 체결됩니다. 대기 주문은 현금·주식을 묶어두지 않으며, 체결 시 부족하면 취소됩니다.</small>
+                                    <small>시장가는 호가 물량 순서로 체결되며 가격 보호 ±5%·현금·물량 한도로 남은 수량은 취소됩니다. 지정가 매수는 입력 가격 이하, 매도는 이상에서 체결됩니다. 대기 주문은 현금·주식을 묶어두지 않으며, 체결 시 부족하면 취소됩니다.</small>
                                     <div id="tradePendingOrders"></div>
                                 </div>
                                 <div class="qty-selector">

@@ -1,5 +1,6 @@
-import { chartPeriod, chartTimeLabel, createChartHistory } from '../engine/ChartTimeframes.js';
-import { elementScale } from '../app/GameViewport.js';
+import { chartPeriod, chartTimeLabel, createChartHistory, chartPriceRange } from '../engine/ChartTimeframes.js';
+import '../app/GameViewport.js';
+import { nearestChartPoint, chartViewportRect } from './chart/ChartPointer.js';
 /**
  * DetailedChartModal Component
  * Unity equivalent: UIDetailedChartModal.cs
@@ -13,7 +14,7 @@ export class DetailedChartModal {
         this.container = container;
         this.callbacks = callbacks;
         this.selectedStockId = 'CLOUDBERRY';
-        this.selectedTimeframe = '1D';
+        this.selectedTimeframe = 'LIVE';
         this.points = [];
         this.fallbackHistory = new Map();
 
@@ -79,7 +80,8 @@ export class DetailedChartModal {
                     <!-- Bottom Pill Controls: Timeframe (1D, 1W, 1M, 1Y) -->
                     <div class="chart-controls-bar bottom-controls">
                         <div class="timeframe-selector pill-selector" id="timeframeSelector">
-                            <button class="tf-btn pill-btn active" data-tf="1D">1일</button>
+                            <button class="tf-btn pill-btn active" data-tf="LIVE">실시간</button>
+                            <button class="tf-btn pill-btn" data-tf="1D">1일</button>
                             <button class="tf-btn pill-btn" data-tf="1W">1주</button>
                             <button class="tf-btn pill-btn" data-tf="1M">1달</button>
                             <button class="tf-btn pill-btn" data-tf="1Y">1년</button>
@@ -115,6 +117,9 @@ export class DetailedChartModal {
         this.crosshair.className = 'detail-chart-crosshair hidden';
         this.crosshair.innerHTML = '<span class="chart-guide-vertical"></span><span class="chart-guide-horizontal"></span><span class="chart-guide-point"></span>';
         this.canvas.parentElement.append(this.crosshair);
+        this.guideVertical = this.crosshair.querySelector('.chart-guide-vertical');
+        this.guideHorizontal = this.crosshair.querySelector('.chart-guide-horizontal');
+        this.guidePoint = this.crosshair.querySelector('.chart-guide-point');
     }
 
     initEventListeners() {
@@ -137,118 +142,111 @@ export class DetailedChartModal {
             });
         });
 
-        // Horizontal Drag Scroll
+        // Scroll first, then resolve the guide against the final canvas position.
+        // Pointer events avoid competing native touch scrolling and mouse handlers.
         const wrapper = this.scrollWrapper;
-        if (wrapper) {
-            let isDragging = false;
-            let startX = 0;
-            let scrollLeft = 0;
+        if (!wrapper || !this.canvas) return;
+        let drag = null;
+        wrapper.addEventListener('pointerdown', e => {
+            if (!e.isPrimary || e.button !== 0) return;
+            const rect = chartViewportRect(wrapper);
+            const scale = rect.width / wrapper.offsetWidth;
+            if (e.clientY >= rect.top + (wrapper.clientTop + wrapper.clientHeight) * scale) return;
+            drag = { id: e.pointerId, x: e.clientX, scrollLeft: wrapper.scrollLeft, scale: scale };
+            wrapper.setPointerCapture(e.pointerId);
+            wrapper.classList.add('active-drag');
+            this.queueChartHover(e);
+        });
+        wrapper.addEventListener('pointermove', e => {
+            if (!e.isPrimary) return;
+            if (drag?.id === e.pointerId) {
+                wrapper.scrollLeft = drag.scrollLeft - (e.clientX - drag.x) / drag.scale;
+            }
+            this.queueChartHover(e);
+        });
+        const endDrag = e => {
+            if (drag?.id !== e.pointerId) return;
+            drag = null;
+            wrapper.classList.remove('active-drag');
+            if (wrapper.hasPointerCapture(e.pointerId)) wrapper.releasePointerCapture(e.pointerId);
+            if (e.type === 'pointercancel' || e.pointerType === 'touch') this.clearChartPointer();
+            else this.queueChartHover(e);
+        };
+        wrapper.addEventListener('pointerup', endDrag);
+        wrapper.addEventListener('pointercancel', endDrag);
+        wrapper.addEventListener('lostpointercapture', () => {
+            drag = null;
+            wrapper.classList.remove('active-drag');
+        });
+        wrapper.addEventListener('scroll', () => {
+            if (this.lastChartPointer) this.queueChartHover(this.lastChartPointer);
+        });
+        wrapper.addEventListener('pointerleave', () => {
+            if (!drag) this.clearChartPointer();
+        });
+    }
 
-            const onStart = (clientX) => {
-                isDragging = true;
-                wrapper.classList.add('active-drag');
-                startX = clientX;
-                scrollLeft = wrapper.scrollLeft;
-            };
+    queueChartHover({ clientX, clientY }) {
+        this.lastChartPointer = { clientX, clientY };
+        if (this.hoverFrame != null) return;
+        this.hoverFrame = requestAnimationFrame(() => {
+            this.hoverFrame = null;
+            if (this.lastChartPointer) this.handleChartHover(this.lastChartPointer);
+        });
+    }
 
-            const onMove = (clientX) => {
-                if (!isDragging) return;
-                const x = clientX;
-                wrapper.scrollLeft = scrollLeft - (x - startX) / elementScale(wrapper) * 1.5;
-            };
+    clearChartPointer() {
+        if (this.hoverFrame != null) cancelAnimationFrame(this.hoverFrame);
+        this.hoverFrame = null;
+        this.lastChartPointer = null;
+        this.hideCrosshair();
+    }
 
-            const onEnd = () => {
-                isDragging = false;
-                wrapper.classList.remove('active-drag');
-            };
-
-            wrapper.addEventListener('mousedown', (e) => onStart(e.clientX));
-            window.addEventListener('mousemove', (e) => onMove(e.clientX));
-            window.addEventListener('mouseup', () => onEnd());
-
-            wrapper.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX), { passive: true });
-            wrapper.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
-            wrapper.addEventListener('touchend', () => onEnd());
+    handleChartHover({ clientX, clientY }) {
+        if (!this.points.length || !this.plotBounds) return;
+        const view = chartViewportRect(this.scrollWrapper);
+        if (clientX < view.left || clientX > view.right || clientY < view.top || clientY > view.bottom) {
+            this.hideCrosshair();
+            return;
         }
-
-        // Crosshair Hover
-        if (this.canvas) {
-            const handleHover = (e) => {
-                if (!this.points || this.points.length === 0) return;
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                const view = this.scrollWrapper.getBoundingClientRect();
-                if (clientX < view.left || clientX > view.right || clientY < view.top || clientY > view.bottom) return;
-                this.lastChartPointer = { clientX, clientY };
-                const rect = this.canvas.getBoundingClientRect();
-                const mouseX = (clientX - rect.left) / rect.width * this.canvas.clientWidth;
-                const pixelTolerance = this.canvas.clientWidth / rect.width * 0.5;
-
-                let closest = this.points[0];
-                let minDist = Math.abs(mouseX - closest.x);
-
-                this.points.forEach(p => {
-                    const dist = Math.abs(mouseX - p.x);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        closest = p;
-                    }
-                });
-
-                for (const point of this.points) {
-                    if (Math.abs(mouseX - point.x) <= minDist + pixelTolerance) closest = point;
-                }
-                const latest = this.points.at(-1);
-                if (mouseX >= latest.x - pixelTolerance) closest = latest;
-                if (closest && this.tooltip) {
-                    this.tooltip.classList.remove('hidden');
-                    const plot = this.plotBounds;
-                    this.crosshair.classList.remove('hidden');
-                    const vertical = this.crosshair.querySelector('.chart-guide-vertical');
-                    const horizontal = this.crosshair.querySelector('.chart-guide-horizontal');
-                    const point = this.crosshair.querySelector('.chart-guide-point');
-                    Object.assign(vertical.style, { left: closest.x + 'px', top: plot.top + 'px', height: (plot.bottom - plot.top + 25) + 'px' });
-                    Object.assign(horizontal.style, { left: plot.left + 'px', top: closest.y + 'px', width: (plot.right - plot.left) + 'px' });
-                    Object.assign(point.style, { left: closest.x + 'px', top: closest.y + 'px' });
-                    const left = this.scrollWrapper.scrollLeft + 12;
-                    const right = this.scrollWrapper.scrollLeft + this.scrollWrapper.clientWidth - this.tooltip.offsetWidth - 12;
-                    this.tooltip.style.left = Math.max(left, Math.min(right, closest.x + 16)) + 'px';
-                    this.tooltip.style.top = Math.max(8, closest.y - this.tooltip.offsetHeight - 16) + 'px';
-
-                    if (this.ttTime) this.ttTime.textContent = closest.time || '시간';
-                    if (this.ttPrice) this.ttPrice.textContent = `${closest.price.toLocaleString()} G`;
-                    if (this.ttChange) {
-                        const isPos = closest.diffPct >= 0;
-                        this.ttChange.textContent = `${isPos ? '+' : ''}${closest.diffPct.toFixed(2)}%`;
-                        this.ttChange.className = `tt-change ${isPos ? 'gainer' : 'loser'}`;
-                    }
-                }
-            };
-
-            this.handleChartHover = handleHover;
-            this.scrollWrapper.addEventListener('mousemove', handleHover);
-            this.scrollWrapper.addEventListener('touchmove', handleHover, { passive: true });
-            this.scrollWrapper.addEventListener('scroll', () => {
-                if (this.lastChartPointer) handleHover(this.lastChartPointer);
-            });
-            this.scrollWrapper.addEventListener('mouseleave', () => {
-                this.lastChartPointer = null;
-                this.hideCrosshair();
-            });
+        const rect = chartViewportRect(this.canvas);
+        if (!rect.width) return;
+        const unitsPerPixel = this.chartWidth / rect.width;
+        const mouseX = (clientX - rect.left) * unitsPerPixel;
+        const closest = nearestChartPoint(this.points, mouseX, unitsPerPixel * 0.5);
+        if (!closest || !this.tooltip) return;
+        const plot = this.plotBounds;
+        this.tooltip.classList.remove('hidden');
+        this.crosshair.classList.remove('hidden');
+        // Update text before measuring, so a wider date/price cannot overflow the viewport.
+        if (this.ttTime) this.ttTime.textContent = closest.time || '시간';
+        if (this.ttPrice) this.ttPrice.textContent = `${closest.price.toLocaleString()} G`;
+        if (this.ttChange) {
+            const isPos = closest.diffPct >= 0;
+            this.ttChange.textContent = `${isPos ? '+' : ''}${closest.diffPct.toFixed(2)}%`;
+            this.ttChange.className = `tt-change ${isPos ? 'gainer' : 'loser'}`;
         }
+        const tooltipWidth = this.tooltip.offsetWidth;
+        const tooltipHeight = this.tooltip.offsetHeight;
+        const left = this.scrollWrapper.scrollLeft + 12;
+        const right = Math.min(this.chartWidth, this.scrollWrapper.scrollLeft + this.scrollWrapper.clientWidth) - tooltipWidth - 12;
+        Object.assign(this.guideVertical.style, { left: closest.x + 'px', top: plot.top + 'px', height: (plot.bottom - plot.top + 25) + 'px' });
+        Object.assign(this.guideHorizontal.style, { left: plot.left + 'px', top: closest.y + 'px', width: (plot.right - plot.left) + 'px' });
+        Object.assign(this.guidePoint.style, { left: closest.x + 'px', top: closest.y + 'px' });
+        this.tooltip.style.left = Math.max(left, Math.min(right, closest.x + 16)) + 'px';
+        this.tooltip.style.top = Math.max(8, closest.y - tooltipHeight - 16) + 'px';
     }
 
     open(stockId) {
+        this.clearChartPointer();
         this.selectedStockId = stockId || 'CLOUDBERRY';
+        this.selectedTimeframe = 'LIVE';
+        this.modal?.querySelectorAll('.tf-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.tf === 'LIVE'));
         this.modal?.classList.remove('hidden');
         this.updateContent();
 
         // Scroll to rightmost (most recent)
-        setTimeout(() => {
-            if (this.scrollWrapper) {
-                this.scrollWrapper.scrollLeft = this.scrollWrapper.scrollWidth;
-            }
-        }, 50);
+        if (this.scrollWrapper) this.scrollWrapper.scrollLeft = this.scrollWrapper.scrollWidth;
     }
 
     hideCrosshair() {
@@ -257,8 +255,7 @@ export class DetailedChartModal {
     }
 
     close() {
-        this.hideCrosshair();
-        this.lastChartPointer = null;
+        this.clearChartPointer();
         this.modal?.classList.add('hidden');
     }
 
@@ -306,6 +303,7 @@ export class DetailedChartModal {
         const hist = this.callbacks.getPriceHistory ? (this.callbacks.getPriceHistory(this.selectedStockId) || [stock.price]) : [stock.price];
         const ctx = this.canvas.getContext('2d');
         const width = this.canvas.clientWidth || 1400;
+        this.chartWidth = width;
         const height = 320;
         const density = Math.max(2, window.devicePixelRatio || 1);
         this.canvas.width = Math.round(width * density);
@@ -324,11 +322,14 @@ export class DetailedChartModal {
         if (!this.fallbackHistory.has(stock.id) && !this.callbacks.getChartHistory) this.fallbackHistory.set(stock.id, createChartHistory(stock));
         const history = this.callbacks.getChartHistory?.(stock.id) || this.fallbackHistory.get(stock.id);
         const selected = chartPeriod(history, this.selectedTimeframe);
-        if (!selected.samples.length) return;
+        if (!selected.samples.length) {
+            this.points = [];
+            this.clearChartPointer();
+            return;
+        }
         this.visibleHistory = selected.samples;
         this.hideCrosshair();
         const expandedPrices = selected.samples.map(p => p.price);
-        const totalBars = expandedPrices.length;
         const periodDiff = expandedPrices.at(-1) - expandedPrices[0];
         const periodPct = expandedPrices[0] > 0 ? periodDiff / expandedPrices[0] * 100 : 0;
         if (this.modalChange) {
@@ -340,10 +341,9 @@ export class DetailedChartModal {
         if (this.modalAvg) this.modalAvg.textContent = selected.average.toLocaleString() + 'G';
         if (this.modalDate) this.modalDate.textContent = '모의 시세 · 최근 ' + selected.period.label;
         const hint = this.modal?.querySelector('.scroll-navigation-hint span');
-        if (hint) hint.textContent = '◀ 좌우로 이동해 최근 ' + selected.period.label + '의 주가 흐름을 확인하세요 ▶';
+        if (hint) hint.textContent = this.selectedTimeframe === 'LIVE' ? '◀ 최근 50개 가격 기록 · 기록별 동일 간격 ▶' : '◀ 좌우로 이동해 최근 ' + selected.period.label + '의 주가 흐름을 확인하세요 ▶';
 
-        const minPrice = Math.min(...expandedPrices) * 0.96;
-        const maxPrice = Math.max(...expandedPrices) * 1.04;
+        const { minPrice, maxPrice } = chartPriceRange(expandedPrices);
         const range = maxPrice - minPrice || 1;
 
         const firstTime = selected.samples[0].time;
@@ -370,8 +370,9 @@ export class DetailedChartModal {
         }
 
         for (let i = 0; i <= 8; i++) {
-            const time = firstTime + timeSpan * i / 8;
-            const x = xForTime(time);
+            const index = Math.round((selected.samples.length - 1) * i / 8);
+            const time = this.selectedTimeframe === 'LIVE' ? selected.samples[index].time : firstTime + timeSpan * i / 8;
+            const x = this.selectedTimeframe === 'LIVE' ? padding.left + index / Math.max(1, selected.samples.length - 1) * chartW : xForTime(time);
             ctx.beginPath();
             ctx.moveTo(x, padding.top);
             ctx.lineTo(x, height - padding.bottom);
@@ -386,7 +387,7 @@ export class DetailedChartModal {
 
         // Points
         this.points = expandedPrices.map((price, idx) => {
-            const x = xForTime(selected.samples[idx].time);
+            const x = this.selectedTimeframe === 'LIVE' ? padding.left + idx / Math.max(1, selected.samples.length - 1) * chartW : xForTime(selected.samples[idx].time);
             const y = padding.top + chartH - ((price - minPrice) / range) * chartH;
             const firstPrice = expandedPrices[0];
             const diffPct = firstPrice > 0 ? ((price - firstPrice) / firstPrice) * 100 : 0;
@@ -422,6 +423,6 @@ export class DetailedChartModal {
         });
         ctx.stroke();
         ctx.shadowBlur = 0;
-        if (this.lastChartPointer) this.handleChartHover?.(this.lastChartPointer);
+        if (this.lastChartPointer) this.queueChartHover(this.lastChartPointer);
     }
 }
