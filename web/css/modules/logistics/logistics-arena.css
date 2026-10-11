@@ -450,3 +450,14 @@
     margin-top: 6px;
     font-variant-numeric: tabular-nums;
 }
+
+.logistics-score-guide {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    flex: 0 0 auto; padding: 8px 20px;
+    background: #101b28; border-bottom: 1px solid #ffffff12;
+    color: #c5d4e3; font-size: 12px;
+}
+.logistics-score-label { margin-right: 4px; font-weight: 600; }
+.logistics-score-chip { padding: 4px 8px; border-radius: 6px; background: #1a2c3c; white-space: nowrap; }
+.logistics-score-chip strong { margin-left: 6px; color: #67e8f9; }
+.logistics-score-guide small { margin-left: auto; color: #92a8ba; font-size: 11px; }

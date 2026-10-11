@@ -407,10 +407,11 @@ export class TradeModal {
             this.btnBuyExecute.textContent = tutorialError ? '안나 추천 종목을 선택해 주세요' : this.isShortMode ? '공매도 진입 (SHORT)' : '매수 (BUY)';
         }
         const preview = this.callbacks.getSellPreview?.(this.selectedStockId, this.tradeQty, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null);
-        if (this.sellOrderPreview && preview) {
-            this.sellOrderPreview.textContent = preview.quantity > 0
+        if (this.sellOrderPreview) {
+            this.sellOrderPreview.hidden = !preview || preview.quantity <= 0;
+            this.sellOrderPreview.textContent = preview?.quantity > 0
                 ? `매도 예상: ${preview.quantity}주 · 수령 ${preview.proceeds.toLocaleString()}G · 실현 손익 ${preview.profit >= 0 ? '+' : ''}${preview.profit.toLocaleString()}G (체결 시 시세에 따라 변동)`
-                : '현재 체결 가능한 매도 물량이 없습니다.';
+                : '';
         }
         if (!this.callbacks.getStock) return;
         const stock = this.callbacks.getStock(this.selectedStockId);

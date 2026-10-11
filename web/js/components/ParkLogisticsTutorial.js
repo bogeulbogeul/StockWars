@@ -1,4 +1,5 @@
 import { gameKey } from '../app/GameKeys.js';
+import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
 /**
  * ParkLogisticsTutorial Component
  * Manager Park (비트 물류 관리소장 박씨) Visual Novel Onboarding Guide for Logistics Mini-Game
@@ -15,9 +16,11 @@ export class ParkLogisticsTutorial {
         this.isTyping = false;
         this.currentText = '';
 
+        this.reviewStepIdx = null;
         this.steps = [];
         this.render();
         this.initDOM();
+        this.installPanelWidth();
         this.initEventListeners();
     }
 
@@ -46,6 +49,7 @@ export class ParkLogisticsTutorial {
                             <div class="vn-controls">
                                 <button class="vn-btn vn-collapse-btn" id="btnParkVnCollapse" title="대화창 접기/펼치기">➖</button>
                                 <button class="vn-btn vn-skip-btn" id="btnParkVnSkip" title="튜토리얼 건너뛰기">⏩ 스킵</button>
+                                <button class="vn-btn" id="btnParkVnPrevious" disabled>◀ 이전</button>
                                 <button class="vn-btn vn-next-btn" id="btnParkVnNext" title="다음 대사">다음 ▶</button>
                             </div>
                         </div>
@@ -80,6 +84,7 @@ export class ParkLogisticsTutorial {
         this.stepTracker = document.getElementById('vnParkStepTracker');
         this.nextIndicator = document.getElementById('vnParkNextIndicator');
         this.btnNext = document.getElementById('btnParkVnNext');
+        this.btnPrevious = document.getElementById('btnParkVnPrevious');
         this.btnSkip = document.getElementById('btnParkVnSkip');
         this.btnCollapse = document.getElementById('btnParkVnCollapse');
         this.actionArea = document.getElementById('vnParkActionArea');
@@ -87,7 +92,26 @@ export class ParkLogisticsTutorial {
         this.isCollapsed = false;
     }
 
+    installPanelWidth() {
+        const panel = document.querySelector('.logistics-game-window');
+        if (!panel || !this.overlay) return;
+        const update = () => {
+            const bounds = this.overlay.getBoundingClientRect();
+            const scale = bounds.width / this.overlay.offsetWidth || 1;
+            const width = panel.getBoundingClientRect().width / scale;
+            if (width > 0) this.overlay.style.setProperty('--park-panel-width', width + 'px');
+        };
+        this.panelResizeObserver = new ResizeObserver(update);
+        this.panelResizeObserver.observe(panel);
+        window.addEventListener('resize', update);
+    }
+
     initEventListeners() {
+        this.btnPrevious?.addEventListener('click', event => {
+            event.stopPropagation();
+            const index = this.reviewStepIdx ?? this.currentStepIdx;
+            if (index > 0) this.showStep(index - 1, true);
+        });
         // Click dialogue box to advance or speed up text
         this.dialogueBox?.addEventListener('click', (e) => {
             if (this.isCollapsed) {
@@ -159,9 +183,25 @@ export class ParkLogisticsTutorial {
                 targetSelector: '#logisticsTruckZone' });
         }
         steps.push({ ...base, expression: 'smile', id: 'park_ready', tracker: '연습 완료 • 실전 준비',
-            text: '이제 실전이다! 많이 실어 안전하게 옮길수록 높은 점수를 받는다. 흔들리면 잠깐 멈춰. 준비됐으면 아래 버튼을 눌러 60초 작업을 시작해!',
+            text: '이제 실전이다! 1개는 1점, 2개는 3점, 3개는 6점, 4개는 10점이다. 배송 횟수 조건 없이 30점이면 S등급! 흔들리면 잠깐 멈춰. 준비됐으면 아래 버튼을 눌러 60초 작업을 시작해!',
             actionBtnText: '🚀 60초 실전 상하차 시작!' });
-        return steps;
+        return steps.map(step => {
+            const compact = { ...step };
+            if (step.id === 'park_intro') {
+                compact.text = nickname + '! 상자 하나부터 옮겨 보자. [다음 ▶]을 눌러 시작해.';
+                compact.cards = [['연습', '시간 제한 없음'], ['연습 물량', '실전 점수 제외']];
+            } else if (step.practice === 'pickup') {
+                compact.text = '오른쪽 상자에서 [W]를 ' + step.count + '번 눌러 ' + step.count + '개를 실어 봐.';
+                compact.cards = [['D →', '상자로 이동'], ['W × ' + step.count, '상자 싣기']];
+            } else if (step.practice === 'deliver') {
+                compact.text = '[A]로 왼쪽 트럭까지 옮겨. 닿으면 자동으로 내려놓는다.';
+                compact.cards = step.count >= 3 ? [['Shift 금지', '걷기로 운반'], ['게이지 70%', '이동 키 놓기'], ['30% 아래', '다시 출발']] : [['A ←', '트럭으로 이동'], ['Shift 없이', '천천히 운반']];
+            } else if (step.id === 'park_ready') {
+                compact.text = '연습 끝! 준비됐으면 60초 실전을 시작해.';
+                compact.cards = [['많이 실어 운반', '점수 증가'], ['흔들리면', '잠깐 멈추기']];
+            }
+            return compact;
+        });
     }
 
     get isPracticeStep() { return this.isActive && !!this.steps[this.currentStepIdx]?.practice; }
@@ -192,16 +232,18 @@ export class ParkLogisticsTutorial {
         this.showStep(0);
     }
 
-    showStep(idx) {
+    showStep(idx, reviewing = false) {
         if (idx < 0 || idx >= this.steps.length) {
             this.finish();
             return;
         }
 
-        this.currentStepIdx = idx;
+        this.reviewStepIdx = reviewing ? idx : null;
+        if (!reviewing) this.currentStepIdx = idx;
         const step = this.steps[idx];
+        renderAnnaLesson(this.dialogueBox?.querySelector('.vn-dialogue-body'), step);
         this.cleanupHighlights();
-        this.callbacks.onStepChanged?.(step);
+        if (!reviewing) this.callbacks.onStepChanged?.(step);
         if (step.targetSelector) this.highlightElement(step.targetSelector, false);
         if (this.portraitImage) {
             const expression = step.expression || 'neutral';
@@ -214,7 +256,7 @@ export class ParkLogisticsTutorial {
         if (this.stepTracker) this.stepTracker.textContent = `물류 가이드 (${step.tracker || (idx + 1) + '/' + this.steps.length})`;
 
         // Action Button vs Next Indicator
-        if (step.actionBtnText) {
+        if (step.actionBtnText && !reviewing) {
             if (this.actionArea) {
                 this.actionArea.classList.remove('hidden');
                 if (this.btnAction) this.btnAction.textContent = step.actionBtnText;
@@ -227,18 +269,22 @@ export class ParkLogisticsTutorial {
             if (this.btnNext) this.btnNext.classList.remove('hidden');
         }
 
-        if (step.practice) {
+        if (step.practice && !reviewing) {
             if (this.btnNext) this.btnNext.disabled = true;
             this.nextIndicator?.classList.add('hidden');
         } else if (this.btnNext) this.btnNext.disabled = false;
 
+        if (this.btnPrevious) this.btnPrevious.disabled = idx === 0;
+        if (this.btnNext) this.btnNext.textContent = reviewing ? '현재 안내로 →' : '다음 ▶';
+
         // Trigger onEnter hook
-        if (step.onEnter) {
+        if (step.onEnter && !reviewing) {
             step.onEnter();
         }
 
         // Run Typewriter
         this.typeWriter(step.text);
+        if (this.dialogueBox) this.dialogueBox.scrollTop = 0;
     }
 
     typeWriter(fullText) {

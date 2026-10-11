@@ -70,7 +70,12 @@ class StockWarsApplication {
                 toastManager.show(result.message);
             },
             onTriggerSettlement: () => this.openSettlement(),
-            onReset: () => this.reset(),
+            onReset: () => this.reset()
+        });
+
+        // Main in-game status and navigation HUD.
+        this.mainHUD = new MainHUD(this.appContainer, {
+            onProfile: () => this.playerProfileModal.open(),
             onStaminaClick: (s) => toastManager.show(`❤️ 체력 (스테미너): ${s.current} / ${s.max} | 알바, 속독 등에 소모`),
             onInventory: () => this.inventoryModal.toggle(),
             onFurnitureEdit: () => this.furnitureEditModal.toggle(),
@@ -251,6 +256,11 @@ class StockWarsApplication {
 
         // Logistics Mini-Game (Bit Logistics 60-second delivery)
         this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
+            hasSeenTutorial: () => !!this.itemEngine?.state.logisticsTutorialSeen,
+            onTutorialSeen: () => {
+                if (this.itemEngine) this.itemEngine.state.logisticsTutorialSeen = true;
+                this.itemGameplay?.save();
+            },
             getTime: () => this.itemEngine?.now() ?? Date.now(),
             getAbilityBonuses: () => this.itemEngine?.logisticsBonuses() || {},
             getLaborReward: gold => this.itemEngine?.laborReward(gold) ?? gold,
@@ -309,6 +319,7 @@ class StockWarsApplication {
             getTutorialDestination: () => this.annaTutorial?.isActive
                 && this.annaTutorial.steps[this.annaTutorial.currentStepIdx]?.id === 'enter_logistics'
                 && !this.logisticsMiniGame?.isOpen ? 'bit_logistics' : null,
+            getDeveloperPlayers: () => this.playerSocial?.getDeveloperPlayers() || [],
             onOpenPlayerProfile: player => this.playerSocial?.open(player),
             onPlayerEncounter: player => this.playerSocial?.encounter(player),
             getPlayerSocialProfile: () => ({ level: this.itemEngine?.playerLevel() || 1, trait: this.userProfile?.trait?.title || '' }),
@@ -374,6 +385,7 @@ class StockWarsApplication {
 
         // 8. Anna Visual Novel Tutorial System (GDD CORE_GDD_10)
         this.annaTutorial = new AnnaTutorial(this.appContainer, {
+            getCurrentTutorialTab: () => this.smartphoneUI.activeAppTab,
             isTradeModalOpen: () => this.tradeModal.isOpen(),
             onActivityChanged: () => this.syncTutorialNavigation(),
             getMarketState: () => marketEngine.getState(),
@@ -403,6 +415,13 @@ class StockWarsApplication {
                 if (this.topDemoBar?.txtFrameToggle) {
                     this.topDemoBar.txtFrameToggle.textContent = '스마트폰 최소화';
                 }
+            },
+            onNavigateTutorial: (tabName) => {
+                if (this.tradeModal.isOpen()) document.getElementById('btnCloseTradeModal')?.click();
+                this.smartphoneUI.showStockApp();
+                document.body.classList.remove('phone-minimized');
+                document.body.classList.add('phone-view-active');
+                this.smartphoneUI.switchTab(tabName);
             },
             onSwitchTab: (tabName) => this.smartphoneUI.switchTab(tabName),
             onOpenTradeModal: (stockId) => this.openTradeModal(stockId),

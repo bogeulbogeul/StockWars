@@ -24,8 +24,9 @@ test('encounter guide is optional, persists dismissal and never sends a friend r
         const actions = social.encounterHint.children[3].children;
         actions[0].handler(); assert.equal(opened, 1);
         social.encounter(null); assert.equal(social.encounterHint.hidden, true);
-        social.encounter(player); actions[1].handler();
-        assert.equal(saves, 1); assert.equal(social.app.itemEngine.state.townFriendTutorialSeen, true);
+        social.encounter(player);
+        const beforeDismiss = saves; actions[1].handler();
+        assert.equal(saves, beforeDismiss + 1); assert.equal(social.app.itemEngine.state.townFriendTutorialSeen, true);
         social.encounter(player); assert.equal(social.encounterHint.hidden, true);
         delete social.app.itemEngine.state.townFriendTutorialSeen;
         social.state.friends = [{ id: 'peer' }]; social.encounter(player);

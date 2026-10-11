@@ -5,9 +5,9 @@ import { TOWN_BUILDINGS } from '../data/townWorldData.js';
 export const HELP_PAGES = [
     { title: '마을을 자유롭게 돌아다니기', short: '이동', text: '이동키나 방향키로 걷고, 달리기 키를 함께 눌러 빠르게 이동하세요.' },
     { title: '건물 앞에서 상호작용하기', short: '건물', text: '건물 입구에 가까이 가면 안내가 나타납니다. 상호작용 키를 누르세요. 준비 중인 건물에서는 설명을 볼 수 있어요.' },
-    { title: '수량을 정하고 매수·매도하기', short: '거래', text: '스마트폰에서 종목을 선택한 뒤 주문 수량과 예상 금액을 확인하세요. 매수는 주식 구매, 매도는 보유 주식 판매입니다.' },
-    { title: '벤치에서 쉬며 기력 채우기', short: '벤치 휴식', text: '마을 벤치에 가까이 가서 상호작용 키를 누르면 앉으며 기력을 모두 회복합니다. 벤치 회복은 하루 1회 사용할 수 있어요. 이동키를 누르면 일어납니다.' },
-    { title: '에너지 드링크로 기력 회복하기', short: '드링크', text: '비비안 잡화점에서 에너지 드링크를 구매하거나, 가방에 보관한 드링크를 사용하세요. 하트 1개를 회복하며 최대 기력은 넘지 않습니다.' }
+    { title: '수량을 정하고 매수·매도하기', short: '거래', text: '매수는 주식을 사는 것, 매도는 파는 것이에요. 주문 전에 수량과 예상 금액을 확인하세요.' },
+    { title: '벤치에서 쉬며 기력 채우기', short: '벤치 휴식', text: '벤치에 앉으면 하루 1회 기력을 모두 회복해요. 이동키를 누르면 일어나요.' },
+    { title: '에너지 드링크로 기력 회복하기', short: '드링크', text: '에너지 드링크 1개로 하트 1개를 회복해요. 최대 기력은 넘지 않아요.' }
 ];
 const key = action => '<kbd data-game-key="' + action + '">' + bindingLabel(action) + '</kbd>';
 function building(id) {
@@ -20,7 +20,7 @@ export class HelpModal {
         this.dialog = document.createElement('dialog');
         this.dialog.className = 'help-dialog';
         this.dialog.setAttribute('aria-labelledby', 'helpTitle');
-        this.dialog.innerHTML = '<header class="help-header"><div><small>PLAY GUIDE</small><h2 id="helpTitle">그림으로 보는 도움말</h2></div><button type="button" class="help-close" aria-label="도움말 닫기">✕</button></header><nav class="help-tabs" aria-label="도움말 주제"></nav><section class="help-card" aria-live="polite"><h3></h3><div class="help-visual"></div><p class="help-description"></p></section><footer class="help-footer"><button type="button" data-help="prev">← 이전</button><span class="help-count"></span><button type="button" data-help="next">다음 →</button></footer><p class="help-tip">← → 페이지 이동 · ESC 닫기 · 조작키는 설정에서 변경할 수 있어요.</p>';
+        this.dialog.innerHTML = '<header class="help-header"><div><small>PLAY GUIDE</small><h2 id="helpTitle">그림으로 보는 도움말</h2></div><button type="button" class="help-close" aria-label="도움말 닫기">✕</button></header><nav class="help-tabs" aria-label="도움말 주제"></nav><section class="help-card" aria-live="polite"><h3></h3><div class="help-visual"></div><p class="help-description"></p><div class="tutorial-next-action"><small>다음 행동</small><strong class="help-next-action"></strong></div></section><footer class="help-footer"><button type="button" data-help="prev">← 이전</button><span class="help-count"></span><button type="button" data-help="next">다음 →</button></footer><p class="help-tip">← → 페이지 이동 · ESC 닫기 · 조작키는 설정에서 변경할 수 있어요.</p>';
         container.append(this.dialog);
         this.tabs = this.dialog.querySelector('.help-tabs');
         HELP_PAGES.forEach((page,i) => {
@@ -46,6 +46,7 @@ export class HelpModal {
         const page = HELP_PAGES[this.index], visual = this.dialog.querySelector('.help-visual');
         this.dialog.querySelector('.help-card h3').textContent = page.title;
         this.dialog.querySelector('.help-description').textContent = page.text;
+        this.dialog.querySelector('.help-next-action').textContent = [bindingLabel('w') + '·' + bindingLabel('a') + '·' + bindingLabel('s') + '·' + bindingLabel('d') + '로 이동해 보세요.', '건물 입구에서 ' + bindingLabel('f') + '를 눌러 보세요.', '종목 선택 → 수량 확인 → 매수 또는 매도 버튼을 누르세요.', '벤치 앞에서 ' + bindingLabel('f') + '로 앉아 보세요.', '하트가 부족하면 가방에서 에너지 드링크를 사용하세요.'][this.index];
         [...this.tabs.children].forEach((b,i) => { b.classList.toggle('active',i === this.index); b.setAttribute('aria-current',i === this.index ? 'page' : 'false'); });
         this.dialog.querySelector('.help-count').textContent = (this.index + 1) + ' / ' + HELP_PAGES.length;
         this.dialog.querySelector('[data-help="prev"]').disabled = this.index === 0;

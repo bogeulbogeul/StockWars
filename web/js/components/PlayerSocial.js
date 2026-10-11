@@ -1,3 +1,5 @@
+import { DeveloperFriend, DEVELOPER_FRIEND_ID } from '../engine/DeveloperFriend.js';
+import { createTutorialGuide } from './tutorial/tutorialPresentation.js';
 import { createGeometricAvatarSVG } from './GeometricAvatar.js';
 import { toastManager } from './ToastManager.js';
 import { FriendGifts } from './FriendGifts.js';
@@ -5,6 +7,7 @@ import { FriendGifts } from './FriendGifts.js';
 export class PlayerSocial {
     constructor(app) {
         this.app = app;
+        this.developerFriend = new DeveloperFriend();
         this.giftDelivery = new FriendGifts(app);
         if (window.stockWarsChat?.friends) app.smartphoneUI.bubbleAppModule.callbacks.addOnlineFriend = name => this.addByName(name);
         this.state = { friends: [], incoming: [], outgoing: [] };
@@ -31,10 +34,22 @@ export class PlayerSocial {
         void this.refresh();
         this.timer = setInterval(() => this.refresh(), 5000);
     }
+    getDeveloperPlayers() {
+        return this.app.isLocalSession || ['DEV', 'DEMO'].includes(this.app.userProfile?.mode)
+            ? [{ ...this.developerFriend.player, x: 1660, y: 1670 }] : [];
+    }
+    mergeDeveloperState() {
+        if (!this.getDeveloperPlayers().length) return;
+        const fixture = this.developerFriend.snapshot();
+        for (const key of ['friends', 'incoming', 'outgoing']) {
+            this.state[key] = [...this.state[key].filter(p => p.id !== DEVELOPER_FRIEND_ID), ...fixture[key]];
+        }
+    }
     async refresh() {
         if (this.app.isLocalSession || !window.stockWarsChat?.friends) {
             this.state = { friends: [], incoming: [], outgoing: [] };
-            this.giftDelivery.pending = [];
+            this.giftDelivery.pending = this.getDeveloperPlayers().length ? [...this.developerFriend.gifts] : [];
+            this.mergeDeveloperState();
             this.renderPanel();
             return;
         }
@@ -47,6 +62,7 @@ export class PlayerSocial {
             const relationship = state => JSON.stringify(['friends', 'incoming', 'outgoing'].map(key => state[key].some(p => p.id === this.player?.id)));
             const previousRelationship = relationship(this.state);
             this.state = result;
+            this.mergeDeveloperState();
             await this.giftDelivery.receive(result.gifts);
             for (const request of result.incoming) {
                 const key = `${request.id}:${request.name}`;
@@ -76,7 +92,7 @@ export class PlayerSocial {
             this.encounterHint.replaceChildren();
             const label = document.createElement('small'); label.textContent = 'ANNA · 마을에서 친구 만나기';
             const title = document.createElement('h3'); title.textContent = `${player.nickname || player.name || '트레이더'}님을 만났어요!`;
-            const text = document.createElement('p'); text.textContent = '마을에 있는 다른 유저의 캐릭터를 클릭하면 프로필을 볼 수 있어요. 프로필에서 친구 요청을 보내고, 상대가 수락하면 버블에서 대화와 선물을 주고받을 수 있어요.';
+            const text = document.createElement('p'); text.textContent = '캐릭터 클릭 → 친구 요청 → 상대 수락. 친구가 되면 버블에서 대화·선물을 주고받아요.';
             const actions = document.createElement('div'); actions.className = 'social-card-actions';
             actions.append(this.button('프로필 보기 →', () => { this.finishTutorial(); void this.open(this.encounterPlayer); }), this.button('나중에 볼게요', () => this.finishTutorial()));
             this.encounterHint.append(label, title, text, actions);
@@ -101,6 +117,19 @@ export class PlayerSocial {
         return { success: true, message: `${player.name}님에게 친구 요청을 보냈습니다. 수락하면 친구 목록에 표시됩니다.` };
     }
     async command(operation, player) {
+        if (player.id === DEVELOPER_FRIEND_ID && this.getDeveloperPlayers().length) {
+            if (operation === 'chat') { this.openDeveloperChat(); return; }
+            if (operation === 'gift') { this.dialog.close(); this.giftDelivery.open(player); return; }
+            if (operation === 'simulateGift') {
+                this.developerFriend.command(operation);
+                await this.giftDelivery.receive(this.developerFriend.gifts);
+                this.dialog.close(); this.giftDelivery.openInbox(); return;
+            }
+            this.developerFriend.command(operation);
+            this.mergeDeveloperState(); this.renderPanel();
+            if (this.dialog.open) this.renderCard();
+            return;
+        }
         if (operation === 'gift') { this.giftDelivery.open(player); return; }
         const result = await window.stockWarsChat?.friends(operation, player.id, { targetName: player.name || player.nickname });
         if (!result || result.error) { toastManager.show(result?.error || '서버 연결이 필요합니다.', false); return; }
@@ -122,6 +151,24 @@ export class PlayerSocial {
             if (this.dialog.open && this.player) this.renderCard();
             toastManager.show(operation === 'request' ? '친구 요청을 보냈습니다.' : operation === 'accept' ? '친구가 되었습니다!' : '친구 요청을 처리했습니다.');
         }
+    }
+    openDeveloperChat() {
+        this.dialog.close();
+        const phone = this.app.smartphoneUI;
+        const bubble = phone.bubbleAppModule;
+        const id = 'local_dev_friend_fixture';
+        if (!bubble.chatRooms.some(room => room.id === id)) {
+            bubble.chatRooms.push({ id, title: '테스트 트레이더', members: [], type: 'direct',
+                sub: '개발자 테스트 친구 · 로컬 대화', avatar: '👤', unread: 0, lastMsg: '대화를 시작해보세요!', time: '' });
+        }
+        bubble.bubbleUserMessages[id] ||= [];
+        bubble.chatRooms.find(room => room.id === id).onLocalSend = text => {
+            if (!this.getDeveloperPlayers().length || !this.developerFriend.send(text)) return;
+            bubble.bubbleUserMessages[id].push({ type: 'received', sender: '테스트 트레이더',
+                text: this.developerFriend.messages.at(-1).text, time: '방금 전' });
+        };
+        phone.showPhone(); phone.showBubbleApp();
+        bubble.openChatRoom(id); bubble.dom.bubbleMsgInput?.focus();
     }
     renderPanel() {
         this.panel.replaceChildren();
@@ -176,14 +223,15 @@ export class PlayerSocial {
         const outgoing = this.state.outgoing.some(p => p.id === player.id);
         const badge = document.createElement('span'); badge.className = 'social-status-badge'; badge.textContent = friends ? '✓ 연결된 친구' : incoming ? '받은 친구 요청' : outgoing ? '수락을 기다리는 중' : '마을에서 만난 트레이더';
         this.dialog.append(badge);
-        const guide = document.createElement('section'); guide.className = 'social-friend-guide';
-        const heading = document.createElement('h3'); heading.textContent = outgoing ? '요청을 보냈어요!' : friends ? '이제 버블에서 만나요' : '안나의 친구 추가 가이드';
-        const steps = document.createElement('ol');
-        for (const text of ['프로필에서 상대 닉네임 확인', '친구 요청 보내기 · 받은 요청은 수락하기', '상대가 수락하면 버블 → 친구에서 대화·선물']) { const item = document.createElement('li'); item.textContent = text; steps.append(item); }
-        const note = document.createElement('p'); note.textContent = outgoing ? '상대가 수락하기 전에는 친구가 아니에요. 버블의 보낸 요청에서 상태를 확인할 수 있어요.' : friends ? '아래 대화하기를 누르면 버블의 대화방으로 이동해요.' : '친구 요청은 아래 버튼을 눌러 직접 보내요. 상대가 수락하면 친구 목록에 나타나요.';
-        guide.append(heading, steps, note);
+        const guide = createTutorialGuide({
+            lessonTitle: friends ? '친구와 대화하기' : outgoing ? '친구 요청을 보냈어요' : incoming ? '받은 친구 요청 수락하기' : '이 플레이어와 친구 되기',
+            text: friends ? '친구가 되면 버블에서 대화와 선물을 주고받아요.' : outgoing ? '상대가 수락하면 친구 목록에 나타나요.' : incoming ? '상대가 먼저 친구 요청을 보냈어요.' : '아래 버튼으로 직접 친구 요청을 보낼 수 있어요.',
+            example: { label: '진행 순서', rows: friends ? ['[대화하기]를 누르면 버블 대화방으로 이동해요.', '[선물하기]에서 보낼 아이템을 고를 수 있어요.'] : outgoing ? ['버블의 [보낸 요청]에서 상태를 확인해요.', '상대가 수락하면 대화·선물 기능을 사용할 수 있어요.'] : incoming ? ['받은 요청 확인 → 내가 수락 → 친구 목록에 등록'] : ['친구 요청 전송 → 상대 수락 → 친구 목록에 등록'] },
+            nextAction: friends ? '아래 [대화하기] 또는 [선물하기]를 누르세요.' : outgoing ? '상대의 수락을 기다리세요. 요청 취소도 가능해요.' : incoming ? '친구가 되고 싶다면 [친구 요청 수락]을 누르세요.' : '[친구 요청 보내기]를 누르세요.'
+        });
+        guide.classList.add('social-friend-guide');
         if (this.tutorialOpen || outgoing) this.dialog.append(guide);
-        else { const help = document.createElement('details'); help.className = 'social-friend-guide'; const summary = document.createElement('summary'); summary.textContent = '친구 추가 방법 다시 보기'; help.append(summary, steps, note); this.dialog.append(help); }
+        else { const help = document.createElement('details'); help.className = 'social-friend-guide'; const summary = document.createElement('summary'); summary.textContent = '친구 기능 안내 다시 보기'; help.append(summary, guide); this.dialog.append(help); }
         const actions = document.createElement('div'); actions.className = 'social-card-actions';
         this.dialog.append(actions);
         if (friends) actions.append(this.button('대화하기', () => this.command('chat', player)), this.button('선물하기', () => this.command('gift', player)));
@@ -191,6 +239,8 @@ export class PlayerSocial {
             actions.append(this.button('친구 요청 수락', () => this.command('accept', player)), this.button('거절', () => this.command('reject', player)));
         } else if (outgoing) actions.append(this.button('친구 요청 취소', () => this.command('cancel', player)));
         else actions.append(this.button('친구 요청 보내기', () => this.command('request', player)));
+        if (player.id === DEVELOPER_FRIEND_ID && friends) actions.append(this.button('테스트 선물 받기', () => this.command('simulateGift', player)));
+        if (player.id === DEVELOPER_FRIEND_ID && outgoing) actions.append(this.button('테스트 친구 수락시키기', () => this.command('simulateAccept', player)));
         const close = this.button('닫기', () => this.dialog.close()); close.className = 'social-close'; this.dialog.append(close);
     }
 }

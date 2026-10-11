@@ -4,6 +4,8 @@
  * GDD Reference: CORE_GDD_10 (v2.0.0)
  */
 
+import { compactAnnaLessons } from './compactAnnaLessons.js';
+
 export function buildAnnaScenario({
     nickname = '파트너',
     targetStock = { id: 'CLOUDBERRY', name: '클라우드 베리' },
@@ -16,11 +18,11 @@ export function buildAnnaScenario({
 }) {
     const stockName = targetStock.name;
     const stockId = targetStock.id;
-    const recommendationLead = reason 
+    const recommendationLead = reason
         ? `${nickname} 님의 투자 성향과 시장 분석 결과, ${reason}인 '${stockName}'을(를) 추천해요.`
         : `${nickname} 님의 투자 프로필과 오늘 시장 수급 분석 결과, 현재 시세로 구매 가능한 '${stockName}'을(를) 추천해요.`;
 
-    return [
+    const steps = [
         // STEP 1: Welcome to Office & Initial Funds
         {
             id: 'welcome_1',
@@ -428,4 +430,5 @@ export function buildAnnaScenario({
             }
         }
     ];
+    return compactAnnaLessons(steps, { nickname, stockName: stockId ? stockName : null });
 }

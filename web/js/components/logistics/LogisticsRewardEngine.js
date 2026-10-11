@@ -5,10 +5,10 @@
  */
 
 export function deliveryScore(count) {
-    return [0, 1, 2, 4, 6][count] || 0;
+    return [0, 1, 3, 6, 10][count] || 0;
 }
-export function calculateLogisticsGrade(score, highStackDeliveries = 0) {
-    if (score >= 26 && highStackDeliveries >= 2) return 'S';
+export function calculateLogisticsGrade(score) {
+    if (score >= 30) return 'S';
     if (score >= 18) return 'A';
     if (score >= 10) return 'B';
     return 'C';
@@ -19,8 +19,8 @@ export function isNightLogistics(time) {
     return hour >= 22 || hour < 2;
 }
 
-export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTime = false, startedAt = Date.now(), score = loadedCount, highStackDeliveries = 0) {
-    const grade = calculateLogisticsGrade(score, highStackDeliveries);
+export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTime = false, startedAt = Date.now(), score = loadedCount) {
+    const grade = calculateLogisticsGrade(score);
     let goldReward = 100;
     let expReward = 10;
     let rumorChance = 0;
@@ -30,7 +30,7 @@ export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTi
         goldReward = 800;
         expReward = 100;
         rumorChance = 0.30;
-        gradeLabel = 'S (특급 기여 / 26점 이상 · 3단 이상 배송 2회)';
+        gradeLabel = 'S (특급 기여 / 30점 이상)';
     } else if (grade === 'A') {
         goldReward = 560;
         expReward = 70;
@@ -65,7 +65,6 @@ export function calculateLogisticsSettlement(loadedCount, brokenCount, isFirstTi
         isJackpot,
         gradeLabel,
         score,
-        highStackDeliveries,
         loadedCount,
         brokenCount,
         isFirstTime

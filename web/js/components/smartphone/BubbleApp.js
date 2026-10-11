@@ -535,6 +535,7 @@ export class BubbleApp {
         if (this.currentRoomId?.startsWith('local_')) {
             const room = this.chatRooms.find(r => r.id === this.currentRoomId);
             this.bubbleUserMessages[room.id].push({ text: text.slice(0, 500), time: new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) });
+            room.onLocalSend?.(text.slice(0, 500));
             room.lastMsg = `나: ${text}`;
             room.time = '방금 전';
             this.dom.bubbleMsgInput.value = '';

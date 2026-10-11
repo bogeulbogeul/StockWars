@@ -20,6 +20,11 @@ export class FriendGifts {
         });
     }
     async send(player, id) {
+        if (player.id && player.id === this.app.playerSocial?.developerFriend?.player.id && this.app.playerSocial.getDeveloperPlayers().length) {
+            const item = this.app.itemEngine.state.inventory.find(i => i.id === id && this.eligible(i));
+            return item ? { success: true, message: item.name + ' 테스트 전송 완료! 실제 아이템은 차감하지 않았어요.' }
+                : { success: false, message: '선물할 아이템을 선택해 주세요.' };
+        }
         if (this.busy || this.app.itemEngine.state.pendingGift) return { success: false, message: '이전 선물 전송을 확인 중입니다.' };
         const engine = this.app.itemEngine;
         const item = engine.state.inventory.find(i => i.id === id && this.eligible(i));

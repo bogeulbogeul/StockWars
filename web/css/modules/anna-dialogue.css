@@ -34,3 +34,49 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
+
+.vn-lesson-visual { margin: 14px 0; }
+.vn-lesson-cards { display: flex; flex-wrap: wrap; gap: 8px; }
+.vn-lesson-card { flex: 1 1 100px; min-width: 0; padding: 12px; border-radius: 12px; border: 1px solid #76e3d52b; background: linear-gradient(135deg, #17343b, #142430); display: grid; gap: 6px; }
+.vn-lesson-card small { color: #8fabbb; font-size: 11px; line-height: 1.4; }
+.vn-lesson-card strong { color: #caeee8; font-size: 16px; line-height: 1.45; overflow-wrap: anywhere; }
+.vn-lesson-card.positive strong { color: #6ce3c1; }
+.vn-lesson-card.negative strong { color: #ff9ca8; }
+.vn-lesson-details { margin-top: 10px; color: #93acbc; font-size: 12px; }
+.vn-lesson-details summary { width: fit-content; cursor: pointer; padding: 5px 0; }
+.vn-lesson-details summary:focus-visible { outline: 2px solid #80e7d6; outline-offset: 3px; }
+.vn-lesson-details p { margin: 8px 0; padding: 12px; max-height: 160px; overflow-y: auto; border-left: 2px solid #5bd3b9; background: #06142080; font-size: 12px; line-height: 1.8; white-space: normal; }
+body #annaTutorialOverlay .vn-dialogue-text { line-height: 1.65 !important; }
+.vn-theme-park .vn-lesson-card { background: linear-gradient(135deg, #352c1e, #25231d); border-color: #efc3753b; }
+.vn-theme-park .vn-lesson-card strong { color: #f1d199; }
+.vn-lesson-heading { margin: 0 0 12px; color: #8fe7d9; font-size: 17px; font-weight: 700; line-height: 1.5; }
+.vn-lesson-example { padding: 16px; border: 1px solid #7bcabc30; border-radius: 14px; background: #081a25; }
+.vn-example-label { display: block; margin-bottom: 12px; color: #a5bcc8; font-size: 12px; line-height: 1.5; }
+.vn-example-line { color: #e3f3ef; font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+.vn-example-arrow { display: block; margin: 4px 0; color: #69cdbd; font-size: 20px; line-height: 1.1; }
+.vn-lesson-takeaway { padding: 10px 12px; margin: 12px 0 0; border-left: 3px solid #d4b37c; background: #302a1e60; color: #e0cfaf; font-size: 12px; line-height: 1.7; }
+.vn-lesson-cards { gap: 10px; }
+.vn-lesson-card small { color: #adc5cf; font-size: 12px; }
+.vn-lesson-details { color: #adc2cc; }
+.vn-lesson-details p { color: #c2d2dc; font-size: 13px; }
+.tutorial-guide { margin: 14px 0; text-align: left; }
+.tutorial-explanation { margin: 0 0 12px; font-size: 14px; color: #d2e7e6; line-height: 1.7; }
+.tutorial-next-action { margin-top: 14px; padding: 12px 14px; border-left: 3px solid #77dfca; background: #2a5e532b; display: grid; gap: 6px; }
+.tutorial-next-action small { color: #82caba; font-size: 11px; }
+.tutorial-next-action strong { color: #d5f8ef; font-size: 13px; font-weight: 600; line-height: 1.6; overflow-wrap: anywhere; }
+.vn-lesson-example .vn-example-line + .vn-example-line { margin-top: 10px; }
+.social-friend-guide .vn-example-line, .gift-inbox .vn-example-line { font-size: 13px; }
+.social-friend-guide .tutorial-next-action strong, .gift-inbox .tutorial-next-action strong { font-size: 12px; }
+.vn-theme-park .tutorial-next-action { border-color: #efc375; background: #5b492c35; }
+.vn-theme-park .tutorial-next-action small { color: #d3ba8b; }
+.vn-theme-park .tutorial-next-action strong { color: #f4e2bd; }
+.gift-inbox .gift-inbox-hero { width: 58px; height: 58px; margin: 16px auto 12px; font-size: 30px; border-radius: 18px; }
+
+.tutorial-shortcut-btn {
+    display: block; margin-top: 12px; width: 100%; padding: 11px 16px;
+    border: 1px solid #00cfe5; border-radius: 8px;
+    background: #063b47; color: #e8fcff; font: inherit; font-weight: 700;
+    cursor: pointer;
+}
+.tutorial-shortcut-btn:hover { background: #095465; }
+.tutorial-shortcut-btn:focus-visible { outline: 2px solid #80edff; outline-offset: 3px; }

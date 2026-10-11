@@ -444,6 +444,7 @@ export class TownStage {
 
     // Complete remote snapshot for the active channel; coordinates use the town ground plane.
     setRemotePlayers(players = []) {
+        players = [...players, ...(this.callbacks.getDeveloperPlayers?.() || [])];
         const seen = new Set();
         for (const player of players) {
             if (player.location && player.location !== 'town') continue;
@@ -454,7 +455,10 @@ export class TownStage {
                 const element = this.townChar.cloneNode(true);
                 element.removeAttribute('id');
                 element.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-                element.classList.remove('resting-bench');
+                element.classList.remove('resting-bench', 'hidden');
+                element.hidden = false;
+                element.style.visibility = 'visible';
+                element.style.opacity = '1';
                 element.classList.add('town-remote-player');
                 element.style.pointerEvents = 'auto';
                 element.style.cursor = 'pointer';
@@ -627,6 +631,7 @@ export class TownStage {
         this.playerController.updateCamera(this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE, 0, true);
         this.update(0);
         this.checkProximity();
+        this.setRemotePlayers([]);
         if(!this.callbacks.externalPresence)this.presenceSync?.start();
     }
 

@@ -1,3 +1,4 @@
+import { deliveryScore } from './LogisticsRewardEngine.js';
 import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * LogisticsTemplate
@@ -28,7 +29,7 @@ export function getLogisticsModalHtml() {
                         </div>
                         <div class="logistics-stat-item">
                             <span class="logistics-stat-label">배송 점수:</span>
-                            <span class="logistics-stat-value" id="logisticsLoadedText">0 / 26점 · 3개 이상 배송 0/2회</span>
+                            <span class="logistics-stat-value" id="logisticsLoadedText">0 / 30점</span>
                         </div>
                         <div class="logistics-stat-item">
                             <span class="logistics-stat-label">예상 등급:</span>
@@ -44,6 +45,12 @@ export function getLogisticsModalHtml() {
                         <button class="logistics-guide-btn" id="btnLogisticsGuide" title="관리소장 박씨 튜토리얼 가이드">💡 박씨 가이드</button>
                         <button class="logistics-close-btn" id="btnLogisticsClose" title="작업 중단 및 나가기">✕</button>
                     </div>
+                </div>
+
+                <div class="logistics-score-guide" aria-label="한 번에 운반하는 상자별 점수">
+                    <span class="logistics-score-label">한 번 하차 시</span>
+                    ${[1, 2, 3, 4].map(count => `<span class="logistics-score-chip">📦 ${count}개 <strong>${deliveryScore(count)}점</strong></span>`).join('')}
+                    <small>안전하게 하차하면 획득 · 연습 점수 제외</small>
                 </div>
 
                 <!-- News Ticker -->

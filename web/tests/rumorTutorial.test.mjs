@@ -22,7 +22,10 @@ test('logistics lesson compares one event in five stages before graduation', () 
 test('each time answer advances once with feedback and reviewing cannot answer again', () => {
     const previousDocument = globalThis.document;
     const element = () => ({ style: {}, children: [], classList: { toggle() {}, add() {}, remove() {} },
-        append(child) { this.children.push(child); }, addEventListener(type, listener) { this[type] = listener; } });
+        append(...children) { for (const child of children) { child.parent = this; this.children.push(child); } },
+        remove() { this.parent.children = this.parent.children.filter(child => child !== this); },
+        querySelector(selector) { return this.children.find(child => child.className === selector.slice(1)); },
+        addEventListener(type, listener) { this[type] = listener; } });
     globalThis.document = { createElement: element };
     try {
         for (let answer = 0; answer < 3; answer++) {
@@ -32,17 +35,18 @@ test('each time answer advances once with feedback and reviewing cannot answer a
             let advances = 0;
             const tutorial = Object.assign(Object.create(AnnaTutorial.prototype), {
                 steps, currentStepIdx, isActive: true, historyCursor: null, dialogueHistory: [],
-                dialogueBox: { classList: element().classList, querySelector: selector => selector === '.vn-dialogue-body' ? body : null },
+                dialogueBox: { classList: element().classList, querySelector: selector => selector === '.vn-dialogue-body' ? body : body.querySelector(selector) },
                 setExpression() {}, typeText() {}, nextStep() { advances++; this.currentStepIdx++; }
             });
             const step = steps[currentStepIdx];
             tutorial.renderDialogue(step);
-            const button = body.children[0].children[answer];
+            const button = body.querySelector('.vn-rumor-choices').children[answer];
             button.click(); button.click();
             assert.equal(advances, 1);
             assert.ok(steps[currentStepIdx + 1].text.startsWith(step.choices[answer].feedback));
             tutorial.renderDialogue(step, true);
-            assert.equal(body.children.length, 1);
+            assert.equal(body.children.filter(child => child.className === 'vn-lesson-visual').length, 1);
+            assert.equal(body.querySelector('.vn-rumor-choices'), undefined);
         }
     } finally { globalThis.document = previousDocument; }
 });

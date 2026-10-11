@@ -1,6 +1,8 @@
+import { tutorialShortcutDestination } from './tutorial/tutorialPresentation.js';
 import { gameKey } from '../app/GameKeys.js';
 import { installAnnaDialogueLayout } from './tutorial/annaDialogueLayout.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
+import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
 
 export class AnnaTutorial {
     constructor(container, callbacks = {}) {
@@ -153,7 +155,7 @@ export class AnnaTutorial {
         this.firstPurchaseDone = false;
         this.recommendationTimer = setInterval(() => this.reviewRecommendation(), 10000);
         const nickname = userProfile.nickname || '파트너';
-        
+
         this.steps = buildAnnaScenario({
             nickname,
             targetStock: this.targetStock,
@@ -207,7 +209,7 @@ export class AnnaTutorial {
         if (['select_stock', 'buy_stock'].includes(stepId)) {
             const step = next[this.currentStepIdx];
             step.text = recommendation.stock
-                ? `그사이 시세가 변했네요. 지금 현금으로 구매할 수 있는 '${this.targetStock.name}'을 새로 추천할게요. 목록 맨 위의 [안나 추천] 종목을 눌러 주세요.`
+                ? `추천 종목이 바뀌었어요. '${this.targetStock.name}'을 ${stepId === 'buy_stock' ? '[시장가 · 1주]로 매수해 주세요.' : '목록에서 눌러 주세요.'}`
                 : '현재 현금으로 살 수 있는 종목이 없어요. 시장을 계속 확인할게요. 구매 가능한 종목이 생기면 다시 추천해 드릴게요.';
             this.showCurrentStep();
         }
@@ -233,7 +235,10 @@ export class AnnaTutorial {
             const state = this.callbacks.getMarketState?.();
             const lesson = this.callbacks.getFirstTradeLesson?.();
             const holding = state?.portfolio.find(p => p.id === this.targetStock?.id && !p.isShort);
-            if (holding && lesson) step.text = "'" + this.targetStock.name + "'을 " + lesson.buyPrice.toLocaleString() + 'G에 샀어요! 내 계좌에 ' + holding.qty + '주가 생겼고, 현금은 ' + state.cash.toLocaleString() + 'G 남았어요. 다음에는 산 주식을 확인해 볼게요.';
+            if (holding && lesson) {
+                step.text = "'" + this.targetStock.name + "'을 샀어요! 내 계좌를 확인해 볼까요?";
+                step.cards = [['보유', holding.qty + '주'], ['매수가', lesson.buyPrice.toLocaleString() + 'G'], ['남은 현금', state.cash.toLocaleString() + 'G']];
+            }
         }
         this.historyCursor = null;
         const snapshot = { ...step };
@@ -246,6 +251,22 @@ export class AnnaTutorial {
     }
 
     renderDialogue(step, reviewing = false) {
+        this.overlay?.classList.toggle('vn-movement-guide', ['go_town_proposal', 'enter_logistics'].includes(step.id));
+        const destination = tutorialShortcutDestination(step.id);
+        const accountOpen = destination?.tab === 'Profile'
+            && ['Profile', 'Account'].includes(this.callbacks.getCurrentTutorialTab?.())
+            && !this.callbacks.isTradeModalOpen?.();
+        const shortcut = destination && !accountOpen && this.historyCursor === null ? { label: destination.label, run: () => {
+            if (this.steps[this.currentStepIdx]?.id !== step.id || this.historyCursor !== null) return;
+            if (destination.tab) {
+                this.callbacks.onNavigateTutorial?.(destination.tab);
+                if (destination.openRecommendedStock && this.targetStock?.id) {
+                    this.callbacks.onOpenTradeModal?.(this.targetStock.id);
+                }
+            }
+            else document.querySelector(destination.selector)?.click();
+        } } : undefined;
+        const presentationText = renderAnnaLesson(this.dialogueBox?.querySelector('.vn-dialogue-body'), step, shortcut);
         this.dialogueBox?.querySelector('.vn-rumor-choices')?.remove();
         if (step.choices && !reviewing) {
             const choices = document.createElement('div');
@@ -255,11 +276,13 @@ export class AnnaTutorial {
                 const button = document.createElement('button');
                 button.className = 'vn-btn';
                 button.textContent = choice.label;
-                button.addEventListener('click', () => {
+                button.addEventListener('click', event => {
+                    event?.stopPropagation();
                     if (!this.isActive || this.steps[this.currentStepIdx] !== step || this.historyCursor != null) return;
                     const feedback = this.steps[this.currentStepIdx + 1];
                     feedback.baseText ??= feedback.text;
-                    feedback.text = `${choice.feedback} ${feedback.baseText}`;
+                    feedback.text = choice.feedback;
+                    feedback.detailText = feedback.baseText;
                     this.nextStep();
                 });
                 choices.append(button);
@@ -291,7 +314,7 @@ export class AnnaTutorial {
             this.dialogueBox?.classList.remove('has-choice');
         }
         if (this.btnPrevious) this.btnPrevious.disabled = (this.historyCursor ?? this.dialogueHistory.length - 1) <= 0;
-        this.typeText(step.text);
+        this.typeText(presentationText || step.text);
     }
 
     showPreviousDialogue() {
@@ -450,6 +473,10 @@ export class AnnaTutorial {
     // Called when player manually switches tabs (e.g. Market, Profile/Account)
     notifyTabSwitched(tabName) {
         if (!this.isActive) return;
+        const destination = tutorialShortcutDestination(this.steps[this.currentStepIdx]?.id);
+        if (destination?.tab === 'Profile' && ['Profile', 'Account'].includes(tabName)) {
+            this.dialogueBox?.querySelector('.tutorial-shortcut-btn')?.remove();
+        }
         const currentStep = this.steps[this.currentStepIdx];
         if (!currentStep) return;
 
@@ -608,7 +635,8 @@ export class AnnaTutorial {
         const base = { speaker: '전담 매니저 안나', expression: 'Smile', tracker: '첫 투자 • 매도와 보유 선택' };
         const sellGuide = {
             ...base, id: 'first_sell_guide', allowHold: true, requiresManualAction: true,
-            text: `'${stock.name}'을 몇 주 팔지 정하고, 예상 손익을 확인해 주세요. [매도 (SELL)]를 누르면 체결돼요. 아직 팔고 싶지 않다면 계속 보유해도 괜찮아요.`,
+            text: '수량과 예상 손익을 확인한 뒤 [매도 (SELL)]를 누르세요. 계속 보유해도 괜찮아요.',
+            cards: [['매도', '지금 거래 시도'], ['계속 보유', '나중에 직접 매도']],
             interactionHint: '매도 수량과 예상 손익을 확인한 뒤 직접 매도하거나, 계속 보유하기를 선택하세요.',
             targetSelector: '#btnSellExecute', actionBtnText: '매도 화면 다시 열기',
             onEnter: () => { this.callbacks.onOpenSellGuide?.(stock.id); this.highlightElement('#btnSellExecute', true); },
@@ -617,11 +645,14 @@ export class AnnaTutorial {
         if (lesson.status === 'sold') {
             const sale = lesson.sale;
             this.steps = [{ ...base, id: 'first_sale_result', expression: 'Happy',
-                text: `'${stock.name}' ${sale.quantity}주를 매도했어요! 첫 매수가 ${lesson.buyPrice.toLocaleString()}G, 매도 체결가 ${sale.sellPrice.toLocaleString()}G예요. 이번 거래의 실현 손익은 ${sale.profit >= 0 ? '+' : ''}${sale.profit.toLocaleString()}G이며, ${sale.proceeds.toLocaleString()}G가 현금으로 돌아왔어요. 평가 손익은 보유 중의 값이고, 실현 손익은 매도로 확정된 결과랍니다.`,
+                text: `${sale.quantity}주를 매도했어요! 실현 손익은 ${sale.profit >= 0 ? '+' : ''}${sale.profit.toLocaleString()}G예요.`,
+                cards: [['첫 매수가', lesson.buyPrice.toLocaleString() + 'G'], ['매도 체결가', sale.sellPrice.toLocaleString() + 'G'], ['돌아온 현금', sale.proceeds.toLocaleString() + 'G']],
                 actionBtnText: '확인', onAction: () => this.complete() }];
         } else if (lesson.status === 'selling') this.steps = [sellGuide];
         else this.steps = [{ ...base, id: 'first_profit_choice', allowHold: true, requiresManualAction: true,
-            text: `처음 산 '${stock.name}'이 첫 매수가보다 10% 이상 올랐어요! 지금 팔아 수익을 실현하거나, 계속 보유할 수 있어요. 어느 쪽을 골라도 나머지 안내는 계속해 드리고, 정착 지원금도 그대로 받을 수 있어요. 계속 보유하면 나중에 매도할 때 다시 안내해 드릴게요.`,
+            text: `'${stock.name}'이 10% 이상 올랐어요! 지금 팔까요, 계속 보유할까요?`,
+            cards: [['지금 매도', '손익을 확정'], ['계속 보유', '가격은 계속 변동']],
+            detailText: '어느 쪽을 골라도 안내와 정착 지원금은 그대로예요. 나중에 매도하면 그때 결과를 안내해요.',
             actionBtnText: '매도해 보기',
             onAction: () => { lesson.status = 'selling'; this.callbacks.onSaveLesson?.(); this.steps = [sellGuide]; this.currentStepIdx = 0; this.showCurrentStep(); }
         }];

@@ -1,4 +1,5 @@
 import { getItemArtwork } from '../data/itemArtwork.js';
+import { createTutorialGuide } from './tutorial/tutorialPresentation.js';
 
 export class GiftInbox {
     constructor(app, delivery) {
@@ -20,13 +21,19 @@ export class GiftInbox {
         const header = document.createElement('header'); header.className = 'gift-inbox-header';
         const heading = document.createElement('div');
         const label = document.createElement('small'); label.textContent = 'BUBBLE · GIFT INBOX';
-        const title = document.createElement('h2'); title.textContent = '마음을 담은 선물이 도착했어요';
+        const title = document.createElement('h2'); title.textContent = '받은 선물 확인하기';
         heading.append(label, title);
         const close = document.createElement('button'); close.type = 'button'; close.textContent = '✕'; close.setAttribute('aria-label', '선물함 닫기'); close.onclick = () => this.dialog.close();
         header.append(heading, close);
         const hero = document.createElement('div'); hero.className = 'gift-inbox-hero'; hero.textContent = '🎁'; hero.setAttribute('aria-hidden', 'true');
-        const summary = document.createElement('p'); summary.className = 'gift-inbox-summary'; summary.textContent = `받지 않은 선물 ${this.delivery.pending.length}개 · 받기를 누르면 소지품으로 이동해요.`;
+        const summary = document.createElement('p'); summary.className = 'gift-inbox-summary'; summary.textContent = `받지 않은 선물 ${this.delivery.pending.length}개`;
         this.dialog.append(header, hero, summary);
+        if (this.delivery.pending.length) this.dialog.append(createTutorialGuide({
+            lessonTitle: '선물을 소지품으로 옮기기',
+            text: '아래에서 보낸 사람과 아이템을 확인하세요.',
+            example: { label: '수령 흐름', rows: ['선물 도착 → 직접 받기 → 소지품에 보관'] },
+            nextAction: '아래에서 받을 아이템의 [받기]를 누르세요.'
+        }));
         const list = document.createElement('div'); list.className = 'gift-inbox-list';
         for (const gift of this.delivery.pending) {
             const card = document.createElement('article'); card.className = 'gift-inbox-item';

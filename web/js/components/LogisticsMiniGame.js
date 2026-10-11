@@ -1,3 +1,4 @@
+import { startReadyCountdown, cancelReadyCountdown } from './logistics/LogisticsSession.js';
 import { gameKey } from '../app/GameKeys.js';
 /**
  * LogisticsMiniGame Component
@@ -33,7 +34,7 @@ export class LogisticsMiniGame {
         // Session Specs (GDD)
         this.sessionDuration = 60; // 60 seconds
         this.timeLeft = this.sessionDuration;
-        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0;
+        this.loadedCount = 0; this.deliveryPoints = 0;
         this.brokenCount = 0;
 
         // Player Physical Position & Movement
@@ -130,6 +131,7 @@ export class LogisticsMiniGame {
             onComplete: () => {
                 this.resetPracticeCargo();
                 this.hasSeenTutorial = true;
+                this.callbacks.onTutorialSeen?.();
                 if (this.isOpen) this.startSession();
             },
             onSkip: () => {
@@ -149,7 +151,7 @@ export class LogisticsMiniGame {
         this.btnBottomStackMore?.addEventListener('click', () => this.tryStackBox());
 
         window.addEventListener('keydown', (e) => {
-            if (!this.isOpen || this.isGameOver || this.parkTutorial?.isActive && !this.parkTutorial.isPracticeStep) return;
+            if (!this.isOpen || !this.isRunning || this.isGameOver || this.parkTutorial?.isActive && !this.parkTutorial.isPracticeStep) return;
 
             if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
             const isLeft = gameKey(e) === 'a';
@@ -192,13 +194,14 @@ export class LogisticsMiniGame {
     }
 
     resetPracticeCargo() {
-        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0; this.brokenCount = 0; this.damageGauge = 0;
+        this.loadedCount = 0; this.deliveryPoints = 0; this.brokenCount = 0; this.damageGauge = 0;
         this.charX = 780; this.velocityX = 0; this.carriedCount = 1; this.hasBox = true;
         this.stackCooldown = 0; this.timeLeft = this.sessionDuration;
         this.updateHUD(); this.updateCharacterVisual(); this.updateTruckBoxesGraphic();
     }
 
     startTutorial() {
+        cancelReadyCountdown(this);
         // Pause timer & game physics
         this.isRunning = false;
         if (this.timerInterval) clearInterval(this.timerInterval);
@@ -217,7 +220,7 @@ export class LogisticsMiniGame {
         this.isOpen = true;
         this.isGameOver = false;
         this.timeLeft = this.sessionDuration;
-        this.loadedCount = 0; this.deliveryPoints = 0; this.highStackDeliveries = 0;
+        this.loadedCount = 0; this.deliveryPoints = 0;
         this.brokenCount = 0;
         this.damageGauge = 0;
         this.charX = 780; // Start at box pallet
@@ -234,7 +237,7 @@ export class LogisticsMiniGame {
         this.updateTruckBoxesGraphic();
 
         // If first time or explicitly requested, run Manager Park's Tutorial
-        if (!this.hasSeenTutorial || options.forceTutorial) {
+        if (!(this.hasSeenTutorial || this.callbacks.hasSeenTutorial?.()) || options.forceTutorial) {
             this.startTutorial();
         } else {
             this.startSession();
@@ -242,6 +245,7 @@ export class LogisticsMiniGame {
     }
 
     close() {
+        cancelReadyCountdown(this);
         this.isOpen = false;
         this.isRunning = false;
         if (this.parkTutorial?.isActive) {
@@ -255,26 +259,7 @@ export class LogisticsMiniGame {
     }
 
     startSession() {
-        this.isRunning = true;
-        this.jobStartedAt = this.callbacks.getTime?.() ?? Date.now();
-        this.lastTimestamp = performance.now();
-
-        // 60-Second Countdown Timer
-        if (this.timerInterval) clearInterval(this.timerInterval);
-        this.timerInterval = setInterval(() => {
-            if (!this.isRunning || this.isGameOver) return;
-            this.timeLeft--;
-            this.updateHUD();
-
-            if (this.timeLeft <= 0) {
-                this.timeLeft = 0;
-                this.endSession();
-            }
-        }, 1000);
-
-        if (this.animFrameId) cancelAnimationFrame(this.animFrameId);
-        // Game Loop Animation Frame
-        this.animFrameId = requestAnimationFrame(this.gameLoop.bind(this));
+        startReadyCountdown(this);
     }
 
     gameLoop(now) {
@@ -419,7 +404,6 @@ export class LogisticsMiniGame {
             const delivered = this.carriedCount;
             this.loadedCount += delivered;
             this.deliveryPoints += deliveryScore(delivered);
-            if (delivered >= 3) this.highStackDeliveries++;
             this.hasBox = false;
             this.carriedCount = 0;
             this.damageGauge = 0;
@@ -459,10 +443,10 @@ export class LogisticsMiniGame {
 
     updateHUD() {
         this.timerText.textContent = this.parkTutorial?.isActive ? '연습 · 시간 제한 없음' : `${this.timeLeft}s`;
-        this.loadedText.textContent = `${this.deliveryPoints} / 26점 · 3개 이상 배송 ${this.highStackDeliveries}/2회`;
+        this.loadedText.textContent = `${this.deliveryPoints} / 30점`;
         this.brokenText.textContent = `${this.brokenCount}`;
 
-        const currentGrade = calculateLogisticsGrade(this.deliveryPoints, this.highStackDeliveries);
+        const currentGrade = calculateLogisticsGrade(this.deliveryPoints);
         this.gradeText.textContent = currentGrade;
         if (currentGrade === 'S') this.gradeText.style.color = '#ec4899';
         else if (currentGrade === 'A') this.gradeText.style.color = '#00e5ff';
@@ -477,7 +461,7 @@ export class LogisticsMiniGame {
         if (this.timerInterval) clearInterval(this.timerInterval);
 
         const isFirstTime = this.completedJobsCount === 0;
-        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt, this.deliveryPoints, this.highStackDeliveries);
+        const result = calculateLogisticsSettlement(this.loadedCount, this.brokenCount, isFirstTime, this.jobStartedAt, this.deliveryPoints);
         result.goldReward = this.callbacks.getLaborReward?.(result.goldReward) ?? result.goldReward;
         const rumorBonus = this.callbacks.getAbilityBonuses?.().rumor || 0;
         if (!result.isFirstTime && !result.hasRumor && rumorBonus > 0 && Math.random() < Math.min(1, rumorBonus / (1 - result.rumorChance))) result.hasRumor = true;
@@ -505,7 +489,7 @@ export class LogisticsMiniGame {
         // Update Settlement Card
         this.settlementStamp.className = `settlement-stamp grade-${grade}`;
         this.settlementStamp.textContent = grade;
-        this.resLoadedCount.textContent = `${this.loadedCount}개 · ${this.deliveryPoints}점 · 3개 이상 배송 ${this.highStackDeliveries}회`;
+        this.resLoadedCount.textContent = `${this.loadedCount}개 · ${this.deliveryPoints}점`;
         this.resBrokenCount.textContent = `${this.brokenCount} 개`;
         this.resFinalGrade.textContent = `${gradeLabel}${result.isNight ? ' · 야간 찌라시 확률 2배' : ''}`;
         this.resFinalGrade.style.color = grade === 'S' ? '#ec4899' : (grade === 'A' ? '#00e5ff' : (grade === 'B' ? '#10b981' : '#94a3b8'));

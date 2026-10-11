@@ -1,6 +1,7 @@
 
 .help-dialog { box-sizing: border-box; width: min(700px, calc(100 * var(--game-vw) - 32px)); max-height: calc(100 * var(--game-vh) - 32px); padding: 24px; overflow: auto; margin: auto; color: #edf2fa; background: #111a28; border: 1px solid #35475f; border-radius: 20px; box-shadow: 0 24px 100px #0009; font-family: inherit; }
 .help-dialog::backdrop { background: #030912b8; backdrop-filter: blur(6px); }
+.help-footer { margin-top: 16px; }
 .help-header,.help-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .help-header small { color: #66d9d1; letter-spacing: 2px; font-size: 10px; }
 .help-header h2 { margin: 6px 0 20px; font-size: 22px; }
