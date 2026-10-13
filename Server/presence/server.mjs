@@ -11,7 +11,7 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
         const reply = async (status, body) => { if (durable && status < 400 && req.method === 'POST') await durable.flush(registry); res.writeHead(status); res.end(JSON.stringify(body)); };
-        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, arenaRoomCleanup: true, guestDeletion: true, socialFeatures: 2, seatingSync: true, durableStorage: durable ? 'supabase' : 'local' });
+        if (req.method === 'GET' && req.url === '/health') return reply(200, { status: 'ok', dataEpoch: 'alpha-reset-20261006-v1', giftsDailyLimit: 3, onlineArena: true, arenaRoomCleanup: true, guestDeletion: true, socialFeatures: 2, seatingSync: true, uniqueNicknames: registry.enforceUniqueNicknames, revision: process.env.RENDER_GIT_COMMIT || null, durableStorage: durable ? 'supabase' : 'local' });
         if (req.method !== 'POST' || !['/api/presence', '/api/chat','/api/arena'].includes(req.url)) return reply(404, { error: 'Not found' });
         try {
             let body = '';
@@ -56,7 +56,10 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-    const registry = new PresenceRegistry({ nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names-alpha-reset-v1.json', import.meta.url)) });
+    const registry = new PresenceRegistry({
+        nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names-alpha-reset-v1.json', import.meta.url)),
+        enforceUniqueNicknames: process.env.STOCKWARS_ENFORCE_UNIQUE_NICKNAMES !== 'false'
+    });
     const durable = configuredPlayerStore();
     if (!durable && process.env.STOCKWARS_REQUIRE_DURABLE === 'true') throw new Error('친구 기록 보존을 위해 무료 저장소를 먼저 연결해야 합니다.');
     if (durable) await durable.restore(registry);

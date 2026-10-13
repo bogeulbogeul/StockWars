@@ -5,12 +5,14 @@ import path from 'node:path';
 
 // Closed-demo guest sessions, not authenticated accounts. No NPCs are registered.
 export class PresenceRegistry {
-    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile } = {}) {
+    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = true } = {}) {
         this.now = now;
         this.timeoutMs = timeoutMs;
         this.capacity = capacity;
         this.sessions = new Map();
         this.nameFile = nameFile;
+        // Shared towns reserve each normalized nickname for its session.
+        this.enforceUniqueNicknames = enforceUniqueNicknames;
         this.names = new Map();
         this.social = { requests: [], friendships: [] };
         if (nameFile && fs.existsSync(`${nameFile}.social`)) this.social = JSON.parse(fs.readFileSync(`${nameFile}.social`, 'utf8'));
@@ -37,6 +39,7 @@ export class PresenceRegistry {
 
     update(token, action, channelId, pose) {
         this.prune();
+        let seatRejected = null;
         const session = this.sessions.get(token);
         if (!session) throw Object.assign(new Error('세션을 다시 연결해 주세요.'), { status: 401 });
         if (action === 'nickname') {
@@ -60,6 +63,13 @@ export class PresenceRegistry {
             const nickname = this.claimNickname(token, pose.nickname ?? `플레이어 ${session.playerId}`);
             const location = pose.location || 'town';
             if (!['town', 'cipher', 'vivian', 'logistics', 'arena', 'training'].includes(location)) throw Object.assign(new Error('잘못된 장소입니다.'), { status: 400 });
+            // A sofa has one shared seat, including aliases from the earlier two-seat client.
+            if(location==='cipher'&&pose.resting===true&&typeof pose.seatId==='string'){
+                const seatId=pose.seatId.replace(/^(lounge-(?:left|right))-[12]$/, '$1');
+                const occupied=['lounge-left','lounge-right'].includes(seatId)&&[...this.sessions.values()].some(other=>other!==session&&other.active&&other.channelId===session.channelId&&other.pose?.location==='cipher'&&other.pose.resting&&other.pose.seatId===seatId&&this.now()-other.poseAt<5000);
+                if(occupied){seatRejected=pose.seatId;pose={...pose,x:session.pose?.x??pose.x,y:session.pose?.y??pose.y,resting:false,seatId:null};}
+                else pose={...pose,seatId};
+            }
             session.pose = { location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true,
                 seatId:pose.resting===true&&typeof pose.seatId==='string'?pose.seatId.slice(0,80):null, nickname,
                 level: Number.isInteger(pose.level) ? Math.min(20, Math.max(1, pose.level)) : 1,
@@ -70,7 +80,7 @@ export class PresenceRegistry {
         }
         session.active = action !== 'disconnect';
         session.seen = this.now();
-        return this.snapshot(token);
+        return {...this.snapshot(token),...(seatRejected?{seatRejected}:{})};
     }
 
     forget(token) {
@@ -82,6 +92,7 @@ export class PresenceRegistry {
         this.social.friendships = this.social.friendships.filter(pair => !pair.includes(token));
         if (this.social.gifts) this.social.gifts = this.social.gifts.filter(g => g.from !== token && g.to !== token);
         if (this.social.arenaResults) this.social.arenaResults = this.social.arenaResults.map(r => ({ ...r, results: r.results.filter(p => p.owner !== token) })).filter(r => r.results.length);
+        if (this.social.leaderboard) this.social.leaderboard = this.social.leaderboard.filter(r => r.owner !== token);
         this.sessions.delete(token);
         if (id !== undefined) {
             this.news = this.news.filter(n => n.playerId !== id);
@@ -114,11 +125,15 @@ export class PresenceRegistry {
 
     claimNickname(token, input) {
         const nickname = typeof input === 'string' ? input.normalize('NFKC').trim().replace(/\s+/g, ' ') : '';
-        if (!nickname || Array.from(nickname).length > 24 || /[\p{Cc}\p{Cf}]/u.test(nickname)) {
-            throw Object.assign(new Error('닉네임은 1~24자로 입력해 주세요.'), { status: 400 });
+        if (!nickname || Array.from(nickname).length > 10 || /[\p{Cc}\p{Cf}]/u.test(nickname)) {
+            throw Object.assign(new Error('닉네임은 1~10자로 입력해 주세요.'), { status: 400 });
         }
-        const key = nickname.replace(/\s/g, '').toLowerCase();
-        const existing = this.names.get(key);
+        const normalized = nickname.replace(/\s/g, '').toLowerCase();
+        const key = this.enforceUniqueNicknames ? normalized : `session:${token}`;
+        const existing = this.enforceUniqueNicknames
+            ? [...this.names.values()].find(entry => entry.token !== token && entry.nickname.replace(/\s/g, '').toLowerCase() === normalized)
+                || this.names.get(key)
+            : this.names.get(key);
         if (existing && existing.token !== token) throw Object.assign(new Error('이미 사용 중인 닉네임입니다. 다른 이름을 입력해 주세요.'), { status: 409 });
         if (existing?.nickname === nickname) return nickname;
         const next = new Map(this.names);
@@ -138,6 +153,7 @@ export class PresenceRegistry {
         const session = this.sessions.get(token);
         if (!session || !session.active) throw Object.assign(new Error('세션을 다시 연결해 주세요.'), { status: 401 });
         const fail = (message, status = 400) => { throw Object.assign(new Error(message), { status }); };
+        if (action === 'leaderboard') return this.leaderboard(token, options.profile);
         if (action === 'friends') return this.friends(token, options);
         if (action === 'newsPublish') {
             const a = options.achievement;
@@ -277,12 +293,48 @@ export class PresenceRegistry {
         };
     }
 
+    leaderboard(token, profile) {
+        const registered = [...this.names.values()].find(n => n.token === token);
+        if (!registered) throw Object.assign(new Error('플레이어 등록 후 랭킹을 이용할 수 있습니다.'), { status: 409 });
+        if (profile) {
+            if (!Number.isFinite(profile.netWorth) || profile.netWorth < 0 || profile.netWorth > Number.MAX_SAFE_INTEGER || typeof profile.title !== 'string' || profile.title.length > 80) throw Object.assign(new Error('잘못된 플레이 기록입니다.'), { status: 400 });
+            const records = this.social.leaderboard || [];
+            let record = records.find(r => r.owner === token);
+            if (!record) { record = { owner: token, history: [] }; records.push(record); }
+            const now = this.now(), day = Math.floor((now + 9 * 3600000) / 86400000);
+            const previous = record.history.find(h => h.day === day);
+            if (previous) previous.netWorth = profile.netWorth;
+            else record.history.push({ day, netWorth: profile.netWorth });
+            record.history = record.history.filter(h => h.day >= day - 8);
+            Object.assign(record, { netWorth: profile.netWorth, title: profile.title, updatedAt: now });
+            this.social.leaderboard = records;
+            if (this.nameFile) {
+                fs.mkdirSync(path.dirname(this.nameFile), { recursive: true });
+                fs.writeFileSync(this.nameFile + '.social.tmp', JSON.stringify(this.social), { mode: 0o600 });
+                fs.renameSync(this.nameFile + '.social.tmp', this.nameFile + '.social');
+            }
+        }
+        const peers = new Set(this.social.friendships.filter(pair => pair.includes(token)).flat());
+        const day = Math.floor((this.now() + 9 * 3600000) / 86400000);
+        const records = (this.social.leaderboard || []).flatMap(record => {
+            const player = [...this.names.values()].find(n => n.token === record.owner);
+            if (!player || !Number.isFinite(record.netWorth)) return [];
+            const baseline = record.history?.find(h => h.day === day - 7);
+            const current = record.history?.find(h => h.day === day);
+            return [{ name: player.nickname, title: record.title, avatar: '👤', netWorth: record.netWorth,
+                weeklyReturn: baseline?.netWorth > 0 && current ? (current.netWorth / baseline.netWorth - 1) * 100 : null,
+                updatedAt: record.updatedAt, isMe: record.owner === token, isFriend: peers.has(record.owner) }];
+        });
+        return { records };
+    }
+
     snapshot(token) {
         this.prune();
         const active = [...this.sessions.values()].filter(s => s.active && this.now() - s.seen < this.timeoutMs);
         const session = this.sessions.get(token);
         return {
             totalCCU: active.length,
+            uniqueNicknames: this.enforceUniqueNicknames,
             capacity: this.capacity,
             currentChannelId: session?.channelId || null,
             playerId: session?.playerId,
