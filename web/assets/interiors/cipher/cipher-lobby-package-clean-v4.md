@@ -1,0 +1,7 @@
+# 사이퍼 로비 clean v4
+
+내장 image_gen으로 팔걸이/등받이 끝의 두 줄 흰 장식선을 한 줄로 정리했다. 잘못 제거했던 양쪽 소파 하단의 흰 받침은 복원했다. 게임은 `cipher-lobby-package-clean-v4.png`를 사용한다. 배치와 충돌 코드는 유지한다.
+
+## 생성 프롬프트
+
+Use case: precise-object-edit. Input 1 is the complete room EDIT TARGET. Input 2 is a close-up PROBLEM LOCATION reference: the two parallel WHITE VERTICAL/L-shaped stripes on the sofa's upper left arm/back END CAP. Correct these doubled end-cap stripes to exactly ONE simple solid white stripe wrapping over each upper end cap. At the left sofa's left end near (935,514) in the 1759x894 image, two white parallel strokes have blue between them: replace with ONE solid white accent, no blue slit splitting it into two lines. Apply consistent single-stripe detail to the other sofa end caps too. ALSO UNDO an erroneous previous edit: restore the cream/white horizontal LOWER BASE plinth underneath BOTH blue sofas (one continuous cream base band per sofa above small dark feet). The lower white base was not the user's complaint and must be restored. Preserve every other pixel/composition as closely as possible: same isometric camera, exact furniture positions/shapes, desk, rug, table, plants, doors, empty display, navy background, clean flat surfaces, no characters/UI. Do not move, rescale or warp furniture. Return complete opaque room, same size and framing. Only sofa decorative strip details and restoration of cream lower bases.

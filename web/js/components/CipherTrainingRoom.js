@@ -25,16 +25,13 @@ export class CipherTrainingRoom {
             const option=document.createElement('option');option.value=value;option.textContent=label;sectors.append(option);
         }
         this.dialog.querySelector('[type=search]').after(sectors);this.sectors=sectors;sectors.onchange=()=>this.render();
-        const accountButton=document.createElement('button');accountButton.textContent='내 계좌';accountButton.onclick=()=>{this.accountVisible=!this.accountVisible;this.renderAccount();};
-        this.dialog.querySelector('header').insertBefore(accountButton,this.dialog.querySelector('[data-close]'));
-        this.account=document.createElement('section');this.account.className='training-account';this.account.hidden=true;
+        this.account=document.createElement('section');this.account.className='training-account training-assets';this.account.setAttribute('aria-label','내 자산 현황');
         this.dialog.querySelector('header').after(this.account);
         if(this.desktopMode){
             this.dialog.classList.add('training-desktop');
-            this.summary=document.createElement('section');this.summary.className='training-summary';this.dialog.querySelector('header').after(this.summary);
             const filter=document.createElement('select');filter.setAttribute('aria-label','종목 목록 필터');for(const [value,label] of [['all','전체 종목'],['watch','관심 종목'],['held','보유 종목']]){const option=document.createElement('option');option.value=value;option.textContent=label;filter.append(option);}filter.onchange=()=>{this.stockFilter=filter.value;this.render();};sectors.after(filter);
             const star=document.createElement('button');star.setAttribute('data-watch','');star.onclick=()=>{if(this.watchlist.has(this.selected))this.watchlist.delete(this.selected);else this.watchlist.add(this.selected);localStorage.setItem('stockwars.training.watchlist',JSON.stringify([...this.watchlist]));this.render();};this.dialog.querySelector('.training-stock-heading').append(star);
-            this.info=document.createElement('details');this.info.open=true;this.info.style.cssText='margin-top:18px;padding:16px 18px;background:#12283a;border:1px solid #345268;border-radius:12px';
+            this.info=document.createElement('details');this.info.open=false;this.info.style.cssText='margin-top:18px;padding:16px 18px;background:#12283a;border:1px solid #345268;border-radius:12px';
             const infoTitle=document.createElement('summary');infoTitle.textContent='기업 정보 · 투자 판단 자료';infoTitle.style.cssText='cursor:pointer;font-weight:700;color:#e5c267';
             this.infoBody=document.createElement('div');this.info.append(infoTitle,this.infoBody);this.dialog.querySelector('.training-chart').before(this.info);
             const infoButton=document.createElement('button');infoButton.textContent='ⓘ 기업 정보';infoButton.onclick=()=>{this.info.open=!this.info.open;if(this.info.open)this.info.scrollIntoView({behavior:'smooth',block:'nearest'});};this.dialog.querySelector('.training-stock-heading').append(infoButton);
@@ -43,9 +40,13 @@ export class CipherTrainingRoom {
         }
         if(!document.getElementById('cipher-training-style')){
             const style=document.createElement('style');style.id='cipher-training-style';style.textContent=`
-            .cipher-training{box-sizing:border-box;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:24px;background:#081221;color:#eaf0f8;border:0;font-family:inherit}
-            .cipher-training[open]{display:flex;flex-direction:column;gap:22px}.cipher-training header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263e55;padding-bottom:18px}.cipher-training h2{margin:6px 0}.cipher-training small{color:#e4bb59;letter-spacing:2px}.cipher-training h3{font-size:15px;color:#a6bace}.cipher-training button,.cipher-training input{font:inherit;border:1px solid #344e68;border-radius:8px;padding:10px;background:#14283e;color:#eaf0f8}.cipher-training button{cursor:pointer}.training-workspace{display:grid;grid-template-columns:260px minmax(0,1fr) 300px;gap:18px;min-height:0;flex:1}.training-workspace>aside,.training-workspace>main{background:#0e1d2e;border:1px solid #233950;border-radius:14px;padding:18px;overflow:auto}.cipher-training select{width:100%;padding:10px;margin-bottom:8px;background:#14283e;color:#eaf0f8;border:1px solid #344e68;border-radius:8px}.training-account{padding:14px 20px;background:#14283e;border:1px solid #344e68;border-radius:12px;max-height:230px;overflow:auto}.training-account[hidden]{display:none}.training-workspace input{box-sizing:border-box;width:100%;margin:8px 0}.training-stocks button{display:flex;width:100%;justify-content:space-between;margin:8px 0;text-align:left;gap:12px}.training-stocks button.active{border-color:#e4bb59;background:#223449}.training-stock-heading{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}.training-stock-heading strong{font-size:28px;color:#ffd875}.training-stock-heading span{color:#8da8bd}.training-chart{height:clamp(240px,45vh,550px);margin-top:20px}.training-book>div,.training-portfolio>div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #233950;gap:12px}.training-actions{display:flex;gap:10px}.training-actions button{flex:1;font-weight:700}.training-actions [data-buy]{background:#923b46}.training-actions [data-sell]{background:#225a94}.training-result{min-height:48px;line-height:1.6;color:#e4bb59}.training-order label{display:block;margin:22px 0}.training-order p{line-height:1.7}
-            .training-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;background:#12283b;border:1px solid #2b475e;border-radius:12px;padding:14px 18px}.training-summary small{display:block;letter-spacing:0;color:#9fb7ca;margin-bottom:6px}.training-summary strong{font-size:22px;color:#f5d583}.training-desktop .training-chart{height:clamp(240px,32vh,360px)}.training-desktop .training-book{display:grid;grid-template-columns:1fr 1fr;gap:16px}.training-desktop .training-book section>div{padding:10px 0;border-bottom:1px solid #294157;font-size:14px}.training-quantity-shortcuts{display:flex;gap:8px;margin-top:8px}.training-quantity-shortcuts button{flex:1;padding:7px}.training-desktop .training-stocks button small{display:block;letter-spacing:0;font-size:12px}.training-desktop [data-watch]{font-size:13px;margin-left:auto}@media(max-width:640px){.training-summary{grid-template-columns:1fr 1fr}}
+            .cipher-training{box-sizing:border-box;position:fixed;inset:0;width:calc(100 * var(--game-vw, 1vw));height:calc(100 * var(--game-vh, 1dvh));max-width:none;max-height:none;margin:0;padding:24px;background:#081221;color:#eaf0f8;border:0;font-family:inherit}
+            .cipher-training[open]{display:flex;flex-direction:column;gap:22px}.cipher-training header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263e55;padding-bottom:18px}.cipher-training h2{margin:6px 0}.cipher-training small{color:#e4bb59;letter-spacing:2px}.cipher-training h3{font-size:15px;color:#a6bace}.cipher-training button,.cipher-training input{font:inherit;border:1px solid #344e68;border-radius:8px;padding:10px;background:#14283e;color:#eaf0f8}.cipher-training button{cursor:pointer}.training-workspace{display:grid;grid-template-columns:260px minmax(0,1fr) 300px;gap:18px;min-height:0;flex:1}.training-workspace>aside,.training-workspace>main{background:#0e1d2e;border:1px solid #233950;border-radius:14px;padding:18px;overflow:auto}.cipher-training select{width:100%;padding:10px;margin-bottom:8px;background:#14283e;color:#eaf0f8;border:1px solid #344e68;border-radius:8px}.training-account{padding:14px 20px;background:#14283e;border:1px solid #344e68;border-radius:12px;max-height:230px;overflow:auto}.training-account[hidden]{display:none}.training-workspace input{box-sizing:border-box;width:100%;margin:8px 0}.training-stocks button{display:flex;width:100%;justify-content:space-between;margin:8px 0;text-align:left;gap:12px}.training-stocks button.active{border-color:#e4bb59;background:#223449}.training-stock-heading{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}.training-stock-heading strong{font-size:28px;color:#ffd875}.training-stock-heading span{color:#8da8bd}.training-chart{height:clamp(240px,calc(45 * var(--game-vh, 1vh)),550px);margin-top:20px}.training-book>div,.training-portfolio>div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #233950;gap:12px}.training-actions{display:flex;gap:10px}.training-actions button{flex:1;font-weight:700}.training-actions [data-buy]{background:#923b46}.training-actions [data-sell]{background:#225a94}.training-result{min-height:48px;line-height:1.6;color:#e4bb59}.training-order label{display:block;margin:22px 0}.training-order p{line-height:1.7}
+            .cipher-training .training-assets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;flex-shrink:0;padding:16px 20px;background:#111e2d;border:1px solid #2b3c4f;border-radius:12px;max-height:none;overflow:visible}
+            .training-assets>div{min-width:0}.training-assets>div+div{border-left:1px solid #2b3c4f;padding-left:20px}.training-assets span{display:block;color:#94a8bc;font-size:12px;margin-bottom:6px}.training-assets strong{font-size:21px;color:#e7eef6;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.training-assets>div:first-child strong{color:#dfc384}
+            @media(max-width:640px){.cipher-training .training-assets{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;padding:14px}.training-assets>div+div{padding-left:0;border-left:0}.training-assets strong{font-size:18px}}
+            .training-holding{padding:14px 0;border-bottom:1px solid #2b3c4f;line-height:1.7}.training-holding strong{display:block;font-size:14px;color:#e1eaf3;overflow-wrap:anywhere}.training-holding span{display:block;font-size:12px;color:#a3b7ca}
+            .training-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;background:#12283b;border:1px solid #2b475e;border-radius:12px;padding:14px 18px}.training-summary small{display:block;letter-spacing:0;color:#9fb7ca;margin-bottom:6px}.training-summary strong{font-size:22px;color:#f5d583}.training-desktop .training-chart{height:clamp(240px,calc(32 * var(--game-vh, 1vh)),360px)}.training-desktop .training-book{display:grid;grid-template-columns:1fr 1fr;gap:16px}.training-desktop .training-book section>div{padding:10px 0;border-bottom:1px solid #294157;font-size:14px}.training-quantity-shortcuts{display:flex;gap:8px;margin-top:8px}.training-quantity-shortcuts button{flex:1;padding:7px}.training-desktop .training-stocks button small{display:block;letter-spacing:0;font-size:12px}.training-desktop [data-watch]{font-size:13px;margin-left:auto}@media(max-width:640px){.training-summary{grid-template-columns:1fr 1fr}}
             .cipher-training:not(.cipher-arena){overflow-y:auto;overscroll-behavior:contain}
             .cipher-training:not(.cipher-arena)>*{flex-shrink:0}
             .cipher-training:not(.cipher-arena)>.training-workspace{flex:none;min-height:560px;align-items:start}
@@ -84,7 +85,7 @@ export class CipherTrainingRoom {
         }
         this.renderDetails();
         this.renderAccount();
-        if(this.summary){const state=this.engine.getState();this.summary.replaceChildren();for(const [label,value] of [['총자산',state.totalNetWorth],['보유 현금',state.cash],['보유 평가액',state.portfolioValue],['평가손익',state.totalProfitLoss]]){const card=document.createElement('div'),caption=document.createElement('small'),amount=document.createElement('strong');caption.textContent=label;amount.textContent=`${Math.round(value).toLocaleString()}G`;card.append(caption,amount);this.summary.append(card);}}
+
     }
     renderDetails(){
         const stock=this.engine.stocks.get(this.selected);if(!stock)return;
@@ -113,7 +114,8 @@ export class CipherTrainingRoom {
             const line=document.createElement('div');line.textContent=`${this.engine.stocks.get(position.id)?.name||position.id} · ${position.qty??position.quantity??0}주`;portfolio.append(line);
         }
         if(!portfolio.childElementCount)portfolio.textContent='보유 종목이 없습니다.';
-        if(this.desktopMode){portfolio.replaceChildren();const position=this.engine.getState().portfolio.find(item=>item.id===this.selected);const line=document.createElement('p');line.style.cssText='line-height:1.9;color:#b4cadb';line.textContent=position?`${stock.name} · ${position.qty}주\n평균 매수가 ${Math.round(position.avgPrice).toLocaleString()}G · 평가손익 ${Math.round(position.profitLoss).toLocaleString()}G`:`${stock.name} 보유 수량 0주`;portfolio.append(line);}
+        if(this.desktopMode)this.renderHoldings(portfolio);
+
     }
     renderInfo(stock){
         const related=(this.engine.news||[]).filter(news=>news.stockId===stock.id||news.sector===stock.sector).slice(0,3);
@@ -145,22 +147,36 @@ export class CipherTrainingRoom {
         const result=side==='buy'?(this.shortMode?this.engine.shortStock(this.selected,qty,this.leverage,'brokerage'):this.engine.buyStock(this.selected,qty,this.leverage,'brokerage')):this.engine.sellStock(this.selected,qty,'brokerage');
         this.dialog.querySelector('.training-result').textContent=result.msg;this.render();
     }
-    renderAccount(){
-        this.account.hidden=!this.accountVisible;if(!this.accountVisible)return;
-        const state=this.engine.getState(),money=n=>`${Math.round(n).toLocaleString()}G`;
-        this.account.replaceChildren();
-        const title=document.createElement('h3');title.textContent='내 계좌';this.account.append(title);
-        const cards=document.createElement('div');cards.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px';
-        for(const [label,value] of [['총 자산',state.totalNetWorth],['보유 현금',state.cash],['보유 평가액',state.portfolioValue],['평가손익',state.totalProfitLoss]]){
-            const card=document.createElement('div');card.style.cssText='padding:16px;background:#0b1a2b;border:1px solid #2b435a;border-radius:10px';
-            const caption=document.createElement('small');caption.textContent=label;caption.style.cssText='display:block;color:#90a8bd;letter-spacing:0;margin-bottom:8px';
-            const amount=document.createElement('strong');amount.textContent=money(value);amount.style.cssText=`font-size:22px;color:${label==='평가손익'?(value<0?'#79b8ff':'#ff939c'):'#f5d583'}`;card.append(caption,amount);cards.append(card);
-        }this.account.append(cards);
-        for(const item of state.portfolio){
-            const row=document.createElement('p');row.textContent=`${item.name||this.engine.stocks.get(item.id)?.name} · ${item.isShort?'공매도':'매수'} ${item.leverage}배 · ${item.qty}주 · 평균가 ${money(item.avgPrice)} · 평가손익 ${money(item.profitLoss)}`;this.account.append(row);
+    renderHoldings(portfolio){
+        portfolio.replaceChildren();
+        const positions=this.engine.getState().portfolio;
+        if(!positions.length){portfolio.textContent='보유 종목이 없습니다.';return;}
+        const money=value=>`${Math.round(value).toLocaleString()}G`;
+        for(const position of positions){
+            const row=document.createElement('article');row.className='training-holding';
+            const name=document.createElement('strong');name.textContent=position.name||this.engine.stocks.get(position.id)?.name||position.id;
+            const quantity=document.createElement('span');quantity.textContent=`${position.isShort?'공매도':'매수'} · ${position.leverage||1}배 · ${position.qty}주`;
+            const cost=document.createElement('span');cost.textContent=`평균가 ${money(position.avgPrice)}`;
+            const profit=document.createElement('span');profit.textContent=`평가손익 ${position.profitLoss>0?'+':''}${money(position.profitLoss)}`;profit.style.color=position.profitLoss>0?'#f18d99':position.profitLoss<0?'#86bafa':'#b6c6d6';
+            row.append(name,quantity,cost,profit);portfolio.append(row);
         }
-        if(!state.portfolio.length){const empty=document.createElement('p');empty.textContent='보유 종목이 없습니다.';this.account.append(empty);}
     }
+    renderAccount(){
+        this.account.hidden=false;
+        const state=this.engine.getState(),money=value=>`${Math.round(value).toLocaleString()}G`;
+        const rate=this.engine.initialCash>0?(state.totalNetWorth/this.engine.initialCash-1)*100:0;
+        const change=this.desktopMode?state.totalProfitLoss:rate;
+        const changeLabel=this.desktopMode?'평가손익':'대결 수익률';
+        const changeValue=this.desktopMode?`${change>0?'+':''}${money(change)}`:`${rate>0?'+':''}${rate.toFixed(2)}%`;
+        this.account.replaceChildren();
+        for(const [label,value] of [['총자산',money(state.totalNetWorth)],['보유 현금',money(state.cash)],['주식 평가액',money(state.portfolioValue)],[changeLabel,changeValue]]){
+            const cell=document.createElement('div'),caption=document.createElement('span'),amount=document.createElement('strong');
+            caption.textContent=label;amount.textContent=value;
+            if(label===changeLabel)amount.style.color=change>0?'#f18d99':change<0?'#86bafa':'#dce6f0';
+            cell.append(caption,amount);this.account.append(cell);
+        }
+    }
+
 }
 
 

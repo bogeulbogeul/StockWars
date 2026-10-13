@@ -1,0 +1,6 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>트레이닝 자산 현황 미리보기</title><link rel="stylesheet" href="../css/style.css"></head><body><script type="module">
+import {CipherTrainingRoom} from '../js/components/CipherTrainingRoom.js?training-assets-preview=2';
+import {MarketEngine,marketEngine} from '../js/engine/marketEngine.js';
+marketEngine.stopEngine();const engine=new MarketEngine();engine.stopEngine();engine.cash=engine.initialCash=10000;
+const match=new CipherTrainingRoom(document.body);match.open();
+</script></body></html>

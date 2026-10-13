@@ -11,7 +11,7 @@ test('town appears only after server accepts entry, office departure releases me
     let shown = false;
     let left = false;
     const bridge = {
-        claimNickname: async () => ({ snapshot: {} }),
+        claimNickname: async () => { throw new Error('Town entry must not check nickname uniqueness'); },
         join: async () => accepted ? { snapshot: { channels: [{id: 'town-1', name: '타운 1'}], currentChannelId: 'town-1', ping: 8 } } : { error: 'offline' },
         leave: async () => { left = true; }
     };

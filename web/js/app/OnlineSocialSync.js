@@ -29,6 +29,7 @@ export class OnlineSocialSync {
                 const sofa=scene.location==='cipher'&&seat?a.cipherLobby.editor.items.find(i=>i.id===seat.id):null;
                 const seatId=sofa?`sofa:${sofa.u}:${sofa.v}:${sofa.rotation||0}`:seat?.id;
                 const result=await window.stockWarsPresence.position({location:scene.location,x:p.charPosX??p.x,y:p.charPosY??p.y,facing:typeof p.facing==='string'?p.facing:p.facing===-1?'left':'right',resting:!!seat||p.isResting||false,seatId,nickname:a.userProfile.nickname,level:a.itemEngine?.playerLevel()||1,trait:a.userProfile.trait?.title||''});
+                if(scene.location==='cipher'&&result.snapshot?.seatRejected===seatId&&a.cipherLobby.seated===seat)a.cipherLobby.standUp();
                 if(!a.isLocalSession&&!result.error&&this.currentScene()?.location===scene.location)this.receive(result.snapshot?.players||[],scene.location);
             }catch{}
         }else this.receive([],null);

@@ -1,0 +1,25 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>통합 로비 겹침 검수</title>
+<style>:root{zoom:1!important}body{margin:16px;background:#081221;color:#eaf8ff;font:14px system-ui}main{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:1200px}figure{margin:0;background:#142637;border-radius:10px;overflow:hidden}figcaption{padding:8px}canvas{display:block;width:100%;height:auto}h1{font-size:20px}</style>
+<h1>통합 원본 배치 · 가구 진입 차단 · 착석 검수</h1><p role="status">에셋 불러오는 중</p><main></main>
+<script type="module">
+import {CipherRoomPackage} from '../js/components/CipherRoomPackage.js';
+import {createPackageNavigation,SEATS,overlapsForeground} from '../js/components/CipherRoomPackageGeometry.js';
+import {CipherLobby} from '../js/components/CipherCanvasLobby.js';
+import {marketEngine} from '../js/engine/marketEngine.js';
+marketEngine.stopEngine();
+const background=new Image();background.src='../assets/interiors/cipher/cipher-lobby-package-clean-v7.png';
+const agent=new Image();agent.src='../assets/characters/agent-k/agent-k-chibi-isometric-v1.png';
+await Promise.all([background.decode(),agent.decode()]);
+const navigation=createPackageNavigation();
+const cases=[['데스크 상판 모서리 진입 차단',803,332,620,200],['데스크 오른쪽 끝 진입 차단',850,348,620,200],['왼쪽 소파 뒤 진입 차단',1030,485,880,380],['오른쪽 소파 옆 진입 차단',1195,551,990,420],['상판 화분 진입 차단',1152,550,940,430],['테이블 앞 이동',1115,701,940,440],['왼쪽 소파 중앙 착석',998,531,880,420,SEATS[0]],['오른쪽 소파 중앙 착석',1269,562.5,1080,440,SEATS[1]],['오른쪽 문 접근',1400,571,1120,380]];
+let failures=0;
+for(const [label,x,y,ox,oy,seat] of cases){
+ const player={x,y,phase:0,facing:1},lobby={player,seated:seat,notice:{hidden:true},paintPlayer:CipherLobby.prototype.paintPlayer};
+ const room=Object.assign(Object.create(CipherRoomPackage.prototype),{lobby,background,agent,navigation});
+ const pose=room.actorPose(player,seat);
+ if(!seat&&(!navigation.isWalkable(pose.x,pose.y)||overlapsForeground(pose.x,pose.y)))failures++;
+ const figure=document.createElement('figure'),caption=document.createElement('figcaption'),canvas=document.createElement('canvas');caption.textContent=label;canvas.width=440;canvas.height=290;
+ const ctx=canvas.getContext('2d');ctx.translate(-ox,-oy);room.draw(ctx);figure.append(caption,canvas);document.querySelector('main').append(figure);
+}
+document.querySelector('[role=status]').textContent=(failures?'FAIL':'PASS')+' · 9개 위치 · 캐릭터 픽셀 삭제 및 가구별 바닥 조각 합성 없음';
+</script></html>

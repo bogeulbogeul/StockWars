@@ -35,7 +35,7 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         rumor_time_prediction: ['연습용: “이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.” 언제 영향을 줄까요?'],
         rumor_time_feedback: ['“이틀 뒤”가 시간 단서예요. 주가 반응은 발표보다 빠르거나 늦을 수 있어요.', [['시간 단서', '이틀 뒤'], ['시장 반응', '발표 시점과 다를 수 있음']]],
         rumor_reading_summary: ['찌라시의 단서를 뉴스와 공시로 확인하세요.', [['무엇?', '종목 · 사건'], ['어떻게?', '상승 · 하락'], ['언제?', '발표 · 영향 시점']]],
-        stamina_recovery_guide: ['물류 일을 하면 하트가 줄어요. 부족하면 벤치에서 쉬세요.', [['물류 일', '하트 소모'], ['벤치', '하루 1회 전량 회복']]],
+        stamina_recovery_guide: ['물류 일 하느라 수고했어요! 에너지 드링크 한 캔을 선물할게요. 지금 마시고 하트 1개를 회복해 보세요.', [['안나의 선물', '에너지 드링크 1개'], ['바로 사용', '하트 1개 회복']]],
         stock_basics_budget: ['투자하기 전에 월세로 쓸 현금을 남겨 두세요.', [['7일 차', '월세 5,000G'], ['생활비', '투자금과 나눠 두기']]],
         logistics_completed: ['첫 거래 안내를 마쳤어요! 준비됐다면 자립을 시작하세요.', [['+2,000G', '정착 지원금'], ['7일 차', '월세 준비']]]
     };
@@ -83,7 +83,10 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
                 '연습용: 에코 배터리의 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.',
                 '연습용: 에코 배터리의 5조 원 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.'
             ];
-            compact.text = examples[level - 1]; compact.detailText = step.text;
+            compact.lessonTitle = `분석력 ${level}단계에서는 찌라시가 어떻게 보일까요?`;
+            compact.text = `분석력 ${level}단계에서 읽으면 이렇게 보여요.\n${examples[level - 1]}`;
+            compact.detailText = step.text;
+            compact.takeaway = '분석력이 높아질수록 같은 찌라시에서 기업명·사건·금액 등 더 구체적인 정보를 읽을 수 있어요. 지금은 실제 능력치를 바꾸지 않고 1~5단계의 차이를 비교하는 연습이에요.';
             compact.cards = [[`분석력 ${level}단계`, ['비유 속 단서', '업종 · 방향', '사건 · 시점', '기업 · 근거', '금액 · 상세'][level - 1]], ['주의', '해석 ≠ 진위 보증']];
         }
         const additions = [];

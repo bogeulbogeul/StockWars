@@ -5,12 +5,14 @@ import path from 'node:path';
 
 // Closed-demo guest sessions, not authenticated accounts. No NPCs are registered.
 export class PresenceRegistry {
-    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile } = {}) {
+    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = false } = {}) {
         this.now = now;
         this.timeoutMs = timeoutMs;
         this.capacity = capacity;
         this.sessions = new Map();
         this.nameFile = nameFile;
+        // Development: devices may share a display name; identities remain separate tokens.
+        this.enforceUniqueNicknames = enforceUniqueNicknames;
         this.names = new Map();
         this.social = { requests: [], friendships: [] };
         if (nameFile && fs.existsSync(`${nameFile}.social`)) this.social = JSON.parse(fs.readFileSync(`${nameFile}.social`, 'utf8'));
@@ -37,6 +39,7 @@ export class PresenceRegistry {
 
     update(token, action, channelId, pose) {
         this.prune();
+        let seatRejected = null;
         const session = this.sessions.get(token);
         if (!session) throw Object.assign(new Error('세션을 다시 연결해 주세요.'), { status: 401 });
         if (action === 'nickname') {
@@ -60,6 +63,13 @@ export class PresenceRegistry {
             const nickname = this.claimNickname(token, pose.nickname ?? `플레이어 ${session.playerId}`);
             const location = pose.location || 'town';
             if (!['town', 'cipher', 'vivian', 'logistics', 'arena', 'training'].includes(location)) throw Object.assign(new Error('잘못된 장소입니다.'), { status: 400 });
+            // A sofa has one shared seat, including aliases from the earlier two-seat client.
+            if(location==='cipher'&&pose.resting===true&&typeof pose.seatId==='string'){
+                const seatId=pose.seatId.replace(/^(lounge-(?:left|right))-[12]$/, '$1');
+                const occupied=['lounge-left','lounge-right'].includes(seatId)&&[...this.sessions.values()].some(other=>other!==session&&other.active&&other.channelId===session.channelId&&other.pose?.location==='cipher'&&other.pose.resting&&other.pose.seatId===seatId&&this.now()-other.poseAt<5000);
+                if(occupied){seatRejected=pose.seatId;pose={...pose,x:session.pose?.x??pose.x,y:session.pose?.y??pose.y,resting:false,seatId:null};}
+                else pose={...pose,seatId};
+            }
             session.pose = { location, x: pose.x, y: pose.y, facing: pose.facing, resting: pose.resting === true,
                 seatId:pose.resting===true&&typeof pose.seatId==='string'?pose.seatId.slice(0,80):null, nickname,
                 level: Number.isInteger(pose.level) ? Math.min(20, Math.max(1, pose.level)) : 1,
@@ -70,7 +80,7 @@ export class PresenceRegistry {
         }
         session.active = action !== 'disconnect';
         session.seen = this.now();
-        return this.snapshot(token);
+        return {...this.snapshot(token),...(seatRejected?{seatRejected}:{})};
     }
 
     forget(token) {
@@ -118,8 +128,12 @@ export class PresenceRegistry {
         if (!nickname || Array.from(nickname).length > 10 || /[\p{Cc}\p{Cf}]/u.test(nickname)) {
             throw Object.assign(new Error('닉네임은 1~10자로 입력해 주세요.'), { status: 400 });
         }
-        const key = nickname.replace(/\s/g, '').toLowerCase();
-        const existing = this.names.get(key);
+        const normalized = nickname.replace(/\s/g, '').toLowerCase();
+        const key = this.enforceUniqueNicknames ? normalized : `session:${token}`;
+        const existing = this.enforceUniqueNicknames
+            ? [...this.names.values()].find(entry => entry.token !== token && entry.nickname.replace(/\s/g, '').toLowerCase() === normalized)
+                || this.names.get(key)
+            : this.names.get(key);
         if (existing && existing.token !== token) throw Object.assign(new Error('이미 사용 중인 닉네임입니다. 다른 이름을 입력해 주세요.'), { status: 409 });
         if (existing?.nickname === nickname) return nickname;
         const next = new Map(this.names);

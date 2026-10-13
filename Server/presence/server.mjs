@@ -56,7 +56,10 @@ export function createPresenceServer({ registry = new PresenceRegistry(), durabl
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-    const registry = new PresenceRegistry({ nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names-alpha-reset-v1.json', import.meta.url)) });
+    const registry = new PresenceRegistry({
+        nameFile: process.env.STOCKWARS_NAME_FILE || fileURLToPath(new URL('./data/player-names-alpha-reset-v1.json', import.meta.url)),
+        enforceUniqueNicknames: process.env.STOCKWARS_ENFORCE_UNIQUE_NICKNAMES === 'true'
+    });
     const durable = configuredPlayerStore();
     if (!durable && process.env.STOCKWARS_REQUIRE_DURABLE === 'true') throw new Error('친구 기록 보존을 위해 무료 저장소를 먼저 연결해야 합니다.');
     if (durable) await durable.restore(registry);

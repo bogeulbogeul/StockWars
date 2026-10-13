@@ -342,6 +342,22 @@ export class ItemEngine {
         this.state.stamina = Math.max(0, this.state.stamina - cost);
         return { goldReward: reward, staminaCost: cost };
     }
+    claimTutorialRecoveryDrink() {
+        if (this.state.tutorialRecoveryDrinkClaimed) return { ...ok('이미 안나의 회복 선물을 받았습니다.'), recovered: 0 };
+        this.tick();
+        const id = 'item_energy_drink';
+        if (!this.add(id)) return fail('가방 공간 또는 드링크 묶음 수량이 부족해요. 소지품을 정리한 뒤 선물을 다시 받아 주세요.');
+        const before = this.state.stamina;
+        const stored = before >= this.maxStamina();
+        if (!stored) {
+            const result = this.use(id);
+            if (!result.success) { this.consume(id); return result; }
+        }
+        this.state.tutorialRecoveryDrinkClaimed = true;
+        return { ...ok(stored ? '체력이 가득 차서 선물한 에너지 드링크 1개를 소지품에 보관했어요.'
+            : `선물한 에너지 드링크를 마셔 하트 ${this.state.stamina - before}개를 회복했어요! (${this.state.stamina}/${this.maxStamina()})`),
+            recovered: this.state.stamina - before, stored };
+    }
     claimTutorialReward(skipped = false) {
         if (skipped || this.state.tutorialRewardClaimed) return 0;
         this.state.tutorialRewardClaimed = true;

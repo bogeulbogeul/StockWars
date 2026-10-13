@@ -1,0 +1,8 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>사이퍼 로비 기능 검증</title><link rel="stylesheet" href="../css/style.css"></head><body><button id="enter">사이퍼 증권 입장</button><script type="module">
+import {CipherLobby} from '../js/components/CipherCanvasLobby.js';
+const lobby=new CipherLobby(document.body);
+// Exercise the production component without writing tutorial flags or account data.
+lobby.agentKIntroduced=true;
+document.querySelector('#enter').onclick=()=>lobby.open();
+lobby.open();
+</script></body></html>

@@ -266,6 +266,7 @@ class StockWarsApplication {
             getLaborReward: gold => this.itemEngine?.laborReward(gold) ?? gold,
             onComplete: (result) => {
                 const settlement = this.itemEngine.finishLabor(result.goldReward, result.expReward, true);
+                if (this.userProfile?.firstTutorialCompleted === false) this.userProfile.tutorialCheckpoint = 'rumor_inventory_guide';
                 this.itemGameplay.sync();
                 toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${settlement.staminaCost}: ${this.itemEngine.state.stamina}/${this.itemEngine.maxStamina()})`);
                 
@@ -391,6 +392,26 @@ class StockWarsApplication {
             getMarketState: () => marketEngine.getState(),
             getFirstTradeLesson: () => marketEngine.firstTradeLesson,
             onSaveLesson: () => this.itemGameplay?.save(),
+            onCheckpoint: checkpoint => {
+                if (checkpoint && this.userProfile?.firstTutorialCompleted === false) {
+                    this.userProfile.tutorialCheckpoint = checkpoint;
+                    this.itemGameplay?.save();
+                }
+            },
+            onRestoreTutorialChapter: checkpoint => {
+                if (checkpoint === 'celebrate') {
+                    this.smartphoneUI.showStockApp();
+                    document.body.classList.remove('phone-minimized');
+                    document.body.classList.add('phone-view-active');
+                    this.smartphoneUI.switchTab('Profile');
+                }
+            },
+            onTutorialRecoveryDrink: () => {
+                const result = this.itemEngine.claimTutorialRecoveryDrink();
+                this.itemGameplay.sync();
+                toastManager.show(result.message, result.success);
+                return result;
+            },
             onOpenSellGuide: (stockId) => {
                 this.smartphoneUI.showStockApp();
                 document.body.classList.remove('phone-minimized');
@@ -399,7 +420,8 @@ class StockWarsApplication {
                 this.openTradeModal(stockId);
             },
             onGrantInitialFunds: (amount = 5000) => {
-                if (marketEngine.cash === 0) {
+                if (!this.userProfile.initialFundsGranted && marketEngine.cash === 0) {
+                    this.userProfile.initialFundsGranted = true;
                     marketEngine.cash = amount;
                     marketEngine.initialCash = amount;
                     marketEngine.notify();
@@ -475,13 +497,13 @@ class StockWarsApplication {
         }
     }
 
-    onCharacterCreated(userProfile) {
-        this.userProfile = { ...userProfile, firstTutorialCompleted: false };
+    async onCharacterCreated(userProfile) {
+        this.userProfile = { ...userProfile, firstTutorialCompleted: false, tutorialCheckpoint: 'welcome_1' };
         this.smartphoneUI.updateUserProfile(this.userProfile);
         this.officeStage?.updateUserProfile(userProfile);
         this.townStage?.updateUserProfile(userProfile);
         this.enterOffice();
-        this.startGame(userProfile.mode || 'NEW');
+        await this.startGame(userProfile.mode || 'NEW');
         const recommendation = marketEngine.getRecommendedTutorialStock(userProfile);
         this.annaTutorial?.start(userProfile, recommendation);
         toastManager.show(`🎉 [출입증 발급 완료] ${userProfile.nickname} (${userProfile.trait.title}) 트레이더님 환영합니다!`);
@@ -491,7 +513,7 @@ class StockWarsApplication {
         const sessionMode = mode === 'CONTINUE' ? this.userProfile?.mode : mode;
         this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
         await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
-        if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE';
+        if (this.annaTutorial) this.annaTutorial.lessonEnabled = mode === 'CONTINUE' && this.userProfile?.firstTutorialCompleted === true;
         if (mode !== 'CONTINUE') { marketEngine.firstTradeLesson = null; marketEngine.limitOrders = []; marketEngine.tradeHistory = []; marketEngine.orderBooks.clear(); }
         if (mode !== 'CONTINUE') this.itemGameplay.reset();
         void this.playerSocial?.refresh();
@@ -534,10 +556,22 @@ class StockWarsApplication {
             toastManager.show('💾 저장된 게임 데이터를 불러왔습니다.');
         }
         this.itemGameplay.start();
+        if (mode === 'CONTINUE' && this.userProfile?.firstTutorialCompleted === false) {
+            let checkpoint = this.userProfile.tutorialCheckpoint || 'welcome_1';
+            const lesson = marketEngine.firstTradeLesson;
+            if (lesson && ['welcome_1', 'open_phone'].includes(checkpoint)) checkpoint = 'celebrate';
+            if (this.itemEngine.state.tutorialRecoveryDrinkClaimed && checkpoint === 'stamina_recovery_guide') checkpoint = 'stock_basics_budget';
+            const recommendation = lesson
+                ? { stock: marketEngine.stocks.get(lesson.stockId) }
+                : marketEngine.getRecommendedTutorialStock(this.userProfile, marketEngine.cash || 5000);
+            marketEngine.isTutorialActive = true;
+            if (lesson) marketEngine.tutorialStockId = lesson.stockId;
+            this.annaTutorial.start(this.userProfile, recommendation, checkpoint);
+        }
     }
 
     isTutorialNavigationBlocked() {
-        return !!(marketEngine.isTutorialActive || this.annaTutorial?.isActive);
+        return false; // Tutorial chapters can now be saved and resumed.
     }
 
     syncTutorialNavigation() {
@@ -550,11 +584,21 @@ class StockWarsApplication {
     }
 
     async quit() {
+        this.itemGameplay?.save();
         if (this.isTutorialNavigationBlocked()) return { error: '튜토리얼 완료 후 게임을 종료할 수 있어요.' };
         return window.stockWarsDesktop?.quit?.();
     }
 
     showTitleScreen() {
+        this.itemGameplay?.save();
+        if (this.annaTutorial) {
+            this.annaTutorial.isActive = false;
+            this.annaTutorial.lessonEnabled = false;
+            this.annaTutorial.stopRecommendationReview();
+            this.annaTutorial.finishTyping();
+            this.annaTutorial.cleanupHighlights();
+            this.annaTutorial.overlay?.classList.add('hidden');
+        }
         if (this.isTutorialNavigationBlocked()) {
             toastManager.show('튜토리얼 완료 후 메인메뉴로 나갈 수 있어요.', false);
             return false;
@@ -609,6 +653,7 @@ class StockWarsApplication {
             this.itemCenter.passPopup.open({
                 onQuick: () => {
                     const result = this.itemEngine.quickJob();
+                    if (result.success && this.userProfile?.firstTutorialCompleted === false) this.userProfile.tutorialCheckpoint = 'rumor_inventory_guide';
                     this.itemGameplay.sync();
                     toastManager.show(result.message, result.success);
                     if (result.success) this.annaTutorial?.notifyLogisticsJobCompleted(result);

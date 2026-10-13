@@ -55,3 +55,23 @@ test('ended rooms are destroyed while participants can briefly read their result
     arena.handle(a.token,{action:'leave',id});assert.equal(arena.completed.get(id).snapshots.size,1);
     advance(300000);arena.sweep();assert.equal(arena.completed.has(id),false);assert.equal(registry.social.arenaResults.length,1);
 });
+
+test('leaving a running match preserves a forfeited history entry after completion',()=>{
+    const {arena,a,b,advance}=setup();
+    const id=arena.handle(a.token,{action:'create',room:{...config,passwordHash:null,stake:1000}}).room.id;
+    arena.handle(b.token,{action:'join',id});
+    for(const s of [a,b])arena.handle(s.token,{action:'ready',id,ready:true});
+    arena.handle(a.token,{action:'start',id});
+    arena.handle(a.token,{action:'leave',id});
+    const watching=arena.handle(a.token,{action:'state',id});
+    assert.equal(watching.phase,'running');
+    assert.equal(watching.members.find(p=>p.isOwn).forfeited,true);
+    assert.ok(watching.market.stocks.length>0);
+    assert.throws(()=>arena.handle(a.token,{action:'trade',id,side:'buy',quantity:1,stockId:watching.market.stocks[0].id,requestId:'spectator-order-1'}),/거래 가능한/);
+    advance(180000);
+    const records=arena.handle(a.token,{action:'history'}).records;
+    assert.equal(records.length,1);
+    const mine=records[0].results.find(p=>p.isOwn);
+    assert.equal(mine.forfeited,true);assert.equal(mine.payout,0);assert.equal(mine.rank,2);
+    assert.equal(arena.handle(a.token,{action:'history'}).records.length,1);
+});

@@ -1,0 +1,6 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>대결 자산 현황 미리보기</title><link rel="stylesheet" href="../css/style.css"></head><body><script type="module">
+import {CipherTrainingRoom} from '../js/components/CipherTrainingRoom.js?assets-preview=1';
+import {MarketEngine,marketEngine} from '../js/engine/marketEngine.js';
+marketEngine.stopEngine();const engine=new MarketEngine();engine.stopEngine();engine.cash=engine.initialCash=10000;
+const match=new CipherTrainingRoom(document.body,engine);match.dialog.querySelector('h2').textContent='모의투자 대결';match.dialog.querySelector('[data-close]').textContent='대결 포기';match.open();
+</script></body></html>

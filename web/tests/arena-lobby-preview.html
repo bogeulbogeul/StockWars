@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모의투자 로비 미리보기</title><link rel="stylesheet" href="../css/style.css"></head><body><script type="module">
+import {CipherTrainingRoom} from '../js/components/CipherTrainingRoom.js';
+import {CipherCompetitionRoom} from '../js/components/CipherCompetitionRoom.js';
+import {marketEngine} from '../js/engine/marketEngine.js';
+new CipherTrainingRoom(document.body);marketEngine.stopEngine();
+window.stockWarsArena={request:async()=>({rooms:[],invitations:[],ownRooms:[]})};
+window.stockWarsChat={friends:async()=>({friends:[]})};
+const lobby=new CipherCompetitionRoom(document.body);lobby.rooms=[];lobby.open();
+</script></body></html>

@@ -375,7 +375,7 @@ export function buildAnnaScenario({
             id: 'rumor_time_feedback', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '“이틀 뒤 잔치”는 발표 일정의 단서예요. 사건이 발표될 시점과 주가가 반응할 시점은 다를 수 있어요. 기대가 먼저 반영되거나 발표가 늦어질 수도 있으니, 확정 시각으로 읽지 마세요.',
             tracker: '3/4 • 발표 시점과 시장 반응', requiresManualAction: false,
-            actionBtnText: '분석력별 모습 비교하기', onAction: tutorial => tutorial.nextStep()
+            actionBtnText: '분석력에 따라 찌라시가 어떻게 보이는지 확인하기', onAction: tutorial => tutorial.nextStep()
         },
         ...[
             ['1', '푸른 전기 저장고에 큰 수레꾼이 찾아왔대. 이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.', '이름과 사건은 비유지만 “이틀 뒤”라는 시간 단서는 남아 있어요.'],
@@ -386,7 +386,7 @@ export function buildAnnaScenario({
         ].map(([level, example, explanation]) => ({
             id: `rumor_analysis_example_${level}`, expression: 'Standard', speaker: '전담 매니저 안나',
             text: `[연습용 · 분석력 ${level}단계] “${example}” ${explanation}`,
-            tracker: `3/4 • 같은 찌라시 비교 (${level}/5)`, requiresManualAction: false
+            tracker: `3/4 • 분석력 ${level}단계의 찌라시 해석 (${level}/5)`, requiresManualAction: false
         })),
         {
             id: 'rumor_reading_summary', expression: 'Smile', speaker: '전담 매니저 안나',
@@ -399,12 +399,33 @@ export function buildAnnaScenario({
             id: 'stamina_recovery_guide',
             expression: 'Pain',
             speaker: "전담 매니저 안나",
-            text: `물류 일을 하면 체력이 줄어요. 체력이 부족하면 일을 시작할 수 없어요. 타운의 벤치에서 쉬면 체력을 회복할 수 있습니다.`,
+            text: '물류 일로 체력이 줄었네요. 수고한 파트너에게 에너지 드링크 한 캔을 선물할게요! 아래 [선물 받고 바로 마시기]를 눌러 하트 1개를 회복해 보세요. 이미 체력이 가득 찼다면 소지품에 보관해 둘게요.',
             tracker: "3/4 • 기력 관리 안내",
-            requiresManualAction: false,
+            requiresManualAction: true,
+            actionBtnText: '선물 받고 바로 마시기',
+            onAction: tutorial => {
+                const result = callbacks.onTutorialRecoveryDrink?.();
+                if (!result?.success) return;
+                const next = tutorial.steps.find(step => step.id === 'stamina_recovery_result');
+                next.text = result.message;
+                tutorial.nextStep();
+            },
             onEnter: () => {
                 cleanupHighlights();
             }
+        },
+
+        {
+            id: 'stamina_recovery_result', expression: 'Happy', speaker: '전담 매니저 안나',
+            text: '에너지 드링크는 하트 1개를 회복해요. 다음에도 체력이 부족할 때 사용해 주세요.',
+            tracker: '3/4 • 회복 결과 확인', requiresManualAction: false,
+            example: { label: '다음에 회복하려면', rows: ['소지품 → 에너지 드링크 선택 → 사용', '체력이 가득 차면 드링크는 소모되지 않아요.'] }
+        },
+        {
+            id: 'stamina_bench_guide', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '드링크 외에도 타운의 벤치에서 쉴 수 있어요. 하루 한 번 하트를 모두 회복할 수 있으니 함께 활용해 주세요.',
+            tracker: '3/4 • 벤치에서 쉬기', requiresManualAction: false,
+            example: { label: '회복 방법', rows: ['에너지 드링크: 1개 사용하면 하트 1개 회복', '타운 벤치: 하루 1회 하트 전량 회복'] }
         },
 
         // STEP 13: Graduation after Logistics Labor

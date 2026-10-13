@@ -1,0 +1,15 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모의투자 전적 미리보기</title><link rel="stylesheet" href="../css/style.css"></head><body><script type="module">
+import {CipherTrainingRoom} from '../js/components/CipherTrainingRoom.js';
+import {CipherCompetitionRoom} from '../js/components/CipherCompetitionRoom.js';
+import {marketEngine} from '../js/engine/marketEngine.js';
+new CipherTrainingRoom(document.body);marketEngine.stopEngine();
+window.stockWarsArena={request:async({action})=>action==='history'?{records:[
+{name:'에이전트 K와 연습 대결',ai:true,ended:Date.now(),results:[{name:'나',isOwn:true,rank:1,assets:10000,payout:500},{name:'AI',rank:1,assets:10000,payout:500}]},
+{name:'친구들과 5분 대결',ended:Date.now()-3600000,results:[{name:'나',isOwn:true,rank:2,assets:98000,payout:0},{name:'트레이더',rank:1,assets:105000,payout:10000}]},
+{name:'시장 흐름 연습',ai:true,ended:Date.now()-86400000,results:[{name:'나',isOwn:true,rank:2,forfeited:true,assets:9900,payout:0},{name:'AI',rank:1,assets:10000,payout:1000}]}
+]}:{rooms:[],invitations:[],ownRooms:[]}};
+window.stockWarsChat={friends:async()=>({friends:[]})};
+const {installOnlineCompetition}=await import('../js/components/OnlineCompetition.js?history-preview=2');
+const historyMethods={prototype:{render(){},requestJoin(){}}};installOnlineCompetition(historyMethods);
+const lobby=new CipherCompetitionRoom(document.body);lobby.showArenaHistory=historyMethods.prototype.showArenaHistory;lobby.rooms=[];lobby.open();await lobby.showArenaHistory();
+</script></body></html>

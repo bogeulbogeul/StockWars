@@ -1,0 +1,10 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>대결 결과 미리보기</title><link rel="stylesheet" href="../css/style.css"></head><body style="background:#0b1420"><script type="module">
+import {CipherTrainingRoom} from '../js/components/CipherTrainingRoom.js';
+import {CipherCompetitionRoom} from '../js/components/CipherCompetitionRoom.js';
+import {marketEngine} from '../js/engine/marketEngine.js';
+const match=new CipherTrainingRoom(document.body);marketEngine.stopEngine();match.dialog.showModal();
+const lobby=new CipherCompetitionRoom(document.body);
+const key='stockwars.arena.aiHistory',saved=localStorage.getItem(key);
+try{lobby.showResults(match,{id:'preview',name:'모의투자 연습 대결',minutes:3,cash:10000,stake:500},[{name:'나',assets:10000},{name:'AI',assets:10000}]);}
+finally{if(saved===null)localStorage.removeItem(key);else localStorage.setItem(key,saved);}
+</script></body></html>

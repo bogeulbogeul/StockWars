@@ -1,0 +1,5 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 K 선택지</title><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/modules/cipher-lobby.css?choices=4"></head><body style="background:#081221"><div class="cipher-lobby" style="position:fixed;inset:0"><div class="cipher-notice"></div></div><script type="module">
+import {CipherLobby} from '../js/components/CipherCanvasLobby.js?choices=4';
+import {marketEngine} from '../js/engine/marketEngine.js';marketEngine.stopEngine();
+const lobby=Object.create(CipherLobby.prototype);lobby.notice=document.querySelector('.cipher-notice');lobby.defaultNoticeHTML='<strong hidden></strong><p></p><button>확인</button>';lobby.defaultNoticeStyle='';lobby.canvas={focus(){}};lobby.descendStairs=()=>{};lobby.renderAgentChoices();
+</script></body></html>

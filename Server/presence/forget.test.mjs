@@ -8,7 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 const {PresenceClient}=createRequire(import.meta.url)('../../electron-app/src/presence-client.cjs');
 test('forget releases only the caller nickname and removes related social records',()=>{
- const r=new PresenceRegistry(),a=r.session(),b=r.session();
+ const r=new PresenceRegistry({enforceUniqueNicknames:true}),a=r.session(),b=r.session();
  r.update(a.token,'nickname',undefined,{nickname:'반복테스터'});r.update(b.token,'nickname',undefined,{nickname:'유지유저'});
  r.social={requests:[{from:a.token,to:b.token}],friendships:[[a.token,b.token]],gifts:[{from:b.token,to:a.token}],arenaResults:[{results:[{owner:a.token},{owner:b.token}]}]};
  assert.throws(()=>r.forget(),/세션/);r.forget(a.token);r.forget(a.token);

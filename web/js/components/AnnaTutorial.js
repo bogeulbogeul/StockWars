@@ -3,6 +3,7 @@ import { gameKey } from '../app/GameKeys.js';
 import { installAnnaDialogueLayout } from './tutorial/annaDialogueLayout.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
 import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
+import { tutorialChapters, tutorialCheckpoint } from './tutorial/tutorialCheckpoint.js';
 
 export class AnnaTutorial {
     constructor(container, callbacks = {}) {
@@ -143,7 +144,8 @@ export class AnnaTutorial {
         });
     }
 
-    start(userProfile = {}, recommendation = null) {
+    start(userProfile = {}, recommendation = null, checkpoint = null) {
+        this.lessonResume = null;
         this.dialogueHistory = [];
         this.historyCursor = null;
         this.lessonEnabled = true;
@@ -168,6 +170,25 @@ export class AnnaTutorial {
         });
 
         this.currentStepIdx = 0;
+        if (checkpoint) {
+            const chapter = tutorialChapters.find(([id]) => id === checkpoint) || tutorialChapters[0];
+            const targetIndex = this.steps.findIndex(step => step.id === chapter[0]);
+            this.firstPurchaseDone = !!this.callbacks.getFirstTradeLesson?.();
+            if (this.firstPurchaseDone) this.stopRecommendationReview();
+            this.steps.unshift({
+                id: 'tutorial_resume', speaker: '전담 매니저 안나', expression: 'Smile',
+                tracker: '튜토리얼 이어하기', lessonTitle: '돌아오셨네요, 파트너!',
+                text: `다시 만나서 반가워요! 지난번에 진행하던 [${chapter[1]}]부터 튜토리얼을 다시 안내할게요. 준비되면 아래 버튼을 눌러 주세요.`,
+                example: { label: '이어서 배울 내용', rows: [chapter[1], '이미 받은 보상과 거래 결과는 그대로 유지돼요.'] },
+                requiresManualAction: true, actionBtnText: '튜토리얼 이어서 진행하기',
+                onAction: () => {
+                    this.steps.shift();
+                    this.currentStepIdx = Math.max(0, targetIndex);
+                    this.callbacks.onRestoreTutorialChapter?.(chapter[0]);
+                    this.showCurrentStep();
+                }
+            });
+        }
         this.isActive = true;
         this.overlay?.classList.remove('hidden');
         this.showCurrentStep();
@@ -183,6 +204,7 @@ export class AnnaTutorial {
         if (!this.isActive || this.firstPurchaseDone || this.lessonResume) return;
         // Initial grant is delivered by welcome_2, not by recommendation recovery.
         if (this.steps[this.currentStepIdx]?.id === 'welcome_1') return;
+        if (this.steps[this.currentStepIdx]?.id === 'tutorial_resume') return;
         const recommendation = this.callbacks.onRefreshRecommendation?.();
         if (recommendation) this.applyRecommendation(recommendation);
     }
@@ -248,6 +270,9 @@ export class AnnaTutorial {
         else this.dialogueHistory.push(snapshot);
         this.renderDialogue(step);
         if (step.onEnter) step.onEnter();
+        if (!this.lessonResume && step.id !== 'tutorial_resume') {
+            this.callbacks.onCheckpoint?.(tutorialCheckpoint(this.steps, this.currentStepIdx));
+        }
     }
 
     renderDialogue(step, reviewing = false) {

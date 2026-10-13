@@ -33,7 +33,7 @@ export function describeTutorialStep(step) {
         rumor_intel_explain: ['찌라시 선택 → [찌라시 열람] → 내용 확인'],
         rumor_time_prediction: ['“이틀 뒤”가 언제 발표될지 알려주는 단서예요.', '아래에서 예상 시점을 하나 골라보세요.'],
         rumor_time_feedback: ['“이틀 뒤” → 발표 일정의 단서', '주가는 발표 전이나 후에 반응할 수도 있어요.'],
-        stamina_recovery_guide: ['물류 일을 하면 하트가 줄어요.', '벤치에서 쉬면 하루 1회 하트를 모두 회복해요.'],
+        stamina_recovery_guide: ['아래 버튼으로 안나의 에너지 드링크 1개를 받아 바로 마셔요.', '하트 1개 회복 · 이미 체력이 가득 차면 소지품에 보관해요.'],
         stock_basics_budget: ['7일 차에 월세 5,000G를 내야 해요.', '주식에 쓸 돈과 월세로 남겨둘 돈을 나누세요.'],
         stock_basics_diversification: ['A기업에 전부 투자하면 A기업 하락의 영향을 크게 받아요.', 'A·B기업에 나눠 투자해도 둘 다 떨어지면 손해예요.'],
         logistics_completed: ['완료 버튼을 누르면 정착 지원금 2,000G를 받아요.', '이제 거래와 물류 일을 하며 월세를 준비하세요.']
@@ -62,7 +62,10 @@ export function describeTutorialStep(step) {
     if (examples[step.id]) result.example = { label: step.requiresManualAction ? '화면에서 확인하기' : '예시로 이해하기', rows: examples[step.id] };
     if (step.id?.startsWith('rumor_analysis_example_')) {
         const level = Number(step.id.slice(-1));
-        result.example = { label: '이 단계에서 읽을 수 있는 정보', rows: [
+        result.nextAction = level < 5
+            ? `[다음 ▶]으로 분석력 ${level + 1}단계에서 어떤 정보가 더 보이는지 확인하세요.`
+            : '[◀ 이전]으로 낮은 분석력 단계와 비교하거나, [다음 ▶]으로 해석 요령을 정리하세요.';
+        result.example = { label: `분석력 ${level}단계에서 알아낼 수 있는 정보`, rows: [
             ['비유에서 기업과 사건을 추측해요.', '어느 업종인지와 상승 방향을 읽을 수 있어요.', '독점 계약 사건과 이틀 뒤 발표를 읽을 수 있어요.', '기업이 에코 배터리임을 읽을 수 있어요.', '계약 금액 5조 원까지 읽을 수 있어요.'][level - 1],
             '자세히 읽힌다고 소문이 사실로 확정되는 것은 아니에요.'
         ] };

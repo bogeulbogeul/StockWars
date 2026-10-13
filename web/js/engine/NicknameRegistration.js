@@ -8,7 +8,8 @@ export async function registerNickname(input, bridge) {
     catch { return { nickname, pending: true }; }
     if (result?.error) {
         // Older servers reject the new action; connectivity failures are not duplicates.
-        if (result.status === 409 || /이미 사용|중복|닉네임은|잘못된 닉네임/.test(result.error)) throw new Error(result.error);
+        // Uniqueness is disabled during development, including responses from older servers.
+        if (/닉네임은|잘못된 닉네임/.test(result.error)) throw new Error(result.error);
         return { nickname, pending: true };
     }
     return { nickname, pending: false };

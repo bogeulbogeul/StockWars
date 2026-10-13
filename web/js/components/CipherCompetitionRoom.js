@@ -1,7 +1,9 @@
+import {tradeHardArenaBot} from './arenaBot.js';
 import {MarketEngine} from '../engine/marketEngine.js';
 import {FriendManager} from '../engine/FriendManager.js';
 import {CipherTrainingRoom} from './CipherTrainingRoom.js';
 import {installOnlineCompetition} from './OnlineCompetition.js';
+import {saveAiArenaHistory} from './arenaHistory.js';
 
 export function validArenaStake(cash,stake){
     return Number.isSafeInteger(stake)&&stake%100===0&&(stake===0||(stake>=cash*.01&&stake<=cash*.1));
@@ -19,23 +21,44 @@ export class CipherCompetitionRoom{
         this.dialog.addEventListener('cancel',e=>{e.preventDefault();this.close();});
         if(!document.getElementById('cipher-arena-style')){
             const style=document.createElement('style');style.id='cipher-arena-style';style.textContent=`
-            .cipher-arena{background:radial-gradient(ellipse at 75% 0%,#173650 0%,#081221 60%)}
-            .cipher-arena header{padding:10px 6px 22px}.cipher-arena header h2{font-size:30px;letter-spacing:-1px}
-            .cipher-arena>p{margin:0;padding:16px 20px;background:linear-gradient(90deg,#1b3448,#142337);border-left:3px solid #f2c65c;border-radius:8px;color:#b5c9da;line-height:1.6}
-            .cipher-arena .training-workspace{gap:24px;grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr)!important}
-            .cipher-arena .training-workspace>main,.cipher-arena .training-workspace>aside{background:#101f30e8;border-color:#2a4054;padding:24px;border-radius:18px}
-            .cipher-arena h3{color:#f2d390;font-size:17px;margin:8px 0 18px}.cipher-arena [data-rooms]>section{background:linear-gradient(120deg,#20374b,#122235);border-color:#456075!important;box-shadow:0 8px 20px #0002}
-            .cipher-arena [data-rooms] p{color:#a8c4d9;line-height:1.8}.cipher-arena form[data-create]{display:grid;grid-template-columns:1fr 1fr;gap:16px}.cipher-arena form label{display:flex;flex-direction:column;gap:7px;font-size:13px;color:#a8bfd1}.cipher-arena form label:first-child{grid-column:1/-1}.cipher-arena input,.cipher-arena select{margin:0!important;min-height:44px}.cipher-arena small{font-size:11px;letter-spacing:0;color:#7e9bad}.cipher-arena form button{grid-column:1/-1;background:linear-gradient(135deg,#e5c267,#bd923b);border-color:#e7c970;color:#102234;font-weight:800;min-height:46px}.cipher-arena [data-rooms] button:first-of-type{background:#236074;border-color:#40889b}.cipher-arena [data-friend]{display:flex;gap:10px}.cipher-arena [data-friend] input{flex:1;min-width:0}.cipher-arena [data-friend] button{white-space:nowrap}.cipher-arena [data-friends] p{background:#182b3d;padding:14px;border-radius:9px}.cipher-arena button:hover{filter:brightness(1.13)}
-            .cipher-arena .training-workspace{grid-template-columns:minmax(240px,1fr) minmax(320px,1.35fr) minmax(220px,.75fr)!important}
-            .cipher-arena .arena-public-sidebar{display:flex;flex-direction:column;min-height:0;overflow:hidden}
-            .cipher-arena .arena-public-sidebar>section:last-child{flex:1;min-height:0;overflow:auto}
-            .cipher-arena .arena-public-sidebar [data-find-results]{max-height:180px;overflow:auto}
-            @media(max-width:1100px){.cipher-arena .training-workspace{grid-template-columns:minmax(220px,1fr) minmax(300px,1.35fr)!important}.cipher-arena .training-workspace>aside:last-child{grid-column:1/-1}}
-            @media(max-width:760px){.cipher-arena .training-workspace{grid-template-columns:1fr!important}.cipher-arena form[data-create]{grid-template-columns:1fr}.cipher-arena .training-workspace>aside{grid-column:auto}.cipher-arena .arena-public-sidebar>section:last-child{max-height:300px;flex:none}}`;
+            .cipher-arena{background:#0b1420;padding:32px clamp(20px,4vw,72px);overflow:auto}
+            .cipher-arena[open]{gap:24px}
+            .cipher-arena>header,.cipher-arena>.training-workspace,.cipher-arena>.arena-intro{width:100%;max-width:1440px;box-sizing:border-box;margin:0 auto}
+            .cipher-arena>header{gap:10px;justify-content:flex-end;padding:0 0 24px;border-bottom:1px solid #263443;flex-wrap:wrap}
+            .cipher-arena>header>div{margin-right:auto}.cipher-arena>header h2{font-size:28px;letter-spacing:-1px;margin:8px 0 0}
+            .cipher-arena>header small{font-size:10px;letter-spacing:2.5px;color:#cbb273}
+            .cipher-arena>header [data-exit]{order:1;margin-left:6px}
+            .cipher-arena>.arena-intro{display:flex;align-items:center;gap:14px;color:#93a5b7;font-size:14px;line-height:1.7;padding:0 2px}
+            .cipher-arena .arena-intro strong{color:#d8c18c;font-size:12px;white-space:nowrap;border:1px solid #524b39;padding:3px 10px;border-radius:6px;font-weight:500}
+            .cipher-arena .training-workspace{display:grid;grid-template-columns:minmax(250px,1fr) minmax(370px,1.45fr) minmax(240px,.8fr);gap:20px;align-items:start;flex:none;min-height:0}
+            .cipher-arena .training-workspace>main,.cipher-arena .training-workspace>aside{box-sizing:border-box;min-width:0;overflow:visible;background:#111e2d;border:1px solid #283747;padding:24px;border-radius:14px}
+            .cipher-arena h3{color:#ecf0f5;font-size:16px;letter-spacing:-.3px;margin:0 0 20px}
+            .cipher-arena .arena-section-note{font-size:13px;line-height:1.7;color:#8fa3b6;margin:-10px 0 24px}
+            .cipher-arena small{font-size:11px;letter-spacing:0;color:#8fa3b6;line-height:1.6}
+            .cipher-arena button,.cipher-arena input,.cipher-arena select{box-sizing:border-box;font:inherit;font-size:13px;border:1px solid #33465a;border-radius:8px;background:#152537;color:#e7edf4;min-height:42px;padding:10px 12px;margin:0}
+            .cipher-arena button{cursor:pointer}.cipher-arena button:hover:not(:disabled){background:#22364b;border-color:#62758b}.cipher-arena button:disabled{opacity:.45;cursor:default}
+            .cipher-arena :is(button,input,select):focus-visible{outline:2px solid #e3c67f;outline-offset:3px}
+            .cipher-arena input::placeholder{color:#7e91a5}.cipher-arena input,.cipher-arena select{width:100%;min-width:0}
+            .cipher-arena form[data-create]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 16px}
+            .cipher-arena form label{display:flex;flex-direction:column;gap:9px;font-size:12px;color:#a5b5c6;min-width:0}
+            .cipher-arena form[data-create] label:has([name=mode]),.cipher-arena form[data-create] label:has([name=name]){grid-column:1/-1}
+            .cipher-arena form[data-create]>button{grid-column:1/-1;margin-top:4px;min-height:46px;background:#d9b969;border-color:#d9b969;color:#18202b;font-weight:700}
+            .cipher-arena form[data-create]>button:hover:not(:disabled){background:#e9cc86;border-color:#e9cc86}
+            .cipher-arena [data-friend]{display:flex;gap:8px}.cipher-arena [data-friend] input{flex:1;min-width:0}.cipher-arena [data-friend] button{white-space:nowrap}
+            .cipher-arena [data-friends]{margin-top:22px}.cipher-arena [data-friends] p{font-size:13px;line-height:1.8;color:#8fa3b6;margin:0;padding:18px 0;border-top:1px solid #293949}
+            .cipher-arena [data-status]{color:#d8c18c;font-size:13px;line-height:1.7;overflow-wrap:anywhere}.cipher-arena [data-status]:empty,.cipher-arena [data-find-status]:empty{display:none}
+            .cipher-arena .arena-public-sidebar>section+section{border-top:1px solid #293949;padding-top:24px;margin-top:24px}
+            .cipher-arena [data-public-status],.cipher-arena [data-find-status],.cipher-arena [data-rooms]{font-size:13px;color:#8fa3b6;line-height:1.8;overflow-wrap:anywhere}
+            .cipher-arena [data-public-rooms],.cipher-arena [data-find-results],.cipher-arena [data-rooms]{max-height:360px;overflow:auto;overscroll-behavior:contain}
+            .cipher-arena [data-public-rooms]>section,.cipher-arena [data-find-results]>section,.cipher-arena [data-rooms]>section{background:#152537;border-color:#33465a!important}
+            .cipher-arena [data-rooms] h3{font-size:14px;margin-bottom:10px}
+            @media(max-width:1100px){.cipher-arena .training-workspace{grid-template-columns:minmax(240px,1fr) minmax(340px,1.4fr)}.cipher-arena .training-workspace>aside:last-child{grid-column:1/-1}}
+            @media(max-width:700px){.cipher-arena{padding:20px 16px}.cipher-arena>header>div{width:100%;margin-bottom:8px}.cipher-arena>header{justify-content:flex-start}.cipher-arena>header h2{font-size:25px}.cipher-arena .training-workspace{grid-template-columns:minmax(0,1fr)}.cipher-arena .training-workspace>main{grid-row:1}.cipher-arena .training-workspace>main,.cipher-arena .training-workspace>aside{padding:20px}.cipher-arena>.arena-intro{align-items:flex-start;font-size:12px}}
+            @media(max-width:380px){.cipher-arena form[data-create]{grid-template-columns:minmax(0,1fr)}}`;
             document.head.append(style);
         }
     }
-    open(){this.dialog.showModal();this.render();this.refreshPublicRooms();this.publicTimer=setInterval(()=>this.refreshPublicRooms(),15000);if(!localStorage.getItem('stockwars.arena.k-tutorial.v1'))this.startTutorial();}
+    open({skipTutorial=false}={}){this.dialog.showModal();this.render();this.refreshPublicRooms();this.publicTimer=setInterval(()=>this.refreshPublicRooms(),15000);if(!skipTutorial&&!localStorage.getItem('stockwars.arena.k-tutorial.v1'))this.startTutorial();}
     close(){clearInterval(this.publicTimer);this.dialog.close();this.onClose?.();}
     save(){try{localStorage.setItem('stockwars.competition.rooms',JSON.stringify(this.rooms));}catch{}if(this.dialog.open)this.refreshPublicRooms();}
     createNewsPanel(match){
@@ -98,32 +121,41 @@ export class CipherCompetitionRoom{
         controls.append(skip,next);top.append(name,controls);body.append(top,line);guide.append(portrait,body);match.dialog.querySelector('header').after(guide);
         const steps=[
             ['어서 오세요. 첫 모의투자는 제가 함께하겠습니다. 여기서는 별도의 가상 자금을 사용하므로 실제 계좌의 돈은 줄어들지 않습니다.',null],
+            ['왼쪽 종목 목록입니다. 이름이나 코드로 검색하고 업종을 골라 종목을 좁힐 수 있습니다. 종목을 누르면 그 기업의 가격과 차트가 가운데 표시됩니다.','.training-stocks'],
+            ['가운데는 선택한 종목의 현재 가격과 차트입니다. 어떤 종목을 보고 있는지 이름부터 확인하세요. 지금은 주문 연습에 집중할 수 있도록 시세와 대결 타이머를 멈춰두었습니다.','.training-chart'],
+            ['호가는 사고팔려는 가격과 물량입니다. 주문 수량과 예상 금액을 확인한 다음 매수하거나 매도합니다. 공매도와 레버리지는 해금 상태에 따라 사용할 수 있습니다. 첫 연습은 1배·1주로 진행합니다.','.training-book'],
             ['왼쪽에서 종목을 고르고 가운데에서 가격과 차트를 확인하세요. 먼저 주문 수량 1주로 매수해 보겠습니다.','.training-order'],
             ['좋습니다. 보유한 주식은 가격이 오르거나 내리면 평가금액도 달라집니다. 이번에는 방금 산 주식을 매도해 보세요.','.training-order'],
             ['내 계좌에서는 남은 현금과 보유 주식, 총자산을 확인할 수 있습니다. 대결은 같은 시작 자금으로 진행하고, 시간이 끝났을 때 총자산이 높은 쪽이 승리합니다.','.training-account'],
             ['차트 위의 최신 뉴스 바를 확인하세요. 제목을 누르면 내용을 펼칠 수 있고, 관련 종목의 차트로 이동할 수 있습니다. 계약 체결이나 실적 악화가 종목과 업종 가격에 영향을 줍니다. 지난 뉴스는 오른쪽 패널에 남습니다.','.arena-latest-news'],
-            ['이제 저와 3분 동안 대결해 볼까요? 참가비와 배팅은 0G입니다. 대결 자금 100,000G는 전용 가상 자금이며, 결과가 실제 계좌에 반영되지 않습니다.',null]
+            ['이제 저와 3분 동안 대결해 볼까요? 참가비와 배팅은 0G입니다. 대결 자금 10만 G는 전용 가상 자금이며, 결과가 실제 계좌에 반영되지 않습니다.',null]
         ];
-        let step=0,highlight=null;
+        const buyStep=4,sellStep=5,accountStep=6,newsStep=7,lastStep=steps.length-1;
+        let step=0,highlight=null,practiceStock=null;
         const paint=()=>{
             if(highlight){highlight.style.outline='';highlight.style.boxShadow='';}line.textContent=steps[step][0];
-            next.hidden=false;next.disabled=step===1||step===2;next.textContent=step===5?'K와 무료 대결 시작':'다음 ▶';
+            next.hidden=false;next.disabled=step===buyStep||step===sellStep;next.textContent=step===lastStep?'K와 무료 대결 시작':'다음 ▶';
             next.style.opacity=next.disabled?'0.45':'1';next.style.cursor=next.disabled?'default':'pointer';
-            next.title=next.disabled?(step===1?'매수를 완료하면 다음 안내로 넘어갑니다.':'매도를 완료하면 다음 안내로 넘어갑니다.'):'';
-            match.dialog.querySelector('[data-buy]').disabled=step!==1;match.dialog.querySelector('[data-sell]').disabled=step!==2;
-            if(step===3){match.accountVisible=true;match.renderAccount();}
+            next.title=next.disabled?(step===buyStep?'매수를 완료하면 다음 안내로 넘어갑니다.':'매도를 완료하면 다음 안내로 넘어갑니다.'):'';
+            match.dialog.querySelector('[data-buy]').disabled=step!==buyStep;match.dialog.querySelector('[data-sell]').disabled=step!==sellStep;
+            if(step===accountStep){match.accountVisible=true;match.renderAccount();}
             highlight=steps[step][1]?match.dialog.querySelector(steps[step][1]):null;
             if(highlight){highlight.style.outline='2px solid #40d8cf';highlight.style.boxShadow='0 0 18px #40d8cf35';}
-            if(step===4)tutorialNews.latestBar.bar.scrollIntoView({behavior:'smooth',block:'center'});
+            if(step===newsStep)tutorialNews.latestBar.bar.scrollIntoView({behavior:'smooth',block:'center'});
         };
-        const startFreeMatch=()=>{localStorage.setItem('stockwars.arena.k-tutorial.v1','1');match.onClose=null;match.close();this.start({name:'에이전트 K와 무료 대결',minutes:3,cash:100000,stake:0,opponent:'에이전트 K'});};
-        const advance=()=>{if(step===1||step===2)return;if(step===5){startFreeMatch();return;}step++;paint();};
-        skip.onclick=startFreeMatch;next.onclick=advance;guide.onclick=e=>{if(!e.target.closest('button'))advance();};
-        match.order=side=>{if((step===1&&side==='buy')||(step===2&&side==='sell')){CipherTrainingRoom.prototype.order.call(match,side);if((step===1&&engine.portfolio.size>0)||(step===2&&engine.portfolio.size===0)){step++;paint();}}};
+        const startFreeMatch=()=>{try{localStorage.setItem('stockwars.arena.k-tutorial.v1','1');}catch{}match.onClose=null;match.close();this.start({name:'에이전트 K와 무료 대결',minutes:3,cash:100000,stake:0,opponent:'에이전트 K',difficulty:'easy'});};
+        const advance=()=>{if(step===buyStep||step===sellStep)return;if(step===lastStep){startFreeMatch();return;}step++;paint();};
+        skip.textContent='연습 그만하기';skip.onclick=()=>match.close();next.onclick=advance;guide.onclick=e=>{if(!e.target.closest('button'))advance();};
+        match.order=side=>{if((step===buyStep&&side==='buy')||(step===sellStep&&side==='sell')){
+            if(side==='sell')match.selected=practiceStock;
+            match.shortMode=false;match.leverage=1;match.modeSelect.value='long';match.leverageSelect.value='1';match.dialog.querySelector('[type=number]').value='1';
+            CipherTrainingRoom.prototype.order.call(match,side);
+            if((step===buyStep&&engine.portfolio.size>0)||(step===sellStep&&engine.portfolio.size===0)){if(side==='buy')practiceStock=match.selected;step++;paint();}
+        }};
         match.onClose=()=>{engine.stopEngine();this.render();};paint();match.open();
     }
     render(){
-        this.dialog.innerHTML='<header><div><small>CIPHER ARENA</small><h2>모의투자 대결</h2></div><button data-exit>로비로 돌아가기 · Esc</button></header><p>같은 시작 자금, 같은 시장. 제한 시간 종료 시 총자산으로 순위를 결정합니다.</p><div class="training-workspace" style="grid-template-columns:1fr 1fr"><main><h3>게임 로비 · 내 방</h3><div data-rooms></div><h3>방 만들기</h3><form data-create><label>방 이름<input name="name" maxlength="40" required placeholder="함께 투자해요"></label><label>대결 시간<select name="minutes"><option value="3">3분</option><option value="5" selected>5분</option><option value="10">10분</option></select></label><label>시작 자금<select name="cash"><option value="10000">10,000G</option><option value="100000" selected>100,000G</option><option value="1000000">1,000,000G</option></select></label><label>배팅 금액 (G)<input name="stake" type="number" min="0" max="1000000" step="100" value="0" required><small>0G는 무료 대결 · 로컬 대결용 가상 배팅</small></label><label>방 공개 설정<select name="access"><option value="open">공개방</option><option value="locked">비밀번호방</option></select></label><label data-password-label style="display:none">방 비밀번호<input name="password" type="password" minlength="4" maxlength="32" autocomplete="new-password" placeholder="4~32자"></label><button>방 만들기</button></form></main><aside><h3>친구</h3><form data-friend><input name="name" maxlength="40" required placeholder="친구 닉네임" aria-label="친구 닉네임"><button>친구 추가</button></form><p role="status" data-status></p><div data-friends></div><p style="color:#90a8bd">현재는 로컬 대결 버전입니다. 친구 등록은 기존 친구 목록과 공유하며, 온라인 초대 전송과 다른 사용자 접속은 아직 연결되지 않았습니다.</p></aside></div>';
+        this.dialog.innerHTML='<header><div><small>CIPHER ARENA</small><h2>모의투자 대결</h2></div><button data-exit>로비로 돌아가기 · Esc</button></header><p class="arena-intro"><strong>모의투자</strong><span>같은 자금, 같은 시장에서 시작합니다. 제한 시간 종료 시 총자산으로 순위를 결정합니다.</span></p><div class="training-workspace"><main><div data-rooms hidden></div><h3>새 대결 만들기</h3><p class="arena-section-note">대결 조건을 정하고 함께할 상대를 초대하세요.</p><form data-create><label>방 이름<input name="name" maxlength="40" required placeholder="함께 투자해요"></label><label>대결 시간<select name="minutes"><option value="3">3분</option><option value="5" selected>5분</option><option value="10">10분</option></select></label><label>시작 자금<select name="cash"><option value="10000">1만 G</option><option value="100000" selected>10만 G</option><option value="1000000">100만 G</option></select></label><label>배팅 금액 (G)<input name="stake" type="number" min="0" max="1000000" step="100" value="0" required><small>0G는 무료 대결 · 로컬 대결용 가상 배팅</small></label><label>방 공개 설정<select name="access"><option value="open">공개방</option><option value="locked">비밀번호방</option></select></label><label data-password-label style="display:none">방 비밀번호<input name="password" type="password" minlength="4" maxlength="32" autocomplete="new-password" placeholder="4~32자"></label><button>방 만들기</button></form></main><aside><h3>온라인 친구</h3><form data-friend><input name="name" type="search" maxlength="40" placeholder="친구 닉네임" aria-label="친구 닉네임 검색"><button>검색</button></form><p role="status" data-status></p><div data-friends></div><p style="color:#90a8bd">현재는 로컬 대결 버전입니다. 친구 등록은 기존 친구 목록과 공유하며, 온라인 초대 전송과 다른 사용자 접속은 아직 연결되지 않았습니다.</p></aside></div>';
         this.dialog.querySelector('[data-exit]').onclick=()=>this.close();
         const tutorial=document.createElement('button');tutorial.textContent='K 튜토리얼 · 무료';tutorial.onclick=()=>this.startTutorial();this.dialog.querySelector('header').append(tutorial);
         const publicPanel=document.createElement('section');publicPanel.innerHTML='<h3>공개 게임방</h3><p data-public-status>공개방 서버에 연결 중입니다.</p><div data-public-rooms></div>';
@@ -170,18 +202,8 @@ export class CipherCompetitionRoom{
             const passwordHash=data.get('access')==='locked'?await arenaPasswordHash(String(data.get('password'))):null;
             const room={passwordHash,stake,id:crypto.randomUUID(),name,minutes:Number(data.get('minutes')),cash:Number(data.get('cash')),invited:[]};this.rooms.push(room);this.save();this.join(room);
         };
-        this.dialog.querySelector('[data-friend]').onsubmit=e=>{e.preventDefault();const result=this.friends.addFriendByName(new FormData(e.target).get('name'));this.render();this.dialog.querySelector('[data-status]').textContent=result.message;};
-        for(const room of this.rooms){
-            const card=document.createElement('section');card.style.cssText='padding:16px;margin:12px 0;border:1px solid #344e68;border-radius:12px';
-            const title=document.createElement('h3');title.textContent=room.name;const info=document.createElement('p');info.textContent=`${room.passwordHash?'🔒 비밀번호방':'공개방'} · ${room.minutes}분 · ${room.cash.toLocaleString()}G · 배팅 ${(room.stake||0).toLocaleString()}G · 참가자 나 + AI`;
-            const code=document.createElement('p');code.textContent=`방 코드: ${room.id}`;code.style.cssText='font-size:12px;overflow-wrap:anywhere;user-select:all';
-            const start=document.createElement('button');start.textContent='방 참가하기';start.onclick=()=>this.requestJoin(room);
-            const remove=document.createElement('button');remove.textContent='방 삭제';remove.style.marginLeft='8px';remove.onclick=()=>{this.rooms=this.rooms.filter(r=>r.id!==room.id);this.save();this.render();};card.append(title,info,code,start,remove);this.dialog.querySelector('[data-rooms]').append(card);
-        }
-        if(!this.rooms.length)this.dialog.querySelector('[data-rooms]').textContent='아직 방이 없습니다. 첫 대결 방을 만들어 보세요.';
-        for(const friend of this.friends.getFriends()){
-            const row=document.createElement('p');row.textContent=`👤 ${friend.name} · 오프라인`;this.dialog.querySelector('[data-friends]').append(row);
-        }
+
+
     }
     requestJoin(room){
         if(!room.passwordHash){this.join(room);return;}
@@ -192,7 +214,7 @@ export class CipherCompetitionRoom{
         const error=document.createElement('p');error.setAttribute('role','status');
         const enter=document.createElement('button');enter.textContent='확인하고 참가';
         const cancel=document.createElement('button');cancel.type='button';cancel.textContent='취소';cancel.onclick=()=>this.render();
-        form.append(title,input,error,enter,cancel);this.dialog.querySelector('[data-rooms]').prepend(form);
+        form.append(title,input,error,enter,cancel);const joinPanel=this.dialog.querySelector('[data-rooms]');joinPanel.hidden=false;joinPanel.prepend(form);
         form.onsubmit=async e=>{e.preventDefault();enter.disabled=true;try{if(await arenaPasswordHash(input.value)===room.passwordHash)this.join(room);else{error.textContent='비밀번호가 일치하지 않습니다.';input.focus();}}finally{enter.disabled=false;}};
         input.focus();
     }
@@ -240,34 +262,72 @@ export class CipherCompetitionRoom{
         start.focus();
     }
     showResults(match,room,players){
-        const popup=document.createElement('dialog');popup.setAttribute('aria-label','모의투자 대결 최종 순위');
-        popup.style.cssText='position:fixed;inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;box-sizing:border-box;width:min(620px,calc(100vw - 32px));max-height:85dvh;overflow:auto;padding:30px;border:1px solid #d6b45a;border-radius:20px;background:linear-gradient(140deg,#193448,#081522);color:#edf4fa;box-shadow:0 24px 90px #0009';
-        const style=document.createElement('style');style.textContent='dialog[aria-label="모의투자 대결 최종 순위"]::backdrop{background:#030b16bd;backdrop-filter:blur(5px)}';popup.append(style);
-        const badge=document.createElement('small');badge.textContent='MATCH RESULT';badge.style.cssText='color:#e5c267;letter-spacing:2px';
-        const title=document.createElement('h2');title.textContent='대결 종료 · 최종 순위';
-        const subtitle=document.createElement('p');subtitle.textContent=`${room.name} · ${room.minutes}분 · 시작 자금 ${room.cash.toLocaleString()}G`;subtitle.style.color='#a8bfd0';
         const sorted=[...players].sort((a,b)=>b.assets-a.assets);
-        title.textContent=`승자: ${sorted.filter(p=>p.assets===sorted[0].assets).map(p=>p.name).join(', ')}`;
         const winners=sorted.filter(p=>p.assets===sorted[0].assets),pot=(room.stake||0)*sorted.length;
-        const history=JSON.parse(localStorage.getItem('stockwars.arena.aiHistory')||'[]');
-        history.push({id:room.id,name:room.name,ended:Date.now(),cash:room.cash,stake:room.stake||0,ai:true,results:sorted.map((p,i)=>({...p,isOwn:p.name==='나',rank:p.assets===sorted[0].assets?1:i+1,payout:winners.includes(p)?Math.floor(pot/winners.length):0}))});
-        localStorage.setItem('stockwars.arena.aiHistory',JSON.stringify(history.slice(-100)));
-        const table=document.createElement('table');table.style.cssText='width:100%;border-collapse:collapse;margin:24px 0;text-align:left';
-        const header=document.createElement('tr');for(const label of ['순위','참가자','총자산','수익률']){const cell=document.createElement('th');cell.textContent=label;cell.style.cssText='padding:12px 6px;color:#9bb6c9;border-bottom:1px solid #345368;font-size:13px';header.append(cell);}const head=document.createElement('thead');head.append(header);table.append(head);
+        saveAiArenaHistory(room,players);
+        const make=(tag,cls,text)=>{const el=document.createElement(tag);el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+        const popup=make('dialog','arena-result');popup.setAttribute('aria-label','모의투자 대결 최종 순위');
+        const style=document.createElement('style');style.textContent=`
+            dialog.arena-result{position:fixed;inset:0;margin:auto;box-sizing:border-box;width:min(620px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 40px);overflow:auto;padding:32px;border:1px solid #334356;border-radius:18px;background:#101c2a;color:#eaf0f6;box-shadow:0 28px 100px #0008;font:inherit}
+            .arena-result::backdrop{background:#040b14c9;backdrop-filter:blur(6px)}
+            .arena-result .result-eyebrow{display:block;color:#d9bd7c;font-size:10px;letter-spacing:2.5px;margin-bottom:12px}
+            .arena-result .result-title{margin:0;font-size:28px;line-height:1.3;letter-spacing:-.8px;overflow-wrap:anywhere}
+            .arena-result .result-subtitle{margin:10px 0 24px;color:#93a6b9;font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+            .arena-result .result-summary{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px;background:#172738;border:1px solid #2b3c4f;border-radius:12px;margin-bottom:26px}
+            .arena-result .result-summary>div+div{border-left:1px solid #324254;padding-left:20px}
+            .arena-result .result-summary span{display:block;font-size:12px;color:#9bafc2;margin-bottom:8px}
+            .arena-result .result-summary strong{font-size:24px;letter-spacing:-.5px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+            .arena-result .result-section-title{font-size:13px;color:#d6e0eb;margin:0 0 8px}
+            .arena-result .result-table-wrap{overflow-x:auto}
+            .arena-result .result-table{width:100%;border-collapse:collapse;text-align:left;table-layout:fixed;font-size:13px;font-variant-numeric:tabular-nums}
+            .arena-result .result-table th{font-size:11px;font-weight:500;color:#91a4b8;padding:12px 10px;border-bottom:1px solid #314255}
+            .arena-result .result-table td{padding:16px 10px;border-bottom:1px solid #263648;overflow-wrap:anywhere}
+            .arena-result .result-table th:first-child{width:14%}.arena-result .result-table th:nth-child(3){width:30%}.arena-result .result-table th:last-child{width:22%}
+            .arena-result .result-table :is(th,td):nth-child(n+3){text-align:right}
+            .arena-result .result-own{background:#172637}.arena-result .result-own td:nth-child(2){font-weight:700}
+            .arena-result .result-first{color:#dfc384;font-weight:700}
+            .arena-result .result-positive{color:#f18d99}.arena-result .result-negative{color:#86bafa}.arena-result .result-neutral{color:#bccbda}
+            .arena-result .result-note{font-size:12px;color:#94a7ba;line-height:1.8;margin:20px 0 0}
+            .arena-result .result-note strong{color:#c4d1df;font-weight:500}
+            .arena-result .result-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid #2b3b4c}
+            .arena-result .result-actions button{font:inherit;font-size:13px;min-height:42px;padding:10px 16px;border-radius:8px;border:1px solid #3b4d61;background:#17283a;color:#dde6ef;cursor:pointer}
+            .arena-result .result-actions .result-primary{background:#d9b969;border-color:#d9b969;color:#18202b;font-weight:700}
+            .arena-result .result-actions button:hover{filter:brightness(1.1)}.arena-result .result-actions button:focus-visible{outline:2px solid #efd99f;outline-offset:3px}
+            @media(max-width:480px){dialog.arena-result{padding:24px 18px}.arena-result .result-title{font-size:24px}.arena-result .result-summary{padding:16px;gap:12px}.arena-result .result-summary strong{font-size:20px}.arena-result .result-table :is(th,td){padding:12px 6px}.arena-result .result-actions{flex-direction:column-reverse}.arena-result .result-actions button{width:100%}}
+        `;popup.append(style);
+        const mine=sorted.find(p=>p.name==='나');
+        const myRank=mine?sorted.findIndex(p=>p.assets===mine.assets)+1:null;
+        const title=make('h2','result-title',myRank===1?(winners.length>1?'공동 1위로 마쳤어요':'1위로 마쳤어요'):myRank?`${myRank}위로 마쳤어요`:'대결이 종료되었습니다');
+        const subtitle=make('p','result-subtitle',`${room.name} · ${room.minutes}분 · 시작 자금 ${room.cash.toLocaleString()} G`);
+        const tone=rate=>rate>0?'result-positive':rate<0?'result-negative':'result-neutral';
+        const percent=rate=>`${rate>0?'+':''}${rate.toFixed(2)}%`;
+        const summary=make('div','result-summary');
+        if(mine){
+            const rate=(mine.assets/room.cash-1)*100;
+            for(const [label,value,cls] of [['내 최종 자산',`${Math.round(mine.assets).toLocaleString()} G`,''],['내 수익률',percent(rate),tone(rate)]]){
+                const cell=make('div','');cell.append(make('span','',label),make('strong',cls,value));summary.append(cell);
+            }
+        }
+        const table=make('table','result-table');table.setAttribute('aria-label','대결 최종 순위');
+        const head=document.createElement('thead'),header=document.createElement('tr');
+        for(const label of ['순위','참가자','총자산','수익률']){const cell=make('th','',label);cell.scope='col';header.append(cell);}head.append(header);table.append(head);
         const body=document.createElement('tbody');let rank=1;
         sorted.forEach((player,index)=>{
             if(index&&player.assets!==sorted[index-1].assets)rank=index+1;
-            const row=document.createElement('tr');if(player.name==='나')row.style.background='#214356';
-            const rate=(player.assets/room.cash-1)*100;
-            for(const [column,value] of [`${rank===1?'🏆 ':''}${rank}위`,player.name,`${Math.round(player.assets).toLocaleString()}G`,`${rate>=0?'+':''}${rate.toFixed(2)}%`].entries()){
-                const cell=document.createElement('td');cell.textContent=value;cell.style.cssText='padding:18px 6px;border-bottom:1px solid #294457;font-weight:700';if(column===0)cell.style.color='#f5d583';if(column===3)cell.style.color=rate>=0?'#ff9199':'#7cbdff';row.append(cell);
-            }body.append(row);
+            const row=make('tr',player===mine?'result-own':'');const rate=(player.assets/room.cash-1)*100;
+            for(const [column,value] of [`${rank}위`,player.name,`${Math.round(player.assets).toLocaleString()} G`,percent(rate)].entries())row.append(make('td',column===3?tone(rate):column===0&&rank===1?'result-first':'',value));
+            body.append(row);
         });table.append(body);
-        const note=document.createElement('p');note.textContent=`가상 배당 ${winners.some(p=>p.name==='나')?Math.floor(pot/winners.length).toLocaleString():0}G · 실제 지급 0G · 모의투자 전용 가상 계좌입니다.`;note.style.cssText='font-size:13px;color:#9cb5c8;line-height:1.6';
-        const actions=document.createElement('div');actions.style.cssText='display:flex;gap:12px;flex-wrap:wrap;margin-top:24px';
-        const review=document.createElement('button');review.textContent='거래 화면 확인';review.onclick=()=>{popup.close();popup.remove();};
-        const back=document.createElement('button');back.textContent='대결 로비로 돌아가기';back.style.cssText='background:#dfb957;color:#102234;font-weight:700';back.onclick=()=>{popup.close();popup.remove();match.close();};actions.append(review,back);
-        popup.append(badge,title,subtitle,table,note,actions);match.dialog.append(popup);popup.addEventListener('cancel',event=>{event.preventDefault();review.click();});popup.showModal();back.focus();
+        const tableWrap=make('div','result-table-wrap');tableWrap.append(table);
+        const payout=winners.some(p=>p.name==='나')?Math.floor(pot/winners.length):0;
+        const note=make('p','result-note');note.append(make('strong','',`가상 배당 ${payout.toLocaleString()} G · 실제 지급 0 G`),document.createElement('br'),document.createTextNode('모의투자 결과는 실제 계좌에 반영되지 않습니다.'));
+        const actions=make('div','result-actions');
+        const review=make('button','','거래 화면 확인');review.onclick=()=>{popup.close();popup.remove();};
+        const back=make('button','result-primary','대결 로비로 돌아가기');back.onclick=()=>{popup.close();popup.remove();match.close();};actions.append(review,back);
+        popup.append(make('small','result-eyebrow','MATCH RESULT'),title,subtitle);
+        if(mine)popup.append(summary);
+        popup.append(make('h3','result-section-title','최종 순위'),tableWrap,note,actions);match.dialog.append(popup);
+        popup.addEventListener('cancel',event=>{event.preventDefault();review.click();});popup.showModal();back.focus();
     }
     start(room){
         if(!validArenaStake(room.cash,room.stake||0)){this.dialog.querySelector('[data-status]').textContent='이 방의 배팅 금액이 새 범위를 벗어납니다. 방을 다시 만들어 주세요.';return;}
@@ -324,7 +384,9 @@ export class CipherCompetitionRoom{
             const mine=engine.getState().totalNetWorth,other=botAssets();
             status.textContent=quit?'대결을 포기했습니다.':`대결 종료 · ${mine>other?'1위 나':mine<other?`1위 ${opponent}`:'공동 1위'} · 내 총자산 ${Math.round(mine).toLocaleString()}G · ${opponent} ${Math.round(other).toLocaleString()}G${room.opponent?' · 참가비 0G · 실제 계좌 변동 없음':''}`;
             match.dialog.querySelector('[data-close]').textContent='대결 로비로 돌아가기';
-            if(!quit)this.showResults(match,room,[{name:'나',assets:mine},{name:opponent,assets:other}]);
+            const players=[{name:'나',assets:mine,forfeited:quit},{name:opponent,assets:other}];
+            if(quit)saveAiArenaHistory(room,players);
+            else this.showResults(match,room,players);
         };
         match.onClose=()=>{finish(true);this.render();};
         match.order=side=>{if(!finished)CipherTrainingRoom.prototype.order.call(match,side);};
@@ -332,7 +394,8 @@ export class CipherCompetitionRoom{
             const remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));if(!remaining){finish();return;}
             if(Date.now()>=nextNewsAt)publishNews();
             updateStandings(remaining);
-            if(remaining%5===0){const stocks=[...engine.stocks.values()],stock=stocks[Math.floor(Math.random()*stocks.length)];if(Math.random()<.6){const qty=Math.floor(bot.cash*.15/stock.price);if(qty>0){bot.cash-=qty*stock.price;bot.positions.set(stock.id,(bot.positions.get(stock.id)||0)+qty);}}else{const holding=[...bot.positions][0];if(holding){bot.cash+=engine.stocks.get(holding[0]).price*holding[1];bot.positions.delete(holding[0]);}}}
+            if(room.difficulty==='hard'){if(remaining%2===0)tradeHardArenaBot(bot,engine);}
+            else if(remaining%5===0){const stocks=[...engine.stocks.values()],stock=stocks[Math.floor(Math.random()*stocks.length)];if(Math.random()<.6){const qty=Math.floor(bot.cash*.15/stock.price);if(qty>0){bot.cash-=qty*stock.price;bot.positions.set(stock.id,(bot.positions.get(stock.id)||0)+qty);}}else{const holding=[...bot.positions][0];if(holding){bot.cash+=engine.stocks.get(holding[0]).price*holding[1];bot.positions.delete(holding[0]);}}}
         },1000);
         updateStandings(room.minutes*60);engine.startEngine();match.open();
     }

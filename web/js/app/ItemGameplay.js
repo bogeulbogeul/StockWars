@@ -12,13 +12,13 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     let saved;
     try { saved = JSON.parse(localStorage.getItem(saveKey)); } catch { /* First run or corrupt save. */ }
     if (saved?.items?.version !== 1 || !Array.isArray(saved?.items?.inventory) || !Array.isArray(saved?.market?.stocks)) saved = null;
-    // Old completed saves have the tutorial reward marker; unfinished saves cannot resume.
-    if (saved && saved.profile?.firstTutorialCompleted !== true && !saved.items.tutorialRewardClaimed) {
+    // Legacy unfinished saves without a chapter cannot safely resume.
+    if (saved && saved.profile?.firstTutorialCompleted !== true && !saved.items.tutorialRewardClaimed && !saved.profile?.tutorialCheckpoint) {
         try { localStorage.removeItem(saveKey); } catch {}
         saved = null;
     }
     if (saved) {
-        saved.profile.firstTutorialCompleted = true;
+        saved.profile.firstTutorialCompleted = saved.profile.firstTutorialCompleted === true || !!saved.items.tutorialRewardClaimed;
         market.cash = saved.market.cash;
         market.initialCash = saved.market.initialCash;
         market.day = saved.market.day;
@@ -74,7 +74,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     let lastSaved = 0;
     let storageWarning = false;
     function save(force = true) {
-        if (app.userProfile?.firstTutorialCompleted !== true) return false;
+        if (!gameStarted || !app.userProfile?.nickname) return false;
         if (!force && Date.now() - lastSaved < 1000) return;
         try {
             localStorage.setItem(saveKey, JSON.stringify({ items: engine.state, profile: app.userProfile,
