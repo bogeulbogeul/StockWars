@@ -34,7 +34,7 @@ test('reservations survive server restart and original session can reclaim name'
 });
 
 test('development permits duplicate names and positions without replacing either identity', () => {
-    const registry = new PresenceRegistry();
+    const registry = new PresenceRegistry({ enforceUniqueNicknames: false });
     const a = registry.session().token, b = registry.session().token;
     // A reservation from a previous server version must also allow duplicates.
     registry.names.set('황금개미', { token: a, nickname: '황금개미' });

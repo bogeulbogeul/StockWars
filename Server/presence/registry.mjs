@@ -5,13 +5,13 @@ import path from 'node:path';
 
 // Closed-demo guest sessions, not authenticated accounts. No NPCs are registered.
 export class PresenceRegistry {
-    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = false } = {}) {
+    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = true } = {}) {
         this.now = now;
         this.timeoutMs = timeoutMs;
         this.capacity = capacity;
         this.sessions = new Map();
         this.nameFile = nameFile;
-        // Development: devices may share a display name; identities remain separate tokens.
+        // Shared towns reserve each normalized nickname for its session.
         this.enforceUniqueNicknames = enforceUniqueNicknames;
         this.names = new Map();
         this.social = { requests: [], friendships: [] };
@@ -334,6 +334,7 @@ export class PresenceRegistry {
         const session = this.sessions.get(token);
         return {
             totalCCU: active.length,
+            uniqueNicknames: this.enforceUniqueNicknames,
             capacity: this.capacity,
             currentChannelId: session?.channelId || null,
             playerId: session?.playerId,
