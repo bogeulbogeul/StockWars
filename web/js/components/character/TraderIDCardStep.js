@@ -3,7 +3,7 @@
  * Renders the holographic Trader Pass ceremony and status bonuses.
  */
 
-import { createGeometricAvatarSVG } from '../GeometricAvatar.js';
+import { characterFaceSVG, resolveCharacterStyle } from '../CharacterSprite.js';
 
 export class TraderIDCardStep {
     constructor(domElements, callbacks = {}) {
@@ -16,13 +16,8 @@ export class TraderIDCardStep {
 
         if (this.dom.idCardPhoto) {
             this.dom.idCardPhoto.innerHTML = `
-                <div class="id-photo-geometric-wrapper" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 4px;">
-                    ${createGeometricAvatarSVG({
-                        shape: profile.shape || 'square',
-                        skinTone: profile.skinTone || 'fair',
-                        hairStyle: profile.hairStyle || 'short',
-                        direction: 'front'
-                    })}
+                <div class="id-photo-portrait-wrapper" role="img" aria-label="${resolveCharacterStyle(profile.styleId).label} 증명사진" style="width: 100%; height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 4px; overflow: hidden;">
+                    ${characterFaceSVG(profile.styleId || 'dog', { shoulders: true })}
                 </div>
             `;
         }

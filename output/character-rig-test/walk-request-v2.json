@@ -1,0 +1,24 @@
+{
+  "cell": {
+    "width": 256,
+    "height": 320,
+    "safe_margin": 24
+  },
+  "chroma_key": "#00FF00",
+  "states": {
+    "right_walk": {
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "action": "Natural relaxed walking toward screen-right, SAME fixed mild three-quarter camera in ALL frames. Exactly ONE complete TWO-STEP cycle with eight distinct ordered poses. Near leg and far leg MUST alternate: 1 NEAR foot forward touching ground / FAR foot behind; 2 weight on NEAR foot, FAR foot lifts heel; 3 FAR knee passes NEAR leg with slight bend and low foot clearance; 4 FAR leg swings forward, NEAR foot trailing; 5 FAR foot forward touching ground / NEAR foot behind, OPPOSITE of frame1; 6 weight on FAR foot, NEAR heel lifts; 7 NEAR knee passes FAR leg slightly bent; 8 NEAR leg swings forward into frame1. Frame5 MUST NOT repeat frame1. Frame6 MUST NOT repeat frame2. Frame7 MUST NOT repeat frame3. Frame8 MUST NOT repeat frame4. Each arm counter-swings opposite its OWN leg. Far limbs use a subtle darker shade to distinguish. No marching high knees, no exaggerated steps, no running, no torso rotation or face turn. Ground line stays stable, head bob tiny, preserve original head-to-body proportions and highlighted BLACK OVAL eyes, white tee black shorts black shoes. Identity locked to reference."
+    }
+  },
+  "style": "Match accepted NPC-style clean outlined cel-shaded chibi illustration, no pixel processing",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  }
+}

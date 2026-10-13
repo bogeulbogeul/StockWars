@@ -1,0 +1,25 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\black-cat-sprite-test\\v1\\run",
+  "states": [
+    "right_walk"
+  ],
+  "ok": 1,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "right_walk",
+      "out": "C:\\GitHub\\StockWars\\output\\black-cat-sprite-test\\v1\\run\\raw\\right_walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\black-cat-sprite-test\\v1\\run\\reports\\gen-set\\right_walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\black-cat-sprite-test\\v1\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\black-cat-sprite-test\\v1\\run\\references\\layout-guides\\right_walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 49.2,
+      "ok": true
+    }
+  ]
+}

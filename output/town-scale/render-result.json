@@ -1,0 +1,68 @@
+{
+  "rows": [
+    {
+      "id": "home_office_tower",
+      "expected": 630,
+      "attribute": 630,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/OfficeBuilding.png"
+    },
+    {
+      "id": "bit_logistics",
+      "expected": 324,
+      "attribute": 324,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/Bit.png"
+    },
+    {
+      "id": "vivian_store",
+      "expected": 270,
+      "attribute": 270,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/VivianStore.png"
+    },
+    {
+      "id": "julian_furniture",
+      "expected": 405,
+      "attribute": 405,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/MordenFrame.png"
+    },
+    {
+      "id": "claire_apparel",
+      "expected": 405,
+      "attribute": 405,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/SalonDeTail-v2.png"
+    },
+    {
+      "id": "data_ink_bookstore",
+      "expected": 468,
+      "attribute": 468,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/BookStore.png"
+    },
+    {
+      "id": "cipher_securities",
+      "expected": 720,
+      "attribute": 720,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/CipherBuilding.png"
+    },
+    {
+      "id": "node_finance",
+      "expected": 450,
+      "attribute": 450,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/BankBuilding.png"
+    },
+    {
+      "id": "midnight_pub",
+      "expected": 360,
+      "attribute": 360,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/MidnightPub.png"
+    },
+    {
+      "id": "barter_pawn_shop",
+      "expected": 450,
+      "attribute": 450,
+      "src": "file:///C:/GitHub/StockWars/web/assets/buildings/topdown-v1/BarterPawnShop.png"
+    }
+  ],
+  "salonHeight": 405,
+  "salonName": "살롱 드 꼬리",
+  "benchWidth": 135,
+  "pass": true
+}

@@ -1,11 +1,17 @@
 import { toastManager } from '../components/ToastManager.js';
+import { registerNickname } from '../engine/NicknameRegistration.js';
 
 export const worldNavigation = {
     async enterTown(server = null, spawnLocation = null) {
         const bridge = this.isLocalSession ? null : window.stockWarsPresence;
         if (this.isLocalSession) server = { id: 'local', name: '로컬 개발자 마을', ping: 0 };
         if (bridge) {
-            // Development allows duplicate display names. Position updates register the name.
+            try {
+                const registered = await registerNickname(this.userProfile?.nickname, bridge);
+                if (registered.pending) throw new Error('닉네임 중복 확인을 완료한 뒤 입장해 주세요.');
+                this.userProfile.nickname = registered.nickname;
+                this.userProfile.nicknamePending = false;
+            } catch (error) { toastManager.show(error.message, false); return false; }
             const result = await bridge.join(server?.id || 'town-1');
             if (result.error) { toastManager.show(result.error); return false; }
             const selected = result.snapshot.channels.find(ch => ch.id === result.snapshot.currentChannelId);

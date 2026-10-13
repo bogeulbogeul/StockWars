@@ -1,0 +1,10 @@
+const {chromium}=require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http');const root=path.resolve(__dirname,'../..');
+const mime={'.html':'text/html','.js':'application/javascript','.css':'text/css','.png':'image/png','.svg':'image/svg+xml'};
+const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));if(!p.startsWith(root+path.sep)){res.writeHead(403);return res.end();}fs.readFile(p,(e,b)=>{res.writeHead(e?404:200,{'Content-Type':mime[path.extname(p)]||'application/octet-stream'});res.end(e?'missing':b);});});
+(async()=>{let browser;try{await new Promise(r=>server.listen(0,'127.0.0.1',r));browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});const page=await browser.newPage({viewport:{width:1500,height:1000}});
+await page.goto('http://127.0.0.1:'+server.address().port+'/web/tests/anna-deer-preview.html');await page.waitForFunction(()=>window.annaPreviewReady);
+await page.evaluate(async()=>{const url=getComputedStyle(document.querySelector('.anna-portrait')).backgroundImage.match(/url\(["']?(.*?)["']?\)/)[1];const img=new Image();img.src=url;await img.decode();});
+const results=[];for(const exp of ['Standard','Smile','Happy','Pain','Angry']){results.push(await page.evaluate(exp=>{window.annaPreview.setExpression(exp);const p=document.querySelector('.anna-portrait'),s=getComputedStyle(p);return {exp,asset:s.backgroundImage,position:s.backgroundPosition,width:p.clientWidth,height:p.clientHeight};},exp));await page.screenshot({path:path.join(__dirname,'anna-deer-'+exp.toLowerCase()+'-applied.png')});}
+fs.writeFileSync(path.join(__dirname,'anna-deer-render-result.json'),JSON.stringify(results,null,2));console.log(JSON.stringify(results));
+}catch(e){console.error(e);process.exitCode=1;}finally{await browser?.close();server.close();}})();

@@ -1,0 +1,37 @@
+[
+  {
+    "exp": "Standard",
+    "asset": "url(\"http://127.0.0.1:59097/web/assets/characters/anna/anna-deer-dialogue-expressions-v2.png\")",
+    "position": "0% 0%",
+    "width": 70,
+    "height": 70
+  },
+  {
+    "exp": "Smile",
+    "asset": "url(\"http://127.0.0.1:59097/web/assets/characters/anna/anna-deer-dialogue-expressions-v2.png\")",
+    "position": "50% 0%",
+    "width": 70,
+    "height": 70
+  },
+  {
+    "exp": "Happy",
+    "asset": "url(\"http://127.0.0.1:59097/web/assets/characters/anna/anna-deer-dialogue-expressions-v2.png\")",
+    "position": "100% 0%",
+    "width": 70,
+    "height": 70
+  },
+  {
+    "exp": "Pain",
+    "asset": "url(\"http://127.0.0.1:59097/web/assets/characters/anna/anna-deer-dialogue-expressions-v2.png\")",
+    "position": "0% 100%",
+    "width": 70,
+    "height": 70
+  },
+  {
+    "exp": "Angry",
+    "asset": "url(\"http://127.0.0.1:59097/web/assets/characters/anna/anna-deer-dialogue-expressions-v2.png\")",
+    "position": "50% 100%",
+    "width": 70,
+    "height": 70
+  }
+]

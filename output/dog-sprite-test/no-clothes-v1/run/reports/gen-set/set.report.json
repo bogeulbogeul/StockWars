@@ -1,0 +1,53 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run",
+  "states": [
+    "walk",
+    "carry",
+    "sit"
+  ],
+  "ok": 3,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "walk",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\raw\\walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\reports\\gen-set\\walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\references\\layout-guides\\walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 55.6,
+      "ok": true
+    },
+    {
+      "state": "carry",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\raw\\carry.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\reports\\gen-set\\carry.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\references\\layout-guides\\carry.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 52.9,
+      "ok": true
+    },
+    {
+      "state": "sit",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\raw\\sit.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\reports\\gen-set\\sit.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\no-clothes-v1\\run\\references\\layout-guides\\sit.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 52.1,
+      "ok": true
+    }
+  ]
+}

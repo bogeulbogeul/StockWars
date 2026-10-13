@@ -299,7 +299,7 @@ export class FurnitureEditModal {
     }
 
     renderCatalog() {
-        const filtered = this.furnitureList.filter(f => 
+        const filtered = this.furnitureList.filter(f =>
             this.activeCategory === 'all' || f.category === this.activeCategory
         );
 
@@ -468,6 +468,7 @@ export class FurnitureEditModal {
     }
 
     open() {
+        if (this.stage?.roomPackage) { this.callbacks.onShowToast?.("현재 홈오피스는 고정 배치 룸입니다."); return; }
         if (!this.modal.classList.contains('hidden')) return;
         this.previousFocus = document.activeElement;
         this.initialLayout = JSON.stringify(this.furnitureList);

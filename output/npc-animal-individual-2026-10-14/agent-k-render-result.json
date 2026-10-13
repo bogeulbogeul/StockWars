@@ -1,0 +1,7 @@
+{
+  "room": "http://127.0.0.1:49682/web/assets/interiors/cipher/cipher-lobby-package-agent-k-v8.png",
+  "portrait": "http://127.0.0.1:49682/web/assets/characters/agent-k/agent-k-russian-blue-dialogue-v1.png",
+  "dialogueVisible": true,
+  "nearAgent": true,
+  "portraitLoaded": true
+}

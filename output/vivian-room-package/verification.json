@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "clockMoves": true,
+  "resizing": [
+    {
+      "room": {
+        "x": 0,
+        "y": 0,
+        "width": 900,
+        "height": 600,
+        "top": 0,
+        "right": 900,
+        "bottom": 600,
+        "left": 0
+      },
+      "background": {
+        "x": 0,
+        "y": 0,
+        "width": 900,
+        "height": 600,
+        "top": 0,
+        "right": 900,
+        "bottom": 600,
+        "left": 0
+      },
+      "playerFoot": [
+        603.5000305175781,
+        474.609375
+      ],
+      "expectedFoot": [
+        603.515625,
+        474.609375
+      ]
+    },
+    {
+      "room": {
+        "x": 0,
+        "y": 240,
+        "width": 480,
+        "height": 320,
+        "top": 240,
+        "right": 480,
+        "bottom": 560,
+        "left": 0
+      },
+      "background": {
+        "x": 0,
+        "y": 240,
+        "width": 480,
+        "height": 320,
+        "top": 240,
+        "right": 480,
+        "bottom": 560,
+        "left": 0
+      },
+      "playerFoot": [
+        321.85935974121094,
+        493.125
+      ],
+      "expectedFoot": [
+        321.875,
+        493.125
+      ]
+    }
+  ],
+  "game": {
+    "package": true,
+    "places": [
+      {
+        "x": 1030,
+        "y": 810,
+        "action": "exit",
+        "label": "나가기"
+      },
+      {
+        "x": 450,
+        "y": 690,
+        "action": "shop",
+        "label": "계산대"
+      }
+    ],
+    "src": "file:///C:/GitHub/StockWars/web/assets/interiors/vivian-package/vivian-room-package-clean-v4.png"
+  },
+  "errors": []
+}

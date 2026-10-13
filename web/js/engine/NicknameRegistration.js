@@ -5,12 +5,11 @@ export async function registerNickname(input, bridge) {
     if (!bridge?.claimNickname) return { nickname, pending: true };
     let result;
     try { result = await bridge.claimNickname(nickname); }
-    catch { return { nickname, pending: true }; }
+    catch { throw new Error('닉네임 중복 확인 서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.'); }
     if (result?.error) {
-        // Older servers reject the new action; connectivity failures are not duplicates.
-        // Uniqueness is disabled during development, including responses from older servers.
-        if (/닉네임은|잘못된 닉네임/.test(result.error)) throw new Error(result.error);
-        return { nickname, pending: true };
+        throw new Error(result.error);
     }
+    if (!result?.snapshot || result.snapshot.local) throw new Error('온라인 서버에서 닉네임을 확인하지 못했습니다. 다시 시도해 주세요.');
+    if (result.snapshot.uniqueNicknames !== true) throw new Error('닉네임 중복 방지를 위해 온라인 서버 업데이트가 필요합니다.');
     return { nickname, pending: false };
 }

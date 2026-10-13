@@ -34,7 +34,7 @@ export class TitleScreen {
                     </header>
                     <nav class="title-menu-container" aria-label="게임 메뉴">
                         <button type="button" class="title-btn primary-start-btn" id="btnTitleNewGame">
-                            <span class="btn-text-group"><span class="btn-title">새 게임</span><span class="btn-sub">나만의 트레이더로 첫 출근하기</span></span>
+                            <span class="btn-text-group"><span class="btn-title">새 게임 · 멀티플레이</span><span class="btn-sub">트레이더 등록 후 같은 마을에서 함께하기</span></span>
                             <span class="btn-arrow" aria-hidden="true">↗</span>
                         </button>
                         <div class="title-sub-btn-group">
@@ -56,7 +56,7 @@ export class TitleScreen {
                     <div class="title-bottom-row">
                         <span class="title-copyright">© 2026 StockWars</span>
                         <button type="button" class="title-dev-btn" id="btnTitleStartDemo" aria-describedby="titleDevHint"><span aria-hidden="true">⌘</span> 개발자 모드 <span aria-hidden="true">↗</span></button>
-                        <span class="title-dev-hint" id="titleDevHint">새 게임 진행 · 디버그 툴바</span>
+                        <span class="title-dev-hint" id="titleDevHint">혼자 플레이 · 디버그 툴바</span>
                     </div>
                 </footer>
             </section>

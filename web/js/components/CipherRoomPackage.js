@@ -2,14 +2,20 @@ import {ROOM_SIZE,OBJECTS,PLACES,SEATS,inside,createPackageNavigation} from './C
 import {marketEngine} from '../engine/marketEngine.js';
 import {elementScale} from '../app/GameViewport.js';
 
+// Source-art coordinates remain the package's navigation/interaction map.
+// Convert the entire room uniformly to the H=90 scene; never stretch its art.
+export const CIPHER_ROOM_SCALE = 0.6;
+export const CIPHER_AGENT_ENABLED = true;
+
 export class CipherRoomPackage {
     constructor(lobby){
         this.lobby=lobby;this.navigation=createPackageNavigation();this.pending=null;
-        lobby.canvas.width=ROOM_SIZE.width;lobby.canvas.height=ROOM_SIZE.height;
+        this.scale=CIPHER_ROOM_SCALE;
+        lobby.canvas.width=Math.round(ROOM_SIZE.width*this.scale);lobby.canvas.height=Math.round(ROOM_SIZE.height*this.scale);
         this.background=new Image();this.background.onload=()=>lobby.draw();
         this.background.onerror=()=>{lobby.dialog.querySelector('.cipher-lobby-error').hidden=false;};
-        this.background.src=new URL('../../assets/interiors/cipher/cipher-lobby-package-clean-v7.png',import.meta.url).href;
-        this.agent=new Image();this.agent.onload=()=>lobby.draw();this.agent.src=new URL('../../assets/characters/agent-k/agent-k-chibi-isometric-v1.png',import.meta.url).href;
+        // Fixed receptionist is painted into this user-requested room variant.
+        this.background.src=new URL('../../assets/interiors/cipher/cipher-lobby-package-agent-k-v8.png',import.meta.url).href;
         this.overlay=document.createElement('div');this.overlay.className='cipher-package-overlay';
         this.overlay.innerHTML='<section class="cipher-index-board" aria-label="사이퍼 지수 전광판"><header><strong>사이퍼 지수</strong><span>게임 시장</span></header><div class="cipher-index-data"><div><small>CIPHER INDEX</small><b class="cipher-index-value">—</b><span class="cipher-index-change"></span></div><div class="cipher-index-plot" role="img" aria-label="사이퍼 지수 추이"></div></div><footer>로비 입장 이후 지수 추이 · pt</footer></section>';
         lobby.canvas.after(this.overlay);
@@ -18,7 +24,7 @@ export class CipherRoomPackage {
         lobby.canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;event.preventDefault();const r=lobby.canvas.getBoundingClientRect(),s=Math.min(r.width/ROOM_SIZE.width,r.height/ROOM_SIZE.height);lobby.movePlayerTo({x:(event.clientX-r.left-(r.width-ROOM_SIZE.width*s)/2)/s,y:(event.clientY-r.top-(r.height-ROOM_SIZE.height*s)/2)/s});});
         // Keyboard equivalents use the same approach/move/arrival flow as object clicks.
         const actions=document.createElement('nav');actions.className='cipher-package-actions';actions.setAttribute('aria-label','로비 시설로 이동');
-        for(const place of [...PLACES,...SEATS.map(s=>({...s,label:'소파 앉기'}))]){const button=document.createElement('button');button.textContent=place.label;button.onclick=()=>this.request(place.id);actions.append(button);}
+        for(const place of [...PLACES.filter(p=>CIPHER_AGENT_ENABLED||p.id!=='agent'),...SEATS.map(s=>({...s,label:'소파 앉기'}))]){const button=document.createElement('button');button.textContent=place.label;button.onclick=()=>this.request(place.id);actions.append(button);}
         lobby.dialog.append(actions);
     }
     resize(){
@@ -47,6 +53,7 @@ export class CipherRoomPackage {
     occupied(seat){return this.lobby.remotePlayers?.some(p=>p.resting&&(p.seatId===seat.id||p.seatId?.startsWith(seat.id+'-')))||false;}
     nearbySeat(){const l=this.lobby;return SEATS.filter(s=>!this.occupied(s)).map(s=>({...s,distance:Math.hypot(l.player.x-s.approach.x,l.player.y-s.approach.y)})).filter(s=>s.distance<48).sort((a,b)=>a.distance-b.distance)[0]||null;}
     request(id){
+        if(id==='agent'&&!CIPHER_AGENT_ENABLED)return;
         const l=this.lobby;if(!l.isOpen||!l.notice.hidden||l.tour?.active||l.trainingRoom.dialog.open||l.competitionRoom.dialog.open)return;
         l.standUp();l.player.stop();const place=PLACES.find(p=>p.id===id)||SEATS.find(s=>s.id===id);if(!place)return;
         if(place.sofa&&this.occupied(place)){this.pending=null;return;}
@@ -55,7 +62,7 @@ export class CipherRoomPackage {
     }
     moveTo(p){
         const l=this.lobby;if(!l.notice.hidden||l.tour?.active)return;
-        const place=PLACES.find(q=>inside(p.x,p.y,q.hit));
+        const place=PLACES.find(q=>(CIPHER_AGENT_ENABLED||q.id!=='agent')&&inside(p.x,p.y,q.hit));
         const sofa=OBJECTS.find(o=>o.id.startsWith('sofa')&&inside(p.x,p.y,o.silhouette));
         if(place)return this.request(place.id);
         if(sofa){const seat=SEATS.find(s=>s.sofa===sofa.id&&!this.occupied(s));if(seat)return this.request(seat.id);return;}
@@ -74,19 +81,11 @@ export class CipherRoomPackage {
     actorPose(pose,seat){
         // Old online coordinates also pass through the same safe standing map.
         // Only a recognised occupied seat is allowed inside a sofa.
-        return {...pose,...(seat?{x:seat.x,y:seat.y,phase:0}:this.navigation.clamp(pose.x,pose.y))};
+        return {...pose,...(seat?{x:seat.x,y:seat.y,phase:0,resting:true,facing:seat.id==='lounge-left'?1:-1}:this.navigation.clamp(pose.x,pose.y))};
     }
     draw(ctx){
         if(!this.background.naturalWidth)return;
         ctx.drawImage(this.background,0,0,ROOM_SIZE.width,ROOM_SIZE.height);
-        // K is a fixed NPC behind the counter. This small, fixed composition
-        // never masks moving players or copies carpet edges around furniture.
-        if(this.agent.naturalWidth){
-            ctx.save();this.path(ctx,[[566,292],[694,292],[694,411],[566,472]]);ctx.clip();
-            ctx.drawImage(this.agent,566,292,128,192);ctx.restore();
-            ctx.save();this.path(ctx,[[616,438],[635,429],[635,420],[634,416],[678,398],[679,422],[700,411],[704,371],[730,349],[757,402],[818,384],[818,474],[528,590],[440,483],[533,469]]);ctx.clip();
-            ctx.drawImage(this.background,0,0,ROOM_SIZE.width,ROOM_SIZE.height);ctx.restore();
-        }
         const l=this.lobby,actors=[{pose:l.player,seat:l.seated},...(l.remotePlayers||[]).map(p=>({pose:{...p,facing:p.facing==='left'?-1:1,phase:p.walking&&!p.resting?performance.now()/100:0},seat:p.resting?SEATS.find(s=>s.id===p.seatId):null,nickname:p.nickname}))];
         for(const actor of actors)actor.pose=this.actorPose(actor.pose,actor.seat);
         actors.sort((a,b)=>a.pose.y-b.pose.y);

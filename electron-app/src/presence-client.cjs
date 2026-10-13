@@ -26,7 +26,7 @@ class PresenceClient {
     }
     if (action === 'forget') return data;
     this.snapshot = { totalCCU: data.totalCCU, capacity: data.capacity, channels: data.channels,
-      currentChannelId: data.currentChannelId, playerId: data.playerId, players: data.players, ping: Date.now() - started };
+      currentChannelId: data.currentChannelId, playerId: data.playerId, players: data.players, uniqueNicknames: data.uniqueNicknames, ping: Date.now() - started };
     this.error = null;
     return this.snapshot;
   }

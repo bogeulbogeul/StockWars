@@ -1,0 +1,117 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2",
+  "states": [
+    "walk",
+    "carry",
+    "sit"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "walk",
+      "source": "frames",
+      "expected_frames": 6,
+      "found_frames": 6,
+      "natural_pose_count": 6,
+      "frame_files": [
+        "frames/walk/frame-0.png",
+        "frames/walk/frame-1.png",
+        "frames/walk/frame-2.png",
+        "frames/walk/frame-3.png",
+        "frames/walk/frame-4.png",
+        "frames/walk/frame-5.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9705128316673939,
+          "mean": 0.9831507165361594
+        },
+        "dhash_similarity": {
+          "min": 0.84375,
+          "mean": 0.921875
+        },
+        "motion_presence": 0.04590327244178921,
+        "centroid_sigma": {
+          "x": 2.72270107062562,
+          "y": 1.6035936911307176
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "carry",
+      "source": "frames",
+      "expected_frames": 6,
+      "found_frames": 6,
+      "natural_pose_count": 6,
+      "frame_files": [
+        "frames/carry/frame-0.png",
+        "frames/carry/frame-1.png",
+        "frames/carry/frame-2.png",
+        "frames/carry/frame-3.png",
+        "frames/carry/frame-4.png",
+        "frames/carry/frame-5.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.977267748472267,
+          "mean": 0.9850344546475561
+        },
+        "dhash_similarity": {
+          "min": 0.875,
+          "mean": 0.9260416666666667
+        },
+        "motion_presence": 0.044569355085784315,
+        "centroid_sigma": {
+          "x": 2.9534264616770294,
+          "y": 1.7014409335473464
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "sit",
+      "source": "frames",
+      "expected_frames": 4,
+      "found_frames": 4,
+      "natural_pose_count": 4,
+      "frame_files": [
+        "frames/sit/frame-0.png",
+        "frames/sit/frame-1.png",
+        "frames/sit/frame-2.png",
+        "frames/sit/frame-3.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9104596961597702,
+          "mean": 0.9472640168766993
+        },
+        "dhash_similarity": {
+          "min": 0.6875,
+          "mean": 0.8151041666666666
+        },
+        "motion_presence": 0.0664688010620915,
+        "centroid_sigma": {
+          "x": 8.510838013703207,
+          "y": 2.3460898488359305
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

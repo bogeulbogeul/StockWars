@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "dog-three-pose-test",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 255.69,
+    "min_subject_distance": 247.86,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 14400
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 224.39,
+        "min_subject_distance": 218.1,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 236.55,
+        "min_subject_distance": 221.04,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 255.69,
+        "min_subject_distance": 247.86,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 247.8,
+        "min_subject_distance": 224.39,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "walk": {
+      "frames": 3,
+      "fps": 5,
+      "loop": true,
+      "action": "Exactly THREE poses only, ordered A / neutral standing / B. A matches old walk frame-0 pose. Neutral has both short feet grounded under pelvis and relaxed arms. B matches old walk frame-2 pose. Keep same fixed right-facing three-quarter view, same face proportions and head orientation in all three. Correct both arms to identical golden tan body fur, no cream or pale stripe on arms. Cream only on muzzle and belly. No clothing, shoes, boxes, tail or extra poses."
+    }
+  },
+  "style": "Exactly match attached unclothed dog: golden tan body fur, cream oval belly and muzzle, floppy ears, short rounded bare paws and feet, black oval highlighted eyes. NO clothes, NO shoes. StockWars clean dark warm outlines and cel shading, compact mascot body.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "walkDirections": ["down", "left", "right", "up"],
+  "carryDirections": ["left", "right"],
+  "sitDirections": ["down", "left", "right"],
+  "movingFrameIndices": [0, 1, 2, 1],
+  "frameDurationMs": 160,
+  "sitFrameIndex": 0,
+  "status": "experimental",
+  "note": "Three unique movement drawings. Separate parcel and chair objects; anchor positions require game integration validation. Sitting holds only; entry/exit clips not yet produced."
+}

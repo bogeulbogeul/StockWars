@@ -1,5 +1,5 @@
 export const CIPHER_TOUR_KEY = 'stockwars.cipher.guided-tour.v1';
-const agentKPortraitUrl = new URL('../../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png?portrait=hd1', import.meta.url).href;
+import {AGENT_K_PORTRAIT_URL as agentKPortraitUrl} from '../CipherAgentK.js';
 export const cipherTourSteps = [
     { room: 'lobby', title: '사이퍼 증권에 오신 것을 환영합니다', text: '저는 에이전트 K입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
     { room: 'lobby', title: '전광판과 휴식 공간', text: '뒤쪽 전광판은 사이퍼 지수의 현재 값과 흐름을 보여줍니다. 소파에서는 앉아서 잠시 쉴 수 있습니다. 로비 이동은 이동 키나 바닥 클릭, 가까운 시설 이용은 상호작용 키로 합니다.', page: 1 },

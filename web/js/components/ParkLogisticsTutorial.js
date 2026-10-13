@@ -32,7 +32,7 @@ export class ParkLogisticsTutorial {
                     <!-- Left: Park Portrait Frame -->
                     <div class="vn-portrait-frame" id="vnParkPortraitFrame">
                         <div class="vn-portrait-avatar" id="vnParkPortraitAvatar">
-                            <img id="vnParkPortrait" src="assets/characters/manager-park/park-dialogue-neutral-v1.png" alt="관리소장 박씨 — 무뚝뚝한 표정" draggable="false">
+                            <img id="vnParkPortrait" src="assets/characters/manager-park/park-boar-dialogue-neutral-v1.png" alt="관리소장 박씨 — 무뚝뚝한 표정" draggable="false">
                         </div>
                         <div class="vn-portrait-badge">MANAGER PARK</div>
                     </div>
@@ -183,7 +183,7 @@ export class ParkLogisticsTutorial {
                 targetSelector: '#logisticsTruckZone' });
         }
         steps.push({ ...base, expression: 'smile', id: 'park_ready', tracker: '연습 완료 • 실전 준비',
-            text: '이제 실전이다! 1개는 1점, 2개는 3점, 3개는 6점, 4개는 10점이다. 배송 횟수 조건 없이 30점이면 S등급! 흔들리면 잠깐 멈춰. 준비됐으면 아래 버튼을 눌러 60초 작업을 시작해!',
+            text: '이제 실전이다! 1개는 1점, 2개는 3점, 3개는 6점, 4개는 8점이다. 배송 횟수 조건 없이 30점이면 S등급! 흔들리면 잠깐 멈춰. 준비됐으면 아래 버튼을 눌러 60초 작업을 시작해!',
             actionBtnText: '🚀 60초 실전 상하차 시작!' });
         return steps.map(step => {
             const compact = { ...step };
@@ -247,7 +247,7 @@ export class ParkLogisticsTutorial {
         if (step.targetSelector) this.highlightElement(step.targetSelector, false);
         if (this.portraitImage) {
             const expression = step.expression || 'neutral';
-            this.portraitImage.src = `assets/characters/manager-park/park-dialogue-${expression}-v1.png`;
+            this.portraitImage.src = `assets/characters/manager-park/park-boar-dialogue-${expression}-v1.png`;
             this.portraitImage.alt = `관리소장 박씨 — ${{ neutral: '무뚝뚝한 표정', smile: '흡족한 미소', angry: '호통', worried: '걱정' }[expression]}`;
         }
 

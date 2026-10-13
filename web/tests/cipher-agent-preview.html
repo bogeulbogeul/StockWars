@@ -1,0 +1,6 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="../css/style.css"><title>K 로비 확인</title><body><script type="module">
+import {CipherLobby} from '../js/components/CipherCanvasLobby.js';
+const lobby=window.kPreviewLobby=new CipherLobby(document.body);
+lobby.agentKIntroduced=true;lobby.open();lobby.hideAgentWelcome();
+window.kPreviewReady=true;
+</script></body></html>

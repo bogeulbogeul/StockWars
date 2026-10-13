@@ -6,7 +6,7 @@
  * - TraderIDCardStep: Step 3 Hologram pass ceremony
  */
 
-import { createGeometricAvatarSVG } from './GeometricAvatar.js';
+import { CHARACTER_STYLES, characterFaceSVG, updateCharacterSprite } from './CharacterSprite.js';
 import { PersonalityTestStep } from './character/PersonalityTestStep.js';
 import { TraderIDCardStep } from './character/TraderIDCardStep.js';
 import { registerNickname } from '../engine/NicknameRegistration.js';
@@ -18,6 +18,7 @@ export class CharacterCreation {
 
         // Customization State
         this.shape = 'square';
+        this.styleId = 'dog';
         this.gender = 'male';
         this.skinTone = 'fair';
         this.hairStyle = 'short';
@@ -89,12 +90,13 @@ export class CharacterCreation {
                                 </div>
 
                                 <div class="control-group" id="shapeControlGroup">
-                                    <label class="control-label">캐릭터 형태</label>
+                                    <label class="control-label">캐릭터 선택</label>
                                     <div class="shape-swatch-group">
-                                        <button class="shape-swatch-btn active" data-shape="square" title="기본 하얀색 네모">
-                                            <span class="shape-icon">⬜</span>
-                                            <span>기본 하얀색 네모</span>
-                                        </button>
+                                        ${CHARACTER_STYLES.map(style => `
+                                            <button type="button" class="shape-swatch-btn character-face-btn ${style.id === this.styleId ? 'active' : ''}" data-style-id="${style.id}" aria-label="${style.label}" title="${style.label}" aria-pressed="${style.id === this.styleId}">
+                                                ${characterFaceSVG(style.id)}
+                                            </button>
+                                        `).join('')}
                                     </div>
                                     <div class="character-guide-note" style="margin-top: 8px; font-size: 11.5px; color: var(--accent-cyan); background: rgba(0,229,255,0.08); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(0,229,255,0.2);">
                                         🏢 홈 오피스 입장 후 바닥 타일 클릭 또는 방향키(WASD)로 자유롭게 캐릭터를 이동시켜 움직임을 테스트할 수 있습니다.
@@ -230,6 +232,12 @@ export class CharacterCreation {
     }
 
     initEventListeners() {
+        this.modal.querySelectorAll('[data-style-id]').forEach(button => {
+            button.addEventListener('click', () => {
+                this.styleId = button.dataset.styleId;
+                this.updateAvatarPreview();
+            });
+        });
         this.btnRotLeft?.addEventListener('click', () => {
             const idx = this.directions.indexOf(this.direction);
             this.direction = this.directions[(idx - 1 + this.directions.length) % this.directions.length];
@@ -305,13 +313,16 @@ export class CharacterCreation {
 
     updateAvatarPreview() {
         if (this.avatarFigure) {
-            this.avatarFigure.innerHTML = createGeometricAvatarSVG({
-                shape: this.shape,
-                skinTone: this.skinTone,
-                hairStyle: this.hairStyle,
-                direction: this.direction
-            });
+            updateCharacterSprite(this.avatarFigure, { styleId: this.styleId, direction: this.direction });
+            // Selection camera zoom; world character height remains90.
+            this.avatarFigure.style.transform = 'scale(2)';
+            this.avatarFigure.style.transformOrigin = 'center';
         }
+        this.modal.querySelectorAll('[data-style-id]').forEach(button => {
+            const selected = button.dataset.styleId === this.styleId;
+            button.classList.toggle('active', selected);
+            button.setAttribute('aria-pressed', String(selected));
+        });
     }
 
     showIdCardCeremony() {
@@ -325,6 +336,7 @@ export class CharacterCreation {
         }
         this.idCardStep.renderCeremony({
             nickname: this.nickname,
+            styleId: this.styleId,
             shape: this.shape,
             skinTone: this.skinTone,
             hairStyle: this.hairStyle,
@@ -347,6 +359,7 @@ export class CharacterCreation {
     finishCreation() {
         const userProfile = {
             nickname: this.nickname,
+            styleId: this.styleId,
             shape: this.shape,
             gender: this.gender,
             nicknamePending: this.nicknamePending === true,

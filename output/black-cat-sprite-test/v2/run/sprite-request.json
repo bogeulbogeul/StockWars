@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "black-cat-test-v2",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 260.33,
+    "min_subject_distance": 250.48,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 19896
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 188.77,
+        "min_subject_distance": 184.63,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 209.93,
+        "min_subject_distance": 208.72,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 260.33,
+        "min_subject_distance": 250.48,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 194.16,
+        "min_subject_distance": 190.04,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. straight front facing viewer, symmetric head and ears, both eyes. Both short feet planted, arms relaxed. No extra animation poses. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE drawings ordered step A, neutral standing, step B. straight front facing viewer, symmetric head and ears, both eyes in ALL frames, absolutely no turning during row. A one short foot advances, neutral BOTH feet planted under hips with relaxed arms, B OPPOSITE short foot advances and arms counter swing. Tiny simple gait as approved3-pose test. Cream only belly and muzzle; charcoal black arms. No added frames effects boxes chair. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. facing camera-right with same slightly three-quarter view as approved black cat. Both short feet planted, arms relaxed. No extra animation poses. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "right_walk": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": "FOUR fixed RIGHT-FACING profile poses. Frame1 nearest foreground leg is FRONT extended forward, far leg behind. Frame2 nearest leg straight VERTICAL planted under pelvis, far leg passes forward bent knee. Frame3 nearest foreground leg is BEHIND slanted backwards, far leg leads FRONT (use slightly lighter charcoal tone on farther leg to identify it). Frame4 far leg straight vertical under pelvis supports, near leg passes forward bent knee. Foreground leg switches FRONT in1 to BACK in3. DO NOT repeat first pose in third! No neutral standing no high kick. Head torso same size orientation location; arms opposite legs and alternate. Match blackcat base:2 triangle ears amber eyes pink nose no clothes shoes tail whitepatches."
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE straight BACK VIEW stationary black cat, feet smooth rounded HEELS and rear ankles only, toe tips pointing AWAY hidden ahead of shins. NO toe/finger/claw crease lines or front paw lobes. No tail. Same charcoal black black cat identity. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "THREE straight BACK VIEW drawings walking away: left contact, passing, right contact. Feet smooth rear HEELS behind ankles, toes face AWAY and hidden by shins. NO front-facing toe/claw crease lines, no toe fan. Raised foot has smooth small heel underside. Arms subtly alternate. No face belly tail. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": "Fixed camera-right profile black cat. FOUR frames. Nearest leg is foreground overlaps farther leg. Frame1 foreground leg in FRONT (toward facing), farther leg BEHIND. Frame2 foreground leg VERTICAL firmly grounded under pelvis, farther knee flexed softly passes in FRONT of grounded leg. Frame3 foreground leg BEHIND, farther leg in FRONT; draw farther shin and paw visibly in front of foreground leg WITHOUT moving foreground leg forward. Frame4 farther leg VERTICAL grounded under pelvis, foreground knee flexed softly passes in FRONT. No repeating1as3 or2as4, no both-feet-together standing. Feet low near ground, no kicks no high knees no rump lift. Foreground leg same charcoal black tan, farther leg subtle orange shade only to show overlap. Fixed head/torso size and angle. Both palms up forward supporting separate cargo, same hand position allframes, no boxes. No garments, shoes, tail, effects. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR SEATED pose only, not a sit-down animation. Facing down matching anchor. Pelvis raised above floor at seat height, torso upright, hips bent90degrees, thighs extend forward horizontally and knees bent down with short feet below. Both paws relaxed on thighs. Not sitting on floor/haunches, not legs stretched out. Draw character ONLY with NO chair; leave empty area under pelvis for separate chair seat. Same proportions and charcoal black arm fur. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE CHAIR SEATED pose in elevated ISOMETRIC THREE-QUARTER FRONT view facing camera-right diagonally toward viewer. BOTH eyes visible, BOTH ears visible, far eye ear smaller. NOT pure side profile. Thighs forward along isometric floor diagonal29.5degrees toward camera-right, knees bend down, pelvis at raised seat height, torso upright, paws on thighs. black cat ONLY no chair or shadow. Preserve huge head compact tiny body charcoal black fur black belly muzzle, no clothes shoes tail. Not floor or haunch sit. Exactly2 upright triangular CAT ears; preserve amber highlighted eyes and black fur, no dog floppy ears, no tail."
+    }
+  },
+  "style": "Match black cat base exactly. Entire charcoal black fur, warm gray highlights, oval amber eyes black pupils white catchlights, tiny pink nose, two upright triangle ears muted pink inner ears. Huge rounded head tiny biped body short paws. No clothes shoes tail white patches. Same clean outlined cel-shaded StockWars dog mascot style. Preserve2ears same head body proportions across allstates.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

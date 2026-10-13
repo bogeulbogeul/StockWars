@@ -1,0 +1,25 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1",
+  "states": [
+    "right_walk"
+  ],
+  "ok": 1,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "right_walk",
+      "out": "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1\\raw\\right_walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1\\reports\\gen-set\\right_walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1\\references\\layout-guides\\right_walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 48.2,
+      "ok": true
+    }
+  ]
+}

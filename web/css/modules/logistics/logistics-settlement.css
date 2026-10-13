@@ -78,9 +78,9 @@
 
 .char-stack-badge {
     position: absolute;
-    top: -24px;
+    bottom: max(calc(100% + 12px), var(--stack-label-head-clearance, 74px));
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleX(var(--stack-label-facing, 1));
     background: #090e17;
     border: 2px solid #f59e0b;
     color: #f59e0b;
@@ -96,7 +96,12 @@
     border-color: #ef4444;
     color: #ef4444;
     box-shadow: 0 0 16px rgba(239, 68, 68, 1);
-    animation: flashAlert 0.35s infinite alternate;
+    animation: stackBadgeAlert 0.35s infinite alternate;
+}
+
+@keyframes stackBadgeAlert {
+    from { filter: drop-shadow(0 0 2px #ef4444); }
+    to { filter: drop-shadow(0 0 8px #ef4444); }
 }
 
 /* Quick Stack Button in Bottom Footer */
@@ -324,6 +329,9 @@ body:has(#parkTutorialOverlay:not(.hidden)) .logistics-footer-bar,
     height: 96px;
     flex-shrink: 0;
     object-fit: contain;
+    box-sizing: border-box;
+    padding: 0;
+    object-position: center bottom;
     background: radial-gradient(circle, #49331a, transparent);
     border-radius: 10px;
 }

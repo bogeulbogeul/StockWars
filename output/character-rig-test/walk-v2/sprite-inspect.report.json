@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v2",
+  "states": [
+    "right_walk"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "right_walk",
+      "source": "frames",
+      "expected_frames": 8,
+      "found_frames": 8,
+      "natural_pose_count": 8,
+      "frame_files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png",
+        "frames/right_walk/frame-3.png",
+        "frames/right_walk/frame-4.png",
+        "frames/right_walk/frame-5.png",
+        "frames/right_walk/frame-6.png",
+        "frames/right_walk/frame-7.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.97582878217815,
+          "mean": 0.9833374214572026
+        },
+        "dhash_similarity": {
+          "min": 0.859375,
+          "mean": 0.9391741071428571
+        },
+        "motion_presence": 0.039928344384628854,
+        "centroid_sigma": {
+          "x": 2.3581415993081,
+          "y": 3.655908393170501
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

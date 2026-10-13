@@ -60,15 +60,15 @@ export const TOWN_BUILDINGS = [
     {
         id: 'claire_apparel',
         available: false,
-        name: '테일러드 의상실',
-        sign: '테일러드',
-        category: '의상 / 스타일',
-        icon: '👗',
+        name: '살롱 드 꼬리',
+        sign: '살롱 드 꼬리',
+        category: '그루밍 / 스타일',
+        icon: '🪮',
         width: 240,
         height: 230,
         colorTheme: 'magenta',
-        desc: '트레이더 전용 스탯 의상 및 명품 커스텀 코스튬 (디자이너 클레어)',
-        actionText: '의상실 입장'
+        desc: '동물 트레이더의 완성형 스타일을 미리 보고 선택하는 그루밍 살롱입니다. 스타일리스트 클레어가 개점을 준비하고 있어요.',
+        actionText: '살롱 입장'
     },
     {
         id: 'data_ink_bookstore',

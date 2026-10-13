@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "dog-direction-test",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 257.47,
+    "min_subject_distance": 238.01,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 19770
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 228.14,
+        "min_subject_distance": 221.04,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 231.21,
+        "min_subject_distance": 215.55,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 257.47,
+        "min_subject_distance": 238.01,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 246.5,
+        "min_subject_distance": 221.63,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. straight front facing viewer, symmetric head and ears, both eyes. Both short feet planted, arms relaxed. No extra animation poses."
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE drawings ordered step A, neutral standing, step B. straight front facing viewer, symmetric head and ears, both eyes in ALL frames, absolutely no turning during row. A one short foot advances, neutral BOTH feet planted under hips with relaxed arms, B OPPOSITE short foot advances and arms counter swing. Tiny simple gait as approved3-pose test. Cream only belly and muzzle; golden arms. No added frames effects boxes chair."
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. facing camera-right with same slightly three-quarter view as approved dog. Both short feet planted, arms relaxed. No extra animation poses."
+    },
+    "right_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE very different leg silhouettes, facing camera-right throughout. Frame1 A: nearest visible short leg bends BEHIND body with paw LIFTED toward rump, far leg is planted under body. Frame2 neutral: both feet flat on ground aligned side by side under hips. Frame3 B: nearest visible leg swings FORWARD with paw lifted IN FRONT of body, far leg grounded behind. The near paw must move from BEHIND in frame1 to IN FRONT in frame3, not the same foot-forward drawing repeated! No crossed straight scissor legs, no duplicate pose. Arms counter swing in A and B, relaxed at sides in neutral. Preserve direction anchor face head shape and scale, golden arms match body, no clothes shoes tail effects. Tiny short leg motion."
+    },
+    "left_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. facing camera-left, matching opposite right view. Both short feet planted, arms relaxed. No extra animation poses."
+    },
+    "left_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE very different leg silhouettes, facing camera-left throughout. Frame1 A: nearest visible short leg bends BEHIND body with paw LIFTED toward rump, far leg is planted under body. Frame2 neutral: both feet flat on ground aligned side by side under hips. Frame3 B: nearest visible leg swings FORWARD with paw lifted IN FRONT of body, far leg grounded behind. The near paw must move from BEHIND in frame1 to IN FRONT in frame3, not the same foot-forward drawing repeated! No crossed straight scissor legs, no duplicate pose. Arms counter swing in A and B, relaxed at sides in neutral. Preserve direction anchor face head shape and scale, golden arms match body, no clothes shoes tail effects. Tiny short leg motion."
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. straight rear view facing away, no eyes muzzle nose belly visible. Both short feet planted, arms relaxed. No extra animation poses."
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE drawings ordered step A, neutral standing, step B. straight rear view facing away, no eyes muzzle nose belly visible in ALL frames, absolutely no turning during row. A one short foot advances, neutral BOTH feet planted under hips with relaxed arms, B OPPOSITE short foot advances and arms counter swing. Tiny simple gait as approved3-pose test. Cream only belly and muzzle; golden arms. No added frames effects boxes chair."
+    },
+    "right_carry": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE very different leg silhouettes, facing camera-right throughout. Frame1 A: nearest visible short leg bends BEHIND body with paw LIFTED toward rump, far leg is planted under body. Frame2 neutral: both feet flat on ground aligned side by side under hips. Frame3 B: nearest visible leg swings FORWARD with paw lifted IN FRONT of body, far leg grounded behind. The near paw must move from BEHIND in frame1 to IN FRONT in frame3, not the same foot-forward drawing repeated! No crossed straight scissor legs, no duplicate pose. Keep BOTH paws extended together forward PALMS UP as fixed support shelf at same lower-chest position in ALL3, dog only NO parcel or chair. Preserve direction anchor face head shape and scale, golden arms match body, no clothes shoes tail effects. Tiny short leg motion."
+    },
+    "left_carry": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE drawings: short-foot step A, neutral BOTH feet planted, OPPOSITE short-foot step B. Facing camera-left throughout, same fixed view as direction anchor. BOTH front paws together extended forward at lower chest with palms UP, forming a stable supporting shelf under separately rendered stack of1-4 parcels. Arms remain steady in all3 poses. Draw dog ONLY: no box parcel tray trolley or cargo. No hugging pose. Golden fur arms match body. Keep face clear."
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR SEATED pose only, not a sit-down animation. Facing down matching anchor. Pelvis raised above floor at seat height, torso upright, hips bent90degrees, thighs extend forward horizontally and knees bent down with short feet below. Both paws relaxed on thighs. Not sitting on floor/haunches, not legs stretched out. Draw character ONLY with NO chair; leave empty area under pelvis for separate chair seat. Same proportions and golden arm fur."
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR SEATED pose only, not a sit-down animation. Facing right matching anchor. Pelvis raised above floor at seat height, torso upright, hips bent90degrees, thighs extend forward horizontally and knees bent down with short feet below. Both paws relaxed on thighs. Not sitting on floor/haunches, not legs stretched out. Draw character ONLY with NO chair; leave empty area under pelvis for separate chair seat. Same proportions and golden arm fur."
+    },
+    "left_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR SEATED pose only, not a sit-down animation. Facing left matching anchor. Pelvis raised above floor at seat height, torso upright, hips bent90degrees, thighs extend forward horizontally and knees bent down with short feet below. Both paws relaxed on thighs. Not sitting on floor/haunches, not legs stretched out. Draw character ONLY with NO chair; leave empty area under pelvis for separate chair seat. Same proportions and golden arm fur."
+    }
+  },
+  "style": "Exactly match approved unclothed golden dog: huge round floppy-eared head, tiny rounded biped mascot body, dark warm outlines, clean cel shading, black oval eyes with white catchlights, cream muzzle and oval belly only. Both arms and paws golden tan like body, no pale arm patch, no clothes/shoes/tail. Directional experiment for StockWars; keep consistent proportions and mild elevated game camera.",
+  "directions": {
+    "set": [
+      "down",
+      "right",
+      "left",
+      "up"
+    ],
+    "mirror": {},
+    "anchor_suffix": "idle"
+  },
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

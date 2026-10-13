@@ -924,10 +924,26 @@ body #parkTutorialOverlay .vn-dialogue-box:not(.collapsed) .vn-portrait-avatar {
     border: 1px solid #e5bb59;
     border-radius: 10px;
     box-shadow: none !important;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+body #parkTutorialOverlay .vn-portrait-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px #e5bb59;
+    pointer-events: none;
+    z-index: 1;
 }
 body #parkTutorialOverlay .vn-portrait-avatar img {
     object-fit: cover;
-    object-position: center;
+    object-position: center bottom;
+    box-sizing: border-box;
+    padding: 0;
+    transform: translateY(8%) scale(1.08);
+    transform-origin: center bottom;
 }
 body #parkTutorialOverlay .vn-dialogue-box:not(.collapsed) .vn-content-wrapper {
     width: auto;

@@ -1,0 +1,8 @@
+{
+  "source": "run/sprite-sheet-alpha.png",
+  "frameIndices": [0, 1, 2, 1],
+  "frameDurationMs": 160,
+  "loop": true,
+  "idleFrameIndex": 1,
+  "note": "Three unique drawings; reuse neutral between A and B. Experimental requested pose sequence, not verified alternating-foot gait."
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run",
+  "states": [
+    "right_walk",
+    "left_walk",
+    "right_carry"
+  ],
+  "ok": 3,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "right_walk",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\raw\\right\\walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\reports\\gen-set\\right_walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\anchors\\right-anchor-x8.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\layout-guides\\right\\walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 56.8,
+      "ok": true
+    },
+    {
+      "state": "left_walk",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\raw\\left\\walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\reports\\gen-set\\left_walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\anchors\\left-anchor-x8.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\layout-guides\\left\\walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 50.6,
+      "ok": true
+    },
+    {
+      "state": "right_carry",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\raw\\right\\carry.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\reports\\gen-set\\right_carry.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\anchors\\right-anchor-x8.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v1\\run\\references\\layout-guides\\right\\carry.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 52.1,
+      "ok": true
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import {CIPHER_FURNITURE_RASTERS,cipherRasterRect,paintCipherRaster} from './Cip
 import {drawMarketDisplay} from './CipherMarketDisplay.js';
 import {carpetContains} from './CipherCarpet.js';
 
-import { drawAgentK } from './CipherAgentK.js';
+import { drawAgentK, AGENT_K_RECEPTION_URL } from './CipherAgentK.js';
 import { cipherGridToScreen, CIPHER_FLOOR } from './CipherGrid.js';
 import { SPRITES } from './store/VivianInteriorScene.js';
 const KEY='stockwars.cipher-room-layout.v1';
@@ -33,7 +33,7 @@ export class CipherRoomEditor{
         this.lobby=lobby;this.active=false;this.selected=null;this.items=[];this.images={};
         this.agentK=new Image();
         this.agentK.onload=()=>{lobby.sceneLayers=null;lobby.draw();};
-        this.agentK.src=new URL('../../assets/characters/agent-k/agent-k-chibi-isometric-v1.png',import.meta.url).href;
+        this.agentK.src=AGENT_K_RECEPTION_URL;
         let layoutVersion=0;
         try{const saved=JSON.parse(localStorage.getItem(KEY));layoutVersion=saved?.version||0;if([1,2,3,4,5].includes(saved?.version)&&Array.isArray(saved.items)&&saved.items.length<=64&&new Set(saved.items.map(i=>i.id)).size===saved.items.length){const clean=saved.items.filter(i=>typeof i.id==='string'&&catalog[i.asset]);if(clean.length===saved.items.length&&clean.every(i=>validCipherPlacement(i,clean)))this.items=clean;}}catch{}
         if(layoutVersion<5||!this.items.length)this.items=[

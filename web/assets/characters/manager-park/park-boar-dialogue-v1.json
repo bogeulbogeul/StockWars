@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "expressions": [
+    {
+      "name": "neutral",
+      "file": "park-boar-dialogue-neutral-v1.png",
+      "prompt": "Use case: identity-preserve. ONE standalone transparent bust portrait of MANAGER PARK, the adult male WILD BOAR in the supplied character sheet. Preserve EXACT brown fur, broad stocky shoulders, bristly dark mane, wide brown-pink snout, two small ivory tusks, angular thick brows, dark amber eyes and middle-aged gruff dependable appearance. Clean warm dark outlines and clear soft cel shading, no clothes human hairstyle or human face. Gentle three-quarter view toward viewer, whole ears mane snout tusks and shoulders fully visible inside square canvas with generous margins. Same head scale posture lighting across variants. No labels text frames grid props room or full body. TRUE transparent background with ZERO haze/glow/shadow outside silhouette. Reference sheet is IDENTITY/STYLE, not layout. Rigging reference structure only; no human aesthetics. Dialogue UI view only, not top-down town or isometric sprite. Gruff neutral expression, closed mouth, steady attentive gaze."
+    },
+    {
+      "name": "smile",
+      "file": "park-boar-dialogue-smile-v1.png",
+      "prompt": "Use case: identity-preserve. ONE standalone transparent bust portrait of MANAGER PARK, the adult male WILD BOAR in the supplied character sheet. Preserve EXACT brown fur, broad stocky shoulders, bristly dark mane, wide brown-pink snout, two small ivory tusks, angular thick brows, dark amber eyes and middle-aged gruff dependable appearance. Clean warm dark outlines and clear soft cel shading, no clothes human hairstyle or human face. Gentle three-quarter view toward viewer, whole ears mane snout tusks and shoulders fully visible inside square canvas with generous margins. Same head scale posture lighting across variants. No labels text frames grid props room or full body. TRUE transparent background with ZERO haze/glow/shadow outside silhouette. Reference sheet is IDENTITY/STYLE, not layout. Rigging reference structure only; no human aesthetics. Dialogue UI view only, not top-down town or isometric sprite. Small proud approving smile, softened brow; maintain gruff older adult personality."
+    },
+    {
+      "name": "angry",
+      "file": "park-boar-dialogue-angry-v1.png",
+      "prompt": "Use case: identity-preserve. ONE standalone transparent bust portrait of MANAGER PARK, the adult male WILD BOAR in the supplied character sheet. Preserve EXACT brown fur, broad stocky shoulders, bristly dark mane, wide brown-pink snout, two small ivory tusks, angular thick brows, dark amber eyes and middle-aged gruff dependable appearance. Clean warm dark outlines and clear soft cel shading, no clothes human hairstyle or human face. Gentle three-quarter view toward viewer, whole ears mane snout tusks and shoulders fully visible inside square canvas with generous margins. Same head scale posture lighting across variants. No labels text frames grid props room or full body. TRUE transparent background with ZERO haze/glow/shadow outside silhouette. Reference sheet is IDENTITY/STYLE, not layout. Rigging reference structure only; no human aesthetics. Dialogue UI view only, not top-down town or isometric sprite. Stern shouting warning expression, brows knitted, mouth open; no rage symbols."
+    },
+    {
+      "name": "worried",
+      "file": "park-boar-dialogue-worried-v1.png",
+      "prompt": "Use case: identity-preserve. ONE standalone transparent bust portrait of MANAGER PARK, the adult male WILD BOAR in the supplied character sheet. Preserve EXACT brown fur, broad stocky shoulders, bristly dark mane, wide brown-pink snout, two small ivory tusks, angular thick brows, dark amber eyes and middle-aged gruff dependable appearance. Clean warm dark outlines and clear soft cel shading, no clothes human hairstyle or human face. Gentle three-quarter view toward viewer, whole ears mane snout tusks and shoulders fully visible inside square canvas with generous margins. Same head scale posture lighting across variants. No labels text frames grid props room or full body. TRUE transparent background with ZERO haze/glow/shadow outside silhouette. Reference sheet is IDENTITY/STYLE, not layout. Rigging reference structure only; no human aesthetics. Dialogue UI view only, not top-down town or isometric sprite. Tired concerned frown, raised inner brow, sympathetic troubled eyes, mouth closed."
+    }
+  ],
+  "usage": "ParkLogisticsTutorial and Logistics settlement portraits"
+}

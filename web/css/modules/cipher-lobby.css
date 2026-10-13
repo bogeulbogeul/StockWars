@@ -93,7 +93,7 @@
     display:flex; align-items:center; gap:22px; padding:22px; z-index:10;
     color:#eaf1f8; background:#10202ff7; border:1px solid #496071; border-radius:16px; box-shadow:0 12px 36px #0006;
 }
-.cipher-agent-menu .cipher-agent-portrait { width:104px; height:124px; aspect-ratio:auto; object-fit:cover; object-position:top; border:1px solid #576171; border-radius:10px; }
+.cipher-agent-menu .cipher-agent-portrait { width:104px; height:124px; aspect-ratio:auto; object-fit:contain; object-position:center; border:1px solid #576171; border-radius:10px; }
 .cipher-agent-menu .cipher-dialogue-body { flex:1; min-width:0; }
 .cipher-agent-identity { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
 .cipher-agent-identity strong { color:#e6ca87; font-size:15px; }

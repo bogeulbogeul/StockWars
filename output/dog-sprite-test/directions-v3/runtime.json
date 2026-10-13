@@ -1,0 +1,20 @@
+{
+  "sourceAtlas": "../directions-v2/run/sprite-sheet-alpha.png",
+  "sourceManifest": "../directions-v2/run/manifest.json",
+  "sizing": "../directions-v2/scale.json",
+  "aliases": {
+    "left_walk": {
+      "source": "right_walk",
+      "flipX": true
+    },
+    "left_carry": {
+      "source": "right_carry",
+      "flipX": true
+    },
+    "left_sit": {
+      "source": "right_sit",
+      "flipX": true
+    }
+  },
+  "notes": "Right seated drawing has exactly two ears; malformed independently generated left seated image retired. Side gait remains experimental."
+}

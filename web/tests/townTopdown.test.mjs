@@ -80,7 +80,7 @@ test('rest heals once and releases on vertical input', () => {
 test('all named facility returns, aliases and preserved unqualified return positions', () => {
     globalThis.document={body:{classList:{add(){}}}};
     try {
-        const stage={callbacks:{},playerController:player(),viewportEl:{clientWidth:1200,clientHeight:900},update(){},checkProximity(){}};
+        const stage={callbacks:{},playerController:player(),viewportEl:{clientWidth:1200,clientHeight:900},update(){},checkProximity(){},setRemotePlayers(){}};
         for(const id of [...TOWN_BUILDINGS.map(b=>b.id),'vivian','logistics']) {
             TownStage.prototype.show.call(stage,undefined,id);
             const e=townEntrance(TOWN_BUILDINGS.find(b=>b.id===({vivian:'vivian_store',logistics:'bit_logistics'}[id]||id)));

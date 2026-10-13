@@ -1,0 +1,26 @@
+[
+  {
+    "exp": "neutral",
+    "asset": "http://127.0.0.1:63192/web/assets/characters/manager-park/park-boar-dialogue-neutral-v1.png",
+    "width": 110,
+    "height": 134
+  },
+  {
+    "exp": "smile",
+    "asset": "http://127.0.0.1:63192/web/assets/characters/manager-park/park-boar-dialogue-smile-v1.png",
+    "width": 110,
+    "height": 134
+  },
+  {
+    "exp": "angry",
+    "asset": "http://127.0.0.1:63192/web/assets/characters/manager-park/park-boar-dialogue-angry-v1.png",
+    "width": 110,
+    "height": 134
+  },
+  {
+    "exp": "worried",
+    "asset": "http://127.0.0.1:63192/web/assets/characters/manager-park/park-boar-dialogue-worried-v1.png",
+    "width": 110,
+    "height": 134
+  }
+]

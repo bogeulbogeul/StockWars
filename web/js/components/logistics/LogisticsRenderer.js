@@ -1,3 +1,4 @@
+import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js';
 import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * LogisticsRenderer Module
@@ -32,8 +33,18 @@ export class LogisticsRenderer {
         if (!characterEl) return;
         characterEl.style.left = `${game.charX}px`;
 
-        const scaleX = game.charFacing === 1 ? -1 : 1;
+        const scaleX = game.charFacing === -1 ? -1 : 1;
         characterEl.style.transform = `scaleX(${scaleX})`;
+        characterEl.style.setProperty('--stack-label-facing', scaleX);
+        // Use the selected profile style when the minigame has no explicit override.
+        const avatar = characterEl.querySelector('.logistics-char-avatar');
+        if (!avatar) return;
+        updateDogSprite(avatar, { direction: 'right', moving: Math.abs(game.velocityX) > 20, carrying: game.hasBox && game.carriedCount > 0 });
+        characterEl.style.width = avatar.style.width;
+        characterEl.style.height = avatar.style.height;
+        const scale = parseFloat(avatar.style.width) / 320;
+        characterEl.style.setProperty('--stack-label-head-clearance', `${parseFloat(avatar.style.height) - ((372 - 210) * scale - 3) + 12}px`);
+        if (charBoxTower) { charBoxTower.style.left = `${240 * scale - 22}px`; charBoxTower.style.bottom = `${(372 - 210) * scale - 3}px`; }
 
         const isNearPallet = isNearBoxPallet(game);
 
@@ -151,3 +162,4 @@ export function isNearBoxPallet(game) {
     return playerCenter >= pallet.offsetLeft - 30 &&
         playerCenter <= pallet.offsetLeft + pallet.offsetWidth + 30;
 }
+

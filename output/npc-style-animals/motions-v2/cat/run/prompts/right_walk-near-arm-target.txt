@@ -1,0 +1,7 @@
+Fix ONLY the camera-near arm in the SIX cat walk poses. This is a targeted anatomical edit, NOT a new walking interpretation. Keep every head, face, ear, tail, torso, leg, color, scale, spacing and cyan background unchanged. Existing first/second near arms point RIGHT: ERASE those old forward arms completely.
+Pose1: draw near arm from the near shoulder DOWN-LEFT, near paw LEFT OF HIP toward tail, clearly outside left torso silhouette. Far arm stays forward RIGHT.
+Pose2: near arm DOWN-LEFT, near paw LEFT OF HIP, slightly less backward. Far arm stays forward RIGHT.
+Pose3: near arm DOWN by hip.
+Pose4 and5: near arm FORWARD RIGHT as already drawn. Far arm swings BACK LEFT and is partly hidden behind torso.
+Pose6: near arm DOWN by hip.
+Near shoulder is visible on camera side, starts near LEFT upper torso. The near hand must visibly alternate x-position: left of hip in1/2, right of belly in4/5. Do NOT keep the old near hand on right in1/2. Only TWO arms TOTAL, fixed shoulder attachment, one paw each. Behind arm does not become an extra limb. No blotches or changed shading. Whole six-pose strip output. Reference2 dog shows these EXACT near arm positions: COPY those arm placements to cat, NOT dog identity, fur colors or ears.

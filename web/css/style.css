@@ -36,7 +36,7 @@
 /* 6. Narrative, Tutorial & Intro */
 @import './modules/title-screen.css';
 @import './modules/character/kiosk-base.css';
-@import './modules/character/avatar-customizer.css';
+@import './modules/character/avatar-customizer.css?v=animal-faces-1';
 @import './modules/character/personality-test.css';
 @import './modules/character/id-card.css';
 @import './modules/visual-novel.css';

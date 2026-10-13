@@ -1,3 +1,4 @@
+import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js';
 import { gameKey } from '../../app/GameKeys.js';
 /**
  * VivianStoreModal Component
@@ -14,6 +15,7 @@ import { StorePlayerController } from './StorePlayerController.js';
 import { VivianRoomEditor } from './VivianRoomEditor.js';
 import { ROOM_PLAYER_DEPTH } from './IsometricRoomGrid.js';
 import { vivianStaffRectangle } from './VivianInteriorScene.js';
+import {VivianRoomPackage,VIVIAN_PACKAGE_VIEW_SCALE,VIVIAN_SQUIRREL_URL} from './VivianRoomPackage.js';
 
 export class VivianStoreModal {
     constructor(container, callbacks = {}, {allowLayoutEditing=false} = {}) {
@@ -36,9 +38,10 @@ export class VivianStoreModal {
 
         this.render();
         this.initDOM();
-        this.roomEditor = new VivianRoomEditor(this.interiorEl,
+        this.roomEditor = this.allowLayoutEditing ? new VivianRoomEditor(this.interiorEl,
             navigation => this.player.configureRoom(navigation),
-            () => this.player.stop(), {enabled:this.allowLayoutEditing});
+            () => this.player.stop(), {enabled:true}) : new VivianRoomPackage(this.interiorEl,navigation=>this.player.configureRoom(navigation));
+        if(!this.allowLayoutEditing)this.roomPackage=this.roomEditor;
         this.initEventListeners();
     }
 
@@ -97,15 +100,18 @@ export class VivianStoreModal {
         });
         document.getElementById('vivianWalkway').addEventListener('click', e => {
             if (this.isShopping || this.roomEditor?.active) return;
+            this.roomPackage?.cancel();
             const rect = this.interiorEl.getBoundingClientRect();
             this.player.moveTo((e.clientX - rect.left) / rect.width * 1536, (e.clientY - rect.top) / rect.height * 1024);
         });
+        this.interiorEl.querySelectorAll('[data-package-place]').forEach(button=>button.addEventListener('click',()=>this.roomPackage?.request(this,button.dataset.packagePlace)));
         window.addEventListener('keyup', e => this.player.keys.delete(gameKey(e)));
         window.addEventListener('blur', () => this.player.stop());
         document.addEventListener('visibilitychange', () => this.player.stop());
         this.btnClose?.addEventListener('click', () => this.showInterior());
         document.getElementById('btnVivianDoor')?.addEventListener('click', () => {
             if (this.roomEditor?.active) return;
+            if(this.roomPackage){this.roomPackage.request(this,'exit');return;}
             if (this.player.nearby()?.action === 'exit') this.close();
             else this.player.moveTo(this.player.places[0].x, this.player.places[0].y);
         });
@@ -113,6 +119,7 @@ export class VivianStoreModal {
             button.addEventListener('click', () => {
                 if (this.roomEditor?.active) return;
                 this.lastInteriorControl = button;
+                if(this.roomPackage){this.roomPackage.request(this,button===this.shopAction?(this.player.nearby()?.id||'counter'):'counter');return;}
                 if (this.player.nearby()?.action === 'shop') this.showShop(button.dataset.storeBrowse);
                 else {
                     const counter = this.player.places.find(place => place.action === 'shop');
@@ -211,6 +218,7 @@ export class VivianStoreModal {
         this.player.reset();
         this.isOpen = true;
         this.modalEl?.classList.remove('hidden');
+        this.roomPackage?.syncClock();
         this.showInterior();
         this.updateHeaderInfo();
         this.switchTab(this.activeTab);
@@ -235,13 +243,16 @@ export class VivianStoreModal {
     animatePlayer(now) {
         if (!this.isOpen) return;
         if (!this.isShopping && !this.roomEditor?.active) this.player.update((now - this.lastFrame) / 1000);
+        this.roomPackage?.updateInteractions(this);
+        if(!this.isOpen)return;
         this.lastFrame = now;
         this.playerEl.style.left = `${this.player.x / 1536 * 100}%`;
         this.playerEl.style.top = `${this.player.y / 1024 * 100}%`;
         this.playerEl.style.zIndex = ROOM_PLAYER_DEPTH;
         this.roomEditor?.updatePlayerDepth(this.player.x,this.player.y);
+        if(this.roomPackage){const scale=this.interiorEl.getBoundingClientRect().width/1536*VIVIAN_PACKAGE_VIEW_SCALE;this.playerEl.style.transform=`translate(-50%, -100%) scale(${scale})`;}
         const body = this.playerEl.querySelector('.town-char-body');
-        body.style.transform = `scaleX(${this.player.facing}) translateY(${-Math.sin(this.player.phase) * 5}px)`;
+        updateDogSprite(body, { direction: this.player.facing < 0 ? 'left' : 'right', moving: this.player.moving });
         this.updateExitAction();
         this.updateShopAction();
         this.playerFrame = requestAnimationFrame(time => this.animatePlayer(time));
@@ -260,6 +271,7 @@ export class VivianStoreModal {
     updateShopAction() {
         if (!this.shopAction) return;
         this.shopAction.hidden=!this.isOpen || this.isShopping || Boolean(this.roomEditor?.active) || this.player.nearby()?.action!=='shop';
+        if(this.roomPackage){const p=this.player.nearby();this.shopAction.style.left=`${(p?.x||450)/1536*100}%`;this.shopAction.style.top=`${((p?.y||690)-90)/1024*100}%`;return;}
         const staff=vivianStaffRectangle(this.roomEditor?.items);
         this.shopAction.style.left=`${(staff.x+staff.width*652/1254)/1536*100}%`;
         this.shopAction.style.top=`${(staff.y+staff.height*112/1254-12)/1024*100}%`;
@@ -269,7 +281,7 @@ export class VivianStoreModal {
         if (!this.isOpen || this.isShopping || this.roomEditor?.active) return;
         const nearby = this.player.nearby();
         if (nearby?.action === 'exit') this.close();
-        else if (nearby) this.showShop();
+        else if (nearby) this.showShop(nearby.tab||'daily');
     }
 
     showInterior() {
@@ -292,6 +304,7 @@ export class VivianStoreModal {
     }
 
     close() {
+        this.hideWelcome();
         this.hideReceipt(false);
         this.roomEditor?.cancel();
         this.player.stop();
@@ -308,7 +321,7 @@ export class VivianStoreModal {
         if (shopState) { this.affinity = shopState.affinity; this.purchasedCounts = shopState.purchases; }
         const cash = this.callbacks.getCash ? this.callbacks.getCash() : 0;
         if (this.userCashEl) this.userCashEl.textContent = `${cash.toLocaleString()} G`;
-        
+
         const level = this.affinity >= 200 ? 3 : (this.affinity >= 100 ? 2 : 1);
         const max = level === 1 ? 100 : (level === 2 ? 200 : 300);
         if (this.affinityBadgeEl) {
@@ -355,7 +368,7 @@ export class VivianStoreModal {
             const stockText = isSoldOut ? '품절' : (item.dailyLimit ? `잔여 ${item.dailyLimit - purchased}개` : '재고 충분');
 
             return `
-                <div class="vivian-item-card ${isSelected ? 'selected' : ''} ${isSoldOut ? 'sold-out' : ''} ${isSecretLocked ? 'locked' : ''}" 
+                <div class="vivian-item-card ${isSelected ? 'selected' : ''} ${isSoldOut ? 'sold-out' : ''} ${isSecretLocked ? 'locked' : ''}"
                      data-id="${item.id}" style="--rarity-glow: ${rarity.glow}; --rarity-color: ${rarity.color};">
                     ${isSecretLocked ? `<div class="locked-overlay">🔒 <span>${item.reqUnlock.conditionDesc}</span></div>` : ''}
                     <div class="card-icon-area">
@@ -421,7 +434,7 @@ export class VivianStoreModal {
 
         const purchased = this.purchasedCounts[item.id] || 0;
         const maxAllowed = item.dailyLimit ? Math.max(1, item.dailyLimit - purchased) : 99;
-        
+
         this.quantity = Math.max(1, Math.min(qty, maxAllowed));
         if (this.qtyInput) this.qtyInput.value = this.quantity;
         this.updatePriceCalculation();
@@ -574,7 +587,7 @@ export class VivianStoreModal {
             consume: 'smile', done: 'smile', poor: 'skeptical', secret: 'secret'
         }[type] || 'neutral';
         if (this.portraitEl) {
-            this.portraitEl.src = `assets/characters/vivian/vivian-dialogue-${expression}-v1.png`;
+            this.portraitEl.src = this.roomPackage ? VIVIAN_SQUIRREL_URL : `assets/characters/vivian/vivian-dialogue-${expression}-v1.png`;
             this.portraitEl.alt = `비비안 — ${{ neutral: '차분한 미소', smile: '흡족한 미소', skeptical: '의심과 단호함', secret: '비밀스러운 귓속말' }[expression]}`;
         }
         const pool = VIVIAN_DIALOGUES[type] || VIVIAN_DIALOGUES.greet;

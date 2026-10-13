@@ -8,6 +8,6 @@
    ========================================================================== */
 
 @import './character/kiosk-base.css';
-@import './character/avatar-customizer.css';
+@import './character/avatar-customizer.css?v=animal-faces-1';
 @import './character/personality-test.css';
 @import './character/id-card.css';

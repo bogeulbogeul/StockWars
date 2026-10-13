@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-gif-run",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run",
+  "exports": [
+    {
+      "state": "down_idle",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_idle.gif",
+      "frames": 1,
+      "fps": 1.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_idle.gif",
+        "frames": 1,
+        "delay_ticks": [
+          100
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2
+        ]
+      }
+    },
+    {
+      "state": "down_walk",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_walk.gif",
+      "frames": 3,
+      "fps": 6.0,
+      "loop": true,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_walk.gif",
+        "frames": 3,
+        "delay_ticks": [
+          16,
+          16,
+          16
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "state": "right_idle",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_idle.gif",
+      "frames": 1,
+      "fps": 1.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_idle.gif",
+        "frames": 1,
+        "delay_ticks": [
+          100
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2
+        ]
+      }
+    },
+    {
+      "state": "right_walk",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_walk.gif",
+      "frames": 3,
+      "fps": 6.0,
+      "loop": true,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_walk.gif",
+        "frames": 3,
+        "delay_ticks": [
+          16,
+          16,
+          16
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "state": "up_idle",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\up_idle.gif",
+      "frames": 1,
+      "fps": 1.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\up_idle.gif",
+        "frames": 1,
+        "delay_ticks": [
+          100
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2
+        ]
+      }
+    },
+    {
+      "state": "up_walk",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\up_walk.gif",
+      "frames": 3,
+      "fps": 6.0,
+      "loop": true,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\up_walk.gif",
+        "frames": 3,
+        "delay_ticks": [
+          16,
+          16,
+          16
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "state": "right_carry",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_carry.gif",
+      "frames": 4,
+      "fps": 6.0,
+      "loop": true,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_carry.gif",
+        "frames": 4,
+        "delay_ticks": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "state": "down_sit",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_sit.gif",
+      "frames": 1,
+      "fps": 1.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\down_sit.gif",
+        "frames": 1,
+        "delay_ticks": [
+          100
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2
+        ]
+      }
+    },
+    {
+      "state": "right_sit",
+      "output": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_sit.gif",
+      "frames": 1,
+      "fps": 1.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\qa\\right_sit.gif",
+        "frames": 1,
+        "delay_ticks": [
+          100
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2
+        ]
+      }
+    }
+  ]
+}

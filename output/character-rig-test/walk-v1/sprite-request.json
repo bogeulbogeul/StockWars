@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "player-npc-test",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 233.45,
+    "min_subject_distance": 217.29,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 11161
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 206.94,
+        "min_subject_distance": 202.71,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 214.71,
+        "min_subject_distance": 211.39,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 233.45,
+        "min_subject_distance": 217.29,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 199.28,
+        "min_subject_distance": 194.66,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "right_walk": {
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "action": "Experimental right-facing walk-in-place in the accepted slightly elevated three-quarter view. Preserve black oval eyes with white catchlights, dark short hair, plain white T-shirt, black shorts and black shoes. Exactly one full two-step gait cycle: right foot forward contact, recoil, passing, high point, left foot forward contact, recoil, passing, high point. Same-side arm swings opposite to leg. Knees bend, supporting foot remains on ground, opposite foot clears ground. Small natural body bob, stable head and body proportions, no turning, no running, no jumping, no extra limbs. Frame8 leads into frame1; do not repeat frame1 as final frame."
+    }
+  },
+  "style": "Match accepted NPC-style clean outlined cel-shaded chibi illustration, no pixel processing",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

@@ -44,7 +44,7 @@ export class TownPlayerController {
     get renderPosition() {
         const bench = this.isResting && this.restingBench;
         if (bench) return { x: bench.x + bench.width / 2,
-            y: bench.y - (bench.height || 86) * 0.24, z: Math.ceil(bench.y) + 1 };
+            y: bench.y - (bench.height || 86) * 0.24 + 12, z: Math.ceil(bench.y) + 1 };
         return { x: this.charPosX, y: this.charPosY, z: Math.round(this.charPosY) };
     }
 

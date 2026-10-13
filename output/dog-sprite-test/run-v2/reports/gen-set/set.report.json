@@ -1,0 +1,39 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2",
+  "states": [
+    "walk",
+    "carry"
+  ],
+  "ok": 2,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "walk",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\raw\\walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\reports\\gen-set\\walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\references\\layout-guides\\walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 59.6,
+      "ok": true
+    },
+    {
+      "state": "carry",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\raw\\carry.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\reports\\gen-set\\carry.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\run-v2\\references\\layout-guides\\carry.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 57.6,
+      "ok": true
+    }
+  ]
+}

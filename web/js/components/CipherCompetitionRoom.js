@@ -4,6 +4,7 @@ import {FriendManager} from '../engine/FriendManager.js';
 import {CipherTrainingRoom} from './CipherTrainingRoom.js';
 import {installOnlineCompetition} from './OnlineCompetition.js';
 import {saveAiArenaHistory} from './arenaHistory.js';
+import {AGENT_K_PORTRAIT_URL} from './CipherAgentK.js';
 
 export function validArenaStake(cash,stake){
     return Number.isSafeInteger(stake)&&stake%100===0&&(stake===0||(stake>=cash*.01&&stake<=cash*.1));
@@ -97,7 +98,7 @@ export class CipherCompetitionRoom{
         match.dialog.querySelector('h2').textContent='에이전트 K · 첫 모의투자';
         const guide=document.createElement('section');
         guide.style.cssText='display:flex;gap:18px;align-items:center;padding:18px;border:1px solid #e5bb59;border-radius:14px;background:#102333;cursor:pointer';
-        const portrait=document.createElement('img');portrait.src=new URL('../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png?portrait=hd2',import.meta.url).href;portrait.alt='에이전트 K';portrait.decoding='sync';portrait.style.cssText='width:112px;height:136px;flex-shrink:0;object-fit:cover;border:1px solid #e5bb59;border-radius:10px';
+        const portrait=document.createElement('img');portrait.src=AGENT_K_PORTRAIT_URL;portrait.alt='에이전트 K';portrait.decoding='sync';portrait.style.cssText='width:112px;height:136px;flex-shrink:0;object-fit:contain;border:1px solid #e5bb59;border-radius:10px';
         portrait.style.setProperty('image-rendering','auto','important');
         const portraitCanvas=document.createElement('canvas');portraitCanvas.setAttribute('role','img');portraitCanvas.setAttribute('aria-label','에이전트 K');portraitCanvas.style.cssText=portrait.style.cssText;
         portraitCanvas.style.setProperty('image-rendering','auto','important');

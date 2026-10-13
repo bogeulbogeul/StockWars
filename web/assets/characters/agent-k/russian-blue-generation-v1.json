@@ -1,0 +1,31 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-14",
+  "reception": {
+    "file": "agent-k-russian-blue-reception-v1.png",
+    "prompt": "Use case: stylized-concept. Generate a single usable transparent PNG asset for StockWars, NOT a sheet. Exact identity from supplied Russian Blue Agent K character sheet: blue-gray fur, tapered sharp feline face, tall pointed ears, green eyes, thin rectangular silver eyeglasses with CLEAR lenses, small bipedal compact animal body, no human hair, no clothing or shoes. Crisp warm dark outlines, clean readable color shapes, soft cel shading, restrained professional adult personality. Reference sheet is IDENTITY and STYLE. Rigging reference is STRUCTURE ONLY: do not copy humans outfits colors. No text, labels, border, background, props, desk, scenery, shadow haze, watermark. True transparent background, crisp cutout silhouette and all ears visible. FULL BODY receptionist standing neutral, complete ears through paws and feet uncropped. Slightly elevated orthographic three-quarter camera compatible with an isometric interior, looking toward screen bottom-right visitor area, show both eyes with restrained sharp professional gaze. Body is upright with both paws relaxed near abdomen, no human proportions. Tail visible behind. Character alone, counter will be separate foreground drawn over lower body. World outside uses RPG top-down, but this particular asset is for the isometric indoor reception desk. Preserve character proportions, no perspective stretching.",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "headTop": 340,
+    "foot": [
+      635,
+      1448
+    ],
+    "roomAnchor": [
+      650,
+      490
+    ],
+    "displayHeightExcludingEars": 90
+  },
+  "portrait": {
+    "file": "agent-k-russian-blue-dialogue-v1.png",
+    "prompt": "Use case: stylized-concept. Generate a single usable transparent PNG asset for StockWars, NOT a sheet. Exact identity from supplied Russian Blue Agent K character sheet: blue-gray fur, tapered sharp feline face, tall pointed ears, green eyes, thin rectangular silver eyeglasses with CLEAR lenses, small bipedal compact animal body, no human hair, no clothing or shoes. Crisp warm dark outlines, clean readable color shapes, soft cel shading, restrained professional adult personality. Reference sheet is IDENTITY and STYLE. Rigging reference is STRUCTURE ONLY: do not copy humans outfits colors. No text, labels, border, background, props, desk, scenery, shadow haze, watermark. True transparent background, crisp cutout silhouette and all ears visible. DIALOGUE UI PORTRAIT: one large head and upper chest bust centered, front gentle three-quarter toward viewer, restrained welcoming small smile while maintaining sharp professional eyes. Match supplied newly generated receptionist identity EXACTLY including glasses blue-gray fur green eyes ear shape. Transparent background, no circular frame, no name labels, entire ears unobstructed with generous top margin. Portrait designed to fit a tall UI image box with eyes clearly visible. No full body, legs or feet."
+  },
+  "verification": {
+    "automatedTests": 28,
+    "liveBrowserRender": "passed; reception and dialogue screenshots saved under output/npc-animal-individual-2026-10-14",
+    "integration": "Portrait remains active in lobby dialogue/welcome, tutorial and practice. Reception sprite overlay was superseded by cipher-lobby-package-agent-k-v8.png at the user's request."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "reference": "run/frames/down_idle/frame-0.png",
+  "targetStandingHeight": 90,
+  "referenceAlphaBox": [
+    40,
+    24,
+    215,
+    296
+  ],
+  "referenceStandingHeight": 272,
+  "uniformScale": 0.33088235294117646,
+  "groundY": 296,
+  "policy": "Single uniform scale for ALL states. Never fit each seated or walking frame to90. Camera zoom is separate."
+}

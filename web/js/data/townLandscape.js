@@ -1,3 +1,4 @@
+import { TOWN_PROP_SIZES } from './townScale.js';
 // Placement uses visible artwork bounds; y is the front ground-contact line.
 const artwork = {
     hedge: ['LandscapeHedgeBedSimple', 2172, 724, 56, 195, 2056, 350],
@@ -9,12 +10,7 @@ const artwork = {
     vending: ['EnergyDrinkVendingMachine', 1024, 1536, 200, 196, 626, 1134]
 };
 // Shared display sizes per prop family; keep placement centers stable when resizing.
-const landscapeSizes = {
-    tree: { width: 165, depth: 70 },
-    hedge: { width: 180, depth: 30 },
-    bench: { width: 180, depth: 35 },
-    lamp: { width: 48, depth: 24 }
-};
+const landscapeSizes = TOWN_PROP_SIZES;
 export const TOWN_LANDSCAPE = [
     ['energy_drink_vending', 'vending', 95, 1530, 110, 50],
     ['plaza_fountain', 'fountain', 1660, 1490, 360, 180],

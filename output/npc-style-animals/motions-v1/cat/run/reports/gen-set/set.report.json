@@ -1,0 +1,39 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run",
+  "states": [
+    "right_walk",
+    "right_carry"
+  ],
+  "ok": 2,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "right_walk",
+      "out": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\raw\\right_walk.png",
+      "report": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\reports\\gen-set\\right_walk.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\references\\layout-guides\\right_walk.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 47.7,
+      "ok": true
+    },
+    {
+      "state": "right_carry",
+      "out": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\raw\\right_carry.png",
+      "report": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\reports\\gen-set\\right_carry.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\npc-style-animals\\motions-v1\\cat\\run\\references\\layout-guides\\right_carry.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 45.9,
+      "ok": true
+    }
+  ]
+}

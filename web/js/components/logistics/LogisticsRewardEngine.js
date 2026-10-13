@@ -5,7 +5,7 @@
  */
 
 export function deliveryScore(count) {
-    return [0, 1, 3, 6, 10][count] || 0;
+    return [0, 1, 3, 6, 8][count] || 0;
 }
 export function calculateLogisticsGrade(score) {
     if (score >= 30) return 'S';

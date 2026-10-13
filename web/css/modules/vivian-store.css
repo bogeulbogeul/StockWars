@@ -965,6 +965,22 @@
 
 .vivian-welcome-dialogue { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 1800; display: flex; align-items: center; gap: 18px; width: min(580px, 90%); padding: 16px 22px 16px 16px; box-sizing: border-box; border: 1px solid #70e3d580; border-radius: 16px; background: #102332f5; box-shadow: 0 10px 32px #0008; color: #f1f8ff; pointer-events: none; }
 .vivian-welcome-dialogue[hidden] { display: none; }
+
+/* Fixed package: all layers share the PNG's 1536×1024 coordinate space. */
+.vivian-interior.vivian-package-room { aspect-ratio:3/2; transform:none; width:min(calc(100 * var(--game-vw)),calc(150 * var(--game-vh))); }
+.vivian-package-background,.vivian-package-counter,.vivian-package-foreground,.vivian-package-clock { position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none; }
+.vivian-package-background { z-index:0; }
+.vivian-package-facility { position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;z-index:1501;cursor:pointer; }
+.vivian-package-facility:hover,.vivian-package-facility:focus-visible { background:#54ffe718; }
+.vivian-package-foreground { z-index:1201; }
+.vivian-package-clock { z-index:1202; }
+.vivian-package-room .vivian-player { width:87.6px;height:101.3px;bottom:auto;transform-origin:bottom center; }
+.vivian-package-room .vivian-player .town-char-body { position:relative;inset:auto; }
+.vivian-package-room .town-char-shadow { display:none; }
+.vivian-package-room .vivian-walkway { inset:0;width:100%;height:100%;z-index:1400; }
+.vivian-package-room .vivian-door-hotspot { left:60.81%;top:70.51%;width:15.625%;height:13.28%;clip-path:polygon(0 65%,70% 0,100% 28%,30% 100%); }
+.vivian-package-room .vivian-counter-hotspot { left:13.67%;top:41.99%;width:18.23%;height:26.17%;clip-path:polygon(0 53%,64% 0,100% 20%,100% 60%,22% 100%,0 87%); }
+.vivian-package-room .vivian-portrait-image,.vivian-package-room .vivian-welcome-portrait { object-fit:contain; }
 .vivian-welcome-portrait { flex: 0 0 80px; width: 80px; height: 96px; object-fit: cover; object-position: top; border-radius: 12px; background: #1a3b46; }
 .vivian-welcome-lines { min-width: 0; }
 .vivian-welcome-lines strong { color: #8ceddd; font-size: 14px; }

@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "src": "file:///C:/GitHub/StockWars/web/assets/interiors/vivian-package/vivian-room-with-squirrel-v8.png",
+  "tabs": [
+    {
+      "id": "goods",
+      "tab": "daily"
+    },
+    {
+      "id": "fridge",
+      "tab": "daily"
+    },
+    {
+      "id": "household",
+      "tab": "weekly"
+    },
+    {
+      "id": "island",
+      "tab": "daily"
+    },
+    {
+      "id": "counter",
+      "tab": "daily"
+    }
+  ],
+  "actualGameEntryCheckoutExit": true,
+  "errors": []
+}

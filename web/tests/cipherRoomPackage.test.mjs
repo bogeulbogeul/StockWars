@@ -3,10 +3,34 @@ import assert from 'node:assert/strict';
 import {createPackageNavigation,PLACES,SEATS,OBJECTS,inside,actorIsBehind,PLAYER_COLLIDER,overlapsForeground} from '../js/components/CipherRoomPackageGeometry.js';
 import {CipherLobby} from '../js/components/CipherCanvasLobby.js';
 import {StorePlayerController} from '../js/components/store/StorePlayerController.js';
-import {CipherRoomPackage} from '../js/components/CipherRoomPackage.js';
+import {CipherRoomPackage,CIPHER_ROOM_SCALE,CIPHER_AGENT_ENABLED} from '../js/components/CipherRoomPackage.js';
 import {marketEngine} from '../js/engine/marketEngine.js';
 marketEngine.stopEngine();
 const nav=createPackageNavigation();
+
+test('integrated receptionist room draws once without an extra floating K sprite',()=>{
+    const background={naturalWidth:1760},agentK={naturalWidth:1024},calls=[];
+    const ctx=new Proxy({},{get:(_,key)=>key==='drawImage'?(image)=>calls.push(image):key==='clip'?()=>calls.push('clip'):()=>{},set:()=>true});
+    const room=Object.assign(Object.create(CipherRoomPackage.prototype),{scale:CIPHER_ROOM_SCALE,background,agentK,navigation:{clamp:(x,y)=>({x,y})},lobby:{player:{x:669,y:585},notice:{hidden:true},dialoguePage:null,paintPlayer:()=>calls.push('player')}});
+    room.draw(ctx);
+    assert.deepEqual(calls,[background,'player']);
+});
+
+test('room scaling preserves the standing character height and enables K requests',()=>{
+    const oldImage=globalThis.Image;globalThis.Image=class{naturalWidth=1024;};
+    try{
+        const scales=[],ctx=new Proxy({},{get:(_,key)=>key==='scale'?(x,y)=>scales.push([x,y]):()=>{},set:()=>true});
+        ctx.scale(CIPHER_ROOM_SCALE,CIPHER_ROOM_SCALE);
+        const player={x:566,y:668,facing:1,phase:0};
+        CipherLobby.prototype.paintPlayer.call({player,roomPackage:{scale:CIPHER_ROOM_SCALE}},ctx);
+        assert.equal(scales[0][1]*scales[1][1],1,'room conversion leaves character H=90 unchanged');
+        assert.equal(CIPHER_AGENT_ENABLED,true);
+        let target;
+        const room=Object.assign(Object.create(CipherRoomPackage.prototype),{pending:null,navigation:nav,lobby:{isOpen:true,notice:{hidden:true},trainingRoom:{dialog:{open:false}},competitionRoom:{dialog:{open:false}},standUp(){},player:{x:566,y:668,stop(){},moveTo(x,y){target={x,y};}},canvas:{focus(){}}}});
+        room.request('agent');assert.equal(room.pending,'agent');
+        assert.deepEqual(target,{x:669,y:585});
+    }finally{globalThis.Image=oldImage;}
+});
 
 test('competition door has an open approach corridor beside the relocated lounge',()=>{
     for(const [x,y] of [[1300,520],[1340,540],[1380,560]])assert.ok(nav.isWalkable(x,y));
@@ -35,10 +59,14 @@ test('depth uses one foot-anchor decision for the entire sprite, including furni
     assert.equal(actorIsBehind({x:1152,y:542},right),true);
 });
 test('local and remote seated characters use the cushion anchor without the legacy 24px lift',()=>{
+    const priorImage=globalThis.Image;
+    globalThis.Image=class { naturalWidth=1024; };
     const translations=[],ctx=new Proxy({},{get:(_,key)=>key==='translate'?(...args)=>translations.push(args):()=>{},set:()=>true});
     const player={x:1030,y:515,facing:1,phase:0},lobby={player,seated:SEATS[1]};
     CipherLobby.prototype.paintPlayer.call(lobby,ctx);assert.deepEqual(translations[0],[1030,515]);
     translations.length=0;CipherLobby.prototype.paintPlayer.call(lobby,ctx,{...player,resting:true});assert.deepEqual(translations[0],[1030,515]);
+    assert.deepEqual(translations[2],[0,17]);
+    globalThis.Image=priorImage;
 });
 test('every facility and seat approach is walkable and connected in both directions',()=>{
     const destinations=[...PLACES,...SEATS.map(s=>({...s.approach,id:s.id}))];

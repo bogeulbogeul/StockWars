@@ -1,0 +1,13 @@
+const fs=require('fs'),path=require('path');
+const root=__dirname,prior=path.resolve(root,'../directions-v2'),run=path.join(prior,'run');
+let html=fs.readFileSync(path.join(prior,'preview-template.html'),'utf8');
+html=html.replace('강아지 수정본 · 기준 키90','강아지 좌우 반전 · 기준 키90');
+html=html.replace('뒷발은 뒤꿈치, 좌우 앉기는 아이소메트릭 시점입니다.','왼쪽 걷기·운반·앉기는 오른쪽 그림을 좌우 반전합니다. 귀가 세 개처럼 보이던 왼쪽 앉기 그림은 사용하지 않습니다.');
+html=html.replace('const frames=manifest.frame_layout.rows[state];','const mirrored=state.startsWith("left_");const sourceState=mirrored?state.replace("left_","right_"):state;const frames=manifest.frame_layout.rows[sourceState];');
+html=html.replace('c.translate(-128,-sizing.groundY);','if(mirrored)c.scale(-1,1);c.translate(-128,-sizing.groundY);');
+html=html.replace("const x=state.startsWith('left')?35:179;","const x=179;");
+html=html.replace('__SCALE__',fs.readFileSync(path.join(prior,'scale.json'),'utf8')).replace('__MANIFEST__',fs.readFileSync(path.join(run,'manifest.json'),'utf8')).replace('__ATLAS__','data:image/png;base64,'+fs.readFileSync(path.join(run,'sprite-sheet-alpha.png')).toString('base64')).replace('__PARCEL__','data:image/png;base64,'+fs.readFileSync(path.resolve(root,'../../../web/assets/minigames/logistics/parcel.png')).toString('base64'));
+if(!html.includes('if(mirrored)c.scale(-1,1)')||!html.includes('sourceState'))throw Error('Mirror patch not applied');
+fs.writeFileSync(path.join(root,'preview.html'),html);
+fs.writeFileSync(path.join(root,'runtime.json'),JSON.stringify({sourceAtlas:'../directions-v2/run/sprite-sheet-alpha.png',sourceManifest:'../directions-v2/run/manifest.json',sizing:'../directions-v2/scale.json',aliases:{left_walk:{source:'right_walk',flipX:true},left_carry:{source:'right_carry',flipX:true},left_sit:{source:'right_sit',flipX:true}},notes:'Right seated drawing has exactly two ears; malformed independently generated left seated image retired. Side gait remains experimental.'},null,2));
+console.log('Mirrored left walk/carry/sit; single right source; common90 scale retained.');

@@ -1,0 +1,25 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v2\\run",
+  "states": [
+    "left_carry"
+  ],
+  "ok": 1,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "left_carry",
+      "out": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v2\\run\\raw\\left_carry.png",
+      "report": "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v2\\run\\reports\\gen-set\\left_carry.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v2\\run\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\dog-sprite-test\\directions-v2\\run\\references\\layout-guides\\left_carry.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 57.4,
+      "ok": true
+    }
+  ]
+}

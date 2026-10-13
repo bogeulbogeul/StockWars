@@ -34,5 +34,5 @@ test('live room uses the approved unified background, without separate furniture
     const source=readFileSync(new URL('../js/components/CipherRoomPackage.js',import.meta.url),'utf8');
     assert.ok(!source.includes('destination-out'));
     assert.ok(!source.includes('CipherRoomSprites'));
-    assert.ok(source.includes('cipher-lobby-package-clean-v7.png'));
+    assert.ok(source.includes('cipher-lobby-package-agent-k-v8.png'));
 });

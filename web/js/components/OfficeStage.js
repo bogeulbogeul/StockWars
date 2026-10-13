@@ -1,3 +1,5 @@
+import { OfficeRoomPackage, homeGridToScreen } from './office/OfficeRoomPackage.js';
+import { updateCharacterSprite as updateDogSprite } from './CharacterSprite.js';
 import { gameKey } from '../app/GameKeys.js';
 /**
  * OfficeStage Component
@@ -9,7 +11,7 @@ import { gameKey } from '../app/GameKeys.js';
 import { getOfficeStageHtml, generateFloorTilesSvg } from './office/OfficeSvgTemplate.js?v=wall-fill-v2';
 import { OFFICE_OPENINGS, officeWallHeight } from './office/OfficeOpeningSizing.js?v=window-grid-v1';
 import { SkyBackground } from './sky/SkyBackground.js';
-import { OfficeAnna } from './office/OfficeAnna.js';
+
 import { FURNITURE_THEMES } from '../data/furnitureData.js';
 import { officeGridToScreen, officeFootprintPoints, officeAssetPlacement } from './office/OfficeGrid.js';
 import { officeMove, officePositionBlocked } from './office/OfficeCollision.js?v=bed-collision-v2';
@@ -19,7 +21,7 @@ export class OfficeStage {
         this.container = container;
         this.callbacks = callbacks;
         this.skyBackground = null;
-        
+
         // Continuous floating-point coordinates on 8x8 floor grid [0..7]
         this.posX = 3.5;
         this.posY = 3.5;
@@ -42,10 +44,7 @@ export class OfficeStage {
 
         this.render();
         this.initDOM();
-        this.anna = new OfficeAnna(this.actorLayer);
-        this.anna.onTalkToAnna = () => {
-            if (this.callbacks.onTalkToAnna) this.callbacks.onTalkToAnna();
-        };
+        this.roomPackage = new OfficeRoomPackage(this);
         this.initFloorTiles();
         this.initEventListeners();
         this.startLoop();
@@ -71,7 +70,10 @@ export class OfficeStage {
         this.doorPrompt = document.getElementById('isoDoorPrompt');
         this.annaPrompt = document.getElementById('isoAnnaPrompt');
         this.annaFloatingBtn = document.getElementById('officeAnnaFloatingBtn');
-        this.isNearAnna = false;
+        this.annaPrompt?.remove();
+        this.annaFloatingBtn?.remove();
+        this.annaPrompt = null;
+        this.annaFloatingBtn = null;
 
         // Dynamic Atmospheric Sky System
         if (this.stageContainer) {
@@ -80,11 +82,13 @@ export class OfficeStage {
     }
 
     initFloorTiles() {
+        if (this.roomPackage) return;
         if (!this.floorTilesGroup) return;
         this.floorTilesGroup.innerHTML = generateFloorTilesSvg(8);
     }
 
     initEventListeners() {
+        if (this.roomPackage) return;
         this.stageContainer?.querySelector('#btnOfficeFurnitureEdit')?.addEventListener('click', () => {
             this.keysHeld.clear();
             this.targetTile = null;
@@ -131,24 +135,6 @@ export class OfficeStage {
         });
 
 
-        const triggerAnnaInteraction = () => {
-            if (this.furnitureEditMode) return;
-            if (this.stageContainer?.classList.contains('hidden')) return;
-            if (this.callbacks.onTalkToAnna) {
-                this.callbacks.onTalkToAnna();
-            }
-        };
-
-        this.annaPrompt?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            triggerAnnaInteraction();
-        });
-
-        this.annaFloatingBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            triggerAnnaInteraction();
-        });
-
         // 3. Continuous Keyboard Tracking (WASD & F Key for Door Interaction)
         window.addEventListener('keydown', (e) => {
             if (this.furnitureEditMode) return;
@@ -167,9 +153,6 @@ export class OfficeStage {
                 if (this.isNearDoor) {
                     e.preventDefault();
                     triggerDoorInteraction();
-                } else if (this.isNearAnna) {
-                    e.preventDefault();
-                    triggerAnnaInteraction();
                 }
             }
         });
@@ -203,6 +186,7 @@ export class OfficeStage {
     update(now) {
         const dt = Math.min(0.06, (now - this.lastTimestamp) / 1000);
         this.lastTimestamp = now;
+        if (this.roomPackage) { this.roomPackage.update(dt); return; }
         if (this.furnitureEditMode) return;
         if (this.stageContainer?.classList.contains('hidden')) return;
         if (document.querySelector('.player-profile-dialog[open], .settings-dialog[open], .help-dialog[open]')) {
@@ -258,6 +242,11 @@ export class OfficeStage {
         }
 
         const isActivelyMoving = moveDirX !== 0 || moveDirY !== 0;
+        if (isActivelyMoving) {
+            const dx = (moveDirY - moveDirX) * 33.75;
+            const dy = (moveDirX + moveDirY) * 19.1;
+            this.dogDirection = Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'left' : 'right') : (dy < 0 ? 'up' : 'down');
+        }
         const speed = 4.8; // Grid units per second (snappy & smooth)
 
         if (isActivelyMoving) {
@@ -288,47 +277,7 @@ export class OfficeStage {
         }
 
         this.renderCharacterFrame();
-        this.anna.updateAvailability(new Date().getHours(), this.callbacks.isAnnaMarriageCompleted?.());
-        // Tutorial activity persists even while its dialogue is temporarily hidden.
-        const tutorialActive = !!this.callbacks.isTutorialActive?.();
-        if (tutorialActive) this.anna.direction = 'down';
-        const annaPaused = tutorialActive || document.hidden || document.body.classList.contains('phone-view-active')
-            || document.body.classList.contains('modal-active')
-            || !!document.querySelector('#titleScreen:not(.hidden), #characterCreationModal:not(.hidden), .modal-overlay:not(.hidden), .vn-tutorial-overlay:not(.hidden)');
-        this.anna.update(dt, { x: this.posX, y: this.posY }, annaPaused);
 
-        // Check Proximity to Anna (this.anna.x, this.anna.y)
-        const distToAnna = Math.hypot(this.posX - this.anna.x, this.posY - this.anna.y);
-        const nearAnna = distToAnna <= 2.2 && this.anna.visible;
-
-        if (nearAnna !== this.isNearAnna) {
-            this.isNearAnna = nearAnna;
-            if (this.annaPrompt) {
-                if (nearAnna) {
-                    this.annaPrompt.classList.remove('hidden');
-                } else {
-                    this.annaPrompt.classList.add('hidden');
-                }
-            }
-            if (this.annaFloatingBtn) {
-                if (nearAnna) {
-                    this.annaFloatingBtn.classList.remove('hidden');
-                } else {
-                    this.annaFloatingBtn.classList.add('hidden');
-                }
-            }
-        }
-
-        if (this.isNearAnna && this.annaPrompt) {
-            const annaScreenX = 500 + (this.anna.y - this.anna.x) * 33.75;
-            const floatBob = Math.sin(now / 250) * 3;
-            const annaScreenY = 320 + (this.anna.x + this.anna.y + 1) * 19.1 - 120 + floatBob;
-            this.annaPrompt.setAttribute('transform', `translate(${annaScreenX.toFixed(2)}, ${annaScreenY.toFixed(2)})`);
-        }
-        // SVG paints later siblings in front; sort the two actors by floor depth.
-        const frontActor = this.posX + this.posY >= this.anna.x + this.anna.y
-            ? this.playerChar : this.anna.element;
-        if (this.actorLayer.lastElementChild !== frontActor) this.actorLayer.appendChild(frontActor);
     }
 
     renderCharacterFrame() {
@@ -343,11 +292,11 @@ export class OfficeStage {
         let shadowScale = 1;
 
         if (this.isMoving) {
-            bobY = -Math.abs(Math.sin(this.walkPhase)) * 7;
+            bobY = 0;
             tiltDeg = Math.sin(this.walkPhase) * 3.5 * (this.facing < 0 ? -1 : 1);
             shadowScale = 0.92 + Math.abs(Math.sin(this.walkPhase)) * 0.12;
         } else {
-            bobY = Math.sin(this.idlePhase) * 1.5;
+            bobY = 0;
             tiltDeg = 0;
             shadowScale = 1;
         }
@@ -355,7 +304,9 @@ export class OfficeStage {
         this.playerChar.setAttribute('transform', `translate(${screenX.toFixed(2)}, ${(screenY + bobY).toFixed(2)})`);
 
         if (this.charBody) {
-            this.charBody.setAttribute('transform', `rotate(${tiltDeg.toFixed(2)})`);
+            this.charBody.removeAttribute('transform');
+            updateDogSprite(this.charBody, { direction: this.dogDirection || 'down', moving: this.isMoving }, true);
+            this.charNametag?.setAttribute('transform', 'translate(0, -110)');
         }
 
         if (this.charShadow) {
@@ -423,6 +374,7 @@ export class OfficeStage {
     }
 
     renderFurniture(items, selectedId) {
+        if (this.roomPackage) return;
         this.collisionFurniture = items.filter(item => item.placed && !item.wallFixture);
         if (!this.furnitureEditMode && officePositionBlocked(this.collisionFurniture, this.posX, this.posY)) {
             let nearest = null;
@@ -497,6 +449,7 @@ export class OfficeStage {
     }
 
     hide() {
+        this.roomPackage?.cancel();
         this.keysHeld.clear();
         this.targetTile = null;
         this.isMoving = false;

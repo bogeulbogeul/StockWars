@@ -8,6 +8,8 @@ let quitting = false;
 let tutorialActive = false;
 const hasLock = app.requestSingleInstanceLock();
 if (!hasLock) app.quit();
+// Development assets are read from the checkout; never reuse cached modules.
+if (!app.isPackaged) app.commandLine.appendSwitch('disable-http-cache');
 
 function serverConfig() {
   const configRoot = app.isPackaged ? process.resourcesPath : app.getAppPath();
@@ -45,6 +47,14 @@ if (hasLock) app.whenReady().then(async () => {
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
   const webRoot = app.isPackaged ? path.join(process.resourcesPath, 'web') : path.resolve(__dirname, '../../web');
+  if (!app.isPackaged) {
+    win.webContents.on('before-input-event', (event, input) => {
+      if (input.type === 'keyDown' && (input.key === 'F5' || (input.control && input.key.toLowerCase() === 'r'))) {
+        event.preventDefault();
+        win.webContents.reloadIgnoringCache();
+      }
+    });
+  }
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
   ipcMain.handle('presence:local-mode', (event, enabled) => trusted(event) && typeof enabled === 'boolean'
     ? presence.setLocalMode(enabled) : { error: '잘못된 모드입니다.' });

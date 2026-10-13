@@ -11,14 +11,14 @@ export const TOWN_SCENERY_ENABLED = false;
 // The approved concept's three rows, with an open central plaza and connected lanes.
 // centerX is the artwork center; y is the front ground-contact line.
 export const TOWN_BUILDING_PLACEMENTS = {
-    home_office_tower: { centerX: 700, y: 870 },
+    home_office_tower: { centerX: 700, y: 900 },
     cipher_securities: { centerX: 1800, y: 950 },
-    node_finance: { centerX: 2950, y: 850 },
+    node_finance: { centerX: 2950, y: 900 },
     vivian_store: { centerX: 460, y: 1530 },
     julian_furniture: { centerX: 1050, y: 1530 },
     midnight_pub: { centerX: 2690, y: 1530 },
     barter_pawn_shop: { centerX: 3280, y: 1530 },
-    bit_logistics: { centerX: 650, y: 2260, scale: 1.5 },
+    bit_logistics: { centerX: 650, y: 2260 },
     claire_apparel: { centerX: 1540, y: 2260 },
     data_ink_bookstore: { centerX: 2240, y: 2260 }
 };

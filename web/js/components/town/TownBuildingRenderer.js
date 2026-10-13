@@ -19,8 +19,8 @@ export class TownBuildingRenderer {
         return `<svg class="town-landscape-ground" viewBox="0 0 3700 2600" aria-hidden="true" focusable="false">
             <defs>
                 <g id="townWalkShape" fill="none" stroke-linejoin="round">
-                    <path d="${lanes}" stroke-width="80" />
-                    <path d="${entrances}" stroke-width="64" />
+                    <path d="${lanes}" stroke-width="108" />
+                    <path d="${entrances}" stroke-width="90" />
                 </g>
                 <g id="townFloorShape" fill="white" stroke="white">
                     <use href="#townWalkShape" />

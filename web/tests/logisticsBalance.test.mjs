@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {deliveryScore,calculateLogisticsGrade,calculateLogisticsSettlement} from '../js/components/logistics/LogisticsRewardEngine.js';
 import {LogisticsPhysicsEngine} from '../js/components/logistics/LogisticsPhysicsEngine.js';
-test('delivery points reward successful large stacks; two-box loops cannot reach S',()=>{
- assert.deepEqual([1,2,3,4].map(deliveryScore),[1,2,4,6]);
+test('delivery points reward large stacks with eight points for four boxes',()=>{
+ assert.deepEqual([1,2,3,4].map(deliveryScore),[1,3,6,8]);
  assert.equal(calculateLogisticsGrade(9,2),'C');assert.equal(calculateLogisticsGrade(10),'B');assert.equal(calculateLogisticsGrade(18),'A');
- assert.equal(calculateLogisticsGrade(100,0),'A');assert.equal(calculateLogisticsGrade(26,1),'A');assert.equal(calculateLogisticsGrade(26,2),'S');
- const result=calculateLogisticsSettlement(18,0,true,0,26,2);assert.equal(result.grade,'S');assert.equal(result.hasRumor,true);assert.equal(result.score,26);
+ assert.equal(calculateLogisticsGrade(29),'A');assert.equal(calculateLogisticsGrade(30),'S');
+ assert.equal(calculateLogisticsGrade(deliveryScore(4)*3),'A');assert.equal(calculateLogisticsGrade(deliveryScore(4)*4),'S');
+ const result=calculateLogisticsSettlement(16,0,true,0,32);assert.equal(result.grade,'S');assert.equal(result.hasRumor,true);assert.equal(result.score,32);
 });
 function simulateDelivery({ count, startX = 780, dt = 1 / 60, stabilize = false, sprint = false }) {
  let crashed = false, resting = false, stops = 0, elapsed = 0;

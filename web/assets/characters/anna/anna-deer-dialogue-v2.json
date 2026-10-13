@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "image": "anna-deer-dialogue-expressions-v2.png",
+  "expressions": [
+    "Standard",
+    "Smile",
+    "Happy",
+    "Pain",
+    "Angry"
+  ],
+  "layout": "3 columns x 2 rows; bottom-right empty",
+  "prompt": "Use case: identity-preserve. StockWars shared Anna dialogue portrait atlas. Reference 1 is the exact approved ANNA antlerless female DEER identity and style: reddish tan fur, cream muzzle throat chest, emerald green eyes, large upright deer ears, delicate dark nose, subtle shoulder white spots, clean warm dark outlines and soft cel shading. Preserve this deer appearance. Reference 2 rigging image STRUCTURE ONLY; ignore its human figures/clothes/colors. No antlers, no human hair, no clothes. Create ONE LANDSCAPE atlas exactly 3 equally sized square columns x 2 equally sized square rows, FIVE bust portraits and bottom-right cell fully EMPTY TRANSPARENT. Canvas aspect ratio 3:2. Each portrait head and upper chest centered within its cell, same head scale, same front gentle three-quarter direction, same shoulder position, entire ears inside each cell with generous top margins. Only facial expressions change. Exact reading order top-left calm professional neutral Standard; top-middle gentle reassuring CLOSED-MOUTH Smile; top-right joyful OPEN-MOUTH Happy; bottom-left worried sympathetic Pain with raised inner brows and downturned mouth; bottom-middle stern Angry with knitted brows. Bottom-right absolutely empty. No text labels headings grid lines frames shadows props or glow; transparent background and clean separated silhouettes. This is dialogue UI front bust imagery, not town top-down/isometric world motion assets. Transparent high-resolution PNG, no extra animals or duplicate expression cells.",
+  "cleanupPrompt": "Background extraction and alpha cleanup ONLY on the supplied 3x2 Anna deer expression atlas. Keep every deer portrait in exactly the same pixel position, scale, cell, pose, fur colors, ears, eyes and facial expression. Remove ALL brown/orange ambient haze, glow, halos and shadow outside the actual deer silhouettes. True clean transparent alpha ZERO across every gutter, all outer space and entire empty bottom-right cell. Keep crisp anti-aliased silhouette edges. No background, no gradients anywhere outside fur, no added content. Preserve original 1536x1024 canvas and 3x2 equal square cell arrangement exactly. Do not shift portraits or crop ears.",
+  "usage": "Shared .anna-portrait CSS, including Anna dialogue and tutorial. World sprite unchanged."
+}

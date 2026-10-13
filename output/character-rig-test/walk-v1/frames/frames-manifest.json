@@ -1,0 +1,181 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\character-rig-test\\walk-v1",
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 233.45,
+    "min_subject_distance": 217.29,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 11161
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 206.94,
+        "min_subject_distance": 202.71,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 214.71,
+        "min_subject_distance": 211.39,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 233.45,
+        "min_subject_distance": 217.29,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 199.28,
+        "min_subject_distance": 194.66,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "rows": [
+    {
+      "state": "right_walk",
+      "frames": 8,
+      "method": "components",
+      "files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png",
+        "frames/right_walk/frame-3.png",
+        "frames/right_walk/frame-4.png",
+        "frames/right_walk/frame-5.png",
+        "frames/right_walk/frame-6.png",
+        "frames/right_walk/frame-7.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 21152,
+          "bbox": [
+            67,
+            24,
+            194,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 21047,
+          "bbox": [
+            67,
+            24,
+            195,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 19715,
+          "bbox": [
+            72,
+            24,
+            198,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "nontransparent_pixels": 19949,
+          "bbox": [
+            80,
+            24,
+            203,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 4,
+          "nontransparent_pixels": 21139,
+          "bbox": [
+            67,
+            24,
+            193,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 5,
+          "nontransparent_pixels": 20673,
+          "bbox": [
+            66,
+            24,
+            193,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 6,
+          "nontransparent_pixels": 19902,
+          "bbox": [
+            70,
+            24,
+            198,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 7,
+          "nontransparent_pixels": 19984,
+          "bbox": [
+            79,
+            24,
+            203,
+            296
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

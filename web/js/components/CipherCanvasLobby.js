@@ -1,5 +1,6 @@
-import {CipherRoomPackage} from './CipherRoomPackage.js';
-import {PLACES as PACKAGE_PLACES} from './CipherRoomPackageGeometry.js';
+import { paintCharacterSprite as paintDogSprite } from './CharacterSprite.js';
+import {CipherRoomPackage,CIPHER_AGENT_ENABLED} from './CipherRoomPackage.js';
+import {PLACES as PACKAGE_PLACES,ROOM_SIZE} from './CipherRoomPackageGeometry.js';
 import { gameKey, bindingLabel } from '../app/GameKeys.js';
 import { elementScale } from '../app/GameViewport.js';
 import {CipherCompetitionRoom} from './CipherCompetitionRoom.js';
@@ -7,7 +8,7 @@ import {CipherTrainingRoom} from './CipherTrainingRoom.js';
 import {AGENT_K_WELCOME} from './CipherAgentKDialogue.js';
 import { CipherTour, CIPHER_TOUR_KEY } from './tutorial/cipherTour.js';
 import {StorePlayerController} from './store/StorePlayerController.js';
-const agentKPortraitUrl = new URL('../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png?portrait=hd1', import.meta.url).href;
+import {AGENT_K_PORTRAIT_URL as agentKPortraitUrl} from './CipherAgentK.js';
 export class CipherLobby {
     constructor(container) {
         this.isOpen=false;
@@ -71,11 +72,12 @@ export class CipherLobby {
         if(!this.player||!this.notice)return;
         const ctx=this.canvas.getContext('2d');
         ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-        this.roomPackage.draw(ctx);
+        ctx.save();ctx.scale(this.roomPackage.scale,this.roomPackage.scale);
+        this.roomPackage.draw(ctx);ctx.restore();
     }
     ensurePlayer(){if(!this.navigation.isWalkable(this.player.x,this.player.y))Object.assign(this.player,this.navigation.clamp(this.player.x,this.player.y));}
     nearExit(){return this.roomPackage?this.roomPackage.near('exit'):this.player.nearby()?.action==='exit';}
-    nearAgentK(){return this.roomPackage.near('agent',72);}
+    nearAgentK(){return CIPHER_AGENT_ENABLED&&this.roomPackage.near('agent',72);}
     talkToAgentK(){
         if(!this.nearAgentK()||this.editor.active||this.tour?.active)return;
         this.player.stop();
@@ -195,22 +197,13 @@ export class CipherLobby {
     }
     movePlayerTo(p){this.roomPackage.moveTo(p);}
     paintPlayer(ctx,pose=this.player,nickname=''){
-        const p=pose,seated=pose===this.player?this.seated:pose.resting;
-        // Package seat anchors already describe the cushion surface.
-        ctx.save();ctx.translate(p.x,p.y);
-        ctx.fillStyle='#00000055';ctx.beginPath();ctx.ellipse(0,0,24,7,0,0,Math.PI*2);ctx.fill();
-        // Walking bounce stays above the foot anchor used by room collisions.
-        ctx.translate(0,seated?0:-Math.abs(Math.sin(p.phase))*5);ctx.scale(p.facing,1);
-        ctx.shadowColor='#00000066';ctx.shadowBlur=10;ctx.shadowOffsetY=5;
-        ctx.fillStyle='#ffffff';ctx.strokeStyle='#2c3e50';ctx.lineWidth=3;
-        ctx.beginPath();ctx.roundRect(-28,-58,56,56,10);ctx.fill();ctx.stroke();
-        ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetY=0;
-        ctx.fillStyle='#1e272e';
-        for(const x of [-10,6]){ctx.beginPath();ctx.roundRect(x,-40,6,10,3);ctx.fill();}
-        ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-7,-25);ctx.bezierCurveTo(-7,-15,8,-15,8,-25);ctx.stroke();
-        ctx.fillStyle='#00d8ee';ctx.beginPath();ctx.arc(17,-12,4.5,0,Math.PI*2);ctx.fill();
+        const roomScale=this.roomPackage?.scale||1;
+        ctx.save();ctx.translate(pose.x,pose.y);ctx.scale(1/roomScale,1/roomScale);
+        // Align the integrated seated sprite with this room's sofa cushion.
+        if (pose===this.player ? this.seated : pose.resting) ctx.translate(0,24);
+        paintDogSprite(ctx, 0, 0, { direction: pose.facing < 0 ? 'left' : 'right', moving: !!pose.moving || !!pose.phase, seated: pose===this.player ? !!this.seated : !!pose.resting });
+        if(nickname){ctx.save();ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.fillStyle='#6eeaff';ctx.fillText(nickname,0,-108);ctx.restore();}
         ctx.restore();
-        if(nickname){ctx.save();ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.fillStyle='#071e2d';const width=ctx.measureText(nickname).width+18;ctx.fillRect(p.x-width/2,p.y-85,width,22);ctx.fillStyle='#6eeaff';ctx.fillText(nickname,p.x,p.y-68);ctx.restore();}
     }
     nearbySeat(){return this.roomPackage.nearbySeat();}
     toggleSitting(){
@@ -239,9 +232,9 @@ export class CipherLobby {
         if(!prompt)return;
         prompt.hidden=false;prompt.textContent=label+' · '+bindingLabel('f');
         const canvas=this.canvas.getBoundingClientRect(),dialog=this.dialog.getBoundingClientRect(),uiScale=elementScale(this.dialog);
-        const scale=Math.min(canvas.width/this.canvas.width,canvas.height/this.canvas.height);
-        prompt.style.left=`${(canvas.left-dialog.left+(canvas.width-this.canvas.width*scale)/2+this.player.x*scale)/uiScale}px`;
-        prompt.style.top=`${(canvas.top-dialog.top+(canvas.height-this.canvas.height*scale)/2+(this.player.y-78)*scale)/uiScale}px`;
+        const scale=Math.min(canvas.width/ROOM_SIZE.width,canvas.height/ROOM_SIZE.height);
+        prompt.style.left=`${(canvas.left-dialog.left+(canvas.width-ROOM_SIZE.width*scale)/2+this.player.x*scale)/uiScale}px`;
+        prompt.style.top=`${(canvas.top-dialog.top+(canvas.height-ROOM_SIZE.height*scale)/2+(this.player.y-120/this.roomPackage.scale)*scale)/uiScale}px`;
     }
     animate(now){
         if(!this.isOpen)return;
@@ -255,9 +248,11 @@ export class CipherLobby {
         this.updateExitPrompt();this.draw();
         if(!this.trainingRoom.dialog.open&&!this.competitionRoom.dialog.open)this.frame=requestAnimationFrame(t=>this.animate(t));
     }
-    open(){if(this.isOpen)return;this.dialog.showModal();this.isOpen=true;this.restoreNotice();this.dialoguePage=null;this.notice.hidden=true;this.stairMotion=null;this.stairNotified=false;this.stairAttempt=false;this.seated=null;this.player.reset();this.ensurePlayer();this.roomPackage?.open();this.lastFrame=performance.now();this.canvas.focus();this.animate(this.lastFrame);let seen=!!this.agentKIntroduced;try{seen||=localStorage.getItem(CIPHER_TOUR_KEY)==='1'||localStorage.getItem('stockwars.cipher.agent-k.introduced')==='1';}catch{}if(!seen)this.startAgentIntroduction();else this.showAgentWelcome();}
+    open(){if(this.isOpen)return;this.dialog.showModal();this.isOpen=true;this.restoreNotice();this.dialoguePage=null;this.notice.hidden=true;this.stairMotion=null;this.stairNotified=false;this.stairAttempt=false;this.seated=null;this.player.reset();this.ensurePlayer();this.roomPackage?.open();this.lastFrame=performance.now();this.canvas.focus();this.animate(this.lastFrame);let seen=!!this.agentKIntroduced;try{seen||=localStorage.getItem(CIPHER_TOUR_KEY)==='1'||localStorage.getItem('stockwars.cipher.agent-k.introduced')==='1';}catch{}if(CIPHER_AGENT_ENABLED){if(!seen)this.startAgentIntroduction();else this.showAgentWelcome();}}
     close(){this.hideAgentWelcome();this.tour?.stop();if(this.editor.active)this.editor.cancel();this.dialog.close();this.isOpen=false;}
 }
+
+
 
 
 

@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "dog-resident-test",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 320,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 240.84,
+    "min_subject_distance": 229.11,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 11961
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 223.0,
+        "min_subject_distance": 211.76,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 215.57,
+        "min_subject_distance": 212.97,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 240.84,
+        "min_subject_distance": 229.11,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 210.21,
+        "min_subject_distance": 206.81,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "walk": {
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "action": "One six-pose relaxed biped walk cycle in the SAME fixed right-facing elevated three-quarter view as base. 1 near foot forward on floor far foot behind, 2 far foot passing with tiny lift, 3 far foot swinging forward, 4 far foot forward on floor near foot behind OPPOSITE of frame1, 5 near foot passing with tiny lift, 6 near foot swings forward into frame1. Near and far short legs MUST alternate, arms counter-swing opposite own legs. Tiny bob, no high knees no run no turning, preserve ears muzzle eye shape and proportions."
+    },
+    "carry": {
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "action": "Same fixed right-facing view, same six-phase biped walk as walk with near/far feet exchanging roles at frame4. Both paws hold ONE plain small brown parcel at belly height, stable parcel dimensions and hand contacts, no arm swinging or extra paws. Small steps, very short legs, no high knees, no changing face or head size. Parcel touching hands, no detached scenery. This is a baked visual test only."
+    },
+    "sit": {
+      "frames": 4,
+      "fps": 6,
+      "loop": false,
+      "action": "Fixed right-facing three-quarter view, sit-down one-shot WITHOUT a drawn chair: frame1 standing neutral, frame2 lower pelvis with knees gently bending forward, frame3 pelvis seated with short thighs angled forward and calves down, frame4 same completed seated hold with hands on lap. Human-style biped chair sitting, NOT quadruped dog sitting on haunches. Keep head and ear size fixed, no parcel, no chair or scenery, no squashing whole body or rotating entire sprite."
+    }
+  },
+  "style": "Exactly match dog base: polished StockWars NPC cel shading, dark warm outlines, golden tan floppy-eared dog with cream muzzle and simple black oval highlighted eyes, plain white tee black shorts black shoes. Keep large round head and very short compact biped limbs; no long human legs.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

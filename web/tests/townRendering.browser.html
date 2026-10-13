@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8">
+<link rel="stylesheet" href="../css/style.css">
+<style>body{margin:0;background:#e9dfc8}#fixture{position:relative;width:1600px;height:1000px}.town-building-box{pointer-events:none}#character{position:absolute;left:640px;top:650px}#results{position:fixed;top:0;left:0;z-index:99999;background:white;color:black}</style>
+<div id="fixture"></div><pre id="results"></pre>
+<script type="module">
+import { TownBuildingRenderer } from '../js/components/town/TownBuildingRenderer.js';
+import { TOWN_BUILDINGS } from '../js/data/townWorldData.js';
+import { TOWN_LANDSCAPE } from '../js/data/townLandscape.js';
+import { characterSpriteSVG } from '../js/components/CharacterSprite.js';
+const fixture=document.querySelector('#fixture');
+fixture.innerHTML=TownBuildingRenderer.renderBuildingsHTML()+TownBuildingRenderer.renderLandscapeHTML();
+const salon=TOWN_BUILDINGS.find(b=>b.id==='claire_apparel');
+for(const el of fixture.querySelectorAll('.town-building-box'))el.style.display='none';
+const el=document.querySelector('#building_claire_apparel');
+Object.assign(el.style,{display:'flex',left:'450px',top:'200px'});
+fixture.insertAdjacentHTML('beforeend',`<div id="character">${characterSpriteSVG()}</div>`);
+await Promise.all([...fixture.querySelectorAll('image')].map(el=>new Promise(resolve=>{const img=new Image();img.onload=resolve;img.onerror=()=>resolve();img.src=el.getAttribute('href');})));
+await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+const rows=TOWN_BUILDINGS.map(b=>{const node=document.querySelector(`#building_${b.id} .building-artwork`);return {id:b.id,expected:b.height,attribute:Number(node.getAttribute('height')),src:node.querySelector('image').getAttribute('href')};});
+const rect=el.querySelector('.building-artwork').getBoundingClientRect();
+const bench=TOWN_LANDSCAPE.find(p=>p.type==='bench');
+window.townRenderResult={rows,salonHeight:rect.height,salonName:el.dataset.buildingName,benchWidth:bench.width,pass:rows.every(r=>r.expected===r.attribute)&&Math.abs(rect.height-405)<1&&salon.asset.src.includes('SalonDeTail-v2.png')&&bench.width===135};
+document.querySelector('#results').textContent=JSON.stringify(window.townRenderResult,null,2);
+</script></html>

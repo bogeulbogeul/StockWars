@@ -6,13 +6,13 @@ marketEngine.stopEngine();
 function lobby(){
  return {isOpen:false,dialog:{showModal(){}},notice:{hidden:true},restoreNotice(){},player:{reset(){}},ensurePlayer(){},canvas:{focus(){}},animate(){},greetings:0,tours:0,showAgentWelcome(){this.greetings++;},startAgentIntroduction(){this.tours++;}};
 }
-test('welcome repeats on every building entry but not duplicate opens',()=>{
+test('restored K welcomes returning players on each fresh entry',()=>{
  globalThis.localStorage={getItem:()=> '1'};
  const view=lobby();CipherLobby.prototype.open.call(view);assert.equal(view.greetings,1);
  CipherLobby.prototype.open.call(view);assert.equal(view.greetings,1);
  view.isOpen=false;CipherLobby.prototype.open.call(view);assert.equal(view.greetings,2);assert.equal(view.tours,0);
 });
-test('first visit keeps the existing introduction',()=>{
+test('restored K introduces the lobby on the first visit',()=>{
  globalThis.localStorage={getItem:()=>null};
  const view=lobby();CipherLobby.prototype.open.call(view);assert.equal(view.tours,1);assert.equal(view.greetings,0);
 });

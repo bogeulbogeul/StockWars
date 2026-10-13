@@ -1,0 +1,3 @@
+# v4
+
+User accepted v3 walking motion; edited walking colors only, preserving three-pose silhouette/order. Removed deliberately gray limb blocks. Carry regenerated from dog exact four-pose motion target, cat front neutral as facial identity reference. All limbs use body charcoal fur palette with soft shading. Built-in GPT edit prompts in edit-prompts/*v4.txt. Canonical extraction and inspect pass with no errors; five low-motion warnings for held idle/sit are expected. All other states and H90 scale retained. Earlier qa-notes are historical. No claim of exact pixel-level preservation or final locomotion certification. New atlas is linked in game under black-cat-test-v4, styleId remains black-cat.

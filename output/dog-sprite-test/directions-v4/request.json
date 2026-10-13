@@ -1,0 +1,95 @@
+{
+  "cell": {
+    "width": 256,
+    "height": 320,
+    "safe_margin": 24
+  },
+  "style": "Exactly match approved unclothed golden dog: huge round floppy-eared head, tiny rounded biped mascot body, dark warm outlines, clean cel shading, black oval eyes with white catchlights, cream muzzle and oval belly only. Both arms and paws golden tan like body, no pale arm patch, no clothes/shoes/tail. Directional experiment for StockWars; keep consistent proportions and mild elevated game camera.",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "states": {
+    "down_idle": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. straight front facing viewer, symmetric head and ears, both eyes. Both short feet planted, arms relaxed. No extra animation poses.",
+      "frames": 1
+    },
+    "down_walk": {
+      "fps": 6,
+      "loop": true,
+      "action": "EXACTLY THREE drawings ordered step A, neutral standing, step B. straight front facing viewer, symmetric head and ears, both eyes in ALL frames, absolutely no turning during row. A one short foot advances, neutral BOTH feet planted under hips with relaxed arms, B OPPOSITE short foot advances and arms counter swing. Tiny simple gait as approved3-pose test. Cream only belly and muzzle; golden arms. No added frames effects boxes chair.",
+      "frames": 3
+    },
+    "right_idle": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. facing camera-right with same slightly three-quarter view as approved dog. Both short feet planted, arms relaxed. No extra animation poses.",
+      "frames": 1
+    },
+    "right_walk": {
+      "fps": 6,
+      "loop": true,
+      "action": "Fixed camera-right profile dog. FOUR frames. Nearest leg is foreground overlaps farther leg. Frame1 foreground leg in FRONT (toward facing), farther leg BEHIND. Frame2 foreground leg VERTICAL firmly grounded under pelvis, farther knee flexed softly passes in FRONT of grounded leg. Frame3 foreground leg BEHIND, farther leg in FRONT; draw farther shin and paw visibly in front of foreground leg WITHOUT moving foreground leg forward. Frame4 farther leg VERTICAL grounded under pelvis, foreground knee flexed softly passes in FRONT. No repeating1as3 or2as4, no both-feet-together standing. Feet low near ground, no kicks no high knees no rump lift. Foreground leg same golden tan, farther leg subtle orange shade only to show overlap. Fixed head/torso size and angle. Opposite arms counter swing. No garments, shoes, tail, effects.",
+      "frames": 4
+    },
+    "left_idle": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE stationary neutral full body direction anchor. facing camera-left, matching opposite right view. Both short feet planted, arms relaxed. No extra animation poses.",
+      "frames": 1
+    },
+    "left_walk": {
+      "fps": 6,
+      "loop": true,
+      "action": "Fixed camera-left profile dog. FOUR frames. Nearest leg is foreground overlaps farther leg. Frame1 foreground leg in FRONT (toward facing), farther leg BEHIND. Frame2 foreground leg VERTICAL firmly grounded under pelvis, farther knee flexed softly passes in FRONT of grounded leg. Frame3 foreground leg BEHIND, farther leg in FRONT; draw farther shin and paw visibly in front of foreground leg WITHOUT moving foreground leg forward. Frame4 farther leg VERTICAL grounded under pelvis, foreground knee flexed softly passes in FRONT. No repeating1as3 or2as4, no both-feet-together standing. Feet low near ground, no kicks no high knees no rump lift. Foreground leg same golden tan, farther leg subtle orange shade only to show overlap. Fixed head/torso size and angle. Opposite arms counter swing. No garments, shoes, tail, effects.",
+      "frames": 4
+    },
+    "up_idle": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE straight BACK VIEW stationary dog, feet smooth rounded HEELS and rear ankles only, toe tips pointing AWAY hidden ahead of shins. NO toe/finger/claw crease lines or front paw lobes. No tail. Same golden dog identity.",
+      "frames": 1
+    },
+    "up_walk": {
+      "fps": 6,
+      "loop": true,
+      "action": "THREE straight BACK VIEW drawings walking away: left contact, passing, right contact. Feet smooth rear HEELS behind ankles, toes face AWAY and hidden by shins. NO front-facing toe/claw crease lines, no toe fan. Raised foot has smooth small heel underside. Arms subtly alternate. No face belly tail.",
+      "frames": 3
+    },
+    "right_carry": {
+      "fps": 6,
+      "loop": true,
+      "action": "Fixed camera-right profile dog. FOUR frames. Nearest leg is foreground overlaps farther leg. Frame1 foreground leg in FRONT (toward facing), farther leg BEHIND. Frame2 foreground leg VERTICAL firmly grounded under pelvis, farther knee flexed softly passes in FRONT of grounded leg. Frame3 foreground leg BEHIND, farther leg in FRONT; draw farther shin and paw visibly in front of foreground leg WITHOUT moving foreground leg forward. Frame4 farther leg VERTICAL grounded under pelvis, foreground knee flexed softly passes in FRONT. No repeating1as3 or2as4, no both-feet-together standing. Feet low near ground, no kicks no high knees no rump lift. Foreground leg same golden tan, farther leg subtle orange shade only to show overlap. Fixed head/torso size and angle. Both palms up forward supporting separate cargo, same hand position allframes, no boxes. No garments, shoes, tail, effects.",
+      "frames": 4
+    },
+    "left_carry": {
+      "fps": 6,
+      "loop": true,
+      "action": "Fixed camera-left profile dog. FOUR frames. Nearest leg is foreground overlaps farther leg. Frame1 foreground leg in FRONT (toward facing), farther leg BEHIND. Frame2 foreground leg VERTICAL firmly grounded under pelvis, farther knee flexed softly passes in FRONT of grounded leg. Frame3 foreground leg BEHIND, farther leg in FRONT; draw farther shin and paw visibly in front of foreground leg WITHOUT moving foreground leg forward. Frame4 farther leg VERTICAL grounded under pelvis, foreground knee flexed softly passes in FRONT. No repeating1as3 or2as4, no both-feet-together standing. Feet low near ground, no kicks no high knees no rump lift. Foreground leg same golden tan, farther leg subtle orange shade only to show overlap. Fixed head/torso size and angle. Both palms up forward supporting separate cargo, same hand position allframes, no boxes. No garments, shoes, tail, effects.",
+      "frames": 4
+    },
+    "down_sit": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR SEATED pose only, not a sit-down animation. Facing down matching anchor. Pelvis raised above floor at seat height, torso upright, hips bent90degrees, thighs extend forward horizontally and knees bent down with short feet below. Both paws relaxed on thighs. Not sitting on floor/haunches, not legs stretched out. Draw character ONLY with NO chair; leave empty area under pelvis for separate chair seat. Same proportions and golden arm fur.",
+      "frames": 1
+    },
+    "right_sit": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE CHAIR SEATED pose in elevated ISOMETRIC THREE-QUARTER FRONT view facing camera-right diagonally toward viewer. BOTH eyes visible, BOTH ears visible, far eye ear smaller. NOT pure side profile. Thighs forward along isometric floor diagonal29.5degrees toward camera-right, knees bend down, pelvis at raised seat height, torso upright, paws on thighs. Dog ONLY no chair or shadow. Preserve huge head compact tiny body golden fur cream belly muzzle, no clothes shoes tail. Not floor or haunch sit.",
+      "frames": 1
+    },
+    "left_sit": {
+      "fps": 1,
+      "loop": false,
+      "action": "ONE ISOMETRIC FRONT-LEFT chair seated dog, muzzle and nose displaced to LEFT side of head, gaze to bottom LEFT, left cheek contour and ear nearer viewer, farther eye and ear on RIGHT side visibly foreshortened. Two eyes and two ears visible. Face points LEFT never RIGHT. Elevated orthographic room camera, thighs project diagonally lower LEFT at29.5degree floor axis, pelvis raised at seat height, upright torso, bent knees feet hanging down, paws on thighs. Character only NO chair. Match base golden fur cream belly/muzzle huge round head tiny body. No tail clothing shoes. Not pure profile, not front-right.",
+      "frames": 1
+    }
+  }
+}

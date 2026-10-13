@@ -1,0 +1,10 @@
+Precise-object-edit: repair ONLY THE TWO ARMS in the SIX-POSE horizontal puppy walking strip (reference1). Preserve exactly all heads, faces, ears, coats, tails, trunks, leg poses, scale, spacing and the flat cyan #00FFFF background. Reference2 is anatomy/style identity only.
+The puppy has exactly TWO arms TOTAL, ONE rooted at each shoulder, and exactly ONE paw at each arm's end. Erase the old incorrect arm before drawing its corrected location. Never leave an old forearm, extra fist, duplicate paw or extra outline suggesting a third limb.
+The camera-near arm is the visible arm attached to the near shoulder on the LEFT side of each torso in this right-facing view. It must travel through a real BACK-to-FRONT-to-BACK pendulum. The tail is LEFT, nose is RIGHT.
+Pose1: NEAR ARM swings BACK LEFT toward tail, hand clearly LEFT of hip, elbow gently flexed. FAR ARM swings FORWARD RIGHT, visible at right of chest.
+Pose2: NEAR ARM still behind LEFT but less extreme, moving toward vertical. FAR ARM lowering from forward.
+Pose3: NEAR ARM vertically DOWN at hip, forepaw low beside thigh, far arm also passing down but correctly occluded by torso.
+Pose4: NEAR ARM swings FORWARD RIGHT, elbow softly bent, near hand right of belly. FAR ARM BACK LEFT, its upper arm hidden behind torso but small far paw peeks on left below tail.
+Pose5: NEAR ARM remains forward but starts returning toward vertical. FAR ARM starts returning from backward.
+Pose6: NEAR ARM vertically DOWN beside hip, far arm passes down behind torso, ready to move backward into pose1.
+Keep both arm LENGTHS constant and attached at fixed shoulders. Shoulder pivots do not slide. Strong enough front/back displacement to read the near/right arm's SWING, not a stationary arm. Only narrow overlap can hide the far arm; no duplicate near arms. No smear or afterimage. Output the entire corrected SIX-pose row, not isolated frames, no annotations.

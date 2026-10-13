@@ -1,4 +1,5 @@
 import { HelpModal } from './components/HelpModal.js';
+import { setPlayerCharacterStyle } from './components/CharacterSprite.js';
 import './app/GameViewport.js';
 import { worldNavigation } from './app/WorldNavigation.js';
 import { OnlineSocialSync } from './app/OnlineSocialSync.js';
@@ -48,6 +49,7 @@ class StockWarsApplication {
         this.initComponents();
         this.playerSocial = new PlayerSocial(this);
         installItemGameplay(this, marketEngine);
+        setPlayerCharacterStyle(this.userProfile?.styleId);
         this.titleScreen.btnContinue.disabled = !this.userProfile?.nickname;
         this.bindEngine();
         this.onlineSocialSync=new OnlineSocialSync(this);
@@ -86,6 +88,9 @@ class StockWarsApplication {
 
         // 3. 3D Isometric Rooftop Office Stage Background
         this.officeStage = new OfficeStage(this.appContainer, {
+            onOpenWardrobe: () => this.wardrobeModal.open(this.inventoryModal.items),
+            onOpenComputer: () => { this.smartphoneUI.showPhone(); this.smartphoneUI.showStockApp(); },
+            onRoomMessage: message => toastManager.show(message),
             onFurnitureEdit: () => this.furnitureEditModal.open(),
             isTutorialActive: () => !!this.annaTutorial?.isActive,
             isAnnaMarriageCompleted: () => this.userProfile?.annaMarriageCompleted === true,
@@ -269,7 +274,7 @@ class StockWarsApplication {
                 if (this.userProfile?.firstTutorialCompleted === false) this.userProfile.tutorialCheckpoint = 'rumor_inventory_guide';
                 this.itemGameplay.sync();
                 toastManager.show(`📦 [비트 물류] +${result.goldReward.toLocaleString()}G / ${result.expReward} EXP (체력 -${settlement.staminaCost}: ${this.itemEngine.state.stamina}/${this.itemEngine.maxStamina()})`);
-                
+
                 if (result.hasRumor) {
                     const rumorItem = getRandomRumorItem();
                     this.inventoryModal?.addItem(rumorItem);
@@ -344,7 +349,7 @@ class StockWarsApplication {
             },
             onOpenStore: () => this.openVivianStore(),
             onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 줄리안: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
-            onOpenApparel: () => toastManager.show('👗 [테일러드 의상실] 클레어: "트레이더의 신뢰도를 높여주는 명품 수트와 커스텀 코스튬 쇼룸입니다."'),
+            onOpenApparel: () => toastManager.show('🪮 [살롱 드 꼬리] 클레어: "동물 트레이더를 위한 완성형 스타일을 준비하고 있어요."'),
             onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소피아: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
             onOpenSecurities: () => {
                 this.cipherLobby.open();
@@ -498,6 +503,7 @@ class StockWarsApplication {
     }
 
     async onCharacterCreated(userProfile) {
+        setPlayerCharacterStyle(userProfile.styleId);
         this.userProfile = { ...userProfile, firstTutorialCompleted: false, tutorialCheckpoint: 'welcome_1' };
         this.smartphoneUI.updateUserProfile(this.userProfile);
         this.officeStage?.updateUserProfile(userProfile);
@@ -727,4 +733,3 @@ Object.assign(StockWarsApplication.prototype, worldNavigation);
 document.addEventListener('DOMContentLoaded', () => {
     window.stockWarsApp = new StockWarsApplication();
 });
-

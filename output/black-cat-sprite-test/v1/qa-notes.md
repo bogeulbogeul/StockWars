@@ -1,0 +1,9 @@
+# Black cat sprite test
+
+Same package format as DOG_SPRITE_BASELINE: no clothes, huge head tiny biped body, charcoal black fur, amber eyes, pink nose/inner ears, exactly2 triangle ears, no tail. New built-in GPT base used dog front image for style/proportions only. Codex GPT row generation:prepare/gen-set/extract/compose-atlas/compose-gif/inspect. Flat independent rows are an experimental edit route, not an accepted production direction-anchor chain. Base and generated prompts saved; row reports record refs/provider. Cat differs from dog in face/fur/ears, not a palette swap.
+
+9 source rows: down/right/up idle1, down/up walk3, right walk4, right carry4, down/right(isometric) sit1. Left idle/walk/carry/sit reuse right with runtime reflection, never generated independently. Body height calibrated from extracted down_idle alpha box:272px maps to90units, scale90/272 shared by allstates. Chair/cargo not baked. Preview9motion/direction cards includes mirrored views, zoom1–3 and separate parcel stack0–4.
+
+Visual QA: triangle ears2, charcoal limbs match body, amber face consistent, rear feet smooth heels/soles. Both seated poses show raised pelvis bent knees, right seated has two visible eyes in3/4view. Sidewalk initially repeated first contact in third, regenerated once. Final foreground/far overlap improves contact separation but small foot phases/passings remain ambiguous; movement continuity remains experimental. Carry paws are cupped at chest and may need flatter palm-up drawing for stack shelf. Front/back loops and direction-to-direction size/shape drift require actual motion/game validation. No natural gait guarantee or chair/hand alignment pass claimed.
+
+Extraction no errors/warnings. Inspect no errors;5 low-motion warnings are intended one-frame idle/seated states. Existing dog/game default untouched; cat package prepared in web/assets/characters/black-cat-test for later integration. Rigging source is not created.

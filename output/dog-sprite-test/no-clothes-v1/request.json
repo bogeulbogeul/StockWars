@@ -1,0 +1,35 @@
+{
+  "cell": {
+    "width": 256,
+    "height": 320,
+    "safe_margin": 24
+  },
+  "style": "Exactly match attached unclothed dog: golden tan body fur, cream oval belly and muzzle, floppy ears, short rounded bare paws and feet, black oval highlighted eyes. NO clothes, NO shoes. StockWars clean dark warm outlines and cel shading, compact mascot body.",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "foot-centroid",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "states": {
+    "walk": {
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "action": "Same fixed right-facing 3/4 view throughout. Six distinct short biped walking poses: near foot forward contact, far foot passing, far foot advancing, far foot forward contact OPPOSITE near foot phase, near foot passing, near foot advancing. Short bare paws alternate; same-side arms counter-swing, tiny bob, no high knees, no changing torso direction, no human anatomy, no added tail or outfits."
+    },
+    "carry": {
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "action": "Same fixed right-facing 3/4 view. Walk with BOTH short front paws extended forward at lower chest height, elbows bent, palms facing UP as a horizontal supporting shelf UNDER a separately rendered vertical stack of1-4 boxes. No hugging pose, no gripping an invisible single large box at belly, paws stay steady together while short bare feet alternate in six poses (near contact, far passing, far forward, far contact, near passing, near forward). Slight backward body lean for balance. Draw character ONLY: ABSOLUTELY NO box, parcel, tray, platform, trolley or cargo. Keep face visible. Supporting paw position constant across frames for later stack composition. NO clothes/shoes."
+    },
+    "sit": {
+      "frames": 4,
+      "fps": 6,
+      "loop": false,
+      "action": "Same fixed right-facing3/4 view, four-pose biped sit-down: standing, lowering onto chair height, short legs extend forward and pelvis settles, seated hold paws on lap. Do not draw chair. No clothes shoes box. Preserve compact oval fur torso and belly patch; no quadruped haunch sit."
+    }
+  }
+}

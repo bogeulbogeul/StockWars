@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-unpack-source",
+  "layout_source": "manifest",
+  "cell": {
+    "width": 320,
+    "height": 400
+  },
+  "atlas": "output\\npc-style-animals\\motions-v2\\cat\\run\\variants\\charcoal-unified.png",
+  "manifest": "output\\npc-style-animals\\motions-v2\\cat\\run\\manifest.json",
+  "direction": null,
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  }
+}

@@ -1,3 +1,4 @@
+import { updateCharacterSprite as updateDogSprite } from './CharacterSprite.js';
 import { gameKey, bindingLabel } from '../app/GameKeys.js';
 /**
  * TownStage Component (RPG 탑다운 마을 무대 컨트롤러)
@@ -398,7 +399,7 @@ export class TownStage {
             const flip = this.playerController.charFacing < 0 ? 'scaleX(-1)' : 'scaleX(1)';
             const bounce = this.playerController.isMoving ? Math.sin(this.playerController.walkPhase) * 6 : 0;
             if (this.charBody) {
-                this.charBody.style.transform = `${flip} translateY(${-bounce}px)`;
+                updateDogSprite(this.charBody, { direction: this.playerController.facing, moving: this.playerController.isMoving, seated: this.playerController.isResting });
             }
         }
 
@@ -547,7 +548,7 @@ export class TownStage {
             this.promptEl.classList.remove('hidden');
             this.promptEl.style.left = `${townEntrance(nearby).x}px`;
             
-            this.promptEl.style.top = `${nearby.y - 150}px`;
+            this.promptEl.style.top = `${nearby.y - (nearby.type === 'bench' ? 190 : 150)}px`;
             this.promptEl.style.bottom = "auto";
 
             if (this.promptIcon) this.promptIcon.textContent = nearby.icon || '🏢';
@@ -650,3 +651,4 @@ export class TownStage {
         if (this.nameTag) this.nameTag.textContent = this.nickname;
     }
 }
+

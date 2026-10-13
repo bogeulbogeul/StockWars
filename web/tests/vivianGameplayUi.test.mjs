@@ -27,7 +27,9 @@ test('purchase prompt appears near Vivian and hides away, while shopping or edit
 });
 
 test('gameplay hides editing controls by default, explicit authoring option enables them',()=>{
-    assert.match(getVivianStoreHtml(),/class="vivian-layout-toolbar" hidden/);
+    assert.doesNotMatch(getVivianStoreHtml(),/class="vivian-layout-toolbar"/);
+    assert.match(getVivianStoreHtml(),/vivian-room-with-squirrel-v8\.png/);
+    assert.match(getVivianStoreHtml(),/vivian-squirrel-cashier-v1\.png/);
     assert.doesNotMatch(getVivianStoreHtml({allowLayoutEditing:true}),/class="vivian-layout-toolbar" hidden/);
     const disabled={enabled:false};
     VivianRoomEditor.prototype.begin.call(disabled);
