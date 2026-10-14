@@ -1,0 +1,32 @@
+FRAME TRANSFER
+Edit IMAGE 1 directly: REPLACE EACH DOG WITH THE NOBLE LOP RABBIT FROM IMAGE 2 while keeping the dog's EXACT POSE AND SHEET STRUCTURE. This is a frame-for-frame character replacement, NOT new animation design. Treat the dog's motions as locked and approved. Do NOT use earlier rabbit animation attempts.
+
+IMAGE ROLES:
+1 DOG SHEET = authoritative edit target and exact pose/position/direction template for EVERY limb, each frame, every row.
+2 RABBIT TURNAROUND = appearance ONLY: ivory lop rabbit, brown eyes, sage bonnet with lace brim, cream chin ribbon, Rococo sage overskirt and cream multi-tier lace underskirt, sleeve lace, bows and flower accents, round rabbit tail. Preserve this approved identity and outfit.
+3 HUMAN PARTS REFERENCE = internal production separation concept ONLY. Do not copy anything visual from it.
+
+Keep 4 columns and 9 rows, exactly 18 figures at the SAME occupied cells as dog:
+row1 col1: down idle
+row2 cols1-3: down walk A,neutral,B
+row3 col1: right idle in SAME slightly turned view as dog
+row4 cols1-3: right walk A,neutral,B in SAME views as dog
+row5 col1: up idle
+row6 cols1-3: up walk A,neutral,B
+row7 cols1-4: right carry 4 phases EXACTLY dog
+row8 col1: down seated EXACTLY dog
+row9 col1: isometric right seated EXACTLY dog.
+ALL other slots EMPTY transparent. Preserve the tall sheet composition, ideally 1280x3600. No labels/grid.
+
+POSE TRANSFER RULES: imagine tracing the dog's skeleton joint-for-joint and dressing it as the rabbit. Copy head facing, torso tilt, shoulder/elbow/wrist angles, hip/knee/ankle angles, paw center positions, planted foot and lifted foot, gait amplitude and phase order. Fit rabbit costume around these fixed poses; do NOT substitute demure hands-down poses, tiny shuffling steps, hopping, legs dangling straight when sitting, or profile instead of 3/4. Body proportions can accommodate the costume but must preserve pose landmarks relative to body crown and soles. Bonnet and floppy ears are extra silhouette, do not count them toward body height.
+Front walk: reproduce dog lifted/bent opposing arm, lowered arm and alternate step clearly even if sleeves must drape behind exposed paws. Rear walk: duplicate lifted rear heel/sole and opposing arms. Side walk: near arm back in A with near leg forward, neutral, near arm forward with near leg back, exactly matching corresponding dog. Carry: match each dog frame's legs and TWO palms underneath imaginary cargo; no cargo drawn. Chair seated: copy dog's bent thighs and knees, compact shin lengths, hands on knees, and precise three-quarter right angle in last row. Dress drapes OVER the posed thighs and bends with them, not a static cone or long gown hiding motion. Bare paws remain visible. No chair.
+Copy motion and pose only; never copy dog's golden fur, pointed muzzle, short ears or fluffy long tail. Rabbit's short round tail attached at rear pelvis. No human features/hair. Maintain identical rabbit face, dress construction, colors and crisp dark outlines/flat cel shading in every frame. Lace may move with body but may not change tiers. Hand digits stay visible. Outfit must not immobilize arms. Generous separation between frames, same per-row baseline and same character scale. True transparent alpha, no floor, shadow or objects.
+StockWars uses village RPG top-down and indoor isometric; inherit camera for each pose from dog, especially isometric seated right. H=90 sole-to-crown display benchmark excludes bonnet/ears; not a pixel-resolution command. This user-requested raster sheet does not select final rigging software or change future separated-parts 2D rigging policy.
+
+TRANSFER CORRECTION
+Edit image 1 (rabbit 9-row sheet), using IMAGE 2 DOG SHEET AS EXACT POSE TEMPLATE. Keep all 18 frames, same 9x4 sparse layout, same rabbit design, bonnet, rich sage/cream lace dress, face, scale, alpha background. Image3 approved rabbit appearance.
+Targeted corrections ONLY:
+ROW4 walk right outer frames and ROW7 carrying all four frames: copy the corresponding dog's hip, knee, ankle and foot POSITIONS and separation normalized by torso size. Rabbit currently takes much smaller steps. Increase its stride to the dog's full stride and transfer exact passing knee flexion. Legs should articulate from pelvis beneath dress; cloth follows motion, it does not shorten legs. Preserve regular character body leg lengths consistently. Contact A and B MUST distinguish near leg vs far leg. Copy same-side opposite arm in row4, dog wrist position. In row7 copy dog's palms-up hand orientation (two small cupped palms underneath an absent box, not hands together in a fist). Keep paws' finger lines.
+ROW9 col1 seated right: MUST be the exact DOG row9 camera/body orientation, which is FRONT-RIGHT THREE-QUARTER with BOTH eyes clearly visible. Turn face and shoulders TOWARD VIEWER enough to see both eyes as in dog, NOT profile. Copy dog's hip/thigh/knee/shin pose exactly, hands on knees. Tilt seat axis diagonally for isometric. Skirt drapes across horizontal thighs and around bent knees. Match dog knee spacing, lower-leg length and paw positions. No chair. Don't change it into standing.
+ROW8 front seated: copy dog row8 knee bends and shin lengths, avoid straight long vertical leg tubes.
+Every other pose stays unchanged. Keep EXACT 9-row structure, 1/3/1/3/1/3/4/1/1 figures per row, no new poses. No dog features. No text, lines, background, floor or shadow. Real alpha. User already validated dog animations; do not reinterpret or invent motions, use them as locked. Village RPG top-down, indoors isometric; inherit source view for each pose.

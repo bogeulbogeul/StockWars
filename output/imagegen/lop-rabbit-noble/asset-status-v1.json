@@ -1,0 +1,16 @@
+{
+  "asset": "lop-rabbit-noble-turnaround-v1.png",
+  "status": "design-turnaround-candidate",
+  "tool": "built-in image_gen",
+  "character": "귀족 영애 의상을 입힌 롭이어 토끼 한정판",
+  "views": ["front", "right", "back"],
+  "references": ["Docs/ART_STYLE_GUIDE.md", "Docs/part_separation_guide_512.md", "Docs/CORE_GDD_08_CharacterCreation.md", "Docs/DOG_SPRITE_BASELINE.md"],
+  "visual_review": "롭이어 귀, 아이보리 털, 세이지 드레스, 손발 구분, 뒤꿈치와 골반 꼬리 확인. 기존 동물보다 명암과 자수 디테일이 많아 최종 화풍 일치 검수는 미완료.",
+  "production_layers": false,
+  "rigged": false,
+  "animations": false,
+  "runtime_integrated": false,
+  "scale_and_anchors": "H=90 접지선-정수리 기준 적용 전. 방향별 원점과 크기 정렬 미검증.",
+  "pending": ["제작용 파츠 분리와 가려진 연결 면", "본과 피벗", "정지·걷기·생활·운반 모션", "실제 표시 크기 및 실내외 시점 검증"],
+  "prompt": "prompt-v1.txt"
+}

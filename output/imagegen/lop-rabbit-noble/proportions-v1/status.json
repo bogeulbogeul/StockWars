@@ -1,0 +1,10 @@
+{
+  "selected_source": "selected-source.png",
+  "candidate": "proportion-adjusted-sheet.png",
+  "tool": "built-in image_gen",
+  "status": "proportion-adjustment-candidate",
+  "master": "selected source row 2 column 2",
+  "intent": "Preserve user-selected appearance and motions while aligning character scale and anatomical proportions",
+  "review": "19 figures, sage bonnet, rich lace and opposite seated views retained. Scale adjustment is generated, not a numeric skeletal lock. Idle paws remain partly occluded and row gutters are tight; not adopted as a runtime atlas.",
+  "runtime_integrated": false
+}

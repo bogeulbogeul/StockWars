@@ -1,0 +1,65 @@
+{
+  "image": "sprite-sheet.png",
+  "status": "dog-pose-transfer-raster",
+  "sourceMotion": "output/npc-style-animals/motions-v2/dog/run/sprite-sheet-alpha.png",
+  "sourceMotionAcceptedByUser": true,
+  "sourceMotionRevalidation": false,
+  "appearance": "../lop-rabbit-noble-turnaround-v2.png",
+  "tool": "built-in image_gen",
+  "rows": [
+    {
+      "name": "down_idle",
+      "count": 1
+    },
+    {
+      "name": "down_walk",
+      "count": 3
+    },
+    {
+      "name": "right_idle",
+      "count": 1
+    },
+    {
+      "name": "right_walk",
+      "count": 3
+    },
+    {
+      "name": "up_idle",
+      "count": 1
+    },
+    {
+      "name": "up_walk",
+      "count": 3
+    },
+    {
+      "name": "right_carry",
+      "count": 4
+    },
+    {
+      "name": "down_sit",
+      "count": 1
+    },
+    {
+      "name": "right_sit",
+      "count": 1
+    }
+  ],
+  "columns": 4,
+  "walkPlayback": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "carryPlayback": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "frameMs": 160,
+  "frameRects": null,
+  "rigged": false,
+  "runtimeIntegrated": false,
+  "transferReview": "강아지 행 순서·18자세를 유지. 정면 팔 교대·후면 들린 발·옆 보폭 반영. 생성 결과의 관절 좌표가 원본과 수치적으로 동일한 것은 아니며 옆 앉기 회전과 운반 손 형태에는 잔여 차이가 있음. 원본 모션 자체는 재검증하지 않음."
+}

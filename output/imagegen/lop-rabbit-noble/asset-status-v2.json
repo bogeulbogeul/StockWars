@@ -1,0 +1,13 @@
+{
+  "asset": "lop-rabbit-noble-turnaround-v2.png",
+  "status": "design-turnaround-candidate",
+  "tool": "built-in image_gen",
+  "prompt": "prompt-v2.txt",
+  "changes": ["보넷", "풍성한 레이스 로코코 드레스", "선명한 외곽선과 색면 명암으로 보정"],
+  "visual_review": "3방향 보넷·레이스·늘어진 귀 및 손발 확인. v1보다 선과 명암 경계가 선명함. 기본 고양이·강아지 대비 큰 눈과 둥근 머리 비율 차이는 남아 있으며 동일 화풍 최종 채택 아님.",
+  "production_layers": false,
+  "rigged": false,
+  "animations": false,
+  "runtime_integrated": false,
+  "small_scale_and_camera_validation": false
+}

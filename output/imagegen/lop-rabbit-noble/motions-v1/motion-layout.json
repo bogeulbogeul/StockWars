@@ -1,0 +1,28 @@
+{
+  "image": "sprite-sheet.png",
+  "status": "generated-motion-sheet-candidate",
+  "tool": "built-in image_gen",
+  "layout": {"columns": 4, "rows": 5, "note": "Semantic slots only; exact crop bounds and anchors not yet validated"},
+  "rows_top_to_bottom": [
+    ["down_idle", "down_walk_A", "down_walk_neutral", "down_walk_B"],
+    ["right_idle", "right_walk_A", "right_walk_neutral", "right_walk_B"],
+    ["up_idle", "up_walk_A", "up_walk_neutral", "up_walk_B"],
+    ["right_carry_0", "right_carry_1", "right_carry_2", "right_carry_3"],
+    ["down_sit", "right_sit_candidate", null, null]
+  ],
+  "walk_playback_proposal": {"columns_zero_based": [1, 2, 3, 2], "frame_ms": 160},
+  "carry_playback_proposal": {"columns_zero_based": [0, 1, 2, 3], "frame_ms": 160},
+  "left_direction": "Mirror right with anchors; asymmetric bonnet flower needs review",
+  "appearance_reference": "../lop-rabbit-noble-turnaround-v2.png",
+  "motion_references": ["output/npc-style-animals/motions-v2/dog/run/sprite-sheet-alpha.png", "output/npc-style-animals/motions-v2/cat/run/sprite-sheet-alpha.png"],
+  "visual_review": {
+    "count": 18,
+    "costume": "bonnet, sage dress and cream lace retained",
+    "right_walk": "near arm backward in A, forward in B after correction",
+    "pending": ["front and rear arm swing remains subtle", "carry step phases need playback review", "right seated is still close to profile and requires stronger isometric angle", "seated leg length and furniture contact", "exact frame bounds, baseline and H=90 normalization", "alpha edge quality at runtime scale"]
+  },
+  "rigged": false,
+  "runtime_integrated": false,
+  "runtime_validated": false,
+  "not_in_this_reference_set": ["bed lying", "bench rest", "pickup and putdown transitions", "limited edition special motion"]
+}
