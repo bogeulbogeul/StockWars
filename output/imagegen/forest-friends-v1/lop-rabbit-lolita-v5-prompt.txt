@@ -1,0 +1,13 @@
+Correct TURNAROUND CONTINUITY in this exact 3-view rabbit character sheet, NOT the design. The LEFT FRONT figure is the approved master and must remain visually unchanged. Preserve its original elaborate ivory gathered-lace bonnet and pink ribbon design exactly. Do NOT simplify to a headband or redesign the lace or bows. Preserve all clothing below the neck, poses, face, long lop ears, colors, scale, linework, shading, canvas composition, transparent background.
+
+Redraw ONLY the bonnet accessory in CENTER SIDE and RIGHT REAR to depict the SAME physical object as the front, rotated consistently. Treat the approved front as a 3D spatial blueprint:
+- One broad ivory lace-trimmed headpiece arches over the crown from one upper ear root to the other, with the same layered ruffle depth as front. It terminates near the small side bows at the upper ear roots, not at the neck.
+- Exactly ONE large central pink bow, at the crown midline; and TWO smaller pink bows, one fixed at each upper ear root. Do not slide the little bow up onto the central bow in side view. Maintain their physical separation and attachment locations.
+- CENTER facing right: show the near small bow at the upper root of the long visible ear at the same anatomical height as front; far small bow is hidden. Large central bow sits inward toward the midline and above the small bow, visibly separate. Show the large bow's folded thickness and foreshortened overlapping loops, not a pointed vertical spike or a frontal bow pasted on the head. Lace lies across the crown at its original depth and disappears behind the near ear; remove the erroneous long vertical lace strip along the ear/cheek down to neck. Only the crown section is visible in profile. The uncovered cheek remains cream fur.
+- RIGHT BACK: same crown piece seen from behind, same large bow backside and same two smaller bow backs partially occluded where appropriate by ear roots. Show the reverse of the gathered lace and the narrow supporting fabric, not a second identical front-facing lace border across the back of skull. Do not create a new bonnet or add ornaments. Bow loops' reverse folds are visible without inventing extra knots.
+Retain original ornament complexity and overall silhouette. The user LIKES the original lace and ribbon design; only their changing placement/shape between views was wrong. Aim for an animator's genuinely consistent front-side-back turnaround. No labels, no new objects, no background.
+
+Tool: built-in image_gen.
+Base: lop-rabbit-lolita-v2.png. V3/V4 simplification not used.
+Status: Turnaround continuity revision for review; original front design retained as master. Side lace no longer runs to neck; side and rear bonnet projections revised. Not a rig or production animation atlas.
+

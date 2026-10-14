@@ -1,0 +1,13 @@
+Edit ONLY the CENTER right-facing rabbit's head accessory in image 1. Front and rear figures are approved and locked. Image 2 is the current side closeup; image 3 is the approved large ribbon's shape reference, which must be imagined from its SIDE.
+
+Apply exactly these user changes:
+1. REMOVE the bonnet/lace that wraps around the BACK of the skull. In center figure, erase the long scalloped ivory diagonal trailing from crown down-left along the rear silhouette of the head/upper ear. Restore plain cream fur there. No bonnet cap or fabric wrapping the occiput. Keep just the transverse crown-to-near-temple lace decoration.
+2. Tidy the remaining ivory lace into a continuous neatly gathered strip with consistent scallops and believable folds. PRESERVE its current crown-to-side-bow length and endpoint height from image 1; user approves that length. Do not shorten or extend it; do not simplify the original ornate design to a plain band.
+3. The small pink bow at the near ear-root currently has only ONE hanging tail. Draw exactly TWO clearly separated flat pink tails from its knot, with a small visible gap between them, one slightly overlapping/offset, same approximate length as existing tail. Keep the two upper loops and center knot. This is a second tail, not a third loop or a second bow.
+4. The crown bow must be the SIDE VIEW of the broad flat folded ribbon shown in image 3 / the front figure. It has a wide soft triangular fan-shaped fabric loop pinched at the central knot; in side view the near and far loops overlap, their thin folded edges and fold crease visible. Turn that SAME ribbon 90 degrees, do not replace it with two horizontal pill/oval shapes or a miniature front-facing bow. Preserve fan-loop height/volume and wrapped knot, compress its width through foreshortening; near loop conceals most of far loop with just a small offset contour visible. No hollow cylindrical roll, no trumpet hole, no extra tails on crown bow. Use the reference loop's softly curved triangular outer silhouette and inner fold, viewed edge-on, not an upright pointed spike. Crown ribbon and near small ribbon stay distinct attachments.
+
+Everything else unchanged: head, ear length, face, dress, palette, body, all three figures, original dark linework and restrained cel shading. Transparent alpha, no captions.
+
+Tool: built-in image_gen.
+Status: Side bonnet revision for review. Rear-wrapping lace removed from side silhouette; small side bow has two tails; top bow redrawn from supplied shape reference. Not rigged or integrated.
+

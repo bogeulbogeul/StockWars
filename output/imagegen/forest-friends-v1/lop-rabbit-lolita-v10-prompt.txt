@@ -1,0 +1,13 @@
+Edit this three-view cream lop rabbit Lolita character sheet. User now explicitly requests replacing the lace headband with a TRUE BONNET HAT. Redesign the headwear coherently in ALL THREE views; the previous instruction to leave back head bare is superseded for this new hat. Preserve the same rabbit face/eyes/cream fur/long floppy ears/body, blush pink and ivory dress, socks/shoes, clean dark outlines and restrained cel shading. Same front / right profile / back layout and scale.
+
+New hat: a sweet classic Lolita fabric bonnet, a softly rounded blush-pink fitted cap that visibly encloses the crown AND back of skull. A moderately flared oval brim frames the face, ivory lining and a neatly gathered scalloped lace edge. Clear cap volume and simple curved panel seams, no floppy giant sunhat, no flat lace headband, no crown-top giant bow. Use a narrow matching pink ribbon around the cap-to-brim seam and a modest tied bow at each lower side of the brim, two flat tails each. The long rabbit ears emerge naturally through symmetric tailored side openings BEHIND the brim and hang freely OUTSIDE the cap. Keep recognizable lop ears and visible face, do not turn the ears into fabric.
+
+Front: open face centered inside the soft horseshoe-shaped lace-edged brim; pink cap subtly visible above brim, two long cream ears outside, small bows at lower brim ends.
+Right profile: clearly distinguish the rounded pink cap covering the back of the skull on screen left from the curved brim projecting slightly forward on screen right around forehead/cheek. Near long cream ear emerges from one opening at upper side behind brim and hangs outside; one small side bow at lower brim edge, far bow naturally hidden. No large ambiguous top ribbon.
+Back: rounded pink fabric cap with clean curved seam panels and narrow ribbon band; two long cream ears outside at symmetric side openings. The front brim is only a thin peripheral edge from behind, NOT a second face-opening or duplicate frontal ruffle glued onto back. Same hat dimensions, seams, bows and ear openings in every view.
+
+Polished consistent turnaround concept, hat drawn as one physical object rotated, readable game illustration matching original cat/dog-derived style. Transparent background real alpha, no labels/props/shadows. Do not change the dress or add human hair.
+
+Tool: built-in image_gen.
+Status: Bonnet hat design concept replacing lace headdress, front/profile/back. Not rigged or integrated.
+
