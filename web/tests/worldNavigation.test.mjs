@@ -11,13 +11,14 @@ test('town appears only after server accepts entry, office departure releases me
     let accepted = false;
     let shown = false;
     let left = false;
+    const classes = new Set();
     const bridge = {
         claimNickname: async () => ({ snapshot: { uniqueNicknames: true } }),
         join: async () => accepted ? { snapshot: { channels: [{id: 'town-1', name: '타운 1'}], currentChannelId: 'town-1', ping: 8 } } : { error: 'offline' },
         leave: async () => { left = true; }
     };
     const context = vm.createContext({ registerNickname, window: { stockWarsPresence: bridge },
-        document: { body: { classList: { add() {}, remove() {} } } }, toastManager: { show() {} } });
+        document: { body: { classList: { add: name => classes.add(name), remove: name => classes.delete(name), contains: name => classes.has(name) } } }, toastManager: { show() {} } });
     vm.runInContext(source, context);
     const app = { ...context.worldNavigation, userProfile: { nickname: '트레이더' }, townStage: { show(server) { shown = server.id; }, hide() {} },
         officeStage: { show() {}, hide() {} }, serverSelectModal: { close() {}, applyPresence() {} } };
@@ -26,6 +27,8 @@ test('town appears only after server accepts entry, office departure releases me
     accepted = true;
     assert.equal(await app.enterTown(), true);
     assert.equal(shown, 'town-1');
+    assert.equal(classes.has('town-mode-active'), true);
     app.enterOffice();
     assert.equal(left, true);
+    assert.equal(classes.has('town-mode-active'), false);
 });

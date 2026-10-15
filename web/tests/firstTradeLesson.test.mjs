@@ -47,7 +47,7 @@ test('10% threshold uses first successful execution, not subsequent average or l
     engine.notify();
     assert.equal(engine.firstTradeLesson.status, 'holding');
 });
-test('choice waits for dialogue boundary and holding resumes without rewards or duplicate alert', () => {
+test('choice waits until onboarding ends and holding resumes without rewards or duplicate alert', () => {
     const engine = market();
     engine.buyStock('TEST', 1);
     const ui = tutorial(engine);
@@ -56,6 +56,11 @@ test('choice waits for dialogue boundary and holding resumes without rewards or 
     ui.notifyMarketUpdated(engine.getState());
     assert.equal(ui.steps[0].id, 'original');
     ui.nextStep();
+    assert.equal(ui.steps[0].id, 'original');
+    assert.equal(ui.steps[ui.currentStepIdx].id, 'next');
+    assert.equal(ui.tryShowLesson(), false);
+    ui.isActive = false;
+    assert.equal(ui.tryShowLesson(), true);
     assert.equal(ui.steps[0].id, 'first_profit_choice');
     assert.match(ui.steps[0].text, /10% 이상/);
     assert.equal(ui.steps[0].allowHold, true);

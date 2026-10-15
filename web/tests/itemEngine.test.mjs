@@ -38,7 +38,7 @@ test('pass activation reports its duration, survives reload and blocks duplicate
 
 test('failed instant uses and full bags never charge gold or consume an item', () => {
     const { engine:e,market:m }=fixture(); const cash=m.cash;
-    assert.equal(e.purchase('item_energy_drink',1,true).success,false);
+    assert.equal(e.purchase('item_caffeine_shot',1,true).success,false);
     assert.equal(e.purchase('item_crypto_decoder',1,true).success,false);
     assert.equal(m.cash,cash); assert.equal(e.state.inventory.length,0);
     e.state.inventory=Array.from({length:24},(_,i)=>({id:`other${i}`,quantity:1}));
@@ -107,8 +107,9 @@ test('recovery grants whole hearts, preserves current health on buffs and clamps
     e.add('item_energy_drink',3); e.add('item_caffeine_shot');
     use(e,'item_energy_drink'); assert.equal(e.state.stamina,4);
     use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,5);
-    assert.equal(e.use('item_energy_drink').success,false);
-    assert.equal(e.state.inventory.find(i=>i.id==='item_energy_drink').quantity,2);
+    assert.equal(e.use('item_energy_drink').success,true);
+    assert.equal(e.state.stamina,5);
+    assert.equal(e.state.inventory.find(i=>i.id==='item_energy_drink').quantity,1);
     const restored = new ItemEngine({market,clock:e.clock,state:JSON.parse(JSON.stringify(e.state))});
     assert.equal(restored.maxStamina(),5); assert.equal(restored.state.stamina,5);
     advance(ITEM_BALANCE.buffMs); restored.tick();
@@ -207,4 +208,22 @@ test('realized sale profit, not unrealized gains or labor wages, unlocks profit 
     m.buyStock('CLOUDBERRY',10); m.stocks.get('CLOUDBERRY').price+=1000;
     assert.equal(e.state.profit,0); m.sellStock('CLOUDBERRY',10); assert.equal(e.state.profit,9959);
     e.finishLabor(800); assert.equal(e.state.profit,9959);
+});
+
+test('energy drinks can be bought and consumed at full stamina without exceeding capacity', () => {
+    const { engine, market } = fixture();
+    const cash = market.cash, stamina = engine.maxStamina();
+    engine.state.stamina = stamina;
+    const result = engine.purchase('item_energy_drink', 1, true);
+    assert.equal(result.success, true);
+    assert.ok(market.cash < cash);
+    assert.equal(engine.state.stamina, stamina);
+    assert.equal(engine.state.inventory.some(item => item.id === 'item_energy_drink' && item.quantity > 0), false);
+    engine.add('item_energy_drink', 2);
+    assert.equal(engine.use('item_energy_drink').success, true);
+    assert.equal(engine.state.stamina, stamina);
+    assert.equal(engine.state.inventory.find(item => item.id === 'item_energy_drink').quantity, 1);
+    engine.add('item_caffeine_shot');
+    assert.equal(engine.use('item_caffeine_shot').success, false);
+    assert.equal(engine.state.inventory.find(item => item.id === 'item_caffeine_shot').quantity, 1);
 });

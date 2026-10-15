@@ -58,15 +58,25 @@ test('depth uses one foot-anchor decision for the entire sprite, including furni
     assert.equal(actorIsBehind({x:1149,y:621},right),false);
     assert.equal(actorIsBehind({x:1152,y:542},right),true);
 });
-test('local and remote seated characters use the cushion anchor without the legacy 24px lift',()=>{
+test('local and remote seated characters use the same room cushion offset',(t)=>{
     const priorImage=globalThis.Image;
+    t.after(()=>{globalThis.Image=priorImage;});
     globalThis.Image=class { naturalWidth=1024; };
     const translations=[],ctx=new Proxy({},{get:(_,key)=>key==='translate'?(...args)=>translations.push(args):()=>{},set:()=>true});
-    const player={x:1030,y:515,facing:1,phase:0},lobby={player,seated:SEATS[1]};
-    CipherLobby.prototype.paintPlayer.call(lobby,ctx);assert.deepEqual(translations[0],[1030,515]);
-    translations.length=0;CipherLobby.prototype.paintPlayer.call(lobby,ctx,{...player,resting:true});assert.deepEqual(translations[0],[1030,515]);
-    assert.deepEqual(translations[2],[0,17]);
-    globalThis.Image=priorImage;
+    const room={navigation:nav};
+    const seated=SEATS[1];
+    const player=CipherRoomPackage.prototype.actorPose.call(room,{x:0,y:0},seated);
+    const remote=CipherRoomPackage.prototype.actorPose.call(room,{x:900,y:800},seated);
+    assert.deepEqual([player.x,player.y],[seated.x,seated.y]);
+    assert.deepEqual(remote,player);
+    const lobby={player,seated};
+    CipherLobby.prototype.paintPlayer.call(lobby,ctx);assert.deepEqual(translations[0],[seated.x,seated.y]);
+    translations.length=0;CipherLobby.prototype.paintPlayer.call(lobby,ctx,{...player,resting:true});assert.deepEqual(translations[0],[seated.x,seated.y]);
+    assert.deepEqual(translations[1],[0,24]);
+    translations.length=0;CipherLobby.prototype.paintPlayer.call(lobby,ctx);
+    assert.deepEqual(translations[1],[0,24]);
+    translations.length=0;CipherLobby.prototype.paintPlayer.call({...lobby,seated:null},ctx);
+    assert.deepEqual(translations[1],[0,0]);
 });
 test('every facility and seat approach is walkable and connected in both directions',()=>{
     const destinations=[...PLACES,...SEATS.map(s=>({...s.approach,id:s.id}))];

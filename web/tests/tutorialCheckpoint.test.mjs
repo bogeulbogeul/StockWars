@@ -24,7 +24,7 @@ test('returning player sees Anna welcome before chapter actions; review cannot r
     try {
         tutorial.start({ nickname: '테스터' }, { stock: { id: 'TEST', name: '테스트' } }, 'rumor_inventory_guide');
         assert.equal(shown.id, 'tutorial_resume');
-        assert.match(shown.text, /찌라시 읽는 방법.*다시 안내/);
+        assert.match(shown.text, /찌라시 읽는 방법.*부터 이어갈까요/);
         assert.equal(restored, undefined);
         assert.equal(granted, 0);
         tutorial.isTyping = false;
