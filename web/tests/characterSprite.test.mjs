@@ -31,6 +31,18 @@ test('switching style refreshes DOM even at same direction and frame', () => {
     assert.match(host.innerHTML, /검은 고양이/);
 });
 
+test('stopping holds exactly the same atlas pixels as the walking neutral pose', () => {
+    for (const styleId of ['dog', 'black-cat']) {
+        for (const direction of ['down', 'right', 'up', 'left', 'front', 'back']) {
+            const walking = characterFrame({ styleId, direction, moving: true, time: 160 });
+            const stopped = characterFrame({ styleId, direction, time: 0 });
+            assert.deepEqual(stopped.rect, walking.rect, `${styleId}: ${direction}`);
+            assert.equal(stopped.flip, walking.flip);
+            assert.equal(stopped.style.scale, walking.style.scale);
+        }
+    }
+});
+
 test('both atlases preserve manifest bounds, three-pose loops and four carry poses', async () => {
     const { readFileSync } = await import('node:fs');
     for (const styleId of ['dog', 'black-cat']) {
@@ -46,6 +58,28 @@ test('both atlases preserve manifest bounds, three-pose loops and four carry pos
             assert.deepEqual([0,160,320,480].map(time => characterFrame({styleId,direction,moving:true,time}).index), [0,1,2,1]);
         }
         assert.deepEqual([0,160,320,480].map(time => characterFrame({styleId,direction:'right',moving:true,carrying:true,time}).index), [0,1,2,3]);
-        assert.equal(characterFrame({styleId,direction:'right',carrying:true,time:320}).index, 0);
+        assert.equal(characterFrame({styleId,direction:'right',carrying:true,time:320}).index, styleId === 'dog' ? 1 : 0);
     }
+});
+
+test('dog keeps wagging while idle, seated or holding cargo; cat stays still', () => {
+    for (const options of [{direction:'down'}, {direction:'right'}, {direction:'up'},
+        {direction:'left'}, {direction:'down',seated:true}, {direction:'right',seated:true},
+        {direction:'right',carrying:true}]) {
+        const frames = [0,160,320,480,640].map(time => characterFrame({...options,styleId:'dog',time}));
+        assert.deepEqual(frames.map(f => f.index), [1,2,1,0,1]);
+        assert.equal(new Set(frames.map(f => JSON.stringify(f.rect))).size, 3);
+        assert.deepEqual(frames[0].rect, frames[4].rect);
+    }
+    assert.deepEqual(characterFrame({styleId:'black-cat',time:0}).rect,
+        characterFrame({styleId:'black-cat',time:160}).rect);
+});
+
+test('dog atlas keeps each motion together in one row', () => {
+    const { rows, sheetHeight } = resolveCharacterStyle('dog').frames;
+    for (const frames of Object.values(rows)) {
+        assert.equal(new Set(frames.map(f => f.y)).size, 1);
+    }
+    assert.equal(rows.right_carry[0].y, rows.right_carry_wag[0].y);
+    assert.equal(rows.face_portrait[0].y, sheetHeight - 400);
 });

@@ -1,22 +1,22 @@
 # 시고르자브종·검은 고양이 캐릭터 시트 기준
 
-> 최종 개정: 2026-10-14
-> 상태: 사용자 지정 새 외형·모션 참고 기준 / 전체 방향 색·그림체 보정본 / 새 시트 게임 연결 완료 / 실제 가구·화물 접촉 검수는 별도
+> 최종 개정: 2026-10-16
+> 상태: 얼굴 초상화 포함 캐릭터 시트 기본형 채택 / 기존 모션 게임 연결 완료 / 초상화 UI 연결 및 실제 접촉 검수는 별도
 
 ## 1. 채택본과 우선순위
 
-사용자가 현재 두 시트를 새 기준으로 지정했다. 신규 동물 캐릭터 제작과 수정은 **NPC 그림체의 시고르자브종 강아지·검은 고양이 motions-v2 최신 보정본**을 우선한다. 기존 dog directions-v4·black-cat v4, 별도 꼬리 합성 시험, 옆 걷기 6자세와 손가락을 없앤 시안은 이전 이력이다.
+2026-10-16 사용자 지정: **얼굴 초상화가 포함된 unified-v2 강아지·고양이 전체 시트를 캐릭터 시트 기본형으로 채택한다.** 신규 캐릭터와 판매용 스타일도 기존 방향·모션에 별도의 정면 얼굴 초상화1칸을 포함한다. unified-v2은 얼굴 포함 기본형을 유지하면서 모든 모션·초상화의 선·털색·명암을 같은 정면 기준으로 보정한 최신본이다. 이전 portraits-v1은 비교 이력으로 보존한다. 기존 dog directions-v4·black-cat v4, 별도 꼬리 합성 시험, 옆 걷기 6자세와 손가락을 없앤 시안은 이전 이력이다.
 
 | 자료 | 강아지 | 검은 고양이 |
 | :--- | :--- | :--- |
-| 최신 투명 시트 | [강아지 시트](../output/npc-style-animals/motions-v2/dog/run/sprite-sheet-alpha.png) | [고양이 시트](../output/npc-style-animals/motions-v2/cat/run/sprite-sheet-alpha.png) |
-| 프레임 좌표·상태 | [manifest.json](../output/npc-style-animals/motions-v2/dog/run/manifest.json) | [manifest.json](../output/npc-style-animals/motions-v2/cat/run/manifest.json) |
-| 제작 요청 | [sprite-request.json](../output/npc-style-animals/motions-v2/dog/run/sprite-request.json) | [sprite-request.json](../output/npc-style-animals/motions-v2/cat/run/sprite-request.json) |
-| 정면 색·외형 기준 | [정면 정지](../output/npc-style-animals/motions-v2/dog/run/frames/down_idle/frame-0.png) | [정면 정지](../output/npc-style-animals/motions-v2/cat/run/frames/down_idle/frame-0.png) |
+| 최신 투명 시트 | [강아지 시트](../output/npc-style-animals/tail-wag-v1/dog/run/sprite-sheet-alpha.png) | [고양이 시트](../output/npc-style-animals/unified-v2/cat/run/sprite-sheet-alpha.png) |
+| 프레임 좌표·상태 | [manifest.json](../output/npc-style-animals/tail-wag-v1/dog/run/manifest.json) | [manifest.json](../output/npc-style-animals/unified-v2/cat/run/manifest.json) |
+| 제작 요청 | [sprite-request.json](../output/npc-style-animals/tail-wag-v1/dog/run/sprite-request.json) | [sprite-request.json](../output/npc-style-animals/unified-v2/cat/run/sprite-request.json) |
+| 정면 색·외형 기준 | [정면 정지](../output/npc-style-animals/unified-v2/dog/run/frames/down_idle/frame-0.png) | [정면 정지](../output/npc-style-animals/unified-v2/cat/run/frames/down_idle/frame-0.png) |
 
-[현재 재생 비교 화면](../output/npc-style-animals/motions-v2/preview.html), [최신 구성 기록](../output/npc-style-animals/motions-v2/current-update.md), [전체 색·그림체 보정 기록](../output/npc-style-animals/motions-v2/style-unification.md)을 함께 확인한다. 파일명 v2 안에서도 수정이 누적되므로 과거 raw, before, variants 시안 대신 위 최신 시트와 현재 frames를 사용한다.
+[이전 모션 재생 비교 화면](../output/npc-style-animals/motions-v2/preview.html), [이전 구성 기록](../output/npc-style-animals/motions-v2/current-update.md), [이전 색·그림체 보정 기록](../output/npc-style-animals/motions-v2/style-unification.md)을 함께 확인한다. 기본형 확인은 [얼굴 포함 전체 시트](../output/npc-style-animals/unified-v2/preview.html)를 사용한다. 과거 raw, before, variants 시안 대신 위 채택 시트와 해당 frames를 사용한다. 게임 모션은 unified-v2 시트에 연결하며 초상화의 게임 UI 연결은 별도다.
 
-기준 채택은 게임 교체·본 리깅·전체 동작 품질 검수 완료와 구분한다. 완성형 스타일 선택·판매 및 제작용 파츠 분리·본 기반 2D 리깅 방침은 [캐릭터 제작 가이드](part_separation_guide_512.md)를 유지한다. 전체 세계관과 다른 캐릭터의 최종 화풍을 자동 확정하지 않는다.
+기준 채택은 게임 연결·전체 동작 품질 검수 완료와 구분한다. 완성형 스타일 선택·판매와 스프라이트 시트 직접 제작 방식은 [캐릭터 제작 가이드](part_separation_guide_512.md)를 따른다. 전체 세계관과 다른 캐릭터의 최종 화풍을 자동 확정하지 않는다.
 
 ### 앞으로 제작할 모든 캐릭터의 모션 기준
 
@@ -25,7 +25,7 @@
 - 정지 방향, 걷기 3자세와 A→중립→B→중립 순서, 팔·다리 교대, 운반 4자세, 정면·아이소메트릭 앉기 및 좌우 반전 구성은 아래 방향·모션 명세를 따른다.
 - 체형과 의상에 맞춰 관절·접지·손/화물·좌석 접촉을 보정하되 기준 동작을 유지한다. 외형·털색·귀·꼬리를 모든 캐릭터에 복제하는 규칙은 아니다.
 - 현재 두 시트에 없는 벤치 휴식·침대 눕기·진입/이탈·특별 모션은 별도 제작·검수한다. 기존 시트에 포함되거나 완성된 것으로 간주하지 않는다.
-- 기준 동작의 채택과 실제 품질 검수는 구분한다. 아래 미완료 검수 항목 및 제작용 파츠 분리·본 기반 2D 리깅 방침은 유지한다.
+- 기준 동작의 채택과 실제 품질 검수는 구분한다. 아래 미완료 검수 항목과 완성 프레임 직접 제작·스프라이트 시트 전달 방침을 유지한다.
 
 ## 2. 외형·색·그림체
 
@@ -41,13 +41,13 @@
 
 정면 정지를 각 종의 색·명암·선 기준으로 삼는다. 정면·옆·뒤, 걷기·운반·앉기의 색을 따로 정하지 않는다. 방향 전환 때문에 털이 진해지거나 고양이가 갈색·푸른 회색으로 바뀌지 않게 한다. 먼 팔다리의 명암은 겹침이 읽히는 정도만 사용한다. 얼룩·불규칙한 색 조각·새 무늬·과한 그라데이션을 추가하지 않는다.
 
-고양이 최종 차콜 보정은 원래 밝기를 유지하며 RGB를 맞춘 sprite-gen 색상 맵이다. [프레임별 보정 및 알파 검증](../output/npc-style-animals/motions-v2/cat/run/palette-frames/verification.json)을 보존한다. 중간 variants·variants-full 및 별도 꼬리 PNG를 최신 외형으로 오인하지 않는다.
+이전 motions-v2 고양이 차콜 보정은 원래 밝기를 유지하며 RGB를 맞춘 sprite-gen 색상 맵이다. [프레임별 보정 및 알파 검증](../output/npc-style-animals/motions-v2/cat/run/palette-frames/verification.json)을 보존한다. 중간 variants·variants-full 및 별도 꼬리 PNG를 최신 외형으로 오인하지 않는다.
 
 ## 3. 크기·원점·전달
 
 서 있는 몸체 기준 키는 **H=90 기준 단위**다. 접지선부터 정수리까지 재고 솟은 귀·꼬리·투명 여백·그림자·UI는 제외한다. 중립 자세에서 정한 균일 배율을 모든 방향·걷기·운반·앉기에 공통 적용한다. 프레임마다 높이90에 맞추거나 앉은 그림을 늘리지 않는다.
 
-현재 전달 셀은320×400px, 시트는1280×3600px, 각 캐릭터9행18그림이다. 현재 미리보기 발밑 원점은(160,372), 공통 표시 배율은 강아지90/330, 고양이90/307이다. 정수리 측정은 시각적 근사값이며 새 원본으로 교체하면 재측정한다. 이 원본 해상도와 근사값을 모든 신규 캐릭터의 의무 규격으로 취급하지 않는다.
+현재 기본형 전달 셀은320×400px, 시트는1280×4000px, 각 캐릭터10행19그림이다. 기존9행18그림 뒤 마지막 행에 정면 얼굴 초상화1그림을 추가한다. face_portrait은 UI용 별도 상태이며 월드 걷기 프레임으로 재생하지 않는다. 현재 미리보기 발밑 원점은(160,372), 공통 표시 배율은 강아지90/330, 고양이90/307이다. 정수리 측정은 시각적 근사값이며 새 원본으로 교체하면 재측정한다. 이 원본 해상도와 근사값을 모든 신규 캐릭터의 의무 규격으로 취급하지 않는다.
 
 manifest.frame_layout의 실제 프레임 좌표를 읽는다. 투명 영역으로 그리드를 추측하지 않는다. 좌석·화물 정렬에는 발밑 원점과 별도 연결점을 사용한다. 카메라 확대는 기본 H=90과 구분한다.
 
@@ -59,9 +59,12 @@ manifest.frame_layout의 실제 프레임 좌표를 읽는다. 투명 영역으�
 | 걷기 | 정면·오른쪽·뒤 각3장 | A→중립→B→중립 |
 | 물류 운반 | 오른쪽4장 | 0→1→2→3 |
 | 의자 앉기 | 정면·아이소메트릭 오른쪽 각1장 | 유지 자세 |
+| 얼굴 초상화 | 정면1장, 마지막 행 face_portrait | UI용 유지 이미지 |
 | 왼쪽 | 오른쪽을 좌우 반전 | 몸·꼬리·손/화물 연결점을 함께 반전 |
 
-정면·옆·뒤 걷기의 구성과 시험 속도는 동일하게 맞춘다. 현재 프레임당160ms,3그림 재생 순서0→1→2→1이다. 사용자 요청 없이 옆 걷기만6자세로 늘리지 않는다. 추가 자세보다 접지·교대·외형 일관성을 우선한다.
+2026-10-15 사용자 재확정: **앞으로도 걷기는 기존 3프레임 체제를 유지한다.** 정면·옆·뒤 모두 접지 A·중립·반대 접지 B의 3그림을 사용하며 프레임당160ms, 재생 순서0→1→2→1이다. 사용자의 명시적 변경 요청 없이 방향별 프레임 수를 늘리지 않는다. `output/npc-style-animals/smooth-v1/`의 8프레임 비교본은 미채택이며 unified-v2에 포함된 기존3프레임 모션이 현행 기준이다. 추가 자세보다 접지·교대·외형 일관성을 우선한다. 운반은 기존 4자세를 유지한다.
+
+2026-10-16 사용자 결정: **옆 걷기 시점은 강아지의 앞오른쪽 사선 측면으로 통일한다.** 양 눈과 앞가슴이 보이는 강아지 각도를 기준으로 고양이 right_walk의3자세를 수정했다. 순수 정측면으로 되돌리지 않는다. [수정 전후·강아지 각도 비교](../output/npc-style-animals/cat-angle-v1/preview.html), [제작 기록](../output/npc-style-animals/cat-angle-v1/README.md). motions-v2 최신 고양이 시트와 게임 black-cat-npc-v2에 반영했다. 왼쪽은 같은 그림을 반전하며 기존3프레임·160ms를 유지한다.
 
 옆 걷기는 현재 강아지와 이에 맞춘 고양이 동작을 기준으로 한다. 같은 쪽 팔은 다리와 반대로 움직이고 가까운 팔의 뒤→아래→앞→아래 스윙을 보인다. 먼 팔은 몸 뒤로 자연스럽게 가리며 추가 앞발·겹친 주먹을 만들지 않는다. 들어 올린 발은 지면 가까이 지나가고 허벅지→무릎→종아리→발목 연결을 유지한다. 엉덩이에서 발이 바로 나오거나 무릎이 배에 붙는 형태를 금한다.
 
@@ -73,7 +76,7 @@ manifest.frame_layout의 실제 프레임 좌표를 읽는다. 투명 영역으�
 
 ## 5. 제작·게임 적용 상태와 검수
 
-현재 시트는 GPT 행 생성/편집 후 sprite-gen의 투명 추출·조합·색상 보정으로 만든 참고본이며 본이 심어진 원본은 아직 없다. 최종 제작의 파츠 분리·2D 리깅 및 실시간/베이크 전달 방식 후속 결정은 유지한다.
+현재 시트는 GPT 행 생성/편집 후 sprite-gen의 투명 추출·조합·색상 보정으로 제작했다. 이 직접 프레임 제작 흐름을 현행 방식으로 사용하며, 원본·투명 프레임·시트·manifest·미리보기와 검수 기록을 보존한다.
 
 2026-10-14 게임 공통 CharacterSprite.js를 web/assets/characters/dog-npc-v2·black-cat-npc-v2 시트와 manifest 좌표에 연결했다. 마을·실내·물류·선택창·출입증에서 공통 렌더러를 사용하며 기존 DogSprite.js도 같은 렌더러에 위임한다. H=90 배율과 (160,372) 원점을 적용하고 별도 CharacterTail 합성을 제거했다. 선택창 얼굴 및 출입증 어깨 사진 크롭, 물류 화물 연결 위치를 새 셀 기준으로 조정했다. 자동 검사와 실제 가구·화물 접촉 시각 검수는 구분한다.
 
@@ -86,5 +89,15 @@ manifest.frame_layout의 실제 프레임 좌표를 읽는다. 투명 영역으�
 - [ ] 실제 의자 좌석·골반 및 상자·양손 접촉과 가림 검수
 - [x] 마을·실내·물류·선택창·출입증 공통 렌더러에 새 시트 연결 및 프레임·반전·배율 자동 회귀 검증
 - [ ] 실제 게임 화면에서 가구/화물 접촉과 이동 재생 시각 검수
-- [ ] 파츠·본 제작 원본과 최종 전달 계약 확보
+- [ ] 편집 원본·최종 프레임·시트·manifest와 전달 규격 확인
 
+
+### 모션 간 외형·색 통일 (2026-10-16)
+
+강아지·고양이 최신본은 `output/npc-style-animals/unified-v2/`다. 정면·사선·뒤 걷기, 운반, 두 앉기와 얼굴 초상화를 같은 종별 기준 색·선·명암으로 보정했다. 방향별 정지는 해당 걷기의 중립 `frame-1`과 동일 PNG를 사용하며 게임 렌더러도 같은 걷기 중립 좌표를 표시한다. 별도로 그린 정지 그림으로 전환하지 않는다. 신규 스타일도 정지↔걷기 전환에서 얼굴·털색·선·배율·원점이 바뀌지 않는지 검사한다. 기존3프레임·0→1→2→1·160ms, 운반4프레임, 사선 시점과 얼굴 포함10행 기본형은 유지한다. 이전 portraits-v1/motions-v2는 비교·제작 이력이다.
+
+### 강아지 꼬리 상시 움직임 (2026-10-16)
+
+사용자 요청으로 강아지는 정지·앉기·화물을 들고 멈춘 상태에도 꼬리를 반복해서 흔든다. 추가6상태는 완성 프레임으로 제작하며 리깅·본·런타임 꼬리 파츠 합성을 사용하지 않는다. 머리·몸·팔다리는 기존 승인본으로 고정하고 꼬리 영역만 생성 프레임에서 조합한다. 중립은 기존 원본을 사용한다. 최신 게임 강아지 전달본은 `output/npc-style-animals/tail-wag-v1/dog/run/`이며10행28고유그림(1920×4000,6열), 얼굴 초상화는 마지막 행이다. 걷기3프레임·160ms·0→1→2→1과 기존 운반4프레임은 변경하지 않는다. 고양이는 unified-v2를 유지한다. 꼬리 대기는 중립→안쪽→중립→바깥쪽을160ms 간격으로 재생한다. 같은 모션은 같은 행으로 정리한다. 정면 대기/걷기, 사선 대기/걷기, 뒤 대기/걷기, 운반, 정면 앉기, 사선 앉기, 얼굴 순서로10행이다. 운반 걷기4그림과 운반 대기용 꼬리2그림만 같은 운반 행의6칸에 모으며 다른 모션 행에 끼워 넣지 않는다. 대기 중립은 행의 가독성을 위해 표시하되 게임은 기존 중립 좌표를 공유할 수 있다. 상태별 좌표는 manifest.frame_layout을 따른다.
+
+2026-10-16 정면 걷기 꼬리 수정: down_walk 접지A/B의 꼬리를 바깥쪽/반대쪽으로 변경했다. 중립은 기존 원본, 몸·얼굴·손발은 기존 승인 자세를 고정했다. 3그림·0→1→2→1·160ms를 유지한다. 정지 꼬리만 바뀌고 걷기는 빠졌던 이전 적용을 대체한다.

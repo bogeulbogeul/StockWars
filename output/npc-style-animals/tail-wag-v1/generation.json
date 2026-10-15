@@ -1,0 +1,38 @@
+[
+  {
+    "source": "down_idle",
+    "state": "down_idle_wag",
+    "prompt": "Edit reference: exact approved StockWars dog down_idle full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture . Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-084ba8c6-ee06-4260-8d25-6c3c4e6a57ef.png"
+  },
+  {
+    "source": "right_idle",
+    "state": "right_idle_wag",
+    "prompt": "Edit reference: exact approved StockWars dog right_idle full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture . Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-ee5a4fa9-3812-4536-bd3b-f95f80755091.png"
+  },
+  {
+    "source": "up_idle",
+    "state": "up_idle_wag",
+    "prompt": "Edit reference: exact approved StockWars dog up_idle full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture strict BACK view, no face. Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-456a7b77-f484-4025-beaf-407ba0fc9a6c.png"
+  },
+  {
+    "source": "down_sit",
+    "state": "down_sit_wag",
+    "prompt": "Edit reference: exact approved StockWars dog down_sit full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture raised chair-seated posture, chair invisible. Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-3bc985b0-6c22-414a-83e7-e3386192bf70.png"
+  },
+  {
+    "source": "right_sit",
+    "state": "right_sit_wag",
+    "prompt": "Edit reference: exact approved StockWars dog right_sit full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture raised chair-seated posture, chair invisible. Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-2e19767c-34f6-4118-81c8-3476d16a7491.png"
+  },
+  {
+    "source": "right_carry",
+    "state": "right_carry_wag",
+    "prompt": "Edit reference: exact approved StockWars dog right_carry full-body sprite. Create a horizontal row of exactly THREE copies of this SAME pose for a continuous tail-wag idle loop. Only tail shape changes: first tail gently swings outward/left, middle tail is exact original neutral curl, third tail gently swings inward/right. Keep tail attached at pelvis, cream tip and warm wheat tan colors unchanged. Body, face, ears, eyes, fur outlines, arms and feet MUST stay identical and motionless in all three copies; do not redraw identity or animate legs. Preserve exact camera angle and posture hands extended palms up, retain existing limb pose; no box. Match the reference precisely: clean dark outlines, restrained cel shading. Equal scale, identical head/body/feet alignment with ample gaps and padding. Flat pure CYAN #00FFFF background, no text, no grid, no shadows. Complete frames, not separated parts; no rigging. A restrained friendly swish, not a tail teleporting to the opposite body side.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-40010681-d3df-484b-9dba-9838d5605b94.png"
+  }
+]

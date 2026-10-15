@@ -143,6 +143,23 @@
 .port-val { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
 .port-pl { font-size: 12px; font-weight: 600; font-family: var(--font-mono); }
 
+/* Account space is reserved for holdings rather than a duplicate identity card. */
+#tabProfileView .section-title { font-size: 19px; }
+#tabProfileView .sector-allocation-card { padding: 18px; }
+#tabProfileView .legend-item { font-size: 17px; flex-wrap: wrap; gap: 6px; padding: 8px; }
+#tabProfileView .legend-val { font-size: 15px; }
+#tabProfileView .donut-center-lbl { font-size: 14px; }
+#tabProfileView .donut-center-val { font-size: 19px; }
+#tabProfileView #portfolioSlotStatus { font-size: 16px; }
+#tabProfileView .portfolio-item { flex-direction: column; align-items: stretch; gap: 12px; padding: 18px; }
+#tabProfileView .port-stock-name { font-size: 20px; line-height: 1.4; overflow-wrap: anywhere; }
+#tabProfileView .port-stock-sub { font-size: 16px; line-height: 1.5; margin-top: 6px; }
+#tabProfileView .port-right { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; text-align: left; }
+#tabProfileView .port-val { font-size: 22px; }
+#tabProfileView .port-pl { font-size: 18px; }
+#tabProfileView .trade-history-menu > summary { font-size: 19px; padding: 16px; }
+#tabProfileView :is(.trade-history-note, .trade-history-list) { font-size: 16px; line-height: 1.6; }
+
 .profile-actions { display: flex; flex-direction: column; gap: 10px; }
 .action-btn { width: 100%; padding: 12px; border-radius: var(--radius-md); font-size: 13px; font-weight: 700; border: none; cursor: pointer; }
 .action-btn.warning { background: linear-gradient(135deg, #ffd600, #ffab00); color: #000; }
@@ -233,6 +250,18 @@
 .trade-history-list { max-height: 360px; overflow-y: auto; }
 .trade-history-row { display: grid; gap: 5px; padding: 12px 14px; border-top: 1px solid var(--border-light); font-size: 12px; }
 .trade-history-row small { color: var(--text-muted); font-size: 10px; }
+
+#tabProfileView .trade-history-row {
+    font-size: 19px;
+    line-height: 1.6;
+    gap: 10px;
+    padding: 18px 14px;
+    overflow-wrap: anywhere;
+}
+#tabProfileView .trade-history-row > strong { font-size: 20px; }
+#tabProfileView .trade-history-row small { font-size: 16px; line-height: 1.5; }
+#tabProfileView .trade-history-row summary { font-size: 18px; padding: 10px 0; }
+#tabProfileView .trade-history-list { max-height: none; overflow: visible; }
 
 /* Separate holding limits from the first stock card. */
 #portfolioSlotStatus { margin-bottom: 10px; line-height: 1.6; }

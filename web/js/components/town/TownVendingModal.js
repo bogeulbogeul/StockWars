@@ -1,4 +1,5 @@
 import { VIVIAN_SHOP_CATALOG } from '../../data/vivianStoreData.js';
+import { settingsStore } from '../../engine/SettingsStore.js';
 export const VENDING_ITEM = VIVIAN_SHOP_CATALOG.find(item => item.id === 'item_energy_drink');
 
 // Payment delivers immediately; collecting is presentation only, so closing cannot lose an item.
@@ -61,18 +62,32 @@ export class TownVendingModal {
         container.appendChild(this.dialog);
         this.dialog.querySelector('[data-close]').onclick = () => this.dialog.close();
         this.dialog.querySelector('[data-select]').onclick = () => {
+            const state = this.callbacks.getVendingState?.();
+            if ((state?.purchased || 0) >= VENDING_ITEM.dailyLimit) {
+                this.message('오늘은 매진이에요. 잡화점·자판기 합산 하루 2개까지 구매할 수 있어요. 다음 날 00시에 다시 구매할 수 있어요.');
+                this.refresh(); return;
+            }
             this.cycle.select(); this.message('에너지 드링크 선택 완료. 구매 방식을 골라 주세요.'); this.refresh();
         };
         this.dialog.querySelectorAll('[data-buy]').forEach(button => {
             button.onclick = () => {
                 const result = this.cycle.buy(this.callbacks.onPurchaseDrink, button.dataset.buy === 'drink');
                 if (!result?.success) { this.message(result?.message || '구매할 수 없습니다.'); this.refresh(); return; }
+                const sound = new Audio(new URL('../../../assets/effects/vending-can-rattle.wav', import.meta.url).href);
+                sound.volume = settingsStore.value.effectsVolume / 100;
+                if (sound.volume > 0) void sound.play().catch(() => {});
                 this.message('덜컹! 드링크가 내려오고 있어요.'); this.refresh();
                 setTimeout(() => { this.cycle.finish(); this.message('배출구를 눌러 드링크를 꺼내세요.'); this.refresh(); }, 850);
             };
         });
         this.dialog.querySelector('[data-collect]').onclick = () => {
             if (!this.cycle.collect()) return;
+            const sound = new Audio(new URL('../../../assets/effects/vending-can-collect.wav', import.meta.url).href);
+            sound.volume = settingsStore.value.effectsVolume / 100;
+            if (sound.volume > 0) void sound.play().catch(() => {});
+            if (this.cycle.instant) {
+                setTimeout(() => this.callbacks.onDrinkCollected?.(), 1050);
+            }
             this.message(this.cycle.instant ? '드링크를 꺼내 마셨습니다. 기력 1칸 회복!' : '드링크를 꺼냈습니다. 가방에서 확인하세요.'); this.refresh();
         };
     }
@@ -86,8 +101,11 @@ export class TownVendingModal {
             ? `보유 ${state.cash.toLocaleString()}G · 오늘 ${remaining}개 구매 가능 · 가방 ${state.owned}개`
             : '자판기 연결 대기 중';
         const busy = ['dispensing', 'ready'].includes(this.cycle.phase);
+        const soldOut = !!state && remaining === 0;
         const select = this.dialog.querySelector('[data-select]');
         select.disabled = busy;
+        select.textContent = soldOut ? '오늘 매진' : '● 상품 선택';
+        if (soldOut && !busy) this.message('오늘은 매진이에요. 잡화점·자판기 합산 하루 2개 · 다음 날 00시 재입고');
         select.setAttribute('aria-pressed', String(this.cycle.phase !== 'idle'));
         this.dialog.querySelectorAll('[data-buy]').forEach(button => {
             button.disabled = this.cycle.phase !== 'selected' || !state || remaining === 0 || state.cash < VENDING_ITEM.price;

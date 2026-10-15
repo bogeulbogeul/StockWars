@@ -52,6 +52,41 @@ export function buildAnnaScenario({
 
         // STEP 2: Open Smartphone to Home Screen
         {
+            id: 'hud_overview', speaker: '안나', expression: 'Smile',
+            text: '화면 위쪽은 현재 상태를 확인하는 곳이에요. 왼쪽에는 날짜와 체력, 가운데에는 자산, 오른쪽에는 메뉴가 있어요.',
+            tracker: '1/4 • 상단 화면 둘러보기', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'hud_day_guide', speaker: '안나', expression: 'Smile', text: 'DAY는 게임을 시작한 뒤 며칠째인지 보여줘요. 월세 납부일까지 남은 날을 확인할 때 살펴보세요.', tracker: '1/4 • 날짜', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'hud_time_guide', speaker: '안나', expression: 'Smile', text: '시계는 현재 시각을 보여줘요.', tracker: '1/4 • 시각', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'hud_weather_guide', speaker: '안나', expression: 'Smile', text: '지금 계신 지역의 날씨와 기온을 알려주는 곳이에요.', tracker: '1/4 • 날씨', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'hud_stamina_guide', speaker: '안나', expression: 'Smile', text: '하트는 현재 체력이에요. 물류 일을 하면 줄어들고, 드링크를 마시거나 벤치에서 쉬면 회복할 수 있어요.', tracker: '1/4 • 체력', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'hud_cash_guide', speaker: '안나', expression: 'Smile',
+            text: '보유 현금은 지금 바로 쓸 수 있는 돈이에요. 잠시 후 받을 시작 자금도 여기에 표시돼요.',
+            tracker: '1/4 • 보유 현금', requiresManualAction: false,
+            example: { label: '현금을 쓰는 곳', rows: ['주식 매수 · 물건 구매 · 월세 납부'] }
+        },
+        {
+            id: 'hud_assets_guide', speaker: '안나', expression: 'Smile',
+            text: '총 평가 자산은 현금과 보유 주식의 현재 가치를 합친 금액이에요. 주가가 바뀌면 함께 달라져요.',
+            tracker: '1/4 • 총 평가 자산', requiresManualAction: false,
+            example: { label: '예시', rows: ['현금 4,000G + 주식 평가금 1,000G = 총 평가 자산 5,000G'] }
+        },
+        {
+            id: 'hud_profit_guide', speaker: '안나', expression: 'Smile',
+            text: '손익은 이익이나 손해를 보여줘요. 청록색은 이익, 빨간색은 손실이에요. 색과 함께 +·− 숫자도 확인해 주세요.',
+            tracker: '1/4 • 손익 읽기', requiresManualAction: false,
+            example: { label: '색과 부호', rows: ['청록색 +: 이익 · 빨간색 −: 손실 · 0: 중립'] }
+        },
+        {
             id: 'open_phone',
             expression: 'Smile',
             speaker: "전담 매니저 안나",
@@ -70,7 +105,7 @@ export function buildAnnaScenario({
             ['stock', '#iconStockApp', '사이퍼M', '사이퍼M은 주식을 사고파는 앱이에요.\n종목 가격과 내 계좌를 확인할 수 있어요.'],
             ['bubble', '#iconBubbleApp', 'Bubble', 'Bubble에서는 친구를 추가하고\n다른 플레이어와 채팅할 수 있어요.'],
             ['memo', '#iconMemoApp', '메모', '메모는 투자 생각과 매매 일지를 적을 공간이에요.\n아직 준비 중이에요.'],
-            ['achievements', '#iconAchieveApp', '업적', '업적은 달성한 목표를 확인할 공간이에요.\n지금은 간단한 달성 안내만 보여줘요.'],
+            ['achievements', '#iconAchieveApp', '업적', '도전 목표의 진행 상황과 획득한 칭호를 확인해 보세요.\n목표를 달성하면 칭호 컬렉션에 추가돼요.'],
             ['settings', '#iconSettingsApp', '설정', '이 설정 앱은 아직 버전 안내만 보여줘요.\n게임 설정은 화면 위 톱니바퀴에서 바꿀 수 있어요.']
         ].map(([id, appIntroTarget, name, text]) => ({
             id: `phone_app_intro_${id}`, expression: 'Smile', speaker: '안나',
@@ -147,6 +182,12 @@ export function buildAnnaScenario({
         },
 
         {
+            id: 'trade_screen_overview', expression: 'Smile', speaker: '안나',
+            text: '여기는 차트·호가 화면이에요. 위에는 현재 가격, 가운데는 가격 흐름, 아래에는 호가가 보여요. [주문하기]에서 매수·매도를 할 수 있어요. 하나씩 살펴볼게요.',
+            tracker: '2/4 • 차트·호가 화면 둘러보기', requiresManualAction: false,
+            screenOverview: true
+        },
+        {
             id: 'stock_basics_price', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '주가는 주식 1주가 거래되는 가격이에요. 기업 실적과 앞으로의 기대, 시장 분위기에 따라 사고 싶은 사람과 팔고 싶은 사람이 달라지면서 가격도 움직여요. 가격 그래프는 그동안 주가가 어떻게 변했는지 보여줍니다.',
             tracker: '2/4 • 주가가 움직이는 이유', requiresManualAction: false
@@ -181,6 +222,41 @@ export function buildAnnaScenario({
             targetSelector: '#btnCloseDetailedChartModal'
         },
 
+        {
+            id: 'open_company_info', expression: 'Smile', speaker: '안나',
+            text: '주문하기 전에 어떤 기업인지 알아볼까요? 위쪽 [기업 정보] 탭을 눌러 주세요.',
+            tracker: '2/4 • 기업 정보 열기', requiresManualAction: true,
+            targetSelector: '#btnSubtabInfo', example: { label: '직접 확인하기', rows: ['위쪽 [기업 정보] 탭을 눌러 주세요.'] }
+        },
+        {
+            id: 'company_info_overview', expression: 'Smile', speaker: '안나',
+            text: '기업 정보 화면이에요. 기업이 하는 일, 투자 지표와 재무 정보, 관련 뉴스를 확인할 수 있어요.',
+            tracker: '2/4 • 기업 정보 둘러보기', requiresManualAction: false, screenOverview: true
+        },
+        ...[
+            ['business', '기업 개요', '이 기업이 어떤 사업을 하는지 설명하는 곳이에요. 어떤 물건이나 서비스를 파는지 살펴보세요.'],
+            ['per', 'PER · 주가수익비율', 'PER는 회사가 버는 이익에 비해 주식 가격이 얼마나 높은지 보여줘요. 회사 이익을 전체 주식 수로 나눈 값이 ‘주당 이익’, 즉 주식 한 주 몫의 이익이에요.', '한 주 가격이 1,000G이고 한 주 몫의 이익이 100G라면 PER는 10배예요. 비슷한 사업을 하는 회사끼리 비교해 보세요.'],
+            ['pbr', 'PBR · 주가순자산비율', '회사가 가진 재산에서 갚아야 할 빚을 빼면 ‘순자산’이에요. 이것을 전체 주식 수로 나눈 값이 ‘주당 순자산’, 즉 주식 한 주 몫의 순자산이에요.', '한 주 몫의 순자산이 1,000G일 때 주가도 1,000G면 PBR 1배, 주가가 2,000G면 2배예요. 순자산에 비해 주식이 얼마에 거래되는지 보는 거예요.'],
+            ['roe', 'ROE · 자기자본이익률', 'ROE는 회사가 자기 돈으로 얼마나 이익을 냈는지 보여줘요. 여기서 ‘자기자본’은 가진 재산에서 빚을 뺀 돈을 뜻해요.', '자기자본 1,000G로 한 해 이익 100G를 냈다면 ROE는 10%예요. 같은 돈으로 이익을 얼마나 냈는지 비교할 수 있어요.'],
+            ['dividend', '주간 배당률', '배당은 회사가 이익의 일부를 주주에게 나눠 주는 돈이에요. 주간 배당률은 주식 가격에 비해 한 주 동안 나눠 주는 배당이 얼마나 되는지 보여줘요.', '주가가 1,000G이고 주간 배당률이 2%라면 한 주당 배당은 20G예요. 실제로 받으려면 지급 조건과 보유 시점도 확인하세요.'],
+            ['market_cap', '시가총액', '시가총액은 주식 한 주의 가격에 회사가 발행한 전체 주식 수를 곱한 값이에요. 지금 주식시장에서 회사 전체에 얼마의 값을 매기는지 보여줘요.', '한 주가 1,000G이고 전체 주식이 10만 주라면 시가총액은 1억G예요. 주가만 보는 것보다 회사 규모를 비교하기 좋아요.'],
+            ['high_low', '52주 최고 · 최저', '52주는 약 1년이에요. 그동안 주식이 가장 비싸게 거래된 가격과 가장 싸게 거래된 가격을 보여줘요.', '최고 1,500G, 최저 800G라면 현재 가격을 이 범위와 비교해 볼 수 있어요. 앞으로도 이 범위 안에서만 움직인다는 뜻은 아니에요.'],
+            ['risk', '위험도 등급', '투자한 돈을 잃을 위험이 어느 정도인지 나타내는 표시예요. Low는 낮음, Mid는 보통, High는 높음이에요. 위험도가 낮아도 주가가 내려가 손실을 볼 수 있어요.'],
+            ['tier', '변동성 티어', '‘변동성’은 주가가 오르내리는 폭을 뜻하고, ‘티어’는 등급이라는 말이에요. 이 표시는 주가가 얼마나 크게 움직이는 성향인지 구분해요.', '1,000G 부근에서 조금씩 움직이는 주식보다 800G와 1,200G 사이를 크게 오가는 주식의 변동성이 더 커요.'],
+            ['news', '관련 뉴스', '‘공시’는 회사가 투자자에게 공식적으로 알리는 발표예요. 사업 실적이나 중요한 계약 같은 소식을 확인할 수 있어요. 관련 뉴스와 함께 읽으며 찌라시의 단서가 맞는지 비교해 보세요.']
+        ].map(([id, title, text, example]) => ({ id: `company_info_${id}`, expression: 'Smile', speaker: '안나', text, ...(example ? { example: { label: '숫자로 살펴보기', rows: [example] } } : {}), tracker: `2/4 • ${title}`, requiresManualAction: false, screenOverview: true })),
+        {
+            id: 'open_order_screen', expression: 'Smile', speaker: '안나',
+            text: '기업 정보를 확인했으니 주문해 볼까요? 위쪽 [주문하기] 탭을 눌러 주세요.',
+            tracker: '2/4 • 주문 화면 열기', requiresManualAction: true,
+            targetSelector: '#btnSubtabOrder'
+        },
+        {
+            id: 'order_screen_overview', expression: 'Smile', speaker: '안나',
+            text: '여기는 주문 화면이에요. 주문 방식과 수량을 정하고, 예상 금액을 확인한 뒤 아래 매수·매도 버튼으로 주문해요. 하나씩 살펴볼게요.',
+            tracker: '2/4 • 주문 화면 둘러보기', requiresManualAction: false,
+            screenOverview: true
+        },
         {
             id: 'market_order_guide', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '주문 방식에는 [시장가]와 [지정가]가 있어요. 시장가는 지금 거래할 수 있는 호가부터 순서대로 사고파는 방식이에요. 화면의 현재가와 실제 체결가는 다를 수 있고, 물량이 부족하면 일부만 체결될 수도 있어요. 사이퍼M에서는 가격 보호 범위 ±5%를 벗어나거나 현금·물량이 부족하면 남은 수량은 취소돼요.',
@@ -250,6 +326,13 @@ export function buildAnnaScenario({
             screenOverview: true
         },
         {
+            id: 'sector_allocation_guide',
+            expression: 'Smile', speaker: '안나',
+            text: '섹터는 기업의 업종이에요. 이 그래프는 보유 주식의 현재 평가금이 업종별로 얼마나 나뉘어 있는지 보여줘요. 현금은 포함하지 않아요.',
+            tracker: '2/4 • 섹터별 투자 비중', requiresManualAction: false,
+            example: { label: '비율 읽는 방법', rows: ['한 업종만 보유하면 그 업종이 100%예요.', '가운데 숫자는 보유한 업종 수예요. 종목 수나 수익률이 아니에요.'] }
+        },
+        {
             id: 'social_and_ranking_guide',
             expression: 'Happy',
             speaker: "전담 매니저 안나",
@@ -278,7 +361,7 @@ export function buildAnnaScenario({
             id: 'portfolio_slots_capacity',
             expression: 'Standard',
             speaker: '전담 매니저 안나',
-            text: '슬롯 자리가 모두 찼을 때 새로운 종목을 매수하려면 보유 종목 하나를 전량 매도하거나 슬롯을 늘려야 해요. 일부만 팔면 그 종목을 계속 보유하므로 자리가 비지 않아요. 같은 종목의 추가 매수는 새 슬롯을 쓰지 않지만 현금과 매수 한도는 확인해야 해요. 내 계좌에서 사용 중인 슬롯과 최대 슬롯, 종목별 투자 한도를 확인할 수 있어요.',
+            text: '슬롯 자리가 모두 찼을 때 새로운 종목을 매수하려면 보유 종목 하나를 전량 매도하거나 슬롯을 늘려야 해요. 일부만 팔면 그 종목을 계속 보유하므로 자리가 비지 않아요. 같은 종목의 추가 매수는 새 슬롯을 쓰지 않지만 현금은 확인해야 해요. 내 계좌에서 사용 중인 슬롯과 최대 슬롯을 확인할 수 있어요.',
             tracker: '2/4 • 슬롯을 비우는 방법',
             requiresManualAction: false
         },
@@ -347,6 +430,21 @@ export function buildAnnaScenario({
             tracker: '2/4 • 뉴스와 시장의 기대', requiresManualAction: false
         },
         {
+            id: 'put_phone_away',
+            expression: 'Smile', speaker: '안나',
+            text: '밖으로 나가기 전에 스마트폰을 넣어볼게요. 스마트폰 밖의 빈 공간을 눌러 스마트폰을 집어넣어 주세요.',
+            tracker: '3/4 • 스마트폰 집어넣기', requiresManualAction: true,
+            example: { label: '직접 해보기', rows: ['스마트폰 바깥 빈 공간을 누르세요.'] },
+            nextAction: '스마트폰 밖의 빈 공간을 누르세요.'
+        },
+        {
+            id: 'movement_keys_guide',
+            expression: 'Smile', speaker: '안나',
+            text: '캐릭터는 키보드의 W·A·S·D로 움직일 수 있어요. 직접 움직여 보고, 준비되면 [다음 ▶]을 눌러 주세요.',
+            tracker: '3/4 • 이동 방법 알아보기', requiresManualAction: false,
+            example: { label: '이동 키', rows: ['W: 위 · S: 아래', 'A: 왼쪽 · D: 오른쪽'] }
+        },
+        {
             id: 'go_town_proposal',
             expression: 'Standard',
             speaker: "전담 매니저 안나",
@@ -363,10 +461,40 @@ export function buildAnnaScenario({
 
         // STEP 9: Enter Bit Logistics Hub in Town
         {
+            id: 'server_overview', speaker: '안나', expression: 'Smile',
+            text: '여기는 타운 채널 선택 화면이에요. 같은 채널에 접속한 플레이어끼리 마을에서 만날 수 있어요. 접속 현황부터 살펴볼게요.',
+            tracker: '3/4 • 타운 채널 선택 화면', requiresManualAction: false, screenOverview: true
+        },
+        {
+            id: 'server_population', speaker: '안나', expression: 'Smile',
+            text: '동시 접속자는 서버에 연결된 인원, 활성 채널은 현재 열린 마을 수예요. 위쪽 선택 채널 표시로 지금 어느 채널에 있는지 확인할 수 있어요.',
+            tracker: '3/4 • 접속 현황 확인', requiresManualAction: false,
+            example: { label: '접속 현황', rows: ['오피스/대기 표시는 아직 마을에 입장하지 않은 상태예요.'] }
+        },
+        {
+            id: 'server_channels', speaker: '안나', expression: 'Smile',
+            text: '각 타운 카드에는 접속 인원과 정원, 혼잡도가 보여요. ms는 서버 응답 시간이며 낮을수록 응답이 빨라요.',
+            tracker: '3/4 • 채널 정보 읽기', requiresManualAction: false,
+            example: { label: '혼잡도', rows: ['쾌적: 0~44% · 보통: 45~84% · 혼잡: 85% 이상'] }
+        },
+        {
+            id: 'server_enter', speaker: '안나', expression: 'Smile',
+            text: '타운 카드를 누르면 그 마을로 들어가요. [빠른 접속]으로 추천 채널에 들어갈 수도 있어요. 이제 입장해 보세요.',
+            tracker: '3/4 • 타운 입장하기', requiresManualAction: true,
+            targetSelector: '#townChannelsGrid, #btnQuickConnect',
+            example: { label: '직접 입장하기', rows: ['원하는 타운 카드 또는 [빠른 접속]을 누르세요.'] }
+        },
+        {
+            id: 'logistics_intro', speaker: '안나', expression: 'Smile',
+            text: '비트 물류센터에서 일을 하고 보상을 받을 수 있어요.',
+            tracker: '3/4 • 물류센터 알아보기', requiresManualAction: false,
+            example: { label: '생활비 벌기', rows: ['물류 일을 하고 보상을 받아 월세를 준비해요.'] }
+        },
+        {
             id: 'enter_logistics',
             expression: 'Standard',
             speaker: "전담 매니저 안나",
-            text: `타운의 [비트 물류센터]로 들어가 주세요. 캐릭터 위의 노란 화살표를 따라 이동해 주세요. 입구에 도착하면 [F] 키를 눌러 들어가세요.`,
+            text: `타운의 [비트 물류센터]로 들어가 주세요. 캐릭터 위의 노란 화살표를 따라 이동해 주세요. 입구에서 [F]로 들어간 뒤 박씨 아저씨에게 말을 걸고 [일 시작하기]를 눌러 주세요.`,
             tracker: "3/4 • 비트 물류센터 진입",
             requiresManualAction: true,
             interactionHint: "마을 남서쪽의 [📦 비트 물류센터]를 클릭하거나, 입구 앞에서 [F] 키를 눌러 들어가세요!",
@@ -399,7 +527,8 @@ export function buildAnnaScenario({
             speaker: "전담 매니저 안나",
             text: `소지품에서 찌라시를 선택하면 [찌라시 열람]으로 읽을 수 있어요. 분석력에 따라 같은 사건도 다르게 보입니다. 지금부터 실제 보상과 별개인 연습용 예시로 종목·사건·방향·시간 단서를 찾아볼게요.`,
             tracker: "3/4 • 찌라시 활용법 안내",
-            requiresManualAction: false,
+            requiresManualAction: true,
+            targetSelector: '.inv-slot[data-category="intel"], #btnInvActionPrimary, #rumorSecretModal',
             onEnter: () => {
                 cleanupHighlights();
             }
@@ -441,15 +570,37 @@ export function buildAnnaScenario({
 
         // STEP 12: Stamina Recovery Guide
         {
+            id: 'close_inventory_guide', speaker: '안나', expression: 'Smile',
+            text: '찌라시를 잘 읽었네요! 오른쪽 위 [✕]를 눌러 소지품 창을 닫아 주세요.',
+            tracker: '3/4 • 소지품 창 닫기', requiresManualAction: true,
+            targetSelector: '#btnCloseInventory',
+            example: { label: '직접 해보기', rows: ['소지품 창 오른쪽 위 [✕]를 누르세요.'] }
+        },
+        {
             id: 'stamina_recovery_guide',
             expression: 'Pain',
             speaker: "전담 매니저 안나",
-            text: '물류 일로 체력이 줄었네요. 수고한 파트너에게 에너지 드링크 한 캔을 선물할게요! 아래 [선물 받고 바로 마시기]를 눌러 하트 1개를 회복해 보세요. 이미 체력이 가득 찼다면 소지품에 보관해 둘게요.',
+            text: '물류 일로 체력이 줄었네요. 수고한 파트너에게 에너지 드링크 한 캔을 선물할게요! 아래 [선물 받고 바로 마시기]를 눌러 하트 1개를 회복해 보세요. 체력이 가득 차도 마실 수 있어요.',
             tracker: "3/4 • 기력 관리 안내",
             requiresManualAction: true,
             actionBtnText: '선물 받고 바로 마시기',
             onAction: tutorial => {
+                if (tutorial.recoveryDrinkBusy) return;
+                const finish = result => {
+                    tutorial.recoveryDrinkBusy = false;
+                    if (tutorial.btnAction) tutorial.btnAction.disabled = false;
+                    if (!result?.success) return;
+                    const next = tutorial.steps.find(step => step.id === 'stamina_recovery_result');
+                    next.text = result.message;
+                    if (tutorial.isActive !== false && tutorial.steps[tutorial.currentStepIdx]?.id === 'stamina_recovery_guide') tutorial.nextStep();
+                };
                 const result = callbacks.onTutorialRecoveryDrink?.();
+                if (result?.then) {
+                    tutorial.recoveryDrinkBusy = true;
+                    if (tutorial.btnAction) tutorial.btnAction.disabled = true;
+                    result.then(finish, () => finish(null));
+                    return;
+                }
                 if (!result?.success) return;
                 const next = tutorial.steps.find(step => step.id === 'stamina_recovery_result');
                 next.text = result.message;
@@ -464,7 +615,7 @@ export function buildAnnaScenario({
             id: 'stamina_recovery_result', expression: 'Happy', speaker: '전담 매니저 안나',
             text: '에너지 드링크는 하트 1개를 회복해요. 다음에도 체력이 부족할 때 사용해 주세요.',
             tracker: '3/4 • 회복 결과 확인', requiresManualAction: false,
-            example: { label: '다음에 회복하려면', rows: ['소지품 → 에너지 드링크 선택 → 사용', '체력이 가득 차면 드링크는 소모되지 않아요.'] }
+            example: { label: '다음에 회복하려면', rows: ['소지품 → 에너지 드링크 선택 → 사용', '체력이 가득 차도 드링크 1개가 소모돼요.'] }
         },
         {
             id: 'stamina_bench_guide', expression: 'Smile', speaker: '전담 매니저 안나',
@@ -478,6 +629,24 @@ export function buildAnnaScenario({
             id: 'stock_basics_budget', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '마지막으로 생활비로 쓸 돈은 남겨 두세요. 7일 차 월세 5,000G를 준비해야 하니 가진 현금을 전부 투자하면 곤란할 수 있어요. 한 종목에 돈을 모두 넣으면 그 종목이 떨어질 때 손해도 크게 몰려요. 여러 종목에 나눠 투자하면 한 기업에 대한 의존을 줄일 수 있지만, 함께 하락할 수도 있어요.',
             tracker: '4/4 • 생활비와 투자금 나누기', requiresManualAction: false
+        },
+        {
+            id: 'side_quest_hint_anna', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '파트너, 이제 제법 트레이더다워졌는데요? 마침 부탁하고 싶은 일이 있어요.',
+            tracker: '4/4 • 안나의 작은 부탁', requiresManualAction: false,
+            example: { label: '서브퀘스트', rows: ['안나와 대화하면 의뢰를 확인할 수 있어요.'] }
+        },
+        {
+            id: 'side_quest_hint_friends', expression: 'Smile', speaker: '전담 매니저 안나',
+            text: '저뿐 아니라 마을 친구들도 도움이 필요한 모양이에요. 이야기를 나누다가 의뢰가 있는지 살짝 물어보세요.',
+            tracker: '4/4 • 마을 친구들의 의뢰', requiresManualAction: false,
+            example: { label: '의뢰 찾기', rows: ['마을 친구들과 대화하고 원하는 의뢰를 수락하세요.'] }
+        },
+        {
+            id: 'side_quest_hint_rewards', expression: 'Happy', speaker: '전담 매니저 안나',
+            text: '의뢰를 완료하고 보상을 받으면 특별한 칭호도 얻을 수 있어요! 준비되면 저에게 다시 말을 걸어 주세요. 제 부탁부터 들려드릴게요.',
+            tracker: '4/4 • 의뢰 보상과 칭호', requiresManualAction: false,
+            example: { label: '칭호 획득과 장착', rows: ['의뢰 달성 → 보상 받기', '스마트폰 → 칭호 도감에서 장착'] }
         },
         {
             id: 'logistics_completed',
@@ -496,5 +665,16 @@ export function buildAnnaScenario({
             }
         }
     ];
+    const menuLessons = [
+        ['profile', '프로필', '프로필에서는 내 캐릭터와 능력치를 확인해요.'],
+        ['inventory', '소지품', '소지품에서는 보유 아이템을 확인하고 사용할 수 있어요.'],
+        ['ranking', '랭킹', '랭킹에서는 다른 트레이더들의 기록을 확인해요.'],
+        ['help', '도움말', '조작이나 게임 규칙이 헷갈리면 도움말을 확인하세요.'],
+        ['settings', '설정', '설정에서는 소리와 게임 설정을 조절할 수 있어요.']
+    ].map(([id, name, text]) => ({ id: `hud_${id}_guide`, speaker: '안나', expression: 'Smile', text, tracker: `1/4 • ${name}`, requiresManualAction: false, screenOverview: true }));
+    steps.splice(steps.findIndex(step => step.id === 'open_phone'), 0, ...menuLessons);
+    const fundingIndex = steps.findIndex(step => step.id === 'welcome_2');
+    const [fundingStep] = steps.splice(fundingIndex, 1);
+    steps.splice(steps.findIndex(step => step.id === 'open_phone'), 0, fundingStep);
     return compactAnnaLessons(steps, { nickname, stockName: stockId ? stockName : null });
 }

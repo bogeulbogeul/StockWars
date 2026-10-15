@@ -1,0 +1,343 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "curation_applied": false,
+  "frame_variant": "pixel",
+  "errors": [],
+  "atlas": "sprite-sheet-alpha.png",
+  "manifest": "manifest.json",
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "states": [
+    "down_idle",
+    "down_walk",
+    "right_idle",
+    "right_walk",
+    "up_idle",
+    "up_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "cells": [
+    {
+      "state": "down_idle",
+      "frame": 0,
+      "nontransparent_pixels": 48408,
+      "x": 0,
+      "y": 0,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "nontransparent_pixels": 47426,
+      "x": 0,
+      "y": 400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "nontransparent_pixels": 48408,
+      "x": 320,
+      "y": 400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "nontransparent_pixels": 46194,
+      "x": 640,
+      "y": 400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_idle",
+      "frame": 0,
+      "nontransparent_pixels": 45548,
+      "x": 0,
+      "y": 800,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "nontransparent_pixels": 47414,
+      "x": 0,
+      "y": 1200,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "nontransparent_pixels": 45548,
+      "x": 320,
+      "y": 1200,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "nontransparent_pixels": 46374,
+      "x": 640,
+      "y": 1200,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "up_idle",
+      "frame": 0,
+      "nontransparent_pixels": 45207,
+      "x": 0,
+      "y": 1600,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "nontransparent_pixels": 42023,
+      "x": 0,
+      "y": 2000,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "nontransparent_pixels": 45207,
+      "x": 320,
+      "y": 2000,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "nontransparent_pixels": 42004,
+      "x": 640,
+      "y": 2000,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "nontransparent_pixels": 46816,
+      "x": 0,
+      "y": 2400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "nontransparent_pixels": 43073,
+      "x": 320,
+      "y": 2400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "nontransparent_pixels": 46796,
+      "x": 640,
+      "y": 2400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "nontransparent_pixels": 43467,
+      "x": 960,
+      "y": 2400,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "nontransparent_pixels": 47272,
+      "x": 0,
+      "y": 2800,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "nontransparent_pixels": 47531,
+      "x": 0,
+      "y": 3200,
+      "w": 320,
+      "h": 400
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "nontransparent_pixels": 43794,
+      "x": 0,
+      "y": 3600,
+      "w": 320,
+      "h": 400
+    }
+  ],
+  "frame_layout": {
+    "sheetWidth": 1280,
+    "sheetHeight": 4000,
+    "cellWidth": 320,
+    "cellHeight": 400,
+    "rows": {
+      "down_idle": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_idle": [
+        {
+          "x": 0,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 0,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3600,
+          "w": 320,
+          "h": 400
+        }
+      ]
+    }
+  }
+}

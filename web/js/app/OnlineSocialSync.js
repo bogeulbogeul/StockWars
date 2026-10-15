@@ -8,6 +8,7 @@ export class OnlineSocialSync {
         if(c.trainingRoom.dialog.open)return {location:'training',player:c.player};
         if(c.isOpen)return {location:'cipher',player:c.player};
         if(a.vivianStoreModal.isOpen)return {location:'vivian',player:a.vivianStoreModal.player};
+        if(a.logisticsWarehouse?.isOpen || a.logisticsWarehouse?.suspended)return {location:'logistics',player:a.logisticsWarehouse.player};
         if(a.logisticsMiniGame.isOpen)return {location:'logistics',player:{x:0,y:0}};
         if(document.body.classList.contains('town-mode-active'))return {location:'town',player:a.townStage.playerController};
         return null;

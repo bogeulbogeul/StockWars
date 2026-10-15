@@ -130,12 +130,15 @@
 /* Sub Navigation inside Trade Modal */
 .trade-modal-subtabs {
     display: flex;
+    padding: 8px;
+    gap: 4px;
     background: rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid var(--border-light);
 }
 
 .subtab-btn {
     flex: 1;
+    min-width: 0;
     padding: 10px 0;
     background: transparent;
     border: none;
@@ -341,3 +344,47 @@
 .order-estimate-details, .order-rule-details { font-size: 11px; color: var(--text-secondary, #98a6b9); }
 .order-estimate-details summary, .order-rule-details summary { cursor: pointer; padding: 4px 0; }
 .order-estimate-details p { margin: 5px 0 0; line-height: 1.5; }
+
+/* Chart analysis and orders each use the full card width. */
+#tradeModal .trade-grid { grid-template-columns: minmax(0, 1fr); }
+#btnOpenOrder { width: 100%; margin-top: 16px; min-height: 48px; font-size: 18px; }
+#tradeModal .subtab-btn { font-size: 16px; min-height: 46px; }
+#tradeSubtabOrderContent .trade-form-panel { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+#tradeSubtabOrderContent :is(.panel-lbl, .qty-lbl, .limit-order-controls label) { font-size: 18px; }
+#tradeSubtabOrderContent :is(.order-type-btn, .lev-btn, .q-btn) { font-size: 16px; min-height: 40px; }
+#tradeSubtabOrderContent :is(.limit-order-controls input, .limit-order-controls select) { font-size: 18px; min-height: 42px; width: 48%; }
+#tradeSubtabOrderContent .qty-btn { width: 44px; height: 44px; font-size: 22px; }
+#tradeSubtabOrderContent .qty-input-group input { width: 90px; height: 44px; font-size: 22px; }
+#tradeSubtabOrderContent .trade-action-btn { font-size: 20px; min-height: 52px; }
+#tradeSubtabOrderContent .total-calc-box { padding: 16px; gap: 10px; }
+#tradeSubtabOrderContent .total-gold { font-size: 32px; }
+#tradeSubtabOrderContent :is(.order-estimate-label, .order-estimate-facts, .order-estimate-fee, .order-estimate-warning, .order-estimate-details, .order-rule-details) { font-size: 16px; }
+#tradeModal .orderbook-rows { font-size: 16px; }
+#tradeModal .ob-row { padding: 7px 10px; }
+#tradeSubtabOrderContent .limit-order-controls:has(#tradeOrderType option[value="market"]:checked) > label:has(#tradeLimitPrice) { display: none; }
+/* Preserve context while drawing attention to the current tutorial control. */
+#serverSelectModal .anna-trade-dim { opacity: .38; filter: saturate(.45); }
+#serverSelectModal .anna-trade-target { outline: 2px solid var(--accent-cyan); outline-offset: 2px; border-radius: 6px; }
+#tradeModal .anna-trade-dim {
+    opacity: .38;
+    filter: saturate(.45);
+}
+#tradeModal :is(.modal-header, .trade-modal-subtabs, .modal-body, .modal-body *) {
+    transition: opacity .25s ease, filter .25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+    #tradeModal :is(.modal-header, .trade-modal-subtabs, .modal-body, .modal-body *) { transition: none; }
+}
+
+/* Readable company details, including each metric's label and value. */
+#tradeSubtabInfoContent .info-section { padding: 18px; }
+#tradeSubtabInfoContent .info-section-title { font-size: 17px; line-height: 1.5; margin-bottom: 12px; }
+#tradeSubtabInfoContent .info-rich-desc { font-size: 16px; line-height: 1.75; color: var(--text-main); }
+#tradeSubtabInfoContent .info-stats-grid { gap: 10px; }
+#tradeSubtabInfoContent .info-stat-card { padding: 12px; gap: 7px; min-width: 0; }
+#tradeSubtabInfoContent .stat-name { font-size: 14px; line-height: 1.5; }
+#tradeSubtabInfoContent .stat-val-num { font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
+#tradeSubtabInfoContent .related-news-list :is(.item-desc, .news-title, .news-meta, .news-content) { font-size: 15px; line-height: 1.65; }
+
+.trade-account-summary { font-size: 15px; line-height: 1.7; padding: 12px; margin-bottom: 16px; background: var(--bg-surface-elevated); border-radius: 8px; color: var(--text-main); }
+#tradeModal .quick-qty-btns { flex-wrap: wrap; }

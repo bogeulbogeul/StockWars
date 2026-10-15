@@ -3,7 +3,7 @@
 Built-in image generation tool. Original deep teal apron retained; orange change cancelled by user.
 Static placement proposal, not a separated rig or final in-room validation.
 Room projection reference: ROOM_GRID {size:8,x:768,y:345,halfWidth:85,halfHeight:41}. Faces screen lower-right (+u). Full body allows counter foreground occlusion. Intended foot anchor: midpoint between soles; proposed single-cell standing footprint, actual placement and scale not yet verified.
-Reference roles: character sheet = identity; room/counter = camera; rigging reference reviewed for production structure only, not copied for appearance.
+Reference roles: character sheet = identity; room/counter = camera; current production uses directly authored sprite frames; the appearance reference is not a production specification.
 
 ## Generation prompt
 

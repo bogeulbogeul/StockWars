@@ -1,0 +1,194 @@
+{
+  "size": [
+    1920,
+    4000
+  ],
+  "unique_frames": 28,
+  "checks": [
+    {
+      "state": "down_walk",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "down_walk",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "down_walk",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "down_idle",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "down_idle_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "down_idle_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "down_idle_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_walk",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_walk",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "right_walk",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_idle",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_idle_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_idle_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "right_idle_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "up_walk",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "up_walk",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "up_walk",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "up_idle",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "up_idle_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "up_idle_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "up_idle_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry",
+      "index": 3,
+      "unchanged": true
+    },
+    {
+      "state": "down_sit",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "down_sit_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "down_sit_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "down_sit_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_sit",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_sit_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_sit_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "right_sit_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry_wag",
+      "index": 0,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry_wag",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "state": "right_carry_wag",
+      "index": 2,
+      "unchanged": true
+    },
+    {
+      "state": "face_portrait",
+      "index": 0,
+      "unchanged": true
+    }
+  ]
+}

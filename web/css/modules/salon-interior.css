@@ -1,0 +1,19 @@
+.salon-interior {
+    width:calc(100 * var(--game-vw, 1vw));height:calc(100 * var(--game-vh, 1vh));
+    max-width:none;max-height:none;margin:0;padding:0;border:0;
+    background:#322735;color:#fff3dd;
+}
+.salon-interior[open] {display:flex;flex-direction:column;}
+.salon-interior::backdrop {background:#322735;}
+.salon-interior header,.salon-interior footer {display:flex;align-items:center;gap:12px;padding:10px 20px;background:#503b51;flex:none;height:64px;box-sizing:border-box;overflow:hidden;}
+.salon-interior header strong,.salon-interior footer span {flex:1;}
+.salon-interior button {font:inherit;color:#fff3dd;background:#725365;border:1px solid #c7a590;border-radius:8px;padding:8px 14px;cursor:pointer;}
+.salon-interior button:focus-visible {outline:2px solid #82d9f7;outline-offset:-2px;}
+.salon-interior canvas:focus,.salon-interior canvas:focus-visible {outline:none;box-shadow:none;}
+.salon-viewport {position:relative;flex:1;min-height:0;overflow:hidden;}
+.salon-interior canvas {display:block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);touch-action:manipulation;}
+.salon-interior footer [data-near] {min-width:220px;flex:none;}
+.salon-interior footer [data-near][hidden] {display:block;visibility:hidden;pointer-events:none;}
+.salon-interior [hidden] {display:none;}
+.salon-actions {position:absolute;left:12px;top:64px;display:flex;flex-wrap:wrap;gap:6px;max-width:70%;z-index:2;}
+.salon-actions:not(:focus-within) {width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}

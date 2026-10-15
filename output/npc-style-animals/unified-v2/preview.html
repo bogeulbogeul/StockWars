@@ -1,0 +1,34 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>강아지·고양이 모션 통일</title>
+<style>body{font:16px system-ui;background:#e8e1d1;color:#302d29;margin:30px}h1{font-size:24px}button,select{font:inherit;padding:8px;margin:4px;border:1px solid #b5a58b;border-radius:7px;background:#fff9ed}main{display:flex;gap:22px;flex-wrap:wrap}article{background:#fff9ed;padding:20px;border-radius:14px}canvas{display:block;background:#e5dac1;border-radius:12px;max-width:100%}a{color:#655032}.sheet{width:300px}p{max-width:760px}</style>
+<h1>강아지·고양이 모션 통일</h1><p>걷다가 멈추어도 같은 중립 그림을 유지합니다. 방향과 동작을 바꾸며 외형과 색을 확인할 수 있습니다.</p>
+<select id="direction"><option value="down">정면</option><option value="right">오른쪽 사선</option><option value="left">왼쪽 사선</option><option value="up">뒷모습</option></select>
+<button id="toggle">멈추기</button><select id="action"><option value="walk">걷기</option><option value="carry">운반</option><option value="sit">앉기</option><option value="face_portrait">얼굴</option></select><label><input id="before" type="checkbox">이전 시트와 비교</label><main id="cards"></main>
+<script type="module">
+import { characterFrame } from '../../../web/js/components/CharacterSprite.js';
+const cards=document.querySelector('#cards'), direction=document.querySelector('#direction'), action=document.querySelector('#action'), toggle=document.querySelector('#toggle'), before=document.querySelector('#before');
+let moving=true;toggle.onclick=()=>{moving=!moving;toggle.textContent=moving?'멈추기':'걷기';};
+const items=[];
+for(const [id,label] of [['dog','강아지'],['cat','고양이']]){
+ const article=document.createElement('article');article.innerHTML=`<h2>${label}</h2><canvas width="420" height="310"></canvas><p><a href="${id}/run/sprite-sheet-alpha.png">전체 시트 보기</a></p>`;cards.append(article);
+ const current=id==='dog'?'../tail-wag-v1/dog/run':'cat/run';
+ const manifest=await fetch(`${current}/manifest.json`).then(r=>r.json());
+ const oldManifest=await fetch(`../portraits-v1/${id}/run/manifest.json`).then(r=>r.json());
+ const image=new Image(),oldImage=new Image();image.src=`${current}/sprite-sheet-alpha.png`;oldImage.src=`../portraits-v1/${id}/run/sprite-sheet-alpha.png`;
+ if(id==='dog')article.querySelector('a').href=`${current}/sprite-sheet-alpha.png`;
+ items.push({id,ctx:article.querySelector('canvas').getContext('2d'),manifest,oldManifest,image,oldImage});
+}
+function draw(time){for(const item of items){
+ const{ctx}=item,old=before.checked,m=old?item.oldManifest:item.manifest,img=old?item.oldImage:item.image;
+ ctx.clearRect(0,0,420,310);
+ let dir=direction.value==='left'?'right':direction.value,mode=action.value;
+ if(['carry','sit'].includes(mode)&&dir==='up')dir='down';
+ let state=mode==='face_portrait'?mode:`${dir}_${mode==='walk'&&!moving?'idle':mode}`;
+ let row=m.frame_layout.rows[state]||m.frame_layout.rows.down_idle;
+ let i=mode==='walk'&&moving?[0,1,2,1][Math.floor(time/160)%4]:mode==='carry'&&moving?Math.floor(time/160)%row.length:0;
+ let r=row[i]||row[0];
+ if(!old&&item.id==='dog'&&mode!=='face_portrait')r=characterFrame({styleId:'dog',direction:direction.value,moving:['walk','carry'].includes(mode)&&moving,seated:mode==='sit',carrying:mode==='carry',time}).rect;
+ ctx.save();ctx.translate(210,280);ctx.scale(direction.value==='left'?-0.6:0.6,0.6);
+ if(img.complete&&img.naturalWidth)ctx.drawImage(img,r.x,r.y,r.w,r.h,-160,-372,320,400);
+ ctx.restore();
+}requestAnimationFrame(draw);}requestAnimationFrame(draw);
+</script></html>

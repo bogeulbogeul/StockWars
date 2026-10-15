@@ -13,8 +13,8 @@ export const ITEM_CATEGORIES = {
     consumable: { key: 'consumable', name: '소모품', icon: '🥤' },
     apparel: { key: 'apparel', name: '의상 / 코스튬', icon: '👗' },
 
-    book: { key: 'book', name: '도서 / 지식', icon: '📚' },
-    intel: { key: 'intel', name: '정보 / 찌라시', icon: '📜' },
+    book: { key: 'book', name: '도서', icon: '📚' },
+    intel: { key: 'intel', name: '찌라시', icon: '📜' },
     etc: { key: 'etc', name: '기타 / 재료', icon: '💎' }
 };
 

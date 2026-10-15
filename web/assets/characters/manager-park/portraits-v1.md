@@ -1,6 +1,6 @@
 # Manager Park portraits v1
 
-Built-in image generation tool. Transparent PNGs; reference: output/imagegen/manager-park/manager-park-character-sheet-v1.png.
+Built-in image generation tool. Transparent PNGs; historical human Manager Park sheet reference deleted at user request on 2026-10-16. This record is historical; do not use it as the current NPC appearance reference.
 
 ## neutral
 

@@ -75,7 +75,7 @@ export const VIVIAN_SHOP_CATALOG = [
         price: 3000,
         instantUsable: true,
         desc: '극심한 변동성 속에서도 심박수를 안정시켜 뇌동매매를 방지하는 신경안정제.',
-        effects: ['💼 120분간 [운용력] +2 Bonus', '📊 매수 한도 소폭 확장'],
+        effects: ['💼 120분간 [운용력] +2 Bonus', '📊 1회 주문 가능 수량 소폭 확장'],
         linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '포레스트 랩 바이오 성분' }
     },
     {

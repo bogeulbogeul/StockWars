@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "cat-npc-smooth-v1",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 261.09,
+    "min_subject_distance": 229.6,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 15379
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 203.15,
+        "min_subject_distance": 200.17,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 212.17,
+        "min_subject_distance": 211.83,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 261.09,
+        "min_subject_distance": 229.6,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 188.74,
+        "min_subject_distance": 187.13,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight FRONT neutral standing, both soles planted, relaxed arms. Charcoal BLACK CAT, amber eyes, upright triangular ears pink inside, ALL limbs paws muzzle chest same black fur, one long curved black tail. No cream or brown limb patches."
+    },
+    "down_walk": {
+      "frames": 8,
+      "fps": 12,
+      "loop": true,
+      "action": "Straight FRONT, looking toward viewer, RPG top-down character view matching reference. Eight chronological frames of ONE full walk cycle, not eight separate illustrations: 1 left foot forward contact, 2 left support/down with right heel lifting, 3 left support with right knee passing, 4 right foot reaching forward/up, 5 right foot forward contact, 6 right support/down with left heel lifting, 7 right support with left knee passing, 8 left foot reaching forward/up into frame 1. Both feet alternate. Opposite arm and leg counter-swing. No jumps or high knees; feet lift only slightly. Head and torso retain volume with very subtle vertical bob. Exactly two arms and two legs, stable face and fingers, one tail attached at pelvis with small following sway. Fixed camera, fixed scale, no travel across frame. No duplicate neutral stops. Last pose leads into first without repeating it."
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Facing RIGHT neutral standing, mild three-quarter view consistent with base, both soles planted. Charcoal BLACK CAT, amber eyes, upright triangular ears pink inside, ALL limbs paws muzzle chest same black fur, one long curved black tail. No cream or brown limb patches."
+    },
+    "right_walk": {
+      "frames": 8,
+      "fps": 12,
+      "loop": true,
+      "action": "Facing RIGHT, same side/three-quarter camera as supplied directional reference, never rotate toward front. Eight chronological frames of ONE full walk cycle, not eight separate illustrations: 1 left foot forward contact, 2 left support/down with right heel lifting, 3 left support with right knee passing, 4 right foot reaching forward/up, 5 right foot forward contact, 6 right support/down with left heel lifting, 7 right support with left knee passing, 8 left foot reaching forward/up into frame 1. Both feet alternate. Opposite arm and leg counter-swing. No jumps or high knees; feet lift only slightly. Head and torso retain volume with very subtle vertical bob. Exactly two arms and two legs, stable face and fingers, one tail attached at pelvis with small following sway. Fixed camera, fixed scale, no travel across frame. No duplicate neutral stops. Last pose leads into first without repeating it."
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight BACK neutral standing. Rear of head and body, no face or chest patch. Feet are rounded HEELS, toes point away, no front toe crease lines. Tail connected to rear pelvis. Charcoal BLACK CAT, amber eyes, upright triangular ears pink inside, ALL limbs paws muzzle chest same black fur, one long curved black tail. No cream or brown limb patches. Match FRONT reference coat values and NPC linework exactly, including same dark limbs and subdued highlight strength. Camera rotation does not change lighting or fur palette."
+    },
+    "up_walk": {
+      "frames": 8,
+      "fps": 12,
+      "loop": true,
+      "action": "Straight BACK, no face visible, heels and rear ankles visible, toes point away. Eight chronological frames of ONE full walk cycle, not eight separate illustrations: 1 left foot forward contact, 2 left support/down with right heel lifting, 3 left support with right knee passing, 4 right foot reaching forward/up, 5 right foot forward contact, 6 right support/down with left heel lifting, 7 right support with left knee passing, 8 left foot reaching forward/up into frame 1. Both feet alternate. Opposite arm and leg counter-swing. No jumps or high knees; feet lift only slightly. Head and torso retain volume with very subtle vertical bob. Exactly two arms and two legs, stable face and fingers, one tail attached at pelvis with small following sway. Fixed camera, fixed scale, no travel across frame. No duplicate neutral stops. Last pose leads into first without repeating it."
+    },
+    "right_carry": {
+      "frames": 8,
+      "fps": 12,
+      "loop": true,
+      "action": "Facing RIGHT, same three-quarter camera as carry reference. Both forearms remain extended with palms UP at constant waist height under a separate parcel, NO box drawn; omit arm counter-swing for this state. Eight chronological frames of ONE full walk cycle, not eight separate illustrations: 1 left foot forward contact, 2 left support/down with right heel lifting, 3 left support with right knee passing, 4 right foot reaching forward/up, 5 right foot forward contact, 6 right support/down with left heel lifting, 7 right support with left knee passing, 8 left foot reaching forward/up into frame 1. Both feet alternate. Opposite arm and leg counter-swing. No jumps or high knees; feet lift only slightly. Head and torso retain volume with very subtle vertical bob. Exactly two arms and two legs, stable face and fingers, one tail attached at pelvis with small following sway. Fixed camera, fixed scale, no travel across frame. No duplicate neutral stops. Last pose leads into first without repeating it."
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR seated pose straight FRONT: upright torso, pelvis raised at seat height, thighs forward, knees bent90degrees and lower legs down, paws on thighs. Chair is separate: NO chair drawn. Not floor sitting or animal haunch crouching. Tail moved sideways behind hips. Charcoal BLACK CAT, amber eyes, upright triangular ears pink inside, ALL limbs paws muzzle chest same black fur, one long curved black tail. No cream or brown limb patches."
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR seated pose, elevated isometric FRONT-RIGHT THREE-QUARTER view, BOTH eyes visible, NOT pure profile. Thighs project forward along room diagonal, knees bent90degrees lower legs down, upright torso, pelvis elevated for chair seat. Paws on thighs. NO chair. Tail bends aside behind hips, no floor sitting. Charcoal BLACK CAT, amber eyes, upright triangular ears pink inside, ALL limbs paws muzzle chest same black fur, one long curved black tail. No cream or brown limb patches."
+    }
+  },
+  "style": "Copy cat FRONT IDLE reference precisely: charcoal black fur #35343D base, subdued cool gray #4A4854 highlight planes, near-black outlines, amber eyes, pink inner ears, same head/body proportions and fur tuft shapes. ALL directions share these exact fur tones and clean restrained NPC cel shading; do not make rear lighter gray, brown or differently textured. No clothes props halo shadows. One integrated long curved black tail. Preserve the exact approved reference colors across all views; no identity redesign. This eight-frame sample is requested for smoother motion comparison, not a replacement of the accepted three-pose baseline.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

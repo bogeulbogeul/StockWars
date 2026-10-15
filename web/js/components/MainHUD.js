@@ -174,7 +174,7 @@ export class MainHUD {
             const isPos = state.totalProfitLoss >= 0;
             const pct = state.totalNetWorth > 0 ? (state.totalProfitLoss / (state.initialCash || 5000)) * 100 : 0;
             this.hudPnlVal.textContent = `${isPos ? '+' : ''}${state.totalProfitLoss.toLocaleString()} G (${isPos ? '+' : ''}${pct.toFixed(2)}%)`;
-            this.hudPnlVal.className = `asset-val pnl ${isPos ? 'positive' : 'negative'}`;
+            this.hudPnlVal.className = `asset-val pnl ${state.totalProfitLoss === 0 ? 'neutral' : isPos ? 'positive' : 'negative'}`;
         }
     }
 

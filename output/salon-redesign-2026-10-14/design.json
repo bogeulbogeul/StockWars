@@ -1,0 +1,39 @@
+{
+  "id": "salon-de-tail-two-story-redesign",
+  "date": "2026-10-14",
+  "status": "new-design-preview; not adopted as final gameplay geometry",
+  "background": "salon-two-floor-background-v1.png",
+  "backgroundSize": [1086,1448],
+  "ownerSeparateAsset": "claire-owner-cutout-v1.png",
+  "ownerAppearanceSource": "../npc-animal-individual-2026-10-14/claire-character-v1.png",
+  "presentationPreview": "salon-two-floor-with-owner-v1.png",
+  "previewNpcBaked": true,
+  "gameBackgroundNpcBaked": false,
+  "groundFloor": {
+    "role": "hair-salon",
+    "owner": "Claire",
+    "facilities": ["reception counter", "two mirror styling stations", "shampoo station", "waiting bench", "supplies", "exit carpet", "stairs to showroom"]
+  },
+  "upperFloor": {
+    "role": "complete-character-style-showroom",
+    "regularMannequins": 3,
+    "limitedMannequins": 1,
+    "provisionalDisplayExamples": ["natural sage casual", "modern navy suit", "cozy lilac", "limited burgundy/gold ensemble"],
+    "limitedDisplay": "dedicated gold pedestal, spotlight and plum canopy",
+    "economy": "no prices, unlocks, ownership or gameplay effects assigned"
+  },
+  "referenceRoles": {
+    "SalonDeTail-v2.png": "exterior palette and game illustration only",
+    "claire-character-v1.png": "owner appearance only",
+    "olderInteriorImages": "excluded from new design references"
+  },
+  "generator": "built-in image_gen",
+  "prompts": "prompts.txt",
+  "qa": {
+    "regular3Limited1": "visually checked",
+    "hairSalonAndExitCarpet": "visually checked",
+    "gridProjection": "requested common +/-29.50664658-degree axes; generator deviations remain, exact collision and layer registration need later validation",
+    "characterRig": "static cutout; no rig or animation completed",
+    "runtime": "existing game room preserved; this redesign is a separate image design deliverable"
+  }
+}

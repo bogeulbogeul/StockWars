@@ -20,6 +20,7 @@ export function getTradeModalHtml() {
                 <!-- Sub Navigation Tabs inside Trade Modal -->
                 <div class="trade-modal-subtabs">
                     <button class="subtab-btn active" id="btnSubtabChart">📊 차트 & 호가</button>
+                    <button class="subtab-btn" id="btnSubtabOrder">주문하기</button>
                     <button class="subtab-btn" id="btnSubtabInfo">ℹ️ 기업 정보 (Info)</button>
                 </div>
 
@@ -30,6 +31,7 @@ export function getTradeModalHtml() {
                         <div class="price-change-tag" id="modalStockChange">+2.4%</div>
                     </div>
 
+                    <div id="tradeAccountSummary" class="trade-account-summary" aria-live="polite"></div>
                     <!-- SUBTAB 1: CHART & ORDERBOOK CONTENT -->
                     <div id="tradeSubtabChartContent" class="subtab-content active">
                         <p class="chart-color-guide">실시간 · 최근 50개 기록 · 미국 시장 방식 · <span style="color:#00e5ff">▲ 상승</span> / <span style="color:#ff3b5c">▼ 하락</span></p>
@@ -48,7 +50,10 @@ export function getTradeModalHtml() {
                                 </div>
                             </div>
 
-                            <!-- Right: Trade Form Panel -->
+                        </div>
+                        <button class="trade-action-btn buy-btn" id="btnOpenOrder">매수 · 매도 주문하기 →</button>
+                    </div>
+                    <div id="tradeSubtabOrderContent" class="subtab-content hidden">
                             <div class="trade-form-panel">
                                 <!-- Order Type Selector (Long vs Short) -->
                                 <div class="order-type-selector">
@@ -88,7 +93,8 @@ export function getTradeModalHtml() {
                                     <button class="q-btn" data-qty="1">1주</button>
                                     <button class="q-btn" data-qty="5">5주</button>
                                     <button class="q-btn" data-qty="10">10주</button>
-                                    <button class="q-btn" data-qty="MAX" id="btnQtyMax">MAX</button>
+                                    <button class="q-btn" data-qty="MAX" id="btnQtyMax">매수 MAX</button>
+                                    <button class="q-btn" data-qty="SELL_MAX" id="btnQtySellMax">매도 MAX</button>
                                 </div>
 
                                 <div class="total-calc-box">
@@ -112,7 +118,6 @@ export function getTradeModalHtml() {
                                     <button class="trade-action-btn sell-btn" id="btnSellExecute">매도 (SELL)</button>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                     <!-- SUBTAB 2: STOCK INFO CONTENT -->

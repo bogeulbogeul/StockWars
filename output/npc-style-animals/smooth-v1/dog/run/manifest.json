@@ -1,0 +1,439 @@
+{
+  "characterId": "dog-npc-smooth-v1",
+  "engine": "component-row",
+  "game_input": "sprite-sheet-alpha.png",
+  "degraded_static_fallback": false,
+  "curation_applied": false,
+  "frame_variant": "pixel",
+  "sprite_sheet_alpha": "sprite-sheet-alpha.png",
+  "sprite_sheet_alpha_report": "sprite-sheet-alpha.report.json",
+  "base_image": "base-source.png",
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "auto",
+    "score": 246.74,
+    "min_subject_distance": 226.96,
+    "background": {
+      "mode": "transparent",
+      "opaque_border_fraction": 0.0,
+      "subject_pixels": 15339
+    },
+    "candidates": [
+      {
+        "name": "magenta",
+        "hex": "#FF00FF",
+        "score": 215.2,
+        "min_subject_distance": 208.21,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "green",
+        "hex": "#00FF00",
+        "score": 232.27,
+        "min_subject_distance": 217.28,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "cyan",
+        "hex": "#00FFFF",
+        "score": 246.74,
+        "min_subject_distance": 226.96,
+        "clears_erase_radius": true
+      },
+      {
+        "name": "blue",
+        "hex": "#004DFF",
+        "score": 244.96,
+        "min_subject_distance": 219.86,
+        "clears_erase_radius": true
+      }
+    ],
+    "selection_reason": "highest 1st-percentile subject distance among the 4 candidate(s) clearing the 96 erase radius"
+  },
+  "animation": {
+    "cellWidth": 320,
+    "cellHeight": 400,
+    "columns": 8,
+    "rows": {
+      "down_idle": {
+        "row": 0,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "down_walk": {
+        "row": 1,
+        "frames": 8,
+        "fps": 12,
+        "durations_ms": [
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "right_idle": {
+        "row": 2,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_walk": {
+        "row": 3,
+        "frames": 8,
+        "fps": 12,
+        "durations_ms": [
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "up_idle": {
+        "row": 4,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "up_walk": {
+        "row": 5,
+        "frames": 8,
+        "fps": 12,
+        "durations_ms": [
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "right_carry": {
+        "row": 6,
+        "frames": 8,
+        "fps": 12,
+        "durations_ms": [
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "down_sit": {
+        "row": 7,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_sit": {
+        "row": 8,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 2560,
+    "sheetHeight": 3600,
+    "cellWidth": 320,
+    "cellHeight": 400,
+    "rows": {
+      "down_idle": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1280,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1600,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1920,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 2240,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_idle": [
+        {
+          "x": 0,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1280,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1600,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1920,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 2240,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 0,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1280,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1600,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1920,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 2240,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1280,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1600,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1920,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 2240,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ]
+    }
+  }
+}

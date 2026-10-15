@@ -1,5 +1,13 @@
 import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js';
 import { bindingLabel } from '../../app/GameKeys.js';
+
+// Movement renders every frame; rebuild hints only when their contents change.
+const renderedHints = new WeakMap();
+function setHintHtml(element, html) {
+    if (renderedHints.get(element) === html) return;
+    element.innerHTML = html;
+    renderedHints.set(element, html);
+}
 /**
  * LogisticsRenderer Module
  * Handles DOM character visual state, stacked boxes tower, and SVG truck cargo box rendering.
@@ -82,39 +90,39 @@ export class LogisticsRenderer {
             if (game.carriedCount < game.maxStack) {
                 if (isNearPallet) {
                     if (charStateBadge) {
-                        charStateBadge.className = 'logistics-current-state-badge carrying';
-                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 운반 중 ➔ [${bindingLabel('w')}/버튼] 더 쌓기 or [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 이동</span>`;
+                        if (charStateBadge.className !== 'logistics-current-state-badge carrying') charStateBadge.className = 'logistics-current-state-badge carrying';
+                        setHintHtml(charStateBadge, `<span>📦 ${game.carriedCount}단 운반 중 ➔ [${bindingLabel('w')}/버튼] 더 쌓기 or [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 이동</span>`);
                     }
                     if (boxesTargetIndicator) {
                         boxesTargetIndicator.style.opacity = '1';
-                        boxesTargetIndicator.innerHTML = `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`;
+                        setHintHtml(boxesTargetIndicator, `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 더 쌓기 (${game.carriedCount}/${game.maxStack}단)</span>`);
                     }
                 } else {
                     if (charStateBadge) {
-                        charStateBadge.className = 'logistics-current-state-badge carrying';
-                        charStateBadge.innerHTML = `<span>📦 ${game.carriedCount}단 상자 운반 중 ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`;
+                        if (charStateBadge.className !== 'logistics-current-state-badge carrying') charStateBadge.className = 'logistics-current-state-badge carrying';
+                        setHintHtml(charStateBadge, `<span>📦 ${game.carriedCount}단 상자 운반 중 ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`);
                     }
                     if (boxesTargetIndicator) {
                         boxesTargetIndicator.style.opacity = '0.6';
-                        boxesTargetIndicator.innerHTML = `<span>📦 상자 파렛트 (${game.carriedCount}/${game.maxStack}단)</span>`;
+                        setHintHtml(boxesTargetIndicator, `<span>📦 상자 파렛트 (${game.carriedCount}/${game.maxStack}단)</span>`);
                     }
                 }
                 if (btnBottomStackMore) {
                     btnBottomStackMore.disabled = !isNearPallet;
-                    btnBottomStackMore.innerHTML = `<span>📦 상자 +1단 쌓기 [<span data-game-key="w">${bindingLabel('w')}</span>] (${game.carriedCount}/${game.maxStack})</span>`;
+                    setHintHtml(btnBottomStackMore, `<span>📦 상자 +1단 쌓기 [<span data-game-key="w">${bindingLabel('w')}</span>] (${game.carriedCount}/${game.maxStack})</span>`);
                 }
             } else {
                 if (charStateBadge) {
-                    charStateBadge.className = 'logistics-current-state-badge carrying';
-                    charStateBadge.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 운반 중! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`;
+                    if (charStateBadge.className !== 'logistics-current-state-badge carrying') charStateBadge.className = 'logistics-current-state-badge carrying';
+                    setHintHtml(charStateBadge, `<span>🔥 ${game.maxStack}단 풀스택 운반 중! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭으로 이동하세요!</span>`);
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '0.4';
-                    boxesTargetIndicator.innerHTML = `<span>🔥 ${game.maxStack}단 풀스택 완료! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 하차</span>`;
+                    setHintHtml(boxesTargetIndicator, `<span>🔥 ${game.maxStack}단 풀스택 완료! ➔ [<span data-game-key="a">${bindingLabel('a')}</span>] 트럭 하차</span>`);
                 }
                 if (btnBottomStackMore) {
                     btnBottomStackMore.disabled = true;
-                    btnBottomStackMore.innerHTML = `<span>🔥 최대 적재 완료 (4/4단)</span>`;
+                    setHintHtml(btnBottomStackMore, `<span>🔥 최대 적재 완료 (4/4단)</span>`);
                 }
             }
         } else {
@@ -127,26 +135,26 @@ export class LogisticsRenderer {
 
             if (isNearPallet) {
                 if (charStateBadge) {
-                    charStateBadge.className = 'logistics-current-state-badge empty';
-                    charStateBadge.innerHTML = `<span>📦 파렛트 도착! ➔ [<span data-game-key="w">${bindingLabel('w')}</span>] 키로 상자를 집으세요!</span>`;
+                    if (charStateBadge.className !== 'logistics-current-state-badge empty') charStateBadge.className = 'logistics-current-state-badge empty';
+                    setHintHtml(charStateBadge, `<span>📦 파렛트 도착! ➔ [<span data-game-key="w">${bindingLabel('w')}</span>] 키로 상자를 집으세요!</span>`);
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '1';
-                    boxesTargetIndicator.innerHTML = `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 집기!</span>`;
+                    setHintHtml(boxesTargetIndicator, `<span>📦 [<span data-game-key="w">${bindingLabel('w')}</span>] 상자 집기!</span>`);
                 }
             } else {
                 if (charStateBadge) {
-                    charStateBadge.className = 'logistics-current-state-badge empty';
-                    charStateBadge.innerHTML = `<span>🖐️ 빈손 귀환 중 ➔ [<span data-game-key="d">${bindingLabel('d')}</span>] 우측 파렛트로 이동!</span>`;
+                    if (charStateBadge.className !== 'logistics-current-state-badge empty') charStateBadge.className = 'logistics-current-state-badge empty';
+                    setHintHtml(charStateBadge, `<span>🖐️ 빈손 귀환 중 ➔ [<span data-game-key="d">${bindingLabel('d')}</span>] 우측 파렛트로 이동!</span>`);
                 }
                 if (boxesTargetIndicator) {
                     boxesTargetIndicator.style.opacity = '0.8';
-                    boxesTargetIndicator.innerHTML = '<span>📦 상자 파렛트 [D로 이동]</span>';
+                    setHintHtml(boxesTargetIndicator, '<span>📦 상자 파렛트 [D로 이동]</span>');
                 }
             }
             if (btnBottomStackMore) {
                 btnBottomStackMore.disabled = !isNearPallet;
-                btnBottomStackMore.innerHTML = `<span>📦 상자 집기 [<span data-game-key="w">${bindingLabel('w')}</span>]</span>`;
+                setHintHtml(btnBottomStackMore, `<span>📦 상자 집기 [<span data-game-key="w">${bindingLabel('w')}</span>]</span>`);
             }
         }
     }

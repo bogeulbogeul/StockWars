@@ -9,7 +9,7 @@ test('chapters restore at meaningful boundaries, including logistics rewards and
     for (const [id] of tutorialChapters) {
         assert.equal(tutorialCheckpoint(steps, steps.findIndex(s => s.id === id)), id);
     }
-    assert.equal(tutorialCheckpoint(steps, steps.findIndex(s => s.id === 'enter_logistics')), 'go_town_proposal');
+    assert.equal(tutorialCheckpoint(steps, steps.findIndex(s => s.id === 'enter_logistics')), 'movement_keys_guide');
     assert.equal(tutorialCheckpoint(steps, steps.findIndex(s => s.id === 'rumor_analysis_example_4')), 'rumor_inventory_guide');
 });
 

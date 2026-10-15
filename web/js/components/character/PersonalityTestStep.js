@@ -1,4 +1,4 @@
-﻿/**
+/**
  * PersonalityTestStep Module (Step 2: 투자 성향 진단 TPT)
  * Manages 3 diagnostic investment questions, scoring, and trait outcome evaluation.
  */
@@ -55,7 +55,7 @@ export const TRAITS_DATA = {
         statName: "운용력 +1",
         statColor: "#ff4081",
         icon: "💰",
-        bonusDesc: "보유 가능 종목 수 및 매수 한도 증대",
+        bonusDesc: "보유 가능 종목 수 증대",
         effect: "포트폴리오 종목 슬롯 +2개"
     },
     recovery: {

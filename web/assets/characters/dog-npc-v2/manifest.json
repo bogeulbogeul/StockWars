@@ -1,5 +1,5 @@
 {
-  "characterId": "dog-npc-v2",
+  "characterId": "dog-tail-wag-v1",
   "engine": "component-row",
   "game_input": "sprite-sheet-alpha.png",
   "degraded_static_fallback": false,
@@ -28,17 +28,18 @@
   "animation": {
     "cellWidth": 320,
     "cellHeight": 400,
-    "columns": 4,
+    "columns": 6,
     "rows": {
       "down_idle": {
-        "row": 0,
+        "row": 1,
         "frames": 1,
         "fps": 1,
         "durations_ms": [
           1000
         ],
         "loop": false,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "down_walk": {
         "row": 1,
@@ -50,17 +51,19 @@
           167
         ],
         "loop": true,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "right_idle": {
-        "row": 2,
+        "row": 3,
         "frames": 1,
         "fps": 1,
         "durations_ms": [
           1000
         ],
         "loop": false,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "right_walk": {
         "row": 3,
@@ -72,17 +75,19 @@
           167
         ],
         "loop": true,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "up_idle": {
-        "row": 4,
+        "row": 5,
         "frames": 1,
         "fps": 1,
         "durations_ms": [
           1000
         ],
         "loop": false,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "up_walk": {
         "row": 5,
@@ -94,7 +99,8 @@
           167
         ],
         "loop": true,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "right_carry": {
         "row": 6,
@@ -107,7 +113,8 @@
           167
         ],
         "loop": true,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "down_sit": {
         "row": 7,
@@ -117,7 +124,8 @@
           1000
         ],
         "loop": false,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
       },
       "right_sit": {
         "row": 8,
@@ -127,24 +135,106 @@
           1000
         ],
         "loop": false,
-        "frame_variant": "pixel"
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "down_idle_wag": {
+        "row": 0,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "right_idle_wag": {
+        "row": 2,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "up_idle_wag": {
+        "row": 4,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "down_sit_wag": {
+        "row": 7,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "right_sit_wag": {
+        "row": 8,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "right_carry_wag": {
+        "row": 6,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "packed": true
+      },
+      "face_portrait": {
+        "row": 9,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel",
+        "packed": true
       }
     }
   },
   "frame_layout": {
-    "sheetWidth": 1280,
-    "sheetHeight": 3600,
+    "sheetWidth": 1920,
+    "sheetHeight": 4000,
     "cellWidth": 320,
     "cellHeight": 400,
     "rows": {
-      "down_idle": [
-        {
-          "x": 0,
-          "y": 0,
-          "w": 320,
-          "h": 400
-        }
-      ],
       "down_walk": [
         {
           "x": 0,
@@ -165,10 +255,30 @@
           "h": 400
         }
       ],
-      "right_idle": [
+      "down_idle": [
+        {
+          "x": 320,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_idle_wag": [
         {
           "x": 0,
-          "y": 800,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 0,
           "w": 320,
           "h": 400
         }
@@ -193,10 +303,30 @@
           "h": 400
         }
       ],
-      "up_idle": [
+      "right_idle": [
+        {
+          "x": 320,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_idle_wag": [
         {
           "x": 0,
-          "y": 1600,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 800,
           "w": 320,
           "h": 400
         }
@@ -217,6 +347,34 @@
         {
           "x": 640,
           "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 320,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle_wag": [
+        {
+          "x": 0,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 1600,
           "w": 320,
           "h": 400
         }
@@ -255,6 +413,26 @@
           "h": 400
         }
       ],
+      "down_sit_wag": [
+        {
+          "x": 320,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 0,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        }
+      ],
       "right_sit": [
         {
           "x": 0,
@@ -262,7 +440,63 @@
           "w": 320,
           "h": 400
         }
+      ],
+      "right_sit_wag": [
+        {
+          "x": 320,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 0,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_carry_wag": [
+        {
+          "x": 1280,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 0,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 1600,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3600,
+          "w": 320,
+          "h": 400
+        }
       ]
     }
+  },
+  "packing": {
+    "physical_rows": 10,
+    "columns": 6,
+    "unique_frames": 28,
+    "placed_frames": 31,
+    "grouped_by_motion": true,
+    "coordinates": "frame_layout.rows is authoritative; carry walk and carry idle share row6"
   }
 }

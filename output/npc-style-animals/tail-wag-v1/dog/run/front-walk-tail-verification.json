@@ -1,0 +1,24 @@
+[
+  {
+    "state": "down_walk",
+    "index": 0,
+    "translation": [
+      1,
+      0
+    ],
+    "changed_tail_pixels": 4811,
+    "unchanged_body_pixels": 106680,
+    "body_locked": true
+  },
+  {
+    "state": "down_walk",
+    "index": 2,
+    "translation": [
+      14,
+      0
+    ],
+    "changed_tail_pixels": 5617,
+    "unchanged_body_pixels": 108348,
+    "body_locked": true
+  }
+]

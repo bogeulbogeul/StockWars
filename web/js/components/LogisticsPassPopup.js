@@ -16,7 +16,8 @@ export class LogisticsPassPopup {
         this.dialog.innerHTML = '<header><h2>비트물류 퀵패스</h2></header><p data-pass-status role="status"></p><p data-pass-details></p><div><button data-quick>패스로 즉시 완료</button><button data-manual>직접 작업</button><button data-close>확인</button></div>';
         document.body.appendChild(this.dialog);
         this.dialog.addEventListener('keydown', event => event.stopPropagation());
-        this.dialog.querySelector('[data-close]').onclick = () => this.close();
+        this.dialog.querySelector('[data-close]').onclick = () => this.close(true);
+        this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.close(true); });
     }
     render() {
         const e = this.engine;
@@ -25,7 +26,8 @@ export class LogisticsPassPopup {
         this.dialog.querySelector('[data-pass-details]').textContent = `즉시 완료 보상 ${ITEM_BALANCE.quickGold.toLocaleString()}G · ${ITEM_BALANCE.quickExp} EXP · 수수료 0%\n작업마다 체력 ${e.laborCost()}칸 소모 · 현재 ${e.state.stamina}/${e.maxStamina()}칸`;
         this.dialog.querySelector('[data-quick]').disabled = !active || e.state.stamina < e.laborCost();
     }
-    open({ onQuick, onManual } = {}) {
+    open({ onQuick, onManual, onCancel } = {}) {
+        this.onCancel = onCancel;
         this.render();
         const choice = Boolean(onQuick && onManual);
         this.dialog.querySelector('[data-quick]').hidden = !choice;
@@ -40,5 +42,5 @@ export class LogisticsPassPopup {
         this.open();
         return true;
     }
-    close() { this.dialog.close(); }
+    close(notify = false) { this.dialog.close(); const cancel = this.onCancel; this.onCancel = null; if (notify) cancel?.(); }
 }

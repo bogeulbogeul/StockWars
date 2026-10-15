@@ -4,15 +4,17 @@ export class TownPresenceSync {
         this.stop();
         if (!this.bridge?.position) return;
         const generation = this.generation;
+        let lastSuccess = Date.now();
         const poll = async () => {
             try {
                 const p = this.stage.playerController;
                 const result = await this.bridge.position({ x: p.charPosX, y: p.charPosY, facing: p.facing,
                     resting: p.isResting, nickname: this.stage.nickname, ...this.stage.callbacks?.getPlayerSocialProfile?.() });
                 if (generation !== this.generation) return;
+                lastSuccess = Date.now();
                 this.stage.setRemotePlayers(result.snapshot?.players || []);
             } catch {
-                if (generation === this.generation) this.stage.setRemotePlayers([]);
+                if (generation === this.generation && Date.now() - lastSuccess > 5000) this.stage.setRemotePlayers([]);
             }
             if (generation === this.generation) this.timer = setTimeout(poll, 200);
         };

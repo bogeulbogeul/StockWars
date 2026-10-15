@@ -3,16 +3,16 @@ import { TOWN_BUILDING_HEIGHTS } from './townScale.js';
 
 // Visible artwork bounds exclude transparent padding without modifying the originals.
 const assets = {
-    home_office_tower: ['OfficeBuilding', 1060, 1484, 231, 62, 599, 1349, 0.325],
-    bit_logistics: ['Bit', 1774, 887, 80, 124, 1614, 651, 0.93],
-    vivian_store: ['VivianStore', 1774, 887, 231, 85, 1338, 718, 0.493],
-    julian_furniture: ['MordenFrame', 1536, 1024, 230, 51, 1076, 894, 0.755],
-    claire_apparel: ['SalonDeTail-v2', 1215, 1295, 209, 53, 799, 1157, 0.79],
-    data_ink_bookstore: ['BookStore', 1226, 1283, 110, 86, 1008, 1098, 0.162],
-    cipher_securities: ['CipherBuilding', 1024, 1536, 32, 40, 960, 1376, 0.5],
-    node_finance: ['BankBuilding', 1402, 1122, 186, 50, 1031, 993, 0.5],
-    midnight_pub: ['MidnightPub', 1536, 1024, 165, 52, 1204, 902, 0.178],
-    barter_pawn_shop: ['BarterPawnShop', 1145, 1374, 159, 103, 828, 1148, 0.203],
+    home_office_tower: ['OfficeBuilding-door-v2', 1060, 1484, 230, 62, 600, 1341, 0.338],
+    bit_logistics: ['Bit-door-v2', 1774, 887, 74, 116, 1629, 678, 0.905],
+    vivian_store: ['VivianStore-door-v3', 1774, 887, 227, 62, 1359, 738, 0.485],
+    julian_furniture: ['MordenFrame-single-story-v1', 1536, 1024, 146, 162, 1245, 701, 0.737],
+    claire_apparel: ['SalonDeTail-single-story-v3', 1215, 1295, 58, 196, 1101, 919, 0.802],
+    data_ink_bookstore: ['BookStore-single-story-v1', 1536, 1024, 76, 140, 1385, 745, 0.157],
+    cipher_securities: ['CipherBuilding-door-v2', 1024, 1536, 32, 38, 963, 1383, 0.5],
+    node_finance: ['BankBuilding-single-story-v1', 1402, 1122, 98, 264, 1205, 647, 0.5],
+    midnight_pub: ['MidnightPub-single-story-v1', 1536, 1024, 70, 186, 1397, 699, 0.197],
+    barter_pawn_shop: ['BarterPawnShop-single-story-v1', 1199, 1312, 80, 226, 1039, 895, 0.232],
 };
 
 export function applyBuildingAsset(building) {

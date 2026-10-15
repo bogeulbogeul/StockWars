@@ -382,9 +382,12 @@ export class TownStage {
             this.playerController.update(dt, this.viewportEl.clientWidth / TOWN_VIEW_SCALE, this.viewportEl.clientHeight / TOWN_VIEW_SCALE);
         }
 
+        // Snap only presentation coordinates; keep movement/collision precision.
+        const pixelRatio = globalThis.devicePixelRatio || 1;
+        const snapScreen = value => Math.round(value * pixelRatio) / pixelRatio;
         // Apply World & Camera Transforms
         if (this.worldTrackEl) {
-            this.worldTrackEl.style.transform = `translate(${-this.playerController.cameraX * TOWN_VIEW_SCALE}px, ${-this.playerController.cameraY * TOWN_VIEW_SCALE}px) scale(${TOWN_VIEW_SCALE})`;
+            this.worldTrackEl.style.transform = `translate(${snapScreen(-this.playerController.cameraX * TOWN_VIEW_SCALE)}px, ${snapScreen(-this.playerController.cameraY * TOWN_VIEW_SCALE)}px) scale(${TOWN_VIEW_SCALE})`;
         }
         if (this.parallaxBgEl) {
             this.parallaxBgEl.style.width = `calc(100% + ${this.playerController.worldWidth * 0.25}px)`;
@@ -392,8 +395,8 @@ export class TownStage {
         }
         if (this.townChar) {
             const position = this.playerController.renderPosition;
-            this.townChar.style.left = `${position.x}px`;
-            this.townChar.style.top = `${position.y}px`;
+            this.townChar.style.left = `${snapScreen(position.x * TOWN_VIEW_SCALE) / TOWN_VIEW_SCALE}px`;
+            this.townChar.style.top = `${snapScreen(position.y * TOWN_VIEW_SCALE) / TOWN_VIEW_SCALE}px`;
             this.townChar.style.zIndex = `${position.z}`;
             this.townChar.dataset.facing = this.playerController.facing;
             const flip = this.playerController.charFacing < 0 ? 'scaleX(-1)' : 'scaleX(1)';
@@ -414,6 +417,7 @@ export class TownStage {
     }
 
     updateTutorialDirection() {
+        if (this.tutorialDestination) this.tutorialDestination.hidden = true;
         const building = TOWN_BUILDINGS.find(b => b.id === this.callbacks.getTutorialDestination?.());
         if (!building) {
             if (this.tutorialDirection) this.tutorialDirection.hidden = true;
@@ -424,23 +428,23 @@ export class TownStage {
             this.tutorialDirection = document.createElement('div');
             this.tutorialDirection.className = 'town-tutorial-direction';
             this.tutorialDirection.innerHTML = '<span class="town-tutorial-arrow" aria-hidden="true">➤</span><span class="town-tutorial-direction-text"></span>';
-            this.tutorialDestination = document.createElement('div');
-            this.tutorialDestination.className = 'town-tutorial-destination';
-            this.tutorialDestination.textContent = '📦 비트 물류센터 입구 ▼';
-            this.worldTrackEl.append(this.tutorialDirection, this.tutorialDestination);
+            this.worldTrackEl.append(this.tutorialDirection);
         }
         const target = townEntrance(building), player = this.playerController;
         const dx = target.x - player.charPosX, dy = target.y - player.charPosY;
-        const nearby = Math.hypot(dx, dy) <= 90;
-        this.tutorialDirection.hidden = this.tutorialDestination.hidden = nearby;
+        const nearby = this.activeNearbyObject?.id === building.id || Math.hypot(dx, dy) <= 90;
+        this.tutorialDirection.hidden = nearby;
         if (nearby) return;
         this.tutorialDirection.style.left = player.charPosX + 'px';
-        this.tutorialDirection.style.top = (player.charPosY - 120) + 'px';
+        const nameTop = this.nameTag?.getBoundingClientRect().top;
+        const worldTop = this.worldTrackEl.getBoundingClientRect().top;
+        const guideBottom = Number.isFinite(nameTop)
+            ? (nameTop - worldTop) / TOWN_VIEW_SCALE - 12
+            : player.charPosY - 160;
+        this.tutorialDirection.style.top = guideBottom + 'px';
         this.tutorialDirection.querySelector('.town-tutorial-arrow').style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
         this.tutorialDirection.querySelector('.town-tutorial-arrow').hidden = false;
         this.tutorialDirection.querySelector('.town-tutorial-direction-text').textContent = '물류센터는 이 방향이에요';
-        this.tutorialDestination.style.left = target.x + 'px';
-        this.tutorialDestination.style.top = (target.y - 55) + 'px';
     }
 
     // Complete remote snapshot for the active channel; coordinates use the town ground plane.
@@ -544,11 +548,15 @@ export class TownStage {
         }).filter(item => item.distance <= 90).sort((a, b) => a.distance - b.distance)[0]?.object;
 
         this.activeNearbyObject = nearby;
-        if (nearby && this.promptEl) {
+        const tutorialDestination = this.callbacks?.getTutorialDestination?.();
+        const showPrompt = nearby && (!tutorialDestination || nearby.id === tutorialDestination);
+        if (showPrompt && this.promptEl) {
             this.promptEl.classList.remove('hidden');
-            this.promptEl.style.left = `${townEntrance(nearby).x}px`;
-            
-            this.promptEl.style.top = `${nearby.y - (nearby.type === 'bench' ? 190 : 150)}px`;
+            this.promptEl.style.left = `${this.playerController.charPosX}px`;
+
+            const nameTop = this.nameTag?.getBoundingClientRect().top;
+            const worldTop = this.worldTrackEl.getBoundingClientRect().top;
+            this.promptEl.style.top = `${Number.isFinite(nameTop) ? (nameTop - worldTop) / TOWN_VIEW_SCALE - 12 : this.playerController.charPosY - 160}px`;
             this.promptEl.style.bottom = "auto";
 
             if (this.promptIcon) this.promptIcon.textContent = nearby.icon || '🏢';
@@ -582,6 +590,7 @@ export class TownStage {
     triggerAction(obj) {
         if (this.callbacks.isInputBlocked?.()) return;
         if (!obj) return;
+        if (this.callbacks.onBeforeTownAction?.(obj) === false) return;
         if (obj.available === false) {
             this.openBuildingInfo(obj);
             return;

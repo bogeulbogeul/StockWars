@@ -1,5 +1,5 @@
 {
-  "characterId": "cat-npc-v2",
+  "characterId": "cat-unified-v2",
   "engine": "component-row",
   "game_input": "sprite-sheet-alpha.png",
   "degraded_static_fallback": false,
@@ -128,12 +128,22 @@
         ],
         "loop": false,
         "frame_variant": "pixel"
+      },
+      "face_portrait": {
+        "row": 9,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
       }
     }
   },
   "frame_layout": {
     "sheetWidth": 1280,
-    "sheetHeight": 3600,
+    "sheetHeight": 4000,
     "cellWidth": 320,
     "cellHeight": 400,
     "rows": {
@@ -259,6 +269,14 @@
         {
           "x": 0,
           "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3600,
           "w": 320,
           "h": 400
         }

@@ -16,6 +16,7 @@ import { StockListTab } from './smartphone/StockListTab.js';
 import { NewsTab } from './smartphone/NewsTab.js';
 import { PortfolioTab } from './smartphone/PortfolioTab.js';
 import { BubbleApp } from './smartphone/BubbleApp.js';
+import { AchievementApp } from './smartphone/AchievementApp.js';
 import { getSmartphoneShellHtml } from './smartphone/SmartphoneShellTemplate.js';
 
 export class SmartphoneUI {
@@ -41,6 +42,7 @@ export class SmartphoneUI {
         this.homeScreen = document.getElementById('homeScreen');
         this.stockApp = document.getElementById('stockApp');
         this.bubbleApp = document.getElementById('bubbleApp');
+        this.achievementApp = document.getElementById('achievementApp');
         this.iconStockApp = document.getElementById('iconStockApp');
         this.iconBubbleApp = document.getElementById('iconBubbleApp');
         this.iconMemoApp = document.getElementById('iconMemoApp');
@@ -55,6 +57,7 @@ export class SmartphoneUI {
     }
 
     initSubComponents() {
+        this.achievementAppModule = new AchievementApp(this.achievementApp, () => this.showHomeScreen());
         this.homeTab = new HomeTab({
             summaryCard: document.getElementById('summaryCard'),
             homeNetWorth: document.getElementById('homeNetWorth'),
@@ -167,6 +170,8 @@ export class SmartphoneUI {
     }
 
     showHomeScreen() {
+        this.achievementApp?.classList.remove('active');
+        this.achievementApp?.classList.add('hidden');
         if (this.stockApp) {
             this.stockApp.classList.remove('active');
             this.stockApp.classList.add('hidden');
@@ -182,6 +187,8 @@ export class SmartphoneUI {
     }
 
     showStockApp() {
+        this.achievementApp?.classList.remove('active');
+        this.achievementApp?.classList.add('hidden');
         if (this.homeScreen) {
             this.homeScreen.classList.remove('active');
             this.homeScreen.classList.add('hidden');
@@ -197,6 +204,8 @@ export class SmartphoneUI {
     }
 
     showBubbleApp() {
+        this.achievementApp?.classList.remove('active');
+        this.achievementApp?.classList.add('hidden');
         if (this.homeScreen) {
             this.homeScreen.classList.remove('active');
             this.homeScreen.classList.add('hidden');
@@ -223,15 +232,13 @@ export class SmartphoneUI {
         this.iconMemoApp?.addEventListener('click', () => {
             if (this.callbacks.onShowToast) this.callbacks.onShowToast('📝 메모장: 주식 매매 일지 작성 기능 준비중');
         });
-        this.iconAchieveApp?.addEventListener('click', () => {
-            if (this.callbacks.onShowToast) this.callbacks.onShowToast('🏆 업적 시스템: [초보 탈출] 달성 완료');
-        });
+        this.iconAchieveApp?.addEventListener('click', () => this.showAchievementApp());
         this.iconSettingsApp?.addEventListener('click', () => {
             if (this.callbacks.onShowToast) this.callbacks.onShowToast('⚙️ 스마트폰 설정: 버전 v1.0.4');
         });
 
         this.btnPhysicalHome?.addEventListener('click', () => {
-            if (this.stockApp?.classList.contains('active') || this.bubbleApp?.classList.contains('active')) {
+            if (this.stockApp?.classList.contains('active') || this.bubbleApp?.classList.contains('active') || this.achievementApp?.classList.contains('active')) {
                 this.showHomeScreen();
             } else {
                 this.showStockApp();
@@ -272,6 +279,14 @@ export class SmartphoneUI {
                 this.togglePhone();
             }
         });
+    }
+
+    showAchievementApp() {
+        this.showHomeScreen();
+        this.homeScreen?.classList.remove('active');
+        this.homeScreen?.classList.add('hidden');
+        this.achievementApp?.classList.remove('hidden');
+        this.achievementApp?.classList.add('active');
     }
 
     minimizePhone(e) {

@@ -50,6 +50,8 @@
 
 .detailed-header-price-row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.03);
@@ -62,41 +64,54 @@
 .detail-price-box {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .detail-price-val {
-    font-size: 20px;
+    font-size: 32px;
+    line-height: 1.3;
     font-weight: 800;
     font-family: var(--font-mono);
     color: var(--text-main);
 }
 
 .detail-price-change {
-    font-size: 12px;
+    font-size: 20px;
+    line-height: 1.4;
     font-weight: 700;
     font-family: var(--font-mono);
 }
 
 .detail-metrics-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex: 1 0 100%;
+    min-width: 0;
     gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
 }
 
 .metric-chip {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    font-size: 10px;
+    align-items: flex-start;
+    min-width: 0;
+    gap: 6px;
+    font-size: 18px;
+    line-height: 1.4;
 }
 
 .metric-chip .lbl {
-    color: var(--text-muted);
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 .metric-chip .val {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     font-family: var(--font-mono);
+    overflow-wrap: anywhere;
 }
 
 .chart-controls-bar {

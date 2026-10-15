@@ -385,3 +385,15 @@
     transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(255, 171, 0, 0.5);
 }
+
+/* Focus the reading surface on the rumor itself. Inventory retains item value. */
+#rumorSecretModal :is(.rumor-confidential-badge, .rumor-icon-box, .rumor-tags, .rumor-stock-highlight, .rumor-effects-box, .rumor-value-status-box) { display: none; }
+#rumorSecretModal .rumor-body { gap: 16px; padding: 24px; }
+#rumorSecretModal .rumor-title-row { margin-bottom: 0; }
+#rumorSecretModal .rumor-name-text { font-size: 24px; }
+#rumorSecretModal .rumor-doc-box { min-height: 0; padding: 20px; }
+#rumorSecretModal .rumor-doc-header { font-size: 16px; flex-wrap: wrap; gap: 10px; }
+#rumorSecretModal .rumor-doc-text { font-size: 24px; line-height: 1.85; min-height: 0; padding: 12px 0 24px; }
+#rumorSecretModal .rumor-reliability-note { font-size: 16px; margin-top: 12px; }
+#rumorSecretModal .rumor-footer { padding: 16px 24px; }
+#rumorSecretModal .rumor-confirm-btn { font-size: 18px; min-height: 46px; }

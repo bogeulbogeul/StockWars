@@ -1,0 +1,6 @@
+.player-title-badge { position: relative; display: inline-block; width: 250px; max-width: 100%; vertical-align: middle; pointer-events: none; }
+.player-title-badge > img { display: block; width: 100%; height: auto; }
+.player-title-badge > span { position: absolute; left: 22%; right: 5%; top: 50%; transform: translateY(-50%); text-align: center; color: #fff3d9; font: 700 12px/1.1 system-ui, sans-serif; text-shadow: 0 1px 2px #08182b; overflow-wrap: anywhere; }
+.achieve-card .player-title-badge { margin: 8px auto; }
+.achieve-equip { margin-top: 10px; padding: 7px; border: 1px solid #70829e; border-radius: 8px; background: #23334c; color: #fff3d9; cursor: pointer; }
+.achieve-equip:disabled { opacity: .5; cursor: default; }

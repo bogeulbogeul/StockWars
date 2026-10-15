@@ -1,0 +1,25 @@
+{
+  "kind": "sprite-gen-gen-set-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2",
+  "states": [
+    "open"
+  ],
+  "ok": 1,
+  "failed": [],
+  "not_started": [],
+  "items": [
+    {
+      "state": "open",
+      "out": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\raw\\open.png",
+      "report": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\reports\\gen-set\\open.json",
+      "refs": [
+        "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\base-source.png",
+        "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\references\\layout-guides\\open.png"
+      ],
+      "provider": "codex",
+      "provider_resolved_from": "explicit",
+      "elapsed_seconds": 55.0,
+      "ok": true
+    }
+  ]
+}

@@ -119,7 +119,7 @@ export class ItemEngine {
     orderLimit() { return Math.floor(ITEM_BALANCE.baseOrderLimit * (this.active('management') ? 1 + ITEM_BALANCE.managementBonus : 1)); }
     statLevel(key) { return Math.min(5, Math.max(0, Math.floor(Number(this.state.baseStats[key]) || 0))); }
     portfolioSlots() { return (5 + 5 * this.statLevel('management')) + (this.state.appliedTrait === 'management' ? 2 : 0); }
-    buyCap() { return [10000, 50000, 200000, 1000000, 10000000, Infinity][this.statLevel('management')] * (this.active('management') ? 1.1 : 1); }
+    buyCap() { return Infinity; }
     feeRate(baseRate) { return Math.max(0, baseRate - this.statLevel('negotiation') * 0.0001) * (this.state.appliedTrait === 'negotiation' ? 0.7 : 1); }
     laborReward(gold) { return Math.round(gold * (1 + this.statLevel('negotiation') * 0.05)); }
     logisticsBonuses() {
@@ -187,7 +187,7 @@ export class ItemEngine {
         const s = this.state;
         if (!catalog.has(id)) return fail('사용 기능이 없는 아이템입니다.');
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
-            if (s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
+            if (id === 'item_caffeine_shot' && s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
             if (id === 'item_caffeine_shot' && s.caffeineDay === dayKey(this.now())) return fail('카페인은 하루 1회만 사용할 수 있습니다.');
         }
         if (buffs[id] && this.active(buffs[id])) return fail('같은 강화 효과가 이미 적용 중입니다.');
@@ -348,7 +348,7 @@ export class ItemEngine {
         const id = 'item_energy_drink';
         if (!this.add(id)) return fail('가방 공간 또는 드링크 묶음 수량이 부족해요. 소지품을 정리한 뒤 선물을 다시 받아 주세요.');
         const before = this.state.stamina;
-        const stored = before >= this.maxStamina();
+        const stored = false;
         if (!stored) {
             const result = this.use(id);
             if (!result.success) { this.consume(id); return result; }
@@ -359,7 +359,7 @@ export class ItemEngine {
             recovered: this.state.stamina - before, stored };
     }
     claimTutorialReward(skipped = false) {
-        if (skipped || this.state.tutorialRewardClaimed) return 0;
+        if (this.state.tutorialRewardClaimed) return 0;
         this.state.tutorialRewardClaimed = true;
         this.market.cash += 2000;
         return 2000;

@@ -1,7 +1,7 @@
 # Vivian dialogue portrait v1
 
 Generated using the built-in image generation tool, with transparent_background=true.
-Reference: output/imagegen/vivian/vivian-character-sheet-v1.png
+Historical reference: human Vivian character sheet v1 (deleted at user request on 2026-10-16). This portrait record is historical; do not use it as the current NPC appearance reference.
 
 ## Prompt
 

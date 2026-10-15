@@ -211,11 +211,11 @@
 }
 
 .asset-val.pnl.positive {
-    color: var(--accent-red);
+    color: var(--accent-cyan);
 }
 
 .asset-val.pnl.negative {
-    color: #448aff;
+    color: var(--accent-red);
 }
 
 .hud-divider {

@@ -101,7 +101,10 @@ export class TradeModal {
             this.orderTypeInput.value = 'limit';
             this.limitPriceInput.disabled = false;
             this.limitPriceInput.value = String(price);
+            this.switchSubtab('Order');
             this.updateCalculations();
+            this.callbacks.onOrderScreenOpened?.();
+            this.limitPriceInput.focus();
         });
         this.btnClose?.addEventListener('click', () => this.close());
 
@@ -116,8 +119,13 @@ export class TradeModal {
         });
 
         // Subtabs
-        this.btnSubtabChart?.addEventListener('click', () => this.switchSubtab('Chart'));
-        this.btnSubtabInfo?.addEventListener('click', () => this.switchSubtab('Info'));
+        this.btnSubtabChart?.addEventListener('click', () => { this.switchSubtab('Chart'); this.callbacks.onTutorialSubtab?.('Chart'); });
+        document.getElementById('btnSubtabOrder')?.addEventListener('click', () => { this.switchSubtab('Order'); this.callbacks.onOrderScreenOpened?.(); });
+        document.getElementById('btnOpenOrder')?.addEventListener('click', () => {
+            this.switchSubtab('Order');
+            this.callbacks.onOrderScreenOpened?.();
+        });
+        this.btnSubtabInfo?.addEventListener('click', () => { this.switchSubtab('Info'); this.callbacks.onTutorialSubtab?.('Info'); });
 
         // Expand Chart
         this.btnExpandChart?.addEventListener('click', () => {
@@ -187,7 +195,9 @@ export class TradeModal {
         document.querySelectorAll('.q-btn').forEach(b => {
             b.addEventListener('click', () => {
                 const val = b.dataset.qty;
-                if (val === 'MAX') {
+                if (val === 'SELL_MAX') {
+                    this.tradeQty = this.callbacks.getMaxSellQty?.(this.selectedStockId) || 0;
+                } else if (val === 'MAX') {
                     if (this.callbacks.getMaxQty) {
                         this.tradeQty = this.callbacks.getMaxQty(this.selectedStockId, this.selectedLeverage, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null, this.isShortMode);
                     }
@@ -221,21 +231,14 @@ export class TradeModal {
 
     switchSubtab(tabName) {
         this.activeSubtab = tabName;
-        if (tabName === 'Chart') {
-            this.btnSubtabChart?.classList.add('active');
-            this.btnSubtabInfo?.classList.remove('active');
-            this.subtabChartContent?.classList.remove('hidden');
-            this.subtabChartContent?.classList.add('active');
-            this.subtabInfoContent?.classList.add('hidden');
-            this.subtabInfoContent?.classList.remove('active');
-        } else {
-            this.btnSubtabInfo?.classList.add('active');
-            this.btnSubtabChart?.classList.remove('active');
-            this.subtabInfoContent?.classList.remove('hidden');
-            this.subtabInfoContent?.classList.add('active');
-            this.subtabChartContent?.classList.add('hidden');
-            this.subtabChartContent?.classList.remove('active');
+        for (const name of ['Chart', 'Order', 'Info']) {
+            const active = name === tabName;
+            document.getElementById(`btnSubtab${name}`)?.classList.toggle('active', active);
+            const content = document.getElementById(`tradeSubtab${name}Content`);
+            content?.classList.toggle('hidden', !active);
+            content?.classList.toggle('active', active);
         }
+        if (tabName === 'Chart') this.updateContent();
     }
 
     open(stockId) {
@@ -244,6 +247,7 @@ export class TradeModal {
         this.orderTypeInput.value = 'market'; this.limitPriceInput.value = ''; this.limitPriceInput.disabled = true;
         if (this.tradeQtyInput) this.tradeQtyInput.value = 1;
         this.modal?.classList.remove('hidden');
+        this.switchSubtab('Chart');
         this.updateContent();
     }
 
@@ -401,6 +405,14 @@ export class TradeModal {
     }
 
     updateCalculations() {
+        const account = this.callbacks.getAccountSummary?.(this.selectedStockId);
+        const summary = document.getElementById('tradeAccountSummary');
+        if (summary && account) {
+            summary.textContent = `보유 현금 ${account.cash.toLocaleString()}G · 보유 ${account.quantity.toLocaleString()}주 · 평균 매수가 ${account.quantity ? account.averagePrice.toLocaleString(undefined, { maximumFractionDigits: 2 }) + 'G' : '—'}`;
+        }
+        const sellMax = document.getElementById('btnQtySellMax');
+        if (sellMax) sellMax.disabled = !(this.callbacks.getMaxSellQty?.(this.selectedStockId) > 0);
+
         const tutorialError = this.callbacks.getTutorialOrderError?.(this.selectedStockId, this.isShortMode);
         if (this.btnBuyExecute) {
             this.btnBuyExecute.disabled = !!tutorialError;
@@ -425,7 +437,7 @@ export class TradeModal {
             this.modalTotalCost.textContent = `${(quote?.total ?? totalMargin).toLocaleString()} G`;
             this.orderEstimate.Qty.textContent = `${execution?.quantity ?? this.tradeQty}주`;
             this.orderEstimate.Price.textContent = `주당 ${(execution?.averagePrice ?? price).toLocaleString(undefined, { maximumFractionDigits: 2 })} G`;
-            this.orderEstimate.Fee.textContent = quote ? `수수료 ${quote.fee.toLocaleString()} G 포함` : '수수료 계산 전';
+            this.orderEstimate.Fee.textContent = quote ? `예상 수수료 ${quote.fee.toLocaleString()} G 포함 · 적용률 ${(quote.feeRate * 100).toFixed(3)}%` : '수수료 계산 전';
             this.orderEstimate.Warning.hidden = !execution?.remaining;
             this.orderEstimate.Warning.textContent = execution?.remaining ? `${execution.remaining}주 미체결 · 잔량 취소` : '';
             this.orderEstimate.Details.textContent = `${modeStr} · ${this.selectedLeverage}배 · 주문 ${this.tradeQty}주` + (quote ? ` · 수수료율 ${(quote.feeRate * 100).toFixed(3)}%` : '');

@@ -1127,3 +1127,56 @@ body #annaTutorialOverlay #btnVnNext:disabled:active {
     border-color: #47b6c6 !important;
     color: #e9fcff !important;
 }
+
+#annaDialogueModalOverlay [hidden] { display:none !important; }
+
+/* Inventory onboarding preserves only the target HUD button at full contrast. */
+body:has(#annaTutorialOverlay.vn-inventory-focus:not(.hidden)) :is(#townStageContainer, #isoOfficeStage, .phone-shell, #floatingPhoneBtn, .main-hud-bar .hud-group:not(.hud-menu-group), .hud-menu-group > :not(#btnHudInventory)) {
+    opacity: .3;
+    filter: saturate(.4);
+    transition: opacity .25s ease, filter .25s ease;
+}
+body:has(#annaTutorialOverlay.vn-inventory-focus:not(.hidden)) #btnHudInventory { opacity: 1; filter: none; }
+
+#annaTutorialOverlay.vn-rumor-focus { z-index: 1000001 !important; background: transparent !important; backdrop-filter: none !important; }
+
+/* Quiz answers form a readable vertical list with consistent hit areas. */
+#annaTutorialOverlay .vn-rumor-choices {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+body #annaTutorialOverlay .vn-rumor-choices .vn-btn {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 18px !important;
+    font-size: 19px !important;
+    line-height: 1.6;
+    text-align: left;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    color: #e7edf5;
+    background: #1b2939;
+    border: 1px solid #53677f;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+body #annaTutorialOverlay .vn-rumor-choices .vn-btn:is(:hover, :focus-visible) {
+    color: #fff;
+    background: #203c4d;
+    border-color: var(--accent-cyan);
+}
+
+#inventoryModal .anna-trade-dim { opacity: .3; filter: saturate(.4); transition: opacity .25s ease; }
+#inventoryModal .anna-trade-target { outline: 2px solid var(--accent-cyan); outline-offset: 3px; box-shadow: 0 0 14px #00e5ff66; }
+
+.main-hud-bar .anna-trade-dim { opacity: .3; filter: saturate(.4); transition: opacity .25s ease; }
+.main-hud-bar .anna-trade-target { outline: 2px solid var(--accent-cyan); outline-offset: 5px; border-radius: 5px; }
+
+body:has(#annaTutorialOverlay.vn-hud-focus:not(.hidden)) :is(#isoOfficeStage, #townStageContainer, .phone-shell, #floatingPhoneBtn, .rent-quest) {
+    opacity: .3;
+    filter: saturate(.4);
+    transition: opacity .25s ease, filter .25s ease;
+}

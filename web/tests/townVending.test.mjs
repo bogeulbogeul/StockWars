@@ -53,8 +53,10 @@ test('overnight drink purchases share shop limits and charge the catalog price',
 });
 test('instant drinking restores stamina; rejected purchases do not charge', () => {
     const { engine, market } = setup();
-    assert.equal(engine.purchase(VENDING_ITEM.id, 1, true).success, false);
-    assert.equal(market.cash, 2000);
+    assert.equal(engine.purchase(VENDING_ITEM.id, 1, true).success, true);
+    assert.equal(market.cash, 2000 - VENDING_ITEM.price);
+    assert.equal(engine.state.stamina, engine.maxStamina());
+    assert.equal(engine.state.inventory.length, 0);
     engine.state.stamina = 1;
     assert.ok(engine.purchase(VENDING_ITEM.id, 1, true).success);
     assert.equal(engine.state.stamina, 2);

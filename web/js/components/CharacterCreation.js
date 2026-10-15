@@ -76,7 +76,7 @@ export class CharacterCreation {
                                     <div class="shape-swatch-group">
                                         ${CHARACTER_STYLES.map(style => `
                                             <button type="button" class="shape-swatch-btn character-face-btn ${style.id === this.styleId ? 'active' : ''}" data-style-id="${style.id}" aria-label="${style.label}" title="${style.label}" aria-pressed="${style.id === this.styleId}">
-                                                ${characterFaceSVG(style.id)}
+                                                <img class="character-face-icon" src="${new URL(`../../assets/characters/face-icons-v1/${style.id === 'black-cat' ? 'cat' : 'dog'}-face.png`, import.meta.url).href}" alt="${style.label}" draggable="false">
                                             </button>
                                         `).join('')}
                                     </div>

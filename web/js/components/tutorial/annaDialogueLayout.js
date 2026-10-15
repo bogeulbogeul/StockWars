@@ -21,7 +21,7 @@ export function installAnnaDialogueLayout(overlay) {
         for (const bar of document.querySelectorAll('.main-hud-bar, .demo-top-bar')) {
             if (visible(bar)) top = Math.max(top, (bar.getBoundingClientRect().bottom - bounds.top) / scale + gap);
         }
-        const obstacles = document.querySelectorAll('.phone-shell, .modal-overlay:not(.hidden) > *, dialog[open]');
+        const obstacles = document.querySelectorAll('.phone-shell, .modal-overlay:not(.hidden) > *, #rumorSecretModal:not(.hidden) > *, dialog[open]');
         for (const element of obstacles) {
             if (overlay.contains(element) || !visible(element)) continue;
             const rect = element.getBoundingClientRect();

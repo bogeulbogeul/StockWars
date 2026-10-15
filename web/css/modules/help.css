@@ -31,3 +31,22 @@
 
 .help-bench-picture { width: 160px; }.help-bench-picture svg { height: 110px; }
 @media (max-width: 520px) { .help-building-scene { flex-wrap: wrap; gap: 10px; } }
+
+.help-avatar > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+.help-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.help-info-panel { min-width: 0; padding: 16px 10px; text-align: center; background: #101e2e99; border-radius: 12px; }
+.help-info-panel .help-avatar { margin: auto; }
+.help-item-picture { display: block; width: 100px; height: 130px; object-fit: contain; margin: auto; }
+.help-visual h4 { margin: 12px 0; font-size: 15px; color: #edf2fa; }
+.help-visual p { color: #becbdc; font-size: 13px; line-height: 1.7; }
+.help-info-panel small { display: block; color: #91a2b9; font-size: 12px; line-height: 1.7; }
+.help-large-value { display: block; margin: 26px 0; color: #9df1e4; font-size: 27px; }
+.help-guide-character { display: flex; gap: 18px; align-items: center; }
+.help-guide-character .help-avatar { flex-shrink: 0; width: 76px; height: 94px; }
+.help-flow { display: grid; gap: 12px; padding-left: 24px; color: #becbdc; font-size: 13px; line-height: 1.8; }
+.help-flow strong { color: #9df1e4; }
+.help-info-note { margin: 18px 0 0; padding-top: 12px; border-top: 1px solid #35475f; }
+.help-shortcuts { color: #91a2b9; font-size: 12px; line-height: 1.8; margin: 16px 0 0; }
+.help-shortcuts kbd { font-size: 11px; padding: 2px 5px; min-width: 14px; }
+@container game-viewport (max-width: 440px) { .help-info-grid { grid-template-columns: 1fr; } }

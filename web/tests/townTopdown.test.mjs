@@ -143,3 +143,25 @@ test('all concept-layout entrances connect through the central plaza', () => {
     }
     for(let x=1500;x<=2400;x+=step) assert.ok(p.canStand(x,1100), 'open plaza');
 });
+
+test('tutorial direction stays visible at other buildings and yields only to the destination prompt', () => {
+    const building=TOWN_BUILDINGS.find(b=>b.id==='bit_logistics'),entry=townEntrance(building);
+    const arrow={hidden:false,style:{}},text={textContent:''};
+    const direction={hidden:false,style:{},querySelector: selector=>selector.includes('arrow')?arrow:text};
+    const legacy={hidden:false};
+    const stage={ callbacks:{getTutorialDestination:()=>building.id}, tutorialDirection:direction,tutorialDestination:legacy,
+        playerController:{charPosX:entry.x+200,charPosY:entry.y},worldTrackEl:{getBoundingClientRect:()=>({top:0})},
+        nameTag:{getBoundingClientRect:()=>({top:100})} };
+    TownStage.prototype.updateTutorialDirection.call(stage);
+    assert.equal(direction.hidden,false);assert.equal(legacy.hidden,true);
+    stage.activeNearbyObject={id:'other'};
+    TownStage.prototype.updateTutorialDirection.call(stage);assert.equal(direction.hidden,false);
+    stage.activeNearbyObject={id:building.id};
+    TownStage.prototype.updateTutorialDirection.call(stage);assert.equal(direction.hidden,true);
+    stage.activeNearbyObject=null;stage.playerController.charPosX=entry.x;
+    TownStage.prototype.updateTutorialDirection.call(stage);assert.equal(direction.hidden,true);
+    stage.playerController.charPosX=entry.x+200;
+    TownStage.prototype.updateTutorialDirection.call(stage);assert.equal(direction.hidden,false);
+    stage.callbacks.getTutorialDestination=()=>null;
+    TownStage.prototype.updateTutorialDirection.call(stage);assert.equal(direction.hidden,true);
+});

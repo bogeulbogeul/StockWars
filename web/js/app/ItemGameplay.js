@@ -1,10 +1,15 @@
 import { ItemEngine } from '../engine/ItemEngine.js';
+import { showItemUseNotice } from '../components/ItemUseNotice.js';
+import { toastManager } from '../components/ToastManager.js';
+import { playRecoveryDrinkEffect } from '../components/RecoveryDrinkEffect.js';
 import { applyPlayerTrait } from '../engine/PlayerTrait.js';
 import { LevelUpNotice } from '../components/LevelUpNotice.js';
 import { ItemCenter } from '../components/ItemCenter.js';
+import { SideQuestEngine } from '../engine/SideQuestEngine.js';
 import { RentQuestTracker } from '../components/RentQuestTracker.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
+import { titleName } from '../data/playerTitles.js';
 
 const SAVE_KEY = 'stockwars-item-gameplay-v1';
 
@@ -66,8 +71,47 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     });
     let gameStarted = false;
-    const rentQuest = new RentQuestTracker(app.appContainer);
-    const updateQuest = () => rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true);
+    const sideQuests = new SideQuestEngine(() => engine.state, market);
+    const rentQuest = new RentQuestTracker(app.appContainer, { onClaimQuest: id => {
+        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return;
+        if (sideQuests.list().find(quest=>quest.id===id)) {
+            toastManager.show('의뢰한 NPC에게 돌아가 말을 걸어 보상을 받으세요.',true);return;
+        }
+        const result = sideQuests.claim(id);
+        toastManager.show(result.message, result.success);
+        if (result.success) sync();
+    } });
+    const updateQuest = () => {
+        const quests = sideQuests.active();
+        rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true, quests);
+        app.smartphoneUI.achievementAppModule?.update(sideQuests.titleCollection(), sideQuests.equippedTitle());
+    };
+    if (app.smartphoneUI.achievementAppModule) app.smartphoneUI.achievementAppModule.onEquipTitle = id => {
+        if (!gameStarted || !sideQuests.equipTitle(id).success) return;
+        updateQuest(); save();
+    };
+    app.getProfileTitles = () => ({
+        owned: sideQuests.titleCollection().filter(quest => quest.claimed && titleName(quest.id)).map(quest => quest.id),
+        equipped: sideQuests.equippedTitle()
+    });
+    app.getQuestOffers = giver => gameStarted && app.userProfile?.firstTutorialCompleted === true ? sideQuests.offers(giver) : [];
+    app.getNpcReward = giver => gameStarted && app.userProfile?.firstTutorialCompleted === true
+        ? sideQuests.active().find(quest=>quest.giver===giver&&quest.ready&&!quest.claimed) : null;
+    app.claimNpcReward = (id,giver) => {
+        if(app.getNpcReward(giver)?.id!==id)return {success:false};
+        const result=sideQuests.claim(id);if(result.success)sync();return result;
+    };
+    app.acceptQuest = (id, giver) => {
+        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return { success: false, message: '튜토리얼 이후 의뢰를 받을 수 있어요.' };
+        const result = sideQuests.accept(id, giver);
+        if (result.success) { updateQuest(); rentQuest.setTab('side'); save(); }
+        toastManager.show(result.message, result.success);
+        return result;
+    };
+    app.recordQuestEvent = (event, key) => {
+        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return;
+        if (sideQuests.record(event, key)) { updateQuest(); save(); }
+    };
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
     market.itemEngine = engine;
@@ -125,12 +169,20 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     const activate = id => {
         const result = engine.use(id);
         sync();
+        if (result.success && id === 'item_energy_drink') {
+            app.itemCenter.dialog.close();
+            void playRecoveryDrinkEffect();
+            return result;
+        }
         if (result.success && result.rumorId) {
             const rumor = engine.state.inventory.find(item => item.id === result.rumorId);
             app.inventoryModal.rumorPopup.open(rumor, () => sync());
             return result;
         }
-        if (!app.itemCenter.showStatBoost(result)) app.itemCenter.open(result.message, id === 'item_lotto_ticket' ? 'lotto' : '');
+        if (!result.success) { toastManager.show(result.message, false); return result; }
+        if (id === 'item_lotto_ticket') app.itemCenter.open(result.message, 'lotto');
+        else if (id === 'item_weekly_drink_ration') app.itemCenter.open(result.message, 'mail');
+        else if (!app.itemCenter.showStatBoost(result)) showItemUseNotice(id, result, engine);
         return result;
     };
     app.itemGameplay = {
@@ -138,7 +190,13 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         start() { gameStarted = true; sync(); },
         pause() { gameStarted = false; levelUpNotice.close(); updateQuest(); },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
-        purchase(id, quantity, instant) { const r = engine.purchase(id, quantity, instant); sync(); app.itemCenter.showStatBoost(r); return r; },
+        purchase(id, quantity, instant, { deferDrinkEffect = false } = {}) {
+            const r = engine.purchase(id, quantity, instant);
+            sync();
+            app.itemCenter.showStatBoost(r);
+            if (r.success && instant && id === 'item_energy_drink' && !deferDrinkEffect) void playRecoveryDrinkEffect();
+            return r;
+        },
         activate,
         reset() {
             engine.state = new ItemEngine({ market, blackSwanEnabled: engine.blackSwanEnabled }).state;
@@ -161,7 +219,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     app.inventoryModal.addItem = item => { const r = oldAdd(item); engine.state.inventory = app.inventoryModal.items; save(); return r; };
     const oldDiscard = app.inventoryModal.discardItem.bind(app.inventoryModal);
     app.inventoryModal.discardItem = id => {
-        if (id === 'item_lotto_ticket') { app.itemCenter.open('로또 응모권은 추첨 기록과 연결되어 버릴 수 없습니다.'); return; }
+        if (id === 'item_lotto_ticket') { toastManager.show('로또 응모권은 추첨 기록과 연결되어 버릴 수 없습니다.', false); return; }
         oldDiscard(id);
         engine.state.inventory = app.inventoryModal.items;
         if (!engine.state.inventory.some(i => i.id === id)) {
@@ -170,7 +228,16 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
         sync();
     };
-    market.subscribe(() => { updateQuest(); save(false); });
+    let observedTrades = market.tradeHistory.length;
+    market.subscribe(() => {
+        if (market.tradeHistory.length < observedTrades) observedTrades = 0;
+        const trades = market.tradeHistory.slice(observedTrades);
+        observedTrades = market.tradeHistory.length;
+        for (const trade of trades) {
+            if (trade.quantity > 0 && ['sell', 'liquidate'].includes(trade.side)) app.recordQuestEvent('trade', trade);
+        }
+        updateQuest(); save(false);
+    });
     window.addEventListener('pagehide', () => save());
     engine.tick();
     sync();

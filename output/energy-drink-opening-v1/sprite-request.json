@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "energy-drink-opening",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 384,
+    "safe_margin_x": 24,
+    "safe_margin_y": 36
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "open": {
+      "frames": 4,
+      "fps": 5,
+      "loop": false,
+      "action": "Can opening one-shot: sealed silver pull-tab flat; pull-tab lifts; seal pops open with a small connected pale fizz plume; open aperture with fizz settling. Same can body anchored and unchanged in each frame. No extra cans, text or hands."
+    }
+  },
+  "style": "match the attached base/anchor reference image EXACTLY: same pixel density (logical pixel block size), same body proportions, same outline weight, same palette, same shading style, same level of detail. Do not restyle, do not change proportions, do not add or remove detail density.",
+  "subject": "effect",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

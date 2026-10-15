@@ -34,8 +34,7 @@ export class TitleScreen {
                     </header>
                     <nav class="title-menu-container" aria-label="게임 메뉴">
                         <button type="button" class="title-btn primary-start-btn" id="btnTitleNewGame">
-                            <span class="btn-text-group"><span class="btn-title">새게임 시작</span></span>
-                            <span class="btn-arrow" aria-hidden="true">↗</span>
+                            <span class="btn-title">새게임 시작</span>
                         </button>
                         <div class="title-sub-btn-group">
                             <button type="button" class="title-sub-btn" id="btnTitleContinue">이어하기 <span aria-hidden="true">→</span></button>

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "energy-drink-opening",
+    "description": "Stationary turquoise energy drink can with cream label orange lightning silver lid. Clean readable game UI illustration. Fixed slightly elevated front view showing lid. Not a character, no limbs.",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 384,
+    "safe_margin_x": 24,
+    "safe_margin_y": 36
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "open": {
+      "frames": 10,
+      "fps": 12,
+      "loop": false,
+      "action": "Smooth one-shot can opening in TEN incremental drawings. Body and lid rim stay absolutely stationary and same dimensions across all drawings. Only silver ring-pull rotates gradually upward over frames 1 to 5; aperture opens in frame 6; connected small pale fizz expands gently in frames 7 and 8 then shrinks in 9 and 10. No body squash, no can tilting, no body vertical motion, no zoom, no text, no hands. Keep can base at identical height; leave shared headroom above lid for fizz so the body never needs rescaling."
+    }
+  },
+  "style": "Match the supplied existing can design; clean smooth non-pixel illustration. Orthographic product view, fixed silhouette, identical can body size and bottom baseline in every frame.",
+  "subject": "effect",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

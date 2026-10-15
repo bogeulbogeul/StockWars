@@ -386,6 +386,7 @@ export class CipherCompetitionRoom{
             status.textContent=quit?'대결을 포기했습니다.':`대결 종료 · ${mine>other?'1위 나':mine<other?`1위 ${opponent}`:'공동 1위'} · 내 총자산 ${Math.round(mine).toLocaleString()}G · ${opponent} ${Math.round(other).toLocaleString()}G${room.opponent?' · 참가비 0G · 실제 계좌 변동 없음':''}`;
             match.dialog.querySelector('[data-close]').textContent='대결 로비로 돌아가기';
             const players=[{name:'나',assets:mine,forfeited:quit},{name:opponent,assets:other}];
+            this.onMatchFinished?.({opponent,completed:!quit,playerAssets:mine,opponentAssets:other});
             if(quit)saveAiArenaHistory(room,players);
             else this.showResults(match,room,players);
         };

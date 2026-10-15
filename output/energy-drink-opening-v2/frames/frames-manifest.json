@@ -1,0 +1,169 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2",
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 384,
+    "safe_margin_x": 24,
+    "safe_margin_y": 36
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "open",
+      "frames": 10,
+      "method": "components",
+      "files": [
+        "frames/open/frame-0.png",
+        "frames/open/frame-1.png",
+        "frames/open/frame-2.png",
+        "frames/open/frame-3.png",
+        "frames/open/frame-4.png",
+        "frames/open/frame-5.png",
+        "frames/open/frame-6.png",
+        "frames/open/frame-7.png",
+        "frames/open/frame-8.png",
+        "frames/open/frame-9.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 47059,
+          "bbox": [
+            47,
+            36,
+            208,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 47016,
+          "bbox": [
+            48,
+            36,
+            209,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 45043,
+          "bbox": [
+            50,
+            36,
+            207,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "nontransparent_pixels": 43202,
+          "bbox": [
+            51,
+            36,
+            205,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 4,
+          "nontransparent_pixels": 40022,
+          "bbox": [
+            54,
+            36,
+            201,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 5,
+          "nontransparent_pixels": 39539,
+          "bbox": [
+            55,
+            36,
+            201,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 6,
+          "nontransparent_pixels": 39788,
+          "bbox": [
+            55,
+            36,
+            201,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 7,
+          "nontransparent_pixels": 33980,
+          "bbox": [
+            61,
+            36,
+            195,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 8,
+          "nontransparent_pixels": 40967,
+          "bbox": [
+            53,
+            36,
+            202,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 9,
+          "nontransparent_pixels": 41093,
+          "bbox": [
+            53,
+            36,
+            202,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

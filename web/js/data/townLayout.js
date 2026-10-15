@@ -2,7 +2,7 @@
 export const TOWN_WORLD_WIDTH = 3700;
 export const TOWN_WORLD_HEIGHT = 2600;
 // Temporary camera framing; this is not an asset production specification.
-export const TOWN_VIEW_SCALE = 0.72;
+export const TOWN_VIEW_SCALE = 1;
 export const TOWN_BUILDING_DEPTH = 180;
 export const TOWN_PROP_BASE_Y = 1120;
 // Scenery stays paused. Reposition the retained street props before enabling it.

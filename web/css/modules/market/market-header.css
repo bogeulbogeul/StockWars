@@ -241,6 +241,18 @@
 .hot-card-change { font-size: 12px; font-weight: 600; font-family: var(--font-mono); margin-top: 2px; }
 
 /* Home balances the asset summary and recent stocks across the available phone height. */
+#stockApp .ticker-marquee-wrapper {
+    height: 64px;
+    min-height: 64px;
+    flex-shrink: 0;
+}
+#stockApp .ticker-item {
+    font-size: 17px;
+    line-height: 1.4;
+    padding: 8px 14px;
+    gap: 9px;
+}
+#stockApp .ticker-index-pct { font-size: 15px; }
 #stockApp .app-body:has(> #tabHomeView.active) {
     display: flex;
     flex-direction: column;
@@ -253,38 +265,38 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(180px, .8fr) auto minmax(260px, 1.2fr);
-    gap: 16px;
-    padding: 18px 16px;
+    grid-template-rows: minmax(150px, .7fr) auto minmax(230px, 1.1fr);
+    gap: 10px;
+    padding: 12px 14px;
 }
 #tabHomeView .summary-card {
     margin: 0;
-    padding: 20px 18px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 12px;
+    gap: 8px;
     min-width: 0;
 }
 #tabHomeView .card-title { font-size: 13px; }
-#tabHomeView .net-worth-amount { font-size: 30px; line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
-#tabHomeView .card-stat-grid { padding-top: 16px; gap: 8px; }
+#tabHomeView .net-worth-amount { font-size: 27px; line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
+#tabHomeView .card-stat-grid { padding-top: 10px; gap: 8px; }
 #tabHomeView .stat-box { min-width: 0; gap: 5px; }
 #tabHomeView .stat-lbl { font-size: 11px; }
 #tabHomeView .stat-val { font-size: 13px; overflow-wrap: anywhere; }
 #tabHomeView > .section-title { margin: 4px 0 0; font-size: 15px; }
 #recentStocksGrid {
     margin: 0;
-    gap: 12px;
+    gap: 8px;
     grid-auto-rows: 1fr;
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 #recentStocksGrid .hot-stock-card {
-    padding: 14px;
+    padding: 10px;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 #recentStocksGrid .hot-card-top { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin: 0 0 6px; }
 #recentStocksGrid .hot-stock-name { font-size: 14px; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }

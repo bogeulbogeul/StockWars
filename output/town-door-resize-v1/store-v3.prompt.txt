@@ -1,0 +1,2 @@
+Built-in image_gen, precise-object-edit. Input: VivianStore-door-v2.png.
+Reduce only the central double sliding door and silver frame to 80% width and height, bottom anchored, same horizontal center. Fill freed space with cream tiled wall. Preserve building size, silhouette, roof, basket sign, windows, goods, intercom, palette, crisp outlines, clean color fills, RPG top-down perspective and transparency. No cropping or new objects.

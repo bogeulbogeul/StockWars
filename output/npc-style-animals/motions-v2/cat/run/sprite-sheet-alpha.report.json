@@ -73,7 +73,7 @@
     {
       "state": "right_walk",
       "frame": 0,
-      "nontransparent_pixels": 40014,
+      "nontransparent_pixels": 46984,
       "x": 0,
       "y": 1200,
       "w": 320,
@@ -82,7 +82,7 @@
     {
       "state": "right_walk",
       "frame": 1,
-      "nontransparent_pixels": 33339,
+      "nontransparent_pixels": 42910,
       "x": 320,
       "y": 1200,
       "w": 320,
@@ -91,7 +91,7 @@
     {
       "state": "right_walk",
       "frame": 2,
-      "nontransparent_pixels": 38932,
+      "nontransparent_pixels": 44481,
       "x": 640,
       "y": 1200,
       "w": 320,

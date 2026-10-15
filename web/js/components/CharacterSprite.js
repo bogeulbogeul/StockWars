@@ -15,8 +15,8 @@ export function setPlayerCharacterStyle(styleId) { selectedStyle = resolveCharac
 export function characterFaceSVG(styleId, { shoulders = false } = {}) {
     const style = resolveCharacterStyle(styleId), f = style.frames.rows.down_idle[0];
     const crop = style.id === 'black-cat'
-        ? [96, 22, 174, shoulders ? 201 : 150]
-        : [69, 22, 195, shoulders ? 199 : 145];
+        ? [96, 16, 174, shoulders ? 207 : 156]
+        : [69, 16, 195, shoulders ? 205 : 151];
     const [, , w, h] = crop;
     return `<svg class="character-face-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" aria-hidden="true" focusable="false"><svg width="${w}" height="${h}" viewBox="${crop.join(' ')}" overflow="hidden"><svg width="320" height="400" viewBox="${f.x} ${f.y} ${f.w} ${f.h}" overflow="hidden"><image href="${style.preview}" width="${style.frames.sheetWidth}" height="${style.frames.sheetHeight}"/></svg></svg></svg>`;
 }
@@ -27,7 +27,15 @@ export function characterFrame({ styleId = selectedStyle, direction = 'down', mo
     const basis = flip ? 'right' : seated && facing === 'up' ? 'down' : facing;
     const mode = seated ? 'sit' : carrying ? 'carry' : moving ? 'walk' : 'idle';
     const state = `${basis}_${mode}`;
-    const frames = style.frames.rows[state] || style.frames.rows.down_idle;
+    // Stopping holds the walk's neutral artwork, avoiding a separately drawn idle.
+    const neutral = mode === 'idle' && style.frames.rows[`${basis}_walk`]?.[1];
+    const frames = neutral ? [neutral] : style.frames.rows[state] || style.frames.rows.down_idle;
+    const wag = style.id === 'dog' && (!moving || seated) && style.frames.rows[`${state}_wag`];
+    if (wag) {
+        const index = [1, 2, 1, 0][Math.floor(time / 160) % 4];
+        // The held middle pose shares the original approved artwork exactly.
+        return { style, state, index, flip, rect: index === 1 ? frames[0] : wag[index] };
+    }
     const order = frames.length === 3 ? [0, 1, 2, 1] : frames.map((_, i) => i);
     const index = moving && !seated ? order[Math.floor(time / 160) % order.length] : carrying && !seated && frames.length === 3 ? 1 : 0;
     return { style, state, index, flip, rect: frames[index] };
