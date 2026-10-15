@@ -5,13 +5,13 @@ import path from 'node:path';
 
 // Closed-demo guest sessions, not authenticated accounts. No NPCs are registered.
 export class PresenceRegistry {
-    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = true } = {}) {
+    constructor({ now = Date.now, timeoutMs = 30000, capacity = 50, nameFile, enforceUniqueNicknames = false } = {}) {
         this.now = now;
         this.timeoutMs = timeoutMs;
         this.capacity = capacity;
         this.sessions = new Map();
         this.nameFile = nameFile;
-        // Shared towns reserve each normalized nickname for its session.
+        // Player identity is session-based; name uniqueness is optional.
         this.enforceUniqueNicknames = enforceUniqueNicknames;
         this.names = new Map();
         this.social = { requests: [], friendships: [] };
@@ -233,6 +233,12 @@ export class PresenceRegistry {
         const peer = [...this.sessions.entries()].find(([, value]) => value.playerId === playerId);
         return [...this.names.values()].find(value => value.token === peer?.[0])?.nickname || `플레이어 ${playerId}`;
     }
+    resolveNamedToken(name) {
+        const matches = [...this.names.values()].filter(entry => entry.nickname === name);
+        if (matches.length > 1) throw Object.assign(new Error('같은 닉네임의 유저가 여러 명입니다. 플레이어를 직접 선택해 주세요.'), { status: 409 });
+        return matches[0]?.token;
+    }
+
     friends(token, options = {}) {
         const { operation = 'list', targetId } = options;
         if (operation === 'gift' || operation === 'giftAck') return handleGift(this, token, options);
@@ -247,7 +253,7 @@ export class PresenceRegistry {
         }
         const peers = [...this.sessions.entries()];
         const peer = peers.find(([, s]) => s.playerId === targetId);
-        const target = peer?.[0] || [...this.names.values()].find(n => n.nickname === options.targetName)?.token;
+        const target = peer?.[0] || this.resolveNamedToken(options.targetName);
         const fail = message => { throw Object.assign(new Error(message), { status: 409 }); };
         const connected = this.social.friendships.find(pair => pair.includes(token) && pair.includes(target));
         if (operation !== 'list') {

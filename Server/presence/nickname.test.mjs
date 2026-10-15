@@ -51,3 +51,13 @@ test('development permits duplicate names and positions without replacing either
     assert.equal([...registry.names.values()][0].token, a);
     assert.throws(() => registry.claimNickname(a, ' '), /1~10/);
 });
+
+test('duplicate names cannot silently target the wrong player', () => {
+    const registry = new PresenceRegistry();
+    const a = registry.session(), b = registry.session(), c = registry.session();
+    registry.claimNickname(a.token, '동명이인'); registry.claimNickname(b.token, '동명이인');
+    registry.claimNickname(c.token, '요청유저');
+    assert.throws(() => registry.friends(c.token, { operation: 'request', targetName: '동명이인' }), /여러 명/);
+    registry.friends(c.token, { operation: 'request', targetId: b.playerId });
+    assert.equal(registry.social.requests[0].to, b.token);
+});

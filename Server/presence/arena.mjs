@@ -71,7 +71,7 @@ export class OnlineArena {
         if(action==='state')return this.state(room,token);
         if(action==='invite') {
             if(room.owner!==token||room.phase!=='waiting')fail('방장만 대기실에서 초대할 수 있습니다.',403);
-            const friend=[...this.registry.names.values()].find(n=>n.nickname===input.targetName)?.token;
+            const friend=this.registry.resolveNamedToken(input.targetName);
             if(!friend||!this.registry.social.friendships.some(pair=>pair.includes(token)&&pair.includes(friend)))fail('등록된 친구만 초대할 수 있습니다.');
             if(!this.online(friend))fail('친구가 오프라인입니다.');room.invited.add(friend);return {success:true};
         }
