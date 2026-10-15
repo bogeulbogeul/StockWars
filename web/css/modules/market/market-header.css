@@ -239,3 +239,55 @@
 .sector-tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
 .hot-card-price { font-size: 15px; font-weight: 700; font-family: var(--font-mono); }
 .hot-card-change { font-size: 12px; font-weight: 600; font-family: var(--font-mono); margin-top: 2px; }
+
+/* Home balances the asset summary and recent stocks across the available phone height. */
+#stockApp .app-body:has(> #tabHomeView.active) {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-bottom: 0;
+}
+#tabHomeView.active {
+    flex: 1 0 auto;
+    min-height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(180px, .8fr) auto minmax(260px, 1.2fr);
+    gap: 16px;
+    padding: 18px 16px;
+}
+#tabHomeView .summary-card {
+    margin: 0;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+}
+#tabHomeView .card-title { font-size: 13px; }
+#tabHomeView .net-worth-amount { font-size: 30px; line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
+#tabHomeView .card-stat-grid { padding-top: 16px; gap: 8px; }
+#tabHomeView .stat-box { min-width: 0; gap: 5px; }
+#tabHomeView .stat-lbl { font-size: 11px; }
+#tabHomeView .stat-val { font-size: 13px; overflow-wrap: anywhere; }
+#tabHomeView > .section-title { margin: 4px 0 0; font-size: 15px; }
+#recentStocksGrid {
+    margin: 0;
+    gap: 12px;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+#recentStocksGrid .hot-stock-card {
+    padding: 14px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#recentStocksGrid .hot-card-top { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin: 0 0 6px; }
+#recentStocksGrid .hot-stock-name { font-size: 14px; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+#recentStocksGrid .sector-tag { max-width: 100%; font-size: 10px; white-space: normal; }
+#recentStocksGrid .hot-card-price { margin-top: auto; font-size: 18px; line-height: 1.25; overflow-wrap: anywhere; }
+#recentStocksGrid .hot-card-change { font-size: 12px; }

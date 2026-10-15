@@ -1,8 +1,10 @@
+import { PLAYER_DATA_EPOCH } from './data-epoch.mjs';
 export class DurablePlayerStore {
-    constructor({ url, key, fetchImpl = fetch }) {
+    constructor({ url, key, fetchImpl = fetch, dataEpoch = null }) {
         this.url = new URL('/rest/v1/stockwars_player_state', url);
         this.headers = { apikey: key, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates' };
         if (!key.startsWith('sb_secret_')) this.headers.Authorization = `Bearer ${key}`;
+        this.dataEpoch = dataEpoch;
         this.fetch = fetchImpl; this.queue = Promise.resolve(); this.last = null;
     }
     async restore(registry) {
@@ -13,12 +15,19 @@ export class DurablePlayerStore {
         if(rows.length) {
             const state=rows[0].payload;
             if(state?.version!==1||!Array.isArray(state.names)||!state.social||!Array.isArray(state.social.friendships)||!Array.isArray(state.social.requests))throw new Error('저장소 형식이 올바르지 않습니다.');
+            if (this.dataEpoch && state.dataEpoch !== this.dataEpoch) {
+                registry.names.clear();
+                registry.social = { requests: [], friendships: [] };
+                await this.flush(registry);
+                console.info(`Player data reset completed: ${this.dataEpoch}`);
+                return;
+            }
             registry.names=new Map(state.names);registry.social=state.social;
             this.last=JSON.stringify(state);
         } else await this.flush(registry);
     }
     flush(registry) {
-        const payload={version:1,names:[...registry.names],social:registry.social};
+        const payload={version:1,...(this.dataEpoch ? {dataEpoch:this.dataEpoch} : {}),names:[...registry.names],social:registry.social};
         const serialized=JSON.stringify(payload);
         const write=async()=>{
             if(this.last===serialized)return;
@@ -34,5 +43,5 @@ export function configuredPlayerStore(env=process.env) {
     if(!url&&!key)return null;
     if(!url||!key)throw new Error('무료 저장소 주소와 서버 전용 키를 모두 설정해 주세요.');
     if(new URL(url).protocol!=='https:')throw new Error('저장소에는 HTTPS 주소가 필요합니다.');
-    return new DurablePlayerStore({url,key});
+    return new DurablePlayerStore({url,key,dataEpoch:PLAYER_DATA_EPOCH});
 }

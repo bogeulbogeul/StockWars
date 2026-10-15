@@ -1,4 +1,4 @@
-/* Character Creation: Kiosk Base & Stepper Layout */
+/* Character Creation: Kiosk Base Layout */
 /* ==========================================================================
    Character Creation & Trader Registration Kiosk (GDD CORE_GDD_08)
    ========================================================================== */
@@ -73,65 +73,6 @@
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: -0.5px;
-}
-
-/* Stepper Indicators */
-.kiosk-stepper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.step-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.45;
-    transition: all 0.3s ease;
-}
-
-.step-item.active {
-    opacity: 1;
-}
-
-.step-num {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-main);
-    font-size: 11px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.step-item.active .step-num {
-    background: var(--accent-cyan);
-    color: #000;
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-}
-
-.step-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.step-line {
-    width: 40px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: background 0.3s ease;
-}
-
-.step-line.active {
-    background: var(--accent-cyan);
-    box-shadow: 0 0 6px var(--accent-cyan);
 }
 
 /* Step Views */
@@ -253,47 +194,77 @@
     filter: blur(4px);
 }
 
-/* Stardew Valley Style Arrow Navigation Row */
+/* Compact rotation controls matching the registration screen. */
 .avatar-nav-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 24px;
     margin-top: 14px;
-    width: 100%;
+    padding: 6px;
+    width: fit-content;
+    max-width: 100%;
+    position: relative;
+    border: 1px solid rgba(100, 194, 211, 0.16);
+    border-radius: 18px;
+    background: rgba(5, 12, 22, 0.75);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
-.stardew-arrow-btn {
-    width: 42px;
-    height: 38px;
-    background: linear-gradient(180deg, #f3a83b 0%, #d47e1b 100%);
-    border: 2px solid #3d1c04;
-    border-radius: 6px;
-    box-shadow: inset 0 2px 0 rgba(255, 240, 180, 0.6), inset 0 -2px 0 rgba(100, 45, 0, 0.4), 0 3px 0 #2b1202, 0 6px 12px rgba(0, 0, 0, 0.5);
-    color: #3d1c04;
+.avatar-nav-row::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    height: 16px;
+    transform: translate(-50%, -50%);
+    background: rgba(100, 194, 211, 0.22);
+    pointer-events: none;
+}
+
+.avatar-rotate-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: linear-gradient(160deg, #1b3646, #101e2e);
+    border: 1px solid rgba(95, 218, 235, 0.38);
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 rgba(192, 247, 255, 0.12), 0 3px 0 #060e18;
+    color: #a9f4ff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.08s ease, filter 0.08s ease, box-shadow 0.08s ease;
+    transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
     user-select: none;
+    touch-action: manipulation;
     flex-shrink: 0;
 }
 
-.stardew-arrow-btn:hover {
-    background: linear-gradient(180deg, #ffbe53 0%, #e89127 100%);
-    filter: brightness(1.12);
-    transform: translateY(-2px);
-    box-shadow: inset 0 2px 0 rgba(255, 245, 200, 0.8), inset 0 -2px 0 rgba(100, 45, 0, 0.4), 0 5px 0 #2b1202, 0 8px 16px rgba(243, 168, 59, 0.4);
+.avatar-rotate-btn:hover {
+    background: linear-gradient(160deg, #245063, #163043);
+    border-color: var(--accent-cyan);
+    color: #e4fcff;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(192, 247, 255, 0.2), 0 4px 0 #060e18, 0 0 14px rgba(0, 229, 255, 0.14);
 }
 
-.stardew-arrow-btn:active {
+.avatar-rotate-btn:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+}
+
+.avatar-rotate-btn:active {
     transform: translateY(2px);
-    box-shadow: inset 0 1px 0 rgba(255, 240, 180, 0.3), inset 0 -1px 0 rgba(100, 45, 0, 0.5), 0 1px 0 #2b1202;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3), 0 1px 0 #060e18;
 }
 
-.stardew-arrow-btn svg {
-    width: 18px;
-    height: 18px;
-    filter: drop-shadow(0 1px 0 rgba(255, 240, 180, 0.5));
+.avatar-rotate-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .avatar-rotate-btn { transition: none; }
 }

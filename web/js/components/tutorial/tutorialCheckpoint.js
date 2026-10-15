@@ -14,3 +14,11 @@ export function tutorialCheckpoint(steps, index) {
         return position >= 0 && position <= index;
     }).at(-1)?.[0];
 }
+
+// Return the next available chapter; missing chapters in short follow-up lessons are ignored.
+export function nextTutorialChapter(steps, index, resumeCheckpoint) {
+    const current = steps[index]?.id === 'tutorial_resume'
+        ? Math.max(0, steps.findIndex(step => step.id === resumeCheckpoint)) : index;
+    return tutorialChapters.map(([id, name]) => ({ id, name, index: steps.findIndex(step => step.id === id) }))
+        .find(chapter => chapter.index > current) || null;
+}

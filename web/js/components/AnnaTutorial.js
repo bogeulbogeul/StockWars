@@ -1,9 +1,12 @@
+import { annaLessonScreen } from './tutorial/annaLessonScreen.js';
+import { applyAnnaTradeFocus, clearAnnaTradeFocus } from './tutorial/annaTradeFocus.js';
+import { installAnnaInputGuard } from './tutorial/annaInputGuard.js';
 import { tutorialShortcutDestination } from './tutorial/tutorialPresentation.js';
 import { gameKey } from '../app/GameKeys.js';
 import { installAnnaDialogueLayout } from './tutorial/annaDialogueLayout.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
 import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
-import { tutorialChapters, tutorialCheckpoint } from './tutorial/tutorialCheckpoint.js';
+import { tutorialChapters, tutorialCheckpoint, nextTutorialChapter } from './tutorial/tutorialCheckpoint.js';
 
 export class AnnaTutorial {
     constructor(container, callbacks = {}) {
@@ -23,6 +26,8 @@ export class AnnaTutorial {
         this.render();
         this.initDOM();
         installAnnaDialogueLayout(this.overlay);
+        this.inputKey = gameKey;
+        this.removeInputGuard = installAnnaInputGuard(this);
         this.initEventListeners();
     }
 
@@ -36,7 +41,6 @@ export class AnnaTutorial {
                         <div class="vn-portrait-avatar" id="vnPortraitAvatar">
                             <span class="anna-portrait" id="vnAnnaPortrait" data-expression="Standard" role="img" aria-label="안나 — 기본 표정"></span>
                         </div>
-                        <div class="vn-portrait-badge">MANAGER ANNA</div>
                     </div>
 
                     <!-- Right: Dialogue & Nameplate Content -->
@@ -49,7 +53,7 @@ export class AnnaTutorial {
                                 <span class="vn-speaker-title">Cipher Securities</span>
                             </div>
                             <div class="vn-controls">
-                                <button class="vn-btn vn-skip-btn" id="btnVnSkip" title="튜토리얼 건너뛰기">⏩ 스킵</button>
+                                <button class="vn-btn vn-skip-btn" id="btnVnSkip" title="현재 챕터 건너뛰기">건너뛰기</button>
                                 <button class="vn-btn vn-prev-btn" id="btnVnPrevious" title="이전 대사 다시 보기" disabled>◀ 이전</button>
                                 <button class="vn-btn vn-next-btn" id="btnVnNext" title="다음 대사">다음 ▶</button>
                             </div>
@@ -91,6 +95,13 @@ export class AnnaTutorial {
         this.actionArea = document.getElementById('vnActionArea');
         this.btnAction = document.getElementById('btnVnAction');
         this.btnHold = document.getElementById('btnVnHold');
+        const header = this.dialogueBox.querySelector('.vn-top-bar');
+        header.prepend(this.dialogueBox.querySelector('.vn-portrait-frame'));
+        const controls = this.dialogueBox.querySelector('.vn-controls');
+        this.dialogueBox.querySelector('.vn-content-wrapper').append(controls);
+        header.append(this.btnSkip);
+        controls.insertBefore(this.actionArea, this.btnNext);
+
     }
 
     initEventListeners() {
@@ -178,14 +189,12 @@ export class AnnaTutorial {
             this.steps.unshift({
                 id: 'tutorial_resume', speaker: '전담 매니저 안나', expression: 'Smile',
                 tracker: '튜토리얼 이어하기', lessonTitle: '돌아오셨네요, 파트너!',
-                text: `다시 만나서 반가워요! 지난번에 진행하던 [${chapter[1]}]부터 튜토리얼을 다시 안내할게요. 준비되면 아래 버튼을 눌러 주세요.`,
+                text: `다시 만나서 반가워요!\n‘${chapter[1]}’부터 이어갈까요?`,
                 example: { label: '이어서 배울 내용', rows: [chapter[1], '이미 받은 보상과 거래 결과는 그대로 유지돼요.'] },
-                requiresManualAction: true, actionBtnText: '튜토리얼 이어서 진행하기',
+                requiresManualAction: true, actionBtnText: '이어서 시작하기 →',
                 onAction: () => {
                     this.steps.shift();
-                    this.currentStepIdx = Math.max(0, targetIndex);
-                    this.callbacks.onRestoreTutorialChapter?.(chapter[0]);
-                    this.showCurrentStep();
+                    this.resumeChapter(chapter[0], targetIndex);
                 }
             });
         }
@@ -193,6 +202,22 @@ export class AnnaTutorial {
         this.overlay?.classList.remove('hidden');
         this.showCurrentStep();
         this.callbacks.onRecommendationChanged?.();
+    }
+
+    resumeChapter(chapterId, targetIndex) {
+        this.currentStepIdx = Math.max(0, targetIndex);
+        if (chapterId === 'celebrate') {
+            const accountIndex = this.steps.findIndex(step => step.id === 'portfolio_guide');
+            if (accountIndex >= 0) this.currentStepIdx = accountIndex;
+        }
+        this.dialogueHistory = this.steps.slice(0, this.currentStepIdx)
+            .filter(step => step.id !== 'tutorial_resume').map(step => ({ ...step }));
+        this.historyCursor = null;
+        this.reviewingScreen = false;
+        this.restoringScreen = true;
+        try { this.callbacks.onRestoreTutorialChapter?.(chapterId); }
+        finally { this.restoringScreen = false; }
+        this.showCurrentStep();
     }
 
     stopRecommendationReview() {
@@ -249,16 +274,12 @@ export class AnnaTutorial {
         this.cleanupHighlights();
 
         const step = this.steps[this.currentStepIdx];
-        if (step.id === 'close_trade_guide' && this.callbacks.isTradeModalOpen?.() === false) {
-            this.nextStep();
-            return;
-        }
         if (step.id === 'celebrate') {
             const state = this.callbacks.getMarketState?.();
             const lesson = this.callbacks.getFirstTradeLesson?.();
             const holding = state?.portfolio.find(p => p.id === this.targetStock?.id && !p.isShort);
             if (holding && lesson) {
-                step.text = "'" + this.targetStock.name + "'을 샀어요! 내 계좌를 확인해 볼까요?";
+                step.text = "'" + this.targetStock.name + "'을 샀어요! 오른쪽 위 [✕]를 눌러 내 계좌를 확인하러 가요.";
                 step.cards = [['보유', holding.qty + '주'], ['매수가', lesson.buyPrice.toLocaleString() + 'G'], ['남은 현금', state.cash.toLocaleString() + 'G']];
             }
         }
@@ -266,22 +287,74 @@ export class AnnaTutorial {
         const snapshot = { ...step };
         const last = this.dialogueHistory?.at(-1);
         if (!this.dialogueHistory) this.dialogueHistory = [];
-        if (last?.id === step.id) this.dialogueHistory[this.dialogueHistory.length - 1] = snapshot;
-        else this.dialogueHistory.push(snapshot);
+        if (step.id !== 'tutorial_resume') {
+            if (last?.id === step.id) this.dialogueHistory[this.dialogueHistory.length - 1] = snapshot;
+            else this.dialogueHistory.push(snapshot);
+        }
         this.renderDialogue(step);
         if (step.onEnter) step.onEnter();
+        applyAnnaTradeFocus(step.id, undefined, step.chartIntroTarget);
         if (!this.lessonResume && step.id !== 'tutorial_resume') {
             this.callbacks.onCheckpoint?.(tutorialCheckpoint(this.steps, this.currentStepIdx));
         }
     }
 
     renderDialogue(step, reviewing = false) {
+        if (reviewing || this.reviewingScreen || ['portfolio_guide', 'news_tab_guide', 'hts_home_overview'].includes(step.id)) {
+            this.restoringScreen = true;
+            try {
+                this.callbacks.onRestoreLessonScreen?.(annaLessonScreen(step, this.steps), this.targetStock?.id);
+            } finally { this.restoringScreen = false; }
+        }
+        this.reviewingScreen = reviewing;
+        document.querySelectorAll('.tutorial-pulse-target').forEach(element => element.classList.remove('tutorial-pulse-target'));
+        const reviewTarget = step.targetSelector || ({ news_reading_guide: '#newsListContainer', trade_history_guide: '.trade-history-menu > summary', trade_history_fees: '#tradeHistoryList', portfolio_slots_guide: '#portfolioSlotStatus' })[step.id];
+        if (reviewTarget) this.highlightElement(reviewTarget, true);
+        const chartTour = !!step.chartIntroTarget;
+        if (chartTour || this.chartTourVisible) this.callbacks.onTutorialChartVisibility?.(chartTour);
+        this.chartTourVisible = chartTour;
+        this.overlay?.classList.toggle('vn-chart-tour', chartTour);
+        if (step.id === 'hts_home_overview') {
+            const scroller = document.querySelector('#stockApp .app-body');
+            if (scroller) scroller.scrollTop = 0;
+        }
+        if (step.id === 'portfolio_overview') {
+            const history = document.querySelector('#stockApp .trade-history-menu');
+            if (history) history.open = false;
+            const scroller = document.querySelector('#stockApp .app-body');
+            if (scroller) scroller.scrollTop = 0;
+        }
+        applyAnnaTradeFocus(step.id, undefined, step.chartIntroTarget);
+        this.callbacks.onInputStepChanged?.();
+        this.overlay?.classList.toggle('vn-phone-focus', step.id === 'open_phone' && !reviewing);
+        this.overlay?.classList.toggle('vn-app-focus', !!step.appIntroTarget || step.id === 'launch_stock_app');
+        this.overlay?.classList.toggle('vn-app-tour', !!step.appIntroTarget);
+        this.overlay?.classList.toggle('vn-stock-focus', step.id === 'select_stock');
+        document.querySelectorAll('.hts-tour-target').forEach(target => target.classList.remove('hts-tour-target'));
+        const htsTarget = step.htsIntroTarget || (step.id === 'market_tab' ? '#stockApp .nav-tab[data-tab="Market"]' : step.id === 'portfolio_guide' ? '#stockApp .nav-tab[data-tab="Profile"]' : step.id === 'news_tab_guide' ? '#stockApp .nav-tab[data-tab="News"]' : null);
+        this.overlay?.classList.toggle('vn-hts-focus', !!htsTarget);
+        if (step.htsIntroTarget && this.callbacks.getCurrentTutorialTab?.() !== 'Home') this.callbacks.onNavigateTutorial?.('Home');
+        if (htsTarget) {
+            const target = document.querySelector(htsTarget);
+            target?.classList.add('hts-tour-target');
+            const scroller = target?.closest('.app-body');
+            if (scroller) {
+                const rect = target.getBoundingClientRect(), bounds = scroller.getBoundingClientRect();
+                const scale = bounds.height / scroller.offsetHeight || 1;
+                if (rect.top < bounds.top + 8) scroller.scrollTop += (rect.top - bounds.top) / scale - 8;
+                else if (rect.bottom > bounds.bottom - 8) scroller.scrollTop += (rect.bottom - bounds.bottom) / scale + 8;
+            }
+        }
+
+        document.querySelectorAll('#homeScreen .app-icon-item.tutorial-pulse-target').forEach(icon => icon.classList.remove('tutorial-pulse-target'));
+        if (step.appIntroTarget) this.highlightElement(step.appIntroTarget, true);
+        else if (step.id === 'launch_stock_app') this.highlightElement('#iconStockApp', true);
         this.overlay?.classList.toggle('vn-movement-guide', ['go_town_proposal', 'enter_logistics'].includes(step.id));
         const destination = tutorialShortcutDestination(step.id);
         const accountOpen = destination?.tab === 'Profile'
             && ['Profile', 'Account'].includes(this.callbacks.getCurrentTutorialTab?.())
             && !this.callbacks.isTradeModalOpen?.();
-        const shortcut = destination && !accountOpen && this.historyCursor === null ? { label: destination.label, run: () => {
+        const shortcut = !['open_phone', 'launch_stock_app', 'market_tab'].includes(step.id) && destination && !accountOpen && this.historyCursor === null ? { label: destination.label, run: () => {
             if (this.steps[this.currentStepIdx]?.id !== step.id || this.historyCursor !== null) return;
             if (destination.tab) {
                 this.callbacks.onNavigateTutorial?.(destination.tab);
@@ -291,7 +364,7 @@ export class AnnaTutorial {
             }
             else document.querySelector(destination.selector)?.click();
         } } : undefined;
-        const presentationText = renderAnnaLesson(this.dialogueBox?.querySelector('.vn-dialogue-body'), step, shortcut);
+        const presentationText = renderAnnaLesson(this.dialogueBox?.querySelector('.vn-dialogue-body'), step, shortcut, { focused: true });
         this.dialogueBox?.querySelector('.vn-rumor-choices')?.remove();
         if (step.choices && !reviewing) {
             const choices = document.createElement('div');
@@ -320,7 +393,7 @@ export class AnnaTutorial {
         this.btnNext?.classList.toggle('hidden', needsChoice || !!step.choices || !!step.actionBtnText);
         this.nextIndicator?.classList.toggle('hidden', !!step.requiresManualAction || !!step.actionBtnText);
         this.setExpression(step.expression);
-        if (this.speakerName) this.speakerName.textContent = step.speaker;
+        if (this.speakerName) this.speakerName.textContent = step.speaker?.includes('안나') ? '안나' : step.speaker;
         if (this.stepTracker) this.stepTracker.textContent = step.tracker;
 
         // Action button handling
@@ -338,6 +411,9 @@ export class AnnaTutorial {
             this.nextIndicator?.classList.remove('hidden');
             this.dialogueBox?.classList.remove('has-choice');
         }
+        if (this.btnNext) this.btnNext.disabled = reviewing
+            ? ['#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step.targetSelector)
+            : !!step.requiresManualAction;
         if (this.btnPrevious) this.btnPrevious.disabled = (this.historyCursor ?? this.dialogueHistory.length - 1) <= 0;
         this.typeText(presentationText || step.text);
     }
@@ -395,6 +471,14 @@ export class AnnaTutorial {
         if (this.nextIndicator) this.nextIndicator.style.opacity = '1';
     }
 
+    advanceHistory() {
+        this.historyCursor++;
+        if (this.historyCursor >= this.dialogueHistory.length - 1) {
+            this.historyCursor = null;
+            this.renderDialogue(this.steps[this.currentStepIdx]);
+        } else this.renderDialogue(this.dialogueHistory[this.historyCursor], true);
+    }
+
     handleAdvance() {
         if (this.isTyping) {
             this.finishTyping();
@@ -402,11 +486,9 @@ export class AnnaTutorial {
         }
 
         if (this.historyCursor !== null && this.historyCursor !== undefined) {
-            this.historyCursor++;
-            if (this.historyCursor >= this.dialogueHistory.length - 1) {
-                this.historyCursor = null;
-                this.renderDialogue(this.steps[this.currentStepIdx]);
-            } else this.renderDialogue(this.dialogueHistory[this.historyCursor], true);
+            const step = this.dialogueHistory[this.historyCursor];
+            if (['#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step?.targetSelector)) return;
+            this.advanceHistory();
             return;
         }
         const step = this.steps[this.currentStepIdx];
@@ -475,6 +557,17 @@ export class AnnaTutorial {
     }
 
     // Called when player manually clicks smartphone toggle button
+    notifyDetailedChart(open) {
+        if (!open && this.isActive && !this.restoringScreen && this.historyCursor != null
+            && this.dialogueHistory[this.historyCursor]?.targetSelector === '#btnCloseDetailedChartModal') {
+            this.advanceHistory();
+            return;
+        }
+        if (!this.isActive || this.restoringScreen || this.historyCursor !== null) return;
+        const id = this.steps[this.currentStepIdx]?.id;
+        if ((open && id === 'chart_detail') || (!open && id === 'chart_tour_close')) this.nextStep();
+    }
+
     notifyPhoneOpened() {
         if (!this.isActive) return;
         const currentStep = this.steps[this.currentStepIdx];
@@ -487,7 +580,11 @@ export class AnnaTutorial {
 
     // Called when player manually launches 사이퍼M stock app from OS Home screen
     notifyStockAppOpened() {
-        if (!this.isActive) return;
+        if (!this.isActive || this.restoringScreen) return;
+        if (this.historyCursor != null) {
+            if (this.dialogueHistory[this.historyCursor]?.id === 'launch_stock_app') this.advanceHistory();
+            return;
+        }
         const currentStep = this.steps[this.currentStepIdx];
         if (currentStep && currentStep.id === 'launch_stock_app') {
             this.highlightElement('#iconStockApp', false);
@@ -497,7 +594,14 @@ export class AnnaTutorial {
 
     // Called when player manually switches tabs (e.g. Market, Profile/Account)
     notifyTabSwitched(tabName) {
-        if (!this.isActive) return;
+        if (this.isActive && !this.restoringScreen && this.historyCursor != null
+            && ((this.dialogueHistory[this.historyCursor]?.id === 'portfolio_guide' && ['Profile', 'Account'].includes(tabName))
+                || (this.dialogueHistory[this.historyCursor]?.id === 'news_tab_guide' && tabName === 'News')
+                || (this.dialogueHistory[this.historyCursor]?.id === 'market_tab' && tabName === 'Market'))) {
+            this.advanceHistory();
+            return;
+        }
+        if (!this.isActive || this.restoringScreen || this.historyCursor !== null) return;
         const destination = tutorialShortcutDestination(this.steps[this.currentStepIdx]?.id);
         if (destination?.tab === 'Profile' && ['Profile', 'Account'].includes(tabName)) {
             this.dialogueBox?.querySelector('.tutorial-shortcut-btn')?.remove();
@@ -526,8 +630,17 @@ export class AnnaTutorial {
     }
 
     notifyTradeModalClosed() {
-        if (!this.isActive || this.steps[this.currentStepIdx]?.id !== 'close_trade_guide') return;
-        this.nextStep();
+        if (this.isActive && !this.restoringScreen && this.historyCursor != null
+            && this.dialogueHistory[this.historyCursor]?.targetSelector === '#btnCloseTradeModal') {
+            this.advanceHistory();
+            return;
+        }
+        if (!this.isActive || this.restoringScreen || this.historyCursor !== null) return;
+        const id = this.steps[this.currentStepIdx]?.id;
+        if (id === 'celebrate') {
+            const index = this.steps.findIndex(step => step.id === 'portfolio_guide');
+            if (index >= 0) { this.currentStepIdx = index; this.showCurrentStep(); }
+        }
     }
 
     // Called when player manually opens trade modal for recommended stock
@@ -605,8 +718,37 @@ export class AnnaTutorial {
     }
 
     skip() {
+        if (!this.isActive) return;
+        const next = nextTutorialChapter(this.steps, this.currentStepIdx, this.userProfile?.tutorialCheckpoint);
         this.cleanupHighlights();
-        this.complete(true);
+        this.callbacks.onTutorialChartVisibility?.(false);
+        this.chartTourVisible = false;
+        this.overlay?.classList.remove('vn-chart-tour');
+        if (!next || this.lessonResume) { this.complete(true); return; }
+        // Keep skipped explanations in history without running their actions or rewards.
+        this.dialogueHistory ??= [];
+        const historyStart = this.steps[this.currentStepIdx]?.id === 'tutorial_resume'
+            ? Math.max(0, this.steps.findIndex(step => step.id === this.userProfile?.tutorialCheckpoint))
+            : this.currentStepIdx;
+        for (const step of this.steps.slice(historyStart, next.index)) {
+            if (step.id !== 'tutorial_resume' && !this.dialogueHistory.some(entry => entry.id === step.id)) {
+                this.dialogueHistory.push({ ...step });
+            }
+        }
+        // Skipping the welcome must not leave the trading lesson without starter funds.
+        if (next.id === 'open_phone') this.callbacks.onGrantInitialFunds?.(5000);
+        this.currentStepIdx = next.index;
+        if (next.id === 'celebrate') {
+            // No purchase is invented when the trading chapter was skipped.
+            this.currentStepIdx = this.steps.findIndex(step => step.id === 'portfolio_guide');
+            this.stopRecommendationReview();
+        }
+        if (next.id === 'rumor_inventory_guide') {
+            this.steps[next.index].text = '소지품에서 찌라시를 확인할 수 있어요. 위쪽 [소지품]을 눌러 주세요.';
+        }
+        this.historyCursor = null;
+        this.callbacks.onSkipTutorialChapter?.(next.id);
+        this.showCurrentStep();
     }
 
     complete(isSkipped = false) {
@@ -620,6 +762,9 @@ export class AnnaTutorial {
         }
         if (!this.isActive) return;
         this.isActive = false;
+        this.callbacks.onTutorialChartVisibility?.(false);
+        this.chartTourVisible = false;
+        this.overlay?.classList.remove('vn-chart-tour');
         this.callbacks.onActivityChanged?.();
         this.stopRecommendationReview();
         if (this.typewriterTimer) {
@@ -702,6 +847,9 @@ export class AnnaTutorial {
     }
 
     cleanupHighlights() {
+        clearAnnaTradeFocus();
+        this.overlay?.classList.remove('vn-phone-focus', 'vn-app-focus', 'vn-app-tour', 'vn-hts-focus', 'vn-stock-focus');
+        document.querySelectorAll('.hts-tour-target').forEach(target => target.classList.remove('hts-tour-target'));
         document.querySelectorAll('.tutorial-pulse-target').forEach(el => {
             el.classList.remove('tutorial-pulse-target');
         });

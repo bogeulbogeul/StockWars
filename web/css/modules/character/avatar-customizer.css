@@ -413,3 +413,9 @@
     background: linear-gradient(135deg, var(--accent-cyan), #00a8ff);
     color: #000;
 }
+
+/* Anchor the avatar setup action below the controls. */
+#charStep1 .custom-actions-row {
+    margin-top: auto;
+    padding-top: 24px;
+}

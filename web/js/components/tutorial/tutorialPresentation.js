@@ -8,7 +8,7 @@ export function describeTutorialStep(step) {
         market_tab: ['스마트폰 아래쪽에서 [주식 거래]를 찾으세요.'],
         select_stock: ['종목 목록 맨 위의 [안나 추천] 표시를 확인하세요.'],
         chart_colors: ['400G → 450G: 가격이 올라 청록색 +로 표시돼요.', '400G → 350G: 가격이 내려 빨간색 −로 표시돼요.'],
-        chart_detail: ['가격 그래프를 누르면 더 큰 차트를 볼 수 있어요.', '차트 오른쪽 위 [✕]를 누르면 돌아와요.'],
+        chart_detail: ['빛나는 그래프를 누르면 안내가 이어져요.'],
         limit_order_guide: ['400G에 매수 주문 → 400G 이하에서만 사요.', '400G에 매도 주문 → 400G 이상에서만 팔아요.'],
         stock_basics_profit: ['매수: 현금을 내고 주식을 받아요.', '매도: 주식을 팔고 현금을 받아요.'],
         stock_profit_example: ['400G에 산 1주를 450G에 팔면 50G 이익이에요.', '400G에 산 1주를 350G에 팔면 50G 손해예요.'],
@@ -17,7 +17,6 @@ export function describeTutorialStep(step) {
         celebrate: ['방금 산 주식은 [내 계좌]에 보관돼요.', '체결 금액과 수수료만큼 현금이 줄어요.'],
         first_profit_choice: ['지금 팔면 체결된 가격으로 손익이 확정돼요.', '계속 보유하면 가격이 더 오르거나 떨어질 수 있어요.'],
         first_sell_guide: ['팔 수량과 예상 수령 금액을 먼저 확인하세요.', '[매도 (SELL)]를 직접 누르면 주문을 내요.'],
-        close_trade_guide: ['종목창 오른쪽 위 [✕]를 찾으세요.'],
         portfolio_guide: ['[내 계좌]에 방금 산 주식과 남은 현금이 표시돼요.'],
         social_and_ranking_guide: ['400G에 산 주식이 지금 450G라면 평가 이익은 50G예요.', '450G에 실제로 팔면 거래 비용을 뺀 실현 손익이 기록돼요.'],
         portfolio_slots_growth: ['운용력 0: 서로 다른 종목 5개를 보유할 수 있어요.', '운용력 1: 서로 다른 종목 10개를 보유할 수 있어요.'],
@@ -42,7 +41,7 @@ export function describeTutorialStep(step) {
         open_phone: '📱 스마트폰 버튼을 누르세요.', launch_stock_app: '[사이퍼M]을 누르세요.',
         market_tab: '[주식 거래]를 누르세요.', select_stock: '[안나 추천] 종목을 누르세요.',
         buy_stock: '[시장가 · 1주]를 확인하고 [매수 (BUY)]를 누르세요.',
-        close_trade_guide: '종목창의 [✕]를 누르세요.', portfolio_guide: '[내 계좌]를 누르세요.',
+        portfolio_guide: '[내 계좌]를 누르세요.',
         news_tab_guide: '[공시 뉴스]를 누르세요.', go_town_proposal: '오피스 문을 클릭하거나 문 앞에서 F를 누르세요.',
         enter_logistics: '노란 화살표를 따라 이동한 뒤, 입구에서 F를 누르거나 건물을 클릭하세요.', rumor_inventory_guide: '상단 [소지품]을 누르세요.',
         rumor_time_prediction: '아래에서 예상 시점을 선택하세요.',
@@ -52,10 +51,10 @@ export function describeTutorialStep(step) {
     const result = { ...step, lessonTitle: step.lessonTitle || step.tracker?.split('•').at(-1)?.trim(),
         nextAction: step.nextAction || action[step.id] || (step.actionBtnText ? `[${step.actionBtnText}]를 누르세요.` : '[다음 ▶]으로 다음 내용을 확인하세요.') };
     const explanations = {
-        open_phone: '주식 거래는 스마트폰에서 할 수 있어요.', launch_stock_app: '사이퍼M에서 종목과 가격을 확인할 수 있어요.',
-        market_tab: '주식 거래 탭에 살 수 있는 종목이 모여 있어요.', buy_stock: '현금으로 주식 1주를 사볼게요.',
-        close_trade_guide: '이제 산 주식이 계좌에 들어왔는지 확인할게요.', portfolio_guide: '내 계좌에서 보유 주식과 남은 현금을 볼 수 있어요.',
-        news_tab_guide: '공시와 뉴스에서 기업에 생긴 일을 확인할 수 있어요.', rumor_inventory_guide: '물류 보상으로 받은 찌라시는 소지품에 보관돼요.',
+        open_phone: '오른쪽 아래 빛나는 스마트폰을 눌러 주세요.', launch_stock_app: '빛나는 사이퍼M 앱을 눌러 주세요. 종목과 가격을 확인할 수 있어요.',
+        market_tab: '이제 아래쪽의 빛나는 [주식 거래] 탭을 눌러 주세요.', buy_stock: '현금으로 주식 1주를 사볼게요.',
+        portfolio_guide: '아래쪽 [내 계좌]를 눌러 보유 주식을 확인하세요.',
+        news_tab_guide: '아래쪽 [공시 뉴스]를 눌러 기업 소식을 확인해 보세요.', rumor_inventory_guide: '물류 보상으로 받은 찌라시는 소지품에 보관돼요.',
         enter_logistics: '비트 물류센터에서 일을 하고 보상을 받을 수 있어요.'
     };
     if (explanations[step.id]) result.text = explanations[step.id];
@@ -116,13 +115,10 @@ export function createTutorialAction(text, shortcut) {
 }
 
 export function tutorialShortcutDestination(id) {
-    if (['celebrate', 'portfolio_guide', 'social_and_ranking_guide', 'portfolio_slots_guide', 'portfolio_slots_growth', 'portfolio_slots_capacity', 'portfolio_slots_trait'].includes(id)) return { label: '내 계좌 보기 →', tab: 'Profile' };
-    if (id === 'select_stock') return { label: '추천 종목 보기 →', tab: 'Market', openRecommendedStock: true };
+    if (['social_and_ranking_guide', 'portfolio_slots_guide', 'portfolio_slots_growth', 'portfolio_slots_capacity', 'portfolio_slots_trait'].includes(id)) return { label: '내 계좌 보기 →', tab: 'Profile' };
     if (id === 'market_tab') return { label: '주식 거래 열기 →', tab: 'Market' };
-    if (['news_tab_guide', 'news_reading_guide'].includes(id)) return { label: '공시 뉴스 보기 →', tab: 'News' };
     if (id === 'open_phone') return { label: '스마트폰 열기 →', selector: '#floatingPhoneBtn' };
     if (id === 'launch_stock_app') return { label: '사이퍼M 열기 →', selector: '#iconStockApp' };
-    if (id === 'close_trade_guide') return { label: '종목창 닫기 →', selector: '#btnCloseTradeModal' };
     if (['rumor_inventory_guide', 'rumor_intel_explain'].includes(id)) return { label: '소지품 열기 →', selector: '#btnHudInventory' };
     return null;
 }

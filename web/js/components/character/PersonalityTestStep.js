@@ -5,30 +5,30 @@
 
 export const TPT_QUESTIONS = [
     {
-        q: "Q1. 시장 대폭락 상황, 당신의 첫 행동은?",
+        q: "Q1. 산 주식이 갑자기 떨어졌다면?",
         options: [
-            { key: 'analysis', label: "A. 차트의 기술적 지표를 정밀 분석한다.", stat: "분석력" },
-            { key: 'negotiation', label: "B. 금융권 지인에게 연락해 대출 한도를 체크한다.", stat: "협상력" },
-            { key: 'management', label: "C. 저점 매수 기회로 보고 남은 자산을 투입한다.", stat: "운용력" },
-            { key: 'recovery', label: "D. 일단 휴식을 취하며 시장의 평정심을 기다린다.", stat: "회복력" }
+            { key: 'analysis', label: "A. 가격이 떨어진 이유부터 찾는다.", stat: "분석력" },
+            { key: 'negotiation', label: "B. 투자하는 지인에게 의견을 묻는다.", stat: "협상력" },
+            { key: 'management', label: "C. 여윳돈으로 조금 더 사 본다.", stat: "운용력" },
+            { key: 'recovery', label: "D. 잠시 화면을 끄고 마음을 가라앉힌다.", stat: "회복력" }
         ]
     },
     {
-        q: "Q2. 당신이 가장 신뢰하는 정보의 원천은?",
+        q: "Q2. 투자할 여윳돈이 생겼다면?",
         options: [
-            { key: 'analysis', label: "A. 수치와 데이터가 증명된 공식 리포트", stat: "분석력" },
-            { key: 'negotiation', label: "B. 업계 핵심 관계자로부터 들은 은밀한 찌라시", stat: "협상력" },
-            { key: 'management', label: "C. 시장의 전체적인 거래량과 유동성 흐름", stat: "운용력" },
-            { key: 'recovery', label: "D. 직접 발로 뛰며 체감한 시장의 분위기", stat: "회복력" }
+            { key: 'analysis', label: "A. 관심 있는 회사의 실적을 살펴본다.", stat: "분석력" },
+            { key: 'negotiation', label: "B. 수수료와 가입 혜택을 비교한다.", stat: "협상력" },
+            { key: 'management', label: "C. 여러 종목에 나눠 투자한다.", stat: "운용력" },
+            { key: 'recovery', label: "D. 서두르지 않고 여유가 생길 때 시작한다.", stat: "회복력" }
         ]
     },
     {
-        q: "Q3. 큰 수익을 낸 후 가장 먼저 하고 싶은 일은?",
+        q: "Q3. 주식을 팔아 수익이 났다면?",
         options: [
-            { key: 'analysis', label: "A. 매매 일지를 작성하며 승리 요인을 복기한다.", stat: "분석력" },
-            { key: 'negotiation', label: "B. 더 좋은 고급 정보를 얻기 위해 업계 지인들과 식사한다.", stat: "협상력" },
-            { key: 'management', label: "C. 수익금으로 오피스를 확장하거나 고급 가구를 산다.", stat: "운용력" },
-            { key: 'recovery', label: "D. 스파나 여행을 통해 쌓인 스트레스를 해소한다.", stat: "회복력" }
+            { key: 'analysis', label: "A. 잘된 이유를 짧게 기록한다.", stat: "분석력" },
+            { key: 'negotiation', label: "B. 수수료를 줄일 방법을 알아본다.", stat: "협상력" },
+            { key: 'management', label: "C. 수익 일부를 다음 투자에 보탠다.", stat: "운용력" },
+            { key: 'recovery', label: "D. 맛있는 걸 먹으며 잠깐 쉰다.", stat: "회복력" }
         ]
     }
 ];

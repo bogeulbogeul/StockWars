@@ -47,7 +47,6 @@ export class SmartphoneUI {
         this.iconAchieveApp = document.getElementById('iconAchieveApp');
         this.iconSettingsApp = document.getElementById('iconSettingsApp');
 
-        this.headerDayBadge = document.getElementById('headerDayBadge');
         this.navTabs = document.querySelectorAll('.nav-tab');
         this.tabViews = document.querySelectorAll('.tab-view');
         this.btnPhysicalHome = document.getElementById('btnPhysicalHome');
@@ -58,17 +57,10 @@ export class SmartphoneUI {
     initSubComponents() {
         this.homeTab = new HomeTab({
             summaryCard: document.getElementById('summaryCard'),
-            settlementDDay: document.getElementById('settlementDDay'),
             homeNetWorth: document.getElementById('homeNetWorth'),
             homeCash: document.getElementById('homeCash'),
             homePortfolioVal: document.getElementById('homePortfolioVal'),
             homeProfitLoss: document.getElementById('homeProfitLoss'),
-            rentGoalText: document.getElementById('rentGoalText'),
-            rentProgressFill: document.getElementById('rentProgressFill'),
-            bannerCipherVal: document.getElementById('bannerCipherVal'),
-            bannerCipherChange: document.getElementById('bannerCipherChange'),
-            widgetIndex: document.getElementById('widgetIndex'),
-            widgetIndexSub: document.getElementById('widgetIndexSub'),
             recentStocksGrid: document.getElementById('recentStocksGrid')
         }, {
             onSwitchTab: (tab) => this.switchTab(tab),
@@ -337,9 +329,6 @@ export class SmartphoneUI {
     updateState(state) {
         if (!state) return;
 
-        if (this.headerDayBadge) {
-            this.headerDayBadge.textContent = `Day ${state.day} / ${state.maxDays}`;
-        }
 
         this.homeTab?.updateState(state);
         this.stockListTab?.updateState(state);

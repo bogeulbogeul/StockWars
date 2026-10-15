@@ -43,6 +43,7 @@ export const worldNavigation = {
     },
 
     enterOffice() {
+        const returningFromTown = document.body.classList.contains('town-mode-active');
         void window.stockWarsPresence?.leave();
         this.serverSelectModal?.close();
         this.townStage?.hide();
@@ -51,7 +52,7 @@ export const worldNavigation = {
         if (this.topDemoBar?.txtStageToggle) {
             this.topDemoBar.txtStageToggle.textContent = '타운으로 이동';
         }
-        toastManager.show('🏢 [홈 오피스] 개인 트레이딩 룸으로 복귀했습니다.', true);
+        if (returningFromTown) toastManager.show('홈 오피스로 돌아왔습니다.', true);
     },
 
     toggleStage() {

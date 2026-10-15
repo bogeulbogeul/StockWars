@@ -159,6 +159,7 @@ class StockWarsApplication {
         });
 
         this.detailedChartModal = new DetailedChartModal(this.appContainer, {
+            onClose: () => this.annaTutorial?.notifyDetailedChart(false),
             getStock: (id) => marketEngine.stocks.get(id), getPriceHistory: (id) => marketEngine.priceHistory.get(id), getChartHistory: id => marketEngine.getChartHistory(id)
         });
         this.newsDetailModal = new NewsDetailModal(this.appContainer, {
@@ -391,9 +392,32 @@ class StockWarsApplication {
 
         // 8. Anna Visual Novel Tutorial System (GDD CORE_GDD_10)
         this.annaTutorial = new AnnaTutorial(this.appContainer, {
+            onRestoreLessonScreen: (screen, stockId) => {
+                this.detailedChartModal.close(false);
+                this.tradeModal.close();
+                if (!screen.phone) { this.smartphoneUI.minimizePhone(); return; }
+                document.body.classList.remove('phone-minimized');
+                document.body.classList.add('phone-view-active');
+                if (screen.phone === 'Home') this.smartphoneUI.showHomeScreen();
+                else {
+                    this.smartphoneUI.showStockApp();
+                    this.smartphoneUI.switchTab(screen.tab);
+                    if (screen.trade && stockId) this.tradeModal.open(stockId);
+                }
+            },
+            onTutorialChartVisibility: visible => {
+                if (visible && this.detailedChartModal.modal.classList.contains('hidden')) this.detailedChartModal.open(this.tradeModal.selectedStockId);
+                else if (!visible) this.detailedChartModal.close(false);
+            },
             getCurrentTutorialTab: () => this.smartphoneUI.activeAppTab,
             isTradeModalOpen: () => this.tradeModal.isOpen(),
             onActivityChanged: () => this.syncTutorialNavigation(),
+            onInputStepChanged: () => {
+                this.officeStage?.keysHeld.clear();
+                if (this.officeStage) this.officeStage.targetTile = null;
+                this.officeStage?.roomPackage?.cancel();
+                this.townStage?.playerController?.keysHeld.clear();
+            },
             getMarketState: () => marketEngine.getState(),
             getFirstTradeLesson: () => marketEngine.firstTradeLesson,
             onSaveLesson: () => this.itemGameplay?.save(),
@@ -403,12 +427,24 @@ class StockWarsApplication {
                     this.itemGameplay?.save();
                 }
             },
+            onSkipTutorialChapter: checkpoint => {
+                this.tradeModal.close();
+                this.inventoryModal.close();
+                if (checkpoint === 'celebrate') {
+                    this.smartphoneUI.showStockApp();
+                    document.body.classList.remove('phone-minimized');
+                    document.body.classList.add('phone-view-active');
+                    this.smartphoneUI.switchTab('Market');
+                } else {
+                    this.smartphoneUI.minimizePhone();
+                }
+            },
             onRestoreTutorialChapter: checkpoint => {
                 if (checkpoint === 'celebrate') {
                     this.smartphoneUI.showStockApp();
                     document.body.classList.remove('phone-minimized');
                     document.body.classList.add('phone-view-active');
-                    this.smartphoneUI.switchTab('Profile');
+                    this.smartphoneUI.switchTab('Market');
                 }
             },
             onTutorialRecoveryDrink: () => {
@@ -508,14 +544,13 @@ class StockWarsApplication {
         this.smartphoneUI.updateUserProfile(this.userProfile);
         this.officeStage?.updateUserProfile(userProfile);
         this.townStage?.updateUserProfile(userProfile);
-        this.enterOffice();
         await this.startGame(userProfile.mode || 'NEW');
         const recommendation = marketEngine.getRecommendedTutorialStock(userProfile);
         this.annaTutorial?.start(userProfile, recommendation);
-        toastManager.show(`🎉 [출입증 발급 완료] ${userProfile.nickname} (${userProfile.trait.title}) 트레이더님 환영합니다!`);
     }
 
     async startGame(mode) {
+        toastManager.setQuietMode(mode !== 'CONTINUE' || this.userProfile?.firstTutorialCompleted === false);
         const sessionMode = mode === 'CONTINUE' ? this.userProfile?.mode : mode;
         this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
         await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
@@ -547,9 +582,7 @@ class StockWarsApplication {
             if (this.topDemoBar?.txtFrameToggle) {
                 this.topDemoBar.txtFrameToggle.textContent = '스마트폰 열기';
             }
-            toastManager.show(isDeveloperMode
-                ? '🛠️ 개발자 모드 시작! (Day 1 • 새 게임 진행 / 디버그 툴바 활성화)'
-                : '🎮 새로운 게임 시작! (Day 1 • 오피스 입장)');
+
         } else {
             if (this.isLocalSession) this.topDemoBar?.show();
             else this.topDemoBar?.hide();
@@ -581,6 +614,7 @@ class StockWarsApplication {
     }
 
     syncTutorialNavigation() {
+        toastManager.setQuietMode(this.annaTutorial?.isActive === true);
         this.settingsModal?.syncNavigation();
         const active = this.isTutorialNavigationBlocked();
         if (this.lastTutorialLock !== active) {
@@ -711,6 +745,7 @@ class StockWarsApplication {
 
     openDetailedChart(stockId) {
         this.detailedChartModal.open(stockId);
+        this.annaTutorial?.notifyDetailedChart(true);
     }
 
     openNewsDetailModal(newsId) {

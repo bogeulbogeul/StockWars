@@ -62,11 +62,21 @@ export function buildAnnaScenario({
             targetSelector: '#floatingPhoneBtn',
             onEnter: () => {
                 highlightElement('#floatingPhoneBtn', true);
-                highlightElement('#btnToggleFrame', true);
             }
         },
 
         // STEP 3: Launch 사이퍼M Stock App
+        ...[
+            ['stock', '#iconStockApp', '사이퍼M', '사이퍼M은 주식을 사고파는 앱이에요.\n종목 가격과 내 계좌를 확인할 수 있어요.'],
+            ['bubble', '#iconBubbleApp', 'Bubble', 'Bubble에서는 친구를 추가하고\n다른 플레이어와 채팅할 수 있어요.'],
+            ['memo', '#iconMemoApp', '메모', '메모는 투자 생각과 매매 일지를 적을 공간이에요.\n아직 준비 중이에요.'],
+            ['achievements', '#iconAchieveApp', '업적', '업적은 달성한 목표를 확인할 공간이에요.\n지금은 간단한 달성 안내만 보여줘요.'],
+            ['settings', '#iconSettingsApp', '설정', '이 설정 앱은 아직 버전 안내만 보여줘요.\n게임 설정은 화면 위 톱니바퀴에서 바꿀 수 있어요.']
+        ].map(([id, appIntroTarget, name, text]) => ({
+            id: `phone_app_intro_${id}`, expression: 'Smile', speaker: '안나',
+            text, tracker: `2/4 • ${name}`, requiresManualAction: false, appIntroTarget
+        })),
+
         {
             id: 'launch_stock_app',
             expression: 'Smile',
@@ -81,7 +91,27 @@ export function buildAnnaScenario({
             }
         },
 
+        {
+            id: 'hts_home_overview', speaker: '안나', expression: 'Smile',
+            text: '여기가 주식앱의 홈이에요.\n내 자산과 시장 흐름, 최근 본 종목을 한눈에 볼 수 있어요.',
+            tracker: '2/4 • 홈 둘러보기', requiresManualAction: false,
+            screenOverview: true
+        },
+
         // STEP 4: Navigate to Stock Market Tab
+        ...[
+            ['ticker', '#stockApp .ticker-marquee-wrapper', '지수 전광판', '사이퍼 지수는 시장 전체의 흐름을 보여줘요.\n내가 가진 종목의 수익률과는 달라요.'],
+            ['assets', '#summaryCard', '내 자산', '내 자산은 현금과 주식 평가금을 합친 금액이에요.\n아래에서 현금·평가금·평가 손익을 나눠 볼 수 있어요.'],
+            ['recent', '#recentStocksGrid', '최근 종목', '최근 본 종목의 가격과 등락을 확인하는 곳이에요.\n조회 기록이 적으면 다른 종목도 함께 보여줘요.'],
+            ['home', '#stockApp .nav-tab[data-tab="Home"]', '홈', '홈 탭을 누르면 이 요약 화면으로 돌아와요.'],
+            ['market', '#stockApp .nav-tab[data-tab="Market"]', '주식 거래', '주식 거래에서는 종목을 찾고\n가격을 확인해 매수·매도할 수 있어요.'],
+            ['news', '#stockApp .nav-tab[data-tab="News"]', '공식 뉴스', '공식 뉴스에서는 기업의 공시와\n시장에 영향을 줄 소식을 읽을 수 있어요.'],
+            ['account', '#stockApp .nav-tab[data-tab="Profile"]', '내 계좌', '내 계좌에서는 보유 주식과 손익,\n거래 내역을 확인할 수 있어요.']
+        ].map(([id, htsIntroTarget, name, text]) => ({
+            id: `hts_home_intro_${id}`, expression: 'Smile', speaker: '안나',
+            text, tracker: `2/4 • ${name}`, requiresManualAction: false, htsIntroTarget
+        })),
+
         {
             id: 'market_tab',
             expression: 'Standard',
@@ -127,11 +157,30 @@ export function buildAnnaScenario({
             tracker: '2/4 • 그래프 색상 읽기', requiresManualAction: false
         },
         {
-            id: 'chart_detail', expression: 'Smile', speaker: '전담 매니저 안나',
-            text: '매매 창의 가격 그래프를 누르면 정밀 차트를 열 수 있어요. 더 큰 화면에서 가격 흐름을 자세히 살펴볼 수 있답니다. 정밀 차트는 오른쪽 위 닫기 버튼으로 닫을 수 있어요. 설명을 다 읽었으면 [다음 ▶]이나 [Enter]를 눌러 주세요.',
-            tracker: '2/4 • 정밀 차트 여는 방법', requiresManualAction: false,
+            id: 'chart_detail', expression: 'Smile', speaker: '안나',
+            text: '빛나는 그래프를 눌러 정밀 차트를 열어 주세요.',
+            tracker: '2/4 • 정밀 차트 열기', requiresManualAction: true,
+            targetSelector: '#btnExpandChart',
             onEnter: () => highlightElement('#btnExpandChart', true)
         },
+        ...[
+            ['price', '현재 가격', '현재 주가와 전일 대비 등락을 볼 수 있어요.', '.detail-price-box'],
+            ['metrics', '가격 요약', '최고·최저·평균가는 선택한 기간의 가격을 요약해요.', '.detail-metrics-grid'],
+            ['graph', '가격 흐름', '그래프를 좌우로 움직여 과거 흐름을 보세요.\n점 위에 커서를 올리면 시각과 가격이 나타나요.', '#detailedChartScrollWrapper'],
+            ['period', '조회 기간', '실시간·1일·1주·1달·1년을 눌러\n확인할 기간을 바꿀 수 있어요.', '#timeframeSelector']
+        ].map(([id, name, text, chartIntroTarget]) => ({
+            id: `chart_tour_${id}`, speaker: '안나', expression: 'Smile', text,
+            tracker: `2/4 • ${name}`, requiresManualAction: false, chartIntroTarget,
+            allowedSelector: ['graph', 'period'].includes(id) ? chartIntroTarget : null
+        })),
+        {
+            id: 'chart_tour_close', speaker: '안나', expression: 'Smile',
+            text: '오른쪽 위 닫기를 눌러 매매 화면으로 돌아가요.',
+            tracker: '2/4 • 차트 닫기', requiresManualAction: true,
+            chartIntroTarget: '#btnCloseDetailedChartModal',
+            targetSelector: '#btnCloseDetailedChartModal'
+        },
+
         {
             id: 'market_order_guide', expression: 'Standard', speaker: '전담 매니저 안나',
             text: '주문 방식에는 [시장가]와 [지정가]가 있어요. 시장가는 지금 거래할 수 있는 호가부터 순서대로 사고파는 방식이에요. 화면의 현재가와 실제 체결가는 다를 수 있고, 물량이 부족하면 일부만 체결될 수도 있어요. 사이퍼M에서는 가격 보호 범위 ±5%를 벗어나거나 현금·물량이 부족하면 남은 수량은 취소돼요.',
@@ -175,21 +224,11 @@ export function buildAnnaScenario({
             speaker: "전담 매니저 안나",
             text: `'${stockName}'을 샀어요! 산 주식과 남은 현금을 함께 확인해 볼게요.`,
             tracker: "2/4 • 첫 매수 체결 성공",
-            requiresManualAction: false,
-            onEnter: () => {
-                cleanupHighlights();
-            }
-        },
-        {
-            id: 'close_trade_guide',
-            expression: 'Smile',
-            speaker: "전담 매니저 안나",
-            text: '이제 종목창을 닫고 내 계좌를 확인해 볼까요? 종목창 오른쪽 위의 [✕] 버튼을 눌러 주세요.',
-            tracker: "2/4 • 종목창 닫기",
             requiresManualAction: true,
-            interactionHint: '종목창 오른쪽 위에서 반짝이는 [✕] 버튼을 눌러 주세요!',
             targetSelector: '#btnCloseTradeModal',
-            onEnter: () => highlightElement('#btnCloseTradeModal', true)
+            onEnter: () => {
+                highlightElement('#btnCloseTradeModal', true);
+            }
         },
         {
             id: 'portfolio_guide',
@@ -203,6 +242,12 @@ export function buildAnnaScenario({
             onEnter: () => {
                 highlightElement('.nav-tab[data-tab="Profile"]', true);
             }
+        },
+        {
+            id: 'portfolio_overview', speaker: '안나', expression: 'Smile',
+            text: '여기가 내 계좌예요.\n투자 비중과 보유 종목, 거래 내역을 한눈에 볼 수 있어요.',
+            tracker: '2/4 • 내 계좌 둘러보기', requiresManualAction: false,
+            screenOverview: true
         },
         {
             id: 'social_and_ranking_guide',

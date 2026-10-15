@@ -330,3 +330,14 @@
 .pending-order-cancel:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
 
 .lev-btn:not(.locked) .lock-tag { display: none; }
+
+/* A single prominent amount, with secondary facts separated from explanations. */
+.total-calc-box { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 12px 10px; background: rgba(0, 229, 255, .035); border-radius: 8px; }
+.total-calc-box .order-estimate-label { font-size: 11px; color: var(--text-secondary, #98a6b9); }
+.total-calc-box .total-gold { font-size: 22px; line-height: 1.2; color: var(--text-primary, #e7edf5); }
+.order-estimate-facts { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font-size: 12px; }
+.order-estimate-fee { font-size: 11px; color: var(--text-secondary, #98a6b9); }
+.order-estimate-warning { font-size: 11px; color: var(--accent-yellow); }
+.order-estimate-details, .order-rule-details { font-size: 11px; color: var(--text-secondary, #98a6b9); }
+.order-estimate-details summary, .order-rule-details summary { cursor: pointer; padding: 4px 0; }
+.order-estimate-details p { margin: 5px 0 0; line-height: 1.5; }

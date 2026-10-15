@@ -27,11 +27,11 @@ test('short lessons preserve manual actions and provide optional order caveats',
     assert.ok(steps.findIndex(step => step.id === 'stock_price_expectations') > steps.indexOf(earnings));
 });
 
-test('every onboarding and logistics step supplies a goal, concrete example and next action', () => {
+test('every lesson supplies a goal, example or highlighted app, and next action', () => {
     const steps = [...buildAnnaScenario({}), ...ParkLogisticsTutorial.prototype.buildScenario('신입')];
     for (const step of steps.map(describeTutorialStep)) {
         assert.ok(step.lessonTitle, step.id);
-        assert.ok(step.example?.rows.length, step.id);
+        assert.ok(step.example?.rows.length || step.appIntroTarget || step.htsIntroTarget || step.chartIntroTarget || step.screenOverview, step.id);
         assert.ok(step.nextAction, step.id);
     }
     assert.match(describeTutorialStep(steps.find(step => step.id === 'buy_stock')).nextAction, /매수/);
@@ -51,16 +51,76 @@ test('logistics practice keeps action gates and visible stabilization thresholds
 });
 
 test('shortcuts lead to lesson destinations without executing trades or rewards', () => {
-    assert.equal(tutorialShortcutDestination('celebrate').tab, 'Profile');
-    assert.equal(tutorialShortcutDestination('portfolio_guide').tab, 'Profile');
-    assert.equal(tutorialShortcutDestination('news_tab_guide').tab, 'News');
+    assert.equal(tutorialShortcutDestination('celebrate'), null);
+    assert.equal(tutorialShortcutDestination('portfolio_guide'), null);
+    assert.equal(tutorialShortcutDestination('news_tab_guide'), null);
+    assert.equal(tutorialShortcutDestination('news_reading_guide'), null);
     assert.equal(tutorialShortcutDestination('rumor_inventory_guide').selector, '#btnHudInventory');
     for (const id of ['buy_stock', 'first_sell_guide', 'logistics_completed']) assert.equal(tutorialShortcutDestination(id), null);
 });
 
-test('stock selection shortcut opens the current recommended stock, not just its list', () => {
-    assert.deepEqual(tutorialShortcutDestination('select_stock'), {
-        label: '추천 종목 보기 →', tab: 'Market', openRecommendedStock: true
-    });
-    assert.equal(tutorialShortcutDestination('market_tab').openRecommendedStock, undefined);
+test('stock selection requires clicking the recommended row without a dialogue shortcut', () => {
+    assert.equal(tutorialShortcutDestination('select_stock'), null);
+    const step = buildAnnaScenario({ stockId: 'TEST' }).find(step => step.id === 'select_stock');
+    assert.equal(step.requiresManualAction, true);
+    assert.ok(step.targetSelector.includes('stock-item-row'));
+});
+
+test('phone app tour introduces all five apps before requiring the stock app to open', () => {
+    const steps = buildAnnaScenario({});
+    const start = steps.findIndex(step => step.id === 'open_phone') + 1;
+    const tour = steps.slice(start, start + 5);
+    assert.deepEqual(tour.map(step => step.appIntroTarget), ['#iconStockApp', '#iconBubbleApp', '#iconMemoApp', '#iconAchieveApp', '#iconSettingsApp']);
+    assert.ok(tour.every(step => step.requiresManualAction === false && !step.actionBtnText && !step.targetSelector));
+    assert.ok(tour.every(step => describeTutorialStep(step).text === step.text));
+    assert.match(tour[2].text, /준비 중/);
+    assert.match(tour[4].text, /버전 안내/);
+    assert.equal(steps[start + 5].id, 'launch_stock_app');
+    assert.equal(steps[start + 5].requiresManualAction, true);
+});
+
+test('HTS home explains each region before asking for a direct market-tab click', () => {
+    const steps = buildAnnaScenario({});
+    const overviewIndex = steps.findIndex(step => step.id === 'launch_stock_app') + 1;
+    assert.equal(steps[overviewIndex].id, 'hts_home_overview');
+    assert.equal(steps[overviewIndex].screenOverview, true);
+    assert.equal(steps[overviewIndex].requiresManualAction, false);
+    assert.equal(steps[overviewIndex].htsIntroTarget, undefined);
+    const start = overviewIndex + 1;
+    const tour = steps.slice(start, start + 7);
+    assert.ok(tour.every(step => step.htsIntroTarget && !step.requiresManualAction && !step.actionBtnText));
+    assert.equal(new Set(tour.map(step => step.htsIntroTarget)).size, 7);
+    assert.ok(tour.some(step => step.htsIntroTarget === '#summaryCard'));
+    assert.ok(tour.some(step => step.htsIntroTarget === '#recentStocksGrid'));
+    assert.ok(tour.every(step => describeTutorialStep(step).text === step.text));
+    assert.equal(steps[start + 7].id, 'market_tab');
+    assert.equal(steps[start + 7].requiresManualAction, true);
+});
+
+
+test('expanded chart tour requires opening and closing the chart around four focused lessons', () => {
+    const steps = buildAnnaScenario({});
+    const start = steps.findIndex(step => step.id === 'chart_detail');
+    assert.equal(steps[start].requiresManualAction, true);
+    assert.equal(steps[start].targetSelector, '#btnExpandChart');
+    const tour = steps.slice(start + 1, start + 6);
+    assert.deepEqual(tour.map(step => step.id), ['chart_tour_price', 'chart_tour_metrics', 'chart_tour_graph', 'chart_tour_period', 'chart_tour_close']);
+    assert.ok(tour.every(step => step.chartIntroTarget));
+    assert.equal(tour[2].allowedSelector, '#detailedChartScrollWrapper');
+    assert.equal(tour[3].allowedSelector, '#timeframeSelector');
+    assert.equal(tour[4].requiresManualAction, true);
+    assert.equal(steps[start + 6].id, 'market_order_guide');
+});
+
+
+test('account opens with an unfaded overview before the profit explanation', () => {
+    const steps = buildAnnaScenario({});
+    const index = steps.findIndex(step => step.id === 'portfolio_guide');
+    const overview = steps[index + 1];
+    assert.equal(overview.id, 'portfolio_overview');
+    assert.equal(overview.screenOverview, true);
+    assert.equal(overview.requiresManualAction, false);
+    assert.equal(overview.htsIntroTarget, undefined);
+    assert.equal(tutorialShortcutDestination(overview.id), null);
+    assert.equal(steps[index + 2].id, 'social_and_ranking_guide');
 });

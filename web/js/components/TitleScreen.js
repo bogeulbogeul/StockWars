@@ -34,7 +34,7 @@ export class TitleScreen {
                     </header>
                     <nav class="title-menu-container" aria-label="게임 메뉴">
                         <button type="button" class="title-btn primary-start-btn" id="btnTitleNewGame">
-                            <span class="btn-text-group"><span class="btn-title">새 게임 · 멀티플레이</span><span class="btn-sub">트레이더 등록 후 같은 마을에서 함께하기</span></span>
+                            <span class="btn-text-group"><span class="btn-title">새게임 시작</span></span>
                             <span class="btn-arrow" aria-hidden="true">↗</span>
                         </button>
                         <div class="title-sub-btn-group">

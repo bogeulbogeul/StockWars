@@ -40,25 +40,7 @@ export class CharacterCreation {
             <div id="characterCreationModal" class="char-create-overlay hidden">
                 <div class="char-create-kiosk">
                     <div class="kiosk-header">
-                        <div class="kiosk-badge">CIPHER SECURITIES • KIOSK</div>
-                        <h2 class="kiosk-title">트레이더 자격 등록 & 아바타 설정</h2>
-                    </div>
-
-                    <div class="kiosk-stepper">
-                        <div class="step-item active" id="stepIndicator1">
-                            <span class="step-num">1</span>
-                            <span class="step-label">기본 캐릭터 설정</span>
-                        </div>
-                        <div class="step-line" id="stepLine1"></div>
-                        <div class="step-item" id="stepIndicator2">
-                            <span class="step-num">2</span>
-                            <span class="step-label">투자 성향 진단</span>
-                        </div>
-                        <div class="step-line" id="stepLine2"></div>
-                        <div class="step-item" id="stepIndicator3">
-                            <span class="step-num">3</span>
-                            <span class="step-label">출입증 발급</span>
-                        </div>
+                        <h2 class="kiosk-title">아바타 설정</h2>
                     </div>
 
                     <!-- STEP 1: AVATAR CUSTOMIZATION -->
@@ -71,11 +53,11 @@ export class CharacterCreation {
                                     <div class="avatar-shadow"></div>
                                 </div>
                                 <div class="avatar-nav-row">
-                                    <button class="stardew-arrow-btn left" id="btnRotLeft" title="왼쪽으로 회전">
-                                        <svg viewBox="0 0 16 16"><path d="M10 2 L4 8 L10 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+                                    <button type="button" class="avatar-rotate-btn" id="btnRotLeft" title="왼쪽으로 회전" aria-label="캐릭터 왼쪽으로 회전">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 L9 12 L14.5 17.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                     </button>
-                                    <button class="stardew-arrow-btn right" id="btnRotRight" title="오른쪽으로 회전">
-                                        <svg viewBox="0 0 16 16"><path d="M6 2 L12 8 L6 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+                                    <button type="button" class="avatar-rotate-btn" id="btnRotRight" title="오른쪽으로 회전" aria-label="캐릭터 오른쪽으로 회전">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5 L15 12 L9.5 17.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                     </button>
                                 </div>
                             </div>
@@ -98,14 +80,11 @@ export class CharacterCreation {
                                             </button>
                                         `).join('')}
                                     </div>
-                                    <div class="character-guide-note" style="margin-top: 8px; font-size: 11.5px; color: var(--accent-cyan); background: rgba(0,229,255,0.08); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(0,229,255,0.2);">
-                                        🏢 홈 오피스 입장 후 바닥 타일 클릭 또는 방향키(WASD)로 자유롭게 캐릭터를 이동시켜 움직임을 테스트할 수 있습니다.
-                                    </div>
                                 </div>
 
                                 <div class="custom-actions-row">
                                     <button class="kiosk-action-btn primary" id="btnStep1Next">
-                                        <span>다음: 투자 성향 진단 테스트 ➔</span>
+                                        <span>투자 성향 진단 테스트 ➔</span>
                                     </button>
                                 </div>
                             </div>
@@ -119,11 +98,10 @@ export class CharacterCreation {
                                 <div class="test-progress-fill" id="testProgressFill" style="width: 33.3%;"></div>
                             </div>
                             <div class="test-question-box">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="kiosk-badge">TRADER PERSONALITY TEST (TPT)</span>
+                                <div style="display: flex; justify-content: flex-end; align-items: center;">
                                     <span class="test-step-count" id="testStepCount">문항 1 / 3</span>
                                 </div>
-                                <h3 class="test-q-title" id="testQTitle">Q1. 시장 대폭락 상황, 당신의 첫 행동은?</h3>
+                                <h3 class="test-q-title" id="testQTitle">Q1. 산 주식이 갑자기 떨어졌다면?</h3>
                                 <div class="test-options-list" id="testOptionsList"></div>
                             </div>
                         </div>
@@ -132,13 +110,6 @@ export class CharacterCreation {
                     <!-- STEP 3: ID CARD CEREMONY -->
                     <div class="char-step-view hidden" id="charStep3">
                         <div class="id-ceremony-container">
-                            <div class="ceremony-anna-bubble">
-                                <div class="anna-mini-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="미소 짓는 안나"></span></div>
-                                <div class="anna-speech-txt" id="ceremonyAnnaSpeech">
-                                    "축하합니다! 사이퍼 증권 트레이더 출입증 발급이 완료되었습니다."
-                                </div>
-                            </div>
-
                             <div class="hologram-id-card">
                                 <div class="id-card-top">
                                     <div class="id-card-logo">
@@ -148,13 +119,11 @@ export class CharacterCreation {
                                             <span class="id-corp-sub">OFFICIAL TRADER PASS</span>
                                         </div>
                                     </div>
-                                    <div class="id-chip"></div>
                                 </div>
 
                                 <div class="id-card-body">
                                     <div class="id-photo-frame">
                                         <div class="id-photo-inner" id="idCardPhoto"></div>
-                                        <span class="id-certified-stamp">CERTIFIED</span>
                                     </div>
                                     <div class="id-info-details">
                                         <div class="id-row">
@@ -191,11 +160,6 @@ export class CharacterCreation {
 
     initDOM() {
         this.modal = document.getElementById('characterCreationModal');
-        this.stepIndicator1 = document.getElementById('stepIndicator1');
-        this.stepIndicator2 = document.getElementById('stepIndicator2');
-        this.stepIndicator3 = document.getElementById('stepIndicator3');
-        this.stepLine1 = document.getElementById('stepLine1');
-        this.stepLine2 = document.getElementById('stepLine2');
         this.charStep1 = document.getElementById('charStep1');
         this.charStep2 = document.getElementById('charStep2');
         this.charStep3 = document.getElementById('charStep3');
@@ -227,7 +191,6 @@ export class CharacterCreation {
             idCardTrait: document.getElementById('idCardTrait'),
             idCardBonusVal: document.getElementById('idCardBonusVal'),
             idCardRegNum: document.getElementById('idCardRegNum'),
-            ceremonyAnnaSpeech: document.getElementById('ceremonyAnnaSpeech')
         });
     }
 
@@ -297,18 +260,14 @@ export class CharacterCreation {
 
     setStep(step) {
         this.currentStep = step;
+        const titles = { 1: '아바타 설정', 2: '투자 성향 진단', 3: '트레이더 자격증' };
+        this.modal.querySelector('.kiosk-title').textContent = titles[step];
         this.charStep1?.classList.toggle('active', step === 1);
         this.charStep1?.classList.toggle('hidden', step !== 1);
         this.charStep2?.classList.toggle('active', step === 2);
         this.charStep2?.classList.toggle('hidden', step !== 2);
         this.charStep3?.classList.toggle('active', step === 3);
         this.charStep3?.classList.toggle('hidden', step !== 3);
-
-        this.stepIndicator1?.classList.toggle('active', step >= 1);
-        this.stepIndicator2?.classList.toggle('active', step >= 2);
-        this.stepIndicator3?.classList.toggle('active', step >= 3);
-        this.stepLine1?.classList.toggle('active', step >= 2);
-        this.stepLine2?.classList.toggle('active', step >= 3);
     }
 
     updateAvatarPreview() {

@@ -16,7 +16,7 @@ export class TraderIDCardStep {
 
         if (this.dom.idCardPhoto) {
             this.dom.idCardPhoto.innerHTML = `
-                <div class="id-photo-portrait-wrapper" role="img" aria-label="${resolveCharacterStyle(profile.styleId).label} 증명사진" style="width: 100%; height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 4px; overflow: hidden;">
+                <div class="id-photo-portrait-wrapper" role="img" aria-label="${resolveCharacterStyle(profile.styleId).label} 증명사진">
                     ${characterFaceSVG(profile.styleId || 'dog', { shoulders: true })}
                 </div>
             `;
@@ -47,10 +47,6 @@ export class TraderIDCardStep {
 
         if (this.dom.idCardRegNum) {
             this.dom.idCardRegNum.textContent = profile.traderCode;
-        }
-
-        if (this.dom.ceremonyAnnaSpeech) {
-            this.dom.ceremonyAnnaSpeech.textContent = `"축하합니다, ${profile.nickname}님! 사이퍼 증권 트레이더 출입증 발급이 완료되었습니다. [${chosenTrait.title}] 성향으로 게임 내 ${chosenTrait.effect} 효과가 즉시 적용됩니다."`;
         }
     }
 }

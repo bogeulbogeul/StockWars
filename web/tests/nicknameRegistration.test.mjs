@@ -20,9 +20,9 @@ test('online duplicate nicknames are rejected and valid reservations succeed', a
     assert.deepEqual(await registerNickname('고래', { claimNickname: async () => ({ snapshot: { uniqueNicknames: true } }) }), { nickname: '고래', pending: false });
 });
 
-test('online server must confirm that duplicate prevention is enabled', async () => {
-    for (const uniqueNicknames of [undefined, false]) {
-        await assert.rejects(registerNickname('고래', { claimNickname: async () => ({ snapshot: { uniqueNicknames } }) }), /서버 업데이트/);
+test('online registration accepts servers that permit duplicate nicknames', async () => {
+    for (const uniqueNicknames of [true, false, undefined]) {
+        assert.deepEqual(await registerNickname('고래', { claimNickname: async () => ({ snapshot: { uniqueNicknames } }) }), { nickname: '고래', pending: false });
     }
 });
 

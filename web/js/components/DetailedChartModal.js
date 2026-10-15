@@ -29,7 +29,6 @@ export class DetailedChartModal {
                 <div class="modal-card detailed-chart-card">
                     <div class="modal-header">
                         <div class="modal-header-left">
-                            <span id="detailedModalDate" class="detail-header-date">2026/09/14</span>
                             <div class="modal-stock-title">
                                 <span id="detailedModalStockName" class="stock-name">클라우드 베리</span>
                                 <span id="detailedModalStockCode" class="stock-code">CLOUDBERRY</span>
@@ -96,7 +95,6 @@ export class DetailedChartModal {
     initDOM() {
         this.modal = document.getElementById('detailedChartModal');
         this.btnClose = document.getElementById('btnCloseDetailedChartModal');
-        this.modalDate = document.getElementById('detailedModalDate');
         this.modalStockName = document.getElementById('detailedModalStockName');
         this.modalStockCode = document.getElementById('detailedModalStockCode');
         this.modalStockSector = document.getElementById('detailedModalStockSector');
@@ -254,9 +252,10 @@ export class DetailedChartModal {
         this.crosshair?.classList.add('hidden');
     }
 
-    close() {
+    close(notify = true) {
         this.clearChartPointer();
         this.modal?.classList.add('hidden');
+        if (notify) this.callbacks.onClose?.();
     }
 
     updateContent() {
@@ -339,7 +338,6 @@ export class DetailedChartModal {
         if (this.modalHigh) this.modalHigh.textContent = selected.high.toLocaleString() + 'G';
         if (this.modalLow) this.modalLow.textContent = selected.low.toLocaleString() + 'G';
         if (this.modalAvg) this.modalAvg.textContent = selected.average.toLocaleString() + 'G';
-        if (this.modalDate) this.modalDate.textContent = '모의 시세 · 최근 ' + selected.period.label;
         const hint = this.modal?.querySelector('.scroll-navigation-hint span');
         if (hint) hint.textContent = this.selectedTimeframe === 'LIVE' ? '◀ 최근 50개 가격 기록 · 기록별 동일 간격 ▶' : '◀ 좌우로 이동해 최근 ' + selected.period.label + '의 주가 흐름을 확인하세요 ▶';
 

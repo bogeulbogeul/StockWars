@@ -72,7 +72,7 @@ export function getTradeModalHtml() {
                                 <div class="limit-order-controls">
                                     <label id="tradeOrderTypeControl">주문 방식 <select id="tradeOrderType"><option value="market">시장가</option><option value="limit">지정가</option></select></label>
                                     <label>지정가 (G) <input id="tradeLimitPrice" type="number" min="1" step="1" placeholder="가격 입력" disabled></label>
-                                    <small>시장가는 호가 물량 순서로 체결되며 가격 보호 ±5%·현금·물량 한도로 남은 수량은 취소됩니다. 지정가 매수는 입력 가격 이하, 매도는 이상에서 체결됩니다. 대기 주문은 현금·주식을 묶어두지 않으며, 체결 시 부족하면 취소됩니다.</small>
+                                    <details class="order-rule-details"><summary>주문 방식 안내</summary><small>시장가는 호가 물량 순서로 체결되며 가격 보호 ±5%·현금·물량 한도로 남은 수량은 취소됩니다. 지정가 매수는 입력 가격 이하, 매도는 이상에서 체결됩니다. 대기 주문은 현금·주식을 묶어두지 않으며, 체결 시 부족하면 취소됩니다.</small></details>
                                     <div id="tradePendingOrders"></div>
                                 </div>
                                 <div class="qty-selector">
@@ -92,8 +92,19 @@ export function getTradeModalHtml() {
                                 </div>
 
                                 <div class="total-calc-box">
-                                    <span>총 주문 금액 (증거금):</span>
-                                    <span class="total-gold" id="modalTotalCost">850G</span>
+                                    <span class="order-estimate-label">예상 결제액</span>
+                                    <strong class="total-gold" id="modalTotalCost">850 G</strong>
+                                    <div class="order-estimate-facts">
+                                        <span id="orderEstimateQty">1주</span>
+                                        <span id="orderEstimatePrice">주당 850 G</span>
+                                    </div>
+                                    <span class="order-estimate-fee" id="orderEstimateFee">수수료 포함</span>
+                                    <span class="order-estimate-warning" id="orderEstimateWarning" hidden></span>
+                                    <details class="order-estimate-details">
+                                        <summary>계산 상세</summary>
+                                        <p id="orderEstimateDetails"></p>
+                                        <p>체결 가격에 따라 결제액이 달라질 수 있어요.</p>
+                                    </details>
                                 </div>
 
                                 <div class="order-action-btns">

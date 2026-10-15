@@ -1,6 +1,6 @@
 /**
  * HomeTab Component (스마트폰 HTS 홈 탭)
- * Handles Net Worth summary, 7-day rent goal progress, Cipher Index banner, and Recently Viewed stocks grid.
+ * Handles Net Worth summary and Recently Viewed stocks grid.
  */
 
 import { SECTORS } from '../../data/stocksData.js?v=v72';
@@ -28,28 +28,6 @@ export class HomeTab {
         if (!state) return;
 
         // Header Day Tag
-        if (this.dom.headerDayBadge) {
-            this.dom.headerDayBadge.textContent = `Day ${state.day} / ${state.maxDays}`;
-        }
-
-        // Cipher Index Banner & Home Widgets
-        if (state.cipherIndex) {
-            const isPos = state.cipherIndex.diffPct >= 0;
-            const sign = isPos ? '+' : '';
-            const text = `${state.cipherIndex.val} pts`;
-            const changeText = `${sign}${state.cipherIndex.diffPct.toFixed(2)}%`;
-
-            if (this.dom.bannerCipherVal) this.dom.bannerCipherVal.textContent = text;
-            if (this.dom.bannerCipherChange) {
-                this.dom.bannerCipherChange.textContent = changeText;
-                this.dom.bannerCipherChange.className = `cipher-change ${isPos ? 'gainer' : 'loser'}`;
-            }
-            if (this.dom.widgetIndex) this.dom.widgetIndex.textContent = `Cipher ${text}`;
-            if (this.dom.widgetIndexSub) {
-                this.dom.widgetIndexSub.textContent = `${changeText} Today`;
-                this.dom.widgetIndexSub.className = `widget-sub ${isPos ? 'gainer' : 'loser'}`;
-            }
-        }
 
         // Summary Net Worth & Cash Stats
         if (this.dom.homeNetWorth) this.dom.homeNetWorth.textContent = `${state.totalNetWorth.toLocaleString()} Gold`;
@@ -62,13 +40,6 @@ export class HomeTab {
             this.dom.homeProfitLoss.textContent = `${isPos ? '+' : ''}${state.totalProfitLoss.toLocaleString()}G (${isPos ? '+' : ''}${pct.toFixed(1)}%)`;
             this.dom.homeProfitLoss.className = `stat-val ${isPos ? 'gainer' : 'loser'}`;
         }
-
-        if (this.dom.settlementDDay) this.dom.settlementDDay.textContent = `정산 D-${state.maxDays - state.day + 1}`;
-
-        // Rent Goal Progress
-        const rentPct = Math.min(100, Math.max(0, (state.totalNetWorth / state.targetRent) * 100));
-        if (this.dom.rentGoalText) this.dom.rentGoalText.textContent = `${state.totalNetWorth.toLocaleString()}G 중 ${state.targetRent.toLocaleString()}G`;
-        if (this.dom.rentProgressFill) this.dom.rentProgressFill.style.width = `${rentPct}%`;
 
         this.renderRecentlyViewedStocks(state.stocks);
     }

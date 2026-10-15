@@ -11,13 +11,12 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         select_stock: [`[안나 추천]이 붙은 '${stockName}'을 눌러 주세요.`],
         stock_basics_price: ['주가는 주식 1주를 사고파는 가격이에요.'],
         chart_colors: ['그래프 색과 +·− 숫자를 함께 확인하세요.', [['↗ + 상승', '청록색', 'positive'], ['↘ − 하락', '빨간색', 'negative']]],
-        chart_detail: ['그래프를 누르면 정밀 차트가 열려요.', [['그래프 클릭', '크게 보기'], ['✕', '차트 닫기']]],
+        chart_detail: ['빛나는 그래프를 눌러 정밀 차트를 열어 주세요.', [['그래프 클릭', '크게 보기'], ['✕', '차트 닫기']]],
         market_order_guide: ['시장가는 지금 거래 가능한 가격으로 주문해요.', [['시장가', '즉시 체결 시도'], ['체결 가격', '현재가와 다를 수 있음']]],
         limit_order_guide: ['지정가는 원하는 가격을 정하는 주문이에요.', [['매수 400G', '400G 이하'], ['매도 400G', '400G 이상']]],
         stock_basics_profit: ['매수는 사는 것, 매도는 파는 것이에요.', [['매수', '현금 → 주식'], ['매도', '주식 → 현금']]],
         buy_stock: [`'${stockName}' 1주를 사볼게요. [매수 (BUY)]를 눌러 주세요.`, [['주문 방식', '시장가'], ['수량', '1주']]],
-        celebrate: [`'${stockName}'을 샀어요! 내 계좌에서 확인해 볼까요?`],
-        close_trade_guide: ['종목창 오른쪽 위 [✕]를 눌러 주세요.'],
+        celebrate: [`'${stockName}'을 샀어요! 오른쪽 위 [✕]를 눌러 주세요.`],
         portfolio_guide: ['아래쪽 [내 계좌]를 눌러 보유 주식을 확인하세요.'],
         social_and_ranking_guide: ['아직 보유 중이면 평가 손익, 팔면 실현 손익이에요.', [['평가 손익', '현재 가격 기준'], ['실현 손익', '매도한 결과']]],
         portfolio_slots_guide: ['같은 종목은 여러 주를 사도 슬롯 1칸만 써요.', [['A기업 10주', '1칸'], ['B기업 1주', '1칸'], ['합계', '2칸']]],
@@ -112,22 +111,22 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
     });
 }
 
-export function renderAnnaLesson(body, originalStep, shortcut) {
+export function renderAnnaLesson(body, originalStep, shortcut, { focused = false } = {}) {
     const step = describeTutorialStep(originalStep);
     if (!body) return step.text;
     body.querySelector?.('.vn-lesson-heading')?.remove();
     body.querySelector?.('.vn-lesson-visual')?.remove();
     const title = step.lessonTitle || step.tracker?.split('•').at(-1)?.trim();
-    if (title) {
+    if (title && !focused) {
         const heading = document.createElement('h3'); heading.className = 'vn-lesson-heading'; heading.textContent = title;
         const text = body.querySelector?.('.vn-dialogue-text');
         if (text && body.insertBefore) body.insertBefore(heading, text); else body.append(heading);
     }
     if (!step.cards?.length && !step.detailText && !step.example && !step.takeaway && !step.nextAction) return step.text;
     const section = document.createElement('section'); section.className = 'vn-lesson-visual';
-    if (step.example) section.append(createTutorialExample(step.example));
+    if (step.example && !(focused && (step.id?.startsWith('welcome_') || step.requiresManualAction))) section.append(createTutorialExample(step.example));
     if (step.takeaway) { const note = document.createElement('p'); note.className = 'vn-lesson-takeaway'; note.textContent = step.takeaway; section.append(note); }
-    if (step.detailText && step.detailText !== step.text) {
+    if (!focused && step.detailText && step.detailText !== step.text) {
         const details = document.createElement('details'); details.className = 'vn-lesson-details';
         const summary = document.createElement('summary'); summary.textContent = '자세히 보기';
         const text = document.createElement('p'); text.textContent = step.detailText;
@@ -136,7 +135,11 @@ export function renderAnnaLesson(body, originalStep, shortcut) {
         details.addEventListener('click', event => event.stopPropagation());
         section.append(details);
     }
-    section.append(createTutorialAction(step.nextAction, shortcut));
+    if (!focused || shortcut) {
+        const action = createTutorialAction(step.nextAction, shortcut);
+        if (focused) action.classList.add('vn-shortcut-only');
+        section.append(action);
+    }
     const footer = body.querySelector?.('.vn-indicator-row');
     if (footer && body.insertBefore) body.insertBefore(section, footer);
     else body.append(section);

@@ -158,45 +158,32 @@ body.phone-view-active .phone-screen {
 }
 
 #homeScreen {
-    padding: 24px 20px;
+    padding: 32px 24px;
     background: radial-gradient(circle at top right, #1e2638, #0a0d14);
 }
 
-.os-widget {
-    background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    margin-bottom: 24px;
-}
-
-.widget-title { font-size: 12px; color: var(--text-muted); }
-.widget-val { font-size: 20px; font-weight: 700; margin-top: 4px; font-family: var(--font-mono); }
-.widget-sub { font-size: 12px; font-weight: 600; margin-top: 2px; }
-
 .app-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 16px;
 }
 
 .app-icon-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     cursor: pointer;
 }
 
 .app-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 16px;
+    width: min(80px, 100%);
+    aspect-ratio: 1;
+    border-radius: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 36px;
     position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     transition: transform 0.2s ease;
@@ -231,7 +218,7 @@ body.phone-view-active .phone-screen {
     display: none !important;
 }
 
-.app-label { font-size: 11px; color: var(--text-main); text-align: center; }
+.app-label { font-size: 14px; font-weight: 600; color: var(--text-main); text-align: center; }
 
 /* OS App Icon Tutorial Highlight: Single clean guideline on the app icon itself */
 .app-icon-item.tutorial-pulse-target {
@@ -255,4 +242,83 @@ body.phone-view-active .phone-screen {
         transform: scale(1.07);
         box-shadow: 0 0 0 3.5px var(--accent-yellow), 0 0 24px rgba(255, 214, 0, 0.85);
     }
+}
+
+/* One app at a time during Anna's home-screen introduction. */
+body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) #homeScreen .app-icon-item {
+    transition: opacity 180ms ease, filter 180ms ease;
+}
+body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) #homeScreen .app-icon-item:not(.tutorial-pulse-target) {
+    opacity: 0.38;
+    filter: saturate(0.45);
+}
+@media (prefers-reduced-motion: reduce) {
+    body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) #homeScreen .app-icon-item,
+    body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) #homeScreen .app-icon {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Fade individual home-screen regions, never their shared parent. */
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) #stockApp :is(.app-header, .ticker-marquee-wrapper, #tabHomeView > *, .app-nav-bar > .nav-tab) {
+    transition: opacity 180ms ease, filter 180ms ease;
+}
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) #stockApp :is(.app-header, .ticker-marquee-wrapper, #tabHomeView > *, .app-nav-bar > .nav-tab):not(.hts-tour-target) {
+    opacity: 0.22;
+    filter: saturate(0.3);
+}
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) #stockApp .hts-tour-target {
+    opacity: 1;
+    filter: none;
+    outline: 2px solid #79efff;
+    outline-offset: -2px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 16px rgba(0, 229, 255, 0.15);
+}
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) #tickerMarquee { animation-play-state: paused; }
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) .main-hud-bar,
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) .demo-top-bar { visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+    body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)) #stockApp :is(.app-header, .ticker-marquee-wrapper, #tabHomeView > *, .app-nav-bar > .nav-tab) { transition: none; }
+}
+
+/* Keep the HUD out of every phone lesson, including trading and account steps. */
+body.phone-view-active:has(#annaTutorialOverlay:not(.hidden)) :is(.main-hud-bar, .demo-top-bar) {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Fade individual regions so the recommended row retains full contrast. */
+body:has(#annaTutorialOverlay.vn-stock-focus:not(.hidden)) #stockApp :is(.app-header, .ticker-marquee-wrapper, .market-controls, .app-nav-bar, .stock-item-row:not(.tutorial-recommended-stock)) {
+    opacity: .18;
+    filter: saturate(.25);
+    pointer-events: none;
+}
+body:has(#annaTutorialOverlay.vn-stock-focus:not(.hidden)) #stockApp .tutorial-recommended-stock {
+    opacity: 1;
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: -2px;
+    box-shadow: 0 0 16px rgba(0, 229, 255, .28);
+}
+body:has(#annaTutorialOverlay.vn-stock-focus:not(.hidden)) #tickerMarquee {
+    animation-play-state: paused;
+}
+
+/* Account navigation has one target; stock recommendations are not part of this lesson. */
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)):has(#stockApp .nav-tab[data-tab="Profile"].hts-tour-target) #stockApp .app-body {
+    opacity: .22;
+    filter: saturate(.3);
+}
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)):has(#stockApp .nav-tab[data-tab="Profile"].hts-tour-target) .tutorial-recommended-stock {
+    border: 1px solid var(--border-light);
+    background: var(--bg-surface);
+    box-shadow: none;
+}
+
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)):has(#stockApp .nav-tab[data-tab="Profile"].hts-tour-target) .tutorial-stock-badge { display: none; }
+
+body:has(#annaTutorialOverlay.vn-hts-focus:not(.hidden)):has(#stockApp .nav-tab[data-tab="News"].hts-tour-target) #stockApp .app-body {
+    opacity: .22;
+    filter: saturate(.3);
 }

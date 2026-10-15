@@ -4,8 +4,15 @@ export function installAnnaDialogueLayout(overlay) {
         if (overlay.classList.contains('hidden')) return;
         const bounds = overlay.getBoundingClientRect();
         const scale = bounds.width / overlay.offsetWidth || 1;
+        const phone = document.querySelector?.('#floatingPhoneBtn');
+        if (phone) {
+            const target = phone.getBoundingClientRect();
+            overlay.style.setProperty('--anna-focus-x', `${(target.left + target.width / 2 - bounds.left) / scale}px`);
+            overlay.style.setProperty('--anna-focus-y', `${(target.top + target.height / 2 - bounds.top) / scale}px`);
+        }
         const gap = 32;
         let right = bounds.width / scale - gap;
+        let left = gap;
         let top = gap;
         const visible = element => {
             const style = getComputedStyle(element);
@@ -19,12 +26,19 @@ export function installAnnaDialogueLayout(overlay) {
             if (overlay.contains(element) || !visible(element)) continue;
             const rect = element.getBoundingClientRect();
             if (rect.bottom <= bounds.top + top * scale || rect.top >= bounds.bottom - gap * scale) continue;
-            // Central panels reserve their entire left margin for the companion card.
+            if (rect.left < bounds.left + bounds.width / 2 && rect.right < bounds.right) {
+                left = Math.max(left, (rect.right - bounds.left) / scale + gap);
+            }
+            // Reserve the margins beside visible panels.
             if (rect.right > bounds.left + bounds.width / 2 && rect.left > bounds.left) {
                 right = Math.min(right, (rect.left - bounds.left) / scale - gap);
             }
         }
-        overlay.style.setProperty('--anna-card-width', `${Math.max(1, Math.min(500, right - gap))}px`);
+        const leftSpace = right - gap;
+        const rightSpace = bounds.width / scale - gap - left;
+        const useRight = leftSpace < 320 && rightSpace > leftSpace;
+        overlay.style.setProperty('--anna-card-alignment', useRight ? 'flex-end' : 'flex-start');
+        overlay.style.setProperty('--anna-card-width', `${Math.max(1, Math.min(500, useRight ? rightSpace : leftSpace))}px`);
         overlay.style.setProperty('--anna-card-height', `${Math.max(1, bounds.height / scale - top - gap)}px`);
     };
     let frame;

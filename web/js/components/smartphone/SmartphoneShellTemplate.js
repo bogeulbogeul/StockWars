@@ -13,14 +13,6 @@ export function getSmartphoneShellHtml() {
                 <div class="phone-screen">
                     <!-- OS Home Screen (Default when smartphone opens) -->
                     <div id="homeScreen" class="os-screen active">
-                        <div class="os-widget">
-                            <div class="widget-title">사이퍼M Market Summary</div>
-                            <div class="widget-body">
-                                <div class="widget-val" id="widgetIndex">Cipher 2,485.12</div>
-                                <div class="widget-sub gainer" id="widgetIndexSub">+1.42% Today</div>
-                            </div>
-                        </div>
-
                         <div class="app-grid">
                             <div class="app-icon-item" id="iconStockApp">
                                 <div class="app-icon stock-app-bg">
@@ -65,7 +57,6 @@ export function getSmartphoneShellHtml() {
                                     <span class="logo-text">사이퍼M</span>
                                 </div>
                             </div>
-                            <div class="header-day-tag" id="headerDayBadge">Day 1 / 7</div>
                         </div>
 
                         <div class="ticker-marquee-wrapper">
@@ -78,7 +69,6 @@ export function getSmartphoneShellHtml() {
                                 <div class="summary-card clickable-card" id="summaryCard" title="내 계좌/포트폴리오 상세 보기">
                                     <div class="card-header-row">
                                         <span class="card-title">내 자산 총액</span>
-                                        <span class="settlement-badge" id="settlementDDay">정산 D-7</span>
                                     </div>
                                     <div class="net-worth-amount" id="homeNetWorth">5,000 Gold</div>
                                     <div class="card-stat-grid">
@@ -95,24 +85,6 @@ export function getSmartphoneShellHtml() {
                                             <div class="stat-val" id="homeProfitLoss">0G (0.0%)</div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="rent-goal-box">
-                                    <div class="goal-header">
-                                        <span>🎯 1차 정산 목표 (월세 & 부채 이자)</span>
-                                        <span class="goal-val" id="rentGoalText">5,000G 중 5,000G</span>
-                                    </div>
-                                    <div class="goal-progress-bar">
-                                        <div class="goal-progress-fill" id="rentProgressFill" style="width: 100%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="cipher-index-banner">
-                                    <div class="cipher-info">
-                                        <span class="cipher-name">🏛️ 사이퍼 종합 주가지수</span>
-                                        <span class="cipher-val" id="bannerCipherVal">2,485.12 pts</span>
-                                    </div>
-                                    <span class="cipher-change gainer" id="bannerCipherChange">+1.42%</span>
                                 </div>
 
                                 <div class="section-title">👀 최근 조회한 종목</div>

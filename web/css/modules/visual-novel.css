@@ -830,42 +830,6 @@ body #annaTutorialOverlay .vn-dialogue-text { font-size: 18px !important; font-w
 body #annaTutorialOverlay .vn-step-tracker { font-size: 13px !important; white-space: normal !important; }
 body #annaTutorialOverlay .vn-action-btn { font-size: 15px; min-height: 46px; }
 
-/* Movement instructions stay at the edge so the town and player remain visible. */
-body #annaTutorialOverlay.vn-movement-guide .vn-dialogue-box:not(.collapsed) {
-    width: min(360px, var(--anna-card-width, 500px)) !important;
-    max-height: min(280px, var(--anna-card-height, 280px)) !important;
-    padding: 12px 16px !important;
-    gap: 0 !important;
-    border-radius: 14px !important;
-}
-body #annaTutorialOverlay.vn-movement-guide .vn-dialogue-box:not(.collapsed) { position: relative; }
-body #annaTutorialOverlay.vn-movement-guide .vn-portrait-frame {
-    display: flex !important;
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    width: 44px !important;
-    padding: 0 !important;
-    border: 0 !important;
-}
-body #annaTutorialOverlay.vn-movement-guide .vn-dialogue-box:not(.collapsed) .vn-portrait-avatar {
-    width: 44px !important;
-    height: 44px !important;
-    flex: 0 0 44px;
-}
-body #annaTutorialOverlay.vn-movement-guide .vn-portrait-badge { display: none !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-top-bar { padding-left: 54px; min-height: 44px; }
-body #annaTutorialOverlay.vn-movement-guide .vn-top-bar { margin-bottom: 8px; gap: 6px !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-nameplate { padding: 4px 8px !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-speaker-name { font-size: 13px !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-btn { min-height: 28px; padding: 4px 7px !important; font-size: 12px !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-dialogue-text { display: none !important; }
-body #annaTutorialOverlay.vn-movement-guide .vn-lesson-heading { font-size: 15px; margin-bottom: 6px; }
-body #annaTutorialOverlay.vn-movement-guide .vn-lesson-visual { margin: 6px 0; }
-body #annaTutorialOverlay.vn-movement-guide .vn-lesson-example { display: none; }
-body #annaTutorialOverlay.vn-movement-guide .tutorial-next-action { margin-top: 6px; padding: 8px 10px; }
-body #annaTutorialOverlay.vn-movement-guide .vn-step-tracker { font-size: 11px !important; }
-
 /* Keep logistics guidance below the play area instead of across the character. */
 body #parkTutorialOverlay .vn-dialogue-box:not(.collapsed) {
     width: 640px !important;
@@ -981,3 +945,185 @@ body #parkTutorialOverlay .vn-dialogue-body {
     overflow: visible !important;
 }
 body #parkTutorialOverlay .vn-indicator-row { display: none !important; }
+
+/* Focused Anna dialogue: one compact header, readable speech, controls below. */
+body #annaTutorialOverlay .vn-dialogue-box:not(.collapsed) {
+    padding: 20px 22px !important;
+    gap: 0 !important;
+}
+body #annaTutorialOverlay .vn-content-wrapper { width: 100%; min-width: 0; gap: 16px; }
+body #annaTutorialOverlay .vn-top-bar {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start;
+    gap: 12px !important;
+}
+body #annaTutorialOverlay .vn-portrait-frame {
+    position: static !important;
+    width: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    flex: 0 0 auto;
+}
+body #annaTutorialOverlay .vn-dialogue-box:not(.collapsed) .vn-portrait-avatar {
+    width: 48px !important; height: 48px !important;
+}
+body #annaTutorialOverlay .vn-nameplate { background: none; border: 0; padding: 0 !important; }
+body #annaTutorialOverlay .vn-speaker-name { font-size: 18px !important; }
+body #annaTutorialOverlay .vn-status-dot,
+body #annaTutorialOverlay .vn-indicator-row,
+body #annaTutorialOverlay .vn-lesson-heading { display: none !important; }
+body #annaTutorialOverlay .vn-dialogue-body { padding: 0 !important; }
+body #annaTutorialOverlay .vn-dialogue-text {
+    display: block !important;
+    font-size: 22px !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0;
+    white-space: pre-line;
+    font-weight: 500 !important;
+    min-height: 0;
+}
+body #annaTutorialOverlay .vn-lesson-visual:empty { display: none; }
+body #annaTutorialOverlay .vn-shortcut-only { padding: 0; border: 0; background: none; }
+body #annaTutorialOverlay .vn-shortcut-only > small,
+body #annaTutorialOverlay .vn-shortcut-only > strong { display: none; }
+body #annaTutorialOverlay .vn-controls {
+    width: 100%; margin: 0; align-items: center; gap: 8px !important;
+}
+body #annaTutorialOverlay .vn-skip-btn {
+    margin-left: auto; padding: 6px 0 !important; border-color: transparent;
+    background: transparent; color: #9aa8b8; font-size: 12px !important;
+}
+body #annaTutorialOverlay .vn-next-btn {
+    background: #00c9df; color: #07151d; border-color: #60efff;
+    font-weight: 800; min-width: 96px; min-height: 44px;
+}
+body #annaTutorialOverlay .vn-next-btn:hover { background: #69effa; }
+body #annaTutorialOverlay .vn-btn:focus-visible { outline: 2px solid #8af4ff; outline-offset: 3px; }
+
+body #annaTutorialOverlay { justify-content: var(--anna-card-alignment, flex-start) !important; }
+
+/* A single footer keeps the primary action close to the dialogue. */
+body #annaTutorialOverlay .vn-controls {
+    justify-content: flex-end;
+    padding-top: 4px;
+    gap: 10px !important;
+}
+body #annaTutorialOverlay .vn-action-area:not(.hidden) {
+    display: contents;
+}
+body #annaTutorialOverlay .vn-prev-btn { margin-right: auto; }
+body #annaTutorialOverlay .vn-prev-btn:disabled { display: none; }
+body #annaTutorialOverlay .vn-action-btn,
+body #annaTutorialOverlay .vn-next-btn {
+    flex: 0 1 auto;
+    width: auto;
+    min-height: 44px;
+    padding: 10px 18px !important;
+    background: #0f6674;
+    border: 1px solid #3ba6b5;
+    color: #effdff;
+    border-radius: 10px;
+    font-size: 15px !important;
+    font-weight: 700;
+    box-shadow: none;
+}
+body #annaTutorialOverlay .vn-action-btn:hover,
+body #annaTutorialOverlay .vn-next-btn:hover {
+    background: #197e8c;
+    color: #fff;
+    box-shadow: none;
+}
+body #annaTutorialOverlay .vn-action-secondary {
+    background: #182532;
+    border-color: #425568;
+}
+
+/* Opening the phone is learned on the real control, not a dialogue shortcut. */
+body #annaTutorialOverlay.vn-phone-focus .vn-controls,
+body #annaTutorialOverlay.vn-phone-focus .vn-skip-btn { display: none !important; }
+body.phone-minimized #annaTutorialOverlay.vn-phone-focus::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(19, 31, 46, 0.58);
+    backdrop-filter: blur(3px) saturate(0.5);
+    -webkit-backdrop-filter: blur(3px) saturate(0.5);
+    mask-image: radial-gradient(ellipse 125px 145px at var(--anna-focus-x, 96%) var(--anna-focus-y, 92%), transparent 45%, #000 100%);
+    -webkit-mask-image: radial-gradient(ellipse 125px 145px at var(--anna-focus-x, 96%) var(--anna-focus-y, 92%), transparent 45%, #000 100%);
+    animation: annaFogReveal 350ms ease-out both;
+}
+body #annaTutorialOverlay.vn-phone-focus .vn-dialogue-box { position: relative; z-index: 1; }
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn {
+    animation: annaPhoneBeacon 1.8s ease-in-out infinite !important;
+    box-shadow: 0 0 0 3px #9af9ff, 0 0 30px #00cde5 !important;
+}
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::before,
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::after {
+    content: '';
+    position: absolute;
+    inset: -9px;
+    border: 2px solid #8df7ff;
+    border-radius: 26px;
+    pointer-events: none;
+    animation: annaPhoneRipple 2.4s ease-out infinite;
+}
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::after { animation-delay: 1.2s; }
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn .mini-phone-screen {
+    background: radial-gradient(ellipse at 50% 40%, #238995, #103448 70%);
+    box-shadow: inset 0 0 12px rgba(139, 250, 255, 0.35);
+}
+@keyframes annaFogReveal { from { opacity: 0; } to { opacity: 1; } }
+@keyframes annaPhoneBeacon {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.45); }
+}
+@keyframes annaPhoneRipple {
+    0% { transform: scale(0.96); opacity: 0; }
+    15% { opacity: 0.8; }
+    100% { transform: scale(1.55, 1.3); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body.phone-minimized #annaTutorialOverlay.vn-phone-focus::before,
+    body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn,
+    body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::before,
+    body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::after { animation: none !important; }
+    body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn::after { display: none; }
+}
+
+/* Keep unrelated HUD information out of the app-selection lesson. */
+body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) .main-hud-bar,
+body:has(#annaTutorialOverlay.vn-app-focus:not(.hidden)) .demo-top-bar {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Only dim sibling branches: nested trade controls keep their full contrast. */
+:is(#tradeModal, #detailedChartModal, #stockApp) .anna-trade-dim {
+    opacity: .18;
+    filter: saturate(.25);
+}
+:is(#tradeModal, #detailedChartModal, #stockApp) .anna-trade-target {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+    border-radius: 6px;
+    box-shadow: 0 0 14px rgba(0, 229, 255, .25);
+}
+
+#annaTutorialOverlay.vn-chart-tour { z-index: 100001; }
+
+body #annaTutorialOverlay #btnVnNext:disabled,
+body #annaTutorialOverlay #btnVnNext:disabled:hover,
+body #annaTutorialOverlay #btnVnNext:disabled:active {
+    opacity: .35;
+    cursor: default;
+    box-shadow: none !important;
+    transform: none !important;
+    filter: none !important;
+    background: #126576 !important;
+    border-color: #47b6c6 !important;
+    color: #e9fcff !important;
+}

@@ -13,4 +13,4 @@ services:
       - key: NODE_VERSION
         value: "24"
       - key: STOCKWARS_ENFORCE_UNIQUE_NICKNAMES
-        value: "true"
+        value: "false"

@@ -60,6 +60,7 @@ export class TradeModal {
         this.btnQtyPlus = document.getElementById('btnQtyPlus');
         this.btnQtyMax = document.getElementById('btnQtyMax');
         this.modalTotalCost = document.getElementById('modalTotalCost');
+        this.orderEstimate = Object.fromEntries(['Qty', 'Price', 'Fee', 'Warning', 'Details'].map(key => [key, document.getElementById('orderEstimate' + key)]));
         this.orderTypeInput = document.getElementById('tradeOrderType');
         this.limitPriceInput = document.getElementById('tradeLimitPrice');
         this.pendingOrdersElement = document.getElementById('tradePendingOrders');
@@ -421,7 +422,13 @@ export class TradeModal {
             const price = this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) || 0 : stock.price;
             const execution = this.orderTypeInput.value === 'market' ? this.callbacks.getExecutionPreview?.(this.isShortMode ? 'short' : 'buy', this.selectedStockId, this.tradeQty, this.selectedLeverage) : null;
             const quote = execution || this.callbacks.getOrderQuote?.(price, this.tradeQty, this.selectedLeverage);
-            this.modalTotalCost.textContent = `${(quote?.total ?? totalMargin).toLocaleString()} Gold (${modeStr} ${this.selectedLeverage}x)` + (quote ? ` · 수수료 ${quote.fee.toLocaleString()}G (${(quote.feeRate * 100).toFixed(3)}%) 포함` : '') + (execution ? ` · 예상 ${execution.quantity}/${this.tradeQty}주 · 평균 ${execution.averagePrice.toLocaleString(undefined,{maximumFractionDigits:2})}G${execution.remaining ? ' · 잔량 취소' : ''}` : '');
+            this.modalTotalCost.textContent = `${(quote?.total ?? totalMargin).toLocaleString()} G`;
+            this.orderEstimate.Qty.textContent = `${execution?.quantity ?? this.tradeQty}주`;
+            this.orderEstimate.Price.textContent = `주당 ${(execution?.averagePrice ?? price).toLocaleString(undefined, { maximumFractionDigits: 2 })} G`;
+            this.orderEstimate.Fee.textContent = quote ? `수수료 ${quote.fee.toLocaleString()} G 포함` : '수수료 계산 전';
+            this.orderEstimate.Warning.hidden = !execution?.remaining;
+            this.orderEstimate.Warning.textContent = execution?.remaining ? `${execution.remaining}주 미체결 · 잔량 취소` : '';
+            this.orderEstimate.Details.textContent = `${modeStr} · ${this.selectedLeverage}배 · 주문 ${this.tradeQty}주` + (quote ? ` · 수수료율 ${(quote.feeRate * 100).toFixed(3)}%` : '');
         }
     }
 }

@@ -19,7 +19,15 @@ export class ToastManager {
         }
     }
 
+    setQuietMode(enabled) {
+        const entering = enabled && !this.quiet;
+        this.quiet = !!enabled;
+        // Discard queued visual notices; do not replay them after the tutorial.
+        if (entering) this.container?.replaceChildren();
+    }
+
     show(message, isSuccess = true, duration = 2500) {
+        if (this.quiet && isSuccess) return;
         if (!this.container) this.render();
 
         const toast = document.createElement('div');
