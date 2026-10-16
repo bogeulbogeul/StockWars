@@ -128,7 +128,7 @@ $baseDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\dbc93132-94f3-4
 $file = "media_1789456231270.png"
 $srcPath = Join-Path $baseDir $file
 
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Force }
 
 $targetCanvasW = 240

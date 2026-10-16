@@ -1,0 +1,46 @@
+{
+  "id": "siberian-chipmunk",
+  "changed_frames": [
+    [
+      "down_walk",
+      0
+    ],
+    [
+      "down_walk",
+      2
+    ],
+    [
+      "right_walk",
+      0
+    ],
+    [
+      "right_walk",
+      2
+    ],
+    [
+      "up_walk",
+      0
+    ],
+    [
+      "up_walk",
+      2
+    ],
+    [
+      "right_carry",
+      1
+    ],
+    [
+      "right_carry",
+      2
+    ],
+    [
+      "right_carry",
+      3
+    ]
+  ],
+  "layout_timing_unchanged": true,
+  "neutral_idle_sit_portrait_unchanged": true,
+  "full_native_frames_no_graft": true,
+  "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+  "physical_stride_verified": false
+}

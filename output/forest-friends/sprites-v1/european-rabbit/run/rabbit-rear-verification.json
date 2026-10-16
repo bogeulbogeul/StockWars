@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "edited_logical_frames": 4,
+  "checks": [
+    {
+      "frame": 0,
+      "body_below_y200_exact": true,
+      "all_output_RGB_samples_from_original_approved_frame": true,
+      "native_colors_adopted": false,
+      "uniform_row_scale": 0.49853372434017595,
+      "bbox": [
+        82,
+        26,
+        237,
+        372
+      ]
+    },
+    {
+      "frame": 1,
+      "body_below_y200_exact": true,
+      "all_output_RGB_samples_from_original_approved_frame": true,
+      "native_colors_adopted": false,
+      "uniform_row_scale": 0.49853372434017595,
+      "bbox": [
+        82,
+        32,
+        239,
+        372
+      ]
+    },
+    {
+      "frame": 2,
+      "body_below_y200_exact": true,
+      "all_output_RGB_samples_from_original_approved_frame": true,
+      "native_colors_adopted": false,
+      "uniform_row_scale": 0.49853372434017595,
+      "bbox": [
+        82,
+        26,
+        238,
+        372
+      ]
+    }
+  ],
+  "other_states_byte_identical": [
+    "down_idle",
+    "down_walk",
+    "right_idle",
+    "right_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "native_RGB_not_adopted": true,
+  "runtime_contact_QA": false
+}

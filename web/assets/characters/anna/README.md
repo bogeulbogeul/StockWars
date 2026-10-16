@@ -1,6 +1,6 @@
 # Anna image assets v1
 
-Generated with the built-in image_gen tool. Character design follows Docs/MOD_GDD_06_NPCRegistry.md; expressions follow Docs/MOD_GDD_07_1_Dialogue_Anna.md.
+Generated with the built-in image_gen tool. Character design follows Docs/MOD_GDD_06_NPCRegistry.md; expressions follow Docs/MOD_GDD_07_DialogueDB.md#anna-dialogue.
 
 - anna-chibi-office-v1.png: 1254 x 1254, RGBA PNG, full-body office chibi.
 - anna-dialogue-expressions-v1.png: 1536 x 1024, RGBA PNG, 3 columns x 2 rows of 512 x 512 cells.

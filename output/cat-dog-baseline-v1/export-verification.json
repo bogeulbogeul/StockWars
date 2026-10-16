@@ -1,0 +1,13 @@
+{
+  "states": 10,
+  "logical_frames": 19,
+  "unique_drawings": 16,
+  "layout_and_playback_equal_dog_v9": true,
+  "palette_size": 273,
+  "outside_palette_pixels": 0,
+  "atlas_exact": true,
+  "neutral_exact": true,
+  "clipping": false,
+  "live_motion_continuity": "experimental; not observed",
+  "game_installed": false
+}

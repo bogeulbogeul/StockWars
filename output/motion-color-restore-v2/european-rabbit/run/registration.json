@@ -1,0 +1,275 @@
+[
+  {
+    "state": "down_walk",
+    "index": 0,
+    "uniform_row_scale": 0.4928774928774929,
+    "head_offset_from_neutral": [
+      4.5,
+      0
+    ],
+    "dog_target_offset": [
+      4,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      92,
+      26,
+      239,
+      372
+    ]
+  },
+  {
+    "state": "down_walk",
+    "index": 1,
+    "uniform_row_scale": 0.4928774928774929,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": true,
+    "bbox": [
+      80,
+      26,
+      238,
+      372
+    ]
+  },
+  {
+    "state": "down_walk",
+    "index": 2,
+    "uniform_row_scale": 0.4928774928774929,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      85,
+      26,
+      230,
+      372
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 0,
+    "uniform_row_scale": 0.5036496350364964,
+    "head_offset_from_neutral": [
+      2.0,
+      1
+    ],
+    "dog_target_offset": [
+      2,
+      1
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      71,
+      28,
+      249,
+      374
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 1,
+    "uniform_row_scale": 0.5036496350364964,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": true,
+    "bbox": [
+      84,
+      27,
+      237,
+      372
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 2,
+    "uniform_row_scale": 0.5036496350364964,
+    "head_offset_from_neutral": [
+      2.5,
+      1
+    ],
+    "dog_target_offset": [
+      3,
+      1
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      80,
+      28,
+      259,
+      371
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 0,
+    "uniform_row_scale": 0.4934687953555878,
+    "head_offset_from_neutral": [
+      3.0,
+      0
+    ],
+    "dog_target_offset": [
+      3,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      83,
+      32,
+      240,
+      374
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 1,
+    "uniform_row_scale": 0.4934687953555878,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": true,
+    "bbox": [
+      82,
+      32,
+      239,
+      372
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 2,
+    "uniform_row_scale": 0.4934687953555878,
+    "head_offset_from_neutral": [
+      -2.5,
+      0
+    ],
+    "dog_target_offset": [
+      -3,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      82,
+      32,
+      240,
+      374
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 0,
+    "uniform_row_scale": 0.5894378194207837,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": true,
+    "bbox": [
+      64,
+      26,
+      256,
+      372
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 1,
+    "uniform_row_scale": 0.5894378194207837,
+    "head_offset_from_neutral": [
+      -0.5,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      80,
+      26,
+      253,
+      371
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 2,
+    "uniform_row_scale": 0.5894378194207837,
+    "head_offset_from_neutral": [
+      0.0,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      65,
+      26,
+      257,
+      373
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 3,
+    "uniform_row_scale": 0.5894378194207837,
+    "head_offset_from_neutral": [
+      -0.5,
+      0
+    ],
+    "dog_target_offset": [
+      0,
+      0
+    ],
+    "head_graft": false,
+    "neutral_original_retained": false,
+    "bbox": [
+      80,
+      26,
+      256,
+      372
+    ]
+  }
+]

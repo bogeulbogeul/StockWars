@@ -1,0 +1,200 @@
+{
+  "id": "european-badger",
+  "scope": "all directions/walk/carry/sit/portrait and existing dog idle-tail states",
+  "visual_review": "Existing approved style, coat, markings and face identity compared across complete pose boards. No redraw used; species traits and natural pose changes retained.",
+  "color_verification": "Every frame preserves all nontransparent RGBA values AND their counts. This guards against introducing color changes, not proof of temporal color uniformity in inherited artwork.",
+  "motion_verdict": "existing poses retained; badger whole-pose step offset added. Live playback and in-game contact remain needs-review.",
+  "changed_frames": 6,
+  "frames": [
+    {
+      "state": "down_idle",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "down_walk",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "down_walk",
+      "index": 1,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "down_walk",
+      "index": 2,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "right_idle",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_walk",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "right_walk",
+      "index": 1,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_walk",
+      "index": 2,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "up_idle",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "up_walk",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "up_walk",
+      "index": 1,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "up_walk",
+      "index": 2,
+      "whole_pose_offset": [
+        0,
+        2
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": false
+    },
+    {
+      "state": "right_carry",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_carry",
+      "index": 1,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_carry",
+      "index": 2,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_carry",
+      "index": 3,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "down_sit",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "right_sit",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    },
+    {
+      "state": "face_portrait",
+      "index": 0,
+      "whole_pose_offset": [
+        0,
+        0
+      ],
+      "RGBA_color_counts_exact": true,
+      "unmodified_PNG": true
+    }
+  ]
+}

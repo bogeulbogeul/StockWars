@@ -1,0 +1,8 @@
+{
+  "prompt": "Precise localized EDIT of image1's THREE existing rear-view rabbit walk poses. Image2 is the approved SAME rabbit front/three-quarter identity and COLOR reference. Change ONLY the rear HEAD CHEEK/SKULL contour in all 3 poses: make softly rounded full rabbit head matching image2 from behind, remove wide pointy angular cat-like cheek spikes, keep tiny restrained fur tufts. Keep original long upright rounded rabbit ears and head height/position, same neck attachment, same stance/limb pose/body/tail exactly. No front face, no visible eyes or nose in back view. COLOR MUST REMAIN EXACTLY the approved warm muted taupe fur of image1 and image2, including original outline color/thickness and very restrained original shading. Do NOT add dark shadows, increase saturation/contrast, lighten fur or introduce a new grade. Keep the approved original little highlight, not new patches. This is head contour-only correction, not full character redraw. All feet/palms have NO paw pads/beans or circular/oval sole marks. Keep 3 separated complete existing figures in the same 960x400 horizontal row on cyan #00FFFF, no labels, borders, ground shadow, props or extra frames. Unedited body and leg artwork must remain unchanged.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-6adda102-ce1e-4825-817a-43e2eb202321.png",
+  "refs": [
+    "rear-target.png",
+    "identity-reference.png"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-0.png",
+      "region": [
+        137,
+        302,
+        196,
+        361
+      ],
+      "source_component_bbox": [
+        134,
+        76,
+        602,
+        728
+      ],
+      "source_region": [
+        330,
+        600,
+        433,
+        703
+      ],
+      "changedPixels": 1785,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d45869453ec145e185ba480d03fdd0b31f3c208e88f526d804f7ab237e83412c",
+      "afterSha256": "370d27b7aec0bda8fab12327de8db23a91597184185ce0c7784b3c098b2af0ba"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-2.png",
+      "region": [
+        118,
+        301,
+        183,
+        363
+      ],
+      "source_component_bbox": [
+        1338,
+        72,
+        1797,
+        728
+      ],
+      "source_region": [
+        1494,
+        598,
+        1608,
+        706
+      ],
+      "changedPixels": 1978,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "cd1e4d9522755281ae062ff3a870a6543cf8547b12029e4105131c1e23e91676",
+      "afterSha256": "8d0b404583dddef64816f56cb2c75fcd2efb35ad62ba3137e993b1c5ed0a60f6"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-0.png",
+      "region": [
+        84,
+        285,
+        143,
+        351
+      ],
+      "source_component_bbox": [
+        142,
+        33,
+        571,
+        741
+      ],
+      "source_region": [
+        205,
+        568,
+        316,
+        692
+      ],
+      "changedPixels": 2147,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "cd3745a4dedb9767459530cc21ec89272d54c5f3af5ea8bf003cd8dd47cc7637",
+      "afterSha256": "54af9763350be745e1eb2b1b0246ced3e703a4619e80560ef64b256668fc0c7d"
+    },
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-2.png",
+      "region": [
+        167,
+        281,
+        235,
+        353
+      ],
+      "source_component_bbox": [
+        1375,
+        33,
+        1773,
+        741
+      ],
+      "source_region": [
+        1595,
+        558,
+        1725,
+        696
+      ],
+      "changedPixels": 2387,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "07bf1b7c21964b8eea471840b741e82c456bc097036fd0c5a1cc19182ab71aa0",
+      "afterSha256": "1ef258c433b57c10f9808b45ec692b6b0e11ffca84df78f5084640a7920acbeb"
+    },
+    {
+      "id": "red-fox",
+      "state": "right_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-right_walk-0.png",
+      "region": [
+        220,
+        225,
+        280,
+        282
+      ],
+      "source_component_bbox": [
+        80,
+        46,
+        534,
+        737
+      ],
+      "source_region": [
+        432,
+        447,
+        544,
+        552
+      ],
+      "changedPixels": 1682,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d18e1da2912e7214aa013bdec0088e7024971322efda79a714826c8aff3b017b",
+      "afterSha256": "79d28ebbe6a24c736d2f1ef8488ccdf23e2601f836329a085cebc930791929cf"
+    }
+  ]
+}

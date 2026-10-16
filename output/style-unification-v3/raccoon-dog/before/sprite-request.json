@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "raccoon-dog-forest-v1",
+    "description": "Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon.",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight FRONT neutral standing, both feet planted, relaxed arms. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Straight FRONT fixed view. EXACTLY THREE poses left to right: A own LEFT foot forward and own RIGHT arm forward; NEUTRAL both soles planted arms down; B own RIGHT foot forward and own LEFT arm forward. A/B opposite feet and arms, not duplicates. Walk in place, no hopping. Neutral is the standing idle. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Front-right THREE QUARTER standing, BOTH eyes and chest visible. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "right_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Front-right THREE QUARTER fixed view matching DOG motion reference, BOTH eyes and chest visible. THREE poses: A near leg forward far leg back and near arm BACK; NEUTRAL both soles planted arms down; B far leg forward near leg back and near arm FORWARD. Near arm counter-swings back/down/forward, far arm partly occluded. Low grounded steps with knees and ankles. NO pure profile, no hopping. Neutral is standing idle. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight BACK standing, no face. Rear heels and ankles visible, toes point away. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Straight BACK fixed view. THREE poses: A own LEFT foot forward right arm forward; NEUTRAL both soles planted arms down; B own RIGHT foot forward left arm forward. Alternate feet clearly, show REAR heels/ankles, lifted feet have smooth fur, no sole plane or pad marks, no front-facing toes. Tail attached to rear pelvis. No face or chest markings on back. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Front-right three-quarter facing RIGHT, BOTH eyes visible. FOUR alternating gait poses: near leg forward contact; near support far knee passing; FAR leg forward contact near leg BACK; far support near knee passing. Both arms forward elbows bent and palms UP, hands side-by-side at stable waist height supporting an imaginary separate parcel. Use CAT motion reference for hand support. Draw NO BOX or furniture. Constant hand/torso position, feet alternate; tail never replaces arm. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE FRONT CHAIR-seated pose. Upright torso, pelvis elevated on imaginary seat, thighs project forward, knees bent 90 degrees, lower legs down, paws rest on thighs. NO chair, NO floor sitting, no haunch crouch. Tail behind hips. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR-seated pose elevated isometric FRONT-RIGHT three-quarter with BOTH eyes visible, not pure profile. Upright torso, pelvis elevated, thighs forward along room diagonal, knees bent 90 degrees lower legs down, paws on thighs. NO chair, NO floor sitting. Tail behind hips. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    },
+    "face_portrait": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE straight front-facing head portrait including entire ears and tiny neck tuft, no body. Match front identity exactly. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon."
+    }
+  },
+  "style": "Copy accepted identity image exactly: head/body proportions, coat markings, brown eyes, ear shapes, clean dark outline and restrained cel shading. Two-legged compact SD animal, short arms legs, rounded paws with small digit lines. No clothes shoes props shadows lettering grids or environment. Reference motion image is POSE ONLY, never copy its species or colors. Raccoon DOG: taupe gray-brown coat, dark eye patches, buff muzzle chest belly, dark paws, small rounded triangular ears, ONE short bushy unringed tail with dark tip. NOT American raccoon. All animals: NO paw pads, NO toe beans, NO internal circular/oval sole or palm markings, NO emphasized sole plane. Raised feet remain smooth in the local fur color. Retain normal open finger division lines.",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  },
+  "paw_pad_policy": {
+    "status": "forbidden",
+    "decided": "2026-10-16",
+    "source": "user request",
+    "preserve_finger_divisions": true
+  }
+}

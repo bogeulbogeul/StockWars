@@ -1,0 +1,13 @@
+{
+  "changed": [
+    "up_walk[2]"
+  ],
+  "other_18_frame_files_identical": true,
+  "tail_directions": [
+    "left",
+    "left-neutral",
+    "right"
+  ],
+  "palette_unchanged": true,
+  "game_installed": false
+}

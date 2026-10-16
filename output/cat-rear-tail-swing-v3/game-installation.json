@@ -1,0 +1,24 @@
+{
+  "atlas_sha256": "cf5824382b70b3552a93edaf74d5a95c208b02d0ee435cfb53fb6164efd2a6ce",
+  "source_identical": true,
+  "destination": "C:\\GitHub\\StockWars\\web\\assets\\characters\\black-cat-baseline-v3",
+  "portrait_bbox": [
+    8,
+    72,
+    312,
+    340
+  ],
+  "states": [
+    "down_idle",
+    "down_walk",
+    "right_idle",
+    "right_walk",
+    "up_idle",
+    "up_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "wag_extension_installed": false
+}

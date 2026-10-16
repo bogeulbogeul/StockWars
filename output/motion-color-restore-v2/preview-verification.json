@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "characters": 7,
+  "panelsPerCharacter": 3,
+  "states": 4,
+  "drawCalls": 777,
+  "method": "VM render-path smoke test; no browser visual QA"
+}

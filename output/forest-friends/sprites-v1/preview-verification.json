@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "renderedFrames": 366,
+  "states": 10,
+  "characters": 6,
+  "method": "DOM/canvas render-path smoke test; not browser visual QA"
+}

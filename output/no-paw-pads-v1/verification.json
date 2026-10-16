@@ -1,0 +1,600 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-0.png",
+      "region": [
+        84,
+        285,
+        143,
+        351
+      ],
+      "source_component_bbox": [
+        142,
+        33,
+        571,
+        741
+      ],
+      "source_region": [
+        205,
+        568,
+        316,
+        692
+      ],
+      "changedPixels": 2147,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "cd3745a4dedb9767459530cc21ec89272d54c5f3af5ea8bf003cd8dd47cc7637",
+      "afterSha256": "54af9763350be745e1eb2b1b0246ced3e703a4619e80560ef64b256668fc0c7d",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-2.png",
+      "region": [
+        167,
+        281,
+        235,
+        353
+      ],
+      "source_component_bbox": [
+        1375,
+        33,
+        1773,
+        741
+      ],
+      "source_region": [
+        1595,
+        558,
+        1725,
+        696
+      ],
+      "changedPixels": 2387,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "07bf1b7c21964b8eea471840b741e82c456bc097036fd0c5a1cc19182ab71aa0",
+      "afterSha256": "1ef258c433b57c10f9808b45ec692b6b0e11ffca84df78f5084640a7920acbeb",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-0.png",
+      "region": [
+        137,
+        302,
+        196,
+        361
+      ],
+      "source_component_bbox": [
+        134,
+        76,
+        602,
+        728
+      ],
+      "source_region": [
+        330,
+        600,
+        433,
+        703
+      ],
+      "changedPixels": 1785,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d45869453ec145e185ba480d03fdd0b31f3c208e88f526d804f7ab237e83412c",
+      "afterSha256": "370d27b7aec0bda8fab12327de8db23a91597184185ce0c7784b3c098b2af0ba",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-2.png",
+      "region": [
+        118,
+        301,
+        183,
+        363
+      ],
+      "source_component_bbox": [
+        1338,
+        72,
+        1797,
+        728
+      ],
+      "source_region": [
+        1494,
+        598,
+        1608,
+        706
+      ],
+      "changedPixels": 1978,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "cd1e4d9522755281ae062ff3a870a6543cf8547b12029e4105131c1e23e91676",
+      "afterSha256": "8d0b404583dddef64816f56cb2c75fcd2efb35ad62ba3137e993b1c5ed0a60f6",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-0.png",
+      "region": [
+        90,
+        293,
+        152,
+        359
+      ],
+      "source_component_bbox": [
+        144,
+        68,
+        529,
+        727
+      ],
+      "source_region": [
+        208,
+        580,
+        318,
+        697
+      ],
+      "changedPixels": 2227,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "b3051d08bc21732d86f8ed58758fc0a1e6941a32821b2fd58fc512f7e8898c44",
+      "afterSha256": "f58b93cf89247631e8570e26b5dd01b45c44eb987c752b689f73a6efd31c7157",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-2.png",
+      "region": [
+        156,
+        292,
+        224,
+        361
+      ],
+      "source_component_bbox": [
+        1410,
+        68,
+        1794,
+        726
+      ],
+      "source_region": [
+        1600,
+        577,
+        1720,
+        700
+      ],
+      "changedPixels": 2726,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "72048ee75c2ab13e5464f64fd5036d22b219c7e179fc0ccf73fa40d107c51f9a",
+      "afterSha256": "e3315efe35a3562dfb2a2ff11c995304564f51ac511ffc08c2aa9ae05d37b770",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-0.png",
+      "region": [
+        98,
+        287,
+        163,
+        357
+      ],
+      "source_component_bbox": [
+        149,
+        83,
+        496,
+        730
+      ],
+      "source_region": [
+        211,
+        575,
+        323,
+        697
+      ],
+      "changedPixels": 2237,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "1f88a98c0cb51678b188755d6be34b235924bcc53253aaf69daeab7235b9fc57",
+      "afterSha256": "0e49cdb838134f059233785547d2fe56b306cacd4b8e9b5ef24a0a299c5308a1",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-2.png",
+      "region": [
+        154,
+        286,
+        225,
+        359
+      ],
+      "source_component_bbox": [
+        1434,
+        83,
+        1781,
+        730
+      ],
+      "source_region": [
+        1600,
+        573,
+        1725,
+        700
+      ],
+      "changedPixels": 2354,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "32bea7d8bf3228de733ab3f8cf2b37234e74b3ad62e1a542e4d4573d298ea640",
+      "afterSha256": "63cf2b5bd349bae246cbc9558676736a50f829853b441f6cfb0bb37427ece6aa",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-0.png",
+      "region": [
+        92,
+        293,
+        156,
+        361
+      ],
+      "source_component_bbox": [
+        146,
+        73,
+        521,
+        724
+      ],
+      "source_region": [
+        209,
+        578,
+        321,
+        698
+      ],
+      "changedPixels": 2252,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "c7d05ecd66ebfb9080271af81e181d8faa8d92ac084763d5bc97392f37cdc74b",
+      "afterSha256": "d43b2b6205240b96a7095d3985cf1137fc5bce44da7f241c1254ae268c93df5a",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-2.png",
+      "region": [
+        156,
+        291,
+        229,
+        362
+      ],
+      "source_component_bbox": [
+        1413,
+        72,
+        1787,
+        724
+      ],
+      "source_region": [
+        1598,
+        576,
+        1728,
+        700
+      ],
+      "changedPixels": 2657,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "b0e114ea45fb8c4d8101b22a143cfeab2178d32c498de57fd1a8452efa84dc5c",
+      "afterSha256": "2707fc710966504db810956f8368c34b4d269644bd75d3d147f3ecfa75b5427b",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-0.png",
+      "region": [
+        108,
+        290,
+        166,
+        353
+      ],
+      "source_component_bbox": [
+        180,
+        35,
+        505,
+        755
+      ],
+      "source_region": [
+        239,
+        589,
+        351,
+        709
+      ],
+      "changedPixels": 2216,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "f35b3eb9ee84682904141d4c80902a2bacbb6badc1fa2063baa52f8aeb54c143",
+      "afterSha256": "5f9276ae05d7ff364de3e6865e48a0f7c264a5e92f179e58fae12520e78b4c3c",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-2.png",
+      "region": [
+        155,
+        293,
+        218,
+        356
+      ],
+      "source_component_bbox": [
+        1433,
+        35,
+        1757,
+        755
+      ],
+      "source_region": [
+        1590,
+        594,
+        1712,
+        716
+      ],
+      "changedPixels": 2002,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "86539242359524f0add1e7254d0cbada1f95944c51f5ceab78ceed15ea183f61",
+      "afterSha256": "e345ac51bf730924c739b8e542bd48702da032d672acc26a6d05700277c9fb9a",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\tail-wag-v1\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-0.png",
+      "region": [
+        104,
+        286,
+        166,
+        354
+      ],
+      "source_component_bbox": [
+        149,
+        64,
+        522,
+        731
+      ],
+      "source_region": [
+        231,
+        570,
+        342,
+        692
+      ],
+      "changedPixels": 2281,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d0e6df0a5b1f6dea3ec043fd4026b90ccc0ad20706a363b3814bdd1ec83188ca",
+      "afterSha256": "24b5e3dc4eabe411ee651831387cc529ddcb614b48af0732a8daf94e0769ced4",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\tail-wag-v1\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-2.png",
+      "region": [
+        153,
+        286,
+        228,
+        356
+      ],
+      "source_component_bbox": [
+        1415,
+        63,
+        1790,
+        731
+      ],
+      "source_region": [
+        1595,
+        569,
+        1730,
+        695
+      ],
+      "changedPixels": 2328,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "277f4eb770907ab0dc7f0b3a0af65883d88b890ed7b5339c400eacb90dc61bb7",
+      "afterSha256": "c5676241e46234c8dc87a15fbdf18ea0ea242c501f1df7b078cc77e0d0d8d51f",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-0.png",
+      "region": [
+        104,
+        286,
+        166,
+        354
+      ],
+      "source_component_bbox": [
+        149,
+        64,
+        522,
+        731
+      ],
+      "source_region": [
+        231,
+        570,
+        342,
+        692
+      ],
+      "changedPixels": 2281,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d0e6df0a5b1f6dea3ec043fd4026b90ccc0ad20706a363b3814bdd1ec83188ca",
+      "afterSha256": "24b5e3dc4eabe411ee651831387cc529ddcb614b48af0732a8daf94e0769ced4",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-2.png",
+      "region": [
+        153,
+        286,
+        228,
+        356
+      ],
+      "source_component_bbox": [
+        1415,
+        63,
+        1790,
+        731
+      ],
+      "source_region": [
+        1595,
+        569,
+        1730,
+        695
+      ],
+      "changedPixels": 2328,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "277f4eb770907ab0dc7f0b3a0af65883d88b890ed7b5339c400eacb90dc61bb7",
+      "afterSha256": "c5676241e46234c8dc87a15fbdf18ea0ea242c501f1df7b078cc77e0d0d8d51f",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "cat",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\cat-cat-up_walk-0.png",
+      "region": [
+        135,
+        286,
+        198,
+        350
+      ],
+      "source_component_bbox": [
+        150,
+        65,
+        590,
+        734
+      ],
+      "source_region": [
+        326,
+        571,
+        439,
+        687
+      ],
+      "changedPixels": 2103,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "b340b3d7e640c352ad59061a08a87460ec1d10d2f3f4b1a54017f720b12298f6",
+      "afterSha256": "63a5fe252c39a380cf35c67c78d1914b8cbc6340731c76a212d71ebbeb9ad0de",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "cat",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\cat-cat-up_walk-2.png",
+      "region": [
+        83,
+        281,
+        154,
+        350
+      ],
+      "source_component_bbox": [
+        1361,
+        65,
+        1803,
+        735
+      ],
+      "source_region": [
+        1437,
+        562,
+        1567,
+        687
+      ],
+      "changedPixels": 2848,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "a28fa9203c42f56628d8919cd74dd8001b11df8fab7ca71d0c4567e463348fc0",
+      "afterSha256": "52c568694f9e09d1767da15b6426a3e3e6b4104e954733e74e7b4f58f7b8b7e3",
+      "finalPixelChecksPassed": true
+    },
+    {
+      "id": "red-fox",
+      "state": "right_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-right_walk-0.png",
+      "region": [
+        220,
+        225,
+        280,
+        282
+      ],
+      "source_component_bbox": [
+        80,
+        46,
+        534,
+        737
+      ],
+      "source_region": [
+        432,
+        447,
+        544,
+        552
+      ],
+      "changedPixels": 1682,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d18e1da2912e7214aa013bdec0088e7024971322efda79a714826c8aff3b017b",
+      "afterSha256": "79d28ebbe6a24c736d2f1ef8488ccdf23e2601f836329a085cebc930791929cf",
+      "finalPixelChecksPassed": true
+    }
+  ],
+  "allAlphaPreserved": true,
+  "allPixelsOutsideEditedRegionsPreserved": true,
+  "uniqueAnimals": 8,
+  "editedFrames": 19,
+  "visualReview": "before/after regions inspected; no central/bean pad marks retained",
+  "baseGameAtlasesUpdated": true
+}

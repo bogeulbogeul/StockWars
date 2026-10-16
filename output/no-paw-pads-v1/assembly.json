@@ -1,0 +1,477 @@
+[
+  {
+    "id": "red-fox",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-0.png",
+    "region": [
+      84,
+      285,
+      143,
+      351
+    ],
+    "source_component_bbox": [
+      142,
+      33,
+      571,
+      741
+    ],
+    "source_region": [
+      205,
+      568,
+      316,
+      692
+    ]
+  },
+  {
+    "id": "red-fox",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-up_walk-2.png",
+    "region": [
+      167,
+      281,
+      235,
+      353
+    ],
+    "source_component_bbox": [
+      1375,
+      33,
+      1773,
+      741
+    ],
+    "source_region": [
+      1595,
+      558,
+      1725,
+      696
+    ]
+  },
+  {
+    "id": "siberian-chipmunk",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-0.png",
+    "region": [
+      137,
+      302,
+      196,
+      361
+    ],
+    "source_component_bbox": [
+      134,
+      76,
+      602,
+      728
+    ],
+    "source_region": [
+      330,
+      600,
+      433,
+      703
+    ]
+  },
+  {
+    "id": "siberian-chipmunk",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\siberian-chipmunk\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\siberian-chipmunk-siberian-chipmunk-up_walk-2.png",
+    "region": [
+      118,
+      301,
+      183,
+      363
+    ],
+    "source_component_bbox": [
+      1338,
+      72,
+      1797,
+      728
+    ],
+    "source_region": [
+      1494,
+      598,
+      1608,
+      706
+    ]
+  },
+  {
+    "id": "raccoon-dog",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-0.png",
+    "region": [
+      90,
+      293,
+      152,
+      359
+    ],
+    "source_component_bbox": [
+      144,
+      68,
+      529,
+      727
+    ],
+    "source_region": [
+      208,
+      580,
+      318,
+      697
+    ]
+  },
+  {
+    "id": "raccoon-dog",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-2.png",
+    "region": [
+      156,
+      292,
+      224,
+      361
+    ],
+    "source_component_bbox": [
+      1410,
+      68,
+      1794,
+      726
+    ],
+    "source_region": [
+      1600,
+      577,
+      1720,
+      700
+    ]
+  },
+  {
+    "id": "european-badger",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-0.png",
+    "region": [
+      98,
+      287,
+      163,
+      357
+    ],
+    "source_component_bbox": [
+      149,
+      83,
+      496,
+      730
+    ],
+    "source_region": [
+      211,
+      575,
+      323,
+      697
+    ]
+  },
+  {
+    "id": "european-badger",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-2.png",
+    "region": [
+      154,
+      286,
+      225,
+      359
+    ],
+    "source_component_bbox": [
+      1434,
+      83,
+      1781,
+      730
+    ],
+    "source_region": [
+      1600,
+      573,
+      1725,
+      700
+    ]
+  },
+  {
+    "id": "brown-bear",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-0.png",
+    "region": [
+      92,
+      293,
+      156,
+      361
+    ],
+    "source_component_bbox": [
+      146,
+      73,
+      521,
+      724
+    ],
+    "source_region": [
+      209,
+      578,
+      321,
+      698
+    ]
+  },
+  {
+    "id": "brown-bear",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-2.png",
+    "region": [
+      156,
+      291,
+      229,
+      362
+    ],
+    "source_component_bbox": [
+      1413,
+      72,
+      1787,
+      724
+    ],
+    "source_region": [
+      1598,
+      576,
+      1728,
+      700
+    ]
+  },
+  {
+    "id": "european-rabbit",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-0.png",
+    "region": [
+      108,
+      290,
+      166,
+      353
+    ],
+    "source_component_bbox": [
+      180,
+      35,
+      505,
+      755
+    ],
+    "source_region": [
+      239,
+      589,
+      351,
+      709
+    ]
+  },
+  {
+    "id": "european-rabbit",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-2.png",
+    "region": [
+      155,
+      293,
+      218,
+      356
+    ],
+    "source_component_bbox": [
+      1433,
+      35,
+      1757,
+      755
+    ],
+    "source_region": [
+      1590,
+      594,
+      1712,
+      716
+    ]
+  },
+  {
+    "id": "dog",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\tail-wag-v1\\dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-0.png",
+    "region": [
+      104,
+      286,
+      166,
+      354
+    ],
+    "source_component_bbox": [
+      149,
+      64,
+      522,
+      731
+    ],
+    "source_region": [
+      231,
+      570,
+      342,
+      692
+    ]
+  },
+  {
+    "id": "dog",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\tail-wag-v1\\dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-2.png",
+    "region": [
+      153,
+      286,
+      228,
+      356
+    ],
+    "source_component_bbox": [
+      1415,
+      63,
+      1790,
+      731
+    ],
+    "source_region": [
+      1595,
+      569,
+      1730,
+      695
+    ]
+  },
+  {
+    "id": "dog",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-0.png",
+    "region": [
+      104,
+      286,
+      166,
+      354
+    ],
+    "source_component_bbox": [
+      149,
+      64,
+      522,
+      731
+    ],
+    "source_region": [
+      231,
+      570,
+      342,
+      692
+    ]
+  },
+  {
+    "id": "dog",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-2.png",
+    "region": [
+      153,
+      286,
+      228,
+      356
+    ],
+    "source_component_bbox": [
+      1415,
+      63,
+      1790,
+      731
+    ],
+    "source_region": [
+      1595,
+      569,
+      1730,
+      695
+    ]
+  },
+  {
+    "id": "cat",
+    "state": "up_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\cat-cat-up_walk-0.png",
+    "region": [
+      135,
+      286,
+      198,
+      350
+    ],
+    "source_component_bbox": [
+      150,
+      65,
+      590,
+      734
+    ],
+    "source_region": [
+      326,
+      571,
+      439,
+      687
+    ]
+  },
+  {
+    "id": "cat",
+    "state": "up_walk",
+    "index": 2,
+    "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\cat-cat-up_walk-2.png",
+    "region": [
+      83,
+      281,
+      154,
+      350
+    ],
+    "source_component_bbox": [
+      1361,
+      65,
+      1803,
+      735
+    ],
+    "source_region": [
+      1437,
+      562,
+      1567,
+      687
+    ]
+  },
+  {
+    "id": "red-fox",
+    "state": "right_walk",
+    "index": 0,
+    "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\red-fox\\run",
+    "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\red-fox-red-fox-right_walk-0.png",
+    "region": [
+      220,
+      225,
+      280,
+      282
+    ],
+    "source_component_bbox": [
+      80,
+      46,
+      534,
+      737
+    ],
+    "source_region": [
+      432,
+      447,
+      544,
+      552
+    ]
+  }
+]

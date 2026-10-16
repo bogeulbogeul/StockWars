@@ -1,0 +1,24 @@
+{
+  "atlas_sha256": "f5dd0c70efe9eee1dec287ce92c539c4d6f9a59c95fbaa013b40ec9af94d6f69",
+  "source_identical": true,
+  "destination": "C:\\GitHub\\StockWars\\web\\assets\\characters\\dog-baseline-v9",
+  "portrait_bbox": [
+    8,
+    79,
+    312,
+    320
+  ],
+  "states": [
+    "down_idle",
+    "down_walk",
+    "right_idle",
+    "right_walk",
+    "up_idle",
+    "up_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "wag_extension_installed": false
+}

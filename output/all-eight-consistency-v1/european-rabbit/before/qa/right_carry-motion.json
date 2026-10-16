@@ -1,0 +1,223 @@
+{
+  "kind": "sprite-gen-motion-report",
+  "version": 1,
+  "status": "needs-review",
+  "frame_count": 4,
+  "duration_seconds": 0.64,
+  "size": [
+    320,
+    400
+  ],
+  "anchor_px": [
+    160.0,
+    400.0
+  ],
+  "facing": null,
+  "contacts": [],
+  "foot_box": null,
+  "duplicate_frames": {
+    "exact": 0,
+    "adjacent_exact": 0,
+    "exact_silhouette": 0,
+    "near_silhouette": 0
+  },
+  "motion": {
+    "present": true,
+    "changed_transitions": 3,
+    "silhouette_changed_transitions": 3,
+    "silhouette_change_per_second": 0.9736078902481768
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "time_seconds": 0.0,
+      "duration_seconds": 0.16,
+      "bbox": [
+        64,
+        26,
+        256,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -96.0,
+        -374.0,
+        96.0,
+        -28.0
+      ],
+      "centroid_px": [
+        157.35507361298338,
+        201.6852879761055
+      ],
+      "opaque_pixels": 37833,
+      "edge_sides": []
+    },
+    {
+      "frame": 1,
+      "time_seconds": 0.16,
+      "duration_seconds": 0.16,
+      "bbox": [
+        80,
+        25,
+        255,
+        373
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -80.0,
+        -375.0,
+        95.0,
+        -27.0
+      ],
+      "centroid_px": [
+        156.36149997188957,
+        189.90605498397707
+      ],
+      "opaque_pixels": 35574,
+      "edge_sides": []
+    },
+    {
+      "frame": 2,
+      "time_seconds": 0.32,
+      "duration_seconds": 0.16,
+      "bbox": [
+        65,
+        25,
+        258,
+        373
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -95.0,
+        -375.0,
+        98.0,
+        -27.0
+      ],
+      "centroid_px": [
+        158.52351157591798,
+        201.68858082586016
+      ],
+      "opaque_pixels": 38917,
+      "edge_sides": []
+    },
+    {
+      "frame": 3,
+      "time_seconds": 0.48,
+      "duration_seconds": 0.16,
+      "bbox": [
+        82,
+        26,
+        257,
+        373
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -78.0,
+        -374.0,
+        97.0,
+        -27.0
+      ],
+      "centroid_px": [
+        158.3860641891892,
+        190.0009009009009
+      ],
+      "opaque_pixels": 35520,
+      "edge_sides": []
+    }
+  ],
+  "bbox_stats": {
+    "union": [
+      64,
+      25,
+      258,
+      373
+    ],
+    "width_range": [
+      175,
+      193
+    ],
+    "height_range": [
+      346,
+      348
+    ],
+    "bottom_range": [
+      372,
+      373
+    ]
+  },
+  "edge_contact": {
+    "frames": [],
+    "sides": {
+      "left": [],
+      "top": [],
+      "right": [],
+      "bottom": []
+    }
+  },
+  "contact_candidates": [],
+  "confidence": 0.0,
+  "sequence": {
+    "source": "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\qa\\right_carry-sequence.json",
+    "state": null,
+    "fps_override": null,
+    "frame_count": 4,
+    "size": [
+      320,
+      400
+    ],
+    "anchor_px": [
+      160.0,
+      400.0
+    ],
+    "durations_seconds": [
+      0.16,
+      0.16,
+      0.16,
+      0.16
+    ]
+  },
+  "source_fingerprints": {
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\qa\\right_carry-sequence.json": "a79ebffb0fcf78e41b5857e0df3487f463e55a0c24e497c3b83dba4d24f2b10b",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-0.png": "0095b304162e0e71b495c59ea08dba48814e8323013de728b6bf5be6fc3ae340",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-1.png": "8a05b9115c4794924624e1d9a9846705c97391c2852e1fad25c9b09d9ef93225",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-2.png": "0f71a6c3bc2c9fb949432460649076eeedf45c2dfca7fa88721d4cb7a5bbeb0f",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-3.png": "fb119a15b7dbf46c3eecbd2080227db45e1ad552fdde0e7063deccbafc48c181"
+  },
+  "stride_verified": false,
+  "foot_velocity_px_per_second": null,
+  "stride_px_per_second": null,
+  "warnings": [
+    "Ground contact is unknown: provide both manual contacts and a single-foot ROI; silhouette bottoms do not identify a planted foot."
+  ],
+  "method": {
+    "silhouette": "alpha > 0 in source canvas coordinates; bbox right/bottom are exclusive",
+    "near_silhouette_iou": 0.98,
+    "duplicates": "Counts frames matching an earlier frame; near excludes exact silhouette matches. No time or frames are removed.",
+    "motion": "Adjacent visible pixel changes; silhouette XOR/union summed over full duration. No loop-seam assumption.",
+    "contact": "User-declared same-foot stance spans plus isolated ROI alpha centroid; no automatic contact or facing inference.",
+    "timing": "Cumulative frame-start seconds; repeated tracked poses use their first onset with all intervening durations retained. Final hold is included in duration but has no displacement endpoint.",
+    "velocity": "Endpoint horizontal displacement / pose-onset elapsed seconds; positive = image right. Stride is absolute velocity under manual ground-contact assumptions.",
+    "confidence": "0.9 = at least 3 distinct poses, stable baseline/shape, monotonic near-linear motion and consistent spans. Heuristic conditional confidence, not a calibrated contact probability.",
+    "sequence": "Identity of the analysed sequence: source, atlas state, fps override, frame count, size, anchor and effective per-frame durations. A consumer applying the stride must match all of it and source_fingerprints; another state or frame rate of the same files is a different sequence."
+  },
+  "source_files": [
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\qa\\right_carry-sequence.json",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-0.png",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-1.png",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-2.png",
+    "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\frames\\right_carry\\frame-3.png"
+  ],
+  "source": "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\european-rabbit\\run\\qa\\right_carry-sequence.json"
+}

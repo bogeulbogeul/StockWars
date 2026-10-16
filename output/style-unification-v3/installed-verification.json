@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "id": "dog",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": true
+    },
+    {
+      "id": "cat",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": true
+    },
+    {
+      "id": "red-fox",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    },
+    {
+      "id": "raccoon-dog",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    },
+    {
+      "id": "european-badger",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    },
+    {
+      "id": "brown-bear",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    },
+    {
+      "id": "european-rabbit",
+      "current_run_png_and_frames_identical": true,
+      "game_png_identical": "not integrated"
+    }
+  ]
+}

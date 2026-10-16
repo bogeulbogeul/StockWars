@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-0.png",
+      "region": [
+        104,
+        286,
+        166,
+        354
+      ],
+      "source_component_bbox": [
+        149,
+        64,
+        522,
+        731
+      ],
+      "source_region": [
+        231,
+        570,
+        342,
+        692
+      ],
+      "changedPixels": 2281,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "d0e6df0a5b1f6dea3ec043fd4026b90ccc0ad20706a363b3814bdd1ec83188ca",
+      "afterSha256": "24b5e3dc4eabe411ee651831387cc529ddcb614b48af0732a8daf94e0769ced4"
+    },
+    {
+      "id": "dog",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\dog-dog-up_walk-2.png",
+      "region": [
+        153,
+        286,
+        228,
+        356
+      ],
+      "source_component_bbox": [
+        1415,
+        63,
+        1790,
+        731
+      ],
+      "source_region": [
+        1595,
+        569,
+        1730,
+        695
+      ],
+      "changedPixels": 2328,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "277f4eb770907ab0dc7f0b3a0af65883d88b890ed7b5339c400eacb90dc61bb7",
+      "afterSha256": "c5676241e46234c8dc87a15fbdf18ea0ea242c501f1df7b078cc77e0d0d8d51f"
+    }
+  ]
+}

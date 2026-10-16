@@ -1,0 +1,7 @@
+{
+  "id": "european-badger",
+  "state": "up_walk",
+  "instruction": "Correct ONLY unwanted white front-paw markings. In ALL THREE rear-view figures, BOTH forearms and hands/fingers must be dark charcoal matching middle figure. Remove cream-white patch from screen-left hand in FIRST pose and screen-right hand in THIRD pose. Keep white head stripe and short pale-tipped tail untouched. Keep leg phases soles heads proportions positions cyan background and row size unchanged.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-918af54a-33d5-4e1b-9a07-1b1fe3cf6d3e.png",
+  "prompt": "Precise sprite row correction. Image1 is EDIT TARGET. Correct ONLY unwanted white front-paw markings. In ALL THREE rear-view figures, BOTH forearms and hands/fingers must be dark charcoal matching middle figure. Remove cream-white patch from screen-left hand in FIRST pose and screen-right hand in THIRD pose. Keep white head stripe and short pale-tipped tail untouched. Keep leg phases soles heads proportions positions cyan background and row size unchanged. Image2 is accepted identity reference for coat colors only. No new props, no labels. Retain exactly three separated full-body figures on flat cyan #00FFFF."
+}

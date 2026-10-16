@@ -1,0 +1,11 @@
+{
+  "changed": [
+    "up_walk[0]",
+    "up_walk[1]",
+    "up_walk[2]",
+    "up_idle[0]"
+  ],
+  "other_15_frame_files_identical": true,
+  "palette_unchanged": true,
+  "game_installed": false
+}

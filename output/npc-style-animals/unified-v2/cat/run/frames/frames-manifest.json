@@ -3,7 +3,7 @@
   "engine": "component-row",
   "engine_revision": "472a5b08401d",
   "extract_args": {},
-  "run_dir": "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\style-unification-v3\\cat\\run",
   "cell": {
     "shape": "rect",
     "width": 320,
@@ -32,20 +32,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 45337,
           "bbox": [
             54,
-            28,
+            27,
             266,
             372
           ],
+          "nontransparent_pixels": 45764,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
       "engine_revision": "472a5b08401d",
-      "source": "down_walk/frame-1.png (byte-identical neutral pose)"
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "down_walk",
@@ -59,43 +59,44 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 43317,
           "bbox": [
             52,
-            28,
-            268,
+            26,
+            269,
             372
           ],
+          "nontransparent_pixels": 44000,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 1,
-          "nontransparent_pixels": 45337,
           "bbox": [
             54,
-            28,
+            27,
             266,
             372
           ],
+          "nontransparent_pixels": 45764,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 2,
-          "nontransparent_pixels": 41793,
           "bbox": [
             59,
-            28,
+            26,
             261,
             372
           ],
+          "nontransparent_pixels": 42284,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "right_idle",
@@ -107,20 +108,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 44072,
           "bbox": [
             48,
-            28,
-            272,
+            27,
+            273,
             372
           ],
+          "nontransparent_pixels": 45152,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
       "engine_revision": "472a5b08401d",
-      "source": "right_walk/frame-1.png (byte-identical neutral pose)"
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "right_walk",
@@ -134,43 +135,44 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 46923,
           "bbox": [
-            31,
-            28,
+            30,
+            27,
             289,
             372
           ],
+          "nontransparent_pixels": 47858,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 1,
-          "nontransparent_pixels": 44072,
           "bbox": [
             48,
-            28,
-            272,
+            27,
+            273,
             372
           ],
+          "nontransparent_pixels": 45152,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 2,
-          "nontransparent_pixels": 45420,
           "bbox": [
             34,
-            28,
-            285,
+            27,
+            286,
             372
           ],
+          "nontransparent_pixels": 45957,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "up_idle",
@@ -182,20 +184,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 46996,
           "bbox": [
-            45,
-            28,
+            44,
+            27,
             274,
             372
           ],
+          "nontransparent_pixels": 47714,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
       "engine_revision": "472a5b08401d",
-      "source": "up_walk/frame-1.png (byte-identical neutral pose)"
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "up_walk",
@@ -209,43 +211,44 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 44535,
           "bbox": [
-            47,
-            28,
+            46,
+            27,
             273,
             372
           ],
+          "nontransparent_pixels": 45247,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 1,
-          "nontransparent_pixels": 46996,
           "bbox": [
-            45,
-            28,
+            44,
+            27,
             274,
             372
           ],
+          "nontransparent_pixels": 47714,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 2,
-          "nontransparent_pixels": 44539,
           "bbox": [
             46,
-            28,
-            273,
+            27,
+            274,
             372
           ],
+          "nontransparent_pixels": 44980,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "right_carry",
@@ -260,55 +263,56 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 42069,
           "bbox": [
-            40,
-            28,
-            279,
+            38,
+            26,
+            280,
             372
           ],
+          "nontransparent_pixels": 43017,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 1,
-          "nontransparent_pixels": 38378,
           "bbox": [
-            44,
-            28,
-            275,
+            42,
+            25,
+            276,
             372
           ],
+          "nontransparent_pixels": 39354,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 2,
-          "nontransparent_pixels": 41450,
           "bbox": [
-            43,
-            28,
-            277,
+            42,
+            25,
+            278,
             372
           ],
+          "nontransparent_pixels": 42226,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         },
         {
           "index": 3,
-          "nontransparent_pixels": 38826,
           "bbox": [
-            44,
-            28,
-            275,
+            43,
+            25,
+            276,
             372
           ],
+          "nontransparent_pixels": 39521,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "down_sit",
@@ -320,19 +324,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 44912,
           "bbox": [
-            53,
-            28,
+            54,
+            26,
             266,
             372
           ],
+          "nontransparent_pixels": 45328,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "right_sit",
@@ -344,19 +349,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 42799,
           "bbox": [
-            48,
-            28,
-            271,
+            46,
+            26,
+            272,
             372
           ],
+          "nontransparent_pixels": 43547,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     },
     {
       "state": "face_portrait",
@@ -368,19 +374,20 @@
       "frame_records": [
         {
           "index": 0,
-          "nontransparent_pixels": 51026,
           "bbox": [
-            28,
-            75,
-            292,
+            27,
+            73,
+            293,
             372
           ],
+          "nontransparent_pixels": 51744,
           "edge_pixels": 0,
           "chroma_adjacent_pixels": 0
         }
       ],
       "ok": true,
-      "engine_revision": "472a5b08401d"
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
     }
   ],
   "errors": [],

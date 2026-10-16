@@ -1,0 +1,18 @@
+{
+  "changed": [
+    "right_walk[2]"
+  ],
+  "other_18_frames_byte_identical": true,
+  "palette_size": 279,
+  "outside_palette_RGB": 0,
+  "carry_order_preserved": true,
+  "walk_sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "frame_ms": 160,
+  "game_installed": false,
+  "motion_continuity": "experimental; live playback not observed"
+}

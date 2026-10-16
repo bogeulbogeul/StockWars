@@ -1,0 +1,11 @@
+{
+  "unchanged_logical_frames": 17,
+  "changed": [
+    "right_walk[1]",
+    "right_idle[0]"
+  ],
+  "A_B_contact_frames_unchanged": true,
+  "native_whole_frame_edit": true,
+  "game_installed": false,
+  "live_playback_QA": false
+}

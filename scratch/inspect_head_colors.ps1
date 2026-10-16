@@ -1,7 +1,7 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
 # Let's inspect what colors make up the outline and skin in base_fair_left.png
-$bmp = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png")
+$bmp = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_left.png")
 
 # Sample outline color around top head
 $outlineColors = @()

@@ -282,5 +282,26 @@
         }
       ]
     }
+  },
+  "style_correction": {
+    "version": "style-unification-v3",
+    "date": "2026-10-16",
+    "provider": "built-in image_gen",
+    "reference": "output/style-unification-v3/cat/identity.png",
+    "source_and_prompts": "output/style-unification-v3/generation.json",
+    "color_correction": "native image edit using approved front idle as fixed palette/style reference; continuous RGB retained; deterministic recolor trials rejected",
+    "original_layout_and_timing_preserved": true,
+    "no_paw_pads": true,
+    "game_integrated": true,
+    "runtime_contact_QA": "not performed; forest characters not integrated",
+    "assembly": "canonical chroma/component functions, board-wide isotropic scale, original frame ground lines and atlas coordinates, dog held-body tail masks"
+  },
+  "all_eight_consistency_review": {
+    "source": "output/all-eight-consistency-v1/",
+    "approved_RGB_preserved_exactly": true,
+    "no_redraw_no_recolor": true,
+    "all_common_states_reviewed": true,
+    "head_motion": "existing complete native poses retained; badger contact whole pose translated 2px down to avoid static head",
+    "live_playback_QA": false
   }
 }

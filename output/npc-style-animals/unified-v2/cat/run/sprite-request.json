@@ -86,7 +86,7 @@
       "action": "One front-facing head portrait, ears fully included, tiny neck tuft, no body. Match approved front idle face and colors."
     }
   },
-  "style": "Copy cat FRONT IDLE reference precisely: charcoal black fur #35343D base, subdued cool gray #4A4854 highlight planes, near-black outlines, amber eyes, pink inner ears, same head/body proportions and fur tuft shapes. ALL directions share these exact fur tones and clean restrained NPC cel shading; do not make rear lighter gray, brown or differently textured. No clothes props halo shadows. One integrated long curved black tail.",
+  "style": "Copy cat FRONT IDLE reference precisely: charcoal black fur #35343D base, subdued cool gray #4A4854 highlight planes, near-black outlines, amber eyes, pink inner ears, same head/body proportions and fur tuft shapes. ALL directions share these exact fur tones and clean restrained NPC cel shading; do not make rear lighter gray, brown or differently textured. No clothes props halo shadows. One integrated long curved black tail. All animals: NO paw pads, NO toe beans, NO internal circular/oval sole or palm markings, NO emphasized sole plane. Raised feet remain smooth in the local fur color. Retain normal open finger division lines. All directions, actions and portrait must match the approved front idle palette, line weight, cel shading and identity. No motion-specific coat hue, brightness or rendering changes. NO paw pads or toe beans.",
   "layout": "taxonomy/v1",
   "fit": {
     "resample": "lanczos",
@@ -99,5 +99,11 @@
     "mode": "rgb",
     "unmix_reach": 4,
     "spill_max_fraction": 0.005
+  },
+  "paw_pad_policy": {
+    "status": "forbidden",
+    "decided": "2026-10-16",
+    "source": "user request",
+    "preserve_finger_divisions": true
   }
 }

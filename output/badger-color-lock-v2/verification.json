@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "state": "down_walk",
+      "shared_torso_pixels": 2535,
+      "max_shared_torso_RGB_delta": 0,
+      "mouth_RGBA_exact_to_neutral": true,
+      "motion_alpha_preserved_outside_mouth": true
+    },
+    {
+      "state": "right_walk",
+      "shared_torso_pixels": 1077,
+      "max_shared_torso_RGB_delta": 0,
+      "mouth_RGBA_exact_to_neutral": true,
+      "motion_alpha_preserved_outside_mouth": true
+    },
+    {
+      "state": "up_walk",
+      "shared_torso_pixels": 5123,
+      "max_shared_torso_RGB_delta": 0,
+      "mouth_RGBA_exact_to_neutral": false,
+      "motion_alpha_preserved_outside_mouth": true
+    }
+  ],
+  "method": "neutral material median calibration with soft boundaries; shared torso core RGB and full mouth RGBA locked to neutral; rejected edge propagation/flat-field experiments not adopted",
+  "live_playback_QA": false
+}

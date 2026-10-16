@@ -1,6 +1,6 @@
 param(
     [int]$port = 8080,
-    [string]$rootDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web"
+    [string]$rootDir = "${PSScriptRoot}\..\web"
 )
 
 $listener = New-Object System.Net.HttpListener

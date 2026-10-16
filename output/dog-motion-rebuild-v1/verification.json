@@ -1,0 +1,20 @@
+{
+  "logical_frames": 19,
+  "unique_drawings": 16,
+  "states": 10,
+  "atlas_pixel_match": true,
+  "idle_is_walk_neutral": true,
+  "frames_clipped": false,
+  "walk_sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "walk_frame_ms": 160,
+  "RGB_recoloring": false,
+  "pasted_static_heads": false,
+  "live_motion_continuity": "not observed; experimental design candidate",
+  "temporal_material_color_lock": "not certified by static export checks",
+  "game_installed": false
+}

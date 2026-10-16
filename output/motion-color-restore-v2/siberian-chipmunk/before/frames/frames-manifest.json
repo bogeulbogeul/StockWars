@@ -1,0 +1,415 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\style-unification-v3\\siberian-chipmunk\\run",
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "down_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/down_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            54,
+            25,
+            265,
+            372
+          ],
+          "nontransparent_pixels": 49247,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "down_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            58,
+            25,
+            271,
+            373
+          ],
+          "nontransparent_pixels": 48071,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            54,
+            25,
+            265,
+            372
+          ],
+          "nontransparent_pixels": 49247,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            58,
+            25,
+            265,
+            372
+          ],
+          "nontransparent_pixels": 46635,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/right_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            42,
+            25,
+            279,
+            372
+          ],
+          "nontransparent_pixels": 52757,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            42,
+            26,
+            289,
+            369
+          ],
+          "nontransparent_pixels": 51670,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            42,
+            25,
+            279,
+            372
+          ],
+          "nontransparent_pixels": 52757,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            46,
+            26,
+            293,
+            369
+          ],
+          "nontransparent_pixels": 50437,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "up_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/up_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            41,
+            26,
+            279,
+            372
+          ],
+          "nontransparent_pixels": 50955,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "up_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            46,
+            26,
+            287,
+            374
+          ],
+          "nontransparent_pixels": 49295,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            41,
+            26,
+            279,
+            372
+          ],
+          "nontransparent_pixels": 50955,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            42,
+            26,
+            260,
+            376
+          ],
+          "nontransparent_pixels": 47075,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "components",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            40,
+            26,
+            281,
+            372
+          ],
+          "nontransparent_pixels": 49721,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            40,
+            27,
+            275,
+            372
+          ],
+          "nontransparent_pixels": 45453,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            38,
+            27,
+            278,
+            373
+          ],
+          "nontransparent_pixels": 49030,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "bbox": [
+            40,
+            27,
+            277,
+            373
+          ],
+          "nontransparent_pixels": 46050,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "down_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/down_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            66,
+            78,
+            254,
+            372
+          ],
+          "nontransparent_pixels": 35929,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/right_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            60,
+            79,
+            259,
+            372
+          ],
+          "nontransparent_pixels": 34128,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "face_portrait",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/face_portrait/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            48,
+            110,
+            273,
+            312
+          ],
+          "nontransparent_pixels": 34686,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "shared_idle_neutral": [
+    {
+      "state": "down_idle",
+      "neutral": "down_walk/frame-1.png",
+      "identical": true,
+      "sha256": "5b0f94ae977b26a4a0a307c007fed2710396dfcfac8295d28d766e358a1a5e67"
+    },
+    {
+      "state": "right_idle",
+      "neutral": "right_walk/frame-1.png",
+      "identical": true,
+      "sha256": "b06f5362d736f009ae7f4ae7e7f26d29c9e5bd526932968b6ec791c87b76ec0b"
+    },
+    {
+      "state": "up_idle",
+      "neutral": "up_walk/frame-1.png",
+      "identical": true,
+      "sha256": "ec0fff9d14949d6feb503408532a186a9716d6ee9559c3aa2ea4f6419cb3f16b"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 Add-Type -AssemblyName System.Drawing
 
-$baseDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$baseDir = "${PSScriptRoot}\..\web\assets\character"
 $srcDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\0415e4d4-6a74-4c66-aab6-731ecd9b95d7\.user_uploaded"
-$testDir = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_hair_composites"
+$testDir = "${PSScriptRoot}\..\scratch\test_hair_composites"
 if (-not (Test-Path $testDir)) { New-Item -ItemType Directory -Path $testDir -Force }
 
 $bmp = New-Object System.Drawing.Bitmap((Join-Path $srcDir "media_1789463644510.png"))

@@ -1,0 +1,80 @@
+{
+  "theme": "숲속 친구들",
+  "sale_period": "one calendar month; start not scheduled",
+  "regular_count": 5,
+  "limited_count": 1,
+  "characters": [
+    {
+      "id": "red-fox",
+      "name": "붉은여우",
+      "tier": "regular",
+      "sheet": "red-fox/run/sprite-sheet-alpha.png",
+      "manifest": "red-fox/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "name": "시베리아다람쥐",
+      "tier": "regular",
+      "sheet": "siberian-chipmunk/run/sprite-sheet-alpha.png",
+      "manifest": "siberian-chipmunk/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    },
+    {
+      "id": "raccoon-dog",
+      "name": "너구리",
+      "tier": "regular",
+      "sheet": "raccoon-dog/run/sprite-sheet-alpha.png",
+      "manifest": "raccoon-dog/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    },
+    {
+      "id": "european-badger",
+      "name": "유럽오소리",
+      "tier": "regular",
+      "sheet": "european-badger/run/sprite-sheet-alpha.png",
+      "manifest": "european-badger/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    },
+    {
+      "id": "brown-bear",
+      "name": "불곰",
+      "tier": "regular",
+      "sheet": "brown-bear/run/sprite-sheet-alpha.png",
+      "manifest": "brown-bear/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    },
+    {
+      "id": "european-rabbit",
+      "name": "유럽토끼",
+      "tier": "limited",
+      "sheet": "european-rabbit/run/sprite-sheet-alpha.png",
+      "manifest": "european-rabbit/run/manifest.json",
+      "states": 10,
+      "frames": 19,
+      "unique_frames": 16,
+      "game_integrated": false,
+      "visual_review": "see run/qa-notes.md"
+    }
+  ]
+}

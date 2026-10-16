@@ -1,7 +1,7 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$bodyLeft = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png")
-$bodyRight = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png")
+$bodyLeft = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_left.png")
+$bodyRight = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_right.png")
 
 # In Left view: Nose points LEFT. Front of face is MinX.
 Write-Host "--- LEFT PROFILE (Facing Left) ---"

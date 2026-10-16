@@ -1,4 +1,4 @@
-// Source-pixel geometry for the approved salon-with-claire-v9 illustration.
+// Source-pixel geometry for the approved palette/official-logo v10 illustration.
 // Retain its native aspect ratio; exact common-grid conformity remains an art limitation.
 import { CHARACTER_HEIGHT } from '../../data/characterScale.js';
 // Claire's full standing body is obscured by the counter. The reference sheet's
@@ -9,29 +9,29 @@ export const SALON_CHARACTER_REFERENCE = Object.freeze({
     sourceStandingHeight: 189, sourcePixelsPerUnit: 189 / CHARACTER_HEIGHT,
     measurement: 'reference-sheet estimate; legs obscured in unified room'
 });
-export const SALON_ROOM = Object.freeze({ id: 'salon-de-tail-v9', width: 1216, height: 1294,
+export const SALON_ROOM = Object.freeze({ id: 'salon-de-tail-v10', width: 1254, height: 1254,
     characterScale: SALON_CHARACTER_REFERENCE.sourcePixelsPerUnit });
-export const SALON_FLOOR = [[613,452],[1184,790],[598,1160],[36,790]];
+export const SALON_FLOOR = [[613,490],[1156,782],[610,1138],[82,782]];
 export const SALON_OBJECTS = [
-    { id:'console', footprint:[[658,506],[1094,758],[1094,783],[658,531]], silhouette:[[655,431],[1095,684],[1095,783],[655,532]] },
-    { id:'chair-left', footprint:[[681,611],[710,596],[750,618],[750,635],[716,649],[680,630]], silhouette:[[656,510],[687,506],[715,525],[731,530],[752,549],[752,582],[735,604],[750,620],[747,635],[716,650],[681,636],[677,620],[690,606],[659,580]] },
-    { id:'chair-back', footprint:[[790,701],[821,685],[865,708],[865,726],[828,741],[790,722]], silhouette:[[778,601],[808,596],[837,615],[852,620],[875,638],[875,670],[851,695],[865,712],[861,727],[829,741],[792,727],[788,712],[801,696],[780,673]] },
-    { id:'chair-front', footprint:[[930,793],[966,778],[1009,802],[1009,820],[973,835],[930,817]], silhouette:[[916,692],[945,687],[974,704],[992,712],[1018,733],[1018,762],[995,788],[1009,805],[1005,822],[972,835],[934,821],[929,805],[943,790],[918,768]] },
-    { id:'wash-left', footprint:[[365,584],[429,551],[528,610],[528,640],[465,676],[365,617]], silhouette:[[355,495],[395,471],[446,480],[450,522],[483,532],[528,587],[528,641],[465,677],[365,618]] },
-    { id:'wash-back', footprint:[[484,506],[545,475],[639,531],[639,557],[575,595],[484,539]], silhouette:[[474,421],[514,397],[563,407],[568,449],[602,458],[639,507],[639,558],[576,596],[484,540]] },
-    { id:'reception', footprint:[[124,738],[326,645],[420,688],[420,781],[256,865],[125,799]], silhouette:[[122,693],[187,655],[229,672],[331,622],[411,651],[420,684],[420,784],[256,866],[125,800]] },
-    { id:'rear-plant', footprint:[[569,440],[613,421],[659,444],[649,467],[611,482],[572,460]], silhouette:[[553,354],[575,337],[582,303],[611,324],[637,303],[647,335],[672,346],[656,388],[659,443],[649,467],[612,482],[571,460],[568,406]] }
+    { id:'console', footprint:[[668,543],[1075,772],[1075,801],[668,571]], silhouette:[[668,480],[1075,706],[1075,801],[668,571]] },
+    { id:'chair-left', footprint:[[699,649],[735,633],[769,653],[769,673],[735,689],[697,668]], silhouette:[[679,546],[706,542],[735,557],[751,570],[770,581],[770,617],[751,641],[769,655],[769,674],[735,689],[698,670],[697,651],[710,638],[682,612]] },
+    { id:'chair-back', footprint:[[820,730],[855,713],[895,735],[895,752],[858,769],[819,749]], silhouette:[[800,626],[828,622],[858,638],[875,649],[895,663],[895,698],[875,720],[895,738],[895,753],[858,770],[820,750],[818,732],[833,717],[802,693]] },
+    { id:'chair-front', footprint:[[948,813],[985,797],[1025,819],[1025,839],[986,856],[946,834]], silhouette:[[926,713],[956,707],[985,723],[1004,736],[1028,750],[1028,784],[1005,807],[1025,821],[1025,840],[986,856],[947,835],[945,817],[959,802],[928,779]] },
+    { id:'wash-left', footprint:[[386,625],[445,591],[531,642],[531,674],[475,708],[386,657]], silhouette:[[375,550],[411,517],[461,524],[467,562],[496,580],[531,625],[531,674],[475,708],[386,657]] },
+    { id:'wash-back', footprint:[[497,552],[552,525],[642,575],[642,603],[587,637],[497,585]], silhouette:[[486,479],[521,452],[571,459],[577,497],[608,515],[642,557],[642,603],[587,637],[497,585]] },
+    { id:'reception', footprint:[[173,767],[333,691],[434,730],[434,802],[278,868],[174,817]], silhouette:[[171,735],[219,697],[266,711],[351,672],[424,691],[434,726],[434,803],[278,869],[173,818]] },
+    { id:'rear-plant', footprint:[[579,487],[612,470],[653,491],[650,514],[614,529],[580,507]], silhouette:[[563,431],[575,399],[591,372],[613,391],[636,371],[651,405],[671,422],[653,465],[653,491],[650,514],[614,529],[580,507]] }
 ];
 export const SALON_BODIES = SALON_OBJECTS.map(o => ({ id:o.id, type:'static', polygon:o.footprint }));
 export const SALON_PLAYER_BODY = Object.freeze({ type:'kinematic', radiusX:16, radiusY:8 });
 export const SALON_PLACES = [
-    { id:'exit', label:'카펫에서 마을로 나가기', x:421,y:946, hit:[[303,936],[382,886],[546,997],[468,1052]], action:'exit' },
-    { id:'styles', label:'클레어와 스타일 상담', x:384,y:836, hit:[[190,540],[344,540],[344,695],[190,695]], action:'styles' },
-    { id:'chair-left', label:'첫 번째 스타일링 의자', x:678,y:687, hit:SALON_OBJECTS[1].silhouette, seat:{x:707,y:579,direction:'up'} },
-    { id:'chair-back', label:'두 번째 스타일링 의자', x:785,y:779, hit:SALON_OBJECTS[2].silhouette, seat:{x:827,y:670,direction:'up'} },
-    { id:'chair-front', label:'세 번째 스타일링 의자', x:916,y:873, hit:SALON_OBJECTS[3].silhouette, seat:{x:967,y:762,direction:'up'} },
-    { id:'wash', label:'샴푸석 이용 안내', x:543,y:663, hit:SALON_OBJECTS[4].silhouette, action:'wash' },
-    { id:'wash-back', label:'안쪽 샴푸석 이용 안내', x:646,y:603, hit:SALON_OBJECTS[5].silhouette, action:'wash' }
+    { id:'exit', label:'카펫에서 마을로 나가기', x:455,y:940, hit:[[350,916],[421,870],[560,962],[489,1011]], action:'exit' },
+    { id:'styles', label:'클레어와 대화하기', x:408,y:841, hit:[[229,573],[371,573],[371,711],[229,711]], action:'styles' },
+    { id:'chair-left', label:'첫 번째 스타일링 의자', x:680,y:719, hit:SALON_OBJECTS[1].silhouette, seat:{x:729,y:675,direction:'up'} },
+    { id:'chair-back', label:'두 번째 스타일링 의자', x:797,y:799, hit:SALON_OBJECTS[2].silhouette, seat:{x:851,y:756,direction:'up'} },
+    { id:'chair-front', label:'세 번째 스타일링 의자', x:925,y:885, hit:SALON_OBJECTS[3].silhouette, seat:{x:979,y:842,direction:'up'} },
+    { id:'wash', label:'샴푸석 이용 안내', x:550,y:702, hit:SALON_OBJECTS[4].silhouette, action:'wash' },
+    { id:'wash-back', label:'안쪽 샴푸석 이용 안내', x:658,y:645, hit:SALON_OBJECTS[5].silhouette, action:'wash' }
 ];
 export function inside(x,y,polygon) {
     let result=false;

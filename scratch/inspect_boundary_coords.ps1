@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$bmp = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png")
+$bmp = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_left.png")
 
 Write-Host "Left profile head outline coordinates (Y=40..100):"
 for ($y = 40; $y -le 100; $y++) {

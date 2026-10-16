@@ -1,0 +1,126 @@
+{
+  "palette_size": 279,
+  "logical_frames": 19,
+  "all_nontransparent_RGB_in_shared_palette": true,
+  "alpha_preserved_during_recolor": true,
+  "motion_geometry_unchanged": true,
+  "portrait_face_only": true,
+  "checks": [
+    {
+      "state": "down_idle",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "down_walk",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "down_walk",
+      "index": 1,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "down_walk",
+      "index": 2,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_idle",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_walk",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_walk",
+      "index": 1,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_walk",
+      "index": 2,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "up_idle",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "up_walk",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "up_walk",
+      "index": 1,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "up_walk",
+      "index": 2,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_carry",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_carry",
+      "index": 1,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_carry",
+      "index": 2,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_carry",
+      "index": 3,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "down_sit",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "right_sit",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    },
+    {
+      "state": "face_portrait",
+      "index": 0,
+      "outside_palette": 0,
+      "alpha_preserved": true
+    }
+  ],
+  "temporal_shading_consistency": "requires playback review; palette membership alone is not proof",
+  "game_installed": false
+}

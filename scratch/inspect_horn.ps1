@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$bmp = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png")
+$bmp = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_right.png")
 
 Write-Host "Inspecting Right profile head (facing right):"
 # Center of head is around X=120, apex Y ~ 42

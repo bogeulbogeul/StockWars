@@ -1,0 +1,112 @@
+[
+  {
+    "state": "down_idle",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.6405959031657356,
+    "source_max_size": [
+      296,
+      537
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "down_walk",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.5134328358208955,
+    "source_max_size": [
+      383,
+      670
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_idle",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.6405959031657356,
+    "source_max_size": [
+      303,
+      537
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_walk",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.5333333333333333,
+    "source_max_size": [
+      411,
+      645
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "up_idle",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.6417910447761194,
+    "source_max_size": [
+      290,
+      536
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "up_walk",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.5316846986089645,
+    "source_max_size": [
+      360,
+      647
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_carry",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.6088495575221239,
+    "source_max_size": [
+      336,
+      565
+    ],
+    "target_max_height": 344,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "down_sit",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.43582089552238806,
+    "source_max_size": [
+      379,
+      670
+    ],
+    "target_max_height": 292,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_sit",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.31842966194111233,
+    "source_max_size": [
+      535,
+      917
+    ],
+    "target_max_height": 292,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "face_portrait",
+    "method": "canonical roomy extraction then one uniform row scale",
+    "scale": 0.6256983240223464,
+    "source_max_size": [
+      393,
+      358
+    ],
+    "target_max_height": 224,
+    "per_frame_height_normalization": false
+  }
+]

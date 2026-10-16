@@ -1,4 +1,4 @@
-$charDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$charDir = "${PSScriptRoot}\..\web\assets\character"
 
 $skins = @("pale", "fair", "natural", "tan", "deep")
 $dirs = @("front", "right", "back", "left")

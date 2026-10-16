@@ -1,0 +1,4 @@
+down_walk: experimental / needs-review. Complete pose boards reviewed for anatomy, identity and seams. Four-step sequence at 160ms verified. Live animated playback and in-game contact QA remain unverified.
+right_walk: experimental / needs-review. Complete pose boards reviewed for anatomy, identity and seams. Four-step sequence at 160ms verified. Live animated playback and in-game contact QA remain unverified.
+up_walk: experimental / needs-review. Complete pose boards reviewed for anatomy, identity and seams. Four-step sequence at 160ms verified. Live animated playback and in-game contact QA remain unverified.
+right_carry: experimental / needs-review. Complete pose boards reviewed for anatomy, identity and seams. Four-step sequence at 160ms verified. Live animated playback and in-game contact QA remain unverified.

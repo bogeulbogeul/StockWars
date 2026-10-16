@@ -1,7 +1,7 @@
 Add-Type -AssemblyName System.Drawing
 
-$baseDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
-$rigDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\rig"
+$baseDir = "${PSScriptRoot}\..\web\assets\character"
+$rigDir = "${PSScriptRoot}\..\web\assets\character\rig"
 
 $skins = @("pale", "fair", "natural", "tan", "deep")
 $dirs = @("front", "left", "back", "right")

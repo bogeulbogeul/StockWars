@@ -184,14 +184,14 @@
       ],
       "metrics": {
         "histogram_intersection": {
-          "min": 0.889158774918906,
-          "mean": 0.9239715483744511
+          "min": 0.8828994035348613,
+          "mean": 0.9199214302600915
         },
         "dhash_similarity": {
           "min": 0.921875,
           "mean": 0.9375
         },
-        "motion_presence": 0.018360332414215686,
+        "motion_presence": 0.018298100490196076,
         "centroid_sigma": {
           "x": 0.6405829386406524,
           "y": 2.746223867458579

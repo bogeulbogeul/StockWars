@@ -12,7 +12,7 @@ function Resize-Image($srcPath, $dstPath) {
     $bmp.Dispose()
 }
 
-Resize-Image "C:\Users\Administrator\.gemini\antigravity\brain\1ec498ef-bac8-4ddc-a363-e6a0c7f8b19f\seamless_rain_texture_256_1780461200533.png" "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_rain_texture.png"
-Copy-Item "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_rain_texture.png" -Destination "C:\Users\Administrator\.gemini\antigravity\brain\1ec498ef-bac8-4ddc-a363-e6a0c7f8b19f\cozy_rain_texture.png"
+Resize-Image "C:\Users\Administrator\.gemini\antigravity\brain\1ec498ef-bac8-4ddc-a363-e6a0c7f8b19f\seamless_rain_texture_256_1780461200533.png" "${PSScriptRoot}\..\Art_References\cozy_rain_texture.png"
+Copy-Item "${PSScriptRoot}\..\Art_References\cozy_rain_texture.png" -Destination "C:\Users\Administrator\.gemini\antigravity\brain\1ec498ef-bac8-4ddc-a363-e6a0c7f8b19f\cozy_rain_texture.png"
 
 Write-Output "Rain texture resized and copied successfully!"

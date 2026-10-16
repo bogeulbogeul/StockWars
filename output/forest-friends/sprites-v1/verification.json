@@ -1,0 +1,115 @@
+{
+  "ok": true,
+  "characters": [
+    {
+      "id": "red-fox",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    },
+    {
+      "id": "siberian-chipmunk",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    },
+    {
+      "id": "raccoon-dog",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    },
+    {
+      "id": "european-badger",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    },
+    {
+      "id": "brown-bear",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    },
+    {
+      "id": "european-rabbit",
+      "ok": true,
+      "states": 10,
+      "atlas_slots": 19,
+      "unique_images": 16,
+      "alpha": "RGBA",
+      "atlas_matches_frames": true,
+      "walk_neutral_shared": true,
+      "walk_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "frame_ms": 160,
+      "portrait_single_component": true
+    }
+  ],
+  "total_atlas_slots": 114,
+  "game_integration_tested": false
+}

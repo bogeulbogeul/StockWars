@@ -1,0 +1,415 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\style-unification-v3\\red-fox\\run",
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "down_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/down_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            64,
+            35,
+            256,
+            372
+          ],
+          "nontransparent_pixels": 42811,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "down_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            67,
+            34,
+            261,
+            376
+          ],
+          "nontransparent_pixels": 41029,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            64,
+            35,
+            256,
+            372
+          ],
+          "nontransparent_pixels": 42811,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            86,
+            34,
+            277,
+            376
+          ],
+          "nontransparent_pixels": 40537,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "output/motion-color-restore-v2/generation.json"
+    },
+    {
+      "state": "right_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/right_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            56,
+            26,
+            265,
+            372
+          ],
+          "nontransparent_pixels": 43626,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            46,
+            27,
+            282,
+            374
+          ],
+          "nontransparent_pixels": 45639,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            56,
+            26,
+            265,
+            372
+          ],
+          "nontransparent_pixels": 43626,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            59,
+            27,
+            284,
+            373
+          ],
+          "nontransparent_pixels": 43997,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "output/motion-color-restore-v2/generation.json"
+    },
+    {
+      "state": "up_idle",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/up_idle/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            62,
+            26,
+            258,
+            372
+          ],
+          "nontransparent_pixels": 43628,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "up_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            56,
+            26,
+            272,
+            375
+          ],
+          "nontransparent_pixels": 43377,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            62,
+            26,
+            258,
+            372
+          ],
+          "nontransparent_pixels": 43628,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            30,
+            26,
+            236,
+            375
+          ],
+          "nontransparent_pixels": 42515,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "output/motion-color-restore-v2/generation.json"
+    },
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "components",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            48,
+            28,
+            273,
+            372
+          ],
+          "nontransparent_pixels": 41776,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "bbox": [
+            48,
+            28,
+            274,
+            373
+          ],
+          "nontransparent_pixels": 39209,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "bbox": [
+            50,
+            29,
+            274,
+            374
+          ],
+          "nontransparent_pixels": 41287,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "bbox": [
+            47,
+            29,
+            271,
+            374
+          ],
+          "nontransparent_pixels": 39711,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "output/motion-color-restore-v2/generation.json"
+    },
+    {
+      "state": "down_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/down_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            69,
+            77,
+            251,
+            372
+          ],
+          "nontransparent_pixels": 34200,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "right_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/right_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            64,
+            80,
+            254,
+            372
+          ],
+          "nontransparent_pixels": 32181,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    },
+    {
+      "state": "face_portrait",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/face_portrait/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "bbox": [
+            46,
+            87,
+            272,
+            312
+          ],
+          "nontransparent_pixels": 37274,
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d",
+      "source": "style-edit-raw; see ../../../generation.json"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "shared_idle_neutral": [
+    {
+      "state": "down_idle",
+      "neutral": "down_walk/frame-1.png",
+      "identical": true,
+      "sha256": "00fa99d39dc98af1ce190ac7904de4d6d3bd25329745db6cf605f442b83b27ec"
+    },
+    {
+      "state": "right_idle",
+      "neutral": "right_walk/frame-1.png",
+      "identical": true,
+      "sha256": "4f7d07605447a2f4a8b184505641f664f78c89175a071b64b615021a20913aba"
+    },
+    {
+      "state": "up_idle",
+      "neutral": "up_walk/frame-1.png",
+      "identical": true,
+      "sha256": "97e15121c02af37fd2538f27905c2d127ad8cb352fccd25bb3174d3edc908264"
+    }
+  ]
+}

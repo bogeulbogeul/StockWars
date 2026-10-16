@@ -1,0 +1,347 @@
+{
+  "ok": true,
+  "animals": 7,
+  "changed_logical_frames": 65,
+  "dog_png_unchanged": true,
+  "dog_sha256": "3f09c4783b560c017e3a6daf379636d9b932845be80787f2ba5da2b579cba566",
+  "checks": [
+    {
+      "id": "cat",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "red-fox",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "raccoon-dog",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "european-badger",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "brown-bear",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": false,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    },
+    {
+      "id": "european-rabbit",
+      "changed_logical_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_idle",
+          0
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          1
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "approved_static_frames_unchanged": true,
+      "rabbit_rear_neutral_exception": true,
+      "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+      "motion_continuity": "experimental; needs live playback review",
+      "runtime_contact_QA": false
+    }
+  ],
+  "runtime_contact_QA": false
+}

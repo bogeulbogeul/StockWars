@@ -1,0 +1,335 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\motion-color-restore-v2\\siberian-chipmunk\\run",
+  "states": [
+    "down_idle",
+    "down_walk",
+    "right_idle",
+    "right_walk",
+    "up_idle",
+    "up_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "down_idle",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/down_idle/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "state": "down_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.7385782421803642,
+          "mean": 0.8243922862968599
+        },
+        "dhash_similarity": {
+          "min": 0.8125,
+          "mean": 0.8645833333333334
+        },
+        "motion_presence": 0.06225849226409314,
+        "centroid_sigma": {
+          "x": 1.7622312281346824,
+          "y": 3.3431143178460725
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "right_idle",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/right_idle/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "right_idle: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "state": "right_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.7384762253718254,
+          "mean": 0.8106344727261683
+        },
+        "dhash_similarity": {
+          "min": 0.859375,
+          "mean": 0.8854166666666666
+        },
+        "motion_presence": 0.07662999770220588,
+        "centroid_sigma": {
+          "x": 0.757876188269434,
+          "y": 0.8010752338682041
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "up_idle",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/up_idle/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "up_idle: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "state": "up_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.6478687153355566,
+          "mean": 0.7622981006923293
+        },
+        "dhash_similarity": {
+          "min": 0.9375,
+          "mean": 0.9479166666666666
+        },
+        "motion_presence": 0.0716052485447304,
+        "centroid_sigma": {
+          "x": 3.811453523298997,
+          "y": 1.8940358017654109
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "right_carry",
+      "source": "frames",
+      "expected_frames": 4,
+      "found_frames": 4,
+      "natural_pose_count": 4,
+      "frame_files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.6973108130077833,
+          "mean": 0.8378670272252524
+        },
+        "dhash_similarity": {
+          "min": 0.875,
+          "mean": 0.9244791666666666
+        },
+        "motion_presence": 0.06225944967830882,
+        "centroid_sigma": {
+          "x": 0.7637859396188981,
+          "y": 3.5927867583217266
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "state": "down_sit",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/down_sit/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "down_sit: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "state": "right_sit",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/right_sit/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "right_sit: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "state": "face_portrait",
+      "source": "frames",
+      "expected_frames": 1,
+      "found_frames": 1,
+      "natural_pose_count": 1,
+      "frame_files": [
+        "frames/face_portrait/frame-0.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "dhash_similarity": {
+          "min": 1.0,
+          "mean": 1.0
+        },
+        "motion_presence": 0.0,
+        "centroid_sigma": {
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "down_idle: motion presence is too low (0.0000 < 0.0100)",
+    "right_idle: motion presence is too low (0.0000 < 0.0100)",
+    "up_idle: motion presence is too low (0.0000 < 0.0100)",
+    "down_sit: motion presence is too low (0.0000 < 0.0100)",
+    "right_sit: motion presence is too low (0.0000 < 0.0100)",
+    "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+  ]
+}

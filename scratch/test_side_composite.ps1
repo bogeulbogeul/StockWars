@@ -3,8 +3,8 @@
 $faceSrc = "C:\Users\Administrator\.gemini\antigravity-ide\brain\0415e4d4-6a74-4c66-aab6-731ecd9b95d7\.user_uploaded\media_1789461632227.png"
 $faceBmp = New-Object System.Drawing.Bitmap($faceSrc)
 
-$bodyLeft = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png")
-$bodyRight = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png")
+$bodyLeft = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_left.png")
+$bodyRight = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_right.png")
 
 # Left Decal: X: 377..433 (W=57), Y: 101..229 (H=129)
 # Height scale ~ 40px (same scale as front face: 40 / 129 ~ 0.31)
@@ -27,7 +27,7 @@ $destRectL = New-Object System.Drawing.Rectangle($destXL, $destYL, $destWL, $des
 $g.DrawImage($faceBmp, $destRectL, $cropLeft, [System.Drawing.GraphicsUnit]::Pixel)
 $g.Dispose()
 
-$testOutL = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_composite_left.png"
+$testOutL = "${PSScriptRoot}\..\scratch\test_composite_left.png"
 $compLeft.Save($testOutL, [System.Drawing.Imaging.ImageFormat]::Png)
 $compLeft.Dispose()
 Write-Host "Saved Left Composite: $testOutL (X=$destXL, Y=$destYL, W=$destWL, H=$destHL)"
@@ -50,7 +50,7 @@ $destRectR = New-Object System.Drawing.Rectangle($destXR, $destYR, $destWR, $des
 $g.DrawImage($faceBmp, $destRectR, $cropRight, [System.Drawing.GraphicsUnit]::Pixel)
 $g.Dispose()
 
-$testOutR = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_composite_right.png"
+$testOutR = "${PSScriptRoot}\..\scratch\test_composite_right.png"
 $compRight.Save($testOutR, [System.Drawing.Imaging.ImageFormat]::Png)
 $compRight.Dispose()
 Write-Host "Saved Right Composite: $testOutR (X=$destXR, Y=$destYR, W=$destWR, H=$destHR)"

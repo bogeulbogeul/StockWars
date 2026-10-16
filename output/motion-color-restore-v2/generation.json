@@ -1,0 +1,72 @@
+[
+  {
+    "cid": "cat",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/cat/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/cat/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/cat/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-7bd6b490-207c-4c59-b2a9-75ddd04063a4.png"
+  },
+  {
+    "cid": "red-fox",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/red-fox/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/red-fox/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/red-fox/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-051f6a75-2f2a-479e-be09-5dbe7ed14af4.png"
+  },
+  {
+    "cid": "raccoon-dog",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/raccoon-dog/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/raccoon-dog/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/raccoon-dog/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-10209f01-ac91-4be5-8d39-fba5d415c093.png"
+  },
+  {
+    "cid": "siberian-chipmunk",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/siberian-chipmunk/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/siberian-chipmunk/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/siberian-chipmunk/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-62e77b8c-fa71-409a-93c8-21756dc2c2bc.png"
+  },
+  {
+    "cid": "european-badger",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-badger/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-badger/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-badger/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-f8c6bc3f-684d-4efd-987b-2f3d3662610f.png"
+  },
+  {
+    "cid": "european-rabbit",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses. ADDITIONAL REQUIRED CHANGE to all THREE BACK poses in row3 only: update old angular pointy cheek silhouette to the SAME NEW ROUND RABBIT HEAD seen from behind, matching image3 and target front/3/4 heads. Rounded domed skull, soft full rounded cheeks/back of head, tiny minimal fur tufts instead of wide pointed spikes; consistent head width and long rounded rabbit ears. No triangular cat cheeks or pointed cat ears. Keep ears upright, white round tail, exact back limb poses and body. Side/front rabbit faces already approved; preserve them. All lower legs/thighs are taupe fur without cream patches, only original foot tips; carry groin/thigh must have no white patches. Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-rabbit/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-rabbit/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/european-rabbit/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-665e576e-9d4d-48cd-bfa8-922490313f6b.png"
+  },
+  {
+    "cid": "brown-bear",
+    "prompt": "Precise existing sprite-board EDIT, not a redesign. Image1 is EDIT TARGET: keep exactly its 16 complete poses, anatomy, limb placements, camera directions, scale, composition and gait phases. Image2 is the APPROVED EARLIER COLOR REFERENCE for the same animal; use colors ONLY, never copy its old limb poses. Image3 is the approved FRONT IDLE color/face identity reference. Correct the target's over-darkened/over-saturated fur and stronger shading to EXACTLY the softer original colors in image2 and image3. This is restoration, no new grading: match base fur RGB appearance, cream markings, eyes/nose, colored outlines and restrained shadows. Do not darken outlines, deepen shadows, boost contrast, saturation or warm hue. No global brightness wash; keep pupils and clean strokes. Target neutral/idle/portrait colors already match reference and must stay the same; make stepping poses match them. Maintain target row1 front walk A/neutral/B/portrait; row2 front-right 3/4 walk A/neutral/B/front sit; row3 back walk A/neutral/B/3/4 sit; row4 four carry poses.  Preserve species identity and markings, no clothes, no props, NO paw pads/toe beans or circles/ovals on soles/palms; preserve finger lines. Keep clean smooth SD cel illustration. Deliver same 4x4 existing edit-board on solid cyan #00FFFF, full figures in each cell with generous gutters, no text, borders, shadows or extra poses. Do not change motion to solve color.",
+    "refs": [
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/brown-bear/edit-target.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/brown-bear/color-reference.png",
+      "C:/GitHub/StockWars/output/motion-color-restore-v2/brown-bear/identity.png"
+    ],
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-2704f2de-66c9-47d8-a85c-743a832aa8ba.png"
+  }
+]

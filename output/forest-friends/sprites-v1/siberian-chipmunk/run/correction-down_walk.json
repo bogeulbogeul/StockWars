@@ -1,0 +1,7 @@
+{
+  "id": "siberian-chipmunk",
+  "state": "down_walk",
+  "instruction": "Edit ONLY the THIRD (rightmost) chipmunk pose: its arm swing is wrong. In THIRD pose, bring the SCREEN-RIGHT arm/paw FORWARD bent at elbow in front of chest, and lower the SCREEN-LEFT arm/paw DOWN/BACK beside torso. This must be opposite the first pose. Keep third pose's legs exactly as they are: screen-left foot down/forward, screen-right knee lifted. Keep first two poses, all heads faces stripes tail colors proportions positions background and row size unchanged.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-d316f72b-388a-4534-af2b-db353b3880d3.png",
+  "prompt": "Precise sprite row correction. Image1 is EDIT TARGET. Edit ONLY the THIRD (rightmost) chipmunk pose: its arm swing is wrong. In THIRD pose, bring the SCREEN-RIGHT arm/paw FORWARD bent at elbow in front of chest, and lower the SCREEN-LEFT arm/paw DOWN/BACK beside torso. This must be opposite the first pose. Keep third pose's legs exactly as they are: screen-left foot down/forward, screen-right knee lifted. Keep first two poses, all heads faces stripes tail colors proportions positions background and row size unchanged. Image2 is accepted identity reference for coat colors only. No new props, no labels. Retain exactly three separated full-body figures on flat cyan #00FFFF."
+}

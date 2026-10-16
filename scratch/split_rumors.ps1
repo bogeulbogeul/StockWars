@@ -1,7 +1,7 @@
 ﻿# split_rumors.ps1
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$docsDir = "c:\Users\Administrator\Documents\GitHub\StockWars\Docs"
+$docsDir = "${PSScriptRoot}\..\Docs"
 
 # Helper function to extract full and short sector names from the original header line
 function Get-SectorNames($line) {

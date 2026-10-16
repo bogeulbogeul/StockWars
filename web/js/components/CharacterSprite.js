@@ -1,11 +1,13 @@
 import { DOG_FRAMES } from './DogSpriteData.js';
 import { CHARACTER_HEIGHT } from '../data/characterScale.js';
 import { CAT_FRAMES } from './CatSpriteData.js';
+import { FOREST_CHARACTER_STYLES } from './ForestCharacterStyles.js';
 
-export const CHARACTER_STYLES = Object.freeze([
-    { id: 'dog', label: '강아지', preview: new URL('../../assets/characters/dog-npc-v2/atlas.png', import.meta.url).href, frames: DOG_FRAMES, scale: CHARACTER_HEIGHT / 330 },
-    { id: 'black-cat', label: '검은 고양이', preview: new URL('../../assets/characters/black-cat-npc-v2/atlas.png', import.meta.url).href, frames: CAT_FRAMES, scale: CHARACTER_HEIGHT / 307 }
+export const BASE_CHARACTER_STYLES = Object.freeze([
+    { id: 'dog', label: '강아지', preview: new URL('../../assets/characters/dog-baseline-v9/atlas.png', import.meta.url).href, frames: DOG_FRAMES, scale: CHARACTER_HEIGHT / 340, portrait: true, portraitCrop: [8, 78, 304, 244] },
+    { id: 'black-cat', label: '검은 고양이', preview: new URL('../../assets/characters/black-cat-baseline-v3/atlas.png', import.meta.url).href, frames: CAT_FRAMES, scale: CHARACTER_HEIGHT / 340, portrait: true, portraitCrop: [8, 72, 304, 268] }
 ]);
+export const CHARACTER_STYLES = Object.freeze([...BASE_CHARACTER_STYLES, ...FOREST_CHARACTER_STYLES]);
 let selectedStyle = 'dog';
 const canvasAtlases = new Map();
 export function resolveCharacterStyle(styleId) {
@@ -13,8 +15,9 @@ export function resolveCharacterStyle(styleId) {
 }
 export function setPlayerCharacterStyle(styleId) { selectedStyle = resolveCharacterStyle(styleId).id; }
 export function characterFaceSVG(styleId, { shoulders = false } = {}) {
-    const style = resolveCharacterStyle(styleId), f = style.frames.rows.down_idle[0];
-    const crop = style.id === 'black-cat'
+    const style = resolveCharacterStyle(styleId);
+    const f = style.portrait ? style.frames.rows.face_portrait[0] : style.frames.rows.down_idle[0];
+    const crop = style.portrait ? style.portraitCrop || [0, 0, 320, 400] : style.id === 'black-cat'
         ? [96, 16, 174, shoulders ? 207 : 156]
         : [69, 16, 195, shoulders ? 205 : 151];
     const [, , w, h] = crop;
@@ -24,7 +27,7 @@ export function characterFrame({ styleId = selectedStyle, direction = 'down', mo
     const style = resolveCharacterStyle(styleId);
     const facing = direction === 'front' ? 'down' : direction === 'back' ? 'up' : direction;
     const flip = facing === 'left';
-    const basis = flip ? 'right' : seated && facing === 'up' ? 'down' : facing;
+    const basis = carrying && !seated ? 'right' : flip ? 'right' : seated && facing === 'up' ? 'down' : facing;
     const mode = seated ? 'sit' : carrying ? 'carry' : moving ? 'walk' : 'idle';
     const state = `${basis}_${mode}`;
     // Stopping holds the walk's neutral artwork, avoiding a separately drawn idle.

@@ -117,7 +117,7 @@ public class CleanCloudSlicer {
 "@ -ReferencedAssemblies "System.Drawing.dll"
 
 $srcDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\55929f9f-455c-4f12-8b4c-3002acd2c56d\.user_uploaded"
-$destDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\weather"
+$destDir = "${PSScriptRoot}\..\web\assets\weather"
 
 # Clean previous slice files first
 Get-ChildItem -Path "$destDir\cloud_*.png" | Remove-Item -Force

@@ -86,7 +86,7 @@
       "action": "One front-facing head portrait, ears fully included, tiny neck tuft, no body. Match approved front idle face and colors."
     }
   },
-  "style": "Match the supplied NPC-style animal base exactly: clean dark outlines, restrained cel shading, detailed chibi biped anatomy, same head/body proportions. No clothes shoes props halos haze or shadows. One anatomically attached tail in every pose. No grids or text. Use only the flat key background specified in the layout requirements. Keep ample gaps between poses, identical scale and head size across row. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever.",
+  "style": "Match the supplied NPC-style animal base exactly: clean dark outlines, restrained cel shading, detailed chibi biped anatomy, same head/body proportions. No clothes shoes props halos haze or shadows. One anatomically attached tail in every pose. No grids or text. Use only the flat key background specified in the layout requirements. Keep ample gaps between poses, identical scale and head size across row. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever. All animals: NO paw pads, NO toe beans, NO internal circular/oval sole or palm markings, NO emphasized sole plane. Raised feet remain smooth in the local fur color. Retain normal open finger division lines.",
   "layout": "taxonomy/v1",
   "fit": {
     "resample": "lanczos",
@@ -99,5 +99,11 @@
     "mode": "rgb",
     "unmix_reach": 4,
     "spill_max_fraction": 0.005
+  },
+  "paw_pad_policy": {
+    "status": "forbidden",
+    "decided": "2026-10-16",
+    "source": "user request",
+    "preserve_finger_divisions": true
   }
 }

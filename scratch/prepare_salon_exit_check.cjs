@@ -1,0 +1,18 @@
+const fs=require('fs');
+let s=fs.readFileSync('scratch/verify_salon_v10.cjs','utf8');
+s=s.replace('await page.waitForTimeout(400);',`await page.waitForTimeout(400);
+    assert.ok(await page.locator('.salon-exit-prompt').isVisible());
+    await page.evaluate(()=>{salon.player.x=700;salon.player.y=850;});
+    await page.waitForFunction(()=>salon.exitPrompt.hidden);
+    await page.evaluate(()=>{salon.player.x=350;salon.player.y=900;});
+    await page.waitForFunction(()=>!salon.exitPrompt.hidden);
+    await page.screenshot({path:'output/salon-palette-claire-2026-10-16/exit-prompt.png'});
+    await page.click('.salon-exit-prompt');
+    assert.ok(await page.evaluate(()=>!salon.isOpen));
+    await page.click('#enter');
+    await page.waitForFunction(()=>!salon.exitPrompt.hidden);
+    await page.keyboard.press('f');
+    assert.ok(await page.evaluate(()=>!salon.isOpen));
+    await page.click('#enter');
+    await page.waitForFunction(()=>salon.isOpen);`);
+fs.writeFileSync('scratch/verify_salon_exit_prompt.cjs',s);

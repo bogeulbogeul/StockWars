@@ -1,0 +1,192 @@
+[
+  {
+    "state": "down_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      92,
+      26,
+      239,
+      373
+    ],
+    "head_anchor_before": [
+      162.5,
+      26
+    ],
+    "head_anchor_after": [
+      162.0,
+      26
+    ]
+  },
+  {
+    "state": "down_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      86,
+      25,
+      231,
+      372
+    ],
+    "head_anchor_before": [
+      158.0,
+      26
+    ],
+    "head_anchor_after": [
+      158.5,
+      26
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      70,
+      28,
+      251,
+      374
+    ],
+    "head_anchor_before": [
+      166.0,
+      28
+    ],
+    "head_anchor_after": [
+      165.5,
+      28
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      82,
+      27,
+      259,
+      370
+    ],
+    "head_anchor_before": [
+      166.5,
+      28
+    ],
+    "head_anchor_after": [
+      166.5,
+      28
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      83,
+      32,
+      240,
+      375
+    ],
+    "head_anchor_before": [
+      163.5,
+      32
+    ],
+    "head_anchor_after": [
+      163.5,
+      32
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 1,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      82,
+      31,
+      239,
+      372
+    ],
+    "head_anchor_before": [
+      160.5,
+      32
+    ],
+    "head_anchor_after": [
+      160.5,
+      32
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      82,
+      32,
+      241,
+      374
+    ],
+    "head_anchor_before": [
+      158.0,
+      32
+    ],
+    "head_anchor_after": [
+      158.5,
+      32
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 1,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      80,
+      25,
+      255,
+      373
+    ],
+    "head_anchor_before": [
+      160.0,
+      26
+    ],
+    "head_anchor_after": [
+      159.5,
+      26
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      65,
+      25,
+      258,
+      373
+    ],
+    "head_anchor_before": [
+      160.5,
+      26
+    ],
+    "head_anchor_after": [
+      160.5,
+      26
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 3,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      82,
+      26,
+      257,
+      373
+    ],
+    "head_anchor_before": [
+      160.0,
+      26
+    ],
+    "head_anchor_after": [
+      160.5,
+      26
+    ]
+  }
+]

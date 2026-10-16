@@ -1,7 +1,7 @@
 # 플레이어 기본형 생성 후보
 
 - 생성 도구: built-in image_gen
-- 기준: Docs/ART_STYLE_GUIDE.md, Docs/part_separation_guide_512.md (2026-09-28), Docs/References/player-character-style-reference.png
+- 과거 사람형 픽셀 외형 실험이며 현재 제작 기준이 아니다. 당시 참고 이미지는 폐기했다. 신규 작업은 [프로젝트 지침](../../../AGENTS.md)과 [현행 아트 가이드](../../../Docs/ART_STYLE_GUIDE.md)를 따른다. 아래 프롬프트는 생성 당시 기록이다.
 - 결과: player_base_idle_down_candidate.png
 - 범위: 정면(down) 정지 외형 1종, 기본 헤어·얼굴·의상을 합성한 디자인 참고 이미지.
 - 검수: 파스텔 색감, 큰 눈, 유색 윤곽선과 픽셀 실루엣을 반영. 비율 보정 후에도 머리 대비 몸이 짧아 약 2등신 목표 추가 조정 필요. 균일한 원본 픽셀 격자·평면 팔레트·알파 경계는 제작 단계에서 정리해야 함.

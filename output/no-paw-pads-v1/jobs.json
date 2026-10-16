@@ -1,0 +1,86 @@
+[
+  {
+    "id": "red-fox",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/red-fox/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-53c57e9f-3c96-4967-bef7-1ae03c6d6cd5.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/red-fox-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area.",
+    "second_edit": {
+      "state": "up_walk",
+      "prompt": "Edit ONLY the raised feet of the FIRST and THIRD foxes. The previous removal accidentally colored these raised feet ORANGE. Both raised feet MUST instead be DARK CHOCOLATE BROWN, exactly matching the dark fur of the grounded feet in the same row. There must be NO central paw pads, NO toe beans, NO circles or ovals or sole border inside the feet. Make each raised foot one smooth dark-brown fur-covered shape with restrained dark shading. Keep the original orange-to-dark-fur ankle boundary from the accepted reference image2. Keep everything else pixel-stable: all heads, bodies, arms, tails, middle fox, positions, poses and cyan background. Image1 edit target, image2 color/ankle reference ONLY; do not copy its forbidden pad markings.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-333ec653-c078-4120-91e8-b598bb31b625.png",
+      "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/red-fox-up_walk.png"
+    }
+  },
+  {
+    "id": "siberian-chipmunk",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/siberian-chipmunk/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-0d826d4a-d03a-4fba-8c43-23dffda3f449.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/siberian-chipmunk-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "raccoon-dog",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/raccoon-dog/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-0483df0e-fd08-422c-850e-6080920414b3.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/raccoon-dog-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "european-badger",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/european-badger/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-4082a4a7-4619-4f92-9330-176315f1253d.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/european-badger-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "brown-bear",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/brown-bear/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-2beb4d9c-c44b-4d39-8e9d-cfe701b9e3e5.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/brown-bear-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "european-rabbit",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/european-rabbit/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-69dea283-efc4-42f3-9ce0-6f064e2451c2.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/european-rabbit-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "dog",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/npc-style-animals/unified-v2/dog/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-8157b5ec-7327-4236-b90a-3e52d2c59267.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/dog-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "cat",
+    "state": "up_walk",
+    "path": "C:/GitHub/StockWars/output/npc-style-animals/unified-v2/cat/run/raw/up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-3a590b84-f5da-464d-b62e-4a39cc035dd3.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/cat-up_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area."
+  },
+  {
+    "id": "red-fox",
+    "state": "right_walk",
+    "path": "C:/GitHub/StockWars/output/forest-friends/sprites-v1/red-fox/run/raw/right_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-cc795e41-b3be-4d59-a21c-7bc6a0e53d2c.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/red-fox-right_walk.png",
+    "prompt": "Precise sprite-row edit: supplied image is EDIT TARGET, NOT a style suggestion. Remove ALL animal paw-pad/sole markings ONLY. In first and third figures, erase the circular/oval central sole pads, toe beans, internal pad borders and dark pad patches on the raised hind feet. Fill those areas seamlessly with the SAME local fur color as the surrounding foot, preserving original simple cel shading. The raised feet must read as smooth rounded fur-covered feet, not a distinct underside/sole surface. Also remove visible bean-shaped palm pads on front paws if present, but retain normal finger division lines. Specifically remove the brown central palm pad and circular beans on the small far hand extended forward in the FIRST figure. There are no foot-pad markings to add. Keep ALL silhouettes, foot/leg positions and gait phases, neutral middle figure, head, body, arms, tail, coat markings, proportions, linework and palette IDENTICAL. Exactly three full-body figures in the SAME positions and camera angles and SAME canvas aspect ratio, with the original flat cyan background. No extra figures, no text, no props. Change no other area.",
+    "second_edit": {
+      "state": "right_walk",
+      "prompt": "Edit ONLY the small far front paw sticking forward on SCREEN-RIGHT of the FIRST fox. Its palm currently shows a round lighter BROWN CENTER PAD surrounded by darker round toe beans. Remove that ENTIRE internal bean/pad pattern. Fill the palm with one continuous uniform DARK CHOCOLATE BROWN furry surface matching its wrist and other dark hands. Keep a few simple open-ended finger crease lines only, but no enclosed circular or oval shapes, no distinct palm/sole plane. Keep the outer paw silhouette, wrist angle and exact location. Leave all other pixels and both other figures unchanged. Image1 edit target. Exactly same three foxes, same cyan background.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-86292652-da26-4e22-b5ac-ae16849abad3.png",
+      "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/generated/red-fox-right_walk.png"
+    }
+  }
+]

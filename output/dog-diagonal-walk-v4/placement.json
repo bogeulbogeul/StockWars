@@ -1,0 +1,10 @@
+{
+  "common_scale": 0.4473684210526316,
+  "native_heights": [
+    760,
+    760,
+    760
+  ],
+  "neutral_retained_from_v3": true,
+  "no_limb_warp_no_head_paste": true
+}

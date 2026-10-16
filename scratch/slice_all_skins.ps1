@@ -9,7 +9,7 @@ $skinMap = @(
 )
 
 $srcDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\7417655f-9bbf-4bd5-84f4-3032d4a5cc2f\.user_uploaded"
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Force }
 
 $targetCanvasW = 240

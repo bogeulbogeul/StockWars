@@ -1,0 +1,9 @@
+{
+  "active": "pre-motion approved original",
+  "source": "output\\dog-motion-match-v1\\european-rabbit\\before",
+  "rejected": [
+    "dog-motion-match-v1",
+    "motion-color-restore-v2"
+  ],
+  "atlas_sha256": "bc5cdb4e3bcccf7131dd810c8f1e021868e266a9eab94450ed5764d599883971"
+}

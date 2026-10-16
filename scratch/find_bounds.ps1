@@ -32,7 +32,7 @@ $files = @(
 )
 
 foreach ($rel in $files) {
-    $full = Join-Path "c:\Users\Administrator\Documents\GitHub\StockWars" $rel
+    $full = Join-Path "${PSScriptRoot}\.." $rel
     if (Test-Path $full) {
         $b = Get-NonTransparentBounds $full
         Write-Host "$rel -> X: $($b.MinX)..$($b.MaxX) (W=$($b.Width)), Y: $($b.MinY)..$($b.MaxY) (H=$($b.Height))"

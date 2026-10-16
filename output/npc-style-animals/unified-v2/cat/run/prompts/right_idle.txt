@@ -43,3 +43,5 @@ Layout requirements:
 - Preserve the same silhouette, face, proportions, palette, material, and props across every frame.
 
 Output only the sprite strip image.
+
+ All animals: NO paw pads, NO toe beans, NO internal circular/oval sole or palm markings, NO emphasized sole plane. Raised feet remain smooth in the local fur color. Retain normal open finger division lines.

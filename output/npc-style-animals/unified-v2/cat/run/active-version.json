@@ -1,0 +1,9 @@
+{
+  "active": "pre-motion approved original",
+  "source": "output\\dog-motion-match-v1\\cat\\before",
+  "rejected": [
+    "dog-motion-match-v1",
+    "motion-color-restore-v2"
+  ],
+  "atlas_sha256": "6329f9efe7a5137a4415ec2ce903231dbc542a78f72780ca321f8e2ff7d3a044"
+}

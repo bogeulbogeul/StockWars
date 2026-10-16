@@ -120,7 +120,7 @@ function Perfect-Cranium {
 
 $skins = @("pale", "fair", "natural", "tan", "deep")
 $dirs = @("left", "right")
-$charDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$charDir = "${PSScriptRoot}\..\web\assets\character"
 
 foreach ($skin in $skins) {
     foreach ($dir in $dirs) {

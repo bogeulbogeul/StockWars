@@ -1,0 +1,29 @@
+[
+  {
+    "state": "down_walk",
+    "scale": 0.4899135446685879,
+    "component_heights": [
+      695,
+      694,
+      695
+    ]
+  },
+  {
+    "state": "right_walk",
+    "scale": 0.48502139800285304,
+    "component_heights": [
+      699,
+      701,
+      699
+    ]
+  },
+  {
+    "state": "up_walk",
+    "scale": 0.4788732394366197,
+    "component_heights": [
+      709,
+      710,
+      710
+    ]
+  }
+]

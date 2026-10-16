@@ -225,7 +225,7 @@ Add-Type -TypeDefinition $csharpCode -ReferencedAssemblies System.Drawing -Langu
 
 $srcDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\dbc93132-94f3-4940-836f-bddd85e738d0\.user_uploaded"
 $femaleFile = "media_1789449863748.png"
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Force }
 
 $srcPath = Join-Path $srcDir $femaleFile
