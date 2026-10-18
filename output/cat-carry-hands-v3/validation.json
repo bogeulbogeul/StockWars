@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "hand_windows": [
+    {
+      "frame": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "window": [
+        321,
+        272,
+        416,
+        335
+      ]
+    },
+    {
+      "frame": 1,
+      "offset": [
+        0,
+        -5
+      ],
+      "window": [
+        321,
+        267,
+        416,
+        330
+      ]
+    },
+    {
+      "frame": 2,
+      "offset": [
+        -1,
+        -1
+      ],
+      "window": [
+        320,
+        271,
+        415,
+        334
+      ]
+    },
+    {
+      "frame": 3,
+      "offset": [
+        -3,
+        -5
+      ],
+      "window": [
+        318,
+        267,
+        413,
+        330
+      ]
+    }
+  ],
+  "outside_hand_windows_rgba_identical": true,
+  "other_states_identical": true,
+  "frame_layout_identical": true,
+  "animation_identical": true,
+  "palette_used": 42,
+  "colors_outside_palette": 0,
+  "changed_pixels": 16462,
+  "alpha_changed_only_inside_hand_windows": true,
+  "game_installed": false
+}

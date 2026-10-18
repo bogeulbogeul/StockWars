@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "changed_states": [
+    "right_idle",
+    "right_walk neutral"
+  ],
+  "local_window": [
+    198,
+    265,
+    242,
+    390
+  ],
+  "outside_window_rgba_identical": true,
+  "idle_neutral_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "changed_pixels": 7254,
+  "game_installed": false
+}

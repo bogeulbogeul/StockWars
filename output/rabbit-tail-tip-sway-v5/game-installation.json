@@ -1,0 +1,21 @@
+{
+  "source_identical": true,
+  "atlas_sha256": "b0cfa645cd1bdd71f7311c80df2d38e121db071fb6e30ef6c28dafaf6b853dd9",
+  "destination": "C:\\GitHub\\StockWars\\web\\assets\\characters\\forest-friends\\european-rabbit",
+  "other_five_forest_atlases_unchanged": true,
+  "shared_shop_rectangles_unchanged": true,
+  "walk_sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "frame_duration_ms": 160,
+  "states": 10,
+  "portrait_crop": [
+    8,
+    40,
+    304,
+    340
+  ]
+}

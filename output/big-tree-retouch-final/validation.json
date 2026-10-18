@@ -1,0 +1,13 @@
+{
+  "geometry_uv_materials_preserved": true,
+  "original_binary_preserved": true,
+  "triangles": 7767978,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "embedded_texture_matches_png": true,
+  "missing_paint_pixels_repaired": 39930,
+  "remaining_missing_paint_pixels": 0,
+  "source_sha256": "00fc3e2588ba9815c317e69c0782de4e87beae464e65493e9dc2c783d2b571f8"
+}

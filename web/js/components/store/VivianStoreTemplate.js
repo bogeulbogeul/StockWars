@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { bindingLabel } from '../../app/GameKeys.js';
 /**
  * VivianStoreTemplate
@@ -21,7 +22,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
         <div id="vivianStoreModal" class="modal-overlay hidden vivian-store-overlay">
             <section class="vivian-interior${allowLayoutEditing?'':' vivian-package-room'}" id="vivianInterior" tabindex="-1" aria-label="비비안 잡화점 내부">
                 ${allowLayoutEditing?getVivianRoomHtml()+getVivianInteriorPropsHtml()+getVivianStaffHtml():getVivianPackageHtml()}
-                <div class="vivian-welcome-dialogue" id="vivianWelcomeBubble" role="status" hidden><img class="vivian-welcome-portrait" src="${allowLayoutEditing?'assets/characters/vivian/vivian-dialogue-neutral-v1.png':VIVIAN_SQUIRREL_URL}" alt="비비안"><div class="vivian-welcome-lines"><strong>비비안</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
+                <div class="vivian-welcome-dialogue" id="vivianWelcomeBubble" role="status" hidden><img class="vivian-welcome-portrait" src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}" alt="비비안"><div class="vivian-welcome-lines"><strong>비비안</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
                 ${allowLayoutEditing?getRoomGridHtml({editable:true}):''}
                 <div class="town-player-character vivian-player" id="vivianPlayer" aria-label="플레이어 캐릭터">
                     <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
@@ -68,7 +69,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                         <div class="vivian-portrait-card">
                             <div class="vivian-portrait-viewport" id="vivianPortraitViewport">
                                 <img id="vivianPortrait" class="vivian-portrait-image"
-                                     src="${allowLayoutEditing?'assets/characters/vivian/vivian-dialogue-neutral-v1.png':VIVIAN_SQUIRREL_URL}"
+                                     src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}"
                                      alt="비비안 — 차분한 미소" draggable="false">
                                 <div class="vivian-portrait-mood-tag" id="vivianMoodTag">영업 중 • 침착</div>
                             </div>

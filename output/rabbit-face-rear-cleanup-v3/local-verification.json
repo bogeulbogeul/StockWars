@@ -1,0 +1,166 @@
+{
+  "logical_frames": 19,
+  "alpha_and_outer_body_silhouettes_exact": true,
+  "outside_local_edit_RGBA_exact": true,
+  "shared_palette_unchanged": true,
+  "nose_material_RGB": [
+    97,
+    55,
+    42
+  ],
+  "nose_logical_frames_checked": 15,
+  "short_tail_same_drawing_and_RGB_all_three_rear_phases": true,
+  "short_tail_centers": [
+    [
+      160,
+      247
+    ],
+    [
+      160,
+      252
+    ],
+    [
+      160,
+      247
+    ]
+  ],
+  "independent_lateral_tail_wag": false,
+  "layout_and_playback_equal_v2_and_dog_v9": true,
+  "game_installed": false,
+  "live_motion_continuity": "not observed; experimental",
+  "frames": [
+    {
+      "state": "down_idle",
+      "frame": 0,
+      "changed_pixels": 96,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "changed_pixels": 86,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "changed_pixels": 96,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "changed_pixels": 99,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_idle",
+      "frame": 0,
+      "changed_pixels": 72,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "changed_pixels": 63,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "changed_pixels": 72,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "changed_pixels": 66,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "up_idle",
+      "frame": 0,
+      "changed_pixels": 2267,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "changed_pixels": 2818,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "changed_pixels": 2267,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "changed_pixels": 2692,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "changed_pixels": 79,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "changed_pixels": 80,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "changed_pixels": 63,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "changed_pixels": 70,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "changed_pixels": 101,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "changed_pixels": 68,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "changed_pixels": 7537,
+      "outside_edit_RGBA_exact": true,
+      "alpha_exact": true
+    }
+  ]
+}

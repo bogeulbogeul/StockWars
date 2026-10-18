@@ -1,0 +1,10 @@
+{
+  "geometry_unchanged": true,
+  "actions": [
+    "Eat",
+    "Greeting",
+    "Sit",
+    "Walk"
+  ],
+  "export_reimport": true
+}

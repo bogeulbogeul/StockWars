@@ -1,0 +1,6 @@
+{
+  "original_binary_preserved": true,
+  "source_sha256": "00fc3e2588ba9815c317e69c0782de4e87beae464e65493e9dc2c783d2b571f8",
+  "output_sha256": "a9a02b181e3319033788c418a434b50ab3382f3b757b9a63c2290ce106654443",
+  "method": "ImageGen local paint repair registered to original UV; texture-only GLB replacement"
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "tolerance",
+  "tolerance": 255,
+  "variants": [
+    {
+      "name": "chocolate",
+      "map": {
+        "#4e2e1e": "#4e2e1e"
+      }
+    }
+  ]
+}

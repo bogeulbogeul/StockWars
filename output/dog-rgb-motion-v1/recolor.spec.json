@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "tolerance",
+  "tolerance": 255,
+  "variants": [
+    {
+      "name": "dog-rgb-motion",
+      "map": {
+        "#FEBC6B": "#FEBC6B",
+        "#FDB866": "#FDB866",
+        "#FFBE6C": "#FFBE6C",
+        "#F39854": "#F39854",
+        "#FDBA68": "#FDBA68",
+        "#FDBB6A": "#FDBB6A",
+        "#FEBB6B": "#FEBB6B",
+        "#F6A15B": "#F6A15B",
+        "#FEBB6A": "#FEBB6A",
+        "#E07643": "#E07643",
+        "#FEF6E7": "#FEF6E7",
+        "#FEF5E6": "#FEF5E6",
+        "#FEF7EA": "#FEF7EA",
+        "#FEF5E5": "#FEF5E5",
+        "#FEF4E2": "#FEF4E2",
+        "#FBD0AE": "#FBD0AE",
+        "#FBC7A2": "#FBC7A2",
+        "#FFF6E7": "#FFF6E7",
+        "#FEF6E8": "#FEF6E8",
+        "#FBF6ED": "#FBF6ED",
+        "#F9F9F9": "#F9F9F9",
+        "#DAB59D": "#DAB59D",
+        "#3E1300": "#3E1300",
+        "#A94F1F": "#A94F1F",
+        "#000000": "#000000",
+        "#F7F9FA": "#F7F9FA",
+        "#0E0905": "#0E0905",
+        "#442313": "#442313",
+        "#250D04": "#250D04",
+        "#F5B26A": "#F5B26A",
+        "#FEF2DE": "#FEF2DE",
+        "#E47B6B": "#E47B6B",
+        "#BB5344": "#BB5344",
+        "#090605": "#090605"
+      }
+    }
+  ]
+}

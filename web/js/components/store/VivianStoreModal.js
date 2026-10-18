@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js';
 import { gameKey } from '../../app/GameKeys.js';
 /**
@@ -587,7 +588,7 @@ export class VivianStoreModal {
             consume: 'smile', done: 'smile', poor: 'skeptical', secret: 'secret'
         }[type] || 'neutral';
         if (this.portraitEl) {
-            this.portraitEl.src = this.roomPackage ? VIVIAN_SQUIRREL_URL : `assets/characters/vivian/vivian-dialogue-${expression}-v1.png`;
+            this.portraitEl.src = this.roomPackage ? VIVIAN_SQUIRREL_URL : EMPTY_CHARACTER_IMAGE;
             this.portraitEl.alt = `비비안 — ${{ neutral: '차분한 미소', smile: '흡족한 미소', skeptical: '의심과 단호함', secret: '비밀스러운 귓속말' }[expression]}`;
         }
         const pool = VIVIAN_DIALOGUES[type] || VIVIAN_DIALOGUES.greet;

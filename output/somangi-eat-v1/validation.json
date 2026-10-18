@@ -1,0 +1,21 @@
+{
+  "frames": 73,
+  "loop_error": 0.0,
+  "stationary_leg_error": 1.4901161193847656e-08,
+  "belly_core_displacement": 0,
+  "body_vertex_count": 60654,
+  "bones": 8,
+  "duration": 3,
+  "fps": 24,
+  "known_limit": "Visible shoulder/underarm creases remain in raised pose. Mouth stays fixed; prop is not consumed.",
+  "source_mesh_positions_unchanged": true,
+  "roundtrip": {
+    "meshes": [
+      "Food_Bun",
+      "Somangi_Body",
+      "Icosphere"
+    ],
+    "bones": 8,
+    "clip": "Eat"
+  }
+}

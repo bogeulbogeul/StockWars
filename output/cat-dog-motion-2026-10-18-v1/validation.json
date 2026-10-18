@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "dimensions": [
+    2048,
+    5120
+  ],
+  "states": 10,
+  "frame_ms": 160,
+  "palette_allowed": 42,
+  "palette_used": 42,
+  "colors_outside_palette": 0,
+  "alpha_preserved_by_palette_bake": true,
+  "neutral_matches_idle": true,
+  "frame_edges_clear": true,
+  "walk_AB_distinct": true,
+  "gameplay_contact_review": false,
+  "game_installed": false,
+  "limitation": "Palette mapping uses global nearest RGB, not per-material masks. Generated poses use dog references; pixel-identical joint trajectories are not guaranteed. Motion visual verdict recorded separately in qa-notes.md."
+}

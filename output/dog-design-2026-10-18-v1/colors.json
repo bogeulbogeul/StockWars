@@ -1,0 +1,18 @@
+{
+  "source": "design-sheet.png",
+  "method": "Most frequent exact RGB pixel in each specified rectangle; rectangles are [left, top, right, bottom], with right/bottom excluded. These are sampled representatives, not a uniform palette guaranteed across the image.",
+  "swatches": [
+    {"part": "털색", "rgb": [254,192,113], "hex": "#FEC071", "roi": [990,795,1050,855]},
+    {"part": "크림색", "rgb": [254,240,217], "hex": "#FEF0D9", "roi": [1095,795,1155,855]},
+    {"part": "눈 홍채", "rgb": [141,74,31], "hex": "#8D4A1F", "roi": [1205,795,1265,855]},
+    {"part": "코", "rgb": [63,39,27], "hex": "#3F271B", "roi": [1310,795,1370,855]},
+    {"part": "윤곽선", "rgb": [63,39,27], "hex": "#3F271B", "roi": [1415,795,1475,855]}
+  ],
+  "painted_region_samples": [
+    {"part": "정면 이마 털", "rgb": [254,187,106], "hex": "#FEBB6A", "roi": [185,200,245,228]},
+    {"part": "정면 배 크림색", "rgb": [254,246,231], "hex": "#FEF6E7", "roi": [205,427,233,467]},
+    {"part": "정면 볼 크림색", "rgb": [254,246,232], "hex": "#FEF6E8", "roi": [140,324,165,337]},
+    {"part": "정면 발 크림색", "rgb": [254,246,232], "hex": "#FEF6E8", "roi": [139,589,161,606]},
+    {"part": "기쁨 표정 혀", "rgb": [226,121,105], "hex": "#E27969", "roi": [460,904,483,912]}
+  ]
+}

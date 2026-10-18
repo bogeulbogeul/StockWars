@@ -1,0 +1,129 @@
+import * as THREE from '../../../vendor/three/three.module.js';
+import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
+import { applyCleanBuildingMaterials } from './CleanBuildingMaterial.js';
+import { TOWN_MODEL_BUILDINGS, TOWN_CAMERA, TOWN_PREVIEW_FRAME, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
+import { TOWN_MODEL_PROPS, propAssetUrl } from '../../data/townModelProps.js';
+
+// Separate from the retained sprite stage: both use the same ground coordinates.
+export class TownModelScene {
+    constructor(town) {
+        this.town = town;
+        this.viewport = town.viewportEl;
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(TOWN_CAMERA.fieldOfView, 1, 1, 12000);
+        this.layer = document.createElement('section');
+        this.layer.className = 'town-model-layer';
+        this.layer.setAttribute('aria-label', '건물·정류장·광장 쉼터가 배치된 마을');
+        this.status = document.createElement('p');
+        this.status.className = 'town-model-status';
+        this.status.setAttribute('role', 'status');
+        this.status.textContent = '마을 건물과 쉼터를 불러오는 중…';
+        this.layer.append(this.status);
+        this.viewport.append(this.layer);
+        this.labels = [];
+        this.ready = this.initialize().catch(error => {
+            this.status.hidden = false;
+            this.status.textContent = '3D 건물을 표시하지 못했습니다. 새로고침해 주세요.';
+            console.error('Town building models:', error);
+        });
+    }
+
+    async initialize() {
+        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = 1;
+        this.renderer.setClearColor(0, 0);
+        this.renderer.domElement.setAttribute('aria-label', '건물 7곳·버스 정류장·나무·벤치·게시판·광고판');
+        this.layer.prepend(this.renderer.domElement);
+        // Neutral diffuse studio environment supplies the reflections expected by
+        // the GLB's metallic/roughness materials without warm, harsh highlights.
+        const environmentScene = new THREE.Scene();
+        environmentScene.background = new THREE.Color(0xffffff);
+        const pmrem = new THREE.PMREMGenerator(this.renderer);
+        this.environmentTarget = pmrem.fromScene(environmentScene);
+        this.scene.environment = this.environmentTarget.texture;
+        this.scene.environmentIntensity = 0.8;
+        pmrem.dispose();
+        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xbfc6cf, 0.8));
+        const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+        sun.position.set(-500, 1500, 900);
+        this.scene.add(sun);
+        this.observer = new ResizeObserver(() => this.resize());
+        this.observer.observe(this.viewport);
+        this.resize();
+        const loader = new GLTFLoader();
+        const definitions = [
+            ...TOWN_MODEL_BUILDINGS.map(definition => ({ ...definition, url: modelAssetUrl(definition.file) })),
+            ...TOWN_MODEL_PROPS.map(definition => ({ ...definition, url: propAssetUrl(definition.file) }))
+        ];
+        const assets = new Map();
+        const results = await Promise.allSettled(definitions.map(async definition => {
+            if (!assets.has(definition.url)) assets.set(definition.url, loader.loadAsync(definition.url));
+            const gltf = await assets.get(definition.url);
+            const model = gltf.scene.clone(true);
+            applyCleanBuildingMaterials(model, this.renderer);
+            model.rotation.y = definition.rotation;
+            model.updateMatrixWorld(true);
+            const bounds = new THREE.Box3().setFromObject(model);
+            const size = bounds.getSize(new THREE.Vector3());
+            if (!Number.isFinite(size.x) || size.x <= 0) throw new Error('Invalid model bounds');
+            const scale = definition.width / size.x;
+            model.scale.multiplyScalar(scale);
+            const center = bounds.getCenter(new THREE.Vector3());
+            // Front edge sits on the retained town's building ground-contact line.
+            model.position.set(definition.x - center.x * scale, -bounds.min.y * scale,
+                definition.y / GROUND_PROJECTION - bounds.max.z * scale);
+            model.name = definition.id;
+            this.scene.add(model);
+            const label = document.createElement('span');
+            label.className = 'town-model-label';
+            label.textContent = definition.name;
+            this.layer.append(label);
+            this.labels.push({ label, definition });
+        }));
+        this.loadedCount = results.filter(result => result.status === 'fulfilled').length;
+        if (this.loadedCount !== definitions.length) {
+            this.status.textContent = `마을 요소 ${this.loadedCount}/${definitions.length}개 표시됨 · 일부 모델을 불러오지 못했습니다.`;
+            results.filter(result => result.status === 'rejected').forEach(result => console.error(result.reason));
+        } else this.status.hidden = true;
+        this.draw();
+    }
+
+    resize() {
+        const width = this.viewport.clientWidth;
+        const height = this.viewport.clientHeight;
+        if (!width || !height || !this.renderer) return;
+        if (this.width === width && this.height === height) return;
+        this.width = width;
+        this.height = height;
+        this.renderer.setSize(width, height);
+        this.camera.aspect = width / height;
+        this.camera.updateProjectionMatrix();
+    }
+
+    draw() {
+        if (!this.renderer || this.town.containerEl.classList.contains('hidden')) return;
+        this.resize();
+        const { cameraX, cameraY } = this.town.playerController;
+        const preview = document.body.classList.contains('ui-paused');
+        if (preview && !this.previewCameraOrigin) this.previewCameraOrigin = { x: cameraX, y: cameraY };
+        const x = preview ? TOWN_PREVIEW_FRAME.x + cameraX - this.previewCameraOrigin.x
+            : cameraX + this.viewport.clientWidth / 2;
+        const groundY = preview ? TOWN_PREVIEW_FRAME.y + cameraY - this.previewCameraOrigin.y
+            : cameraY + this.viewport.clientHeight / 2;
+        const z = groundY / GROUND_PROJECTION;
+        const pitch = THREE.MathUtils.degToRad(TOWN_CAMERA.pitchDegrees);
+        const visibleHeight = preview ? Math.max(TOWN_PREVIEW_FRAME.visibleHeight,
+            TOWN_PREVIEW_FRAME.visibleWidth / this.camera.aspect) : this.viewport.clientHeight;
+        const distance = visibleHeight / (2 * Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)));
+        this.camera.position.set(x, Math.sin(pitch) * distance, z + Math.cos(pitch) * distance);
+        this.camera.lookAt(x, 0, z);
+        for (const { label, definition } of this.labels) {
+            label.style.left = `${definition.x - cameraX}px`;
+            label.style.top = `${definition.y - cameraY + 20}px`;
+        }
+        this.renderer.render(this.scene, this.camera);
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit target image 1, four-frame red fox carry sprite row. Image 2 is STRICT face/style/color reference of the SAME fox in neutral three-quarter right view. Correct ONLY heads/faces of all four carry poses to match image2: wider round cheeks, short rounded muzzle, same eye size/spacing/brown irises, same gentle mouth, same head width and ear proportions. No slender beautified face. Preserve each original carry pose, limbs, hands, feet, tail, frame order, scale, placement and cyan background. Also remove the anomalous dark brown wedge on the orange back/upper arm near the armpit; keep orange fur continuous there with only thin anatomical outline. Keep existing chocolate hands/feet/outer ears, orange and ivory material colors. Clean readable hand-drawn game sprite, same three-quarter camera as references, no paw pads, no extra arms, no text. Four clearly separated full body drawings on one horizontal row, same positions as target. Head must follow natural pose, not appear pasted or frozen. Body motion is already adopted dog baseline and must not change.",
+  "native_source": "C:/Users/bogeu/.codex/generated_images/01a14172-5c70-7963-aff2-a738b3c007a8/exec-aa841f01-e951-4563-89f2-94641724e983.png",
+  "scope": "Native edited head regions plus local material-classification correction; other frames preserved."
+}

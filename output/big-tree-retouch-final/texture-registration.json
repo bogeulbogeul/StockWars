@@ -1,0 +1,12 @@
+[
+  {
+    "model": "BigTree",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 2163167,
+    "protected_edge_pixels": 2038222,
+    "mean_registration_pixels": 0.8106855154037476
+  }
+]

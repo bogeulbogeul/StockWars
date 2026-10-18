@@ -3,9 +3,9 @@ import { paintCharacterSprite } from '../CharacterSprite.js';
 import { gameKey, bindingLabel } from '../../app/GameKeys.js';
 import { PARK, WAREHOUSE_ENTRANCE, WAREHOUSE_PLACES, warehouseEntranceHit, createWarehouseNavigation } from './WarehouseGeometry.js';
 const ROOM_URL = new URL('../../../assets/interiors/logistics/warehouse-breakroom-v5.png', import.meta.url).href;
-const PARK_URL = new URL('../../../assets/characters/manager-park/park-boar-standing-v4.png', import.meta.url).href;
-const PORTRAIT_URL = new URL('../../../assets/characters/manager-park/park-boar-dialogue-neutral-v1.png', import.meta.url).href;
-const SMILE_URL = new URL('../../../assets/characters/manager-park/park-boar-dialogue-smile-v1.png', import.meta.url).href;
+const PARK_URL = new URL('../../../assets/characters/manager-park/park-sheet-standing-v5.png', import.meta.url).href;
+const PORTRAIT_URL = new URL('../../../assets/characters/manager-park/park-sheet-neutral-v2.png', import.meta.url).href;
+const SMILE_URL = new URL('../../../assets/characters/manager-park/park-sheet-proud-v2.png', import.meta.url).href;
 const PARK_REQUESTS = {
     challenge_logistics_s_v1: '요즘 물량이 밀려서 손 빠른 일꾼이 필요해. 한 번 일할 때 30점은 해낼 수 있겠나? S등급을 해내면 보너스도 챙겨주지.',
     challenge_flawless_v1: '이번엔 깨지기 쉬운 물건들이야. 서두르는 것보다 멀쩡히 보내는 게 중요하지. 상자 하나도 깨뜨리지 않고 한 번에 18점 이상 해보겠나?'

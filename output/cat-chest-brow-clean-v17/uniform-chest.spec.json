@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "uniform-chest",
+      "map": {
+        "#332D30": "#494246",
+        "#413B3E": "#494246",
+        "#494246": "#494246",
+        "#5C5155": "#494246"
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-gif-run",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-carry-leg-fix-v2\\final-run",
+  "exports": [
+    {
+      "state": "right_carry",
+      "output": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\previews\\right_carry.gif",
+      "frames": 4,
+      "fps": 6.25,
+      "loop": true,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\previews\\right_carry.gif",
+        "frames": 4,
+        "delay_ticks": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { paintCharacterSprite as paintDogSprite } from './CharacterSprite.js';
 import {CipherRoomPackage,CIPHER_AGENT_ENABLED} from './CipherRoomPackage.js';
 import {PLACES as PACKAGE_PLACES,ROOM_SIZE} from './CipherRoomPackageGeometry.js';
@@ -140,7 +141,7 @@ export class CipherLobby {
         const reward=this.getQuestReward?.();
         if(reward&&this.onClaimReward?.(reward.id)?.success){
             this.renderAgentMenu(`하하, 이번 승부는 당신의 승리군요. 마지막까지 자산을 지켜 낸 판단이 훌륭했습니다. 약속한 ${reward.gold}G와 ${reward.exp} EXP입니다. 다음 대결도 기대하겠습니다.`,[['감사합니다',()=>this.renderAgentChoices(),true]]);
-            this.notice.querySelector('.cipher-agent-portrait').src=new URL('../../assets/characters/agent-k/agent-k-dialogue-smile-v1.png',import.meta.url).href;
+            this.notice.querySelector('.cipher-agent-portrait').src=EMPTY_CHARACTER_IMAGE;
             return;
         }
         this.renderAgentMenu('다시 찾아주셨군요. 무엇을 도와드릴까요?',[

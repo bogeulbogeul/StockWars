@@ -1,0 +1,11 @@
+{
+  "triangles": 189164,
+  "expressions": [
+    "neutral",
+    "blink",
+    "happy",
+    "back"
+  ],
+  "geometry_source": "Meshy 6 Lite faceless input",
+  "rigged": false
+}

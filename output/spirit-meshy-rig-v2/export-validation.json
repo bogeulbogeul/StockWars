@@ -1,0 +1,11 @@
+{
+  "bones": 7,
+  "actions": [
+    "Eat_Reach_Test",
+    "Idle",
+    "Tpose",
+    "Walk",
+    "Wave"
+  ],
+  "glb_reimport": "passed"
+}

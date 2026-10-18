@@ -8,7 +8,7 @@ import {CipherLobby} from '../js/components/CipherCanvasLobby.js';
 import {marketEngine} from '../js/engine/marketEngine.js';
 marketEngine.stopEngine();
 const background=new Image();background.src='../assets/interiors/cipher/cipher-lobby-package-clean-v7.png';
-const agent=new Image();agent.src='../assets/characters/agent-k/agent-k-chibi-isometric-v1.png';
+const agent=new Image();agent.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR4nGNgAAIAAAUAAXpeqz8AAAAASUVORK5CYII=';
 await Promise.all([background.decode(),agent.decode()]);
 const navigation=createPackageNavigation();
 const cases=[['데스크 상판 모서리 진입 차단',803,332,620,200],['데스크 오른쪽 끝 진입 차단',850,348,620,200],['왼쪽 소파 뒤 진입 차단',1030,485,880,380],['오른쪽 소파 옆 진입 차단',1195,551,990,420],['상판 화분 진입 차단',1152,550,940,430],['테이블 앞 이동',1115,701,940,440],['왼쪽 소파 중앙 착석',998,531,880,420,SEATS[0]],['오른쪽 소파 중앙 착석',1269,562.5,1080,440,SEATS[1]],['오른쪽 문 접근',1400,571,1120,380]];

@@ -1,0 +1,352 @@
+{
+  "passed": true,
+  "states": 10,
+  "physical_drawings": 19,
+  "alpha_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "common_material_rgb_difference": 0,
+  "materials": {
+    "fur": {
+      "rgb": [
+        65,
+        59,
+        62
+      ],
+      "pixels": 1240839
+    },
+    "eyebrow": {
+      "rgb": [
+        92,
+        81,
+        85
+      ],
+      "pixels": 4504
+    },
+    "outline": {
+      "rgb": [
+        2,
+        1,
+        2
+      ],
+      "pixels": 242245
+    },
+    "inner-ear": {
+      "rgb": [
+        254,
+        157,
+        120
+      ],
+      "pixels": 50186
+    },
+    "eye-white": {
+      "rgb": [
+        249,
+        249,
+        249
+      ],
+      "pixels": 15362
+    },
+    "iris-gold": {
+      "rgb": [
+        249,
+        166,
+        8
+      ],
+      "pixels": 5367
+    }
+  },
+  "frames": [
+    {
+      "state": "down_idle",
+      "frame": 0,
+      "roles": {
+        "fur": 69243,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 362,
+        "outline": 13347,
+        "inner-ear": 4307,
+        "inner-ear-shadow": 0,
+        "eye-white": 1195,
+        "iris-gold": 473
+      }
+    },
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "roles": {
+        "fur": 64726,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 365,
+        "outline": 13158,
+        "inner-ear": 4291,
+        "inner-ear-shadow": 0,
+        "eye-white": 1208,
+        "iris-gold": 458
+      }
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "roles": {
+        "fur": 69243,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 362,
+        "outline": 13347,
+        "inner-ear": 4307,
+        "inner-ear-shadow": 0,
+        "eye-white": 1195,
+        "iris-gold": 473
+      }
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "roles": {
+        "fur": 64804,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 359,
+        "outline": 13244,
+        "inner-ear": 4307,
+        "inner-ear-shadow": 0,
+        "eye-white": 1213,
+        "iris-gold": 471
+      }
+    },
+    {
+      "state": "right_idle",
+      "frame": 0,
+      "roles": {
+        "fur": 55499,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 143,
+        "outline": 11108,
+        "inner-ear": 1891,
+        "inner-ear-shadow": 0,
+        "eye-white": 636,
+        "iris-gold": 129
+      }
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "roles": {
+        "fur": 67475,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 118,
+        "outline": 12111,
+        "inner-ear": 1770,
+        "inner-ear-shadow": 0,
+        "eye-white": 682,
+        "iris-gold": 115
+      }
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "roles": {
+        "fur": 55499,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 143,
+        "outline": 11108,
+        "inner-ear": 1891,
+        "inner-ear-shadow": 0,
+        "eye-white": 636,
+        "iris-gold": 129
+      }
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "roles": {
+        "fur": 63299,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 147,
+        "outline": 11525,
+        "inner-ear": 1773,
+        "inner-ear-shadow": 0,
+        "eye-white": 672,
+        "iris-gold": 114
+      }
+    },
+    {
+      "state": "up_idle",
+      "frame": 0,
+      "roles": {
+        "fur": 75689,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 0,
+        "outline": 13517,
+        "inner-ear": 0,
+        "inner-ear-shadow": 0,
+        "eye-white": 0,
+        "iris-gold": 0
+      }
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "roles": {
+        "fur": 73701,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 0,
+        "outline": 13179,
+        "inner-ear": 0,
+        "inner-ear-shadow": 0,
+        "eye-white": 0,
+        "iris-gold": 0
+      }
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "roles": {
+        "fur": 75689,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 0,
+        "outline": 13517,
+        "inner-ear": 0,
+        "inner-ear-shadow": 0,
+        "eye-white": 0,
+        "iris-gold": 0
+      }
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "roles": {
+        "fur": 74465,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 0,
+        "outline": 13327,
+        "inner-ear": 0,
+        "inner-ear-shadow": 0,
+        "eye-white": 0,
+        "iris-gold": 0
+      }
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "roles": {
+        "fur": 62467,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 184,
+        "outline": 11718,
+        "inner-ear": 1775,
+        "inner-ear-shadow": 0,
+        "eye-white": 575,
+        "iris-gold": 155
+      }
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "roles": {
+        "fur": 56211,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 173,
+        "outline": 10557,
+        "inner-ear": 1685,
+        "inner-ear-shadow": 0,
+        "eye-white": 555,
+        "iris-gold": 141
+      }
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "roles": {
+        "fur": 62389,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 182,
+        "outline": 11437,
+        "inner-ear": 1758,
+        "inner-ear-shadow": 0,
+        "eye-white": 578,
+        "iris-gold": 161
+      }
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "roles": {
+        "fur": 53344,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 150,
+        "outline": 10479,
+        "inner-ear": 1639,
+        "inner-ear-shadow": 0,
+        "eye-white": 525,
+        "iris-gold": 136
+      }
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "roles": {
+        "fur": 53208,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 351,
+        "outline": 11721,
+        "inner-ear": 3082,
+        "inner-ear-shadow": 0,
+        "eye-white": 983,
+        "iris-gold": 421
+      }
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "roles": {
+        "fur": 52952,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 295,
+        "outline": 12254,
+        "inner-ear": 2500,
+        "inner-ear-shadow": 0,
+        "eye-white": 668,
+        "iris-gold": 251
+      }
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "roles": {
+        "fur": 90936,
+        "thin-internal-line": 0,
+        "ear-back-shadow": 0,
+        "eyebrow": 1170,
+        "outline": 21591,
+        "inner-ear": 13210,
+        "inner-ear-shadow": 0,
+        "eye-white": 4041,
+        "iris-gold": 1740
+      }
+    }
+  ],
+  "allowed_colors": 42,
+  "used_colors": 11,
+  "colors_outside_palette": 0,
+  "changed_pixels": 926179,
+  "game_installed": false,
+  "limitation": "Checks confirm shared material RGB and geometry, not pixel-identical facial artwork across poses. Broad fur/ear shading is flattened; original near-black contours remain."
+}

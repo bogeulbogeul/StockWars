@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "sigeureujabeujong",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 512,
+    "height": 512,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "right_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "right_walk"
+    }
+  },
+  "style": "Pure right side profile; match existing front walk illustration, colors and body size.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "centroid",
+    "align_y": "bottom",
+    "ground_frames": false,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

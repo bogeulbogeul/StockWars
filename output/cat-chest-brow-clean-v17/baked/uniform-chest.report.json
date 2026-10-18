@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "uniform-chest-input.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "uniform-chest",
+      "sheet": "uniform-chest.png",
+      "substituted_pixels": 24426,
+      "substitutions": [
+        {
+          "from": "#332d30",
+          "to": "#494246",
+          "pixels": 8170
+        },
+        {
+          "from": "#413b3e",
+          "to": "#494246",
+          "pixels": 3006
+        },
+        {
+          "from": "#494246",
+          "to": "#494246",
+          "pixels": 10803
+        },
+        {
+          "from": "#5c5155",
+          "to": "#494246",
+          "pixels": 2447
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "inner-ear",
+      "map": {
+        "#EE8968": "#FE9D78",
+        "#F1A786": "#FE9D78",
+        "#FDA58A": "#FE9D78",
+        "#FE9D78": "#FE9D78",
+        "#FEA37C": "#FE9D78"
+      }
+    }
+  ]
+}

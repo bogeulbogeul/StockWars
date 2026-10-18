@@ -1,0 +1,10 @@
+{
+  "rear_round": {
+    "prompt": "Edit the attached REAR RABBIT three-frame row. Keep head/body/arms/leg poses, plain smooth heels, colours and anatomy unchanged. Change ONLY tails: each tail must be a SMALL ROUND IVORY COTTON PUFF, approximately one PAW WIDTH in diameter, about HALF the size of the current tall teardrop tail. NO long pointed tip, NO upward dog-like plume, NO tan/brown base with cream tip. The ENTIRE little puff is cream fur with only modest ivory shadow and tiny fur edge. Root attached at CENTER rump/spine just above buttocks, not left/right flank. For A puff can lean slightly left; neutral centred; B slightly right, but root always on centre pelvis. Short round rabbit pom-pom, not dog tail. All other pixels/design and three motion phases should remain visually unchanged. All rear feet smooth heels without toe grooves. Exactly3 isolated fullbody rear rabbits on solid cyan #00FFFF, no text.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-34b51226-685d-4d6a-ac53-29df98c57b1e.png"
+  },
+  "carry_phase4": {
+    "prompt": "Edit this rabbit FOUR-frame carry strip, preserving first THREE poses and all4 upper bodies/colour/style. FOURTH pose is currently repeating second leg pose; replace ONLY fourth lower-body phase to match fourth DOG reference. FOURTH: far leg is vertically planted beneath far/right hip and ground foot on RIGHT. Foreground NEAR thigh emerges from visible LEFT hip, bends FORWARD toward screenRIGHT to lifted knee, calf folds back DOWN-LEFT, near cream paw RAISED slightly LEFT of the planted far paw. Foreground near thigh contour passes IN FRONT of far leg. Do not keep foreground near leg straight down-left planted as in second pose. Both palms remain forward held at same height, no box. Rabbit same long ears face body ratios, no paw pads. Four isolated fullbody rabbits on cyan. Dog reference only tells phase4 anatomy; NEVER dog fur colours.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-ca0eacee-ac2a-4ddb-9962-42a09aa9049e.png"
+  }
+}

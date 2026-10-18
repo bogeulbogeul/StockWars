@@ -1,0 +1,276 @@
+{
+  "characterId": "rabbit-face-rear-cleanup-v3",
+  "status": "design-candidate",
+  "cell": {
+    "width": 320,
+    "height": 400
+  },
+  "animation": {
+    "rows": {
+      "down_idle": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      },
+      "down_walk": {
+        "frames": 3,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "right_idle": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      },
+      "right_walk": {
+        "frames": 3,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "up_idle": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      },
+      "up_walk": {
+        "frames": 3,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "right_carry": {
+        "frames": 4,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "down_sit": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      },
+      "right_sit": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      },
+      "face_portrait": {
+        "frames": 1,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "sequence": [
+          0
+        ]
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 1280,
+    "sheetHeight": 4000,
+    "rows": {
+      "down_idle": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_idle": [
+        {
+          "x": 0,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 0,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3600,
+          "w": 320,
+          "h": 400
+        }
+      ]
+    }
+  },
+  "game_integrated": false,
+  "motion_reference": "output/dog-hidden-hand-v9/",
+  "tail_wag_extension": false
+}

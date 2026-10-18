@@ -1,0 +1,6 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Edit this exact compact ivory rabbit tail tuft into a horizontal row of THREE separated tail-only animation drawings on transparent background: LEFT image = upper tuft tips leaning subtly to viewer LEFT; MIDDLE = original upright neutral; RIGHT = upper tuft tips leaning subtly to viewer RIGHT. The lower attachment/root and the entire bottom third must be identical in all three, centered and fixed. Only upper two thirds flex gently, around 6 degrees or 5 percent of tail width, never a large wag or side translation. Keep this exact tail size, fluffy points, round compact volume, cream color, existing soft shading, dark outline thickness and identical lighting. No additional anatomical features, no body, no text, no diagram lines, no shadows, no background. Three tails same scale, generous separation, same bottom baseline. This is a subtle deformation of upper fluff with an anchored lower root, not rotating or moving the entire tail. Do not recolor, redesign, enlarge or shrink the tail.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-04c5f821-53c5-4d19-aa35-82afb1f3dd39.png",
+  "scope": "up_walk contact A/B upper tail only; neutral and lower root preserved from v4."
+}

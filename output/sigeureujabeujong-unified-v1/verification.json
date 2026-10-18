@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "sheet_size": [
+    2048,
+    5120
+  ],
+  "cell_size": [
+    512,
+    512
+  ],
+  "states": 10,
+  "physical_drawings": 19,
+  "idle_equals_walk_neutral": true,
+  "walk_sequence": "A-neutral-B-neutral",
+  "duration_ms": 160,
+  "seated_uniform_scale": 0.9,
+  "game_integrated": true,
+  "limitations": [
+    "Native generated asset RGB equality and live game contact remain unverified. Static-state motion warnings are expected."
+  ],
+  "sha256": "e3c3d910b3d957f1ffea161edc3a2da3b236b568fc31c6cc94c424ba29869772",
+  "installation_report": "game-installation.json"
+}

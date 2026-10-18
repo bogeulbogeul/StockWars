@@ -1,0 +1,27 @@
+{
+  "carry": [
+    {
+      "frame": 0,
+      "corrected_spot_pixels": 176,
+      "below_y238_exact": true
+    },
+    {
+      "frame": 1,
+      "corrected_spot_pixels": 205,
+      "below_y238_exact": true
+    },
+    {
+      "frame": 2,
+      "corrected_spot_pixels": 190,
+      "below_y238_exact": true
+    },
+    {
+      "frame": 3,
+      "corrected_spot_pixels": 192,
+      "below_y238_exact": true
+    }
+  ],
+  "other_frames_byte_identical": 15,
+  "palette_unchanged": true,
+  "live_visual_qa": "pending"
+}

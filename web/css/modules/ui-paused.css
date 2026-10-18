@@ -1,0 +1,28 @@
+/* Temporary UI reset; remove ui-paused from body to restore the existing UI. */
+body.ui-paused #app > :not(#townStageContainer),
+body.ui-paused #townStageContainer > :not(#townViewport),
+body.ui-paused .town-model-label,
+body.ui-paused .town-model-status,
+body.ui-paused dialog,
+body.ui-paused .toast-container {
+    display: none !important;
+}
+
+/* Keep the scenery viewport at full size with no HUD margins or dimming. */
+body.ui-paused #townStageContainer,
+body.ui-paused #townViewport {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+body.ui-paused #townViewport > :not(.town-model-layer) {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+body.ui-paused #townViewport { cursor: default !important; }
+body.ui-paused dialog::backdrop { display: none !important; }

@@ -1,0 +1,12 @@
+[
+  {
+    "model": "BankBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3604762,
+    "protected_edge_pixels": 584920,
+    "mean_registration_pixels": 2.1825356483459473
+  }
+]

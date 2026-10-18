@@ -1,0 +1,16 @@
+{
+  "source_identical": true,
+  "atlas_sha256": "31800db3c8a01e1e9c22ad781c8497a1b0394ec5a536e777afff7b7e2b0201af",
+  "destination": "C:\\GitHub\\StockWars\\web\\assets\\characters\\forest-friends\\red-fox",
+  "other_five_forest_atlases_unchanged": true,
+  "shared_shop_rectangles_unchanged": true,
+  "walk_sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "frame_duration_ms": 160,
+  "states": 10,
+  "live_play_visual_qa": "pending"
+}

@@ -1,0 +1,28 @@
+{
+  "bones": [
+    "Root",
+    "Body",
+    "Arm_L",
+    "Arm_R",
+    "Leg_L",
+    "Leg_R"
+  ],
+  "no_elbow_or_knee": true,
+  "rigid_weights": true,
+  "actions": [
+    "Idle",
+    "Walk",
+    "Wave",
+    "Eat"
+  ],
+  "source_vertices": 52126,
+  "parts": {
+    "Body": 2980,
+    "Head": 7941,
+    "Arm_L": 1490,
+    "Arm_R": 1490,
+    "Leg_L": 6466,
+    "Leg_R": 6466
+  },
+  "note": "Imported head retained. Simple torso and rounded limbs rebuilt to prevent torn cut surfaces. Rigid shoulder/hip rotation only. Original preserved in source.blend. Eat is a reach test without facial texture."
+}

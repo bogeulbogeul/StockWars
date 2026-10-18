@@ -1,0 +1,12 @@
+{
+  "screen_mesh": "AdScreen",
+  "screen_material": "AdScreenMaterial",
+  "screen_vertices": 4,
+  "screen_triangles": 2,
+  "uv_full_rectangle": true,
+  "screen_planar": true,
+  "unlit_extension_exported": true,
+  "body_triangle_count_preserved": 98554,
+  "default_display": "blank",
+  "advertisement_playback_implemented": false
+}

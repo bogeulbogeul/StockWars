@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "changed_state": "down_sit",
+  "outside_body_rgba_identical": true,
+  "head_rgba_identical": true,
+  "other_states_rgba_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "changed_pixels": 43698,
+  "game_installed": false
+}

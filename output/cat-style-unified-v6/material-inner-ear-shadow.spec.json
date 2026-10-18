@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "inner-ear-shadow",
+      "map": {
+        "#EE8968": "#EE8968"
+      }
+    }
+  ]
+}

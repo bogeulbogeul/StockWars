@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-carry-v1\\run",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24,
+    "size": 512,
+    "safe_margin": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "components",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 88456,
+          "bbox": [
+            89,
+            24,
+            415,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 80935,
+          "bbox": [
+            93,
+            24,
+            410,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 88806,
+          "bbox": [
+            89,
+            24,
+            413,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "nontransparent_pixels": 81284,
+          "bbox": [
+            93,
+            24,
+            409,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,10 @@
+{
+  "source": "meshy-dog-simple-v1/dog.glb",
+  "changed_face_vertices": 11909,
+  "expressions": [
+    "neutral",
+    "blink",
+    "happy"
+  ],
+  "rigged": false
+}

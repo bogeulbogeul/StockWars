@@ -1,0 +1,32 @@
+[
+  {
+    "model": "FinanceBuilding",
+    "triangles": 810620,
+    "source_sha256": "ce6bafe200a45320b9e14f4154bad90dad83c4e83a6d7dd8ab8026f646bfd03c",
+    "output_sha256": "4b45523824f5a402031f3890f2e432ca743cb51cbb1ed269b481fa32de9fb5b3"
+  },
+  {
+    "model": "FunitueStoreBuilding",
+    "triangles": 1253672,
+    "source_sha256": "1d4dde091ddebc886271d3b75f6247f9306abbc97756c365eee136fc90719098",
+    "output_sha256": "819121025eda48e5f577a16c01648910f184cb94f9c16a28542e663d6a4ae80a"
+  },
+  {
+    "model": "StoreBuilding",
+    "triangles": 824116,
+    "source_sha256": "9584344b0c415dac82d63ffbbac40cd7a3e60ea09b8c7deaf70aeab1b17e2d9e",
+    "output_sha256": "25d320dabbaf5209ddc12237b50decd841f8232c02dcb8eeed38fa4990acbbb6"
+  },
+  {
+    "model": "InformationBuilding",
+    "triangles": 993068,
+    "source_sha256": "22aab245629f7fe655717eb86e1050a08c553f2c0a4db36781c8e261e852817c",
+    "output_sha256": "212fa1c1ff916fea6e3b0cb0bfc990b30a58c355ad8de243ad9cc7fc0cfa70ad"
+  },
+  {
+    "model": "HomeBuilding",
+    "triangles": 842684,
+    "source_sha256": "aebdf72f7f6dea7af4f98d1f9b07b1bb3008a2f3e65dee33275e2427270ed273",
+    "output_sha256": "c19c85b6ca988ae1de726ecdd589a76a42266a1a083d69b000903cbecd1e90ca"
+  }
+]

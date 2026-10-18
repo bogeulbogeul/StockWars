@@ -1,0 +1,12 @@
+[
+  {
+    "model": "PubBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3381866,
+    "protected_edge_pixels": 704022,
+    "mean_registration_pixels": 1.720773696899414
+  }
+]

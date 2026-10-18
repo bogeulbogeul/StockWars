@@ -1,0 +1,249 @@
+{
+  "passed": true,
+  "pngs_checked": 22,
+  "base_rgb_difference": 0,
+  "frames": [
+    {
+      "png": "frames/down_idle/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 26734
+    },
+    {
+      "png": "frames/down_walk/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 22938
+    },
+    {
+      "png": "frames/down_walk/frame-1.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 26734
+    },
+    {
+      "png": "frames/down_walk/frame-2.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 24033
+    },
+    {
+      "png": "frames/down_walk/frame-3.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 26734
+    },
+    {
+      "png": "frames/right_idle/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 20573
+    },
+    {
+      "png": "frames/right_walk/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 28183
+    },
+    {
+      "png": "frames/right_walk/frame-1.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 20573
+    },
+    {
+      "png": "frames/right_walk/frame-2.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 27163
+    },
+    {
+      "png": "frames/right_walk/frame-3.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 20573
+    },
+    {
+      "png": "frames/up_idle/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 27319
+    },
+    {
+      "png": "frames/up_walk/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 19726
+    },
+    {
+      "png": "frames/up_walk/frame-1.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 27319
+    },
+    {
+      "png": "frames/up_walk/frame-2.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 30423
+    },
+    {
+      "png": "frames/up_walk/frame-3.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 27319
+    },
+    {
+      "png": "frames/right_carry/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 24826
+    },
+    {
+      "png": "frames/right_carry/frame-1.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 24022
+    },
+    {
+      "png": "frames/right_carry/frame-2.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 26153
+    },
+    {
+      "png": "frames/right_carry/frame-3.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 21127
+    },
+    {
+      "png": "frames/down_sit/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 17599
+    },
+    {
+      "png": "frames/right_sit/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 19993
+    },
+    {
+      "png": "frames/face_portrait/frame-0.png",
+      "matches_atlas": true,
+      "alpha_identical": true,
+      "base_rgb": [
+        65,
+        59,
+        62
+      ],
+      "base_pixels_checked": 26477
+    }
+  ]
+}

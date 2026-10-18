@@ -1,0 +1,117 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "down_walk-1-body-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "down_walk-1-body",
+      "sheet": "down_walk-1-body.png",
+      "substituted_pixels": 35899,
+      "substitutions": [
+        {
+          "from": "#3a3438",
+          "to": "#413b3e",
+          "pixels": 548
+        },
+        {
+          "from": "#3b3538",
+          "to": "#413b3e",
+          "pixels": 206
+        },
+        {
+          "from": "#3c3638",
+          "to": "#413b3e",
+          "pixels": 505
+        },
+        {
+          "from": "#3c373a",
+          "to": "#413b3e",
+          "pixels": 25
+        },
+        {
+          "from": "#3e3130",
+          "to": "#413b3e",
+          "pixels": 624
+        },
+        {
+          "from": "#3e383b",
+          "to": "#413b3e",
+          "pixels": 1154
+        },
+        {
+          "from": "#403a3d",
+          "to": "#413b3e",
+          "pixels": 1018
+        },
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 33
+        },
+        {
+          "from": "#413c3f",
+          "to": "#413b3e",
+          "pixels": 26
+        },
+        {
+          "from": "#413c40",
+          "to": "#413b3e",
+          "pixels": 9
+        },
+        {
+          "from": "#423b3e",
+          "to": "#413b3e",
+          "pixels": 8585
+        },
+        {
+          "from": "#423c3f",
+          "to": "#413b3e",
+          "pixels": 15
+        },
+        {
+          "from": "#423c40",
+          "to": "#413b3e",
+          "pixels": 10
+        },
+        {
+          "from": "#433c40",
+          "to": "#413b3e",
+          "pixels": 4988
+        },
+        {
+          "from": "#433d40",
+          "to": "#413b3e",
+          "pixels": 99
+        },
+        {
+          "from": "#443e41",
+          "to": "#413b3e",
+          "pixels": 20
+        },
+        {
+          "from": "#453e41",
+          "to": "#413b3e",
+          "pixels": 10713
+        },
+        {
+          "from": "#484245",
+          "to": "#413b3e",
+          "pixels": 7305
+        },
+        {
+          "from": "#5c5155",
+          "to": "#413b3e",
+          "pixels": 16
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

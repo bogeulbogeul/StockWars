@@ -1,0 +1,52 @@
+[
+  {
+    "model": "FinanceBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3509837,
+    "protected_edge_pixels": 683390,
+    "mean_registration_pixels": 1.5960854291915894
+  },
+  {
+    "model": "FunitueStoreBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3528176,
+    "protected_edge_pixels": 659623,
+    "mean_registration_pixels": 2.37129545211792
+  },
+  {
+    "model": "StoreBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3599937,
+    "protected_edge_pixels": 591237,
+    "mean_registration_pixels": 2.8958044052124023
+  },
+  {
+    "model": "InformationBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3663338,
+    "protected_edge_pixels": 529866,
+    "mean_registration_pixels": 1.7222468852996826
+  },
+  {
+    "model": "HomeBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3725935,
+    "protected_edge_pixels": 462566,
+    "mean_registration_pixels": 3.5462512969970703
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": ".run.sg-staging",
+    "description": "unpacked from atlas (manifest)"
+  },
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "size": 512,
+    "safe_margin": 0
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    },
+    "down_walk": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": ""
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    },
+    "right_walk": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": ""
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    },
+    "up_walk": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": ""
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": ""
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    },
+    "face_portrait": {
+      "frames": 1,
+      "fps": 6,
+      "loop": false,
+      "action": ""
+    }
+  }
+}

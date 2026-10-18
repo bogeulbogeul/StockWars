@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "sigeureujabeujong",
+    "description": "imported PNG set from C:\\GitHub\\StockWars\\output\\sigeureujabeujong-unified-v1\\selected\\down_idle"
+  },
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "size": 512,
+    "safe_margin": 0
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "imported still set"
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    },
+    "right_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "imported still set"
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "imported still set"
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6.25,
+      "loop": true,
+      "action": "imported still set"
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    },
+    "face_portrait": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "imported still set"
+    }
+  }
+}

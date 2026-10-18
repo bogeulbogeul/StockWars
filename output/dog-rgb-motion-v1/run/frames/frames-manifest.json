@@ -1,0 +1,118 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\dog-rgb-motion-v1\\.run.sg-staging",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "size": 512,
+    "safe_margin": 0
+  },
+  "rows": [
+    {
+      "state": "down_idle",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/down_idle/frame-0.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "down_walk",
+      "frames": 4,
+      "method": "unpacked",
+      "files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png",
+        "frames/down_walk/frame-3.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "right_idle",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/right_idle/frame-0.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "right_walk",
+      "frames": 4,
+      "method": "unpacked",
+      "files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png",
+        "frames/right_walk/frame-3.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "up_idle",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/up_idle/frame-0.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "up_walk",
+      "frames": 4,
+      "method": "unpacked",
+      "files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png",
+        "frames/up_walk/frame-3.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "unpacked",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "down_sit",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/down_sit/frame-0.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "right_sit",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/right_sit/frame-0.png"
+      ],
+      "ok": true
+    },
+    {
+      "state": "face_portrait",
+      "frames": 1,
+      "method": "unpacked",
+      "files": [
+        "frames/face_portrait/frame-0.png"
+      ],
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

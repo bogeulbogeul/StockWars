@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-carry-leg-fix-v2\\.final-run.sg-staging",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "size": 512,
+    "safe_margin": 0
+  },
+  "rows": [
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "imported-pngs",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "labels": [
+        "frame-0",
+        "frame-1",
+        "frame-2",
+        "frame-3"
+      ],
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

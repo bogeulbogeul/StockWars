@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run",
+  "states": [
+    "right_walk"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "right_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9557054921348145,
+          "mean": 0.965780910818584
+        },
+        "dhash_similarity": {
+          "min": 0.796875,
+          "mean": 0.8645833333333334
+        },
+        "motion_presence": 0.10377556295955882,
+        "centroid_sigma": {
+          "x": 0.14041333233711503,
+          "y": 6.817131758623708
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

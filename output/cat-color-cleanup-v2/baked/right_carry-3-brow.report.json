@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "right_carry-3-brow-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "right_carry-3-brow",
+      "sheet": "right_carry-3-brow.png",
+      "substituted_pixels": 123,
+      "substitutions": [
+        {
+          "from": "#453e41",
+          "to": "#5c5155",
+          "pixels": 3
+        },
+        {
+          "from": "#484245",
+          "to": "#5c5155",
+          "pixels": 80
+        },
+        {
+          "from": "#5c5155",
+          "to": "#5c5155",
+          "pixels": 40
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "source": "Meshy_AI_Blank_Buddy_1018082424_texture.glb",
+  "vertices": 60654,
+  "triangles": 108618,
+  "geometry_unchanged": true,
+  "repair": "Disconnect generated normal map containing ghost eyes. Base color/roughness preserved; mesh smooth normals used.",
+  "bones": [
+    "Root",
+    "Body",
+    "Head",
+    "Arm.L",
+    "Arm.R",
+    "Leg.L",
+    "Leg.R"
+  ],
+  "unweighted_vertices": 0,
+  "weight_error": 4.470348358154297e-08,
+  "clip": "Walk_InPlace",
+  "fps": 24,
+  "period_seconds": 1.0,
+  "closure_keyframe": 25,
+  "stride_distance": 0.14,
+  "nominal_travel_speed": 0.28,
+  "foot_lift": 0.045,
+  "forward_axis": "Blender -Y / glTF +Z",
+  "preview_ground_z": -0.951
+}

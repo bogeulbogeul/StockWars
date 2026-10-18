@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "clear-brow",
+      "map": {
+        "#413B3E": "#5C5155",
+        "#5C5155": "#5C5155"
+      }
+    }
+  ]
+}

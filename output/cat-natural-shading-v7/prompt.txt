@@ -1,0 +1,7 @@
+Built-in image_gen lighting-only edit.
+Edit target: ../cat-style-unified-v6/overview.png, an existing 4x4 contact sheet of sixteen poses.
+Reference: ../cat-design-2026-10-18-v1/design-sheet.png, for natural charcoal shading only.
+Preserve exact pose, silhouette, placement, linework, hands, facial expression and tail curve in every existing cell. Keep gray background and no text.
+Restore the design sheet's restrained soft cel shading consistently in every pose. Fixed soft upper-left frontal light with common intensity and hue. Fur midtone RGB65,59,62; shadow RGB51,45,48; subtle lit charcoal RGB73,66,70.
+Gentle shading on cheeks/lower head, under chin/chest tufts, rounded belly, inner arms/thighs, curved inner tail, toes and ear backs. Preserve clear eyebrows, amber eyes and pink ears.
+No new marks on rear, no paw pads, no harsh shiny rim, no strong gradients, no patchy noise, no rectangular seams, no layout change. Square output.

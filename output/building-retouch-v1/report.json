@@ -1,0 +1,27 @@
+[
+  {
+    "model": "FinanceBuilding",
+    "glass_triangles": 2974,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v1\\FinanceBuilding-retouched.glb"
+  },
+  {
+    "model": "FunitueStoreBuilding",
+    "glass_triangles": 1290,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v1\\FunitueStoreBuilding-retouched.glb"
+  },
+  {
+    "model": "StoreBuilding",
+    "glass_triangles": 876,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v1\\StoreBuilding-retouched.glb"
+  },
+  {
+    "model": "InformationBuilding",
+    "glass_triangles": 628,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v1\\InformationBuilding-retouched.glb"
+  },
+  {
+    "model": "HomeBuilding",
+    "glass_triangles": 1037,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v1\\HomeBuilding-retouched.glb"
+  }
+]

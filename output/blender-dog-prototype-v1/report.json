@@ -1,0 +1,10 @@
+{
+  "status": "prototype, not game-installed",
+  "expressions": [
+    "neutral",
+    "blink",
+    "happy"
+  ],
+  "rigged": false,
+  "triangles": 19214
+}

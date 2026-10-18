@@ -1,0 +1,7 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Edit this EXACT rabbit design-sheet portrait crop into a clean transparent-background game portrait. Faithfully preserve the design itself: identical tall ears and their angle, head/cheek silhouette, cream eyebrow marks, large vertically oval eyes with dark upper lashes, warmly shaded amber-brown irises with dark upper shading and brighter lower brown, large black oval pupils, one crisp white catchlight, tiny reddish brown triangular nose and small gentle smile, cream cheeks and muzzle, taupe fur and peach ear insides. This is faithful background removal / asset extraction, NOT a redesign. Do NOT make flat dull monochrome irises, circular staring eyes, enlarged eyes, pixel banding, extra eye sparkles, or a flat oval blob nose. Keep the reference's eye shape and rich brown eye expression exactly. Remove only the light beige paper background. Output ONE centered head with full ears, transparent background, no body, neck, chest, text, frame or shadows. Keep clean smooth hand-drawn game illustration edges and reference palette. Leave padding around every ear tip.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-bfd517aa-9904-4198-b78c-0b2460bf68e7.png",
+  "appearance_reference": "../rabbit-design-2026-10-17-v1/design-sheet.png, face portrait crop",
+  "scope": "Only face_portrait. All other 18 logical frames preserved."
+}

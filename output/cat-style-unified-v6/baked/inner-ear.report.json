@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "material-inner-ear.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "inner-ear",
+      "sheet": "inner-ear.png",
+      "substituted_pixels": 50186,
+      "substitutions": [
+        {
+          "from": "#ee8968",
+          "to": "#fe9d78",
+          "pixels": 11800
+        },
+        {
+          "from": "#f1a786",
+          "to": "#fe9d78",
+          "pixels": 348
+        },
+        {
+          "from": "#fda58a",
+          "to": "#fe9d78",
+          "pixels": 19
+        },
+        {
+          "from": "#fe9d78",
+          "to": "#fe9d78",
+          "pixels": 30880
+        },
+        {
+          "from": "#fea37c",
+          "to": "#fe9d78",
+          "pixels": 7139
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

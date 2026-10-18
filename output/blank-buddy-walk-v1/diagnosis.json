@@ -1,0 +1,55 @@
+{
+  "bounds": [
+    [
+      -0.6293920278549194,
+      0.6284189820289612
+    ],
+    [
+      -0.5076360106468201,
+      0.5085480213165283
+    ],
+    [
+      -0.9504430294036865,
+      0.9493539929389954
+    ]
+  ],
+  "nodes": [
+    {
+      "name": "Principled BSDF",
+      "type": "BSDF_PRINCIPLED",
+      "image": null
+    },
+    {
+      "name": "Material Output",
+      "type": "OUTPUT_MATERIAL",
+      "image": null
+    },
+    {
+      "name": "Image Texture",
+      "type": "TEX_IMAGE",
+      "image": "texture"
+    },
+    {
+      "name": "Separate Color",
+      "type": "SEPARATE_COLOR",
+      "image": null
+    },
+    {
+      "name": "Image Texture.001",
+      "type": "TEX_IMAGE",
+      "image": "Image_1"
+    },
+    {
+      "name": "Normal Map",
+      "type": "NORMAL_MAP",
+      "image": null
+    },
+    {
+      "name": "Image Texture.002",
+      "type": "TEX_IMAGE",
+      "image": "Image_2"
+    }
+  ],
+  "vertices": 60654,
+  "faces": 108618
+}

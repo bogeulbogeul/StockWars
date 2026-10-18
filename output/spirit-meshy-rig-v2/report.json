@@ -1,0 +1,25 @@
+{
+  "source": "Meshy_AI_Blank_Buddy_1018043201_generate.glb",
+  "vertices": 47613,
+  "triangles": 95222,
+  "mesh_coordinates_unchanged": true,
+  "mesh_faces_unchanged": true,
+  "weights_normalized": true,
+  "bones": [
+    "Root",
+    "Body",
+    "Head",
+    "Arm.L",
+    "Arm.R",
+    "Leg.L",
+    "Leg.R"
+  ],
+  "actions": [
+    "Tpose",
+    "Idle",
+    "Walk",
+    "Wave",
+    "Eat_Reach_Test"
+  ],
+  "notes": "No elbows/knees. Single bones per limb with shoulder/hip root blending. Eat is a reach prototype; mouth texture not yet placed."
+}

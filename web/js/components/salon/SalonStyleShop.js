@@ -1,10 +1,11 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { SALON_STYLES } from './SalonStyleCatalog.js';
 import { playSalonMakeoverEffect } from './SalonMakeoverEffect.js';
 
 const directions=['down','right','up','left'];
 const directionNames=['정면','오른쪽','뒤','왼쪽'];
 const priceLabel=style=>`${style.price.toLocaleString('ko-KR')} G`;
-const atlas=id=>new URL(`../../../assets/characters/forest-friends/${id}/atlas.png`,import.meta.url).href;
+const atlas=id=>EMPTY_CHARACTER_IMAGE;
 function sprite(style,rect,flip=false) {
     return `<svg viewBox="0 0 320 400" role="img" aria-label="${style.label}"><g ${flip?'transform="translate(320 0) scale(-1 1)"':''}><svg width="320" height="400" viewBox="${rect.x} ${rect.y} ${rect.w} ${rect.h}" overflow="hidden"><image href="${atlas(style.id)}" width="${style.frames.sheetWidth}" height="${style.frames.sheetHeight}"/></svg></g></svg>`;
 }

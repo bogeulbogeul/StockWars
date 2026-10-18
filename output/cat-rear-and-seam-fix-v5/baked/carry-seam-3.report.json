@@ -1,0 +1,117 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "carry-seam-3-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "carry-seam-3",
+      "sheet": "carry-seam-3.png",
+      "substituted_pixels": 5912,
+      "substitutions": [
+        {
+          "from": "#2f2a2a",
+          "to": "#413b3e",
+          "pixels": 299
+        },
+        {
+          "from": "#2f2a2d",
+          "to": "#413b3e",
+          "pixels": 42
+        },
+        {
+          "from": "#332d30",
+          "to": "#413b3e",
+          "pixels": 365
+        },
+        {
+          "from": "#3a3438",
+          "to": "#413b3e",
+          "pixels": 147
+        },
+        {
+          "from": "#3b3538",
+          "to": "#413b3e",
+          "pixels": 202
+        },
+        {
+          "from": "#3c3638",
+          "to": "#413b3e",
+          "pixels": 1456
+        },
+        {
+          "from": "#3c373a",
+          "to": "#413b3e",
+          "pixels": 89
+        },
+        {
+          "from": "#3e3130",
+          "to": "#413b3e",
+          "pixels": 284
+        },
+        {
+          "from": "#3e383b",
+          "to": "#413b3e",
+          "pixels": 1099
+        },
+        {
+          "from": "#403a3d",
+          "to": "#413b3e",
+          "pixels": 756
+        },
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 687
+        },
+        {
+          "from": "#413c3f",
+          "to": "#413b3e",
+          "pixels": 7
+        },
+        {
+          "from": "#423b3e",
+          "to": "#413b3e",
+          "pixels": 389
+        },
+        {
+          "from": "#423c3f",
+          "to": "#413b3e",
+          "pixels": 12
+        },
+        {
+          "from": "#433d40",
+          "to": "#413b3e",
+          "pixels": 28
+        },
+        {
+          "from": "#443e41",
+          "to": "#413b3e",
+          "pixels": 4
+        },
+        {
+          "from": "#453e41",
+          "to": "#413b3e",
+          "pixels": 38
+        },
+        {
+          "from": "#484245",
+          "to": "#413b3e",
+          "pixels": 6
+        },
+        {
+          "from": "#5c5155",
+          "to": "#413b3e",
+          "pixels": 2
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

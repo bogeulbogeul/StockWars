@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "dimensions": [
+    2048,
+    5120
+  ],
+  "palette_allowed": 34,
+  "palette_used": 34,
+  "colors_outside_palette": 0,
+  "alpha_identical": true,
+  "states": 10,
+  "frame_ms": 160,
+  "neutral_matches_idle": true,
+  "walk_A_and_B_distinct": true,
+  "gif_durations_verified": true,
+  "game_installed": false,
+  "motion_source": "sigeureujabeujong-unified-v1; poses and alpha preserved",
+  "limitation": "Nearest-RGB mapping is global, not a per-part material mask. Palette compliance does not prove each body part has an individually fixed color. No live gameplay/contact review performed."
+}

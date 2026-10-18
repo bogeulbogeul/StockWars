@@ -1,0 +1,9 @@
+// Render-path smoke test; no claim of browser visual or in-game contact QA.
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const source=fs.readFileSync(path.join(__dirname,'preview.html'),'utf8').match(/<script>([\s\S]*)<\/script>/)[1];new Function(source);
+let draws=0,render;const ctx=new Proxy({},{get:(_,k)=>k==='drawImage'?(...args)=>{if(args.slice(1).some(n=>!Number.isFinite(n)))throw Error('Invalid atlas rectangle');draws++}:()=>{},set:()=>true});
+const controls=new Map();function element(k){if(!controls.has(k))controls.set(k,{value:'',checked:k==='#tail',textContent:'',add(){},append(){},querySelector(){return {textContent:''}}});return controls.get(k)}
+const context={document:{querySelector:element,createElement:()=>({innerHTML:'',querySelector:()=>({textContent:''}),querySelectorAll:()=>[{getContext:()=>ctx},{getContext:()=>ctx}]})},Option:function(){},Image:function(){this.complete=true;this.naturalWidth=1920},requestAnimationFrame:cb=>{render=cb},console};vm.runInNewContext(source,context);
+let time=0;for(const s of ['down_idle','down_walk','right_idle','right_walk','up_idle','up_walk','right_carry','down_sit','right_sit','face_portrait'])for(const tail of [false,true]){element('#state').value=s;element('#state').onchange();element('#tail').checked=tail;for(let i=0;i<8;i++)render(time+=160);element('#mirror').checked=true;element('#small').checked=true;render(time+=160);element('#mirror').checked=false;element('#small').checked=false}element('#play').onclick();element('#step').onclick();render(time+=160);element('#cycle').onclick();render(time+=2500);element('#cycle').onclick();
+const report={ok:true,characters:1,commonStates:10,dogTailStates:0,drawCalls:draws,method:'VM DOM/canvas render-path smoke test; not browser visual QA'};fs.writeFileSync(path.join(__dirname,'preview-verification.json'),JSON.stringify(report,null,2)+'\n');console.log(report);
+

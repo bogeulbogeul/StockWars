@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "states": 10,
+  "unique_drawings": 16,
+  "transparent_background": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "alpha_preserved": false,
+  "geometry_redrawn": true,
+  "frames": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        125,
+        26,
+        449,
+        495
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        68,
+        26,
+        392,
+        496
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        72,
+        25,
+        391,
+        494
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        58,
+        22,
+        423,
+        494
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        83,
+        15,
+        394,
+        494
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        76,
+        16,
+        414,
+        491
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        124,
+        18,
+        450,
+        493
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        132,
+        18,
+        454,
+        493
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        108,
+        15,
+        434,
+        490
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "alpha_bbox": [
+        80,
+        14,
+        411,
+        491
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "alpha_bbox": [
+        82,
+        15,
+        411,
+        491
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "alpha_bbox": [
+        78,
+        15,
+        411,
+        491
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "alpha_bbox": [
+        91,
+        13,
+        412,
+        490
+      ]
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "alpha_bbox": [
+        102,
+        68,
+        403,
+        491
+      ]
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "alpha_bbox": [
+        95,
+        68,
+        406,
+        491
+      ]
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "alpha_bbox": [
+        20,
+        37,
+        484,
+        466
+      ]
+    }
+  ],
+  "game_installed": false,
+  "limitation": "Timing/layout checks do not prove identical hand/foot contact or design fidelity; visual review is required."
+}

@@ -1,0 +1,15 @@
+{
+  "screenMesh": "AdScreen",
+  "screenMaterial": "AdScreenMaterial",
+  "uv": "full 0..1, one quad / two glTF triangles",
+  "width": 1.368,
+  "height": 0.5740000000000001,
+  "aspectRatio": 2.3832752613240418,
+  "recommendedImageSize": [
+    1440,
+    604
+  ],
+  "unlit": true,
+  "originalBodyPreserved": true,
+  "note": "New opaque display covers original split surface inside existing bezel; advertising playback is not implemented."
+}

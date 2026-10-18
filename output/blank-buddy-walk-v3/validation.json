@@ -1,0 +1,10 @@
+{
+  "leg_translation": 0,
+  "rigid_leg_edge_length_error": 1.1838956694848468e-07,
+  "belly_deformation": 0,
+  "stance_height_error": 5.960464477539063e-08,
+  "minimum_sole_clearance": -5.960464477539063e-08,
+  "loop_error": 0.0,
+  "frames": 25,
+  "glb_roundtrip_bones": 7
+}

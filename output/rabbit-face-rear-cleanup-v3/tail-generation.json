@@ -1,0 +1,6 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Create ONE isolated short European rabbit tail tuft on transparent background for sprite compositing. Reference FIRST image ONLY for exact tail SHAPE: the ivory central tail in the rear view and central-tail closeup: compact vertically oval teardrop puff, a small upward pointed tuft at top, softly jagged furry outer contour, rounded lower tip. Reference SECOND image ONLY for existing cream color and dark-brown line weight. This is only a TAIL asset, no rabbit head/body, no legs, no labels, no shadow, no brown attachment base, no ring or mark underneath. Rear-facing tail, symmetrical compact shape; no long curl and no sideways dog tail. Clean simple cel shading, mostly the existing ivory with subtle warm cream lower shading, crisp outline. One single small tail centered, large enough for clean extraction. The final sprite will reuse this same short tail attached to rear central pelvis and follow pelvic bob, without independent left-right wagging.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-aebc1f7b-cd69-4db1-bcc5-9b3db7e73354.png",
+  "motion": "One compact puff follows central pelvis; no independent lateral wagging."
+}

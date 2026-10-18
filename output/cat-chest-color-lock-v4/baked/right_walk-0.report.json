@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "right_walk-0-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "right_walk-0",
+      "sheet": "right_walk-0.png",
+      "substituted_pixels": 3511,
+      "substitutions": [
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 3511
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

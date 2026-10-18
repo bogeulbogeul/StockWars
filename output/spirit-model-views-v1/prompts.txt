@@ -1,0 +1,12 @@
+Tool: built-in image_gen
+Reference: ../spirit-turnaround-v1/turnaround.png
+Purpose: separate modeling reference images; not calibrated technical drawings. Generated framing differs slightly between views.
+
+FRONT
+Edit the provided turnaround reference into ONE standalone full-body modeling reference image. Preserve exactly the selected figure's identity, silhouette, proportions, pose, matte white material and soft 3D shading. Huge rounded head, plump short torso, tiny rounded feet, short thick teardrop arms lowered beside body. Do not redesign or elongate limbs. Single centered character occupying about 85 percent image height, entire head and feet visible with margin. Orthographic eye-level view, neutral light gray plain studio background, subtle contact shadow. No text, no labels, no other characters or views, no props, no added anatomy, no clothes. Select ONLY the LEFT figure: exact FRONT view facing directly at viewer, two black oval eyes and small curved smile matching the reference.
+
+RIGHT SIDE
+Create one standalone right-facing 90-degree side view of the white fantasy mascot shown in the center of the reference sheet, for 3D modeling reference. Keep the same large rounded head, plump body, short rounded arms and tiny feet, white matte 3D render and black oval eye. Preserve the reference design and relaxed standing pose. Full body centered on a plain light gray studio background, orthographic camera, generous margins, no lettering, no other views or objects.
+
+BACK
+Edit the provided turnaround reference into ONE standalone full-body modeling reference image. Preserve exactly the selected figure's identity, silhouette, proportions, pose, matte white material and soft 3D shading. Huge rounded head, plump short torso, tiny rounded feet, short thick teardrop arms lowered beside body. Do not redesign or elongate limbs. Single centered character occupying about 85 percent image height, entire head and feet visible with margin. Orthographic eye-level view, neutral light gray plain studio background, subtle contact shadow. No text, no labels, no other characters or views, no props, no added anatomy, no clothes. Select ONLY the RIGHT figure: exact BACK view, 180-degree rear view, symmetrical back of head and body with both short arms and both feet. No facial features on the back, no tail, no seams. Preserve the back figure exactly.

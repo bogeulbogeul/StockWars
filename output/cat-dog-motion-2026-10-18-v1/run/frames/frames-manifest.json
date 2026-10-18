@@ -1,0 +1,315 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\cat-dog-motion-2026-10-18-v1\\run",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24,
+    "size": 512,
+    "safe_margin": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "right_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/right_walk/frame-0.png",
+        "frames/right_walk/frame-1.png",
+        "frames/right_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 83238,
+          "bbox": [
+            80,
+            24,
+            432,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 70287,
+          "bbox": [
+            111,
+            24,
+            401,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 78477,
+          "bbox": [
+            94,
+            24,
+            418,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "right_carry",
+      "frames": 4,
+      "method": "components",
+      "files": [
+        "frames/right_carry/frame-0.png",
+        "frames/right_carry/frame-1.png",
+        "frames/right_carry/frame-2.png",
+        "frames/right_carry/frame-3.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 78167,
+          "bbox": [
+            97,
+            24,
+            415,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 70635,
+          "bbox": [
+            101,
+            24,
+            411,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 77897,
+          "bbox": [
+            99,
+            24,
+            412,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "nontransparent_pixels": 67512,
+          "bbox": [
+            103,
+            24,
+            408,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "down_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/down_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 98240,
+          "bbox": [
+            95,
+            24,
+            416,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "right_sit",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/right_sit/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 96845,
+          "bbox": [
+            85,
+            24,
+            427,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "face_portrait",
+      "frames": 1,
+      "method": "components",
+      "files": [
+        "frames/face_portrait/frame-0.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 136992,
+          "bbox": [
+            24,
+            81,
+            488,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "up_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 86308,
+          "bbox": [
+            105,
+            24,
+            407,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 85899,
+          "bbox": [
+            113,
+            24,
+            398,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 86161,
+          "bbox": [
+            104,
+            24,
+            407,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    },
+    {
+      "state": "down_walk",
+      "frames": 3,
+      "method": "components",
+      "files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 85950,
+          "bbox": [
+            101,
+            24,
+            410,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 90445,
+          "bbox": [
+            100,
+            24,
+            411,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 85829,
+          "bbox": [
+            102,
+            24,
+            410,
+            488
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

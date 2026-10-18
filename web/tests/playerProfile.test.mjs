@@ -28,7 +28,7 @@ test('profile safely renders current data, refreshes changes, and handles an unr
     const field = key => fields.get(`[data-field="${key}"]`);
     modal.update();
     assert.equal(field('nickname').textContent, '<img src=x>');
-    assert.match(fields.get('.player-profile-portrait').children[0].src, /face-icons-v1\/dog-face\.png$/);
+    assert.match(fields.get('.player-profile-portrait').innerHTML, /dog-rgb-motion-v1\/atlas.png/);
     assert.equal(fields.get('.player-profile-portrait').attributes['aria-label'], '<img src=x>의 얼굴');
     assert.equal(field('analysis').textContent, 4);
     assert.equal(field('stamina').textContent, '1.5 / 3');

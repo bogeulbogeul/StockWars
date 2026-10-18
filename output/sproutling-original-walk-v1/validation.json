@@ -1,0 +1,11 @@
+{
+  "geometry_unchanged": true,
+  "uv_unchanged": true,
+  "materials_unchanged": true,
+  "walk_only": true,
+  "vertices": 142463,
+  "arm_separation": false,
+  "duration_seconds": 1,
+  "foot_swing_degrees": 10,
+  "export_reimport": true
+}

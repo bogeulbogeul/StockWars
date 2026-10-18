@@ -1,0 +1,28 @@
+{
+  "adopted_on": "2026-10-18",
+  "style_id": "dog",
+  "source": "output\\sigeureujabeujong-unified-v1\\run\\sprite-sheet-alpha.png",
+  "runtime": "web\\assets\\characters\\sigeureujabeujong-unified-v1\\atlas.png",
+  "sha256": "e3c3d910b3d957f1ffea161edc3a2da3b236b568fc31c6cc94c424ba29869772",
+  "png_identical": true,
+  "manifest_identical": true,
+  "tests_passed": 321,
+  "states": 10,
+  "game_installed": true,
+  "live_browser_verified": false,
+  "live_browser_blocker": "In-app browser localhost connection timed out.",
+  "runtime_geometry": {
+    "cell": [
+      512,
+      512
+    ],
+    "foot": [
+      256,
+      488
+    ],
+    "crown_y": 39,
+    "standing_height": 449,
+    "world_height": 90
+  },
+  "contacts": "Cargo anchor configured; actual seat/cargo contact needs visual playtest."
+}
