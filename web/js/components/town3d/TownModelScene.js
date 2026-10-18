@@ -3,6 +3,11 @@ import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { applyCleanBuildingMaterials } from './CleanBuildingMaterial.js';
 import { TOWN_MODEL_BUILDINGS, TOWN_CAMERA, TOWN_PREVIEW_FRAME, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
 import { TOWN_MODEL_PROPS, propAssetUrl } from '../../data/townModelProps.js';
+import { SomangiPlayer } from './SomangiPlayer.js';
+import { SOMANGI_VIEW_HEIGHT } from '../../data/somangiModels.js';
+import { installModelPreviewCollision } from './TownModelCollision.js';
+import { TownLandscape } from './TownLandscape.js';
+import { BuildingClock } from './BuildingClock.js';
 
 // Separate from the retained sprite stage: both use the same ground coordinates.
 export class TownModelScene {
@@ -21,6 +26,9 @@ export class TownModelScene {
         this.layer.append(this.status);
         this.viewport.append(this.layer);
         this.labels = [];
+        this.buildingClocks = [];
+        this.collisionFootprints = [];
+        this.lastDrawTime = performance.now();
         this.ready = this.initialize().catch(error => {
             this.status.hidden = false;
             this.status.textContent = '3D 건물을 표시하지 못했습니다. 새로고침해 주세요.';
@@ -50,9 +58,11 @@ export class TownModelScene {
         const sun = new THREE.DirectionalLight(0xffffff, 0.8);
         sun.position.set(-500, 1500, 900);
         this.scene.add(sun);
+        this.landscape = new TownLandscape(this.scene);
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.viewport);
         this.resize();
+        this.player = new SomangiPlayer(this.scene, this.town, this.layer);
         const loader = new GLTFLoader();
         const definitions = [
             ...TOWN_MODEL_BUILDINGS.map(definition => ({ ...definition, url: modelAssetUrl(definition.file) })),
@@ -63,7 +73,8 @@ export class TownModelScene {
             if (!assets.has(definition.url)) assets.set(definition.url, loader.loadAsync(definition.url));
             const gltf = await assets.get(definition.url);
             const model = gltf.scene.clone(true);
-            applyCleanBuildingMaterials(model, this.renderer);
+            if (!definition.nativeMaterials) applyCleanBuildingMaterials(model, this.renderer);
+            if (definition.clock) this.buildingClocks.push(new BuildingClock(model));
             model.rotation.y = definition.rotation;
             model.updateMatrixWorld(true);
             const bounds = new THREE.Box3().setFromObject(model);
@@ -76,6 +87,16 @@ export class TownModelScene {
             model.position.set(definition.x - center.x * scale, -bounds.min.y * scale,
                 definition.y / GROUND_PROJECTION - bounds.max.z * scale);
             model.name = definition.id;
+            this.landscape.wrap(model);
+            this.landscape.addContactShadow(model);
+            if (TOWN_MODEL_BUILDINGS.some(building => building.id === definition.id)) {
+                this.collisionFootprints.push({
+                    minX: model.position.x + bounds.min.x * scale,
+                    maxX: model.position.x + bounds.max.x * scale,
+                    minY: (model.position.z + bounds.min.z * scale) * GROUND_PROJECTION,
+                    maxY: definition.y
+                });
+            }
             this.scene.add(model);
             const label = document.createElement('span');
             label.className = 'town-model-label';
@@ -88,6 +109,9 @@ export class TownModelScene {
             this.status.textContent = `마을 요소 ${this.loadedCount}/${definitions.length}개 표시됨 · 일부 모델을 불러오지 못했습니다.`;
             results.filter(result => result.status === 'rejected').forEach(result => console.error(result.reason));
         } else this.status.hidden = true;
+        await this.player.ready;
+        this.landscape.wrap(this.player.root);
+        installModelPreviewCollision(this.town.playerController, this.collisionFootprints);
         this.draw();
     }
 
@@ -104,18 +128,24 @@ export class TownModelScene {
     }
 
     draw() {
+        const now = performance.now();
+        const dt = (now - this.lastDrawTime) / 1000;
+        this.lastDrawTime = now;
         if (!this.renderer || this.town.containerEl.classList.contains('hidden')) return;
         this.resize();
         const { cameraX, cameraY } = this.town.playerController;
         const preview = document.body.classList.contains('ui-paused');
         if (preview && !this.previewCameraOrigin) this.previewCameraOrigin = { x: cameraX, y: cameraY };
-        const x = preview ? TOWN_PREVIEW_FRAME.x + cameraX - this.previewCameraOrigin.x
+        const followPlayer = this.player && this.player.state !== 'loading';
+        const x = followPlayer ? this.town.playerController.charPosX
+            : preview ? TOWN_PREVIEW_FRAME.x + cameraX - this.previewCameraOrigin.x
             : cameraX + this.viewport.clientWidth / 2;
-        const groundY = preview ? TOWN_PREVIEW_FRAME.y + cameraY - this.previewCameraOrigin.y
+        const groundY = followPlayer ? this.town.playerController.charPosY - 60
+            : preview ? TOWN_PREVIEW_FRAME.y + cameraY - this.previewCameraOrigin.y
             : cameraY + this.viewport.clientHeight / 2;
         const z = groundY / GROUND_PROJECTION;
         const pitch = THREE.MathUtils.degToRad(TOWN_CAMERA.pitchDegrees);
-        const visibleHeight = preview ? Math.max(TOWN_PREVIEW_FRAME.visibleHeight,
+        const visibleHeight = followPlayer ? SOMANGI_VIEW_HEIGHT : preview ? Math.max(TOWN_PREVIEW_FRAME.visibleHeight,
             TOWN_PREVIEW_FRAME.visibleWidth / this.camera.aspect) : this.viewport.clientHeight;
         const distance = visibleHeight / (2 * Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)));
         this.camera.position.set(x, Math.sin(pitch) * distance, z + Math.cos(pitch) * distance);
@@ -124,6 +154,10 @@ export class TownModelScene {
             label.style.left = `${definition.x - cameraX}px`;
             label.style.top = `${definition.y - cameraY + 20}px`;
         }
+        this.player?.update(dt);
+        const wallTime = Date.now();
+        for (const clock of this.buildingClocks) clock.update(wallTime);
+        this.landscape.update(x, z, this.town.playerController.renderPosition);
         this.renderer.render(this.scene, this.camera);
     }
 }

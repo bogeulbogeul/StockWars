@@ -1,5 +1,7 @@
 import { toastManager } from '../components/ToastManager.js';
 import { registerNickname } from '../engine/NicknameRegistration.js';
+import { HomeModelScene } from '../components/home3d/HomeModelScene.js';
+import { TOWN_MODEL_BUILDINGS } from '../data/townModelBuildings.js';
 
 export const worldNavigation = {
     async enterTown(server = null, spawnLocation = null) {
@@ -21,6 +23,8 @@ export const worldNavigation = {
             server ||= { id: 'town-1', name: '타운 1', ping: null };
         }
         this.serverSelectModal?.close();
+        this.homeModelScene?.hide();
+        this.cipherLobbyScene?.hide();
         this.officeStage?.hide?.();
         this.townStage?.show(server, spawnLocation);
         document.body.classList.add('town-mode-active');
@@ -43,11 +47,25 @@ export const worldNavigation = {
     },
 
     enterOffice() {
+        this.cipherLobbyScene?.hide();
         const returningFromTown = document.body.classList.contains('town-mode-active');
         void window.stockWarsPresence?.leave();
         this.serverSelectModal?.close();
         this.townStage?.hide();
-        this.officeStage?.show?.();
+        this.officeStage?.hide?.();
+        this.homeModelScene ||= new HomeModelScene(this.appContainer, async () => {
+            const entered = await this.enterTown();
+            if (entered === false) return;
+            const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
+            const player = this.townStage.playerController;
+            player.charPosX = home.x;
+            player.charPosY = home.y + 65;
+            player.keysHeld.clear();
+            player.isMoving = false;
+            player.facing = 'down';
+            player.updateCamera(this.townStage.viewportEl.clientWidth, this.townStage.viewportEl.clientHeight, 0, true);
+        });
+        this.homeModelScene.show();
         document.body.classList.remove('town-mode-active');
         if (this.topDemoBar?.txtStageToggle) {
             this.topDemoBar.txtStageToggle.textContent = '타운으로 이동';

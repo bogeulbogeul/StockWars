@@ -1,0 +1,14 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\room-clean-v2\\Room-clean.glb",
+  "parts": [
+    "Floor",
+    "Wall_Back",
+    "Wall_Front",
+    "Wall_Left",
+    "Wall_Right"
+  ],
+  "geometry_unchanged": true,
+  "wallpaper": "Matte plain warm white, separate material per wall",
+  "floor": "Light oak staggered planks; embedded 1024px color texture",
+  "preview": "Interior preview hides front and right wall only; delivered models include all walls"
+}

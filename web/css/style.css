@@ -31,3 +31,6 @@
 @import './modules/graphics-paused.css';
 @import './modules/town/town-models.css';
 @import './modules/ui-paused.css';
+@import './modules/town/somangi-controls.css';
+@import './modules/home-model.css';
+@import './modules/cipher-lobby.css';

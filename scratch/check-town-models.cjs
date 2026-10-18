@@ -23,9 +23,65 @@ const server = http.createServer((req, res) => {
         page.on('pageerror', error => errors.push(error.message));
         page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
         await page.goto('http://127.0.0.1:8096/');
-        await page.waitForFunction(() => window.stockWarsApp?.townModelScene?.loadedCount === 19, null, { timeout: 90000 });
+        const expectedModels = await page.evaluate(async () => {
+            const [{ TOWN_MODEL_BUILDINGS }, { TOWN_MODEL_PROPS }] = await Promise.all([
+                import('/js/data/townModelBuildings.js'), import('/js/data/townModelProps.js')
+            ]);
+            return TOWN_MODEL_BUILDINGS.length + TOWN_MODEL_PROPS.length;
+        });
+        await page.waitForFunction(count => window.stockWarsApp?.townModelScene?.loadedCount === count, expectedModels, { timeout: 90000 });
+        if (process.env.AUDIT_MATERIALS === '1') await require('./audit-building-materials.cjs')(page);
         await page.waitForTimeout(1500);
+        if (process.env.CHECK_LAYOUT === '1') await require('./audit-village-paths.cjs')(page);
+        if (process.env.CHECK_LANDSCAPE === '1') {
+            assert.equal(await page.evaluate(() => {
+                const scene = window.stockWarsApp.townModelScene;
+                return !!scene.landscape && scene.scene.background.isTexture
+                    && !!scene.scene.getObjectByName('village-grass-ground')
+                    && scene.landscape.pathsMap.isTexture;
+            }), true);
+            await page.screenshot({ path: 'scratch/town-landscape-player.png' });
+            const position = await page.evaluate(() => {
+                const player = window.stockWarsApp.townStage.playerController;
+                return { x: player.charPosX, y: player.charPosY };
+            });
+            for (const [x, y] of [[1250, 600], [1150, 1950]]) {
+                await page.evaluate(({ x, y }) => {
+                    const scene = window.stockWarsApp.townModelScene;
+                    scene.town.playerController.charPosX = x;
+                    scene.town.playerController.charPosY = y;
+                    scene.draw();
+                }, { x, y });
+                await page.waitForTimeout(100);
+                assert.equal(await page.evaluate(() => {
+                    const scene = window.stockWarsApp.townModelScene;
+                    return Number.isFinite(scene.landscape.center.value)
+                        && scene.landscape.ground.position.z === scene.landscape.center.value;
+                }), true);
+            }
+            await page.evaluate(({ x, y }) => {
+                const scene = window.stockWarsApp.townModelScene;
+                scene.town.playerController.charPosX = x;
+                scene.town.playerController.charPosY = y;
+                scene.draw();
+            }, position);
+        }
+        const playerState = await page.evaluate(() => {
+            const scene = window.stockWarsApp.townModelScene;
+            const state = scene.player?.state;
+            const controller = scene.town.playerController;
+            controller.updateCamera(scene.viewport.clientWidth, scene.viewport.clientHeight, 0, true);
+            scene.previewCameraOrigin = { x: controller.cameraX, y: controller.cameraY };
+            if (scene.player) scene.player.state = 'loading';
+            scene.draw();
+            return state;
+        });
         await page.screenshot({ path: 'scratch/town-camera-ui-paused.png' });
+        await page.evaluate(state => {
+            const scene = window.stockWarsApp.townModelScene;
+            if (scene.player) scene.player.state = state;
+            scene.draw();
+        }, playerState);
         if (process.env.COMPARE_MATERIALS === '1') {
             await page.evaluate(() => {
                 window.stockWarsApp.townModelScene.scene.traverse(object => {
@@ -46,7 +102,7 @@ const server = http.createServer((req, res) => {
             await page.waitForTimeout(200);
             await page.screenshot({ path: 'scratch/town-base-color.png' });
         }
-        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.loadedCount), 19);
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.loadedCount), expectedModels);
         assert.equal(await page.locator('button:visible').count(), 0);
         assert.equal(await page.locator('.town-model-layer').isVisible(), true);
         assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.camera.isPerspectiveCamera), true);
@@ -62,11 +118,13 @@ const server = http.createServer((req, res) => {
         const movement = await page.evaluate(() => {
             const scene = window.stockWarsApp.townModelScene;
             const player = scene.town.playerController;
+            scene.draw();
             const before = scene.camera.position.x;
-            player.cameraX += 100;
+            const coordinate = scene.player && scene.player.state !== 'loading' ? 'charPosX' : 'cameraX';
+            player[coordinate] += 100;
             scene.draw();
             const delta = scene.camera.position.x - before;
-            player.cameraX -= 100;
+            player[coordinate] -= 100;
             scene.draw();
             return delta;
         });
@@ -76,7 +134,7 @@ const server = http.createServer((req, res) => {
         await page.evaluate(() => window.stockWarsApp.townStage.show({ name: '검수', ping: null }));
         assert.equal(await page.locator('.town-model-layer').isVisible(), true);
         assert.equal(errors.length, 0, errors.join('\n'));
-        console.log('PASS: automatic town view, hidden UI, perspective camera, safe shortcuts, 19 scene objects, resize, camera synchronization, office/town round trip.');
+        console.log(`PASS: automatic town view, hidden UI, perspective camera, safe shortcuts, ${expectedModels} scene objects, resize, camera synchronization, office/town round trip.`);
         console.log(JSON.stringify(await page.evaluate(() => {
             const scene = window.stockWarsApp.townModelScene;
             return { loaded: scene.loadedCount, models: scene.scene.children.filter(c => c.name).map(c => c.name),

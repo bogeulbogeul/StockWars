@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "mesh_count": 84,
+  "finite_vertices": true,
+  "studio_objects_excluded": true,
+  "closed_entry_ray": {
+    "hit": true,
+    "y": -0.9352,
+    "object": "Leaf_Right"
+  },
+  "open_entry_ray": {
+    "hit": true,
+    "y": 0.78,
+    "object": "Wall_Back_NoWindows"
+  },
+  "door_pivots_preserved": true
+}

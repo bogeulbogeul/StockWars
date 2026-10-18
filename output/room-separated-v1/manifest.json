@@ -1,0 +1,24 @@
+{
+  "source": "C:\\Users\\bogeu\\Downloads\\Room.glb",
+  "source_sha256": "dce7aaf0c531ea0c7596468334c761082eef8e6748fcbdf40a393f5f22b7e03e",
+  "method": "Original triangles partitioned without moving or deleting vertices",
+  "axes": "glTF Y up; front = +Z (door side)",
+  "parts": {
+    "Floor": {
+      "triangles": 1728
+    },
+    "Wall_Left": {
+      "triangles": 1262
+    },
+    "Wall_Right": {
+      "triangles": 731
+    },
+    "Wall_Back": {
+      "triangles": 1653
+    },
+    "Wall_Front": {
+      "triangles": 2422
+    }
+  },
+  "validation": "All 7796 source triangles preserved exactly once; original vertex/normal streams unchanged"
+}

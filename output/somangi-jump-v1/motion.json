@@ -1,0 +1,224 @@
+[
+  {
+    "frame": 1,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.0
+  },
+  {
+    "frame": 2,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.01881110788291178
+  },
+  {
+    "frame": 3,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.03535331853275966
+  },
+  {
+    "frame": 4,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.047631397208144126
+  },
+  {
+    "frame": 5,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.05416442641567144
+  },
+  {
+    "frame": 6,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.05416442641567144
+  },
+  {
+    "frame": 7,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.047631397208144126
+  },
+  {
+    "frame": 8,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.03535331853275967
+  },
+  {
+    "frame": 9,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.01881110788291179
+  },
+  {
+    "frame": 10,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 6.735557395310442e-18
+  },
+  {
+    "frame": 11,
+    "airborne": true,
+    "jump_height": 0.09444444444444448,
+    "crouch": 0
+  },
+  {
+    "frame": 12,
+    "airborne": true,
+    "jump_height": 0.17777777777777784,
+    "crouch": 0
+  },
+  {
+    "frame": 13,
+    "airborne": true,
+    "jump_height": 0.24999999999999994,
+    "crouch": 0
+  },
+  {
+    "frame": 14,
+    "airborne": true,
+    "jump_height": 0.3111111111111111,
+    "crouch": 0
+  },
+  {
+    "frame": 15,
+    "airborne": true,
+    "jump_height": 0.3611111111111111,
+    "crouch": 0
+  },
+  {
+    "frame": 16,
+    "airborne": true,
+    "jump_height": 0.4,
+    "crouch": 0
+  },
+  {
+    "frame": 17,
+    "airborne": true,
+    "jump_height": 0.4277777777777778,
+    "crouch": 0
+  },
+  {
+    "frame": 18,
+    "airborne": true,
+    "jump_height": 0.4444444444444444,
+    "crouch": 0
+  },
+  {
+    "frame": 19,
+    "airborne": true,
+    "jump_height": 0.45,
+    "crouch": 0
+  },
+  {
+    "frame": 20,
+    "airborne": true,
+    "jump_height": 0.4444444444444444,
+    "crouch": 0
+  },
+  {
+    "frame": 21,
+    "airborne": true,
+    "jump_height": 0.42777777777777776,
+    "crouch": 0
+  },
+  {
+    "frame": 22,
+    "airborne": true,
+    "jump_height": 0.39999999999999997,
+    "crouch": 0
+  },
+  {
+    "frame": 23,
+    "airborne": true,
+    "jump_height": 0.36111111111111105,
+    "crouch": 0
+  },
+  {
+    "frame": 24,
+    "airborne": true,
+    "jump_height": 0.3111111111111112,
+    "crouch": 0
+  },
+  {
+    "frame": 25,
+    "airborne": true,
+    "jump_height": 0.2500000000000001,
+    "crouch": 0
+  },
+  {
+    "frame": 26,
+    "airborne": true,
+    "jump_height": 0.17777777777777784,
+    "crouch": 0
+  },
+  {
+    "frame": 27,
+    "airborne": true,
+    "jump_height": 0.09444444444444448,
+    "crouch": 0
+  },
+  {
+    "frame": 28,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.0
+  },
+  {
+    "frame": 29,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.015390906449655099
+  },
+  {
+    "frame": 30,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.02892544243589428
+  },
+  {
+    "frame": 31,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.038971143170299746
+  },
+  {
+    "frame": 32,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.04431634888554936
+  },
+  {
+    "frame": 33,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.04431634888554936
+  },
+  {
+    "frame": 34,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.03897114317029975
+  },
+  {
+    "frame": 35,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.028925442435894275
+  },
+  {
+    "frame": 36,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 0.015390906449655099
+  },
+  {
+    "frame": 37,
+    "airborne": false,
+    "jump_height": 0,
+    "crouch": 5.5109105961630896e-18
+  }
+]

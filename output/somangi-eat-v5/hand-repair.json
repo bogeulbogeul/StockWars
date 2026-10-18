@@ -1,0 +1,12 @@
+{
+  "L": {
+    "maximum_radial_adjustment": 0.030896848674649736,
+    "axial_position_error": 1.00000761449337e-07,
+    "cap_radius": 0.122
+  },
+  "R": {
+    "maximum_radial_adjustment": 0.030896892707924194,
+    "axial_position_error": 8.038477972149849e-08,
+    "cap_radius": 0.122
+  }
+}

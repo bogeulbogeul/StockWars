@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "animated_hands": [
+    "Clock_Hour",
+    "Clock_Minute"
+  ],
+  "animation_clips": 2,
+  "preview_frames": 48
+}

@@ -1,0 +1,14 @@
+{
+  "frames": 37,
+  "duration_seconds": 1.5,
+  "maximum_root_jump_height": 0.45,
+  "maximum_foot_clearance": 0.4304513931274414,
+  "floor_penetration": 5.960464477539063e-08,
+  "leg_edge_length_error": 1.5896787969229415e-07,
+  "belly_shape_error_after_translation": 2.9802322387695312e-08,
+  "loop_error": 0.0,
+  "bone_scales_fixed": true,
+  "roundtrip_clips": [
+    "Jump"
+  ]
+}

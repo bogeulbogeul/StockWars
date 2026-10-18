@@ -1,0 +1,22 @@
+[
+  {
+    "model": "ClothingStore",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3353295,
+    "protected_edge_pixels": 838125,
+    "mean_registration_pixels": 1.5999205112457275
+  },
+  {
+    "model": "BookStoreBuilding",
+    "size": [
+      2048,
+      2048
+    ],
+    "changed_pixels": 3537837,
+    "protected_edge_pixels": 654931,
+    "mean_registration_pixels": 1.7036553621292114
+  }
+]

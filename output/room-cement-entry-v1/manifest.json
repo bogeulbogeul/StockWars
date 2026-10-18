@@ -1,0 +1,12 @@
+{
+  "change": "Entrance material only: warm gray matte cement with subtle grain",
+  "verified": "All mesh positions and non-entrance materials unchanged; front wall remains hidden",
+  "preserved": [
+    "White wallpaper",
+    "Oak floor",
+    "Black camera background",
+    "Entrance end fade",
+    "Camera and lighting"
+  ],
+  "scope": "Model and preview; not installed in game"
+}

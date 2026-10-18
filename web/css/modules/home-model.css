@@ -1,0 +1,26 @@
+.home-model-stage {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 5;
+    overflow: hidden;
+    outline: none;
+}
+.home-model-stage.hidden { display: none !important; }
+.home-model-stage canvas { display: block; width: 100%; height: 100%; }
+.home-model-status { position: absolute; top: 45%; width: 100%; text-align: center; color: #fff; }
+.home-entry-hint {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: #202c36e6;
+    border-radius: 16px;
+    padding: 8px 16px;
+    pointer-events: none;
+    z-index: 6;
+}
+body.ui-paused #townViewport > .home-entry-hint { visibility: visible !important; }
+body.home-model-active { background: #000 !important; }
+body.home-model-active #isoOfficeStage { display: none !important; }

@@ -1,5 +1,5 @@
 /* Temporary UI reset; remove ui-paused from body to restore the existing UI. */
-body.ui-paused #app > :not(#townStageContainer),
+body.ui-paused #app > :not(#townStageContainer):not(#homeModelStage):not(#cipherLobbyStage):not(.cipher-training),
 body.ui-paused #townStageContainer > :not(#townViewport),
 body.ui-paused .town-model-label,
 body.ui-paused .town-model-status,

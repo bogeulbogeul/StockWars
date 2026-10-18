@@ -1,0 +1,12 @@
+{
+  "front": {
+    "source_frames": 30,
+    "decoded_frames": 28,
+    "black_eye_preserved": true
+  },
+  "side": {
+    "source_frames": 30,
+    "decoded_frames": 28,
+    "black_eye_preserved": true
+  }
+}

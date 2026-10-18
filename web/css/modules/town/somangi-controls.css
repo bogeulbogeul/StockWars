@@ -1,0 +1,13 @@
+.somangi-controls {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #202c36d9;
+    color: #fff;
+    font-size: 13px;
+    white-space: nowrap;
+}

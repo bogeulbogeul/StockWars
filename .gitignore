@@ -108,3 +108,7 @@ yarn-error.log*
 
 # Sprite generation temporary locks
 *.sg-rwlock
+
+# Python generated cache
+__pycache__/
+*.py[cod]

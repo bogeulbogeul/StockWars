@@ -1,0 +1,28 @@
+{
+  "parts": [
+    "Floor",
+    "Wall_Left",
+    "Wall_Right",
+    "Wall_Back",
+    "Wall_Front"
+  ],
+  "bounds_min": [
+    -0.9507060050964355,
+    -0.3641408681869507,
+    -0.9506528973579407
+  ],
+  "bounds_max": [
+    0.9497078657150269,
+    0.3623785972595215,
+    0.9496756196022034
+  ],
+  "bounds_match_tolerance": 1e-06,
+  "door": {
+    "door_left": -0.162,
+    "door_right": 0.209,
+    "door_top": 0.2375
+  },
+  "door_measurement": "Straightened from dense original edge clusters; approximate within original surface noise",
+  "validation": "5 closed manifold meshes; flat shading; separate materials; UVs; source bounds match",
+  "floor_note": "Thin 0.001 slab stays inside original bounds; walking surface is 0.001 above original minimum"
+}

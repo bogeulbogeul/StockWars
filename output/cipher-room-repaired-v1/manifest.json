@@ -1,0 +1,22 @@
+{
+  "source": "C:\\Users\\bogeu\\Downloads\\Meshy_AI_Blue_Trimmed_Empty_Ro_1018221403_generate.glb",
+  "source_sha256": "ad4d787f868859ab8aa42139d57e01c9f0a80165ab49e8590fbde29b83f630bf",
+  "method": "Planar architectural reconstruction matching source footprint; not vertex-preserving mesh smoothing.",
+  "original_triangles": 69042,
+  "clean_triangles": 5230,
+  "mesh_parts": 46,
+  "floor_z": -0.312,
+  "wall_top_z": 0.313,
+  "outer_width": 1.90039,
+  "outer_depth": 1.88546,
+  "door_center_x": 0.007515,
+  "door_width": 0.32,
+  "door_height": 0.425,
+  "floor_surface_height_range": 0.0,
+  "status": "Local model preview only; not installed into game.",
+  "notes": [
+    "Door and trim sizes approximated from source, not exact vertex transfer.",
+    "Colors are new blue/ivory proposal: uploaded GLB has no color textures.",
+    "Only main entry is open; no side doors or elevator added."
+  ]
+}

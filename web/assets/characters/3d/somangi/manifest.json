@@ -1,0 +1,21 @@
+{
+  "installed": "2026-10-19",
+  "height": 100,
+  "walk_source": "latest rounded body/arms from somangi-wave-v3 + blank-buddy-walk-v3 Walk_InPlace",
+  "wave_source": "output/somangi-wave-v3/somangi-wave.glb",
+  "eat_source": "output/somangi-eat-v6/somangi-eat.glb",
+  "controls": {
+    "move": "WASD / arrows",
+    "wave": "1",
+    "eat": "2",
+    "jump": "Space"
+  },
+  "scope": "local town preview; no food consumption, healing or multiplayer broadcast",
+  "files": {
+    "eat.glb": "22e26a4b52ba52d5152ef8777281a368fda337968c958ea4bf8578f952db9908",
+    "walk.glb": "d7bb714bb57a5fa514362088422f0a5b0aa552fa254d209e38fc0b07834dfe2d",
+    "wave.glb": "a0fa91f52befc98dfbdf5190c4c98f977407b3e1e6fd30c7dedfc75b60d89ed6",
+    "jump.glb": "2861cbe6e96b0c029a3444e41f0f8d6ecf83f4c1f20aa0b5114b5b22c2393e6b"
+  },
+  "jump_source": "output/somangi-jump-v1/somangi-jump.blend (grounded frame 1 export)"
+}
