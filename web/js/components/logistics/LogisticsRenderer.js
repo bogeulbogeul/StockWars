@@ -173,3 +173,4 @@ export function isNearBoxPallet(game) {
         playerCenter <= pallet.offsetLeft + pallet.offsetWidth + 30;
 }
 
+origin/main

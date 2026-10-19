@@ -28,3 +28,4 @@ body.ui-paused #townViewport > .cipher-lobby-entry-hint { visibility: visible !i
 /* Reveal only the facility dialogs while using the 3D lobby in art preview. */
 body.ui-paused.cipher-facility-active dialog[open] { display: flex !important; }
 body.ui-paused.cipher-facility-active .cipher-training img { opacity: 1 !important; }
+origin/main

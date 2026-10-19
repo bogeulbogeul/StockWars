@@ -17,6 +17,7 @@
 - 우체국 상호·담당 주민·위치·개방 시점·졸업 전시회 포함 여부는 미정이다. 편지지 선택·편지 전시 등 세부 꾸미기는 이번 결정으로 확정하지 않는다.
 
 efbd2ad4468dabf6d87584ff0dee3c6869c12350
+origin/main
 > **2026-10-16 대조 결과:** 현재 온라인 친구 요청·수락·DM·아이템 선물은 [PlayerSocial](../web/js/components/PlayerSocial.js)·[FriendGifts](../web/js/components/FriendGifts.js)·[서버 선물](../Server/presence/gifts.mjs)을 따른다. 실제 선물은 보유 아이템 1개를 보내고 서버 KST 하루 송신 한도는 3개다. 아래 하루 에너지 1회·수령 5회·FP·무료 찌라시 복제 규칙은 구 로컬 FriendManager 설계로, 온라인 공통 정책이 아니다. 홈 방문·스타일 랭킹·블랙잭 알림은 확장안이다.
 
 **버전:** v2.44.0 (최종 완결본 - 배 아픈 알림 기능 반영)

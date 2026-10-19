@@ -45,4 +45,5 @@ Day 7에 현금 5,000G 이상이면 월세를 한 번 차감하고 `rentSettleme
 블랙 스완 기능은 엔진의 시험 로직과 별개로 현재 게임 연결에서 비활성화한다. 100일 전역 위기와 2일 후 최초·7일 간격 로컬 시험 로직을 현재 발생 일정으로 안내하지 않는다.
 
 efbd2ad4468dabf6d87584ff0dee3c6869c12350
+origin/main
 근거: [시장·정산](../web/js/engine/marketEngine.js), [아이템 시간·로또](../web/js/engine/ItemEngine.js), [게임 연결](../web/js/main.js), [아이템 연결](../web/js/app/ItemGameplay.js).
