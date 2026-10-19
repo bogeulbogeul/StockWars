@@ -1,90 +1,27 @@
-# StockWars GDD: CORE_GDD_09. 이벤트 버스 시스템 (Event Bus System)
+# CORE_GDD_09 이벤트와 시스템 연결
 
-**버전:** v1.0.0 (최초 제정)  
-**기능:** 시스템 간 결합도 완화 및 메시지 기반 동적 상호작용 아키텍처 명세
+> 개정: 2026-10-16. 현재 웹의 콜백·리스너 구조를 기준으로 한다. 과거 C# 전역 EventBus는 확장 설계 이력이다.
 
----
+## 1. 현재 연결
 
-## 1. 아키텍처 개요 (Architecture Overview)
+`main.js`가 시장·아이템·튜토리얼·월드·거래 UI의 콜백을 연결한다. `MarketEngine`은 listeners와 notify로 상태 변경을 전달하고, `ItemGameplay`는 상태 동기화·저장·수락한 의뢰의 진행 기록을 연결한다. 사용자 조작에는 DOM 이벤트를 사용한다.
 
-### 1.1. 디자인 패턴: Pub/Sub (Observer)
-본 프로젝트는 시스템 간의 직접적인 참조(Direct Reference)를 차단하고, 중앙화된 **EventBus**를 통해 메시지를 주고받는 구조를 채택합니다.
-- **Publisher**: 이벤트를 발생시키는 주체 (예: MarketEngine, PlayerPortfolio).
-- **Subscriber**: 이벤트를 수신하여 리액션을 수행하는 주체 (예: DialogueManager, UIManager, SeizureEngine).
-- **Event Bus**: 메시지를 중계하고 우선순위에 따라 배포하는 중앙 허브.
+| 사건 | 현재 경로 |
+| :--- | :--- |
+| 주가·체결·잔고 변경 | 시장 notify → 구독한 UI·아이템 연결 갱신 |
+| 첫 매수·창 열기·타운 입장·물류 완료 | 컴포넌트 콜백 → AnnaTutorial 단계 알림 |
+| 물류 보상 | 등급 정산 → ItemEngine의 골드·EXP·체력 반영 → 화면·저장 |
+| 의뢰 진행 | 수락한 trade/labor/arena 이벤트를 SideQuestEngine에 기록 |
+| 온라인 위치·대결·친구 | 각 데스크톱 브리지·서버 응답·폴링 경로 |
 
----
+현재 `TUTORIAL_STEP_COMPLETE`, `PriceChangedEvent`, `StaminaEmptyEvent`, `AssetSeizedEvent` 등의 C# 이벤트 타입을 공용 런타임 API라고 가정하지 않는다. 특히 하트 0만으로 강제 귀가·상점 이용 차단을 추가하지 않는다. 노동 시작·아이템 사용 시 해당 비용만 검사한다.
 
-## 2. 데이터 구조 및 인터페이스 (Data Structures)
+## 2. 변경 시 유지할 계약
 
-### 2.1. IGameEvent 인터페이스
-모든 이벤트 객체는 본 인터페이스를 상속받아 정의됩니다.
-```csharp
-public interface IGameEvent {
-    EventPriority Priority { get; }
-    DateTime TimeStamp { get; }
-    object Sender { get; }
-}
+실제 체결 결과를 받은 뒤 수량·수수료·잔고를 화면과 저장에 반영한다. 의뢰는 수락 전 행동을 자동 누적하지 않으며 중복 보상을 막는다. 화면 종료·재진입 때 리스너·타이머의 수명을 확인한다. 현재 콜백을 유지할 수 있는 변경에 전역 버스 재구축을 필수 선행 작업으로 추가하지 않는다.
 
-public enum EventPriority {
-    Low,      // 단순 UI 갱신 등
-    Normal,   // 일반적인 데이터 변동
-    High,     // 게임 플레이에 즉각적 영향을 주는 변화
-    Critical  // 압류, 파산, 블랙 스완 등 시스템 전체 중단/전환
-}
-```
+## 3. 확장 설계
 
-### 2.2. 이벤트 버스 관리 로직 (Pseudo-code)
-```csharp
-public static class EventBus {
-    private static Dictionary<Type, List<IEnumerator>> subscribers;
+우선순위 큐·Critical 인터럽트·부채/압류/수배 이벤트는 해당 기능을 구현할 때 설계한다. 블랙 스완으로 모든 금융 정산을 건너뛰는 예시는 현행 동작이 아니다. 중앙 이벤트 버스를 도입하려면 기존 구독 경로·저장 순서·중복 알림을 먼저 정의한다.
 
-    public static void Subscribe<T>(Action<T> callback) where T : IGameEvent;
-    public static void Unsubscribe<T>(Action<T> callback) where T : IGameEvent;
-    public static void Publish<T>(T eventArgs) where T : IGameEvent;
-}
-```
-
----
-
-## 3. 이벤트 카테고리 정의 (Event Categories)
-
-| 카테고리 | 이벤트 예시 (Event Types) | 상세 설명 |
-| :--- | :--- | :--- |
-| **Market** | `PriceChangedEvent` | 특정 종목의 가격 변동 시 발행. 차트 및 UI 갱신 트리거. |
-| | `GlobalCrisisEvent` | **블랙 스완** 발생 및 종료 시 발행. 전 시스템 모드 전환. |
-| **Finance** | `AssetSeizedEvent` | 자산 압류 실행 시 발행. NPC 대사 및 아이템 박탈 연동. |
-| | `TransactionExecutedEvent` | 매수/매도 성공 시 발행. 포트폴리오 및 수수료 정산 유도. |
-| **Player** | `StaminaEmptyEvent` | 유저 기력 소진 시 발행. 강제 귀가 및 상점 이용 제한. |
-| | `ReliabilityChangedEvent` | NPC와의 신뢰도 등급 변화 시 발행. 특수 대사 해금. |
-| **World** | `TimeTickEvent` | 게임 내 시간(H) 경과 시 발행. 영업 시간 체크 및 이자 계산. |
-| | `ShopStockUpdatedEvent` | 상점 매대 갱신 시 발행. 알림 UI 및 NPC 호객 대사 트리거. |
-
----
-
-## 4. 특수 메커니즘: 이벤트 우선순위 및 차단 (Priority & Blocking)
-
-### 4.1. 크리티컬 이벤트 가로채기 (Critical Interruption)
-`Critical` 우선순위를 가진 이벤트가 발행될 경우, 현재 진행 중인 하위 우선순위의 연출(일반 대사, UI 애니메이션)을 즉시 중단시키고 크리티컬 연출을 최상단에 배치합니다.
-- **Case**: 일반 대사 도중 **압류(Seizure)** 발생 시 → 즉시 대사창이 붉게 점멸하며 압류 연출로 전환.
-
-### 4.2. 지연 실행 (Deferred Execution)
-네트워크 통신이나 대규모 연산이 필요한 경우, `EventBus`는 이벤트를 큐(Queue)에 쌓아두고 프레임 드랍이 없는 시점에 순차적으로 배포합니다.
-
----
-
-## 5. 실전 사례: 블랙 스완 시퀀스 (Scenario Example)
-
-이벤트 버스를 통한 시스템 간 유기적 연동 흐름:
-1. **[발행]** `MarketManager`가 `GlobalCrisisEvent(Type.Start)` 발행.
-2. **[구역 1]** `PostProcessManager`가 화면을 붉은색 글리치 효과로 전환 (구독).
-3. **[구역 2]** `DialogueManager`가 안나의 긴급 경고 대사(`ANN_BS_FREEZE_01`) 출력 (구독).
-4. **[구역 3]** `TheVaultManager`가 **디지털 방독면** 등 Class E 아이템을 판매 목록에 노출 (구독).
-5. **[구역 4]** `FinanceEngine`이 주간 정산 및 이자 징수 플래그를 `Bypass`로 전환 (구독).
-
----
-
-## 6. 설계상의 주의사항
-- **순환 참조 금지**: 이벤트 A가 이벤트 B를 부르고, 다시 B가 A를 부르는 구조를 지양할 것.
-- **구독 해제**: `OnDestroy` 시점에 반드시 `Unsubscribe`를 호출하여 메모리 누수를 방지할 것.
- Linda Linda
+근거: [main](../web/js/main.js), [MarketEngine](../web/js/engine/marketEngine.js), [ItemGameplay](../web/js/app/ItemGameplay.js), [SideQuestEngine](../web/js/engine/SideQuestEngine.js).

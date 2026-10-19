@@ -1,260 +1,41 @@
-# StockWars GDD: CORE_GDD_06. 기술 명세 및 데이터 구조 (Technical Spec)
-
-**버전:** v5.0.0 (2026.05.01 최종 SSOT 및 하이브리드 엔진 통합본)  
-**핵심 기획:** 실시간-접속 시간 하이브리드 동기화, 이중 스탯 시스템, 원자적 정산 엔진 명세
-
----
-
-## 1. 하이브리드 시간 동기화 정책 (Hybrid Time Sync)
-
-본 시스템은 '서버 시간(Server Time)'과 '유저 플레이 시간(Play Time)'을 분리하여 관리함으로써 경제적 공정성과 유저 편의성을 동시에 확보합니다.
-
-### 1.1. 실시간 (Server Time) 적용 항목
-유저가 오프라인일 때도 서버 클락($Server\ Clock$)에 의해 계속 흐르는 항목입니다. 로그인 시 `Delta Time`을 계산하여 배치 정산(Batch Processing)합니다.
-- **블랙 스완 (100일 주기)**: 전 세계 유저에게 동일한 타이밍에 발생하여 '시장의 냉혹함'을 연출합니다.
-- **은행 이자 및 오피스 유지비**: 오프라인 중에도 자산 가용 비용은 발생합니다 (리텐션 요소).
-- **압류 엔진 (Forfeiture)**: 전당포 및 은행 채무의 상환 기한은 실시간(168시간 등)을 따릅니다.
-- **로또 추첨**: 매주 토요일 21:00 정각에 일괄 처리됩니다.
-
-### 1.2. 접속 시간 (Play Time) 적용 항목
-유저가 게임에 접속하여 활동 중일 때만 소모되거나 갱신되는 항목입니다.
-- **서적 정독 (Reading)**: 1~5분간의 집중 시간이 필요하며, 정지 메뉴 호출 시 일시 정지됩니다.
-- **버프 지속 시간**: 아이템(각성제 등) 효과는 순수 플레이 시간만큼만 유지됩니다.
-- **노동 스테미너 회복**: 오프라인 회복 보너스가 존재하지만, 기본적으로 유저의 활발한 활동을 전제로 합니다.
-
-### 1.3. 서버 권한 네트워크 시간 및 시간 변조 방어 (Anti-Time Tampering Architecture) [NEW]
-클라이언트 로컬 OS 시계(`DateTime.UtcNow / DateTime.Now`) 직접 참조를 전면 배제하고, `NetworkTimeManager`를 통해 서버 권한 표준시(Server Authoritative UTC)를 동기화합니다.
-- **모노토닉 하드웨어 누적 (`Time.realtimeSinceStartupAsDouble`)**: 서버 동기화 후 시간 경과는 OS 윈도우 시계 변경에 영향을 받지 않는 CPU 모노토닉 클럭을 통해 누적되므로, 유저가 컴퓨터 시계를 임의로 앞당기거나 되돌려도 게임 속 시간은 변조되지 않습니다.
-- **변조 감지 및 보안 처리 (`SystemTimeTamperedEvent`)**: 로컬 OS 시계와 서버 모노토닉 시간 간의 급격한 드리프트($\Delta > 10\text{초}$) 발생 시 변조 시도를 감지하고 서버 표준시를 강제 유지합니다.
-
----
-
-## 2. 플레이어 데이터 구조 (Player Data Structure)
-
-### 2.1. 이중 스탯 시스템 (Dual Stat System)
-최종 스탯 효과는 `Base Blocks`와 `Bonus Fragments`의 합산으로 결정됩니다.
-
-```csharp
-public struct UserStats {
-    // Base Blocks: 캐릭터 레벨업으로 획득 (최대 5)
-    public int base_analysis_lv;   // 분석력
-    public int base_negotiation_lv; // 협상력
-    public int base_trading_lv;     // 운용력
-    public int base_recovery_lv;    // 회복력
-
-    // Bonus Fragments: 서적 정독, 가구 세트, 세미나 등으로 무제한 누적
-    public float bonus_analysis_val;
-    public float bonus_negotiation_val;
-    public float bonus_trading_val;
-    public float bonus_recovery_val;
-
-    // 최종 효과 계산 공식
-    // FinalEffect = (Base_LV * Unit_Value) + Bonus_Value
-}
-```
-
----
-
-## 3. 금융 정산 엔진 (Settlement Engine)
-
-### 3.1. 주간 금융 틱 (Finance Tick) 우선순위
-매주 월요일 00:00(UTC)에 실행되는 **Atomic Transaction** 내에서 다음 순서로 연산을 처리합니다.
-
-1.  **배당금 입금 (Credit First)**: 72시간 보유 조건을 충족한 종목에 대해 배당금 일괄 지급.
-2.  **기본 임대료 차감 (Rent Settlement)**: 오피스 표준 기본 임대료(5,000G) 선차감 (가입 72시간 이내 신규 유저 면제).
-3.  **누진 세금 차감 (Tax Settlement)**:
-    - **금융소득세**: 지난 1주일간 실현 순수익($Realized\_Profit$)에 대한 누진 소득세 (0% ~ 20%). (가구 구매비용 50% 공제 적용)
-    - **종합 자산세**: 총 자산($Cash + Portfolio\_Value$)에 대한 누진 보유세 (0% ~ 1.0%). (정기적금 원금 비과세)
-    - **안나 절세 보정**: 협상력 스탯당 3% 최종 세액 감면 ($Tax_{Final} = Tax_{Raw} \times (1 - Negotiation\_Lv \times 0.03)$).
-4.  **이자 및 부채 상환 (Debt Settlement)**: 이자 우선 상환 원칙에 따라 이자 정산 후 원금 상환.
-5.  **적색 수배 및 압류 판정**: 최종 가용 자산 확인 후 Seizure Engine 혹은 Red Notice 발동.
-
-### 3.2. 실시간 몰수 엔진 (Real-time Forfeiture)
-- **담보 상태 감시**: `LoanTimestamp`를 체크하여 168시간 경과 시 즉시 소유권을 바터(Barter)에게 이전.
-- **스탯 실시간 무효화**: 압류 즉시 해당 아이템이 제공하던 **모든 스탯 및 기능 버프는 실시간으로 무효화** 처리되어야 함.
-
----
-
-## 4. 엔드게임 보조 엔진 (Short & Embezzlement)
-
-### 4.1. 적색 수배 (Red Notice) 로직
-횡령액 임계치에 따른 누진적 페널티 시스템입니다.
-- **1단계 (의심: 5~10%)**: 안나의 경고 메일 발송 및 지적 대사 추가.
-- **2단계 (조사: 10~15%)**: 상점 수수료 2.0배 적용. 안나의 'Angry' 표정 고정.
-- **3단계 (수배: 15% 초과)**: **[적색 수배]** 발동. 안나 상호작용 차단 및 뒷모습 초상화 고정.
-- **회생 프로토콜**: 
-    - **자수 (120% 납부)**: 은행을 통해 횡령액+20% 벌금 납부. 피해자에게 120% 전액 보상 트리거 발동.
-    - **신분 세탁 (200% 납부)**: 안드레를 통해 은밀히 해결. 피해자 구제금으로는 100%만 전달되며 나머지는 시스템 소각.
-
-### 4.2. 신용 레버리지 및 공매도 마진콜 감시 엔진 (Margin Trading & Short Watcher) [NEW]
-
-#### 4.2.1. 포지션 데이터 구조 (Holdings Data Extension)
-```csharp
-public class StockHoldingsDTO
-{
-    // [현물 및 신용 롱(Long) 포지션]
-    public int Quantity;                // 총 매수 보유 수량
-    public double AveragePurchasePrice; // 평균 매입단가
-    public float LeverageMultiplier;    // 레버리지 배수 (1.0x = 일반 현물, 2.0x~3.0x = 신용 롱)
-    public long BorrowedMarginLoan;     // 차입한 신용 융자 원금 (Gold)
-
-    // [공매도/숏(Short) 포지션]
-    public int ShortQuantity;           // 숏 포지션 수량
-    public double ShortEntryPrice;      // 숏 진입 평단가
-    public long LockedMargin;           // 담보로 동결된 증거금 (주문액의 140%)
-    public DateTime ShortOpenedTimeUtc; // 숏 포지션 진입 시각
-}
-```
+# CORE_GDD_06 현재 기술 구조와 저장
 
-#### 4.2.2. 마진콜 및 강제 청산 알고리즘 (Liquidation Math)
-실시간 시세 변동 시마다 포트폴리오 내 신용 롱 / 공매도 숏 포지션의 담보 유지 비율($Margin\_Ratio$)을 실시간 연산합니다.
+> 개정: 2026-10-16. 웹·Electron·Node 코드 기준이다. 과거 Unity/C#·C++ IOCP·Steam 설계를 현행 채택·성능 검증 결과로 취급하지 않는다.
 
-1. **공매도 숏 담보율 산출식**:
-   $$\text{Short\_Collateral} = \text{LockedMargin} + (\text{ShortEntryPrice} - \text{CurrentPrice}) \times \text{ShortQuantity}$$
-   $$\text{Margin\_Ratio}_{Short} = \frac{\text{Short\_Collateral}}{\text{CurrentPrice} \times \text{ShortQuantity}}$$
+## 1. 실행 구조
 
-2. **신용 롱 담보율 산출식 (2.0x~3.0x)**:
-   $$\text{Margin\_Ratio}_{Long} = \frac{\text{CurrentPrice} \times \text{Quantity}}{\text{BorrowedMarginLoan}}$$
-
-- **경고 단계 (Warning - $Margin\_Ratio \le 1.25$)**: 
-  - 위험도 게이지 적색 점멸, 안나의 긴급 경고 다이얼로그(`ANN_SHORT_SQUEEZE_WARN` / `ANN_MARGIN_CALL_WARN`) 및 스마트폰 푸시 발송.
-- **강제 청산 단계 (Force Close - $Margin\_Ratio < 1.10$)**:
-  - 시스템이 즉시 시장가 **강제 반대매매(Forced Liquidation / Buy to Cover)** 체결 단행.
-  - 부족분은 동결된 증거금에서 차감 정산하고 포지션 강제 소거. 초과 손실액은 지갑 잔고를 음수(Negative Gold)로 전락시켜 즉시 부채로 전환.
-
-#### 4.2.3. 주문 유효성 검증 및 10레벨 게이팅 (Validation Rules)
-```csharp
-// 주문 접수 시 서버/로컬 공통 유효성 검사
-if (order.OrderType == OrderType.MarginLong || order.OrderType == OrderType.ShortSelling)
-{
-    if (saveData.PlayerLevel < 10)
-    {
-        return TransactionResult.Failed("ERR_LEVEL_LOCKED", "신용 레버리지 및 공매도는 플레이어 Lv.10 이상부터 이용 가능합니다.");
-    }
-}
-```
+**2026-10-19 성능 목표:** 사용자 Pentium 6405U·RAM 20GB 노트북을 첫 검증 기기로 삼아 낮은 옵션·720p 수준 3D 내부 해상도에서 안정적인 30fps를 목표로 한다. UI 선명도·장시간 메모리·입력 반응·로딩을 함께 측정한다. 졸업 전시회까지 웹·Electron을 유지하며 이후 엔진 전환은 미정이다. [성능 목표와 검증 계획](PERFORMANCE_TARGETS.md)을 따른다. **P0 (Core) · ✅ 목표 문서화 / ⏳ 실측·최적화·검수 대기.** 공식 최소 사양이나 달성 성능이 아니다.
 
----
+클라이언트는 `web/`의 JavaScript·HTML·CSS이며 데스크톱 래퍼는 `electron-app/`이다. `Server/presence/`의 Node 서비스가 접속·채널·닉네임·소셜·모의투자 대결 등의 온라인 경로를 제공한다. 현재 서버를 Pure C++/WinSock2/IOCP 서버로 기록하지 않는다. 500/5,000/50,000 CCU·5ms 지연·CPU 20% 같은 이전 목표는 실측 보장치가 아니다.
 
-## 5. 블랙 스완 및 글리치 매니저 (Glitch & Crisis)
+## 2. 메인 시장과 온라인 대결의 분리
 
-### 5.1. 정보 오염 알고리즘 (Decryption Algorithm)
-- **가림 확률**: `HideChance = 1.0f - Decryption_Rate`
-- **Masking Priority**: `[STOCK_NAME]` > `[DIRECTION]` > `[CAUSE]` 순으로 가려짐.
-- **전략적 노이즈**: 분석력 만렙 유저라도 5% 확률로 오보 찌라시 생성(리스크 관리 학습).
+일반 주가는 클라이언트 `MarketEngine`이 약 2,200ms마다 갱신한다. 주문 호가·잔고·보유 주식·첫 월세는 로컬 상태다. 온라인 접속·같은 채널에 있다는 사실은 메인 주가·잔고·주문이 전 세계 서버 단일 시장으로 동기화되었다는 뜻이 아니다.
 
-### 5.2. 블랙 스완 사이클 매니저
-- **주기**: 실시간 100일.
-- **예외 처리 플래그**:
-    - `Weekly_Tick_Bypass = true`: 블랙 스완 진행 중 월요일 정산 무시.
-    - `Seizure_Engine_Lock = true`: 이벤트 중 압류 로직 중단.
-    - `Relief_Week_Active = true`: 종료 후 차기 정산일까지 이자 0원 고정.
-
----
-
-## 6. 데이터 영속성 및 무결성 (Persistence)
-- **Atomic Transaction**: 모든 재무 정산은 'All or Nothing' 원칙을 준수하여 데이터 꼬임을 방지함.
-- **Delta Time 정산**: 로그인 시점과 로그아웃 시점의 차이를 계산하여 부재 중 발생한 모든 경제적 변동을 시뮬레이션함.
-
----
+온라인 경쟁룸은 서버 `arena.mjs`의 별도 가상 계좌·주가·기한·순위를 사용한다. 서버 대결의 실물 잔고 지급은 0이다. 운영·보존 설정은 [온라인 저장 안내](ONLINE_ARENA_STORAGE_SETUP.md)를 따른다.
 
-## 7. 타운 인스턴스 및 동적 채널링 (World Channeling)
+## 3. 세 종류의 시간
 
-유저 증가 시의 기술적 안정성과 쾌적한 커뮤니티 환경을 위해 **'분신 공간(채널)'** 시스템을 도입합니다.
+| 구분 | 현재 동작 |
+| :--- | :--- |
+| 메인 Day | 다음 날 조작으로 1→7 진행. 현실 월요일 금융 틱과 별개 |
+| 아이템 시계 | `max(Date.now() + offset, lastNow)`. 다음 날 진행 시 offset에 86,400,000ms 추가. KST 날짜로 구매·카페인·벤치 등의 제한 처리 |
+| 온라인 대결 | 서버의 시작 시각·마감 시각·경과 틱으로 처리 |
 
-### 7.1. 동적 채널링 엔진 (Dynamic Scaling)
-- **자동 생성**: 한 구역당 최대 인원을 **50명**으로 설정하며, 점유율 80% 초과 시 새로운 구역이 자동으로 생성됩니다.
-- **자동 소멸**: 유저가 빠져나가 인원이 희박해진 구역은 일정 시간 유지 후 기존 구역으로 통합(Merge)되며 소멸합니다.
+버프·패스·우편·로또·유료 정보는 아이템 시계를 사용한다. 종료 중 경과한 기간도 로드 후 처리하므로 '플레이 중에만 버프 시간 감소'라고 기록하지 않는다. 로컬 시계 의존이 남아 있으며 서버 표준시·모노토닉 변조 방어 완료를 주장하지 않는다. 자연 하트 회복은 제거했다.
 
-### 7.2. 마스터 데이터 통합 (Unified Data)
-- **통합 경제**: 유저가 어느 구역에 있더라도 **주가 데이터, 개인 계좌, 인벤토리**는 단일 마스터 서버에서 통합 관리됩니다. 구역 이동은 오직 시각적인 아바타 위치 정보만 변경합니다.
-- **통합 대화**: 구역 번호와 무관하게 전 세계 유저와 소통할 수 있는 **'전체 대화'** 기능을 상시 제공합니다.
+블랙 스완은 `ItemEngine`에 시험 코드가 남아 있지만 게임 연결에서 `blackSwanEnabled: false`로 생성한다. 이어하기에서도 활성 상태를 해제한다. 현재 100일·7일 재난 일정이 가동 중인 것으로 취급하지 않는다.
 
-### 7.3. 구역 이동 로직
-- **직접 선택**: 타운 입구 혹은 설정 메뉴를 통해 이동하고자 하는 구역 번호를 직접 선택할 수 있습니다.
-- **친구 추적**: 친구 목록의 유저가 위치한 구역으로 즉시 이동할 수 있는 편의 기능을 제공합니다.
+## 4. 현재 저장 계약
 
----
+메인 진행은 localStorage의 `stockwars-item-gameplay-v1`에 저장한다. `items`(인벤토리·스탯·EXP·의뢰·효과·로또 등), `profile`(닉네임·스타일·성향·안내 체크포인트), `market`(현금·Day·월세·보유 주식·시세·주문·거래 기록·호가·첫 투자 후속 안내)을 함께 직렬화한다. 현재 자료구조는 JS 객체·Map의 배열 변환이며 C# DTO 필드명을 그대로 적용하지 않는다.
 
-## 8. 스팀 계정 연동 및 클라우드 세이브 (Steam Integration & Cloud Save)
+닉네임·게임 시작 조건이 갖춰져야 저장하며 pagehide와 진행 변경에서 저장한다. 저장 불가 시 세션만 유지한다. 성장·체력·성향의 기존 버전 호환 로직을 건너뛰어 값을 초기화하지 않는다. 스타일·룸·부채·아이템 보유 이관은 해당 정책을 정한 뒤 구현한다.
 
-본 프로젝트는 **PC(Steam) 플랫폼 단독 출시**를 목표로 하며, 유저의 편의성과 데이터 안전성을 위해 스팀웍스(Steamworks) 및 스팀 클라우드(Steam Cloud)를 적극 활용합니다.
+친구·게시글·K 안내 확인·대결 기록 등에는 별도 저장 키가 있다. 온라인 유저 기록 보존과 메인 잔고 클라우드 동기화는 구분한다. Electron 게스트 세션은 사용자 데이터 경로의 `presence-session.json`을 사용한다. Steam Cloud·`Save_Demo.dat` 이관·AES-256 암호화·SHA-256 세이브 검증이 현재 구현됐다고 기록하지 않는다.
 
-### 8.1. 스팀 클라우드 연동 (Steam Cloud)
-- **방식**: 스팀에서 제공하는 자동 파일 동기화 시스템을 사용합니다.
-- **연동 파일**: `%APPDATA%/StockWars/Saves/` 경로의 세이브 파일들.
-- **장점**: 유저가 다른 PC에서 접속하더라도 별도의 로그인 없이 스팀 계정만으로 세이브 데이터가 자동으로 동기화됩니다.
+## 5. 이벤트와 화면 갱신
 
-### 8.2. 데이터 저장 구조 및 보안 (Save Architecture)
-- **포맷**: **JSON Serialization**. `Newtonsoft.Json` 라이브러리를 사용하여 직렬화합니다.
-- **보안 (Anti-Cheat)**:
-    - **Checksum**: 저장 파일 하단에 데이터 본문의 **SHA-256 해시값**을 기록하여, 파일 무단 수정 시 로드를 차단합니다.
-    - **암호화**: 핵심 재무 데이터(Gold, Portfolio)는 `AES-256` 암호화하여 저장합니다.
+[이벤트 명세](CORE_GDD_09_EventBusSystem.md)의 현재 콜백·리스너 구조를 따른다. JS 화면에 Unity `Instantiate`·`Destroy`·`GC.Collect`·`StringBuilder`를 의무화하지 않는다. 모듈 크기·분리는 [AGENTS.md의 코드 구조와 검증](../AGENTS.md#코드-구조와-검증)을 따른다.
 
-### 8.3. 데모 데이터 이관 프로토콜 (Demo Migration)
-1. **경로 탐색**: 정식 버전 실행 시 동일한 Saves 폴더 내에서 `Save_Demo.dat` 파일을 탐색합니다.
-2. **검증 및 이관**: 데모 완료 플래그 확인 시 유저에게 **"데모 데이터 통합"** 팝업을 노출하고 정식 버전 세이브로 변환합니다.
-3. **특전 지급**: 이관 성공 시 `isDemoVeteran` 플래그를 활성화하여 특전 아이템을 지급합니다.
-
----
-
-## 9. 24/7 실시간 실행 최적화 및 가비지 관리 (Memory & GC Management)
-
-24시간 중단 없이 가동되는 시뮬레이션 환경에서 메모리 비대화 및 가비지 컬렉터(GC) 부하로 인한 프레임 드랍과 프로그램 무거워짐을 방지하기 위한 기술 명세입니다.
-
-### 9.1. Zero-Allocation Loop (실시간 연산 최적화)
-- **원칙**: 매 프레임 또는 매 초(Tick)마다 실행되는 업데이트 루프 내에서는 `new` 키워드를 통한 힙(Heap) 메모리 할당을 절대 금지합니다.
-- **문자열 최적화**: 티커 UI, 주가 변동 텍스트 등 빈번한 문자열 변경 시 `String` 대신 `StringBuilder`를 전역적으로 재사용(Cache)하여 가비지 생성을 방지합니다.
-- **구조체 활용**: 일시적인 데이터 전달은 클래스(Class) 대신 구조체(Struct)를 사용하여 스택(Stack) 메모리에서 처리되도록 유도합니다.
-
-### 9.2. 오브젝트 풀링 의무화 (Object Pooling)
-- **대상**: 찌라시 팝업 UI, 미니맵 마커, 파티클 이펙트, 티커 아이템 등 생성과 파괴가 빈번한 모든 프리팹.
-- **동작**: 객체 필요 시 `Instantiate` 대신 미리 생성된 풀(Pool)에서 꺼내어 활성화(`SetActive(true)`)하고, 사용 완료 시 `Destroy` 대신 풀로 반환하여 비활성화합니다.
-
-### 9.3. 주기적 강제 메모리 플러시 (Scheduled Cleanup)
-- **자동 정리 트리거**: 유저의 활동이 가장 적은 **매일 새벽 04:00 (서버 시간 기준)**에 시스템이 자동으로 메모리 정리를 수행합니다.
-- **처리 항목**:
-    - `System.GC.Collect()` 호출을 통한 가비지 강제 수집.
-    - `Resources.UnloadUnusedAssets()` 호출을 통한 메모리 내 미사용 에셋(텍스처, 사운드 등) 완전 해제.
-- **부하 분산**: 해당 작업 수행 시 1~2초간 미세한 렉이 발생할 수 있으므로, 반드시 유저가 덜 활동하는 시간대에 배치 처리합니다.
-
-### 9.4. 데이터 보관 상한선 설정 (Data Capping)
-- **메모리 보호**: 채팅 로그, 지난 뉴스 내역, 세부 거래 기록 등은 메모리에 무제한으로 누적되지 않도록 최대 보관 개수를 제한합니다.
-    - **뉴스 및 찌라시 로그**: 최대 최근 100개만 유지.
-    - **채팅 메시지**: 최대 최근 200개만 유지.
-- **초과 데이터 처리**: 최대치에 도달하면 가장 오래된 데이터부터 메모리에서 FIFO(First-In, First-Out) 방식으로 제거하거나 로컬 디스크(또는 DB)로 스왑(Swap)합니다.
-
-### 9.5. 네트워크 패킷 스로틀링 및 일괄 브로드캐스트 (Network Packet Batching)
-- **패킷 배칭 (Packet Batching)**: 24개 종목의 개별 주가 변동을 각기 다른 소켓 메시지로 쪼개어 브로드캐스팅하는 것을 금지하며, 매 1초(Tick)마다의 전체 가격 동향을 **단 하나의 압축 JSON 객체 배열**로 통합 병합하여 1초에 단 1번만 일괄 송출합니다. 이로써 50인 동접 시 소켓 트래픽 오버헤드를 90% 이상 감축합니다.
-- **채팅 릴레이 버퍼링 (Chat Queue)**: 다수의 동접 유저가 채팅 메시지를 동시다발적으로 입력할 시, 서버 소켓이 수신한 메시지를 즉시 개별 릴레이하지 않고 0.1초(100ms) 단위의 틱 버퍼에 수집(Queue)한 뒤 단일 벌크(Bulk) 패킷으로 릴레이하여 순간적인 소켓 I/O 폭증과 병목을 방지합니다.
-
----
-
-## 10. 서버 아키텍처 및 C++ 고성능 개발 전략 (Server Architecture & C++ Strategy)
-
-본 프로젝트는 대규모 주식 거래 체결 연산, 락프리 동기화, 초저지연 멀티플레이어 세션 처리 및 네오플 등 하이엔드 게임사 백엔드 규격에 맞춘 **Pure C++ (Modern C++17/20, WinSock2 / IOCP)** 기반 게임 서버 아키텍처를 채택합니다.
-
-### 10.1. 메인 백엔드 서버 (Pure C++17/20 & Windows IOCP)
-- **주요 채택 사유**:
-  - **초고속 메모리 & I/O 제어**: Windows IOCP(Input/Output Completion Port) 비동기 입출력 모델과 락프리 큐(Lock-Free Queue)를 통해 수천 명의 동접 유저 소켓 처리 및 지연 시간(Latency < 5ms) 극소화.
-  - **메모리 풀 (Memory Pool)**: 커스텀 메모리 할당자를 통해 힙 할당 파편화를 방지하고 하드웨어 성능을 100% 한계까지 끌어올림.
-  - **포트폴리오 전문성**: C++ 서버 고유의 포인터 제어, 멀티스레딩 동기화(`std::thread`, `std::mutex`), 바이트 패킷 직렬화 아키텍처 구현.
-- **담당 영역**: IOCP 소켓 네트워크 통신, 오더북(Orderbook) 매칭 엔진, 유저 세션 관리, 타운 멀티플레이어 동기화, 실시간 주가 틱 브로드캐스팅.
-
-### 10.2. 클라이언트(Unity C#) - C++ 서버 통신 및 코드 주석 표준
-- **통신 프로토콜**: C++ WinSock2 / WebSocket 소켓 통신을 통한 바이너리 패킷 또는 JSON DTO 전송.
-- **코드 주석 및 학습 가이드 표준**:
-  - C++ 코드 내 포인터(`*`), 메모리 풀, IOCP 네트워크 구조 및 멀티스레딩 흐름을 후일 분석하고 쉽게 학습할 수 있도록 **상세한 한글 주석 체계**를 의무 작성.
-
-### 10.3. 서버 수용 인원 및 단계별 스케일링 로드맵 (Capacity Roadmap)
-- **1단계 (알파/개발 초기 Target)**: **CCU 500명** (마을 채널 10개 / 단일 C++ IOCP 서버 1대로 검증)
-- **2단계 (베타/스팀 얼리 액세스 Target)**: **CCU 5,000명** (마을 채널 100개 / C++ 서버 2~3대 + Redis/DB)
-- **3단계 (정식 출시/글로벌 Target)**: **CCU 50,000명+** (분산 로드밸런서 + C++ 체결 엔진 연동)
-
-### 10.4. 서버 성능 검증 및 부하 테스트 명세 (Stress Testing & Dummy Clients)
-- **더미 클라이언트 엔진 (Dummy Client Bot)**: C++ / C# 기반 500~1,000인 가상 유저(Bot_001~Bot_500) 자동 접속 및 랜덤 이동/주식 매매 패킷 자동 발송 툴 탑재.
-- **부하 검증 지표**: 500인 동접 시 서버 CPU 점유율 < 20%, 메모리 < 500MB, 네트워크 틱 처리 지연 < 5ms 유지 검증.
-
-
-
-
+근거: [메인 연결](../web/js/main.js), [저장·아이템 연결](../web/js/app/ItemGameplay.js), [시장](../web/js/engine/marketEngine.js), [아이템](../web/js/engine/ItemEngine.js), [Electron](../electron-app/src/main.js), [서버](../Server/presence/server.mjs).

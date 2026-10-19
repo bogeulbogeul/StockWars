@@ -1,52 +1,203 @@
-# INDEX_GDD_00: StockWars GDD 마스터 인덱스 (Master Index)
+# StockWars 문서 인덱스
 
-> **2026-09-28 시각 기획 기준:** [아트 스타일 가이드](ART_STYLE_GUIDE.md)와 [그래픽·시점 전환 계획](VISUAL_TRANSITION_PLAN.md)을 우선 참조합니다. 마을 RPG식 탑다운·홈 오피스 및 일반 실내 아이소메트릭을 기획 방향으로 정했으며 연결 검증은 예정 상태입니다. 픽셀아트는 필수 조건이 아니고 최종 화풍은 보류합니다.
+2026-10-19 최신 씨앗 성장: **플레이어 머리 위 외형과 화분에 심은 씨앗의 성장 단계를 연동**한다. Lv.1~2 씨앗 → Lv.3~6 잎 하나 → Lv.7~11 두 잎 → Lv.12~19 꽃봉오리 → Lv.20 개화다. 심기 전에는 머리 성장만 진행하고, 늦게 심으면 현재 레벨 단계로 표시한다. [대응 표](SPIRIT_CHARACTER_BASELINE.md)·[성장](CORE_GDD_03_PlayerGrowth.md)·[씨앗 이야기](CORE_GDD_10_TutorialSystem.md)를 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 에셋·구현·저장 복원·검수 대기.**
 
-**버전:** v5.0.0 (원복 및 복구본)  
-**상태:** 활성 (Active)
+2026-10-19 성능 기준: 사용자 **Pentium 6405U·RAM 20GB 노트북**을 첫 검증 기기로 삼는다. 낮은 옵션·720p 수준 3D 내부 해상도·안정적인 30fps와 선명한 UI를 목표로 하며 졸업 전시회까지 웹·Electron을 유지한다. [성능 목표와 저사양 노트북 검증 계획](PERFORMANCE_TARGETS.md)에서 측정 절차·상태를 관리한다. **P0 (Core) · ✅ 목표 문서화 / ⏳ 실측·최적화·검수 대기.** 공식 최소 사양과 이후 Unity 전환은 확정하지 않는다.
 
----
+2026-10-19 최신 우편 채택: **우체국에서 편지 작성·선물 발송, 집 앞 우편함에서 편지·선물 수신**으로 구성한다. NPC 주민·다른 플레이어와의 교류 및 미래의 나에게 편지를 남기는 용도를 포함한다. 우체국 도입 시 휴대폰 내 선물 보내기를 제거하고 이전하며 친구·DM은 유지한다. [마을 시설](MOD_GDD_01_WorldFacilities.md)·[우편 정책](MOD_GDD_09_FriendSystem.md)·[Bubble 역할](MOD_GDD_11_BubbleSystem.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 세부 정책·제작·구현·기존 선물 이관·검수 대기.**
 
-## 🏛️ 1. 핵심 시스템 (Core Systems)
-- [CORE_GDD_01: 프로젝트 개요 및 아키텍처](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_01_Introduction.md)
-- [CORE_GDD_02: 주가 변동 및 거래 엔진](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_02_MarketEngine.md)
-- [CORE_GDD_03: 캐릭터 성장 및 레벨링](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_03_PlayerGrowth.md)
-- [CORE_GDD_04: 금융 기관 및 부채 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_04_FinancialInstitutions.md)
-- [CORE_GDD_05: 씬 구조 및 UI 시각 명세](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_05_ScenesUI.md)
-- [CORE_GDD_06: 기술 명세 및 데이터 구조](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_06_TechnicalSpec.md)
-- [CORE_GDD_07: 경제 시뮬레이션 및 밸런스](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_07_EconomySim.md)
-- [CORE_GDD_08: 캐릭터 생성 및 초기화](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_08_CharacterCreation.md)
-- [CORE_GDD_09: 이벤트 버스 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_09_EventBusSystem.md)
-- [CORE_GDD_10: 튜토리얼 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/CORE_GDD_10_TutorialSystem.md)
+2026-10-19 최신 찌라시 수급: 잡화점에 **수상한 요정 손님이 확률 등장 → 주문 성공 시 찌라시 1장 확정 지급 → 의미심장한 대사를 남기고 퇴장**한다. 화남 한계로 주문이 취소되면 지급하지 않는다. 첫 조작 튜토리얼은 해당 손님을 한 번 확정 등장시키고 시간 압박 없이 첫 찌라시를 얻어 해석 안내로 연결한다. [노동 상세](MOD_GDD_02_LaborJobs.md)·[튜토리얼](CORE_GDD_10_TutorialSystem.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 등장 확률·대사·구현·검수 대기.**
 
-## 📉 2. 시장 및 경제 콘텐츠 (Market & Economy)
-- [MOD_GDD_10: 상장 예비 종목 풀](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_10_ReserveStockPool.md)
-- [MOD_GDD_12: 기업 뉴스 이벤트 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_12_0_CorporateNewsIndex.md)
-- [MOD_GDD_13: 고스트 트레이더 운영 로직](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_13_GhostTrader.md)
-- [MOD_GDD_14: 부채 탕감 및 회생 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_14_DebtRelief.md)
+2026-10-19 최신 노동 채택: 잡화점 노동은 **2D 상품 포장 퍼즐**로 제작한다. 상품을 주문 전부터 아래쪽 고정 진열대에 놓고, 위쪽 요정 손님의 주문에 맞춰 가운데 상자로 끌어 회전·배치한다. 첫 시제품은 재고 보충 없이 같은 상품을 계속 선택하는 방식으로 검증한다. 첫 손님과 시간 압박 없는 조작 튜토리얼을 진행한 뒤 본 게임에 다른 요정 손님을 추가한다. 본 게임에서 대기 시간에 따라 화남 게이지가 상승하고, 한계에 도달한 손님은 떠나며 해당 주문이 취소된다. [노동 상세](MOD_GDD_02_LaborJobs.md)·[첫날 안내](CORE_GDD_10_TutorialSystem.md)를 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 상세 규칙·구현·검수 대기.**
 
-## 🏠 3. 월드 및 인프라 (World & Infrastructure)
-- [MOD_GDD_01: 월드 시설 및 홈 오피스](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_01_WorldFacilities.md)
-- [MOD_GDD_02: 노동 및 미니게임 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_02_LaborJobs.md)
-- [MOD_GDD_03_3] 의상 상점 (Apparel) [Claire Apparel](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_3_ClaireApparel.md)
-- [MOD_GDD_03_4] 데이터 잉크 서점 (Data Ink Bookstore) [Data Ink Bookstore](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_4_Bookstore.md)
-- [MOD_GDD_03_5: 럭키 캡슐 폐기 및 직접 구매 이관 정책 — 2026-09-28, 신규 구현 제외](MOD_GDD_03_5_LuckyCapsuleGacha.md)
-- [MOD_GDD_18] 세미나 퀴즈 시스템 (Quiz System) [Quiz System](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_18_QuizSystem.md)
-- [MOD_GDD_03: 아이템 상점 및 리스트](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_03_0_ShopIndex.md)
-- [MOD_GDD_05: 라이프스타일 및 사교](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_05_LifestyleSocial.md)
-- [MOD_GDD_11: 스마트폰 Bubble 메신저 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_11_BubbleSystem.md)
-- [MOD_GDD_20: 연례 대휴장 및 신년 12지신 페스티벌](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_20_NewYearFestival.md)
+> 정리: 2026-10-16. 현재 기획의 진입점이다. 문서의 기획 확정·에셋 채택·코드 구현·게임 검수 완료를 구분한다.
 
-## 🤝 4. 소셜 및 멀티플레이 (Social & Multiplayer)
-- [MOD_GDD_09: 친구 시스템 및 소셜 루프](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_09_FriendSystem.md)
-- [MOD_GDD_15: 기관 투자자 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_15_InstitutionSystem.md)
+## 현재 기준과 읽는 순서
 
+2026-10-19 벤치 간식 확정: 첫 노동 또는 투자 배우기 후 안나가 **“오늘 수고했어요. 꿀 쿠키 하나 먹을래요?”**라며 **꿀 쿠키 1개·하트 1칸 회복** 간식을 건넨다. 잡화점 판매 먹거리와 같은 상품이며 두 분기 공통으로 한 번 제공하고 기존 튜토리얼 드링크 선물을 대체한다. 가격·구매/사용 제한·실행 처리는 후속 설계다. [대사·지급](CORE_GDD_10_TutorialSystem.md)·[상품](MOD_GDD_03_1_VivianStore.md)을 따른다. ✅ 기획 반영 / ⏳ 구현·검수 대기.
 
-## 📑 5. 데이터 및 서사 (Data & Narrative)
-- [MOD_GDD_04: 유니버설 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_04_0_RumorIndex.md)
-- [MOD_GDD_19: IPO 종목 찌라시 라이브러리](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_19_0_IPORumorIndex.md)
-- [MOD_GDD_06: NPC 레지스트리 및 프로필](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_06_NPCRegistry.md)
-- [MOD_GDD_07: 다이얼로그 및 대사 DB](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_07_DialogueDB.md)
-- [MOD_GDD_08: 업적 및 칭호 시스템](file:///c:/Users/Administrator/Documents/GitHub/StockWars/Docs/MOD_GDD_08_AchievementSystem.md)
+2026-10-19 첫 활동 재회 후속: 수입 활동 선택 직후 안나는 목적지를 알려주고 **“그럼 이따가 다시 광장 벤치에서 만나요.”**라고 말한다. 비비안/K에게 첫 활동을 배운 후 해 질 무렵 벤치에서 안나와 재회하고 귀가·첫 숙박으로 연결한다. 노동 선행의 찌라시 해석·회복도 재회 장면에서 진행한다. [대사·완료 조건](CORE_GDD_10_TutorialSystem.md)을 따른다. ✅ 기획 반영 / ⏳ 구현·검수 대기.
 
----
+2026-10-19 화분 노출 후속: **씨앗용 화분은 씨앗 심기 스토리의 비비안 대화에서만 한 번 구매**한다. 일반 상품 목록·상시 진열에 추가하지 않으며 구매 후 심기 단계로 연결한다. [스토리 전용 조건](CORE_GDD_10_TutorialSystem.md)을 따른다. ✅ 기획 반영 / ⏳ 구현·검수 대기.
+
+2026-10-19 씨앗 심기 후속: **씨앗 심기 전 비비안 잡화점에서 화분 구매 → 귀가 → 씨앗 심기**로 연결한다. 스토리용 화분만 잡화점에서 판매하고 다른 인테리어는 모던 프레임 판매를 유지한다. 가격·정확한 이야기 시점·전시 위치는 후속 설계다. [장면](CORE_GDD_10_TutorialSystem.md)·[상점 정책](MOD_GDD_03_0_ShopIndex.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 최종 시간 정정: **아침 출발 → 점심 도착·정착·첫 활동 → 선택한 잡화점 일 또는 주식 배우기를 마치면 해 질 무렵 → 귀가·첫 숙박 → 로컬 시간 전환 → 남은 활동·공통 자립 안내**다. 아래 해 질 무렵 도착·활동 전 숙박·활동 시작 시 로컬 전환 기록을 대체한다. 두 활동 모두 체험하되 첫 숙박을 사이에 둔다. [현재 시간 흐름](CORE_GDD_10_TutorialSystem.md)을 따른다. ✅ 기획 정정 / ⏳ 구현·검수 대기.
+
+2026-10-19 최신 시간 정정: **아침 출발 → 해 질 무렵 도착 → 첫 숙박 → 점심에 수입 방법 안내·활동 선택·이동 → 첫 노동 또는 투자 배우기 시작 시 로컬 시간 전환**으로 설계한다. 첫 숙박 직후 전환·양쪽 체험 완료 후 전환이 아니라 첫 활동 시작 전까지 점심을 유지하는 방향이다. [상세·미정 체크포인트](CORE_GDD_10_TutorialSystem.md)를 따른다. ✅ 기획 정정 / ⏳ 구현·검수 대기.
+
+2026-10-19 도입 시간 후속: **아침에 버스 탑승 → 해 질 무렵 마을 도착 → 정착·첫 숙박 → 기기 로컬 현재 시각으로 일반 생활 시작**을 채택한다. 도입은 실제 접속 시간과 별도의 연출이며 첫 숙박 후에는 하늘·조명·생활 시계를 로컬 시간에 맞춘다. 두 수입 활동 안내는 숙박 후로 연결한다. 기존 경제 Day·월세·배당의 현실 날짜 매핑과 KST 외관 시계 전환은 후속 설계·구현 대상이다. [튜토리얼](CORE_GDD_10_TutorialSystem.md)·[경제](CORE_GDD_07_EconomySim.md)를 따른다. **P0 (Core) · ✅ 기획 반영 / 🔄 세부 시간 설계 / ⏳ 구현·검수 대기.**
+
+2026-10-19 게시판 후속: **스토리 진행 조건에 따라 안내문을 하나씩 공개**한다. 첫 비비안 구인 → 자립 후 가구점·서점·의상점·펍 소개 → 호감도와 선행 이야기 조건을 갖춘 주민 부탁으로 확장한다. 동시 해금 시 한 번에 한 장씩 확인하며 구매·선택 의뢰 미완료로 다른 공고를 막지 않는다. [공개 조건·순서·상태](MOD_GDD_01_WorldFacilities.md)를 따른다. **P1 (Major) · ✅ 기획 반영 / 🔄 세부 배치 / ⏳ 구현·검수 대기.**
+
+2026-10-19 추가 주민 이야기: **펍 안드레·의상점 클레어·서점 소피아**의 첫 방문 계기와 호감도 2~5단계 이야기를 [NPC 레지스트리](MOD_GDD_06_NPCRegistry.md)에 추가했다. 핵심 5명 외 이 세 주민도 이야기 범위에 포함한다. 사건은 검토용 초안이며 시설의 옛 운영 기능·스킨 판매를 자동 복원하지 않는다. **P1 (Major) · ✅ 배치 초안 작성 / 🔄 세부 설계 / ⏳ 구현·검수 대기.**
+
+2026-10-19 주민 이야기 배치 초안: **안나·비비안·줄리안·K·샤일록의 호감도 5단계별 개인 이야기와 발동 조건**을 [NPC 레지스트리](MOD_GDD_06_NPCRegistry.md)에 정리했다. 기본 안내·첫 주 관계·머리 위 성장·첫 가구 배치는 호감도로 막지 않는다. 단계 점수·경제 보상·기존 `affinity` 이관은 미정이며 개별 사건은 검토용 초안이다. **P1 (Major) · ✅ 배치 초안 작성 / 🔄 세부 설계 / ⏳ 구현·검수 대기.**
+
+2026-10-19 성장 대사 후속: 소망이 머리 위 **Lv.3 잎 하나·Lv.7 두 잎·Lv.12 꽃봉오리·Lv.20 개화**에 단계별 짧은 반응 대사를 추가한다. [대사 원고](MOD_GDD_07_DialogueDB.md)·[성장 조건](CORE_GDD_03_PlayerGrowth.md)을 따른다. **P0 (Core) · ✅ 대사 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 최신 첫 방문 정정: **정착 안내소가 마을 도착 후 처음 방문하는 건물**이다. 버스 정류장에서 안나와 만남 → 안내소에서 **마을 입주 신청서 서명·이름 등록** → 마을 안내·빈 집 확인 → 생활 자금 상담·은행 → 입주 순서다. 아래 마을 구경·집 확인 후 신청하는 설명을 대체한다. 투자 TPT·자격증은 증권사 체험에서 진행한다. [튜토리얼](CORE_GDD_10_TutorialSystem.md)·[등록](CORE_GDD_08_CharacterCreation.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 양쪽 활동 체험 후속: 첫 선택은 **체험 순서만 결정**한다. 잡화점 일을 먼저 하면 다음은 증권사 자격증·첫 투자, 주식을 먼저 하면 다음은 게시판 비비안 공고·잡화점 일로 안내한다. 정상 진행에서는 두 활동과 정보 해석·회복을 마친 뒤 공통 자립 안내로 합류하며 정착 지원금 2,000G는 전체 완료/건너뛰기에 한 번만 지급한다. 아래 양쪽 체험 필수 여부·합류 미정 설명보다 우선한다. [튜토리얼](CORE_GDD_10_TutorialSystem.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 빈 방·배치 안내 후속: **첫 집은 가구 없는 빈 방**으로 시작한다. **모던 프레임 첫 가구 구매 → 귀가 → 구매 가구를 지정 위치에 배치하는 튜토리얼**로 연결한다. 가구 미구매 상태에서도 생활·첫 활동 선택을 진행하며 자유 가구 이동·회전은 도입하지 않는다. [룸 명세](ROOM_PACKAGE_GUIDE.md)·[가구점](MOD_GDD_03_2_JulianFurniture.md)·[튜토리얼](CORE_GDD_10_TutorialSystem.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 서명 후속: 주민 신청서 하단 **‘신청인 서명’ 칸의 이름 입력으로 닉네임을 등록**한다. 별도 이름 입력을 반복하지 않으며 ‘태어난 소망’은 빈칸을 허용한다. [등록](CORE_GDD_08_CharacterCreation.md)·[장면](CORE_GDD_10_TutorialSystem.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 아이템 시안 기록: **비비안 잡화점 2D 아이템 12종 모음 v1**을 제작·보관했다. [시안 이미지](../output/vivian-items-2d-concept-v1/overview.png)·[구성 및 상태](MOD_GDD_03_1_VivianStore.md)·[아트 기준](ART_STYLE_GUIDE.md)을 따른다. **P1 (Major) · ✅ 시안 생성·문서 기록 / ⏳ 최종 채택·개별 아이콘·3D 제작·게임 적용 대기.**
+
+2026-10-19 아이템 표시 채택: **상점 UI는 3D, 인벤토리는 간결한 2D 아이콘**으로 같은 아이템을 보여준다. 색·실루엣·대표 표식과 상품 ID를 공유한다. [UI 명세](CORE_GDD_05_ScenesUI.md)·[아트 가이드](ART_STYLE_GUIDE.md)·[상점 정책](MOD_GDD_03_0_ShopIndex.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 에셋·상세 UI·구현·검수 대기.**
+
+2026-10-19 잡화점 방문 요소 채택: **간식·음료 등 먹거리 자체가 기본 회복 상품이며 상시 판매**한다. ‘오늘의 간식’은 이 상품들 중 추천 표시만 바꾸는 기능이며 판매 목록을 교체하지 않는다. 주민 추천 문구를 함께 도입하고 선물 포장·문구류·시식 선물은 후속 검토 후보로 둔다. 구체 상품·추천 갱신 규칙·주민 선호는 별도 설계한다. [비비안 잡화점](MOD_GDD_03_1_VivianStore.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 상세 설계·구현·검수 대기.**
+
+2026-10-19 잡화점 최신 후속: **초고농축 카페인은 개편 상품에서 삭제**, 다크넷 해독키는 **달빛가루로 변경하여 사용 즉시 분석력 레벨 MAX(현재 효과 상한 Lv.5)**로 만든다. 영구/기간제 여부·가격·해금·저장 이관은 미정이다. [잡화점](MOD_GDD_03_1_VivianStore.md)·[분석력](CORE_GDD_03_PlayerGrowth.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 세부 설계·구현·검수 대기.**
+
+2026-10-19 잡화점 후속: **주간 로또는 유지하고 암호 해독기는 ‘반짝가루’로 재디자인**한다. 찌라시에 뿌려 해석을 돕고, 가루로 종이가 더러워져 매각 가치가 낮아지는 설정을 채택한다. 감가 수치·시점·누적 여부·기존 첫 열람 감가와의 관계는 후속 설계다. [비비안 잡화점](MOD_GDD_03_1_VivianStore.md)을 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 세부 설계·제작·구현·검수 대기.**
+
+2026-10-19 최신 회복 아이템 방향: [비비안 잡화점](MOD_GDD_03_1_VivianStore.md)의 회복 상품을 **음료·간식·차·요정식 먹거리로 다양화하여 취향에 따른 선택권**을 제공한다. 개별 상품명·수량·회복량·가격·제한·기존 상품 이관은 후속 설계다. **P1 (Major) · ✅ 기획 반영 / ⏳ 상품 설계·제작·구현·검수 대기.**
+
+2026-10-19 최신 판매처 확정: **인테리어 용품은 작은 장식까지 모던 프레임에서만 판매**한다. 비비안 잡화점의 새 상품 구성은 후속 설계다. [상점 정책](MOD_GDD_03_0_ShopIndex.md)·[모던 프레임](MOD_GDD_03_2_JulianFurniture.md)·[비비안 잡화점](MOD_GDD_03_1_VivianStore.md)을 따른다. ✅ 기획 반영 / ⏳ 상품 개편·구현·검수 대기.
+
+2026-10-19 최신 첫 활동 선택: 안나가 **‘주민 부탁 들어주기’ / ‘주식 투자하기’** 중 무엇부터 할지 묻는다. 주민 부탁은 **마을 게시판의 비비안 공고 → 잡화점 첫 주문**, 투자는 **사이퍼 증권 → 투자 자격증 발급 → 거래 기초·첫 매수**로 분기한다. 주민 신청과 투자 등록을 분리하고 기존 TPT·출입증 연출은 증권사 절차로 옮겨 활용하도록 설계한다. 아래 주민 신청 단계의 TPT·출입증과 첫 매수 우선 고정 순서보다 이번 결정을 우선한다. 보너스 지급 시점·기존 저장 이관·분기 완료/합류 조건은 후속 설계다. [튜토리얼](CORE_GDD_10_TutorialSystem.md)·[등록](CORE_GDD_08_CharacterCreation.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 수입 안내 후속: 입주 후 첫 매수 전에 안나가 **첫째 주민들을 돕고 보수 받기, 둘째 주식 투자로 수익 얻기**를 소개한다. 투자 손실 가능성과 생활비 분리를 함께 설명한다. 소개 순서와 별개로 기존 첫 매수 → 잡화점 주문 체험 순서는 유지한다. [대표 대사·진행](CORE_GDD_10_TutorialSystem.md)을 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.**
+
+2026-10-19 최신 이주·대출 채택: **마을 광고 전단지 → 버스 도착 → 안나와 마을 구경·집 확인 → 주민 신청·TPT·출입증 → 생활 자금 상담 → 노드 은행 정착 대출 → 입주**로 진행한다. 기존 시작 자금 **5,000G의 출처를 정착 대출로 전환**하고 정착 지원금 **2,000G는 별도 유지**한다. 이중 지급하지 않으며 7일 차 현금 월세 5,000G와 대출 상환을 구분한다. 이자·상환 일정·연체·저장 이관은 후속 설계 대상이다. 아래 도착 직후 등록·은행 첫날 제외·대출 전체 미정 설명보다 우선한다. [도입](CORE_GDD_10_TutorialSystem.md)·[등록](CORE_GDD_08_CharacterCreation.md)·[금융](CORE_GDD_04_FinancialInstitutions.md)·[경제](CORE_GDD_07_EconomySim.md)를 따른다. **P0 (Core) · ✅ 기획 반영 / ⏳ 구현·검수 대기.** 중후반 스토리와 엔딩 제안은 이번에 확정하지 않는다.
+
+2026-10-19 최신 전당포 후속: **전당포를 초기 마을에서 제외하고, 향후 중고·골동품 가게로 재해석하는 방향을 채택**한다. 도입 시점·구체 거래 방식·바터의 세부 역할은 미정이다. 은행 대출·잡화점 및 인테리어 상점의 되팔기/매입도 **미정**이며 전당포의 기능을 자동 이전하지 않는다. [마을 구성](MOD_GDD_01_WorldFacilities.md)·[금융 범위](CORE_GDD_04_FinancialInstitutions.md)·[상점 정책](MOD_GDD_03_0_ShopIndex.md)을 따른다. ✅ 기획 반영 / ⏳ 후속 설계·구현·검수 대기.
+
+2026-10-18 최신 표현 후속: **마을 바닥·하늘은 2D, 건물은 3D 배치**를 채택했다. 바닥은 평평한 월드 지면에 2D 텍스처를 적용하는 검증 시작안이며 소망 요정의 3D 방향은 유지한다. [시점 전환 계획](VISUAL_TRANSITION_PLAN.md)·[아트 가이드](ART_STYLE_GUIDE.md)를 따른다. ✅ 기획 반영 / ⏳ 혼합 시험 장면·게임 구현·검수 대기.
+
+2026-10-18 최신 오프닝 채택: 소망이가 **정착 안내문을 보고 버스로 마을에 도착 → 정류장에서 안나와 첫 만남 → 안내소 등록·닉네임·TPT·출입증 → 집·오피스 첫날 안내**로 진행한다. [오프닝·대사·진행 계약](CORE_GDD_10_TutorialSystem.md), [등록](CORE_GDD_08_CharacterCreation.md), [안나의 관계](MOD_GDD_06_NPCRegistry.md)를 따른다. 기존 첫 매수·가게 주문·정보 해석·회복·자립·월세 조건은 유지한다. ✅ 기획 반영 / ⏳ 구현·검수 대기.
+
+2026-10-18 최신 성장 외형 후속: **소망이의 머리 위 외형이 Lv.1~2 기본 → Lv.3~6 잎 하나 → Lv.7~11 두 잎 → Lv.12~19 꽃봉오리 → Lv.20 개화**로 성장한다. [정령 외형·의미·제작 기준](SPIRIT_CHARACTER_BASELINE.md), [레벨 연동 범위](CORE_GDD_03_PlayerGrowth.md)를 따른다. 고정 캐릭터의 성장 표현으로, 커스텀·스킨 판매를 추가하지 않는다. ✅ 기획 반영 / ⏳ 시안·모델·구현·게임 검수 대기.
+
+2026-10-18 최신 마을·NPC 후속: **집·정착 안내소·비비안 잡화점·모던 프레임·사이퍼 증권·노드 은행 + 광장 쉼터**, 핵심 NPC **안나·비비안·줄리안·K·샤일록의 요정 재디자인**을 채택했다. [건물 구성](MOD_GDD_01_WorldFacilities.md), [NPC 외형·성격](MOD_GDD_06_NPCRegistry.md), [아트 기준](ART_STYLE_GUIDE.md)을 따른다. 은행의 건물·역할은 채택하되 저축·이자·대출·월세 연동 등은 [금융 명세](CORE_GDD_04_FinancialInstitutions.md)에 미정으로 남긴다. ✅ 기획 반영 / ⏳ 시안·구현·게임 검수 대기. 첫날은 잡화점 주문 흐름을 유지하며 은행 방문을 필수로 추가하지 않는다.
+
+2026-10-18 최신 후속: **캐릭터 커스텀 제거·집꾸미기 집중·모동숲 참고 3D 시점·가게 주문 노동**을 채택했다. [집꾸미기](ROOM_PACKAGE_GUIDE.md), [시점 전환](VISUAL_TRANSITION_PLAN.md), [주문 노동](MOD_GDD_02_LaborJobs.md), [첫날 튜토리얼](CORE_GDD_10_TutorialSystem.md)이 각 주제 기준이다. 아래 이전 선택·판매·물류·투영 설명보다 이 결정을 우선한다. ✅ 기획 반영 / ⏳ 게임 구현·이관·검수 대기.
+
+2026-10-18 최신 서사 채택: 플레이어 컨셉을 **소망 요정**으로 정하고, 기존 튜토리얼 진행을 유지한 첫 일주일의 정착 이야기와 안나의 관계를 반영했다. [초반 스토리·대표 대사](CORE_GDD_10_TutorialSystem.md), [안나의 역할·개인 소망](MOD_GDD_06_NPCRegistry.md), [캐릭터 등록](CORE_GDD_08_CharacterCreation.md)을 따른다. 아래 동물 전용 플레이어 기획보다 이 결정이 우선한다. ✅ 기획 반영 / ⏳ 게임 구현·검수 대기이며 기존 에셋·저장·스킨 판매 정책을 자동 변경하지 않는다.
+
+2026-10-18 최신 캐릭터 제작 후속: [정령 3D 기본형](SPIRIT_CHARACTER_BASELINE.md)의 흰색 무표정 T자 시안을 사용자가 채택했다. 새 정령 제작에는 이 후속 결정이 아래 동물 스프라이트 전용·리깅 미사용 설명보다 우선한다. 기존 동물 에셋·게임 적용·판매 정책의 자동 변경을 뜻하지 않는다.
+
+1. 작업·코드 구조·검증 규칙은 [AGENTS.md](../AGENTS.md)를 따른다.
+2. 채택 진행은 안내문·버스 도착·안나와 첫 만남 → 고정 요정 미리보기·등록 → 오피스·스마트폰 첫 매수 → 타운·비비안 잡화점 첫 주문 → 보상 찌라시 해석·회복 선물 → 자립 안내·NPC 의뢰 → 7일 차 현금 월세다. 첫 매도는 10% 상승 시 별도 선택 안내다. [튜토리얼](CORE_GDD_10_TutorialSystem.md)의 현재 코드 체크포인트와 새 기획을 구분한다.
+3. 플레이어는 고정 외형의 소망 요정이며 커스텀·스킨 선택/판매를 제거한다. [기존 동물 판매 정책](MOD_GDD_03_3_ClaireApparel.md)과 [36개 테마 CSV](Data/ANIMAL_SKIN_THEME_PLAN_36.csv)는 이전 기록이다. 기존 보유 외형의 저장 이관은 미정이다.
+4. 시점은 모동숲 화면을 참고한 3D 카메라로 전환한다. 집은 룸 테마·호환 벽/바닥·지정 위치 가구·장식으로 꾸민다. 자유 가구 이동·회전은 도입하지 않는다. 카메라 수치·렌더러·곡면 표현은 확정하지 않는다.
+5. 새 요정의 모델·본 모션은 [정령 제작 기준](SPIRIT_CHARACTER_BASELINE.md)을 따른다. 강아지·고양이의 3그림·160ms는 기존 스프라이트 제작 기록이며 새 3D 모션에 강제하지 않는다.
+6. 찌라시는 문자 가림 대신 읽을 수 있는 수수께끼와 해석 5단계를 사용한다. [현재 데이터](Data/Rumors.csv)는 고정 25종·본문 125개이며 JS 런타임의 CSV 직접 로딩 완료를 뜻하지 않는다.
+
+전문 문서끼리 충돌하면 해당 주제의 최신 사용자 결정과 위 기준을 우선한다. 이전 숫자·대사·완료 표시는 신규 정책의 확정 또는 구현 증거로 승계하지 않는다. 구 GDD의 Unity/C#·ScriptableObject·Assets 경로는 설계 이력이므로 현재 `web/`·`Server/`·`electron-app/` 구현과 대조한다.
+
+별도 SLIM 기획과 AI 시작 안내는 이 인덱스로 통합했다. 아트·캐릭터·룸·찌라시 규칙은 각 전문 문서에서 관리하고 요약본에 복제하지 않는다. 과거 데모 작업 절차의 새 세션 강제·세션당 마일스톤 1개 제한과 예전 SLIM·Unity 작업 지시는 폐기했다.
+
+## 진행 상태를 확인할 때
+
+- [알파 피드백](Data/ALPHA_FEEDBACK_STATUS.csv)은 피드백 처리 기록이다. [그래픽 전환 계획](VISUAL_TRANSITION_PLAN.md)과 [시트 기준](DOG_SPRITE_BASELINE.md)의 후속 검수를 함께 확인한다.
+- 예전 6월 대회 일정·M2 완료/M3 예정·존재하지 않는 ROADMAP 문서로 현재 작업 범위를 자동 제한하지 않는다. 확장 기능 문서가 남아 있다는 이유만으로 이번 개발 범위에 포함하지 않는다.
+
+## 핵심 게임 진행
+
+- [StockWars GDD: CORE_GDD_01. 프로젝트 소개 및 디자인 철학 (Project Introduction)](CORE_GDD_01_Introduction.md)
+- [StockWars GDD: CORE_GDD_08. 캐릭터 생성 시스템 (Character Creation)](CORE_GDD_08_CharacterCreation.md)
+- [CORE_GDD_10 게임 시작과 튜토리얼](CORE_GDD_10_TutorialSystem.md)
+- [CORE_GDD_03 유저 성장과 능력치](CORE_GDD_03_PlayerGrowth.md)
+- [CORE_GDD_02 현재 시장과 거래 엔진](CORE_GDD_02_MarketEngine.md)
+- [CORE_GDD_04 금융 시설과 증권사](CORE_GDD_04_FinancialInstitutions.md)
+- [CORE_GDD_07 현재 경제와 정산](CORE_GDD_07_EconomySim.md)
+
+## 월드·노동·상점
+
+- [StockWars GDD: MOD_GDD_01. 타운 시설 및 월드 구성](MOD_GDD_01_WorldFacilities.md)
+- [StockWars GDD: MOD_GDD_02. 노동(Job) 시스템 및 미니게임 상세](MOD_GDD_02_LaborJobs.md)
+- [StockWars GDD: [MOD_GDD_03_0] 상점 및 아이템 시스템 인덱스](MOD_GDD_03_0_ShopIndex.md)
+- [StockWars GDD: [MOD_GDD_03_1] 비비안 잡화점 (Vivian's Store)](MOD_GDD_03_1_VivianStore.md)
+- [StockWars GDD: [MOD_GDD_03_2] Modern Frame 완성형 테마 룸 상점](MOD_GDD_03_2_JulianFurniture.md)
+- [StockWars GDD: MOD_GDD_03_3 클레어 동물 캐릭터 스킨 상점](MOD_GDD_03_3_ClaireApparel.md)
+- [StockWars GDD: [MOD_GDD_03_4] 데이터 잉크 서점 (Data Ink Bookstore)](MOD_GDD_03_4_Bookstore.md)
+- [비비안 상품 기능 — 웹 데모 구현](ITEM_GAMEPLAY_IMPLEMENTATION.md)
+
+## 정보·시장 확장
+
+- [찌라시 작성·데이터 가이드](RUMOR_AUTHORING_GUIDE.md)
+- [StockWars GDD: [MOD_GDD_04_0] 유니버설 찌라시 라이브러리 인덱스](MOD_GDD_04_0_RumorIndex.md)
+- [StockWars GDD: [MOD_GDD_12_0] 기업 뉴스 이벤트 시스템 인덱스 (Corporate News Events Index)](MOD_GDD_12_0_CorporateNewsIndex.md)
+- [StockWars GDD: [MOD_GDD_19_0] IPO 종목 찌라시 라이브러리 인덱스](MOD_GDD_19_0_IPORumorIndex.md)
+- [MOD_GDD_10 예비 종목과 IPO 확장 검토](MOD_GDD_10_ReserveStockPool.md)
+- [StockWars GDD: MOD_GDD_13. 고스트 트레이더 시스템 (Ghost Trader System)](MOD_GDD_13_GhostTrader.md)
+- [StockWars GDD: MOD_GDD_14. 개인 회생 및 구제 시스템 (Debt Relief & Bailout)](MOD_GDD_14_DebtRelief.md)
+- [StockWars GDD: MOD_GDD_15. 기관 시스템 (Institution: Public Investment Guild)](MOD_GDD_15_InstitutionSystem.md)
+
+## NPC·소셜·이벤트
+
+- [StockWars GDD: MOD_GDD_06. NPC 레지스트리 및 상호작용 (NPC Registry)](MOD_GDD_06_NPCRegistry.md)
+- [MOD_GDD_07: 다이얼로그 통합 DB](MOD_GDD_07_DialogueDB.md)
+- [MOD_GDD_05 생활과 사교 콘텐츠](MOD_GDD_05_LifestyleSocial.md)
+- [StockWars GDD: MOD_GDD_08. 업적 및 엠블럼 시스템 (Achievement & Emblem System)](MOD_GDD_08_AchievementSystem.md)
+- [StockWars GDD: MOD_GDD_09. 친구 시스템 및 소셜 루프 (Social Network)](MOD_GDD_09_FriendSystem.md)
+- [StockWars GDD: MOD_GDD_11. 스마트폰 Bubble 메신저 시스템 (Bubble System)](MOD_GDD_11_BubbleSystem.md)
+- [StockWars GDD: [MOD_GDD_18] 세미나 퀴즈 시스템 (Seminar Quiz)](MOD_GDD_18_QuizSystem.md)
+- [StockWars GDD: [MOD_GDD_20] 연례 대휴장 및 신년 12지신 페스티벌 시스템 (New Year Festival)](MOD_GDD_20_NewYearFestival.md)
+
+## 아트·공간 제작
+
+- [StockWars 아트 스타일 가이드](ART_STYLE_GUIDE.md)
+- [시고르자브종·검은 고양이 캐릭터 시트 기준](DOG_SPRITE_BASELINE.md)
+- [StockWars 캐릭터 스프라이트 시트 제작 가이드](part_separation_guide_512.md)
+- [완성형 룸 제작·상호작용·웹 합성 명세](ROOM_PACKAGE_GUIDE.md)
+- [건물 내부 그리드 규격](INTERIOR_GRID_GUIDE.md)
+- [StockWars 그래픽·시점 전환 계획](VISUAL_TRANSITION_PLAN.md)
+- [StockWars GDD: CORE_GDD_05. 씬 기획 및 UI/UX 인터페이스 (Scenes & UI)](CORE_GDD_05_ScenesUI.md)
+
+## 구현·운영·검증
+
+- [AGENTS.md 코드 구조와 검증](../AGENTS.md#코드-구조와-검증)
+- [CORE_GDD_06 현재 기술 구조와 저장](CORE_GDD_06_TechnicalSpec.md)
+- [CORE_GDD_09 이벤트와 시스템 연결](CORE_GDD_09_EventBusSystem.md)
+- [온라인 모의투자와 유저 기록 보존 설정](ONLINE_ARENA_STORAGE_SETUP.md)
+- [찌라시 작성·데이터 가이드](RUMOR_AUTHORING_GUIDE.md)
+- [2026-09-30 외부 데모 테스트 준비](EXTERNAL_TEST_2026-09-30.md)
+
+섹터별 찌라시·기업 뉴스·IPO 원고는 각 인덱스에서 찾아간다. 기존 찌라시의 Tier 1~3·가림 본문은 소재 이력이며 현행 작성 규칙이 아니다.
+
+## 현행 목록에서 폐기·통합한 문서
+
+| 이전 문서 | 정리 결과 |
+| :--- | :--- |
+| 금융·찌라시·뉴스 SLIM 3개 + TASK_M3 | 옛 데모 명세·구현 지시 폐기 |
+| 기획 제안서·PPT 본문·슬라이드 프롬프트 3개 | 현행 기준과 다른 옛 발표 자료 폐기 |
+| 안나·타운 대사 분할 2개 | [다이얼로그 통합 DB](MOD_GDD_07_DialogueDB.md)에 합침 |
+| 럭키 캡슐 폐기 정책 | [상점 공통 획득 정책](MOD_GDD_03_0_ShopIndex.md#acquisition-policy)에 합침 |
+| 사람 의상·가구 단품·폐기 테마 카탈로그 | 자료 삭제. 신규 후보·가격·효과로 사용 금지 |
+| 별도 데모 요약 폴더의 AI 시작 안내·작업 절차 | 필요한 안내를 이 인덱스로 통합하고 별도 폴더 삭제 |
+
+현행 기준으로 대체된 옛 기획 보관본은 삭제했다. 기존 보유 데이터·버프·압류·매각의 이관 정책과 미정 가격·판매 일정은 이번 문서 정리로 확정하지 않는다.
+
+## 2026년 10월 16일 게임 진행 대조 결과
+
+| 주제 | 충돌·구 기획 | 정리한 현재 기준 |
+| :--- | :--- | :--- |
+| 튜토리얼 | 강제 매도·퀴즈·가구 배치 | 스마트폰 매수·물류·해석·회복 후 자립. 매도는 별도 선택 |
+| 데모 종료 | Lv.3 즉시 암전·상호작용 잠금 | Lv.20까지 계산, 7일 차 현금 5,000G 월세. 미납은 자동 파산 아님 |
+| 성장 | 종목별 1만~1,000만G 투자금 Cap | 현행 Cap 없음. 슬롯·현금·호가·주문 주수 제한은 별개 |
+| 노동 | 일일 3~5회·운송 개수 등급·최고기록 패스 | 하트 비용·60초 누적 점수 등급·고정 560G/70EXP 패스 |
+| 회복 | 자연 회복·비타민 소모량 감소 | 최대 하트 구간 조정·벤치·드링크·다음 날 회복 |
+| 경제 | 월요일 정산·72시간 유예·예금·세금 | Day 7 일회 월세·다음 날 배당. 대출·세금은 확장안 |
+| 대결 | 24~48시간·실제 잔고 상금·Lv.20 해금 | 3/5/10분 별도 가상 계좌·게임 잔고 지급 0 |
+| 시설 | 전체 시설 운영·시각별 영업 | 은행·서점·룸 상점·펍·전당포 미개방, 살롱은 내부 진입 |
+| 소셜 | 무료 찌라시 복제·FP와 온라인 정책 혼용 | 서버 친구·DM·보유 아이템 선물, 송신 KST 하루 3개 |
+| 위기 | 100일 전역/7일 로컬 블랙 스완 | 엔진 시험 코드만 유지, 현재 게임 연결은 비활성 |
+| 기술 | Unity/C++ IOCP·Steam·암호화 완료 | JS 웹·Electron·Node, 로컬 메인 저장과 서버 온라인 대결 분리 |
+| 원고 | Tier 1~3·96종 뉴스의 적용 완료 주장 | 5단계/25사건 현재 데이터와 확장 소재를 분리 |
+
+대조 근거는 각 전문 문서 하단의 코드 링크에서 확인한다. 문서 정리는 게임 코드·저장·밸런스를 변경하지 않는다. 미개방 확장안을 구현 요청으로 자동 승계하지 않는다.
+
+### 결정과 구현이 더 필요한 항목
+
+- 일반 레벨 10 도달과 공매도 해금 플래그의 자동 연결. 과거 운용력 2 동시 조건은 현행 검사에 없음.
+- 첫 월세 이후 장기 진행·반복 정산, 룸 판매 온보딩, 살롱 월간 판매 구현.
+- 기관 설립 자격(명성/순자산), 보수(15%/20%+0.5%), 정확히 15% 수배 경계와 자수·압류 순서.
+- 은행·독서·세미나·펍 재도입, 신규 룸·동물 스킨에 구 담보·버프·절세·보상 규칙을 적용할지 여부.
+- IPO 기업 ID·별칭·업종 매핑과 채택 목록 확정. 예비 종목의 중복·깨진 표와 금융 찌라시의 반복 블록은 제거했다.
+
+위 항목은 최신 사용자 결정이나 실행 근거 없이 새로운 확정 정책을 만들지 않고 미정·미구현으로 남겼다.

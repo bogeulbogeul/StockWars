@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>소망이 태어나는 세상 · 첫 장면 시안</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171c2b;color:#efe4ce;font-family:Georgia,'Malgun Gothic',serif;display:grid;min-height:100vh;place-content:center;gap:18px}
+main{position:relative;width:min(100vw,1280px);aspect-ratio:16/9;overflow:hidden;background:#efe0c6;isolation:isolate}
+.picture{position:absolute;inset:0;background:url(background-crayon-v2.png) center/cover;animation:approach 8s ease-out both}
+.light{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff3bc;box-shadow:0 0 10px 4px #ffd67788;opacity:0;animation:rise 6s ease-in-out both;animation-delay:var(--delay);left:var(--x);top:var(--y)}
+.caption{position:absolute;left:5%;right:5%;bottom:3%;margin:0;padding:clamp(8px,1.2vw,16px) 12px;border-radius:12px;background:#fff6e6;color:#302419;text-align:center;font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;font-size:clamp(17px,2.5vw,32px);font-weight:700;line-height:1.65;letter-spacing:0;word-break:keep-all;box-shadow:0 2px 12px #38251418;animation:words 8s both}
+.veil{position:absolute;inset:0;background:#f5ead7;pointer-events:none;animation:reveal 1.5s ease-out both}
+footer{display:flex;align-items:center;justify-content:center;gap:20px;font:13px 'Malgun Gothic',sans-serif;color:#bdb5a6}
+button{border:1px solid #b4a58c;border-radius:30px;padding:10px 22px;background:transparent;color:#efe4ce;cursor:pointer}button:focus-visible{outline:2px solid #ffe0a0;outline-offset:4px}
+@keyframes approach{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.5)}25%{opacity:.85}75%{opacity:.6}100%{opacity:0;transform:translateY(-100px) scale(.5)}}
+@keyframes words{0%,15%{opacity:0;transform:translateY(5px)}30%,100%{opacity:1;transform:translateY(0)}}
+@keyframes reveal{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.picture,.caption{animation:none}.light{display:none}.veil{display:none}}
+</style>
+<main aria-label="밤하늘이 그려진 동화책에서 작은 소망의 불빛들이 떠오릅니다.">
+ <div class="picture" aria-hidden="true">
+  <i class="light" style="--x:24%;--y:55%;--delay:.5s"></i>
+  <i class="light" style="--x:40%;--y:48%;--delay:1s"></i>
+  <i class="light" style="--x:58%;--y:59%;--delay:1.8s"></i>
+  <i class="light" style="--x:67%;--y:42%;--delay:.8s"></i>
+  <i class="light" style="--x:79%;--y:29%;--delay:2s"></i>
+ </div>
+ <p class="caption">누군가 마음 깊이 소원을 빌면,<br>세상 어딘가에 작은 요정이 태어났어요.</p>
+ <div class="veil"></div>
+</main>
+<footer><span>첫 장면 · 8초 · 무음 시안</span><button type="button" onclick="location.reload()">다시 재생</button></footer>
+</html>

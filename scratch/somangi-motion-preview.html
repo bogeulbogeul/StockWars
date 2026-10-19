@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>소망이 모션</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>body{margin:0;background:#ecebe5;color:#35413b;font-family:system-ui;text-align:center}h1{margin:24px 0 12px}button{padding:12px 24px;margin:4px;border:0;border-radius:24px;background:white;cursor:pointer;font-size:16px}button.active{background:#456c58;color:white}model-viewer{width:100%;height:75vh}p{color:#67736c}</style>
+<h1>소망이 모션</h1><nav><button data-motion="walk" class="active">걷기</button><button data-motion="wave">인사</button><button data-motion="eat">먹기</button><button data-motion="jump">점프</button></nav>
+<model-viewer src="/web/assets/characters/3d/somangi/walk.glb" autoplay camera-controls shadow-intensity="1" camera-orbit="15deg 80deg auto" environment-image="neutral" exposure="1" interaction-prompt="none"></model-viewer>
+<p id="status">모델을 불러오는 중…</p>
+<script>const viewer=document.querySelector('model-viewer');document.querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelector('.active').classList.remove('active');b.classList.add('active');viewer.src='/web/assets/characters/3d/somangi/'+b.dataset.motion+'.glb';document.querySelector('#status').textContent='모델을 불러오는 중…';});viewer.addEventListener('load',()=>{viewer.animationName=viewer.availableAnimations[0];viewer.play();document.querySelector('#status').textContent='드래그로 회전 · 휠로 확대';});viewer.addEventListener('error',()=>document.querySelector('#status').textContent='모델 로딩 실패');</script></html>

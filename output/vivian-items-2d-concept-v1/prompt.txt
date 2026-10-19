@@ -1,0 +1,16 @@
+Create ONE cohesive 2D inventory item concept sheet for the cozy fairy-village game StockWars. This is a design proposal, not final production art. Landscape composition, 4 columns by 3 rows, exactly 12 equally spaced individual item illustrations, each with one legible Korean name centered below it. Warm ivory plain background, generous empty gutters, no scenic background, no characters, no furniture, no UI controls or prices. Title at top: "비비안 잡화점 · 2D 아이템 시안".
+Art direction: clean charming hand-drawn 2D game icons, smooth dark warm-brown outlines of consistent weight, broad clear color areas, very restrained two-tone cel shading, rounded compact silhouettes. Mostly frontal with a slight top view only to reveal contents. Clearly flat illustrated icons, NOT 3D renders, NOT photorealistic, NOT pixel art, NO painterly grain or watercolor stains. Simple enough to remain recognizable when small. Each icon fills a similar visual area. Consistent light from upper left. This is a tentative icon style exploration, not a fixed world-camera rule.
+Items in exact reading order:
+1 "사과 주스" small squat amber juice bottle, apple emblem, green cap.
+2 "꽃꿀 베리 주스" rounded berry-pink juice bottle with leaf-shaped label, small berry emblem.
+3 "꿀 쿠키" two chunky honey-golden flower-shaped cookies in a simple paper sleeve.
+4 "도토리 빵" one soft acorn-shaped bread with a dark baked cap and a cream paper wrap.
+5 "꽃잎 차" small pink ceramic cup seen slightly from above, single petal floating in tea, minimal steam.
+6 "허브 차" small sage-green cup with leaf emblem, amber tea, minimal steam.
+7 "이슬 젤리" pale aqua translucent teardrop-shaped jelly in a tiny white fluted paper cup; only two simple highlights.
+8 "꽃꿀 사탕" one golden flower-shaped candy in transparent twist wrapper with simple amber ends.
+9 "반짝가루" short cream-and-gold paper powder sachet with a bold four-point star emblem, slightly open top showing GOLDEN DRY POWDER, tiny controlled spill of grains beside sachet. Clearly powder, not liquid.
+10 "달빛가루" matching powder-product family but deep lavender sachet, crescent moon emblem, SILVER-LILAC DRY POWDER showing at open top, tiny controlled spill. Clearly distinct from golden star powder, no potion bottle.
+11 "봉인된 소식 봉투" cream folded paper envelope, dark green seal with a small leaf emblem, one edge of folded newsprint visible. No readable microtext.
+12 "주간 로또" single pale mint paper lottery ticket with perforated short edges, six simple numbered circles and a small clover emblem; no money, casino imagery, or prices.
+Keep all 12 labels exactly as provided. No caffeine item, honey concentrate, tactical tech, masks, alarm, pills, or added objects. Do not display gameplay effects or stat claims. Items and names other than the two powders and lottery are candidate designs. Small unobtrusive footer: "디자인 후보 · 게임 미적용".

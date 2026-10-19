@@ -1,7 +1,9 @@
-﻿# StockWars GDD: [MOD_GDD_19_1] IPO 찌라시 - IT 섹터
+# StockWars GDD: [MOD_GDD_19_1] IPO 찌라시 - IT 섹터
 
-**문서 번호:** MOD_GDD_19_1  
-**상위 기획:** [MOD_GDD_19_0: IPO 종목 찌라시 라이브러리 인덱스](MOD_GDD_19_0_IPORumorIndex.md)  
+> **2026-10-16 대조 결과:** IPO 확장용 이전 소재 원고다. 현재 자동 상장·라이브 보상으로 연결된 목록이 아니며 채택 시 [5단계 작성 가이드](RUMOR_AUTHORING_GUIDE.md)에 맞춰 재작성한다. 종목명·업종·ID는 시장 데이터와 매핑한 뒤 확정한다.
+
+**문서 번호:** MOD_GDD_19_1
+**상위 기획:** [MOD_GDD_19_0: IPO 종목 찌라시 라이브러리 인덱스](MOD_GDD_19_0_IPORumorIndex.md)
 **대상 섹터:** IT 섹터 (Information Technology)
 
 ---
