@@ -60,7 +60,7 @@ export class AchievementApp {
             const card = document.createElement('article');
             card.className = `achieve-card ${earned ? 'is-earned' : ''}`;
             const index = this.quests.indexOf(quest) + 1;
-            card.innerHTML = `<div class="achieve-card-top"><span>No. ${String(index).padStart(2, '0')}</span><span class="achieve-state">${earned ? '✓ 획득' : '미획득'}</span></div><div class="achieve-emblem ${color}" aria-hidden="true">${earned ? symbol : '?'}</div><h4 class="achieve-title"></h4><span class="achieve-category">${quest.event === 'trade' ? '투자' : quest.event === 'labor' ? '물류' : '경쟁'}</span><p class="achieve-condition"></p><div class="achieve-progress-row"><span></span><progress></progress></div>`;
+            card.innerHTML = `<div class="achieve-card-top"><span>No. ${String(index).padStart(2, '0')}</span><span class="achieve-state">${earned ? '✓ 획득' : '미획득'}</span></div><div class="achieve-emblem ${color}" aria-hidden="true">${earned ? symbol : '?'}</div><h4 class="achieve-title"></h4><span class="achieve-category">${quest.event === 'trade' ? '투자' : quest.event === 'labor' ? '노동' : '경쟁'}</span><p class="achieve-condition"></p><div class="achieve-progress-row"><span></span><progress></progress></div>`;
             card.querySelector('.achieve-title').textContent = earned ? title : '???';
             if (quest.event === 'trait') card.querySelector('.achieve-category').textContent = titleLanguage() === 'en' ? 'Starting Trait' : '시작 성향';
             if (earned) card.querySelector('.achieve-emblem').replaceWith(createTitleBadge(quest.id));

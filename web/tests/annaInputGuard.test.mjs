@@ -37,7 +37,7 @@ test('manual step permits only its target and history cannot operate the scene',
 
 test('movement practice permits movement only; hidden or completed tutorials release input', () => {
     const { tutorial, send, dispose, listeners } = setup();
-    tutorial.steps = [{ id: 'enter_logistics', requiresManualAction: true }];
+    tutorial.steps = [{ id: 'go_town_proposal', requiresManualAction: true }];
     assert.equal(send('keydown', {}, 'w'), false);
     assert.equal(send('keydown', {}, 'p'), true);
     tutorial.overlay.classList.contains = () => true;

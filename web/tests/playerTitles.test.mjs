@@ -45,7 +45,7 @@ test('starting trait grants only its own title, migrates old profiles and never 
         applyPlayerTrait(state, profile);
         const engine = new SideQuestEngine(() => state, { cash: 0 });
         assert.equal(engine.equippedTitle(), `trait_${key}`);
-        assert.equal(engine.titleCollection().length, 9);
+        assert.equal(engine.titleCollection().length, 7);
         assert.equal(engine.titleCollection().filter(title => title.claimed).length, 1);
         for (const other of ['analysis', 'negotiation', 'management', 'recovery'].filter(k => k !== key)) {
             assert.equal(engine.equipTitle(`trait_${other}`).success, false);

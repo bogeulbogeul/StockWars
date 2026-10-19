@@ -92,33 +92,7 @@ export const VIVIAN_SHOP_CATALOG = [
         linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '포레스트 랩 정품 납품' }
     },
 
-    {
-        id: 'item_logistics_quickpass_1d',
-        tab: 'daily',
-        name: '비트 물류 퀵-패스 (1일)',
-        category: 'consumable',
-        rarity: 'uncommon',
-        icon: '🎫',
-        price: 1500,
-        instantUsable: false,
-        desc: '하루 동안 비트 물류를 즉시 완료하고 위탁 수수료를 면제받는 패스권.',
-        effects: ['⚡ 비트 물류 즉시 완료', '💰 위탁 수수료 0%'],
-        linkedStock: null
-    },
     // 2. 주간 특수 매대 (Weekly Shelf)
-    {
-        id: 'item_logistics_quickpass_7d',
-        tab: 'weekly',
-        name: '비트 물류 퀵-패스 (7일)',
-        category: 'consumable',
-        rarity: 'rare',
-        icon: '🎟️',
-        price: 8000,
-        instantUsable: false,
-        desc: '7일간 비트 물류 노동을 원클릭 즉시 완료하며 수수료를 전액 면제받는 VIP 패스권.',
-        effects: ['📅 7일간 비트 물류 즉시 완료', '💰 위탁 수수료 면제'],
-        linkedStock: null
-    },
     {
         id: 'item_weekly_drink_ration',
         tab: 'weekly',
@@ -229,7 +203,7 @@ export const VIVIAN_DIALOGUES = {
     ],
     consume: [
         '뉴로-부스터와 에너지 드링크요? 뇌세포를 가불해서 쓰는 거지만... 뭐, 수익만 난다면 남는 장사 아니겠어요?',
-        '기력 회복엔 이게 직효죠. 마시고 곧바로 비트 물류나 증권사로 달려가세요!'
+        '기력 회복엔 이게 직효죠. 마시고 곧바로 마을이나 증권사로 달려가세요!'
     ],
     hardware: [
         '제 물건들은 단순한 장비가 아니라 당신의 생존 확률 그 자체입니다. 제대로 무장하고 나가시죠.',
@@ -244,8 +218,8 @@ export const VIVIAN_DIALOGUES = {
         '좋은 거래였습니다. 매일 00시에 새 보급품이 들어오니 내일 또 들르세요.'
     ],
     poor: [
-        '여긴 자선 단체가 아니에요. 빈손으로 올 거면 차라리 관리소장 박씨한테 가서 몸이라도 쓰시든가요.',
-        '골드가 부족하군요. 비트 물류에서 상하차라도 뛰고 오시는 게 어때요?'
+        '지금 가진 골드에 맞춰 필요한 물건부터 골라 보세요.',
+        '골드가 부족하군요. 생활비를 남겨 두고 다시 찾아오세요.'
     ],
     talk: [
         '잡화점 팁: 우리 가게에서 물건을 많이 사면, 납품사인 [모닝 브루]와 [포레스트 랩]의 매출이 올라서 주가도 뛴다는 소문이 있어요.',

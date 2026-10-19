@@ -28,15 +28,14 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         news_reading_guide: ['뉴스 카드를 누르면 본문을 읽을 수 있어요.', [['카드 클릭', '기사 읽기'], ['✕', '기사 닫기']]],
         stock_basics_news_expectations: ['좋은 뉴스도 이미 가격에 반영됐다면 주가가 안 오를 수 있어요.', [['기대', '먼저 가격에 반영'], ['발표', '기대와 실제를 비교']]],
         go_town_proposal: ['생활비를 벌러 나가볼까요? 오피스 문을 눌러 주세요.', [['W·A·S·D', '이동'], ['문 앞 F', '상호작용']]],
-        enter_logistics: ['노란 화살표를 따라 [비트 물류센터]로 들어가세요. 안에 있는 박씨 아저씨에게 말을 걸어 [일 시작하기]를 누르세요.'],
-        rumor_inventory_guide: ['물류 보상으로 찌라시를 받았어요. 상단 [소지품]을 눌러 주세요.'],
+        rumor_inventory_guide: ['가방에 보관된 찌라시를 확인해 볼게요. 상단 [소지품]을 눌러 주세요.'],
         rumor_intel_explain: ['찌라시를 선택하고 [확인하기]를 눌러 직접 읽어 보세요. 내용을 읽은 뒤 찌라시 창을 닫으면 안내를 이어갈게요.'],
         rumor_time_prediction: ['연습용: “이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.” 언제 영향을 줄까요?'],
         rumor_time_feedback: ['“이틀 뒤”가 시간 단서예요. 주가 반응은 발표보다 빠르거나 늦을 수 있어요.', [['시간 단서', '이틀 뒤'], ['시장 반응', '발표 시점과 다를 수 있음']]],
         rumor_reading_summary: ['찌라시의 단서를 뉴스와 공시로 확인하세요.', [['무엇?', '종목 · 사건'], ['어떻게?', '상승 · 하락'], ['언제?', '발표 · 영향 시점']]],
-        stamina_recovery_guide: ['물류 일 하느라 수고했어요! 에너지 드링크 한 캔을 선물할게요. 지금 마시고 하트 1개를 회복해 보세요.', [['안나의 선물', '에너지 드링크 1개'], ['바로 사용', '하트 1개 회복']]],
+        stamina_recovery_guide: ['오늘 수고했어요! 에너지 드링크 한 캔을 선물할게요. 지금 마시고 하트 1개를 회복해 보세요.', [['안나의 선물', '에너지 드링크 1개'], ['바로 사용', '하트 1개 회복']]],
         stock_basics_budget: ['투자하기 전에 월세로 쓸 현금을 남겨 두세요.', [['7일 차', '월세 5,000G'], ['생활비', '투자금과 나눠 두기']]],
-        logistics_completed: ['첫 거래 안내를 마쳤어요! 준비됐다면 자립을 시작하세요.', [['+2,000G', '정착 지원금'], ['7일 차', '월세 준비']]]
+        tutorial_completed: ['첫 거래 안내를 마쳤어요! 준비됐다면 자립을 시작하세요.', [['+2,000G', '정착 지원금'], ['7일 차', '월세 준비']]]
     };
     const extra = (id, text, cards, tracker, detailText) => ({ id, text, cards, tracker, detailText, speaker: '전담 매니저 안나', expression: 'Smile', requiresManualAction: false });
     return steps.flatMap(step => {

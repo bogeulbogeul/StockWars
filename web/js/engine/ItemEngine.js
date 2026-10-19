@@ -78,13 +78,6 @@ export class ItemEngine {
         return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
     }
     playerLevel() { return this.playerLevelProgress().level; }
-    addDeveloperLevel() {
-        const { level, currentExp, maxExp } = this.playerLevelProgress();
-        if (maxExp === null) return fail('이미 최고 레벨(Lv. 20)입니다.');
-        // Add only the remaining EXP; rounding up safely crosses fractional thresholds.
-        this.state.exp = Math.max(0, Number(this.state.exp) || 0) + Math.ceil(maxExp - currentExp);
-        return ok(`개발자 모드 · Lv. ${level} → Lv. ${this.playerLevel()}`);
-    }
     pendingStatPoints() { return Math.max(0, this.playerLevel() - 1 - (this.state.spentLevelPoints || 0)); }
     allocateLevelStat(key) {
         if (!['analysis', 'negotiation', 'management', 'recovery'].includes(key)) return fail('능력치를 선택해 주세요.');
@@ -122,10 +115,6 @@ export class ItemEngine {
     buyCap() { return Infinity; }
     feeRate(baseRate) { return Math.max(0, baseRate - this.statLevel('negotiation') * 0.0001) * (this.state.appliedTrait === 'negotiation' ? 0.7 : 1); }
     laborReward(gold) { return Math.round(gold * (1 + this.statLevel('negotiation') * 0.05)); }
-    logisticsBonuses() {
-        const level = this.statLevel('recovery');
-        return { control: level >= 1 ? 1.1 : 1, damage: level >= 2 ? 0.85 : 1, speed: level >= 4 ? 1.1 : 1, rumor: level >= 3 ? 0.05 : 0 };
-    }
     maxStamina() { const recovery = this.stats().recovery; return recovery >= 4 ? 5 : recovery >= 2 ? 4 : 3; }
     normalizeStamina() {
         // Round old fractional saves up once so the migration does not lose a partial heart.
@@ -191,7 +180,7 @@ export class ItemEngine {
             if (id === 'item_caffeine_shot' && s.caffeineDay === dayKey(this.now())) return fail('카페인은 하루 1회만 사용할 수 있습니다.');
         }
         if (buffs[id] && this.active(buffs[id])) return fail('같은 강화 효과가 이미 적용 중입니다.');
-        if (id.startsWith('item_logistics_quickpass') && s.passUntil > this.now()) return fail('퀵-패스가 이미 적용 중입니다.');
+        if (id.startsWith('item_logistics_quickpass')) return fail('폐기된 물류 패스입니다. 보유 기록만 유지됩니다.');
         if (id === 'item_weekly_drink_ration' && s.deliveries.length) return fail('드링크 배급권이 이미 적용 중입니다.');
         if (id === 'item_crypto_decoder' && !this.decoderTargets().length && !s.reports.some(r => r.revealed < r.parts.length)) return fail('더 풀어볼 정보가 없습니다. 찌라시를 먼저 열람하세요.');
         if (id === 'item_darknet_key' && !s.reports.some(r => r.revealed < r.parts.length)) return fail('해독할 보고서가 없습니다. 유료 찌라시를 먼저 사용하세요.');
@@ -207,7 +196,6 @@ export class ItemEngine {
         let message = `${catalog.get(id).name} 사용 완료`;
         let rumorId;
         let statBoost;
-        let logisticsPass;
         let consume = true;
         if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             const before = s.stamina;
@@ -219,10 +207,6 @@ export class ItemEngine {
             s.buffs[stat] = now + ITEM_BALANCE.buffMs;
             statBoost = { stat, name: statNames[stat], before, after: this.stats()[stat], amount: 2, durationMinutes: ITEM_BALANCE.buffMs / 60000 };
             message = `${statNames[stat]}이 2 올랐습니다! (${before} → ${statBoost.after}) · ${statBoost.durationMinutes}분간 적용`;
-        } else if (id.startsWith('item_logistics_quickpass')) {
-            s.passUntil = now + (id.endsWith('7d') ? 7 : 1) * DAY;
-            logisticsPass = { until: s.passUntil };
-            message += ' · 비트 물류에서 즉시 완료 선택 가능';
         } else if (id === 'item_weekly_drink_ration') {
             const tomorrow = Date.parse(dayKey(now) + 'T00:00:00+09:00') + DAY;
             s.deliveries = Array.from({ length: 7 }, (_, i) => tomorrow + i * DAY);
@@ -278,7 +262,7 @@ export class ItemEngine {
         } else if (id === 'item_lotto_ticket') { consume = false; message = '아이템 센터의 로또 탭에서 번호·결과·당첨금을 확인하세요.'; }
         if (consume) this.consume(id);
         else { const entry = s.inventory.find(i => i.id === id); entry.isEquipped = id === 'item_gas_mask' ? s.mask : id === 'item_black_swan_alarm' ? s.alarm : false; }
-        return { ...ok(message), ...(rumorId ? { rumorId } : {}), ...(statBoost ? { statBoost } : {}), ...(logisticsPass ? { logisticsPass } : {}) };
+        return { ...ok(message), ...(rumorId ? { rumorId } : {}), ...(statBoost ? { statBoost } : {}) };
     }
     discard(id) {
         if (id === 'item_lotto_ticket') return fail('응모권은 추첨 기록과 연결되어 버릴 수 없습니다.');
@@ -324,14 +308,6 @@ export class ItemEngine {
         this.state.draws.push({ round, numbers, pool, winners: winners.length, prize });
         if (tickets.length) this.consume('item_lotto_ticket', tickets.length);
         this.notice(`로또 추첨: ${numbers.join(', ')} · ${winners.length ? `1등 ${winners.length}장` : '당첨자 없음, 이월'}`);
-    }
-    quickJob() {
-        this.tick();
-        if (this.state.passUntil <= this.now()) return fail('사용 중인 퀵-패스가 없습니다.');
-        if (this.state.stamina < this.laborCost()) return fail('노동에 필요한 체력이 부족합니다.');
-        const goldReward = this.laborReward(ITEM_BALANCE.quickGold);
-        this.finishLabor(goldReward, ITEM_BALANCE.quickExp, true);
-        return { ...ok(`물류 즉시 완료 · ${goldReward}G / ${ITEM_BALANCE.quickExp} EXP · 수수료 0%`), goldReward, expReward: ITEM_BALANCE.quickExp, hasRumor: false };
     }
     finishLabor(gold, exp = 0, adjusted = false) {
         const reward = adjusted ? gold : this.laborReward(gold);

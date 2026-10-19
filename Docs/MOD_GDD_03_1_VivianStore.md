@@ -1,5 +1,7 @@
 # StockWars GDD: [MOD_GDD_03_1] 비비안 잡화점 (Vivian's Store)
 
+2026-10-19 폐기: 물류 퀵패스 1일/7일 판매·사용을 종료한다. 기존 보유 기록은 유지하며 아래 과거 상품표는 제작 이력이다.
+
 ## 2D 아이템 모음 시안 v1 — 2026-10-19
 
 **P1 (Major) · ✅ 완료: 12종 모음 시안 생성·문서 기록 / ⏳ 대기: 최종 외형 채택·개별 아이콘 제작·축소 가독성 검수·3D 제작·게임 적용.** 사용자가 요청한 한 장의 2D 시안을 제작했다. 내장 이미지 생성 도구를 사용했으며 [원본 PNG](../output/vivian-items-2d-concept-v1/overview.png)와 [생성 프롬프트](../output/vivian-items-2d-concept-v1/prompt.txt)를 보관한다.

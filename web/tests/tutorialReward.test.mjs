@@ -18,7 +18,7 @@ test('tutorial reward is equal for skip and completion, paid once and persisted'
     assert.equal(restored.claimTutorialReward(), 2000);
 });
 
-test('duplicate completion and later labor do not reopen a completed or skipped tutorial', () => {
+test('duplicate completion  do not reopen a completed or skipped tutorial', () => {
     let completed = 0;
     const tutorial = Object.assign(Object.create(AnnaTutorial.prototype), {
         isActive: true, callbacks: { onComplete: () => completed++ },
@@ -27,12 +27,10 @@ test('duplicate completion and later labor do not reopen a completed or skipped 
     });
     tutorial.complete();
     tutorial.complete();
-    tutorial.notifyLogisticsJobCompleted({});
     assert.equal(completed, 1);
     assert.equal(tutorial.isActive, false);
     tutorial.isActive = true;
     tutorial.complete(true);
-    tutorial.notifyLogisticsJobCompleted({});
     assert.equal(completed, 2);
     assert.equal(tutorial.isActive, false);
 });

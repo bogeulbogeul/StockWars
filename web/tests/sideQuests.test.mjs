@@ -27,30 +27,6 @@ test('profit streak requires three consecutive sales of at least 100G each', () 
     for (let i = 0; i < 3; i++) quests.record('trade', sale(100));
     assert.equal(quests.list()[1].ready, true);
 });
-test('logistics requires single-round results and flawless rejects broken boxes', () => {
-    const { quests } = setup();
-    for (let i = 0; i < 3; i++) quests.record('labor', { score: 12, brokenCount: 0 });
-    assert.equal(quests.list()[2].count, 12); assert.equal(quests.list()[3].ready, false);
-    quests.record('labor', { score: 30, brokenCount: 1 });
-    assert.equal(quests.list()[2].ready, true); assert.equal(quests.list()[3].ready, false);
-    quests.claim('challenge_logistics_s_v1');quests.accept('challenge_flawless_v1','park');
-    quests.record('labor', { score: 30, brokenCount: 1 });assert.equal(quests.list()[3].ready,false);
-    quests.record('labor', { score: 18, brokenCount: 0 }); assert.equal(quests.list()[3].ready, true);
-});
-test('old easy quest records do not complete challenges and rewards persist once', () => {
-    let state = { sideQuests: { logistics_regular: { claimed: true, count: 2 } } }, market = { cash: 1000 };
-    let quests = new SideQuestEngine(() => state, market);
-    assert.ok(quests.list().every(q => !q.ready));
-    assert.equal(quests.claim('challenge_logistics_s_v1').success, false);
-    quests.accept('challenge_logistics_s_v1','park');
-    quests.record('labor', { score: 30, brokenCount: 1 });
-    state = JSON.parse(JSON.stringify(state)); quests = new SideQuestEngine(() => state, market);
-    assert.equal(quests.claim('challenge_logistics_s_v1').success, true);
-    assert.equal(market.cash, 1300); assert.equal(state.exp, 50);
-    state = JSON.parse(JSON.stringify(state)); quests = new SideQuestEngine(() => state, market);
-    assert.equal(quests.claim('challenge_logistics_s_v1').success, false);
-    state = {}; assert.equal(quests.list()[2].count, 0);
-});
 
 test('Agent K challenge accepts a finished victory only, excluding draws, losses, forfeits and other opponents', () => {
     const {quests} = setup(), id='challenge_agent_k_v1';
@@ -96,24 +72,4 @@ test('legacy automatic records are not accepted, fresh acceptance resets them, a
     assert.equal(quests.accept('challenge_net_profit_v1','anna').success,true);
     assert.equal(quests.active()[0].count,0);assert.equal(quests.active()[0].ready,false);
     assert.equal(quests.accept('challenge_logistics_s_v1','park').success,false);
-});
-
-test('each NPC offers one quest in order and unlocks the next only after reward collection',()=>{
- const {quests}=setup();
- assert.equal(quests.offers('park').length,0);
- assert.equal(quests.accept('challenge_flawless_v1','park').success,false);
- quests.record('labor',{score:30,brokenCount:0});
- assert.equal(quests.offers('park').length,0);
- quests.claim('challenge_logistics_s_v1');
- assert.deepEqual(quests.offers('park').map(q=>q.id),['challenge_flawless_v1']);
- assert.equal(quests.accept('challenge_flawless_v1','park').success,true);
- assert.equal(quests.active().filter(q=>q.giver==='park'&&!q.claimed).length,1);
-});
-test('legacy simultaneous contracts wait in sequence without losing saved progress',()=>{
- const state={sideQuests:{challenge_logistics_s_v1:{accepted:true,count:12},challenge_flawless_v1:{accepted:true,count:10}}};
- const q=new SideQuestEngine(()=>state,{cash:0});
- assert.equal(q.active().length,1);assert.equal(state.sideQuests.challenge_flawless_v1.count,10);
- q.record('labor',{score:30,brokenCount:1});q.claim('challenge_logistics_s_v1');
- assert.equal(q.accept('challenge_flawless_v1','park').success,true);
- assert.equal(q.active().find(x=>x.id==='challenge_flawless_v1').count,10);
 });

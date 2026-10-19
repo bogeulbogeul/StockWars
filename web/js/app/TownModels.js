@@ -2,7 +2,7 @@ import { startTownPreview } from './TownPreview.js';
 import { installHomeModelEntrance } from './HomeModelEntrance.js';
 import { installCipherLobbyEntrance } from './CipherLobbyEntrance.js';
 
-// Keep the legacy >500-line stage untouched; install the new renderer independently.
+// Install the 3D renderer independently of stage input and UI.
 async function installTownModels() {
     const town = window.stockWarsApp?.townStage;
     if (!town?.viewportEl) return;

@@ -56,7 +56,7 @@ export class RumorPopup {
                         <div class="rumor-title-row">
                             <div class="rumor-icon-box" id="rumorIconBox">📜</div>
                             <div class="rumor-name-group">
-                                <div class="rumor-name-text" id="rumorNameText">비트 물류 현장 찌라시</div>
+                                <div class="rumor-name-text" id="rumorNameText">현장 찌라시</div>
                                 <div class="rumor-tags">
                                     <span class="rumor-tag" id="rumorRarityTag" style="background: #00e5ff; color: #000;">희귀</span>
                                     <span class="rumor-tag" style="background: rgba(255, 171, 0, 0.2); color: #ffd54f;">🔒 미공개 내부 정보</span>

@@ -120,7 +120,7 @@ export const ITEM_CATALOG_DB = [
     },
     {
         id: 'item_bit_logistics_rumor',
-        name: '비트 물류 현장 찌라시',
+        name: '현장 찌라시',
         category: 'intel',
         rarity: 'rare',
         icon: '📜',
@@ -132,7 +132,7 @@ export const ITEM_CATALOG_DB = [
         targetSector: 'IT/기술',
         targetChange: '+18.5% ~ +25.0% 급등 예상',
         targetTimeframe: '내일(Day +1) 장중 공시 반영',
-        intelReport: '비트 물류 3번 허브에서 [클라우드 베리]의 차세대 분산 데이터 서버 부품이 전량 독점 출하되는 현장을 포착했습니다. 정부 스마트시티 인프라 단독 납품 계약이 확정적이며, 내일 공시 발표와 함께 주가가 +20% 이상 폭등할 것이 확실시됩니다!',
+        intelReport: '부품 출하 현장에서 [클라우드 베리]의 차세대 분산 데이터 서버 부품이 전량 독점 출하되는 현장을 포착했습니다. 정부 스마트시티 인프라 단독 납품 계약이 확정적이며, 내일 공시 발표와 함께 주가가 +20% 이상 폭등할 것이 확실시됩니다!',
         desc: '[클라우드 베리] IT 부품 독점 출하 포착. 정부 스마트시티 수주 공시 임박 및 주가 급등 복선.',
         effects: [
             '🎯 대상 기업: 클라우드 베리 (CLOUDBERRY • IT/기술)',

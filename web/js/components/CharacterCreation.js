@@ -239,8 +239,7 @@ export class CharacterCreation {
                 this.inputNickname.parentElement.append(error);
             }
             try {
-                const local = this.initialMode === 'DEMO' || this.initialMode === 'DEV';
-                const { nickname, pending } = await registerNickname(this.inputNickname.value, local ? null : window.stockWarsPresence);
+                const { nickname, pending } = await registerNickname(this.inputNickname.value, window.stockWarsPresence);
                 this.nicknamePending = pending;
                 this.nickname = nickname;
                 this.inputNickname.value = nickname;
@@ -304,7 +303,7 @@ export class CharacterCreation {
     }
 
     open(initialMode = 'NEW') {
-        this.initialMode = initialMode;
+        this.initialMode = 'NEW';
         this.traderCode = null;
         this.setStep(1);
         this.updateAvatarPreview();
@@ -335,4 +334,3 @@ export class CharacterCreation {
         }
     }
 }
-origin/main

@@ -81,9 +81,9 @@ test('all named facility returns, aliases and preserved unqualified return posit
     globalThis.document={body:{classList:{add(){}}}};
     try {
         const stage={callbacks:{},playerController:player(),viewportEl:{clientWidth:1200,clientHeight:900},update(){},checkProximity(){},setRemotePlayers(){}};
-        for(const id of [...TOWN_BUILDINGS.map(b=>b.id),'vivian','logistics']) {
+        for(const id of [...TOWN_BUILDINGS.map(b=>b.id),'vivian']) {
             TownStage.prototype.show.call(stage,undefined,id);
-            const e=townEntrance(TOWN_BUILDINGS.find(b=>b.id===({vivian:'vivian_store',logistics:'bit_logistics'}[id]||id)));
+            const e=townEntrance(TOWN_BUILDINGS.find(b=>b.id===({vivian:'vivian_store'}[id]||id)));
             assert.equal(stage.playerController.charPosX,e.x); assert.equal(stage.playerController.charPosY,e.y);
         }
         stage.playerController.charPosX=2000; stage.playerController.charPosY=1600;
@@ -145,7 +145,7 @@ test('all concept-layout entrances connect through the central plaza', () => {
 });
 
 test('tutorial direction stays visible at other buildings and yields only to the destination prompt', () => {
-    const building=TOWN_BUILDINGS.find(b=>b.id==='bit_logistics'),entry=townEntrance(building);
+    const building=TOWN_BUILDINGS.find(b=>b.id==='vivian_store'),entry=townEntrance(building);
     const arrow={hidden:false,style:{}},text={textContent:''};
     const direction={hidden:false,style:{},querySelector: selector=>selector.includes('arrow')?arrow:text};
     const legacy={hidden:false};

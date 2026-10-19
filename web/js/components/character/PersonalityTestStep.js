@@ -47,7 +47,7 @@ export const TRAITS_DATA = {
         statName: "협상력 +1",
         statColor: "#ffd600",
         icon: "🤝",
-        bonusDesc: "매매 수수료 할인 및 물류 보상 증가",
+        bonusDesc: "매매 수수료 할인 및 노동 보상 증가",
         effect: "거래 수수료 추가 -30% · 대출 기능 준비 중"
     },
     management: {
@@ -63,7 +63,7 @@ export const TRAITS_DATA = {
         statName: "회복력 +1",
         statColor: "#00e676",
         icon: "⚡",
-        bonusDesc: "최대 하트 증가 및 물류 효율 향상",
+        bonusDesc: "최대 하트 증가 및 활동 효율 향상",
         effect: "회복력 +1 · 회복력 2단계부터 최대 하트 증가"
     }
 };

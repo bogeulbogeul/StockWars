@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { SettingsStore, DEFAULT_SETTINGS, normalizeSettings } from '../js/engine/SettingsStore.js';
-import { LogisticsAudio } from '../js/components/logistics/LogisticsAudio.js';
+import { LevelUpAudio } from '../js/components/LevelUpAudio.js';
 import { settingsStore } from '../js/engine/SettingsStore.js';
 
 test('settings validate stored values and recover from corrupt storage', () => {
@@ -35,9 +35,9 @@ test('zero effects volume prevents audio initialization', () => {
     const before = settingsStore.value.effectsVolume;
     settingsStore.value.effectsVolume = 0;
     try {
-        const audio = new LogisticsAudio();
+        const audio = new LevelUpAudio();
         audio.init = () => assert.fail('muted audio must not initialize');
-        audio.playCrash();
+        audio.playTone(110);
         assert.equal(audio.audioCtx, null);
     } finally { settingsStore.value.effectsVolume = before; }
 });

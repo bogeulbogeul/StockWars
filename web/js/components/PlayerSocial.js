@@ -1,4 +1,3 @@
-import { DeveloperFriend, DEVELOPER_FRIEND_ID } from '../engine/DeveloperFriend.js';
 import { createTutorialGuide } from './tutorial/tutorialPresentation.js';
 import { createGeometricAvatarSVG } from './GeometricAvatar.js';
 import { toastManager } from './ToastManager.js';
@@ -7,7 +6,6 @@ import { FriendGifts } from './FriendGifts.js';
 export class PlayerSocial {
     constructor(app) {
         this.app = app;
-        this.developerFriend = new DeveloperFriend();
         this.giftDelivery = new FriendGifts(app);
         if (window.stockWarsChat?.friends) app.smartphoneUI.bubbleAppModule.callbacks.addOnlineFriend = name => this.addByName(name);
         this.state = { friends: [], incoming: [], outgoing: [] };
@@ -34,22 +32,10 @@ export class PlayerSocial {
         void this.refresh();
         this.timer = setInterval(() => this.refresh(), 5000);
     }
-    getDeveloperPlayers() {
-        return this.app.isLocalSession || ['DEV', 'DEMO'].includes(this.app.userProfile?.mode)
-            ? [{ ...this.developerFriend.player, x: 1660, y: 1670 }] : [];
-    }
-    mergeDeveloperState() {
-        if (!this.getDeveloperPlayers().length) return;
-        const fixture = this.developerFriend.snapshot();
-        for (const key of ['friends', 'incoming', 'outgoing']) {
-            this.state[key] = [...this.state[key].filter(p => p.id !== DEVELOPER_FRIEND_ID), ...fixture[key]];
-        }
-    }
     async refresh() {
         if (this.app.isLocalSession || !window.stockWarsChat?.friends) {
             this.state = { friends: [], incoming: [], outgoing: [] };
-            this.giftDelivery.pending = this.getDeveloperPlayers().length ? [...this.developerFriend.gifts] : [];
-            this.mergeDeveloperState();
+            this.giftDelivery.pending = [];
             this.renderPanel();
             return;
         }
@@ -62,7 +48,6 @@ export class PlayerSocial {
             const relationship = state => JSON.stringify(['friends', 'incoming', 'outgoing'].map(key => state[key].some(p => p.id === this.player?.id)));
             const previousRelationship = relationship(this.state);
             this.state = result;
-            this.mergeDeveloperState();
             await this.giftDelivery.receive(result.gifts);
             for (const request of result.incoming) {
                 const key = `${request.id}:${request.name}`;
@@ -117,19 +102,6 @@ export class PlayerSocial {
         return { success: true, message: `${player.name}님에게 친구 요청을 보냈습니다. 수락하면 친구 목록에 표시됩니다.` };
     }
     async command(operation, player) {
-        if (player.id === DEVELOPER_FRIEND_ID && this.getDeveloperPlayers().length) {
-            if (operation === 'chat') { this.openDeveloperChat(); return; }
-            if (operation === 'gift') { this.dialog.close(); this.giftDelivery.open(player); return; }
-            if (operation === 'simulateGift') {
-                this.developerFriend.command(operation);
-                await this.giftDelivery.receive(this.developerFriend.gifts);
-                this.dialog.close(); this.giftDelivery.openInbox(); return;
-            }
-            this.developerFriend.command(operation);
-            this.mergeDeveloperState(); this.renderPanel();
-            if (this.dialog.open) this.renderCard();
-            return;
-        }
         if (operation === 'gift') { this.giftDelivery.open(player); return; }
         const result = await window.stockWarsChat?.friends(operation, player.id, { targetName: player.name || player.nickname });
         if (!result || result.error) { toastManager.show(result?.error || '서버 연결이 필요합니다.', false); return; }
@@ -151,24 +123,6 @@ export class PlayerSocial {
             if (this.dialog.open && this.player) this.renderCard();
             toastManager.show(operation === 'request' ? '친구 요청을 보냈습니다.' : operation === 'accept' ? '친구가 되었습니다!' : '친구 요청을 처리했습니다.');
         }
-    }
-    openDeveloperChat() {
-        this.dialog.close();
-        const phone = this.app.smartphoneUI;
-        const bubble = phone.bubbleAppModule;
-        const id = 'local_dev_friend_fixture';
-        if (!bubble.chatRooms.some(room => room.id === id)) {
-            bubble.chatRooms.push({ id, title: '테스트 트레이더', members: [], type: 'direct',
-                sub: '개발자 테스트 친구 · 로컬 대화', avatar: '👤', unread: 0, lastMsg: '대화를 시작해보세요!', time: '' });
-        }
-        bubble.bubbleUserMessages[id] ||= [];
-        bubble.chatRooms.find(room => room.id === id).onLocalSend = text => {
-            if (!this.getDeveloperPlayers().length || !this.developerFriend.send(text)) return;
-            bubble.bubbleUserMessages[id].push({ type: 'received', sender: '테스트 트레이더',
-                text: this.developerFriend.messages.at(-1).text, time: '방금 전' });
-        };
-        phone.showPhone(); phone.showBubbleApp();
-        bubble.openChatRoom(id); bubble.dom.bubbleMsgInput?.focus();
     }
     renderPanel() {
         this.panel.replaceChildren();
@@ -239,8 +193,6 @@ export class PlayerSocial {
             actions.append(this.button('친구 요청 수락', () => this.command('accept', player)), this.button('거절', () => this.command('reject', player)));
         } else if (outgoing) actions.append(this.button('친구 요청 취소', () => this.command('cancel', player)));
         else actions.append(this.button('친구 요청 보내기', () => this.command('request', player)));
-        if (player.id === DEVELOPER_FRIEND_ID && friends) actions.append(this.button('테스트 선물 받기', () => this.command('simulateGift', player)));
-        if (player.id === DEVELOPER_FRIEND_ID && outgoing) actions.append(this.button('테스트 친구 수락시키기', () => this.command('simulateAccept', player)));
         const close = this.button('닫기', () => this.dialog.close()); close.className = 'social-close'; this.dialog.append(close);
     }
 }

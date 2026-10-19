@@ -4,7 +4,6 @@ import { TOWN_BUILDING_HEIGHTS } from './townScale.js';
 // Visible artwork bounds exclude transparent padding without modifying the originals.
 const assets = {
     home_office_tower: ['OfficeBuilding-door-v2', 1060, 1484, 230, 62, 600, 1341, 0.338],
-    bit_logistics: ['Bit-door-v2', 1774, 887, 74, 116, 1629, 678, 0.905],
     vivian_store: ['VivianStore-door-v3', 1774, 887, 227, 62, 1359, 738, 0.485],
     julian_furniture: ['MordenFrame-single-story-v1', 1536, 1024, 146, 162, 1245, 701, 0.737],
     claire_apparel: ['SalonDeTail-single-story-v3', 1215, 1295, 58, 196, 1101, 919, 0.802],

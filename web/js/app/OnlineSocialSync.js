@@ -8,8 +8,6 @@ export class OnlineSocialSync {
         if(c.trainingRoom.dialog.open)return {location:'training',player:c.player};
         if(c.isOpen)return {location:'cipher',player:c.player};
         if(a.vivianStoreModal.isOpen)return {location:'vivian',player:a.vivianStoreModal.player};
-        if(a.logisticsWarehouse?.isOpen || a.logisticsWarehouse?.suspended)return {location:'logistics',player:a.logisticsWarehouse.player};
-        if(a.logisticsMiniGame.isOpen)return {location:'logistics',player:{x:0,y:0}};
         if(document.body.classList.contains('town-mode-active'))return {location:'town',player:a.townStage.playerController};
         return null;
     }
@@ -67,7 +65,7 @@ export class OnlineSocialSync {
             const result=await window.stockWarsArena.request({action:'list'});if(result.error||this.app.isLocalSession)return;
             const a=this.app,c=a.cipherLobby.competitionRoom;
             if(this.inviteDialog&&!result.invitations?.some(r=>r.id===this.inviteId)){this.inviteDialog.close();this.inviteDialog.remove();this.inviteDialog=null;}
-            if(this.inviteDialog||a.annaTutorial?.isActive||a.cipherLobby.notice&&!a.cipherLobby.notice.hidden||document.body.classList.contains('phone-view-active')||c.onlineState||c.dialog.open||a.cipherLobby.trainingRoom.dialog.open||document.querySelector('dialog[open]:not(.cipher-lobby)')||!document.querySelector('#titleScreen')?.classList.contains('hidden'))return;
+            if(this.inviteDialog||a.annaTutorial?.isActive||a.cipherLobby.notice&&!a.cipherLobby.notice.hidden||document.body.classList.contains('phone-view-active')||c.onlineState||c.dialog.open||a.cipherLobby.trainingRoom.dialog.open||document.querySelector('dialog[open]:not(.cipher-lobby)'))return;
             const room=result.invitations?.[0];if(!room)return;
             const popup=document.createElement('dialog');popup.className='settings-dialog';popup.setAttribute('aria-label','모의투자 초대');const title=document.createElement('h2');title.textContent='모의투자 초대';const text=document.createElement('p');text.textContent=`${room.host}님이 ${room.name} 대결에 초대했습니다. (${room.minutes}분)`;
             const status=document.createElement('p'),accept=document.createElement('button'),cancel=document.createElement('button');accept.textContent='확인';cancel.textContent='취소';

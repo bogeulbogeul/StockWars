@@ -21,18 +21,6 @@ export const TOWN_BUILDINGS = [
         isOfficetel: true
     },
     {
-        id: 'bit_logistics',
-        name: '비트 물류센터',
-        sign: '비트 물류',
-        category: '물류 / 노동',
-        icon: '📦',
-        width: 280,
-        height: 230,
-        colorTheme: 'yellow',
-        desc: '초기 시드머니 확보를 위한 60초 화물 운송 노동소 (관리소장 박씨)',
-        actionText: '물류창고 진입'
-    },
-    {
         id: 'vivian_store',
         name: '비비안 잡화점',
         sign: '비비안 잡화점',

@@ -81,13 +81,7 @@ export class FriendGifts {
         if (!gift) return { success: false, message: '이미 받았거나 찾을 수 없는 선물입니다.' };
         this.receiving = true;
         try {
-            if (gift.preview) {
-                if (!this.app.isLocalSession) return { success: false, message: '개발자 모드에서만 확인할 수 있어요.' };
-                this.app.playerSocial.developerFriend.gifts = this.app.playerSocial.developerFriend.gifts.filter(g => g.id !== id);
-                this.pending = this.pending.filter(g => g.id !== id);
-                this.app.playerSocial.renderPanel();
-                return { success: true, message: '테스트 선물 받기 완료! 실제 아이템은 지급되지 않았어요.' };
-            }
+            if (gift.preview) return { success: false, message: '폐기된 테스트 선물입니다.' };
             engine.state.receivedGiftIds ||= [];
             if (engine.state.receivedGiftIds.includes(id)) return { success: false, message: '이미 받은 선물입니다.' };
             const item = { ...structuredClone(gift.item), quantity: 1 };

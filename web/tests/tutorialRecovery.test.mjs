@@ -37,30 +37,3 @@ test('full stamina consumes the gift without overflowing; full inventory allows 
     blocked.state.inventory.pop();
     assert.equal(blocked.claimTutorialRecoveryDrink().recovered, 1);
 });
-
-test('recovery waits for explicit gift action and successful use, then explains recovery and bench', () => {
-    const engine = createEngine();
-    engine.state.stamina = 2;
-    let enabled = false, calls = 0, advanced = 0;
-    const steps = buildAnnaScenario({ callbacks: { onTutorialRecoveryDrink: () => {
-        calls++;
-        return enabled ? engine.claimTutorialRecoveryDrink() : { success: false };
-    } } });
-    const index = steps.findIndex(step => step.id === 'stamina_recovery_guide');
-    const ui = Object.assign(Object.create(AnnaTutorial.prototype), {
-        steps, currentStepIdx: index, historyCursor: null, isTyping: false,
-        nextStep() { advanced++; }
-    });
-    ui.handleAdvance();
-    assert.equal(calls, 0);
-    ui.handleActionClick();
-    assert.equal(advanced, 0);
-    enabled = true;
-    ui.handleActionClick();
-    assert.equal(advanced, 1);
-    assert.match(steps[index + 1].text, /하트 1개.*회복/);
-    assert.equal(steps[index + 2].id, 'stamina_bench_guide');
-    ui.historyCursor = index - 1;
-    ui.handleActionClick();
-    assert.equal(calls, 2);
-});

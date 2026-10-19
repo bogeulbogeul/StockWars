@@ -505,7 +505,7 @@ export class VivianStoreModal {
 
         if (currentCash < totalPrice) {
             this.triggerDialogue('poor');
-            toastManager.show('💸 [골드 부족] 결제에 필요한 골드가 부족합니다! 비트 물류 노동이나 주식 실현 손익을 확보하세요.');
+            toastManager.show('💸 [골드 부족] 결제에 필요한 골드가 부족합니다! 보유 현금과 생활비를 확인하세요.');
             return;
         }
 

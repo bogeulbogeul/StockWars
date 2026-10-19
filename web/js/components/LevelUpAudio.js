@@ -1,11 +1,6 @@
-﻿/**
- * LogisticsAudio Module
- * WebAudio Synthesizer for logistics mini-game sound effects.
- */
+import { settingsStore } from '../engine/SettingsStore.js';
 
-import { settingsStore } from '../../engine/SettingsStore.js';
-
-export class LogisticsAudio {
+export class LevelUpAudio {
     constructor() {
         this.audioCtx = null;
     }
@@ -42,22 +37,6 @@ export class LogisticsAudio {
         } catch (e) {
             // Audio ignore on browser restriction
         }
-    }
-
-    playPickup(count = 1) {
-        this.playTone(380 + count * 60, 0.12, 'sine', 0.25);
-    }
-
-    playLoad(count = 1) {
-        this.playTone(520 + count * 40, 0.18, 'triangle', 0.3);
-    }
-
-    playTurnShock() {
-        this.playTone(180, 0.08, 'sawtooth', 0.2);
-    }
-
-    playCrash() {
-        this.playTone(110, 0.4, 'sawtooth', 0.45);
     }
 
     playWin() {

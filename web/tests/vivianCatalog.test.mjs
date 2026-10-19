@@ -11,15 +11,15 @@ const item = id => catalog.find(entry => entry.id === id);
 
 test('every GDD product is sold at its specified price', () => {
     const gdd = readFileSync(new URL('../../Docs/MOD_GDD_03_1_VivianStore.md', import.meta.url), 'utf8');
-    const rows = [...gdd.matchAll(/\| \*\*(.+?)\*\* \| ([\d,]+) G \|/g)];
+    const rows = [...gdd.matchAll(/\| \*\*(.+?)\*\* \| ([\d,]+) G \|/g)].filter(([, name]) => !name.includes('퀵-패스'));
     assert.equal(catalog.length, rows.length);
     for (const [, name, price] of rows) {
         const product = catalog.find(entry => entry.name === name);
         assert.ok(product, `Missing GDD product: ${name}`);
         assert.equal(product.price, Number(price.replaceAll(',', '')), name);
     }
-    assert.equal(item('item_logistics_quickpass_1d').tab, 'daily');
-    assert.equal(item('item_logistics_quickpass_7d').tab, 'weekly');
+    assert.equal(item('item_logistics_quickpass_1d'), undefined);
+    assert.equal(item('item_logistics_quickpass_7d'), undefined);
     assert.equal(item('item_weekly_drink_ration').tab, 'weekly');
 });
 

@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { ItemEngine } from '../js/engine/ItemEngine.js';
 import { MarketEngine, marketEngine } from '../js/engine/marketEngine.js';
 import { applyPlayerTrait } from '../js/engine/PlayerTrait.js';
-import { LogisticsPhysicsEngine } from '../js/components/logistics/LogisticsPhysicsEngine.js';
 marketEngine.stopEngine();
 function setup(trait) {
     let now = 1000000;
@@ -28,9 +27,6 @@ test('negotiation changes actual fees, previews, history and labor without doubl
     const before=m.cash;
     assert.equal(e.finishLabor(800).goldReward,840);
     assert.equal(m.cash,before+840);
-    e.state.passUntil=e.now()+100000;
-    const quick=e.quickJob(); assert.equal(quick.goldReward,588);
-    assert.equal(m.cash,before+840+588);
     assert.ok(m.getOrderQuote(1000,10,1,'brokerage').feeRate >= 0);
 });
 test('slots count unique stocks, block new stocks, release on full sale and survive reload', () => {
@@ -72,10 +68,5 @@ test('recovery increases heart capacity without time regeneration and preserves 
     }
     b.engine.state.baseStats.recovery=5;
     assert.equal(b.engine.finishLabor(0).staminaCost,0);
-    const physics=new LogisticsPhysicsEngine();
-    const state={hasBox:true,carriedCount:2,velocityX:100,keysHeld:new Set(['shift']),damageGauge:0,wobbleAngle:0};
-    physics.updateSensitivity(state,0.1); const normal=state.damageGauge;
-    state.damageGauge=0;state.abilityBonuses=b.engine.logisticsBonuses();
-    physics.updateSensitivity(state,0.1);
-    assert.ok(Math.abs(state.damageGauge-normal*0.85)<1e-10);
+
 });

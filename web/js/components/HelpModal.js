@@ -9,7 +9,7 @@ export const HELP_PAGES = [
     { title: '벤치와 드링크로 기력 회복하기', short: '기력 회복', text: '벤치는 하루 1회 기력을 전부 회복하고, 드링크는 1개당 하트 1개를 회복해요. 최대 기력은 넘지 않아요.' },
     { title: '찌라시에서 단서 읽기', short: '찌라시', text: '가방의 찌라시 탭에서 정보를 선택하고 읽어 보세요. 분석력이 높을수록 구체적인 단서를 볼 수 있지만, 내용이 사실이라는 뜻은 아니에요.' },
     { title: '의뢰를 완료하고 칭호 모으기', short: '의뢰·칭호', text: '마을 인물에게 의뢰를 수락한 뒤 목표를 달성하세요. 서브 퀘스트에서 보상을 받고, 스마트폰의 칭호 도감에서 획득한 칭호를 장착할 수 있어요.' },
-    { title: '하루를 넘기기 전에 월세 확인하기', short: '하루·월세', text: '상단의 다음 날 버튼을 누르면 하루가 넘어가며 시세가 바뀌고 기력이 회복돼요. 현재 데모는 7일 차에 정산하니, 월세 5,000G를 현금으로 준비하세요.' }
+    { title: '하루를 넘기기 전에 월세 확인하기', short: '하루·월세', text: '현재 경제 규칙은 7일 차에 정산하니, 월세 5,000G를 현금으로 준비하세요.' }
 ];
 const key = action => '<kbd data-game-key="' + action + '">' + bindingLabel(action) + '</kbd>';
 function building(id) {
@@ -73,7 +73,7 @@ export class HelpModal {
         </div>`;
         if (this.index === 4) visual.innerHTML = `<div class="help-guide-character"><div class="help-avatar">${characterSpriteSVG({ styleId: 'black-cat', direction: 'down' })}</div><div><h4>이름보다 사건의 단서를 살펴보세요</h4><p>기업·사건·발표 시점을 연결하고 시세와 비교해 보세요.</p></div></div><ol class="help-flow"><li>${key('i')} 가방에서 <strong>찌라시</strong> 선택</li><li>정보를 골라 <strong>읽기</strong></li><li>단서를 비교한 뒤 거래 판단</li></ol><p class="help-info-note">분석력은 단서를 자세히 보여 줘요. 정보의 진위를 보장하지는 않아요.</p>`;
         if (this.index === 5) visual.innerHTML = `<div class="help-guide-character"><div class="help-avatar">${characterSpriteSVG({ styleId: 'dog', direction: 'down' })}</div><div><h4>수락한 의뢰부터 차근차근</h4><p>튜토리얼 이후 마을 인물의 의뢰를 받을 수 있어요.</p></div></div><ol class="help-flow"><li>마을 인물에게 의뢰 <strong>수락</strong></li><li>목표 달성 후 <strong>서브 퀘스트에서 보상 받기</strong></li><li>${key('p')} 스마트폰 → <strong>칭호 도감</strong> → 장착</li></ol><p class="help-info-note">칭호는 프로필과 이름표에 표시돼요. 바꿔도 시작 능력은 유지돼요.</p>`;
-        if (this.index === 6) visual.innerHTML = `<div class="help-info-grid"><article class="help-info-panel"><h4>하루 진행</h4><strong class="help-large-value">DAY +1</strong><p>상단의 다음 날 버튼</p><small>시세 변동 · 기력 회복</small></article><article class="help-info-panel"><h4>첫 월세 목표</h4><strong class="help-large-value">5,000 G</strong><p>7일 차 정산 · 보유 현금에서 차감</p><small>퀘스트 패널의 월세 목표에서 확인</small></article></div><p class="help-info-note">주식 평가액은 월세로 바로 낼 수 없어요. 정산 전에 필요한 현금을 확보하세요.</p>`;
+        if (this.index === 6) visual.innerHTML = `<div class="help-info-grid"><article class="help-info-panel"><h4>하루 진행</h4><strong class="help-large-value">DAY +1</strong><p>생활 일정 확인</p><small>시세 변동 · 기력 회복</small></article><article class="help-info-panel"><h4>첫 월세 목표</h4><strong class="help-large-value">5,000 G</strong><p>7일 차 정산 · 보유 현금에서 차감</p><small>퀘스트 패널의 월세 목표에서 확인</small></article></div><p class="help-info-note">주식 평가액은 월세로 바로 낼 수 없어요. 정산 전에 필요한 현금을 확보하세요.</p>`;
         this.dialog.querySelector('.help-shortcuts').innerHTML = '가방 ' + key('i') + ' · 스마트폰 ' + key('p') + ' · 프로필은 상단 프로필 버튼';
         refreshKeyHints(this.dialog);
     }

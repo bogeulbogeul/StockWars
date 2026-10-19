@@ -3,7 +3,6 @@ import { TOWN_ARRIVAL } from '../data/townLandscapeLayout.js';
 // A reversible art-review state: no new game, registration, or save reset.
 export function startTownPreview(app) {
     if (!document.body.classList.contains('ui-paused')) return;
-    app.titleScreen.hide();
     app.officeStage.hide();
     app.townStage.show({ name: '그래픽 확인', ping: null });
     // Arrive in the open lane between the foreground stop and information office.

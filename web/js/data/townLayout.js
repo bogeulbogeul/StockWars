@@ -18,7 +18,6 @@ export const TOWN_BUILDING_PLACEMENTS = {
     julian_furniture: { centerX: 1050, y: 1530 },
     midnight_pub: { centerX: 2690, y: 1530 },
     barter_pawn_shop: { centerX: 3280, y: 1530 },
-    bit_logistics: { centerX: 650, y: 2260 },
     claire_apparel: { centerX: 1540, y: 2260 },
     data_ink_bookstore: { centerX: 2240, y: 2260 }
 };

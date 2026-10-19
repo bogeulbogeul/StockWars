@@ -16,25 +16,6 @@ function fixture(date = '2026-09-28T12:00:00+09:00') {
 const purchase = (e,id,n=1) => assert.equal(e.purchase(id,n).success,true,id);
 const use = (e,id) => assert.equal(e.use(id).success,true,id);
 
-test('pass activation reports its duration, survives reload and blocks duplicate use', () => {
-    for (const [id, days] of [['item_logistics_quickpass_1d', 1], ['item_logistics_quickpass_7d', 7]]) {
-        const { engine, market, advance } = fixture();
-        const result = engine.purchase(id, 1, true);
-        assert.equal(result.success, true);
-        engine.add(id);
-        assert.equal(result.logisticsPass.until, engine.now() + days * DAY);
-        const restored = new ItemEngine({ market, clock: engine.clock, state: JSON.parse(JSON.stringify(engine.state)) });
-        assert.equal(restored.state.passUntil, result.logisticsPass.until);
-        assert.equal(restored.use(id).success, false);
-        assert.equal(restored.state.inventory.find(item => item.id === id).quantity, 1);
-        advance(days * DAY);
-        const cash = market.cash, exp = restored.state.exp, stamina = restored.state.stamina;
-        assert.equal(restored.quickJob().success, false);
-        assert.equal(market.cash, cash);
-        assert.equal(restored.state.exp, exp);
-        assert.equal(restored.state.stamina, stamina);
-    }
-});
 
 test('failed instant uses and full bags never charge gold or consume an item', () => {
     const { engine:e,market:m }=fixture(); const cash=m.cash;
@@ -85,14 +66,6 @@ test('ability items report the specific stat increase for inventory and instant 
     }
 });
 
-test('both passes expire and quick labor charges stamina, not fees', () => {
-    for (const [id,days] of [['item_logistics_quickpass_1d',1],['item_logistics_quickpass_7d',7]]) {
-        const {engine:e,market:m,advance}=fixture(); purchase(e,id); use(e,id);
-        const cash=m.cash; assert.equal(e.quickJob().success,true); assert.equal(m.cash,cash+ITEM_BALANCE.quickGold);
-        assert.equal(e.state.stamina,2); e.state.stamina=0; assert.equal(e.quickJob().success,false);
-        advance(days*DAY); e.state.stamina=3; assert.equal(e.quickJob().success,false);
-    }
-});
 
 test('recovery grants whole hearts, preserves current health on buffs and clamps expired capacity', () => {
     const {engine:e,market,advance}=fixture();
@@ -117,9 +90,7 @@ test('recovery grants whole hearts, preserves current health on buffs and clamps
     assert.equal(restored.state.stamina,4);
     use(e,'item_vitamin_complex'); e.state.stamina=2;
     advance(ITEM_BALANCE.buffMs); assert.equal(e.state.stamina,2);
-    e.state.passUntil=e.now()+DAY; e.state.stamina=1;
-    assert.equal(e.quickJob().success,true); assert.equal(e.state.stamina,0);
-    assert.equal(e.quickJob().success,false);
+    e.state.stamina=0;
     assert.equal(e.restOnBench().success,true); assert.equal(e.state.stamina,4);
     assert.equal(e.restOnBench().success,false);
     e.state.baseStats.recovery=4; e.advanceDay(); assert.equal(e.state.stamina,5);

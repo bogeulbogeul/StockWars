@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const source = fs.readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
+const source = fs.readFileSync(new URL('../js/app/ApplicationActions.js', import.meta.url), 'utf8');
 const method = source.match(/    async startGame\(mode\) \{[\s\S]*?(?=\n    isTutorialNavigationBlocked\(\))/)[0];
 
-for (const mode of ['NEW', 'DEMO', 'DEV']) {
+for (const mode of ['NEW']) {
     test(`${mode} starts fresh in the office with Anna grant pending`, async () => {
         const market = { cash: 5000000, initialCash: 5000000, day: 7,
             portfolio: new Map([['old', {}]]), firstTradeLesson: {}, isLevel10Unlocked: true, orderBooks: new Map(), notify() {} };
@@ -36,7 +36,6 @@ for (const mode of ['NEW', 'DEMO', 'DEV']) {
         assert.equal(toolbar, mode !== 'NEW');
         assert.equal(classes.has('phone-minimized'), true);
         assert.equal(classes.has('phone-view-active'), false);
-        assert.equal(app.logisticsMiniGame.completedJobsCount, 0);
         assert.equal(app.smartphoneUI.favorites.size, 0);
         assert.equal(favoritesSaved, true);
         assert.equal(app.annaTutorial.lessonEnabled, false);

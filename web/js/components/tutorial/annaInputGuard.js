@@ -6,7 +6,7 @@ export function installAnnaInputGuard(tutorial, host = window) {
         const reviewing = tutorial.historyCursor != null;
         const visibleStep = reviewing ? tutorial.dialogueHistory?.[tutorial.historyCursor] : tutorial.steps[tutorial.currentStepIdx];
         const step = reviewing ? null : visibleStep;
-        const movement = step?.requiresManualAction && ['go_town_proposal', 'enter_logistics'].includes(step.id);
+        const movement = step?.requiresManualAction && ['go_town_proposal'].includes(step.id);
         if (event.type === 'keydown' || event.type === 'keypress') {
             if (visibleStep?.id === 'movement_keys_guide' && event.type === 'keydown' && ['w', 'a', 's', 'd'].includes(tutorial.inputKey(event))) return;
             // Release events still reach held-key trackers; only movement practice permits new keys.
@@ -15,14 +15,6 @@ export function installAnnaInputGuard(tutorial, host = window) {
             return;
         }
         if (tutorial.dialogueBox?.contains(event.target)) return;
-        if (step?.id === 'enter_logistics' && event.type === 'click') {
-            const building = event.target?.closest?.('.town-building-box');
-            if (building && building.dataset.buildingId !== 'bit_logistics') {
-                block(event);
-                tutorial.warnWrongLogisticsBuilding();
-                return;
-            }
-        }
         if (visibleStep?.id === 'put_phone_away') {
             block(event);
             if (event.type === 'click' && !event.target?.closest?.('.phone-shell, .modal-overlay, .main-hud-bar, .demo-top-bar, button, a, input, select, textarea')) {

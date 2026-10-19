@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { DEVELOPER_FRIEND_ID } from '../js/engine/DeveloperFriend.js';
 
 const source = fs.readFileSync(new URL('../js/components/smartphone/BubbleApp.js', import.meta.url), 'utf8')
     .replace(/^import .*;\r?\n/gm, '').replace('export class BubbleApp', 'globalThis.BubbleApp = class BubbleApp');
@@ -91,7 +90,6 @@ test('friend chat opens with nickname even while background chat refresh is busy
     });
     const socialSource = fs.readFileSync(new URL('../js/components/PlayerSocial.js', import.meta.url), 'utf8')
         .replace(/^import .*;\r?\n/gm, '').replace('export class PlayerSocial', 'globalThis.PlayerSocial = class PlayerSocial');
-    context.DEVELOPER_FRIEND_ID = DEVELOPER_FRIEND_ID;
     vm.runInContext(socialSource, context);
     app.refreshingPlayerChat = true;
     let opened;
