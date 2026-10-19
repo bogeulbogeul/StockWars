@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-0.png",
+      "region": [
+        98,
+        287,
+        163,
+        357
+      ],
+      "source_component_bbox": [
+        149,
+        83,
+        496,
+        730
+      ],
+      "source_region": [
+        211,
+        575,
+        323,
+        697
+      ],
+      "changedPixels": 2237,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "1f88a98c0cb51678b188755d6be34b235924bcc53253aaf69daeab7235b9fc57",
+      "afterSha256": "0e49cdb838134f059233785547d2fe56b306cacd4b8e9b5ef24a0a299c5308a1"
+    },
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-badger\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-badger-european-badger-up_walk-2.png",
+      "region": [
+        154,
+        286,
+        225,
+        359
+      ],
+      "source_component_bbox": [
+        1434,
+        83,
+        1781,
+        730
+      ],
+      "source_region": [
+        1600,
+        573,
+        1725,
+        700
+      ],
+      "changedPixels": 2354,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "32bea7d8bf3228de733ab3f8cf2b37234e74b3ad62e1a542e4d4573d298ea640",
+      "afterSha256": "63cf2b5bd349bae246cbc9558676736a50f829853b441f6cfb0bb37427ece6aa"
+    }
+  ]
+}

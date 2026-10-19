@@ -67,3 +67,15 @@ test('periodic review uses ten seconds, updates current dialogue target and reje
         ui.notifyStockPurchased('OTHER');assert.equal(ui.steps[ui.currentStepIdx].id,'celebrate');assert.equal(cleared,123);
     } finally {globalThis.setInterval=interval;globalThis.clearInterval=clear;}
 });
+
+test('purchase during new company and order explanations advances without requiring a second purchase', () => {
+    for (const id of ['company_info_per', 'open_order_screen', 'order_screen_overview', 'stock_profit_fees']) {
+        const ui = Object.create(AnnaTutorial.prototype);
+        Object.assign(ui, { isActive: true, targetStock: { id: 'CLOUDBERRY' }, currentStepIdx: 0,
+            steps: [{ id }, { id: 'buy_stock' }, { id: 'celebrate' }],
+            stopRecommendationReview() {}, highlightElement() {}, showCurrentStep() {} });
+        ui.notifyStockPurchased('CLOUDBERRY');
+        assert.equal(ui.currentStepIdx, 2, id);
+        assert.equal(ui.firstPurchaseDone, true);
+    }
+});

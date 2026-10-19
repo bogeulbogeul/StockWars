@@ -6,7 +6,7 @@
  * - TraderIDCardStep: Step 3 Hologram pass ceremony
  */
 
-import { CHARACTER_STYLES, characterFaceSVG, updateCharacterSprite } from './CharacterSprite.js';
+import { BASE_CHARACTER_STYLES as CHARACTER_STYLES, characterFaceSVG, updateCharacterSprite } from './CharacterSprite.js';
 import { PersonalityTestStep } from './character/PersonalityTestStep.js';
 import { TraderIDCardStep } from './character/TraderIDCardStep.js';
 import { registerNickname } from '../engine/NicknameRegistration.js';

@@ -1,0 +1,103 @@
+{
+  "ok": true,
+  "animals": [
+    {
+      "animal": "dog",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle_wag: motion presence is too low (0.0083 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "cat",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "red-fox",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "siberian-chipmunk",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "raccoon-dog",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "european-badger",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "brown-bear",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    },
+    {
+      "animal": "european-rabbit",
+      "ok": true,
+      "warnings": [
+        "down_idle: motion presence is too low (0.0000 < 0.0100)",
+        "right_idle: motion presence is too low (0.0000 < 0.0100)",
+        "up_idle: motion presence is too low (0.0000 < 0.0100)",
+        "down_sit: motion presence is too low (0.0000 < 0.0100)",
+        "right_sit: motion presence is too low (0.0000 < 0.0100)",
+        "face_portrait: motion presence is too low (0.0000 < 0.0100)"
+      ]
+    }
+  ],
+  "note": "Static state warnings are expected. Dog rear tail motion is deliberately small and separately has body-lock/changed-tail verification. In-game contact QA is separate."
+}

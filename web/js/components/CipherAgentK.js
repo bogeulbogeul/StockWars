@@ -1,7 +1,8 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { cipherGridToScreen } from './CipherGrid.js';
 
-export const AGENT_K_RECEPTION_URL = new URL('../../assets/characters/agent-k/agent-k-russian-blue-reception-v1.png', import.meta.url).href;
-export const AGENT_K_PORTRAIT_URL = new URL('../../assets/characters/agent-k/agent-k-russian-blue-dialogue-v1.png', import.meta.url).href;
+export const AGENT_K_RECEPTION_URL = EMPTY_CHARACTER_IMAGE;
+export const AGENT_K_PORTRAIT_URL = EMPTY_CHARACTER_IMAGE;
 // Measured on the new 1024×1536 artwork. H excludes the pointed ears.
 export const AGENT_K_ART = { width:1024, height:1536, headTop:340, footY:1448, footX:635 };
 

@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "down_walk-1-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "down_walk-1",
+      "sheet": "down_walk-1.png",
+      "substituted_pixels": 5858,
+      "substitutions": [
+        {
+          "from": "#3a3438",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#3b3538",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#3c3638",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#3e3130",
+          "to": "#413b3e",
+          "pixels": 2
+        },
+        {
+          "from": "#3e383b",
+          "to": "#413b3e",
+          "pixels": 5
+        },
+        {
+          "from": "#403a3d",
+          "to": "#413b3e",
+          "pixels": 4
+        },
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 5838
+        },
+        {
+          "from": "#423b3e",
+          "to": "#413b3e",
+          "pixels": 6
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

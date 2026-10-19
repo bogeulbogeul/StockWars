@@ -1,0 +1,14 @@
+{
+  "base_geometry_unchanged": true,
+  "front_wall": "Retained hidden in blend; omitted from cutaway GLB",
+  "background": "Black camera background in Blender; configure renderer clear color black when loading GLB",
+  "entrance_width": 0.371,
+  "entrance_depth": 0.38,
+  "entrance_position": [
+    -0.162,
+    0.209,
+    0.9496756196022034
+  ],
+  "materials": "Existing white wallpaper and oak preserved; matching entrance planks fade to black",
+  "scope": "Asset and preview only; game integration and exit trigger not implemented"
+}

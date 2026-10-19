@@ -1,0 +1,10 @@
+Tool: built-in image_gen
+Purpose: blank head, no eyes or mouth or growth accessories, modeling base reference.
+Sources: spirit-proportion-views-v2 front/right-side. Back already blank and copied unchanged from spirit-proportion-views-v2/back.png.
+Status: three reference PNGs prepared and visually checked. Concept references, not calibrated technical drawings. No changes to game, models or global fixed-expression design policy.
+
+FRONT
+Edit the reference character modeling design image. Preserve the exact full body silhouette, newer proportions, head size, narrower pear body, short visible legs, rounded feet, lowered droplet arms, standing pose, camera framing, lighting, white matte material and gray backdrop. Make the ENTIRE head completely smooth blank white, with NO eyes, mouth, nose, facial markings, eye sockets, eyebrows or expression. Bare head with NO plant, flower, sprout or accessories. This is a blank base modeling reference, not a neutral face with eyes. No clothes, no extra anatomy, no text, no props, full body uncropped, orthographic eye-level camera. Keep exact straight FRONT view.
+
+RIGHT SIDE
+Edit the reference character modeling design image. Preserve the exact full body silhouette, newer proportions, head size, narrower pear body, short visible legs, rounded feet, lowered droplet arms, standing pose, camera framing, lighting, white matte material and gray backdrop. Make the ENTIRE head completely smooth blank white, with NO eyes, mouth, nose, facial markings, eye sockets, eyebrows or expression. Bare head with NO plant, flower, sprout or accessories. This is a blank base modeling reference, not a neutral face with eyes. No clothes, no extra anatomy, no text, no props, full body uncropped, orthographic eye-level camera. Keep exact 90-degree RIGHT SIDE profile facing screen right. Change only the black eye to smooth blank white surface. No three-quarter angle.

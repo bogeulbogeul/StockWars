@@ -1,0 +1,31 @@
+{
+  "status": "P0 asset built; not installed in game",
+  "opening_width": 0.32,
+  "opening_height": 0.42500000000000004,
+  "arch_spring_height": 0.265,
+  "outer_width": 0.40900000000000003,
+  "outer_height": 0.463,
+  "center_gap": 0.0016,
+  "front_direction_gltf": "+Z",
+  "up_axis_gltf": "+Y",
+  "origin": "floor center of opening",
+  "hinges": [
+    "Hinge_Left",
+    "Hinge_Right"
+  ],
+  "hinge_rotation_axis_gltf": "Y",
+  "materials": [
+    "Door_Blue",
+    "Door_Panel_Edge",
+    "Frame_Cream",
+    "Handle_Ivory"
+  ],
+  "mesh_parts": 23,
+  "triangles": 6500,
+  "mounting": "arched opening needed for passage; existing rectangular main entrance is unchanged",
+  "notes": [
+    "No signs or door emblems",
+    "Opening preview tests hinge setup; no animation clip exported",
+    "Fits room scale, but side openings and collision integration are not implemented"
+  ]
+}

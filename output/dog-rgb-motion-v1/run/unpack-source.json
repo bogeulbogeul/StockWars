@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-unpack-source",
+  "layout_source": "manifest",
+  "cell": {
+    "width": 512,
+    "height": 512
+  },
+  "atlas": "C:\\GitHub\\StockWars\\output\\dog-rgb-motion-v1\\baked\\dog-rgb-motion.png",
+  "manifest": "C:\\GitHub\\StockWars\\output\\dog-rgb-motion-v1\\baked\\dog-rgb-motion.manifest.json",
+  "direction": null,
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from './data/characterAsset.js';
 /* 독립 테스트 화면: 게임 진행 상태와 저장 데이터는 사용하지 않는다. */
 const stage = document.querySelector('#stage');
 const player = document.querySelector('#player');
@@ -44,7 +45,7 @@ new ResizeObserver(clamp).observe(stage);
 const sheet = new Image();
 sheet.onload = () => { ready=true; center(); stage.focus(); };
 sheet.onerror = () => { status.textContent='시트 이미지를 불러오지 못했습니다. 경로를 확인해 주세요.'; };
-sheet.src='assets/characters/mannequin/walk-4direction-v1.png';
+sheet.src=EMPTY_CHARACTER_IMAGE;
 function tick(now) {
   const dt=last ? Math.min((now-last)/1000,.05) : 0; last=now;
   if(ready) {

@@ -1,0 +1,728 @@
+{
+  "source": "design-sheet.png",
+  "sha256": "a33d6ae4566b1f09a78c5d6499e2c8bf439d70e0534ac31ce0510c5a411cb1b0",
+  "method": "Exact RGB mode in manually inspected 5x5 interior regions; ties use first raster occurrence. No quantization or color correction.",
+  "note": "Local representative colors, not an adopted uniform palette. Highlights/shadows are visual region labels; generated art contains continuous color variation.",
+  "colors": [
+    {
+      "group": "털",
+      "part": "이마 기본색",
+      "rgb": [
+        254,
+        188,
+        107
+      ],
+      "hex": "#FEBC6B",
+      "roi": [
+        218,
+        215,
+        223,
+        220
+      ],
+      "exact_pixel_count": 14,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "정수리 털",
+      "rgb": [
+        253,
+        184,
+        102
+      ],
+      "hex": "#FDB866",
+      "roi": [
+        222,
+        182,
+        227,
+        187
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "볼 바깥 기본색",
+      "rgb": [
+        255,
+        190,
+        108
+      ],
+      "hex": "#FFBE6C",
+      "roi": [
+        111,
+        278,
+        116,
+        283
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "볼 털 그림자",
+      "rgb": [
+        243,
+        152,
+        84
+      ],
+      "hex": "#F39854",
+      "roi": [
+        111,
+        292,
+        116,
+        297
+      ],
+      "exact_pixel_count": 1,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "팔 기본색",
+      "rgb": [
+        254,
+        188,
+        107
+      ],
+      "hex": "#FEBC6B",
+      "roi": [
+        291,
+        434,
+        296,
+        439
+      ],
+      "exact_pixel_count": 8,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "팔 안쪽 털",
+      "rgb": [
+        253,
+        186,
+        104
+      ],
+      "hex": "#FDBA68",
+      "roi": [
+        155,
+        418,
+        160,
+        423
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "허벅지 기본색",
+      "rgb": [
+        253,
+        187,
+        106
+      ],
+      "hex": "#FDBB6A",
+      "roi": [
+        168,
+        528,
+        173,
+        533
+      ],
+      "exact_pixel_count": 7,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "허벅지 안쪽 털",
+      "rgb": [
+        254,
+        187,
+        107
+      ],
+      "hex": "#FEBB6B",
+      "roi": [
+        196,
+        515,
+        201,
+        520
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "털",
+      "part": "무릎 접힘 그림자",
+      "rgb": [
+        246,
+        161,
+        91
+      ],
+      "hex": "#F6A15B",
+      "roi": [
+        156,
+        549,
+        161,
+        554
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "귀",
+      "part": "귀 바깥 기본색",
+      "rgb": [
+        254,
+        187,
+        106
+      ],
+      "hex": "#FEBB6A",
+      "roi": [
+        114,
+        196,
+        119,
+        201
+      ],
+      "exact_pixel_count": 6,
+      "sample_pixels": 25
+    },
+    {
+      "group": "귀",
+      "part": "귀 안쪽 주황색",
+      "rgb": [
+        224,
+        118,
+        67
+      ],
+      "hex": "#E07643",
+      "roi": [
+        158,
+        186,
+        163,
+        191
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "눈썹",
+      "rgb": [
+        254,
+        246,
+        231
+      ],
+      "hex": "#FEF6E7",
+      "roi": [
+        182,
+        230,
+        187,
+        235
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "콧등",
+      "rgb": [
+        254,
+        245,
+        230
+      ],
+      "hex": "#FEF5E6",
+      "roi": [
+        217,
+        286,
+        222,
+        291
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "볼",
+      "rgb": [
+        254,
+        247,
+        234
+      ],
+      "hex": "#FEF7EA",
+      "roi": [
+        144,
+        321,
+        149,
+        326
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "입 아래",
+      "rgb": [
+        254,
+        245,
+        229
+      ],
+      "hex": "#FEF5E5",
+      "roi": [
+        218,
+        341,
+        223,
+        346
+      ],
+      "exact_pixel_count": 12,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "가슴",
+      "rgb": [
+        254,
+        245,
+        230
+      ],
+      "hex": "#FEF5E6",
+      "roi": [
+        218,
+        391,
+        223,
+        396
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "가슴 털 끝",
+      "rgb": [
+        254,
+        244,
+        226
+      ],
+      "hex": "#FEF4E2",
+      "roi": [
+        188,
+        422,
+        193,
+        427
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "목 아래 복숭아색 그림자",
+      "rgb": [
+        251,
+        208,
+        174
+      ],
+      "hex": "#FBD0AE",
+      "roi": [
+        218,
+        361,
+        223,
+        366
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "배 기본색",
+      "rgb": [
+        254,
+        246,
+        231
+      ],
+      "hex": "#FEF6E7",
+      "roi": [
+        218,
+        456,
+        223,
+        461
+      ],
+      "exact_pixel_count": 11,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "배 아래 그림자",
+      "rgb": [
+        251,
+        199,
+        162
+      ],
+      "hex": "#FBC7A2",
+      "roi": [
+        218,
+        502,
+        223,
+        507
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "앞발 기본색",
+      "rgb": [
+        255,
+        246,
+        231
+      ],
+      "hex": "#FFF6E7",
+      "roi": [
+        120,
+        473,
+        125,
+        478
+      ],
+      "exact_pixel_count": 7,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "뒷발 기본색",
+      "rgb": [
+        254,
+        246,
+        232
+      ],
+      "hex": "#FEF6E8",
+      "roi": [
+        153,
+        588,
+        158,
+        593
+      ],
+      "exact_pixel_count": 4,
+      "sample_pixels": 25
+    },
+    {
+      "group": "크림색",
+      "part": "뒷발 아래쪽",
+      "rgb": [
+        251,
+        246,
+        237
+      ],
+      "hex": "#FBF6ED",
+      "roi": [
+        153,
+        608,
+        158,
+        613
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "흰자",
+      "rgb": [
+        249,
+        249,
+        249
+      ],
+      "hex": "#F9F9F9",
+      "roi": [
+        155,
+        278,
+        160,
+        283
+      ],
+      "exact_pixel_count": 8,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "흰자 위쪽 그림자",
+      "rgb": [
+        218,
+        181,
+        157
+      ],
+      "hex": "#DAB59D",
+      "roi": [
+        160,
+        261,
+        165,
+        266
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "홍채 위쪽 짙은 갈색",
+      "rgb": [
+        62,
+        19,
+        0
+      ],
+      "hex": "#3E1300",
+      "roi": [
+        171,
+        271,
+        176,
+        276
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "홍채 아래쪽 밝은 갈색",
+      "rgb": [
+        169,
+        79,
+        31
+      ],
+      "hex": "#A94F1F",
+      "roi": [
+        175,
+        291,
+        180,
+        296
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "동공",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "hex": "#000000",
+      "roi": [
+        179,
+        280,
+        184,
+        285
+      ],
+      "exact_pixel_count": 7,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "반사광",
+      "rgb": [
+        247,
+        249,
+        250
+      ],
+      "hex": "#F7F9FA",
+      "roi": [
+        181,
+        267,
+        186,
+        272
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "눈",
+      "part": "윗눈꺼풀 윤곽선",
+      "rgb": [
+        14,
+        9,
+        5
+      ],
+      "hex": "#0E0905",
+      "roi": [
+        162,
+        256,
+        167,
+        261
+      ],
+      "exact_pixel_count": 1,
+      "sample_pixels": 25
+    },
+    {
+      "group": "코",
+      "part": "윗면 밝은 갈색",
+      "rgb": [
+        68,
+        35,
+        19
+      ],
+      "hex": "#442313",
+      "roi": [
+        217,
+        304,
+        222,
+        309
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "코",
+      "part": "중앙 기본색",
+      "rgb": [
+        37,
+        13,
+        4
+      ],
+      "hex": "#250D04",
+      "roi": [
+        218,
+        310,
+        223,
+        315
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "코",
+      "part": "콧구멍",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "hex": "#000000",
+      "roi": [
+        210,
+        312,
+        215,
+        317
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "선",
+      "part": "검은 외곽선",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "hex": "#000000",
+      "roi": [
+        82,
+        192,
+        87,
+        197
+      ],
+      "exact_pixel_count": 6,
+      "sample_pixels": 25
+    },
+    {
+      "group": "꼬리",
+      "part": "황금색 기본 털",
+      "rgb": [
+        254,
+        187,
+        106
+      ],
+      "hex": "#FEBB6A",
+      "roi": [
+        91,
+        432,
+        96,
+        437
+      ],
+      "exact_pixel_count": 9,
+      "sample_pixels": 25
+    },
+    {
+      "group": "꼬리",
+      "part": "털 그림자",
+      "rgb": [
+        245,
+        178,
+        106
+      ],
+      "hex": "#F5B26A",
+      "roi": [
+        103,
+        456,
+        108,
+        461
+      ],
+      "exact_pixel_count": 1,
+      "sample_pixels": 25
+    },
+    {
+      "group": "꼬리",
+      "part": "크림색 끝",
+      "rgb": [
+        254,
+        242,
+        222
+      ],
+      "hex": "#FEF2DE",
+      "roi": [
+        98,
+        384,
+        103,
+        389
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    },
+    {
+      "group": "표정",
+      "part": "혀 기본색",
+      "rgb": [
+        228,
+        123,
+        107
+      ],
+      "hex": "#E47B6B",
+      "roi": [
+        469,
+        906,
+        474,
+        911
+      ],
+      "exact_pixel_count": 3,
+      "sample_pixels": 25
+    },
+    {
+      "group": "표정",
+      "part": "혀 위쪽 그림자",
+      "rgb": [
+        187,
+        83,
+        68
+      ],
+      "hex": "#BB5344",
+      "roi": [
+        465,
+        899,
+        470,
+        904
+      ],
+      "exact_pixel_count": 1,
+      "sample_pixels": 25
+    },
+    {
+      "group": "표정",
+      "part": "입안",
+      "rgb": [
+        9,
+        6,
+        5
+      ],
+      "hex": "#090605",
+      "roi": [
+        471,
+        891,
+        476,
+        896
+      ],
+      "exact_pixel_count": 2,
+      "sample_pixels": 25
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "model": "BankBuilding",
+    "glass_triangles": 965,
+    "output": "C:\\GitHub\\StockWars\\output\\bank-retouch-final\\BankBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  }
+]

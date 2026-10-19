@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>물류창고 박씨 복구 검수</title>
+<link rel="stylesheet" href="../../web/css/modules/logistics/warehouse.css">
+<style>body{margin:0;background:#10151c;color:white;font-family:sans-serif}dialog{max-width:95vw;max-height:95vh}canvas{max-height:75vh}</style>
+<body><script type="module">
+import { LogisticsWarehouse } from '../../web/js/components/logistics/LogisticsWarehouse.js';
+let reward = false;
+const warehouse = new LogisticsWarehouse(document.body, {
+    getQuestReward: () => reward ? { id: 'challenge_logistics_s_v1', gold: 300, exp: 50 } : null,
+    onClaimReward: () => ({ success: true })
+});
+warehouse.open();
+await Promise.all([warehouse.background, warehouse.npc, warehouse.dialog.querySelector('img')].map(img => img.decode()));
+const portrait = warehouse.dialog.querySelector('img');
+const normal = portrait.src.includes('park-sheet-neutral-v2.png');
+warehouse.dismiss();
+warehouse.talk();
+const talk = !warehouse.conversation.hidden && normal;
+reward = true;
+warehouse.rewardDialogue();
+await portrait.decode();
+const smile = portrait.src.includes('park-sheet-proud-v2.png') && portrait.naturalWidth > 1;
+reward = false;
+warehouse.talk();
+await portrait.decode();
+warehouse.draw();
+window.parkRestoreResult = {
+    pass: normal && talk && smile && warehouse.npc.naturalWidth > 1,
+    body: [warehouse.npc.naturalWidth, warehouse.npc.naturalHeight],
+    normal, talk, smile
+};
+</script></body></html>

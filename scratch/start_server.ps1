@@ -1,4 +1,4 @@
-param([int]$Port = 5500, [string]$Path = "c:\Users\Administrator\Documents\GitHub\StockWars\web")
+param([int]$Port = 5500, [string]$Path = "${PSScriptRoot}\..\web")
 
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:$Port/")

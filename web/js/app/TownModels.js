@@ -1,0 +1,26 @@
+import { startTownPreview } from './TownPreview.js';
+import { installHomeModelEntrance } from './HomeModelEntrance.js';
+import { installCipherLobbyEntrance } from './CipherLobbyEntrance.js';
+
+// Keep the legacy >500-line stage untouched; install the new renderer independently.
+async function installTownModels() {
+    const town = window.stockWarsApp?.townStage;
+    if (!town?.viewportEl) return;
+    const { TownModelScene } = await import('../components/town3d/TownModelScene.js');
+    const models = new TownModelScene(town);
+    window.stockWarsApp.townModelScene = models;
+    const updateHomeEntrance = installHomeModelEntrance(window.stockWarsApp);
+    startTownPreview(window.stockWarsApp);
+    const updateCipherEntrance = installCipherLobbyEntrance(window.stockWarsApp);
+    const draw = () => {
+        models.draw();
+        updateHomeEntrance();
+        updateCipherEntrance();
+        requestAnimationFrame(draw);
+    };
+    draw();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    void installTownModels().catch(error => console.error('Town renderer initialization:', error));
+});

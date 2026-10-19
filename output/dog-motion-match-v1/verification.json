@@ -1,0 +1,333 @@
+{
+  "ok": true,
+  "characters_updated": 7,
+  "native_rows": 28,
+  "changed_frames": 63,
+  "dog_atlas_sha256": "3f09c4783b560c017e3a6daf379636d9b932845be80787f2ba5da2b579cba566",
+  "dog_unchanged": true,
+  "checks": [
+    {
+      "id": "cat",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "red-fox",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "raccoon-dog",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "european-badger",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "brown-bear",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    },
+    {
+      "id": "european-rabbit",
+      "changed_frames": [
+        [
+          "down_walk",
+          0
+        ],
+        [
+          "down_walk",
+          2
+        ],
+        [
+          "right_walk",
+          0
+        ],
+        [
+          "right_walk",
+          2
+        ],
+        [
+          "up_walk",
+          0
+        ],
+        [
+          "up_walk",
+          2
+        ],
+        [
+          "right_carry",
+          1
+        ],
+        [
+          "right_carry",
+          2
+        ],
+        [
+          "right_carry",
+          3
+        ]
+      ],
+      "layout_timing_unchanged": true,
+      "neutral_idle_sit_portrait_unchanged": true,
+      "full_native_frames_no_graft": true,
+      "visual_QA": "four complete pose boards reviewed; static frame/loop file checks; no live browser or in-game contact test",
+      "physical_stride_verified": false
+    }
+  ],
+  "runtime_contact_QA": false
+}

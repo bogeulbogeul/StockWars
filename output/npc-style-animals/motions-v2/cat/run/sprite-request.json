@@ -47,7 +47,7 @@
       "frames": 3,
       "fps": 6,
       "loop": true,
-      "action": "THREE poses: contact A, both-feet-planted neutral, opposite contact B. Existing colors and fingers retained."
+      "action": "Exactly THREE poses A / both soles planted neutral / opposite B. Match approved dog right_walk front-right three-quarter camera, BOTH eyes visible, identical angle in all poses. Existing black cat identity and charcoal palette retained. Near arm counter-swings behind / down / forward, far arm naturally occluded. No pure profile."
     },
     "up_idle": {
       "frames": 1,

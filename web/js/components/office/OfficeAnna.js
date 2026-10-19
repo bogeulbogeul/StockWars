@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 // Bounds measured from the final v7 atlas; each frame is anchored at its feet.
 const FRAMES = {
     down: [[199, 35, 389, 391], [477, 35, 668, 393], [729, 35, 919, 392]],
@@ -19,7 +20,7 @@ export class OfficeAnna {
         this.routeIndex = 0;
         this.moving = false;
         this.lastFrame = '';
-        const atlas = new URL('../../../assets/characters/anna/anna-walk-4direction-v7.png', import.meta.url).href;
+        const atlas = EMPTY_CHARACTER_IMAGE;
         this.element = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         this.element.id = 'isoAnnaCharacter';
         this.element.setAttribute('pointer-events', 'all');

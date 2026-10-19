@@ -20,6 +20,6 @@ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resol
 const rows=TOWN_BUILDINGS.map(b=>{const node=document.querySelector(`#building_${b.id} .building-artwork`);return {id:b.id,expected:b.height,attribute:Number(node.getAttribute('height')),src:node.querySelector('image').getAttribute('href')};});
 const rect=el.querySelector('.building-artwork').getBoundingClientRect();
 const bench=TOWN_LANDSCAPE.find(p=>p.type==='bench');
-window.townRenderResult={rows,salonHeight:rect.height,salonName:el.dataset.buildingName,benchWidth:bench.width,pass:rows.every(r=>r.expected===r.attribute)&&Math.abs(rect.height-405)<1&&salon.asset.src.includes('SalonDeTail-v2.png')&&bench.width===135};
+window.townRenderResult={rows,salonHeight:rect.height,salonName:el.dataset.buildingName,benchWidth:bench.width,pass:rows.every(r=>r.expected===r.attribute)&&Math.abs(rect.height-306)<1&&salon.asset.src.includes('SalonDeTail-single-story-v3.png')&&bench.width===135};
 document.querySelector('#results').textContent=JSON.stringify(window.townRenderResult,null,2);
 </script></html>

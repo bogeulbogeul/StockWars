@@ -1,6 +1,7 @@
 // One presentation for lessons, practice instructions and social onboarding.
 export function describeTutorialStep(step) {
     const examples = {
+        open_order_screen: ['위쪽 [주문하기] 탭을 누르세요.'],
         welcome_1: ['[다음 ▶]으로 계속 읽어요.', '[◀ 이전]으로 지난 설명을 다시 봐요.'],
         welcome_2: ['현금 5,000G가 지급됐어요. G는 게임 화폐예요.'],
         open_phone: ['화면 오른쪽 아래의 📱 버튼을 찾으세요.'],
@@ -29,15 +30,17 @@ export function describeTutorialStep(step) {
         go_town_proposal: ['문 앞까지 W·A·S·D로 이동해요.', '문을 클릭하거나 문 앞에서 F를 눌러 밖으로 나가요.'],
         enter_logistics: ['노란 화살표가 가리키는 [비트 물류센터]로 가세요.', '입구에서 F를 누르거나 건물을 클릭하세요.'],
         rumor_inventory_guide: ['상단 [소지품]에서 받은 찌라시를 찾을 수 있어요.'],
-        rumor_intel_explain: ['찌라시 선택 → [찌라시 열람] → 내용 확인'],
+        rumor_intel_explain: ['찌라시 선택 → [확인하기] → 내용 읽기 → 찌라시 창 닫기'],
         rumor_time_prediction: ['“이틀 뒤”가 언제 발표될지 알려주는 단서예요.', '아래에서 예상 시점을 하나 골라보세요.'],
         rumor_time_feedback: ['“이틀 뒤” → 발표 일정의 단서', '주가는 발표 전이나 후에 반응할 수도 있어요.'],
-        stamina_recovery_guide: ['아래 버튼으로 안나의 에너지 드링크 1개를 받아 바로 마셔요.', '하트 1개 회복 · 이미 체력이 가득 차면 소지품에 보관해요.'],
+        stamina_recovery_guide: ['아래 버튼으로 안나의 에너지 드링크 1개를 받아 바로 마셔요.', '체력이 가득 차도 마실 수 있어요. 최대 체력은 넘지 않아요.'],
         stock_basics_budget: ['7일 차에 월세 5,000G를 내야 해요.', '주식에 쓸 돈과 월세로 남겨둘 돈을 나누세요.'],
         stock_basics_diversification: ['A기업에 전부 투자하면 A기업 하락의 영향을 크게 받아요.', 'A·B기업에 나눠 투자해도 둘 다 떨어지면 손해예요.'],
         logistics_completed: ['완료 버튼을 누르면 정착 지원금 2,000G를 받아요.', '이제 거래와 물류 일을 하며 월세를 준비하세요.']
     };
     const action = {
+        rumor_intel_explain: '찌라시를 직접 읽고 창을 닫아 주세요.',
+        open_order_screen: '[주문하기] 탭을 누르세요.',
         open_phone: '📱 스마트폰 버튼을 누르세요.', launch_stock_app: '[사이퍼M]을 누르세요.',
         market_tab: '[주식 거래]를 누르세요.', select_stock: '[안나 추천] 종목을 누르세요.',
         buy_stock: '[시장가 · 1주]를 확인하고 [매수 (BUY)]를 누르세요.',
@@ -55,7 +58,7 @@ export function describeTutorialStep(step) {
         market_tab: '이제 아래쪽의 빛나는 [주식 거래] 탭을 눌러 주세요.', buy_stock: '현금으로 주식 1주를 사볼게요.',
         portfolio_guide: '아래쪽 [내 계좌]를 눌러 보유 주식을 확인하세요.',
         news_tab_guide: '아래쪽 [공시 뉴스]를 눌러 기업 소식을 확인해 보세요.', rumor_inventory_guide: '물류 보상으로 받은 찌라시는 소지품에 보관돼요.',
-        enter_logistics: '비트 물류센터에서 일을 하고 보상을 받을 수 있어요.'
+        enter_logistics: '캐릭터 위의 노란 화살표를 따라 물류센터로 가세요. 입구에서 F를 누르거나 건물을 클릭해 들어가세요.'
     };
     if (explanations[step.id]) result.text = explanations[step.id];
     if (examples[step.id]) result.example = { label: step.requiresManualAction ? '화면에서 확인하기' : '예시로 이해하기', rows: examples[step.id] };
@@ -119,6 +122,5 @@ export function tutorialShortcutDestination(id) {
     if (id === 'market_tab') return { label: '주식 거래 열기 →', tab: 'Market' };
     if (id === 'open_phone') return { label: '스마트폰 열기 →', selector: '#floatingPhoneBtn' };
     if (id === 'launch_stock_app') return { label: '사이퍼M 열기 →', selector: '#iconStockApp' };
-    if (['rumor_inventory_guide', 'rumor_intel_explain'].includes(id)) return { label: '소지품 열기 →', selector: '#btnHudInventory' };
     return null;
 }

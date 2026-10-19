@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-0.png",
+      "region": [
+        90,
+        293,
+        152,
+        359
+      ],
+      "source_component_bbox": [
+        144,
+        68,
+        529,
+        727
+      ],
+      "source_region": [
+        208,
+        580,
+        318,
+        697
+      ],
+      "changedPixels": 2227,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "b3051d08bc21732d86f8ed58758fc0a1e6941a32821b2fd58fc512f7e8898c44",
+      "afterSha256": "f58b93cf89247631e8570e26b5dd01b45c44eb987c752b689f73a6efd31c7157"
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\raccoon-dog\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\raccoon-dog-raccoon-dog-up_walk-2.png",
+      "region": [
+        156,
+        292,
+        224,
+        361
+      ],
+      "source_component_bbox": [
+        1410,
+        68,
+        1794,
+        726
+      ],
+      "source_region": [
+        1600,
+        577,
+        1720,
+        700
+      ],
+      "changedPixels": 2726,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "72048ee75c2ab13e5464f64fd5036d22b219c7e179fc0ccf73fa40d107c51f9a",
+      "afterSha256": "e3315efe35a3562dfb2a2ff11c995304564f51ac511ffc08c2aa9ae05d37b770"
+    }
+  ]
+}

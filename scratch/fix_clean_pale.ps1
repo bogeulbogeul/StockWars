@@ -160,7 +160,7 @@ Add-Type -TypeDefinition $csharpCode -ReferencedAssemblies System.Drawing -Langu
 
 $baseDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\dbc93132-94f3-4940-836f-bddd85e738d0\.user_uploaded"
 $fairFile = "media_1789453620850.png"
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 
 $targetCanvasW = 240
 $targetCanvasH = 340

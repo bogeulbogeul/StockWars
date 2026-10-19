@@ -1,0 +1,134 @@
+[
+  {
+    "state": "down_idle_wag",
+    "index": 0,
+    "translation": [
+      2,
+      0
+    ],
+    "changed_tail_pixels": 3885,
+    "unchanged_body_pixels": 106838,
+    "body_locked": true
+  },
+  {
+    "state": "down_idle_wag",
+    "index": 2,
+    "translation": [
+      14,
+      0
+    ],
+    "changed_tail_pixels": 5419,
+    "unchanged_body_pixels": 106838,
+    "body_locked": true
+  },
+  {
+    "state": "right_idle_wag",
+    "index": 0,
+    "translation": [
+      -2,
+      0
+    ],
+    "changed_tail_pixels": 6269,
+    "unchanged_body_pixels": 112965,
+    "body_locked": true
+  },
+  {
+    "state": "right_idle_wag",
+    "index": 2,
+    "translation": [
+      10,
+      0
+    ],
+    "changed_tail_pixels": 6530,
+    "unchanged_body_pixels": 112965,
+    "body_locked": true
+  },
+  {
+    "state": "up_idle_wag",
+    "index": 0,
+    "translation": [
+      0,
+      0
+    ],
+    "changed_tail_pixels": 15736,
+    "unchanged_body_pixels": 111716,
+    "body_locked": true
+  },
+  {
+    "state": "up_idle_wag",
+    "index": 2,
+    "translation": [
+      1,
+      0
+    ],
+    "changed_tail_pixels": 15755,
+    "unchanged_body_pixels": 111716,
+    "body_locked": true
+  },
+  {
+    "state": "down_sit_wag",
+    "index": 0,
+    "translation": [
+      -5,
+      0
+    ],
+    "changed_tail_pixels": 5062,
+    "unchanged_body_pixels": 105624,
+    "body_locked": true
+  },
+  {
+    "state": "down_sit_wag",
+    "index": 2,
+    "translation": [
+      22,
+      0
+    ],
+    "changed_tail_pixels": 7506,
+    "unchanged_body_pixels": 105624,
+    "body_locked": true
+  },
+  {
+    "state": "right_sit_wag",
+    "index": 0,
+    "translation": [
+      -4,
+      0
+    ],
+    "changed_tail_pixels": 6694,
+    "unchanged_body_pixels": 113519,
+    "body_locked": true
+  },
+  {
+    "state": "right_sit_wag",
+    "index": 2,
+    "translation": [
+      6,
+      0
+    ],
+    "changed_tail_pixels": 6420,
+    "unchanged_body_pixels": 113519,
+    "body_locked": true
+  },
+  {
+    "state": "right_carry_wag",
+    "index": 0,
+    "translation": [
+      -7,
+      -16
+    ],
+    "changed_tail_pixels": 7742,
+    "unchanged_body_pixels": 113477,
+    "body_locked": true
+  },
+  {
+    "state": "right_carry_wag",
+    "index": 2,
+    "translation": [
+      10,
+      0
+    ],
+    "changed_tail_pixels": 7087,
+    "unchanged_body_pixels": 113477,
+    "body_locked": true
+  }
+]

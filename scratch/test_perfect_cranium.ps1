@@ -126,10 +126,10 @@ function Perfect-Cranium {
 }
 
 # Test on base_fair_left.png and base_fair_right.png
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png" -dir "left"
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png" -dir "right"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\base_fair_left.png" -dir "left"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\base_fair_right.png" -dir "right"
 
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\male_base_fair_left.png" -dir "left"
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\male_base_fair_right.png" -dir "right"
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\male_left.png" -dir "left"
-Perfect-Cranium -filePath "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\male_right.png" -dir "right"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\male_base_fair_left.png" -dir "left"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\male_base_fair_right.png" -dir "right"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\male_left.png" -dir "left"
+Perfect-Cranium -filePath "${PSScriptRoot}\..\web\assets\character\male_right.png" -dir "right"

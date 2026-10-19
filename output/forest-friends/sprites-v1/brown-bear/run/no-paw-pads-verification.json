@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-0.png",
+      "region": [
+        92,
+        293,
+        156,
+        361
+      ],
+      "source_component_bbox": [
+        146,
+        73,
+        521,
+        724
+      ],
+      "source_region": [
+        209,
+        578,
+        321,
+        698
+      ],
+      "changedPixels": 2252,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "c7d05ecd66ebfb9080271af81e181d8faa8d92ac084763d5bc97392f37cdc74b",
+      "afterSha256": "d43b2b6205240b96a7095d3985cf1137fc5bce44da7f241c1254ae268c93df5a"
+    },
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\brown-bear-brown-bear-up_walk-2.png",
+      "region": [
+        156,
+        291,
+        229,
+        362
+      ],
+      "source_component_bbox": [
+        1413,
+        72,
+        1787,
+        724
+      ],
+      "source_region": [
+        1598,
+        576,
+        1728,
+        700
+      ],
+      "changedPixels": 2657,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "b0e114ea45fb8c4d8101b22a143cfeab2178d32c498de57fd1a8452efa84dc5c",
+      "afterSha256": "2707fc710966504db810956f8368c34b4d269644bd75d3d147f3ecfa75b5427b"
+    }
+  ]
+}

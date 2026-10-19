@@ -1,0 +1,4 @@
+Cipher lobby four-wall concept references
+Generated with built-in image_gen, 2026-10-19.
+Prompt brief: Keep all four full-height walls and remove only ceiling, following user RoomFront.png. Blue/ivory furnished lobby, blank rear screen and analog clock, book/trophy plaques only above side doors, plain door leaves, front centered rectangular open exit, blue carpet inside, no protruding corridor. Neutral studio background.
+Views: front, rear, front-left oblique, front-right oblique. Side generation produced oblique front views rather than exact 90-degree side elevations. These are concept/modeling references, not orthographic drawings or a geometrically verified turnaround. Rear view has furniture-position differences; use front.png as layout authority. Existing game assets have not been replaced.

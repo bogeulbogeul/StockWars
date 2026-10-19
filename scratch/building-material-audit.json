@@ -1,0 +1,213 @@
+{
+  "buildings": [
+    {
+      "id": "home_office_tower",
+      "name": "집",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "settlement_information",
+      "name": "정착 안내소",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "vivian_store",
+      "name": "비비안 잡화점",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "julian_furniture",
+      "name": "모던 프레임",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "cipher_securities",
+      "name": "사이퍼 증권",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "node_finance",
+      "name": "노드 은행",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "midnight_pub",
+      "name": "미드나잇 펍",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "data_ink_bookstore",
+      "name": "데이터 잉크 서점",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    },
+    {
+      "id": "claire_apparel",
+      "name": "옷가게",
+      "present": true,
+      "materials": [
+        {
+          "name": "building-clean",
+          "corrected": true,
+          "filterInjected": true,
+          "oldPaletteAbsent": true,
+          "originalColorPreserved": true,
+          "originalTexturePreserved": true,
+          "metallic": 0,
+          "roughness": 0.9,
+          "normal": [
+            0.2,
+            0.2
+          ],
+          "mipmaps": false,
+          "colorSpace": "srgb"
+        }
+      ]
+    }
+  ],
+  "shaderErrors": 0,
+  "exposure": 1
+}

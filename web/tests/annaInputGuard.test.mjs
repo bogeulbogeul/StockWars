@@ -48,6 +48,17 @@ test('movement practice permits movement only; hidden or completed tutorials rel
     dispose(); assert.equal(listeners.size, 0);
 });
 
+test('WASD introduction allows movement during replay while keeping shortcuts locked', () => {
+    const { tutorial, send } = setup();
+    tutorial.steps = [{ id: 'movement_keys_guide', requiresManualAction: false }];
+    for (const key of ['w', 'a', 's', 'd']) assert.equal(send('keydown', {}, key), false);
+    for (const key of ['f', 'p', 'i']) assert.equal(send('keydown', {}, key), true);
+    tutorial.historyCursor = 0;
+    tutorial.dialogueHistory = tutorial.steps;
+    for (const key of ['w', 'a', 's', 'd']) assert.equal(send('keydown', {}, key), false);
+    for (const key of ['f', 'p', 'i']) assert.equal(send('keydown', {}, key), true);
+});
+
 
 test('chart exploration permits drag and scroll in both the current lesson and history', () => {
     const { tutorial, send } = setup();

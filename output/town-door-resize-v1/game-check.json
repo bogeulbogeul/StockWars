@@ -1,0 +1,66 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "id": "home_office_tower",
+      "expected": 630,
+      "attribute": 630,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/OfficeBuilding-door-v2.png"
+    },
+    {
+      "id": "bit_logistics",
+      "expected": 324,
+      "attribute": 324,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/Bit-door-v2.png"
+    },
+    {
+      "id": "vivian_store",
+      "expected": 270,
+      "attribute": 270,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/VivianStore-door-v3.png"
+    },
+    {
+      "id": "julian_furniture",
+      "expected": 288,
+      "attribute": 288,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/MordenFrame-single-story-v1.png"
+    },
+    {
+      "id": "claire_apparel",
+      "expected": 306,
+      "attribute": 306,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/SalonDeTail-single-story-v3.png"
+    },
+    {
+      "id": "data_ink_bookstore",
+      "expected": 270,
+      "attribute": 270,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/BookStore-single-story-v1.png"
+    },
+    {
+      "id": "cipher_securities",
+      "expected": 720,
+      "attribute": 720,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/CipherBuilding-door-v2.png"
+    },
+    {
+      "id": "node_finance",
+      "expected": 360,
+      "attribute": 360,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/BankBuilding-single-story-v1.png"
+    },
+    {
+      "id": "midnight_pub",
+      "expected": 270,
+      "attribute": 270,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/MidnightPub-single-story-v1.png"
+    },
+    {
+      "id": "barter_pawn_shop",
+      "expected": 315,
+      "attribute": 315,
+      "src": "http://127.0.0.1:8776/web/assets/buildings/topdown-v1/BarterPawnShop-single-story-v1.png"
+    }
+  ],
+  "errors": []
+}

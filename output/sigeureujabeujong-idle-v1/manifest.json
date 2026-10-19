@@ -1,0 +1,24 @@
+{
+  "kind": "idle-poses",
+  "states": {
+    "front-idle.png": {
+      "source": "output/sigeureujabeujong-front-walk-v1/run/curated/frame-1.png",
+      "sha256": "1b00d5ee73073de2b5b7175a3d102c41adaf536b89ca04df21def09dc0d54737",
+      "pose": "walking neutral held",
+      "game_integrated": false
+    },
+    "right-side-idle.png": {
+      "source": "output/sigeureujabeujong-right-side-walk-v1/run/curated/frame-1.png",
+      "sha256": "4968bcc44458a670fcfafa422ad94f6ac9d117cc98c8e93f96c20a6bc597f454",
+      "pose": "walking neutral held",
+      "game_integrated": false
+    },
+    "back-idle.png": {
+      "source": "output/sigeureujabeujong-back-ear-v2/run/curated/frame-1.png",
+      "sha256": "571de98564296f1f5726bd62c2492822b12fe6dc5f4c9249191b84049a15d9d6",
+      "pose": "walking neutral held",
+      "game_integrated": false
+    }
+  },
+  "note": "Static held poses; no tail loop or transition animation added. Rear uses ear-corrected v2, rejected tail-root version excluded."
+}

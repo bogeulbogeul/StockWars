@@ -1,0 +1,18 @@
+{
+  "changed_frames": [
+    "up_walk/0",
+    "up_walk/2"
+  ],
+  "other_17_PNGs_byte_identical": true,
+  "all_alpha_unchanged": true,
+  "lower_root_y256_and_below_exact": true,
+  "palette_file_unchanged": true,
+  "upper_white_tuft_centroid_x_A_neutral_B": [
+    157.44198895027625,
+    160.58441558441558,
+    164.95882352941177
+  ],
+  "layout_and_playback_unchanged": true,
+  "game_installed": false,
+  "live_continuity": "experimental; not observed"
+}

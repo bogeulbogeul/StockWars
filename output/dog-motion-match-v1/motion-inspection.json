@@ -1,0 +1,201 @@
+{
+  "reports": [
+    {
+      "id": "cat",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "cat",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "cat",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "cat",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "red-fox",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "red-fox",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "red-fox",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-badger",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-badger",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-badger",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "brown-bear",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "brown-bear",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "brown-bear",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-rabbit",
+      "state": "down_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-rabbit",
+      "state": "right_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    },
+    {
+      "id": "european-rabbit",
+      "state": "right_carry",
+      "duration_seconds": 0.64,
+      "stride_verified": false,
+      "status": "needs-review"
+    }
+  ],
+  "note": "Actual four-step GIF loops at 160ms. No manually declared same-foot contact; physical stride remains unverified."
+}

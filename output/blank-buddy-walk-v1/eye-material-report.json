@@ -1,0 +1,24 @@
+{
+  "before": [
+    {
+      "Metallic": {
+        "default": 0.0,
+        "linked": true
+      },
+      "Roughness": {
+        "default": 0.5,
+        "linked": true
+      },
+      "Specular IOR Level": {
+        "default": 0.5,
+        "linked": false
+      }
+    }
+  ],
+  "after": {
+    "metallic": 0,
+    "roughness": 1,
+    "specular": 0
+  },
+  "base_color_unchanged": true
+}

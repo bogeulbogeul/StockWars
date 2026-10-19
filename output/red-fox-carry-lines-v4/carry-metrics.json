@@ -1,0 +1,23 @@
+{
+  "frames": [
+    {
+      "frame": 0,
+      "ear_top_y": 33
+    },
+    {
+      "frame": 1,
+      "ear_top_y": 31
+    },
+    {
+      "frame": 2,
+      "ear_top_y": 33
+    },
+    {
+      "frame": 3,
+      "ear_top_y": 31
+    }
+  ],
+  "head_top_range_px": 2,
+  "no_horizontal_head_splice": true,
+  "live_visual_qa": "pending"
+}

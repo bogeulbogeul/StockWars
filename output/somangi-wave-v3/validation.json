@@ -1,0 +1,22 @@
+{
+  "frames": 61,
+  "duration_seconds": 2.5,
+  "torso_displacement": 0,
+  "feet_displacement": 1.4901161193847656e-08,
+  "arm_edge_length_error": 1.673604135424625e-07,
+  "loop_error": 0.0,
+  "minimum_embedded_shoulder_vertices_each_arm": 305,
+  "shoulder_morphs": false,
+  "distal_arm_head_intersections": 0,
+  "glb": {
+    "animation": "Wave_Happy",
+    "meshes": 4,
+    "morph_channels": 0
+  },
+  "roundtrip": {
+    "clips": [
+      "Wave_Happy"
+    ],
+    "armatures": 1
+  }
+}

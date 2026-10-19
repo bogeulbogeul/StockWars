@@ -1,6 +1,6 @@
 Add-Type -AssemblyName System.Drawing
 
-$dir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\weather"
+$dir = "${PSScriptRoot}\..\web\assets\weather"
 $files = Get-ChildItem -Path "$dir\cloud_*.png"
 
 foreach ($f in $files) {

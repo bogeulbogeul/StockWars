@@ -1,0 +1,7 @@
+{
+  "id": "european-badger",
+  "state": "right_walk",
+  "instruction": "Correct ONLY unwanted coat markings on paws/feet in this row. All THREE figures must have BOTH front paws, fingers, lower legs and feet entirely dark charcoal gray, matching neutral middle pose. Remove the white/cream toes on extended forward feet in first and third figures; remove cream patch on forward hand in third figure. Preserve pale face and gray belly and tail colors exactly. Keep all poses cameras positions sizes heads stripes background and row size unchanged.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-2cfc00cd-7f82-4c1e-af54-7b3ef6bb91b7.png",
+  "prompt": "Precise sprite row correction. Image1 is EDIT TARGET. Correct ONLY unwanted coat markings on paws/feet in this row. All THREE figures must have BOTH front paws, fingers, lower legs and feet entirely dark charcoal gray, matching neutral middle pose. Remove the white/cream toes on extended forward feet in first and third figures; remove cream patch on forward hand in third figure. Preserve pale face and gray belly and tail colors exactly. Keep all poses cameras positions sizes heads stripes background and row size unchanged. Image2 is accepted identity reference for coat colors only. No new props, no labels. Retain exactly three separated full-body figures on flat cyan #00FFFF."
+}

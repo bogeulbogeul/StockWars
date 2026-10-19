@@ -3,7 +3,7 @@
 $faceSrc = "C:\Users\Administrator\.gemini\antigravity-ide\brain\0415e4d4-6a74-4c66-aab6-731ecd9b95d7\.user_uploaded\media_1789461632227.png"
 $faceBmp = New-Object System.Drawing.Bitmap($faceSrc)
 
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 
 $targetCanvasW = 240
 $targetCanvasH = 340

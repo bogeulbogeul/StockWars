@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-curation",
+  "states": {
+    "down_walk": {
+      "selected": [
+        2,
+        1,
+        0,
+        1
+      ],
+      "revision": [
+        "e49e333aea67"
+      ],
+      "transforms": {
+        "0": {
+          "dx": -26
+        },
+        "1": {
+          "dx": -28
+        },
+        "2": {
+          "dx": 26
+        }
+      }
+    },
+    "right_walk": {
+      "selected": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "revision": [
+        "92ccc9a083a2"
+      ],
+      "transforms": {
+        "0": {
+          "dx": -15
+        },
+        "1": {
+          "dx": -16
+        },
+        "2": {
+          "dx": -12
+        }
+      }
+    },
+    "up_walk": {
+      "selected": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "revision": [
+        "06667b1607c6"
+      ],
+      "transforms": {
+        "0": {
+          "dx": -23
+        },
+        "1": {
+          "dx": -21
+        },
+        "2": {
+          "dx": 22
+        }
+      }
+    },
+    "down_sit": {
+      "selected": [
+        0
+      ],
+      "transforms": {
+        "0": {
+          "scale": 0.85,
+          "dy": 35
+        }
+      },
+      "revision": [
+        "a34137e261e3"
+      ]
+    },
+    "right_sit": {
+      "selected": [
+        0
+      ],
+      "transforms": {
+        "0": {
+          "scale": 0.85,
+          "dy": 35
+        }
+      },
+      "revision": [
+        "0b06ccc33c99"
+      ]
+    },
+    "right_carry": {
+      "transforms": {
+        "0": {
+          "dx": -8
+        },
+        "1": {
+          "dx": -4
+        },
+        "2": {
+          "dx": -6
+        },
+        "3": {
+          "dx": -4
+        }
+      },
+      "revision": [
+        "1ca7ec0292dd"
+      ]
+    }
+  },
+  "run_revision": "e93420cb8c3a9493"
+}

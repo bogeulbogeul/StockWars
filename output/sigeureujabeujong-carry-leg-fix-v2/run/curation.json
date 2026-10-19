@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-curation",
+  "states": {
+    "right_carry": {
+      "selected": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "transforms": {
+        "0": {
+          "dx": -2,
+          "dy": 0
+        },
+        "1": {
+          "dx": 0,
+          "dy": 0
+        },
+        "2": {
+          "dx": -1,
+          "dy": 0
+        },
+        "3": {
+          "dx": 1,
+          "dy": 0
+        }
+      },
+      "revision": [
+        "c9f8e8fb150b"
+      ]
+    }
+  },
+  "run_revision": "ab6336350fd43172"
+}

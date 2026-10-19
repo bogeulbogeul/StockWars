@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "material-thin-internal-line.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "thin-internal-line",
+      "sheet": "thin-internal-line.png",
+      "substituted_pixels": 23148,
+      "substitutions": [
+        {
+          "from": "#2b1e17",
+          "to": "#332d30",
+          "pixels": 1603
+        },
+        {
+          "from": "#2f2a2a",
+          "to": "#332d30",
+          "pixels": 7278
+        },
+        {
+          "from": "#2f2a2d",
+          "to": "#332d30",
+          "pixels": 1858
+        },
+        {
+          "from": "#332d30",
+          "to": "#332d30",
+          "pixels": 12006
+        },
+        {
+          "from": "#3a3438",
+          "to": "#332d30",
+          "pixels": 403
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

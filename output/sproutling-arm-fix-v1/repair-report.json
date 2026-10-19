@@ -1,0 +1,26 @@
+[
+  {
+    "object": "Body",
+    "vertices": 101368,
+    "faces": 101370,
+    "open_edges": 0,
+    "non_manifold_edges": 0,
+    "capped_faces": 3
+  },
+  {
+    "object": "Arm.L",
+    "vertices": 4758,
+    "faces": 4746,
+    "open_edges": 0,
+    "non_manifold_edges": 0,
+    "capped_faces": 2
+  },
+  {
+    "object": "Arm.R",
+    "vertices": 4766,
+    "faces": 4758,
+    "open_edges": 0,
+    "non_manifold_edges": 0,
+    "capped_faces": 1
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "adopted": false,
+  "files": [
+    "variants/",
+    "recolor.spec.json",
+    "recolor.log"
+  ],
+  "reason": "Reduced palette lost rare eye whites; dominant-color exact replacement introduced grain in soft native gradients. Final PNGs use corrected native RGB and canonical alpha; no palette reduction/remap is adopted."
+}

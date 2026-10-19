@@ -1,0 +1,30 @@
+{
+  "frames": [
+    {
+      "carry_frame": 0,
+      "walk_head_frame": 0,
+      "head_RGBA_exact": true,
+      "body_RGBA_exact_v2": true
+    },
+    {
+      "carry_frame": 1,
+      "walk_head_frame": 1,
+      "head_RGBA_exact": true,
+      "body_RGBA_exact_v2": true
+    },
+    {
+      "carry_frame": 2,
+      "walk_head_frame": 2,
+      "head_RGBA_exact": true,
+      "body_RGBA_exact_v2": true
+    },
+    {
+      "carry_frame": 3,
+      "walk_head_frame": 1,
+      "head_RGBA_exact": true,
+      "body_RGBA_exact_v2": true
+    }
+  ],
+  "palette_unchanged": true,
+  "live_visual_qa": "pending"
+}

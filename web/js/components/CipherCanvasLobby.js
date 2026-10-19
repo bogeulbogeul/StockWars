@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { paintCharacterSprite as paintDogSprite } from './CharacterSprite.js';
 import {CipherRoomPackage,CIPHER_AGENT_ENABLED} from './CipherRoomPackage.js';
 import {PLACES as PACKAGE_PLACES,ROOM_SIZE} from './CipherRoomPackageGeometry.js';
@@ -70,9 +71,15 @@ export class CipherLobby {
     }
     draw(){
         if(!this.player||!this.notice)return;
+        // Recheck DPR during playback too (e.g. moving to another monitor).
+        this.roomPackage.syncResolution();
         const ctx=this.canvas.getContext('2d');
+        ctx.setTransform(1,0,0,1,0,0);
         ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-        ctx.save();ctx.scale(this.roomPackage.scale,this.roomPackage.scale);
+        const scale=Math.min(this.canvas.width/ROOM_SIZE.width,this.canvas.height/ROOM_SIZE.height);
+        ctx.save();
+        ctx.setTransform(scale,0,0,scale,(this.canvas.width-ROOM_SIZE.width*scale)/2,(this.canvas.height-ROOM_SIZE.height*scale)/2);
+        ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
         this.roomPackage.draw(ctx);ctx.restore();
     }
     ensurePlayer(){if(!this.navigation.isWalkable(this.player.x,this.player.y))Object.assign(this.player,this.navigation.clamp(this.player.x,this.player.y));}
@@ -131,11 +138,26 @@ export class CipherLobby {
         this.notice.hidden=false;choices.querySelector('button')?.focus();
     }
     renderAgentChoices(){
+        const reward=this.getQuestReward?.();
+        if(reward&&this.onClaimReward?.(reward.id)?.success){
+            this.renderAgentMenu(`하하, 이번 승부는 당신의 승리군요. 마지막까지 자산을 지켜 낸 판단이 훌륭했습니다. 약속한 ${reward.gold}G와 ${reward.exp} EXP입니다. 다음 대결도 기대하겠습니다.`,[['감사합니다',()=>this.renderAgentChoices(),true]]);
+            this.notice.querySelector('.cipher-agent-portrait').src=EMPTY_CHARACTER_IMAGE;
+            return;
+        }
         this.renderAgentMenu('다시 찾아주셨군요. 무엇을 도와드릴까요?',[
             ['K와 연습 대결',()=>this.startAgentPractice(),true],
+            ...(this.getQuestOffers?.('agent_k')?.length ? [['의뢰 확인',()=>this.renderAgentQuestOffer()]] : []),
             ['궁금한 게 있어요',()=>this.renderAgentQuestions()],
             ['옵시디언 회원 안내',()=>this.renderAgentMembership()],
             ['대화 마치기',()=>this.advanceNotice(true)]
+        ]);
+    }
+    renderAgentQuestOffer(){
+        const quest=this.getQuestOffers?.('agent_k')?.[0];
+        if(!quest){this.renderAgentChoices();return;}
+        this.renderAgentMenu('이제 배운 것을 실전에서 시험해 볼 때군요. 저와 모의투자로 겨뤄 보시겠습니까? 제한 시간이 끝났을 때 총자산이 저보다 많으면 당신의 승리입니다. 무승부나 중도 포기는 인정하지 않겠습니다. 이기면 다시 찾아오세요. 보상을 준비해 두죠.',[
+            ['맡겨 주세요',()=>{if(!this.onAcceptQuest?.(quest.id,'agent_k')?.success)return;this.renderAgentMenu('좋습니다. 준비되면 저에게 연습 대결을 신청하세요. 승부가 끝나면 다시 이야기를 나눕시다.',[['알겠습니다',()=>this.renderAgentChoices(),true]]);},true],
+            ['나중에 할게요',()=>this.renderAgentChoices()]
         ]);
     }
     startAgentPractice(){

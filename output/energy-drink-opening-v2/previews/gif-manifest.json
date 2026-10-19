@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-gif-run",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2",
+  "exports": [
+    {
+      "state": "open",
+      "output": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\previews\\open.gif",
+      "frames": 10,
+      "fps": 12.0,
+      "loop": false,
+      "gif_report": {
+        "path": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v2\\previews\\open.gif",
+        "frames": 10,
+        "delay_ticks": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "loop": 0,
+        "transparent": true,
+        "disposal": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  ]
+}

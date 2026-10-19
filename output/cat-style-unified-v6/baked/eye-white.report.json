@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "material-eye-white.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "eye-white",
+      "sheet": "eye-white.png",
+      "substituted_pixels": 15362,
+      "substitutions": [
+        {
+          "from": "#f9f9f9",
+          "to": "#f9f9f9",
+          "pixels": 5855
+        },
+        {
+          "from": "#fafafa",
+          "to": "#f9f9f9",
+          "pixels": 9507
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

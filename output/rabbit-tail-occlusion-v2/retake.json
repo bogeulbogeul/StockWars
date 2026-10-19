@@ -1,0 +1,8 @@
+{
+  "rejected": "native/right_sit.png",
+  "reason": "Returned four design views rather than one unchanged seated pose; never used as final sprite.",
+  "accepted": "native/right_sit-retake.png",
+  "provider": "built-in image_gen",
+  "prompt": "Edit only this single seated rabbit sprite. Remove the cream tail puff sticking out to the LEFT behind its waist/hip: replace that puff with transparent background, so the short tail is hidden behind its central rear pelvis. Preserve this EXACT seated pose, face, ears, arms, hands, legs, fur color, shading, proportions, and existing hip contour. One character only. Do not generate a character design sheet or additional views. Transparent background. No text. Only the tail visibility changes.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-4b3e9591-fb30-4e6f-8342-c038c6cff297.png"
+}

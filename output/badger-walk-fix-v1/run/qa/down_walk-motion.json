@@ -1,0 +1,222 @@
+{
+  "kind": "sprite-gen-motion-report",
+  "version": 1,
+  "status": "needs-review",
+  "frame_count": 4,
+  "duration_seconds": 0.64,
+  "size": [
+    320,
+    400
+  ],
+  "anchor_px": [
+    160.0,
+    400.0
+  ],
+  "facing": null,
+  "contacts": [],
+  "foot_box": null,
+  "duplicate_frames": {
+    "exact": 1,
+    "adjacent_exact": 0,
+    "exact_silhouette": 1,
+    "near_silhouette": 0
+  },
+  "motion": {
+    "present": true,
+    "changed_transitions": 3,
+    "silhouette_changed_transitions": 3,
+    "silhouette_change_per_second": 0.5409842440898002
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "time_seconds": 0.0,
+      "duration_seconds": 0.16,
+      "bbox": [
+        60,
+        33,
+        260,
+        380
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -100.0,
+        -367.0,
+        100.0,
+        -20.0
+      ],
+      "centroid_px": [
+        162.17642855663485,
+        187.8141064142659
+      ],
+      "opaque_pixels": 48283,
+      "edge_sides": []
+    },
+    {
+      "frame": 1,
+      "time_seconds": 0.16,
+      "duration_seconds": 0.16,
+      "bbox": [
+        60,
+        33,
+        260,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -100.0,
+        -367.0,
+        100.0,
+        -28.0
+      ],
+      "centroid_px": [
+        159.88020629068947,
+        194.62308808534002
+      ],
+      "opaque_pixels": 50996,
+      "edge_sides": []
+    },
+    {
+      "frame": 2,
+      "time_seconds": 0.32,
+      "duration_seconds": 0.16,
+      "bbox": [
+        60,
+        33,
+        260,
+        378
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -100.0,
+        -367.0,
+        100.0,
+        -22.0
+      ],
+      "centroid_px": [
+        158.08993896109288,
+        186.9881036415729
+      ],
+      "opaque_pixels": 48166,
+      "edge_sides": []
+    },
+    {
+      "frame": 3,
+      "time_seconds": 0.48,
+      "duration_seconds": 0.16,
+      "bbox": [
+        60,
+        33,
+        260,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -100.0,
+        -367.0,
+        100.0,
+        -28.0
+      ],
+      "centroid_px": [
+        159.88020629068947,
+        194.62308808534002
+      ],
+      "opaque_pixels": 50996,
+      "edge_sides": []
+    }
+  ],
+  "bbox_stats": {
+    "union": [
+      60,
+      33,
+      260,
+      380
+    ],
+    "width_range": [
+      200,
+      200
+    ],
+    "height_range": [
+      339,
+      347
+    ],
+    "bottom_range": [
+      372,
+      380
+    ]
+  },
+  "edge_contact": {
+    "frames": [],
+    "sides": {
+      "left": [],
+      "top": [],
+      "right": [],
+      "bottom": []
+    }
+  },
+  "contact_candidates": [],
+  "confidence": 0.0,
+  "sequence": {
+    "source": "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\qa\\down_walk-sequence.json",
+    "state": null,
+    "fps_override": null,
+    "frame_count": 4,
+    "size": [
+      320,
+      400
+    ],
+    "anchor_px": [
+      160.0,
+      400.0
+    ],
+    "durations_seconds": [
+      0.16,
+      0.16,
+      0.16,
+      0.16
+    ]
+  },
+  "source_fingerprints": {
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\qa\\down_walk-sequence.json": "9b7a7d9786a73add92995d5fa07c042cd5105ba17ba40f14f2d687af257599ff",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-0.png": "ceadef7ea01adc322d22552ab633e050fe3f4af3655a43f106a6b5dac5e113e2",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-1.png": "b5ec37722104526e20457bd0b4d076913845e0b0258a49981e0465f036476281",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-2.png": "cff413029e584c29d5ec54c9f8f4bef630f539f4f421748332c79d5b5efbebc9"
+  },
+  "stride_verified": false,
+  "foot_velocity_px_per_second": null,
+  "stride_px_per_second": null,
+  "warnings": [
+    "Ground contact is unknown: provide both manual contacts and a single-foot ROI; silhouette bottoms do not identify a planted foot.",
+    "Repeated poses retain all source frame durations; no frames were removed."
+  ],
+  "method": {
+    "silhouette": "alpha > 0 in source canvas coordinates; bbox right/bottom are exclusive",
+    "near_silhouette_iou": 0.98,
+    "duplicates": "Counts frames matching an earlier frame; near excludes exact silhouette matches. No time or frames are removed.",
+    "motion": "Adjacent visible pixel changes; silhouette XOR/union summed over full duration. No loop-seam assumption.",
+    "contact": "User-declared same-foot stance spans plus isolated ROI alpha centroid; no automatic contact or facing inference.",
+    "timing": "Cumulative frame-start seconds; repeated tracked poses use their first onset with all intervening durations retained. Final hold is included in duration but has no displacement endpoint.",
+    "velocity": "Endpoint horizontal displacement / pose-onset elapsed seconds; positive = image right. Stride is absolute velocity under manual ground-contact assumptions.",
+    "confidence": "0.9 = at least 3 distinct poses, stable baseline/shape, monotonic near-linear motion and consistent spans. Heuristic conditional confidence, not a calibrated contact probability.",
+    "sequence": "Identity of the analysed sequence: source, atlas state, fps override, frame count, size, anchor and effective per-frame durations. A consumer applying the stride must match all of it and source_fingerprints; another state or frame rate of the same files is a different sequence."
+  },
+  "source_files": [
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\qa\\down_walk-sequence.json",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-0.png",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-1.png",
+    "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\frames\\down_walk\\frame-2.png"
+  ],
+  "source": "C:\\GitHub\\StockWars\\output\\badger-walk-fix-v1\\run\\qa\\down_walk-sequence.json"
+}

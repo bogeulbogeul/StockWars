@@ -1,0 +1,9 @@
+{
+  "active": "pre-motion approved original",
+  "source": "output\\dog-motion-match-v1\\siberian-chipmunk\\before",
+  "rejected": [
+    "dog-motion-match-v1",
+    "motion-color-restore-v2"
+  ],
+  "atlas_sha256": "4d33817299ccbde5e80a4f430958c3cf318c32b3ae599b32bf29399b6021541e"
+}

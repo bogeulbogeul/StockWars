@@ -1,0 +1,52 @@
+Create a single horizontal sprite strip for the game character `black-cat-design-motion-v1` in the state `up_walk`.
+
+If this is a pre-idle/simple run, the attached base image may be used as the canonical character design. In direction-anchor mode, do not use base images for final action rows; accepted idle/direction anchors own row identity. Use the attached accepted idle/direction anchor as the canonical character design for this row. If a state anchor is attached for a non-locomotion state, treat it as approved state vocabulary only. Use the attached layout guide image only for frame count, slot spacing, centering, and safe padding. If an additional generated row strip is attached, use it only as a motion reference, never as a replacement identity source. Do not simply copy the still reference pose. Generate distinct animation poses that create a readable cycle or action.
+
+Character: black-cat-design-motion-v1.
+Style contract: Clean outlined SD animal illustration, charcoal black cat, amber eyes, pink inner ears, design-sheet identity. No paw pads..
+
+Use this prompt as an authoritative sprite-production spec.
+
+Animation action: up_walk.
+
+Anchor lock:
+- Accepted idle/direction anchors own character identity, outfit details, colors, face design, asymmetric markings, and side-specific accessories for final action rows.
+- Base character images and original character sheets are pre-idle sources only. Do not reinterpret or reintroduce base-character details inside a direction-anchor action row.
+- This row owns motion only. Spend the variation budget on limb contacts, arm counter-swing, body height, torso lean, head bob, hair bounce, and loop continuity.
+- Do not redesign or reinterpret identity details while animating. Keep face, hair shape, markings, palette, outline weight, body proportions, outfit, props, and silhouette copied from the approved anchors.
+- Preserve side-specific features exactly as the approved anchors show them. Do not solve hairpin side, earring side, logos, handed props, scars, one-sided markings, asymmetric clothing, or lighting cues from scratch inside the row.
+- When generating a paired left/right row, use the paired row reference only for timing, scale, and animation intensity. Rotate the body, feet, shoulders, face angle, and gaze to the target facing, but keep identity details attached according to the accepted target-direction anchor.
+- For cyclic locomotion, do not let a single running/walking pose anchor determine every frame's leg phase. When a multi-pose motion reference is attached, use it for foot contacts.
+- Prefer a subtler animation over any change that mutates the character identity.
+
+
+Transparency and artifact rules:
+- Prefer pose, expression, and silhouette changes over decorative effects.
+- Effects are allowed only when state-relevant, opaque, hard-edged, sprite-like, fully inside the same frame slot, and physically touching or overlapping the character silhouette.
+- Do not draw detached effects: floating stars, loose sparkles, floating punctuation, floating icons, separated smoke clouds, loose dust, disconnected outline bits, or stray pixels.
+- Do not draw wave marks, motion arcs, speed lines, action streaks, afterimages, blur, smears, halos, glows, auras, floor patches, cast shadows, contact shadows, drop shadows, oval floor shadows, landing marks, or impact bursts.
+- Do not include text, labels, frame numbers, visible grids, guide marks, speech bubbles, thought bubbles, UI panels, code snippets, scenery, checkerboard transparency, white backgrounds, or black backgrounds.
+- Reject any pose that is cropped, overlaps another pose, crosses into a neighboring frame slot, or creates a separate disconnected component that is not attached to the character.
+
+Layout requirements:
+- Exactly 3 full-body frames, left to right, in one horizontal row.
+- The attached layout guide shows the 3 frame boxes, inner safe area, and centers for this row. Follow its slot count, spacing, centering, and padding.
+- Do not reproduce the layout guide itself: no visible boxes, guide lines, center marks, labels, guide colors, or guide background may appear in the output.
+- Treat the image as 3 equal-width invisible 512x512 frame slots. Fill every slot: each requested slot must contain exactly one complete full-body pose.
+- Spread the 3 poses evenly across the whole image width. Do not leave any requested slot blank or create large empty gaps between poses.
+- Center one complete pose in each slot. No pose may cross into the neighboring slot.
+- Use a perfectly flat pure cyan #00FFFF chroma-key background across the whole image.
+- Do not use #00FFFF, pure cyan, or chroma-adjacent colors in the character, highlights, props, shadows, or effects.
+- Keep the rendering faithful to the attached reference sprite: same outline weight, same palette, same detail level — do not restyle it.
+- Keep every frame self-contained with at least 24 px horizontal and 24 px vertical safe padding. No character body part should be clipped by the frame slot.
+- Avoid motion blur. Use clear pose changes readable at 512x512.
+- Preserve the same silhouette, face, proportions, palette, material, and props across every frame.
+
+Output only the sprite strip image.
+
+USER PRIORITY: Reference 1 is accepted cat identity, reference 2 its full design sheet; reference 3 is DOG POSES ONLY, reference 4 empty layout guide. Replace dog with this EXACT cat one-to-one, preserving camera, torso tilt, limb pose/order, arm occlusion and body rhythm. Keep cat upright triangular ears, dark charcoal fur, amber eyes, feline muzzle and long slender curved tail; no dog ears, cream markings, fluffy dog tail, clothes, shoes, paw pads. Match cat design head/body proportions and clean outlines across frames. Render separated full characters on perfectly flat cyan #00FFFF with generous empty gaps, NO ground shadows, text, labels, guide lines or other objects. REAR view. Back of ears NOT pink inner ears; back of head NO face. Heels toward viewer, toes away. Match dog A, neutral, opposite B; feline tail rooted behind pelvis.
+Cat source RGB palette (use matching material colors, not dog colors): #413C40, #413C3F, #3E383B, #423B3E, #443E41, #484245, #423C40, #423C3F, #413B3E, #433D40, #403A3D, #332D30, #453E41, #433C40, #3A3438, #2F2A2A, #FEA37C, #EE8968, #FE9D78, #F1A786, #5C5155, #F9F9F9, #BEADAD, #251407, #ED9908, #F9A608, #030000, #FAFAFA, #000000, #3E3130, #1C1616, #020102, #3C373A, #3B3538, #2F2A2D, #E76F66, #C24A44, #3C3638, #FDA58A, #D88C29, #2B1E17, #1F1A1A
+
+CRITICAL NEUTRAL FRAME: Middle frame must be exact symmetrical rear STANDING NEUTRAL: BOTH FEET planted beside each other on same ground line, BOTH arms hanging down. No stepping or lifted leg in middle. Tail is the SAME up-curved C-shaped cat tail as design sheet, rooted at pelvis; neutral tip points UP, never down. Outer A and B swap raised foot/arm and slight tail lean; maintain tail length and C shape, do not turn neutral tail into a downward straight tail. Match dog reference neutral standing feet literally.
+
+FINAL STRICT FIX: COPY DOG LEG/ARM POSITIONS IN EXACT FRAME ORDER, do not reverse A and B. FIRST: screen RIGHT foot lifted, screen LEFT foot planted; screen LEFT arm bent forward/outward, screen RIGHT arm down. MIDDLE: both feet planted, both arms down. THIRD: screen LEFT foot lifted, screen RIGHT planted; screen RIGHT arm bent outward, screen LEFT arm down. Raised feet show smooth fur-covered HEEL/BACK OF ANKLE ONLY like dog reference, toe tips away from camera. ABSOLUTELY NO UNDERSIDE SOLE, NO PADS, NO CIRCLES, NO OVAL SPOTS OR TOE BEANS, not even same-color pad shapes. All raised feet smooth featureless fur heel. Keep neutral upcurved tail.

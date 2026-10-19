@@ -1,0 +1,173 @@
+[
+  {
+    "state": "down_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      53,
+      26,
+      270,
+      373
+    ],
+    "head_anchor_before": [
+      182.0,
+      27
+    ],
+    "head_anchor_after": [
+      182.0,
+      27
+    ]
+  },
+  {
+    "state": "down_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      62,
+      26,
+      266,
+      373
+    ],
+    "head_anchor_before": [
+      178.0,
+      27
+    ],
+    "head_anchor_after": [
+      177.5,
+      27
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      34,
+      29,
+      295,
+      376
+    ],
+    "head_anchor_before": [
+      196.0,
+      29
+    ],
+    "head_anchor_after": [
+      195.5,
+      29
+    ]
+  },
+  {
+    "state": "right_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      40,
+      28,
+      296,
+      376
+    ],
+    "head_anchor_before": [
+      197.0,
+      29
+    ],
+    "head_anchor_after": [
+      197.0,
+      29
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 0,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      49,
+      26,
+      282,
+      372
+    ],
+    "head_anchor_before": [
+      139.5,
+      27
+    ],
+    "head_anchor_after": [
+      139.5,
+      27
+    ]
+  },
+  {
+    "state": "up_walk",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      42,
+      26,
+      274,
+      372
+    ],
+    "head_anchor_before": [
+      133.5,
+      27
+    ],
+    "head_anchor_after": [
+      133.5,
+      27
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 1,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      44,
+      27,
+      279,
+      375
+    ],
+    "head_anchor_before": [
+      174.0,
+      27
+    ],
+    "head_anchor_after": [
+      173.5,
+      27
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 2,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      43,
+      27,
+      279,
+      375
+    ],
+    "head_anchor_before": [
+      174.0,
+      27
+    ],
+    "head_anchor_after": [
+      174.0,
+      27
+    ]
+  },
+  {
+    "state": "right_carry",
+    "index": 3,
+    "board_scale": 1.1408199643493762,
+    "bbox": [
+      45,
+      27,
+      280,
+      375
+    ],
+    "head_anchor_before": [
+      174.0,
+      27
+    ],
+    "head_anchor_after": [
+      174.0,
+      27
+    ]
+  }
+]

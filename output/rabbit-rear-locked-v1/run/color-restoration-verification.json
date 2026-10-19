@@ -1,0 +1,55 @@
+{
+  "id": "european-rabbit",
+  "changed_logical_frames": [
+    [
+      "down_walk",
+      0
+    ],
+    [
+      "down_walk",
+      2
+    ],
+    [
+      "right_walk",
+      0
+    ],
+    [
+      "right_walk",
+      2
+    ],
+    [
+      "up_idle",
+      0
+    ],
+    [
+      "up_walk",
+      0
+    ],
+    [
+      "up_walk",
+      1
+    ],
+    [
+      "up_walk",
+      2
+    ],
+    [
+      "right_carry",
+      1
+    ],
+    [
+      "right_carry",
+      2
+    ],
+    [
+      "right_carry",
+      3
+    ]
+  ],
+  "layout_timing_unchanged": true,
+  "approved_static_frames_unchanged": true,
+  "rabbit_rear_neutral_exception": true,
+  "color_review": "Four state pose boards compared against approved pre-motion color references. Native RGB retained; no quantization or contrast filter.",
+  "motion_continuity": "experimental; needs live playback review",
+  "runtime_contact_QA": false
+}

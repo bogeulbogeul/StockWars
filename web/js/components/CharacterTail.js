@@ -1,6 +1,7 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 const TAILS = {
-    dog: { src: new URL('../../assets/characters/tails-v1/dog.png', import.meta.url).href, crop: [355, 293, 533, 569], width: 46, imageWidth: 1312, imageHeight: 1199 },
-    'black-cat': { src: new URL('../../assets/characters/tails-v1/black-cat.png', import.meta.url).href, crop: [203, 179, 864, 898], width: 78, imageWidth: 1226, imageHeight: 1283 }
+    dog: { src: EMPTY_CHARACTER_IMAGE, crop: [355, 293, 533, 569], width: 46, imageWidth: 1312, imageHeight: 1199 },
+    'black-cat': { src: EMPTY_CHARACTER_IMAGE, crop: [203, 179, 864, 898], width: 78, imageWidth: 1226, imageHeight: 1283 }
 };
 const images = new Map();
 export function tailPose(styleId, state, index = 0, moving = false) {

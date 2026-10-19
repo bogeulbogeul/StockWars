@@ -419,3 +419,6 @@
     margin-top: auto;
     padding-top: 24px;
 }
+
+#charStep1 .character-face-btn { overflow: hidden; }
+#charStep1 .character-face-icon { display: block; object-fit: contain; max-width: 100%; max-height: 100%; }

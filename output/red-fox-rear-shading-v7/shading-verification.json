@@ -1,0 +1,47 @@
+{
+  "frames": [
+    {
+      "frame": 0,
+      "alpha_exact": true,
+      "all_non_orange_pixels_exact": true,
+      "shadow_pixels": 1959,
+      "light_pixels": 2886
+    },
+    {
+      "frame": 1,
+      "alpha_exact": true,
+      "all_non_orange_pixels_exact": true,
+      "shadow_pixels": 1710,
+      "light_pixels": 2889
+    },
+    {
+      "frame": 2,
+      "alpha_exact": true,
+      "all_non_orange_pixels_exact": true,
+      "shadow_pixels": 1727,
+      "light_pixels": 2863
+    }
+  ],
+  "shared_orange_shades_RGB": [
+    [
+      228,
+      122,
+      44
+    ],
+    [
+      253,
+      138,
+      44
+    ],
+    [
+      254,
+      148,
+      56
+    ]
+  ],
+  "palette_unchanged": true,
+  "all_tail_geometry_and_white_tip_pixels_exact_v6": true,
+  "other_frames_byte_identical": 15,
+  "game_installed": false,
+  "live_motion_qa": "pending"
+}

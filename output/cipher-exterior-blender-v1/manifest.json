@@ -1,0 +1,19 @@
+{
+  "status": "Design model only; existing game model unchanged",
+  "style": "Native matte blue/ivory, rounded trim, smooth roof, arch double doors",
+  "features": [
+    "True arched entry with adopted double-door pivots",
+    "Two front arched windows",
+    "Round analog clock dormer",
+    "Raised rising-price emblem",
+    "No rear windows"
+  ],
+  "mesh_count": 84,
+  "triangles": 27792,
+  "notes": [
+    "Side walls deliberately plain",
+    "Clock hands separate but no time update code",
+    "No interior scene included",
+    "Game footprint/collision and art approval pending"
+  ]
+}

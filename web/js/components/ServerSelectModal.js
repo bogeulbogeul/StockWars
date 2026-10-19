@@ -49,12 +49,11 @@ export class ServerSelectModal {
                     <!-- Modal Header -->
                     <div class="cyber-modal-header">
                         <div class="cyber-header-info">
-                            <div class="cyber-header-badge">🚪 TOWN GATEWAY</div>
                             <div class="cyber-title-row">
-                                <h2 class="cyber-modal-title">사이퍼 타운 채널 선택</h2>
+                                <h2 class="cyber-modal-title">타운 선택</h2>
                                 <div class="cyber-current-chip">
                                     <span class="pulse-indicator"></span>
-                                    <span class="chip-label">선택 채널:</span>
+                                    <span class="chip-label">현재:</span>
                                     <b id="currentChannelNameText" class="chip-val">${this.currentChannel.name}</b>
                                     <span class="chip-sub" id="currentChannelSubText">${this.currentChannel.statusLabel}</span>
                                 </div>
@@ -66,11 +65,11 @@ export class ServerSelectModal {
                     <!-- Auto-Scale Live Status Monitor Bar -->
                     <div class="town-autoscale-status-bar">
                         <div class="autoscale-stat-pill">
-                            <span>📡 동시 접속자:</span>
+                            <span>접속자</span>
                             <b id="txtTotalCCU">${this.totalCCU === null ? '집계 대기' : `${this.totalCCU}명`}</b>
                         </div>
                         <div class="autoscale-stat-pill">
-                            <span>🏙️ 활성 채널:</span>
+                            <span>열린 타운</span>
                             <b id="txtActiveChannelsCount">${this.totalCCU === null ? '확인 대기' : `${this.townChannels.length}개`}</b>
                         </div>
                         <div class="autoscale-stat-pill">
@@ -85,7 +84,7 @@ export class ServerSelectModal {
                         <div class="intro-left">
                             <span class="intro-icon">🏙️</span>
                             <div class="intro-text">
-                                <h3 class="intro-title">퍼블릭 타운 채널</h3>
+                                <h3 class="intro-title">함께할 타운을 선택하세요</h3>
                                 <p class="intro-desc" id="presenceStatusText">서버 접속 인원 집계 연결 대기 중입니다.</p>
                             </div>
                         </div>
@@ -243,7 +242,7 @@ export class ServerSelectModal {
             this.currentChannel = current
                 ? { ...current, statusLabel: this.getChannelStatus(current.users).label }
                 : { id: null, name: '오피스 / 대기', ping: null, statusLabel: '마을 미입장' };
-            if (status) status.textContent = snapshot.local ? '로컬 개발자 모드 · 나만 입장하는 마을입니다.' : '실제 앱 접속 기준 · 채널 인원은 마을 입장자 · 연결 종료 시 자동 갱신';
+            if (status) status.textContent = snapshot.local ? '혼자 플레이 중' : '';
         } else {
             this.totalCCU = null;
             this.townChannels = this.townChannels.map(ch => ({ ...ch, users: null, ping: null }));

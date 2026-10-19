@@ -1,4 +1,6 @@
 import { annaLessonScreen } from './tutorial/annaLessonScreen.js';
+import { buildRumorQuiz } from './tutorial/rumorQuiz.js';
+import { rumorDecryption } from './inventory/RumorPopup.js';
 import { applyAnnaTradeFocus, clearAnnaTradeFocus } from './tutorial/annaTradeFocus.js';
 import { installAnnaInputGuard } from './tutorial/annaInputGuard.js';
 import { tutorialShortcutDestination } from './tutorial/tutorialPresentation.js';
@@ -182,6 +184,7 @@ export class AnnaTutorial {
 
         this.currentStepIdx = 0;
         if (checkpoint) {
+            if (checkpoint === 'go_town_proposal') checkpoint = 'movement_keys_guide';
             const chapter = tutorialChapters.find(([id]) => id === checkpoint) || tutorialChapters[0];
             const targetIndex = this.steps.findIndex(step => step.id === chapter[0]);
             this.firstPurchaseDone = !!this.callbacks.getFirstTradeLesson?.();
@@ -300,12 +303,13 @@ export class AnnaTutorial {
     }
 
     renderDialogue(step, reviewing = false) {
-        if (reviewing || this.reviewingScreen || ['portfolio_guide', 'news_tab_guide', 'hts_home_overview'].includes(step.id)) {
+        if (reviewing || this.reviewingScreen || ['portfolio_guide', 'news_tab_guide', 'hts_home_overview', 'movement_keys_guide'].includes(step.id)) {
             this.restoringScreen = true;
             try {
                 this.callbacks.onRestoreLessonScreen?.(annaLessonScreen(step, this.steps), this.targetStock?.id);
             } finally { this.restoringScreen = false; }
         }
+        this.callbacks.onTutorialTradeStep?.(step.id);
         this.reviewingScreen = reviewing;
         document.querySelectorAll('.tutorial-pulse-target').forEach(element => element.classList.remove('tutorial-pulse-target'));
         const reviewTarget = step.targetSelector || ({ news_reading_guide: '#newsListContainer', trade_history_guide: '.trade-history-menu > summary', trade_history_fees: '#tradeHistoryList', portfolio_slots_guide: '#portfolioSlotStatus' })[step.id];
@@ -327,6 +331,10 @@ export class AnnaTutorial {
         applyAnnaTradeFocus(step.id, undefined, step.chartIntroTarget);
         this.callbacks.onInputStepChanged?.();
         this.overlay?.classList.toggle('vn-phone-focus', step.id === 'open_phone' && !reviewing);
+        this.overlay?.classList.toggle('vn-inventory-focus', step.id === 'rumor_inventory_guide');
+        this.overlay?.classList.toggle('vn-rumor-focus', !!step.actualRumor);
+        this.overlay?.classList.toggle('vn-hud-focus', step.id.startsWith('hud_'));
+        if (step.actualRumor && step.rumorPreview) this.callbacks.onRumorPreview?.(step.rumorPreview);
         this.overlay?.classList.toggle('vn-app-focus', !!step.appIntroTarget || step.id === 'launch_stock_app');
         this.overlay?.classList.toggle('vn-app-tour', !!step.appIntroTarget);
         this.overlay?.classList.toggle('vn-stock-focus', step.id === 'select_stock');
@@ -366,16 +374,30 @@ export class AnnaTutorial {
         } } : undefined;
         const presentationText = renderAnnaLesson(this.dialogueBox?.querySelector('.vn-dialogue-body'), step, shortcut, { focused: true });
         this.dialogueBox?.querySelector('.vn-rumor-choices')?.remove();
-        if (step.choices && !reviewing) {
+        if (step.choices) {
             const choices = document.createElement('div');
             choices.className = 'vn-rumor-choices';
-            choices.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px';
             for (const choice of step.choices) {
                 const button = document.createElement('button');
                 button.className = 'vn-btn';
                 button.textContent = choice.label;
                 button.addEventListener('click', event => {
                     event?.stopPropagation();
+                    if (reviewing) {
+                        if (!this.isActive || this.dialogueHistory[this.historyCursor]?.id !== step.id) return;
+                        const feedback = this.dialogueHistory[this.historyCursor + 1];
+                        if (!feedback) return;
+                        feedback.baseText ??= feedback.text;
+                        feedback.text = choice.feedback;
+                        feedback.detailText = feedback.baseText;
+                        const liveFeedback = this.steps.find(entry => entry.id === feedback.id);
+                        if (liveFeedback) {
+                            liveFeedback.text = choice.feedback;
+                            liveFeedback.detailText = feedback.baseText;
+                        }
+                        this.advanceHistory();
+                        return;
+                    }
                     if (!this.isActive || this.steps[this.currentStepIdx] !== step || this.historyCursor != null) return;
                     const feedback = this.steps[this.currentStepIdx + 1];
                     feedback.baseText ??= feedback.text;
@@ -411,9 +433,9 @@ export class AnnaTutorial {
             this.nextIndicator?.classList.remove('hidden');
             this.dialogueBox?.classList.remove('has-choice');
         }
-        if (this.btnNext) this.btnNext.disabled = reviewing
-            ? ['#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step.targetSelector)
-            : !!step.requiresManualAction;
+        if (this.btnNext) this.btnNext.disabled = step.id === 'put_phone_away' || (reviewing
+            ? ['#btnSubtabInfo', '#btnSubtabOrder', '#btnSubtabChart', '#btnCloseInventory', '#btnOpenOrder', '#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step.targetSelector)
+            : !!step.requiresManualAction);
         if (this.btnPrevious) this.btnPrevious.disabled = (this.historyCursor ?? this.dialogueHistory.length - 1) <= 0;
         this.typeText(presentationText || step.text);
     }
@@ -480,6 +502,11 @@ export class AnnaTutorial {
     }
 
     handleAdvance() {
+        const visibleStep = this.historyCursor != null ? this.dialogueHistory[this.historyCursor] : this.steps[this.currentStepIdx];
+        if (visibleStep?.id === 'put_phone_away') {
+            if (this.isTyping) this.finishTyping();
+            return;
+        }
         if (this.isTyping) {
             this.finishTyping();
             return;
@@ -487,7 +514,7 @@ export class AnnaTutorial {
 
         if (this.historyCursor !== null && this.historyCursor !== undefined) {
             const step = this.dialogueHistory[this.historyCursor];
-            if (['#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step?.targetSelector)) return;
+            if (['#btnSubtabInfo', '#btnSubtabOrder', '#btnSubtabChart', '#btnCloseInventory', '#btnOpenOrder', '#iconStockApp', '#btnCloseTradeModal', '#btnCloseDetailedChartModal', '.nav-tab[data-tab="Profile"]', '.nav-tab[data-tab="News"]', '.nav-tab[data-tab="Market"]'].includes(step?.targetSelector)) return;
             this.advanceHistory();
             return;
         }
@@ -545,7 +572,7 @@ export class AnnaTutorial {
         this.stopRecommendationReview();
         this.highlightElement('#btnBuyExecute', false);
         const currentStep = this.steps[this.currentStepIdx];
-        if (currentStep && ['buy_stock', 'select_stock', 'chart_colors', 'chart_detail', 'market_order_guide', 'limit_order_guide'].includes(currentStep.id)) {
+        if (currentStep && (['buy_stock', 'select_stock', 'chart_colors', 'chart_detail', 'market_order_guide', 'limit_order_guide', 'open_company_info', 'open_order_screen', 'order_screen_overview', 'stock_basics_profit', 'stock_profit_example', 'stock_profit_fees'].includes(currentStep.id) || currentStep.id.startsWith('company_info_'))) {
             const celebIdx = this.steps.findIndex(s => s.id === 'celebrate');
             if (celebIdx !== -1) {
                 this.currentStepIdx = celebIdx;
@@ -557,6 +584,15 @@ export class AnnaTutorial {
     }
 
     // Called when player manually clicks smartphone toggle button
+    notifyOrderScreenOpened() {
+        if (!this.isActive || this.restoringScreen) return;
+        if (this.historyCursor != null) {
+            if (this.dialogueHistory[this.historyCursor]?.id === 'open_order_screen') this.advanceHistory();
+            return;
+        }
+        if (this.steps[this.currentStepIdx]?.id === 'open_order_screen') this.nextStep();
+    }
+
     notifyDetailedChart(open) {
         if (!open && this.isActive && !this.restoringScreen && this.historyCursor != null
             && this.dialogueHistory[this.historyCursor]?.targetSelector === '#btnCloseDetailedChartModal') {
@@ -655,12 +691,45 @@ export class AnnaTutorial {
     }
 
     // Called when player enters public town from office
+    explainOpenedRumor(item, decoded) {
+        if (!this.isActive || this.historyCursor != null || this.steps[this.currentStepIdx]?.id !== 'rumor_intel_explain') return;
+        const end = this.steps.findIndex(step => step.id === 'close_inventory_guide');
+        if (end < 0) return;
+        const base = { speaker: '안나', expression: 'Smile', tracker: '3/4 • 실제 찌라시와 분석력', requiresManualAction: false, actualRumor: true };
+        const previews = [1, 2, 3, 4, 5].map(level => rumorDecryption(item.intelReport || item.desc || '', { ...item, interpretationLevel: 1 }, level));
+        const lessons = [
+            { ...base, id: 'rumor_actual_level', rumorPreview: previews[0], text: '먼저 분석력 1단계에서는 이 찌라시가 어떻게 보이는지 살펴볼게요.' },
+            { ...base, id: 'rumor_actual_clues', text: '이 글에서 기업을 가리키는 표현, 어떤 사건인지, 언제 영향을 줄지를 찾아보세요. 낮은 단계에서는 기업명이 비유로 가려질 수 있어요.', example: { label: '분석력에 따른 차이', rows: ['업종과 흐름 → 사건과 방향 → 기업과 근거 → 상세 정보', '분석력과 이 찌라시에 유지된 해석 단계 중 높은 단계가 적용돼요.'] } },
+            { ...base, id: 'rumor_actual_quiz', rumorPreview: previews[0], requiresManualAction: true,
+                ...buildRumorQuiz(previews[0].text) },
+            { ...base, id: 'rumor_actual_feedback', text: '비유는 추리의 단서이며 사실의 보증은 아니에요. 이제 같은 찌라시의 분석력별 차이를 볼게요.' },
+            ...previews.slice(1).map(preview => ({ ...base, id: `rumor_actual_compare_${preview.level}`, rumorPreview: preview,
+                text: `같은 찌라시를 분석력 ${preview.level}단계로 읽은 모습이에요. 앞 단계에서 가려졌던 정보가 어떻게 구체적으로 드러나는지 비교해 보세요.`,
+                example: { label: '앞 단계와 비교하기', rows: ['새롭게 드러난 기업·사건·시간 단서를 찾아보세요.'] } })),
+            { ...base, id: 'rumor_actual_close', rumorPreview: { ...decoded, actual: true }, text: '실제 분석력으로 돌아왔어요. 자세히 읽혀도 진위를 보장하지는 않아요. 뉴스·공시와 비교하세요. 이제 [열람 확인 완료]를 눌러 주세요.', requiresManualAction: true, targetSelector: '#btnRumorConfirm, #btnRumorClose', example: { label: '직접 확인하기', rows: ['찌라시 창을 닫으면 다음 안내가 이어져요.'] } }
+        ];
+        this.steps.splice(this.currentStepIdx + 1, end - this.currentStepIdx - 1, ...lessons);
+        this.nextStep();
+    }
+
+    warnWrongLogisticsBuilding() {
+        if (!this.isActive || this.steps[this.currentStepIdx]?.id !== 'enter_logistics') return false;
+        this.setExpression('Standard');
+        this.typeText('그쪽은 물류센터가 아니에요! 지금은 노란 화살표를 따라 [비트 물류센터]로 가주세요.');
+        return true;
+    }
+
+    notifyServerSelectOpened() {
+        if (!this.isActive || this.historyCursor != null) return;
+        if (this.steps[this.currentStepIdx]?.id === 'go_town_proposal') this.nextStep();
+    }
+
     notifyTownEntered() {
         if (!this.isActive) return;
         const currentStep = this.steps[this.currentStepIdx];
-        if (currentStep && currentStep.id === 'go_town_proposal') {
+        if (currentStep && (currentStep.id === 'go_town_proposal' || currentStep.id === 'server_enter')) {
             this.cleanupHighlights();
-            const logisticsStepIdx = this.steps.findIndex(s => s.id === 'enter_logistics');
+            const logisticsStepIdx = this.steps.findIndex(s => s.id === 'logistics_intro');
             if (logisticsStepIdx !== -1) {
                 this.currentStepIdx = logisticsStepIdx;
                 this.showCurrentStep();
@@ -794,6 +863,8 @@ export class AnnaTutorial {
     }
 
     tryShowLesson() {
+        // The first-trade follow-up must never interrupt the onboarding dialogue.
+        if (this.isActive) return false;
         if (this.lessonEnabled === false) return false;
         const lesson = this.callbacks.getFirstTradeLesson?.();
         if (!lesson || this.lessonResume || !['ready', 'sold', 'selling'].includes(lesson.status)) return false;

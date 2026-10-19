@@ -1,0 +1,11 @@
+{
+  "rigid_distance_check": "passed",
+  "single_bone_weights": "passed",
+  "glb_reimport_clips": [
+    "Eat",
+    "Idle",
+    "Tpose",
+    "Walk",
+    "Wave"
+  ]
+}

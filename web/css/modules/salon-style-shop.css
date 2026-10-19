@@ -1,0 +1,48 @@
+.salon-style-shop {position:fixed;inset:0;margin:auto;width:min(1160px,94vw);height:fit-content;max-width:94vw;max-height:94vh;padding:0;border:3px solid #725267;border-radius:22px;background:#fff3e3;color:#51384d;box-shadow:0 0 0 5px #e7c9aa,0 24px 90px #160c2580;overflow:auto;}
+.salon-style-shop::backdrop {background:#231a2acc;backdrop-filter:blur(5px);}
+.salon-interior .salon-shop-header {height:auto;min-height:90px;justify-content:space-between;background:#62475f;padding:10px 24px;color:#fff1d9;overflow:visible;}
+.salon-shop-brand {display:flex;align-items:center;gap:16px;}
+.salon-shop-brand svg {width:78px;height:68px;}
+.salon-shop-brand small {font-size:13px;color:#eed9ca;}
+.salon-shop-brand h2 {margin:4px 0;font-size:25px;}
+.salon-shop-header [data-close] {font-size:23px;background:#fff0dd;color:#5c4056;}
+.salon-shop-body {display:grid;grid-template-columns:1.22fr 1fr;gap:20px;padding:24px;}
+.salon-shop-catalog,.salon-shop-detail {border:1px solid #dfc3b1;border-radius:16px;padding:20px;background:#fff8ee;min-width:0;}
+.salon-theme-heading {display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.salon-theme-heading h3 {margin:0;font-size:26px;}
+.salon-theme-heading span,.salon-sale-note {color:#907b80;font-size:13px;}
+.salon-sale-note {margin:8px 0 18px;}
+.salon-style-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.salon-interior .salon-style-card {display:flex;flex-direction:column;align-items:center;padding:8px 5px 13px;border:2px solid #e3cbbb;border-radius:14px;background:#fbf0e4;color:#563d51;min-width:0;}
+.salon-style-card svg {width:100%;height:180px;display:block;}
+.salon-style-card strong {font-size:13px;white-space:nowrap;}
+.salon-style-card span {font-size:12px;margin-top:8px;color:#927b83;}
+.salon-interior .salon-style-card[aria-pressed=true] {border-color:#85516c;background:#fbe4e6;box-shadow:inset 0 0 0 1px #85516c;}
+.salon-style-card:hover {filter:brightness(.98);}
+.salon-shop-detail {text-align:center;display:flex;flex-direction:column;align-items:stretch;}
+.salon-shop-detail h3 {font-size:26px;margin:0 0 6px;}
+.salon-theme-tag {margin:0 auto 12px;background:#e8d1cb;border-radius:20px;padding:4px 18px;font-size:12px;}
+.salon-fitting {display:flex;align-items:center;justify-content:center;gap:12px;}
+.salon-mirror {width:235px;height:310px;border:6px solid #d3ad6c;box-shadow:0 0 0 2px #96745c,inset 0 0 0 3px #fff2d8;border-radius:50% 50% 44% 44%;background:linear-gradient(135deg,#e9f5f4,#d7e7ec);display:flex;align-items:end;justify-content:center;}
+.salon-mirror [data-preview] {height:280px;width:224px;}
+.salon-mirror svg {width:100%;height:100%;}
+.salon-interior .salon-fitting button {padding:0;width:37px;height:37px;border-radius:50%;font-size:29px;flex-shrink:0;}
+.salon-direction {font-size:12px;margin:9px 0;}
+.salon-motion-controls {display:flex;gap:5px;justify-content:center;}
+.salon-interior .salon-motion-controls button {padding:8px 12px;background:#f6e8dc;color:#65465e;border-color:#d7bbae;font-size:13px;}
+.salon-interior .salon-motion-controls button[aria-pressed=true] {background:#7b536d;color:#fff3e3;}
+.salon-preview-note {height:15px;margin:7px 0;color:#927a83;font-size:11px;}
+.salon-purchase {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px;border:1px solid #ddc1b0;border-radius:12px;margin-top:auto;}
+.salon-interior .salon-purchase button:disabled {background:#b8a3ad;border-color:#b8a3ad;color:#fff7ee;cursor:not-allowed;}
+.salon-shop-status {font-size:12px;color:#826f77;margin:12px 0 8px;}
+.salon-style-explanation {font-size:11px;color:#9b858a;}
+.salon-style-shop button:focus-visible {outline:3px solid #a46e8a;outline-offset:3px;}
+@media(max-width:800px) {.salon-shop-body {padding:14px;gap:12px;grid-template-columns:1fr;}.salon-style-card svg {height:140px;}.salon-shop-detail {padding:18px;}.salon-mirror {height:250px;width:200px;}.salon-mirror [data-preview] {height:225px;width:180px;}}
+@media(prefers-reduced-motion:reduce) {.salon-style-shop::backdrop {backdrop-filter:none;}}
+.salon-interior .salon-effect-preview {margin:12px auto 0;background:transparent;color:#78516c;border-color:#d7bbae;font-size:12px;padding:6px 14px;}
+.salon-makeover-effect {position:fixed;inset:0;margin:auto;width:min(440px,85vw);height:350px;max-height:85vh;box-sizing:border-box;border:2px solid #ddc6a4;border-radius:24px;padding:22px;background:#fff2e3;color:#614359;text-align:center;box-shadow:0 20px 70px #120b224d;}
+.salon-makeover-effect::backdrop {background:#281c35dc;}
+.salon-makeover-stage {height:225px;position:relative;display:flex;align-items:center;justify-content:center;}
+.salon-makeover-frame {display:block;width:225px;height:225px;max-width:100%;object-fit:contain;filter:drop-shadow(0 5px 6px #51384d26);}
+.salon-makeover-effect p {margin:0 0 15px;font-weight:700;}
+.salon-interior .salon-makeover-effect button {font-size:12px;padding:6px 14px;background:transparent;color:#78516c;}

@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit target image1 sprite row, using image2 as STRICT red fox appearance/rendering reference. Restore the design-sheet's subtle warm CEL SHADING and restrained fluffy fur definition on orange fur and chocolate hands/feet/outerears. Same red fox orange, ivory areas, brown eyes, ear shapes, cheek/muzzle width, proportions and clean dark outlines. Change rendering only; retain ALL existing poses, silhouette, camera, scale, placements and frame order. Broad tasteful warm orange shadows under cheek tufts, nape, inner arm and hip, and lower tail contour; gentle highlights, NO geometric oval/triangle highlight patch on head, no elaborate nape marks or busy fur texture. Keep base orange253,138,44 and chocolate78,46,30, don't globally darken or saturate. All frames must share identical palette and lighting. Eye details, white catchlights, nose/mouth shapes stay unchanged. No pawpads, no extra arms, rearheels have no toe-lines. Existing tail geometry/movement stays EXACT: rear compact center comma tail, same upper-left white tip throughout, central pelvis root. Use reference2 for STYLE not its neutral pose or large side-swept tail. Output same full row on cyan#00ffff, no text, no floor shadows.",
+  "rows": {
+    "down_walk": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-b8ce557f-2da2-4d2f-97dd-cab983462176.png",
+    "right_walk": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-09df5ae4-a6e0-4517-9ef4-a038af04b0c6.png",
+    "up_walk": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-ae666ae0-0666-4a62-9ca0-1d475e1eb1ba.png",
+    "right_carry": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-acd11c5d-90bd-44d3-932f-2172f20f5455.png",
+    "static_poses": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-d25b67da-1199-46cb-9e9b-afbb58ea5df1.png"
+  },
+  "reference": "design-reference.png",
+  "assembly": "native material shading baked onto preserved v6 geometry/outline/face detail with shared existing RGB; no rig or body transforms"
+}

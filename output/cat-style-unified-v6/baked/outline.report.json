@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "material-outline.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "outline",
+      "sheet": "outline.png",
+      "substituted_pixels": 242245,
+      "substitutions": [
+        {
+          "from": "#000000",
+          "to": "#020102",
+          "pixels": 38619
+        },
+        {
+          "from": "#020102",
+          "to": "#020102",
+          "pixels": 151534
+        },
+        {
+          "from": "#030000",
+          "to": "#020102",
+          "pixels": 9918
+        },
+        {
+          "from": "#1c1616",
+          "to": "#020102",
+          "pixels": 23768
+        },
+        {
+          "from": "#1f1a1a",
+          "to": "#020102",
+          "pixels": 18406
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

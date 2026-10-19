@@ -1,3 +1,47 @@
+/* Achievement collection */
+#achievementApp { background: #0e1522; color: #eef2fa; }
+.achieve-header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid #263247; flex-shrink: 0; }
+.achieve-header button { background: #1c293b; color: #eef2fa; border: 1px solid #34435a; border-radius: 12px; width: 36px; height: 36px; cursor: pointer; font-size: 20px; }
+.achieve-header h2 { margin: 3px 0 0; font-size: 19px; }
+.achieve-header div > span, .achieve-eyebrow { font-size: 10px; letter-spacing: 1.8px; color: #c5ad73; }
+.achieve-header-symbol { margin-left: auto; color: #e8c57d; font-size: 28px; }
+.achieve-scroll { overflow-y: auto; min-height: 0; padding: 20px 18px 28px; scrollbar-width: thin; }
+.achieve-summary { padding: 15px 17px; border: 1px solid #344057; background: #182334; border-radius: 14px; }
+.achieve-help { color: #a9b6c9; font-size: 11px; line-height: 1.65; }
+.achieve-total { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px; }
+.achieve-total strong { font-size: 25px; color: #f0d39a; }
+.achieve-total small { font-size: 14px; color: #a9b6c9; font-weight: 400; }
+.achieve-total > span { font-size: 12px; color: #c6cfdd; }
+#achievementApp progress { appearance: none; width: 100%; height: 5px; border: 0; border-radius: 8px; background: #303c50; overflow: hidden; accent-color: #dfbd77; }
+#achievementApp progress::-webkit-progress-bar { background: #303c50; border-radius: 8px; }
+#achievementApp progress::-webkit-progress-value { background: #dfbd77; border-radius: 8px; }
+#achievementApp progress::-moz-progress-bar { background: #dfbd77; }
+.achieve-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 24px; }
+.achieve-section-heading h3 { font-size: 15px; margin: 0; }
+.achieve-filters { display: flex; padding: 3px; border: 1px solid #303d51; border-radius: 10px; }
+.achieve-filters button { background: transparent; border: 0; color: #aab8cb; padding: 6px 12px; font: inherit; font-size: 11px; border-radius: 7px; cursor: pointer; }
+.achieve-filters button[aria-pressed="true"] { background: #e3c58b; color: #1a2331; font-weight: 700; }
+.achieve-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.achieve-card { min-width: 0; border: 1px solid #29364a; background: #151f2e; border-radius: 14px; padding: 12px; text-align: center; }
+.achieve-card.is-earned { border-color: #8d7446; background: linear-gradient(155deg, #2c2d30, #172231); }
+.achieve-card-top { display: flex; justify-content: space-between; gap: 4px; font-size: 9px; color: #a4b1c5; }
+.is-earned .achieve-state { color: #efd29a; }
+.achieve-category { display: inline-block; border: 1px solid #37445a; border-radius: 5px; padding: 2px 7px; color: #aab9ce; font-size: 9px; }
+.achieve-emblem { width: 64px; height: 64px; margin: 18px auto 12px; display: grid; place-items: center; border: 1px dashed #4b5a70; border-radius: 18px; background: #1c293a; color: #7f8fa7; font-size: 38px; font-weight: 700; }
+.is-earned .achieve-emblem { border: 1px solid currentColor; color: #dbbc78; background: #292c31; }
+.is-earned .achieve-emblem.rose { color: #eea8a8; }
+.is-earned .achieve-emblem.mint { color: #9ed5bb; }
+.is-earned .achieve-emblem.blue { color: #9ec9ea; }
+.is-earned .achieve-emblem.violet { color: #c2b1ee; }
+.achieve-card h4 { font-size: 14px; margin: 0 0 8px; color: #d8e1ed; }
+.achieve-condition { font-size: 10px; color: #adbbce; line-height: 1.65; margin: 10px 0 12px; overflow-wrap: anywhere; text-align: left; }
+.achieve-card { display: flex; flex-direction: column; align-items: stretch; }
+.achieve-card .achieve-category { align-self: center; }
+.achieve-progress-row { display: flex; flex-direction: column; gap: 7px; margin-top: auto; text-align: left; }
+.achieve-progress-row span { color: #c3ccda; font-size: 9px; }
+.achieve-empty { grid-column: 1 / -1; color: #adbbce; font-size: 13px; line-height: 1.8; padding: 30px 16px; text-align: center; border: 1px dashed #37445a; border-radius: 14px; }
+#achievementApp button:focus-visible { outline: 2px solid #f0d39a; outline-offset: 3px; }
+
 /* Device Container & Phone Frame */
 .device-container {
     padding: 24px;

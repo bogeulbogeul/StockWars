@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "alpha_identical": true,
+  "nonfur_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "fur_palette": [
+    [
+      65,
+      59,
+      62
+    ],
+    [
+      51,
+      45,
+      48
+    ]
+  ],
+  "fur_gradient_colors": 0,
+  "generated_source": "cel-generated.png",
+  "frames": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 64726,
+      "shadow_pixels": 6617,
+      "shadow_fraction": 0.1022
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 69243,
+      "shadow_pixels": 3480,
+      "shadow_fraction": 0.0503
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 64804,
+      "shadow_pixels": 6497,
+      "shadow_fraction": 0.1003
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "generated_midtone": 63.0,
+      "fur_pixels": 67475,
+      "shadow_pixels": 8478,
+      "shadow_fraction": 0.1256
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 55499,
+      "shadow_pixels": 6207,
+      "shadow_fraction": 0.1118
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 63299,
+      "shadow_pixels": 6924,
+      "shadow_fraction": 0.1094
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "generated_midtone": 64.0,
+      "fur_pixels": 73701,
+      "shadow_pixels": 10422,
+      "shadow_fraction": 0.1414
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 75689,
+      "shadow_pixels": 7370,
+      "shadow_fraction": 0.0974
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "generated_midtone": 64.0,
+      "fur_pixels": 74465,
+      "shadow_pixels": 8682,
+      "shadow_fraction": 0.1166
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 62467,
+      "shadow_pixels": 6357,
+      "shadow_fraction": 0.1018
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "generated_midtone": 64.0,
+      "fur_pixels": 56211,
+      "shadow_pixels": 8459,
+      "shadow_fraction": 0.1505
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 62389,
+      "shadow_pixels": 6126,
+      "shadow_fraction": 0.0982
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "generated_midtone": 63.666666666666664,
+      "fur_pixels": 53344,
+      "shadow_pixels": 5649,
+      "shadow_fraction": 0.1059
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "generated_midtone": 64.0,
+      "fur_pixels": 53208,
+      "shadow_pixels": 3260,
+      "shadow_fraction": 0.0613
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "generated_midtone": 64.33333333333333,
+      "fur_pixels": 52952,
+      "shadow_pixels": 2699,
+      "shadow_fraction": 0.051
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "generated_midtone": 64.66666666666667,
+      "fur_pixels": 90936,
+      "shadow_pixels": 1777,
+      "shadow_fraction": 0.0195
+    }
+  ],
+  "game_installed": false
+}

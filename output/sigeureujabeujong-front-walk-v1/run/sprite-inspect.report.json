@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-front-walk-v1\\run",
+  "states": [
+    "down_walk"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "down_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/down_walk/frame-0.png",
+        "frames/down_walk/frame-1.png",
+        "frames/down_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9877290092323366,
+          "mean": 0.9908971217043254
+        },
+        "dhash_similarity": {
+          "min": 0.796875,
+          "mean": 0.84375
+        },
+        "motion_presence": 0.14412494734221815,
+        "centroid_sigma": {
+          "x": 5.8739483597368665,
+          "y": 4.703859460265734
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,141 @@
+{
+  "provider": "built-in image_gen",
+  "engine": "component-row",
+  "character": {
+    "id": "rabbit-portrait-design-v4"
+  },
+  "cell": {
+    "width": 320,
+    "height": 400
+  },
+  "chroma_key": {
+    "rgb": [
+      0,
+      255,
+      255
+    ]
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    },
+    "down_walk": {
+      "frames": 3,
+      "durations_ms": [
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "sequence": [
+        0,
+        1,
+        2,
+        1
+      ]
+    },
+    "right_idle": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    },
+    "right_walk": {
+      "frames": 3,
+      "durations_ms": [
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "sequence": [
+        0,
+        1,
+        2,
+        1
+      ]
+    },
+    "up_idle": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    },
+    "up_walk": {
+      "frames": 3,
+      "durations_ms": [
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "sequence": [
+        0,
+        1,
+        2,
+        1
+      ]
+    },
+    "right_carry": {
+      "frames": 4,
+      "durations_ms": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "sequence": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "down_sit": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    },
+    "right_sit": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    },
+    "face_portrait": {
+      "frames": 1,
+      "durations_ms": [
+        160
+      ],
+      "loop": false,
+      "sequence": [
+        0
+      ]
+    }
+  }
+}

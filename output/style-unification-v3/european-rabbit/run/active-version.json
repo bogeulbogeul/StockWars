@@ -1,0 +1,6 @@
+{
+  "active": "approved originals + rabbit rear head only",
+  "source": "output/rabbit-rear-locked-v1/",
+  "other_states": "approved original byte-identical",
+  "color_lock": "approved RGB only; native shape/outline masks"
+}

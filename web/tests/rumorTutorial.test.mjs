@@ -19,14 +19,14 @@ test('logistics lesson compares one event in five stages before graduation', () 
     assert.match(examples[4].text, /5조 원/);
 });
 
-test('each time answer advances once with feedback and reviewing cannot answer again', () => {
+test('answers advance once; reviewing changes feedback without advancing the live lesson', () => {
     const previousDocument = globalThis.document;
     const element = () => ({ style: {}, children: [], classList: { toggle() {}, add() {}, remove() {} },
         append(...children) { for (const child of children) { child.parent = this; this.children.push(child); } },
         remove() { this.parent.children = this.parent.children.filter(child => child !== this); },
         querySelector(selector) { return this.children.find(child => child.className === selector.slice(1)); },
         addEventListener(type, listener) { this[type] = listener; } });
-    globalThis.document = { createElement: element };
+    globalThis.document = { createElement: element, querySelectorAll: () => [], querySelector: () => null };
     try {
         for (let answer = 0; answer < 3; answer++) {
             const steps = buildAnnaScenario({});
@@ -34,7 +34,7 @@ test('each time answer advances once with feedback and reviewing cannot answer a
             const body = element();
             let advances = 0;
             const tutorial = Object.assign(Object.create(AnnaTutorial.prototype), {
-                steps, currentStepIdx, isActive: true, historyCursor: null, dialogueHistory: [],
+                callbacks: {}, steps, currentStepIdx, isActive: true, historyCursor: null, dialogueHistory: [],
                 dialogueBox: { classList: element().classList, querySelector: selector => selector === '.vn-dialogue-body' ? body : body.querySelector(selector) },
                 setExpression() {}, typeText() {}, nextStep() { advances++; this.currentStepIdx++; }
             });
@@ -46,7 +46,19 @@ test('each time answer advances once with feedback and reviewing cannot answer a
             assert.ok(steps[currentStepIdx + 1].text.startsWith(step.choices[answer].feedback));
             tutorial.renderDialogue(step, true);
             assert.equal(body.children.filter(child => child.className === 'vn-lesson-visual').length, 1);
-            assert.equal(body.querySelector('.vn-rumor-choices'), undefined);
+            const reviewButtons = body.querySelector('.vn-rumor-choices').children;
+            assert.equal(reviewButtons.length, 3);
+            tutorial.dialogueHistory = [step, { ...steps[currentStepIdx + 1] }];
+            tutorial.historyCursor = 0;
+            let historyAdvances = 0;
+            tutorial.advanceHistory = () => { historyAdvances++; tutorial.historyCursor++; };
+            const liveIndex = tutorial.currentStepIdx;
+            reviewButtons[(answer + 1) % 3].click();
+            reviewButtons[(answer + 1) % 3].click();
+            assert.equal(historyAdvances, 1);
+            assert.equal(advances, 1);
+            assert.equal(tutorial.currentStepIdx, liveIndex);
+            assert.equal(tutorial.dialogueHistory[1].text, step.choices[(answer + 1) % 3].feedback);
         }
     } finally { globalThis.document = previousDocument; }
 });

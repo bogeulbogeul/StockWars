@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "alpha_identical": true,
+  "nonbase_fur_pixels_identical": true,
+  "rear_unchanged": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "fur_detail_rgb": [
+    51,
+    45,
+    48
+  ],
+  "frames": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "restored_detail_pixels": 1158
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "restored_detail_pixels": 1470
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "restored_detail_pixels": 1460
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "restored_detail_pixels": 2013
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "restored_detail_pixels": 1974
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "restored_detail_pixels": 1493
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "restored_detail_pixels": 1047
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "restored_detail_pixels": 925
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "restored_detail_pixels": 1022
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "restored_detail_pixels": 849
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "restored_detail_pixels": 1181
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "restored_detail_pixels": 1291
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "restored_detail_pixels": 894
+    }
+  ],
+  "game_installed": false
+}

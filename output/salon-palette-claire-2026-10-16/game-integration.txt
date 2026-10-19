@@ -1,0 +1,5 @@
+Applied salon-interior-claire-v6.png unchanged as web/assets/interiors/salon/salon-room-package-v10-owner.png.
+Updated SalonInterior asset/view bounds and SalonRoomGeometry source coordinates, collision footprints, foreground masks, approach positions and chair anchors. Exterior retains current official logo asset.
+Verified: node --test web/tests/salonRoomPackage.test.mjs (4 passed); scratch/verify_salon_v10.cjs browser checks (movement, all three seats and standing, resize/click mapping, collision overlay, exit/re-entry, main app town integration, DPR 1/2).
+Screenshots: applied-interior-applied.png, applied-chair-seated.png, applied-collision-check.png, applied-integrated.png.
+Limitations: Claire remains integrated in the approved room illustration as in existing renderer. Geometry is measured from generated art; not proof of exact common-grid conformity.

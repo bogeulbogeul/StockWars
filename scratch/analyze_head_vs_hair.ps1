@@ -1,6 +1,6 @@
 Add-Type -AssemblyName System.Drawing
 
-$baseDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$baseDir = "${PSScriptRoot}\..\web\assets\character"
 $dirs = @("front", "left", "back", "right")
 
 Write-Host "=== Base Head Widths and Bounds ==="

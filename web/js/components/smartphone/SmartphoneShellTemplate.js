@@ -48,6 +48,8 @@ export function getSmartphoneShellHtml() {
                         </div>
                     </div>
 
+                    <div id="achievementApp" class="os-screen hidden" aria-label="업적과 칭호"></div>
+
                     <!-- 사이퍼M HTS Main Application -->
                     <div id="stockApp" class="os-screen hidden">
                         <div class="app-header">
@@ -134,15 +136,6 @@ export function getSmartphoneShellHtml() {
 
                             <!-- VIEW 4: PROFILE TAB -->
                             <div id="tabProfileView" class="tab-view">
-                                <div class="profile-card">
-                                    <div class="profile-avatar">👨‍💼</div>
-                                    <div class="profile-details">
-                                        <div class="profile-name">트레이더 파트너</div>
-                                        <div class="profile-title">초보 주식 트레이더 • 레벨 1</div>
-                                        <div class="partner-status">🤝 매니저 안나(Anna) 협력 중</div>
-                                    </div>
-                                </div>
-
                                 <div class="sector-allocation-card">
                                     <div class="section-title">📊 섹터별 투자 비중</div>
                                     <div class="allocation-body">

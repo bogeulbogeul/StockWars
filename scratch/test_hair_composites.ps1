@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$testDir = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_hair_composites"
+$testDir = "${PSScriptRoot}\..\scratch\test_hair_composites"
 if (-not (Test-Path $testDir)) { New-Item -ItemType Directory -Path $testDir -Force }
 
 $hairStyles = @(
@@ -17,8 +17,8 @@ $dirs = @("front", "left", "back", "right")
 $bodySprites = @{}
 $faceSprites = @{}
 foreach ($d in $dirs) {
-    $bodySprites[$d] = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_$d.png")
-    $faceSprites[$d] = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\face_default_$d.png")
+    $bodySprites[$d] = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_$d.png")
+    $faceSprites[$d] = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\face_default_$d.png")
 }
 
 # Scale factor:

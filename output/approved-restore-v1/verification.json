@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "id": "dog",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "cat",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "red-fox",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "siberian-chipmunk",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "raccoon-dog",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "european-badger",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "brown-bear",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    },
+    {
+      "id": "european-rabbit",
+      "atlas_and_all_frames_byte_identical_to_approved": true
+    }
+  ],
+  "note": "Exact file restoration, no generation or recolor."
+}

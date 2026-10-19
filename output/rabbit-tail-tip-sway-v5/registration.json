@@ -1,0 +1,28 @@
+[
+  {
+    "frame": 0,
+    "box": [
+      132,
+      220,
+      188,
+      256
+    ],
+    "root_preserved_from_y": 256,
+    "native_part": 0,
+    "native_width": 44,
+    "root_x": 160
+  },
+  {
+    "frame": 2,
+    "box": [
+      132,
+      220,
+      188,
+      256
+    ],
+    "root_preserved_from_y": 256,
+    "native_part": 2,
+    "native_width": 44,
+    "root_x": 160
+  }
+]

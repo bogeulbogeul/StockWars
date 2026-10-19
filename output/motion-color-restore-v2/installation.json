@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "updated": [
+    "cat",
+    "red-fox",
+    "siberian-chipmunk",
+    "raccoon-dog",
+    "european-badger",
+    "brown-bear",
+    "european-rabbit"
+  ],
+  "runtime_updated": [
+    "black-cat-npc-v2"
+  ],
+  "dog_png_unchanged": true,
+  "forest_game_integrated": false
+}

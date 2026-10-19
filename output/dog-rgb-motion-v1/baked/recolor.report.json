@@ -1,0 +1,193 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "sprite-sheet-alpha.png",
+  "match": "tolerance",
+  "tolerance": 255,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "dog-rgb-motion",
+      "sheet": "dog-rgb-motion.png",
+      "substituted_pixels": 1726812,
+      "substitutions": [
+        {
+          "from": "#000000",
+          "to": "#000000",
+          "pixels": 68505
+        },
+        {
+          "from": "#090605",
+          "to": "#090605",
+          "pixels": 84272
+        },
+        {
+          "from": "#0e0905",
+          "to": "#0e0905",
+          "pixels": 38686
+        },
+        {
+          "from": "#250d04",
+          "to": "#250d04",
+          "pixels": 27352
+        },
+        {
+          "from": "#3e1300",
+          "to": "#3e1300",
+          "pixels": 1610
+        },
+        {
+          "from": "#442313",
+          "to": "#442313",
+          "pixels": 52130
+        },
+        {
+          "from": "#a94f1f",
+          "to": "#a94f1f",
+          "pixels": 16391
+        },
+        {
+          "from": "#bb5344",
+          "to": "#bb5344",
+          "pixels": 18799
+        },
+        {
+          "from": "#dab59d",
+          "to": "#dab59d",
+          "pixels": 12062
+        },
+        {
+          "from": "#e07643",
+          "to": "#e07643",
+          "pixels": 17767
+        },
+        {
+          "from": "#e47b6b",
+          "to": "#e47b6b",
+          "pixels": 3601
+        },
+        {
+          "from": "#f39854",
+          "to": "#f39854",
+          "pixels": 74539
+        },
+        {
+          "from": "#f5b26a",
+          "to": "#f5b26a",
+          "pixels": 37709
+        },
+        {
+          "from": "#f6a15b",
+          "to": "#f6a15b",
+          "pixels": 27782
+        },
+        {
+          "from": "#f7f9fa",
+          "to": "#f7f9fa",
+          "pixels": 1801
+        },
+        {
+          "from": "#f9f9f9",
+          "to": "#f9f9f9",
+          "pixels": 8609
+        },
+        {
+          "from": "#fbc7a2",
+          "to": "#fbc7a2",
+          "pixels": 17787
+        },
+        {
+          "from": "#fbd0ae",
+          "to": "#fbd0ae",
+          "pixels": 24971
+        },
+        {
+          "from": "#fbf6ed",
+          "to": "#fbf6ed",
+          "pixels": 38465
+        },
+        {
+          "from": "#fdb866",
+          "to": "#fdb866",
+          "pixels": 21604
+        },
+        {
+          "from": "#fdba68",
+          "to": "#fdba68",
+          "pixels": 29698
+        },
+        {
+          "from": "#fdbb6a",
+          "to": "#fdbb6a",
+          "pixels": 227901
+        },
+        {
+          "from": "#febb6a",
+          "to": "#febb6a",
+          "pixels": 498
+        },
+        {
+          "from": "#febb6b",
+          "to": "#febb6b",
+          "pixels": 242032
+        },
+        {
+          "from": "#febc6b",
+          "to": "#febc6b",
+          "pixels": 74770
+        },
+        {
+          "from": "#fef2de",
+          "to": "#fef2de",
+          "pixels": 51030
+        },
+        {
+          "from": "#fef4e2",
+          "to": "#fef4e2",
+          "pixels": 93836
+        },
+        {
+          "from": "#fef5e5",
+          "to": "#fef5e5",
+          "pixels": 41731
+        },
+        {
+          "from": "#fef5e6",
+          "to": "#fef5e6",
+          "pixels": 76290
+        },
+        {
+          "from": "#fef6e7",
+          "to": "#fef6e7",
+          "pixels": 3253
+        },
+        {
+          "from": "#fef6e8",
+          "to": "#fef6e8",
+          "pixels": 35477
+        },
+        {
+          "from": "#fef7ea",
+          "to": "#fef7ea",
+          "pixels": 6345
+        },
+        {
+          "from": "#ffbe6c",
+          "to": "#ffbe6c",
+          "pixels": 248207
+        },
+        {
+          "from": "#fff6e7",
+          "to": "#fff6e7",
+          "pixels": 1302
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": [],
+      "manifest": "dog-rgb-motion.manifest.json"
+    }
+  ]
+}

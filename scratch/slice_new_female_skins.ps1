@@ -143,7 +143,7 @@ public class HighQualitySlicer
 Add-Type -TypeDefinition $csharpCode -ReferencedAssemblies System.Drawing -Language CSharp
 
 $baseDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\dbc93132-94f3-4940-836f-bddd85e738d0\.user_uploaded"
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Force }
 
 $skins = @(

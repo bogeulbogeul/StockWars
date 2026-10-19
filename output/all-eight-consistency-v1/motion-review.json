@@ -1,0 +1,6 @@
+{
+  "scope": "8 species / all common motion states and dog idle-tail states",
+  "review": "Full contact boards inspected for inherited style/color/identity. No newly rendered RGB adopted. Whole-pose registration used only for static-head badger.",
+  "verdict": "needs live playback review; file/pixel checks do not certify all temporal appearance or physical contact",
+  "actual_browser_visual_QA": false
+}

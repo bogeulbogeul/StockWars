@@ -1,6 +1,6 @@
 Add-Type -AssemblyName System.Drawing
 
-$femaleFront = [System.Drawing.Bitmap]::FromFile("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\female_base_front.png")
+$femaleFront = [System.Drawing.Bitmap]::FromFile("${PSScriptRoot}\..\web\assets\character\female_base_front.png")
 Write-Host "Female Base Front size: $($femaleFront.Width) x $($femaleFront.Height)"
 
 $minX = 9999; $maxX = 0; $minY = 9999; $maxY = 0

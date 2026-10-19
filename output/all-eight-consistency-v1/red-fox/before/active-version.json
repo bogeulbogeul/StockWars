@@ -1,0 +1,9 @@
+{
+  "active": "pre-motion approved original",
+  "source": "output\\dog-motion-match-v1\\red-fox\\before",
+  "rejected": [
+    "dog-motion-match-v1",
+    "motion-color-restore-v2"
+  ],
+  "atlas_sha256": "60554e0b2803813bcd84bda4f735555e303416952367ee89e3cab5994c6d7be9"
+}

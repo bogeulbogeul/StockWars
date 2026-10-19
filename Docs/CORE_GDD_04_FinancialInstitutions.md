@@ -63,4 +63,5 @@ K 이용 안내 뒤 무료 연습은 3분·100,000G·배팅 0G다. 현재 일반
 - 기관 자격·보수·투자자 수는 [기관 검토안](MOD_GDD_15_InstitutionSystem.md) 한 곳에서 관리한다. 명성 5,000 조건과 순자산 5,000,000G 조건, 성과 보수 15%와 20%+주간 0.5%의 충돌은 미정으로 남기고 현재 수치로 확정하지 않는다.
 - 수배 직후 전 자산 매각·자수 시 압류 면제·168시간 후 강제 집행의 순서는 상충하므로 재설계 대상이다. 현재 계정 제한·영구 초기화 정책으로 시행하지 않는다.
 
+efbd2ad4468dabf6d87584ff0dee3c6869c12350
 근거: [트레이닝룸](../web/js/components/CipherTrainingRoom.js), [경쟁룸](../web/js/components/CipherCompetitionRoom.js), [온라인 대결](../Server/presence/arena.mjs), [K 안내](../web/js/components/tutorial/cipherTour.js), [마을 시설](../web/js/data/townWorldData.js).

@@ -1,0 +1,25 @@
+{
+  "QA_ArmLift": {
+    "frames_checked": 25,
+    "finite_vertices": true
+  },
+  "QA_HeadTurn": {
+    "frames_checked": 25,
+    "finite_vertices": true
+  },
+  "QA_LimbSwing": {
+    "frames_checked": 25,
+    "finite_vertices": true
+  },
+  "export_roundtrip": {
+    "bones": 7,
+    "vertex_groups": 7,
+    "actions": [
+      "QA_ArmLift",
+      "QA_HeadTurn",
+      "QA_LimbSwing"
+    ],
+    "materials": 1,
+    "embedded_images": 3
+  }
+}

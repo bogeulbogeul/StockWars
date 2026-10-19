@@ -1,0 +1,7 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const source=fs.readFileSync(path.join(__dirname,'preview.html'),'utf8').match(/<script>([\s\S]*)<\/script>/)[1];new Function(source);
+let draws=0,render;const ctx=new Proxy({},{get:(_,k)=>k==='drawImage'?(...a)=>{if(a.slice(1).some(n=>!Number.isFinite(n)))throw Error('Invalid rectangle');draws++}:()=>{}});
+const controls=new Map();function el(k){if(!controls.has(k))controls.set(k,{value:'right_walk',checked:false,textContent:'',append(){}});return controls.get(k)}
+const context={document:{querySelector:el,createElement:()=>({innerHTML:'',querySelector:()=>({textContent:''}),querySelectorAll:()=>Array.from({length:3},()=>({getContext:()=>ctx}))})},Image:function(){this.complete=true;this.naturalWidth=1920},requestAnimationFrame:cb=>{render=cb}};vm.runInNewContext(source,context);
+let time=0;for(const s of ['down_walk','right_walk','up_walk','right_carry']){el('#state').value=s;el('#state').onchange();for(let i=0;i<8;i++)render(time+=160);el('#small').checked=true;render(time+=160);el('#small').checked=false}el('#play').onclick();el('#step').onclick();render(time+=160);
+const report={ok:true,characters:7,panelsPerCharacter:3,states:4,drawCalls:draws,method:'VM render-path smoke test; no browser visual QA'};fs.writeFileSync(path.join(__dirname,'preview-verification.json'),JSON.stringify(report,null,2)+'\n');console.log(report);

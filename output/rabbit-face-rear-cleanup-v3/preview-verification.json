@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "characters": 1,
+  "commonStates": 10,
+  "dogTailStates": 0,
+  "drawCalls": 364,
+  "method": "VM DOM/canvas render-path smoke test; not browser visual QA"
+}

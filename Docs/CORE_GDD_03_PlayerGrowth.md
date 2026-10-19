@@ -66,3 +66,4 @@
 공매도·2/3/5배 레버리지는 현재 `isLevel10Unlocked` 플래그로 차단한다. UI는 레벨 10 해금으로 안내하지만 실제 레벨 상승에 따른 자동 전환과 운용력 2 검사까지 연결되었다고 기록하지 않는다. 개발자 해금 토글은 일반 진행 조건의 구현 증거가 아니다. Lv.20 서밋·명성·기관은 현재 성장 엔진과 별도의 확장 검토 대상이다. [기관 기획](MOD_GDD_15_InstitutionSystem.md)을 참조한다.
 
 근거: [ItemEngine](../web/js/engine/ItemEngine.js), [성향 적용](../web/js/engine/PlayerTrait.js), [주문 검사](../web/js/engine/marketEngine.js), [의뢰](../web/js/engine/SideQuestEngine.js).
+efbd2ad4468dabf6d87584ff0dee3c6869c12350

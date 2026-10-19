@@ -1,0 +1,290 @@
+[
+  {
+    "state": "down_walk",
+    "index": 0,
+    "old_bbox": [
+      63,
+      28,
+      256,
+      372
+    ],
+    "new_bbox": [
+      62,
+      27,
+      256,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "down_walk",
+    "index": 1,
+    "old_bbox": [
+      61,
+      34,
+      258,
+      372
+    ],
+    "new_bbox": [
+      60,
+      33,
+      260,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "down_walk",
+    "index": 2,
+    "old_bbox": [
+      63,
+      32,
+      256,
+      372
+    ],
+    "new_bbox": [
+      62,
+      32,
+      258,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "face_portrait",
+    "index": 0,
+    "old_bbox": [
+      48,
+      131,
+      272,
+      312
+    ],
+    "new_bbox": [
+      47,
+      129,
+      273,
+      312
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_walk",
+    "index": 0,
+    "old_bbox": [
+      50,
+      31,
+      269,
+      372
+    ],
+    "new_bbox": [
+      50,
+      30,
+      270,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_walk",
+    "index": 1,
+    "old_bbox": [
+      58,
+      28,
+      262,
+      372
+    ],
+    "new_bbox": [
+      57,
+      27,
+      263,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_walk",
+    "index": 2,
+    "old_bbox": [
+      57,
+      32,
+      263,
+      372
+    ],
+    "new_bbox": [
+      55,
+      31,
+      265,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "down_sit",
+    "index": 0,
+    "old_bbox": [
+      77,
+      80,
+      242,
+      372
+    ],
+    "new_bbox": [
+      76,
+      79,
+      243,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "up_walk",
+    "index": 0,
+    "old_bbox": [
+      68,
+      28,
+      252,
+      372
+    ],
+    "new_bbox": [
+      66,
+      29,
+      253,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "up_walk",
+    "index": 1,
+    "old_bbox": [
+      64,
+      29,
+      255,
+      372
+    ],
+    "new_bbox": [
+      62,
+      29,
+      256,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "up_walk",
+    "index": 2,
+    "old_bbox": [
+      68,
+      28,
+      252,
+      372
+    ],
+    "new_bbox": [
+      67,
+      29,
+      253,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_sit",
+    "index": 0,
+    "old_bbox": [
+      75,
+      80,
+      245,
+      372
+    ],
+    "new_bbox": [
+      74,
+      80,
+      247,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_carry",
+    "index": 0,
+    "old_bbox": [
+      61,
+      29,
+      259,
+      372
+    ],
+    "new_bbox": [
+      60,
+      27,
+      260,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_carry",
+    "index": 1,
+    "old_bbox": [
+      62,
+      28,
+      257,
+      372
+    ],
+    "new_bbox": [
+      61,
+      26,
+      258,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_carry",
+    "index": 2,
+    "old_bbox": [
+      57,
+      29,
+      262,
+      372
+    ],
+    "new_bbox": [
+      56,
+      27,
+      264,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  },
+  {
+    "state": "right_carry",
+    "index": 3,
+    "old_bbox": [
+      63,
+      28,
+      257,
+      372
+    ],
+    "new_bbox": [
+      62,
+      27,
+      258,
+      372
+    ],
+    "scale": 1.1408199643493762,
+    "per_frame_height_normalization": false
+  }
+]

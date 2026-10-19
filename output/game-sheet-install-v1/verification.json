@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "id": "dog",
+      "asset": "web\\assets\\characters\\dog-npc-v2",
+      "approved_png_byte_identical": true,
+      "sha256": "3f09c4783b560c017e3a6daf379636d9b932845be80787f2ba5da2b579cba566"
+    },
+    {
+      "id": "cat",
+      "asset": "web\\assets\\characters\\black-cat-npc-v2",
+      "approved_png_byte_identical": true,
+      "sha256": "6329f9efe7a5137a4415ec2ce903231dbc542a78f72780ca321f8e2ff7d3a044"
+    },
+    {
+      "id": "red-fox",
+      "asset": "web\\assets\\characters\\forest-friends\\red-fox",
+      "approved_png_byte_identical": true,
+      "sha256": "60554e0b2803813bcd84bda4f735555e303416952367ee89e3cab5994c6d7be9"
+    },
+    {
+      "id": "siberian-chipmunk",
+      "asset": "web\\assets\\characters\\forest-friends\\siberian-chipmunk",
+      "approved_png_byte_identical": true,
+      "sha256": "4d33817299ccbde5e80a4f430958c3cf318c32b3ae599b32bf29399b6021541e"
+    },
+    {
+      "id": "raccoon-dog",
+      "asset": "web\\assets\\characters\\forest-friends\\raccoon-dog",
+      "approved_png_byte_identical": true,
+      "sha256": "5ad0edec2858172d03ba9d33db4583d0cd28a8b33dd978d191f522eb168e7e22"
+    },
+    {
+      "id": "european-badger",
+      "asset": "web\\assets\\characters\\forest-friends\\european-badger",
+      "approved_png_byte_identical": true,
+      "sha256": "038c0bf0144be5f6b787dbd0a772be4ffad23a515a2721b198d2a8f2c008c6d7"
+    },
+    {
+      "id": "brown-bear",
+      "asset": "web\\assets\\characters\\forest-friends\\brown-bear",
+      "approved_png_byte_identical": true,
+      "sha256": "9904dab137ab3676f6175d72e4083ca542fb44ccacf304514eab8262122d1263"
+    },
+    {
+      "id": "european-rabbit",
+      "asset": "web\\assets\\characters\\forest-friends\\european-rabbit",
+      "approved_png_byte_identical": true,
+      "sha256": "ac07303186786e21613400f5758bf57c014c8ab111c715791583020d9d14c55a"
+    }
+  ],
+  "recolor_or_regeneration": false,
+  "runtime_contact_visual_QA": false
+}

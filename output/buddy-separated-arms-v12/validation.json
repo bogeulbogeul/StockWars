@@ -1,0 +1,14 @@
+{
+  "parts": [
+    "Buddy_Original",
+    "Separate_Arm.L",
+    "Separate_Arm.R"
+  ],
+  "arm_bone_influence_on_body": false,
+  "arm_skin": "one rigid bone each",
+  "boundary_edges": {
+    "Buddy_Original": 0,
+    "Separate_Arm.L": 3,
+    "Separate_Arm.R": 3
+  }
+}

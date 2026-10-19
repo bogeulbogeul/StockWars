@@ -1,4 +1,6 @@
 import { HelpModal } from './components/HelpModal.js';
+import { playRecoveryDrinkEffect } from './components/RecoveryDrinkEffect.js';
+import { annaTradeTab } from './components/tutorial/annaTradeFocus.js';
 import { setPlayerCharacterStyle } from './components/CharacterSprite.js';
 import './app/GameViewport.js';
 import { worldNavigation } from './app/WorldNavigation.js';
@@ -32,7 +34,9 @@ import { SettlementModal } from './components/SettlementModal.js';
 import { ServerSelectModal } from './components/ServerSelectModal.js';
 import { TownStage } from './components/TownStage.js';
 import { CipherLobby } from './components/CipherCanvasLobby.js';
+import { SalonInterior } from './components/salon/SalonInterior.js';
 import { AnnaTutorial } from './components/AnnaTutorial.js';
+import { LogisticsWarehouse } from './components/logistics/LogisticsWarehouse.js';
 import { LogisticsMiniGame } from './components/LogisticsMiniGame.js?v=art-2';
 import { InventoryModal } from './components/InventoryModal.js?v=vivian-effects-1';
 import { FurnitureEditModal } from './components/FurnitureEditModal.js?v=default-layout-v4';
@@ -113,6 +117,16 @@ class StockWarsApplication {
 
         // 5. Modals (Trade, Detailed Chart, News Detail, Settlement)
         this.tradeModal = new TradeModal(this.appContainer, {
+            onOrderScreenOpened: () => this.annaTutorial?.notifyOrderScreenOpened(),
+            onTutorialSubtab: tab => {
+                if (tab === 'Info') this.recordQuestEvent?.('company', this.tradeModal.selectedStockId);
+                const tutorial = this.annaTutorial;
+                if (!tutorial?.isActive) return;
+                const step = tutorial.historyCursor != null ? tutorial.dialogueHistory[tutorial.historyCursor] : tutorial.steps[tutorial.currentStepIdx];
+                if ((step?.id === 'open_company_info' && tab === 'Info') || (step?.id === 'company_info_return' && tab === 'Chart')) {
+                    if (tutorial.historyCursor != null) tutorial.advanceHistory(); else tutorial.nextStep();
+                }
+            },
             onClose: () => this.annaTutorial?.notifyTradeModalClosed(),
             getStock: (id) => marketEngine.stocks.get(id),
             getPendingOrders: id => marketEngine.limitOrders.filter(order => order.stockId === id),
@@ -131,6 +145,12 @@ class StockWarsApplication {
             onOpenDetailedChart: (id) => this.openDetailedChart(id),
             onOpenNewsDetailModal: (newsId) => this.openNewsDetailModal(newsId),
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
+            getAccountSummary: id => {
+                const positions = [...marketEngine.portfolio.values()].filter(p => p.id === id && !p.isShort);
+                const quantity = positions.reduce((sum, p) => sum + p.qty, 0);
+                return { cash: marketEngine.cash, quantity, averagePrice: quantity ? positions.reduce((sum, p) => sum + p.qty * p.avgPrice, 0) / quantity : 0 };
+            },
+            getMaxSellQty: id => Math.min(marketEngine.heldQuantity(id), this.itemEngine?.orderLimit() || Infinity),
             getMaxQty: (id, lev, limitPrice, isShort) => {
                 const s = marketEngine.stocks.get(id);
                 if (!s || s.price <= 0) return 1;
@@ -184,6 +204,7 @@ class StockWarsApplication {
         });
         this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
             getProfile: () => this.userProfile,
+            getTitles: () => this.getProfileTitles?.(),
             getPlayerLevel: () => this.itemEngine?.playerLevel() ?? 1,
             getLevelProgress: () => this.itemEngine?.playerLevelProgress(),
             getMarketState: () => marketEngine.getState(),
@@ -203,6 +224,10 @@ class StockWarsApplication {
 
         // Manager Anna Interactive Dialogue Modal (MOD_GDD_07_1)
         this.annaDialogueModal = new AnnaDialogueModal(this.appContainer, {
+            getQuestReward: () => this.getNpcReward?.('anna'),
+            onClaimReward: id => this.claimNpcReward?.(id,'anna'),
+            getQuestOffers: giver => this.getQuestOffers?.(giver) || [],
+            onAcceptQuest: (id, giver) => this.acceptQuest?.(id, giver),
             onGainStamina: (amount) => {
                 const max = this.mainHUD.stamina.max;
                 const next = Math.min(max, this.mainHUD.stamina.current + amount);
@@ -212,6 +237,11 @@ class StockWarsApplication {
 
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
+            onRumorOpened: (item, decoded) => { this.recordQuestEvent?.('rumor', item.id); this.annaTutorial?.explainOpenedRumor(item, decoded); },
+            onRumorClosed: () => {
+                const tutorial = this.annaTutorial;
+                if (tutorial?.isActive && tutorial.historyCursor == null && tutorial.steps[tutorial.currentStepIdx]?.id === 'rumor_actual_close') tutorial.nextStep();
+            },
             getAnalysisLevel: () => this.itemEngine?.stats().analysis ?? 1,
             getDecoderTargets: () => this.itemEngine?.decoderTargets() ?? [],
             decodeRumor: rumorId => {
@@ -225,6 +255,13 @@ class StockWarsApplication {
                 return true;
             },
             onOpen: () => this.annaTutorial?.notifyInventoryOpened(),
+            onClose: () => {
+                const tutorial = this.annaTutorial;
+                if (!tutorial?.isActive) return;
+                if (tutorial.historyCursor != null) {
+                    if (tutorial.dialogueHistory[tutorial.historyCursor]?.id === 'close_inventory_guide') tutorial.advanceHistory();
+                } else if (tutorial.steps[tutorial.currentStepIdx]?.id === 'close_inventory_guide') tutorial.nextStep();
+            },
             onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
             onUseConsumable: (item) => {
                 const addStamina = ['item_caffeine_shot', 'item_energy_drink'].includes(item.id) ? 1 : 0;
@@ -260,6 +297,19 @@ class StockWarsApplication {
             onConnect: (server) => this.enterTown(server)
         });
 
+        this.logisticsWarehouse = new LogisticsWarehouse(this.appContainer, {
+            getQuestReward: () => this.getNpcReward?.('park'),
+            onClaimReward: id => this.claimNpcReward?.(id,'park'),
+            getQuestOffers: giver => this.getQuestOffers?.(giver) || [],
+            onAcceptQuest: (id, giver) => this.acceptQuest?.(id, giver),
+            getNickname: () => this.userProfile?.nickname || '신입',
+            getWorkBlock: () => (this.mainHUD?.stamina?.current ?? 3) < (this.itemEngine?.laborCost() || 1)
+                ? '지금은 체력이 부족하구나. 에너지 드링크로 회복하고 다시 찾아와.' : '',
+            onStartJob: () => this.startLogisticsJob(),
+            onExit: () => {
+                if (this.annaTutorial?.isActive && this.annaTutorial.steps[this.annaTutorial.currentStepIdx]?.id === 'enter_logistics') this.annaTutorial.showCurrentStep();
+            }
+        });
         // Logistics Mini-Game (Bit Logistics 60-second delivery)
         this.logisticsMiniGame = new LogisticsMiniGame(this.appContainer, {
             hasSeenTutorial: () => !!this.itemEngine?.state.logisticsTutorialSeen,
@@ -271,6 +321,7 @@ class StockWarsApplication {
             getAbilityBonuses: () => this.itemEngine?.logisticsBonuses() || {},
             getLaborReward: gold => this.itemEngine?.laborReward(gold) ?? gold,
             onComplete: (result) => {
+                this.recordQuestEvent?.('labor', result);
                 const settlement = this.itemEngine.finishLabor(result.goldReward, result.expReward, true);
                 if (this.userProfile?.firstTutorialCompleted === false) this.userProfile.tutorialCheckpoint = 'rumor_inventory_guide';
                 this.itemGameplay.sync();
@@ -281,10 +332,9 @@ class StockWarsApplication {
                     this.inventoryModal?.addItem(rumorItem);
                     setTimeout(() => toastManager.show(`💌 [찌라시 수신] 비트 물류 동료가 보낸 [${rumorItem.name}] 찌라시가 가방에 도착했습니다!`), 1200);
                 }
-                this.enterTown(null, 'bit_logistics');
-                this.annaTutorial?.notifyLogisticsJobCompleted(result);
+                this.lastLogisticsResult = result;
             },
-            onClose: () => this.enterTown(null, 'bit_logistics')
+            onClose: () => this.returnFromLogisticsJob()
         });
 
         // Vivian Store Modal (MOD_GDD_03_1)
@@ -309,7 +359,17 @@ class StockWarsApplication {
             }
         });
 
+        this.salonInterior = new SalonInterior(this.appContainer, {
+            onClose: () => {
+                if (document.body.classList.contains('town-mode-active')) this.enterTown(null, 'claire_apparel');
+            }
+        });
         this.cipherLobby = new CipherLobby(this.appContainer);
+        this.cipherLobby.getQuestReward = () => this.getNpcReward?.('agent_k');
+        this.cipherLobby.onClaimReward = id => this.claimNpcReward?.(id,'agent_k');
+        this.cipherLobby.getQuestOffers = giver => this.getQuestOffers?.(giver) || [];
+        this.cipherLobby.onAcceptQuest = (id, giver) => this.acceptQuest?.(id, giver);
+        this.cipherLobby.competitionRoom.onMatchFinished = result => this.recordQuestEvent?.('arena', result);
         this.cipherLobby.trainingRoom.onAnalyze=(stockId)=>{
             // Keep the shared analysis overlay inside the active modal's top layer.
             this.cipherLobby.trainingRoom.dialog.append(this.detailedChartModal.modal);
@@ -322,6 +382,11 @@ class StockWarsApplication {
 
         // 6. 2D Side-Scrolling Public Town Stage
         this.townStage = new TownStage(this.appContainer, {
+            onBeforeTownAction: obj => {
+                if (obj.id !== 'bit_logistics' && !['bench', 'billboard', 'vending'].includes(obj.type) && obj.kind !== 'prop'
+                    && this.annaTutorial?.warnWrongLogisticsBuilding()) return false;
+                return true;
+            },
             externalPresence:true,
             getTutorialDestination: () => this.annaTutorial?.isActive
                 && this.annaTutorial.steps[this.annaTutorial.currentStepIdx]?.id === 'enter_logistics'
@@ -335,12 +400,13 @@ class StockWarsApplication {
                 return { cash: marketEngine.cash, purchased: this.itemEngine.state.purchases.item_energy_drink || 0,
                     owned: this.itemEngine.state.inventory.find(item => item.id === 'item_energy_drink')?.quantity || 0 };
             },
-            onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant),
+            onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant, { deferDrinkEffect: true }),
+            onDrinkCollected: () => playRecoveryDrinkEffect(),
             getBillboardState: () => ({
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.logisticsWarehouse?.isOpen === true || this.logisticsWarehouse?.suspended === true || this.salonInterior?.isOpen === true || this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.logisticsMiniGame?.isOpen === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onOpenLogistics: () => this.openLogisticsJob(),
             onHeal: () => {
@@ -350,7 +416,7 @@ class StockWarsApplication {
             },
             onOpenStore: () => this.openVivianStore(),
             onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 줄리안: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
-            onOpenApparel: () => toastManager.show('🪮 [살롱 드 꼬리] 클레어: "동물 트레이더를 위한 완성형 스타일을 준비하고 있어요."'),
+            onOpenApparel: () => this.salonInterior.open(),
             onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소피아: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
             onOpenSecurities: () => {
                 this.cipherLobby.open();
@@ -370,6 +436,8 @@ class StockWarsApplication {
             onStartGame: async (mode) => {
                 const sessionMode = mode === 'CONTINUE' ? this.userProfile?.mode : mode;
                 this.isLocalSession = sessionMode === 'DEMO' || sessionMode === 'DEV';
+                // Cover the office immediately; online preparation must not delay registration.
+                if (mode !== 'CONTINUE') this.characterCreation.open(mode);
                 await window.stockWarsPresence?.setLocalMode?.(this.isLocalSession);
                 this.onlineSocialSync?.receive([], null);
                 if (this.onlineSocialSync?.inviteDialog) {
@@ -383,8 +451,6 @@ class StockWarsApplication {
                     this.officeStage?.updateUserProfile(this.userProfile);
                     this.townStage?.updateUserProfile(this.userProfile);
                     this.startGame('CONTINUE');
-                } else {
-                    this.characterCreation.open(mode);
                 }
             },
             onOpenSettings: () => toastManager.show('⚙️ 게임 설정: 사운드 및 그래픽 옵션')
@@ -392,6 +458,25 @@ class StockWarsApplication {
 
         // 8. Anna Visual Novel Tutorial System (GDD CORE_GDD_10)
         this.annaTutorial = new AnnaTutorial(this.appContainer, {
+            onRumorPreview: preview => {
+                const popup = this.inventoryModal.rumorPopup;
+                popup.docText.textContent = preview.text;
+                popup.analysisStatus.textContent = `${preview.actual ? '현재 해석' : '해석 미리보기'} · 분석 LV ${preview.level}`;
+            },
+            onPutPhoneAway: () => this.smartphoneUI.minimizePhone(),
+            onTutorialTradeStep: stepId => {
+                if (stepId === 'close_inventory_guide' && this.inventoryModal.modal.classList.contains('hidden')) this.inventoryModal.open();
+                if (stepId.startsWith('server_')) this.serverSelectModal?.open();
+                if (!this.tradeModal.isOpen()) return;
+                this.tradeModal.switchSubtab(annaTradeTab(stepId));
+                if (['market_order_guide', 'limit_order_guide', 'buy_stock'].includes(stepId)) {
+                    const limit = stepId === 'limit_order_guide';
+                    this.tradeModal.orderTypeInput.value = limit ? 'limit' : 'market';
+                    this.tradeModal.limitPriceInput.disabled = !limit;
+                    if (limit && !this.tradeModal.limitPriceInput.value) this.tradeModal.limitPriceInput.value = marketEngine.stocks.get(this.tradeModal.selectedStockId)?.price || '';
+                    this.tradeModal.updateCalculations();
+                }
+            },
             onRestoreLessonScreen: (screen, stockId) => {
                 this.detailedChartModal.close(false);
                 this.tradeModal.close();
@@ -447,9 +532,10 @@ class StockWarsApplication {
                     this.smartphoneUI.switchTab('Market');
                 }
             },
-            onTutorialRecoveryDrink: () => {
+            onTutorialRecoveryDrink: async () => {
                 const result = this.itemEngine.claimTutorialRecoveryDrink();
                 this.itemGameplay.sync();
+                if (result.success && !result.stored && result.recovered !== undefined && !result.message.startsWith('이미')) await playRecoveryDrinkEffect();
                 toastManager.show(result.message, result.success);
                 return result;
             },
@@ -496,7 +582,7 @@ class StockWarsApplication {
                 if (this.userProfile) this.userProfile.firstTutorialCompleted = true;
                 const reward = this.itemEngine.claimTutorialReward(skipped);
                 this.itemGameplay.sync();
-                toastManager.show(skipped ? '⏩ 튜토리얼을 건너뛰었습니다. (초기 지원금 5,000G 입금 완료)' : reward
+                toastManager.show(skipped ? (reward ? '⏩ 튜토리얼 건너뛰기 · 정착 지원금 +2,000G 지급 (기본 지원금 총 7,000G)' : '⏩ 튜토리얼을 건너뛰었습니다. 정착 지원금은 이미 지급됐어요.') : reward
                     ? '🎉 튜토리얼 완료! 정착 보너스 +2,000G가 입금되었습니다.'
                     : '🎉 안나 매니저와의 첫 실전 매매 튜토리얼을 완수했습니다!');
             }
@@ -683,8 +769,25 @@ class StockWarsApplication {
     }
 
     openLogisticsJob() {
+        if (this.logisticsMiniGame?.isOpen || this.logisticsWarehouse?.suspended) return;
+        this.logisticsWarehouse.open();
+        this.annaTutorial?.notifyLogisticsOpened();
+    }
+
+    returnFromLogisticsJob() {
+        const result = this.lastLogisticsResult;
+        this.lastLogisticsResult = null;
+        if (result && this.annaTutorial?.isActive) {
+            this.logisticsWarehouse.suspended = false;
+            void this.enterTown(null, 'bit_logistics');
+            this.annaTutorial.notifyLogisticsJobCompleted(result);
+        } else this.logisticsWarehouse.open({ resume: true });
+    }
+
+    startLogisticsJob() {
         const curStamina = this.mainHUD?.stamina?.current ?? 3;
         if (curStamina < this.itemEngine.laborCost()) {
+            this.logisticsWarehouse.open({ resume: true });
             toastManager.show('💔 [체력 고갈] 스테미너 하트가 부족하여 알바를 할 수 없습니다! 잡화점 에너지 드링크를 마시거나 마을 벤치에서 휴식하세요.');
             return;
         }
@@ -696,9 +799,11 @@ class StockWarsApplication {
                     if (result.success && this.userProfile?.firstTutorialCompleted === false) this.userProfile.tutorialCheckpoint = 'rumor_inventory_guide';
                     this.itemGameplay.sync();
                     toastManager.show(result.message, result.success);
-                    if (result.success) this.annaTutorial?.notifyLogisticsJobCompleted(result);
+                    if (result.success) this.lastLogisticsResult = result;
+                    this.returnFromLogisticsJob();
                 },
-                onManual: () => this.logisticsMiniGame?.open({ userNickname: this.userProfile?.nickname || '신입' })
+                onManual: () => this.logisticsMiniGame?.open({ userNickname: this.userProfile?.nickname || '신입' }),
+                onCancel: () => this.logisticsWarehouse.open({ resume: true })
             });
             return;
         }
@@ -755,6 +860,7 @@ class StockWarsApplication {
     openServerSelect() {
         if (this.isLocalSession) { void this.enterTown(); return; }
         this.serverSelectModal?.open();
+        this.annaTutorial?.notifyServerSelectOpened();
     }
 
     switchTab(tabName) {

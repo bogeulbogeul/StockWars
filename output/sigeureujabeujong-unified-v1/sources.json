@@ -1,0 +1,41 @@
+{
+  "down_idle": [
+    "output\\sigeureujabeujong-front-walk-v1\\run\\curated\\frame-1.png"
+  ],
+  "down_walk": [
+    "output\\sigeureujabeujong-front-walk-v1\\run\\curated\\frame-0.png",
+    "output\\sigeureujabeujong-front-walk-v1\\run\\curated\\frame-1.png",
+    "output\\sigeureujabeujong-front-walk-v1\\run\\curated\\frame-2.png"
+  ],
+  "right_idle": [
+    "output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-1.png"
+  ],
+  "right_walk": [
+    "output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-0.png",
+    "output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-1.png",
+    "output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-2.png"
+  ],
+  "up_idle": [
+    "output\\sigeureujabeujong-back-ear-v2\\run\\curated\\frame-1.png"
+  ],
+  "up_walk": [
+    "output\\sigeureujabeujong-back-ear-v2\\run\\curated\\frame-0.png",
+    "output\\sigeureujabeujong-back-ear-v2\\run\\curated\\frame-1.png",
+    "output\\sigeureujabeujong-back-ear-v2\\run\\curated\\frame-2.png"
+  ],
+  "right_carry": [
+    "output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\curated\\frame-0.png",
+    "output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\curated\\frame-1.png",
+    "output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\curated\\frame-2.png",
+    "output\\sigeureujabeujong-carry-leg-fix-v2\\final-run\\curated\\frame-3.png"
+  ],
+  "down_sit": [
+    "output\\sigeureujabeujong-unified-v1\\pose-extract\\frames\\down_sit\\frame-0.png"
+  ],
+  "right_sit": [
+    "output\\sigeureujabeujong-unified-v1\\pose-extract\\frames\\right_sit\\frame-0.png"
+  ],
+  "face_portrait": [
+    "output\\sigeureujabeujong-unified-v1\\pose-extract\\frames\\face_portrait\\frame-0.png"
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "characterId": "black-cat-design-motion-v1",
+  "engine": "component-row",
+  "game_input": "sprite-sheet-alpha.png",
+  "degraded_static_fallback": false,
+  "curation_applied": true,
+  "frame_variant": "pixel",
+  "sprite_sheet_alpha": "sprite-sheet-alpha.png",
+  "sprite_sheet_alpha_report": "sprite-sheet-alpha.report.json",
+  "base_image": "base-source.png",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24,
+    "size": 512,
+    "safe_margin": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "animation": {
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "columns": 4,
+    "rows": {
+      "right_walk": {
+        "row": 0,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          167,
+          167,
+          167
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "down_walk": {
+        "row": 1,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          167,
+          167,
+          167
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "up_walk": {
+        "row": 2,
+        "frames": 3,
+        "fps": 6,
+        "durations_ms": [
+          167,
+          167,
+          167
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "right_carry": {
+        "row": 3,
+        "frames": 4,
+        "fps": 6,
+        "durations_ms": [
+          167,
+          167,
+          167,
+          167
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "down_sit": {
+        "row": 4,
+        "frames": 1,
+        "fps": 6,
+        "durations_ms": [
+          167
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_sit": {
+        "row": 5,
+        "frames": 1,
+        "fps": 6,
+        "durations_ms": [
+          167
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "face_portrait": {
+        "row": 6,
+        "frames": 1,
+        "fps": 6,
+        "durations_ms": [
+          167
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 2048,
+    "sheetHeight": 3584,
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "rows": {
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3072,
+          "w": 512,
+          "h": 512
+        }
+      ]
+    }
+  }
+}

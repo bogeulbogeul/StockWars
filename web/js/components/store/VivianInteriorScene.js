@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { ROOM_GRID, ROOM_VIEW_SCALE, gridToScreen, polygonPoints } from './IsometricRoomGrid.js';
 import { projectSprite } from './VivianSpriteGeometry.js';
 import { getVivianClockHandsHtml } from './VivianClock.js';
@@ -57,7 +58,7 @@ export function vivianStaffRectangle(items = defaultRoomLayout()) {
 }
 export function getVivianStaffHtml() {
     const r=vivianStaffRectangle();
-    const url=new URL('../../../assets/characters/vivian/vivian-chibi-isometric-v3.png',import.meta.url).href;
+    const url=EMPTY_CHARACTER_IMAGE;
     return `<img class="vivian-room-staff" src="${url}" alt="계산대 뒤의 비비안" draggable="false"
         style="left:${r.x/1536*100}%;top:${r.y/1024*100}%;width:${r.width/1536*100}%;height:${r.height/1024*100}%;z-index:${r.zIndex}">`;
 }

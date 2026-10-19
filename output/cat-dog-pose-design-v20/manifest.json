@@ -1,0 +1,296 @@
+{
+  "characterId": "cat-dog-pose-design-v20",
+  "engine": "dog-pose-reference-edit",
+  "game_input": "sprite-sheet-alpha.png",
+  "sprite_sheet_alpha": "sprite-sheet-alpha.png",
+  "sprite_sheet_alpha_report": "validation.json",
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "size": 512,
+    "safe_margin": 0
+  },
+  "animation": {
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "columns": 4,
+    "rows": {
+      "down_idle": {
+        "row": 0,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "down_walk": {
+        "row": 1,
+        "frames": 4,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "right_idle": {
+        "row": 2,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_walk": {
+        "row": 3,
+        "frames": 4,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "up_idle": {
+        "row": 4,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "up_walk": {
+        "row": 5,
+        "frames": 4,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "right_carry": {
+        "row": 6,
+        "frames": 4,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel"
+      },
+      "down_sit": {
+        "row": 7,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_sit": {
+        "row": 8,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "face_portrait": {
+        "row": 9,
+        "frames": 1,
+        "fps": 6.25,
+        "durations_ms": [
+          160
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 2048,
+    "sheetHeight": 5120,
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "rows": {
+      "down_idle": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_idle": [
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 3072,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 3072,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 3072,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 3072,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 3584,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 4096,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 4608,
+          "w": 512,
+          "h": 512
+        }
+      ]
+    }
+  },
+  "appearance_reference": "references/cat-design.png",
+  "pose_template": "references/dog-pose-template.png",
+  "production": "Built-in GPT replacement edit of DOG pose contact sheet, using only user CAT design for identity. No prior cat motion sheets or hand-written head/tail deformation used. Native rendered colors retained."
+}

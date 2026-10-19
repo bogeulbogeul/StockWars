@@ -1,0 +1,57 @@
+[
+  {
+    "model": "FinanceBuilding",
+    "triangles_preserved": 810620,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "embedded_texture_matches_png": true,
+    "basecolor_changed": true,
+    "sha256": "3ec11e2a5550db30dfde423cfb6e320682a6a5c5cde8bbf7414f5453729b2991"
+  },
+  {
+    "model": "FunitueStoreBuilding",
+    "triangles_preserved": 1253672,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "embedded_texture_matches_png": true,
+    "basecolor_changed": true,
+    "sha256": "e4e439426df3d7f63803782d0faf770f8c97eceb0ef2fd9fe7de5fe6a62cdbfc"
+  },
+  {
+    "model": "StoreBuilding",
+    "triangles_preserved": 824116,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "embedded_texture_matches_png": true,
+    "basecolor_changed": true,
+    "sha256": "fc510de4d9549bc1722d6038c538fbad7b6b881d18a2c3e6cae7c2f46aa31518"
+  },
+  {
+    "model": "InformationBuilding",
+    "triangles_preserved": 993068,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "embedded_texture_matches_png": true,
+    "basecolor_changed": true,
+    "sha256": "7916ab33db42519083e66e164f36d29c0fe933b7f4721a17334f4d27a9b5511d"
+  },
+  {
+    "model": "HomeBuilding",
+    "triangles_preserved": 842684,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "embedded_texture_matches_png": true,
+    "basecolor_changed": true,
+    "sha256": "7fcc774a2d0a04d2acd69e9b69a215c5fff1f59ab0b754834711ef1700047824"
+  }
+]

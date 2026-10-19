@@ -1,0 +1,67 @@
+{
+  "method": "native image_gen edit; canonical chroma/component extraction; selected generated region assembly",
+  "frameLayoutUnchanged": true,
+  "animationMetadataUnchanged": true,
+  "checks": [
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "index": 0,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-0.png",
+      "region": [
+        108,
+        290,
+        166,
+        353
+      ],
+      "source_component_bbox": [
+        180,
+        35,
+        505,
+        755
+      ],
+      "source_region": [
+        239,
+        589,
+        351,
+        709
+      ],
+      "changedPixels": 2216,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "f35b3eb9ee84682904141d4c80902a2bacbb6badc1fa2063baa52f8aeb54c143",
+      "afterSha256": "5f9276ae05d7ff364de3e6865e48a0f7c264a5e92f179e58fae12520e78b4c3c"
+    },
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "index": 2,
+      "run": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\european-rabbit\\run",
+      "candidate": "C:\\GitHub\\StockWars\\output\\no-paw-pads-v1\\candidates\\european-rabbit-european-rabbit-up_walk-2.png",
+      "region": [
+        155,
+        293,
+        218,
+        356
+      ],
+      "source_component_bbox": [
+        1433,
+        35,
+        1757,
+        755
+      ],
+      "source_region": [
+        1590,
+        594,
+        1712,
+        716
+      ],
+      "changedPixels": 2002,
+      "unchangedOutsideRegion": true,
+      "alphaIdentical": true,
+      "beforeSha256": "86539242359524f0add1e7254d0cbada1f95944c51f5ceab78ceed15ea183f61",
+      "afterSha256": "e345ac51bf730924c739b8e542bd48702da032d672acc26a6d05700277c9fb9a"
+    }
+  ]
+}

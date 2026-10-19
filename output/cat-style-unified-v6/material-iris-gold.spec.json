@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "iris-gold",
+      "map": {
+        "#D88C29": "#F9A608",
+        "#ED9908": "#F9A608",
+        "#F9A608": "#F9A608"
+      }
+    }
+  ]
+}

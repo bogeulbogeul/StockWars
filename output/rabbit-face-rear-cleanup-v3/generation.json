@@ -1,0 +1,16 @@
+{
+  "provider": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "rear3",
+      "prompt": "Edit FIRST image only: exactly three rear-view rabbit walking poses, same canvas composition. Remove the unnatural double horizontal dark curved crease and dark brown crescent directly UNDER each ivory tail. The rump below the centered tail must be smooth uninterrupted light taupe-brown fur, clean and simple, without an anus mark, circular ring, stacked arcs, or diaper shape. Keep the same small round tail attached at central rear pelvis, same tail size/position, body colors and shading elsewhere, exact arms/legs/feet gait poses and all outer contours. Preserve smooth rear heels with no toes or paw pads. Only retouch the small rump region between the bottom of tail and top of leg separation. Do not move any limb, tail or body. Transparent background. Three original poses only, no new views, no labels.",
+      "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-aaa18b52-c36d-4280-ab82-7e15b1bf642d.png"
+    },
+    {
+      "key": "portrait3",
+      "prompt": "Surgical edit of this rabbit face portrait. Fix ONLY both eyes: clean crisp cartoon eyes, solid deep black pupils, smoothly filled warm medium brown irises, one sharply readable pure-white catchlight per eye. Remove muddy brown patches, quantization banding, blocky pixel steps inside irises, stray reddish blotches. Keep original eye shapes, eyelash outlines, eye size and gaze; make internal color regions clean and legible at small UI icon size. Preserve EXACT face, long ears, cheek cream pattern, tan fur colors, nose, mouth, head silhouette and head-only framing. No global recolor, no extra sparkle dots or iris texture. Transparent background. Single portrait only, no text.",
+      "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-6695626b-8058-452c-b772-f59156f33262.png"
+    }
+  ],
+  "scope": "Local rear crease removal and portrait eyes; nose material correction uses sprite-gen recolor with fixed original palette."
+}

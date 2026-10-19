@@ -5,6 +5,15 @@ import { tutorialChapters, nextTutorialChapter } from '../js/components/tutorial
 import { buildAnnaScenario } from '../js/components/tutorial/annaTutorialScenario.js';
 import { AnnaTutorial } from '../js/components/AnnaTutorial.js';
 
+test('movement lesson follows putting the phone away and restores the office', () => {
+    const steps = buildAnnaScenario({});
+    const index = steps.findIndex(step => step.id === 'put_phone_away');
+    assert.equal(steps[index].requiresManualAction, true);
+    assert.equal(steps[index + 1].id, 'movement_keys_guide');
+    assert.deepEqual(annaLessonScreen(steps[index], steps), { phone: 'Stock', tab: 'News' });
+    assert.deepEqual(annaLessonScreen(steps[index + 1], steps), { phone: null });
+});
+
 test('each chapter skips to the next boundary, with only the last ending the tutorial', () => {
     const steps = buildAnnaScenario({});
     for (let i = 0; i < tutorialChapters.length; i++) {
@@ -15,7 +24,7 @@ test('each chapter skips to the next boundary, with only the last ending the tut
         }
     }
     steps.unshift({ id: 'tutorial_resume' });
-    assert.equal(nextTutorialChapter(steps, 0, 'celebrate').id, 'go_town_proposal');
+    assert.equal(nextTutorialChapter(steps, 0, 'celebrate').id, 'movement_keys_guide');
 });
 
 test('skipping trading goes to account selection without completing or simulating a purchase', () => {

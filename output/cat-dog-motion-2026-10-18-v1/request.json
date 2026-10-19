@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "black-cat-design-motion-v1",
+    "base_image": "C:\\GitHub\\StockWars\\output\\cat-dog-motion-2026-10-18-v1\\references\\cat-front.png"
+  },
+  "cell": {
+    "shape": "square",
+    "width": 512,
+    "height": 512,
+    "safe_margin_x": 24,
+    "safe_margin_y": 24
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "right_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "right_walk"
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "down_walk"
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "up_walk"
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6.25,
+      "loop": true,
+      "action": "right_carry"
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "down_sit"
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "right_sit"
+    },
+    "face_portrait": {
+      "frames": 1,
+      "fps": 6.25,
+      "loop": false,
+      "action": "face_portrait"
+    }
+  },
+  "style": "Clean outlined SD animal illustration, charcoal black cat, amber eyes, pink inner ears, design-sheet identity. No paw pads.",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": false,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  }
+}

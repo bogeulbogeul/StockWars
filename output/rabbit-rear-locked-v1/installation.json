@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "only_rabbit_updated": true,
+  "other_seven_approved_PNG_exact": [
+    "dog",
+    "cat",
+    "red-fox",
+    "siberian-chipmunk",
+    "raccoon-dog",
+    "european-badger",
+    "brown-bear"
+  ],
+  "runtime_updated": false
+}

@@ -45,7 +45,7 @@ export class RumorPopup {
                     <div class="rumor-header">
                         <div class="rumor-header-left">
                             <span class="rumor-confidential-badge">CONFIDENTIAL</span>
-                            <span class="rumor-header-title">극비 정보 / 찌라시 열람 보고서</span>
+                            <span class="rumor-header-title">찌라시 읽기</span>
                         </div>
                         <button class="rumor-close-btn" id="btnRumorClose" title="닫기">✕</button>
                     </div>
@@ -79,13 +79,13 @@ export class RumorPopup {
                         <!-- Secret Document Content Box -->
                         <div class="rumor-doc-box">
                             <div class="rumor-doc-header">
-                                <span>🕵️ 찌라시 원문</span>
+                                <span>내용</span>
                                 <span id="rumorAnalysisStatus"></span>
                             </div>
                             <div class="rumor-doc-text" id="rumorDocText">
                                 내용 로딩 중...
                             </div>
-                            <div class="rumor-reliability-note">해독은 진위 보증이 아닙니다. 완전 해독해도 전략적 오보 5%가 존재합니다.</div>
+                            <div class="rumor-reliability-note">소문은 사실과 다를 수 있어요.</div>
                         </div>
 
                         <!-- Market Impact Effects -->
@@ -233,6 +233,7 @@ export class RumorPopup {
         }
 
         this.modal?.classList.remove('hidden');
+        this.callbacks.onRumorOpened?.(item, decoded);
 
         if (this.onValueDroppedCallback) {
             this.onValueDroppedCallback(item, { isFirstRead, previousPrice, newPrice: newPriceVal, readCount: item.readCount });
@@ -240,6 +241,8 @@ export class RumorPopup {
     }
 
     close() {
+        const wasOpen = this.modal && !this.modal.classList.contains('hidden');
         this.modal?.classList.add('hidden');
+        if (wasOpen) this.callbacks.onRumorClosed?.();
     }
 }

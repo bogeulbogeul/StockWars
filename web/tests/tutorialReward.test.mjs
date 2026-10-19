@@ -3,12 +3,11 @@ import assert from 'node:assert/strict';
 import { ItemEngine } from '../js/engine/ItemEngine.js';
 import { AnnaTutorial } from '../js/components/AnnaTutorial.js';
 
-test('tutorial reward is paid once, persisted, excluded for skip, reset for new game', () => {
+test('tutorial reward is equal for skip and completion, paid once and persisted', () => {
     const market = { cash: 350, initialCash: 5000 };
     const engine = new ItemEngine({ market });
-    assert.equal(engine.claimTutorialReward(true), 0);
-    assert.equal(market.cash, 350);
-    assert.equal(engine.claimTutorialReward(), 2000);
+    assert.equal(engine.claimTutorialReward(true), 2000);
+    assert.equal(engine.claimTutorialReward(), 0);
     assert.equal(market.cash, 2350);
     assert.equal(market.initialCash, 5000);
     assert.equal(engine.claimTutorialReward(), 0);
@@ -23,7 +22,7 @@ test('duplicate completion and later labor do not reopen a completed or skipped 
     let completed = 0;
     const tutorial = Object.assign(Object.create(AnnaTutorial.prototype), {
         isActive: true, callbacks: { onComplete: () => completed++ },
-        steps: [{ id: 'rumor_inventory_guide' }], overlay: { classList: { add() {} } },
+        steps: [{ id: 'rumor_inventory_guide' }], overlay: { classList: { add() {}, remove() {} } },
         cleanupHighlights() {}, tryShowLesson() {}
     });
     tutorial.complete();

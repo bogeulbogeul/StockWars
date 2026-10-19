@@ -1,0 +1,35 @@
+{
+  "character": "european-badger",
+  "reviewed_states": [
+    "down_walk",
+    "right_walk",
+    "up_walk",
+    "right_carry",
+    "down_sit",
+    "right_sit",
+    "face_portrait"
+  ],
+  "contact_sheet_review": {
+    "identity": "reviewed; accepted design species/markings retained",
+    "anatomy": "reviewed; alternating walk contacts and arm counter-swing",
+    "camera": "front, front-right with both eyes, back; seated front-right",
+    "portrait": "largest connected head component; text and palette excluded"
+  },
+  "motion_continuity": "provisional; contact sheets inspected, exact playback exported; animated visual/in-game review not claimed",
+  "runtime": {
+    "integrated": false,
+    "body_crown_measurement": "pending",
+    "chair_and_box_contacts": "pending"
+  },
+  "manual_stages": [
+    "accepted design view crops; canonical cutout",
+    "uniform non-pixel row scale/placement after canonical roomy extraction because stock extractor fits each frame separately",
+    "idle copied byte-identically from walk neutral",
+    "walk playback order and GIF exported using canonical save_clean_gif at 160 ms",
+    "portrait largest component isolated with canonical component routines"
+  ],
+  "corrections": [
+    "right_walk dark hands and feet",
+    "up_walk dark hands"
+  ]
+}

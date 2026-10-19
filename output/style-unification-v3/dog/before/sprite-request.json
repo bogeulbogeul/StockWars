@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-request",
+  "engine": "component-row",
+  "character": {
+    "id": "dog-tail-wag-v1",
+    "description": "",
+    "base_image": "base-source.png"
+  },
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "states": {
+    "down_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight FRONT neutral standing, both soles planted, relaxed arms. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "down_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "Straight FRONT view fixed throughout. Exactly THREE poses: A character own left foot steps forward and right arm forward; neutral both feet planted; B own right foot steps forward and left arm forward. Opposite feet alternate, no duplicate A/B. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "right_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Facing RIGHT neutral standing, mild three-quarter view consistent with base, both soles planted. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "right_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "THREE poses: contact A, both-feet-planted neutral, opposite contact B. Existing colors and fingers retained."
+    },
+    "up_idle": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "Straight BACK neutral standing. Rear of head and body, no face or chest patch. Feet are rounded HEELS, toes point away, no front toe crease lines. Tail connected to rear pelvis. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "up_walk": {
+      "frames": 3,
+      "fps": 6,
+      "loop": true,
+      "action": "Straight BACK view throughout: own left foot contact, neutral both feet planted, own right foot contact. Arms counter-swing. Feet show rear heels and ankles, toes point AWAY, no front-facing toes. Tail emerges from pelvis not thigh. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "right_carry": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "action": "Facing RIGHT throughout, FOUR alternating gait poses: near leg forward contact, near leg vertical support far knee passing, far leg forward contact near leg BACK, far leg vertical support near knee passing. Both forearms extend forward with palms UP beneath a separate parcel stack, hands at constant waist height and position, stable torso. NO box drawn. Tail behind rump, never replaces an arm. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "down_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR seated pose straight FRONT: upright torso, pelvis raised at seat height, thighs forward, knees bent90degrees and lower legs down, paws on thighs. Chair is separate: NO chair drawn. Not floor sitting or animal haunch crouching. Tail moved sideways behind hips. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "right_sit": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "ONE held CHAIR seated pose, elevated isometric FRONT-RIGHT THREE-QUARTER view, BOTH eyes visible, NOT pure profile. Thighs project forward along room diagonal, knees bent90degrees lower legs down, upright torso, pelvis elevated for chair seat. Paws on thighs. NO chair. Tail bends aside behind hips, no floor sitting. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever."
+    },
+    "down_idle_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "right_idle_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "up_idle_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "down_sit_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "right_sit_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "right_carry_wag": {
+      "frames": 3,
+      "fps": 6.25,
+      "loop": true,
+      "action": "Identical held body/face/limbs; only tail swishes outward, neutral, inward. Full frame animation, no rig."
+    },
+    "face_portrait": {
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "action": "One front-facing head portrait, ears fully included, tiny neck tuft, no body. Match approved front idle face and colors."
+    }
+  },
+  "style": "Match the supplied NPC-style animal base exactly: clean dark outlines, restrained cel shading, detailed chibi biped anatomy, same head/body proportions. No clothes shoes props halos haze or shadows. One anatomically attached tail in every pose. No grids or text. Use only the flat key background specified in the layout requirements. Keep ample gaps between poses, identical scale and head size across row. Wheat-tan Korean countryside MIXED-BREED dog, small semi-folded triangular ears, cream muzzle chest paw tips as base, brown eyes, one loosely upward curled furry tan tail. Not retriever. All animals: NO paw pads, NO toe beans, NO internal circular/oval sole or palm markings, NO emphasized sole plane. Raised feet remain smooth in the local fur color. Retain normal open finger division lines.",
+  "layout": "taxonomy/v1",
+  "fit": {
+    "resample": "lanczos",
+    "align_x": "bbox-center",
+    "align_y": "bottom",
+    "ground_frames": true,
+    "pixel_unfake": false
+  },
+  "chroma": {
+    "mode": "rgb",
+    "unmix_reach": 4,
+    "spill_max_fraction": 0.005
+  },
+  "paw_pad_policy": {
+    "status": "forbidden",
+    "decided": "2026-10-16",
+    "source": "user request",
+    "preserve_finger_divisions": true
+  }
+}

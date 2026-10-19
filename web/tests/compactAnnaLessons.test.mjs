@@ -55,7 +55,7 @@ test('shortcuts lead to lesson destinations without executing trades or rewards'
     assert.equal(tutorialShortcutDestination('portfolio_guide'), null);
     assert.equal(tutorialShortcutDestination('news_tab_guide'), null);
     assert.equal(tutorialShortcutDestination('news_reading_guide'), null);
-    assert.equal(tutorialShortcutDestination('rumor_inventory_guide').selector, '#btnHudInventory');
+    assert.equal(tutorialShortcutDestination('rumor_inventory_guide'), null);
     for (const id of ['buy_stock', 'first_sell_guide', 'logistics_completed']) assert.equal(tutorialShortcutDestination(id), null);
 });
 
@@ -109,7 +109,14 @@ test('expanded chart tour requires opening and closing the chart around four foc
     assert.equal(tour[2].allowedSelector, '#detailedChartScrollWrapper');
     assert.equal(tour[3].allowedSelector, '#timeframeSelector');
     assert.equal(tour[4].requiresManualAction, true);
-    assert.equal(steps[start + 6].id, 'market_order_guide');
+    const order = steps.findIndex(step => step.id === 'open_order_screen');
+    assert.ok(order > start + 6);
+    assert.equal(steps[order].id, 'open_order_screen');
+    assert.equal(steps[order].targetSelector, '#btnSubtabOrder');
+    assert.equal(steps[order].requiresManualAction, true);
+    assert.equal(steps[order + 1].id, 'order_screen_overview');
+    assert.equal(steps[order + 1].screenOverview, true);
+    assert.equal(steps[order + 2].id, 'market_order_guide');
 });
 
 
@@ -122,5 +129,6 @@ test('account opens with an unfaded overview before the profit explanation', () 
     assert.equal(overview.requiresManualAction, false);
     assert.equal(overview.htsIntroTarget, undefined);
     assert.equal(tutorialShortcutDestination(overview.id), null);
-    assert.equal(steps[index + 2].id, 'social_and_ranking_guide');
+    assert.equal(steps[index + 2].id, 'sector_allocation_guide');
+    assert.equal(steps[index + 3].id, 'social_and_ranking_guide');
 });

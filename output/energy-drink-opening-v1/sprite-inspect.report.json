@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v1",
+  "states": [
+    "open"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "open",
+      "source": "frames",
+      "expected_frames": 4,
+      "found_frames": 4,
+      "natural_pose_count": 4,
+      "frame_files": [
+        "frames/open/frame-0.png",
+        "frames/open/frame-1.png",
+        "frames/open/frame-2.png",
+        "frames/open/frame-3.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9606347177858289,
+          "mean": 0.9727631667527432
+        },
+        "dhash_similarity": {
+          "min": 0.890625,
+          "mean": 0.9192708333333334
+        },
+        "motion_presence": 0.07602243859783497,
+        "centroid_sigma": {
+          "x": 0.5074318765022279,
+          "y": 4.7017178222117035
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

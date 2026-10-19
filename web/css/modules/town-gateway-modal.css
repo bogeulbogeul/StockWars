@@ -440,3 +440,29 @@
     color: var(--accent-cyan);
     font-weight: 700;
 }
+
+/* Readable town selection, without repeated status explanations. */
+#serverSelectModal .cyber-header-badge,
+#serverSelectModal .autoscale-stat-pill:has(.autoscale-mode-tag),
+#serverSelectModal .intro-icon,
+#serverSelectModal .footer-hint,
+#serverSelectModal .chip-sub { display: none; }
+#serverSelectModal .intro-desc:empty { display: none; }
+#serverSelectModal .cyber-modal-title { font-size: 26px; }
+#serverSelectModal .cyber-title-row { flex-wrap: wrap; gap: 12px; }
+#serverSelectModal .cyber-current-chip { font-size: 18px; }
+#serverSelectModal .cyber-current-chip :is(.chip-label, .chip-val) { font-size: inherit; }
+#serverSelectModal .town-autoscale-status-bar { padding: 16px; gap: 18px; flex-wrap: wrap; }
+#serverSelectModal .autoscale-stat-pill { font-size: 20px; gap: 10px; }
+#serverSelectModal .intro-title { font-size: 20px; }
+#serverSelectModal .intro-desc { font-size: 17px; }
+#serverSelectModal .town-channel-intro { flex-wrap: wrap; gap: 14px; padding: 16px; }
+#serverSelectModal .btn-autoscale-action { font-size: 20px; padding: 12px 18px; min-height: 48px; }
+#serverSelectModal .town-channels-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+#serverSelectModal .town-channel-card { padding: 18px; }
+#serverSelectModal .channel-name { font-size: 24px; }
+#serverSelectModal .traffic-tag { font-size: 18px; }
+#serverSelectModal :is(.ping-text, .density-text) { font-size: 18px; }
+#serverSelectModal .card-footer-row { flex-wrap: wrap; gap: 10px; }
+#serverSelectModal .footer-legend { flex-wrap: wrap; gap: 12px; }
+#serverSelectModal .footer-legend .legend-item { font-size: 16px; }

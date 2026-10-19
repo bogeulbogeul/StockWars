@@ -9,7 +9,7 @@ $files = @(
 )
 
 foreach ($rel in $files) {
-    $full = Join-Path "c:\Users\Administrator\Documents\GitHub\StockWars" $rel
+    $full = Join-Path "${PSScriptRoot}\.." $rel
     if (Test-Path $full) {
         $img = [System.Drawing.Image]::FromFile($full)
         Write-Host "$rel : $($img.Width) x $($img.Height)"

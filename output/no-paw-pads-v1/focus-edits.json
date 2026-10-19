@@ -1,0 +1,14 @@
+[
+  {
+    "id": "cat-foot",
+    "prompt": "Edit this exact close-up. COMPLETELY ERASE the large nearly-black horizontal oval in the center of the paw AND the curved black line under that oval. Replace the entire oval area with continuous charcoal-gray fur color matching the region immediately ABOVE the oval. There must be absolutely NO oval, circle, pad, bean, dark central patch or separate sole plane left anywhere. Keep the outer black silhouette, surrounding leg and cyan background unchanged. Simplify the bottom internal bean contours into at most two short OPEN crease lines; no enclosed toe-pad loops. This is a plain fur-covered rounded hind foot.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-44d79e62-d03c-491e-b761-15e194050060.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/focus/cat-foot-edited.png"
+  },
+  {
+    "id": "fox-palm",
+    "prompt": "Edit this exact close-up. Replace the palm-facing bean pattern with the BACK OF a simple closed furry fist. Remove the red-brown central patch completely: the center must have the SAME dark chocolate brown fur as the wrist. Erase the enclosed round/oval outlines of the four toe beans. Retain the same outer silhouette and pose, with only TWO short open-ended finger division lines near the outer right edge. NO palm pads, NO toe beans, NO circles or ovals, NO reddish central patch. Keep surrounding orange arm, cyan background and black exterior outline unchanged.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-949657d7-e9c4-4c06-860f-d90f462a7705.png",
+    "out": "C:/GitHub/StockWars/output/no-paw-pads-v1/focus/fox-palm-edited.png"
+  }
+]

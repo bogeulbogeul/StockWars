@@ -1,0 +1,13 @@
+{
+  "clock_hands": [
+    "Clock_Hour",
+    "Clock_Minute"
+  ],
+  "pivot": "Each hand origin is its own center on the clock spindle",
+  "blender_axis": "+Y clockwise when viewed from front",
+  "demo_duration_seconds": 12,
+  "demo_time_scale": 3600,
+  "actual_hour_period_seconds": 43200,
+  "actual_minute_period_seconds": 3600,
+  "game_installed": false
+}

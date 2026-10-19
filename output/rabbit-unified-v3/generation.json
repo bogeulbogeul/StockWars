@@ -1,0 +1,12 @@
+[
+  {
+    "kind": "face",
+    "prompt": "Edit ONLY heads in the FIRST FIVE figures of image1 (3x2 existing rabbit pose board: front walk A/neutral/B, front chair sit, front head portrait; bottom-right 6th figure is already corrected side reference and must stay unchanged). Match image2 corrected rabbit face DESIGN across front-facing views: smoothly rounded cheek/jaw silhouette, NO pointed cat cheek spikes, short blunt round cream rabbit muzzle, gentle rounded eyes without sharp feline corners, tiny muted warm brown nose (KEEP original nose color, NOT bright pink), soft small rabbit mouth. Same gray-brown/cream coat palette, brown eyes, long pink-inside ears, clean dark lines/cel shading. Keep all heads front-facing except unchanged side reference, all sizes, ear shapes, positions, original expressions, body/limbs/tail and exact opposite gait poses. Do NOT turn fronts to a side view. Portrait must match corrected front body heads. No added teeth, whiskers, markings, clothes, paw pads. Preserve exact 960x800 board, cyan #00FFFF background. Change only head shapes/face, all bodies unchanged.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-3264d0e6-df19-4573-87a8-8f632f9f757f.png"
+  },
+  {
+    "kind": "carry",
+    "prompt": "Precise local recolor edit of image1, existing FOUR rabbit carrying frames. Remove ALL cream/white triangular or oval patches on the LOWER BELLY/GROIN/UPPER THIGHS immediately BELOW the horizontal forearms/hands. Those four unwanted light patches are indicated by images2-5 closeups. Reconnect these lower-belly/hip/upper-thigh areas smoothly to surrounding taupe gray-brown fur, with matching existing cel shadows. There must be NO cream/white area on thighs, groin or lower belly below the forearms. Keep cream chest ABOVE the arms, cream hands and white foot tips, short white tail exactly as they are. Preserve EVERY face/head/ear/eye/nose, body contour, arm and leg shape, outline, opposite foot gait, size, spacing and all other pixels. Exactly same 4 existing poses, cyan background, 1280x400 row. No pads, beans or sole markings. Head design already corrected; DO NOT redraw heads.",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-088d5be0-5704-47a2-b8f4-54fa2a8e22ce.png"
+  }
+]

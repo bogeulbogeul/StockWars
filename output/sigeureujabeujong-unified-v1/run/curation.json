@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-curation",
+  "states": {
+    "down_walk": {
+      "selected": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "clones": {
+        "3": 1
+      },
+      "revision": [
+        "54e43e5c4756"
+      ]
+    },
+    "right_walk": {
+      "selected": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "clones": {
+        "3": 1
+      },
+      "revision": [
+        "c3d8542c5e20"
+      ]
+    },
+    "up_walk": {
+      "selected": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "clones": {
+        "3": 1
+      },
+      "revision": [
+        "5f8bbf0996f5"
+      ]
+    },
+    "down_sit": {
+      "selected": [
+        0
+      ],
+      "transforms": {
+        "0": {
+          "scale": 0.9,
+          "dx": 0,
+          "dy": 23
+        }
+      },
+      "revision": [
+        "e6bfd62c2227"
+      ]
+    },
+    "right_sit": {
+      "selected": [
+        0
+      ],
+      "transforms": {
+        "0": {
+          "scale": 0.9,
+          "dx": 0,
+          "dy": 23
+        }
+      },
+      "revision": [
+        "ec1d816242b8"
+      ]
+    },
+    "face_portrait": {
+      "selected": [
+        0
+      ],
+      "transforms": {
+        "0": {
+          "dy": -53
+        }
+      },
+      "revision": [
+        "a4444a150c44"
+      ]
+    }
+  },
+  "run_revision": "09636c2fcbbd227c"
+}

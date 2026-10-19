@@ -1,6 +1,6 @@
 Add-Type -AssemblyName System.Drawing
 
-$destDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\weather"
+$destDir = "${PSScriptRoot}\..\web\assets\weather"
 if (!(Test-Path -Path $destDir)) {
     New-Item -ItemType Directory -Path $destDir -Force | Out-Null
 }

@@ -14,3 +14,13 @@ test('late position responses cannot reinsert players after leaving town', async
     await Promise.resolve();
     assert.deepEqual(snapshots, []);
 });
+
+test('one failed presence request does not erase visible remote players', async () => {
+    const snapshots = [];
+    const stage = { playerController: {}, setRemotePlayers: players => snapshots.push(players) };
+    const sync = new TownPresenceSync(stage, { position: async () => { throw new Error('temporary timeout'); } });
+    sync.start();
+    await Promise.resolve();
+    sync.stop();
+    assert.deepEqual(snapshots, []);
+});

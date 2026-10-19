@@ -1,0 +1,95 @@
+[
+  {
+    "animal": "dog",
+    "state": "down_walk",
+    "prompt": "Minimal local correction of this exact 3-pose dog animation row. Preserve all faces, colors, drawing style, body size, legs and arm poses exactly. In the THIRD (rightmost) dog ONLY, move its tail from the viewer's RIGHT side to the viewer's LEFT side of its body, matching the same left-side tail silhouette and attachment used by the first and middle dogs. The tail should not jump to the opposite side between poses. All three dogs should have the curved tail visible on viewer left. Do not mirror the body or change the leg/arm contacts. Keep exactly three complete separated figures, existing layout and flat cyan #00FFFF background. No other changes.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-6a7e983e-e487-4b0b-972f-a8893e4a2bef.png",
+    "previous": {
+      "animal": "dog",
+      "state": "down_walk",
+      "prompt": "Edit target image 1: existing dog sprite animation row with THREE full body poses. Reference image 2: APPROVED identity, precise fur colors, linework and shading style. Unify every pose in target with reference 2: same face, proportions, outline thickness, local fur palette and simple clean cel shading. Preserve exact existing pose, direction, foot positions, arm swing, tail attachment and 3-pose order. No new motion poses. This is a consistent SD biped game character, no clothes. Warm wheat tan fur, cream muzzle/chest/paw tips, brown eyes, folded ears. Front-facing existing view. Render exactly THREE separate complete figures in one horizontal row, equal scale, feet same baseline, ample gaps and padding. Flat solid pure CYAN #00FFFF background for sprite extraction, no checkerboard, shadows, text or grid. Keep art clean at small game scale. Do not generate an atlas.",
+      "hint": "Generated images are saved to C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1 as C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-95a8d180-5592-438a-b802-1ffec3c77efa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-95a8d180-5592-438a-b802-1ffec3c77efa.png"
+    },
+    "final_correction": "Opposite arm swing in third pose; tail remains viewer left, exact colors and other poses retained."
+  },
+  {
+    "animal": "cat",
+    "state": "down_walk",
+    "prompt": "Edit target image 1: existing cat sprite animation row with THREE full body poses. Reference image 2: APPROVED identity, precise fur colors, linework and shading style. Unify every pose in target with reference 2: same face, proportions, outline thickness, local fur palette and simple clean cel shading. Preserve exact existing pose, direction, foot positions, arm swing, tail attachment and 3-pose order. No new motion poses. This is a consistent SD biped game character, no clothes. Neutral dark charcoal fur uniformly across body/limbs/tail, amber eyes, pink ear interiors; avoid blue/brown cast. Front-facing existing view. Render exactly THREE separate complete figures in one horizontal row, equal scale, feet same baseline, ample gaps and padding. Flat solid pure CYAN #00FFFF background for sprite extraction, no checkerboard, shadows, text or grid. Keep art clean at small game scale. Do not generate an atlas.",
+    "hint": "Generated images are saved to C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1 as C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-f5ecef3f-3176-44c4-a222-02b43116fa14.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-f5ecef3f-3176-44c4-a222-02b43116fa14.png"
+  },
+  {
+    "animal": "dog",
+    "state": "right_walk",
+    "prompt": "Edit target image 1 (dog, right_walk): preserve ALL 3 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Maintain alternating opposite contacts A, grounded neutral, B; no new poses. Render exactly 3 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-1c4fc64e-08e4-4794-acf4-d42025d06583.png"
+  },
+  {
+    "animal": "cat",
+    "state": "right_walk",
+    "prompt": "Edit target image 1 (cat, right_walk): preserve ALL 3 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Maintain alternating opposite contacts A, grounded neutral, B; no new poses. Render exactly 3 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-b3b56db6-52d9-4a35-8a63-2691c3cffeac.png"
+  },
+  {
+    "animal": "dog",
+    "state": "up_walk",
+    "prompt": "Edit target image 1 (dog, up_walk): preserve ALL 3 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Strict back view, rear head and heels only, NO face/chest or front toes. Maintain alternating opposite contacts A, grounded neutral, B; no new poses. Render exactly 3 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-50a5b141-a66c-4da3-90b2-4bd9ff9706c4.png"
+  },
+  {
+    "animal": "cat",
+    "state": "up_walk",
+    "prompt": "Edit target image 1 (cat, up_walk): preserve ALL 3 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Strict back view, rear head and heels only, NO face/chest or front toes. Maintain alternating opposite contacts A, grounded neutral, B; no new poses. Render exactly 3 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-3b1be0b9-ddae-4511-8f3a-2f72388b426b.png"
+  },
+  {
+    "animal": "dog",
+    "state": "right_carry",
+    "prompt": "Edit target image 1 (dog, right_carry): preserve ALL 4 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Keep both hands supporting an invisible separate parcel at waist height; no parcel in image. Render exactly 4 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-05d75bda-d1db-4626-8d6d-877f926daa40.png"
+  },
+  {
+    "animal": "cat",
+    "state": "right_carry",
+    "prompt": "Edit target image 1 (cat, right_carry): preserve ALL 4 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Keep both hands supporting an invisible separate parcel at waist height; no parcel in image. Render exactly 4 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-f916ce46-719e-4356-b1ee-a62ddd44c3dc.png"
+  },
+  {
+    "animal": "dog",
+    "state": "down_sit",
+    "prompt": "Edit target image 1 (dog, down_sit): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Front view. Keep raised chair-seated pelvis, knees bent and feet down; chair remains invisible, not floor sitting. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-b84459a7-a084-4884-ba9e-c511db9f1149.png"
+  },
+  {
+    "animal": "cat",
+    "state": "down_sit",
+    "prompt": "Edit target image 1 (cat, down_sit): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Front view. Keep raised chair-seated pelvis, knees bent and feet down; chair remains invisible, not floor sitting. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-7cd7e924-1416-4d34-9b5e-352fa582820b.png"
+  },
+  {
+    "animal": "dog",
+    "state": "right_sit",
+    "prompt": "Edit target image 1 (dog, right_sit): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Keep raised chair-seated pelvis, knees bent and feet down; chair remains invisible, not floor sitting. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-7127765b-f1a6-4340-9508-9f74ab034375.png"
+  },
+  {
+    "animal": "cat",
+    "state": "right_sit",
+    "prompt": "Edit target image 1 (cat, right_sit): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Front-RIGHT THREE QUARTER view, both eyes and front chest visible; keep exact angle in target image. Keep raised chair-seated pelvis, knees bent and feet down; chair remains invisible, not floor sitting. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-1b5ac253-58bd-43e4-a88a-f50c9d23c222.png"
+  },
+  {
+    "animal": "dog",
+    "state": "face_portrait",
+    "prompt": "Edit target image 1 (dog, face_portrait): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Wheat tan mixed breed folded-ear dog, cream muzzle/chest/paw tips, brown eyes. Tail always attached at pelvis and stays behind body in the SAME SIDE throughout row, never mirror the whole character between poses. Front view. HEAD ONLY with whole ears and tiny neck tuft, NO full body. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-c4f80b90-7a9d-406f-9589-4e193a81f445.png"
+  },
+  {
+    "animal": "cat",
+    "state": "face_portrait",
+    "prompt": "Edit target image 1 (cat, face_portrait): preserve ALL 1 existing poses and precise direction, silhouette, proportions and limb placements. Image 2 is the APPROVED identity, palette, outline and restrained cel-shading reference; match its face, fur shapes, local fur colors, clean dark outlines and shading. Image 3 is the newly unified front walking row: match its drawing and palette consistently. Black cat, same neutral dark charcoal across fur body legs paws tail (no blue/brown tint), amber eyes, pink inner ears. Front view. HEAD ONLY with whole ears and tiny neck tuft, NO full body. Render exactly 1 separate complete figures in ONE horizontal row, same scale and baseline, generous gap/padding. Flat solid PURE CYAN #00FFFF background. No checkerboard, shadows, text, guides or additional images. This is an existing clean SD biped game character, not a redesign.",
+    "path": "C:\\Users\\bogeu\\.codex\\generated_images\\01a13ae0-6798-72e3-a02c-beb10c7362e1\\exec-b18be64d-b9ca-4151-9c4f-fb0bb37e00c9.png"
+  }
+]

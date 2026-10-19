@@ -1,0 +1,26 @@
+{
+  "vertex_count": 57846,
+  "triangles": 104018,
+  "bones": [
+    "Root",
+    "Body",
+    "Head",
+    "Arm.L",
+    "Arm.R",
+    "Foot.L",
+    "Foot.R"
+  ],
+  "physical_components_after_virtual_seam_weld": [
+    57846
+  ],
+  "rest_max_displacement": 8.437597493012342e-08,
+  "max_weight_sum_error": 4.619505489245057e-08,
+  "unweighted_vertices": 0,
+  "source_geometry_unchanged": true,
+  "qa_actions": [
+    "QA_LimbSwing",
+    "QA_ArmLift",
+    "QA_HeadTurn"
+  ],
+  "qa_scope": "Deformation tests only, not production walk or ground-contact animation"
+}

@@ -1,0 +1,222 @@
+{
+  "kind": "sprite-gen-motion-report",
+  "version": 1,
+  "status": "needs-review",
+  "frame_count": 4,
+  "duration_seconds": 0.64,
+  "size": [
+    320,
+    400
+  ],
+  "anchor_px": [
+    160.0,
+    400.0
+  ],
+  "facing": null,
+  "contacts": [],
+  "foot_box": null,
+  "duplicate_frames": {
+    "exact": 1,
+    "adjacent_exact": 0,
+    "exact_silhouette": 1,
+    "near_silhouette": 0
+  },
+  "motion": {
+    "present": true,
+    "changed_transitions": 3,
+    "silhouette_changed_transitions": 3,
+    "silhouette_change_per_second": 0.6207398691692358
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "time_seconds": 0.0,
+      "duration_seconds": 0.16,
+      "bbox": [
+        58,
+        25,
+        271,
+        373
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -102.0,
+        -375.0,
+        111.0,
+        -27.0
+      ],
+      "centroid_px": [
+        172.4738468558155,
+        191.19570267131243
+      ],
+      "opaque_pixels": 48216,
+      "edge_sides": []
+    },
+    {
+      "frame": 1,
+      "time_seconds": 0.16,
+      "duration_seconds": 0.16,
+      "bbox": [
+        54,
+        25,
+        265,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -106.0,
+        -375.0,
+        105.0,
+        -28.0
+      ],
+      "centroid_px": [
+        168.78447353006524,
+        197.00695833080854
+      ],
+      "opaque_pixels": 49509,
+      "edge_sides": []
+    },
+    {
+      "frame": 2,
+      "time_seconds": 0.32,
+      "duration_seconds": 0.16,
+      "bbox": [
+        58,
+        25,
+        265,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -102.0,
+        -375.0,
+        105.0,
+        -28.0
+      ],
+      "centroid_px": [
+        168.21182892178854,
+        189.22293789655836
+      ],
+      "opaque_pixels": 46809,
+      "edge_sides": []
+    },
+    {
+      "frame": 3,
+      "time_seconds": 0.48,
+      "duration_seconds": 0.16,
+      "bbox": [
+        54,
+        25,
+        265,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -106.0,
+        -375.0,
+        105.0,
+        -28.0
+      ],
+      "centroid_px": [
+        168.78447353006524,
+        197.00695833080854
+      ],
+      "opaque_pixels": 49509,
+      "edge_sides": []
+    }
+  ],
+  "bbox_stats": {
+    "union": [
+      54,
+      25,
+      271,
+      373
+    ],
+    "width_range": [
+      207,
+      213
+    ],
+    "height_range": [
+      347,
+      348
+    ],
+    "bottom_range": [
+      372,
+      373
+    ]
+  },
+  "edge_contact": {
+    "frames": [],
+    "sides": {
+      "left": [],
+      "top": [],
+      "right": [],
+      "bottom": []
+    }
+  },
+  "contact_candidates": [],
+  "confidence": 0.0,
+  "sequence": {
+    "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\qa\\down_walk-sequence.json",
+    "state": null,
+    "fps_override": null,
+    "frame_count": 4,
+    "size": [
+      320,
+      400
+    ],
+    "anchor_px": [
+      160.0,
+      400.0
+    ],
+    "durations_seconds": [
+      0.16,
+      0.16,
+      0.16,
+      0.16
+    ]
+  },
+  "source_fingerprints": {
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\qa\\down_walk-sequence.json": "8fc666c838abfeb5abaedfe1e7e477346102903b1f0799008afd927a4dda7823",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-0.png": "4327430b96777acb34b64f1c5303bccb7c2a056c520e6a7f0a6497889ab5095b",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-1.png": "be031b52d6033d5252f64a8dbbf67646a6bb43fdaa72b684648fbcc519f42169",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-2.png": "a4e2ee61c4069c1cfac166d9ad2f59c75e5779d6947909c09644a95bea12402d"
+  },
+  "stride_verified": false,
+  "foot_velocity_px_per_second": null,
+  "stride_px_per_second": null,
+  "warnings": [
+    "Ground contact is unknown: provide both manual contacts and a single-foot ROI; silhouette bottoms do not identify a planted foot.",
+    "Repeated poses retain all source frame durations; no frames were removed."
+  ],
+  "method": {
+    "silhouette": "alpha > 0 in source canvas coordinates; bbox right/bottom are exclusive",
+    "near_silhouette_iou": 0.98,
+    "duplicates": "Counts frames matching an earlier frame; near excludes exact silhouette matches. No time or frames are removed.",
+    "motion": "Adjacent visible pixel changes; silhouette XOR/union summed over full duration. No loop-seam assumption.",
+    "contact": "User-declared same-foot stance spans plus isolated ROI alpha centroid; no automatic contact or facing inference.",
+    "timing": "Cumulative frame-start seconds; repeated tracked poses use their first onset with all intervening durations retained. Final hold is included in duration but has no displacement endpoint.",
+    "velocity": "Endpoint horizontal displacement / pose-onset elapsed seconds; positive = image right. Stride is absolute velocity under manual ground-contact assumptions.",
+    "confidence": "0.9 = at least 3 distinct poses, stable baseline/shape, monotonic near-linear motion and consistent spans. Heuristic conditional confidence, not a calibrated contact probability.",
+    "sequence": "Identity of the analysed sequence: source, atlas state, fps override, frame count, size, anchor and effective per-frame durations. A consumer applying the stride must match all of it and source_fingerprints; another state or frame rate of the same files is a different sequence."
+  },
+  "source_files": [
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\qa\\down_walk-sequence.json",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-0.png",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-1.png",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\frames\\down_walk\\frame-2.png"
+  ],
+  "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\siberian-chipmunk\\run\\qa\\down_walk-sequence.json"
+}

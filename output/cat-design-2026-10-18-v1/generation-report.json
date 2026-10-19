@@ -1,0 +1,24 @@
+{
+  "kind": "sprite-gen-image-report",
+  "provider": "codex",
+  "prompt": "Create a polished landscape StockWars black cat character DESIGN SHEET. Reference 1 dog sheet is exact ART STYLE and layout reference: match clean bold outlines, large expressive eyes, large head, short biped body and limbs, readable color shapes, restrained cel shading. Reference 2 cat sheet is ONLY cat identity/color reference, not old rendering or walking angle. Same charcoal black cat, amber gold eyes, upright triangular ears with pink inner ears, dark feline nose, cheek tufts, long slender curved feline tail naturally connected behind pelvis. Uniform charcoal fur on body/limbs/paws/tail. No dog ears, dog markings, fluffy dog tail, clothes, shoes, paw pads or sole markings. Rounded paws retain finger lines. Clean white background. Title 검은 고양이, subtitle 캐릭터 디자인 시트. Top row FOUR neutral full-body turnarounds labeled 정면, 앞사선, 정측면, 뒷면: front, right-front three-quarter, true RIGHT profile with one visible eye, rear. Same head/body scale and common foot baseline, relaxed arms. Bottom row three FACE ONLY portraits labeled 기본, 기쁨, 시무룩 and five palette swatches labeled 털색, 안쪽 귀, 눈, 코, 윤곽선. Confident reserved cat identity. Consistent colors, proportions, line weight and shading across all views. Whole characters uncropped, generous spacing. Static design sheet, no walking, no animation atlas or furniture. Produce finished image.",
+  "out": "C:\\GitHub\\StockWars\\output\\cat-design-2026-10-18-v1\\design-sheet.png",
+  "raw": "C:\\GitHub\\StockWars\\output\\cat-design-2026-10-18-v1\\design-sheet.png.raw.png",
+  "raw_bytes": 1631567,
+  "elapsed_seconds": 43.562,
+  "model": null,
+  "session_id": "01a14bd9-0a23-72a1-8754-a16f48dd788c",
+  "refs": [
+    "C:\\GitHub\\StockWars\\output\\dog-design-2026-10-18-v1\\design-sheet.png",
+    "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run\\sprite-sheet-alpha.png"
+  ],
+  "transparent": false,
+  "alpha": null,
+  "chroma": null,
+  "extra": {
+    "inline_results": 1,
+    "rollout_cleaned": true,
+    "transparent_background_reported": false
+  },
+  "provider_resolved_from": "explicit"
+}

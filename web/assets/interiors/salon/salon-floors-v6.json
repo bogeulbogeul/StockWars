@@ -1,0 +1,14 @@
+{
+  "id": "salon-floors-v6",
+  "status": "visually reviewed separate-floor design previews, not applied to gameplay",
+  "floor1": "salon-floor-1-circulation-v6.png",
+  "floor2": "salon-floor-2-premium-v6.png",
+  "generator": "built-in image_gen",
+  "floor1Changes": ["counter moved left of stairs", "empty right-side approach lane", "solid stair treads, risers and side volume", "Claire included during full layout generation"],
+  "floor1Circulation": "exit carpet -> foreground centre -> right-side aisle -> empty lower stair landing; desk and styling stations branch off centre",
+  "floor2Changes": ["cream panel moulding", "champagne gold accents", "plum wainscoting", "integrated display lights", "arched velvet limited bay"],
+  "floor2Slots": {"regular":3,"limited":1,"productsBaked":false},
+  "npc": {"id":"Claire", "bakedIntoDesignPreview":true,"gameplayNpcSeparationPending":true},
+  "qa": "visual corridor and furniture/stair separation reviewed; final rigid bodies, movement and camera/input registration require runtime validation",
+  "prompts": ["salon-floors-v6.prompt.txt","salon-floor-2-premium-v6.prompt.txt"]
+}

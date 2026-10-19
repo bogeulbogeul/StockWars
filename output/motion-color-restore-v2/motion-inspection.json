@@ -1,0 +1,173 @@
+{
+  "reports": [
+    {
+      "id": "cat",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "cat",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "cat",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "cat",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "red-fox",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "red-fox",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "red-fox",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "red-fox",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "siberian-chipmunk",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "raccoon-dog",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-badger",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-badger",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-badger",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-badger",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "brown-bear",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "brown-bear",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "brown-bear",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "brown-bear",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-rabbit",
+      "state": "down_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-rabbit",
+      "state": "right_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-rabbit",
+      "state": "up_walk",
+      "status": "needs-review",
+      "stride_verified": false
+    },
+    {
+      "id": "european-rabbit",
+      "state": "right_carry",
+      "status": "needs-review",
+      "stride_verified": false
+    }
+  ],
+  "note": "Four-step timing checked; no manual contact evidence. Physical stride and live continuity remain unverified."
+}

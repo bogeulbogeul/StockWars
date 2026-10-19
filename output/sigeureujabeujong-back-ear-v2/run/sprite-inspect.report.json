@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "kind": "sprite-gen-inspect-report",
+  "run_dir": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-back-ear-v2\\run",
+  "states": [
+    "up_walk"
+  ],
+  "thresholds": {
+    "histogram_min": 0.0,
+    "dhash_min": 0.55,
+    "motion_min": 0.01
+  },
+  "rows": [
+    {
+      "state": "up_walk",
+      "source": "frames",
+      "expected_frames": 3,
+      "found_frames": 3,
+      "natural_pose_count": 3,
+      "frame_files": [
+        "frames/up_walk/frame-0.png",
+        "frames/up_walk/frame-1.png",
+        "frames/up_walk/frame-2.png"
+      ],
+      "metrics": {
+        "histogram_intersection": {
+          "min": 0.9893464308026146,
+          "mean": 0.9912413670421412
+        },
+        "dhash_similarity": {
+          "min": 0.90625,
+          "mean": 0.9166666666666666
+        },
+        "motion_presence": 0.04382348154105392,
+        "centroid_sigma": {
+          "x": 0.04773148569290221,
+          "y": 3.1790148618216816
+        }
+      },
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

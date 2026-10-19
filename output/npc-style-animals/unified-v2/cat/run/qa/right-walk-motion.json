@@ -1,0 +1,189 @@
+{
+  "kind": "sprite-gen-motion-report",
+  "version": 1,
+  "status": "needs-review",
+  "frame_count": 3,
+  "duration_seconds": 0.501,
+  "size": [
+    320,
+    400
+  ],
+  "anchor_px": [
+    160.0,
+    400.0
+  ],
+  "facing": null,
+  "contacts": [],
+  "foot_box": null,
+  "duplicate_frames": {
+    "exact": 0,
+    "adjacent_exact": 0,
+    "exact_silhouette": 0,
+    "near_silhouette": 0
+  },
+  "motion": {
+    "present": true,
+    "changed_transitions": 2,
+    "silhouette_changed_transitions": 2,
+    "silhouette_change_per_second": 0.8829158345727992
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "time_seconds": 0.0,
+      "duration_seconds": 0.167,
+      "bbox": [
+        35,
+        29,
+        295,
+        376
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -125.0,
+        -371.0,
+        135.0,
+        -24.0
+      ],
+      "centroid_px": [
+        175.30955142277264,
+        208.25572629747754
+      ],
+      "opaque_pixels": 48286,
+      "edge_sides": []
+    },
+    {
+      "frame": 1,
+      "time_seconds": 0.167,
+      "duration_seconds": 0.167,
+      "bbox": [
+        48,
+        27,
+        273,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -112.0,
+        -373.0,
+        113.0,
+        -28.0
+      ],
+      "centroid_px": [
+        175.28282683801686,
+        202.61594745065247
+      ],
+      "opaque_pixels": 45443,
+      "edge_sides": []
+    },
+    {
+      "frame": 2,
+      "time_seconds": 0.334,
+      "duration_seconds": 0.167,
+      "bbox": [
+        40,
+        29,
+        295,
+        375
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -120.0,
+        -371.0,
+        135.0,
+        -25.0
+      ],
+      "centroid_px": [
+        176.2996445167784,
+        208.51627513544767
+      ],
+      "opaque_pixels": 46697,
+      "edge_sides": []
+    }
+  ],
+  "bbox_stats": {
+    "union": [
+      35,
+      27,
+      295,
+      376
+    ],
+    "width_range": [
+      225,
+      260
+    ],
+    "height_range": [
+      345,
+      347
+    ],
+    "bottom_range": [
+      372,
+      376
+    ]
+  },
+  "edge_contact": {
+    "frames": [],
+    "sides": {
+      "left": [],
+      "top": [],
+      "right": [],
+      "bottom": []
+    }
+  },
+  "contact_candidates": [],
+  "confidence": 0.0,
+  "sequence": {
+    "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\manifest.json",
+    "state": "right_walk",
+    "fps_override": null,
+    "frame_count": 3,
+    "size": [
+      320,
+      400
+    ],
+    "anchor_px": [
+      160.0,
+      400.0
+    ],
+    "durations_seconds": [
+      0.167,
+      0.167,
+      0.167
+    ]
+  },
+  "source_fingerprints": {
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\manifest.json": "1c9779b16a630e5db07c29aa3d366bc19f957be3e8fd5451b6db054508450d20",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\sprite-sheet-alpha.png": "28831b19dc22f3239383923cf9310647da1e66fcd72557bdb0f0ebca5575fd26"
+  },
+  "stride_verified": false,
+  "foot_velocity_px_per_second": null,
+  "stride_px_per_second": null,
+  "warnings": [
+    "Ground contact is unknown: provide both manual contacts and a single-foot ROI; silhouette bottoms do not identify a planted foot."
+  ],
+  "method": {
+    "silhouette": "alpha > 0 in source canvas coordinates; bbox right/bottom are exclusive",
+    "near_silhouette_iou": 0.98,
+    "duplicates": "Counts frames matching an earlier frame; near excludes exact silhouette matches. No time or frames are removed.",
+    "motion": "Adjacent visible pixel changes; silhouette XOR/union summed over full duration. No loop-seam assumption.",
+    "contact": "User-declared same-foot stance spans plus isolated ROI alpha centroid; no automatic contact or facing inference.",
+    "timing": "Cumulative frame-start seconds; repeated tracked poses use their first onset with all intervening durations retained. Final hold is included in duration but has no displacement endpoint.",
+    "velocity": "Endpoint horizontal displacement / pose-onset elapsed seconds; positive = image right. Stride is absolute velocity under manual ground-contact assumptions.",
+    "confidence": "0.9 = at least 3 distinct poses, stable baseline/shape, monotonic near-linear motion and consistent spans. Heuristic conditional confidence, not a calibrated contact probability.",
+    "sequence": "Identity of the analysed sequence: source, atlas state, fps override, frame count, size, anchor and effective per-frame durations. A consumer applying the stride must match all of it and source_fingerprints; another state or frame rate of the same files is a different sequence."
+  },
+  "source_files": [
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\manifest.json",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\sprite-sheet-alpha.png"
+  ],
+  "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\cat\\run\\manifest.json"
+}

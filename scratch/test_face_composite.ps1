@@ -3,9 +3,9 @@
 $faceSrc = "C:\Users\Administrator\.gemini\antigravity-ide\brain\0415e4d4-6a74-4c66-aab6-731ecd9b95d7\.user_uploaded\media_1789461632227.png"
 $faceBmp = New-Object System.Drawing.Bitmap($faceSrc)
 
-$bodyFront = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_front.png")
-$bodyLeft = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png")
-$bodyRight = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png")
+$bodyFront = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_front.png")
+$bodyLeft = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_left.png")
+$bodyRight = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_right.png")
 
 Write-Host "Body canvas size: $($bodyFront.Width) x $($bodyFront.Height)"
 
@@ -40,7 +40,7 @@ $destRect = New-Object System.Drawing.Rectangle($destX, $destY, $destW, $destH)
 $g.DrawImage($faceBmp, $destRect, $cropFront, [System.Drawing.GraphicsUnit]::Pixel)
 $g.Dispose()
 
-$testOut = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_composite_front.png"
+$testOut = "${PSScriptRoot}\..\scratch\test_composite_front.png"
 $compFront.Save($testOut, [System.Drawing.Imaging.ImageFormat]::Png)
 $compFront.Dispose()
 Write-Host "Saved test front composite: $testOut (X=$destX, Y=$destY, W=$destW, H=$destH)"

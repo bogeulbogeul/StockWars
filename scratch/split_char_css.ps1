@@ -32,7 +32,7 @@ $part4 = $part4Header + ($lines[822..($lines.Length - 1)] -join "`n")
 # Router: character-creation.css
 $routerContent = @"
 /* ==========================================================================
-   Character Creation Router (CODE_STANDARDS 500-Line Limit Rule)
+   Character Creation Router (AGENTS.md code structure rules)
    Aggregates modularized Character Creation kiosk styling:
    - kiosk-base.css: Modal layout, headers, steppers, preview stage
    - avatar-customizer.css: Swatches, sliders, animations, motion selectors

@@ -1,0 +1,13 @@
+{
+  "frames": 73,
+  "seconds": 3,
+  "chew_cycles": 4,
+  "body_displacement": 4.2146848510894035e-08,
+  "mouth_loop_error": 0.0,
+  "mouth_movement": 0.07917477169265554,
+  "morph_animation_exported": true,
+  "glb_reimport": true,
+  "clips": [
+    "Mouth_Chew"
+  ]
+}

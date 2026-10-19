@@ -1,0 +1,16 @@
+const fs=require('fs');let s=fs.readFileSync('scratch/verify_salon_shop.cjs','utf8');
+s=s.replace("assert.equal(await page.locator('.salon-style-card').count(),6);",`assert.equal(await page.locator('.salon-style-card').count(),6);
+    await page.click('.salon-effect-preview');
+    await page.waitForFunction(()=>document.querySelector('.salon-makeover-effect')?.open);
+    await page.waitForTimeout(450);
+    await page.screenshot({path:'output/salon-skin-shop-ui/makeover-effect.png'});
+    await page.waitForFunction(()=>!document.querySelector('.salon-makeover-effect'));
+    assert.ok(await page.evaluate(()=>salon.styleShop.dialog.open));
+    await page.click('.salon-effect-preview');
+    await page.keyboard.press('Escape');
+    assert.ok(await page.evaluate(()=>!document.querySelector('.salon-makeover-effect')&&salon.styleShop.dialog.open));
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await page.click('.salon-effect-preview');
+    await page.waitForFunction(()=>!document.querySelector('.salon-makeover-effect'));
+    await page.emulateMedia({reducedMotion:'no-preference'});`);
+fs.writeFileSync('scratch/verify_salon_effect.cjs',s);

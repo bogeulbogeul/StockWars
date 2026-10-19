@@ -1,0 +1,1043 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "rear-before-palette.png",
+  "match": "tolerance",
+  "tolerance": 255,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "rear-fur",
+      "sheet": "rear-fur.png",
+      "substituted_pixels": 106128,
+      "substitutions": [
+        {
+          "from": "#010000",
+          "to": "#010000",
+          "pixels": 1
+        },
+        {
+          "from": "#020101",
+          "to": "#020101",
+          "pixels": 18
+        },
+        {
+          "from": "#020303",
+          "to": "#020303",
+          "pixels": 47
+        },
+        {
+          "from": "#030606",
+          "to": "#030606",
+          "pixels": 121
+        },
+        {
+          "from": "#070101",
+          "to": "#070101",
+          "pixels": 61
+        },
+        {
+          "from": "#070303",
+          "to": "#070303",
+          "pixels": 217
+        },
+        {
+          "from": "#080a09",
+          "to": "#080a09",
+          "pixels": 699
+        },
+        {
+          "from": "#090606",
+          "to": "#090606",
+          "pixels": 588
+        },
+        {
+          "from": "#0b0202",
+          "to": "#0b0202",
+          "pixels": 515
+        },
+        {
+          "from": "#0f0605",
+          "to": "#0f0605",
+          "pixels": 1563
+        },
+        {
+          "from": "#110d0b",
+          "to": "#110d0b",
+          "pixels": 1019
+        },
+        {
+          "from": "#111210",
+          "to": "#111210",
+          "pixels": 1182
+        },
+        {
+          "from": "#130302",
+          "to": "#130302",
+          "pixels": 1084
+        },
+        {
+          "from": "#180401",
+          "to": "#180401",
+          "pixels": 472
+        },
+        {
+          "from": "#180704",
+          "to": "#180704",
+          "pixels": 935
+        },
+        {
+          "from": "#180a07",
+          "to": "#180a07",
+          "pixels": 656
+        },
+        {
+          "from": "#1e0602",
+          "to": "#1e0602",
+          "pixels": 399
+        },
+        {
+          "from": "#1f0c08",
+          "to": "#1f0c08",
+          "pixels": 369
+        },
+        {
+          "from": "#220e0a",
+          "to": "#220e0a",
+          "pixels": 311
+        },
+        {
+          "from": "#251511",
+          "to": "#251511",
+          "pixels": 452
+        },
+        {
+          "from": "#280702",
+          "to": "#280702",
+          "pixels": 98
+        },
+        {
+          "from": "#2e0f09",
+          "to": "#2e0f09",
+          "pixels": 238
+        },
+        {
+          "from": "#301b16",
+          "to": "#301b16",
+          "pixels": 144
+        },
+        {
+          "from": "#311610",
+          "to": "#311610",
+          "pixels": 274
+        },
+        {
+          "from": "#33221c",
+          "to": "#33221c",
+          "pixels": 219
+        },
+        {
+          "from": "#3e1b12",
+          "to": "#3e1b12",
+          "pixels": 404
+        },
+        {
+          "from": "#422921",
+          "to": "#422921",
+          "pixels": 405
+        },
+        {
+          "from": "#48332b",
+          "to": "#48332b",
+          "pixels": 92
+        },
+        {
+          "from": "#54352b",
+          "to": "#54352b",
+          "pixels": 114
+        },
+        {
+          "from": "#593628",
+          "to": "#593628",
+          "pixels": 440
+        },
+        {
+          "from": "#5c4238",
+          "to": "#5c4238",
+          "pixels": 87
+        },
+        {
+          "from": "#6c4436",
+          "to": "#6c4436",
+          "pixels": 557
+        },
+        {
+          "from": "#6c4b3f",
+          "to": "#6c4b3f",
+          "pixels": 189
+        },
+        {
+          "from": "#6f5449",
+          "to": "#6f5449",
+          "pixels": 85
+        },
+        {
+          "from": "#815e4e",
+          "to": "#815e4e",
+          "pixels": 559
+        },
+        {
+          "from": "#84695d",
+          "to": "#84695d",
+          "pixels": 32
+        },
+        {
+          "from": "#876455",
+          "to": "#876455",
+          "pixels": 84
+        },
+        {
+          "from": "#916a58",
+          "to": "#916a58",
+          "pixels": 1147
+        },
+        {
+          "from": "#977767",
+          "to": "#977767",
+          "pixels": 64
+        },
+        {
+          "from": "#a17c6a",
+          "to": "#a17c6a",
+          "pixels": 2005
+        },
+        {
+          "from": "#a38474",
+          "to": "#a38474",
+          "pixels": 34
+        },
+        {
+          "from": "#ae8772",
+          "to": "#ae8772",
+          "pixels": 1906
+        },
+        {
+          "from": "#b28f79",
+          "to": "#b28f79",
+          "pixels": 10
+        },
+        {
+          "from": "#b49784",
+          "to": "#b49784",
+          "pixels": 24
+        },
+        {
+          "from": "#b79079",
+          "to": "#b79079",
+          "pixels": 822
+        },
+        {
+          "from": "#ba9881",
+          "to": "#ba9881",
+          "pixels": 2
+        },
+        {
+          "from": "#bca08c",
+          "to": "#bca08c",
+          "pixels": 12
+        },
+        {
+          "from": "#bd967e",
+          "to": "#bd967e",
+          "pixels": 317
+        },
+        {
+          "from": "#bd9a82",
+          "to": "#bd9a82",
+          "pixels": 0
+        },
+        {
+          "from": "#c09880",
+          "to": "#c09880",
+          "pixels": 751
+        },
+        {
+          "from": "#c09981",
+          "to": "#c09981",
+          "pixels": 0
+        },
+        {
+          "from": "#c09b80",
+          "to": "#c09b80",
+          "pixels": 0
+        },
+        {
+          "from": "#c09c84",
+          "to": "#c09c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c19a83",
+          "to": "#c19a83",
+          "pixels": 1
+        },
+        {
+          "from": "#c29a82",
+          "to": "#c29a82",
+          "pixels": 4
+        },
+        {
+          "from": "#c29b82",
+          "to": "#c29b82",
+          "pixels": 0
+        },
+        {
+          "from": "#c29b83",
+          "to": "#c29b83",
+          "pixels": 0
+        },
+        {
+          "from": "#c29c83",
+          "to": "#c29c83",
+          "pixels": 0
+        },
+        {
+          "from": "#c29c84",
+          "to": "#c29c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c29f88",
+          "to": "#c29f88",
+          "pixels": 2
+        },
+        {
+          "from": "#c39b83",
+          "to": "#c39b83",
+          "pixels": 0
+        },
+        {
+          "from": "#c39b84",
+          "to": "#c39b84",
+          "pixels": 2
+        },
+        {
+          "from": "#c39c83",
+          "to": "#c39c83",
+          "pixels": 0
+        },
+        {
+          "from": "#c39c84",
+          "to": "#c39c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c39c85",
+          "to": "#c39c85",
+          "pixels": 0
+        },
+        {
+          "from": "#c39d84",
+          "to": "#c39d84",
+          "pixels": 0
+        },
+        {
+          "from": "#c39d85",
+          "to": "#c39d85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49c83",
+          "to": "#c49c83",
+          "pixels": 1943
+        },
+        {
+          "from": "#c49c84",
+          "to": "#c49c84",
+          "pixels": 1
+        },
+        {
+          "from": "#c49d85",
+          "to": "#c49d85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49d87",
+          "to": "#c49d87",
+          "pixels": 1
+        },
+        {
+          "from": "#c49e85",
+          "to": "#c49e85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49e86",
+          "to": "#c49e86",
+          "pixels": 0
+        },
+        {
+          "from": "#c49e88",
+          "to": "#c49e88",
+          "pixels": 0
+        },
+        {
+          "from": "#c49f86",
+          "to": "#c49f86",
+          "pixels": 0
+        },
+        {
+          "from": "#c49f88",
+          "to": "#c49f88",
+          "pixels": 0
+        },
+        {
+          "from": "#c4a188",
+          "to": "#c4a188",
+          "pixels": 1
+        },
+        {
+          "from": "#c59e86",
+          "to": "#c59e86",
+          "pixels": 0
+        },
+        {
+          "from": "#c5a28e",
+          "to": "#c5a28e",
+          "pixels": 1
+        },
+        {
+          "from": "#c69e86",
+          "to": "#c69e86",
+          "pixels": 6
+        },
+        {
+          "from": "#c69f85",
+          "to": "#c69f85",
+          "pixels": 2529
+        },
+        {
+          "from": "#c69f88",
+          "to": "#c69f88",
+          "pixels": 0
+        },
+        {
+          "from": "#c6a086",
+          "to": "#c6a086",
+          "pixels": 0
+        },
+        {
+          "from": "#c6a089",
+          "to": "#c6a089",
+          "pixels": 1
+        },
+        {
+          "from": "#c6a188",
+          "to": "#c6a188",
+          "pixels": 0
+        },
+        {
+          "from": "#c6a996",
+          "to": "#c6a996",
+          "pixels": 28
+        },
+        {
+          "from": "#c7a28b",
+          "to": "#c7a28b",
+          "pixels": 3
+        },
+        {
+          "from": "#caa289",
+          "to": "#caa289",
+          "pixels": 66345
+        },
+        {
+          "from": "#cfad98",
+          "to": "#cfad98",
+          "pixels": 41
+        },
+        {
+          "from": "#d2b8aa",
+          "to": "#d2b8aa",
+          "pixels": 28
+        },
+        {
+          "from": "#d7b29d",
+          "to": "#d7b29d",
+          "pixels": 248
+        },
+        {
+          "from": "#d9bfae",
+          "to": "#d9bfae",
+          "pixels": 21
+        },
+        {
+          "from": "#e2c4b2",
+          "to": "#e2c4b2",
+          "pixels": 9
+        },
+        {
+          "from": "#e3ccbc",
+          "to": "#e3ccbc",
+          "pixels": 43
+        },
+        {
+          "from": "#e4bfab",
+          "to": "#e4bfab",
+          "pixels": 5
+        },
+        {
+          "from": "#e6c0a9",
+          "to": "#e6c0a9",
+          "pixels": 957
+        },
+        {
+          "from": "#eacab6",
+          "to": "#eacab6",
+          "pixels": 395
+        },
+        {
+          "from": "#edcfbb",
+          "to": "#edcfbb",
+          "pixels": 181
+        },
+        {
+          "from": "#eed3bf",
+          "to": "#eed3bf",
+          "pixels": 13
+        },
+        {
+          "from": "#f0d4c0",
+          "to": "#f0d4c0",
+          "pixels": 209
+        },
+        {
+          "from": "#f0dac8",
+          "to": "#f0dac8",
+          "pixels": 82
+        },
+        {
+          "from": "#f2e2d2",
+          "to": "#f2e2d2",
+          "pixels": 56
+        },
+        {
+          "from": "#f7e1cc",
+          "to": "#f7e1cc",
+          "pixels": 50
+        },
+        {
+          "from": "#f7ebdb",
+          "to": "#f7ebdb",
+          "pixels": 89
+        },
+        {
+          "from": "#f9e0cb",
+          "to": "#f9e0cb",
+          "pixels": 184
+        },
+        {
+          "from": "#f9ead9",
+          "to": "#f9ead9",
+          "pixels": 44
+        },
+        {
+          "from": "#fae7d5",
+          "to": "#fae7d5",
+          "pixels": 65
+        },
+        {
+          "from": "#faeddd",
+          "to": "#faeddd",
+          "pixels": 127
+        },
+        {
+          "from": "#faf0e2",
+          "to": "#faf0e2",
+          "pixels": 193
+        },
+        {
+          "from": "#faf1e5",
+          "to": "#faf1e5",
+          "pixels": 156
+        },
+        {
+          "from": "#faf3ea",
+          "to": "#faf3ea",
+          "pixels": 112
+        },
+        {
+          "from": "#faf6ef",
+          "to": "#faf6ef",
+          "pixels": 41
+        },
+        {
+          "from": "#fbe6ce",
+          "to": "#fbe6ce",
+          "pixels": 169
+        },
+        {
+          "from": "#fbf5eb",
+          "to": "#fbf5eb",
+          "pixels": 39
+        },
+        {
+          "from": "#fbf8f5",
+          "to": "#fbf8f5",
+          "pixels": 1
+        },
+        {
+          "from": "#fcead4",
+          "to": "#fcead4",
+          "pixels": 54
+        },
+        {
+          "from": "#fcebd9",
+          "to": "#fcebd9",
+          "pixels": 46
+        },
+        {
+          "from": "#fcf8f1",
+          "to": "#fcf8f1",
+          "pixels": 1
+        },
+        {
+          "from": "#fcf9f4",
+          "to": "#fcf9f4",
+          "pixels": 0
+        },
+        {
+          "from": "#fcfcfb",
+          "to": "#fcfcfb",
+          "pixels": 0
+        },
+        {
+          "from": "#fdead4",
+          "to": "#fdead4",
+          "pixels": 93
+        },
+        {
+          "from": "#fdebd5",
+          "to": "#fdebd5",
+          "pixels": 66
+        },
+        {
+          "from": "#fdebd8",
+          "to": "#fdebd8",
+          "pixels": 42
+        },
+        {
+          "from": "#fdecd7",
+          "to": "#fdecd7",
+          "pixels": 56
+        },
+        {
+          "from": "#fdeddb",
+          "to": "#fdeddb",
+          "pixels": 68
+        },
+        {
+          "from": "#fdeddc",
+          "to": "#fdeddc",
+          "pixels": 4
+        },
+        {
+          "from": "#fdeedc",
+          "to": "#fdeedc",
+          "pixels": 79
+        },
+        {
+          "from": "#fdeedd",
+          "to": "#fdeedd",
+          "pixels": 75
+        },
+        {
+          "from": "#fdeede",
+          "to": "#fdeede",
+          "pixels": 3
+        },
+        {
+          "from": "#fdefdb",
+          "to": "#fdefdb",
+          "pixels": 432
+        },
+        {
+          "from": "#fdefde",
+          "to": "#fdefde",
+          "pixels": 58
+        },
+        {
+          "from": "#fdefe0",
+          "to": "#fdefe0",
+          "pixels": 4
+        },
+        {
+          "from": "#fdf0de",
+          "to": "#fdf0de",
+          "pixels": 776
+        },
+        {
+          "from": "#fdf0e0",
+          "to": "#fdf0e0",
+          "pixels": 195
+        },
+        {
+          "from": "#fdf1de",
+          "to": "#fdf1de",
+          "pixels": 1229
+        },
+        {
+          "from": "#fdf1e3",
+          "to": "#fdf1e3",
+          "pixels": 44
+        },
+        {
+          "from": "#fdf3e2",
+          "to": "#fdf3e2",
+          "pixels": 211
+        },
+        {
+          "from": "#fdf3e4",
+          "to": "#fdf3e4",
+          "pixels": 52
+        },
+        {
+          "from": "#fdfcfa",
+          "to": "#fdfcfa",
+          "pixels": 0
+        },
+        {
+          "from": "#feecda",
+          "to": "#feecda",
+          "pixels": 11
+        },
+        {
+          "from": "#feedd6",
+          "to": "#feedd6",
+          "pixels": 109
+        },
+        {
+          "from": "#feedd7",
+          "to": "#feedd7",
+          "pixels": 126
+        },
+        {
+          "from": "#feedd9",
+          "to": "#feedd9",
+          "pixels": 69
+        },
+        {
+          "from": "#feeddb",
+          "to": "#feeddb",
+          "pixels": 2
+        },
+        {
+          "from": "#feeddc",
+          "to": "#feeddc",
+          "pixels": 0
+        },
+        {
+          "from": "#feeedb",
+          "to": "#feeedb",
+          "pixels": 54
+        },
+        {
+          "from": "#feeedc",
+          "to": "#feeedc",
+          "pixels": 113
+        },
+        {
+          "from": "#feeedd",
+          "to": "#feeedd",
+          "pixels": 0
+        },
+        {
+          "from": "#feeede",
+          "to": "#feeede",
+          "pixels": 0
+        },
+        {
+          "from": "#feefda",
+          "to": "#feefda",
+          "pixels": 262
+        },
+        {
+          "from": "#feefdd",
+          "to": "#feefdd",
+          "pixels": 50
+        },
+        {
+          "from": "#feefde",
+          "to": "#feefde",
+          "pixels": 17
+        },
+        {
+          "from": "#feefdf",
+          "to": "#feefdf",
+          "pixels": 0
+        },
+        {
+          "from": "#feefe0",
+          "to": "#feefe0",
+          "pixels": 0
+        },
+        {
+          "from": "#fef0dd",
+          "to": "#fef0dd",
+          "pixels": 811
+        },
+        {
+          "from": "#fef0de",
+          "to": "#fef0de",
+          "pixels": 715
+        },
+        {
+          "from": "#fef0df",
+          "to": "#fef0df",
+          "pixels": 215
+        },
+        {
+          "from": "#fef0e0",
+          "to": "#fef0e0",
+          "pixels": 422
+        },
+        {
+          "from": "#fef1dd",
+          "to": "#fef1dd",
+          "pixels": 387
+        },
+        {
+          "from": "#fef1df",
+          "to": "#fef1df",
+          "pixels": 1310
+        },
+        {
+          "from": "#fef1e2",
+          "to": "#fef1e2",
+          "pixels": 123
+        },
+        {
+          "from": "#fef2e0",
+          "to": "#fef2e0",
+          "pixels": 564
+        },
+        {
+          "from": "#fef2e1",
+          "to": "#fef2e1",
+          "pixels": 355
+        },
+        {
+          "from": "#fef2e3",
+          "to": "#fef2e3",
+          "pixels": 15
+        },
+        {
+          "from": "#fef3e0",
+          "to": "#fef3e0",
+          "pixels": 51
+        },
+        {
+          "from": "#fef3e1",
+          "to": "#fef3e1",
+          "pixels": 145
+        },
+        {
+          "from": "#fef3e3",
+          "to": "#fef3e3",
+          "pixels": 91
+        },
+        {
+          "from": "#fef3e4",
+          "to": "#fef3e4",
+          "pixels": 60
+        },
+        {
+          "from": "#fef4e5",
+          "to": "#fef4e5",
+          "pixels": 119
+        },
+        {
+          "from": "#fef5e4",
+          "to": "#fef5e4",
+          "pixels": 10
+        },
+        {
+          "from": "#fef6e7",
+          "to": "#fef6e7",
+          "pixels": 40
+        },
+        {
+          "from": "#fef7e9",
+          "to": "#fef7e9",
+          "pixels": 44
+        }
+      ],
+      "unused_sources": [
+        {
+          "from": "#bd9a82",
+          "to": "#bd9a82",
+          "pixels": 0
+        },
+        {
+          "from": "#c09981",
+          "to": "#c09981",
+          "pixels": 0
+        },
+        {
+          "from": "#c09b80",
+          "to": "#c09b80",
+          "pixels": 0
+        },
+        {
+          "from": "#c09c84",
+          "to": "#c09c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c29b82",
+          "to": "#c29b82",
+          "pixels": 0
+        },
+        {
+          "from": "#c29b83",
+          "to": "#c29b83",
+          "pixels": 0
+        },
+        {
+          "from": "#c29c83",
+          "to": "#c29c83",
+          "pixels": 0
+        },
+        {
+          "from": "#c29c84",
+          "to": "#c29c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c39b83",
+          "to": "#c39b83",
+          "pixels": 0
+        },
+        {
+          "from": "#c39c83",
+          "to": "#c39c83",
+          "pixels": 0
+        },
+        {
+          "from": "#c39c84",
+          "to": "#c39c84",
+          "pixels": 0
+        },
+        {
+          "from": "#c39c85",
+          "to": "#c39c85",
+          "pixels": 0
+        },
+        {
+          "from": "#c39d84",
+          "to": "#c39d84",
+          "pixels": 0
+        },
+        {
+          "from": "#c39d85",
+          "to": "#c39d85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49d85",
+          "to": "#c49d85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49e85",
+          "to": "#c49e85",
+          "pixels": 0
+        },
+        {
+          "from": "#c49e86",
+          "to": "#c49e86",
+          "pixels": 0
+        },
+        {
+          "from": "#c49e88",
+          "to": "#c49e88",
+          "pixels": 0
+        },
+        {
+          "from": "#c49f86",
+          "to": "#c49f86",
+          "pixels": 0
+        },
+        {
+          "from": "#c49f88",
+          "to": "#c49f88",
+          "pixels": 0
+        },
+        {
+          "from": "#c59e86",
+          "to": "#c59e86",
+          "pixels": 0
+        },
+        {
+          "from": "#c69f88",
+          "to": "#c69f88",
+          "pixels": 0
+        },
+        {
+          "from": "#c6a086",
+          "to": "#c6a086",
+          "pixels": 0
+        },
+        {
+          "from": "#c6a188",
+          "to": "#c6a188",
+          "pixels": 0
+        },
+        {
+          "from": "#fcf9f4",
+          "to": "#fcf9f4",
+          "pixels": 0
+        },
+        {
+          "from": "#fcfcfb",
+          "to": "#fcfcfb",
+          "pixels": 0
+        },
+        {
+          "from": "#fdfcfa",
+          "to": "#fdfcfa",
+          "pixels": 0
+        },
+        {
+          "from": "#feeddc",
+          "to": "#feeddc",
+          "pixels": 0
+        },
+        {
+          "from": "#feeedd",
+          "to": "#feeedd",
+          "pixels": 0
+        },
+        {
+          "from": "#feeede",
+          "to": "#feeede",
+          "pixels": 0
+        },
+        {
+          "from": "#feefdf",
+          "to": "#feefdf",
+          "pixels": 0
+        },
+        {
+          "from": "#feefe0",
+          "to": "#feefe0",
+          "pixels": 0
+        }
+      ],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

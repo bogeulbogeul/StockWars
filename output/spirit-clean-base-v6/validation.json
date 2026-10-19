@@ -1,0 +1,11 @@
+{
+  "parts": 8,
+  "triangles": 36864,
+  "bones": 7,
+  "actions": [
+    "Walk_Small"
+  ],
+  "faces": "blank; texture expressions can be added later",
+  "shoulders": "overlapping round roots, rigid limbs",
+  "glb_reimport": "passed"
+}

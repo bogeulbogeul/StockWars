@@ -1,9 +1,9 @@
 [void][System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 
-$srcPath = "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_pure_sky_day_256.png"
-$dstSunset = "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_pure_sky_sunset_256.png"
-$dstNight = "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_pure_sky_night_256.png"
-$dstRainy = "c:\Users\Administrator\Documents\GitHub\StockWars\Art_References\cozy_pure_sky_rainy_256.png"
+$srcPath = "${PSScriptRoot}\..\Art_References\cozy_pure_sky_day_256.png"
+$dstSunset = "${PSScriptRoot}\..\Art_References\cozy_pure_sky_sunset_256.png"
+$dstNight = "${PSScriptRoot}\..\Art_References\cozy_pure_sky_night_256.png"
+$dstRainy = "${PSScriptRoot}\..\Art_References\cozy_pure_sky_rainy_256.png"
 
 $src = [System.Drawing.Image]::FromFile($srcPath)
 $bmpSunset = New-Object System.Drawing.Bitmap($src)

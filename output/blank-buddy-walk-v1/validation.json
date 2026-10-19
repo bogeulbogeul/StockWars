@@ -1,0 +1,291 @@
+{
+  "frames_checked": 25,
+  "loop_closure_max_vertex_error": 0.0,
+  "stance_foot_height_max_error": 9.924173355102539e-05,
+  "samples": [
+    {
+      "frame": 1,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504430294036865
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9503939747810364
+      }
+    },
+    {
+      "frame": 2,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504340887069702
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9473888874053955
+      }
+    },
+    {
+      "frame": 3,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504095911979675
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9391788244247437
+      }
+    },
+    {
+      "frame": 4,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503761529922485
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9279637932777405
+      }
+    },
+    {
+      "frame": 5,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503543376922607
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9167486429214478
+      }
+    },
+    {
+      "frame": 6,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503466486930847
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9085386395454407
+      }
+    },
+    {
+      "frame": 7,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503437876701355
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9055335521697998
+      }
+    },
+    {
+      "frame": 8,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503466486930847
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9085386395454407
+      }
+    },
+    {
+      "frame": 9,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503543376922607
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9167486429214478
+      }
+    },
+    {
+      "frame": 10,
+      "L": {
+        "stance": true,
+        "min_z": -0.9503761529922485
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9279637932777405
+      }
+    },
+    {
+      "frame": 11,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504095911979675
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9391788244247437
+      }
+    },
+    {
+      "frame": 12,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504340887069702
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9473888874053955
+      }
+    },
+    {
+      "frame": 13,
+      "L": {
+        "stance": false,
+        "min_z": -0.9504430294036865
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503939747810364
+      }
+    },
+    {
+      "frame": 14,
+      "L": {
+        "stance": false,
+        "min_z": -0.9474375247955322
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503846168518066
+      }
+    },
+    {
+      "frame": 15,
+      "L": {
+        "stance": false,
+        "min_z": -0.9392264485359192
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.950368344783783
+      }
+    },
+    {
+      "frame": 16,
+      "L": {
+        "stance": false,
+        "min_z": -0.9280099272727966
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503557682037354
+      }
+    },
+    {
+      "frame": 17,
+      "L": {
+        "stance": false,
+        "min_z": -0.9167933464050293
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.950343132019043
+      }
+    },
+    {
+      "frame": 18,
+      "L": {
+        "stance": false,
+        "min_z": -0.9085822701454163
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503339529037476
+      }
+    },
+    {
+      "frame": 19,
+      "L": {
+        "stance": false,
+        "min_z": -0.905576765537262
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503305554389954
+      }
+    },
+    {
+      "frame": 20,
+      "L": {
+        "stance": false,
+        "min_z": -0.9085822701454163
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503339529037476
+      }
+    },
+    {
+      "frame": 21,
+      "L": {
+        "stance": false,
+        "min_z": -0.9167933464050293
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.950343132019043
+      }
+    },
+    {
+      "frame": 22,
+      "L": {
+        "stance": false,
+        "min_z": -0.9280099272727966
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503557682037354
+      }
+    },
+    {
+      "frame": 23,
+      "L": {
+        "stance": false,
+        "min_z": -0.9392264485359192
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.950368344783783
+      }
+    },
+    {
+      "frame": 24,
+      "L": {
+        "stance": false,
+        "min_z": -0.9474375247955322
+      },
+      "R": {
+        "stance": true,
+        "min_z": -0.9503846168518066
+      }
+    },
+    {
+      "frame": 25,
+      "L": {
+        "stance": true,
+        "min_z": -0.9504430294036865
+      },
+      "R": {
+        "stance": false,
+        "min_z": -0.9503939747810364
+      }
+    }
+  ],
+  "roundtrip": {
+    "bones": 7,
+    "actions": [
+      "Walk_InPlace"
+    ],
+    "normal_map_disconnected": true,
+    "all_vertices_weighted": true,
+    "embedded_images": 2
+  }
+}

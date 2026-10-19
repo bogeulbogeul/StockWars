@@ -1,0 +1,11 @@
+{
+  "glb_reimport": true,
+  "objects": [
+    "Arm.L",
+    "Arm.R",
+    "Body"
+  ],
+  "uv_layers_present": true,
+  "rotation_preview_degrees": 35,
+  "armature_added": false
+}

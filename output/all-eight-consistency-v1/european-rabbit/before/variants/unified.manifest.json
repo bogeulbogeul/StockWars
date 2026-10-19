@@ -1,0 +1,356 @@
+{
+  "characterId": "european-rabbit-forest-v1",
+  "engine": "component-row",
+  "game_input": "unified.png",
+  "degraded_static_fallback": false,
+  "curation_applied": false,
+  "frame_variant": "pixel",
+  "sprite_sheet_alpha": "unified.png",
+  "sprite_sheet_alpha_report": "sprite-sheet-alpha.report.json",
+  "base_image": "base-source.png",
+  "cell": {
+    "shape": "rect",
+    "width": 320,
+    "height": 400,
+    "safe_margin_x": 28,
+    "safe_margin_y": 28
+  },
+  "chroma_key": {
+    "name": "cyan",
+    "hex": "#00FFFF",
+    "rgb": [
+      0,
+      255,
+      255
+    ],
+    "selection": "manual"
+  },
+  "animation": {
+    "cellWidth": 320,
+    "cellHeight": 400,
+    "columns": 4,
+    "rows": {
+      "down_idle": {
+        "row": 0,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "down_walk": {
+        "row": 1,
+        "frames": 3,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "playback_order": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "right_idle": {
+        "row": 2,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_walk": {
+        "row": 3,
+        "frames": 3,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "playback_order": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "up_idle": {
+        "row": 4,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "up_walk": {
+        "row": 5,
+        "frames": 3,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "sequence": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "playback_order": [
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "right_carry": {
+        "row": 6,
+        "frames": 4,
+        "fps": 6.25,
+        "durations_ms": [
+          160,
+          160,
+          160,
+          160
+        ],
+        "loop": true,
+        "frame_variant": "pixel",
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "down_sit": {
+        "row": 7,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "right_sit": {
+        "row": 8,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      },
+      "face_portrait": {
+        "row": 9,
+        "frames": 1,
+        "fps": 1,
+        "durations_ms": [
+          1000
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 1280,
+    "sheetHeight": 4000,
+    "cellWidth": 320,
+    "cellHeight": 400,
+    "rows": {
+      "down_idle": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_walk": [
+        {
+          "x": 0,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_idle": [
+        {
+          "x": 0,
+          "y": 800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_walk": [
+        {
+          "x": 0,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 1200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_idle": [
+        {
+          "x": 0,
+          "y": 1600,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "up_walk": [
+        {
+          "x": 0,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2000,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_carry": [
+        {
+          "x": 0,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 320,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 640,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        },
+        {
+          "x": 960,
+          "y": 2400,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "down_sit": [
+        {
+          "x": 0,
+          "y": 2800,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "right_sit": [
+        {
+          "x": 0,
+          "y": 3200,
+          "w": 320,
+          "h": 400
+        }
+      ],
+      "face_portrait": [
+        {
+          "x": 0,
+          "y": 3600,
+          "w": 320,
+          "h": 400
+        }
+      ]
+    }
+  },
+  "stockwars": {
+    "kind": "forest-friends",
+    "game_integrated": false,
+    "ground_origin": [
+      160,
+      372
+    ],
+    "world_body_height": 90,
+    "display_scale_status": "requires crown measurement and in-game contact QA",
+    "mirrors": {
+      "left": "right"
+    },
+    "motion_review": "candidate; see qa-notes.md",
+    "uniform_row_alignment": "alignment.json"
+  },
+  "style_correction": {
+    "version": "style-unification-v3",
+    "date": "2026-10-16",
+    "provider": "built-in image_gen",
+    "reference": "../identity.png",
+    "source_and_prompts": "../../generation.json",
+    "shared_palette": "reference-palette.json",
+    "original_layout_and_timing_preserved": true,
+    "no_paw_pads": true,
+    "game_integrated": false,
+    "runtime_contact_QA": "not performed; forest characters not integrated",
+    "assembly": "canonical chroma/component functions, board-wide isotropic scale, original frame ground lines and atlas coordinates, dog held-body tail masks, sprite-gen recolor bake"
+  }
+}

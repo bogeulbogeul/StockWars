@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "right_carry-1-brow",
+      "map": {
+        "#453E41": "#5C5155",
+        "#484245": "#5C5155",
+        "#5C5155": "#5C5155"
+      }
+    }
+  ]
+}

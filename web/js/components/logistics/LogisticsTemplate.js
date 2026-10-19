@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { deliveryScore } from './LogisticsRewardEngine.js';
 import { bindingLabel } from '../../app/GameKeys.js';
 /**
@@ -137,7 +138,7 @@ export function getLogisticsModalHtml() {
                         <div class="settlement-stamp grade-S" id="settlementStamp">S</div>
                         <div class="settlement-title">📦 작업 완료 및 급여 정산</div>
                         <div class="park-settlement-dialogue">
-                            <img id="parkSettlementPortrait" src="assets/characters/manager-park/park-boar-dialogue-neutral-v1.png" alt="관리소장 박씨" draggable="false">
+                            <img id="parkSettlementPortrait" src="${EMPTY_CHARACTER_IMAGE}" alt="관리소장 박씨" draggable="false">
                             <div class="settlement-subtitle" id="parkSettlementSpeech">관리소장 박씨: "60초 동안 수고 많았네. 정산 내역을 확인하게."</div>
                         </div>
 

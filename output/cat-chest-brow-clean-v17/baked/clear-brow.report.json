@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "clear-brow-input.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "clear-brow",
+      "sheet": "clear-brow.png",
+      "substituted_pixels": 335,
+      "substitutions": [
+        {
+          "from": "#413b3e",
+          "to": "#5c5155",
+          "pixels": 151
+        },
+        {
+          "from": "#5c5155",
+          "to": "#5c5155",
+          "pixels": 184
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

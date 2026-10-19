@@ -16,16 +16,17 @@ test('visual guide paginates, displays assigned keys and never places a real ord
         guide.showPage(-1); assert.equal(guide.index,0);
         assert.match(fields.get('.help-visual').innerHTML,/data-game-key="w">Z/);
         guide.showPage(1); assert.match(fields.get('.help-visual').innerHTML,/data-game-key="f">Q/);
-        assert.match(fields.get('.help-visual').innerHTML,/VivianStore\.png/);
+        assert.match(fields.get('.help-visual').innerHTML,/VivianStore-door-v3\.png/);
         guide.showPage(2); assert.match(fields.get('.help-visual').innerHTML,/주문이 실행되지 않습니다/);
         guide.showPage(3);
-        assert.match(fields.get('.help-visual').innerHTML,/BenchSimple\.png/);
+        assert.match(fields.get('.help-visual').innerHTML,/벤치에서 쉬기/);
         assert.match(fields.get('.help-visual').innerHTML,/data-game-key="f">Q/);
-        assert.match(fields.get('.help-description').textContent,/하루 1회/);
-        assert.match(fields.get('.help-description').textContent,/기력을 모두 회복/);
+        assert.match(fields.get('.help-visual').innerHTML,/하루 1회 전부 회복/);
+        assert.match(fields.get('.help-visual').innerHTML,/item_energy_drink\.png/);
+        assert.match(fields.get('.help-visual').innerHTML,/1개당 하트 1개/);
         guide.showPage(100); assert.equal(guide.index,HELP_PAGES.length-1);
         assert.equal(fields.get('[data-help="next"]').disabled,true);
-        assert.match(fields.get('.help-visual').innerHTML,/item_energy_drink\.png/);
-        assert.match(fields.get('.help-description').textContent,/하트 1개/);
+        assert.match(fields.get('.help-description').textContent,/월세 5,000G/);
+        assert.match(fields.get('.help-visual').innerHTML,/DAY \+1/);
     } finally {settingsStore.value=before;globalThis.document=doc;}
 });

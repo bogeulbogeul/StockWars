@@ -55,6 +55,11 @@ body:has(#annaTutorialOverlay:not(.hidden)) .office-furniture-edit-btn {
     transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
+/* Inactive rooms must not remain underneath transparent town/tutorial layers. */
+.iso-office-stage.hidden {
+    display: none !important;
+}
+
 /* Dim background when full smartphone view is active */
 body.phone-view-active .iso-office-stage {
     opacity: 0.3;

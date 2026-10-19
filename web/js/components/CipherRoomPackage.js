@@ -1,9 +1,10 @@
 import {ROOM_SIZE,OBJECTS,PLACES,SEATS,inside,createPackageNavigation} from './CipherRoomPackageGeometry.js';
 import {marketEngine} from '../engine/marketEngine.js';
 import {elementScale} from '../app/GameViewport.js';
+import {cipherCanvasResolution} from './CipherCanvasResolution.js';
 
 // Source-art coordinates remain the package's navigation/interaction map.
-// Convert the entire room uniformly to the H=90 scene; never stretch its art.
+// Gameplay/actor proportion only; independent of canvas pixel resolution.
 export const CIPHER_ROOM_SCALE = 0.6;
 export const CIPHER_AGENT_ENABLED = true;
 
@@ -11,7 +12,7 @@ export class CipherRoomPackage {
     constructor(lobby){
         this.lobby=lobby;this.navigation=createPackageNavigation();this.pending=null;
         this.scale=CIPHER_ROOM_SCALE;
-        lobby.canvas.width=Math.round(ROOM_SIZE.width*this.scale);lobby.canvas.height=Math.round(ROOM_SIZE.height*this.scale);
+        lobby.canvas.width=ROOM_SIZE.width;lobby.canvas.height=ROOM_SIZE.height;
         this.background=new Image();this.background.onload=()=>lobby.draw();
         this.background.onerror=()=>{lobby.dialog.querySelector('.cipher-lobby-error').hidden=false;};
         // Fixed receptionist is painted into this user-requested room variant.
@@ -27,11 +28,25 @@ export class CipherRoomPackage {
         for(const place of [...PLACES.filter(p=>CIPHER_AGENT_ENABLED||p.id!=='agent'),...SEATS.map(s=>({...s,label:'소파 앉기'}))]){const button=document.createElement('button');button.textContent=place.label;button.onclick=()=>this.request(place.id);actions.append(button);}
         lobby.dialog.append(actions);
     }
+    syncResolution(){
+        const size=this.displaySize;
+        if(!size)return false;
+        const pixels=cipherCanvasResolution(size.width,size.height,globalThis.devicePixelRatio,ROOM_SIZE);
+        if(!pixels)return false;
+        const canvas=this.lobby.canvas;
+        if(canvas.width===pixels.width&&canvas.height===pixels.height)return false;
+        canvas.width=pixels.width;canvas.height=pixels.height;
+        return true;
+    }
     resize(){
         const {canvas,dialog}=this.lobby,r=canvas.getBoundingClientRect(),d=dialog.getBoundingClientRect(),ui=elementScale(dialog),s=Math.min(r.width/ROOM_SIZE.width,r.height/ROOM_SIZE.height);
+        if(!(r.width>0&&r.height>0))return;
+        this.displaySize={width:r.width,height:r.height};
+        this.syncResolution();
         this.overlay.style.left=`${(r.left-d.left+(r.width-ROOM_SIZE.width*s)/2)/ui}px`;
         this.overlay.style.top=`${(r.top-d.top+(r.height-ROOM_SIZE.height*s)/2)/ui}px`;
         this.overlay.style.transform=`scale(${s/ui})`;
+        this.lobby.draw();
     }
     open(){this.pending=null;this.history=[];this.day=null;this.unsubscribe?.();this.updateIndex(marketEngine.getState());this.unsubscribe=marketEngine.subscribe(state=>this.updateIndex(state));this.resize();}
     close(){this.pending=null;this.unsubscribe?.();this.unsubscribe=null;}

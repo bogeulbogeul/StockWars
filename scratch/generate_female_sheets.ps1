@@ -2,7 +2,7 @@ Add-Type -AssemblyName System.Drawing
 
 $srcDir = "C:\Users\Administrator\.gemini\antigravity-ide\brain\dbc93132-94f3-4940-836f-bddd85e738d0\.user_uploaded"
 $femaleFile = "media_1789449863748.png"
-$testOutDir = "c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_female_skins"
+$testOutDir = "${PSScriptRoot}\..\scratch\test_female_skins"
 if (-not (Test-Path $testOutDir)) { New-Item -ItemType Directory -Path $testOutDir -Force }
 
 $srcPath = Join-Path $srcDir $femaleFile

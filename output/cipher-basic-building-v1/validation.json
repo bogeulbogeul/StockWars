@@ -1,0 +1,10 @@
+{
+  "roundtrip_import": "PASS",
+  "entry_open": "PASS",
+  "front_wall_present": "PASS",
+  "floor_16_rays": "PASS",
+  "floor_height_range": 1.1920928955078125e-07,
+  "floor_normals": "PASS",
+  "mesh_count": 46,
+  "triangle_count": 5230
+}

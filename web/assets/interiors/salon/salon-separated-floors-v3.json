@@ -1,0 +1,34 @@
+{
+  "id": "salon-de-tail-separated-floors-v3",
+  "status": "separate-raster-design-assets; runtime replacement and collision registration not applied",
+  "generator": "built-in image_gen",
+  "floor1": {
+    "asset": "salon-floor-1-v3.png",
+    "canvas": [1536,1024],
+    "reference": "salon-room-package-v1.png and user layout screenshot",
+    "changes": ["remove waiting sofa and side table", "exit carpet in vacated waiting area", "straight single-flight stairs at former player/door location"],
+    "owner": "separate NPC layer; background contains no player or owner"
+  },
+  "floor2": {
+    "asset": "salon-floor-2-v4.png",
+    "canvas": [1536,1024],
+    "role": "weekly rotating style showroom",
+    "slots": [
+      {"id":"regular-1", "type":"regular", "productImage":null},
+      {"id":"regular-2", "type":"regular", "productImage":null},
+      {"id":"regular-3", "type":"regular", "productImage":null},
+      {"id":"limited-1", "type":"limited", "productImage":null}
+    ],
+    "fixedArtwork": "empty platforms, open frames, blank label holders and special lighting only",
+    "dynamicArtwork": "weekly goods, mannequins, product names, prices and availability supplied separately",
+    "stairs": "downstairs floor opening; no third-floor staircase"
+  },
+  "view": "orthographic-isometric single-floor rooms; no stacked-story asset",
+  "projection": {
+    "requestedGridAxesDegrees": [-29.50664658,29.50664658],
+    "validation": "isometric appearance visually checked; exact geometric registration remains provisional; no nonuniform warp applied"
+  },
+  "stairsAnimation": "future separate character motion; not baked into either background",
+  "prompts": ["salon-floors-v3.prompt.txt", "salon-floor-2-v4.prompt.txt"],
+  "preservation": "older art, game room code and inventory/economy remain preserved"
+}

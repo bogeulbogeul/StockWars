@@ -1,0 +1,92 @@
+[
+  {
+    "id": "brown-bear",
+    "state": "down_walk",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing dog row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. Straight FRONT fixed view. EXACTLY THREE poses left to right: A own LEFT foot forward and own RIGHT arm forward; NEUTRAL both soles planted arms down; B own RIGHT foot forward and own LEFT arm forward. A/B opposite feet and arms, not duplicates. Walk in place, no hopping. Neutral is the standing idle.\nDraw a single horizontal row of EXACTLY 3 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\down.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run\\raw\\down_walk.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\down_walk.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\down_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-75c6816c-1b65-4816-85f5-68812c834717.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  },
+  {
+    "id": "brown-bear",
+    "state": "right_walk",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing dog row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. Front-right THREE QUARTER fixed view matching DOG motion reference, BOTH eyes and chest visible. THREE poses: A near leg forward far leg back and near arm BACK; NEUTRAL both soles planted arms down; B far leg forward near leg back and near arm FORWARD. Near arm counter-swings back/down/forward, far arm partly occluded. Low grounded steps with knees and ankles. NO pure profile, no hopping. Neutral is standing idle.\nDraw a single horizontal row of EXACTLY 3 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\right.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run\\raw\\right_walk.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\right_walk.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\right_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-95992a68-27f9-46f0-8192-cd312277b82f.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  },
+  {
+    "id": "brown-bear",
+    "state": "up_walk",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing dog row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. Straight BACK fixed view. THREE poses: A own LEFT foot forward right arm forward; NEUTRAL both soles planted arms down; B own RIGHT foot forward left arm forward. Alternate feet clearly, show REAR heels/ankles, lifted heel may show sole, no front-facing toes. Tail attached to rear pelvis. No face or chest markings on back.\nDraw a single horizontal row of EXACTLY 3 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\up.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\dog\\run\\raw\\up_walk.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\up_walk.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\up_walk.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-38357c16-ae77-461b-916e-4fe5d66a5ff7.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  },
+  {
+    "id": "brown-bear",
+    "state": "right_carry",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing cat row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. Front-right three-quarter facing RIGHT, BOTH eyes visible. FOUR alternating gait poses: near leg forward contact; near support far knee passing; FAR leg forward contact near leg BACK; far support near knee passing. Both arms forward elbows bent and palms UP, hands side-by-side at stable waist height supporting an imaginary separate parcel. Use CAT motion reference for hand support. Draw NO BOX or furniture. Constant hand/torso position, feet alternate; tail never replaces arm.\nDraw a single horizontal row of EXACTLY 4 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\right.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run\\raw\\right_carry.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\right_carry.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\right_carry.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-68bdab83-574a-422c-8ad2-4112d4af4910.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  },
+  {
+    "id": "brown-bear",
+    "state": "down_sit",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing cat row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. ONE FRONT CHAIR-seated pose. Upright torso, pelvis elevated on imaginary seat, thighs project forward, knees bent 90 degrees, lower legs down, paws rest on thighs. NO chair, NO floor sitting, no haunch crouch. Tail behind hips.\nDraw a single horizontal row of EXACTLY 1 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\down.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run\\raw\\down_sit.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\down_sit.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\down_sit.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-008113a9-d24a-484c-9a77-9a7e318809f5.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  },
+  {
+    "id": "brown-bear",
+    "state": "right_sit",
+    "prompt": "Generate one horizontal production sprite row. Clean SD animal illustration, dark outlines, flat colors restrained cel shading, match identity exactly, same short limbs and large head. Input roles: image 1 is this exact character identity in requested direction; image 2 is the existing cat row for POSE, anatomy and camera ONLY, never appearance; image 3 is empty spacing geometry ONLY. Preserve identity from image 1. ONE held CHAIR-seated pose elevated isometric FRONT-RIGHT three-quarter with BOTH eyes visible, not pure profile. Upright torso, pelvis elevated, thighs forward along room diagonal, knees bent 90 degrees lower legs down, paws on thighs. NO chair, NO floor sitting. Tail behind hips.\nDraw a single horizontal row of EXACTLY 1 complete separated figures, with wide cyan gutters. Background solid #00FFFF. No text or props. Match limb phases from image 2. Outdoors RPG top-down and indoor isometric are project directions; keep specified character camera.\n",
+    "refs": [
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\design-views\\right.png",
+      "C:\\GitHub\\StockWars\\output\\npc-style-animals\\unified-v2\\cat\\run\\raw\\right_sit.png",
+      "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\references\\layout-guides\\right_sit.png"
+    ],
+    "out": "C:\\GitHub\\StockWars\\output\\forest-friends\\sprites-v1\\brown-bear\\run\\raw\\right_sit.png",
+    "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-ef866b2e-e8b3-4a19-ae88-e60bbf9e538e.png",
+    "provider": "codex",
+    "method": "built-in image_gen",
+    "copyExit": 0
+  }
+]

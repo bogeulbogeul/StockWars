@@ -1,0 +1,32 @@
+[
+  {
+    "model": "FinanceBuilding",
+    "glass_triangles": 2974,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v2\\FinanceBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  },
+  {
+    "model": "FunitueStoreBuilding",
+    "glass_triangles": 1290,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v2\\FunitueStoreBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  },
+  {
+    "model": "StoreBuilding",
+    "glass_triangles": 876,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v2\\StoreBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  },
+  {
+    "model": "InformationBuilding",
+    "glass_triangles": 628,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v2\\InformationBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  },
+  {
+    "model": "HomeBuilding",
+    "glass_triangles": 1037,
+    "output": "C:\\GitHub\\StockWars\\output\\building-retouch-v2\\HomeBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  }
+]

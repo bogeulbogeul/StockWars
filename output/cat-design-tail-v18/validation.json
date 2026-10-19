@@ -1,0 +1,200 @@
+{
+  "passed": true,
+  "states": 10,
+  "unique_drawings": 16,
+  "transparent_background": true,
+  "cells_not_clipped": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "drawings_redrawn": true,
+  "tail_measurements": [
+    {
+      "frame": 0,
+      "upper_tail_xy": [
+        385.12,
+        225.77
+      ],
+      "rightmost_x": 447
+    },
+    {
+      "frame": 1,
+      "upper_tail_xy": [
+        387.44,
+        225.77
+      ],
+      "rightmost_x": 456
+    },
+    {
+      "frame": 2,
+      "upper_tail_xy": [
+        396.12,
+        239.73
+      ],
+      "rightmost_x": 457
+    }
+  ],
+  "frames": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        123,
+        24,
+        450,
+        494
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        68,
+        25,
+        395,
+        495
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        72,
+        24,
+        394,
+        494
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        57,
+        22,
+        425,
+        493
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        77,
+        14,
+        396,
+        494
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        71,
+        14,
+        415,
+        493
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "alpha_bbox": [
+        117,
+        14,
+        449,
+        493
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "alpha_bbox": [
+        125,
+        14,
+        459,
+        493
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "alpha_bbox": [
+        101,
+        10,
+        459,
+        492
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "alpha_bbox": [
+        75,
+        11,
+        415,
+        492
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "alpha_bbox": [
+        75,
+        11,
+        410,
+        495
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "alpha_bbox": [
+        73,
+        11,
+        414,
+        493
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "alpha_bbox": [
+        86,
+        11,
+        414,
+        491
+      ]
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "alpha_bbox": [
+        92,
+        66,
+        408,
+        489
+      ]
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "alpha_bbox": [
+        92,
+        66,
+        404,
+        492
+      ]
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "alpha_bbox": [
+        17,
+        34,
+        487,
+        489
+      ]
+    }
+  ],
+  "game_installed": false,
+  "limitation": "Tail upper-region coordinates are measurement evidence, not proof of exact anatomical root lock. Design and tail connection require visual review."
+}

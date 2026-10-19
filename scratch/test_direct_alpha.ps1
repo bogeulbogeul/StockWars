@@ -14,7 +14,7 @@ for ($x = 0; $x -lt 256; $x++) {
         }
     }
 }
-$res.Save("c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_direct_alpha.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$res.Save("${PSScriptRoot}\..\scratch\test_direct_alpha.png", [System.Drawing.Imaging.ImageFormat]::Png)
 Write-Host "Saved test_direct_alpha.png!"
 $bmp.Dispose()
 $res.Dispose()

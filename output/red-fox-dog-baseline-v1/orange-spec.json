@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "tolerance",
+  "tolerance": 255,
+  "variants": [
+    {
+      "name": "orange",
+      "map": {
+        "#fd8a2c": "#fd8a2c"
+      }
+    }
+  ]
+}

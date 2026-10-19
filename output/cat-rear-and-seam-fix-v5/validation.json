@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "unrelated_states_identical": true,
+  "carry_alpha_identical": true,
+  "carry_outside_masks_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "carry_arm_hand_base_rgb_uniform": true,
+  "palette_used": 42,
+  "colors_outside_palette": 0,
+  "rear_idle_matches_neutral": true,
+  "rear_head_alignment": {
+    "0": {
+      "dx": 28
+    },
+    "1": {
+      "dx": 29
+    },
+    "2": {
+      "dx": 16
+    }
+  },
+  "carry_masks": [
+    {
+      "frame": 0,
+      "pixels": 6433,
+      "target_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "frame": 1,
+      "pixels": 6127,
+      "target_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "frame": 2,
+      "pixels": 6314,
+      "target_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "frame": 3,
+      "pixels": 5912,
+      "target_rgb": [
+        65,
+        59,
+        62
+      ]
+    }
+  ],
+  "game_installed": false
+}

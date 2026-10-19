@@ -1,0 +1,14 @@
+{
+  "chocolate_base_RGB": [
+    78,
+    46,
+    30
+  ],
+  "orange_base_RGB": [
+    253,
+    138,
+    44
+  ],
+  "selected_pixels": 186444,
+  "face_eye_regions_excluded": true
+}

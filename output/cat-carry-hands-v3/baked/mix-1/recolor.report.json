@@ -1,0 +1,308 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "hand-mix-1.png",
+  "match": "tolerance",
+  "tolerance": 255,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "hand-template-rgb",
+      "sheet": "hand-template-rgb.png",
+      "substituted_pixels": 4071,
+      "substitutions": [
+        {
+          "from": "#000000",
+          "to": "#000000",
+          "pixels": 236
+        },
+        {
+          "from": "#020102",
+          "to": "#020102",
+          "pixels": 443
+        },
+        {
+          "from": "#030000",
+          "to": "#030000",
+          "pixels": 29
+        },
+        {
+          "from": "#1c1616",
+          "to": "#1c1616",
+          "pixels": 144
+        },
+        {
+          "from": "#1f1a1a",
+          "to": "#1f1a1a",
+          "pixels": 73
+        },
+        {
+          "from": "#251407",
+          "to": "#251407",
+          "pixels": 2
+        },
+        {
+          "from": "#2b1e17",
+          "to": "#2b1e17",
+          "pixels": 29
+        },
+        {
+          "from": "#2f2a2a",
+          "to": "#2f2a2a",
+          "pixels": 115
+        },
+        {
+          "from": "#2f2a2d",
+          "to": "#2f2a2d",
+          "pixels": 32
+        },
+        {
+          "from": "#332d30",
+          "to": "#332d30",
+          "pixels": 217
+        },
+        {
+          "from": "#3a3438",
+          "to": "#3a3438",
+          "pixels": 69
+        },
+        {
+          "from": "#3b3538",
+          "to": "#3b3538",
+          "pixels": 65
+        },
+        {
+          "from": "#3c3638",
+          "to": "#3c3638",
+          "pixels": 149
+        },
+        {
+          "from": "#3c373a",
+          "to": "#3c373a",
+          "pixels": 107
+        },
+        {
+          "from": "#3e3130",
+          "to": "#3e3130",
+          "pixels": 96
+        },
+        {
+          "from": "#3e383b",
+          "to": "#3e383b",
+          "pixels": 915
+        },
+        {
+          "from": "#403a3d",
+          "to": "#403a3d",
+          "pixels": 767
+        },
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 95
+        },
+        {
+          "from": "#413c3f",
+          "to": "#413c3f",
+          "pixels": 8
+        },
+        {
+          "from": "#413c40",
+          "to": "#413c40",
+          "pixels": 0
+        },
+        {
+          "from": "#423b3e",
+          "to": "#423b3e",
+          "pixels": 392
+        },
+        {
+          "from": "#423c3f",
+          "to": "#423c3f",
+          "pixels": 11
+        },
+        {
+          "from": "#423c40",
+          "to": "#423c40",
+          "pixels": 0
+        },
+        {
+          "from": "#433c40",
+          "to": "#433c40",
+          "pixels": 0
+        },
+        {
+          "from": "#433d40",
+          "to": "#433d40",
+          "pixels": 26
+        },
+        {
+          "from": "#443e41",
+          "to": "#443e41",
+          "pixels": 5
+        },
+        {
+          "from": "#453e41",
+          "to": "#453e41",
+          "pixels": 37
+        },
+        {
+          "from": "#484245",
+          "to": "#484245",
+          "pixels": 6
+        },
+        {
+          "from": "#5c5155",
+          "to": "#5c5155",
+          "pixels": 2
+        },
+        {
+          "from": "#beadad",
+          "to": "#beadad",
+          "pixels": 0
+        },
+        {
+          "from": "#c24a44",
+          "to": "#c24a44",
+          "pixels": 0
+        },
+        {
+          "from": "#d88c29",
+          "to": "#d88c29",
+          "pixels": 0
+        },
+        {
+          "from": "#e76f66",
+          "to": "#e76f66",
+          "pixels": 0
+        },
+        {
+          "from": "#ed9908",
+          "to": "#ed9908",
+          "pixels": 0
+        },
+        {
+          "from": "#ee8968",
+          "to": "#ee8968",
+          "pixels": 0
+        },
+        {
+          "from": "#f1a786",
+          "to": "#f1a786",
+          "pixels": 0
+        },
+        {
+          "from": "#f9a608",
+          "to": "#f9a608",
+          "pixels": 1
+        },
+        {
+          "from": "#f9f9f9",
+          "to": "#f9f9f9",
+          "pixels": 0
+        },
+        {
+          "from": "#fafafa",
+          "to": "#fafafa",
+          "pixels": 0
+        },
+        {
+          "from": "#fda58a",
+          "to": "#fda58a",
+          "pixels": 0
+        },
+        {
+          "from": "#fe9d78",
+          "to": "#fe9d78",
+          "pixels": 0
+        },
+        {
+          "from": "#fea37c",
+          "to": "#fea37c",
+          "pixels": 0
+        }
+      ],
+      "unused_sources": [
+        {
+          "from": "#413c40",
+          "to": "#413c40",
+          "pixels": 0
+        },
+        {
+          "from": "#423c40",
+          "to": "#423c40",
+          "pixels": 0
+        },
+        {
+          "from": "#433c40",
+          "to": "#433c40",
+          "pixels": 0
+        },
+        {
+          "from": "#beadad",
+          "to": "#beadad",
+          "pixels": 0
+        },
+        {
+          "from": "#c24a44",
+          "to": "#c24a44",
+          "pixels": 0
+        },
+        {
+          "from": "#d88c29",
+          "to": "#d88c29",
+          "pixels": 0
+        },
+        {
+          "from": "#e76f66",
+          "to": "#e76f66",
+          "pixels": 0
+        },
+        {
+          "from": "#ed9908",
+          "to": "#ed9908",
+          "pixels": 0
+        },
+        {
+          "from": "#ee8968",
+          "to": "#ee8968",
+          "pixels": 0
+        },
+        {
+          "from": "#f1a786",
+          "to": "#f1a786",
+          "pixels": 0
+        },
+        {
+          "from": "#f9f9f9",
+          "to": "#f9f9f9",
+          "pixels": 0
+        },
+        {
+          "from": "#fafafa",
+          "to": "#fafafa",
+          "pixels": 0
+        },
+        {
+          "from": "#fda58a",
+          "to": "#fda58a",
+          "pixels": 0
+        },
+        {
+          "from": "#fe9d78",
+          "to": "#fe9d78",
+          "pixels": 0
+        },
+        {
+          "from": "#fea37c",
+          "to": "#fea37c",
+          "pixels": 0
+        }
+      ],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

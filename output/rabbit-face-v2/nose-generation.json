@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Precise color-only follow-up on image 1 (the corrected 8-pose rabbit board): its newly bright pink noses are inconsistent with the approved frontal rabbit in image 2. Change ONLY the tiny nose fill color in each of the eight faces to the same MUTED DUSTY ROSE-BROWN / WARM BROWN nose color in image 2. Preserve the tiny soft rounded triangular nose SHAPE, short muzzle, rounded cheeks, eyes, ears, every outline and all other pixels, pose, layout and size. Keep cyan background. Exactly eight existing figures, no other changes. Do not revert to feline pointed cheeks. Match the original nose color, not a new bright pink.",
+  "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-6170e6b7-6d3d-4dae-93aa-885eb8a06303.png"
+}

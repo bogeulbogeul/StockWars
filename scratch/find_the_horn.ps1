@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$bmp = New-Object System.Drawing.Bitmap("c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_right.png")
+$bmp = New-Object System.Drawing.Bitmap("${PSScriptRoot}\..\web\assets\character\base_fair_right.png")
 
 Write-Host "Printing grid of LeftX (10..11 o'clock) on Right view head:"
 for ($y = 40; $y -le 70; $y++) {

@@ -1,0 +1,13 @@
+{
+  "id": "salon-entry-stairs-v7",
+  "status": "separate-floor composed design previews; not applied to gameplay",
+  "floor1": "salon-floor-1-entry-stairs-v7.png",
+  "floor2": "salon-floor-2-entry-stairs-v7.png",
+  "floor1Layout": "reception and Claire against rear-right wall; single straight-flight stairs beside front exit carpet; central routes branch to service stations and reception",
+  "floor2Layout": "stairs moved to front-middle arrival zone; previous right-edge opening filled; premium 3 regular and 1 limited empty display bays retained",
+  "weeklyGoodsBaked": false,
+  "ownerBakedIntoPreview": true,
+  "generator": "built-in image_gen",
+  "prompts": "salon-entry-stairs-v7.prompt.txt",
+  "qa": "visually reviewed entry/stair adjacency, wall counter placement and four empty display bays; final shared stair coordinates, rigid bodies and runtime movement remain to be validated"
+}

@@ -99,7 +99,7 @@ $rect = New-Object System.Drawing.Rectangle(0, 0, 256, 682)
 $col0 = $fullBmp.Clone($rect, $fullBmp.PixelFormat)
 
 $cleanCol0 = Remove-Background-FloodFill($col0)
-$cleanCol0.Save("c:\Users\Administrator\Documents\GitHub\StockWars\scratch\test_clean_col0.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$cleanCol0.Save("${PSScriptRoot}\..\scratch\test_clean_col0.png", [System.Drawing.Imaging.ImageFormat]::Png)
 
 Write-Host "Saved test_clean_col0.png successfully!"
 $col0.Dispose()

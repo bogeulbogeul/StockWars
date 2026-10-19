@@ -1,0 +1,11 @@
+{
+  "corrective_samples": [
+    32,
+    36,
+    40,
+    44,
+    50
+  ],
+  "basis_unchanged": true,
+  "original_walk_untouched": true
+}

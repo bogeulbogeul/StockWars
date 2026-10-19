@@ -1,7 +1,8 @@
+import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import {getVivianClockHandsHtml} from './VivianClock.js';
 
 export const VIVIAN_PACKAGE_URL=new URL('../../../assets/interiors/vivian-package/vivian-room-with-squirrel-v8.png',import.meta.url).href;
-export const VIVIAN_SQUIRREL_URL=new URL('../../../assets/characters/vivian/vivian-squirrel-cashier-v1.png',import.meta.url).href;
+export const VIVIAN_SQUIRREL_URL=EMPTY_CHARACTER_IMAGE;
 // Measured source-art coordinates. 8 cells across the floor's 1336px diagonal.
 export const VIVIAN_PACKAGE_VIEW_SCALE=1336/(8*67.5);
 export const PACKAGE_FLOOR=[[768,247],[1420,618],[774,975],[114,619]];

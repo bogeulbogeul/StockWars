@@ -1,0 +1,14 @@
+[
+  {
+    "model": "ClothingStore",
+    "glass_triangles": 1089,
+    "output": "C:\\GitHub\\StockWars\\output\\clothing-book-retouch-final\\ClothingStore-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  },
+  {
+    "model": "BookStoreBuilding",
+    "glass_triangles": 1114,
+    "output": "C:\\GitHub\\StockWars\\output\\clothing-book-retouch-final\\BookStoreBuilding-retouched.glb",
+    "texture": "ImageGen retouch registered to original UVs; protected source boundaries and details"
+  }
+]

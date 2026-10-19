@@ -1,0 +1,15 @@
+{
+  "type": "eating_open_mouth",
+  "eyes_preserved": true,
+  "method": "UV basecolor replacement",
+  "source": "blank-buddy-walk-v3",
+  "head_geometry_changed": false,
+  "rig_changed": false,
+  "animation_included": false,
+  "rasterized_face_texels": 6198,
+  "clean_white": [
+    0.9686275124549866,
+    0.960784375667572,
+    0.960784375667572
+  ]
+}

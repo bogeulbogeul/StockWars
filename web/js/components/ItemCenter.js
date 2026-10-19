@@ -48,8 +48,9 @@ export class ItemCenter {
         return true;
     }
     open(message = '', section = '') {
+        this.section = section === 'mail' ? 'mail' : 'lotto';
         this.dialog.classList.toggle('lotto-only', section === 'lotto');
-        this.dialog.querySelector('h2').textContent = section === 'lotto' ? '주간 로또' : '아이템 센터';
+        this.dialog.querySelector('h2').textContent = this.section === 'mail' ? '드링크 배급함' : '주간 로또';
         this.render(); this.feedback(message);
         if (!this.dialog.open) this.dialog.showModal();
         if (section === 'lotto') this.dialog.scrollTop = 0;
@@ -68,6 +69,16 @@ export class ItemCenter {
         document.body.style.setProperty('--item-noise-opacity', `${1 - e.chartNoise() * 0.7}`);
     }
     render() {
+        if (this.section === 'lotto') {
+            this.dialog.querySelector('main').innerHTML = this.lotto.render();
+            return;
+        }
+        if (this.section === 'mail') {
+            const s = this.engine.state;
+            this.dialog.querySelector('main').innerHTML = `<p>앞으로 받을 드링크 ${s.deliveries.length}개</p>` +
+                (s.mail.map(m => `<p>${time(m.due)} · 에너지 드링크 1개 <button data-mail="${escape(m.id)}" ${m.claimed ? 'disabled' : ''}>${m.claimed ? '수령 완료' : '받기'}</button></p>`).join('') || '<p>다음 자정부터 우편이 도착해요.</p>');
+            return;
+        }
         const e = this.engine, s = e.state, now = e.now(), stats = e.stats();
         const reports = s.reports.map(r => {
             const rumor = s.inventory.find(item => item.id === r.id && item.targetStockId);

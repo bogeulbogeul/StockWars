@@ -27,7 +27,7 @@ export class InventoryModal {
     }
 
     render() {
-        const categoryTabsHtml = Object.values(ITEM_CATEGORIES).map(cat => `
+        const categoryTabsHtml = Object.values(ITEM_CATEGORIES).filter(cat => !['apparel', 'etc'].includes(cat.key)).map(cat => `
             <button class="inv-tab-btn ${cat.key === this.activeCategory ? 'active' : ''}" data-cat="${cat.key}">
                 <span>${cat.icon}</span> <span>${cat.name}</span>
             </button>
@@ -159,7 +159,7 @@ export class InventoryModal {
             const visible = this.getItemPresentation(item);
             const isSelected = item.id === this.selectedItemId;
             gridHtml += `
-                <div class="inv-slot ${isSelected ? 'active' : ''}" data-id="${item.id}" data-rarity="${item.rarity}" title="${visible.name}">
+                <div class="inv-slot ${isSelected ? 'active' : ''}" data-category="${item.category}" data-id="${item.id}" data-rarity="${item.rarity}" title="${visible.name}">
                     <span class="inv-item-icon">${itemIconHtml(item)}</span>
                     ${item.quantity > 1 ? `<span class="inv-qty-badge">x${item.quantity}</span>` : ''}
                     ${item.isEquipped ? `<span class="inv-equipped-badge">장착</span>` : ''}

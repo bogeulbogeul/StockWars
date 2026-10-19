@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "changed_frames": [
+    [
+      "down_walk",
+      0
+    ],
+    [
+      "down_walk",
+      2
+    ],
+    [
+      "right_walk",
+      0
+    ],
+    [
+      "right_walk",
+      2
+    ],
+    [
+      "up_walk",
+      0
+    ],
+    [
+      "up_walk",
+      2
+    ]
+  ],
+  "head_RGBA_exact_to_approved_neutral": true,
+  "walk_head_sideways_shift_px": 0,
+  "all_body_RGB_from_approved_samples": true,
+  "neutral_and_non_walk_frames_byte_exact": true,
+  "front_left_right_visible_foot_bottoms_A_B": [
+    [
+      345,
+      379
+    ],
+    [
+      377,
+      343
+    ]
+  ],
+  "motion_review": "Front contacts visibly alternate; three direction pose boards reviewed. Live playback / in-game foot contact remains unverified.",
+  "physical_stride_verified": false
+}

@@ -1,0 +1,16 @@
+{
+  "provider": "built-in image_gen",
+  "reason": "First front/rear rows had contact-foot order opposite the dog reference.",
+  "jobs": [
+    {
+      "state": "down_walk",
+      "prompt": "Correct ONLY the limb phase/order in FIRST fox row; preserve all fox exterior/colors/face/tail style. SECOND dog row is exact pose reference. Three drawings left-to-right. FRONT view. In drawing 1, the foot on VIEWER LEFT must be the LOW PLANTED foot; the foot on VIEWER RIGHT must be the SHORT LIFTED foot. In drawing 3, VIEWER RIGHT foot is planted and VIEWER LEFT foot lifted. Middle neutral both feet grounded and arms down. Drawing1: viewer RIGHT hand raised forward near chest, viewer LEFT hand down/back. Drawing3: viewer LEFT hand raised forward, viewer RIGHT hand down/back. EXACTLY follow the dog row silhouette phases, not the old erroneous fox leg phases. Left/neutral/right fox tail sweep remains as first row, rooted at central rear pelvis; same long bushy tail and cream tip. Same healthy low lifted feet, no paw pads or separate soles. Pure cyan background #00FFFF, three separate complete foxes, same scale/baseline, no text. Never mirror a whole character or copy dog anatomy; redraw corrected completed poses.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-8825f44b-67c9-4489-a444-d46e1590cdeb.png"
+    },
+    {
+      "state": "up_walk",
+      "prompt": "Correct ONLY the limb phase/order in FIRST fox row; preserve all fox exterior/colors/face/tail style. SECOND dog row is exact pose reference. Three drawings left-to-right. REAR view. In drawing 1, the foot on VIEWER LEFT must be the LOW PLANTED foot; the foot on VIEWER RIGHT must be the SHORT LIFTED foot. In drawing 3, VIEWER RIGHT foot is planted and VIEWER LEFT foot lifted. Middle neutral both feet grounded and arms down. Drawing1: viewer LEFT arm swings up/back, viewer RIGHT arm down. Drawing3: viewer RIGHT arm swings up/back, viewer LEFT arm down. Smooth heel backs with no toe lines. EXACTLY follow the dog row silhouette phases, not the old erroneous fox leg phases. Left/neutral/right fox tail sweep remains as first row, rooted at central rear pelvis; same long bushy tail and cream tip. Same healthy low lifted feet, no paw pads or separate soles. Pure cyan background #00FFFF, three separate complete foxes, same scale/baseline, no text. Never mirror a whole character or copy dog anatomy; redraw corrected completed poses.",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-865ddb28-343e-451a-89fa-453385964d14.png"
+    }
+  ]
+}

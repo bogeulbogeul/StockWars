@@ -1,0 +1,19 @@
+{
+  "unchanged_logical_frames": 17,
+  "changed": [
+    "right_walk[0]",
+    "right_walk[2]"
+  ],
+  "palette_size": 279,
+  "outside_palette_pixels": 0,
+  "walk_sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "frame_ms": 160,
+  "native_pose_redraw": true,
+  "motion_continuity": "experimental; live playback not observed",
+  "game_installed": false
+}

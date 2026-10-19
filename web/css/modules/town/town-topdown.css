@@ -23,12 +23,17 @@
 .town-urban-tree.player-behind { opacity: .4; }
 .town-bench-prop, .town-billboard-prop, .street-lamp, .town-urban-tree { bottom: auto; }
 .town-player-character { bottom: auto; transform: translate(-50%, -100%); }
+/* Keep the small raster character outline distinct at town display scale. */
+.town-viewport .town-char-body image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
 .town-player-character[data-facing="up"] .char-face-front { visibility: hidden; }
 .town-player-character.resting-bench .town-char-shadow { display: none; }
 .town-player-character.resting-bench .town-char-body::after {
     content: none;
 }
-.town-building-prompt { z-index: 3000; }
+#townBuildingPrompt { z-index: 3000; transform: translate(-50%, -100%); animation: none; }
 .town-landscape { position: absolute; pointer-events: none; }
 .town-landscape-bench { pointer-events: auto; cursor: pointer; }
 .town-landscape-bench:focus-visible { outline: 3px solid #61d9db; outline-offset: 5px; border-radius: 8px; }

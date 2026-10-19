@@ -1,0 +1,223 @@
+{
+  "kind": "sprite-gen-motion-report",
+  "version": 1,
+  "status": "needs-review",
+  "frame_count": 4,
+  "duration_seconds": 0.64,
+  "size": [
+    320,
+    400
+  ],
+  "anchor_px": [
+    160.0,
+    400.0
+  ],
+  "facing": null,
+  "contacts": [],
+  "foot_box": null,
+  "duplicate_frames": {
+    "exact": 0,
+    "adjacent_exact": 0,
+    "exact_silhouette": 0,
+    "near_silhouette": 0
+  },
+  "motion": {
+    "present": true,
+    "changed_transitions": 3,
+    "silhouette_changed_transitions": 3,
+    "silhouette_change_per_second": 1.0924289622254535
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "time_seconds": 0.0,
+      "duration_seconds": 0.16,
+      "bbox": [
+        52,
+        29,
+        269,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -108.0,
+        -371.0,
+        109.0,
+        -28.0
+      ],
+      "centroid_px": [
+        162.1155004448906,
+        192.67302822203465
+      ],
+      "opaque_pixels": 43831,
+      "edge_sides": []
+    },
+    {
+      "frame": 1,
+      "time_seconds": 0.16,
+      "duration_seconds": 0.16,
+      "bbox": [
+        71,
+        29,
+        267,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -89.0,
+        -371.0,
+        107.0,
+        -28.0
+      ],
+      "centroid_px": [
+        159.53677662253472,
+        179.28554865734162
+      ],
+      "opaque_pixels": 40107,
+      "edge_sides": []
+    },
+    {
+      "frame": 2,
+      "time_seconds": 0.32,
+      "duration_seconds": 0.16,
+      "bbox": [
+        52,
+        29,
+        267,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -108.0,
+        -371.0,
+        107.0,
+        -28.0
+      ],
+      "centroid_px": [
+        160.66293575438354,
+        191.57806038764525
+      ],
+      "opaque_pixels": 43287,
+      "edge_sides": []
+    },
+    {
+      "frame": 3,
+      "time_seconds": 0.48,
+      "duration_seconds": 0.16,
+      "bbox": [
+        73,
+        29,
+        266,
+        372
+      ],
+      "anchor_px": [
+        160.0,
+        400.0
+      ],
+      "bbox_from_anchor": [
+        -87.0,
+        -371.0,
+        106.0,
+        -28.0
+      ],
+      "centroid_px": [
+        162.05118469015795,
+        177.9631429728635
+      ],
+      "opaque_pixels": 39504,
+      "edge_sides": []
+    }
+  ],
+  "bbox_stats": {
+    "union": [
+      52,
+      29,
+      269,
+      372
+    ],
+    "width_range": [
+      193,
+      217
+    ],
+    "height_range": [
+      343,
+      343
+    ],
+    "bottom_range": [
+      372,
+      372
+    ]
+  },
+  "edge_contact": {
+    "frames": [],
+    "sides": {
+      "left": [],
+      "top": [],
+      "right": [],
+      "bottom": []
+    }
+  },
+  "contact_candidates": [],
+  "confidence": 0.0,
+  "sequence": {
+    "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\qa\\right_carry-sequence.json",
+    "state": null,
+    "fps_override": null,
+    "frame_count": 4,
+    "size": [
+      320,
+      400
+    ],
+    "anchor_px": [
+      160.0,
+      400.0
+    ],
+    "durations_seconds": [
+      0.16,
+      0.16,
+      0.16,
+      0.16
+    ]
+  },
+  "source_fingerprints": {
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\qa\\right_carry-sequence.json": "73b0c53cf15bfe86dc1eb7871bef76411d9858027aee9280b86a51e591407230",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-0.png": "01ab7e3f320d8d4b06435cae4df926f5a3319b3f75dbddcca67fa62b50200718",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-1.png": "a6ebb3747c84f89f5920be68ff30911f35583d1bd7daac131bddbd456dfb79ad",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-2.png": "5916cbc751300f0ecd744a911a1b246e2d51008f895b8efd517afd5510019a0a",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-3.png": "cdcaf08dc8380abf9dcb43c95acdeb1aa7de53b06ae963369e3b61775001dd63"
+  },
+  "stride_verified": false,
+  "foot_velocity_px_per_second": null,
+  "stride_px_per_second": null,
+  "warnings": [
+    "Ground contact is unknown: provide both manual contacts and a single-foot ROI; silhouette bottoms do not identify a planted foot."
+  ],
+  "method": {
+    "silhouette": "alpha > 0 in source canvas coordinates; bbox right/bottom are exclusive",
+    "near_silhouette_iou": 0.98,
+    "duplicates": "Counts frames matching an earlier frame; near excludes exact silhouette matches. No time or frames are removed.",
+    "motion": "Adjacent visible pixel changes; silhouette XOR/union summed over full duration. No loop-seam assumption.",
+    "contact": "User-declared same-foot stance spans plus isolated ROI alpha centroid; no automatic contact or facing inference.",
+    "timing": "Cumulative frame-start seconds; repeated tracked poses use their first onset with all intervening durations retained. Final hold is included in duration but has no displacement endpoint.",
+    "velocity": "Endpoint horizontal displacement / pose-onset elapsed seconds; positive = image right. Stride is absolute velocity under manual ground-contact assumptions.",
+    "confidence": "0.9 = at least 3 distinct poses, stable baseline/shape, monotonic near-linear motion and consistent spans. Heuristic conditional confidence, not a calibrated contact probability.",
+    "sequence": "Identity of the analysed sequence: source, atlas state, fps override, frame count, size, anchor and effective per-frame durations. A consumer applying the stride must match all of it and source_fingerprints; another state or frame rate of the same files is a different sequence."
+  },
+  "source_files": [
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\qa\\right_carry-sequence.json",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-0.png",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-1.png",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-2.png",
+    "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\frames\\right_carry\\frame-3.png"
+  ],
+  "source": "C:\\GitHub\\StockWars\\output\\dog-motion-match-v1\\brown-bear\\run\\qa\\right_carry-sequence.json"
+}

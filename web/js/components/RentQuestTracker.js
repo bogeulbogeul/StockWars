@@ -1,5 +1,7 @@
+import { SideQuestList } from './SideQuestList.js';
+
 export class RentQuestTracker {
-    constructor(container) {
+    constructor(container, { onClaimQuest = () => {} } = {}) {
         this.element = document.createElement('aside');
         this.element.className = 'rent-quest';
         this.element.hidden = true;
@@ -18,6 +20,20 @@ export class RentQuestTracker {
         this.progress = this.element.querySelector('progress');
         this.details = this.element.querySelector('.rent-quest-details');
         this.toggleButton = this.element.querySelector('.rent-quest-toggle');
+        this.mainPanel = document.createElement('div');
+        this.mainPanel.append(...this.details.childNodes);
+        this.tabs = document.createElement('nav');
+        this.tabs.className = 'quest-tabs';
+        this.tabs.setAttribute('aria-label', '퀘스트 종류');
+        this.tabs.innerHTML = '<button type="button" data-tab="side">서브 퀘스트</button><button type="button" data-tab="main">월세 목표</button>';
+        this.details.append(this.tabs, this.mainPanel);
+        this.sideQuests = new SideQuestList(this.details, onClaimQuest);
+        this.tabs.addEventListener('click', event => {
+            const tab = event.target.closest('[data-tab]');
+            if (tab) this.setTab(tab.dataset.tab);
+        });
+        this.tabs.addEventListener('keydown', event => event.stopPropagation());
+        this.setTab('side');
         this.collapsed = false;
         try { this.collapsed = globalThis.localStorage?.getItem('stockwars.quest.collapsed') === 'true'; } catch {}
         this.setCollapsed(this.collapsed);
@@ -26,6 +42,16 @@ export class RentQuestTracker {
             try { globalThis.localStorage?.setItem('stockwars.quest.collapsed', String(this.collapsed)); } catch {}
         });
         this.toggleButton.addEventListener('keydown', e => e.stopPropagation());
+    }
+
+    setTab(tab) {
+        this.activeTab = tab;
+        this.mainPanel.hidden = tab !== 'main';
+        this.sideQuests.element.hidden = tab !== 'side';
+        this.fields.deadline.hidden = tab !== 'main';
+        this.element.querySelector('h2').textContent = tab === 'main' ? '첫 월세 준비하기' : '도전 과제';
+        this.element.querySelector('.rent-quest-heading > span').textContent = tab === 'main' ? 'MAIN QUEST' : 'SIDE QUEST';
+        this.tabs.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tab === tab)));
     }
 
     setCollapsed(collapsed) {
@@ -38,9 +64,12 @@ export class RentQuestTracker {
         this.toggleButton.title = label;
     }
 
-    update(state, visible) {
+    update(state, visible, quests = []) {
         this.element.hidden = !visible;
         if (!visible) return;
+        this.tabs.querySelector('[data-tab=side]').hidden = quests.length === 0;
+        if (!quests.length && this.activeTab === 'side') this.setTab('main');
+        this.sideQuests.update(quests);
         const amount = Math.max(0, Math.floor(state.cash));
         const target = state.targetRent;
         const remaining = Math.max(0, target - amount);

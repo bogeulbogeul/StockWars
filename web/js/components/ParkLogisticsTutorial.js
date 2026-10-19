@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { gameKey } from '../app/GameKeys.js';
 import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
 /**
@@ -32,7 +33,7 @@ export class ParkLogisticsTutorial {
                     <!-- Left: Park Portrait Frame -->
                     <div class="vn-portrait-frame" id="vnParkPortraitFrame">
                         <div class="vn-portrait-avatar" id="vnParkPortraitAvatar">
-                            <img id="vnParkPortrait" src="assets/characters/manager-park/park-boar-dialogue-neutral-v1.png" alt="관리소장 박씨 — 무뚝뚝한 표정" draggable="false">
+                            <img id="vnParkPortrait" src="${EMPTY_CHARACTER_IMAGE}" alt="관리소장 박씨 — 무뚝뚝한 표정" draggable="false">
                         </div>
                         <div class="vn-portrait-badge">MANAGER PARK</div>
                     </div>
@@ -247,7 +248,7 @@ export class ParkLogisticsTutorial {
         if (step.targetSelector) this.highlightElement(step.targetSelector, false);
         if (this.portraitImage) {
             const expression = step.expression || 'neutral';
-            this.portraitImage.src = `assets/characters/manager-park/park-boar-dialogue-${expression}-v1.png`;
+            this.portraitImage.src = EMPTY_CHARACTER_IMAGE;
             this.portraitImage.alt = `관리소장 박씨 — ${{ neutral: '무뚝뚝한 표정', smile: '흡족한 미소', angry: '호통', worried: '걱정' }[expression]}`;
         }
 

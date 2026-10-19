@@ -56,13 +56,15 @@ test('sell walks highest bids first and settles actual proceeds against entry co
  assert.equal(result.trade.profit,-52);assert.equal(e.portfolio.size,0);
  assert.deepEqual(e.tradeHistory.at(-1).fills,[{price:1000,quantity:2},{price:980,quantity:2}]);
 });
-test('reads and saved book restoration do not replenish consumed volume; ticks do',()=>{
+test('reads and saved book restoration do not replenish consumed volume; ticks do',(t)=>{
  const e=setup([{price:1000,vol:2}]);e.buyStock(id,1);
  const state=JSON.parse(JSON.stringify([...e.orderBooks]));
  const restored=setup();restored.orderBooks=new Map(state);
  assert.equal(restored.getOrderBook(id).asks[0].vol,1);
  const exposed=restored.getOrderBook(id);exposed.asks[0].vol=999;
  assert.equal(restored.getOrderBook(id).asks[0].vol,1);
+ // Neutral flow isolates replenishment from random aggressive buying.
+ t.mock.method(Math, 'random', () => 0.49);
  restored.tick();assert.ok(restored.getOrderBook(id).asks.length>1);
 });
 test('rejected orders leave both depth and account untouched',()=>{

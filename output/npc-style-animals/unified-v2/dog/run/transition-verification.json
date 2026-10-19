@@ -1,0 +1,20 @@
+[
+  {
+    "state": "down_idle",
+    "source": "down_walk/frame-1.png",
+    "byte_identical": true,
+    "sha256": "b50477e441fc99368840c6b3708dc848672fecd7450582de3058dfda57e68a36"
+  },
+  {
+    "state": "right_idle",
+    "source": "right_walk/frame-1.png",
+    "byte_identical": true,
+    "sha256": "3fbbd78ba819643db7a82c3fcc54249ac8cd2e26c8d87e3416f21b26abd3f99b"
+  },
+  {
+    "state": "up_idle",
+    "source": "up_walk/frame-1.png",
+    "byte_identical": true,
+    "sha256": "e17d8a776a666fcef8ad644ff39f77f9b9cb49f2a8e9e54461d979e7770f6c2b"
+  }
+]

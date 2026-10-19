@@ -1,0 +1,220 @@
+{
+  "passed": true,
+  "alpha_identical": true,
+  "nonfur_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "shading_endpoints": {
+    "base": [
+      65.0,
+      59.0,
+      62.0
+    ],
+    "shadow": [
+      51.0,
+      45.0,
+      48.0
+    ],
+    "light": [
+      73.0,
+      66.0,
+      70.0
+    ]
+  },
+  "generated_source": "shading-generated.png",
+  "frames": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "generated_median": 65.61176470588235,
+      "fur_mean": [
+        63.843,
+        57.537,
+        60.843
+      ],
+      "shadow_fraction": 0.2841207551833884,
+      "light_fraction": 0.34242808145103976
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "generated_median": 65.50672043010753,
+      "fur_mean": [
+        64.117,
+        57.841,
+        61.117
+      ],
+      "shadow_fraction": 0.25504383114538653,
+      "light_fraction": 0.32095663099519084
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "generated_median": 66.07116104868913,
+      "fur_mean": [
+        63.716,
+        57.412,
+        60.716
+      ],
+      "shadow_fraction": 0.2948120486389729,
+      "light_fraction": 0.3364452811554842
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "generated_median": 64.49019607843138,
+      "fur_mean": [
+        63.303,
+        57.014,
+        60.303
+      ],
+      "shadow_fraction": 0.3147536124490552,
+      "light_fraction": 0.29487958503149314
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "generated_median": 64.09934640522876,
+      "fur_mean": [
+        63.722,
+        57.412,
+        60.722
+      ],
+      "shadow_fraction": 0.30342889061064166,
+      "light_fraction": 0.3340420548117984
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "generated_median": 63.91884057971016,
+      "fur_mean": [
+        63.752,
+        57.477,
+        60.752
+      ],
+      "shadow_fraction": 0.28610246607371365,
+      "light_fraction": 0.3287887644354571
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "generated_median": 64.736,
+      "fur_mean": [
+        63.265,
+        57.009,
+        60.265
+      ],
+      "shadow_fraction": 0.3275803584754617,
+      "light_fraction": 0.3083811617210079
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "generated_median": 64.0,
+      "fur_mean": [
+        63.4,
+        57.108,
+        60.4
+      ],
+      "shadow_fraction": 0.32008614197571644,
+      "light_fraction": 0.32599188785688804
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "generated_median": 64.59876543209877,
+      "fur_mean": [
+        63.516,
+        57.242,
+        60.516
+      ],
+      "shadow_fraction": 0.30372658295843685,
+      "light_fraction": 0.3281004498757806
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "generated_median": 64.6640522875817,
+      "fur_mean": [
+        63.478,
+        57.195,
+        60.478
+      ],
+      "shadow_fraction": 0.2956601085373077,
+      "light_fraction": 0.29690876782941394
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "generated_median": 63.681274900398414,
+      "fur_mean": [
+        63.804,
+        57.512,
+        60.804
+      ],
+      "shadow_fraction": 0.29238049492092294,
+      "light_fraction": 0.33402714771130204
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "generated_median": 64.09934640522876,
+      "fur_mean": [
+        63.719,
+        57.408,
+        60.719
+      ],
+      "shadow_fraction": 0.2998445238744009,
+      "light_fraction": 0.3348026094343554
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "generated_median": 64.49019607843138,
+      "fur_mean": [
+        63.943,
+        57.648,
+        60.943
+      ],
+      "shadow_fraction": 0.274126424715057,
+      "light_fraction": 0.3254349130173965
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "generated_median": 66.04417670682732,
+      "fur_mean": [
+        63.939,
+        57.666,
+        60.939
+      ],
+      "shadow_fraction": 0.25736731318598705,
+      "light_fraction": 0.309596301308074
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "generated_median": 64.49019607843138,
+      "fur_mean": [
+        64.088,
+        57.778,
+        61.088
+      ],
+      "shadow_fraction": 0.2776476809185678,
+      "light_fraction": 0.3372677141562169
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "generated_median": 66.44444444444444,
+      "fur_mean": [
+        64.644,
+        58.387,
+        61.644
+      ],
+      "shadow_fraction": 0.1754750593824228,
+      "light_fraction": 0.25735682238057533
+    }
+  ],
+  "game_installed": false
+}

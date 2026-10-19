@@ -1,3 +1,4 @@
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { startReadyCountdown, cancelReadyCountdown } from './logistics/LogisticsSession.js';
 import { gameKey } from '../app/GameKeys.js';
 /**
@@ -473,7 +474,7 @@ export class LogisticsMiniGame {
         const parkPortrait = document.getElementById('parkSettlementPortrait');
         const parkSpeech = document.getElementById('parkSettlementSpeech');
         if (parkPortrait) {
-            parkPortrait.src = `assets/characters/manager-park/park-boar-dialogue-${parkExpression}-v1.png`;
+            parkPortrait.src = EMPTY_CHARACTER_IMAGE;
             parkPortrait.alt = `관리소장 박씨 — ${{ smile: '흡족한 미소', angry: '호통', worried: '걱정', neutral: '무뚝뚝한 표정' }[parkExpression]}`;
         }
         if (parkSpeech) {

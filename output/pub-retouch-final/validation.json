@@ -1,0 +1,11 @@
+{
+  "triangles_preserved": 1825194,
+  "texture_size": [
+    2048,
+    2048
+  ],
+  "embedded_texture_matches_png": true,
+  "basecolor_changed": true,
+  "original_sha256": "d0273a3eb0fba385dff6e7154baa42f09993e739761ef25d2ff0a72d01635a20",
+  "output_sha256": "ea5456da007086095ce60a000443b5281e451d6b0948e4b7807f7f5790ac3277"
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "thin-internal-line",
+      "map": {
+        "#2B1E17": "#332D30",
+        "#2F2A2A": "#332D30",
+        "#2F2A2D": "#332D30",
+        "#332D30": "#332D30",
+        "#3A3438": "#332D30"
+      }
+    }
+  ]
+}

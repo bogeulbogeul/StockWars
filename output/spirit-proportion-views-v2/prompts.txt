@@ -1,0 +1,14 @@
+Tool: built-in image_gen
+Date: 2026-10-18
+Status: new proportion design concepts, pending user selection. Not calibrated technical orthographic drawings. Previous models and rig unchanged.
+References: user outdoor rear walking image for proportion; previous front image for face/material only. New front concept used for side and rear.
+The numeric proportion in the prompt is generation guidance, not a measured or adopted model specification.
+
+FRONT
+Create a new FRONT design view of the white mascot using image 1 as PRIMARY silhouette/proportion reference. Match the small outdoor mascot's relatively small spherical head and compact pear body with short visibly separate legs. Head height must be around 40-43% of total character height; below the head, torso plus legs must be taller than the head. Head width only about 1.2 times torso maximum width. Do not make an oversized bobble head. Image 2 is ONLY for the simple two black oval eyes and closed curved smile and white matte material; its head-to-body ratio must NOT be copied. Preserve simple rounded droplet arms, no fingers, no nose, no ears or clothing. Neutral standing pose, both feet planted and separated, small visible legs, arms lowered a little away from body. One centered full body FRONT orthographic eye-level render, plain light gray background, soft studio shading, no text, no props. Cute compact white wish fairy.
+
+RIGHT SIDE
+Make a standalone exact RIGHT SIDE orthographic design view of the attached NEW white fairy mascot. Rotate this exact character 90 degrees to face screen right. Preserve its new smaller round head, narrow pear torso, visible short legs and rounded feet, droplet arms, exact proportions, smooth matte white 3D material and studio lighting. Near arm hangs diagonally down at side, far arm naturally occluded. Feet grounded together in side profile, no walking. One black oval eye may appear near front edge, no nose, no muzzle, no protruding mouth. This is a true 90 degree side view, not three-quarter. Same centered full-body framing on light gray background, no text, no extra figures, no props or clothes. Keep head scale relative to body exactly as reference.
+
+BACK
+Create ONLY the exact straight BACK view of the attached white wish fairy mascot for a 3D character design reference. Rotate this exact front design 180 degrees, preserve its new smaller spherical head relative to body, narrower pear torso, visible short legs and rounded feet, short droplet arms lowered slightly apart. Same head/body ratio and all proportions as reference, same full-body centered framing and margins, same neutral symmetrical standing pose, both feet flat. Back of head is featureless smooth white; no face on rear, no tail, no seams, no clothing or props. Orthographic eye-level camera, no three-quarter perspective. Soft matte white 3D render with gentle studio lighting on plain light gray background, subtle contact shadow, no text or labels, single character.

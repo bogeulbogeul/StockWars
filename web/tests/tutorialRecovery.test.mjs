@@ -23,10 +23,11 @@ test('Anna gift restores one heart immediately without spending cash or existing
     assert.equal(createEngine().state.tutorialRecoveryDrinkClaimed, undefined);
 });
 
-test('full stamina keeps the gift and full inventory allows retry without claiming', () => {
+test('full stamina consumes the gift without overflowing; full inventory allows retry', () => {
     const engine = createEngine();
-    assert.equal(engine.claimTutorialRecoveryDrink().stored, true);
-    assert.equal(engine.state.inventory[0].quantity, 1);
+    assert.equal(engine.claimTutorialRecoveryDrink().stored, false);
+    assert.equal(engine.state.inventory.length, 0);
+    assert.equal(engine.state.stamina, engine.maxStamina());
     const blocked = createEngine();
     blocked.state.stamina = 2;
     blocked.state.inventory = Array.from({ length: 24 }, (_, i) => ({ id: `full_${i}`, quantity: 1 }));

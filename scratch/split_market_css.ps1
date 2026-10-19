@@ -21,7 +21,7 @@ $p3 = "/* Stock Market: Profile, Sector Allocation Donut Chart, Portfolio List &
 # Router: stock-market.css
 $routerContent = @"
 /* ==========================================================================
-   Stock Market App Router (CODE_STANDARDS 500-Line Limit Rule)
+   Stock Market App Router (AGENTS.md code structure rules)
    Aggregates modularized HTS UI styling:
    - market-header.css: App header, ticker marquee, net worth summary cards, hot stocks
    - market-list.css: Search filter, sector chips, sort controls, stock rows, news feed

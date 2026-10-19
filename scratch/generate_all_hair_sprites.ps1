@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$outDir = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character"
+$outDir = "${PSScriptRoot}\..\web\assets\character"
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Force }
 
 $hairStyles = @(

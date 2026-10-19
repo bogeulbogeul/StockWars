@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "right_walk-2",
+      "map": {
+        "#413B3E": "#413B3E"
+      }
+    }
+  ]
+}

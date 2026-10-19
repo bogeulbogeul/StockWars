@@ -21,7 +21,7 @@ app.whenReady().then(async()=>{
       const node=document.querySelector('#building_claire_apparel .building-artwork');
       const box=document.querySelector('#building_claire_apparel');
       const scale=node.getBoundingClientRect().height/Number(node.getAttribute('height'));
-      resolve({url:location.href,name:box.dataset.buildingName,height:Number(node.getAttribute('height')),screenHeight:node.getBoundingClientRect().height,scale,src:node.querySelector('image').getAttribute('href'),pass:Number(node.getAttribute('height'))===405&&node.querySelector('image').getAttribute('href').includes('SalonDeTail-v2.png')});
+      resolve({url:location.href,name:box.dataset.buildingName,height:Number(node.getAttribute('height')),screenHeight:node.getBoundingClientRect().height,scale,src:node.querySelector('image').getAttribute('href'),pass:Number(node.getAttribute('height'))===306&&node.querySelector('image').getAttribute('href').includes('SalonDeTail-single-story-v3.png')});
      }));
     }else if(Date.now()-start>15000){clearInterval(timer);resolve({pass:false,error:'game startup timeout'});}
    },100);

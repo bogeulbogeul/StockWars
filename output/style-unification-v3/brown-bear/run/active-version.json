@@ -1,0 +1,9 @@
+{
+  "active": "pre-motion approved original",
+  "source": "output\\dog-motion-match-v1\\brown-bear\\before",
+  "rejected": [
+    "dog-motion-match-v1",
+    "motion-color-restore-v2"
+  ],
+  "atlas_sha256": "9904dab137ab3676f6175d72e4083ca542fb44ccacf304514eab8262122d1263"
+}

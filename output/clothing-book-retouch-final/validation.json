@@ -1,0 +1,24 @@
+[
+  {
+    "model": "ClothingStore",
+    "triangles_preserved": 1038894,
+    "embedded_texture_matches_png": true,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "basecolor_changed": true,
+    "source_sha256": "72be19c5b85d73bb9ec7e90c8f1e98eb1660527f7075ba28a1b2488a564aef68"
+  },
+  {
+    "model": "BookStoreBuilding",
+    "triangles_preserved": 1681714,
+    "embedded_texture_matches_png": true,
+    "texture_resolution": [
+      2048,
+      2048
+    ],
+    "basecolor_changed": true,
+    "source_sha256": "01e25029e887ae568318d14b1365a25e61498fda3caf9daeebed4f8413d95c47"
+  }
+]

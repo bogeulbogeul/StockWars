@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "states": 10,
+  "physical_drawings": 19,
+  "nonfront_alpha_identical": true,
+  "front_lower_body_alpha_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "common_fur_rgb": [
+    [
+      51,
+      45,
+      48
+    ],
+    [
+      65,
+      59,
+      62
+    ],
+    [
+      73,
+      66,
+      70
+    ]
+  ],
+  "head_eye_angles": [
+    {
+      "frame": 0,
+      "generated_degrees": 12.319520861609778,
+      "target_dog_degrees": 0.33438979047190986,
+      "final_degrees": 0.409746132389786
+    },
+    {
+      "frame": 1,
+      "generated_degrees": 3.1632877234894194,
+      "target_dog_degrees": -2.8956967667785527,
+      "final_degrees": -2.8870794715283012
+    },
+    {
+      "frame": 2,
+      "generated_degrees": -12.034836680154717,
+      "target_dog_degrees": 0.7546013366561045,
+      "final_degrees": 0.8636907003332087
+    }
+  ],
+  "note": "Head/neck pixels in front poses are intentionally edited. All material cleanup preserves the existing body/limb pose.",
+  "game_installed": false
+}

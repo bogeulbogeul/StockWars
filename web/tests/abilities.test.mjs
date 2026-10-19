@@ -48,12 +48,13 @@ test('slots count unique stocks, block new stocks, release on full sale and surv
     applyPlayerTrait(restored.state,{trait:{key:'management'}});
     assert.equal(restored.portfolioSlots(),12);
 });
-test('investment cap limits fills, rejects oversized limit orders and grows with management',()=>{
+test('investment amount is unlimited at every management level',()=>{
     const {market:m,engine:e}=setup();
-    assert.equal(m.getExecutionPreview('buy','CLOUDBERRY',100).quantity,10);
-    assert.equal(m.placeLimitOrder('buy','CLOUDBERRY',11,1,1000).success,false);
-    assert.equal(m.buyStock('CLOUDBERRY',100).quantity,10);
-    assert.equal(m.buyStock('CLOUDBERRY',1).success,false);
+    assert.equal(e.buyCap(),Infinity);
+    assert.equal(m.getExecutionPreview('buy','CLOUDBERRY',100).quantity,100);
+    assert.equal(m.placeLimitOrder('buy','CLOUDBERRY',11,1,1000).success,true);
+    assert.equal(m.buyStock('CLOUDBERRY',100).quantity,100);
+    assert.equal(m.buyStock('CLOUDBERRY',1).success,true);
     e.state.baseStats.management=1;
     assert.equal(m.buyStock('CLOUDBERRY',1).success,true);
     e.state.baseStats.management=5;

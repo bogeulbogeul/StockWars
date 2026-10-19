@@ -1,6 +1,6 @@
 ﻿Add-Type -AssemblyName System.Drawing
 
-$src = "c:\Users\Administrator\Documents\GitHub\StockWars\web\assets\character\base_fair_left.png"
+$src = "${PSScriptRoot}\..\web\assets\character\base_fair_left.png"
 $bmp = New-Object System.Drawing.Bitmap($src)
 
 Write-Host "Canvas size: $($bmp.Width) x $($bmp.Height)"

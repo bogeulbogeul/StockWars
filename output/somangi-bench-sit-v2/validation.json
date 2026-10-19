@@ -1,0 +1,19 @@
+{
+  "frames_checked": 73,
+  "lower_leg_edge_error": 2.093144533150959e-07,
+  "body_core_deformation": 0,
+  "sit_contact_gap": 0.0023132264614105225,
+  "sampled_bench_penetration_depth": 0,
+  "demo_loop_error": 0.0,
+  "roundtrip": {
+    "glb_meshes": 2,
+    "imported_mesh_objects": 3,
+    "bones": 7,
+    "actions": [
+      "Bench_Seated",
+      "Bench_Sit_Demo",
+      "Bench_SitDown",
+      "Bench_StandUp"
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "passed": true,
+  "alpha_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "fur_base_rgb": [
+    65,
+    59,
+    62
+  ],
+  "base_rgb_difference": 0,
+  "frames": [
+    {
+      "state": "down_idle",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_idle",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "up_idle",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 1,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "up_walk",
+      "frame": 2,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "source_base_red": 63,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    },
+    {
+      "state": "face_portrait",
+      "frame": 0,
+      "source_base_red": 64,
+      "locked_base_rgb": [
+        65,
+        59,
+        62
+      ]
+    }
+  ],
+  "game_installed": false,
+  "note": "Shadow coverage follows each drawing; identical material ramps do not mean identical per-frame whole-body average brightness."
+}

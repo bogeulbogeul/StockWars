@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "right_carry-3-source.png",
+  "match": "exact",
+  "tolerance": 0,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "right_carry-3",
+      "sheet": "right_carry-3.png",
+      "substituted_pixels": 3226,
+      "substitutions": [
+        {
+          "from": "#3a3438",
+          "to": "#413b3e",
+          "pixels": 21
+        },
+        {
+          "from": "#3b3538",
+          "to": "#413b3e",
+          "pixels": 83
+        },
+        {
+          "from": "#3c3638",
+          "to": "#413b3e",
+          "pixels": 2101
+        },
+        {
+          "from": "#3c373a",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#3e3130",
+          "to": "#413b3e",
+          "pixels": 90
+        },
+        {
+          "from": "#3e383b",
+          "to": "#413b3e",
+          "pixels": 343
+        },
+        {
+          "from": "#403a3d",
+          "to": "#413b3e",
+          "pixels": 95
+        },
+        {
+          "from": "#413b3e",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#423b3e",
+          "to": "#413b3e",
+          "pixels": 452
+        },
+        {
+          "from": "#433c40",
+          "to": "#413b3e",
+          "pixels": 1
+        },
+        {
+          "from": "#433d40",
+          "to": "#413b3e",
+          "pixels": 3
+        },
+        {
+          "from": "#453e41",
+          "to": "#413b3e",
+          "pixels": 34
+        },
+        {
+          "from": "#484245",
+          "to": "#413b3e",
+          "pixels": 1
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

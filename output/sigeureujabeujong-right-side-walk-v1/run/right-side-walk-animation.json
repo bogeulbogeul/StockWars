@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-gif",
+  "output": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\right-side-walk.gif",
+  "delay_ticks": 16,
+  "duration_ms": 160,
+  "loop_count": 0,
+  "selected_user_frames": [
+    1,
+    2,
+    3,
+    2
+  ],
+  "source_frames": [
+    "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-0.png",
+    "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-1.png",
+    "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-2.png",
+    "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\curated\\frame-1.png"
+  ],
+  "contact": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\right-side-walk-contact.png",
+  "gif_report": {
+    "path": "C:\\GitHub\\StockWars\\output\\sigeureujabeujong-right-side-walk-v1\\run\\right-side-walk.gif",
+    "frames": 4,
+    "delay_ticks": [
+      16,
+      16,
+      16,
+      16
+    ],
+    "loop": 0,
+    "transparent": true,
+    "disposal": [
+      2,
+      2,
+      2,
+      2
+    ]
+  }
+}

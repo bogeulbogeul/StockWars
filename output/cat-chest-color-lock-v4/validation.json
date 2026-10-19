@@ -1,0 +1,248 @@
+{
+  "passed": true,
+  "chest_base_rgb": [
+    65,
+    59,
+    62
+  ],
+  "per_region_base_rgb_max_difference": 0,
+  "alpha_identical": true,
+  "outside_masks_rgba_identical": true,
+  "hand_windows_rgba_identical": true,
+  "layout_identical": true,
+  "animation_identical": true,
+  "colors_outside_palette": 0,
+  "changed_pixels": 20177,
+  "regions": [
+    {
+      "state": "down_walk",
+      "frame": 0,
+      "roi": [
+        197,
+        238,
+        314,
+        304
+      ],
+      "pixels": 5691,
+      "previous_rgb_count": 7,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 1,
+      "roi": [
+        197,
+        238,
+        314,
+        304
+      ],
+      "pixels": 5858,
+      "previous_rgb_count": 8,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "down_walk",
+      "frame": 2,
+      "roi": [
+        197,
+        238,
+        314,
+        304
+      ],
+      "pixels": 5649,
+      "previous_rgb_count": 6,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 0,
+      "roi": [
+        266,
+        235,
+        340,
+        303
+      ],
+      "pixels": 3511,
+      "previous_rgb_count": 1,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 1,
+      "roi": [
+        266,
+        235,
+        340,
+        303
+      ],
+      "pixels": 3707,
+      "previous_rgb_count": 1,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_walk",
+      "frame": 2,
+      "roi": [
+        266,
+        235,
+        340,
+        303
+      ],
+      "pixels": 3699,
+      "previous_rgb_count": 1,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 0,
+      "roi": [
+        260,
+        222,
+        329,
+        284
+      ],
+      "pixels": 2771,
+      "previous_rgb_count": 11,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 1,
+      "roi": [
+        260,
+        222,
+        329,
+        284
+      ],
+      "pixels": 3029,
+      "previous_rgb_count": 11,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 2,
+      "roi": [
+        260,
+        222,
+        329,
+        284
+      ],
+      "pixels": 2812,
+      "previous_rgb_count": 12,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_carry",
+      "frame": 3,
+      "roi": [
+        260,
+        222,
+        329,
+        284
+      ],
+      "pixels": 3226,
+      "previous_rgb_count": 13,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "down_sit",
+      "frame": 0,
+      "roi": [
+        216,
+        290,
+        325,
+        353
+      ],
+      "pixels": 4715,
+      "previous_rgb_count": 11,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    },
+    {
+      "state": "right_sit",
+      "frame": 0,
+      "roi": [
+        265,
+        285,
+        340,
+        351
+      ],
+      "pixels": 3560,
+      "previous_rgb_count": 9,
+      "after_rgb": [
+        [
+          65,
+          59,
+          62
+        ]
+      ]
+    }
+  ],
+  "game_installed": false,
+  "scope": "Visible chest base colors; existing dark fur boundary/occlusion lines are preserved. Rear has no visible chest."
+}

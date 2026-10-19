@@ -1,0 +1,28 @@
+{
+  "frames": 73,
+  "loop_error": 0.0,
+  "stationary_leg_error": 1.4901161193847656e-08,
+  "belly_core_displacement": 0.028802673276512418,
+  "body_vertex_count": 60654,
+  "bones": 8,
+  "duration": 3,
+  "fps": 24,
+  "known_limit": "Mouth stays fixed; prop is not consumed. Shoulder corrective morphs require morph animation playback.",
+  "source_mesh_positions_unchanged": true,
+  "roundtrip": {
+    "meshes": [
+      "Food_Bun",
+      "Mesh_0",
+      "Icosphere"
+    ],
+    "bones": 8,
+    "clips": [
+      "Eat"
+    ]
+  },
+  "export_animation": {
+    "count": 1,
+    "name": "Eat",
+    "contains_bones_and_morphs": true
+  }
+}

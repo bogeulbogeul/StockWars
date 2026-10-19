@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "kind": "sprite-gen-recolor-report",
+  "base": "orange-patches.png",
+  "match": "tolerance",
+  "tolerance": 255,
+  "alpha_threshold": 0,
+  "variant_count": 1,
+  "variants": [
+    {
+      "name": "orange",
+      "sheet": "orange.png",
+      "substituted_pixels": 291553,
+      "substitutions": [
+        {
+          "from": "#fd8a2c",
+          "to": "#fd8a2c",
+          "pixels": 291553
+        }
+      ],
+      "unused_sources": [],
+      "passthrough_pixels": 0,
+      "passthrough_color_count": 0,
+      "passthrough_colors": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "provider": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "reararmsfox",
+      "state": "up_walk",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-baafe1be-2283-498d-8f70-72a06293ac13.png",
+      "prompt": "Surgical edit FIRST fox rear walking row: keep every leg/foot pose and its order EXACTLY unchanged, keep faces/ears/back/tail silhouettes and all colors unchanged. Correct only the two over-extended sideways arms in drawings 1 and 3. Bring these arms DOWN close to torso, like SECOND dog motion row: arm should descend diagonally and mitten remain near hip level, not extend horizontally like a T-pose. Drawing1 viewer LEFT hand sits slightly higher than viewer RIGHT hand, with elbow close to side. Drawing3 viewer RIGHT hand slightly higher than viewer LEFT. The raised-back hand is only about one mitten height above the other, never at shoulder/neck height. Middle neutral unchanged. Three complete separate rear fox poses, original large ivory-tipped tails and central pelvis roots preserved, dark smooth heels no toes or pads. Uniform pure cyan background #00FFFF. No text. Do NOT swap or redraw the legs; current viewer LEFT planted in drawing1 and viewer RIGHT planted in drawing3 are correct."
+    },
+    {
+      "key": "lowfrontfox",
+      "state": "down_walk",
+      "source": "C:\\Users\\bogeu\\.codex\\generated_images\\01a14172-5c70-7963-aff2-a738b3c007a8\\exec-fd1d3a3e-8754-4691-a836-200b91c8cbb0.png",
+      "prompt": "Correct ONLY lifted-foot height in FIRST fox front walk row, using SECOND dog row as exact movement reference. Keep arm positions/order, fox faces, body, colors, tail positions, camera, scale unchanged. Existing first and third fox drawings raise the knee too high like marching. Lower the raised knee and paw so the lifted paw is only about HALF A PAW HEIGHT above the planted paw's floor, exactly the low relaxed step of the dog. The thigh remains mostly vertical, no high knee toward belly. Drawing1: viewer LEFT foot remains planted, viewer RIGHT paw slightly off floor. Drawing3: viewer RIGHT foot planted, viewer LEFT paw slightly off floor. Keep opposite arm forward and each original hand. Neutral unchanged. No paw pads, no soles. Three foxes same scale/baseline, pure cyan #00FFFF background, no text."
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "state": "down_idle_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 3995,
+    "native_translation": [
+      -2,
+      -2
+    ],
+    "mask": "down_idle-tail-mask.png"
+  },
+  {
+    "state": "down_idle_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 5674,
+    "native_translation": [
+      0,
+      -2
+    ],
+    "mask": "down_idle-tail-mask.png"
+  },
+  {
+    "state": "right_idle_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 6334,
+    "native_translation": [
+      -2,
+      -2
+    ],
+    "mask": "right_idle-tail-mask.png"
+  },
+  {
+    "state": "right_idle_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 6599,
+    "native_translation": [
+      -2,
+      -2
+    ],
+    "mask": "right_idle-tail-mask.png"
+  },
+  {
+    "state": "up_idle_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 15818,
+    "native_translation": [
+      0,
+      -2
+    ],
+    "mask": "up_idle-tail-mask.png"
+  },
+  {
+    "state": "up_idle_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 15830,
+    "native_translation": [
+      1,
+      -2
+    ],
+    "mask": "up_idle-tail-mask.png"
+  },
+  {
+    "state": "down_sit_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 5004,
+    "native_translation": [
+      0,
+      -2
+    ],
+    "mask": "down_sit-tail-mask.png"
+  },
+  {
+    "state": "down_sit_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 7439,
+    "native_translation": [
+      0,
+      -2
+    ],
+    "mask": "down_sit-tail-mask.png"
+  },
+  {
+    "state": "right_sit_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 6778,
+    "native_translation": [
+      0,
+      -2
+    ],
+    "mask": "right_sit-tail-mask.png"
+  },
+  {
+    "state": "right_sit_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 6633,
+    "native_translation": [
+      2,
+      -2
+    ],
+    "mask": "right_sit-tail-mask.png"
+  },
+  {
+    "state": "right_carry_wag",
+    "index": 0,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 7923,
+    "native_translation": [
+      0,
+      -1
+    ],
+    "mask": "right_carry-tail-mask.png"
+  },
+  {
+    "state": "right_carry_wag",
+    "index": 2,
+    "body_byte_identical": true,
+    "tail_changed_pixels": 7127,
+    "native_translation": [
+      -1,
+      -1
+    ],
+    "mask": "right_carry-tail-mask.png"
+  }
+]

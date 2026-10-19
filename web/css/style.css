@@ -1,75 +1,36 @@
-@import './modules/help.css';
-/* ==========================================================================
-   StockWars Web Demo - Master Modular Stylesheet
-   Architecture: Domain-driven modular CSS structure (500-line hard limit per file)
-   ========================================================================== */
-
-/* 1. Design Tokens, CSS Reset & Base Layout */
-@import './modules/base.css';
-
-/* 2. Global Presentation & Financial HUD */
-@import './modules/top-demo-bar.css';
-@import './modules/main-hud.css';
-@import './modules/player-profile.css';
-@import './modules/settings.css';
-@import './modules/level-up.css';
-@import './modules/toasts.css';
-
-/* 3. Smartphone OS Hardware & Navigation */
-@import './modules/smartphone.css';
-@import './modules/minimized-phone.css';
-
-/* 4. Core Financial & Trading Views */
-@import './modules/market/market-header.css';
-@import './modules/market/market-list.css';
-@import './modules/market/market-portfolio.css';
-@import './modules/trade-modal.css';
-@import './modules/detailed-chart.css';
-@import './modules/news.css';
-
-/* 5. In-Game SNS & Communication */
-@import './modules/bubble-messenger.css?v=bubble-group-chat-v14';
-@import './modules/friend-modal.css';
-@import './modules/player-social.css';
-@import './modules/ranking-modal.css';
-
-/* 6. Narrative, Tutorial & Intro */
-@import './modules/title-screen.css';
-@import './modules/character/kiosk-base.css';
-@import './modules/character/avatar-customizer.css?v=animal-faces-1';
-@import './modules/character/personality-test.css';
-@import './modules/character/id-card.css';
-@import './modules/visual-novel.css';
-@import './modules/anna-portrait.css';
-@import './modules/anna-dialogue.css';
-@import './modules/rent-quest.css';
-
-/* 7. World Environments & Stages */
-@import './modules/sky-background.css';
-@import './modules/sky-weather.css';
-@import './modules/office-stage.css';
-@import './modules/town-gateway-modal.css';
-@import './modules/cipher-lobby.css';
-@import './modules/town/town-base.css';
-@import './modules/town/town-buildings.css';
-@import './modules/town/town-building-assets.css';
-@import './modules/town/town-billboard.css';
-@import './modules/town/town-props.css';
-@import './modules/town/town-character.css';
-@import './modules/town/town-topdown.css';
-@import './modules/town/town-modal.css';
-@import './modules/logistics/logistics-arena.css';
-@import './modules/logistics/logistics-settlement.css';
-@import './modules/logistics/logistics-artwork.css';
-
-/* 8. Settlement & Reporting */
-@import './modules/settlement-modal.css';
-
-/* 9. Inventory & Item Systems */
-@import './modules/inventory-modal.css?v=vivian-items-1';
-@import './modules/item-center.css';
-@import './modules/lotto-panel.css';
-@import './modules/rumor-popup.css';
-@import './modules/furniture-edit.css';
-@import './modules/wardrobe-modal.css';
+/* CSS module router. Import order preserves the existing cascade. */
+@import './modules/help.css'; @import './modules/base.css';
+@import './modules/top-demo-bar.css'; @import './modules/main-hud.css';
+@import './modules/player-profile.css'; @import './modules/player-titles.css';
+@import './modules/settings.css'; @import './modules/level-up.css';
+@import './modules/toasts.css'; @import './modules/smartphone.css';
+@import './modules/minimized-phone.css'; @import './modules/market/market-header.css';
+@import './modules/market/market-list.css'; @import './modules/market/market-portfolio.css';
+@import './modules/trade-modal.css'; @import './modules/detailed-chart.css';
+@import './modules/news.css'; @import './modules/bubble-messenger.css?v=bubble-group-chat-v14';
+@import './modules/friend-modal.css'; @import './modules/player-social.css';
+@import './modules/ranking-modal.css'; @import './modules/title-screen.css';
+@import './modules/character/kiosk-base.css'; @import './modules/character/avatar-customizer.css?v=animal-faces-1';
+@import './modules/character/personality-test.css'; @import './modules/character/id-card.css';
+@import './modules/visual-novel.css'; @import './modules/anna-portrait.css';
+@import './modules/anna-dialogue.css'; @import './modules/rent-quest.css';
+@import './modules/sky-background.css'; @import './modules/sky-weather.css';
+@import './modules/office-stage.css'; @import './modules/town-gateway-modal.css';
+@import './modules/cipher-lobby.css'; @import './modules/salon-interior.css';
+@import './modules/logistics/warehouse.css'; @import './modules/town/town-base.css';
+@import './modules/town/town-buildings.css'; @import './modules/town/town-building-assets.css';
+@import './modules/town/town-billboard.css'; @import './modules/town/town-props.css';
+@import './modules/town/town-character.css'; @import './modules/town/town-topdown.css';
+@import './modules/town/town-modal.css'; @import './modules/logistics/logistics-arena.css';
+@import './modules/logistics/logistics-settlement.css'; @import './modules/logistics/logistics-artwork.css';
+@import './modules/settlement-modal.css'; @import './modules/inventory-modal.css?v=vivian-items-1';
+@import './modules/item-center.css'; @import './modules/lotto-panel.css';
+@import './modules/rumor-popup.css'; @import './modules/furniture-edit.css';
+@import './modules/wardrobe-modal.css'; @import './modules/salon-style-shop.css';
 @import './modules/vivian-store.css?v=vivian-items-1';
+@import './modules/graphics-paused.css';
+@import './modules/town/town-models.css';
+@import './modules/ui-paused.css';
+@import './modules/town/somangi-controls.css';
+@import './modules/home-model.css';
+@import './modules/cipher-lobby.css';

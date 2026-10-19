@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "kind": "sprite-gen-recolor",
+  "match": "exact",
+  "tolerance": 0,
+  "variants": [
+    {
+      "name": "eye-white",
+      "map": {
+        "#F9F9F9": "#F9F9F9",
+        "#FAFAFA": "#F9F9F9"
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "engine": "component-row",
+  "engine_revision": "472a5b08401d",
+  "extract_args": {},
+  "run_dir": "C:\\GitHub\\StockWars\\output\\energy-drink-opening-v1",
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 384,
+    "safe_margin_x": 24,
+    "safe_margin_y": 36
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "selection": "manual"
+  },
+  "rows": [
+    {
+      "state": "open",
+      "frames": 4,
+      "method": "components",
+      "files": [
+        "frames/open/frame-0.png",
+        "frames/open/frame-1.png",
+        "frames/open/frame-2.png",
+        "frames/open/frame-3.png"
+      ],
+      "frame_records": [
+        {
+          "index": 0,
+          "nontransparent_pixels": 52764,
+          "bbox": [
+            38,
+            36,
+            219,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 1,
+          "nontransparent_pixels": 46094,
+          "bbox": [
+            44,
+            36,
+            212,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 2,
+          "nontransparent_pixels": 42875,
+          "bbox": [
+            48,
+            36,
+            208,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        },
+        {
+          "index": 3,
+          "nontransparent_pixels": 48686,
+          "bbox": [
+            41,
+            36,
+            214,
+            348
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ],
+      "ok": true,
+      "engine_revision": "472a5b08401d"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

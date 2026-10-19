@@ -1,0 +1,7 @@
+# Smooth motion comparison — 2026-10-15
+
+Native image_gen GPT generation, no Grok/OpenAI paid API. Eight figures per new row; canonical sprite-gen extract/compose-atlas/preview/compose-gif/inspect. Both characters: front/right/back walk and right carry, 8 frames at 80ms (640ms cycle). Left uses runtime horizontal mirror as existing baseline. Standing and seated PNGs are copied byte-for-byte with their existing canonical extraction records; this import of approved states is the only manual manifest merge.
+
+First rows had repeated half cycles; seven rows regenerated with explicit screen/near/far foot instructions and existing motion contacts. Those contact sheets can contain older six-pose trials; identity uses the current accepted directional PNG. Rejected first raw rows remain in rejected-v1. No manual painting, skeleton animation or frame retiming to conceal failed motion.
+
+Motion verdict: EXPERIMENTAL, not passed as final game-ready locomotion. New intermediate silhouettes exist and all frames extract, but some adjacent poses are close duplicates. Near/far support leg alternation is still ambiguous in side walk and carry, front tail position can jump, and generated shading/face details are not pixel-identical to baseline. No final smoothness improvement claim. Use preview.html for equal 640ms-cycle comparison and frame-by-frame inspection. Actual moving foot contact and furniture/cargo attachment are unverified. Existing game assets and approved baseline remain unchanged.

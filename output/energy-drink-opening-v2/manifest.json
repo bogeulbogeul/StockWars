@@ -1,0 +1,124 @@
+{
+  "characterId": "energy-drink-opening",
+  "engine": "component-row",
+  "game_input": "sprite-sheet-alpha.png",
+  "degraded_static_fallback": false,
+  "curation_applied": true,
+  "frame_variant": "pixel",
+  "sprite_sheet_alpha": "sprite-sheet-alpha.png",
+  "sprite_sheet_alpha_report": "sprite-sheet-alpha.report.json",
+  "base_image": "base-source.png",
+  "cell": {
+    "shape": "rect",
+    "width": 256,
+    "height": 384,
+    "safe_margin_x": 24,
+    "safe_margin_y": 36
+  },
+  "chroma_key": {
+    "name": "magenta",
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "selection": "manual"
+  },
+  "animation": {
+    "cellWidth": 256,
+    "cellHeight": 384,
+    "columns": 10,
+    "rows": {
+      "open": {
+        "row": 0,
+        "frames": 10,
+        "fps": 12,
+        "durations_ms": [
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83,
+          83
+        ],
+        "loop": false,
+        "frame_variant": "pixel"
+      }
+    }
+  },
+  "frame_layout": {
+    "sheetWidth": 2560,
+    "sheetHeight": 384,
+    "cellWidth": 256,
+    "cellHeight": 384,
+    "rows": {
+      "open": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 256,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 768,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 1280,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 1536,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 1792,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 2048,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        },
+        {
+          "x": 2304,
+          "y": 0,
+          "w": 256,
+          "h": 384
+        }
+      ]
+    }
+  }
+}

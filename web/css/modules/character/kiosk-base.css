@@ -268,3 +268,23 @@
 @media (prefers-reduced-motion: reduce) {
     .avatar-rotate-btn { transition: none; }
 }
+
+/* Balance the avatar preview with a compact, readable registration form. */
+.char-create-kiosk:has(#charStep1.active) { max-width: 720px; padding: 28px; gap: 24px; }
+#charStep1 .char-creator-grid { grid-template-columns: 240px minmax(0, 1fr); gap: 28px; }
+#charStep1 .avatar-preview-box { padding: 20px 14px; }
+#charStep1 .custom-controls-box { display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 12px 0; min-width: 0; }
+#charStep1 .control-group { margin: 0; }
+#charStep1 .control-label { display: block; margin-bottom: 12px; font-size: 16px; line-height: 1.5; }
+#charStep1 .nickname-input-group { gap: 10px; }
+#charStep1 .nickname-input-group input { min-width: 0; font-size: 18px; min-height: 48px; }
+#charStep1 .random-btn { width: 48px; min-height: 48px; flex-shrink: 0; }
+#charStep1 .shape-swatch-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+#charStep1 .character-face-btn { width: 100%; height: 100px; margin: 0; }
+#charStep1 .custom-actions-row { margin-top: 4px; padding-top: 20px; border-top: 1px solid #ffffff14; }
+#charStep1 .kiosk-action-btn { min-height: 52px; font-size: 17px; }
+@container game-viewport (max-width: 680px) {
+    #charStep1 .char-creator-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    #charStep1 .avatar-stage { height: 210px; }
+    #charStep1 .custom-controls-box { gap: 20px; }
+}
