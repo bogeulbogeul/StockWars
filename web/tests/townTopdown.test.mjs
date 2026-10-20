@@ -1,5 +1,10 @@
 import { readFileSync } from 'node:fs';
-import test from 'node:test';
+import test, { beforeEach, afterEach } from 'node:test';
+import { EMPTY_CHARACTER_IMAGE } from '../js/data/characterAsset.js';
+import { TOWN_MODEL_BUILDINGS } from '../js/data/townModelBuildings.js';
+let previousDocument;
+beforeEach(() => { previousDocument = globalThis.document; globalThis.document = { body: { classList: { contains: () => false } } }; });
+afterEach(() => { globalThis.document = previousDocument; });
 import assert from 'node:assert/strict';
 import { TownPlayerController } from '../js/components/town/TownPlayerController.js';
 import { TownStage } from '../js/components/TownStage.js';
@@ -107,10 +112,19 @@ test('paused scenery has no invisible collision or proximity targets', () => {
     assert.equal(stage.activeNearbyObject, undefined);
 });
 
-test('regenerated building PNGs exist and entrance markers match each doorway', () => {
+test('remaining 2D building PNGs and transparent Cipher fallback preserve entrance markers', () => {
     for (const b of TOWN_BUILDINGS) {
         const left = b.x + (b.width - b.asset.displayWidth) / 2;
         assert.ok(b.entranceX > left && b.entranceX < left + b.asset.displayWidth, b.id);
+        if (b.id === 'cipher_securities') {
+            assert.equal(b.asset.src, EMPTY_CHARACTER_IMAGE);
+            const model = TOWN_MODEL_BUILDINGS.find(item => item.id === b.id);
+            const glb = readFileSync(new URL(`../assets/buildings/3d/${model.file}`, import.meta.url));
+            assert.equal(glb.toString('ascii', 0, 4), 'glTF');
+            assert.equal(glb.readUInt32LE(4), 2);
+            assert.equal(glb.readUInt32LE(8), glb.length);
+            continue;
+        }
         assert.ok(b.asset.src.includes('/topdown-v1/'), b.id);
         assert.ok(b.asset.x >= 0 && b.asset.x + b.asset.cropWidth <= b.asset.width, b.id);
         assert.ok(b.asset.y >= 0 && b.asset.y + b.asset.cropHeight <= b.asset.height, b.id);
