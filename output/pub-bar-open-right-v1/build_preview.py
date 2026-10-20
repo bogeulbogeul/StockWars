@@ -14,6 +14,12 @@ from barrel_geometry import build_barrel
 from window_geometry import build_windows
 from door_geometry import build_door
 from room_extension import extend_entrance
+from sofa_geometry import build_sofa
+from table_geometry import build_table
+from table_decor import build_table_decor
+from window_dining import build_window_dining
+from wall_lantern import build_wall_lanterns
+from jukebox_geometry import build_jukebox
 from furniture_height import lower_bar, lower_barrel
 
 bpy.ops.wm.open_mainfile(filepath=str(ROOT.parent/'pub-room-shell-oak-v2'/'Pub-room-shell.blend'))
@@ -48,16 +54,42 @@ build_door()
 bpy.ops.object.select_all(action='DESELECT')
 for obj in set(bpy.context.scene.objects)-door_before:obj.select_set(True)
 bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-basement-door.glb'),export_format='GLB',use_selection=True)
+sofa_before=set(bpy.context.scene.objects)
+build_sofa()
+bpy.ops.object.select_all(action='DESELECT')
+for obj in set(bpy.context.scene.objects)-sofa_before:obj.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-wall-sofa.glb'),export_format='GLB',use_selection=True,export_extras=True)
+table_before=set(bpy.context.scene.objects)
+build_table()
+build_table_decor(-1.67,-2.98,.775)
+bpy.ops.object.select_all(action='DESELECT')
+for obj in set(bpy.context.scene.objects)-table_before:obj.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-round-table.glb'),export_format='GLB',use_selection=True)
+dining_before=set(bpy.context.scene.objects)
+build_window_dining()
+bpy.ops.object.select_all(action='DESELECT')
+for obj in set(bpy.context.scene.objects)-dining_before:obj.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-window-dining.glb'),export_format='GLB',use_selection=True)
+lamps_before=set(bpy.context.scene.objects)
+build_wall_lanterns()
+bpy.ops.object.select_all(action='DESELECT')
+for obj in set(bpy.context.scene.objects)-lamps_before:obj.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-wall-lanterns.glb'),export_format='GLB',use_selection=True)
+jukebox_before=set(bpy.context.scene.objects)
+build_jukebox()
+bpy.ops.object.select_all(action='DESELECT')
+for obj in set(bpy.context.scene.objects)-jukebox_before:obj.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-jukebox.glb'),export_format='GLB',use_selection=True)
 bpy.ops.object.select_all(action='DESELECT')
 for obj in bpy.context.scene.objects:
     if obj.type in {'MESH','CURVE'}:obj.select_set(True)
-bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-bar-room-preview.glb'),export_format='GLB',use_selection=True)
+bpy.ops.export_scene.gltf(filepath=str(ROOT/'Pub-bar-room-preview.glb'),export_format='GLB',use_selection=True,export_extras=True)
 scene=bpy.context.scene
 cam=scene.camera
 cam.data.type='PERSP'
 cam.data.lens=38
-cam.location=(0,-14,10)
-cam.rotation_euler=(Vector((0,-.5,1))-cam.location).to_track_quat('-Z','Y').to_euler()
+cam.location=(0,-15.5,10.5)
+cam.rotation_euler=(Vector((0,-1.1,1))-cam.location).to_track_quat('-Z','Y').to_euler()
 scene.render.filepath=str(ROOT/'front.png')
 bpy.ops.render.render(write_still=True)
 cam.data.ortho_scale=1.45
@@ -84,9 +116,14 @@ cam.rotation_euler=(Vector((-3.98,-.65,1.45))-cam.location).to_track_quat('-Z','
 scene.render.filepath=str(ROOT/'window-close.png')
 bpy.ops.render.render(write_still=True)
 assert 2.43-1.40>=1.0
-cam.data.ortho_scale=2.45
+cam.data.ortho_scale=4.60
+cam.location=(1,-6,3.8)
+cam.rotation_euler=(Vector((-2.65,-3.10,.52))-cam.location).to_track_quat('-Z','Y').to_euler()
+scene.render.filepath=str(ROOT/'sofa-close.png')
+bpy.ops.render.render(write_still=True)
+cam.data.ortho_scale=3.65
 cam.location=(1,-3,2.6)
-cam.rotation_euler=(Vector((2.65,2.98,1.02))-cam.location).to_track_quat('-Z','Y').to_euler()
+cam.rotation_euler=(Vector((2.65,2.98,1.30))-cam.location).to_track_quat('-Z','Y').to_euler()
 scene.render.filepath=str(ROOT/'door-close.png')
 bpy.ops.render.render(write_still=True)
 cam.data.ortho_scale=4.90

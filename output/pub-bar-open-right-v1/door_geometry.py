@@ -1,6 +1,7 @@
 """Closed single oak door fitted inside the existing basement arch."""
 import bpy
 import math
+from door_sign import build_door_sign
 from exterior_geometry import material, extrude, disk, finish, box
 
 
@@ -51,3 +52,9 @@ def build_door():
                 if world.y<2.93:
                     world.y-=.115
                     vertex.co=obj.matrix_world.inverted() @ world
+    # Cap the exposed ends of the wall rail right up to each door jamb.
+    # The old opening boolean left a dark recess at this exact junction.
+    for sign in [-1,1]:
+        box('Basement_Door_Wall_Rail_Joint',(.14,.40,.070),
+            (cx+sign*.535,2.95,.660),frame_mat,.003)
+    build_door_sign()

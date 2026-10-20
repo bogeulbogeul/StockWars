@@ -1,0 +1,16 @@
+{
+  "status": "model and room preview; game integration pending",
+  "geometry_source": "web/assets/office/3d/Cipher-single-sofa.glb",
+  "geometry": "actual source geometry unchanged, including rounded upholstered arms",
+  "leather_rgb_linear": [
+    0.21,
+    0.062,
+    0.021
+  ],
+  "placement": [
+    0,
+    1.3,
+    0.024
+  ],
+  "validation": "source geometry reused; sitting/contact review pending"
+}

@@ -1,0 +1,20 @@
+{
+  "motion": "Crab_Left v4",
+  "character_height": 1.0,
+  "clear_gap": 0.615,
+  "runtime": "model audit only; pub gameplay integration pending",
+  "results": [
+    {
+      "lane_y": -1.9875,
+      "samples": 97,
+      "intersections": 0,
+      "hits": []
+    },
+    {
+      "lane_y": -0.1725000000000001,
+      "samples": 97,
+      "intersections": 0,
+      "hits": []
+    }
+  ]
+}

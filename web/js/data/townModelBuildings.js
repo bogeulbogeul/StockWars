@@ -11,7 +11,7 @@ export const TOWN_MODEL_BUILDINGS = [
     { id: 'cipher_securities', name: '사이퍼 증권', file: 'CipherSecurities-clock.glb',
         nativeMaterials: true, clock: true,
         x: 2030, y: 1730, width: 370, rotation: 0.04 },
-    { id: 'node_finance', name: '노드 은행', file: 'BankBuilding.glb',
+    { id: 'node_finance', name: '노드 은행', file: 'Bank-clean.glb', nativeMaterials: true,
         x: 2620, y: 2030, width: 390, rotation: -0.05 },
     { id: 'midnight_pub', name: '미드나잇 펍', file: 'Pub-clean.glb', nativeMaterials: true,
         x: 2350, y: 760, width: 390, rotation: -0.07 },
