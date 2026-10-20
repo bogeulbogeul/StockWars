@@ -15,6 +15,5 @@ export const TOWN_PROP_SIZES = {
     bench: { width: CHARACTER_HEIGHT * 1.5, depth: 30 },
     lamp: { width: CHARACTER_HEIGHT * 0.45, depth: 24 },
     vending: { width: CHARACTER_HEIGHT * 0.72, depth: 35 },
-    fountain: { width: CHARACTER_HEIGHT * 3.2, depth: 144 },
-    billboard: { width: CHARACTER_HEIGHT * 3.4, depth: 45 }
+    fountain: { width: CHARACTER_HEIGHT * 3.2, depth: 144 }
 };

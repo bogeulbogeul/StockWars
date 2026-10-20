@@ -3,7 +3,7 @@ import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js'
 import { gameKey } from '../../app/GameKeys.js';
 /**
  * VivianStoreModal Component
- * Controller for Vivian's General Store (비비안 잡화점 내부)
+ * Controller for Vivian's General Store (봉봉 잡화점 내부)
  * References: MOD_GDD_03_1_VivianStore.md / CORE_GDD_02_MarketEngine.md
  */
 
@@ -589,7 +589,7 @@ export class VivianStoreModal {
         }[type] || 'neutral';
         if (this.portraitEl) {
             this.portraitEl.src = this.roomPackage ? VIVIAN_SQUIRREL_URL : EMPTY_CHARACTER_IMAGE;
-            this.portraitEl.alt = `비비안 — ${{ neutral: '차분한 미소', smile: '흡족한 미소', skeptical: '의심과 단호함', secret: '비밀스러운 귓속말' }[expression]}`;
+            this.portraitEl.alt = `봉봉 — ${{ neutral: '차분한 미소', smile: '흡족한 미소', skeptical: '의심과 단호함', secret: '비밀스러운 귓속말' }[expression]}`;
         }
         const pool = VIVIAN_DIALOGUES[type] || VIVIAN_DIALOGUES.greet;
         const text = fixedIdx !== null ? pool[fixedIdx] : pool[Math.floor(Math.random() * pool.length)];

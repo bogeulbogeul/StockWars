@@ -102,7 +102,7 @@ export const VIVIAN_SHOP_CATALOG = [
         icon: '📦',
         price: 3000,
         instantUsable: false,
-        desc: '비비안 상점의 특제 에너지 드링크를 매일 아침 오피스 메일함으로 직배송해 주는 정기 구독권.',
+        desc: '봉봉 상점의 특제 에너지 드링크를 매일 아침 오피스 메일함으로 직배송해 주는 정기 구독권.',
         effects: ['💌 7일간 매일 드링크 1개 Mail 지급'],
         linkedStock: { id: 'MORNINGBREW', name: '모닝 브루', note: '모닝 브루 정기 구독 납품' }
     },
@@ -149,7 +149,7 @@ export const VIVIAN_SHOP_CATALOG = [
         dailyLimit: 1,
         instantUsable: true,
         reqUnlock: { trustLevel: 3, profit: 20000, conditionDesc: '수익 20,000G + 신뢰 Lv.3' },
-        desc: '비비안의 개인 비밀 연구실에서 증류된 초고순도 각성 앰플. 즉각적인 폭발력을 냅니다.',
+        desc: '봉봉의 개인 비밀 연구실에서 증류된 초고순도 각성 앰플. 즉각적인 폭발력을 냅니다.',
         effects: ['💖 하트 1개 즉시 회복 (일일 1회)'],
         linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '고순도 농축 바이오 앰플' }
     },

@@ -70,10 +70,6 @@ export function initWorld() {
             },
             onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant, { deferDrinkEffect: true }),
             onDrinkCollected: () => playRecoveryDrinkEffect(),
-            getBillboardState: () => ({
-                cipherIndex: marketEngine.getCipherIndex(),
-                news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
-            }),
             isInputBlocked: () => this.salonInterior?.isOpen === true || this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onHeal: () => {
@@ -82,14 +78,14 @@ export function initWorld() {
                 return result;
             },
             onOpenStore: () => this.openVivianStore(),
-            onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 줄리안: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
+            onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 우디: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
             onOpenApparel: () => this.salonInterior.open(),
-            onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소피아: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
+            onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소담: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
             onOpenSecurities: () => {
                 this.cipherLobby.open();
             },
-            onOpenBank: () => toastManager.show('🏦 [노드 파이낸스 은행] 지점장 샤일록: "4주 정기 적금과 긴급 신용 대출 상담 창구입니다. 연체는 용납하지 않습니다."'),
-            onOpenPub: () => toastManager.show('🍸 [미드나잇 펍] 브로커 안드레: "5% 노이즈가 제거된 확정형 찌라시 거래와 지하 블랙잭 테이블을 취급하지."'),
+            onOpenBank: () => toastManager.show('🏦 [노드 파이낸스 은행] 지점장 차곡: "4주 정기 적금과 긴급 신용 대출 상담 창구입니다. 연체는 용납하지 않습니다."'),
+            onOpenPub: () => toastManager.show('🍸 [미드나잇 펍] 브로커 도란: "5% 노이즈가 제거된 확정형 찌라시 거래와 지하 블랙잭 테이블을 취급하지."'),
             onOpenBarter: () => toastManager.show('⚖️ [더 바터 전당포] 전당포주 바터: "보유 가구나 주식을 담보로 LTV 60% 즉시 현금 대출이 가능하네."')
         });
 

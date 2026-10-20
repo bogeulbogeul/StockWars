@@ -71,7 +71,7 @@ export class SideQuestEngine {
                 if (quest.mode === 'netProfit') next += result.profit;
                 else next = result.side === 'sell' && result.profit >= 100 ? next + 1 : 0;
             } else if (event === 'arena') {
-                if (result?.opponent !== '에이전트 K' || result.completed !== true
+                if (!['토리', '에이전트 K'].includes(result?.opponent) || result.completed !== true
                     || !Number.isFinite(result.playerAssets) || !Number.isFinite(result.opponentAssets)
                     || result.playerAssets <= result.opponentAssets) continue;
                 next = 1;

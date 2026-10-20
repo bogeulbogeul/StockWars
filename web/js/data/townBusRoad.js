@@ -4,7 +4,7 @@ const stop = TOWN_MODEL_PROPS.find(prop => prop.id === 'village_bus_stop');
 
 // East-west carriageway in the same flat ground coordinates as the village.
 export const TOWN_BUS_ROAD = {
-    centerY: stop.y + 150,
+    centerY: 2460,
     width: 180,
     shoulder: 18,
     stopX: stop.x,

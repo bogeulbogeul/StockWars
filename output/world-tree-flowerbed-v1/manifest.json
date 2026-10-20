@@ -1,0 +1,11 @@
+{
+  "status": "P1 model draft; visual approval and game integration pending",
+  "base": "output/world-tree-clean-v2/WorldTree-ancient.blend",
+  "tree_mesh_vertex_counts_preserved": true,
+  "border_radius": 2.83,
+  "border_height": 0.23,
+  "soil_surface_z": 0.12,
+  "root_contact": "Raised continuous soil embeds tapered root undersides; flowers raised by same .105 offset",
+  "design": "Low rounded cream stone ring; ivory, lilac and blush flowers; clear root centre",
+  "game_modified": false
+}

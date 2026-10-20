@@ -89,7 +89,7 @@ export const AnnaTutorialMethods3 = {
         if (!stock) return false;
         if (lesson.status !== 'sold' && !state.portfolio.some(p => p.id === stock.id && !p.isShort && p.qty > 0)) return false;
         this.lessonResume = { steps: this.steps, index: this.currentStepIdx, active: this.isActive };
-        const base = { speaker: '전담 매니저 안나', expression: 'Smile', tracker: '첫 투자 • 매도와 보유 선택' };
+        const base = { speaker: '전담 매니저 모아', expression: 'Smile', tracker: '첫 투자 • 매도와 보유 선택' };
         const sellGuide = {
             ...base, id: 'first_sell_guide', allowHold: true, requiresManualAction: true,
             text: '수량과 예상 손익을 확인한 뒤 [매도 (SELL)]를 누르세요. 계속 보유해도 괜찮아요.',

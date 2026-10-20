@@ -19,8 +19,7 @@ export class SomangiPlayer {
 
     blocked() {
         return this.town.containerEl.classList.contains('hidden') || this.town.buildingInfoOpen
-            || this.town.callbacks.isInputBlocked?.()
-            || (this.town.billboardModal && !this.town.billboardModal.classList.contains('hidden'));
+            || this.town.callbacks.isInputBlocked?.();
     }
 
     async load() {

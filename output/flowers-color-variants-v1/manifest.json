@@ -1,0 +1,70 @@
+{
+  "status": "P1 three color studies rendered; user review and game integration pending",
+  "source": "C:\\GitHub\\StockWars\\output\\flowers-clean-v1\\Flowers-clean.blend",
+  "variants": {
+    "pink": {
+      "petal_base_colors": [
+        [
+          0.95,
+          0.49,
+          0.6
+        ],
+        [
+          0.91,
+          0.33,
+          0.46
+        ],
+        [
+          0.98,
+          0.65,
+          0.71
+        ]
+      ],
+      "model": "Flowers-pink.glb",
+      "geometry_unchanged": true
+    },
+    "lavender": {
+      "petal_base_colors": [
+        [
+          0.63,
+          0.48,
+          0.83
+        ],
+        [
+          0.48,
+          0.32,
+          0.68
+        ],
+        [
+          0.78,
+          0.65,
+          0.92
+        ]
+      ],
+      "model": "Flowers-lavender.glb",
+      "geometry_unchanged": true
+    },
+    "sky-blue": {
+      "petal_base_colors": [
+        [
+          0.38,
+          0.7,
+          0.91
+        ],
+        [
+          0.25,
+          0.54,
+          0.81
+        ],
+        [
+          0.61,
+          0.82,
+          0.96
+        ]
+      ],
+      "model": "Flowers-sky-blue.glb",
+      "geometry_unchanged": true
+    }
+  },
+  "game_modified": false
+}

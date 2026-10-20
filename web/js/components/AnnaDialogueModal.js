@@ -22,7 +22,7 @@ export class AnnaDialogueModal {
                     <!-- Left: Anna Expression Portrait -->
                     <div class="vn-portrait-frame">
                         <div class="vn-portrait-avatar">
-                            <span class="anna-portrait" id="annaVnPortrait" data-expression="Smile" role="img" aria-label="안나"></span>
+                            <span class="anna-portrait" id="annaVnPortrait" data-expression="Smile" role="img" aria-label="모아"></span>
                         </div>
                         <div class="vn-portrait-badge">MANAGER ANNA</div>
                     </div>
@@ -32,7 +32,7 @@ export class AnnaDialogueModal {
                         <div class="vn-top-bar">
                             <div class="vn-nameplate">
                                 <span class="vn-status-dot"></span>
-                                <span class="vn-speaker-name">전담 매니저 안나</span>
+                                <span class="vn-speaker-name">전담 매니저 모아</span>
                                 <span class="vn-speaker-title">Cipher Securities</span>
                             </div>
                             <div class="vn-controls">

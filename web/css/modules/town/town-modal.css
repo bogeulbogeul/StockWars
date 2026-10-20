@@ -1,5 +1,5 @@
-/* Billboard News Interactive Modal */
-.town-billboard-modal-overlay {
+/* Town building information modal */
+.town-building-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,11 +14,11 @@
     animation: fadeIn 0.2s ease;
 }
 
-.town-billboard-modal-overlay.hidden {
+.town-building-modal-overlay.hidden {
     display: none !important;
 }
 
-.town-billboard-modal-dialog {
+.town-building-modal-dialog {
     width: 680px;
     max-width: calc(92 * var(--game-vw));
     max-height: calc(85 * var(--game-vh));
@@ -31,7 +31,7 @@
     overflow: hidden;
 }
 
-.billboard-modal-header {
+.town-building-modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -81,89 +81,6 @@
     color: #ef4444;
 }
 
-.billboard-modal-body {
-    padding: 22px 24px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.section-title {
-    margin: 0 0 12px 0;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--accent-cyan);
-    letter-spacing: 0.5px;
-}
-
-.news-list-grid, .ad-list-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.news-card-item, .ad-card-item {
-    display: flex;
-    gap: 14px;
-    padding: 12px 16px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
-}
-
-.news-card-item:hover, .ad-card-item:hover {
-    background: rgba(20, 32, 56, 0.8);
-    border-color: var(--accent-cyan);
-    transform: translateX(4px);
-}
-
-.news-card-badge, .ad-card-badge {
-    align-self: flex-start;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.news-card-item.breaking .news-card-badge {
-    background: rgba(239, 68, 68, 0.2);
-    border: 1px solid #ef4444;
-    color: #f87171;
-}
-
-.news-card-item.market .news-card-badge {
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid #3b82f6;
-    color: #93c5fd;
-}
-
-.ad-card-item.shop .ad-card-badge {
-    background: rgba(234, 179, 8, 0.2);
-    border: 1px solid #eab308;
-    color: #fde047;
-}
-
-.ad-card-item.furniture .ad-card-badge {
-    background: rgba(168, 85, 247, 0.2);
-    border: 1px solid #a855f7;
-    color: #d8b4fe;
-}
-
-.news-card-headline, .ad-card-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 4px;
-}
-
-.news-card-detail, .ad-card-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-}
 /* Unopened town building details */
 .town-building-info-dialog { width: 480px; }
 .town-building-info-body { padding: 24px; overflow-y: auto; }

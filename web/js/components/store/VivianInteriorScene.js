@@ -59,7 +59,7 @@ export function vivianStaffRectangle(items = defaultRoomLayout()) {
 export function getVivianStaffHtml() {
     const r=vivianStaffRectangle();
     const url=EMPTY_CHARACTER_IMAGE;
-    return `<img class="vivian-room-staff" src="${url}" alt="계산대 뒤의 비비안" draggable="false"
+    return `<img class="vivian-room-staff" src="${url}" alt="계산대 뒤의 봉봉" draggable="false"
         style="left:${r.x/1536*100}%;top:${r.y/1024*100}%;width:${r.width/1536*100}%;height:${r.height/1024*100}%;z-index:${r.zIndex}">`;
 }
 export function defaultRoomLayout() { return placements.map(p => ({...p})); }

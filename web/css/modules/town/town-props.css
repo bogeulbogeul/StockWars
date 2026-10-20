@@ -86,7 +86,7 @@
     height: 130px;
     z-index: 20;
     pointer-events: none;
-    background: url('../../../assets/ground/TownSidewalkRoad.png') left top / 768px 130px repeat-x;
+    background: transparent;
     transition: filter 2.2s ease;
 }
 
@@ -97,7 +97,7 @@
     position: absolute;
     inset: 0 0 auto;
     height: 44.7px;
-    background: url('../../../assets/ground/TownSidewalkRoad.png') left top / 195px 130px repeat-x;
+    background: transparent;
     pointer-events: none;
 }
 

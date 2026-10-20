@@ -6,7 +6,7 @@ export const VIVIAN_SQUIRREL_URL=EMPTY_CHARACTER_IMAGE;
 // Measured source-art coordinates. 8 cells across the floor's 1336px diagonal.
 export const VIVIAN_PACKAGE_VIEW_SCALE=1336/(8*67.5);
 export const PACKAGE_FLOOR=[[768,247],[1420,618],[774,975],[114,619]];
-export const PACKAGE_PLACES=[{id:'exit',x:1030,y:810,action:'exit',label:'나가기'},{id:'counter',x:450,y:690,action:'shop',tab:'daily',label:'비비안 · 상품 구매'},
+export const PACKAGE_PLACES=[{id:'exit',x:1030,y:810,action:'exit',label:'나가기'},{id:'counter',x:450,y:690,action:'shop',tab:'daily',label:'봉봉 · 상품 구매'},
     {id:'goods',x:570,y:560,action:'shop',tab:'daily',label:'일일 보급 진열대'},
     {id:'fridge',x:955,y:510,action:'shop',tab:'daily',label:'음료 냉장고'},
     {id:'household',x:1260,y:690,action:'shop',tab:'weekly',label:'주간 특수 상품'},
@@ -61,7 +61,7 @@ const clip=p=>p.map(([x,y])=>`${x/1536*100}% ${y/1024*100}%`).join(',');
 const shapePath=p=>'M'+p.map(a=>a.join(' ')).join('L')+'Z';
 export function getVivianPackageHtml(){
     const clock=getVivianClockHandsHtml().replace('matrix(.7 -.27 0 1 666 612)','matrix(.085 -.033 0 .11 252 373)');
-    return `<img class="vivian-package-background" src="${VIVIAN_PACKAGE_URL}" alt="비비안 잡화점 통합 룸" draggable="false">
+    return `<img class="vivian-package-background" src="${VIVIAN_PACKAGE_URL}" alt="봉봉 잡화점 통합 룸" draggable="false">
         ${PACKAGE_OBJECTS.filter(o=>PACKAGE_PLACES.some(p=>p.id===o.id)&&o.id!=='counter').map(o=>`<button class="vivian-package-facility" data-package-place="${o.id}" aria-label="${PACKAGE_PLACES.find(p=>p.id===o.id).label}" style="clip-path:polygon(${clip(o.shape)})"></button>`).join('')}
         <button class="vivian-package-facility" data-package-place="wallShelf" aria-label="벽 선반 · 특수 장비" style="clip-path:polygon(${clip(PACKAGE_WALL_FIXTURES[0].shape)})"></button>
         <svg class="vivian-package-foreground" viewBox="0 0 1536 1024" aria-hidden="true"><defs><clipPath id="vivianPackageForeground"><path d=""/></clipPath></defs><image href="${VIVIAN_PACKAGE_URL}" width="1536" height="1024" clip-path="url(#vivianPackageForeground)"/></svg>

@@ -39,7 +39,7 @@ export class LottoPanel {
         const e = this.engine, s = e.state;
         return `<section class="lotto-panel" id="item-lotto"><div class="lotto-hero"><div><span class="lotto-eyebrow">VIVIAN’S LUCKY DRAW</span><h3>이번 주, 행운의 여섯 숫자</h3><p>1부터 45까지 · 마음에 드는 번호 6개를 골라 보세요.</p></div><img src="assets/items/vivian-front-v1/item_lotto_ticket.png" alt=""></div>
           <div class="lotto-meta"><span>매주 토요일 <strong>21:00 KST 추첨</strong></span><span>이월 금액 <strong>${s.rollover.toLocaleString()} G</strong></span></div>
-          <div class="lotto-tickets">${s.tickets.map(t=>this.ticket(t)).join('') || '<div class="lotto-empty">아직 응모권이 없어요.<br><small>비비안 잡화점에서 주간 로또를 구매하면 번호표가 발급됩니다.</small></div>'}</div>
+          <div class="lotto-tickets">${s.tickets.map(t=>this.ticket(t)).join('') || '<div class="lotto-empty">아직 응모권이 없어요.<br><small>봉봉 잡화점에서 주간 로또를 구매하면 번호표가 발급됩니다.</small></div>'}</div>
           ${s.draws.length ? `<details class="lotto-history"><summary>지난 추첨 결과 · ${s.draws.length}회</summary>${[...s.draws].reverse().map(d=>`<div><p>제 ${e.lottoRoundNumber(d.round)}회 · ${date(d.round)} · 1등 ${d.winners}장</p><div class="lotto-balls">${d.numbers.map(ball).join('')}</div></div>`).join('')}</details>` : ''}
           <p class="lotto-footnote">로컬 데모 추첨 · 판매/번호 변경 마감 토요일 19:00 · 판매 재개 21:05<br>판매액 50% 적립 · 6개 일치 시 당첨 풀의 75% 배분 · 미당첨 금액 이월</p></section>`;
     }

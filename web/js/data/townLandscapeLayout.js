@@ -1,24 +1,30 @@
 import { TOWN_MODEL_BUILDINGS } from './townModelBuildings.js';
 
-export const TOWN_PLAZA = { x: 1450, y: 1280, radiusX: 360, radiusY: 190 };
-export const TOWN_ARRIVAL = { x: 1300, y: 2190 };
+// The tree definition uses its front edge; its planter center is at (1659, 1205).
+export const TOWN_PLAZA = { x: 1659, y: 1205, radiusX: 300, radiusY: 132 };
+export const TOWN_ARRIVAL = { x: 1750, y: 2190 };
 
-// One arrival spine with short branches; no loops or overlapping parallel roads.
+// Three clear walking lanes with short door approaches and compact corners.
 export function villagePathRoutes() {
     const door = id => {
         const building = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
-        return [building.x, building.y + 24];
+        return [building.x + (building.entranceOffsetX || 0), building.y + 24];
     };
     return [
-        [[650, 2334], [1000, 2250], [1550, 2130], [1670, 2000], [1700, 1900], [1680, 1580], [1450, 1450]],
-        [door('settlement_information'), [1250, 2040]],
-        [door('julian_furniture'), [650, 1770], [900, 1790], [980, 1880], [1010, 2020], [1250, 2040], [1500, 2000], [1670, 2000]],
-        [door('home_office_tower'), [700, 1000], [1000, 1060], [1170, 1200]],
-        [door('claire_apparel'), [800, 1490], [1000, 1490], [1190, 1400]],
-        [door('vivian_store'), [1990, 1150], [1750, 1220]],
-        [door('midnight_pub'), [2390, 940], [2230, 1170], [1990, 1150]],
-        [door('data_ink_bookstore'), [2220, 1490], [1950, 1450], [1770, 1370]],
-        [door('cipher_securities'), [1860, 1810], [1700, 1900]],
-        [door('node_finance'), [2400, 2130], [2140, 2070], [1860, 2000], [1700, 1900]]
+        [[1750, 2140], [1750, 1590]],
+        [[1150, 2330], [1200, 2330], [1200, 2160], [1750, 2160]],
+        [[1140, 1000], [1140, 1840], [1750, 1840]],
+        [[2400, 980], [2400, 2160], [1750, 2160]],
+        [[1140, 1570], [2400, 1570]],
+        [[1659, 1570], [1659, 1310]],
+        [door('settlement_information'), [1400, 2160], [1750, 2160]],
+        [door('julian_furniture'), [850, 1840], [1140, 1840]],
+        [door('home_office_tower'), [898, 1000], [1140, 1000]],
+        [door('claire_apparel'), [850, 1400], [1140, 1400]],
+        [door('vivian_store'), [2150, 1190], [2400, 1190]],
+        [door('midnight_pub'), [2600, 980], [2400, 980]],
+        [door('data_ink_bookstore'), [2600, 1530], [2400, 1530]],
+        [door('cipher_securities'), [2150, 1840], [2400, 1840]],
+        [door('node_finance'), [2600, 2160], [2400, 2160]]
     ];
 }

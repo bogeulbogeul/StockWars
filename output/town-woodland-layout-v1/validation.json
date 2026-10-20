@@ -1,0 +1,307 @@
+{
+  "buildings": [
+    {
+      "id": "home_office_tower",
+      "file": "Home-inset-window.glb",
+      "loaded": true
+    },
+    {
+      "id": "settlement_information",
+      "file": "Information-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "vivian_store",
+      "file": "VivianStore-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "julian_furniture",
+      "file": "Furniture-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "cipher_securities",
+      "file": "CipherSecurities-clock.glb",
+      "loaded": true
+    },
+    {
+      "id": "node_finance",
+      "file": "Bank-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "midnight_pub",
+      "file": "Pub-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "data_ink_bookstore",
+      "file": "Bookstore-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "claire_apparel",
+      "file": "ClothingStore-clean.glb",
+      "loaded": true
+    }
+  ],
+  "trees": [
+    {
+      "id": "boundary_tree_north_outer_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_16",
+      "loaded": true
+    }
+  ],
+  "props": 153,
+  "buildingsInFrame": true,
+  "loadedCount": 162,
+  "errors": []
+}

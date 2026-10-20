@@ -31,7 +31,7 @@ export const worldNavigation = {
         this.townStage?.show(server, spawnLocation);
         document.body.classList.add('town-mode-active');
         if (spawnLocation === 'vivian_store' || spawnLocation === 'vivian') {
-            toastManager.show(`🏪 [비비안 잡화점 앞] 보급품 상점 거리에 복귀했습니다!`, true);
+            toastManager.show(`🏪 [봉봉 잡화점 앞] 보급품 상점 거리에 복귀했습니다!`, true);
         } else {
             toastManager.show(`🏙️ [${server.name}] 마을 광장에 도착했습니다! (A/D로 이동, 드래그/휠로 스크롤)`, true);
         }

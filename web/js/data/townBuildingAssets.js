@@ -2,7 +2,7 @@ import { TOWN_BUILDING_PLACEMENTS } from './townLayout.js';
 import { TOWN_BUILDING_HEIGHTS } from './townScale.js';
 import { EMPTY_CHARACTER_IMAGE } from './characterAsset.js';
 
-// Visible artwork bounds exclude transparent padding without modifying the originals.
+// Retained footprint and entrance measurements only; retired 2D artwork is not loaded.
 const assets = {
     home_office_tower: ['OfficeBuilding-door-v2', 1060, 1484, 230, 62, 600, 1341, 0.338],
     vivian_store: ['VivianStore-door-v3', 1774, 887, 227, 62, 1359, 738, 0.485],
@@ -32,8 +32,7 @@ export function applyBuildingAsset(building) {
         layoutScale: scale,
         entranceX: worldX + (slotWidth - displayWidth) / 2 + displayWidth * entryRatio,
         asset: {
-            src: building.id === 'cipher_securities' ? EMPTY_CHARACTER_IMAGE
-                : new URL(`../../assets/buildings/topdown-v1/${file}.png`, import.meta.url).href,
+            src: EMPTY_CHARACTER_IMAGE,
             width, height, x, y, cropWidth, cropHeight,
             displayWidth
         }

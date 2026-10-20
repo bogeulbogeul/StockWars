@@ -1,0 +1,88 @@
+{
+  "status": "P1 revised shape and four colorways; user visual review and game integration pending",
+  "source": "C:\\GitHub\\StockWars\\output\\world-tree-flowerbed-v1\\WorldTree-flowerbed.blend",
+  "method": "Reuse first three actual Popori flowerbed flowers; translation and petal colors only",
+  "variants": {
+    "original": {
+      "model": "Flowers-mini-original.glb",
+      "petal_colors": [
+        [
+          0.97,
+          0.88,
+          0.64
+        ],
+        [
+          0.95,
+          0.68,
+          0.24
+        ],
+        [
+          0.82,
+          0.41,
+          0.43
+        ]
+      ]
+    },
+    "pink": {
+      "model": "Flowers-mini-pink.glb",
+      "petal_colors": [
+        [
+          0.95,
+          0.49,
+          0.6
+        ],
+        [
+          0.91,
+          0.33,
+          0.46
+        ],
+        [
+          0.98,
+          0.65,
+          0.71
+        ]
+      ]
+    },
+    "lavender": {
+      "model": "Flowers-mini-lavender.glb",
+      "petal_colors": [
+        [
+          0.63,
+          0.48,
+          0.83
+        ],
+        [
+          0.48,
+          0.32,
+          0.68
+        ],
+        [
+          0.78,
+          0.65,
+          0.92
+        ]
+      ]
+    },
+    "sky-blue": {
+      "model": "Flowers-mini-sky-blue.glb",
+      "petal_colors": [
+        [
+          0.38,
+          0.7,
+          0.91
+        ],
+        [
+          0.25,
+          0.54,
+          0.81
+        ],
+        [
+          0.61,
+          0.82,
+          0.96
+        ]
+      ]
+    }
+  },
+  "game_modified": false
+}

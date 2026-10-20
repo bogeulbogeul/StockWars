@@ -197,7 +197,7 @@ export const AnnaTutorialMethods2 = {
         if (!this.isActive || this.historyCursor != null || this.steps[this.currentStepIdx]?.id !== 'rumor_intel_explain') return;
         const end = this.steps.findIndex(step => step.id === 'close_inventory_guide');
         if (end < 0) return;
-        const base = { speaker: '안나', expression: 'Smile', tracker: '3/4 • 실제 찌라시와 분석력', requiresManualAction: false, actualRumor: true };
+        const base = { speaker: '모아', expression: 'Smile', tracker: '3/4 • 실제 찌라시와 분석력', requiresManualAction: false, actualRumor: true };
         const previews = [1, 2, 3, 4, 5].map(level => rumorDecryption(item.intelReport || item.desc || '', { ...item, interpretationLevel: 1 }, level));
         const lessons = [
             { ...base, id: 'rumor_actual_level', rumorPreview: previews[0], text: '먼저 분석력 1단계에서는 이 찌라시가 어떻게 보이는지 살펴볼게요.' },

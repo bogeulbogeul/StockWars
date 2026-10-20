@@ -44,7 +44,7 @@ export class AnnaTutorial {
                     <!-- Left: Anna expression portrait -->
                     <div class="vn-portrait-frame" id="vnPortraitFrame">
                         <div class="vn-portrait-avatar" id="vnPortraitAvatar">
-                            <span class="anna-portrait" id="vnAnnaPortrait" data-expression="Standard" role="img" aria-label="안나 — 기본 표정"></span>
+                            <span class="anna-portrait" id="vnAnnaPortrait" data-expression="Standard" role="img" aria-label="모아 — 기본 표정"></span>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@ export class AnnaTutorial {
                         <div class="vn-top-bar">
                             <div class="vn-nameplate">
                                 <span class="vn-status-dot"></span>
-                                <span class="vn-speaker-name" id="vnSpeakerName">전담 매니저 안나</span>
+                                <span class="vn-speaker-name" id="vnSpeakerName">전담 매니저 모아</span>
                                 <span class="vn-speaker-title">Cipher Securities</span>
                             </div>
                             <div class="vn-controls">
@@ -193,7 +193,7 @@ export class AnnaTutorial {
             this.firstPurchaseDone = !!this.callbacks.getFirstTradeLesson?.();
             if (this.firstPurchaseDone) this.stopRecommendationReview();
             this.steps.unshift({
-                id: 'tutorial_resume', speaker: '전담 매니저 안나', expression: 'Smile',
+                id: 'tutorial_resume', speaker: '전담 매니저 모아', expression: 'Smile',
                 tracker: '튜토리얼 이어하기', lessonTitle: '돌아오셨네요, 파트너!',
                 text: `다시 만나서 반가워요!\n‘${chapter[1]}’부터 이어갈까요?`,
                 example: { label: '이어서 배울 내용', rows: [chapter[1], '이미 받은 보상과 거래 결과는 그대로 유지돼요.'] },

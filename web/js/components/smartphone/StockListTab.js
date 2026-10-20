@@ -204,7 +204,7 @@ export class StockListTab {
                         <div class="item-name-area">
                             <button class="item-fav-btn ${isFav ? 'active' : ''}" data-fav-id="${s.id}" title="관심 종목 토글">⭐</button>
                             <span class="item-name">${s.name}</span>
-                            ${s.id === tutorialId ? '<span class="tutorial-stock-badge">안나 추천</span>' : ''}
+                            ${s.id === tutorialId ? '<span class="tutorial-stock-badge">모아 추천</span>' : ''}
                             <span class="item-code">${s.id}</span>
                             <span class="sector-tag" style="background:${sec.bg}; color:${sec.color}">${sec.name}</span>
                         </div>

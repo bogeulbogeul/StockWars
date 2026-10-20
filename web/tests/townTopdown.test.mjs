@@ -112,11 +112,11 @@ test('paused scenery has no invisible collision or proximity targets', () => {
     assert.equal(stage.activeNearbyObject, undefined);
 });
 
-test('remaining 2D building PNGs and transparent Cipher fallback preserve entrance markers', () => {
+test('retired 2D artwork is transparent and preserves entrance markers', () => {
     for (const b of TOWN_BUILDINGS) {
         const left = b.x + (b.width - b.asset.displayWidth) / 2;
         assert.ok(b.entranceX > left && b.entranceX < left + b.asset.displayWidth, b.id);
-        if (b.id === 'cipher_securities') {
+        if (TOWN_MODEL_BUILDINGS.some(model => model.id === b.id)) {
             assert.equal(b.asset.src, EMPTY_CHARACTER_IMAGE);
             const model = TOWN_MODEL_BUILDINGS.find(item => item.id === b.id);
             const glb = readFileSync(new URL(`../assets/buildings/3d/${model.file}`, import.meta.url));
@@ -125,13 +125,7 @@ test('remaining 2D building PNGs and transparent Cipher fallback preserve entran
             assert.equal(glb.readUInt32LE(8), glb.length);
             continue;
         }
-        assert.ok(b.asset.src.includes('/topdown-v1/'), b.id);
-        assert.ok(b.asset.x >= 0 && b.asset.x + b.asset.cropWidth <= b.asset.width, b.id);
-        assert.ok(b.asset.y >= 0 && b.asset.y + b.asset.cropHeight <= b.asset.height, b.id);
-        const png = readFileSync(new URL(b.asset.src));
-        assert.equal(png.readUInt32BE(16), b.asset.width);
-        assert.equal(png.readUInt32BE(20), b.asset.height);
-        assert.equal(png[25], 6, 'RGBA transparency');
+        assert.equal(b.asset.src, EMPTY_CHARACTER_IMAGE);
     }
 });
 

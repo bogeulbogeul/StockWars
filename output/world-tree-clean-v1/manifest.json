@@ -1,0 +1,11 @@
+{
+  "status": "P1 draft model; user visual review and game integration pending",
+  "style": "Smooth matte native 3D matching current village buildings",
+  "references": [
+    "output/big-tree-retouch-final/BigTree-after.png",
+    "output/bookstore-exterior-clean-v1/front-left.png"
+  ],
+  "mesh_count": 10,
+  "polygon_count": 31788,
+  "game_modified": false
+}

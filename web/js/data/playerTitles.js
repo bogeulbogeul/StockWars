@@ -7,7 +7,7 @@ export const PLAYER_TITLES = {
     challenge_profit_streak_v1: { names: { ko: '승부사', en: 'Winning Streak' }, image: 'seungbusa-v2-no-text.png' },
     challenge_logistics_s_v1: { names: { ko: '물류의 달인', en: 'Logistics Ace' }, image: 'logistics-v1-no-text.png' },
     challenge_flawless_v1: { names: { ko: '빈틈없는', en: 'Flawless' }, image: 'flawless-v1-no-text.png' },
-    challenge_agent_k_v1: { names: { ko: 'K를 넘은 자', en: 'Beyond K' }, image: 'k-victory-v1-no-text.png' }
+    challenge_agent_k_v1: { names: { ko: '토리를 넘은 자', en: 'Beyond Tori' }, image: 'k-victory-v1-no-text.png' }
 };
 
 export function titleLanguage(locale = globalThis.document?.documentElement?.lang || globalThis.navigator?.language || 'ko') {

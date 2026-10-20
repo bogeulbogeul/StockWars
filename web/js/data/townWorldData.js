@@ -1,6 +1,6 @@
 /**
  * Town World Geometry & Static Definitions
- * Contains canonical building specifications, interactive props, street decoration assets, and billboard news.
+ * Contains canonical building specifications, interactive props, street decoration assets.
  */
 
 import { applyBuildingAsset } from './townBuildingAssets.js';
@@ -16,20 +16,20 @@ export const TOWN_BUILDINGS = [
         width: 280,
         height: 350,
         colorTheme: 'home-officetel',
-        desc: '파트너 안나가 상주하는 나만의 오피스텔 펜트하우스 트레이딩 룸입니다.',
+        desc: '파트너 모아가 상주하는 나만의 오피스텔 펜트하우스 트레이딩 룸입니다.',
         actionText: '내 오피스 들어가기',
         isOfficetel: true
     },
     {
         id: 'vivian_store',
-        name: '비비안 잡화점',
-        sign: '비비안 잡화점',
+        name: '봉봉 잡화점',
+        sign: '봉봉 잡화점',
         category: '잡화 / 소모품',
         icon: '🏪',
         width: 240,
         height: 210,
         colorTheme: 'green',
-        desc: '에너지 드링크(기력 회복) 및 데모 편의 소모품 구매 (상점주 비비안)',
+        desc: '에너지 드링크(기력 회복) 및 데모 편의 소모품 구매 (상점주 봉봉)',
         actionText: '잡화점 입장'
     },
     {
@@ -42,7 +42,7 @@ export const TOWN_BUILDINGS = [
         width: 250,
         height: 230,
         colorTheme: 'amber',
-        desc: '8x8 오피스 맞춤형 가구, 책상 및 인테리어 데코 쇼룸 (디자이너 줄리안 & 레오)',
+        desc: '8x8 오피스 맞춤형 가구, 책상 및 인테리어 데코 쇼룸 (디자이너 우디 & 레오)',
         actionText: '가구점 입장'
     },
     {
@@ -55,7 +55,7 @@ export const TOWN_BUILDINGS = [
         width: 240,
         height: 230,
         colorTheme: 'magenta',
-        desc: '동물 트레이더의 완성형 스타일을 미리 보고 선택하는 그루밍 살롱입니다. 스타일리스트 클레어가 맞이하는 살롱 내부를 둘러보세요.',
+        desc: '동물 트레이더의 완성형 스타일을 미리 보고 선택하는 그루밍 살롱입니다. 스타일리스트 보니가 맞이하는 살롱 내부를 둘러보세요.',
         actionText: '살롱 입장'
     },
     {
@@ -68,7 +68,7 @@ export const TOWN_BUILDINGS = [
         width: 240,
         height: 220,
         colorTheme: 'indigo',
-        desc: '영구 스탯 강화 전문 도서 및 섹터별 인사이트 리포트 (사서 소피아)',
+        desc: '영구 스탯 강화 전문 도서 및 섹터별 인사이트 리포트 (사서 소담)',
         actionText: '서점 입장'
     },
     {
@@ -81,7 +81,7 @@ export const TOWN_BUILDINGS = [
         height: 360,
         isMainLandmark: true,
         colorTheme: 'violet',
-        desc: '중앙 거대 객장, 실시간 전광판 틱 시세판, 아레나 배틀룸 및 서밋 라운지 (에이전트 K)',
+        desc: '중앙 거대 객장, 실시간 전광판 틱 시세판, 아레나 배틀룸 및 서밋 라운지 (토리)',
         actionText: '증권사 객장 입장'
     },
     {
@@ -94,7 +94,7 @@ export const TOWN_BUILDINGS = [
         width: 300,
         height: 260,
         colorTheme: 'blue',
-        desc: '4주 정기 적금, 긴급 신용 대출 및 부채 자산 관리 (지점장 샤일록)',
+        desc: '4주 정기 적금, 긴급 신용 대출 및 부채 자산 관리 (지점장 차곡)',
         actionText: '은행 창구 이용'
     },
     {
@@ -107,7 +107,7 @@ export const TOWN_BUILDINGS = [
         width: 260,
         height: 230,
         colorTheme: 'purple',
-        desc: '확정형 고급 찌라시 정보 거래, 지하 정통 블랙잭 테이블 (브로커 안드레)',
+        desc: '확정형 고급 찌라시 정보 거래, 지하 정통 블랙잭 테이블 (브로커 도란)',
         actionText: '펍 입장'
     },
     {
@@ -140,17 +140,6 @@ export const TOWN_PROP_DEFINITIONS = [
         actionText: '벤치에 앉아 체력 회복'
     },
     {
-        id: 'billboard_central',
-        type: 'billboard',
-        name: '사이퍼 센트럴 미디어 전광판',
-        icon: '📺',
-        x: 3200,
-        width: 520,
-        height: 354.4,
-        desc: '실시간 긴급 뉴스 속보, 상점 특별 할인 광고 및 아레나 대회 공지가 송출되는 타운 대형 LED 전광판입니다.',
-        actionText: '실시간 속보 & 광고 브리핑'
-    },
-    {
         id: 'bench_east',
         type: 'bench',
         name: '동부 광장 쉼터 벤치',
@@ -166,11 +155,3 @@ export const TOWN_PROP_DEFINITIONS = [
 export const TOWN_INTERACTIVE_PROPS = TOWN_SCENERY_ENABLED ? TOWN_PROP_DEFINITIONS : [];
 export const TOWN_STREET_LAMPS = TOWN_SCENERY_ENABLED ? TOWN_LAMP_POSITIONS : [];
 export const TOWN_URBAN_TREES = TOWN_SCENERY_ENABLED ? TOWN_TREE_POSITIONS : [];
-
-export const TOWN_BILLBOARD_NEWS = [
-    { badge: '🔥 긴급 속보', type: 'breaking', text: '바이오닉스, 차세대 AI 신약 임상 3상 돌파 루머에 거래량 폭증!' },
-    { badge: '📢 상점 특가', type: 'ad', text: '비비안 잡화점: 오늘 하루 몬스터 에너지 드링크 20% 특별 타임세일!' },
-    { badge: '📈 시장 시황', type: 'market', text: '코스닥 반도체 & AI 테마주 일제히 급등... 외인 대규모 순매수 유입' },
-    { badge: '🏆 아레나 공지', type: 'event', text: '사이퍼 증권배 실전투자대회 시즌 1 참가자 접수 중! (총상금 10억 크레딧)' },
-    { badge: '🛋️ 가구 신상', type: 'ad', text: '모던 프레임 가구점: 8x8 오피스 맞춤형 사이버 트레이딩 데스크 세트 입고' }
-];

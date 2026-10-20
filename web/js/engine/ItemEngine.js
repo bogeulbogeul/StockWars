@@ -319,7 +319,7 @@ export class ItemEngine {
         return { goldReward: reward, staminaCost: cost };
     }
     claimTutorialRecoveryDrink() {
-        if (this.state.tutorialRecoveryDrinkClaimed) return { ...ok('이미 안나의 회복 선물을 받았습니다.'), recovered: 0 };
+        if (this.state.tutorialRecoveryDrinkClaimed) return { ...ok('이미 모아의 회복 선물을 받았습니다.'), recovered: 0 };
         this.tick();
         const id = 'item_energy_drink';
         if (!this.add(id)) return fail('가방 공간 또는 드링크 묶음 수량이 부족해요. 소지품을 정리한 뒤 선물을 다시 받아 주세요.');

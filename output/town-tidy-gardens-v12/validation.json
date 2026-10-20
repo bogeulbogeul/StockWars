@@ -1,0 +1,1073 @@
+{
+  "buildings": [
+    {
+      "id": "home_office_tower",
+      "file": "Home-inset-window.glb",
+      "loaded": true
+    },
+    {
+      "id": "settlement_information",
+      "file": "Information-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "vivian_store",
+      "file": "VivianStore-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "julian_furniture",
+      "file": "Furniture-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "cipher_securities",
+      "file": "CipherSecurities-clock.glb",
+      "loaded": true
+    },
+    {
+      "id": "node_finance",
+      "file": "Bank-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "midnight_pub",
+      "file": "Pub-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "data_ink_bookstore",
+      "file": "Bookstore-clean.glb",
+      "loaded": true
+    },
+    {
+      "id": "claire_apparel",
+      "file": "ClothingStore-clean.glb",
+      "loaded": true
+    }
+  ],
+  "trees": [
+    {
+      "id": "boundary_tree_north_outer_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_outer_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_inner_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_outer_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_outer_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_deep_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_west_far_20",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_deep_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_east_far_20",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_deep_20",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_20",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_far_21",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_0",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_1",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_2",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_3",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_4",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_5",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_6",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_7",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_8",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_9",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_10",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_11",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_12",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_13",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_14",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_15",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_16",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_17",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_18",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_19",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_20",
+      "loaded": true
+    },
+    {
+      "id": "boundary_tree_north_horizon_21",
+      "loaded": true
+    }
+  ],
+  "props": 316,
+  "roadClear": true,
+  "entrancesReachable": true,
+  "busRoute": {
+    "entry": {
+      "x": -6000,
+      "y": 2415
+    },
+    "stop": {
+      "x": 1000,
+      "y": 2415
+    },
+    "exit": {
+      "x": 10000,
+      "y": 2415
+    }
+  },
+  "road": {
+    "centerY": 2460,
+    "width": 180,
+    "shoulder": 18,
+    "stopX": 1000,
+    "platformY": 2313,
+    "platformWidth": 420,
+    "entryX": -6000,
+    "exitX": 10000
+  },
+  "buildingsInFrame": true,
+  "loadedCount": 325,
+  "errors": []
+}

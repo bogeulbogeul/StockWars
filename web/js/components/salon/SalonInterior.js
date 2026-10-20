@@ -31,7 +31,7 @@ export class SalonInterior {
         this.exitPrompt.onclick = () => { if(this.active() && this.nearExit())this.close(); };
         this.talkPrompt=document.createElement('button');
         this.talkPrompt.type='button';this.talkPrompt.className='salon-exit-prompt';this.talkPrompt.hidden=true;
-        this.talkPrompt.textContent='클레어와 대화하기 · '+bindingLabel('f');
+        this.talkPrompt.textContent='보니와 대화하기 · '+bindingLabel('f');
         this.talkPrompt.onclick=()=>{if(this.active()&&this.nearClaire())this.request('styles');};
         this.viewport.append(this.talkPrompt);
         this.resizeObserver = new ResizeObserver(() => { this.resizeCanvas(); if(this.isOpen)this.draw(); });
@@ -145,7 +145,7 @@ export class SalonInterior {
             Object.assign(this.player,place.seat);this.direction=place.seat.direction;
             this.status.textContent='앉아 있습니다. 이동하거나 '+bindingLabel('f')+'로 일어나세요.';
         } else if(place.action==='styles') {
-            this.status.textContent='클레어의 스타일 상점을 둘러보고 있어요.';
+            this.status.textContent='보니의 스타일 상점을 둘러보고 있어요.';
             this.styleShop.open();
             this.callbacks.onStyles?.();
         } else if(place.action==='wash') this.status.textContent='샴푸석입니다. 그루밍 서비스는 준비 중입니다.';

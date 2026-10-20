@@ -1,24 +1,25 @@
-// Interim placement in the existing town's ground-coordinate system.
+// Current exterior assets; retired models must not be used as fallbacks.
+// Placement remains interim in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
     { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 48,
-        x: 520, y: 880, width: 320, rotation: -0.06 },
+        x: 850, y: 900, width: 320, rotation: 0 },
     { id: 'settlement_information', name: '정착 안내소', file: 'Information-clean.glb', nativeMaterials: true,
-        x: 1250, y: 1980, width: 370, rotation: 0 },
-    { id: 'vivian_store', name: '비비안 잡화점', file: 'VivianStore-clean.glb', nativeMaterials: true,
-        x: 2070, y: 1040, width: 370, rotation: 0.06 },
-    { id: 'julian_furniture', name: '모던 프레임', file: 'FunitueStoreBuilding.glb',
-        x: 470, y: 1690, width: 390, rotation: -0.08 },
+        x: 1400, y: 2050, width: 370, rotation: 0 },
+    { id: 'vivian_store', name: '봉봉 잡화점', file: 'VivianStore-clean.glb', nativeMaterials: true,
+        x: 2150, y: 1100, width: 370, rotation: 0 },
+    { id: 'julian_furniture', name: '모던 프레임', file: 'Furniture-clean.glb', nativeMaterials: true,
+        x: 850, y: 1760, width: 448.5, rotation: 0 },
     { id: 'cipher_securities', name: '사이퍼 증권', file: 'CipherSecurities-clock.glb',
         nativeMaterials: true, clock: true,
-        x: 2030, y: 1730, width: 370, rotation: 0.04 },
+        x: 2150, y: 1760, width: 370, rotation: 0 },
     { id: 'node_finance', name: '노드 은행', file: 'Bank-clean.glb', nativeMaterials: true,
-        x: 2620, y: 2030, width: 390, rotation: -0.05 },
+        x: 2600, y: 2050, width: 390, rotation: 0 },
     { id: 'midnight_pub', name: '미드나잇 펍', file: 'Pub-clean.glb', nativeMaterials: true,
-        x: 2350, y: 760, width: 390, rotation: -0.07 },
-    { id: 'data_ink_bookstore', name: '데이터 잉크 서점', file: 'BookStoreBuilding.glb',
-        x: 2450, y: 1450, width: 350, rotation: 0.08 },
-    { id: 'claire_apparel', name: '옷가게', file: 'ClothingStore.glb',
-        x: 720, y: 1400, width: 340, rotation: -0.05 }
+        x: 2600, y: 850, width: 390, rotation: 0 },
+    { id: 'data_ink_bookstore', name: '데이터 잉크 서점', file: 'Bookstore-clean.glb', nativeMaterials: true,
+        x: 2600, y: 1450, width: 350, rotation: 0 },
+    { id: 'claire_apparel', name: '옷가게', file: 'ClothingStore-clean.glb', nativeMaterials: true,
+        x: 850, y: 1320, width: 340, rotation: 0 }
 ];
 
 // Temporary tuning for a front-facing village view inspired by the reference.

@@ -8,7 +8,7 @@ export function installVivianModelEntrance(app) {
     const town = app.townStage;
     const hint = document.createElement('p');
     hint.className = 'home-entry-hint';
-    hint.textContent = 'F · 비비안 잡화점 입장';
+    hint.textContent = 'F · 봉봉 잡화점 입장';
     hint.hidden = true;
     town.viewportEl.append(hint);
     const near = () => document.body.classList.contains('ui-paused')
