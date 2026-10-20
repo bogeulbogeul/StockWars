@@ -24,6 +24,7 @@ export const worldNavigation = {
         }
         this.serverSelectModal?.close();
         this.homeModelScene?.hide();
+        this.bankModelScene?.hide();
         this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         this.officeStage?.hide?.();
@@ -47,6 +48,7 @@ export const worldNavigation = {
     },
 
     enterOffice() {
+        this.bankModelScene?.hide();
         this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         const returningFromTown = document.body.classList.contains('town-mode-active');

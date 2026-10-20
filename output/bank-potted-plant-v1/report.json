@@ -1,0 +1,13 @@
+{
+  "dimensions": [
+    0.6964503228664398,
+    0.7351664900779724,
+    0.8141695111989975
+  ],
+  "somangi_reference": "web/assets/characters/3d/somangi/wave.glb frame 1 at 1/1.95",
+  "somangi_body_height": 0.97425,
+  "height_ratio": 0.8356884898116475,
+  "textures": 0,
+  "bytes": 331896,
+  "status": "standalone model; not yet placed in room"
+}

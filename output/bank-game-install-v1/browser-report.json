@@ -1,0 +1,16 @@
+{
+  "loaded": {
+    "active": true,
+    "failed": false,
+    "meshes": 468,
+    "spawn": {
+      "x": 0,
+      "z": 206.0344389908664
+    }
+  },
+  "movement": true,
+  "escapeReturn": true,
+  "reentry": true,
+  "doorReturn": true,
+  "pageErrors": []
+}

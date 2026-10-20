@@ -1,5 +1,5 @@
 /* Temporary UI reset; remove ui-paused from body to restore the existing UI. */
-body.ui-paused #app > :not(#townStageContainer):not(#homeModelStage):not(#vivianModelStage):not(#vivianStoreModal):not(#cipherLobbyStage):not(#cipherTrainingStage):not(#cipherSimulationStage):not(.cipher-training),
+body.ui-paused #app > :not(#townStageContainer):not(#homeModelStage):not(#vivianModelStage):not(#vivianStoreModal):not(#cipherLobbyStage):not(#cipherTrainingStage):not(#cipherSimulationStage):not(#bankModelStage):not(.cipher-training),
 body.ui-paused #townStageContainer > :not(#townViewport),
 body.ui-paused .town-model-label,
 body.ui-paused .town-model-status,
@@ -25,4 +25,5 @@ body.ui-paused #townViewport > :not(.town-model-layer) {
     pointer-events: none !important;
 }
 body.ui-paused #townViewport { cursor: default !important; }
+body.ui-paused #townViewport > .bank-entry-hint { visibility: visible !important; }
 body.ui-paused dialog::backdrop { display: none !important; }

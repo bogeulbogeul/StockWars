@@ -1,0 +1,13 @@
+{
+  "dimensions": [
+    0.6050000190734863,
+    0.5050000101327896,
+    1.1363985389471054
+  ],
+  "reference_body_height": 0.97425,
+  "height_ratio": 1.1664342201150686,
+  "screen_center_height": 0.845,
+  "textures": 1,
+  "bytes": 325600,
+  "status": "decorative model, not functional banking UI; room placement pending"
+}

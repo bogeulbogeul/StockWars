@@ -1,0 +1,36 @@
+{
+  "basis": "game SOMANGI_HEIGHT=100 and source divisor=1.95; assumed room model unit=100 game units",
+  "measured_pose_height": 0.9742549061775208,
+  "sofa_seat_top": 0.4510909999999999,
+  "desk_top": 0.79,
+  "safe_top": 1.6245000000000003,
+  "window_sill": 0.94,
+  "two_seat_width": 1.9642000000000002,
+  "placements": [
+    [
+      "Desk",
+      [
+        0,
+        -0.95,
+        0.024
+      ]
+    ],
+    [
+      "Sofa",
+      [
+        -2.15,
+        -0.8,
+        0.024
+      ]
+    ],
+    [
+      "Safe",
+      [
+        2.7,
+        1.04,
+        0.024
+      ]
+    ]
+  ],
+  "status": "visual proportion check; no sitting pose or runtime collision verification"
+}

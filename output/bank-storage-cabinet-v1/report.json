@@ -1,0 +1,13 @@
+{
+  "cabinet_dimensions": [
+    1.72,
+    0.5,
+    0.805
+  ],
+  "somangi_reference_height": 0.97425,
+  "countertop_ratio": 0.8262766230433668,
+  "source": "reference bank cabinet; two doors and three drawers",
+  "textures": 0,
+  "bytes": 1498532,
+  "status": "standalone model; drawers and doors static; room placement pending"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "waiting sofa and bank placement preview; game integration pending",
+  "source": "information-waiting-sofa-v1 wooden frame",
+  "upholstery": "cream seat and back cushions retained; decorative throw pillows excluded",
+  "placement": [
+    -3.2,
+    -0.6,
+    0.024
+  ],
+  "rotation_degrees": 90,
+  "validation": "render and no-throw-pillow check; sitting/collision pending"
+}
