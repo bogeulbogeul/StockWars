@@ -1,0 +1,18 @@
+{
+  "status": "3D wall mark produced; review pending",
+  "diameter": 0.86,
+  "position": [
+    0,
+    2.955,
+    2.03
+  ],
+  "units": "temporary office modeling units",
+  "features": [
+    "rounded wood rim",
+    "cream inset",
+    "raised stem and two leaves"
+  ],
+  "plant_version": "information-potted-plant-v2",
+  "anna_version": "anna-meshy-short-vest-v5",
+  "game_changed": false
+}

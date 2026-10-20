@@ -1,0 +1,22 @@
+{
+  "parts": [
+    "Anna_BaseBody",
+    "Anna_Vest",
+    "Anna_Sprout"
+  ],
+  "cream_srgb": [
+    1.0,
+    0.8823530077934265,
+    0.6313725709915161
+  ],
+  "olive_srgb": [
+    0.4235294461250305,
+    0.4686274826526642,
+    0.16862745583057404
+  ],
+  "body_surface_restored": true,
+  "vest_thickness": 0.006,
+  "face_blank": true,
+  "source_preserved": true,
+  "rig_added": false
+}

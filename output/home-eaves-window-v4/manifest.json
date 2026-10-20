@@ -1,0 +1,11 @@
+{
+  "eaves": "One closed manifold mitered fascia; no overlapping cylindrical end caps",
+  "window_bars": [
+    "Home_Front_Window_Cross_V",
+    "Home_Front_Window_Cross_H",
+    "Home_Right_Window_Cross_V",
+    "Home_Right_Window_Cross_H"
+  ],
+  "bar_local_y": -0.859,
+  "preserved": "House colors, red tiles, smooth walls, door and window placement, entry and interior"
+}

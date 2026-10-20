@@ -1,0 +1,14 @@
+{
+  "leaf_rebuilt_as_separate_mesh": true,
+  "body_face_geometry_preserved": true,
+  "root_attachment_preserved": true,
+  "rounded_blade": true,
+  "single_curved_groove": true,
+  "smooth_rear": true,
+  "source_preserved": true,
+  "leaf_srgb": [
+    0.57,
+    0.62,
+    0.22
+  ]
+}

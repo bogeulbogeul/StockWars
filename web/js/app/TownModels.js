@@ -1,6 +1,7 @@
 import { startTownPreview } from './TownPreview.js';
 import { installHomeModelEntrance } from './HomeModelEntrance.js';
 import { installCipherLobbyEntrance } from './CipherLobbyEntrance.js';
+import { installVivianModelEntrance } from './VivianModelEntrance.js';
 
 // Install the 3D renderer independently of stage input and UI.
 async function installTownModels() {
@@ -12,10 +13,12 @@ async function installTownModels() {
     const updateHomeEntrance = installHomeModelEntrance(window.stockWarsApp);
     startTownPreview(window.stockWarsApp);
     const updateCipherEntrance = installCipherLobbyEntrance(window.stockWarsApp);
+    const updateVivianEntrance = installVivianModelEntrance(window.stockWarsApp);
     const draw = () => {
         models.draw();
         updateHomeEntrance();
         updateCipherEntrance();
+        updateVivianEntrance();
         requestAnimationFrame(draw);
     };
     draw();

@@ -1,0 +1,19 @@
+{
+  "status": "Empty room shell; game not changed",
+  "reference": "User shop screenshot with corner pillars and top trim",
+  "dimensions": [
+    8,
+    6,
+    2.8
+  ],
+  "units": "Temporary modeling units",
+  "features": [
+    "4 corner pillars with capitals and feet",
+    "Honey wood top trim",
+    "Coral baseboards",
+    "Square tiled floor",
+    "Home-style central exit"
+  ],
+  "furniture": false,
+  "ceiling_and_front": "Open cutaway for interior view"
+}

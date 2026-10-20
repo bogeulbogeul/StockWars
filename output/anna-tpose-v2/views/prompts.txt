@@ -1,0 +1,7 @@
+Tool: built-in image_gen. Date: 2026-10-20.
+Reference: ../front.png, Anna T-pose v2, identity and proportions.
+Create one orthographic modeling reference image of the SAME Anna fairy in the input image, rotating the character only. Preserve EXACT head/body ratio, round pear belly, short legs, rounded feet, short rounded arms, cream body color, olive sleeveless open vest and single olive leaf geometry. Blank head without ANY face features. No book or props. Maintain anatomical T-pose, arms extended sideways at shoulder level, legs slightly apart. Clean matte 3D rendering, plain white background, subtle ground contact shadow, full body including leaf/hands/feet within frame. No text, no bones, no additional views or characters. Do not redesign the proportions. 
+left.png: true left-facing 90-degree side profile, belly and toes toward image left; camera sees character right side. Anatomical T-pose arms point toward/away camera, near hand seen end-on. Leaf viewed naturally from side.
+right.png: right-facing side profile, belly and toes toward image right; camera sees character left side. Same T-pose and fixed leaf attachment.
+back.png: directly behind, 180 degrees, arms horizontal, continuous plain olive vest back panel. Original leaf points image left when viewed from rear. No face or props.
+Status: generated modeling reference concepts only, not a validated orthographic mesh turnaround. Minor view-to-view differences in feet, leaf and perspective remain to be reconciled during modeling. No model, rig or game changes.

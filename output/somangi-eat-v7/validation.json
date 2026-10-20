@@ -1,0 +1,22 @@
+{
+  "frames": 73,
+  "duration_seconds": 3,
+  "torso_displacement": 0,
+  "feet_displacement": 1.4901161193847656e-08,
+  "arm_edge_length_error": 1.3177528972174724e-07,
+  "loop_error": 0.0,
+  "minimum_embedded_shoulder_vertices_each_arm": 169,
+  "shoulder_morphs": false,
+  "glb": {
+    "animation": "Eat",
+    "meshes": 7,
+    "mouth_morphs": 3,
+    "combined_bones_and_morphs": true
+  },
+  "roundtrip": {
+    "clips": [
+      "Eat"
+    ],
+    "armatures": 1
+  }
+}

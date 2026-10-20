@@ -1,0 +1,25 @@
+{
+  "trim_count": 9,
+  "skirting_height": 0.035,
+  "crown_height": 0.024,
+  "trim_depth": 0.014,
+  "material": "Light warm matte wood",
+  "wall_children": {
+    "Left_Skirting": "Wall_Left",
+    "Right_Skirting": "Wall_Right",
+    "Back_Skirting": "Wall_Back",
+    "Front_Skirting_0": "Wall_Front",
+    "Front_Skirting_1": "Wall_Front",
+    "Left_Crown": "Wall_Left",
+    "Right_Crown": "Wall_Right",
+    "Back_Crown": "Wall_Back",
+    "Front_Crown_0": "Wall_Front"
+  },
+  "preserved": [
+    "Ivory wallpaper",
+    "Office plank floor",
+    "Cement entry fade",
+    "Room size and walking height"
+  ],
+  "doorway": "Skirting split around existing opening"
+}

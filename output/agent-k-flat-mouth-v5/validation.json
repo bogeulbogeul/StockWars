@@ -1,0 +1,10 @@
+{
+  "removed": [
+    "AgentK_SmoothMouth"
+  ],
+  "texture_outside_mouth_unchanged": true,
+  "normal_cleanup": [],
+  "mouth_texels": 8308,
+  "flat_texture_mouth_only": true,
+  "glb_reimport_ok": true
+}

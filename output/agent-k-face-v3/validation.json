@@ -1,0 +1,9 @@
+{
+  "removed": [
+    "Glasses temple -1",
+    "Glasses temple 1"
+  ],
+  "texture_outside_mouth_unchanged": true,
+  "mouth_texels": 4940,
+  "glb_reimport_ok": true
+}

@@ -1,0 +1,23 @@
+{
+  "position": [
+    3.24,
+    2.3,
+    0.022
+  ],
+  "bounds": {
+    "min": [
+      2.945053815841675,
+      1.9970537424087524,
+      0.02199999988079071
+    ],
+    "max": [
+      3.5509462356567383,
+      2.6029462814331055,
+      1.2775685787200928
+    ]
+  },
+  "cabinet_gap": 0.3450538158416747,
+  "rear_molding_gap": 0.19705371856689435,
+  "walkway": "plant is outside the cabinet, away from chair-side exit path",
+  "game_changed": false
+}

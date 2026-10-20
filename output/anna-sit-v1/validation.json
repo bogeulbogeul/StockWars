@@ -1,0 +1,15 @@
+{
+  "ground_penetration_max": 8.900833126102015e-08,
+  "torso_rigid_error": 0,
+  "transition_pose_match": true,
+  "clips": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "status": "Noticeboard produced; game not changed",
+  "position": [
+    -3.96,
+    0.7,
+    1.6
+  ],
+  "dimensions": [
+    1.04,
+    0.11,
+    1.3
+  ],
+  "features": [
+    "wood frame",
+    "cork insert",
+    "four independent pinned notices",
+    "colored pins"
+  ],
+  "paper_content": "illustrative lines only; no actual quest text",
+  "pending": [
+    "user art review",
+    "game display and interactions"
+  ]
+}

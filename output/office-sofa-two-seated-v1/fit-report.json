@@ -1,0 +1,48 @@
+{
+  "placements": [
+    {
+      "character": "Anna_Provisional_Chair_Fit",
+      "scale": 0.65,
+      "seat_center": [
+        3.175,
+        -0.9575
+      ],
+      "bounds": {
+        "min": [
+          2.851536512374878,
+          -1.391509771347046,
+          0.6316999793052673
+        ],
+        "max": [
+          3.5120561122894287,
+          -0.5234902501106262,
+          1.9024100303649902
+        ]
+      }
+    },
+    {
+      "character": "Somangi_Visitor_Seated_Preview",
+      "scale": 0.65,
+      "seat_center": [
+        3.175,
+        -1.8025
+      ],
+      "bounds": {
+        "min": [
+          2.8431715965270996,
+          -2.211029291152954,
+          0.5928840637207031
+        ],
+        "max": [
+          3.5036911964416504,
+          -1.3934520483016968,
+          1.6670889854431152
+        ]
+      }
+    }
+  ],
+  "seat_surface": 0.632,
+  "contact_target": 0.633,
+  "status": "Static seated preview; floor/bench poses reused, full collisions and transitions unverified",
+  "game_changed": false
+}

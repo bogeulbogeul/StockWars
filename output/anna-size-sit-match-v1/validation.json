@@ -1,0 +1,16 @@
+{
+  "equal_scale_seated_body_world_vertex_error": 0,
+  "clips": [
+    "Bench_Seated",
+    "Bench_SitDown",
+    "Bench_StandUp",
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

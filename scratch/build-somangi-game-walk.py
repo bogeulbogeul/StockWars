@@ -1,12 +1,8 @@
 import bpy
 from pathlib import Path
 P=Path('C:/GitHub/StockWars')
-bpy.ops.wm.open_mainfile(filepath=str(P/'output/somangi-wave-v3/somangi-wave.blend'))
-r=bpy.data.objects['Somangi_Rig'];r.animation_data_clear()
-for a in list(bpy.data.actions):bpy.data.actions.remove(a)
-with bpy.data.libraries.load(str(P/'output/blank-buddy-walk-v3/somangi-walk.blend'),link=False) as (src,dst):
- print('WALK_ACTIONS',src.actions);dst.actions=src.actions
-r.animation_data_create();r.animation_data.action=dst.actions[0]
+bpy.ops.wm.open_mainfile(filepath=str(P/'output/somangi-walk-v4/somangi-walk.blend'))
+r=bpy.data.objects['Somangi_Rig']
 m=bpy.data.objects['Somangi_Body'];bs=m.data.materials[0].node_tree.nodes.get('Principled BSDF');tex=bpy.data.images.load(str(P/'output/somangi-smile-v1/base-original.png'));tex.pack();bs.inputs['Base Color'].links[0].from_node.image=tex
 s=bpy.context.scene;s.frame_start=1;s.frame_end=25;s.frame_set(7)
 bpy.ops.object.select_all(action='DESELECT')

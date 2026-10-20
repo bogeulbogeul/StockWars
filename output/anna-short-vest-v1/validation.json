@@ -1,0 +1,17 @@
+{
+  "vest_vertices": 106636,
+  "vest_boundary_edges": 0,
+  "vest_rest_bottom": -0.4995174705982208,
+  "source": "native garment modeled on Somangi torso",
+  "body_leaf_vertices_unchanged": true,
+  "clips": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

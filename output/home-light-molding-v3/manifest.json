@@ -1,0 +1,12 @@
+{
+  "reference": "Wallpaper-roll reference: lower light molding and thin boundary only",
+  "change": "Lower molding painted light ivory with a thin beige boundary",
+  "preserved": [
+    "Existing ivory wall color and texture",
+    "Upper molding",
+    "Solid floor",
+    "Cement entry"
+  ],
+  "no_checks": true,
+  "no_solid_trim": true
+}

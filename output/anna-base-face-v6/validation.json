@@ -1,0 +1,8 @@
+{
+  "method": "smooth quadratic leaf surface plus one analytic rounded groove",
+  "groove_depth": 0.023,
+  "groove_width": 0.02,
+  "outside_front_patch_unchanged": true,
+  "topology_unchanged": true,
+  "source_preserved": true
+}

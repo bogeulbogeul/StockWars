@@ -1,0 +1,112 @@
+{
+  "game_changed": false,
+  "character_source": "Existing bench sit v2; not newly adopted gameplay animation",
+  "scale": 0.5128205128205129,
+  "seat_fit_offset": [
+    4.487484693527222e-05,
+    -0.28095847368240356,
+    0.6683776378631592
+  ],
+  "preview_only_leg_lift_game_units": 3.333,
+  "samples": [
+    {
+      "frame": 1,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 7,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 13,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 19,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 25,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 37,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 49,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 55,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 61,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 67,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    },
+    {
+      "frame": 73,
+      "penetration_depth": {
+        "Sofa_Rounded_Arm": 0,
+        "Sofa_Rounded_Arm.001": 0,
+        "Sofa_Seat_Cushion": 0,
+        "Sofa_Back_Cushion": 0
+      }
+    }
+  ]
+}

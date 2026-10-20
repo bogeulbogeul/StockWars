@@ -1,0 +1,28 @@
+{
+  "status": "Table and waiting corner placed; game unchanged",
+  "table_diameter": 0.86,
+  "table_height": 0.43,
+  "table_position": [
+    1.42,
+    -1.38,
+    0.049
+  ],
+  "sofa_position": [
+    3.2,
+    -1.38,
+    0.022
+  ],
+  "rug_position": [
+    1.78,
+    -1.38,
+    0.022
+  ],
+  "sofa_frame_to_table_gap": 0.925,
+  "plant": "potted-plant-v2 at .65 scale",
+  "units": "temporary office units",
+  "pending": [
+    "user art review",
+    "character seating and movement",
+    "game integration"
+  ]
+}

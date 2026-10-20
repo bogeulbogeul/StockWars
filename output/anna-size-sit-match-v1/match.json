@@ -1,0 +1,10 @@
+{
+  "body_scale_both": 1,
+  "body_meshes_identical": true,
+  "seat_plane_both": 0,
+  "leg_rotation_degrees": -76,
+  "foot_center_y": -0.42,
+  "foot_center_z": 0.16,
+  "leaf_excluded_from_scale_reference": true,
+  "note": "Existing legacy bench model and current shared torso have different seating rigs. New common bench clips use current shared body for both."
+}

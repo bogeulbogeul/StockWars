@@ -1,0 +1,28 @@
+{
+  "status": "Packing station modeled and placed; game not changed",
+  "placement": "Back-right wall, to right of checkout counter",
+  "center": [
+    2.25,
+    2.22,
+    0
+  ],
+  "dimensions": [
+    2.1,
+    0.92,
+    1.78
+  ],
+  "units": "Temporary modeling units",
+  "features": [
+    "Clear wooden worktop",
+    "Paper roll",
+    "Ribbon reels",
+    "Lower storage shelf"
+  ],
+  "preserved": [
+    "Empty fridge and merchandise shelves",
+    "Counter",
+    "Wall flower",
+    "Central aisle"
+  ],
+  "validation": "Overview/detail rendered; no merchandise added; gameplay interaction pending"
+}

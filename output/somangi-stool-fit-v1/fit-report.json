@@ -1,0 +1,14 @@
+{
+  "source": "somangi-bench-sit-v2",
+  "clip": "Bench_Seated",
+  "facing": "Anna / Blender +Y",
+  "scale": 0.65,
+  "scale_status": "provisional preview, matching Anna preview",
+  "stool_surface_z": 0.512,
+  "pelvis_contact_gap": 0.0010000114440917862,
+  "character_to_desk_front_y_gap": 0.47817177683115003,
+  "lowest_character_z": 0.47288402915000916,
+  "floor_z": 0.022,
+  "validation": "Seated hold only; transition and full surface collisions unverified",
+  "source_and_game_changed": false
+}

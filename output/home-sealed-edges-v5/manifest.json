@@ -1,0 +1,17 @@
+{
+  "changes": [
+    "Tile underside backing overlaps continuous eaves",
+    "Continuous threshold closes bottom and side-jamb gaps"
+  ],
+  "retained": [
+    "V4 continuous corners",
+    "Recessed front and side window bars",
+    "Original roof/wall/door colors",
+    "No masonry or canopy"
+  ],
+  "objects_added": [
+    "Home_Sealed_Tile_Underside",
+    "Home_Sealed_Tile_Underside.001",
+    "Home_Continuous_Door_Threshold"
+  ]
+}

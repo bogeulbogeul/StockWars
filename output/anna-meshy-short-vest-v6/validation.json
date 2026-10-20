@@ -1,0 +1,16 @@
+{
+  "maximum_surface_adjustment": 0.0030000153249490078,
+  "normal_map_removed": true,
+  "clean_matte_material": true,
+  "base_and_leaf_vertices_unchanged": true,
+  "clips": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

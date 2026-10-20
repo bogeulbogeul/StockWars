@@ -1,0 +1,15 @@
+{
+  "status": "3D flower modeled and installed in room; game not changed",
+  "placement": "Back wall centered above checkout counter",
+  "center": [
+    0,
+    2.95,
+    1.98
+  ],
+  "components": {
+    "coral_petals": 5,
+    "gold_center": 1,
+    "green_leaves": 2
+  },
+  "validation": "Room overview and emblem close-up rendered"
+}

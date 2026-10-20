@@ -38,6 +38,8 @@ export function installCipherLobbyEntrance(app) {
         document.body.classList.remove('town-mode-active');
         app.cipherLobbyScene.show();
     };
+    // Legacy town callbacks must also use the current 3D lobby, never the retired image room.
+    app.cipherLobby.open = enter;
     window.addEventListener('keydown', event => {
         if (event.ctrlKey || event.metaKey || event.altKey || !inTown()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;

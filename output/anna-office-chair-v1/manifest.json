@@ -1,0 +1,33 @@
+{
+  "status": "Chair model and room preview produced; art review and game integration pending",
+  "dimensions_approx": [
+    0.79,
+    0.73,
+    1.235
+  ],
+  "units": "same temporary units as information-room-shell-v1",
+  "seat_surface_z": 0.565,
+  "seat_anchor": "Anna_Seat_Anchor",
+  "front_axis_blender": "-Y",
+  "front_axis_gltf": "+Z",
+  "armrests": false,
+  "materials": [
+    "honey wood",
+    "sage upholstery"
+  ],
+  "room_preview_position": [
+    0,
+    1.85,
+    0.022
+  ],
+  "validation": {
+    "finite_vertices": true,
+    "rendered_front_and_rear": true
+  },
+  "pending": [
+    "Anna seated pose fit",
+    "leg and foot contact",
+    "desk clearance",
+    "game integration"
+  ]
+}

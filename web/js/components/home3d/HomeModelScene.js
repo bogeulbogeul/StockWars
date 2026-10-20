@@ -28,7 +28,7 @@ export class HomeModelScene {
         container.append(this.layer);
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0x000000);
-        this.camera = new THREE.OrthographicCamera(-600, 600, 500, -500, 1, 5000);
+        this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new HomeRoomCamera(this.camera);
         this.bindInput();
         this.ready = this.initialize().catch(error => {
@@ -143,13 +143,7 @@ export class HomeModelScene {
         const width = this.layer.clientWidth, height = this.layer.clientHeight;
         if (!width || !height) return;
         this.renderer.setSize(width, height);
-        const frame = 1.25 * HOME_MODEL_SCALE;
-        const halfHeight = Math.max(frame, frame / (width / height));
-        this.camera.top = halfHeight;
-        this.camera.bottom = -halfHeight;
-        this.camera.left = -halfHeight * width / height;
-        this.camera.right = halfHeight * width / height;
-        this.camera.updateProjectionMatrix();
+        this.roomCamera.resize(width / height);
     }
 
     update(dt) {

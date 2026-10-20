@@ -1,8 +1,9 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { marketEngine } from '../../engine/marketEngine.js';
 import { LOBBY } from '../../data/cipherLobbyRoom.js';
-import { addArchedLobbyDoor } from './CipherLobbyArchitecture.js';
 import { drawCipherIndex } from './CipherIndexDisplay.js';
+import { addCozyFacilityDoor } from './CipherCozyDoors.js';
+import { addCipherIndexBoardFrame } from './CipherIndexBoardFrame.js';
 
 function screen(room, name, width, height, x, y, z, canvasWidth, canvasHeight) {
     const canvas = document.createElement('canvas');
@@ -18,23 +19,11 @@ function screen(room, name, width, height, x, y, z, canvasWidth, canvasHeight) {
     return { canvas, texture, mesh, ctx: canvas.getContext('2d') };
 }
 
-function addDoor(room, box, door) {
-    const groupName = `door-${door.id}`;
-    // Build in local front-facing coordinates, then mount flush to a side wall.
-    const assembly = new THREE.Group();
-    assembly.name = groupName;
-    addArchedLobbyDoor(assembly, door.id, box);
-    assembly.rotation.y = door.wall === 'left' ? Math.PI / 2 : -Math.PI / 2;
-    assembly.position.set((door.wall === 'left' ? -1 : 1) * LOBBY.width / 2, 0, door.z);
-    room.add(assembly);
-}
-
 export class CipherMarketBoard {
     constructor(room, box) {
         const z = -LOBBY.depth / 2;
-        box('market-board-frame', [484, 203, 16], [0, 190, z + 10], 0xf3ead9);
-        box('market-board-trim', [458, 177, 6], [0, 190, z + 21], 0x315c80);
-        this.display = screen(room, 'market-board-screen', 440, 160, 0, 190, z + 25, 1760, 640);
+        room.userData.boardFrameReady = addCipherIndexBoardFrame(room);
+        this.display = screen(room, 'market-board-screen', 440, 160, 0, 190, z + 21, 1760, 640);
         this.lastUpdate = -Infinity;
         this.history = [];
         this.update(0);
@@ -58,6 +47,6 @@ export class CipherMarketBoard {
 }
 
 export function addLobbyFixtures(room, box) {
-    for (const door of LOBBY.doors) addDoor(room, box, door);
+    room.userData.doorsReady = Promise.all(LOBBY.doors.map(door => addCozyFacilityDoor(room,door)));
     return new CipherMarketBoard(room, box);
 }

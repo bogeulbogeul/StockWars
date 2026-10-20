@@ -1,0 +1,16 @@
+{
+  "walls": [
+    "Wall_Back",
+    "Wall_Front",
+    "Wall_Left",
+    "Wall_Right"
+  ],
+  "finish": "Warm ivory matte woven wallpaper",
+  "preserved": [
+    "Office plank floor",
+    "Cement entrance fade",
+    "Geometry",
+    "Walking height"
+  ],
+  "texture": "Embedded 512px subtle weave; common image, independently editable wall materials"
+}

@@ -1,0 +1,58 @@
+{
+  "furniture_clearance": "PASS",
+  "units": "temporary modeling units; not meters",
+  "chair_bounds": {
+    "min": [
+      -0.39500001072883606,
+      1.8650000095367432,
+      0.02199999988079071
+    ],
+    "max": [
+      0.39500001072883606,
+      2.5950000286102295,
+      1.2569999694824219
+    ]
+  },
+  "desk_bounds": {
+    "min": [
+      -1.399999976158142,
+      0.40483999252319336,
+      0.04699999839067459
+    ],
+    "max": [
+      1.399999976158142,
+      1.4300000667572021,
+      0.9920000433921814
+    ]
+  },
+  "chair_front_to_counter_back": 0.435,
+  "chair_back_to_wainscot": 0.205,
+  "seat_surface_to_counter_underside": 0.295,
+  "knee_bay_width": 1.45,
+  "chair_width": 0.79,
+  "knee_space_ray_first_hit": {
+    "object": "Cream_Desk_Body",
+    "position": [
+      0.0,
+      0.690000057220459,
+      0.7200000286102295
+    ]
+  },
+  "available_anna_candidate_clips": [
+    "Idle",
+    "Walk_InPlace"
+  ],
+  "available_anna_candidate_bones": {
+    "Anna_Rig": [
+      "Root",
+      "Body",
+      "Arm.L",
+      "Arm.R",
+      "Head",
+      "Leg.L",
+      "Leg.R"
+    ]
+  },
+  "anna_seated_body_fit": "UNVERIFIED: no adopted seated pose or locked character scale",
+  "game_integration": "not performed"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "Empty fridge modeled and placed; game not changed",
+  "placement": "Back-left wall, to right of existing left-wall shelves",
+  "center": [
+    -2.05,
+    2.28,
+    0
+  ],
+  "empty_shelves": 4,
+  "goods": 0,
+  "features": [
+    "Hollow cream interior",
+    "Two clear glass doors",
+    "Coral top and base"
+  ],
+  "validation": "Overview/detail rendered; no Goods_ objects in room"
+}

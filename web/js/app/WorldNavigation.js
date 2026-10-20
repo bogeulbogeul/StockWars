@@ -24,6 +24,7 @@ export const worldNavigation = {
         }
         this.serverSelectModal?.close();
         this.homeModelScene?.hide();
+        this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         this.officeStage?.hide?.();
         this.townStage?.show(server, spawnLocation);
@@ -38,10 +39,15 @@ export const worldNavigation = {
     },
 
     openVivianStore() {
+        if (this.enterVivianModel && document.body.classList.contains('town-mode-active')) {
+            this.enterVivianModel();
+            return;
+        }
         this.vivianStoreModal?.open();
     },
 
     enterOffice() {
+        this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         const returningFromTown = document.body.classList.contains('town-mode-active');
         void window.stockWarsPresence?.leave();
@@ -53,7 +59,7 @@ export const worldNavigation = {
             if (entered === false) return;
             const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
             const player = this.townStage.playerController;
-            player.charPosX = home.x;
+            player.charPosX = home.x + (home.entranceOffsetX || 0);
             player.charPosY = home.y + 65;
             player.keysHeld.clear();
             player.isMoving = false;

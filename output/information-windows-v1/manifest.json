@@ -1,0 +1,28 @@
+{
+  "status": "Two side windows with actual wall openings; game not changed",
+  "positions": [
+    [
+      4.015,
+      -1.15,
+      0.92
+    ],
+    [
+      -4.015,
+      -1.15,
+      0.92
+    ]
+  ],
+  "rear_wall": "unchanged, no windows",
+  "opening_rays": "PASS: blue panes hit instead of wall",
+  "features": [
+    "rounded wood arch frame",
+    "cross mullions",
+    "wood sill",
+    "opaque stylized blue pane"
+  ],
+  "pending": [
+    "user art review",
+    "game integration",
+    "dynamic daylight"
+  ]
+}

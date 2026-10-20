@@ -1,0 +1,12 @@
+{
+  "floor": "Real plank geometry, tiny joints, rounded edges, six quiet oak colors",
+  "plank_count": 44,
+  "walking_height_unchanged": -0.36314088106155396,
+  "preserved": [
+    "Walls",
+    "Cement entrance and black fade",
+    "Room footprint",
+    "All four walls for rotation"
+  ],
+  "source": "room-cement-entry-v1/Room-cement-entry.blend"
+}

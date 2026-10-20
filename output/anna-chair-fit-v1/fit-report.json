@@ -1,0 +1,15 @@
+{
+  "source": "anna-sit-v1/Anna-sit.blend",
+  "clip": "Seated",
+  "source_motion_type": "floor sitting, not chair sitting",
+  "character_scale": 0.65,
+  "scale_status": "provisional; not adopted",
+  "torso_bottom": 0.5869999527931213,
+  "seat_surface": 0.587,
+  "lowest_body_point": 0.5856997966766357,
+  "room_floor": 0.022,
+  "body_floor_clearance": 0.5636997966766357,
+  "frontmost_character_y": 1.8765366077423096,
+  "result": "REQUIRES_CHAIR_POSE: floor-sitting leg translations remain; foot support unverified",
+  "source_and_game_changed": false
+}

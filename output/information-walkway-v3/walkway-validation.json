@@ -1,0 +1,87 @@
+{
+  "method": "2D circle vs measured furniture bounds, both paths sampled every .01 units",
+  "walk_width": 0.86802,
+  "envelope_radius_with_margin": 0.4841,
+  "minimum_extra_clearance": 0.02014991607666028,
+  "obstacles": {
+    "chair": [
+      -0.39500001072883606,
+      0.39500001072883606,
+      1.8650000095367432,
+      2.5950000286102295
+    ],
+    "desk": [
+      -1.399999976158142,
+      1.399999976158142,
+      -0.19516000151634216,
+      0.8300000429153442
+    ],
+    "left_cabinet": [
+      -2.5999999046325684,
+      -1.6999998092651367,
+      1.8942499160766602,
+      2.6499998569488525
+    ],
+    "right_cabinet": [
+      1.6999998092651367,
+      2.5999999046325684,
+      1.8942499160766602,
+      2.6499998569488525
+    ],
+    "visitor_stool": [
+      -0.33000001311302185,
+      0.33000001311302185,
+      -1.3300000429153442,
+      -0.6699999570846558
+    ]
+  },
+  "right_exit_path": [
+    [
+      1.1,
+      2.23
+    ],
+    [
+      1.1,
+      1.39
+    ],
+    [
+      2.2,
+      1.39
+    ],
+    [
+      2.2,
+      -0.8
+    ]
+  ],
+  "left_exit_path": [
+    [
+      -1.1,
+      2.23
+    ],
+    [
+      -1.1,
+      1.39
+    ],
+    [
+      -2.2,
+      1.39
+    ],
+    [
+      -2.2,
+      -0.8
+    ]
+  ],
+  "cabinet_centers_x": [
+    -2.15,
+    2.15
+  ],
+  "desk_and_visitor_shift_y": -0.6,
+  "chair_cabinet_aisle": 1.305,
+  "rear_cross_aisle": 1.12,
+  "result": "PASS for sampled exit paths starting beside chair",
+  "pending": [
+    "sit-to-stand and step off chair",
+    "runtime collision and path following"
+  ],
+  "game_changed": false
+}

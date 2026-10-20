@@ -1,0 +1,7 @@
+{
+  "body_face_positions_identical": true,
+  "face_texture_identical": true,
+  "topology_identical": true,
+  "finite_vertices": true,
+  "sprout_no_normal_map": true
+}

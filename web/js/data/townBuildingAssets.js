@@ -1,5 +1,6 @@
 import { TOWN_BUILDING_PLACEMENTS } from './townLayout.js';
 import { TOWN_BUILDING_HEIGHTS } from './townScale.js';
+import { EMPTY_CHARACTER_IMAGE } from './characterAsset.js';
 
 // Visible artwork bounds exclude transparent padding without modifying the originals.
 const assets = {
@@ -31,7 +32,8 @@ export function applyBuildingAsset(building) {
         layoutScale: scale,
         entranceX: worldX + (slotWidth - displayWidth) / 2 + displayWidth * entryRatio,
         asset: {
-            src: new URL(`../../assets/buildings/topdown-v1/${file}.png`, import.meta.url).href,
+            src: building.id === 'cipher_securities' ? EMPTY_CHARACTER_IMAGE
+                : new URL(`../../assets/buildings/topdown-v1/${file}.png`, import.meta.url).href,
             width, height, x, y, cropWidth, cropHeight,
             displayWidth
         }

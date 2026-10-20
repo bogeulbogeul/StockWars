@@ -1,0 +1,46 @@
+{
+  "status": "Three separate prop GLBs and desk/room previews; game integration pending",
+  "props": [
+    "Document-tray.glb",
+    "Application-form-pen.glb",
+    "Sprout-teacup.glb"
+  ],
+  "tabletop_world_height": 0.992,
+  "positions": [
+    [
+      "Document-tray.glb",
+      [
+        -0.91,
+        0.97,
+        0.992
+      ]
+    ],
+    [
+      "Application-form-pen.glb",
+      [
+        0,
+        0.92,
+        0.992
+      ]
+    ],
+    [
+      "Sprout-teacup.glb",
+      [
+        0.95,
+        0.92,
+        0.992
+      ]
+    ]
+  ],
+  "features": [
+    "stacked sheets",
+    "form lines and signature field",
+    "wood pen with brass tip",
+    "hollow cup",
+    "tea surface below rim",
+    "loop handle",
+    "raised sprout emblem"
+  ],
+  "source_units": "same temporary office units",
+  "game_changed": false
+}

@@ -1,0 +1,9 @@
+{
+  "chair_moved_back": 0.38,
+  "chair_center_y": 2.23,
+  "chair_front_to_counter_back_gap": 0.435,
+  "chair_back_to_wainscot_clearance": 0.205,
+  "chair_meshes": 13,
+  "desk_and_props": "unchanged",
+  "status": "Layout preview; Anna seated-body fit and game integration pending"
+}

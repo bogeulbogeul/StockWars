@@ -1,0 +1,14 @@
+{
+  "status": "Basic geometry only; not installed in game",
+  "clear_interior": {
+    "width": 6.0,
+    "depth": 6.0,
+    "height": 6.0
+  },
+  "wall_thickness": 0.12,
+  "units": "temporary modeling units, not final game dimensions",
+  "full": "Floor, four walls, ceiling",
+  "cutaway": "Floor, back wall, left wall, right wall",
+  "entrance": "Not cut yet; separate next design step",
+  "furniture": false
+}

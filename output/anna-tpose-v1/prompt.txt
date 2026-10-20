@@ -1,0 +1,5 @@
+Tool: built-in image_gen
+Reference: output/village-fairy-npcs-v1/01-anna.png
+Purpose: Anna modeling and rigging reference image, 2026-10-20.
+Edit Anna into a straight-on front orthographic T-pose. Remove the book and all facial features, leaving a smooth blank cream face for later expression textures. Preserve the cream short plump body, large rounded head, olive leaf shape and orientation, green open sleeveless vest, short rounded arms and feet, clean soft matte 3D style. Extend both arms horizontally and symmetrically at shoulder height with rounded ends and clear armpits. Keep legs straight, slightly separated, feet flat. Full character and leaf visible on white studio background with soft even lighting. No props, text, skeleton overlays, extra characters or elongated human proportions.
+Status: image reference only; model, bones and game installation not created.

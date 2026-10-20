@@ -1,10 +1,10 @@
 // Interim placement in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
-    { id: 'home_office_tower', name: '집', file: 'HomeBuilding.glb',
+    { id: 'home_office_tower', name: '집', file: 'Home-single-eaves.glb', nativeMaterials: true, entranceOffsetX: 48,
         x: 520, y: 880, width: 320, rotation: -0.06 },
-    { id: 'settlement_information', name: '정착 안내소', file: 'InformationBuilding.glb',
+    { id: 'settlement_information', name: '정착 안내소', file: 'Information-clean.glb', nativeMaterials: true,
         x: 1250, y: 1980, width: 370, rotation: 0 },
-    { id: 'vivian_store', name: '비비안 잡화점', file: 'StoreBuilding.glb',
+    { id: 'vivian_store', name: '비비안 잡화점', file: 'VivianStore-clean.glb', nativeMaterials: true,
         x: 2070, y: 1040, width: 370, rotation: 0.06 },
     { id: 'julian_furniture', name: '모던 프레임', file: 'FunitueStoreBuilding.glb',
         x: 470, y: 1690, width: 390, rotation: -0.08 },

@@ -1,0 +1,44 @@
+{
+  "status": "Four decor GLBs and composed previews; game unchanged",
+  "placements": [
+    [
+      "Bound-documents.glb",
+      [
+        -2.36,
+        2.29,
+        0.882
+      ]
+    ],
+    [
+      "Small-potted-plant.glb",
+      [
+        -1.94,
+        2.29,
+        0.882
+      ]
+    ],
+    [
+      "Cabinet-paper-tray.glb",
+      [
+        1.94,
+        2.27,
+        0.882
+      ]
+    ],
+    [
+      "Standing-files.glb",
+      [
+        2.37,
+        2.3,
+        0.882
+      ]
+    ]
+  ],
+  "reference": "user cabinet-top image",
+  "anna_source": "anna-meshy-short-vest-v5",
+  "walkway_layout": "information-walkway-v3",
+  "pending": [
+    "user art review",
+    "game integration"
+  ]
+}

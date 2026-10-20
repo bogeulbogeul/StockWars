@@ -1,0 +1,22 @@
+{
+  "vertices": 108210,
+  "bones": [
+    "Root",
+    "Body",
+    "Head",
+    "Arm.L",
+    "Arm.R",
+    "Leg.L",
+    "Leg.R"
+  ],
+  "materials": [
+    "Anna_Cream",
+    "Anna_Leaf",
+    "Anna_Vest",
+    "Anna_Face"
+  ],
+  "source_geometry_preserved": true,
+  "unweighted_vertices": 0,
+  "max_weight_sum_error": 2.9802322387695312e-08,
+  "status": "first pass; inspect clothing boundaries and shoulder deformation before adoption"
+}

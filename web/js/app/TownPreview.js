@@ -21,6 +21,7 @@ export function startTownPreview(app) {
         if (!document.body.classList.contains('ui-paused')) return;
         if (document.body.classList.contains('cipher-facility-active') && event.target?.closest?.('dialog[open]')) return;
         if (app.homeModelScene?.active && ['KeyQ', 'KeyE'].includes(event.code)) return;
+        if (app.cipherLobbyScene?.simulationRoomScene?.active && event.code==='Enter') return;
         if (allowed.has(event.key.toLowerCase()) || physicalKeys.has(event.code) || event.key === 'F5' || event.ctrlKey || event.metaKey || event.altKey) return;
         event.preventDefault();
         event.stopImmediatePropagation();

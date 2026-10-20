@@ -1,0 +1,20 @@
+{
+  "lowered_arm_rest_baked": true,
+  "rest_meshes_unchanged_during_animation": true,
+  "bones": 7,
+  "actions": [
+    "Idle",
+    "Walk_InPlace"
+  ],
+  "rigid_vest_body_weight": true,
+  "ground_max_error": 2.218014660826384e-11,
+  "loop_vertex_error": 0.0,
+  "normalized_weights": true,
+  "reimport_actions": [
+    "Idle",
+    "Walk_InPlace"
+  ],
+  "reimport_bones": 7,
+  "lower_belly_vertices_checked": 6331,
+  "lower_belly_deformation_error": 0
+}
