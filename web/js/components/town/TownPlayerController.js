@@ -1,4 +1,6 @@
 import { gameKey } from '../../app/GameKeys.js';
+import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
+import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { TOWN_WORLD_WIDTH, TOWN_WORLD_HEIGHT, townEntrance } from '../../data/townLayout.js';
 import { TOWN_LANDSCAPE } from '../../data/townLandscape.js';
 import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_STREET_LAMPS, TOWN_URBAN_TREES } from '../../data/townWorldData.js';
@@ -84,8 +86,12 @@ export class TownPlayerController {
         }
         const oldX = this.charPosX, oldY = this.charPosY;
         const running = this.keysHeld.has('shift');
+        if (document.body.classList.contains('ui-paused')) {
+            updateSomangiClearance(this, dx, dy / GROUND_PROJECTION, oldX, oldY / GROUND_PROJECTION,
+                (x, z) => this.canStand(x, z * GROUND_PROJECTION));
+        }
         if (dx || dy) {
-            const distance = (running ? 504 : 280) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
+            const distance = (this.somangiCrab ? 14 : running ? 504 : 280) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
             // Substeps prevent tunnelling through narrow footprints; axes slide along walls.
             const steps = Math.max(1, Math.ceil(distance / 8));
             for (let i = 0; i < steps; i++) {

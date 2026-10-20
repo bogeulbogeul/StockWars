@@ -1,6 +1,6 @@
 // Interim placement in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
-    { id: 'home_office_tower', name: '집', file: 'Home-single-eaves.glb', nativeMaterials: true, entranceOffsetX: 48,
+    { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 48,
         x: 520, y: 880, width: 320, rotation: -0.06 },
     { id: 'settlement_information', name: '정착 안내소', file: 'Information-clean.glb', nativeMaterials: true,
         x: 1250, y: 1980, width: 370, rotation: 0 },
@@ -13,7 +13,7 @@ export const TOWN_MODEL_BUILDINGS = [
         x: 2030, y: 1730, width: 370, rotation: 0.04 },
     { id: 'node_finance', name: '노드 은행', file: 'BankBuilding.glb',
         x: 2620, y: 2030, width: 390, rotation: -0.05 },
-    { id: 'midnight_pub', name: '미드나잇 펍', file: 'PubBuilding.glb',
+    { id: 'midnight_pub', name: '미드나잇 펍', file: 'Pub-clean.glb', nativeMaterials: true,
         x: 2350, y: 760, width: 390, rotation: -0.07 },
     { id: 'data_ink_bookstore', name: '데이터 잉크 서점', file: 'BookStoreBuilding.glb',
         x: 2450, y: 1450, width: 350, rotation: 0.08 },

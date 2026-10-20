@@ -1,6 +1,7 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
+import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { LOBBY, lobbyCanStand, nearbyLobbyDoor } from '../../data/cipherLobbyRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
@@ -74,7 +75,7 @@ export class CipherLobbyScene {
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
         if(this.createInteraction)this.interaction=await this.createInteraction(this);
-        this.player.hint.textContent = this.defaultHint;
+        this.player.setControlsHint(this.defaultHint);
         this.player.root.traverse(object => { if (object.isMesh) object.castShadow = true; });
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
@@ -185,7 +186,9 @@ export class CipherLobbyScene {
         }
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
-        const length = Math.hypot(dx, dz), speed = keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION,
+            (x, z) => this.canStand(x, z));
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         if(length && !this.blocked() && this.interaction?.tryEnter(dx/length,dz/length,oldX,oldZ))return;
         let x = oldX, z = oldZ;

@@ -15,8 +15,8 @@ export function startTownPreview(app) {
     document.activeElement?.blur();
 
     // Hidden UI must not receive focus or open an invisible modal via shortcuts.
-    const allowed = new Set(['w', 'a', 's', 'd', 'f', 'l', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright', 'shift', '1', '2', 'escape', ' ']);
-    const physicalKeys = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyL', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ShiftLeft', 'ShiftRight', 'Digit1', 'Digit2', 'Space']);
+    const allowed = new Set(['w', 'a', 's', 'd', 'f', 'l', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright', 'shift', '1', '2', '3', 'escape', ' ']);
+    const physicalKeys = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyL', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ShiftLeft', 'ShiftRight', 'Digit1', 'Digit2', 'Digit3', 'Space']);
     window.addEventListener('keydown', event => {
         if (!document.body.classList.contains('ui-paused')) return;
         if (document.body.classList.contains('cipher-facility-active') && event.target?.closest?.('dialog[open]')) return;

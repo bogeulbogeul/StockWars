@@ -1,0 +1,37 @@
+{
+  "status": "Empty native 3D shell; game integration pending",
+  "dimensions": [
+    8,
+    6,
+    2.8
+  ],
+  "units": "temporary modeling units",
+  "interior_wall_angles_degrees": [
+    90,
+    90,
+    90,
+    90
+  ],
+  "validation": {
+    "axis_aligned_perpendicular_walls": true,
+    "finite_vertices": true,
+    "asset_export_excludes_cameras_and_lights": true
+  },
+  "features": [
+    "cream walls",
+    "dark oak plank floor",
+    "oak wainscot",
+    "four capped oak corner pillars",
+    "six curved oak corbels",
+    "top cornice",
+    "central exit"
+  ],
+  "basement_portal": {
+    "x": 2.65,
+    "width": 0.96,
+    "state": "opening and frame only; door and stairs pending"
+  },
+  "furniture": false,
+  "windows": "not cut at shell stage",
+  "front_and_ceiling": "open cutaway"
+}

@@ -1,0 +1,19 @@
+{
+  "samples": 97,
+  "floor_penetration": 0.00037914514541625977,
+  "support_gap": 0.00010675191879272461,
+  "leg_length_error": 1.3275727029065515e-07,
+  "torso_shape_error": 3.0719530773294423e-08,
+  "leg_translation": 0.01799999854671775,
+  "loop_error": 0.0,
+  "foot_motion": "lateral rotation around Y, with at most 0.018 vertical lift; no horizontal leg translation",
+  "direction": "Left",
+  "forward_foot_travel": 1.1920928955078125e-07,
+  "lateral_foot_travel": 0.13559941202402115,
+  "clips": [
+    "Crab_Enter",
+    "Crab_Exit",
+    "Crab_Left",
+    "Crab_Right"
+  ]
+}

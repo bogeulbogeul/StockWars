@@ -1,6 +1,7 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
+import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { VIVIAN_MODEL_URL, VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS, VIVIAN_SPAWN,
     VIVIAN_EXIT_Z, VIVIAN_ROOM_RATIO, vivianCanStand } from '../../data/vivianModelRoom.js';
@@ -96,7 +97,7 @@ export class VivianModelScene {
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.hint.textContent = 'WASD / 방향키 이동 · F 계산대 이용 · 현관 / Esc 나가기';
+        this.player.setControlsHint('WASD / 방향키 이동 · F 계산대 이용 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -183,7 +184,8 @@ export class VivianModelScene {
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         ({ dx, dz } = this.roomCamera.movement(dx, dz));
-        const length = Math.hypot(dx, dz), speed = keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, vivianCanStand);
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         let x = oldX, z = oldZ;
         if (length) {
