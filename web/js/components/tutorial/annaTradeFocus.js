@@ -54,7 +54,7 @@ export function clearAnnaTradeFocus(root = document) {
 
 export function applyAnnaTradeFocus(stepId, root, chartSelector) {
     const hudTargets = { hud_overview: '.main-hud-bar', hud_cash_guide: '.hud-asset-item:has(#hudCashVal)', hud_assets_guide: '.hud-asset-item:has(#hudTotalAssetVal)', hud_profit_guide: '.hud-asset-item:has(#hudPnlVal)' };
-    Object.assign(hudTargets, { hud_day_guide: '.day-badge', hud_time_guide: '#hudClockItem', hud_weather_guide: '#hudWeatherItem', hud_stamina_guide: '#hudStaminaItem', hud_profile_guide: '#btnHudProfile', hud_inventory_guide: '#btnHudInventory', hud_ranking_guide: '#btnHudRanking', hud_help_guide: '#btnHudHelp', hud_settings_guide: '#btnHudSettings' });
+    Object.assign(hudTargets, { hud_day_guide: '.day-badge', hud_time_guide: '#hudClockItem', hud_weather_guide: '#hudWeatherItem', hud_stamina_guide: '#hudStaminaItem', hud_profile_guide: '#btnHudProfile', hud_inventory_guide: '#btnHudInventory', hud_ranking_guide: '#btnHudRanking', hud_settings_guide: '#btnHudSettings' });
     if (hudTargets[stepId]) {
         root ??= document.querySelector('.main-hud-bar');
         chartSelector = hudTargets[stepId];

@@ -70,7 +70,7 @@ export function initWorld() {
             },
             onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant, { deferDrinkEffect: true }),
             onDrinkCollected: () => playRecoveryDrinkEffect(),
-            isInputBlocked: () => this.salonInterior?.isOpen === true || this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.salonInterior?.isOpen === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onHeal: () => {
                 const result = this.itemGameplay.restOnBench();

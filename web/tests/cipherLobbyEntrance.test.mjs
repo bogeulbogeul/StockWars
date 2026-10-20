@@ -9,7 +9,7 @@ const source = readFileSync(new URL('../js/app/CipherLobbyEntrance.js', import.m
     .replace('export function installCipherLobbyEntrance', 'function installCipherLobbyEntrance');
 
 test('legacy Cipher entry opens the 3D lobby and returns only after town accepts entry', async () => {
-    const classes = new Set(['ui-paused', 'town-mode-active']);
+    const classes = new Set(['town-model-mode', 'town-mode-active']);
     let lobbyShown = 0, lobbyHidden = 0, townHidden = 0, connections = 0, cameraUpdates = 0;
     let accepted = false;
     class CipherLobbyScene {

@@ -11,7 +11,7 @@ export function installVivianModelEntrance(app) {
     hint.textContent = 'F · 봉봉 잡화점 입장';
     hint.hidden = true;
     town.viewportEl.append(hint);
-    const near = () => document.body.classList.contains('ui-paused')
+    const near = () => document.body.classList.contains('town-model-mode')
         && !town.containerEl.classList.contains('hidden') && !town.callbacks.isInputBlocked?.()
         && Math.abs(town.playerController.charPosX - building.x) < 85
         && town.playerController.charPosY >= building.y + 15

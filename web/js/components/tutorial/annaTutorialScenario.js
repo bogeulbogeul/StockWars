@@ -351,7 +351,6 @@ export function buildAnnaScenario({
         ['profile', '프로필', '프로필에서는 내 캐릭터와 능력치를 확인해요.'],
         ['inventory', '소지품', '소지품에서는 보유 아이템을 확인하고 사용할 수 있어요.'],
         ['ranking', '랭킹', '랭킹에서는 다른 트레이더들의 기록을 확인해요.'],
-        ['help', '도움말', '조작이나 게임 규칙이 헷갈리면 도움말을 확인하세요.'],
         ['settings', '설정', '설정에서는 소리와 게임 설정을 조절할 수 있어요.']
     ].map(([id, name, text]) => ({ id: `hud_${id}_guide`, speaker: '모아', expression: 'Smile', text, tracker: `1/4 • ${name}`, requiresManualAction: false, screenOverview: true }));
     steps.splice(steps.findIndex(step => step.id === 'open_phone'), 0, ...menuLessons);

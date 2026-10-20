@@ -1,3 +1,4 @@
+import { retireLegacyWorldViews } from './CurrentWorldViews.js';
 import { startTownPreview } from './TownPreview.js';
 import { installHomeModelEntrance } from './HomeModelEntrance.js';
 import { installCipherLobbyEntrance } from './CipherLobbyEntrance.js';
@@ -9,6 +10,7 @@ async function installTownModels() {
     const town = window.stockWarsApp?.townStage;
     if (!town?.viewportEl) return;
     const { TownModelScene } = await import('../components/town3d/TownModelScene.js');
+    retireLegacyWorldViews(window.stockWarsApp);
     const models = new TownModelScene(town);
     window.stockWarsApp.townModelScene = models;
     const updateHomeEntrance = installHomeModelEntrance(window.stockWarsApp);

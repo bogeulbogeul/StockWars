@@ -17,7 +17,7 @@ test('production module graph resolves without retired screens or warehouse modu
         if (visited.has(file)) return;
         visited.add(file);
         assert.ok(fs.existsSync(file), file);
-        assert.doesNotMatch(file, /TitleScreen|TopDemoBar|DeveloperFriend|Logistics|WarehouseGeometry/);
+        assert.doesNotMatch(file, /components[\\/]TitleScreen|TopDemoBar|DeveloperFriend|Logistics|WarehouseGeometry/);
         const source = fs.readFileSync(file, 'utf8');
         for (const [, relative] of source.matchAll(/(?:from\s+|import\s*\(?)["'](\.[^"']+)["']/g)) {
             visit(path.resolve(path.dirname(file), relative.split('?')[0]));

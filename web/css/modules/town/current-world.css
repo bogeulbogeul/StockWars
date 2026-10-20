@@ -1,0 +1,12 @@
+/* The current 3D viewport owns the full world area; smartphone overlays stay live. */
+.town-stage-container,
+.town-viewport {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    filter: none;
+    opacity: 1;
+}
+.town-viewport { cursor: default; }

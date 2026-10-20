@@ -86,7 +86,7 @@ export class TownPlayerController {
         }
         const oldX = this.charPosX, oldY = this.charPosY;
         const running = this.keysHeld.has('shift');
-        if (document.body.classList.contains('ui-paused')) {
+        if (document.body.classList.contains('town-model-mode')) {
             updateSomangiClearance(this, dx, dy / GROUND_PROJECTION, oldX, oldY / GROUND_PROJECTION,
                 (x, z) => this.canStand(x, z * GROUND_PROJECTION));
         }

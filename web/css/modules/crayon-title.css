@@ -1,0 +1,39 @@
+.crayon-title {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: grid;
+    place-items: center;
+    background: #fcf3dc;
+}
+.crayon-title__art {
+    position: relative;
+    width: min(100vw, calc(100dvh * 1672 / 941));
+    aspect-ratio: 1672 / 941;
+}
+.crayon-title__art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+.crayon-title__start {
+    position: absolute;
+    left: 32%;
+    top: 77.5%;
+    width: 36%;
+    height: 17.5%;
+    min-height: 24px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.crayon-title__start:hover { background: #52734512; }
+.crayon-title__start:active { background: #52734525; }
+.crayon-title__start:focus-visible {
+    outline: 3px dashed #365c3d;
+    outline-offset: 4px;
+}
+body.title-screen-active { overflow: hidden; }

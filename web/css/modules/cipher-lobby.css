@@ -21,15 +21,5 @@
     pointer-events: none;
     z-index: 6;
 }
-body.ui-paused #app > #cipherLobbyStage { display: block !important; }
-body.ui-paused #app > #cipherLobbyStage.hidden { display: none !important; }
-body.ui-paused #app > #cipherTrainingStage { display: block !important; }
-body.ui-paused #app > #cipherTrainingStage.hidden { display: none !important; }
-body.ui-paused #app > #cipherSimulationStage { display: block !important; }
-body.ui-paused #app > #cipherSimulationStage.hidden { display: none !important; }
-body.ui-paused #townViewport > .cipher-lobby-entry-hint { visibility: visible !important; }
 .cipher-lobby-stage .somangi-controls { max-width: calc(100% - 32px); white-space: normal; text-align: center; }
 /* Reveal only the facility dialogs while using the 3D lobby in art preview. */
-body.ui-paused.cipher-facility-active dialog[open] { display: flex !important; }
-body.ui-paused.cipher-facility-active .cipher-training img { opacity: 1 !important; }
-origin/main

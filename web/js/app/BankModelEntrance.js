@@ -14,7 +14,7 @@ export function installBankModelEntrance(app) {
     town.viewportEl.append(hint);
     const inTown = () => !town.containerEl.classList.contains('hidden')
         && !town.callbacks.isInputBlocked?.();
-    const near = () => document.body.classList.contains('ui-paused') && inTown()
+    const near = () => document.body.classList.contains('town-model-mode') && inTown()
         && Math.abs(town.playerController.charPosX - building.x) < 85
         && town.playerController.charPosY >= building.y + 15
         && town.playerController.charPosY < building.y + 145;

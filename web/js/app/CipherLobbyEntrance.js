@@ -9,7 +9,7 @@ export function installCipherLobbyEntrance(app) {
     const hint = document.createElement('p');
     hint.className = 'cipher-lobby-entry-hint';
     town.viewportEl.append(hint);
-    const inTown = () => document.body.classList.contains('ui-paused')
+    const inTown = () => document.body.classList.contains('town-model-mode')
         && !town.containerEl.classList.contains('hidden') && !town.callbacks.isInputBlocked?.();
     const near = () => Math.abs(town.playerController.charPosX - building.x) < 85
         && town.playerController.charPosY >= building.y + 15
