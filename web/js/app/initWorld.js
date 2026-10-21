@@ -7,6 +7,7 @@ import { TownStage } from '../components/TownStage.js';
 import { CipherLobby } from '../components/CipherCanvasLobby.js';
 import { SalonInterior } from '../components/salon/SalonInterior.js';
 import { VivianStoreModal } from '../components/store/VivianStoreModal.js?v=vivian-effects-1';
+import { initPackingGame } from './PackingEntrance.js';
 
 export function initWorld() {
         // Server Selection Modal (Office Door Town Gateway)
@@ -74,7 +75,7 @@ export function initWorld() {
                 cipherIndex: marketEngine.getCipherIndex(),
                 news: marketEngine.news.filter(item => marketEngine.stocks.has(item.stockId))
             }),
-            isInputBlocked: () => this.salonInterior?.isOpen === true || this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.packingGame?.isOpen === true || this.salonInterior?.isOpen === true || this.helpModal?.dialog.open === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
             onReturnOffice: () => this.enterOffice(),
             onHeal: () => {
                 const result = this.itemGameplay.restOnBench();
@@ -92,6 +93,8 @@ export function initWorld() {
             onOpenPub: () => toastManager.show('🍸 [미드나잇 펍] 브로커 안드레: "5% 노이즈가 제거된 확정형 찌라시 거래와 지하 블랙잭 테이블을 취급하지."'),
             onOpenBarter: () => toastManager.show('⚖️ [더 바터 전당포] 전당포주 바터: "보유 가구나 주식을 담보로 LTV 60% 즉시 현금 대출이 가능하네."')
         });
+
+        initPackingGame(this);
 
         // 6. Character Creation & Trader Registration Kiosk (GDD CORE_GDD_08)
         this.characterCreation = new CharacterCreation(this.appContainer, {

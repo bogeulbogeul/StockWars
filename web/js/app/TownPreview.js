@@ -19,6 +19,7 @@ export function startTownPreview(app) {
     const physicalKeys = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyL', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ShiftLeft', 'ShiftRight', 'Digit1', 'Digit2', 'Space']);
     window.addEventListener('keydown', event => {
         if (!document.body.classList.contains('ui-paused')) return;
+        if (app.packingGame?.isOpen) return;
         if (document.body.classList.contains('cipher-facility-active') && event.target?.closest?.('dialog[open]')) return;
         if (app.homeModelScene?.active && ['KeyQ', 'KeyE'].includes(event.code)) return;
         if (allowed.has(event.key.toLowerCase()) || physicalKeys.has(event.code) || event.key === 'F5' || event.ctrlKey || event.metaKey || event.altKey) return;
@@ -27,6 +28,7 @@ export function startTownPreview(app) {
     }, true);
     app.townStage.viewportEl.addEventListener('click', event => {
         if (!document.body.classList.contains('ui-paused')) return;
+        if (event.target?.closest?.('.packing-entry-hint')) return;
         event.preventDefault();
         event.stopImmediatePropagation();
     }, true);

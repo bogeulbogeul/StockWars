@@ -1,6 +1,7 @@
 import { startTownPreview } from './TownPreview.js';
 import { installHomeModelEntrance } from './HomeModelEntrance.js';
 import { installCipherLobbyEntrance } from './CipherLobbyEntrance.js';
+import { installPackingEntrance } from './PackingEntrance.js';
 
 // Install the 3D renderer independently of stage input and UI.
 async function installTownModels() {
@@ -12,10 +13,12 @@ async function installTownModels() {
     const updateHomeEntrance = installHomeModelEntrance(window.stockWarsApp);
     startTownPreview(window.stockWarsApp);
     const updateCipherEntrance = installCipherLobbyEntrance(window.stockWarsApp);
+    const updatePackingEntrance = installPackingEntrance(window.stockWarsApp);
     const draw = () => {
         models.draw();
         updateHomeEntrance();
         updateCipherEntrance();
+        updatePackingEntrance();
         requestAnimationFrame(draw);
     };
     draw();
