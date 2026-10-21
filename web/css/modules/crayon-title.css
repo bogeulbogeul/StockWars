@@ -18,22 +18,34 @@
     user-select: none;
 }
 .crayon-title__start {
+    z-index: 1;
     position: absolute;
     left: 32%;
     top: 77.5%;
     width: 36%;
     height: 17.5%;
     min-height: 24px;
+    padding: 0;
     border: 0;
     border-radius: 999px;
     background: transparent;
     cursor: pointer;
     touch-action: manipulation;
 }
-.crayon-title__start:hover { background: #52734512; }
-.crayon-title__start:active { background: #52734525; }
+.crayon-title__start:hover { filter: brightness(1.04); }
+.crayon-title__start img { object-fit: contain; }
+.crayon-title__start:active { filter: brightness(.95); }
 .crayon-title__start:focus-visible {
     outline: 3px dashed #365c3d;
     outline-offset: 4px;
 }
 body.title-screen-active { overflow: hidden; }
+.crayon-title__frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.crayon-title__art .crayon-title__frame[hidden] { display: none; }
+body.graphics-paused .crayon-title__art img { opacity: 1 !important; }

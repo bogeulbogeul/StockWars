@@ -1,4 +1,5 @@
 // Current exterior assets; retired models must not be used as fallbacks.
+import { scaleTownBuilding } from './townObjectScale.js';
 // Placement remains interim in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
     { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 48,
@@ -20,7 +21,7 @@ export const TOWN_MODEL_BUILDINGS = [
         x: 2600, y: 1450, width: 350, rotation: 0 },
     { id: 'claire_apparel', name: '옷가게', file: 'ClothingStore-clean.glb', nativeMaterials: true,
         x: 850, y: 1320, width: 340, rotation: 0 }
-];
+].map(scaleTownBuilding);
 
 // Temporary tuning for a front-facing village view inspired by the reference.
 export const TOWN_CAMERA = { pitchDegrees: 26, fieldOfView: 35 };

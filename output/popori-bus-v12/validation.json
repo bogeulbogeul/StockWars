@@ -1,0 +1,17 @@
+{
+  "removed": [
+    "Handle_Mount",
+    "Handle_Mount.001",
+    "Rounded_Pull_Handle",
+    "Handle_Mount.002",
+    "Handle_Mount.003",
+    "Rounded_Pull_Handle.001"
+  ],
+  "refinements": [
+    "Reduced hinge projection",
+    "Recessed central seal",
+    "Reduced lower moulding projection"
+  ],
+  "wheel_roll_preserved": true,
+  "game_modified": false
+}

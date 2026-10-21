@@ -1,0 +1,19 @@
+.bus-arrival { background: #cbdedb; }
+.bus-arrival__stage { position: absolute; inset: 0; }
+.bus-arrival__stage canvas { display: block; width: 100%; height: 100%; }
+.bus-arrival__caption {
+    position: absolute;
+    left: 50%;
+    bottom: max(7%, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 90%;
+    margin: 0;
+    padding: 12px 22px;
+    border-radius: 16px;
+    background: #fff6e6ed;
+    color: #423d31;
+    font: 600 clamp(15px, 2vw, 23px)/1.6 'Malgun Gothic', sans-serif;
+    text-align: center;
+    word-break: keep-all;
+}

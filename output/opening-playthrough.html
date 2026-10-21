@@ -9,25 +9,38 @@ iframe{border:0;width:100%;flex:1;min-height:80vh}nav{display:flex;gap:16px;just
 button{border:1px solid #b4a58c;border-radius:24px;padding:10px 18px;background:transparent;color:inherit;font:inherit;cursor:pointer}button:focus-visible{outline:2px solid #ffe0a0;outline-offset:3px}
 </style>
 <iframe title="전체 오프닝 장면" id="screen"></iframe>
-<nav><span id="status" aria-live="polite"></span><button id="restart">처음부터 다시 재생</button></nav>
+<nav><span id="status" aria-live="polite"></span><button id="restart">음악과 함께 처음부터 재생</button><button id="skip">건너뛰기</button></nav>
 <script>
 const durations=[16,20,24,24,26,30];
 const screen=document.querySelector('#screen');
 const status=document.querySelector('#status');
+const music=new Audio('../web/assets/opening/first-little-journey-140s.mp3');
+music.volume=.55;
 let index=0,timer,run=0;
+function stopMusic(){music.pause();music.currentTime=0;}
+function restart(){
+ stopMusic();
+ music.play().catch(()=>{status.textContent='음악을 들으려면 ‘음악과 함께 처음부터 재생’을 눌러주세요.';});
+ playScene(0);
+}
 function playScene(i){
  clearTimeout(timer);index=i;const token=++run;
- status.textContent=`${i+1} / 6 장면 · 전체 약 140초 · 무음`;
+ status.textContent=`${i+1} / 6 장면 · 전체 약 140초 · 오르골·피아노`;
  screen.onload=()=>{
   if(token!==run)return;
   timer=setTimeout(()=>{
    if(i<durations.length-1)playScene(i+1);
-   else status.textContent='오프닝 재생 완료 · 6 / 6 장면';
+   else {stopMusic();status.textContent='오프닝 재생 완료 · 6 / 6 장면';}
   },durations[i]*1000);
  };
  screen.src=`opening-scene-${String(i+1).padStart(2,'0')}-v1/preview.html?playthrough=${run}`;
 }
-document.querySelector('#restart').onclick=()=>playScene(0);
-playScene(0);
+document.querySelector('#restart').onclick=restart;
+document.querySelector('#skip').onclick=()=>{
+ clearTimeout(timer);run++;screen.onload=null;stopMusic();
+ screen.src='about:blank';status.textContent='오프닝을 건너뛰었습니다.';
+};
+window.addEventListener('pagehide',stopMusic);
+restart();
 </script>
 </html>

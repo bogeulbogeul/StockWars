@@ -1,0 +1,35 @@
+{
+  "smile": {
+    "original_mesh_coordinates_preserved": true,
+    "reimport_mesh_count": 6,
+    "reimport_clips": [
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "loop_endpoint_max_error": null,
+    "texture_finite": true
+  },
+  "doze": {
+    "original_mesh_coordinates_preserved": true,
+    "reimport_mesh_count": 6,
+    "reimport_clips": [
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Seated_Doze",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "loop_endpoint_max_error": 0.0,
+    "texture_finite": true
+  }
+}

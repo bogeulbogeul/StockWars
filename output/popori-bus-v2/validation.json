@@ -1,0 +1,31 @@
+{
+  "wheel_checks": [
+    {
+      "pivot": "WheelPivot_Rear_Right",
+      "stationary_axle": true,
+      "radius": 0.39
+    },
+    {
+      "pivot": "WheelPivot_Rear_Left",
+      "stationary_axle": true,
+      "radius": 0.39
+    },
+    {
+      "pivot": "WheelPivot_Front_Right",
+      "stationary_axle": true,
+      "radius": 0.39
+    },
+    {
+      "pivot": "WheelPivot_Front_Left",
+      "stationary_axle": true,
+      "radius": 0.39
+    }
+  ],
+  "clip": "Wheel_Roll",
+  "seconds_per_revolution": 2,
+  "distance_per_revolution": 2.4504422698000385,
+  "rotation_axis": "Blender +Y; front is +X",
+  "status": "Model and wheel clip exported; game motion integration pending",
+  "linear_speed_verified_frames": 16,
+  "full_revolution_frames": 48
+}

@@ -1,6 +1,10 @@
 const durations = [16, 20, 24, 24, 26, 30];
 
 export function playOpening(screen) {
+    // Called directly by the title click, so playback has a user gesture.
+    const music = new Audio(new URL('../../assets/opening/first-little-journey-140s.mp3', import.meta.url).href);
+    music.volume = .55;
+    music.play().catch(() => { /* Audio restrictions must not block the opening. */ });
     return new Promise(resolve => {
         screen.classList.add('opening-sequence');
         screen.innerHTML = `
@@ -15,6 +19,10 @@ export function playOpening(screen) {
         const finish = () => {
             if (finished) return;
             finished = true;
+            music.pause();
+            music.currentTime = 0;
+            music.removeAttribute('src');
+            music.load();
             clearTimeout(timer);
             frame.onload = null;
             frame.onerror = null;

@@ -1,0 +1,8 @@
+{
+  "vent_panel_rear_face_y": 0.813,
+  "body_side_y": 0.815,
+  "panel_overlap": 0.002,
+  "surface_fit": "Each panel and vent vertex follows actual curved body raycast",
+  "wheel_roll_preserved": true,
+  "game_modified": false
+}
