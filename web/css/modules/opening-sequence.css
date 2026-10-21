@@ -1,0 +1,52 @@
+.opening-sequence { background: #171c2b; }
+.opening-sequence iframe {
+    width: 100%;
+    height: 100dvh;
+    border: 0;
+    pointer-events: none;
+}
+.opening-sequence__skip {
+    position: absolute;
+    top: max(18px, env(safe-area-inset-top));
+    right: max(18px, env(safe-area-inset-right));
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 36px;
+    padding: 6px 12px;
+    border: 1px solid #bdb5a638;
+    border-radius: 20px;
+    background: #242936cc;
+    color: #bdb5a6;
+    font: 400 12px/1.4 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    letter-spacing: .02em;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: color .18s ease, background-color .18s ease;
+}
+.opening-sequence__skip-icon {
+    display: grid;
+    place-items: center;
+    width: 14px;
+    height: 18px;
+    color: inherit;
+    font: 400 18px/1 Georgia, serif;
+    letter-spacing: -2px;
+    padding-right: 2px;
+}
+@media (hover: hover) {
+    .opening-sequence__skip:hover {
+        background-color: #343947;
+        color: #eee5d5;
+    }
+}
+.opening-sequence__skip:active {
+    background-color: #1c2130;
+}
+.opening-sequence__skip:focus-visible {
+    outline: 2px solid #bdb5a6;
+    outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .opening-sequence__skip { transition: none; }
+}

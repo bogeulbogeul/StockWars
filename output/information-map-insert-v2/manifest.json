@@ -1,0 +1,15 @@
+{
+  "image": "C:\\GitHub\\StockWars\\output\\popori-map-colored-pencil-no-text-v1\\map.png",
+  "image_pixels": [
+    1403,
+    1121
+  ],
+  "print_width": 1.1764674397859054,
+  "print_height": 0.94,
+  "text": false,
+  "mesh": "Popori_Colored_Pencil_Map_No_Text",
+  "image_packed": true,
+  "status": "Map installed in stand and its adopted wall-layout room; game room not connected",
+  "originals_preserved": true,
+  "brochures": 8
+}

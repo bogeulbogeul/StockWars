@@ -1,3 +1,5 @@
+import { playOpening } from './OpeningSequence.js';
+
 // Artwork and hit target share one aspect-ratio box at every viewport size.
 export function showTitleScreen(onStart) {
     const screen = document.createElement('section');
@@ -18,16 +20,17 @@ export function showTitleScreen(onStart) {
         event.stopImmediatePropagation();
         if (event.type === 'keydown' && ['Enter', ' '].includes(event.key)) {
             event.preventDefault();
-            button.click();
+            if (!event.repeat) screen.querySelector('button')?.click();
         } else if (event.key === 'Tab') {
             event.preventDefault();
-            button.focus({ preventScroll: true });
+            screen.querySelector('button')?.focus({ preventScroll: true });
         }
     };
     window.addEventListener('keydown', blockWorldInput, true);
     window.addEventListener('keyup', blockWorldInput, true);
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
         button.disabled = true;
+        await playOpening(screen);
         window.removeEventListener('keydown', blockWorldInput, true);
         window.removeEventListener('keyup', blockWorldInput, true);
         if (app) app.inert = false;

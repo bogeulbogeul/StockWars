@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오래된 나무 아래 · 두 번째 장면</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171c2b;color:#efe4ce;font-family:'Malgun Gothic',sans-serif;display:grid;min-height:100vh;place-content:center;gap:18px}
+main{position:relative;width:min(100vw,1280px);aspect-ratio:16/9;overflow:hidden;background:#efe0c6;isolation:isolate}
+.picture{position:absolute;inset:0;animation:approach 20s ease-out both}
+.picture img{position:absolute;width:100%;height:100%;object-fit:cover}
+.sleep{clip-path:ellipse(4.5% 3% at 37.5% 41%);animation:wake 20s both}
+.sunlight{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 20%,#fff3c533,transparent 65%);animation:dawn 20s ease-out both;pointer-events:none}
+.caption{position:absolute;left:5%;right:5%;bottom:3%;margin:0;padding:clamp(8px,1.2vw,16px) 12px;border-radius:12px;background:#fff6e6;color:#302419;text-align:center;font-size:clamp(17px,2.5vw,32px);font-weight:700;line-height:1.65;word-break:keep-all;box-shadow:0 2px 12px #38251418;animation:words 20s both}
+.veil{position:absolute;inset:0;background:#f5ead7;pointer-events:none;animation:reveal 1.5s ease-out both}
+footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;font-size:13px;color:#bdb5a6;padding:0 10px 12px}
+button,a{border:1px solid #b4a58c;border-radius:30px;padding:10px 20px;background:transparent;color:#efe4ce;cursor:pointer;font:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:2px solid #ffe0a0;outline-offset:4px}
+@keyframes approach{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes wake{0%,27%{opacity:1}34%,100%{opacity:0}}
+@keyframes dawn{from{opacity:0}to{opacity:1}}
+@keyframes words{0%,12%{opacity:0}24%,100%{opacity:1}}
+@keyframes reveal{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.picture,.caption,.sunlight{animation:none}.sleep,.veil{display:none}}
+body{background:#171c2b;overflow:hidden;gap:0}main{width:min(100vw,calc(100dvh * 16 / 9))}</style>
+<main aria-label="새벽 숲, 오래된 나무 아래에서 흰 소망이가 눈을 뜹니다. 곁에는 편지와 씨앗이 있습니다.">
+ <div class="picture" aria-hidden="true"><img src="awake-crayon-v2.png" alt=""><img class="sleep" src="asleep-crayon-v2.png" alt=""><div class="sunlight"></div></div>
+ <p class="caption">그런데 이 작은 요정은,<br>어떤 소망에서 태어났는지 알지 못했지요.</p>
+ <div class="veil"></div>
+</main>
+
+</html>

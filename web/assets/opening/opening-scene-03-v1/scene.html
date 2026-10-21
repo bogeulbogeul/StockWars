@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>씨앗과 편지 · 세 번째 장면</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171c2b;color:#efe4ce;font-family:'Malgun Gothic',sans-serif;display:grid;min-height:100vh;place-content:center;gap:18px}
+main{position:relative;width:min(100vw,1280px);aspect-ratio:16/9;overflow:hidden;background:#efe0c6;isolation:isolate}
+.picture{position:absolute;inset:0;animation:approach 24s ease-out both}
+.picture img{position:absolute;width:100%;height:100%;object-fit:cover}
+.discovery{animation:discover 24s both}
+.sunlight{position:absolute;inset:0;background:radial-gradient(ellipse at 82% 20%,#fff3c522,transparent 65%);animation:dawn 24s ease-out both;pointer-events:none}
+.caption{position:absolute;left:5%;right:5%;bottom:3%;margin:0;padding:clamp(8px,1.2vw,16px) 12px;border-radius:12px;background:#fff6e6;color:#302419;text-align:center;font-size:clamp(17px,2.5vw,32px);font-weight:700;line-height:1.65;word-break:keep-all;box-shadow:0 2px 12px #38251418}
+.intro{animation:intro 24s both}.letter{animation:letter 24s both}
+.veil{position:absolute;inset:0;background:#f5ead7;pointer-events:none;animation:reveal 1s ease-out both}
+footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;font-size:13px;color:#bdb5a6;padding:0 10px 12px}
+button,a{border:1px solid #b4a58c;border-radius:30px;padding:10px 20px;background:transparent;color:#efe4ce;cursor:pointer;font:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:2px solid #ffe0a0;outline-offset:4px}
+@keyframes approach{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes discover{0%,23%{opacity:1}32%,100%{opacity:0}}
+@keyframes dawn{from{opacity:0}to{opacity:1}}
+@keyframes intro{0%{opacity:0}8%,24%{opacity:1}30%,100%{opacity:0}}
+@keyframes letter{0%,31%{opacity:0}39%,100%{opacity:1}}
+@keyframes reveal{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.picture,.sunlight,.letter{animation:none}.discovery,.intro,.veil{display:none}}
+body{background:#171c2b;overflow:hidden;gap:0}main{width:min(100vw,calc(100dvh * 16 / 9))}</style>
+<main aria-label="소망이가 나무 아래 놓인 편지를 펼치고, 손에 올린 아직 싹트지 않은 씨앗을 바라봅니다.">
+ <div class="picture" aria-hidden="true">
+  <img src="letter-and-seed-crayon.png" alt="">
+  <img class="discovery" src="../opening-scene-02-v1/awake-crayon-v2.png" alt="">
+  <div class="sunlight"></div>
+ </div>
+ <p class="caption intro">곁에는 작은 씨앗과<br>편지 한 통이 놓여 있었어요.</p>
+ <p class="caption letter">“네가 원하는 삶을 찾으면,<br>이 씨앗도 깨어날 거야.”</p>
+ <div class="veil"></div>
+</main>
+
+</html>

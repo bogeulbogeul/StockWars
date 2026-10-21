@@ -1,0 +1,17 @@
+{
+  "active": true,
+  "map": true,
+  "texture": true,
+  "noStagedVisitor": true,
+  "mapReachable": true,
+  "spawnClear": true,
+  "wallBlocked": true,
+  "furnitureBlocked": true,
+  "townHidden": true,
+  "movement": true,
+  "escapeReturn": true,
+  "reentry": true,
+  "automaticExit": true,
+  "resize": true,
+  "errors": []
+}
