@@ -1,9 +1,8 @@
 import { updateCharacterSprite as updateDogSprite } from '../CharacterSprite.js';
 import { gameKey } from '../../app/GameKeys.js';
-import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../../data/townWorldData.js';
+import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS } from '../../data/townWorldData.js';
 import { townEntrance, TOWN_VIEW_SCALE } from '../../data/townLayout.js';
 import { TOWN_LANDSCAPE_INTERACTIVE } from '../../data/townLandscape.js';
-import { getBillboardBroadcast, formatCipherIndex } from '../town/TownBillboardBroadcast.js';
 
 export const TownStageMethods1 = {
     initEventListeners() {
@@ -20,7 +19,6 @@ export const TownStageMethods1 = {
             if (this.callbacks.isInputBlocked?.()) return;
             if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
             const key = gameKey(e);
-            if (!this.billboardModal.classList.contains('hidden') && key !== 'escape') return;
             if ((key === 'enter' || key === ' ') && e.target?.closest?.('.town-landscape-bench')) {
                 e.preventDefault();
                 if (!e.repeat) e.target.closest('.town-landscape-bench').click();
@@ -29,10 +27,6 @@ export const TownStageMethods1 = {
             if (key === 'f') {
                 if (e.repeat || e.defaultPrevented) return;
                 if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
-            } else if (key === 'escape') {
-                if (this.billboardModal && !this.billboardModal.classList.contains('hidden')) {
-                    this.billboardModal.classList.add('hidden');
-                }
             }
             this.playerController.handleKeyDown(e);
         });
@@ -52,16 +46,6 @@ export const TownStageMethods1 = {
 
         this.promptEl?.addEventListener('click', () => {
             if (this.activeNearbyObject) this.triggerAction(this.activeNearbyObject);
-        });
-
-        this.btnBillboardClose?.addEventListener('click', () => {
-            this.billboardModal?.classList.add('hidden');
-        });
-
-        this.billboardModal?.addEventListener('click', (e) => {
-            if (e.target === this.billboardModal) {
-                this.billboardModal.classList.add('hidden');
-            }
         });
 
         this.btnBuildingInfoClose?.addEventListener('click', () => this.closeBuildingInfo());
@@ -84,7 +68,7 @@ export const TownStageMethods1 = {
                 return;
             }
 
-            const targetProp = e.target.closest('.town-bench-prop, .town-billboard-prop, .town-landscape-bench');
+            const targetProp = e.target.closest('.town-bench-prop, .town-landscape-bench');
             if (targetProp) {
                 const pId = targetProp.dataset.propId;
                 const prop = [...TOWN_INTERACTIVE_PROPS, ...TOWN_LANDSCAPE_INTERACTIVE].find(p => p.id === pId);
@@ -111,52 +95,8 @@ export const TownStageMethods1 = {
         this.animFrameId = requestAnimationFrame(loop);
     },
 
-    startBillboardCarousel() {
-        if (this.billboardTimer) clearInterval(this.billboardTimer);
-        this.refreshBillboard();
-        this.billboardTimer = setInterval(() => this.refreshBillboard(), 1000);
-    },
-
-    refreshBillboard(date = new Date()) {
-        const state = this.callbacks.getBillboardState?.() || {};
-        const ads = TOWN_BILLBOARD_NEWS.filter(item => item.type === 'ad' || item.type === 'event');
-        const broadcast = getBillboardBroadcast(date, state.news || [], ads);
-        const screen = this.containerEl?.querySelector('.billboard-screen-frame');
-        if (!screen) return;
-        const badge = screen.querySelector('.news-badge');
-        badge.className = `news-badge badge-${broadcast.type}`;
-        badge.textContent = broadcast.badge;
-        const body = screen.querySelector('.news-body-text');
-        if (screen.classList.contains('town-information-screen')) {
-            let copy = body.querySelector('.town-board-copy');
-            if (!copy) {
-                copy = document.createElement('span');
-                copy.className = 'town-board-copy';
-                body.replaceChildren(copy);
-            }
-            if (copy.textContent !== broadcast.text) {
-                copy.textContent = broadcast.text;
-                copy.classList.remove('is-scrolling');
-            }
-            // Keep header/ticker fixed; unusually long broadcasts reveal their full text.
-            const overflow = Math.max(0, copy.scrollHeight - body.clientHeight);
-            copy.style.setProperty('--board-scroll-distance', `-${overflow}px`);
-            copy.style.setProperty('--board-scroll-duration', `${Math.max(10, overflow / 12 + 6)}s`);
-            copy.classList.toggle('is-scrolling', overflow > 1);
-        } else {
-            body.textContent = broadcast.text;
-        }
-        screen.querySelector('.live-title').textContent = broadcast.title;
-        if (state.cipherIndex) {
-            const text = formatCipherIndex(state.cipherIndex);
-            screen.querySelectorAll('.cipher-index-value').forEach(item => {
-                if (item.textContent !== text) item.textContent = text;
-            });
-        }
-    },
-
     update(dt) {
-        if (this.callbacks.isInputBlocked?.() || !this.billboardModal.classList.contains('hidden')) {
+        if (this.callbacks.isInputBlocked?.()) {
             // Release movement held before entering the mini-game as well.
             this.playerController.keysHeld.clear();
             this.playerController.isMoving = false;

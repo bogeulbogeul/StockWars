@@ -1,0 +1,1434 @@
+[
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-agent-k-bottom-dialogue-preview.png",
+    "sha256": "BB78C38181F06B17EBB968F1762C231A3513C8A1DC234411C5D7712F6F64F117"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-agent-k-clean-highlight-preview.png",
+    "sha256": "7AF19D1C51F20D40211434A9A5E195427AA5D6CB2F6637B79FD1EA317705544A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-agent-k-highlight-preview.png",
+    "sha256": "5391860D38BA9C30C0A32969CC91FCB604B12E83124109F2282B379390BACAF9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-agent-k-talk-preview.png",
+    "sha256": "5C47B2DECD5C14E292FA250B5937FBA8907A3EA6EFF65E65B01F3EBC8D2B3ABB"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-agent-k-welcome-preview.png",
+    "sha256": "03D34607F2567B5ACF5599798AACF78F19BB84709385CFE414F6CC689200F89E"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-arena-news-preview.png",
+    "sha256": "83C01F66991068D68A1E559FE6A5CE8E1E7A63E34FBF4A6C221635FBDE7E38AE"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-arena-scroll-preview.png",
+    "sha256": "6A7828A92395A1C94B9FB94EC1EF29D5BACE82202E905A21B071437E440B8E99"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-arena-sidebar-preview.png",
+    "sha256": "FE9F903CBF8575DCE98DA27E810E736B53C94AD322A4F600C50DEFAE4B39C9CF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-common-grid-v1.png",
+    "sha256": "A300B5BC233423A06F53FBC92600E1E57EC06B7AFB24515EC33EF6C3134D8235"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-common-grid-v2.png",
+    "sha256": "64F4735EAB5115C9B7BCCBD58B27A67F2CDCA9055F13627A7774AB2029A0F11C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-common-grid.md",
+    "sha256": "6B6BB5FA369D2BD82DFABE467550750E4BCE0540FAFA804AC696BA3BD7CFEB62"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-exit-prompt-preview.png",
+    "sha256": "CB3EC3230B6BF9ADB4518DD54E2FB642D6505EE44190B838D83A98A7D38AB473"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3-preview.jpg",
+    "sha256": "046EDB75377F0D423187B3AFDC7D6C5C96F0320052BCC6ABD85622ECBF450479"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3.png",
+    "sha256": "155DC200C40F75B5CA32D9CC4C6A177E7721B8B7CB73D022A10FCEF78A041F68"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3.prompt.md",
+    "sha256": "F5424C23E9A585A624E866D8EC7CCD40B8DEFB40E32382C5817BCFABA032DAD0"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4-preview.jpg",
+    "sha256": "769EB76AD94E8CA10DC587EAB9E3167DD525E75481488525B2DC5CB7A88219FA"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4.png",
+    "sha256": "13EC47E2AEC4D5038ABF30F2CF93E9813ECB494C29131D2847932AFD734A2BC6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4.prompt.md",
+    "sha256": "5AD1E564039F93F31EA044164A911CB9A1310083939DF1EEB1B76756771CC934"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5-preview.jpg",
+    "sha256": "AE42B0AA3FE839E51360185012E20686628D7BADA25BFA4354F45ED0889EC785"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5.png",
+    "sha256": "7BF5C099D9E623CA7F061D2C82DDB1D470E56E95B670D4718CCF64FF83319FB9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5.prompt.md",
+    "sha256": "8EDF22CC6347318D5612E789D0AE3EAACAE1838E8DD7CA293F79234AE7F196B6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-carpet-selection-aligned-preview.jpg",
+    "sha256": "3F205117C0E6E3EDA3D7B3EB82ECA5FBFC275C61CD796A37C7E5A991B44F1189"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-collision-depth-preview.png",
+    "sha256": "CD1742F03584B0057E6D5ECB438388A3A20118F431070F13712F6CD543F3802C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-competition-lobby-preview.png",
+    "sha256": "35441B87402AD812CC56E54ED57DFED5CE3D8364C5318B4D2B05A257B82F74C5"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v1.png",
+    "sha256": "7A354BE4760B761FDAAB83F5C323ACC68CD1A02829B4B4E87FB91482FFF80F13"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v2.md",
+    "sha256": "02A512D431DBA68E37E0BABE2EA4C539125C541BC47759F04BB7E9765F57F066"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v2.png",
+    "sha256": "4CE39E09E6984A64382ADB6B47D9D264F4ECDDAFA0BC0EEA070B1B4D8A1775E3"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid.md",
+    "sha256": "3198DBA8B10DE783311B97BEFD872DFBBE269E0F3AB4C6A7391E4DDE10798392"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-display-frame-corner-v1.png",
+    "sha256": "9BF08794F45335B7B4651B2B43353826A835A3E4AE8BD9CB0065B7DACAF9BB34"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-display-frame-corner-v2.png",
+    "sha256": "E6D2051D22DB8BFB812F88430DA73148C3C079B876C4C26C4709C335A89B6399"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-display-frame-left-v1.png",
+    "sha256": "371887339161A58A8D0E75DDC1D58219B3028A83674D06294F2011894CA77FB3"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-entrance-carpet-clean-v2.png",
+    "sha256": "A3051C2ADA4CDA77778C0E04278E2A5311F68D1B28081AF57721EC865B658E57"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-entrance-carpet-user-v3.svg",
+    "sha256": "89270B7F075F9144412F03B9E57AB6B5FA31BAC9C9D61D39BDAE5B9D34DDA5A2"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-entrance-carpet-v1.png",
+    "sha256": "8B582ED77A33F3E509A0C362EE511FFB247A0E0F3F8149816DAFBF209570A701"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-fixed-layout-preview.jpg",
+    "sha256": "2555E0DC6C7D2D491B5500E03B2498740D4E55C71BBFC70E6EAC6A2A15BDADCD"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-furniture-rotation-preview.png",
+    "sha256": "1E46793E05D6E49B6578219E9002E5A91D2B689BCDD517ABC7D1CB80E2BA3876"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-guide-connected-preview.jpg",
+    "sha256": "EB90D154D490A6D2A27783A8D63713C7E6DDD555A29B059C6E388CDDDD9DE5DA"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-highlights-display-preview.jpg",
+    "sha256": "12969BE01B89C7666CFA916337190021BD1BD260735038F784943270568A8E91"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-final-layout-preview.png",
+    "sha256": "176BFCB5ECAAF102523DB3E3F2C2BA2EAB20D84BD19373D843891536FF094FEF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-agent-k-v8.json",
+    "sha256": "397A00F273833AA26E862863ADA8F635E919AD6C0B16F1C6FD142F9B3A22A3B2"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-agent-k-v8.png",
+    "sha256": "971301D93273E482163585CE2AC47F075F44A9490B5FE5B7279445C354E97F8B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v3.md",
+    "sha256": "159F631FC48AA82E279D13C3096A85A07B5B5F9FD1F23BCEDAE3C28E95E51CF9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v3.png",
+    "sha256": "06A943D57A38DB331D346BD27456E075924D95F85CD23F7D9F459632FA85C121"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v4.md",
+    "sha256": "BE2A16155EC8F69B19A6988164A08D4154A9D8D1525D5FBE68F54BDC388B1E50"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v4.png",
+    "sha256": "1CAB88FF4D1B9E89F5A9D7C5680F640AB661E1EF89F512276BC285EEC5BF868F"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v5.md",
+    "sha256": "0410D2A163EBC1C1E4526383F2C96CF80BF6918FA13A100A8360065C0CA207FA"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v5.png",
+    "sha256": "8071036D8287BE8B36348BAB161C9D15587DC37367864E3F2E6941D990DD7AE8"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v6.md",
+    "sha256": "97F184ED99E3465733CE4AC4A426B0336E3F946326568D8B9A5D7144C0315C2C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v6.png",
+    "sha256": "F12290E4469B60349370A685B2293B496570E362A0AF9D27342F71D207214EA8"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v7.md",
+    "sha256": "6CD3EE40809A29F7504F377F32F503F857BDF297C57422502D04351AFBEECB2D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v7.png",
+    "sha256": "DE2F80ED980051D4B86B806665C1F019E819B695F68DAC0BC2E42A5BBC0B6FD0"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-v1.md",
+    "sha256": "DFE0C5DCD34774A30E4B48553DFD5AC6F1D54862988196ADDBE2E5DA08EF49C4"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-package-v1.png",
+    "sha256": "433D2B91A0E9BE5E732ECBDD89877A2E5E6FBC5390D41C1371C324BCD67C6F07"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-grid.svg",
+    "sha256": "6151A9F11F4FF119B90607215DE3CA7679099C029F044C76C6342C29CD474864"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v1-draft.png",
+    "sha256": "C0A9C436436F6C1BBDCA19B0D58345F8650E42B0FD805F9DBD9F4797F8D9E2EB"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v2-draft.png",
+    "sha256": "030A60C0DBB036F0E1D58911430772ED21BA99F517C8CB1B005EA1C44FF98F63"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v3.png",
+    "sha256": "A7CB03BA90FE329286881000CF712845FE4AA1FC1EABBE86D8031EA9C3E74C37"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v4.png",
+    "sha256": "90C01926F4631FB782351E1874ED9CE99DA497722F880E9B8E80A4508AA1999F"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v5.png",
+    "sha256": "97A04176289766FDD933487AB45304AE562B31C6DF65A3CBB4C50352EF531748"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v7-grid-reference.png",
+    "sha256": "EF40C7662961B58843BD9FAD0BEC4EFA33856DC87AC20B2BF9155201D7863815"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shell-v8-wall-reference.png",
+    "sha256": "DB49441F33C3AE61FC12C526201696B8C9E92170236F917CDE9876BDAD08AA20"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-lobby-shop-format-preview.png",
+    "sha256": "26C16911841DFBA82D3BB6AB04D110E542AF165A9C676A6B12C19914DA219DF9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-1x1-simple-v2.png",
+    "sha256": "B2F5CB4CFC7D295110F887A710198CE27E4DA5821BB34A37B7E858BCB5F477EC"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-1x1-v1.png",
+    "sha256": "023B77FD8E052CE7E0BE003D5DC5D26D9980BA29D65929F57087A5A25EBEEC25"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-applied-preview.png",
+    "sha256": "14E52FEEFBCA30E41F132CFADDC0717080F814A6976EC6203FC6F994529631C8"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v1.png",
+    "sha256": "369B18AFCFE6728A1FFAA9E2CDF6444188A0E7E0A7700B731C47E96A1A330B02"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v2.md",
+    "sha256": "D92F2958678692F44617F46C68308912FC77BE4395A0C952A66D8E79353137EA"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v2.png",
+    "sha256": "07D3CDEA0E0E146138FDA6E2B0E9A4EFCBE47EDAEAD282C30CF7C6EE3306EF11"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-plant-common-grid.md",
+    "sha256": "C7B1CA55107A0EFB80DCA673423C036D80126DF5CEDED64E387C4535D031FEA2"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-player-movement-preview.png",
+    "sha256": "ECC77B381675B6760C7BEFF316C6F5A06FCAC98CEBFCB2DD6770EB40B437B5C6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-center-v10.png",
+    "sha256": "DA193657497287A49A4D69DE870063AE14F9E4324A60661210547954D3617761"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-grid-v11.svg",
+    "sha256": "26FA6314E9FC3CAA24DA91D256095AA46D310C05313456F62C045EBE3B90EEE9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-v8.png",
+    "sha256": "9CFD906A837F67768E1C22D13B28B4907DCB8D109386FB1321C9D54B885F874C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-v9.png",
+    "sha256": "0F4750CFEA9CB27521500E174BE63F133FCA97C6E0FA8C3EF60204654E463294"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-clean-v4.svg",
+    "sha256": "D3F127B909CB4A473ED2D170DE2E7471FB60153356488D3FA8652D40214F1ED9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v1.md",
+    "sha256": "63B96CBF5095896E79DB5B77258EC3D9D061C1F05044ED9B683D393D52621213"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v1.png",
+    "sha256": "C928EE34F1FBDF79C7948D708F912103AF097F89AF9C2C94BECC0E9B886D3309"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v2.md",
+    "sha256": "1CBE5B596D42114D13B0005B7BB34675517C133E6D9E2C143C34B424FDCE9F58"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v2.png",
+    "sha256": "2DFC0267D9C95C3D0C060BD9EF875B9FF88F3EE9A772F91B886E82FA8876D923"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v3.md",
+    "sha256": "7EB53DEB93A11F614E73ACC21D87561D2C5D5DD955D85314B0D1E77E9B1C12B6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v3.png",
+    "sha256": "AAA25F244D73BA0593598F61BD20BE176B6C521BA8978287A5E21FA98894C79D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v4.md",
+    "sha256": "F20CA363EA361A4C8F360CA03C7AAAC67B238FB8A3B38F21807DC2D1E2B3E8DF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v4.png",
+    "sha256": "10D52BD15859F0C33BBA99E94EB9922EB2C92F7BDCD4F25955083F95F7C6DDB9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-draft-v5.png",
+    "sha256": "BE9FFC31BA630A1AF7CC2A77E977E86990968669617E9E10D7528F6965B6919D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-v6.svg",
+    "sha256": "B03ADE73331CE15175D1938A9CC2BADE73CC32DB4DF234255E903B92D1E13098"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-v7.svg",
+    "sha256": "318AAD9BA93872D961A7FBFB3DAA846D870031671013FDB8419B46BC41ED415C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v5.md",
+    "sha256": "A8842DF7B50356F23D5AEFBFFFBDD8B6FE3E435819290A0DFEF88D8687D01E75"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v5.png",
+    "sha256": "B5821D279DE946902F7045EB8BA53D6A39A2BD9B479624D364F18970CF9C5758"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v6.md",
+    "sha256": "30ECB35F6D0614A04BF16E24CE5CC152DE93FF3DBF124F28517BCE48C0651B5A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v6.png",
+    "sha256": "530FAD779E9D858D850E7AEF14DBFF7FCDB61F9985F6BF33F0B330C35B779ABF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-logo-v3.png",
+    "sha256": "F86BC581D8000D1D50ADB51706B26C69E1FA06A0899EF7556764F4C9A59BAFDD"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-user.svg",
+    "sha256": "F866C00715CA704EE436DCC20937F2F387C0C68710E4F98445159778D6962B3A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-v1.png",
+    "sha256": "746FAB31E055AF9C7418246FB8B3300BF36A963FA49892C3BF8D0376260A7745"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-reception-desk-v2.png",
+    "sha256": "7723DD70E022FF5A97AA837BAEEB087EB39D181080935201752C84653FA94D46"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v3.md",
+    "sha256": "31B9007BF49C51E6213FB123C9674B87E4261DC9A2EB0D9F2E47A539B4131318"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v3.png",
+    "sha256": "84D212C92B4F3DFCF6A907A729DE9C786F3533A06629089EB2048CF5B04D2D60"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v4-candidate.md",
+    "sha256": "D646963A39A0AA504E25A507CB6C2A39A12F112A4127019F8304574CCEC87DD7"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v4-candidate.png",
+    "sha256": "2C19DA4326BF49BD2BF88481635AA7F3B0B5F605AE90855F0BF69D4C185C97F8"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v5-candidate.md",
+    "sha256": "3B5298EA6187B541F0B4BED319D0C3E8A96F2838693F8A69D55232D93F8D69FF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v5-candidate.png",
+    "sha256": "5CA050692D178B7C694316721955E6B6EA2BE2B4556CEF46023C3D22420AE6EC"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-marble-seamless-v2.md",
+    "sha256": "D06F5BB216104BBE2C1BB670FEF69D6EA7D727CB2D8C6260ACCBCBC5BB989BB9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-marble-seamless-v2.png",
+    "sha256": "D507D8EEDF1580B7F0BB18129C8DFE43D8DD2956A3F4ED1640AACCE441DDAD62"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-marble-v1.md",
+    "sha256": "E8C4FE86E87314F4347BAB2BC2989AB3F4DBEA01D9B36DA61467BB36894A5036"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-marble-v1.png",
+    "sha256": "0314BBEC860F453B0DCDBEC70A7728AD1A87C7F6B4205A7C689098F7AAD7C42C"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-unified-10x10-v2.svg",
+    "sha256": "E93BF31280BA50A7147AF6960C9CD2318BB23DBA20DA757375F507F675466C2A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-room-unified-v1.png",
+    "sha256": "DD37E7CEC32037EE8F298A96AE3D25755B2C3550B5FBCD82827FE4CDA386020B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-angle-draft-v4.png",
+    "sha256": "62BB64ACF0E1FE7C158FA7A266B3282181FD98306A09184AE86A9E98F7A14C21"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-applied-v4.svg",
+    "sha256": "E3BEEB0776B88E132004BD45ED87E03F8F586A26C58C80539865D3C51FEE77DB"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-approved-angle-v6.svg",
+    "sha256": "BC0D586232762755AC74FE557A39CBC69BF9B621F7D361D83265D896203EFDE4"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-approved-angle-v7.svg",
+    "sha256": "4DF2BF611AC2B81516466FCCC723AC2047AC4AC41CEF4BC3F3F10F80B81691F6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-approved-v6-preview.png",
+    "sha256": "C687A9411C66C772098FF87AE6619C8FD96B6675BCCEFEDE341DF12ACEE9705B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-approved-v7-preview.png",
+    "sha256": "54C78EEC56C82F5F263C6A456CAB8F33A20080EF8F66121EFB479D767AADCB83"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-clean-v1.svg",
+    "sha256": "3278928CFA8BBA32A790B6BE447CFFBA00A0E89129E54C837C0150D65FE08BEC"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v1.png",
+    "sha256": "D9415189FD319A33350B71E26E0459723C9EA0A2A683CACEC3FD21ADE4B8993A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v2.md",
+    "sha256": "1B4469F1C2E6B9BECE8C0D84FE4D654A196565BCD717C2C0CB56329C41C4A784"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v2.png",
+    "sha256": "C5AAFF3760B2A7878E6A49131FEF1D1E13AB63EA47589752BCB8B77B8428B63E"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-common-grid.md",
+    "sha256": "8EF61A82637A55270E8C0509D234783B595D339D373B580F0A49846D0AF2AF45"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-generated-clean-v8.svg",
+    "sha256": "2622DDDA11F315CA4056AFCA79B895453D60C059D72EF7544DC6B6B67211EFC0"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-generated-v8-preview.png",
+    "sha256": "5BA106D6E65B96CD2542B300FF64FBA0234C636C3420B58D8ECF75FD6DE6DF4E"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-grid-generated-v8.png",
+    "sha256": "4F6A7EB21930580070C7D7179C0235E0139C94BABEA00A0F76B5351233491A6B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-grid-size-preview.jpg",
+    "sha256": "DC90D77F061A2D6C97AB841E1C3038757CF45C7679DA3A31009B58451F4FE5C1"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-grid-styled-v2.svg",
+    "sha256": "2C039CA966878661C28CBB053614332AD28AD6AB6D783229D3540F7F2A19C966"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-grid-textured-v5.svg",
+    "sha256": "FAFB5401B488A1CD1E159969EC6B4E17C7AF3BADF4F6A1CB4EA79439A9157666"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-grid-v5-preview.png",
+    "sha256": "0C4EAFCFB1E04619309267EBE84E994118617DBC774815C297B4E841B1F17BF7"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-inset-preview.jpg",
+    "sha256": "843D46E61261780BF845D102CA8B309187C0C674CF6521944D1E0BB04F666283"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6-preview.jpg",
+    "sha256": "3E599BE64A0330DE66A4AA1F73CB71AFD674C66CF50BE31A040AB125A1D07E95"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6.png",
+    "sha256": "0FB8DB2C382360CB2FBEB110D48C5F43078AB8CB75953F8E481AB721AEDADFCF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6.prompt.md",
+    "sha256": "EA7C95D0E88DACE942619B9BB1270B36FAB88436B5486BFA22194E881421D648"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-parallel-base-v5.md",
+    "sha256": "F1EB7CC6623E7E865126FD9EE79D9C1503EC63B271D9B2103A10DA980BD41CE4"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-parallel-base-v5.png",
+    "sha256": "2733C17F7A16EA643395F161C5456C77487509DE3C3FABFF84AE482B25D68EB9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-redrawn-v3.png",
+    "sha256": "7E65607480380D97CF363597E7303713367113766CA9E459D33C566A9B450BD7"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8-preview.jpg",
+    "sha256": "86EC31F048AD9B379662BE5B92A79A2AC7CB5776BD2006D795405D3CCCBB2A11"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8.png",
+    "sha256": "9A79ED1F4C722FBBC0C486FE4534F10AC3B441BEF1B153B1B970746228EC73A5"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8.prompt.md",
+    "sha256": "07740735A51AB834EA3B6B171F5AE632A4DCA99D164C7161A8ED91B2E7D5A636"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7-preview.jpg",
+    "sha256": "5DD3A101595BC21D963409655165068A9E1901501FAC8EFE1D6671D655613536"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7.png",
+    "sha256": "7EB1056992883FD328C462CE301190F2A5144CB75E662C0314B417337924430D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7.prompt.md",
+    "sha256": "98A283E722C31E94DA3E3E473A15C2526DBBDA168B4AA56A634C42DE20686027"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-sofa-v1.png",
+    "sha256": "387375DB16694F8C86819C9ADA08468A57B2D6F99960E37DBA2DBBD51FC07C64"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-stair-membership-preview.png",
+    "sha256": "18764EB92A592A41D7D2AA44C6AFFE200DEE4A0E48050D54B5C68A1FA52A14E1"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-stair-prompt-preview.png",
+    "sha256": "A182F59378BD4E226C8ED0E0C28712CE0A2EB42F8070237F28F3C255B8AD9B8E"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-stair-third-step-preview.png",
+    "sha256": "8A8807C2B1845552B7C4EB23642832EBDF891CD871E48E49B6716C873D593759"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-2x2-glass-v2.png",
+    "sha256": "561726019ABB992D30F5FE1B786C65F7DBA1EF522EC7D22778FF05D83F8EFC36"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-2x2-v1.png",
+    "sha256": "712246401E00A8940CCA9F4059266CA962DC14424AD82446EC00C0058BB1D9AD"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-applied-preview.png",
+    "sha256": "203C93AF497FE8B0856B7966C64657BADEF31A36A8D12B3C08C55C8B772879BE"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-common-grid-v1.png",
+    "sha256": "97876088C23703149B03130B092B670CF425DFBFB9CEA05CD706D9A2DCE10093"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-common-grid-v2.md",
+    "sha256": "181FF3C8AC9F2B356F39B990BEC2935FCA29652A87835EA0CD63CD2306246B51"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-common-grid-v2.png",
+    "sha256": "0D4EC827B299C1012E49551BD19401539646C18C6DF8DCEA54DB4D8847D22301"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-table-common-grid.md",
+    "sha256": "6FBECB0AFC23BCEC8FCF7C74DADD840784165FA8C4D8D12DE07E032DC2754B19"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-training-room-preview.png",
+    "sha256": "9517B5B54CF52A79635D00A33F2C49276938D63BE0A81A9431CB839C632F6793"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-walls-doors-stairs-v2.png",
+    "sha256": "31E1C9A68342C9B0CFB1392AF0711C50B6EFC9967BA3598F720219083E6631CD"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\cipher-walls-v1.png",
+    "sha256": "1B1C7752502F9D4D94A4B87F971857C1E580EDA201BC105E8CD31734E46C641D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\desk-laptop-v5-preview.jpg",
+    "sha256": "F024273DCAB939A689920C233BED7F99FDC6D900E33AB78937E0EC9233759B83"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\display-v2-game-preview.jpg",
+    "sha256": "4FD6022DDC58068D8A07AECB1B95D3A8BDFC88319C52823EA1CC1E70A1081A4A"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\editor-clean-preview.jpg",
+    "sha256": "1567C791CF911C8254967B34DFB9DB7C4BBC8570DB2350144EC08997B0E4BF47"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\export-room.mjs",
+    "sha256": "93839FD8E7F573B19A3E673F7AC7AED77DBDCDE024663701CBCB260DC461E3DC"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\furniture-common-grid-preview.jpg",
+    "sha256": "967A31041E50A076F3D3FD97DAD682D53CE101777A0365AA5F371981D0258620"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\grid-calibration.json",
+    "sha256": "B1D02BDD503A1C2CB005E547F1A3EBE4FB2E512BF8CB1121121BC0555E27A2DB"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\laptop-v6-preview.jpg",
+    "sha256": "EB6B75F2D647BFB557091502D619E6727F0906A3B947955F021ACC929526B48D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\npc-height-90-preview.jpg",
+    "sha256": "F8D85EB9857F77F9A96FFB12B660BA89FE0C3B9AC05CB5F5B596E4FA9F45ACAF"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\plant-v2-preview.jpg",
+    "sha256": "23772ED0ECE6047026F621EBE49CDE2B913CD5563976C488C2AEBA916D08E26B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\sofa-parallel-base-preview.jpg",
+    "sha256": "D201168C06EB0ADD3229147710775C051508FC6563DDE3F729FC92E8D92C1060"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\sofa-v2-preview.jpg",
+    "sha256": "3A27D9BF9035B2478F99FE5DA807467FBB210FF7FCE1F7DF756C80F55857918D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\table-v2-game-preview.jpg",
+    "sha256": "BEB209330D210C5339BFB3FD1EB6D6C0357225D7C66DBA8B5318FA0B1163A955"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\backplant.png",
+    "sha256": "8F6895C1A724457C8667D8E7BAAAAF9563E28231B4EC1521B32D74ED5CFF76DA"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\brochures.png",
+    "sha256": "9AAAE14E3EBBD72E9960A1D8BF3E498E563D473BE3A1F48DB02A84B3AE4E15A8"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\desk.png",
+    "sha256": "155D539E8AA94E30CE09931F97036F8F6C44F6AD5365B02EDAC33F4A4641D9AC"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\entryrug.png",
+    "sha256": "960F3CFC604A41E76B86EB2AC736BD248E446D1CE15A360D116097E587EF0E41"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\floorplant.png",
+    "sha256": "DDE1576581526CF85FFA5F8083C3FCF7025106FBEF2FC2A9A27617CAC04ECFA2"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\laptop.png",
+    "sha256": "5A7BB8A85E46B7904436B9579FAA0B5E14A81FCCE94901DBBCB7BDA2356D44D6"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\plant.png",
+    "sha256": "D70E8239C3540429588A3ABBCD0C19F57B9018746C5051473354B6B86F006553"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\README.md",
+    "sha256": "B8898CB06C02B1EB85E4FDDA4F655366360E00A6D23AB3F3D7E152525909B199"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\room.png",
+    "sha256": "3A07B12BD35F2785C90CC0AB83867213CA1CA6D09B956A2FB91F9389CCD427A9"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\rug.png",
+    "sha256": "94DB96600C4F270C4CD6DC7F9DA1204BE60C5AFEEC38F81AC3387AF7E9A7AC3D"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\sign.png",
+    "sha256": "7DFCBEA9D9AC4403663B48D18EEF9224AE061AAB5AED5DB7FB25CB01F051594B"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\sofa.png",
+    "sha256": "684F7CD762B5041F4C442119E47629BD960C08178D4FF575BBCBE9F3B7953C72"
+  },
+  {
+    "source": "web\\assets\\interiors\\cipher\\separated-v2\\table.png",
+    "sha256": "E66B27075D06AD571464A5540765A5EBA9DC69CC8FD28A3DB3E492A8651FD50E"
+  },
+  {
+    "source": "web\\assets\\buildings\\CipherBuilding.png",
+    "sha256": "78957868F0F72A551351E03D8ACB30BC205243D0DFBA56641479603906A9D37C"
+  },
+  {
+    "source": "web\\assets\\buildings\\topdown-v1\\CipherBuilding.png",
+    "sha256": "96214A79409947EA9E1F4DD291E6C5F177306A45B0E4FBB4475C152C2A713FD3"
+  },
+  {
+    "source": "web\\assets\\buildings\\topdown-v1\\CipherBuilding-door-v2.png",
+    "sha256": "0A071022B756791E1FE3BFAA5E7CB9B07439A0473D7CA11A665504D9B476DD34"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-agent-k-bottom-dialogue-preview.png",
+    "sha256": "BB78C38181F06B17EBB968F1762C231A3513C8A1DC234411C5D7712F6F64F117"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-agent-k-clean-highlight-preview.png",
+    "sha256": "7AF19D1C51F20D40211434A9A5E195427AA5D6CB2F6637B79FD1EA317705544A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-agent-k-highlight-preview.png",
+    "sha256": "5391860D38BA9C30C0A32969CC91FCB604B12E83124109F2282B379390BACAF9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-agent-k-talk-preview.png",
+    "sha256": "5C47B2DECD5C14E292FA250B5937FBA8907A3EA6EFF65E65B01F3EBC8D2B3ABB"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-agent-k-welcome-preview.png",
+    "sha256": "03D34607F2567B5ACF5599798AACF78F19BB84709385CFE414F6CC689200F89E"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-arena-news-preview.png",
+    "sha256": "83C01F66991068D68A1E559FE6A5CE8E1E7A63E34FBF4A6C221635FBDE7E38AE"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-arena-scroll-preview.png",
+    "sha256": "6A7828A92395A1C94B9FB94EC1EF29D5BACE82202E905A21B071437E440B8E99"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-arena-sidebar-preview.png",
+    "sha256": "FE9F903CBF8575DCE98DA27E810E736B53C94AD322A4F600C50DEFAE4B39C9CF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-common-grid-v1.png",
+    "sha256": "A300B5BC233423A06F53FBC92600E1E57EC06B7AFB24515EC33EF6C3134D8235"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-common-grid-v2.png",
+    "sha256": "64F4735EAB5115C9B7BCCBD58B27A67F2CDCA9055F13627A7774AB2029A0F11C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-common-grid.md",
+    "sha256": "6B6BB5FA369D2BD82DFABE467550750E4BCE0540FAFA804AC696BA3BD7CFEB62"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-exit-prompt-preview.png",
+    "sha256": "CB3EC3230B6BF9ADB4518DD54E2FB642D6505EE44190B838D83A98A7D38AB473"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3-preview.jpg",
+    "sha256": "046EDB75377F0D423187B3AFDC7D6C5C96F0320052BCC6ABD85622ECBF450479"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3.png",
+    "sha256": "155DC200C40F75B5CA32D9CC4C6A177E7721B8B7CB73D022A10FCEF78A041F68"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-grid-v3.prompt.md",
+    "sha256": "F5424C23E9A585A624E866D8EC7CCD40B8DEFB40E32382C5817BCFABA032DAD0"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4-preview.jpg",
+    "sha256": "769EB76AD94E8CA10DC587EAB9E3167DD525E75481488525B2DC5CB7A88219FA"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4.png",
+    "sha256": "13EC47E2AEC4D5038ABF30F2CF93E9813ECB494C29131D2847932AFD734A2BC6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-logo-grid-v4.prompt.md",
+    "sha256": "5AD1E564039F93F31EA044164A911CB9A1310083939DF1EEB1B76756771CC934"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5-preview.jpg",
+    "sha256": "AE42B0AA3FE839E51360185012E20686628D7BADA25BFA4354F45ED0889EC785"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5.png",
+    "sha256": "7BF5C099D9E623CA7F061D2C82DDB1D470E56E95B670D4718CCF64FF83319FB9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-parallel-v5.prompt.md",
+    "sha256": "8EDF22CC6347318D5612E789D0AE3EAACAE1838E8DD7CA293F79234AE7F196B6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-carpet-selection-aligned-preview.jpg",
+    "sha256": "3F205117C0E6E3EDA3D7B3EB82ECA5FBFC275C61CD796A37C7E5A991B44F1189"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-collision-depth-preview.png",
+    "sha256": "CD1742F03584B0057E6D5ECB438388A3A20118F431070F13712F6CD543F3802C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-competition-lobby-preview.png",
+    "sha256": "35441B87402AD812CC56E54ED57DFED5CE3D8364C5318B4D2B05A257B82F74C5"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v1.png",
+    "sha256": "7A354BE4760B761FDAAB83F5C323ACC68CD1A02829B4B4E87FB91482FFF80F13"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v2.md",
+    "sha256": "02A512D431DBA68E37E0BABE2EA4C539125C541BC47759F04BB7E9765F57F066"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid-v2.png",
+    "sha256": "4CE39E09E6984A64382ADB6B47D9D264F4ECDDAFA0BC0EEA070B1B4D8A1775E3"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-cornerDisplay-common-grid.md",
+    "sha256": "3198DBA8B10DE783311B97BEFD872DFBBE269E0F3AB4C6A7391E4DDE10798392"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-display-frame-corner-v1.png",
+    "sha256": "9BF08794F45335B7B4651B2B43353826A835A3E4AE8BD9CB0065B7DACAF9BB34"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-display-frame-corner-v2.png",
+    "sha256": "E6D2051D22DB8BFB812F88430DA73148C3C079B876C4C26C4709C335A89B6399"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-display-frame-left-v1.png",
+    "sha256": "371887339161A58A8D0E75DDC1D58219B3028A83674D06294F2011894CA77FB3"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-entrance-carpet-clean-v2.png",
+    "sha256": "A3051C2ADA4CDA77778C0E04278E2A5311F68D1B28081AF57721EC865B658E57"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-entrance-carpet-user-v3.svg",
+    "sha256": "89270B7F075F9144412F03B9E57AB6B5FA31BAC9C9D61D39BDAE5B9D34DDA5A2"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-entrance-carpet-v1.png",
+    "sha256": "8B582ED77A33F3E509A0C362EE511FFB247A0E0F3F8149816DAFBF209570A701"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-fixed-layout-preview.jpg",
+    "sha256": "2555E0DC6C7D2D491B5500E03B2498740D4E55C71BBFC70E6EAC6A2A15BDADCD"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-furniture-rotation-preview.png",
+    "sha256": "1E46793E05D6E49B6578219E9002E5A91D2B689BCDD517ABC7D1CB80E2BA3876"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-guide-connected-preview.jpg",
+    "sha256": "EB90D154D490A6D2A27783A8D63713C7E6DDD555A29B059C6E388CDDDD9DE5DA"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-highlights-display-preview.jpg",
+    "sha256": "12969BE01B89C7666CFA916337190021BD1BD260735038F784943270568A8E91"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-final-layout-preview.png",
+    "sha256": "176BFCB5ECAAF102523DB3E3F2C2BA2EAB20D84BD19373D843891536FF094FEF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-agent-k-v8.json",
+    "sha256": "397A00F273833AA26E862863ADA8F635E919AD6C0B16F1C6FD142F9B3A22A3B2"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-agent-k-v8.png",
+    "sha256": "971301D93273E482163585CE2AC47F075F44A9490B5FE5B7279445C354E97F8B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v3.md",
+    "sha256": "159F631FC48AA82E279D13C3096A85A07B5B5F9FD1F23BCEDAE3C28E95E51CF9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v3.png",
+    "sha256": "06A943D57A38DB331D346BD27456E075924D95F85CD23F7D9F459632FA85C121"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v4.md",
+    "sha256": "BE2A16155EC8F69B19A6988164A08D4154A9D8D1525D5FBE68F54BDC388B1E50"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v4.png",
+    "sha256": "1CAB88FF4D1B9E89F5A9D7C5680F640AB661E1EF89F512276BC285EEC5BF868F"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v5.md",
+    "sha256": "0410D2A163EBC1C1E4526383F2C96CF80BF6918FA13A100A8360065C0CA207FA"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v5.png",
+    "sha256": "8071036D8287BE8B36348BAB161C9D15587DC37367864E3F2E6941D990DD7AE8"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v6.md",
+    "sha256": "97F184ED99E3465733CE4AC4A426B0336E3F946326568D8B9A5D7144C0315C2C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v6.png",
+    "sha256": "F12290E4469B60349370A685B2293B496570E362A0AF9D27342F71D207214EA8"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v7.md",
+    "sha256": "6CD3EE40809A29F7504F377F32F503F857BDF297C57422502D04351AFBEECB2D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-clean-v7.png",
+    "sha256": "DE2F80ED980051D4B86B806665C1F019E819B695F68DAC0BC2E42A5BBC0B6FD0"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-v1.md",
+    "sha256": "DFE0C5DCD34774A30E4B48553DFD5AC6F1D54862988196ADDBE2E5DA08EF49C4"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-package-v1.png",
+    "sha256": "433D2B91A0E9BE5E732ECBDD89877A2E5E6FBC5390D41C1371C324BCD67C6F07"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-grid.svg",
+    "sha256": "6151A9F11F4FF119B90607215DE3CA7679099C029F044C76C6342C29CD474864"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v1-draft.png",
+    "sha256": "C0A9C436436F6C1BBDCA19B0D58345F8650E42B0FD805F9DBD9F4797F8D9E2EB"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v2-draft.png",
+    "sha256": "030A60C0DBB036F0E1D58911430772ED21BA99F517C8CB1B005EA1C44FF98F63"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v3.png",
+    "sha256": "A7CB03BA90FE329286881000CF712845FE4AA1FC1EABBE86D8031EA9C3E74C37"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v4.png",
+    "sha256": "90C01926F4631FB782351E1874ED9CE99DA497722F880E9B8E80A4508AA1999F"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v5.png",
+    "sha256": "97A04176289766FDD933487AB45304AE562B31C6DF65A3CBB4C50352EF531748"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v7-grid-reference.png",
+    "sha256": "EF40C7662961B58843BD9FAD0BEC4EFA33856DC87AC20B2BF9155201D7863815"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shell-v8-wall-reference.png",
+    "sha256": "DB49441F33C3AE61FC12C526201696B8C9E92170236F917CDE9876BDAD08AA20"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-lobby-shop-format-preview.png",
+    "sha256": "26C16911841DFBA82D3BB6AB04D110E542AF165A9C676A6B12C19914DA219DF9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-1x1-simple-v2.png",
+    "sha256": "B2F5CB4CFC7D295110F887A710198CE27E4DA5821BB34A37B7E858BCB5F477EC"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-1x1-v1.png",
+    "sha256": "023B77FD8E052CE7E0BE003D5DC5D26D9980BA29D65929F57087A5A25EBEEC25"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-applied-preview.png",
+    "sha256": "14E52FEEFBCA30E41F132CFADDC0717080F814A6976EC6203FC6F994529631C8"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v1.png",
+    "sha256": "369B18AFCFE6728A1FFAA9E2CDF6444188A0E7E0A7700B731C47E96A1A330B02"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v2.md",
+    "sha256": "D92F2958678692F44617F46C68308912FC77BE4395A0C952A66D8E79353137EA"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-common-grid-v2.png",
+    "sha256": "07D3CDEA0E0E146138FDA6E2B0E9A4EFCBE47EDAEAD282C30CF7C6EE3306EF11"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-plant-common-grid.md",
+    "sha256": "C7B1CA55107A0EFB80DCA673423C036D80126DF5CEDED64E387C4535D031FEA2"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-player-movement-preview.png",
+    "sha256": "ECC77B381675B6760C7BEFF316C6F5A06FCAC98CEBFCB2DD6770EB40B437B5C6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-center-v10.png",
+    "sha256": "DA193657497287A49A4D69DE870063AE14F9E4324A60661210547954D3617761"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-grid-v11.svg",
+    "sha256": "26FA6314E9FC3CAA24DA91D256095AA46D310C05313456F62C045EBE3B90EEE9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-v8.png",
+    "sha256": "9CFD906A837F67768E1C22D13B28B4907DCB8D109386FB1321C9D54B885F874C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-agent-k-v9.png",
+    "sha256": "0F4750CFEA9CB27521500E174BE63F133FCA97C6E0FA8C3EF60204654E463294"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-clean-v4.svg",
+    "sha256": "D3F127B909CB4A473ED2D170DE2E7471FB60153356488D3FA8652D40214F1ED9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v1.md",
+    "sha256": "63B96CBF5095896E79DB5B77258EC3D9D061C1F05044ED9B683D393D52621213"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v1.png",
+    "sha256": "C928EE34F1FBDF79C7948D708F912103AF097F89AF9C2C94BECC0E9B886D3309"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v2.md",
+    "sha256": "1CBE5B596D42114D13B0005B7BB34675517C133E6D9E2C143C34B424FDCE9F58"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v2.png",
+    "sha256": "2DFC0267D9C95C3D0C060BD9EF875B9FF88F3EE9A772F91B886E82FA8876D923"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v3.md",
+    "sha256": "7EB53DEB93A11F614E73ACC21D87561D2C5D5DD955D85314B0D1E77E9B1C12B6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v3.png",
+    "sha256": "AAA25F244D73BA0593598F61BD20BE176B6C521BA8978287A5E21FA98894C79D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v4.md",
+    "sha256": "F20CA363EA361A4C8F360CA03C7AAAC67B238FB8A3B38F21807DC2D1E2B3E8DF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-common-grid-v4.png",
+    "sha256": "10D52BD15859F0C33BBA99E94EB9922EB2C92F7BDCD4F25955083F95F7C6DDB9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-draft-v5.png",
+    "sha256": "BE9FFC31BA630A1AF7CC2A77E977E86990968669617E9E10D7528F6965B6919D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-v6.svg",
+    "sha256": "B03ADE73331CE15175D1938A9CC2BADE73CC32DB4DF234255E903B92D1E13098"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-grid-v7.svg",
+    "sha256": "318AAD9BA93872D961A7FBFB3DAA846D870031671013FDB8419B46BC41ED415C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v5.md",
+    "sha256": "A8842DF7B50356F23D5AEFBFFFBDD8B6FE3E435819290A0DFEF88D8687D01E75"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v5.png",
+    "sha256": "B5821D279DE946902F7045EB8BA53D6A39A2BD9B479624D364F18970CF9C5758"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v6.md",
+    "sha256": "30ECB35F6D0614A04BF16E24CE5CC152DE93FF3DBF124F28517BCE48C0651B5A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-laptop-v6.png",
+    "sha256": "530FAD779E9D858D850E7AEF14DBFF7FCDB61F9985F6BF33F0B330C35B779ABF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-logo-v3.png",
+    "sha256": "F86BC581D8000D1D50ADB51706B26C69E1FA06A0899EF7556764F4C9A59BAFDD"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-user.svg",
+    "sha256": "F866C00715CA704EE436DCC20937F2F387C0C68710E4F98445159778D6962B3A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-v1.png",
+    "sha256": "746FAB31E055AF9C7418246FB8B3300BF36A963FA49892C3BF8D0376260A7745"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-reception-desk-v2.png",
+    "sha256": "7723DD70E022FF5A97AA837BAEEB087EB39D181080935201752C84653FA94D46"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v3.md",
+    "sha256": "31B9007BF49C51E6213FB123C9674B87E4261DC9A2EB0D9F2E47A539B4131318"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v3.png",
+    "sha256": "84D212C92B4F3DFCF6A907A729DE9C786F3533A06629089EB2048CF5B04D2D60"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v4-candidate.md",
+    "sha256": "D646963A39A0AA504E25A507CB6C2A39A12F112A4127019F8304574CCEC87DD7"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v4-candidate.png",
+    "sha256": "2C19DA4326BF49BD2BF88481635AA7F3B0B5F605AE90855F0BF69D4C185C97F8"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v5-candidate.md",
+    "sha256": "3B5298EA6187B541F0B4BED319D0C3E8A96F2838693F8A69D55232D93F8D69FF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-elevator-grid-v5-candidate.png",
+    "sha256": "5CA050692D178B7C694316721955E6B6EA2BE2B4556CEF46023C3D22420AE6EC"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-marble-seamless-v2.md",
+    "sha256": "D06F5BB216104BBE2C1BB670FEF69D6EA7D727CB2D8C6260ACCBCBC5BB989BB9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-marble-seamless-v2.png",
+    "sha256": "D507D8EEDF1580B7F0BB18129C8DFE43D8DD2956A3F4ED1640AACCE441DDAD62"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-marble-v1.md",
+    "sha256": "E8C4FE86E87314F4347BAB2BC2989AB3F4DBEA01D9B36DA61467BB36894A5036"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-marble-v1.png",
+    "sha256": "0314BBEC860F453B0DCDBEC70A7728AD1A87C7F6B4205A7C689098F7AAD7C42C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-unified-10x10-v2.svg",
+    "sha256": "E93BF31280BA50A7147AF6960C9CD2318BB23DBA20DA757375F507F675466C2A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-room-unified-v1.png",
+    "sha256": "DD37E7CEC32037EE8F298A96AE3D25755B2C3550B5FBCD82827FE4CDA386020B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-angle-draft-v4.png",
+    "sha256": "62BB64ACF0E1FE7C158FA7A266B3282181FD98306A09184AE86A9E98F7A14C21"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-applied-v4.svg",
+    "sha256": "E3BEEB0776B88E132004BD45ED87E03F8F586A26C58C80539865D3C51FEE77DB"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-approved-angle-v6.svg",
+    "sha256": "BC0D586232762755AC74FE557A39CBC69BF9B621F7D361D83265D896203EFDE4"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-approved-angle-v7.svg",
+    "sha256": "4DF2BF611AC2B81516466FCCC723AC2047AC4AC41CEF4BC3F3F10F80B81691F6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-approved-v6-preview.png",
+    "sha256": "C687A9411C66C772098FF87AE6619C8FD96B6675BCCEFEDE341DF12ACEE9705B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-approved-v7-preview.png",
+    "sha256": "54C78EEC56C82F5F263C6A456CAB8F33A20080EF8F66121EFB479D767AADCB83"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-clean-v1.svg",
+    "sha256": "3278928CFA8BBA32A790B6BE447CFFBA00A0E89129E54C837C0150D65FE08BEC"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v1.png",
+    "sha256": "D9415189FD319A33350B71E26E0459723C9EA0A2A683CACEC3FD21ADE4B8993A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v2.md",
+    "sha256": "1B4469F1C2E6B9BECE8C0D84FE4D654A196565BCD717C2C0CB56329C41C4A784"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-common-grid-v2.png",
+    "sha256": "C5AAFF3760B2A7878E6A49131FEF1D1E13AB63EA47589752BCB8B77B8428B63E"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-common-grid.md",
+    "sha256": "8EF61A82637A55270E8C0509D234783B595D339D373B580F0A49846D0AF2AF45"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-generated-clean-v8.svg",
+    "sha256": "2622DDDA11F315CA4056AFCA79B895453D60C059D72EF7544DC6B6B67211EFC0"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-generated-v8-preview.png",
+    "sha256": "5BA106D6E65B96CD2542B300FF64FBA0234C636C3420B58D8ECF75FD6DE6DF4E"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-grid-generated-v8.png",
+    "sha256": "4F6A7EB21930580070C7D7179C0235E0139C94BABEA00A0F76B5351233491A6B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-grid-size-preview.jpg",
+    "sha256": "DC90D77F061A2D6C97AB841E1C3038757CF45C7679DA3A31009B58451F4FE5C1"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-grid-styled-v2.svg",
+    "sha256": "2C039CA966878661C28CBB053614332AD28AD6AB6D783229D3540F7F2A19C966"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-grid-textured-v5.svg",
+    "sha256": "FAFB5401B488A1CD1E159969EC6B4E17C7AF3BADF4F6A1CB4EA79439A9157666"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-grid-v5-preview.png",
+    "sha256": "0C4EAFCFB1E04619309267EBE84E994118617DBC774815C297B4E841B1F17BF7"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-inset-preview.jpg",
+    "sha256": "843D46E61261780BF845D102CA8B309187C0C674CF6521944D1E0BB04F666283"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6-preview.jpg",
+    "sha256": "3E599BE64A0330DE66A4AA1F73CB71AFD674C66CF50BE31A040AB125A1D07E95"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6.png",
+    "sha256": "0FB8DB2C382360CB2FBEB110D48C5F43078AB8CB75953F8E481AB721AEDADFCF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-original-style-v6.prompt.md",
+    "sha256": "EA7C95D0E88DACE942619B9BB1270B36FAB88436B5486BFA22194E881421D648"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-parallel-base-v5.md",
+    "sha256": "F1EB7CC6623E7E865126FD9EE79D9C1503EC63B271D9B2103A10DA980BD41CE4"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-parallel-base-v5.png",
+    "sha256": "2733C17F7A16EA643395F161C5456C77487509DE3C3FABFF84AE482B25D68EB9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-redrawn-v3.png",
+    "sha256": "7E65607480380D97CF363597E7303713367113766CA9E459D33C566A9B450BD7"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8-preview.jpg",
+    "sha256": "86EC31F048AD9B379662BE5B92A79A2AC7CB5776BD2006D795405D3CCCBB2A11"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8.png",
+    "sha256": "9A79ED1F4C722FBBC0C486FE4534F10AC3B441BEF1B153B1B970746228EC73A5"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-refined-v8.prompt.md",
+    "sha256": "07740735A51AB834EA3B6B171F5AE632A4DCA99D164C7161A8ED91B2E7D5A636"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7-preview.jpg",
+    "sha256": "5DD3A101595BC21D963409655165068A9E1901501FAC8EFE1D6671D655613536"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7.png",
+    "sha256": "7EB1056992883FD328C462CE301190F2A5144CB75E662C0314B417337924430D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-table-aligned-v7.prompt.md",
+    "sha256": "98A283E722C31E94DA3E3E473A15C2526DBBDA168B4AA56A634C42DE20686027"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-sofa-v1.png",
+    "sha256": "387375DB16694F8C86819C9ADA08468A57B2D6F99960E37DBA2DBBD51FC07C64"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-stair-membership-preview.png",
+    "sha256": "18764EB92A592A41D7D2AA44C6AFFE200DEE4A0E48050D54B5C68A1FA52A14E1"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-stair-prompt-preview.png",
+    "sha256": "A182F59378BD4E226C8ED0E0C28712CE0A2EB42F8070237F28F3C255B8AD9B8E"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-stair-third-step-preview.png",
+    "sha256": "8A8807C2B1845552B7C4EB23642832EBDF891CD871E48E49B6716C873D593759"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-2x2-glass-v2.png",
+    "sha256": "561726019ABB992D30F5FE1B786C65F7DBA1EF522EC7D22778FF05D83F8EFC36"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-2x2-v1.png",
+    "sha256": "712246401E00A8940CCA9F4059266CA962DC14424AD82446EC00C0058BB1D9AD"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-applied-preview.png",
+    "sha256": "203C93AF497FE8B0856B7966C64657BADEF31A36A8D12B3C08C55C8B772879BE"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-common-grid-v1.png",
+    "sha256": "97876088C23703149B03130B092B670CF425DFBFB9CEA05CD706D9A2DCE10093"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-common-grid-v2.md",
+    "sha256": "181FF3C8AC9F2B356F39B990BEC2935FCA29652A87835EA0CD63CD2306246B51"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-common-grid-v2.png",
+    "sha256": "0D4EC827B299C1012E49551BD19401539646C18C6DF8DCEA54DB4D8847D22301"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-table-common-grid.md",
+    "sha256": "6FBECB0AFC23BCEC8FCF7C74DADD840784165FA8C4D8D12DE07E032DC2754B19"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-training-room-preview.png",
+    "sha256": "9517B5B54CF52A79635D00A33F2C49276938D63BE0A81A9431CB839C632F6793"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-walls-doors-stairs-v2.png",
+    "sha256": "31E1C9A68342C9B0CFB1392AF0711C50B6EFC9967BA3598F720219083E6631CD"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\cipher-walls-v1.png",
+    "sha256": "1B1C7752502F9D4D94A4B87F971857C1E580EDA201BC105E8CD31734E46C641D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\desk-laptop-v5-preview.jpg",
+    "sha256": "F024273DCAB939A689920C233BED7F99FDC6D900E33AB78937E0EC9233759B83"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\display-v2-game-preview.jpg",
+    "sha256": "4FD6022DDC58068D8A07AECB1B95D3A8BDFC88319C52823EA1CC1E70A1081A4A"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\editor-clean-preview.jpg",
+    "sha256": "1567C791CF911C8254967B34DFB9DB7C4BBC8570DB2350144EC08997B0E4BF47"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\export-room.mjs",
+    "sha256": "93839FD8E7F573B19A3E673F7AC7AED77DBDCDE024663701CBCB260DC461E3DC"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\furniture-common-grid-preview.jpg",
+    "sha256": "967A31041E50A076F3D3FD97DAD682D53CE101777A0365AA5F371981D0258620"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\grid-calibration.json",
+    "sha256": "B1D02BDD503A1C2CB005E547F1A3EBE4FB2E512BF8CB1121121BC0555E27A2DB"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\laptop-v6-preview.jpg",
+    "sha256": "EB6B75F2D647BFB557091502D619E6727F0906A3B947955F021ACC929526B48D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\npc-height-90-preview.jpg",
+    "sha256": "F8D85EB9857F77F9A96FFB12B660BA89FE0C3B9AC05CB5F5B596E4FA9F45ACAF"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\plant-v2-preview.jpg",
+    "sha256": "23772ED0ECE6047026F621EBE49CDE2B913CD5563976C488C2AEBA916D08E26B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\sofa-parallel-base-preview.jpg",
+    "sha256": "D201168C06EB0ADD3229147710775C051508FC6563DDE3F729FC92E8D92C1060"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\sofa-v2-preview.jpg",
+    "sha256": "3A27D9BF9035B2478F99FE5DA807467FBB210FF7FCE1F7DF756C80F55857918D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\table-v2-game-preview.jpg",
+    "sha256": "BEB209330D210C5339BFB3FD1EB6D6C0357225D7C66DBA8B5318FA0B1163A955"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\backplant.png",
+    "sha256": "8F6895C1A724457C8667D8E7BAAAAF9563E28231B4EC1521B32D74ED5CFF76DA"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\brochures.png",
+    "sha256": "9AAAE14E3EBBD72E9960A1D8BF3E498E563D473BE3A1F48DB02A84B3AE4E15A8"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\desk.png",
+    "sha256": "155D539E8AA94E30CE09931F97036F8F6C44F6AD5365B02EDAC33F4A4641D9AC"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\entryrug.png",
+    "sha256": "960F3CFC604A41E76B86EB2AC736BD248E446D1CE15A360D116097E587EF0E41"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\floorplant.png",
+    "sha256": "DDE1576581526CF85FFA5F8083C3FCF7025106FBEF2FC2A9A27617CAC04ECFA2"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\laptop.png",
+    "sha256": "5A7BB8A85E46B7904436B9579FAA0B5E14A81FCCE94901DBBCB7BDA2356D44D6"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\plant.png",
+    "sha256": "D70E8239C3540429588A3ABBCD0C19F57B9018746C5051473354B6B86F006553"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\README.md",
+    "sha256": "B8898CB06C02B1EB85E4FDDA4F655366360E00A6D23AB3F3D7E152525909B199"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\room.png",
+    "sha256": "3A07B12BD35F2785C90CC0AB83867213CA1CA6D09B956A2FB91F9389CCD427A9"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\rug.png",
+    "sha256": "94DB96600C4F270C4CD6DC7F9DA1204BE60C5AFEEC38F81AC3387AF7E9A7AC3D"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\sign.png",
+    "sha256": "7DFCBEA9D9AC4403663B48D18EEF9224AE061AAB5AED5DB7FB25CB01F051594B"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\sofa.png",
+    "sha256": "684F7CD762B5041F4C442119E47629BD960C08178D4FF575BBCBE9F3B7953C72"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\interiors\\cipher\\separated-v2\\table.png",
+    "sha256": "E66B27075D06AD571464A5540765A5EBA9DC69CC8FD28A3DB3E492A8651FD50E"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\buildings\\CipherBuilding.png",
+    "sha256": "78957868F0F72A551351E03D8ACB30BC205243D0DFBA56641479603906A9D37C"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\buildings\\topdown-v1\\CipherBuilding.png",
+    "sha256": "96214A79409947EA9E1F4DD291E6C5F177306A45B0E4FBB4475C152C2A713FD3"
+  },
+  {
+    "source": "electron-app\\dist\\win-unpacked\\resources\\web\\assets\\buildings\\topdown-v1\\CipherBuilding-door-v2.png",
+    "sha256": "0A071022B756791E1FE3BFAA5E7CB9B07439A0473D7CA11A665504D9B476DD34"
+  }
+]

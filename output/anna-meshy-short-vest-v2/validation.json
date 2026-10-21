@@ -1,0 +1,26 @@
+{
+  "original_vest_length_and_topology_preserved": true,
+  "upper_torso_width_clearance": 0.14,
+  "fit_method": "scale, translation, smooth depth clearance only",
+  "scale": [
+    0.4699999988079071,
+    0.7799999713897705,
+    0.4099999964237213
+  ],
+  "location": [
+    0.0,
+    -0.014999999664723873,
+    -0.2199999988079071
+  ],
+  "base_and_leaf_vertices_unchanged": true,
+  "clips": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

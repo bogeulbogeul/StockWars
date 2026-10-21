@@ -6,7 +6,7 @@
     transform-origin: 0 0;
     background-color: #c9c1ae;
     /* A continuous stone surface keeps the town readable at overview scale. */
-    background-image: url('../../../assets/ground/topdown-v1/SidewalkMaterial.png');
+    background-image: none;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -21,7 +21,7 @@
 .building-artwork { position: relative; z-index: 1; }
 .town-building-box.player-behind .building-artwork { opacity: .38; }
 .town-urban-tree.player-behind { opacity: .4; }
-.town-bench-prop, .town-billboard-prop, .street-lamp, .town-urban-tree { bottom: auto; }
+.town-bench-prop, .street-lamp, .town-urban-tree { bottom: auto; }
 .town-player-character { bottom: auto; transform: translate(-50%, -100%); }
 /* Keep the small raster character outline distinct at town display scale. */
 .town-viewport .town-char-body image {
@@ -52,30 +52,13 @@
 .town-water-ripple { stroke: #d5ffff; stroke-width: 6; animation: town-water-ripple 1.8s ease-out infinite; }
 @keyframes town-water-flow { to { stroke-dashoffset: -56; } }
 @keyframes town-water-ripple { from { transform: scale(.35); opacity: .85; } to { transform: scale(1.7); opacity: 0; } }
-.town-information-screen.billboard-screen-frame {
-    left: 3.4%; top: 8.8%; width: 93%; height: 62%; box-sizing: border-box;
-    padding: 5px 8px 3px; gap: 3px; border-radius: 2px;
-    display: grid; grid-template-rows: 13px 16px minmax(0, 1fr) 16px;
-    background: linear-gradient(135deg, #102c42, #081624); color: #e2f3fa;
-    box-shadow: inset 0 0 20px #3fced21a;
-}
-.town-board-heading { display: flex; align-items: center; gap: 5px; border-bottom: 1px solid #386074; padding-bottom: 2px; }
-.town-information-screen .live-title { font-size: 10px; line-height: 11px; color: #79e4d7; letter-spacing: .6px; }
-.town-board-dot { width: 6px; height: 6px; border-radius: 50%; background: #79e4d7; }
-.town-information-screen .news-badge { align-self: flex-start; margin: 0; padding: 1px 5px; font-size: 10px; line-height: 12px; color: #ffdb86; background: #ffdb8615; }
-.town-information-screen .news-body-text { margin: 0; min-height: 0; font-size: 12px; font-weight: 600; line-height: 15px; color: #f0f6ff; display: block; overflow: hidden; overflow-wrap: anywhere; }
-.town-board-copy { display: block; }
-.town-board-copy.is-scrolling { animation: town-board-copy-scroll var(--board-scroll-duration, 12s) linear infinite alternate; }
-@keyframes town-board-copy-scroll { 0%, 20% { transform: translateY(0); } 80%, 100% { transform: translateY(var(--board-scroll-distance)); } }
-.town-board-ticker { margin: 0; padding: 2px 0 0; border-top: 1px solid #386074; font-size: 10px; line-height: 12px; color: #79e4d7; white-space: nowrap; overflow: hidden; }
-.town-information-screen .cipher-index-value { font-size: inherit; line-height: inherit; min-width: 0; padding: 0; }
 @media (prefers-reduced-motion: reduce) {
     .town-water-spark, .town-water-jet, .town-water-ripple { animation: none; }
     .town-water-ripple { opacity: .45; }
 }
 .town-ground-platform {
     top: 1270px; bottom: auto; height: 310px; z-index: 0;
-    background: url('../../../assets/ground/TownSidewalkRoad.png') left top / 768px 310px repeat-x;
+    background: transparent;
     border-bottom: 18px solid #c4bba7;
 }
 .town-ground-platform::before {

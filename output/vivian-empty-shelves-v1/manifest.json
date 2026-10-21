@@ -1,0 +1,12 @@
+{
+  "status": "Merchandise removed from room model; game not changed",
+  "removed_objects": 96,
+  "remaining_shelf_units": 2,
+  "preserved": [
+    "Shelf geometry and positions",
+    "Counter",
+    "Wall flower",
+    "Room shell"
+  ],
+  "validation": "No Goods_ objects remain; exactly two shelf units preserved"
+}

@@ -1,0 +1,14 @@
+{
+  "style_reference": "cipher-exterior-clock-v1/front-right.png",
+  "style": "Native smooth blue curved roof, ivory walls and cream rounded trim",
+  "home_details": [
+    "Single arched wood door",
+    "Two arched front windows",
+    "Round front attic window",
+    "Warm matte cement entrance",
+    "Windowless rear"
+  ],
+  "game_width": 320,
+  "mesh_count": 55,
+  "notes": "Original HomeBuilding.glb and interior assets retained. Door is static, not animated."
+}

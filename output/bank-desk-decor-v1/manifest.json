@@ -1,0 +1,11 @@
+{
+  "status": "desktop prop models and bank placement preview; game integration pending",
+  "props": [
+    "leather desk mat",
+    "hollow pen holder with pens and quill",
+    "brass service bell",
+    "open wooden document tray with papers"
+  ],
+  "desk_top_z": 0.79,
+  "interaction": "decorative meshes only, bell and documents not wired"
+}

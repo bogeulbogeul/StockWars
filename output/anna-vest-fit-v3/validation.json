@@ -1,0 +1,9 @@
+{
+  "Anna_BaseBody_unchanged": true,
+  "Anna_PlumpLeaf_unchanged": true,
+  "glb_meshes": [
+    "Anna_BaseBody",
+    "Anna_PlumpLeaf",
+    "Anna_Vest"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "basis": "same source divisor 1.95 as current game; room unit=100 game units assumption",
+  "chair_seat_front_y": 0.915,
+  "counter_rear_y": 1.0,
+  "central_counter_rear_y": 0.3,
+  "central_seat_gap": 0.615,
+  "central_arm_gap": 0.73,
+  "note": "counter outer wings extend to y=1; bounding boxes overstate central overlap",
+  "crab_pose_depth": 0.822586178779602,
+  "route_samples": [
+    {
+      "x": 1.2,
+      "y": 0.6,
+      "intersections": []
+    },
+    {
+      "x": 0.9,
+      "y": 0.6,
+      "intersections": []
+    },
+    {
+      "x": 0.65,
+      "y": 0.6,
+      "intersections": [
+        "Desk_Leather_Mat"
+      ]
+    },
+    {
+      "x": 0.4,
+      "y": 0.6,
+      "intersections": [
+        "Desk_Leather_Mat"
+      ]
+    },
+    {
+      "x": 0.2,
+      "y": 0.6,
+      "intersections": [
+        "Desk_Leather_Mat"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0.6,
+      "intersections": [
+        "Desk_Leather_Mat"
+      ]
+    }
+  ],
+  "seated_triangle_intersections": [
+    "Executive_Headrest_Cushion",
+    "Executive_High_Back_Shell",
+    "Executive_Lumbar_Cushion",
+    "Executive_Mid_Back_Cushion",
+    "Executive_Seat"
+  ],
+  "result": "sampled central crab route intersects furniture; seated pose also intersects back cushions",
+  "runtime": "bank has no registered chair interaction; actual input/animation transition not verified"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "P1 model draft; user visual approval and game integration pending",
+  "reference": "output/bus-stop-multiview-v1/front.png",
+  "style": "Smooth matte geometry matching current village buildings",
+  "preserved": "Terracotta tiled roof, honey timber shelter, bench, cream platform, bus sign and lantern",
+  "mesh_count": 129,
+  "game_modified": false
+}

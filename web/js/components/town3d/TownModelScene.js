@@ -98,11 +98,6 @@ export class TownModelScene {
                 });
             }
             this.scene.add(model);
-            const label = document.createElement('span');
-            label.className = 'town-model-label';
-            label.textContent = definition.name;
-            this.layer.append(label);
-            this.labels.push({ label, definition });
         }));
         this.loadedCount = results.filter(result => result.status === 'fulfilled').length;
         if (this.loadedCount !== definitions.length) {
@@ -134,7 +129,7 @@ export class TownModelScene {
         if (!this.renderer || this.town.containerEl.classList.contains('hidden')) return;
         this.resize();
         const { cameraX, cameraY } = this.town.playerController;
-        const preview = document.body.classList.contains('ui-paused');
+        const preview = document.body.classList.contains('town-model-mode');
         if (preview && !this.previewCameraOrigin) this.previewCameraOrigin = { x: cameraX, y: cameraY };
         const followPlayer = this.player && this.player.state !== 'loading';
         const x = followPlayer ? this.town.playerController.charPosX

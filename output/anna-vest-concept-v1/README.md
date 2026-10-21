@@ -1,0 +1,1 @@
+Anna vest concept for Meshy image-to-3D. Isolated olive open sleeveless vest, rounded panels and openings, short broad fairy proportions. References: anna-tpose-v2/front.png (garment), anna-base-face-v7/front.png (body proportions). Generated with image_gen. Concept only; no mesh or game integration.

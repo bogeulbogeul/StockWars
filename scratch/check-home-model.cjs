@@ -25,9 +25,11 @@ const server = http.createServer((req, res) => {
         await page.goto('http://127.0.0.1:8097/');
         await page.waitForFunction(() => window.stockWarsApp?.townModelScene?.loadedCount >= 20, null, { timeout: 90000 });
         const save = await page.evaluate(() => JSON.stringify(localStorage));
-        await page.evaluate(() => {
+        await page.evaluate(async () => {
+            const { TOWN_MODEL_BUILDINGS } = await import('/js/data/townModelBuildings.js');
+            const home = TOWN_MODEL_BUILDINGS.find(b => b.id === 'home_office_tower');
             const player = window.stockWarsApp.townStage.playerController;
-            player.charPosX = 350; player.charPosY = 765;
+            player.charPosX = home.x + (home.entranceOffsetX || 0); player.charPosY = home.y + 65;
         });
         await page.keyboard.press('f');
         await page.waitForFunction(() => window.stockWarsApp.homeModelScene?.player?.state === 'idle', null, { timeout: 90000 });
@@ -41,6 +43,15 @@ const server = http.createServer((req, res) => {
         assert.equal(state.background, 0);
         assert(!state.parts.includes('Wall_Front'));
         assert(state.parts.includes('Entrance_Floor') && state.textures);
+        assert(await page.evaluate(() => {
+            const floor = window.stockWarsApp.homeModelScene.room.getObjectByName('Floor');
+            let solid = false;
+            floor.traverse(obj => {
+                if (obj.isMesh && ![obj.material].flat().some(mat => mat.map)
+                    && obj.geometry.attributes.position.count > 24) solid = true;
+            });
+            return solid;
+        }));
         await page.screenshot({ path: 'scratch/home-cement-entry-game.png' });
         const rotation = await page.evaluate(() => window.stockWarsApp.homeModelScene.roomCamera.targetYaw);
         await page.keyboard.press('e');

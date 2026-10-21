@@ -1,0 +1,15 @@
+{
+  "duration_seconds": 1,
+  "clips": [
+    {
+      "name": "Sidestep_Right",
+      "loop_error": 0.0
+    },
+    {
+      "name": "Sidestep_Left",
+      "loop_error": 0.0
+    }
+  ],
+  "maximum_arm_edge_error": 8.299636932232457e-08,
+  "torso_displacement": 0
+}

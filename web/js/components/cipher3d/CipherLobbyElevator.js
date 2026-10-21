@@ -15,16 +15,22 @@ export function addLobbyElevator(room, box) {
         group.add(mesh);
         return mesh;
     };
-    part('surround', [168, 224, 19], [0, 112, 11], cream);
-    part('recess', [142, 194, 7], [0, 97, 24], darkBlue);
+    // Slim separate jambs replace the old solid white backing slab.
+    part('recess', [140, 194, 5], [0, 97, 6], darkBlue);
     for (const side of [-1, 1]) {
-        part('door', [66, 184, 5], [side*34, 93, 30], 0x9bacb9);
-        part('door-inlay', [2, 139, 1], [side*48, 98, 33], 0xc8d2d7);
+        part('jamb', [12, 200, 22], [side*75, 100, 14], blue);
+        part('inner-trim', [3, 188, 4], [side*66, 95, 18], cream);
+        part('door', [62, 184, 5], [side*32, 94, 12], 0xb8c5cd);
+        part('door-edge', [2, 179, 1], [side*3, 94, 15], 0x8d9fae);
     }
-    part('center-seam', [2, 185, 1], [0, 93, 33], darkBlue);
-    part('threshold', [158, 3, 34], [0, 1.5, 25], 0x8a9bab);
-    part('indicator', [65, 18, 3], [0, 207, 22], darkBlue);
-    part('call-panel', [21, 51, 5], [-105, 103, 13], blue);
+    part('header', [162, 34, 22], [0, 207, 14], blue);
+    part('header-accent', [122, 2, 2], [0, 192, 26], cream);
+    part('center-seam', [2, 183, 1], [0, 94, 15], darkBlue);
+    part('threshold', [152, 3, 24], [0, 1.5, 12], 0x8d9fae);
+    part('threshold-track', [127, 1, 2], [0, 3.1, 16], darkBlue);
+    part('indicator', [58, 21, 3], [0, 208, 26], darkBlue);
+    // Place the controls on the entrance side, visible past the door frame.
+    part('call-panel', [24, 58, 6], [104, 112, 8], blue);
     const arrow = (name, x, y, z, direction, size, color) => {
         const shape = new THREE.Shape();
         shape.moveTo(-size, -direction*size/2);
@@ -37,10 +43,15 @@ export function addLobbyElevator(room, box) {
         mesh.position.set(x,y,z);
         group.add(mesh);
     };
-    for (const [y, direction] of [[115,1],[92,-1]]) {
-        part('call-button', [14, 16, 3], [-105,y,17], cream);
-        arrow(direction === 1 ? 'elevator-call-up' : 'elevator-call-down', -105,y,18.6,direction,4,darkBlue);
+    for (const [y, direction] of [[125,1],[100,-1]]) {
+        const button = new THREE.Mesh(new THREE.CylinderGeometry(8,8,3,24),
+            new THREE.MeshStandardMaterial({ color:cream,roughness:.8 }));
+        button.name = direction === 1 ? 'elevator-up-button' : 'elevator-down-button';
+        button.rotation.x = Math.PI/2;
+        button.position.set(104,y,13);
+        group.add(button);
+        arrow(direction === 1 ? 'elevator-call-up' : 'elevator-call-down', 104,y,14.6,direction,4,darkBlue);
     }
-    arrow('elevator-indicator-up', -11,207,23.6,1,5,0xbadbc8);
-    part('floor-one', [2.5, 10, 1], [11,207,23.6], cream);
+    arrow('elevator-indicator-up', -11,208,27.6,1,5,0xbadbc8);
+    part('floor-one', [3, 12, 1], [10,208,27.6], cream);
 }

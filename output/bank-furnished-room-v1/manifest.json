@@ -1,0 +1,87 @@
+{
+  "status": "furnished room model; game runtime integration pending",
+  "placements": [
+    {
+      "asset": "Waiting_Sofa",
+      "source": "bank-sofa-square-seat-v4/Bank-sofa-native.blend",
+      "location": [
+        -3.3,
+        -0.8,
+        0.01
+      ],
+      "rotation_z": 1.5707963267948966,
+      "scale": 1.22
+    },
+    {
+      "asset": "Vault_Safe",
+      "source": "bank-safe-hinges-v2/Bank-safe.blend",
+      "location": [
+        2.7,
+        2.4,
+        0.024
+      ],
+      "rotation_z": 0,
+      "scale": 1.1
+    },
+    {
+      "asset": "Arched_Window",
+      "source": "bank-arched-window-v1/Bank-arched-window.blend",
+      "location": [
+        3.99,
+        -0.35,
+        0.94
+      ],
+      "rotation_z": -1.5707963267948966,
+      "scale": 1.03
+    }
+  ],
+  "bounds": {
+    "Waiting_Sofa": {
+      "min": [
+        -3.834359884262085,
+        -1.9382600784301758,
+        0.027079999446868896
+      ],
+      "max": [
+        -2.8302998542785645,
+        0.3382600247859955,
+        0.8640000224113464
+      ]
+    },
+    "Vault_Safe": {
+      "min": [
+        2.0840001106262207,
+        1.802150011062622,
+        0.024000003933906555
+      ],
+      "max": [
+        3.315999984741211,
+        2.7850000858306885,
+        1.6245001554489136
+      ]
+    },
+    "Arched_Window": {
+      "min": [
+        3.8123250007629395,
+        -0.7620000243186951,
+        0.9106450080871582
+      ],
+      "max": [
+        4.07497501373291,
+        0.06200001388788223,
+        2.4437999725341797
+      ]
+    }
+  },
+  "validation": [
+    "finite transformed bounds",
+    "central approach corridor clear of new furniture",
+    "arched opening cut in right wall"
+  ],
+  "preserved": [
+    "existing desk",
+    "executive chair",
+    "gold sprout wall mark",
+    "desktop props"
+  ]
+}

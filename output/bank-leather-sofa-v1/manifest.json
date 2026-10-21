@@ -1,0 +1,14 @@
+{
+  "status": "armless single-seat leather sofa; game integration pending",
+  "seat_top": 0.54,
+  "height": 1.204,
+  "placement": [
+    0,
+    1.25,
+    0.024
+  ],
+  "desk_front_clearance": 0.34,
+  "rear_wall_clearance": 1.09,
+  "units": "temporary model units; character reference height 1.0",
+  "validation": "static placement only; sitting/contact review pending"
+}

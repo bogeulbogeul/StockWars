@@ -1,0 +1,23 @@
+{
+  "fixed_root_vertices": 329,
+  "root_max_drift": 0,
+  "loop_error": 0,
+  "walk_preserved": true,
+  "actions": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Walk_InPlace"
+  ],
+  "bones": [
+    "Root",
+    "Body",
+    "Arm.L",
+    "Arm.R",
+    "Head",
+    "Leaf_Stem",
+    "Leaf_Tip",
+    "Leg.L",
+    "Leg.R"
+  ]
+}

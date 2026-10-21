@@ -1,0 +1,11 @@
+{
+  "name": "포포리 나무",
+  "status": "P1 fruit design accepted by user; applied to Popori tree model; game integration pending",
+  "approved_fruit_model": "Popori-fruit.glb",
+  "tree_model": "Popori-tree-fruit.glb",
+  "tree_preview": "tree-preview.png",
+  "fruit_count": 6,
+  "design": "Refined rounded honey peach fruit; close-fitting mint calyx; shorter stem; tapered fine luminous seams with clean ends",
+  "game_modified": false,
+  "mechanics_added": false
+}

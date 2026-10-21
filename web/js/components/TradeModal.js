@@ -417,7 +417,7 @@ export class TradeModal {
         if (this.btnBuyExecute) {
             this.btnBuyExecute.disabled = !!tutorialError;
             this.btnBuyExecute.title = tutorialError || '';
-            this.btnBuyExecute.textContent = tutorialError ? '안나 추천 종목을 선택해 주세요' : this.isShortMode ? '공매도 진입 (SHORT)' : '매수 (BUY)';
+            this.btnBuyExecute.textContent = tutorialError ? '모아 추천 종목을 선택해 주세요' : this.isShortMode ? '공매도 진입 (SHORT)' : '매수 (BUY)';
         }
         const preview = this.callbacks.getSellPreview?.(this.selectedStockId, this.tradeQty, this.orderTypeInput.value === 'limit' ? Number(this.limitPriceInput.value) : null);
         if (this.sellOrderPreview) {

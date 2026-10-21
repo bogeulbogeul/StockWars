@@ -1,0 +1,20 @@
+{
+  "status": "desk model and room preview; game integration pending",
+  "dimensions": [
+    3.76,
+    1.12,
+    0.79
+  ],
+  "placement": [
+    0,
+    0.35,
+    0
+  ],
+  "units": "temporary model units, character height assumed 1.0",
+  "side_clearance": 2.12,
+  "rear_clearance": 1.76,
+  "staff_bay_width": 2.6,
+  "shape": "shallow gentle U, short rounded returns, open rear, no countertop decorations",
+  "includes": "desk only, no loose tabletop props or chair",
+  "validation": "side/rear static clearances; user and character contact review pending"
+}

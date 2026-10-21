@@ -1,0 +1,31 @@
+{
+  "status": "Desk produced; user art review and game integration pending",
+  "dimensions": [
+    2.8,
+    1.02,
+    0.97
+  ],
+  "units": "temporary room modeling units",
+  "rear_knee_bay_width": 1.45,
+  "underside_height": 0.86,
+  "counter_anchor": "Application_Surface_Anchor",
+  "counter_height": 0.97,
+  "desk_room_position": [
+    0,
+    0.92,
+    0.022
+  ],
+  "chair_room_position": [
+    0,
+    1.85,
+    0.022
+  ],
+  "seat_to_counter_height": 0.405,
+  "pending": [
+    "Anna seated pose clearance",
+    "interactive application form",
+    "game integration"
+  ],
+  "props": false,
+  "finite_vertices": true
+}

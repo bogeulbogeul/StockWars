@@ -1,0 +1,16 @@
+{
+  "localized_front_back_profile_smoothing": true,
+  "maximum_y_adjustment": 0.008086221632318131,
+  "x_z_materials_unchanged": true,
+  "base_and_leaf_vertices_unchanged": true,
+  "clips": [
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "motion": "adopted Crab_Left v4",
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-crab-walk-v4\\somangi-crab-walk.blend",
+  "character_height": 1.0,
+  "scale_assumption": "100 game units per pub model unit; pub runtime not integrated",
+  "geometry": "evaluated animated meshes vs actual counter/stool meshes using triangle BVH",
+  "results": [
+    {
+      "y": 0.3,
+      "samples": 97,
+      "intersection_count": 0,
+      "hits": [],
+      "conservative_gap_to_counter_or_stool_band": 0.0392058789730072
+    }
+  ],
+  "runtime_auto_transition_and_collision": "not tested: pub is not installed"
+}

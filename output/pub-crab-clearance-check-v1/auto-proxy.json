@@ -1,0 +1,65 @@
+{
+  "warning": "Proxy collider only. Pub runtime and actual collision are not installed.",
+  "radius": 22,
+  "scale": 100,
+  "results": [
+    {
+      "direction": -1,
+      "transitions": [
+        {
+          "x": 0.99,
+          "auto": true
+        },
+        {
+          "x": -0.01,
+          "auto": false
+        },
+        {
+          "x": -0.46,
+          "auto": true
+        },
+        {
+          "x": -1.46,
+          "auto": false
+        },
+        {
+          "x": -1.91,
+          "auto": true
+        },
+        {
+          "x": -2.91,
+          "auto": false
+        }
+      ]
+    },
+    {
+      "direction": 1,
+      "transitions": [
+        {
+          "x": -2.99,
+          "auto": true
+        },
+        {
+          "x": -1.99,
+          "auto": false
+        },
+        {
+          "x": -1.54,
+          "auto": true
+        },
+        {
+          "x": -0.54,
+          "auto": false
+        },
+        {
+          "x": -0.09,
+          "auto": true
+        },
+        {
+          "x": 0.91,
+          "auto": false
+        }
+      ]
+    }
+  ]
+}

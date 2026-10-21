@@ -1,0 +1,14 @@
+{
+  "samples": 97,
+  "leg_swing_degrees": 24,
+  "arm_swing_degrees": 18,
+  "cycle_seconds": 0.75,
+  "floor_penetration": 0.002550065517425537,
+  "support_gap": 0.0006799101829528809,
+  "leg_edge_error": 2.615966916558188e-07,
+  "belly_shape_error": 7.450580596923828e-09,
+  "loop_error": 0.0,
+  "clips": [
+    "Walk_InPlace"
+  ]
+}

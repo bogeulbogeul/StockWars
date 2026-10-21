@@ -1,0 +1,19 @@
+{
+  "rest_meshes_unchanged": true,
+  "bones": 7,
+  "actions": [
+    "Idle",
+    "Walk_InPlace"
+  ],
+  "rigid_vest_body_weight": true,
+  "ground_max_error": 2.218014660826384e-11,
+  "loop_vertex_error": 0.0,
+  "normalized_weights": true,
+  "reimport_actions": [
+    "Idle",
+    "Walk_InPlace"
+  ],
+  "reimport_bones": 7,
+  "somangi_limb_rotation_quaternion_max_error": 3.5762786865234375e-07,
+  "cycle_seconds": 0.75
+}

@@ -1,0 +1,9 @@
+{
+  "shape": "straight rounded rectangle, no rear wings",
+  "counter_rear_y": 0.3,
+  "seat_front_y": 0.915,
+  "gap": 0.615,
+  "props_shift_y": -0.3,
+  "chair_unchanged": true,
+  "status": "room model update; runtime seating pending"
+}

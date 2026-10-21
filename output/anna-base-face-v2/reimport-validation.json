@@ -1,0 +1,14 @@
+{
+  "Anna_Clean_Cream": {
+    "normal": false,
+    "basecolor_texture": false
+  },
+  "Anna_Clean_Olive": {
+    "normal": true,
+    "basecolor_texture": true
+  },
+  "Anna_Face_CalmSmile": {
+    "normal": false,
+    "basecolor_texture": true
+  }
+}

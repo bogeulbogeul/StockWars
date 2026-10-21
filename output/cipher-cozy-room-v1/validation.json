@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "both_arch_openings_clear": true,
+  "walls_above_doors_solid": true,
+  "floor_top": 0.0,
+  "no_studio_objects_in_glb": true
+}

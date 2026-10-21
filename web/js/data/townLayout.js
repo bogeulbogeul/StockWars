@@ -28,7 +28,6 @@ export function townEntrance(object) {
 }
 export const TOWN_PROP_POSITIONS = {
     bench_west: 2740,
-    billboard_central: 5440,
     bench_east: 7020
 };
 

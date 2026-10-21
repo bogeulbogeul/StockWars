@@ -36,10 +36,12 @@ const server = http.createServer((req, res) => {
                     || !room.getObjectByName(`waiting-planter-${area.side}`)) throw Error('Missing waiting furniture');
                 if (lobbyCanStand(area.benchX, area.benchZ) || lobbyCanStand(area.plantX, area.plantZ)) throw Error('Furniture collision missing');
             }
-            for (const x of [-450,450]) {
+            for (const x of [-LOBBY.width/2+50,LOBBY.width/2-50]) {
                 if (!lobbyCanStand(x,-100) || !nearbyLobbyDoor(x,-100)) throw Error('Door access blocked');
             }
-            if (!lobbyCanStand(0,245) || !lobbyCanStand(400,245)) throw Error('Entrance/elevator approach blocked');
+            if (!lobbyCanStand(LOBBY.spawn.x,LOBBY.spawn.z)
+                || !lobbyCanStand(LOBBY.width/2-25,169)) throw Error('Entrance/former elevator area blocked');
+            if (room.getObjectByName('entrance-elevator')) throw Error('Retired elevator still visible');
             const board = room.userData.marketBoard;
             const { marketEngine } = await import('/js/engine/marketEngine.js');
             const original = [...marketEngine.stocks.values()][0];
@@ -58,6 +60,7 @@ const server = http.createServer((req, res) => {
                 frames: !!room.getObjectByName('door-training-frame') && !!room.getObjectByName('door-competition-frame') };
         });
         assert.deepEqual(fixtures, { index: true, updated: true, training: true, competition: true, frames: true });
+        const layout = await page.evaluate(async () => (await import('/js/data/cipherLobbyRoom.js')).LOBBY);
         await page.screenshot({ path: 'scratch/cipher-lobby-board-doors.png' });
         const position = () => page.evaluate(() => {
             const s = window.stockWarsApp.cipherLobbyScene;
@@ -69,21 +72,22 @@ const server = http.createServer((req, res) => {
         await page.evaluate(() => { for (let i=0; i<100; i++) window.stockWarsApp.cipherLobbyScene.update(.05); });
         await page.keyboard.up('w');
         const desk = await position();
-        assert(desk.z >= -63 && desk.z < -50, JSON.stringify(desk));
+        const deskFront = layout.desk.z + layout.desk.depth/2 + layout.radius;
+        assert(desk.z >= deskFront && desk.z < deskFront+13, JSON.stringify(desk));
         await page.keyboard.down('d');
         await page.evaluate(() => { for (let i=0; i<40; i++) window.stockWarsApp.cipherLobbyScene.update(.05); });
         await page.keyboard.up('d');
         // Pass between the desk and the new waiting bench before testing the back wall.
-        await page.evaluate(() => { window.stockWarsApp.cipherLobbyScene.controller.charPosX = 210; });
+        await page.evaluate(() => { window.stockWarsApp.cipherLobbyScene.controller.charPosX = 190; });
         await page.keyboard.down('w');
         await page.evaluate(() => { for (let i=0; i<100; i++) window.stockWarsApp.cipherLobbyScene.update(.05); });
         await page.keyboard.up('w');
-        assert((await position()).z >= -358);
-        assert((await position()).z < -340);
+        assert((await position()).z >= -layout.depth/2+layout.radius);
+        assert((await position()).z < -layout.depth/2+layout.radius+18);
         await page.keyboard.down('d');
         await page.evaluate(() => { for (let i=0; i<100; i++) window.stockWarsApp.cipherLobbyScene.update(.05); });
         await page.keyboard.up('d');
-        assert((await position()).x <= 478);
+        assert((await position()).x <= layout.width/2-layout.radius);
         await page.keyboard.press('Escape');
         await page.waitForFunction(() => !window.stockWarsApp.cipherLobbyScene.active);
         assert(await page.locator('#townStageContainer').isVisible());

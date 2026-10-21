@@ -1,0 +1,21 @@
+{
+  "source": "user-painted Anna.glb, 2026-10-20 02:19",
+  "vertices": 117838,
+  "cream_srgb": [
+    1.0,
+    0.8823530077934265,
+    0.6313725709915161
+  ],
+  "olive_srgb": [
+    0.4235294461250305,
+    0.4686274826526642,
+    0.16862745583057404
+  ],
+  "retouch_loop_count": 48110,
+  "native_blender_texture_bake": true,
+  "geometry_preserved": true,
+  "uv_preserved": true,
+  "face_kept_blank": true,
+  "rig_added": false,
+  "normal_roughness_maps_preserved": true
+}

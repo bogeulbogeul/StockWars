@@ -1,0 +1,9 @@
+{
+  "status": "P1 design draft; final user visual review and game integration pending",
+  "design": "Compact bright green untiered canopy, short warm matte trunk, five small grounded roots, no magical ornaments",
+  "reference": "output/world-tree-clean-v1/front.png",
+  "game_modified": false,
+  "mesh_count": 7,
+  "trunk_base_z": -0.08,
+  "polygon_count": 13534
+}

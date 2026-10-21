@@ -1,0 +1,28 @@
+{
+  "status": "Cabinet produced; user art review and game integration pending",
+  "dimensions": [
+    0.9,
+    0.7,
+    0.86
+  ],
+  "units": "temporary office modeling units",
+  "position": [
+    1.3,
+    2.3,
+    0.022
+  ],
+  "chair_side_clearance": 0.455,
+  "back_wainscot_clearance": 0.15,
+  "drawer_count": 3,
+  "drawer_slide_axis": "Blender -Y",
+  "drawer_preview_travel": 0.22,
+  "features": [
+    "separate drawer boxes",
+    "sage fronts",
+    "wood top",
+    "cream frame",
+    "round wood knobs"
+  ],
+  "anna_source": "anna-meshy-short-vest-v5",
+  "game_changed": false
+}

@@ -1,0 +1,4 @@
+{
+  "fix": "Separated coplanar front surfaces of door-window crossbars by 0.0015 source units",
+  "preserved": "Crossbar shape, color, round glass, all other exterior geometry"
+}

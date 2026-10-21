@@ -21,6 +21,5 @@
     pointer-events: none;
     z-index: 6;
 }
-body.ui-paused #townViewport > .home-entry-hint { visibility: visible !important; }
 body.home-model-active { background: #000 !important; }
 body.home-model-active #isoOfficeStage { display: none !important; }

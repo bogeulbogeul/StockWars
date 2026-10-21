@@ -8,7 +8,8 @@ export function createSomangiControls(layer, play, blocked) {
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
         const action = event.code === 'Digit1' || event.key === '1' ? 'wave'
             : event.code === 'Digit2' || event.key === '2' ? 'eat'
-                : event.code === 'Space' || event.key === ' ' ? 'jump' : null;
+                : event.code === 'Digit3' || event.key === '3' ? 'crab'
+                    : event.code === 'Space' || event.key === ' ' ? 'jump' : null;
         if (action && play(action)) event.preventDefault();
     });
     return hint;

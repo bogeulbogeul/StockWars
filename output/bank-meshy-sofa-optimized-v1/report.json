@@ -1,0 +1,18 @@
+{
+  "source_triangles": 182738,
+  "optimized_triangles": 45683,
+  "reduction_percent": 75.0,
+  "source_bytes": 11818736,
+  "optimized_bytes": 1644272,
+  "textures": [],
+  "changes": [
+    "muted honey wood material",
+    "clean cream fabric material",
+    "high roughness",
+    "image textures removed",
+    "surface normals reset"
+  ],
+  "game_integration": false,
+  "exported_image_count": 0,
+  "mesh_count": 2
+}

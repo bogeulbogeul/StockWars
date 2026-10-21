@@ -1,0 +1,25 @@
+{
+  "status": "Existing empty fridge moved; second empty fridge added; game not changed",
+  "fridge_count": 2,
+  "placement": "Right wall, both doors face room center",
+  "centers": [
+    [
+      3.48,
+      0.8,
+      0
+    ],
+    [
+      3.48,
+      -0.95,
+      0
+    ]
+  ],
+  "goods": 0,
+  "preserved": [
+    "Packing table",
+    "Counter",
+    "Wall flower",
+    "Empty left shelves"
+  ],
+  "validation": "Two complete fridge assemblies; no Goods_ objects; rendered overview"
+}

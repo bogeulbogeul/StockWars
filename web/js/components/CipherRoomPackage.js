@@ -1,5 +1,6 @@
 import {ROOM_SIZE,OBJECTS,PLACES,SEATS,inside,createPackageNavigation} from './CipherRoomPackageGeometry.js';
 import {marketEngine} from '../engine/marketEngine.js';
+import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import {elementScale} from '../app/GameViewport.js';
 import {cipherCanvasResolution} from './CipherCanvasResolution.js';
 
@@ -15,8 +16,8 @@ export class CipherRoomPackage {
         lobby.canvas.width=ROOM_SIZE.width;lobby.canvas.height=ROOM_SIZE.height;
         this.background=new Image();this.background.onload=()=>lobby.draw();
         this.background.onerror=()=>{lobby.dialog.querySelector('.cipher-lobby-error').hidden=false;};
-        // Fixed receptionist is painted into this user-requested room variant.
-        this.background.src=new URL('../../assets/interiors/cipher/cipher-lobby-package-agent-k-v8.png',import.meta.url).href;
+        // Retired 2D package: retain compatibility state without loading old artwork.
+        this.background.src=EMPTY_CHARACTER_IMAGE;
         this.overlay=document.createElement('div');this.overlay.className='cipher-package-overlay';
         this.overlay.innerHTML='<section class="cipher-index-board" aria-label="사이퍼 지수 전광판"><header><strong>사이퍼 지수</strong><span>게임 시장</span></header><div class="cipher-index-data"><div><small>CIPHER INDEX</small><b class="cipher-index-value">—</b><span class="cipher-index-change"></span></div><div class="cipher-index-plot" role="img" aria-label="사이퍼 지수 추이"></div></div><footer>로비 입장 이후 지수 추이 · pt</footer></section>';
         lobby.canvas.after(this.overlay);

@@ -1,7 +1,7 @@
 export const CIPHER_TOUR_KEY = 'stockwars.cipher.guided-tour.v1';
 import {AGENT_K_PORTRAIT_URL as agentKPortraitUrl} from '../CipherAgentK.js';
 export const cipherTourSteps = [
-    { room: 'lobby', title: '사이퍼 증권에 오신 것을 환영합니다', text: '저는 에이전트 K입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
+    { room: 'lobby', title: '사이퍼 증권에 오신 것을 환영합니다', text: '저는 토리입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
     { room: 'lobby', title: '전광판과 휴식 공간', text: '뒤쪽 전광판은 사이퍼 지수의 현재 값과 흐름을 보여줍니다. 소파에서는 앉아서 잠시 쉴 수 있습니다. 로비 이동은 이동 키나 바닥 클릭, 가까운 시설 이용은 상호작용 키로 합니다.', page: 1 },
     { room: 'lobby', title: '회원 전용 공간과 출구', text: '위층은 회원 전용 공간이며 현재 가입 절차는 준비 중입니다. 마을로 돌아갈 때는 앞쪽 카펫으로 이동하세요. 안내는 로비의 [이용 안내]에서 다시 볼 수 있습니다.', page: 4 },
     { room: 'lobby', title: '왼쪽 트레이닝룸으로 들어가겠습니다', text: '트레이닝룸은 큰 화면으로 거래하는 증권사 HTS입니다. 이곳의 매매는 스마트폰과 같은 게임 계좌에 반영됩니다. 다음을 누르면 내부에서 기능을 살펴보겠습니다.', page: 2 },
@@ -20,9 +20,9 @@ export const cipherTourSteps = [
     { room: 'competition', title: '방 검색과 공개방', text: '방 이름·방장 이름·방 코드로 방을 찾거나 공개방 목록에서 선택할 수 있습니다. 비밀번호방은 비밀번호가 필요합니다. 서버에 연결되지 않았다면 온라인 목록 대신 연결 상태를 확인하세요.', target: '.arena-public-sidebar' },
     { room: 'competition', title: '내 방과 방 만들기', text: '직접 방을 만들려면 이름을 정하고 대결 방식을 선택합니다. AI 연습과 온라인 대결을 구분하세요. 지금 안내에서는 방을 만들지 않고, 마지막에 제가 준비한 무료 연습으로 이동합니다.', target: '[data-create]' },
     { room: 'competition', title: '대결 시간과 시작 자금', text: '방 설정에서 대결 시간은 3분·5분·10분 중에서, 시작 자금은 1만 G·10만 G·100만 G 중에서 고를 수 있습니다. 시작 자금은 참가자가 동일하게 받는 대결 전용 자금입니다.', target: '[name=cash]' },
-    { room: 'competition', title: '무료 대결과 가상 배팅', text: '배팅 0G는 무료 대결입니다. 유료 설정은 시작 자금의 1~10% 범위에서 100G 단위로 입력합니다. 이는 대결 전용 가상 배팅이며, 지금 K와의 연습은 0G로 진행합니다.', target: '[name=stake]' },
+    { room: 'competition', title: '무료 대결과 가상 배팅', text: '배팅 0G는 무료 대결입니다. 유료 설정은 시작 자금의 1~10% 범위에서 100G 단위로 입력합니다. 이는 대결 전용 가상 배팅이며, 지금 토리와의 연습은 0G로 진행합니다.', target: '[name=stake]' },
     { room: 'competition', title: '공개 설정과 친구', text: '공개방 또는 비밀번호방을 선택할 수 있습니다. 친구 요청은 상대가 수락해야 연결되며, 온라인 방에서는 친구와 참가·준비 상태를 확인합니다. 실제 대결 시작 전 참가자와 조건을 확인하세요.', target: '.training-workspace > aside:last-child' },
-    { room: 'competition', title: '이제 가상 계좌에서 연습하겠습니다', text: '다음에는 실제 모의투자 화면에서 종목·차트·주문·계좌·뉴스를 확인하고 직접 사고팔아 보겠습니다. 연습이 끝나면 [K와 무료 대결 시작]을 눌러 10만 G로 3분 대결을 시작하세요.', target: 'header', action: 'K와 매수·매도 연습하기' }
+    { room: 'competition', title: '이제 가상 계좌에서 연습하겠습니다', text: '다음에는 실제 모의투자 화면에서 종목·차트·주문·계좌·뉴스를 확인하고 직접 사고팔아 보겠습니다. 연습이 끝나면 [토리와 무료 대결 시작]을 눌러 10만 G로 3분 대결을 시작하세요.', target: 'header', action: '토리와 매수·매도 연습하기' }
 ];
 
 export class CipherTour {
@@ -74,8 +74,8 @@ export class CipherTour {
         }
         const panel = document.createElement('section'); this.panel = panel;
         panel.className = 'cipher-tour'; panel.dataset.room = step.room;
-        panel.setAttribute('aria-label', '에이전트 K 증권사 안내');
-        const speaker = document.createElement('small'); speaker.textContent = `에이전트 K · 증권사 이용 안내 ${this.index + 1}/${cipherTourSteps.length}`;
+        panel.setAttribute('aria-label', '토리 증권사 안내');
+        const speaker = document.createElement('small'); speaker.textContent = `토리 · 증권사 이용 안내 ${this.index + 1}/${cipherTourSteps.length}`;
         const title = document.createElement('h3'); title.textContent = step.title;
         const text = document.createElement('p'); text.textContent = step.text;
         const nav = document.createElement('nav');
@@ -85,7 +85,7 @@ export class CipherTour {
         const portrait = document.createElement('img');
         portrait.className = 'cipher-tour-portrait';
         portrait.src = agentKPortraitUrl;
-        portrait.alt = '에이전트 K';
+        portrait.alt = '토리';
         portrait.decoding = 'sync';
         portrait.draggable = false;
         const content = document.createElement('div');

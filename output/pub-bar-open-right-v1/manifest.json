@@ -1,0 +1,16 @@
+{
+  "status": "Native bar built; game integration and Andre movement testing pending",
+  "staff_aisle_width": 1.03,
+  "right_access_clear_width": 0.995,
+  "units": "temporary model units; not validated against an Andre model",
+  "right_return_and_gate": false,
+  "stools": 3,
+  "stool_to_counter_clear_gap": 0.6,
+  "stool_style": "domed burgundy cushion, rounded oak legs, no yellow rungs",
+  "basement_door_approach": "right side remains clear",
+  "assets": [
+    "Pub-bar-open-right.glb",
+    "Pub-bar-room-preview.glb"
+  ],
+  "character_animation_collision_navigation": "not implemented"
+}

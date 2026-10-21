@@ -9,7 +9,7 @@ export function installCipherLobbyEntrance(app) {
     const hint = document.createElement('p');
     hint.className = 'cipher-lobby-entry-hint';
     town.viewportEl.append(hint);
-    const inTown = () => document.body.classList.contains('ui-paused')
+    const inTown = () => document.body.classList.contains('town-model-mode')
         && !town.containerEl.classList.contains('hidden') && !town.callbacks.isInputBlocked?.();
     const near = () => Math.abs(town.playerController.charPosX - building.x) < 85
         && town.playerController.charPosY >= building.y + 15
@@ -38,6 +38,8 @@ export function installCipherLobbyEntrance(app) {
         document.body.classList.remove('town-mode-active');
         app.cipherLobbyScene.show();
     };
+    // Legacy town callbacks must also use the current 3D lobby, never the retired image room.
+    app.cipherLobby.open = enter;
     window.addEventListener('keydown', event => {
         if (event.ctrlKey || event.metaKey || event.altKey || !inTown()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;

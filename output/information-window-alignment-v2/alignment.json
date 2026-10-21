@@ -1,0 +1,14 @@
+{
+  "reference": "information-exterior-clean-v1/build_information.py",
+  "mapping": "normalized wall positions; interior expansion uses separate X/Y/Z ratios",
+  "front_window_centers_x": [
+    -2.6577181208053693,
+    2.6577181208053693
+  ],
+  "right_side_center_y": 0,
+  "window_bottom": 0.6637037037037036,
+  "left_wall_windows": 0,
+  "rear_wall_windows": 0,
+  "front_cutaway_hidden_for_interior": true,
+  "game_changed": false
+}

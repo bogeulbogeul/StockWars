@@ -1,0 +1,14 @@
+{
+  "samples": 97,
+  "floor_penetration": 0.0009480118751525879,
+  "support_gap": 0.0002516508102416992,
+  "leg_length_error": 1.5819279806927877e-07,
+  "torso_shape_error": 3.0719530773294423e-08,
+  "leg_translation": 0,
+  "loop_error": 0.0,
+  "clips": [
+    "Narrow_Enter",
+    "Narrow_Exit",
+    "Narrow_Walk"
+  ]
+}

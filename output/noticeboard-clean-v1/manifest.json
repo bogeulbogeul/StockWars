@@ -1,0 +1,8 @@
+{
+  "status": "P1 model draft; user visual review and game integration pending",
+  "reference": "output/noticeboard-multiview-v1/front.png",
+  "design": "Smooth matte honey wood, continuous curved crest, sprout medallion, cork panel and six blank pinned notices",
+  "mark_source": "output/information-sprout-mark-v1/Information-sprout-wall-mark.glb; exact meshes at .32 uniform scale; wood matches frame",
+  "game_modified": false,
+  "notice_content": "Visual placeholders only; no progression or story changes"
+}

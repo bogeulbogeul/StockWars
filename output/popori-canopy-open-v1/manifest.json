@@ -1,0 +1,12 @@
+{
+  "status": "P1 revised canopy model; user visual review and game integration pending",
+  "tier_z_offsets": [
+    0,
+    0.48,
+    0.96
+  ],
+  "canopy_thickness_multiplier": 0.78,
+  "fruit_design": "Approved popori-fruit-v2; middle tier fruit moved with crown",
+  "roots_and_flowerbed": "unchanged",
+  "game_modified": false
+}

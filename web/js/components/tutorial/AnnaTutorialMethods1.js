@@ -154,7 +154,7 @@ export const AnnaTutorialMethods1 = {
         this.btnNext?.classList.toggle('hidden', needsChoice || !!step.choices || !!step.actionBtnText);
         this.nextIndicator?.classList.toggle('hidden', !!step.requiresManualAction || !!step.actionBtnText);
         this.setExpression(step.expression);
-        if (this.speakerName) this.speakerName.textContent = step.speaker?.includes('안나') ? '안나' : step.speaker;
+        if (this.speakerName) this.speakerName.textContent = step.speaker?.includes('모아') ? '모아' : step.speaker;
         if (this.stepTracker) this.stepTracker.textContent = step.tracker;
 
         // Action button handling
@@ -193,7 +193,7 @@ export const AnnaTutorialMethods1 = {
         const resolved = Object.hasOwn(labels, expression) ? expression : 'Standard';
         if (this.portrait) {
             this.portrait.dataset.expression = resolved;
-            this.portrait.setAttribute('aria-label', `안나 — ${labels[resolved]} 표정`);
+            this.portrait.setAttribute('aria-label', `모아 — ${labels[resolved]} 표정`);
         }
     },
 

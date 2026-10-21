@@ -95,12 +95,12 @@ export class CipherCompetitionRoom{
         this.match?.dialog.remove();const match=new CipherTrainingRoom(this.container,engine);this.match=match;
         const tutorialNews=this.createNewsPanel(match);
         this.addNewsCard(match,tutorialNews,{stock:[...engine.stocks.values()][0],title:'대형 공급 계약 체결… 매출 성장 기대',detail:'신규 고객 확보 소식에 매수세가 유입되고 있습니다. 관련 종목 버튼을 눌러 차트를 확인해 보세요.',example:true});
-        match.dialog.querySelector('h2').textContent='에이전트 K · 첫 모의투자';
+        match.dialog.querySelector('h2').textContent='토리 · 첫 모의투자';
         const guide=document.createElement('section');
         guide.style.cssText='display:flex;gap:18px;align-items:center;padding:18px;border:1px solid #e5bb59;border-radius:14px;background:#102333;cursor:pointer';
-        const portrait=document.createElement('img');portrait.src=AGENT_K_PORTRAIT_URL;portrait.alt='에이전트 K';portrait.decoding='sync';portrait.style.cssText='width:112px;height:136px;flex-shrink:0;object-fit:contain;border:1px solid #e5bb59;border-radius:10px';
+        const portrait=document.createElement('img');portrait.src=AGENT_K_PORTRAIT_URL;portrait.alt='토리';portrait.decoding='sync';portrait.style.cssText='width:112px;height:136px;flex-shrink:0;object-fit:contain;border:1px solid #e5bb59;border-radius:10px';
         portrait.style.setProperty('image-rendering','auto','important');
-        const portraitCanvas=document.createElement('canvas');portraitCanvas.setAttribute('role','img');portraitCanvas.setAttribute('aria-label','에이전트 K');portraitCanvas.style.cssText=portrait.style.cssText;
+        const portraitCanvas=document.createElement('canvas');portraitCanvas.setAttribute('role','img');portraitCanvas.setAttribute('aria-label','토리');portraitCanvas.style.cssText=portrait.style.cssText;
         portraitCanvas.style.setProperty('image-rendering','auto','important');
         portrait.onload=()=>{
             const density=Math.max(2,window.devicePixelRatio||1);portraitCanvas.width=Math.round(112*density);portraitCanvas.height=Math.round(136*density);
@@ -113,7 +113,7 @@ export class CipherCompetitionRoom{
             portrait.replaceWith(portraitCanvas);
         };
         const body=document.createElement('div');body.style.cssText='flex:1;min-width:0';
-        const name=document.createElement('strong');name.textContent='에이전트 K';name.style.color='#f5d583';
+        const name=document.createElement('strong');name.textContent='토리';name.style.color='#f5d583';
         const line=document.createElement('p');line.setAttribute('role','status');line.style.lineHeight='1.7';
         const top=document.createElement('div');top.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap';
         const controls=document.createElement('div');controls.style.cssText='display:flex;gap:8px;margin-left:auto';
@@ -135,7 +135,7 @@ export class CipherCompetitionRoom{
         let step=0,highlight=null,practiceStock=null;
         const paint=()=>{
             if(highlight){highlight.style.outline='';highlight.style.boxShadow='';}line.textContent=steps[step][0];
-            next.hidden=false;next.disabled=step===buyStep||step===sellStep;next.textContent=step===lastStep?'K와 무료 대결 시작':'다음 ▶';
+            next.hidden=false;next.disabled=step===buyStep||step===sellStep;next.textContent=step===lastStep?'토리와 무료 대결 시작':'다음 ▶';
             next.style.opacity=next.disabled?'0.45':'1';next.style.cursor=next.disabled?'default':'pointer';
             next.title=next.disabled?(step===buyStep?'매수를 완료하면 다음 안내로 넘어갑니다.':'매도를 완료하면 다음 안내로 넘어갑니다.'):'';
             match.dialog.querySelector('[data-buy]').disabled=step!==buyStep;match.dialog.querySelector('[data-sell]').disabled=step!==sellStep;
@@ -144,7 +144,7 @@ export class CipherCompetitionRoom{
             if(highlight){highlight.style.outline='2px solid #40d8cf';highlight.style.boxShadow='0 0 18px #40d8cf35';}
             if(step===newsStep)tutorialNews.latestBar.bar.scrollIntoView({behavior:'smooth',block:'center'});
         };
-        const startFreeMatch=()=>{try{localStorage.setItem('stockwars.arena.k-tutorial.v1','1');}catch{}match.onClose=null;match.close();this.start({name:'에이전트 K와 무료 대결',minutes:3,cash:100000,stake:0,opponent:'에이전트 K',difficulty:'easy'});};
+        const startFreeMatch=()=>{try{localStorage.setItem('stockwars.arena.k-tutorial.v1','1');}catch{}match.onClose=null;match.close();this.start({name:'토리와 무료 대결',minutes:3,cash:100000,stake:0,opponent:'토리',difficulty:'easy'});};
         const advance=()=>{if(step===buyStep||step===sellStep)return;if(step===lastStep){startFreeMatch();return;}step++;paint();};
         skip.textContent='연습 그만하기';skip.onclick=()=>match.close();next.onclick=advance;guide.onclick=e=>{if(!e.target.closest('button'))advance();};
         match.order=side=>{if((step===buyStep&&side==='buy')||(step===sellStep&&side==='sell')){
@@ -158,7 +158,7 @@ export class CipherCompetitionRoom{
     render(){
         this.dialog.innerHTML='<header><div><small>CIPHER ARENA</small><h2>모의투자 대결</h2></div><button data-exit>로비로 돌아가기 · Esc</button></header><p class="arena-intro"><strong>모의투자</strong><span>같은 자금, 같은 시장에서 시작합니다. 제한 시간 종료 시 총자산으로 순위를 결정합니다.</span></p><div class="training-workspace"><main><div data-rooms hidden></div><h3>새 대결 만들기</h3><p class="arena-section-note">대결 조건을 정하고 함께할 상대를 초대하세요.</p><form data-create><label>방 이름<input name="name" maxlength="40" required placeholder="함께 투자해요"></label><label>대결 시간<select name="minutes"><option value="3">3분</option><option value="5" selected>5분</option><option value="10">10분</option></select></label><label>시작 자금<select name="cash"><option value="10000">1만 G</option><option value="100000" selected>10만 G</option><option value="1000000">100만 G</option></select></label><label>배팅 금액 (G)<input name="stake" type="number" min="0" max="1000000" step="100" value="0" required><small>0G는 무료 대결 · 로컬 대결용 가상 배팅</small></label><label>방 공개 설정<select name="access"><option value="open">공개방</option><option value="locked">비밀번호방</option></select></label><label data-password-label style="display:none">방 비밀번호<input name="password" type="password" minlength="4" maxlength="32" autocomplete="new-password" placeholder="4~32자"></label><button>방 만들기</button></form></main><aside><h3>온라인 친구</h3><form data-friend><input name="name" type="search" maxlength="40" placeholder="친구 닉네임" aria-label="친구 닉네임 검색"><button>검색</button></form><p role="status" data-status></p><div data-friends></div><p style="color:#90a8bd">현재는 로컬 대결 버전입니다. 친구 등록은 기존 친구 목록과 공유하며, 온라인 초대 전송과 다른 사용자 접속은 아직 연결되지 않았습니다.</p></aside></div>';
         this.dialog.querySelector('[data-exit]').onclick=()=>this.close();
-        const tutorial=document.createElement('button');tutorial.textContent='K 튜토리얼 · 무료';tutorial.onclick=()=>this.startTutorial();this.dialog.querySelector('header').append(tutorial);
+        const tutorial=document.createElement('button');tutorial.textContent='토리 튜토리얼 · 무료';tutorial.onclick=()=>this.startTutorial();this.dialog.querySelector('header').append(tutorial);
         const publicPanel=document.createElement('section');publicPanel.innerHTML='<h3>공개 게임방</h3><p data-public-status>공개방 서버에 연결 중입니다.</p><div data-public-rooms></div>';
         this.dialog.querySelector('[data-rooms]').before(publicPanel);this.paintPublicRooms();
         const finder=document.createElement('section');finder.innerHTML='<h3>방 찾기</h3><form data-find><input name="query" required maxlength="100" aria-label="방 검색" placeholder="방 이름 · 방장 이름 · 방 코드"><button>검색</button></form><p data-find-status role="status"></p><div data-find-results></div>';

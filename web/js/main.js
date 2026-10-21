@@ -9,6 +9,7 @@ import { applicationActions } from './app/ApplicationActions.js';
 import { initInterface } from './app/initInterface.js';
 import { initWorld } from './app/initWorld.js';
 import { initTutorial } from './app/initTutorial.js';
+import { showTitleScreen } from './app/TitleScreen.js';
 
 class StockWarsApplication {
     constructor() {
@@ -20,7 +21,9 @@ class StockWarsApplication {
         setPlayerCharacterStyle(this.userProfile?.styleId);
         this.bindEngine();
         this.onlineSocialSync=new OnlineSocialSync(this);
-        if (!document.body.classList.contains('ui-paused')) void this.enterGame();
+        showTitleScreen(() => {
+            // The current 3D town is already mounted; retain the active session.
+        });
     }
 
     initComponents() {

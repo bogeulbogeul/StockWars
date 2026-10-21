@@ -53,8 +53,8 @@ for sign in [-1,1]:
     pane=extrude('Front_Window_Glass',[(x+px,bottom+pz) for px,pz in arch_outline(radius,spring)],-.922,-.89,glass,.007)
     arch_ring('Front_Window_Frame',x,bottom,radius,spring,.047,-.957,-.88,cream)
     box('Window_Sill',(.49,.16,.045),(x,-.929,bottom-.015),cream,.013)
-    box('Window_Cross_Vertical',(.023,.022,.40),(x,-.962,bottom+.21),cream,.006)
-    box('Window_Cross_Horizontal',(.345,.022,.023),(x,-.965,bottom+.255),cream,.006)
+    box('Window_Cross_Vertical',(.023,.022,.40),(x,-.936,bottom+.21),cream,.006)
+    box('Window_Cross_Horizontal',(.345,.022,.023),(x,-.939,bottom+.255),cream,.006)
 
 # Solid gables and a clean curved roof with thick blue eaves, no noisy shingles.
 for name,ya,yb in [('Front_Gable',-.895,-.77),('Rear_Gable',.77,.895)]:

@@ -1,0 +1,23 @@
+{
+  "status": "Both fridge assemblies moved forward; game not changed",
+  "translation": [
+    0,
+    -0.5,
+    0
+  ],
+  "centers": [
+    [
+      3.48,
+      0.3,
+      0
+    ],
+    [
+      3.48,
+      -1.45,
+      0
+    ]
+  ],
+  "placement": "Right wall opposite left shelves; doors face center aisle",
+  "units": "Temporary modeling units",
+  "validation": "Both parent assemblies translated together; rendered overview"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "Model produced; user art review pending",
+  "reference": "output/meshy-buildings-v1/02-settlement-office.png",
+  "style": [
+    "home-single-eaves-v6",
+    "cipher-exterior-blender-v1"
+  ],
+  "rear": "windowless",
+  "mesh_count": 153
+}

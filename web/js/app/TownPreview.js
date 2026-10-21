@@ -2,7 +2,6 @@ import { TOWN_ARRIVAL } from '../data/townLandscapeLayout.js';
 
 // A reversible art-review state: no new game, registration, or save reset.
 export function startTownPreview(app) {
-    if (!document.body.classList.contains('ui-paused')) return;
     app.officeStage.hide();
     app.townStage.show({ name: '그래픽 확인', ping: null });
     // Arrive in the open lane between the foreground stop and information office.
@@ -14,22 +13,5 @@ export function startTownPreview(app) {
     document.body.classList.add('town-mode-active');
     document.activeElement?.blur();
 
-    // Hidden UI must not receive focus or open an invisible modal via shortcuts.
-    const allowed = new Set(['w', 'a', 's', 'd', 'f', 'l', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright', 'shift', '1', '2', 'escape', ' ']);
-    const physicalKeys = new Set(['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyL', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ShiftLeft', 'ShiftRight', 'Digit1', 'Digit2', 'Space']);
-    window.addEventListener('keydown', event => {
-        if (!document.body.classList.contains('ui-paused')) return;
-        if (app.packingGame?.isOpen) return;
-        if (document.body.classList.contains('cipher-facility-active') && event.target?.closest?.('dialog[open]')) return;
-        if (app.homeModelScene?.active && ['KeyQ', 'KeyE'].includes(event.code)) return;
-        if (allowed.has(event.key.toLowerCase()) || physicalKeys.has(event.code) || event.key === 'F5' || event.ctrlKey || event.metaKey || event.altKey) return;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-    }, true);
-    app.townStage.viewportEl.addEventListener('click', event => {
-        if (!document.body.classList.contains('ui-paused')) return;
-        if (event.target?.closest?.('.packing-entry-hint')) return;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-    }, true);
+e4467a027e8cbbb4b3332b7d0218b1384450c9cd
 }

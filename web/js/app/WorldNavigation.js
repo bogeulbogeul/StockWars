@@ -24,12 +24,15 @@ export const worldNavigation = {
         }
         this.serverSelectModal?.close();
         this.homeModelScene?.hide();
+        this.bankModelScene?.hide();
+        this.informationModelScene?.hide();
+        this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         this.officeStage?.hide?.();
         this.townStage?.show(server, spawnLocation);
         document.body.classList.add('town-mode-active');
         if (spawnLocation === 'vivian_store' || spawnLocation === 'vivian') {
-            toastManager.show(`🏪 [비비안 잡화점 앞] 보급품 상점 거리에 복귀했습니다!`, true);
+            toastManager.show(`🏪 [봉봉 잡화점 앞] 보급품 상점 거리에 복귀했습니다!`, true);
         } else {
             toastManager.show(`🏙️ [${server.name}] 마을 광장에 도착했습니다! (A/D로 이동, 드래그/휠로 스크롤)`, true);
         }
@@ -38,10 +41,17 @@ export const worldNavigation = {
     },
 
     openVivianStore() {
+        if (this.enterVivianModel && document.body.classList.contains('town-mode-active')) {
+            this.enterVivianModel();
+            return;
+        }
         this.vivianStoreModal?.open();
     },
 
     enterOffice() {
+        this.informationModelScene?.hide();
+        this.bankModelScene?.hide();
+        this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
         const returningFromTown = document.body.classList.contains('town-mode-active');
         void window.stockWarsPresence?.leave();
@@ -53,7 +63,7 @@ export const worldNavigation = {
             if (entered === false) return;
             const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
             const player = this.townStage.playerController;
-            player.charPosX = home.x;
+            player.charPosX = home.x + (home.entranceOffsetX || 0);
             player.charPosY = home.y + 65;
             player.keysHeld.clear();
             player.isMoving = false;

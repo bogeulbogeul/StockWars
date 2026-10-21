@@ -1,0 +1,19 @@
+{
+  "status": "Native model and studio previews; user art review pending",
+  "design_reference": "output/meshy-buildings-v1/03-vivian-store.png",
+  "style_references": [
+    "home-single-eaves-v6",
+    "cipher-exterior-blender-v1"
+  ],
+  "preserved": [
+    "coral roof",
+    "cream walls",
+    "honey wood",
+    "striped scalloped awning",
+    "flower sign",
+    "center door and two display windows",
+    "side window"
+  ],
+  "rear": "windowless",
+  "mesh_count": 158
+}

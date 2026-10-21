@@ -1,0 +1,19 @@
+{
+  "cabinet_source": "information-drawer-cabinet-v1/Information-drawer-cabinet.glb",
+  "positions": [
+    [
+      -1.3,
+      2.3,
+      0.022
+    ],
+    [
+      1.3,
+      2.3,
+      0.022
+    ]
+  ],
+  "chair_side_clearance_each": 0.455,
+  "back_wainscot_clearance_each": 0.15,
+  "anna_source": "anna-meshy-short-vest-v5",
+  "status": "Two-cabinet placement preview; game not changed"
+}

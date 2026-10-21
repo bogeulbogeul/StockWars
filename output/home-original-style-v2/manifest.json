@@ -1,0 +1,18 @@
+{
+  "design_reference": "meshy-buildings-v1/01-home.png and original HomeBuilding.glb",
+  "style_only_reference": "Clean matte native geometry and softened edges of brokerage",
+  "retained": [
+    "Red tiles",
+    "Cream plaster",
+    "Beige stone",
+    "Chimney",
+    "Left front window",
+    "Right wooden door with round glazing",
+    "Side window",
+    "Wood canopy",
+    "Two stone steps"
+  ],
+  "rear": "Windowless per current art guide",
+  "door_local_x": 0.43,
+  "status": "Replaces blue-roof reinterpretation; original source preserved"
+}

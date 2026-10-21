@@ -2,13 +2,13 @@ import { describeTutorialStep, createTutorialExample, createTutorialAction } fro
 // Keep the original explanations available on demand; guide one idea at a time.
 export function compactAnnaLessons(steps, { nickname, stockName }) {
     const lessons = {
-        welcome_1: [`${nickname} 님, 반가워요! 첫 거래를 함께할 안나예요.`, [['다음 ▶ / Enter', '설명 계속'], ['◀ 이전', '다시 보기']]],
+        welcome_1: [`${nickname} 님, 반가워요! 첫 거래를 함께할 모아예요.`, [['다음 ▶ / Enter', '설명 계속'], ['◀ 이전', '다시 보기']]],
         welcome_2: ['시작 자금이 들어왔어요. 이제 첫 주식을 사볼까요?', [['+5,000G', '시작 자금'], ['G = Gold', '게임 화폐']]],
         open_phone: ['오른쪽 아래 📱 버튼을 눌러 스마트폰을 열어 주세요.'],
         launch_stock_app: ['홈 화면에서 [사이퍼M]을 눌러 주세요.'],
         market_tab: ['아래쪽 [주식 거래] 탭을 눌러 주세요.'],
         stock_basics_ownership: ['주식 1주는 기업의 작은 지분이에요.', [['기업', '사업을 운영'], ['1주', '지분의 작은 단위']]],
-        select_stock: [`[안나 추천]이 붙은 '${stockName}'을 눌러 주세요.`],
+        select_stock: [`[모아 추천]이 붙은 '${stockName}'을 눌러 주세요.`],
         stock_basics_price: ['주가는 주식 1주를 사고파는 가격이에요.'],
         chart_colors: ['그래프 색과 +·− 숫자를 함께 확인하세요.', [['↗ + 상승', '청록색', 'positive'], ['↘ − 하락', '빨간색', 'negative']]],
         chart_detail: ['빛나는 그래프를 눌러 정밀 차트를 열어 주세요.', [['그래프 클릭', '크게 보기'], ['✕', '차트 닫기']]],
@@ -33,11 +33,11 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         rumor_time_prediction: ['연습용: “이틀 뒤 잔치에서 천막이 걷히면 간판도 들썩이겠지.” 언제 영향을 줄까요?'],
         rumor_time_feedback: ['“이틀 뒤”가 시간 단서예요. 주가 반응은 발표보다 빠르거나 늦을 수 있어요.', [['시간 단서', '이틀 뒤'], ['시장 반응', '발표 시점과 다를 수 있음']]],
         rumor_reading_summary: ['찌라시의 단서를 뉴스와 공시로 확인하세요.', [['무엇?', '종목 · 사건'], ['어떻게?', '상승 · 하락'], ['언제?', '발표 · 영향 시점']]],
-        stamina_recovery_guide: ['오늘 수고했어요! 에너지 드링크 한 캔을 선물할게요. 지금 마시고 하트 1개를 회복해 보세요.', [['안나의 선물', '에너지 드링크 1개'], ['바로 사용', '하트 1개 회복']]],
+        stamina_recovery_guide: ['오늘 수고했어요! 에너지 드링크 한 캔을 선물할게요. 지금 마시고 하트 1개를 회복해 보세요.', [['모아의 선물', '에너지 드링크 1개'], ['바로 사용', '하트 1개 회복']]],
         stock_basics_budget: ['투자하기 전에 월세로 쓸 현금을 남겨 두세요.', [['7일 차', '월세 5,000G'], ['생활비', '투자금과 나눠 두기']]],
         tutorial_completed: ['첫 거래 안내를 마쳤어요! 준비됐다면 자립을 시작하세요.', [['+2,000G', '정착 지원금'], ['7일 차', '월세 준비']]]
     };
-    const extra = (id, text, cards, tracker, detailText) => ({ id, text, cards, tracker, detailText, speaker: '전담 매니저 안나', expression: 'Smile', requiresManualAction: false });
+    const extra = (id, text, cards, tracker, detailText) => ({ id, text, cards, tracker, detailText, speaker: '전담 매니저 모아', expression: 'Smile', requiresManualAction: false });
     return steps.flatMap(step => {
         const lesson = lessons[step.id];
         const compact = lesson ? { ...step, text: lesson[0], cards: lesson[1], detailText: step.text } : { ...step };

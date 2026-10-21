@@ -1,0 +1,6 @@
+{
+  "source": "output/bank-exterior-clean-v1/Bank-clean.glb / Coin_Gold_Rim",
+  "geometry": "exact reused engraved medallion, uniform scale 2.65",
+  "material": "single gold including engraving floor",
+  "status": "interior model/placement; gameplay integration pending"
+}

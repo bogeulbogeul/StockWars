@@ -1,0 +1,9 @@
+{
+  "vertices": 108210,
+  "green_vertices": 46095,
+  "boundary_vertices": 8527,
+  "method": "surface-crease weighted geodesic segmentation with fixed interior/exterior seeds; corner interpolation",
+  "geometry_unchanged": true,
+  "rig_weights_unchanged": true,
+  "face_unchanged": true
+}

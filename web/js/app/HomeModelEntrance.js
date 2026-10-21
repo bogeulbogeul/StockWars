@@ -12,11 +12,11 @@ export function installHomeModelEntrance(app) {
     const near = () => {
         const town = app.townStage, player = town.playerController;
         return !town.containerEl.classList.contains('hidden') && !town.callbacks.isInputBlocked?.()
-            && Math.abs(player.charPosX - home.x) < 85
+            && Math.abs(player.charPosX - home.x - (home.entranceOffsetX || 0)) < 85
             && player.charPosY >= home.y + 15 && player.charPosY < home.y + 145;
     };
     window.addEventListener('keydown', event => {
-        if (!document.body.classList.contains('ui-paused') || gameKey(event) !== 'f') return;
+        if (!document.body.classList.contains('town-model-mode') || gameKey(event) !== 'f') return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
         if (!near()) return;
         event.preventDefault();

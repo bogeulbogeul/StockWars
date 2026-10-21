@@ -1,0 +1,13 @@
+{
+  "status": "P1 model draft; user review, seated contact and game integration pending",
+  "reference": "output/backless-bench-multiview-v1/front.png",
+  "character_reference": "C:\\GitHub\\StockWars\\web\\assets\\characters\\3d\\somangi\\walk.glb",
+  "character_pose": "walk source frame 1, whole unadorned mesh bounds used as body H",
+  "source_body_height": 2.0,
+  "normalized_H": 1,
+  "bench_width_H": 1.72,
+  "bench_depth_H": 0.458,
+  "seat_top_H": 0.36,
+  "game_modified": false,
+  "seated_contact_verified": false
+}

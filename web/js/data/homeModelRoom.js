@@ -1,5 +1,5 @@
 // Adopted room coordinates, scaled uniformly to the existing 3D player's units.
-export const HOME_MODEL_URL = new URL('../../assets/office/3d/Room-cement-entry-full.glb', import.meta.url).href;
+export const HOME_MODEL_URL = new URL('../../assets/office/3d/Room-light-molding.glb', import.meta.url).href;
 // Compact starter room: 65% of the initial shell; Somangi remains 100 units tall.
 export const HOME_MODEL_SCALE = 260;
 export const HOME_ROOM_BOUNDS = { minX: -0.9507060051, maxX: 0.9497078657,

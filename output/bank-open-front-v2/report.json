@@ -1,0 +1,18 @@
+[
+  {
+    "source": "bank-furnished-room-v1/Bank-furnished-room.blend",
+    "removed": [
+      "Front_Low_Border",
+      "Front_Low_Border.001"
+    ],
+    "output": "Bank-furnished-room"
+  },
+  {
+    "source": "bank-scale-check-v1/Bank-scale-check.blend",
+    "removed": [
+      "Front_Low_Border",
+      "Front_Low_Border.001"
+    ],
+    "output": "Bank-scale-check"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "somangi_base_vertices_unchanged": true,
+  "source": "somangi-walk-v4",
+  "accessories": [
+    "Anna_PlumpLeaf",
+    "Anna_Vest"
+  ],
+  "body_face": "Somangi original face recolored cream",
+  "actions": [
+    "Walk_InPlace"
+  ],
+  "shared_base_hashes_identical": true,
+  "all_25_frames_all_bones_identical": true,
+  "glb_mesh_count": 6,
+  "glb_bones": 7,
+  "glb_actions": [
+    "Walk_InPlace"
+  ],
+  "glb_mesh_names": [
+    "Anna_PlumpLeaf",
+    "Anna_Vest",
+    "Eating_Torso",
+    "Icosphere",
+    "Rigid_Arm.L",
+    "Rigid_Arm.R",
+    "Somangi_Body"
+  ]
+}

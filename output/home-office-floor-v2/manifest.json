@@ -1,0 +1,13 @@
+{
+  "floor": "Actual four Office_Plank materials and scaled office board dimensions",
+  "reference": "C:\\GitHub\\StockWars\\output\\information-floor-edge-v1\\Office-floor-edge-preview.blend",
+  "plank_count": 100,
+  "walking_height_unchanged": -0.36314088106155396,
+  "preserved": [
+    "Walls",
+    "Cement entrance and black fade",
+    "Room footprint",
+    "All four walls for rotation"
+  ],
+  "source": "room-cement-entry-v1/Room-cement-entry.blend"
+}

@@ -1,6 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { TOWN_PLAZA, villagePathRoutes } from '../../data/townLandscapeLayout.js';
-import { TOWN_BUS_ROAD } from '../../data/townBusRoad.js';
 
 function canvas(width, height = width) {
     const image = document.createElement('canvas');
@@ -80,16 +79,19 @@ export function createPathsTexture() {
             ctx.lineWidth = width * (routeIndex === 0 ? 1.25 : 1);
             ctx.beginPath();
             ctx.moveTo(...route[0]);
-            for (let index = 0; index < route.length - 1; index++) {
-                const p0 = route[Math.max(0, index - 1)];
-                const p1 = route[index];
-                const p2 = route[index + 1];
-                const p3 = route[Math.min(route.length - 1, index + 2)];
-                ctx.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6,
-                    p1[1] + (p2[1] - p0[1]) / 6,
-                    p2[0] - (p3[0] - p1[0]) / 6,
-                    p2[1] - (p3[1] - p1[1]) / 6, ...p2);
+            for (let index = 1; index < route.length - 1; index++) {
+                const previous = route[index - 1], corner = route[index], next = route[index + 1];
+                const before = Math.hypot(corner[0] - previous[0], corner[1] - previous[1]);
+                const after = Math.hypot(next[0] - corner[0], next[1] - corner[1]);
+                if (!before || !after) continue;
+                const radius = Math.min(28, before / 2, after / 2);
+                ctx.lineTo(corner[0] + (previous[0] - corner[0]) * radius / before,
+                    corner[1] + (previous[1] - corner[1]) * radius / before);
+                ctx.quadraticCurveTo(...corner,
+                    corner[0] + (next[0] - corner[0]) * radius / after,
+                    corner[1] + (next[1] - corner[1]) * radius / after);
             }
+            ctx.lineTo(...route[route.length - 1]);
             ctx.stroke();
         }
     };
@@ -98,15 +100,7 @@ export function createPathsTexture() {
     const { x: plazaX, y: plazaY, radiusX: rx, radiusY: ry } = TOWN_PLAZA;
     ctx.fillStyle = '#e5ce98';
     ctx.beginPath();
-    ctx.moveTo(plazaX - rx, plazaY);
-    ctx.bezierCurveTo(plazaX - rx * 1.08, plazaY - ry * 0.7,
-        plazaX - rx * 0.4, plazaY - ry * 1.1, plazaX + rx * 0.1, plazaY - ry);
-    ctx.bezierCurveTo(plazaX + rx * 0.75, plazaY - ry * 0.9,
-        plazaX + rx * 1.1, plazaY - ry * 0.25, plazaX + rx, plazaY + ry * 0.3);
-    ctx.bezierCurveTo(plazaX + rx * 0.85, plazaY + ry * 1.15,
-        plazaX - rx * 0.15, plazaY + ry, plazaX - rx * 0.55, plazaY + ry * 0.85);
-    ctx.bezierCurveTo(plazaX - rx * 0.95, plazaY + ry * 0.65,
-        plazaX - rx, plazaY + ry * 0.25, plazaX - rx, plazaY);
+    ctx.ellipse(plazaX, plazaY, rx, ry, 0, 0, Math.PI * 2);
     ctx.fill();
     // A few small grains keep paths soft without a noisy dirt overlay.
     ctx.fillStyle = '#d6bd87';
@@ -117,14 +111,6 @@ export function createPathsTexture() {
         const y = plazaY + Math.sin(angle) * radius * ry * 0.85;
         ctx.beginPath(); ctx.ellipse(x, y, 2.2, 1.4, 0, 0, Math.PI * 2); ctx.fill();
     }
-    // Flat boarding pavement connects the footpath to the near-side curb.
-    const roadEdge = TOWN_BUS_ROAD.centerY - TOWN_BUS_ROAD.width / 2;
-    ctx.fillStyle = '#d7d5bf';
-    ctx.beginPath();
-    ctx.roundRect(TOWN_BUS_ROAD.stopX - TOWN_BUS_ROAD.platformWidth / 2,
-        TOWN_BUS_ROAD.platformY, TOWN_BUS_ROAD.platformWidth,
-        roadEdge - TOWN_BUS_ROAD.platformY, 8);
-    ctx.fill();
     return texture(image);
 }
 

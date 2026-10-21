@@ -142,8 +142,8 @@ export class MarketEngine {
     tutorialOrderError(stockId, isShort = false) {
         if (!this.isTutorialActive) return null;
         if (!this.tutorialStockId) return '현재 현금으로 구매 가능한 추천 종목을 찾고 있어요. 시세를 다시 확인할 때까지 기다려 주세요.';
-        if (stockId !== this.tutorialStockId) return '튜토리얼 중에는 안나가 추천한 종목만 매수할 수 있어요. 목록의 [안나 추천] 종목을 선택해 주세요.';
-        if (isShort && !this.firstTradeLesson) return '첫 거래는 안나가 추천한 종목의 매수로 진행해 주세요.';
+        if (stockId !== this.tutorialStockId) return '튜토리얼 중에는 모아가 추천한 종목만 매수할 수 있어요. 목록의 [모아 추천] 종목을 선택해 주세요.';
+        if (isShort && !this.firstTradeLesson) return '첫 거래는 모아가 추천한 종목의 매수로 진행해 주세요.';
         return null;
     }
 

@@ -1,0 +1,20 @@
+{
+  "removed_solid_trim_objects": [
+    "Left_Skirting",
+    "Right_Skirting",
+    "Back_Skirting",
+    "Front_Skirting_0",
+    "Front_Skirting_1",
+    "Left_Crown",
+    "Right_Crown",
+    "Back_Crown",
+    "Front_Crown_0"
+  ],
+  "molding": "Painted into wallpaper image, no protruding geometry",
+  "preserved": [
+    "Solid plank floor",
+    "Wall shape and doorway",
+    "Cement entrance fade"
+  ],
+  "image": "Embedded 1024x512 wallpaper with top and bottom wood bands"
+}

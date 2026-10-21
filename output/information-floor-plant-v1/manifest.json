@@ -1,0 +1,19 @@
+{
+  "status": "Floor plant produced and placed; game unchanged",
+  "position": [
+    3.24,
+    0.3,
+    0.022
+  ],
+  "leaf_count": 12,
+  "features": [
+    "rounded hollow cream pot",
+    "recessed soil",
+    "three leaf tiers"
+  ],
+  "pending": [
+    "user art review",
+    "full movement collision",
+    "game integration"
+  ]
+}

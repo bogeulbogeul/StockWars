@@ -50,7 +50,7 @@ test('K menu routes questions and starts free practice without tutorial',t=>{
  globalThis.cancelAnimationFrame=()=>{};
  const calls=[];
  const view={renderAgentMenu(text,options){this.options=options;},renderAgentQuestions:CipherLobby.prototype.renderAgentQuestions,renderAgentAnswer:CipherLobby.prototype.renderAgentAnswer,renderAgentChoices:CipherLobby.prototype.renderAgentChoices,startAgentPractice:CipherLobby.prototype.startAgentPractice,advanceNotice:()=>calls.push('dismiss'),player:{stop(){}},competitionRoom:{open:options=>calls.push(options),start:room=>calls.push(room)}};
- view.renderAgentChoices();assert.deepEqual(view.options.map(o=>o[0]),['K와 연습 대결','궁금한 게 있어요','옵시디언 회원 안내','대화 마치기']);
+ view.renderAgentChoices();assert.deepEqual(view.options.map(o=>o[0]),['토리와 연습 대결','궁금한 게 있어요','옵시디언 회원 안내','대화 마치기']);
  view.options[1][1]();assert.equal(view.options[0][0],'거래 수수료');view.options[0][1]();assert.equal(view.options[0][0],'다른 질문 보기');
- view.renderAgentChoices();view.options[0][1]();assert.equal(calls.length,3);assert.deepEqual(calls[1],{skipTutorial:true});assert.equal(calls[2].stake,0);assert.equal(calls[2].minutes,3);assert.equal(calls[2].cash,100000);assert.equal(calls[2].opponent,'에이전트 K');assert.equal(calls[2].difficulty,'hard');
+ view.renderAgentChoices();view.options[0][1]();assert.equal(calls.length,3);assert.deepEqual(calls[1],{skipTutorial:true});assert.equal(calls[2].stake,0);assert.equal(calls[2].minutes,3);assert.equal(calls[2].cash,100000);assert.equal(calls[2].opponent,'토리');assert.equal(calls[2].difficulty,'hard');
 });

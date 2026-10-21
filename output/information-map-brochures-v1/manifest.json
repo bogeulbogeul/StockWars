@@ -1,0 +1,18 @@
+{
+  "status": "Blank map frame and brochures placed; game unchanged",
+  "map_surface": "Blank cream, no terrain, roads, buildings or labels",
+  "brochures": 8,
+  "rack_rows": 2,
+  "position": [
+    -3.9,
+    -0.95,
+    0.022
+  ],
+  "map_insert_mesh": "Blank_Map_Insert",
+  "reference": "user map and brochure stand image",
+  "pending": [
+    "actual village layout",
+    "user art review",
+    "game integration"
+  ]
+}

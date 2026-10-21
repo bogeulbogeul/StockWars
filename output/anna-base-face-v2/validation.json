@@ -1,0 +1,9 @@
+{
+  "geometry_identical": true,
+  "body_material_unchanged": true,
+  "face_pixels_unchanged": true,
+  "normal_only_on_sprout": true,
+  "normal_strength": 1.1,
+  "normal_source": "original uploaded Anna.glb via input.blend",
+  "geometry_not_deepened": true
+}

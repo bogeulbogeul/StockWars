@@ -1,0 +1,45 @@
+{
+  "status": "asset seating contract; pub gameplay integration pending",
+  "seats": [
+    {
+      "id": "pub_sofa_1",
+      "sittable": false,
+      "blocked_reason": "decorative_pillow",
+      "position_blender": [
+        -3.2,
+        -4.165,
+        0.54
+      ]
+    },
+    {
+      "id": "pub_sofa_2",
+      "sittable": true,
+      "blocked_reason": null,
+      "position_blender": [
+        -3.2,
+        -3.455,
+        0.54
+      ]
+    },
+    {
+      "id": "pub_sofa_3",
+      "sittable": true,
+      "blocked_reason": null,
+      "position_blender": [
+        -3.2,
+        -2.745,
+        0.54
+      ]
+    },
+    {
+      "id": "pub_sofa_4",
+      "sittable": true,
+      "blocked_reason": null,
+      "position_blender": [
+        -3.2,
+        -2.035,
+        0.54
+      ]
+    }
+  ]
+}

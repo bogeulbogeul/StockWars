@@ -26,7 +26,7 @@ export const SALON_BODIES = SALON_OBJECTS.map(o => ({ id:o.id, type:'static', po
 export const SALON_PLAYER_BODY = Object.freeze({ type:'kinematic', radiusX:16, radiusY:8 });
 export const SALON_PLACES = [
     { id:'exit', label:'카펫에서 마을로 나가기', x:455,y:940, hit:[[350,916],[421,870],[560,962],[489,1011]], action:'exit' },
-    { id:'styles', label:'클레어와 대화하기', x:408,y:841, hit:[[229,573],[371,573],[371,711],[229,711]], action:'styles' },
+    { id:'styles', label:'보니와 대화하기', x:408,y:841, hit:[[229,573],[371,573],[371,711],[229,711]], action:'styles' },
     { id:'chair-left', label:'첫 번째 스타일링 의자', x:680,y:719, hit:SALON_OBJECTS[1].silhouette, seat:{x:729,y:675,direction:'up'} },
     { id:'chair-back', label:'두 번째 스타일링 의자', x:797,y:799, hit:SALON_OBJECTS[2].silhouette, seat:{x:851,y:756,direction:'up'} },
     { id:'chair-front', label:'세 번째 스타일링 의자', x:925,y:885, hit:SALON_OBJECTS[3].silhouette, seat:{x:979,y:842,direction:'up'} },

@@ -1,0 +1,5 @@
+{
+  "mouth_crop_max_pixel_error": 0,
+  "mouth_crop_mean_pixel_error": 0.0,
+  "reference": "original base-color with mouth overlay disabled"
+}

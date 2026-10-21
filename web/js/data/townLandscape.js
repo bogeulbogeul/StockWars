@@ -1,12 +1,12 @@
+import { EMPTY_CHARACTER_IMAGE } from './characterAsset.js';
 import { TOWN_PROP_SIZES } from './townScale.js';
-// Placement uses visible artwork bounds; y is the front ground-contact line.
+// Retained ground geometry for movement and interactions; retired 2D images are not loaded.
 const artwork = {
     hedge: ['LandscapeHedgeBedSimple', 2172, 724, 56, 195, 2056, 350],
     tree: ['LandscapeTreeBedSimple', 1254, 1254, 204, 160, 850, 952],
     fountain: ['FountainBaseSimple', 1254, 1254, 128, 218, 1000, 888],
     bench: ['BenchSimple', 1536, 1024, 78, 158, 1382, 664],
     lamp: ['StreetLampSimple', 1024, 1536, 380, 82, 266, 1378],
-    billboard: ['BillboardSimple', 1536, 1024, 112, 134, 1314, 754],
     vending: ['EnergyDrinkVendingMachine', 1024, 1536, 200, 196, 626, 1134]
 };
 // Shared display sizes per prop family; keep placement centers stable when resizing.
@@ -16,7 +16,6 @@ export const TOWN_LANDSCAPE = [
     ['plaza_fountain', 'fountain', 1660, 1490, 360, 180],
     ['north_west_tree', 'tree', 977.5, 720, 165, 70],
     ['north_east_tree', 'tree', 2287.5, 480, 165, 70],
-    ['town_information_board', 'billboard', 2160, 800, 420, 55],
     ['plaza_west_tree', 'tree', 1395, 1495, 165, 75],
     ['plaza_east_tree', 'tree', 2140, 1495, 165, 75],
     ['garden_tree', 'tree', 2937.5, 2090, 165, 70],
@@ -74,7 +73,7 @@ export const TOWN_LANDSCAPE = [
     }
     const [file, imageWidth, imageHeight, cropX, cropY, cropWidth, cropHeight] = artwork[type];
     return { id, type, x, y, width, depth, height: width * cropHeight / cropWidth,
-        src: new URL(`../../assets/props/topdown-v1/${file}.png`, import.meta.url).href,
+        src: EMPTY_CHARACTER_IMAGE,
         imageWidth, imageHeight, viewBox: `${cropX} ${cropY} ${cropWidth} ${cropHeight}` };
 });
 

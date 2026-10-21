@@ -140,7 +140,7 @@ export class VivianRoomEditor {
     }
     describe(message) {
         const i=this.current();
-        this.status.textContent = message || `${i.name} · ${i.w}×${i.h}칸 · (${i.u+1}, ${i.v+1})${i.id==='counter' ? ' · 뒤쪽 한 줄은 비비안 자리' : ''}`;
+        this.status.textContent = message || `${i.name} · ${i.w}×${i.h}칸 · (${i.u+1}, ${i.v+1})${i.id==='counter' ? ' · 뒤쪽 한 줄은 봉봉 자리' : ''}`;
     }
     selectItem(id) {
         this.selected = id; this.select.value = id; this.footprint.classList.remove('is-invalid'); this.paint(); this.describe();

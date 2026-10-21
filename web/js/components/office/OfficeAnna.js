@@ -26,7 +26,7 @@ export class OfficeAnna {
         this.element.setAttribute('pointer-events', 'all');
         this.element.setAttribute('cursor', 'pointer');
         this.element.setAttribute('role', 'img');
-        this.element.setAttribute('aria-label', '오피스 매니저 안나');
+        this.element.setAttribute('aria-label', '오피스 매니저 모아');
         this.element.innerHTML = `
             <ellipse cx="0" cy="0" rx="15" ry="6" fill="rgba(0,0,0,0.18)" />
             <svg class="office-anna-sprite" overflow="hidden" preserveAspectRatio="none">

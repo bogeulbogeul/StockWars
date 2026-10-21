@@ -1,6 +1,7 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
+import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { HOME_MODEL_URL, HOME_MODEL_SCALE, HOME_ROOM_BOUNDS, HOME_SPAWN,
     HOME_EXIT_Z, homeCanStand } from '../../data/homeModelRoom.js';
@@ -28,7 +29,7 @@ export class HomeModelScene {
         container.append(this.layer);
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0x000000);
-        this.camera = new THREE.OrthographicCamera(-600, 600, 500, -500, 1, 5000);
+        this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new HomeRoomCamera(this.camera);
         this.bindInput();
         this.ready = this.initialize().catch(error => {
@@ -68,7 +69,7 @@ export class HomeModelScene {
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.hint.textContent = 'WASD / 방향키 이동 · Space 점프 · Q/E 시점 회전 · 현관 / Esc 나가기';
+        this.player.setControlsHint('WASD / 방향키 이동 · Space 점프 · Q/E 시점 회전 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -143,13 +144,7 @@ export class HomeModelScene {
         const width = this.layer.clientWidth, height = this.layer.clientHeight;
         if (!width || !height) return;
         this.renderer.setSize(width, height);
-        const frame = 1.25 * HOME_MODEL_SCALE;
-        const halfHeight = Math.max(frame, frame / (width / height));
-        this.camera.top = halfHeight;
-        this.camera.bottom = -halfHeight;
-        this.camera.left = -halfHeight * width / height;
-        this.camera.right = halfHeight * width / height;
-        this.camera.updateProjectionMatrix();
+        this.roomCamera.resize(width / height);
     }
 
     update(dt) {
@@ -159,7 +154,8 @@ export class HomeModelScene {
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         ({ dx, dz } = this.roomCamera.movement(dx, dz));
-        const length = Math.hypot(dx, dz), speed = keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, homeCanStand);
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         let x = oldX, z = oldZ;
         if (length) {

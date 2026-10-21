@@ -150,11 +150,10 @@ export const TownStageMethods2 = {
             this.openBuildingInfo(obj);
             return;
         }
-        if (obj.kind === 'prop' || obj.type === 'bench' || obj.type === 'billboard') {
+        if (obj.kind === 'prop' || obj.type === 'bench') {
             if (obj.type === 'bench') {
                 this.playerController.restOnBench(obj, this.townChar, this.worldTrackEl);
-            } else if (obj.type === 'billboard') {
-                this.billboardModal?.classList.remove('hidden');
+
             } else if (obj.type === 'vending') {
                 this.playerController.keysHeld.clear();
                 this.vendingModal.open();

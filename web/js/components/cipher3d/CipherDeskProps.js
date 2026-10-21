@@ -36,24 +36,5 @@ export function addCipherDeskProps(room, box) {
     display.rotation.y = Math.PI;
     lid.add(display);
 
-    const logo = new THREE.Group();
-    logo.name = 'desk-cipher-logo';
-    logo.position.set(desk.x, 29, desk.z + desk.depth/2 - 3);
-    room.add(logo);
-    // Match the exterior emblem proportions: the rising line crosses the last bar.
-    for (const [x, height] of [[-25, 8], [-8, 14], [9, 21]]) {
-        part(logo, 'cipher-logo-bar', [9, height, 3], [x, height/2-10, 0], cream);
-    }
-    const stroke = (name, points) => {
-        const curve = new THREE.CurvePath();
-        for (let i = 1; i < points.length; i++) {
-            curve.add(new THREE.LineCurve3(new THREE.Vector3(...points[i-1]), new THREE.Vector3(...points[i])));
-        }
-        const mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, 24, 1.5, 6, false),
-            new THREE.MeshStandardMaterial({ color: cream, roughness: .85 }));
-        mesh.name = name;
-        logo.add(mesh);
-    };
-    stroke('cipher-logo-rise', [[-30, 1, 2], [-10, 10, 2], [6, 7, 2], [30, 18, 2]]);
-    stroke('cipher-logo-arrow', [[20, 18, 2], [30, 18, 2], [26, 9, 2]]);
+    // The native desk model now includes its oval emblem and rising-chart logo.
 }

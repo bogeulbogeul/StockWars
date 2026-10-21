@@ -1,7 +1,7 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { LOBBY } from '../../data/cipherLobbyRoom.js';
 
-export function addLobbyEntry(room) {
+export function addLobbyEntry(room, layout = LOBBY) {
     const canvas = document.createElement('canvas');
     canvas.width = 16;
     canvas.height = 128;
@@ -15,10 +15,10 @@ export function addLobbyEntry(room) {
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace;
     const length = 110;
-    const passage = new THREE.Mesh(new THREE.PlaneGeometry(LOBBY.exitHalfWidth*2,length),
+    const passage = new THREE.Mesh(new THREE.PlaneGeometry(layout.exitHalfWidth*2,length),
         new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false, toneMapped: false }));
     passage.name = 'lobby-entry-passage';
     passage.rotation.x = -Math.PI/2;
-    passage.position.set(0,-.2,LOBBY.depth/2+length/2-.3);
+    passage.position.set(0,-.2,layout.depth/2+length/2-.3);
     room.add(passage);
 }

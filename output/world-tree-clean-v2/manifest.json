@@ -1,0 +1,9 @@
+{
+  "status": "P1 visual proposal; final art acceptance and game integration pending",
+  "design": "Ancient spiralling wood, buttress roots, three tiered jade crowns, six warm luminous seed pods",
+  "seed_pods": "Decorative visual proposal; no growth, reward or story mechanic added",
+  "game_modified": false,
+  "mesh_count": 36,
+  "polygon_count": 73360,
+  "reference": "output/world-tree-clean-v1/front.png"
+}

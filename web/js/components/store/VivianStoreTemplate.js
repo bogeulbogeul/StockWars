@@ -20,9 +20,9 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
 
     return `
         <div id="vivianStoreModal" class="modal-overlay hidden vivian-store-overlay">
-            <section class="vivian-interior${allowLayoutEditing?'':' vivian-package-room'}" id="vivianInterior" tabindex="-1" aria-label="비비안 잡화점 내부">
+            <section class="vivian-interior${allowLayoutEditing?'':' vivian-package-room'}" id="vivianInterior" tabindex="-1" aria-label="봉봉 잡화점 내부">
                 ${allowLayoutEditing?getVivianRoomHtml()+getVivianInteriorPropsHtml()+getVivianStaffHtml():getVivianPackageHtml()}
-                <div class="vivian-welcome-dialogue" id="vivianWelcomeBubble" role="status" hidden><img class="vivian-welcome-portrait" src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}" alt="비비안"><div class="vivian-welcome-lines"><strong>비비안</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
+                <div class="vivian-welcome-dialogue" id="vivianWelcomeBubble" role="status" hidden><img class="vivian-welcome-portrait" src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}" alt="봉봉"><div class="vivian-welcome-lines"><strong>봉봉</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
                 ${allowLayoutEditing?getRoomGridHtml({editable:true}):''}
                 <div class="town-player-character vivian-player" id="vivianPlayer" aria-label="플레이어 캐릭터">
                     <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
@@ -34,14 +34,14 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                 <button class="vivian-exit-action vivian-shop-action" id="btnVivianShopAction" data-store-browse="daily" type="button" hidden>상품 구매하기 <kbd data-game-key="f">${bindingLabel('f')}</kbd></button>
                 <button class="vivian-interior-hotspot vivian-counter-hotspot" data-store-browse="daily" aria-label="계산대 이용하기"></button>
             </section>
-            <div class="modal-card vivian-store-card hidden" id="vivianShopPanel" role="dialog" aria-label="비비안 잡화점 상품 구매">
+            <div class="modal-card vivian-store-card hidden" id="vivianShopPanel" role="dialog" aria-label="봉봉 잡화점 상품 구매">
                 <!-- Top Neon Ambient Header -->
                 <div class="vivian-store-header">
                     <div class="vivian-header-brand">
                         <div class="vivian-header-icon-box">🏪</div>
                         <div class="vivian-header-titles">
                             <div class="vivian-header-title-row">
-                                <span class="vivian-store-title">비비안 잡화점</span>
+                                <span class="vivian-store-title">봉봉 잡화점</span>
                                 <span class="vivian-badge-online">OPEN 24H</span>
                             </div>
                             <div class="vivian-header-desc">증시 생존을 위한 필수 소모품 및 특수 전술 장비 보급소</div>
@@ -54,7 +54,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                             <span class="meta-val gold" id="vivianUserCash">0 G</span>
                         </div>
                         <div class="vivian-meta-chip">
-                            <span class="meta-label">비비안 신뢰도</span>
+                            <span class="meta-label">봉봉 신뢰도</span>
                             <span class="meta-val affinity" id="vivianAffinityBadge">Lv.1 💖 (0/100)</span>
                         </div>
                         <button class="vivian-close-btn" id="btnVivianClose" title="상점 내부로 돌아가기 (ESC)" aria-label="구매창 닫기">✕</button>
@@ -70,11 +70,11 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                             <div class="vivian-portrait-viewport" id="vivianPortraitViewport">
                                 <img id="vivianPortrait" class="vivian-portrait-image"
                                      src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}"
-                                     alt="비비안 — 차분한 미소" draggable="false">
+                                     alt="봉봉 — 차분한 미소" draggable="false">
                                 <div class="vivian-portrait-mood-tag" id="vivianMoodTag">영업 중 • 침착</div>
                             </div>
                             <div class="vivian-nameplate">
-                                <div class="vivian-npc-name">비비안 (Vivian)</div>
+                                <div class="vivian-npc-name">봉봉</div>
                                 <div class="vivian-npc-role">실용주의 보급상 & 정보 브로커</div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                         <div class="vivian-dialogue-bubble">
                             <div class="vivian-speech-header">
                                 <span class="vivian-dot-pulse"></span>
-                                <span class="speech-title">비비안의 메시지</span>
+                                <span class="speech-title">봉봉의 메시지</span>
                             </div>
                             <div class="vivian-speech-content" id="vivianSpeechText">
                                 "증시라는 전쟁터로 다시 들어가시려고요? 제대로 된 보급 없이는 1분도 못 버티고 깡통 차게 될 텐데요."
@@ -186,7 +186,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
             </div>
             <div class="vivian-receipt-overlay" id="vivianReceipt" hidden>
                 <section class="vivian-receipt" role="dialog" aria-modal="true" aria-labelledby="vivianReceiptTitle">
-                    <p class="vivian-receipt-brand">비비안 잡화점</p>
+                    <p class="vivian-receipt-brand">봉봉 잡화점</p>
                     <h2 id="vivianReceiptTitle">구매 완료</h2>
                     <p class="vivian-receipt-date" id="vivianReceiptDate"></p>
                     <dl>

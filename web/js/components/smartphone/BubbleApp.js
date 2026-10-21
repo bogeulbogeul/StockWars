@@ -442,9 +442,9 @@ export class BubbleApp {
             }
         } else if (roomId === 'anna') {
             html += `<div class="chat-row incoming">
-                <div class="chat-avatar-col"><div class="chat-avatar anna-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="안나"></span></div></div>
+                <div class="chat-avatar-col"><div class="chat-avatar anna-avatar"><span class="anna-portrait" data-expression="Smile" role="img" aria-label="모아"></span></div></div>
                 <div class="chat-bubble-col">
-                    <div class="chat-sender-meta"><span class="sender-name">전담 매니저 안나</span><span class="sender-role-badge anna">멘토</span></div>
+                    <div class="chat-sender-meta"><span class="sender-name">전담 매니저 모아</span><span class="sender-role-badge anna">멘토</span></div>
                     <div class="chat-bubble-wrap">
                         <div class="chat-bubble incoming-bubble"><div class="chat-bubble-text">파트너님, 좋은 아침이에요! ☀️<br>오늘도 수급을 파악해서 7일차 정산 목표 달성을 완료해 보아요!</div></div>
                         <div class="chat-time"><span>오전 09:15</span></div>
@@ -466,7 +466,7 @@ export class BubbleApp {
             html += `<div class="chat-row incoming">
                 <div class="chat-avatar-col"><div class="chat-avatar">🛍️</div></div>
                 <div class="chat-bubble-col">
-                    <div class="chat-sender-meta"><span class="sender-name">비비안 점주</span></div>
+                    <div class="chat-sender-meta"><span class="sender-name">봉봉 점주</span></div>
                     <div class="chat-bubble-wrap">
                         <div class="chat-bubble incoming-bubble"><div class="chat-bubble-text">어서오세요! 오늘 잡화점에 신상 소모품 및 유료 찌라시가 수신되었습니다. 💖</div></div>
                         <div class="chat-time"><span>어제</span></div>
@@ -503,7 +503,7 @@ export class BubbleApp {
                 html += `<div class="chat-row incoming">
                     <div class="chat-avatar-col"><div class="chat-avatar">${roomId === 'anna' ? '💼' : '🦅'}</div></div>
                     <div class="chat-bubble-col">
-                        <div class="chat-sender-meta"><span class="sender-name">${roomId === 'anna' ? '안나 💼' : '여의도 우주갈매기'}</span></div>
+                        <div class="chat-sender-meta"><span class="sender-name">${roomId === 'anna' ? '모아 💼' : '여의도 우주갈매기'}</span></div>
                         <div class="chat-bubble-wrap">
                             <div class="chat-bubble incoming-bubble"><div class="chat-bubble-text">${msg.reply}</div></div>
                             <div class="chat-time"><span>${msg.time}</span></div>

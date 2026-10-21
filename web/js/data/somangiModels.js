@@ -4,7 +4,8 @@ export const SOMANGI_MODELS = {
     walk: { file: 'walk.glb', clip: 'Walk_InPlace' },
     wave: { file: 'wave.glb', clip: 'Wave_Happy' },
     eat: { file: 'eat.glb', clip: 'Eat' },
-    jump: { file: 'jump.glb', clip: 'Jump' }
+    jump: { file: 'jump.glb', clip: 'Jump' },
+    crab: { file: 'crab.glb', clip: 'Crab_Left' }
 };
 
 export function somangiAssetUrl(file) {

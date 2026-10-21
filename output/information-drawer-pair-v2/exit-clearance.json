@@ -1,0 +1,8 @@
+{
+  "scale": 0.65,
+  "current_chair_cabinet_gap": 0.455,
+  "walk_width_min": 0.8680195212364197,
+  "walk_width_max": 0.8680195987224579,
+  "fits_straight_through_gap": false,
+  "method": "All visible meshes projected width over 25 walk frames; provisional scene scale"
+}

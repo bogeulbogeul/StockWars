@@ -1,0 +1,82 @@
+{
+  "status": "furniture assembled in room; runtime integration pending",
+  "placements": [
+    {
+      "name": "Storage_Cabinet",
+      "source": "bank-storage-cabinet-v1/Bank-storage-cabinet.blend",
+      "location": [
+        -2.65,
+        2.48,
+        0.009
+      ],
+      "rotation_z": 0,
+      "bounds": {
+        "min": [
+          -3.510000228881836,
+          2.177999973297119,
+          0.024000000208616257
+        ],
+        "max": [
+          -1.790000081062317,
+          2.7300000190734863,
+          1.2239999771118164
+        ]
+      }
+    },
+    {
+      "name": "Entry_Plant",
+      "source": "bank-potted-plant-v1/Bank-potted-plant.blend",
+      "location": [
+        -3.15,
+        -2.59,
+        0.009
+      ],
+      "rotation_z": 0,
+      "bounds": {
+        "min": [
+          -3.490115165710449,
+          -2.943748950958252,
+          0.024000000208616257
+        ],
+        "max": [
+          -2.7936649322509766,
+          -2.208582639694214,
+          0.838169515132904
+        ]
+      }
+    },
+    {
+      "name": "Info_Terminal",
+      "source": "bank-display-flat-mark-v4/Bank-info-terminal.blend",
+      "location": [
+        3.34,
+        -0.96,
+        0.009
+      ],
+      "rotation_z": -1.5707963267948966,
+      "bounds": {
+        "min": [
+          3.069999933242798,
+          -1.2625000476837158,
+          0.024000000208616257
+        ],
+        "max": [
+          3.575000047683716,
+          -0.6574999690055847,
+          1.1603984832763672
+        ]
+      }
+    }
+  ],
+  "preserved": [
+    "original U counter",
+    "shifted sofa clear of moulding",
+    "open front with raised borders removed",
+    "adopted gold bank wall mark",
+    "safe and arched window",
+    "desktop props and executive chair"
+  ],
+  "display": "flat 2D adopted bank mark, texture packed",
+  "character": "three scale-reference copies in separate scale-check blend",
+  "validation": "placement and render only; no new seating checks"
+}

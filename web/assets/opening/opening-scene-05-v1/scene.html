@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정류장의 안내문 · 다섯 번째 장면</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171c2b;color:#efe4ce;font-family:'Malgun Gothic',sans-serif;display:grid;min-height:100vh;place-content:center;gap:18px}
+main{position:relative;width:min(100vw,1280px);aspect-ratio:16/9;overflow:hidden;background:#efe0c6;isolation:isolate}
+.picture{position:absolute;inset:0;animation:approach 26s ease-out both}
+.picture img{width:100%;height:100%;object-fit:cover}
+.flyer{position:absolute;left:64.5%;top:34%;width:14%;margin:0;color:#493523;text-align:center;font-size:clamp(9px,1.2vw,15px);font-weight:700;line-height:1.6;transform:rotate(-3deg)}
+.sunlight{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,#fff3c533,transparent 65%);animation:dawn 26s ease-out both;pointer-events:none}
+.caption{position:absolute;left:5%;right:5%;bottom:3%;margin:0;padding:clamp(8px,1.2vw,16px) 12px;border-radius:12px;background:#fff6e6;color:#302419;text-align:center;font-size:clamp(17px,2.5vw,32px);font-weight:700;line-height:1.65;word-break:keep-all;box-shadow:0 2px 12px #38251418}
+.intro{animation:intro 26s both}.quote{animation:quote 26s both}.response{animation:response 26s both}
+.veil{position:absolute;inset:0;background:#f5ead7;pointer-events:none;animation:reveal 1s ease-out both}
+footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;font-size:13px;color:#bdb5a6;padding:0 10px 12px}
+button,a{border:1px solid #b4a58c;border-radius:30px;padding:10px 20px;background:transparent;color:#efe4ce;cursor:pointer;font:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:2px solid #ffe0a0;outline-offset:4px}
+@keyframes approach{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes dawn{from{opacity:0}to{opacity:1}}
+@keyframes intro{0%{opacity:0}7%,21%{opacity:1}25%,100%{opacity:0}}
+@keyframes quote{0%,26%{opacity:0}32%,72%{opacity:1}77%,100%{opacity:0}}
+@keyframes response{0%,78%{opacity:0}84%,100%{opacity:1}}
+@keyframes reveal{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.picture,.sunlight,.quote{animation:none}.intro,.response,.veil{display:none}}
+body{background:#171c2b;overflow:hidden;gap:0}main{width:min(100vw,calc(100dvh * 16 / 9))}</style>
+<main aria-label="시골 정류장에서 소망이가 새 주민 모집 안내문을 읽습니다. 아직 무엇을 하고 싶은지 몰라도 괜찮다는 문구에 마음이 움직입니다.">
+ <div class="picture">
+  <img src="bus-stop-notice-crayon.png" alt="편지와 씨앗을 품은 소망이가 정류장 게시판을 바라봅니다.">
+  <p class="flyer">새 주민 모집<br>작은 방 · 정착 안내</p>
+  <div class="sunlight"></div>
+ </div>
+ <p class="caption intro">그러던 어느 날,<br>정류장에서 안내문 하나를 발견했어요.</p>
+ <p class="caption quote">“아직 무엇을 하고 싶은지<br>몰라도 괜찮습니다.”</p>
+ <p class="caption response">“……나도 가도 되는 걸까?”</p>
+ <div class="veil"></div>
+</main>
+
+</html>

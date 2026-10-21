@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
     try {
         const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
         const errors = [];
+        page.on('response', response => { if(response.status() >= 400) console.error('HTTP',response.status(),response.url()); });
         page.on('pageerror', error => errors.push(error.message));
         page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
         await page.goto('http://127.0.0.1:8099/');
@@ -29,7 +30,9 @@ const server = http.createServer((req, res) => {
         await page.waitForFunction(() => window.stockWarsApp.cipherLobbyScene?.player?.state === 'idle', null, { timeout: 90000 });
         await page.keyboard.press('f');
         assert.equal(await page.locator('dialog[open]').count(), 0, 'F away from doors must do nothing');
-        for (const [id, x, selector] of [['training', -450, '[data-close]'], ['competition', 450, '[data-exit]']]) {
+        const width = await page.evaluate(async () => (await import('/js/data/cipherLobbyRoom.js')).LOBBY.width);
+        // Walkable training room is verified by check-cipher-training-shell.cjs.
+        for (const [id, x, selector] of [['competition', width/2-50, '[data-exit]']]) {
             for (const closeWith of ['button', 'Escape']) {
                 await page.evaluate(({x}) => {
                     const s = window.stockWarsApp.cipherLobbyScene;

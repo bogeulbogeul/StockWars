@@ -32,12 +32,12 @@ test('Agent K challenge accepts a finished victory only, excluding draws, losses
     const {quests} = setup(), id='challenge_agent_k_v1';
     for(const result of [
         {opponent:'AI',completed:true,playerAssets:12000,opponentAssets:10000},
-        {opponent:'에이전트 K',completed:false,playerAssets:12000,opponentAssets:10000},
-        {opponent:'에이전트 K',completed:true,playerAssets:10000,opponentAssets:10000},
-        {opponent:'에이전트 K',completed:true,playerAssets:9000,opponentAssets:10000},
-        {opponent:'에이전트 K',completed:true,playerAssets:NaN,opponentAssets:10000}
+        {opponent:'토리',completed:false,playerAssets:12000,opponentAssets:10000},
+        {opponent:'토리',completed:true,playerAssets:10000,opponentAssets:10000},
+        {opponent:'토리',completed:true,playerAssets:9000,opponentAssets:10000},
+        {opponent:'토리',completed:true,playerAssets:NaN,opponentAssets:10000}
     ]){quests.record('arena',result);assert.equal(quests.list().find(q=>q.id===id).ready,false);}
-    quests.record('arena',{opponent:'에이전트 K',completed:true,playerAssets:11000,opponentAssets:10000});
+    quests.record('arena',{opponent:'토리',completed:true,playerAssets:11000,opponentAssets:10000});
     assert.equal(quests.list().find(q=>q.id===id).ready,true);
 });
 test('Agent K victory and its reward survive reload and cannot pay twice', () => {

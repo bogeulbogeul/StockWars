@@ -10,7 +10,7 @@ import { gameKey, bindingLabel } from '../app/GameKeys.js';
  * - townWorldData: Canonical world layout definitions
  */
 
-import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS, TOWN_BILLBOARD_NEWS } from '../data/townWorldData.js';
+import { TOWN_BUILDINGS, TOWN_INTERACTIVE_PROPS } from '../data/townWorldData.js';
 import { townEntrance, TOWN_VIEW_SCALE, TOWN_SCENERY_ENABLED } from '../data/townLayout.js';
 import { TownBuildingRenderer } from './town/TownBuildingRenderer.js';
 import { TownPlayerController } from './town/TownPlayerController.js';
@@ -19,7 +19,6 @@ import { TownVendingModal } from './town/TownVendingModal.js';
 import { TOWN_OCCLUDERS, getTownVisibility } from './town/TownOcclusion.js';
 import { TownPresenceSync } from './town/TownPresenceSync.js';
 import { SkyBackground } from './sky/SkyBackground.js';
-import { getBillboardBroadcast, formatCipherIndex } from './town/TownBillboardBroadcast.js';
 
 export class TownStage {
     constructor(container, callbacks = {}) {
@@ -32,8 +31,6 @@ export class TownStage {
         this.activeChannel = '타운 2';
         this.activeNearbyObject = null;
         this.animFrameId = null;
-        this.billboardTimer = null;
-        this.billboardSlideIdx = 0;
         this.lastTimestamp = performance.now();
         this.skyBackground = null;
 
@@ -50,7 +47,6 @@ export class TownStage {
         this.initDOM();
         this.initEventListeners();
         this.startLoop();
-        this.startBillboardCarousel();
     }
 
     render() {
@@ -85,58 +81,12 @@ export class TownStage {
 
                     <!-- Town World Scroll Track -->
                     <div class="town-world-track" id="townWorldTrack" style="width: ${this.playerController.worldWidth}px; height: ${this.playerController.worldHeight}px;">
-                        <div class="town-surroundings" aria-hidden="true"></div>
-                        <svg class="town-outer-road" viewBox="-140 -140 3980 2880" aria-hidden="true" focusable="false">
-                            <defs>
-                                <pattern id="townOuterRoadTexture" width="512" height="128" patternUnits="userSpaceOnUse">
-                                    <rect width="512" height="128" fill="#43576b" />
-                                    <svg width="512" height="128" viewBox="0 232 2172 100" preserveAspectRatio="none">
-                                        <image href="${new URL('../../assets/ground/topdown-v1/RoadStraight.png', import.meta.url).href}" width="2172" height="724" />
-                                    </svg>
-                                </pattern>
-                            </defs>
-                            <path fill="url(#townOuterRoadTexture)" fill-rule="evenodd" d="M-260 -140H3840V2740H-260Z M-120 0H3700V2600H-120Z" />
-                            <rect x="-10000" y="-10000" width="10020" height="22600" fill="url(#townOuterRoadTexture)" />
-                            <rect x="3560" y="-10000" width="10000" height="22600" fill="url(#townOuterRoadTexture)" />
-                            <!-- Opposite sidewalks align with the central block, including side curbs. -->
-                            <path class="town-road-curb" d="M20 -10000V-140H3560V-10000 M20 12600V2740H3560V12600" />
-                            ${[ { x: 1221, y: -128 }, { x: 1781, y: 2612 } ].map(({ x, y }) => `
-                                <svg x="${x}" y="${y}" width="118" height="116" viewBox="966 220 240 284" preserveAspectRatio="none" overflow="hidden">
-                                    <rect x="966" y="220" width="240" height="284" fill="#43576b" />
-                                    <image href="${new URL('../../assets/ground/topdown-v1/RoadCrosswalk.png', import.meta.url).href}" width="2172" height="724" />
-                                </svg>
-                            `).join('')}
-                        </svg>
-                        <!-- Roads are walkable ground; props remain independently paused. -->
-                        <svg class="town-road-network" viewBox="0 0 3700 2600" aria-hidden="true" focusable="false">
-                            <defs>
-                                <pattern id="townAsphalt" width="512" height="128" patternUnits="userSpaceOnUse">
-                                    <rect width="512" height="128" fill="#43576b" />
-                                    <svg width="512" height="128" viewBox="0 232 2172 100" preserveAspectRatio="none">
-                                        <image href="${new URL('../../assets/ground/topdown-v1/RoadStraight.png', import.meta.url).href}" width="2172" height="724" />
-                                    </svg>
-                                </pattern>
-                            </defs>
-                            <path fill="url(#townAsphalt)" fill-rule="evenodd" d="M-120 0H3700V2600H-120Z M20 140H3560V2460H20Z" />
-                            <path class="town-road-curb" d="M20 140H3560V2460H20Z" />
-                            <path class="town-road-centerline" d="M-120 0H3700V2600H-120Z" />
-                            <!-- Crop the crossing section of the matching road asset.
-                                 North: gap between office and securities; south: central walkway. -->
-                            ${[ { x: 1221, y: 12 }, { x: 1781, y: 2472 } ].map(({ x, y }) => `
-                                <svg x="${x}" y="${y}" width="118" height="116" viewBox="966 220 240 284" preserveAspectRatio="none" overflow="hidden">
-                                    <rect x="966" y="220" width="240" height="284" fill="#43576b" />
-                                    <image href="${new URL('../../assets/ground/topdown-v1/RoadCrosswalk.png', import.meta.url).href}" width="2172" height="724" />
-                                </svg>
-                            `).join('')}
-                        </svg>
-                        <!-- Buildings Row Layer -->
-                        ${TownBuildingRenderer.renderLandscapeGroundHTML()}
-                        ${TownBuildingRenderer.renderLandscapeHTML()}
+                        <!-- Invisible interaction markers; village artwork is rendered in 3D. -->
                         <div class="town-buildings-layer" id="townBuildingsLayer">
                             ${TownBuildingRenderer.renderBuildingsHTML()}
                         </div>
 
-                        <!-- Interactive Props Layer (Benches & Electronic Billboard) -->
+                        <!-- Interactive Props Layer (Benches) -->
                         <div class="town-interactive-props-layer" id="townInteractivePropsLayer">
                             ${TownBuildingRenderer.renderInteractivePropsHTML()}
                         </div>
@@ -176,11 +126,9 @@ export class TownStage {
                     </div>
                 </div>
 
-                <!-- Electronic Billboard News & Ad Interactive Modal -->
-                ${TownBuildingRenderer.renderBillboardModalHTML()}
-                <div class="town-billboard-modal-overlay hidden" id="townBuildingInfoModal">
-                    <section class="town-billboard-modal-dialog town-building-info-dialog" role="dialog" aria-modal="true" aria-labelledby="townBuildingInfoTitle" aria-describedby="townBuildingInfoDesc townBuildingInfoStatus">
-                        <div class="billboard-modal-header">
+                <div class="town-building-modal-overlay hidden" id="townBuildingInfoModal">
+                    <section class="town-building-modal-dialog town-building-info-dialog" role="dialog" aria-modal="true" aria-labelledby="townBuildingInfoTitle" aria-describedby="townBuildingInfoDesc townBuildingInfoStatus">
+                        <div class="town-building-modal-header">
                             <div class="modal-title-group">
                                 <span class="modal-title-icon" id="townBuildingInfoIcon" aria-hidden="true"></span>
                                 <div><h3 class="modal-title-text" id="townBuildingInfoTitle"></h3><p class="modal-subtitle-text" id="townBuildingInfoCategory"></p></div>
@@ -213,8 +161,6 @@ export class TownStage {
         this.promptDesc = document.getElementById('promptBuildingDesc');
         this.btnReturnOffice = document.getElementById('btnTownReturnOffice');
         this.channelText = document.getElementById('townActiveChannelText');
-        this.billboardModal = document.getElementById('townBillboardModal');
-        this.btnBillboardClose = document.getElementById('btnBillboardClose');
 
         this.buildingInfoModal = document.getElementById('townBuildingInfoModal');
         this.btnBuildingInfoClose = document.getElementById('btnBuildingInfoClose');

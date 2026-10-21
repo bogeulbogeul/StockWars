@@ -1,0 +1,15 @@
+{
+  "glass_y": -0.825,
+  "opening_radius": 0.108,
+  "crossbar_half_length": 0.118,
+  "rim_outer_radius": 0.137,
+  "crossbars": "Ends overlap wooden rim by .010",
+  "fixes": [
+    "Real opening through door and rim",
+    "Wood-lined inner reveal",
+    "Recessed glass",
+    "Crossbars meet rim",
+    "Offset crossing faces to avoid central dot"
+  ],
+  "preserved": "House palette and all other exterior/interior features"
+}

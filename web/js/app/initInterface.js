@@ -1,4 +1,3 @@
-import { HelpModal } from '../components/HelpModal.js';
 import { VIVIAN_SHOP_CATALOG } from '../data/vivianStoreData.js';
 import { marketEngine } from '../engine/marketEngine.js';
 import { toastManager } from '../components/ToastManager.js';
@@ -19,7 +18,6 @@ import { RankingModal } from '../components/RankingModal.js';
 import { AnnaDialogueModal } from '../components/AnnaDialogueModal.js';
 
 export function initInterface() {
-        this.helpModal = new HelpModal(this.appContainer);
         // Main in-game status and navigation HUD.
         this.mainHUD = new MainHUD(this.appContainer, {
             onProfile: () => this.playerProfileModal.open(),
@@ -27,7 +25,6 @@ export function initInterface() {
             onInventory: () => this.inventoryModal.toggle(),
             onFurnitureEdit: () => this.furnitureEditModal.toggle(),
             onRanking: () => this.rankingModal.show(),
-            onHelp: () => this.helpModal.open(),
             onSettings: () => this.settingsModal.open()
         });
 

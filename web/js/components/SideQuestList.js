@@ -1,4 +1,4 @@
-const giverName = giver => ({anna:'안나',agent_k:'에이전트 K'}[giver] || '의뢰인');
+const giverName = giver => ({anna:'모아',agent_k:'토리'}[giver] || '의뢰인');
 import { titleName } from '../data/playerTitles.js';
 
 export class SideQuestList {

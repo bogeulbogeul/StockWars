@@ -1,0 +1,30 @@
+{
+  "status": "Layout model adjusted; game not changed",
+  "counter_translation": [
+    0,
+    -0.4,
+    0
+  ],
+  "packing_translation": [
+    -0.3,
+    0,
+    0
+  ],
+  "counter_center": [
+    0,
+    0.75,
+    0
+  ],
+  "packing_center": [
+    1.95,
+    2.22,
+    0
+  ],
+  "units": "Temporary modeling units",
+  "preserved": [
+    "Two empty right-wall fridges",
+    "Empty left-wall shelves",
+    "Room and flower"
+  ],
+  "validation": "Rendered overview; complete assemblies moved together"
+}

@@ -1,0 +1,21 @@
+{
+  "vertices": 57449,
+  "geometry_identical": true,
+  "source_uv_preserved": true,
+  "cream_srgb": [
+    1.0,
+    0.8901961445808411,
+    0.7333333492279053
+  ],
+  "olive_srgb": [
+    0.35686275362968445,
+    0.3960784673690796,
+    0.11372549831867218
+  ],
+  "face": "open oval eyes, subtle highlights, small smile",
+  "face_texture_separate": true,
+  "roughness": 0.82,
+  "metallic": 0,
+  "source_stain_normal_maps_replaced": true,
+  "rig_added": false
+}

@@ -1,21 +1,41 @@
 {
   "installed": "2026-10-19",
   "height": 100,
-  "walk_source": "latest rounded body/arms from somangi-wave-v3 + blank-buddy-walk-v3 Walk_InPlace",
+  "walk_source": "output/somangi-walk-v4/somangi-walk.glb",
   "wave_source": "output/somangi-wave-v3/somangi-wave.glb",
-  "eat_source": "output/somangi-eat-v6/somangi-eat.glb",
+  "eat_source": "output/somangi-eat-v7/somangi-eat.glb",
   "controls": {
     "move": "WASD / arrows",
     "wave": "1",
     "eat": "2",
-    "jump": "Space"
+    "jump": "Space",
+    "crab": "automatic in narrow passages; 3 toggles manual mode"
   },
   "scope": "local town preview; no food consumption, healing or multiplayer broadcast",
   "files": {
-    "eat.glb": "22e26a4b52ba52d5152ef8777281a368fda337968c958ea4bf8578f952db9908",
-    "walk.glb": "d7bb714bb57a5fa514362088422f0a5b0aa552fa254d209e38fc0b07834dfe2d",
+    "eat.glb": "ae32c04804677bfe84eb9342e4bffedc79a0b2a8b06f05c9b82aa8b52f8902ee",
+    "walk.glb": "e72512fa6f12fd10f99078bbb83cf65b1e5c87956b4aed6f3549aecb1f212a41",
     "wave.glb": "a0fa91f52befc98dfbdf5190c4c98f977407b3e1e6fd30c7dedfc75b60d89ed6",
-    "jump.glb": "2861cbe6e96b0c029a3444e41f0f8d6ecf83f4c1f20aa0b5114b5b22c2393e6b"
+    "jump.glb": "2861cbe6e96b0c029a3444e41f0f8d6ecf83f4c1f20aa0b5114b5b22c2393e6b",
+    "crab.glb": "0045fffbceea754a365dea761f422f4f7eeafeb1e3900ae4129f8006e74ff649"
   },
-  "jump_source": "output/somangi-jump-v1/somangi-jump.blend (grounded frame 1 export)"
+  "jump_source": "output/somangi-jump-v1/somangi-jump.blend (grounded frame 1 export)",
+  "walk_tuning": {
+    "leg_swing_degrees": 24,
+    "arm_swing_degrees": 18,
+    "cycle_seconds": 0.75,
+    "movement_speed_changed": false
+  },
+  "crab_source": "output/somangi-crab-walk-v4/somangi-crab-walk.glb",
+  "crab_clearance": {
+    "enter_probe": 34,
+    "exit_probe": 44,
+    "forward_probes": [
+      0,
+      12,
+      24
+    ],
+    "both_sides_required": true,
+    "collision_radius_changed": false
+  }
 }

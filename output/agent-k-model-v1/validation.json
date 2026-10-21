@@ -1,0 +1,33 @@
+{
+  "body_vertex_coordinates_unchanged": true,
+  "anna_v7_vest_geometry_unchanged": true,
+  "bones": [
+    "Root",
+    "Body",
+    "Head",
+    "Arm.L",
+    "Arm.R",
+    "Leg.L",
+    "Leg.R"
+  ],
+  "game_changed": false,
+  "reimport_meshes": [
+    "AgentK_Crystal",
+    "AgentK_Vest",
+    "Crystal collar",
+    "Eating_Torso",
+    "Glasses bridge",
+    "Glasses rim -1",
+    "Glasses rim 1",
+    "Glasses temple -1",
+    "Glasses temple 1",
+    "Icosphere",
+    "Rigid_Arm.L",
+    "Rigid_Arm.R",
+    "Somangi_Body"
+  ],
+  "reimport_actions": [
+    "Walk_InPlace",
+    "Walk_InPlace.001"
+  ]
+}

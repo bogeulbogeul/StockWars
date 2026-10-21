@@ -1,0 +1,17 @@
+{
+  "status": "Two stocked shelves modeled and placed; game not changed",
+  "placement": "Left wall, facing room center",
+  "units": 2,
+  "rows_per_unit": 3,
+  "products_per_row": 6,
+  "goods": [
+    "Cream jars with colored lids",
+    "Boxed goods",
+    "Folded kraft paper bags"
+  ],
+  "preserved": [
+    "Counter and back-wall flower",
+    "Clear central entrance aisle"
+  ],
+  "validation": "Overview/detail rendered; movement and interaction not implemented"
+}
