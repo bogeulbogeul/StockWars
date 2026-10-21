@@ -1,6 +1,6 @@
 # StockWars 문서 인덱스
 
-2026-10-21 잡화점 알바 후속: **주문 상품 미리 제공 → 상자에 회전·배치하는 2D 포장 퍼즐**, 화남 게이지·시간제한 제거, 난이도 선택 없이 검증된 10개 상자 조합 무작위 출제를 채택했다. 5건 목표의 플레이 시제품과 마을/상점 진입을 구현했다. [노동 최신 명세](MOD_GDD_02_LaborJobs.md)·[화면과 검증](../output/packing-ui-v1/README.md)을 따른다. **P0 (Core) · ✅ UI·플레이 및 자동 검증 / ⏳ 사용자 검수·보수/하트·저장·찌라시·첫날 연결.** 아래 고정 진열대 선택·화남 게이지·새 노동 전체 미구현 표기는 이전 기록이다.
+2026-10-21 잡화점 알바 후속: **필요 상품 미리 제공 → 기본 방향 그대로 상자에 빈칸 없이 배치하는 2D 포장 퍼즐**이다. 회전·화남 게이지·시간제한·난이도 선택 없이 20개 조합 중 5상자를 무작위로 제공한다. 사용자 제안인 ‘비비안이 손님이 맡긴 찌라시 봉투를 알바 후 전달’과 완료 UI 후보도 정리했다. [포장 알바 통합 기획](PACKING_JOB_DESIGN.md)·[노동 최신 명세](MOD_GDD_02_LaborJobs.md)를 따른다. **P0 (Core) · ✅ 퍼즐 구현·자동 검증 / ⏳ 사용자 최종 검수·보수/하트·저장·봉투 연출·첫날 연결.** 완료 UI 제안과 보상 지급 구현은 구분하며 아래 이전 회전·10개 패턴·고정 진열대·화남 게이지 기록은 현행 규칙이 아니다.
 
 2026-10-21 집주인 여행 우편 채택: 세계여행 중인 집주인이 **가끔 편지나 기념품을 보내고 소망이는 집 앞 우편함에서 수신**한다. 여행 경험·안부를 나누는 일상 교류이며 발송 주기·첫 도착·구체 여행지·기념품 품목/효과·답장 조건은 후속 설계다. [주거 설정](MOD_GDD_01_WorldFacilities.md)·[여행 우편 정책](MOD_GDD_09_FriendSystem.md)·[소개 대사](CORE_GDD_10_TutorialSystem.md)를 따른다. **P1 (Major) · ✅ 기획 반영 / ⏳ 콘텐츠·발송/수신·저장 구현·검수.**
 
@@ -155,6 +155,7 @@ origin/main
 
 - [StockWars GDD: MOD_GDD_01. 타운 시설 및 월드 구성](MOD_GDD_01_WorldFacilities.md)
 - [StockWars GDD: MOD_GDD_02. 노동(Job) 시스템 및 미니게임 상세](MOD_GDD_02_LaborJobs.md)
+- [비비안 잡화점 포장 알바 통합 기획·완료 후 봉투 UI 논의](PACKING_JOB_DESIGN.md)
 - [StockWars GDD: [MOD_GDD_03_0] 상점 및 아이템 시스템 인덱스](MOD_GDD_03_0_ShopIndex.md)
 - [StockWars GDD: [MOD_GDD_03_1] 비비안 잡화점 (Vivian's Store)](MOD_GDD_03_1_VivianStore.md)
 - [StockWars GDD: [MOD_GDD_03_2] Modern Frame 완성형 테마 룸 상점](MOD_GDD_03_2_JulianFurniture.md)
