@@ -6,8 +6,6 @@ import { installPackingEntrance } from './PackingEntrance.js';
 import { installVivianModelEntrance } from './VivianModelEntrance.js';
 import { installBankModelEntrance } from './BankModelEntrance.js';
 import { installInformationModelEntrance } from './InformationModelEntrance.js';
-e4467a027e8cbbb4b3332b7d0218b1384450c9cd
-
 // Install the 3D renderer independently of stage input and UI.
 async function installTownModels() {
     const town = window.stockWarsApp?.townStage;
@@ -23,8 +21,7 @@ async function installTownModels() {
     const updateVivianEntrance = installVivianModelEntrance(window.stockWarsApp);
     const updateBankEntrance = installBankModelEntrance(window.stockWarsApp);
     const updateInformationEntrance = installInformationModelEntrance(window.stockWarsApp);
-e4467a027e8cbbb4b3332b7d0218b1384450c9cd
-    const draw = () => {
+const draw = () => {
         models.draw();
         updateHomeEntrance();
         updateCipherEntrance();
@@ -32,8 +29,7 @@ e4467a027e8cbbb4b3332b7d0218b1384450c9cd
         updateVivianEntrance();
         updateBankEntrance();
         updateInformationEntrance();
-e4467a027e8cbbb4b3332b7d0218b1384450c9cd
-        requestAnimationFrame(draw);
+requestAnimationFrame(draw);
     };
     draw();
 }

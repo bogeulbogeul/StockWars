@@ -72,8 +72,7 @@ export function initWorld() {
             onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant, { deferDrinkEffect: true }),
             onDrinkCollected: () => playRecoveryDrinkEffect(),
             isInputBlocked: () => this.packingGame?.isOpen === true || this.salonInterior?.isOpen === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
-e4467a027e8cbbb4b3332b7d0218b1384450c9cd
-            onReturnOffice: () => this.enterOffice(),
+onReturnOffice: () => this.enterOffice(),
             onHeal: () => {
                 const result = this.itemGameplay.restOnBench();
                 if (result.success) toastManager.show('💖 기력 완충! 오늘의 벤치 회복을 사용했습니다.', true);

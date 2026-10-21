@@ -13,5 +13,4 @@ export function startTownPreview(app) {
     document.body.classList.add('town-mode-active');
     document.activeElement?.blur();
 
-e4467a027e8cbbb4b3332b7d0218b1384450c9cd
 }
