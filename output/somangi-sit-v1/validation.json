@@ -1,0 +1,19 @@
+{
+  "meshAndUvUnchanged": true,
+  "meshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "clips": [
+    "Sit_Cycle",
+    "Sit_Down",
+    "Sit_Idle",
+    "Stand_Up",
+    "Walk_InPlace"
+  ],
+  "samples": 281,
+  "maxSeamGap": 0,
+  "floorPenetration": 0.00011676549911499023,
+  "cycleLoopError": 0.0,
+  "previewSeatPenetration": 0,
+  "maximumVerticesInPreviewSeat": 0,
+  "worstSeatPhase": 0,
+  "seatDetails": {}
+}

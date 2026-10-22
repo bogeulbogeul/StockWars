@@ -1,0 +1,21 @@
+{
+  "reference": "C:\\GitHub\\StockWars\\output\\somangi-eat-drink-grip-v3",
+  "sampleFrames": 91,
+  "torsoHeadLegDisplacementFromReferenceMotion": 0,
+  "shoulderBoundaryDisplacement": 0,
+  "maximumPalmBreadSurfaceError": 1.3211215132960398e-07,
+  "twoHands": true,
+  "foodScales": [
+    1,
+    0.95,
+    0.9,
+    0.85
+  ],
+  "animatedMouth": true,
+  "beverageIncluded": false,
+  "gameInstalled": false,
+  "bodyMorphAndUvIdenticalToV9": true,
+  "breadTransformDifferenceFromV9": 0,
+  "eyeMaterialIdenticalToV9": true,
+  "mouthReference": "somangi-chew-v1: max half-width .067, half-height .080"
+}

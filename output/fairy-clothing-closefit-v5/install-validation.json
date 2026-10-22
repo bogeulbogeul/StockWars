@@ -1,0 +1,37 @@
+[
+  {
+    "file": "moa-bench-sit.glb",
+    "target": "web/assets/characters/3d/anna/bench-sit.glb",
+    "sha256": "b58c8053a258bb842e6883c02eb039dcb17fbcfc8cf0bd9b534612aee35c9f57",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "moa-bench-doze.glb",
+    "target": "web/assets/characters/3d/anna/bench-doze.glb",
+    "sha256": "5608662c439ee9365d98f5e383e5b981a36c5b9b49d4b8b432559c4ed8e552cf",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "tori.glb",
+    "target": "web/assets/characters/3d/agent-k/Agent-K.glb",
+    "sha256": "7f7e867151aff032c8d94a867399cdd844847e7da18d15eefea58c67467ef3e3",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "information-room.glb",
+    "target": "web/assets/office/3d/Information-furnished-room.glb",
+    "sha256": "b338a32c4eeebcb9298c54d42cacf5d3a0a2889fe5271c36837d367ad30f5f4c",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "bongbong.glb",
+    "target": "web/assets/characters/3d/bongbong/Bongbong.glb",
+    "sha256": "2cc8119a6de5bad7648cca4e4001e19ed585dfc88869b1f9a9267542155e4c7a",
+    "web": true,
+    "runtime": true
+  }
+]

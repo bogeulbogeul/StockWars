@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
@@ -7,6 +8,7 @@ import { VIVIAN_MODEL_URL, VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS, VIVIAN_SPAWN,
     VIVIAN_EXIT_Z, VIVIAN_ROOM_RATIO, vivianCanStand } from '../../data/vivianModelRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
 import { VivianRoomCamera } from './VivianRoomCamera.js';
+import { addVivianShopkeeper } from './VivianShopkeeper.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class VivianModelScene {
@@ -49,10 +51,7 @@ export class VivianModelScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '잡화점 내부 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 2));
-        const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         const gltf = await new GLTFLoader().loadAsync(VIVIAN_MODEL_URL);
         this.room = gltf.scene;
         this.room.name = 'vivian-room';
@@ -92,6 +91,7 @@ export class VivianModelScene {
         carpet.add(carpetBorder);
         this.room.add(carpet);
         this.scene.add(this.room);
+        this.shopkeeper = await addVivianShopkeeper(this.room);
         this.roomCamera.update(0, this.room);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };

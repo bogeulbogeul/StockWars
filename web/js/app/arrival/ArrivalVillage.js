@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { addGameLights } from '../../components/lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { TownLandscape } from '../../components/town3d/TownLandscape.js';
 import { TOWN_MODEL_BUILDINGS, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
@@ -14,10 +15,7 @@ export async function getArrivalVillage() {
         return { scene: live.scene, landscape: live.landscape, live, owned: false };
     }
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xbfc6cf, .8));
-    const sun = new THREE.DirectionalLight(0xffffff, .8);
-    sun.position.set(-500, 1500, 900);
-    scene.add(sun);
+    addGameLights(scene);
     const landscape = new TownLandscape(scene);
     const definitions = [
         ...TOWN_MODEL_BUILDINGS.map(d => ({ ...d, url: modelAssetUrl(d.file) })),

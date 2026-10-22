@@ -1,0 +1,345 @@
+{
+  "report": [
+    {
+      "file": "somangi-walk.glb",
+      "clip": "Walk_InPlace",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-wave.glb",
+      "clip": "Wave_Happy",
+      "duration": 2.5416667461395264,
+      "frames": 63,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-eat.glb",
+      "clip": "Eat",
+      "duration": 3.0416667461395264,
+      "frames": 75,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-jump.glb",
+      "clip": "Jump",
+      "duration": 1.5416666269302368,
+      "frames": 38,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-crab.glb",
+      "clip": "Crab_Enter",
+      "duration": 0.5416666865348816,
+      "frames": 15,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-crab.glb",
+      "clip": "Crab_Exit",
+      "duration": 0.5416666865348816,
+      "frames": 15,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-crab.glb",
+      "clip": "Crab_Left",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-crab.glb",
+      "clip": "Crab_Right",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "somangi-office-sit.glb",
+      "clip": "Office_Sit",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Bench_Seated",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Bench_SitDown",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Bench_StandUp",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Leaf_Calm",
+      "duration": 2.03125,
+      "frames": 50,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Leaf_Happy",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Leaf_Sad",
+      "duration": 2.03125,
+      "frames": 50,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Seated",
+      "duration": 1.03125,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Sit_Demo",
+      "duration": 3.03125,
+      "frames": 74,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "SitDown",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "StandUp",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-sit.glb",
+      "clip": "Walk_InPlace",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Bench_Seated",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Bench_SitDown",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Bench_StandUp",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Leaf_Calm",
+      "duration": 2.03125,
+      "frames": 50,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Leaf_Happy",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Leaf_Sad",
+      "duration": 2.03125,
+      "frames": 50,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Seated",
+      "duration": 1.03125,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Seated_Doze",
+      "duration": 4.03125,
+      "frames": 98,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Sit_Demo",
+      "duration": 3.03125,
+      "frames": 74,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "SitDown",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "StandUp",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "moa-bench-doze.glb",
+      "clip": "Walk_InPlace",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "tori.glb",
+      "clip": null,
+      "duration": 0,
+      "frames": 2,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "bongbong.glb",
+      "clip": "Walk_InPlace",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    }
+  ],
+  "errors": []
+}

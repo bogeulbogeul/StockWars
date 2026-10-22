@@ -1,0 +1,38 @@
+[
+  {
+    "file": "walk.glb",
+    "sha256": "2a6ae20365968c0be22db38948eaa31687848cef93563b9beb65d3e1f03fb04c",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "wave.glb",
+    "sha256": "b81bbb54875d9e7a7f0603ac9185c5371d27a5a88c925bfea3f79f996e7b72c1",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "eat.glb",
+    "sha256": "a1c62219b0220c262a2e088d27d67e7f6770046fe7cafa6ace4cb1f0f54399ae",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "jump.glb",
+    "sha256": "048d60560e31517fdcab42b09c6c2d35ff3e0e1c4f2ad3ff35b79f7059972952",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "crab.glb",
+    "sha256": "d9b0396b3047bd0faf9fb329fce1ec13aa54a9ad3c48f7bca176d68772deff67",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "office-sit.glb",
+    "sha256": "ccdd30c53471274af503f347ada303018f8a052ad66dbd149913c1af69f062e2",
+    "web": true,
+    "runtime": true
+  }
+]

@@ -1,0 +1,2889 @@
+{
+  "frames": 144,
+  "eyeRegions": 288,
+  "eyeInteriorsRemainBlack": true,
+  "maxMedianChannel": 1.0,
+  "scope": "neutral studio renders, eye interior medians, excluding edges",
+  "checks": [
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 0,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 0,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 1,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 1,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 2,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 2,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 3,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 3,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 4,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 4,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 5,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 5,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 6,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 6,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 7,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 7,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 8,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 8,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 9,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 9,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 10,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 10,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 11,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 11,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 12,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 12,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 13,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 13,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 14,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 14,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 15,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 15,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 16,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 16,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 17,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 17,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 18,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 18,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 19,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 19,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 20,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 20,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 21,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 21,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 22,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 22,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 23,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 23,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 24,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 24,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 25,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 25,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 26,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 26,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 27,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 27,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 28,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 28,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 29,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 29,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 30,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 30,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 31,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 31,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 32,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 32,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 33,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 33,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 34,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 34,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 35,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "front",
+      "frame": 35,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 0,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 0,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 1,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 1,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 2,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 2,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 3,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 3,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 4,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 4,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 5,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 5,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 6,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 6,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 7,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 7,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 8,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 8,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 9,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 9,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 10,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 10,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 11,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 11,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 12,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 12,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 13,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 13,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 14,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 14,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 15,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 15,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 16,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 16,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 17,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 17,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 18,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 18,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 19,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 19,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 20,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 20,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 21,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 21,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 22,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 22,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 23,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 23,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 24,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 24,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 25,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 25,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 26,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 26,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 27,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 27,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 28,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 28,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 29,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 29,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 30,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 30,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 31,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 31,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 32,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 32,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 33,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 33,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 34,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 34,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 35,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "bread",
+      "view": "angle",
+      "frame": 35,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 0,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 0,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 1,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 1,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 2,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 2,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 3,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 3,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 4,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 4,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 5,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 5,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 6,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 6,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 7,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 7,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 8,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 8,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 9,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 9,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 10,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 10,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 11,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 11,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 12,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 12,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 13,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 13,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 14,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 14,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 15,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 15,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 16,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 16,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 17,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 17,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 18,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 18,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 19,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 19,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 20,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 20,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 21,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 21,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 22,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 22,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 23,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 23,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 24,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 24,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 25,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 25,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 26,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 26,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 27,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 27,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 28,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 28,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 29,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 29,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 30,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 30,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 31,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 31,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 32,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 32,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 33,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 33,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 34,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 34,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 35,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "front",
+      "frame": 35,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 0,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 0,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 1,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 1,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 2,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 2,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 3,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 3,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 4,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 4,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 5,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 5,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 6,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 6,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 7,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 7,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 8,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 8,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 9,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 9,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 10,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 10,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 11,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 11,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 12,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 12,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 13,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 13,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 14,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 14,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 15,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 15,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 16,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 16,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 17,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 17,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 18,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 18,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 19,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 19,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 20,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 20,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 21,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 21,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 22,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 22,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 23,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 23,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 24,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 24,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 25,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 25,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 26,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 26,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 27,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 27,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 28,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 28,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 29,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 29,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 30,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 30,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 31,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 31,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 32,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 32,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 33,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 33,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 34,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 34,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 35,
+      "medianRGB": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "drink",
+      "view": "angle",
+      "frame": 35,
+      "medianRGB": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ]
+}

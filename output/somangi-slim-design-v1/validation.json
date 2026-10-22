@@ -1,0 +1,12 @@
+{
+  "source": "Meshy_AI_Blank_Buddy_1022154035_texture.glb",
+  "vertices": 60654,
+  "triangles": 108618,
+  "finite": true,
+  "maxDisplacement": 0.15350200449824658,
+  "textureBytesUvsIndicesPreserved": true,
+  "normalMapDisabledForCleanSurface": true,
+  "rigged": false,
+  "animations": 0,
+  "notes": "Body width and belly depth reduced, limbs slimmed, legs lengthened; head shape and facial texture preserved. Not installed in game."
+}

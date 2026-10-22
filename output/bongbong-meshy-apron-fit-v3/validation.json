@@ -1,0 +1,12 @@
+{
+  "source_mesh_unchanged": false,
+  "source_short_straps_removed": true,
+  "front_and_pocket_unchanged": true,
+  "body_unchanged": true,
+  "continuous_waist_halves": 2,
+  "smooth_shoulders": 2,
+  "front_ends_tucked": true,
+  "surface_clearance": 0.03,
+  "material": "Original apron material with fixed coral and ivory UV samples",
+  "validation": "Static six-angle render; full motion contact review pending"
+}

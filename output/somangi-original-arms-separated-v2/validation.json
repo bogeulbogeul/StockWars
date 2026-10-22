@@ -1,0 +1,28 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-face-smooth-v1\\somangi-face-smooth.glb",
+  "method": "Planar shoulder cuts, original surface retained without smoothing; closed flat caps",
+  "parts": [
+    {
+      "name": "Arm.L",
+      "vertices": 3609,
+      "faces": 6947,
+      "capFaces": 1,
+      "openBoundaryEdgesAfterCap": 0
+    },
+    {
+      "name": "Arm.R",
+      "vertices": 3774,
+      "faces": 7252,
+      "capFaces": 1,
+      "openBoundaryEdgesAfterCap": 0
+    },
+    {
+      "name": "Body",
+      "vertices": 33513,
+      "faces": 65965,
+      "capFaces": 0,
+      "openBoundaryEdgesAfterCap": 0
+    }
+  ],
+  "gameInstalled": false
+}

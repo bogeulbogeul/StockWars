@@ -1,5 +1,5 @@
-import { EMPTY_CHARACTER_IMAGE } from '../../data/characterAsset.js';
 import { bindingLabel } from '../../app/GameKeys.js';
+import { dialogueThemeStyle } from '../dialogue/dialogueTheme.js';
 /**
  * VivianStoreTemplate
  * Generates semantic HTML markup for Vivian's General Store modal & interior scene.
@@ -8,7 +8,7 @@ import { bindingLabel } from '../../app/GameKeys.js';
 import { VIVIAN_TABS } from '../../data/vivianStoreData.js';
 import { roomFloorClipPath } from './IsometricRoomGrid.js';
 import { getVivianRoomHtml, getVivianInteriorPropsHtml, getRoomGridHtml, getVivianStaffHtml } from './VivianInteriorScene.js';
-import {getVivianPackageHtml,packageFloorClip,VIVIAN_SQUIRREL_URL} from './VivianRoomPackage.js';
+import {getVivianPackageHtml,packageFloorClip} from './VivianRoomPackage.js';
 
 export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
     const tabsHtml = Object.values(VIVIAN_TABS).map(tab => `
@@ -22,7 +22,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
         <div id="vivianStoreModal" class="modal-overlay hidden vivian-store-overlay">
             <section class="vivian-interior${allowLayoutEditing?'':' vivian-package-room'}" id="vivianInterior" tabindex="-1" aria-label="봉봉 잡화점 내부">
                 ${allowLayoutEditing?getVivianRoomHtml()+getVivianInteriorPropsHtml()+getVivianStaffHtml():getVivianPackageHtml()}
-                <div class="vivian-welcome-dialogue" id="vivianWelcomeBubble" role="status" hidden><img class="vivian-welcome-portrait" src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}" alt="봉봉"><div class="vivian-welcome-lines"><strong>봉봉</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
+                <div class="vivian-welcome-dialogue crayon-dialogue" style='${dialogueThemeStyle('bongbong')}' data-dialogue-theme="bongbong" id="vivianWelcomeBubble" role="status" hidden><div class="vivian-welcome-lines"><strong class="crayon-nameplate">봉봉</strong><p>어서오세요.<br>필요한 물건이 있으면 저에게 말을 걸어주세요.</p></div></div>
                 ${allowLayoutEditing?getRoomGridHtml({editable:true}):''}
                 <div class="town-player-character vivian-player" id="vivianPlayer" aria-label="플레이어 캐릭터">
                     <div class="town-char-body"><div class="char-face-front"><span class="char-eye left"></span><span class="char-eye right"></span><span class="char-smile"></span><span class="char-badge-pip"></span></div></div>
@@ -64,27 +64,13 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                 <!-- Main Split Stage Body -->
                 <div class="vivian-store-body">
                     <!-- Left: NPC Vivian Saloon Counter -->
-                    <div class="vivian-npc-panel">
-                        <!-- Portrait Frame (Ready for 2D/3D illustration asset) -->
-                        <div class="vivian-portrait-card">
-                            <div class="vivian-portrait-viewport" id="vivianPortraitViewport">
-                                <img id="vivianPortrait" class="vivian-portrait-image"
-                                     src="${allowLayoutEditing?EMPTY_CHARACTER_IMAGE:VIVIAN_SQUIRREL_URL}"
-                                     alt="봉봉 — 차분한 미소" draggable="false">
-                                <div class="vivian-portrait-mood-tag" id="vivianMoodTag">영업 중 • 침착</div>
-                            </div>
-                            <div class="vivian-nameplate">
-                                <div class="vivian-npc-name">봉봉</div>
-                                <div class="vivian-npc-role">실용주의 보급상 & 정보 브로커</div>
-                            </div>
+                    <div class="vivian-npc-panel crayon-dialogue" style='${dialogueThemeStyle('bongbong')}' data-dialogue-theme="bongbong">
+                        <div class="vivian-nameplate">
+                            <div class="vivian-npc-name">봉봉</div>
                         </div>
 
                         <!-- Dialogue Speech Bubble -->
                         <div class="vivian-dialogue-bubble">
-                            <div class="vivian-speech-header">
-                                <span class="vivian-dot-pulse"></span>
-                                <span class="speech-title">봉봉의 메시지</span>
-                            </div>
                             <div class="vivian-speech-content" id="vivianSpeechText">
                                 "증시라는 전쟁터로 다시 들어가시려고요? 제대로 된 보급 없이는 1분도 못 버티고 깡통 차게 될 텐데요."
                             </div>

@@ -1,0 +1,28 @@
+# 캐릭터 게임 에셋 삭제 — 2026-10-23
+
+사용자 요청: “소망, 토리, 봉봉, 모아 에셋 삭제해줘.” 진행 중이던 소망이 실루엣 수정은 중단하고 삭제 요청을 우선했다.
+
+**P1 (Major) · ✅ 웹·실행본 리소스 삭제 및 브라우저 검증 / ⏳ 사용자 최종 플레이 검수.**
+
+## 삭제한 게임 리소스
+
+- `web/assets/characters/3d/somangi/`: 걷기·인사·먹기·점프·게걸음·착석 모델과 매니페스트/착석 메타데이터.
+- `web/assets/characters/3d/agent-k/`: 토리 모델.
+- `web/assets/characters/3d/bongbong/`: 봉봉 모델.
+- `web/assets/characters/3d/anna/`: 모아 착석·졸기 모델과 웃는 얼굴 텍스처.
+- `web/assets/office/3d/Information-furnished-room.glb` 안의 모아 6개 구성 메시와 해당 전용 미사용 데이터. 방과 가구는 보존했다.
+- 실행본 `electron-app/dist/win-unpacked/resources/web/`에도 같은 삭제·코드 변경을 반영했다. 설치 프로그램을 새로 빌드한 것은 아니다.
+
+모델 로더를 비활성화하고 소망이 모델·모션·착석 및 캐릭터 단축키 실행을 제거했다. 이동·카메라용 빈 기준점은 유지한다. 네 캐릭터를 대신할 형상은 추가하지 않는다. 플레이어 그림자를 숨기고 봉봉·토리와 안내소 모아의 전용 충돌 항목도 제거했다. 기존 가구 충돌은 유지한다.
+
+## 보존 범위
+
+제작 원본·이전 `output/` 작업과 검수 이미지는 삭제하지 않았다. 삭제 직전 게임 파일·기존 로딩 코드는 [보존 기록](../output/character-assets-retired-2026-10-23/)에 별도 보관한다. 과거 기록은 현재 적용 완료를 뜻하지 않으며 새 요청 없이 복원하지 않는다.
+
+저장·보유권·경제·튜토리얼·대사 기능을 삭제하지 않았다. 별도 크레파스 타이틀과 이름별 대사 UI는 캐릭터 3D 에셋 삭제 범위에 포함하지 않는다.
+
+## 검증
+
+`scratch/check-character-assets-retired.cjs`로 웹과 실행본 리소스를 각각 검사했다. 마을·집·잡화점·안내소·증권사에서 네 캐릭터 메시가 없고 플레이어 기준점에 자식 모델이 없음을 확인했다. 삭제 경로 요청 0건, 에셋 로딩 실패 및 브라우저 예외 0건이었다. 봉봉·토리의 빈 자리 통행과 기존 기능키 입력 시 오류 없음을 확인했다. 안내소 내장 모아는 숨김이 아니라 메시와 미사용 바이너리 데이터를 제거했다.
+
+검사 결과와 촬영: [웹](../output/character-assets-retired-2026-10-23/web-validation.json) · [실행본](../output/character-assets-retired-2026-10-23/runtime-validation.json) · [내장 모아 제거 기록](../output/character-assets-retired-2026-10-23/embedded-removal.json).

@@ -1,0 +1,227 @@
+[
+  {
+    "file": "moa-bench-sit.glb",
+    "altered": [
+      {
+        "node": "Anna_Vest",
+        "maxMove": 0.021057739429864875,
+        "before": {
+          "min": 0.010131538107456595,
+          "median": 0.023435063250365873,
+          "p95": 0.03313573584237217,
+          "max": 0.03740817853300302
+        },
+        "after": {
+          "min": 0.006647353718684357,
+          "median": 0.011436622770131688,
+          "p95": 0.014928864903253958,
+          "max": 0.016466944271881084
+        },
+        "lengthReduction": 0
+      }
+    ],
+    "bodyHeadLimbsRigWeightsClipsUnchanged": true,
+    "sourceHash": "f9266bc4891a6f423f801c61580d65f5d4fcf84bce50a76deee2fe84d77d48cc",
+    "outputHash": "b58c8053a258bb842e6883c02eb039dcb17fbcfc8cf0bd9b534612aee35c9f57",
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "moa-bench-doze.glb",
+    "altered": [
+      {
+        "node": "Anna_Vest",
+        "maxMove": 0.021057739429864875,
+        "before": {
+          "min": 0.010131538107456595,
+          "median": 0.023435063250365873,
+          "p95": 0.03313573584237217,
+          "max": 0.03740817853300302
+        },
+        "after": {
+          "min": 0.006647353718684357,
+          "median": 0.011436622770131688,
+          "p95": 0.014928864903253958,
+          "max": 0.016466944271881084
+        },
+        "lengthReduction": 0
+      }
+    ],
+    "bodyHeadLimbsRigWeightsClipsUnchanged": true,
+    "sourceHash": "7f79ae2fe049604613a6e319f56a27d6d3a2be1ae6687f29595147b16ef30518",
+    "outputHash": "5608662c439ee9365d98f5e383e5b981a36c5b9b49d4b8b432559c4ed8e552cf",
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Seated_Doze",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "tori.glb",
+    "altered": [
+      {
+        "node": "AgentK_Vest",
+        "maxMove": 0.021057739429864875,
+        "before": {
+          "min": 0.010131538107456595,
+          "median": 0.023435063250365873,
+          "p95": 0.03313573584237217,
+          "max": 0.03740817853300302
+        },
+        "after": {
+          "min": 0.006647353718684357,
+          "median": 0.011436622770131688,
+          "p95": 0.014928864903253958,
+          "max": 0.016466944271881084
+        },
+        "lengthReduction": 0
+      }
+    ],
+    "bodyHeadLimbsRigWeightsClipsUnchanged": true,
+    "sourceHash": "2211b0c6ba95c25365d8961754915dd308688b892537c3f04cf4c6987b4741b7",
+    "outputHash": "7f7e867151aff032c8d94a867399cdd844847e7da18d15eefea58c67467ef3e3",
+    "clips": []
+  },
+  {
+    "file": "information-room.glb",
+    "altered": [
+      {
+        "node": "Anna_Vest",
+        "maxMove": 0.040408029516768224,
+        "before": {
+          "min": 0.010131517752623387,
+          "median": 0.023560957963718154,
+          "p95": 0.03355078959438976,
+          "max": 0.03764473024211401
+        },
+        "after": {
+          "min": 0.006647346390944414,
+          "median": 0.011481944866938598,
+          "p95": 0.015078284253980306,
+          "max": 0.01655210288716108
+        },
+        "lengthReduction": 0
+      }
+    ],
+    "bodyHeadLimbsRigWeightsClipsUnchanged": true,
+    "sourceHash": "678e4cc2f68fa5c068da4847e336a01b81ba0794133b6b655edb47a3b20eab2a",
+    "outputHash": "b338a32c4eeebcb9298c54d42cacf5d3a0a2889fe5271c36837d367ad30f5f4c",
+    "clips": []
+  },
+  {
+    "file": "bongbong.glb",
+    "altered": [
+      {
+        "node": "Apron_Continuous_Waist_1",
+        "maxMove": 0.01015757754889307,
+        "before": {
+          "min": 0.012013184137381505,
+          "median": 0.019278847007715705,
+          "p95": 0.019846917760888982,
+          "max": 0.019846917760888982
+        },
+        "after": {
+          "min": 0.00708448260670963,
+          "median": 0.009554807982623259,
+          "p95": 0.009747952038702323,
+          "max": 0.009747952038702323
+        },
+        "lengthReduction": 0
+      },
+      {
+        "node": "Apron_Continuous_Waist_-1",
+        "maxMove": 0.01015757754889307,
+        "before": {
+          "min": 0.012013195078195094,
+          "median": 0.019278691442864038,
+          "p95": 0.019846646448548277,
+          "max": 0.019846646448548277
+        },
+        "after": {
+          "min": 0.007084486326586259,
+          "median": 0.009554755090573797,
+          "p95": 0.009747859792506364,
+          "max": 0.009747859792506364
+        },
+        "lengthReduction": 0
+      },
+      {
+        "node": "Apron_Finished_Shoulder_1",
+        "maxMove": 0.015702516371402457,
+        "before": {
+          "min": 0.010866643139505139,
+          "median": 0.019318903466539,
+          "p95": 0.028660868742015094,
+          "max": 0.028660868742015094
+        },
+        "after": {
+          "min": 0.006911991530221873,
+          "median": 0.00995480524795403,
+          "p95": 0.013317912747125432,
+          "max": 0.013317912747125432
+        },
+        "lengthReduction": 0
+      },
+      {
+        "node": "Apron_Finished_Shoulder_-1",
+        "maxMove": 0.015702516371402457,
+        "before": {
+          "min": 0.013819513042222786,
+          "median": 0.02534904752981723,
+          "p95": 0.028370188577470812,
+          "max": 0.028370188577470812
+        },
+        "after": {
+          "min": 0.007975024695200283,
+          "median": 0.012125657110734211,
+          "p95": 0.013213267887889513,
+          "max": 0.013213267887889513
+        },
+        "lengthReduction": 0
+      },
+      {
+        "node": "Bongbong_Meshy_Apron",
+        "maxMove": 0.046557726648489055,
+        "before": {
+          "min": 0.017056541702287764,
+          "median": 0.034252039081052454,
+          "p95": 0.07460976626942972,
+          "max": 0.08418872833216712
+        },
+        "after": {
+          "min": 0.01082261668091511,
+          "median": 0.017720427465830968,
+          "p95": 0.03837450782412655,
+          "max": 0.046273381879659514
+        },
+        "lengthReduction": 0
+      }
+    ],
+    "bodyHeadLimbsRigWeightsClipsUnchanged": true,
+    "sourceHash": "ab4aa99f971fa6a266e68e0ad128f1107c085ef4b391acee03c6be7198df222f",
+    "outputHash": "2cc8119a6de5bad7648cca4e4001e19ed585dfc88869b1f9a9267542155e4c7a",
+    "clips": [
+      "Walk_InPlace"
+    ]
+  }
+]

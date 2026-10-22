@@ -1,0 +1,71 @@
+[
+  {
+    "file": "walk.glb",
+    "sourceHash": "88747171067e3a101980d2e9107bc5efb04401e83fedea1f485b663ddc072d50",
+    "outputHash": "bae019389628b8ecf0a3c91edef54cce760156ef3339fe2122d871bf2844a95a",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "wave.glb",
+    "sourceHash": "7cd83f3a7309a807c91b4c57e94f6a8b81e476a13567e5f0e6545b4c3271e8a2",
+    "outputHash": "b85280ba8db1b51c080949e7297f9f7a25dd9ebec3e3ac26f638a6198c6a2e6d",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Wave_Happy"
+    ]
+  },
+  {
+    "file": "eat.glb",
+    "sourceHash": "242f3a6055f21c89b6ab3b1ed105751138b8fd36b92edd3cb072665605558262",
+    "outputHash": "a9a338727dd348956c9156fa9d394c5fa2cd2d288ce010fff175dd94c28ba586",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Eat"
+    ]
+  },
+  {
+    "file": "jump.glb",
+    "sourceHash": "00a554e30c1b776abfa8e986ecbeeb2cd9668475879af7aea54bfa1785442f58",
+    "outputHash": "fef41ad795b88138dd0388198d3006525b13e6b97f77e53c43c9d62b055fdcb5",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Jump"
+    ]
+  },
+  {
+    "file": "crab.glb",
+    "sourceHash": "fd548fd8677a5a79a99641158765d382513cc05d9c50222883b0b6da2581dfe1",
+    "outputHash": "70f2ba0495aaccc0537f05f1d1f747d2b44e7651d271135b5d4f9c9c19273a9c",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ]
+  },
+  {
+    "file": "office-sit.glb",
+    "sourceHash": "b7f863eecf5553df9e16aaec09ae04fa1984a1960e69515f36a9bd4f9c7bf077",
+    "outputHash": "a60a0a134a2a3677322182028d2f088534b8121da164c61876ef3d0ac43758a8",
+    "armDrop": 0.055,
+    "bodyGeometryUnchanged": true,
+    "armRotationScaleTimingUnchanged": true,
+    "clips": [
+      "Office_Sit"
+    ]
+  }
+]

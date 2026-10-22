@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { applyCleanBuildingMaterials } from './CleanBuildingMaterial.js';
 import { TOWN_MODEL_BUILDINGS, TOWN_CAMERA, TOWN_PREVIEW_FRAME, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
@@ -47,19 +48,7 @@ export class TownModelScene {
         this.renderer.setClearColor(0, 0);
         this.renderer.domElement.setAttribute('aria-label', '건물 7곳·버스 정류장·나무·벤치·게시판·광고판');
         this.layer.prepend(this.renderer.domElement);
-        // Neutral diffuse studio environment supplies the reflections expected by
-        // the GLB's metallic/roughness materials without warm, harsh highlights.
-        const environmentScene = new THREE.Scene();
-        environmentScene.background = new THREE.Color(0xffffff);
-        const pmrem = new THREE.PMREMGenerator(this.renderer);
-        this.environmentTarget = pmrem.fromScene(environmentScene);
-        this.scene.environment = this.environmentTarget.texture;
-        this.scene.environmentIntensity = 0.8;
-        pmrem.dispose();
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xbfc6cf, 0.8));
-        const sun = new THREE.DirectionalLight(0xffffff, 0.8);
-        sun.position.set(-500, 1500, 900);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         this.landscape = new TownLandscape(this.scene);
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.viewport);

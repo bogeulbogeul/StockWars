@@ -1,0 +1,16 @@
+{
+  "meshObjects": 1,
+  "connectedPieces": 6,
+  "pieceVertexCounts": [
+    9436,
+    5875,
+    6205,
+    7003,
+    6946,
+    12318
+  ],
+  "maximumSourceSurfaceDistance": 0.0,
+  "maximumInternalRootProtrusion": 0,
+  "source": "somangi-face-smooth-v1/somangi-face-smooth.glb",
+  "restGlbSurfaceDistance": 1.647572531737751e-07
+}

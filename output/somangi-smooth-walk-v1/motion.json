@@ -1,0 +1,106 @@
+{
+  "fps": 30,
+  "cycleSeconds": 0.8,
+  "keys": [
+    {
+      "frame": 1,
+      "groundCorrection": 0.03126239776611328
+    },
+    {
+      "frame": 2,
+      "groundCorrection": 0.028374552726745605
+    },
+    {
+      "frame": 3,
+      "groundCorrection": 0.02024531364440918
+    },
+    {
+      "frame": 4,
+      "groundCorrection": 0.01481550931930542
+    },
+    {
+      "frame": 5,
+      "groundCorrection": 0.010597467422485352
+    },
+    {
+      "frame": 6,
+      "groundCorrection": 0.005366325378417969
+    },
+    {
+      "frame": 7,
+      "groundCorrection": 0.0
+    },
+    {
+      "frame": 8,
+      "groundCorrection": 0.007060110569000244
+    },
+    {
+      "frame": 9,
+      "groundCorrection": 0.013904333114624023
+    },
+    {
+      "frame": 10,
+      "groundCorrection": 0.019951999187469482
+    },
+    {
+      "frame": 11,
+      "groundCorrection": 0.024921178817749023
+    },
+    {
+      "frame": 12,
+      "groundCorrection": 0.028762102127075195
+    },
+    {
+      "frame": 13,
+      "groundCorrection": 0.03138607740402222
+    },
+    {
+      "frame": 14,
+      "groundCorrection": 0.028506219387054443
+    },
+    {
+      "frame": 15,
+      "groundCorrection": 0.020366311073303223
+    },
+    {
+      "frame": 16,
+      "groundCorrection": 0.01474839448928833
+    },
+    {
+      "frame": 17,
+      "groundCorrection": 0.010557293891906738
+    },
+    {
+      "frame": 18,
+      "groundCorrection": 0.005408644676208496
+    },
+    {
+      "frame": 19,
+      "groundCorrection": -1.1026859283447266e-05
+    },
+    {
+      "frame": 20,
+      "groundCorrection": 0.006828963756561279
+    },
+    {
+      "frame": 21,
+      "groundCorrection": 0.013762950897216797
+    },
+    {
+      "frame": 22,
+      "groundCorrection": 0.019857466220855713
+    },
+    {
+      "frame": 23,
+      "groundCorrection": 0.024829566478729248
+    },
+    {
+      "frame": 24,
+      "groundCorrection": 0.028641998767852783
+    },
+    {
+      "frame": 25,
+      "groundCorrection": 0.03126239776611328
+    }
+  ]
+}

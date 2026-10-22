@@ -1,0 +1,25 @@
+{
+  "townBench": "C:\\GitHub\\StockWars\\web\\assets\\props\\3d\\Bench-clean.glb",
+  "benchSha256": "c9a21d366cca9c821ab76e33a3c7463430a04545eaaf533d1ced497a6d670e3c",
+  "characterRuntimeScale": 51.282051282051285,
+  "benchRuntimeScale": 88.88888888888889,
+  "relativeBenchScale": 1.7333333333333332,
+  "actualSeatZ": -0.3266429603099823,
+  "previewSeatZ": -0.7529350519180298,
+  "requiredSeatHeightOffsetNative": 0.4262920916080475,
+  "requiredSeatHeightOffsetTown": 21.861132902976795,
+  "unaligned": {
+    "offsetZ": 0,
+    "penetratingVertexSamples": 2938,
+    "maximumNearestSurfaceDepth": 0.08253073692321777,
+    "lowestPointAboveGround": 0.12097394466400146
+  },
+  "heightAligned": {
+    "offsetZ": 0.4272920916080475,
+    "penetratingVertexSamples": 0,
+    "maximumNearestSurfaceDepth": 0,
+    "lowestPointAboveGround": 0.5482660233974457
+  },
+  "sourceModelsAndMotionUnchanged": true,
+  "note": "Seated pose placement test. Existing sit-entry trajectory is not adapted to the taller town bench."
+}

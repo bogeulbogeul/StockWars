@@ -1,5 +1,5 @@
 export const CIPHER_TOUR_KEY = 'stockwars.cipher.guided-tour.v1';
-import {AGENT_K_PORTRAIT_URL as agentKPortraitUrl} from '../CipherAgentK.js';
+import { applyDialogueTheme } from '../dialogue/dialogueTheme.js';
 export const cipherTourSteps = [
     { room: 'lobby', title: '사이퍼 증권에 오신 것을 환영합니다', text: '저는 토리입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
     { room: 'lobby', title: '전광판과 휴식 공간', text: '뒤쪽 전광판은 사이퍼 지수의 현재 값과 흐름을 보여줍니다. 소파에서는 앉아서 잠시 쉴 수 있습니다. 로비 이동은 이동 키나 바닥 클릭, 가까운 시설 이용은 상호작용 키로 합니다.', page: 1 },
@@ -59,21 +59,9 @@ export class CipherTour {
         if (step.room !== 'lobby') cancelAnimationFrame(lobby.frame);
         if (step.account) { training.accountVisible = true; training.renderAccount(); }
         this.host = step.room === 'lobby' ? lobby.dialog : step.room === 'training' ? training.dialog : competition.dialog;
-        if (!document.getElementById('cipher-tour-style')) {
-            const style = document.createElement('style'); style.id = 'cipher-tour-style';
-            style.textContent = '.cipher-tour{position:sticky;top:0;z-index:30;flex-shrink:0;padding:18px;background:#0c2033fa;border:2px solid #dcae39;border-radius:14px;color:#edf5fa;box-shadow:0 8px 28px #0007}.cipher-tour h3{margin:8px 0;color:#ffd575}.cipher-tour p{line-height:1.7;margin:10px 0}.cipher-tour nav{display:flex;gap:10px;flex-wrap:wrap}.cipher-tour button{padding:9px 14px;border:1px solid #987b3f;border-radius:7px;background:#253749;color:#fff;font:inherit;cursor:pointer}.cipher-tour button:disabled{opacity:.4}.cipher-tour-target{outline:3px solid #48decf!important;outline-offset:4px;scroll-margin-top:290px}.cipher-tour[data-room=lobby]{position:absolute;bottom:20px;top:auto;left:20px;right:20px;max-height:65%;overflow:auto}.cipher-tour small{color:#e4bc68;letter-spacing:0}';
-            style.textContent += `
-                .cipher-tour{display:flex;align-items:center;gap:20px}
-                .cipher-tour-portrait{display:block;width:128px;height:156px;flex:0 0 128px;object-fit:cover;border:1px solid #a7894e;border-radius:12px;background:#102333;image-rendering:auto!important}
-                .cipher-tour-content{flex:1;min-width:0}
-                .cipher-tour-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #365064}
-                .cipher-tour-top nav{margin-left:auto}
-                @media(max-width:640px){.cipher-tour{gap:12px;padding:12px;align-items:flex-start}.cipher-tour-portrait{width:80px;height:98px;flex-basis:80px}}
-            `;
-            document.head.append(style);
-        }
         const panel = document.createElement('section'); this.panel = panel;
         panel.className = 'cipher-tour'; panel.dataset.room = step.room;
+        applyDialogueTheme(panel, 'tori');
         panel.setAttribute('aria-label', '토리 증권사 안내');
         const speaker = document.createElement('small'); speaker.textContent = `토리 · 증권사 이용 안내 ${this.index + 1}/${cipherTourSteps.length}`;
         const title = document.createElement('h3'); title.textContent = step.title;
@@ -82,19 +70,13 @@ export class CipherTour {
         for (const [label, action, disabled] of [['안내 그만 보기', () => this.stop(), false], ['◀ 이전', () => this.move(-1), this.index === 0], [step.action || '다음 ▶', () => this.move(1), false]]) {
             const button = document.createElement('button'); button.type = 'button'; button.textContent = label; button.disabled = disabled; button.onclick = action; nav.append(button);
         }
-        const portrait = document.createElement('img');
-        portrait.className = 'cipher-tour-portrait';
-        portrait.src = agentKPortraitUrl;
-        portrait.alt = '토리';
-        portrait.decoding = 'sync';
-        portrait.draggable = false;
         const content = document.createElement('div');
         content.className = 'cipher-tour-content';
         const top = document.createElement('div');
         top.className = 'cipher-tour-top';
         top.append(speaker, nav);
         content.append(top, title, text);
-        panel.append(portrait, content);
+        panel.append(content);
         panel.addEventListener('click', event => {
             if (event.target.closest('button, a, input, select, textarea')) return;
             // Starting practice remains an explicit action; ordinary dialogue advances on click.

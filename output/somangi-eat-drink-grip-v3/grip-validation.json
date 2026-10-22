@@ -1,0 +1,14 @@
+{
+  "bread": {
+    "samples": 181,
+    "maximumGripSeparation": 0,
+    "breadRadialInsetUpperBound": 0.008048226254146704,
+    "characterUnchanged": true
+  },
+  "drink": {
+    "samples": 181,
+    "maximumGripSeparation": 0.001997681023918571,
+    "breadRadialInsetUpperBound": 0,
+    "characterUnchanged": true
+  }
+}

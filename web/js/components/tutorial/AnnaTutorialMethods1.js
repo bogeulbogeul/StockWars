@@ -3,6 +3,7 @@ import { applyAnnaTradeFocus } from '../tutorial/annaTradeFocus.js';
 import { tutorialShortcutDestination } from '../tutorial/tutorialPresentation.js';
 import { renderAnnaLesson } from '../tutorial/compactAnnaLessons.js';
 import { tutorialCheckpoint } from '../tutorial/tutorialCheckpoint.js';
+import { applyDialogueTheme } from '../dialogue/dialogueTheme.js';
 
 export const AnnaTutorialMethods1 = {
     showCurrentStep() {
@@ -42,6 +43,7 @@ export const AnnaTutorialMethods1 = {
     },
 
     renderDialogue(step, reviewing = false) {
+        applyDialogueTheme(this.dialogueBox, step.speaker || 'moa');
         if (reviewing || this.reviewingScreen || ['portfolio_guide', 'news_tab_guide', 'hts_home_overview', 'movement_keys_guide'].includes(step.id)) {
             this.restoringScreen = true;
             try {

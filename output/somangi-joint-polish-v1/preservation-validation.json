@@ -1,0 +1,13 @@
+{
+  "previous": "C:\\GitHub\\StockWars\\output\\somangi-marked-boundary-mesh-v1",
+  "outerSurfaceAndCutVerticesMaxDisplacement": {
+    "Head": 0.0,
+    "Arm.L": 0.0,
+    "Arm.R": 0.0,
+    "Leg.L": 0.0,
+    "Leg.R": 0.0,
+    "Root": 0.0
+  },
+  "sameMarkedCutBoundaries": true,
+  "onlyInteriorCapsWeightsAndHipPivotsChanged": true
+}

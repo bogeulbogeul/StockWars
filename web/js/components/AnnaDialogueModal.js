@@ -5,6 +5,7 @@
  */
 import { marketEngine } from '../engine/marketEngine.js';
 import { toastManager } from './ToastManager.js';
+import { applyDialogueTheme } from './dialogue/dialogueTheme.js';
 
 export class AnnaDialogueModal {
     constructor(container, callbacks = {}) {
@@ -12,6 +13,7 @@ export class AnnaDialogueModal {
         this.callbacks = callbacks;
         this.render();
         this.initDOM();
+        applyDialogueTheme(this.modalOverlay.querySelector('.vn-dialogue-box'), 'moa');
         this.initEventListeners();
     }
 
@@ -19,21 +21,11 @@ export class AnnaDialogueModal {
         const html = `
             <div id="annaDialogueModalOverlay" class="vn-tutorial-overlay hidden" style="z-index: 9998;">
                 <div class="vn-dialogue-box" id="annaVnBox" style="pointer-events: auto;">
-                    <!-- Left: Anna Expression Portrait -->
-                    <div class="vn-portrait-frame">
-                        <div class="vn-portrait-avatar">
-                            <span class="anna-portrait" id="annaVnPortrait" data-expression="Smile" role="img" aria-label="모아"></span>
-                        </div>
-                        <div class="vn-portrait-badge">MANAGER ANNA</div>
-                    </div>
-
                     <!-- Right: Content & Controls -->
                     <div class="vn-content-wrapper">
                         <div class="vn-top-bar">
                             <div class="vn-nameplate">
-                                <span class="vn-status-dot"></span>
-                                <span class="vn-speaker-name">전담 매니저 모아</span>
-                                <span class="vn-speaker-title">Cipher Securities</span>
+                                <span class="vn-speaker-name">모아</span>
                             </div>
                             <div class="vn-controls">
                                 <button class="vn-btn vn-collapse-btn" id="btnCloseAnnaVn" title="대화 마치기">✕ 닫기</button>

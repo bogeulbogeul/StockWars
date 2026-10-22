@@ -16,10 +16,13 @@ export class TownLandscape {
         this.shadowMap = createContactShadowTexture();
         this.ground = this.plane(26000, 26000, createGrassTexture(), 0, false, 256);
         this.ground.name = 'village-grass-ground';
+        // The grass and road must follow the same exposure as the 3D buildings.
+        this.ground.material.toneMapped = true;
         this.pathsMap = createPathsTexture();
         this.blendPathsIntoGround();
         applyTownRoadSurface(this.ground.material);
         this.playerShadow = this.shadow(75, 55);
+        this.playerShadow.visible = false;
     }
 
     blendPathsIntoGround() {

@@ -12,8 +12,7 @@
 @import './modules/ranking-modal.css';
 @import './modules/character/kiosk-base.css'; @import './modules/character/avatar-customizer.css?v=animal-faces-1';
 @import './modules/character/personality-test.css'; @import './modules/character/id-card.css';
-@import './modules/visual-novel.css'; @import './modules/anna-portrait.css';
-@import './modules/anna-dialogue.css'; @import './modules/rent-quest.css';
+@import './modules/anna-portrait.css'; @import './modules/rent-quest.css';
 @import './modules/sky-background.css'; @import './modules/sky-weather.css';
 @import './modules/office-stage.css'; @import './modules/town-gateway-modal.css';
 @import './modules/cipher-lobby.css'; @import './modules/salon-interior.css';
@@ -41,3 +40,8 @@
 @import './modules/demo-end.css';
 @import url('./modules/diary.css');
 @import './modules/bus-arrival.css';
+@import './modules/dialogue/crayon-dialogue.css';
+@import './modules/dialogue/crayon-layout.css';
+@import './modules/dialogue/dialogue-shell.css';
+@import './modules/dialogue/tutorial-focus.css';
+@import './modules/dialogue/dialogue-placement.css';

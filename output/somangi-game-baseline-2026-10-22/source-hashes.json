@@ -1,0 +1,10 @@
+[
+  {
+    "path": "web/assets/characters/3d/somangi/walk.glb",
+    "sha256": "A59B6C929131E07647D3C138A8722249F4AC9237D0CE538CDB02C02E1390D6B5"
+  },
+  {
+    "path": "electron-app/dist/win-unpacked/resources/web/assets/characters/3d/somangi/walk.glb",
+    "sha256": "A59B6C929131E07647D3C138A8722249F4AC9237D0CE538CDB02C02E1390D6B5"
+  }
+]

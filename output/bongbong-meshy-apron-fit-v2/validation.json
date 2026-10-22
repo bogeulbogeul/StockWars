@@ -1,0 +1,10 @@
+{
+  "source_mesh_unchanged": true,
+  "front_and_pocket_unchanged": true,
+  "body_unchanged": true,
+  "waist_tie_extensions": 2,
+  "extension_arc_degrees_per_side": 95.68395178684747,
+  "surface_clearance": 0.023,
+  "material": "Original apron material with fixed coral UV sample",
+  "validation": "Static six-angle render; full motion contact review pending"
+}

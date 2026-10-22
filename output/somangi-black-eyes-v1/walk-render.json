@@ -1,0 +1,15 @@
+{
+  "clip": "Walk_InPlace",
+  "durationSeconds": 0.75,
+  "framesPerView": 18,
+  "views": [
+    "front",
+    "angle"
+  ],
+  "keyLightColor": [
+    1,
+    0.48,
+    0.18
+  ],
+  "source": "somangi-black-eyes.glb"
+}

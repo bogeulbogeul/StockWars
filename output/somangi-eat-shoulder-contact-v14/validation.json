@@ -1,0 +1,10 @@
+{
+  "samples": 181,
+  "headFoodTriangleIntersections": 0,
+  "maximumFaceClearanceViolationAlongY": 0,
+  "testedFaceClearanceAlongY": 0.01,
+  "maximumPalmLoafSurfaceError": 0.002916104741083664,
+  "maximumTorsoDifferenceFromV13": 0,
+  "breadIncludesTopScoring": true,
+  "gameInstalled": false
+}

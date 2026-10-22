@@ -1,0 +1,185 @@
+{
+  "results": [
+    {
+      "key": "townModelScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    },
+    {
+      "key": "homeModelScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    },
+    {
+      "key": "vivianModelScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    },
+    {
+      "key": "bankModelScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    },
+    {
+      "key": "informationModelScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    },
+    {
+      "key": "cipherLobbyScene",
+      "exposure": 0.72,
+      "lights": [
+        [
+          "HemisphereLight",
+          1.05
+        ],
+        [
+          "DirectionalLight",
+          0.8
+        ]
+      ],
+      "profile": {
+        "exposure": 0.72,
+        "skyColor": 14870252,
+        "groundColor": 11450292,
+        "ambientIntensity": 1.05,
+        "keyColor": 16052456,
+        "keyIntensity": 0.8,
+        "environmentIntensity": 0.25,
+        "backgroundIntensity": 0.72,
+        "shadowIntensity": 0.42,
+        "direction": [
+          -500,
+          1500,
+          900
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

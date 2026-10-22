@@ -1,0 +1,84 @@
+/* The panel is the anchor: choices float above its right edge, outside its paper. */
+body .cipher-tour.crayon-dialogue {
+    position: fixed;
+    top: auto;
+    left: 5%;
+    right: 5%;
+    bottom: 24px;
+    width: 90%;
+}
+body .vn-dialogue-box.crayon-dialogue {
+    position: relative;
+    overflow: visible !important;
+    max-height: 42%;
+}
+body #annaDialogueModalOverlay .vn-dialogue-box.crayon-dialogue,
+body .cipher-notice.crayon-dialogue,
+body .cipher-tour.crayon-dialogue[data-room="lobby"] {
+    overflow: visible !important;
+    max-height: 42%;
+}
+body .crayon-dialogue :is(.vn-dialogue-body, .cipher-dialogue-text, .vivian-dialogue-bubble, .cipher-tour-content > p) {
+    max-height: calc(28 * var(--game-vh));
+    overflow-y: auto;
+}
+body .crayon-dialogue :is(.anna-vn-options, .npc-quest-offers, .cipher-agent-actions,
+    .vivian-npc-actions, .vn-rumor-choices),
+body .crayon-dialogue.has-choice .vn-action-area:not(.hidden) {
+    position: absolute;
+    right: -8px;
+    bottom: calc(100% + 24px);
+    width: min(380px, 90%);
+    max-height: calc(40 * var(--game-vh));
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0;
+    padding: 4px !important;
+    z-index: 2;
+    pointer-events: auto;
+}
+body .crayon-dialogue :is(.anna-vn-options, .npc-quest-offers, .cipher-agent-actions,
+    .vivian-npc-actions, .vn-rumor-choices) > button,
+body .crayon-dialogue.has-choice .vn-action-area > button {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 48px;
+    text-align: left;
+}
+/* Store conversations share the same bottom anchor instead of the former sidebar. */
+body .vivian-npc-panel.crayon-dialogue {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    width: min(1050px, 90%);
+    max-height: 30%;
+    overflow: visible;
+    z-index: 2;
+}
+body .vivian-npc-panel .vivian-stock-link-box { display: none; }
+body .vivian-store-overlay:has(.vivian-npc-panel.crayon-dialogue) {
+    align-items: flex-start;
+}
+body .vivian-store-overlay .vivian-store-card {
+    height: calc(64 * var(--game-vh));
+    max-height: calc(100 * var(--game-vh) - 300px);
+}
+@media (max-width: 640px) {
+    body .crayon-dialogue :is(.anna-vn-options, .npc-quest-offers, .cipher-agent-actions,
+        .vivian-npc-actions, .vn-rumor-choices),
+    body .crayon-dialogue.has-choice .vn-action-area:not(.hidden) {
+        right: -8px;
+        bottom: calc(100% + 16px);
+        width: min(320px, calc(100% + 16px));
+        max-height: 38vh;
+        gap: 8px;
+    }
+    body .crayon-dialogue :is(.vn-dialogue-body, .cipher-dialogue-text) {
+        max-height: 22vh;
+    }
+}

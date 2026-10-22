@@ -4,6 +4,7 @@ import { CipherTour, cipherTourSteps, CIPHER_TOUR_KEY } from '../js/components/t
 
 function element() {
     const node = { children: [], dataset: {}, listeners: {}, open: false,
+        style: { setProperty() {} },
         classList: { add() {}, remove() {} },
         append(...children) { this.children.push(...children); },
         prepend(child) { this.children.unshift(child); },

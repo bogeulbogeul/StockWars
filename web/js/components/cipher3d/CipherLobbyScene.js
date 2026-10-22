@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
@@ -56,16 +57,7 @@ export class CipherLobbyScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '증권사 로비 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 1.5));
-        const sun = new THREE.DirectionalLight(0xffffff, 2);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        sun.castShadow = true;
-        sun.shadow.mapSize.set(2048, 2048);
-        Object.assign(sun.shadow.camera, { left: -800, right: 800, top: 800, bottom: -800, near: 1, far: 3000 });
-        sun.shadow.bias = -.0004;
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer, true);
         this.room = this.buildRoom(this.scene);
         await Promise.all([this.room.userData.shellReady, this.room.userData.deskReady, this.room.userData.doorsReady,
             this.room.userData.entryMatReady, this.room.userData.agentKReady,

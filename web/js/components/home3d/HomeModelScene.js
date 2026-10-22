@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
@@ -48,10 +49,7 @@ export class HomeModelScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '집 내부 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 2));
-        const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         const gltf = await new GLTFLoader().loadAsync(HOME_MODEL_URL);
         this.room = gltf.scene;
         this.room.name = 'home-cement-entry';

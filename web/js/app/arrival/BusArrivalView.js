@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { configureGameRenderer, addGameEnvironment } from '../../components/lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { GROUND_PROJECTION, TOWN_CAMERA } from '../../data/townModelBuildings.js';
 import { TOWN_BUS_ROAD } from '../../data/townBusRoad.js';
@@ -25,8 +26,7 @@ export function createArrivalView(host) {
     const camera = new THREE.PerspectiveCamera(TOWN_CAMERA.fieldOfView, 1, 1, 20000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    configureGameRenderer(renderer);
     host.append(renderer.domElement);
     const loader = new GLTFLoader();
     let disposed = false, bus, mixer, clip, village, environment, removeForest;
@@ -59,13 +59,7 @@ export function createArrivalView(host) {
             village = result;
             if (disposed) { cleanupVillage(); return; }
             if (!village.scene.environment) {
-                const studio = new THREE.Scene();
-                studio.background = new THREE.Color(0xffffff);
-                const pmrem = new THREE.PMREMGenerator(renderer);
-                environment = pmrem.fromScene(studio);
-                village.scene.environment = environment.texture;
-                village.scene.environmentIntensity = .8;
-                pmrem.dispose();
+                environment = addGameEnvironment(village.scene, renderer);
             }
             host.dataset.villageModels = String(village.scene.children.filter(o => o.name).length);
             removeForest = addArrivalForest(village.scene, village.landscape);
@@ -105,7 +99,7 @@ export function createArrivalView(host) {
             host.dataset.busX = bus.position.x.toFixed(4);
             host.dataset.wheelTime = mixer.time.toFixed(4);
             village.landscape.update(targetX, targetZ, { x: TOWN_ARRIVAL.x, y: TOWN_ARRIVAL.y });
-            village.landscape.playerShadow.visible = playerView > 0;
+            village.landscape.playerShadow.visible = false;
             renderer.render(village.scene, camera);
             const center = bus.position.clone().project(camera);
             const front = bus.localToWorld(new THREE.Vector3(2, 0, 0)).project(camera);
@@ -119,7 +113,7 @@ export function createArrivalView(host) {
             mixer?.stopAllAction();
             if (bus) mixer?.uncacheRoot(bus);
             if (bus) { bus.removeFromParent(); disposeModel(bus); }
-            if (village) village.landscape.playerShadow.visible = true;
+            if (village) village.landscape.playerShadow.visible = false;
             removeForest?.();
             cleanupVillage();
             if (environment) {

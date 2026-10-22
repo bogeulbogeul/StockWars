@@ -1,0 +1,154 @@
+[
+  {
+    "file": "somangi-walk.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Walk_InPlace"
+    ],
+    "sourceHash": "2ad28512149d9c22788321d2e27bc448d344cf77cd775915a9ea68c566018632",
+    "outputHash": "5689f14b85947b47f4b045f48d7a130f554a7e3cde8d34cc17b03a14c819e288"
+  },
+  {
+    "file": "somangi-wave.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Wave_Happy"
+    ],
+    "sourceHash": "3329f5196a54d5f4f253d08bdd19e148cf90e46cda6cb9bad34ed79754c99ecb",
+    "outputHash": "504d42bb61ac111b8f93380719b88a75db3db62448412e06257e1d0d6a1c93d2"
+  },
+  {
+    "file": "somangi-eat.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Eat"
+    ],
+    "sourceHash": "0f9c57cb4d61d91850d86e4461c8c9d26c91cf9946048bb50e30afd2e9e7f7e8",
+    "outputHash": "6ccfb5c28cb5515423ee59c3d84772077fd68630a8e5ec31805160b1fc8d6823"
+  },
+  {
+    "file": "somangi-jump.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Jump"
+    ],
+    "sourceHash": "5580562e1ae71c24d97baba0b950db09e57afa052c280394b97a2d4fceb3c378",
+    "outputHash": "74f73a1d2f0393b683abbc0e0c31b0c308e6dd46b1eb2e977e347545cb4949f9"
+  },
+  {
+    "file": "somangi-crab.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ],
+    "sourceHash": "584a533d611ac48cd67f6922d08416513d8468f90ff935a6bc58944ab74f8066",
+    "outputHash": "eb57886e016a51f7d5888fa1fb532311f87e64b44f5da085397c6375be47eaea"
+  },
+  {
+    "file": "somangi-office-sit.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Office_Sit"
+    ],
+    "sourceHash": "3470b54be3b67f63135baa9d383fcc5f4a94b6c343f8b303185e5e55e230464c",
+    "outputHash": "e9ab2d199e193a3621cf3f74e37279e686f1fe1a363c515c18a0472131c2e4f8"
+  },
+  {
+    "file": "moa-bench-sit.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "sourceHash": "b465bf60fbd694eff6689acb066bd06dd7b70c6277eef44c10280665ea5d6b22",
+    "outputHash": "c9d94ce8a86326cca57c9962fbff92c171540919ec84da241b5a21c7704bac35"
+  },
+  {
+    "file": "moa-bench-doze.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Seated_Doze",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "sourceHash": "aecfc4da1d5e080d7511ddb547815bc0949e399e750bd5d04eb36f20cbb24964",
+    "outputHash": "366e1fe4503c766deaa04479387af4eb1302d1db5543e022a8a22bde0a906769"
+  },
+  {
+    "file": "tori.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [],
+    "sourceHash": "accc70e2019cc2e9383381267c37536be6415c9e23e0f8652e18be100eba5920",
+    "outputHash": "2c4b96d52c2a85cc643c08bcd030b363853c6e3b4c01003b9b554f08c3a14fbe"
+  },
+  {
+    "file": "information-room.glb",
+    "changedVertices": 11549,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 5545,
+    "unrelatedBytesPreserved": true,
+    "clips": [],
+    "sourceHash": "b8d2d9c9004f1bc039961c75c84ba110e705767c623cb5c727694d9c6a7de2cb",
+    "outputHash": "e70af4118e5c35f811926a475186dea0d2123c12157069de5f74f4a42f1beecf"
+  },
+  {
+    "file": "bongbong.glb",
+    "changedVertices": 9636,
+    "unchangedHeadVertices": 13803,
+    "unchangedFootVertices": 7458,
+    "unrelatedBytesPreserved": true,
+    "clips": [
+      "Walk_InPlace"
+    ],
+    "sourceHash": "7cc35df7c0a9f905a565123b569523ffb638a2a929dcde7c9f341e3f91a786b8",
+    "outputHash": "d291ab6316f3567e1abb7a8ecc31edac1ff421348db761cb49e1add517578bee"
+  }
+]

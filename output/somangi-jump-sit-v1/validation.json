@@ -1,0 +1,13 @@
+{
+  "meshAndUvUnchanged": true,
+  "meshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "samples": 361,
+  "maxSeamGap": 0,
+  "floorPenetration": 0,
+  "benchPenetrationDepth": 0,
+  "maximumVerticesInsideBench": 0,
+  "worstTimeSeconds": 0,
+  "worstBenchPart": "",
+  "actualTownBench": true,
+  "gameInstalled": false
+}

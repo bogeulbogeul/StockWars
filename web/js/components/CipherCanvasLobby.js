@@ -1,4 +1,3 @@
-import { EMPTY_CHARACTER_IMAGE } from '../data/characterAsset.js';
 import { paintCharacterSprite as paintDogSprite } from './CharacterSprite.js';
 import {CipherRoomPackage,CIPHER_AGENT_ENABLED} from './CipherRoomPackage.js';
 import {PLACES as PACKAGE_PLACES,ROOM_SIZE} from './CipherRoomPackageGeometry.js';
@@ -9,7 +8,7 @@ import {CipherTrainingRoom} from './CipherTrainingRoom.js';
 import {AGENT_K_WELCOME} from './CipherAgentKDialogue.js';
 import { CipherTour, CIPHER_TOUR_KEY } from './tutorial/cipherTour.js';
 import {StorePlayerController} from './store/StorePlayerController.js';
-import {AGENT_K_PORTRAIT_URL as agentKPortraitUrl} from './CipherAgentK.js';
+import { applyDialogueTheme, clearDialogueTheme } from './dialogue/dialogueTheme.js';
 export class CipherLobby {
     constructor(container) {
         this.isOpen=false;
@@ -103,13 +102,9 @@ export class CipherLobby {
         this.hideAgentWelcome();
         if(!this.welcomeBubble){
             const bubble=document.createElement('div');bubble.className='cipher-welcome-dialogue';bubble.setAttribute('role','status');
-            bubble.innerHTML=`<img src="${agentKPortraitUrl}" alt="토리"><div><strong>토리</strong><p>사이퍼 증권에 오신 것을 환영합니다.<br>도움이 필요하시면 저에게 말을 걸어주세요.</p></div>`;
-            const style=document.createElement('style');style.textContent=`
-                .cipher-welcome-dialogue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:18px;width:min(580px,90%);padding:16px 22px 16px 16px;box-sizing:border-box;border:1px solid #70e3d580;border-radius:16px;background:#102332f5;box-shadow:0 10px 32px #0008;color:#f1f8ff;pointer-events:none}
-                .cipher-welcome-dialogue[hidden]{display:none}.cipher-welcome-dialogue img{flex:0 0 80px;width:80px;height:96px;object-fit:cover;object-position:top;border-radius:12px;background:#1a3b46}.cipher-welcome-dialogue>div{min-width:0}.cipher-welcome-dialogue strong{color:#8ceddd;font-size:14px}.cipher-welcome-dialogue p{margin:8px 0 0;font-size:15px;line-height:1.7;overflow-wrap:anywhere}
-                @media(max-width:520px){.cipher-welcome-dialogue{bottom:12px;gap:12px;padding:12px}.cipher-welcome-dialogue img{flex-basis:60px;width:60px;height:76px}.cipher-welcome-dialogue p{font-size:13px}}
-            `;
-            bubble.append(style);this.dialog.append(bubble);this.welcomeBubble=bubble;
+            bubble.innerHTML=`<div><strong class="crayon-nameplate">토리</strong><p>사이퍼 증권에 오신 것을 환영합니다.<br>도움이 필요하시면 저에게 말을 걸어주세요.</p></div>`;
+            applyDialogueTheme(bubble, 'tori');
+            this.dialog.append(bubble);this.welcomeBubble=bubble;
         }
         this.welcomeBubble.hidden=false;
         this.welcomeTimer=setTimeout(()=>this.hideAgentWelcome(),5000);
@@ -128,7 +123,8 @@ export class CipherLobby {
         if(this.tour?.active)this.tour.stop();
         this.hideAgentWelcome();this.restoreNotice();this.dialoguePage=null;this.agentChoiceMode=true;
         this.notice.classList.add('cipher-agent-menu');this.notice.style.cssText='';
-        this.notice.innerHTML=`<img class="cipher-agent-portrait" src="${agentKPortraitUrl}" alt="토리"><div class="cipher-dialogue-body"><div class="cipher-agent-identity"><strong>토리</strong><span>Cipher Securities</span></div><p class="cipher-dialogue-text"></p><div class="cipher-agent-actions"></div></div>`;
+        this.notice.innerHTML=`<div class="cipher-dialogue-body"><div class="cipher-agent-identity"><strong class="crayon-nameplate">토리</strong></div><p class="cipher-dialogue-text"></p><div class="cipher-agent-actions"></div></div>`;
+        applyDialogueTheme(this.notice, 'tori');
         this.notice.querySelector('.cipher-dialogue-text').textContent=text;
         const choices=this.notice.querySelector('.cipher-agent-actions');
         for(const [label,action,primary=false] of options){
@@ -172,17 +168,19 @@ export class CipherLobby {
             this.advanceNotice();
         };
         if(!this.notice.querySelector('.cipher-dialogue-text')){
-            this.notice.style.cssText='position:absolute;left:20px;right:20px;bottom:20px;top:auto;padding:16px 20px;background:rgba(12,13,17,.97);color:#fff2d9;border:2px solid #dcae39;border-radius:16px;z-index:10;box-shadow:0 10px 35px #0008;display:flex;gap:18px;align-items:center;text-align:left';
-            this.notice.innerHTML=`<img class="cipher-agent-portrait" src="${agentKPortraitUrl}" alt="토리"><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px"><strong style="color:#f3cf70;border:1px solid #3a8190;border-radius:20px;padding:6px 12px;background:#102b35">● 토리 <small style="margin-left:8px;color:#c4b575">Cipher Securities</small></strong><div style="display:flex;gap:6px"><button data-dialogue="collapse" aria-label="대화창 접기" style="padding:5px 10px;border:1px solid #665740;border-radius:6px;background:#25222a;color:#f1d995">−</button><button data-dialogue="skip" style="padding:5px 10px;border:1px solid #665740;border-radius:6px;background:#25222a;color:#c4b9a4">⏩ 스킵</button><button data-dialogue="next" style="padding:5px 12px;border:1px solid #c69a27;border-radius:6px;background:#493409;color:#ffd35f;font-weight:700">다음 ▶</button></div></div><div class="cipher-dialogue-body"><p class="cipher-dialogue-text" style="margin:0;line-height:1.7;font-size:15px;font-weight:600"></p><div style="display:flex;justify-content:space-between;color:#e5ba42;font-size:12px;margin-top:12px"><span class="cipher-dialogue-progress"></span><span>▼</span></div></div></div>`;
+            this.notice.style.cssText='';
+            this.notice.innerHTML=`<div class="cipher-dialogue-body"><strong class="crayon-nameplate">토리</strong><p class="cipher-dialogue-text"></p><span class="cipher-dialogue-progress"></span></div><nav><button data-dialogue="collapse" aria-label="대화창 접기">−</button><button data-dialogue="skip">안내 마치기</button><button data-dialogue="next">다음 ▶</button></nav>`;
             this.notice.querySelector('[data-dialogue=next]').onclick=()=>this.advanceNotice();
             this.notice.querySelector('[data-dialogue=skip]').onclick=()=>this.advanceNotice(true);
             this.notice.querySelector('[data-dialogue=collapse]').onclick=e=>{const body=this.notice.querySelector('.cipher-dialogue-body');body.hidden=!body.hidden;e.target.textContent=body.hidden?'+':'−';};
         }
+        applyDialogueTheme(this.notice, 'tori');
         this.notice.querySelector('.cipher-dialogue-text').textContent=AGENT_K_WELCOME[this.dialoguePage];
         this.notice.querySelector('.cipher-dialogue-progress').textContent='';
         this.notice.querySelector('[data-dialogue=next]').textContent=this.dialoguePage===AGENT_K_WELCOME.length-1?'대화 마치기':'다음 ▶';
     }
     restoreNotice(){
+        clearDialogueTheme(this.notice);
         this.notice.classList.remove('cipher-agent-menu');
         this.agentChoiceMode=false;
         this.notice.onclick=null;

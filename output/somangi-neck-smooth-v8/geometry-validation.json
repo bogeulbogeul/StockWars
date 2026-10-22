@@ -1,0 +1,65 @@
+[
+  {
+    "file": "walk.glb",
+    "sourceHash": "bae019389628b8ecf0a3c91edef54cce760156ef3339fe2122d871bf2844a95a",
+    "outputHash": "246f8a3226aba60190faf9acd0e7e2adcabb16035af29c31551abe58925aca53",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "wave.glb",
+    "sourceHash": "b85280ba8db1b51c080949e7297f9f7a25dd9ebec3e3ac26f638a6198c6a2e6d",
+    "outputHash": "ae1c068d2466becacb556ac5b7d36c1ace8d61d4f7c00d392dd7ad392e689d85",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Wave_Happy"
+    ]
+  },
+  {
+    "file": "eat.glb",
+    "sourceHash": "a9a338727dd348956c9156fa9d394c5fa2cd2d288ce010fff175dd94c28ba586",
+    "outputHash": "c2db5a273f1e3810199bf06ddcbaa38083c7b66948acf359d02b675fd32446db",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Eat"
+    ]
+  },
+  {
+    "file": "jump.glb",
+    "sourceHash": "fef41ad795b88138dd0388198d3006525b13e6b97f77e53c43c9d62b055fdcb5",
+    "outputHash": "1b7a7569adcf411e903cf45e8dc39a9e1f4781761c042a68ddbdd3e5f59a44ca",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Jump"
+    ]
+  },
+  {
+    "file": "crab.glb",
+    "sourceHash": "70f2ba0495aaccc0537f05f1d1f747d2b44e7651d271135b5d4f9c9c19273a9c",
+    "outputHash": "2273d34e06d5085a7ab45c668e5c4fd39323429652e2dd47984f856c82981f2f",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ]
+  },
+  {
+    "file": "office-sit.glb",
+    "sourceHash": "a60a0a134a2a3677322182028d2f088534b8121da164c61876ef3d0ac43758a8",
+    "outputHash": "2bd9460032335c0524ed1c5bca9af1de4a5ac2f2327d226309eca38710b1ca44",
+    "changedLowerHeadVertices": 7515,
+    "bodyArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Office_Sit"
+    ]
+  }
+]

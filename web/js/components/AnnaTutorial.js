@@ -8,7 +8,6 @@ import { applyAnnaTradeFocus, clearAnnaTradeFocus } from './tutorial/annaTradeFo
 import { installAnnaInputGuard } from './tutorial/annaInputGuard.js';
 import { tutorialShortcutDestination } from './tutorial/tutorialPresentation.js';
 import { gameKey } from '../app/GameKeys.js';
-import { installAnnaDialogueLayout } from './tutorial/annaDialogueLayout.js';
 import { buildAnnaScenario } from './tutorial/annaTutorialScenario.js';
 import { renderAnnaLesson } from './tutorial/compactAnnaLessons.js';
 import { tutorialChapters, tutorialCheckpoint, nextTutorialChapter } from './tutorial/tutorialCheckpoint.js';
@@ -30,7 +29,6 @@ export class AnnaTutorial {
         this.steps = [];
         this.render();
         this.initDOM();
-        installAnnaDialogueLayout(this.overlay);
         this.inputKey = gameKey;
         this.removeInputGuard = installAnnaInputGuard(this);
         this.initEventListeners();
@@ -41,21 +39,12 @@ export class AnnaTutorial {
             <div id="annaTutorialOverlay" class="vn-tutorial-overlay hidden">
                 <!-- Visual Novel Dialogue Box (Bottom Floating) -->
                 <div class="vn-dialogue-box" id="vnDialogueBox">
-                    <!-- Left: Anna expression portrait -->
-                    <div class="vn-portrait-frame" id="vnPortraitFrame">
-                        <div class="vn-portrait-avatar" id="vnPortraitAvatar">
-                            <span class="anna-portrait" id="vnAnnaPortrait" data-expression="Standard" role="img" aria-label="모아 — 기본 표정"></span>
-                        </div>
-                    </div>
-
                     <!-- Right: Dialogue & Nameplate Content -->
                     <div class="vn-content-wrapper">
                         <!-- Top Nameplate & Controls Bar -->
                         <div class="vn-top-bar">
                             <div class="vn-nameplate">
-                                <span class="vn-status-dot"></span>
                                 <span class="vn-speaker-name" id="vnSpeakerName">전담 매니저 모아</span>
-                                <span class="vn-speaker-title">Cipher Securities</span>
                             </div>
                             <div class="vn-controls">
                                 <button class="vn-btn vn-skip-btn" id="btnVnSkip" title="현재 챕터 건너뛰기">건너뛰기</button>
@@ -101,7 +90,6 @@ export class AnnaTutorial {
         this.btnAction = document.getElementById('btnVnAction');
         this.btnHold = document.getElementById('btnVnHold');
         const header = this.dialogueBox.querySelector('.vn-top-bar');
-        header.prepend(this.dialogueBox.querySelector('.vn-portrait-frame'));
         const controls = this.dialogueBox.querySelector('.vn-controls');
         this.dialogueBox.querySelector('.vn-content-wrapper').append(controls);
         header.append(this.btnSkip);

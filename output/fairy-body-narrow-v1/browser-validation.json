@@ -1,0 +1,32 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "results": [
+    {
+      "key": "homeModelScene",
+      "failed": false,
+      "torso": 5,
+      "shopkeeper": false
+    },
+    {
+      "key": "vivianModelScene",
+      "failed": false,
+      "torso": 6,
+      "shopkeeper": true
+    },
+    {
+      "key": "informationModelScene",
+      "failed": false,
+      "torso": 6,
+      "shopkeeper": false
+    }
+  ],
+  "tori": true,
+  "motions": [
+    "walk",
+    "wave",
+    "eat",
+    "jump",
+    "crab"
+  ],
+  "errors": []
+}

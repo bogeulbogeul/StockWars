@@ -1,0 +1,21 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-joint-polish-v1\\somangi-motion-ready.blend",
+  "kind": "chair/bench",
+  "sameMeshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "meshGeometryUvUnchanged": true,
+  "seatSurfaceZ": -0.7529350519180298,
+  "floorZ": -0.950643002986908,
+  "seatFrontY": 0.28,
+  "seatBackY": 0.68,
+  "rootBackwardShift": 0.28,
+  "clips": {
+    "Sit_Down": 0.9,
+    "Sit_Idle": 1,
+    "Stand_Up": 0.9,
+    "Sit_Cycle": 2.8
+  },
+  "walkPreserved": true,
+  "walkDurationSeconds": 0.75,
+  "seatedLegLift": 0.16,
+  "gameInstalled": false
+}

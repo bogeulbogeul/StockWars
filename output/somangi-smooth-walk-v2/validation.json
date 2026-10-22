@@ -1,0 +1,15 @@
+{
+  "samples": 97,
+  "clips": [
+    "Walk_InPlace"
+  ],
+  "durationSeconds": 0.75,
+  "floorPenetration": 0.0003746151924133301,
+  "supportGap": 0.00044041872024536133,
+  "loopError": 0.0,
+  "torsoShapeError": 7.508562643358995e-09,
+  "armTravel": 0.2311598203027861,
+  "minimumEmbeddedThighVertices": 653,
+  "minimumEmbeddedShoulderVertices": 293,
+  "armLoopError": 0
+}

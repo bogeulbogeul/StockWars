@@ -18,7 +18,6 @@ export const LOBBY = {
 export function lobbyCanStand(x, z) {
     const { width, depth, radius, desk } = LOBBY;
     if (Math.abs(x) > width / 2 - radius || Math.abs(z) > depth / 2 - radius) return false;
-    if (Math.hypot(x - LOBBY.agentK.x, z - LOBBY.agentK.z) < LOBBY.agentK.radius + radius) return false;
     for (const area of LOBBY.waitingAreas) {
         if (Math.abs(x-area.benchX) < area.benchHalfWidth+radius
             && Math.abs(z-area.benchZ) < area.benchHalfDepth+radius) return false;
