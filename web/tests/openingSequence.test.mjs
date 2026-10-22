@@ -5,23 +5,28 @@ import vm from 'node:vm';
 
 const source = fs.readFileSync(new URL('../js/app/OpeningSequence.js', import.meta.url), 'utf8')
     .replace('export function', 'function')
-    .replace('import.meta.url', "'https://example.test/js/app/OpeningSequence.js'");
+    .replaceAll('import.meta.url', "'https://example.test/js/app/OpeningSequence.js'");
 
 function setup() {
     const frame = {};
     const skip = { addEventListener(type, fn) { this.click = fn; }, focus() {} };
     let pending;
-    const context = vm.createContext({ URL,
+    const music = { playCount: 0, pauseCount: 0, currentTime: 12,
+        play() { this.playCount++; return Promise.resolve(); },
+        pause() { this.pauseCount++; }, removeAttribute() {}, load() {} };
+    const context = vm.createContext({ URL, Audio: function(src) { music.src = src; return music; },
         setTimeout(fn, delay) { pending = { fn, delay }; return 1; },
         clearTimeout() { pending = null; }
     });
     vm.runInContext(source, context);
     const screen = { classList: { add() {} }, querySelector: tag => tag === 'iframe' ? frame : skip };
-    return { frame, skip, run: context.playOpening(screen), timer: () => pending };
+    return { frame, skip, music, run: context.playOpening(screen), timer: () => pending };
 }
 
 test('plays all six scenes for 140 seconds then completes', async () => {
     const state = setup();
+    assert.equal(state.music.playCount, 1);
+    assert.match(state.music.src, /first-little-journey-140s.mp3$/);
     let completed = false;
     state.run.then(() => { completed = true; });
     let total = 0;
@@ -38,6 +43,8 @@ test('plays all six scenes for 140 seconds then completes', async () => {
     assert.equal(total, 140000);
     assert.equal(completed, true);
     assert.equal(state.timer(), null);
+    assert.equal(state.music.pauseCount, 1);
+    assert.equal(state.music.currentTime, 0);
 });
 
 test('skip completes once and cancels the active scene timer', async () => {
@@ -48,4 +55,6 @@ test('skip completes once and cancels the active scene timer', async () => {
     await state.run;
     assert.equal(state.timer(), null);
     assert.equal(state.frame.onload, null);
+    assert.equal(state.music.pauseCount, 1);
+    assert.equal(state.music.currentTime, 0);
 });

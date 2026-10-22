@@ -1,0 +1,19 @@
+{
+  "clips": [
+    "Bench_Seated",
+    "Bench_SitDown",
+    "Bench_StandUp",
+    "Leaf_Calm",
+    "Leaf_Happy",
+    "Leaf_Sad",
+    "Seated",
+    "Seated_Doze",
+    "Sit_Demo",
+    "SitDown",
+    "StandUp",
+    "Walk_InPlace"
+  ],
+  "seat_plane": 0,
+  "source_pose": "Bench_Seated",
+  "doze_duration_seconds": 4
+}

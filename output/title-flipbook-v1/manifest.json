@@ -1,0 +1,34 @@
+{
+  "width": 1672,
+  "height": 941,
+  "frames": [
+    "frame-0.png",
+    "frame-1.png",
+    "frame-2.png"
+  ],
+  "sequence": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    1,
+    0,
+    2,
+    0
+  ],
+  "durations": [
+    240,
+    220,
+    220,
+    220,
+    220,
+    220,
+    220,
+    220,
+    1100
+  ],
+  "generation": "Built-in image_gen: raise the waving arm/lean sprouts left; lower the waving arm/lean sprouts right; retain original outside animated regions.",
+  "invariant": "All pixels outside the arm and lower corner sprout masks equal button-free frame-0 exactly.",
+  "separateButton": "start-button.png (transparent background, independent HTML button)"
+}

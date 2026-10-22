@@ -7,7 +7,9 @@ import { SomangiPlayer } from './SomangiPlayer.js';
 import { SOMANGI_VIEW_HEIGHT } from '../../data/somangiModels.js';
 import { installModelPreviewCollision } from './TownModelCollision.js';
 import { TownLandscape } from './TownLandscape.js';
+import { addSleepingAnna } from './SleepingAnna.js';
 import { BuildingClock } from './BuildingClock.js';
+import { fitTownProp } from './TownObjectFit.js';
 
 // Separate from the retained sprite stage: both use the same ground coordinates.
 export class TownModelScene {
@@ -82,6 +84,7 @@ export class TownModelScene {
             if (!Number.isFinite(size.x) || size.x <= 0) throw new Error('Invalid model bounds');
             const scale = definition.width / size.x;
             model.scale.multiplyScalar(scale);
+            fitTownProp(model, definition, scale);
             const center = bounds.getCenter(new THREE.Vector3());
             // Front edge sits on the retained town's building ground-contact line.
             model.position.set(definition.x - center.x * scale, -bounds.min.y * scale,
@@ -105,6 +108,7 @@ export class TownModelScene {
             results.filter(result => result.status === 'rejected').forEach(result => console.error(result.reason));
         } else this.status.hidden = true;
         await this.player.ready;
+        this.sleepingAnna = await addSleepingAnna(this.scene, this.scene.getObjectByName('village_bus_stop'));
         this.landscape.wrap(this.player.root);
         installModelPreviewCollision(this.town.playerController, this.collisionFootprints);
         this.draw();
@@ -126,7 +130,7 @@ export class TownModelScene {
         const now = performance.now();
         const dt = (now - this.lastDrawTime) / 1000;
         this.lastDrawTime = now;
-        if (!this.renderer || this.town.containerEl.classList.contains('hidden')) return;
+        if (this.arrivalActive || !this.renderer || this.town.containerEl.classList.contains('hidden')) return;
         this.resize();
         const { cameraX, cameraY } = this.town.playerController;
         const preview = document.body.classList.contains('town-model-mode');
@@ -150,6 +154,7 @@ export class TownModelScene {
             label.style.top = `${definition.y - cameraY + 20}px`;
         }
         this.player?.update(dt);
+        this.sleepingAnna?.update(dt, this.player?.root.position);
         const wallTime = Date.now();
         for (const clock of this.buildingClocks) clock.update(wallTime);
         this.landscape.update(x, z, this.town.playerController.renderPosition);

@@ -1,0 +1,28 @@
+{
+  "removed": [
+    "Window_Upper_Vent_Crossbar",
+    "Window_Lower_Sill",
+    "Window_Vent_Latch",
+    "Window_Upper_Vent_Crossbar.001",
+    "Window_Lower_Sill.001",
+    "Window_Vent_Latch.001",
+    "Window_Upper_Vent_Crossbar.002",
+    "Window_Lower_Sill.002",
+    "Window_Vent_Latch.002",
+    "Window_Upper_Vent_Crossbar.003",
+    "Window_Lower_Sill.003",
+    "Window_Vent_Latch.003",
+    "Window_Upper_Vent_Crossbar.004",
+    "Window_Lower_Sill.004",
+    "Window_Vent_Latch.004",
+    "Window_Upper_Vent_Crossbar.005",
+    "Window_Lower_Sill.005",
+    "Window_Vent_Latch.005",
+    "Window_Upper_Vent_Crossbar.006",
+    "Window_Lower_Sill.006",
+    "Window_Vent_Latch.006"
+  ],
+  "inset_glass_and_outer_frames_preserved": true,
+  "wheel_roll_preserved": true,
+  "game_modified": false
+}

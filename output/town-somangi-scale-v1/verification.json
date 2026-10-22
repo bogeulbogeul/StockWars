@@ -1,0 +1,2354 @@
+{
+  "sizes": [
+    {
+      "id": "home_office_tower",
+      "file": "Home-inset-window.glb",
+      "width": 347.5275154910389,
+      "height": 316.6209115687956,
+      "expectedWidth": 347.527515491039
+    },
+    {
+      "id": "settlement_information",
+      "file": "Information-clean.glb",
+      "width": 464.0885751928854,
+      "height": 296.6690368089367,
+      "expectedWidth": 464.08857519288523
+    },
+    {
+      "id": "vivian_store",
+      "file": "VivianStore-clean.glb",
+      "width": 440.1199029357185,
+      "height": 331.11571631215236,
+      "expectedWidth": 440.11990293571876
+    },
+    {
+      "id": "julian_furniture",
+      "file": "Furniture-clean.glb",
+      "width": 530.7456141596541,
+      "height": 270.33284323185086,
+      "expectedWidth": 530.745614159654
+    },
+    {
+      "id": "cipher_securities",
+      "file": "CipherSecurities-clock.glb",
+      "width": 443.1524089764953,
+      "height": 345.30815998920923,
+      "expectedWidth": 443.1524089764952
+    },
+    {
+      "id": "node_finance",
+      "file": "Bank-clean.glb",
+      "width": 446.84677417876446,
+      "height": 285.64720008825327,
+      "expectedWidth": 446.84677417876435
+    },
+    {
+      "id": "midnight_pub",
+      "file": "Pub-clean.glb",
+      "width": 519.417144708018,
+      "height": 323.5079512137404,
+      "expectedWidth": 519.4171447080183
+    },
+    {
+      "id": "data_ink_bookstore",
+      "file": "Bookstore-clean.glb",
+      "width": 455.62332916416335,
+      "height": 280.4708279881421,
+      "expectedWidth": 455.6233291641629
+    },
+    {
+      "id": "claire_apparel",
+      "file": "ClothingStore-clean.glb",
+      "width": 401.2689540570651,
+      "height": 270.06729786606326,
+      "expectedWidth": 401.2689540570652
+    },
+    {
+      "id": "village_bus_stop",
+      "file": "BusStop-clean.glb",
+      "width": 316.3687150837991,
+      "height": 199.0502798136541,
+      "expectedWidth": 316.36871508379886
+    },
+    {
+      "id": "plaza_tree",
+      "file": "Popori-refined.glb",
+      "width": 623.8188952654232,
+      "height": 650.0000319835028,
+      "expectedWidth": 623.8188952654232
+    },
+    {
+      "id": "home_garden_tree",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403596,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "shop_garden_tree",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "plaza_flowers_west",
+      "file": "Flowers-mini-original.glb",
+      "width": 33.66239863325745,
+      "height": 18.000000167075175,
+      "expectedWidth": 33.6623986332574
+    },
+    {
+      "id": "plaza_flowers_east",
+      "file": "Flowers-mini-pink.glb",
+      "width": 33.66239863325745,
+      "height": 18.000000167075175,
+      "expectedWidth": 33.6623986332574
+    },
+    {
+      "id": "home_flowers",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 33.66239863325734,
+      "height": 18.000000167075175,
+      "expectedWidth": 33.6623986332574
+    },
+    {
+      "id": "shop_flowers",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 33.66239863325745,
+      "height": 18.000000167075175,
+      "expectedWidth": 33.6623986332574
+    },
+    {
+      "id": "plaza_bench_west",
+      "file": "Bench-clean.glb",
+      "width": 152.8888888888887,
+      "height": 31.99999974587167,
+      "expectedWidth": 152.88888888888889
+    },
+    {
+      "id": "plaza_bench_east",
+      "file": "Bench-clean.glb",
+      "width": 152.8888888888887,
+      "height": 31.99999974587167,
+      "expectedWidth": 152.88888888888889
+    },
+    {
+      "id": "plaza_notice_board",
+      "file": "NoticeBoard-clean.glb",
+      "width": 170.67833698030654,
+      "height": 150.00000253954306,
+      "expectedWidth": 170.67833698030634
+    },
+    {
+      "id": "garden_tree_west_gate",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_west_meadow",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403596,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_west_garden",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403596,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_home_orchard",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_back_grove",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_tree_grove_a",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_pub_grove",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_book_grove",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_tree_bank_grove",
+      "file": "CommonTree-clean.glb",
+      "width": 223.96491041403578,
+      "height": 269.99991845373904,
+      "expectedWidth": 223.96491041403584
+    },
+    {
+      "id": "garden_flowers_home_0",
+      "file": "Flowers-mini-pink.glb",
+      "width": 29.77827571403543,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_home_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299809,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_home_2",
+      "file": "Flowers-mini-pink.glb",
+      "width": 27.18886043455393,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_clothing_0",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 29.77827571403543,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_clothing_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299809,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_clothing_2",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 27.18886043455393,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_furniture_0",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 29.778275714035374,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_furniture_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299809,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_furniture_2",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 27.18886043455393,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_information_0",
+      "file": "Flowers-mini-pink.glb",
+      "width": 29.778275714035544,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_information_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299832,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_information_2",
+      "file": "Flowers-mini-pink.glb",
+      "width": 27.18886043455427,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_bank_0",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_bank_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_bank_2",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_finance_0",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_finance_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_finance_2",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_book_0",
+      "file": "Flowers-mini-pink.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_book_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_book_2",
+      "file": "Flowers-mini-pink.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_store_0",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_store_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_store_2",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_pub_0",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_pub_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_pub_2",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_bus_stop_0",
+      "file": "Flowers-mini-pink.glb",
+      "width": 29.77827571403543,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_bus_stop_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299809,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_bus_stop_2",
+      "file": "Flowers-mini-pink.glb",
+      "width": 27.18886043455393,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_tree_west_0",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 29.778275714035544,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_tree_west_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299832,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_tree_west_2",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 27.18886043455427,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_tree_east_0",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 29.778275714035544,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_tree_east_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_tree_east_2",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_home_seat_0",
+      "file": "Flowers-mini-pink.glb",
+      "width": 29.778275714035544,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_home_seat_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299832,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_home_seat_2",
+      "file": "Flowers-mini-pink.glb",
+      "width": 27.18886043455427,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_book_seat_0",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 29.778275714035317,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_book_seat_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299786,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_book_seat_2",
+      "file": "Flowers-mini-lavender.glb",
+      "width": 27.188860434554044,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_flowers_entry_0",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 29.778275714035544,
+      "height": 16.06118966724972,
+      "expectedWidth": 29.778275714035395
+    },
+    {
+      "id": "garden_flowers_entry_1",
+      "file": "Flowers-mini-original.glb",
+      "width": 34.95710627299832,
+      "height": 18.578615678923143,
+      "expectedWidth": 34.957106272998075
+    },
+    {
+      "id": "garden_flowers_entry_2",
+      "file": "Flowers-mini-sky-blue.glb",
+      "width": 27.18886043455427,
+      "height": 14.456242139721951,
+      "expectedWidth": 27.18886043455406
+    },
+    {
+      "id": "garden_bench_home",
+      "file": "Bench-clean.glb",
+      "width": 152.8888888888887,
+      "height": 31.99999974587167,
+      "expectedWidth": 152.88888888888889
+    },
+    {
+      "id": "garden_bench_book",
+      "file": "Bench-clean.glb",
+      "width": 152.8888888888887,
+      "height": 31.99999974587167,
+      "expectedWidth": 152.88888888888889
+    },
+    {
+      "id": "garden_bench_gate",
+      "file": "Bench-clean.glb",
+      "width": 152.8888888888887,
+      "height": 31.99999974587167,
+      "expectedWidth": 152.88888888888889
+    },
+    {
+      "id": "boundary_tree_north_outer_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_outer_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_outer_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_outer_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062107,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_outer_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_outer_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_outer_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_outer_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_outer_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_outer_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618402,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_outer_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_outer_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_outer_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_outer_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_outer_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_inner_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_inner_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_inner_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_inner_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_inner_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_inner_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_inner_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_inner_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_inner_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_inner_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_inner_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_inner_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_inner_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_inner_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574508,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662308,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574508,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062098,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745067,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.831512170621,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623023,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745016,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_outer_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_outer_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.831512170621,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_outer_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_outer_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_outer_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062093,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_outer_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745076,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_outer_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623095,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_outer_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062098,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_outer_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_outer_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_outer_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706209,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_outer_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745076,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_outer_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_outer_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_outer_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_outer_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_outer_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623023,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_outer_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_outer_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_outer_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_outer_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_outer_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_outer_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745016,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_outer_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_outer_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_outer_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_outer_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_outer_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_outer_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_outer_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_outer_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_outer_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_outer_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_deep_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_deep_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062098,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_deep_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_deep_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_deep_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_deep_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745076,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_deep_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_deep_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_deep_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_deep_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_deep_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623092,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062098,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_deep_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_deep_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_deep_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_deep_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_far_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_far_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_far_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062098,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_far_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.6760431618408,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_far_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_far_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_far_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_far_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623086,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_far_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574507,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_far_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_far_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_far_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_west_far_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184082,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_west_far_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_west_far_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_west_far_20",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_deep_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623023,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_deep_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_deep_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_deep_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_deep_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_deep_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745016,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_deep_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_deep_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_deep_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_deep_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_deep_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_deep_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_deep_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_deep_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_deep_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_far_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_far_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623023,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_far_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_far_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_far_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_far_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745016,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_far_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_far_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_far_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.8315121706214,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_far_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_far_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_far_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_east_far_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_east_far_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_east_far_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_east_far_20",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574507,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_deep_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_deep_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.831512170621,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_deep_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_deep_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662308,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_deep_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_deep_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_deep_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_deep_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_deep_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574504,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_deep_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_deep_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_deep_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_deep_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_deep_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_deep_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_deep_20",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745073,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_far_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_far_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.831512170621,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_far_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574508,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_far_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662308,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_far_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062084,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_far_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_far_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_far_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_far_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745062,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_far_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_far_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_far_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_far_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_far_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_far_20",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_far_21",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_0",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574507,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_1",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184077,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_2",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662309,
+      "height": 281.1980717536636,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_horizon_3",
+      "file": "CommonTree-clean.glb",
+      "width": 251.831512170621,
+      "height": 288.36205820726093,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_horizon_4",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 217.3084940848293,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_5",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 235.5469690482018,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_6",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662308,
+      "height": 265.708994510066,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_horizon_7",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 303.594378353513,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_horizon_8",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745084,
+      "height": 224.54422565319496,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_9",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 237.89561457707634,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_10",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 255.93084136968082,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_horizon_11",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062073,
+      "height": 286.8716577896289,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_horizon_12",
+      "file": "CommonTree-clean.glb",
+      "width": 196.0983086574504,
+      "height": 236.405458553965,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_13",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184088,
+      "height": 245.81683650455028,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_14",
+      "file": "CommonTree-clean.glb",
+      "width": 233.25377766623114,
+      "height": 258.4827350693233,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_horizon_15",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 276.31471369115985,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_horizon_16",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 223.38366795094055,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_17",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 258.80176515381436,
+      "expectedWidth": 214.6760431618408
+    },
+    {
+      "id": "boundary_tree_north_horizon_18",
+      "file": "CommonTree-clean.glb",
+      "width": 233.2537776662307,
+      "height": 267.0894473559056,
+      "expectedWidth": 233.25377766623086
+    },
+    {
+      "id": "boundary_tree_north_horizon_19",
+      "file": "CommonTree-clean.glb",
+      "width": 251.83151217062095,
+      "height": 279.0698555615703,
+      "expectedWidth": 251.83151217062095
+    },
+    {
+      "id": "boundary_tree_north_horizon_20",
+      "file": "CommonTree-clean.glb",
+      "width": 196.09830865745107,
+      "height": 215.1630967267228,
+      "expectedWidth": 196.09830865745073
+    },
+    {
+      "id": "boundary_tree_north_horizon_21",
+      "file": "CommonTree-clean.glb",
+      "width": 214.67604316184043,
+      "height": 244.54633123050328,
+      "expectedWidth": 214.6760431618408
+    }
+  ],
+  "doors": [
+    {
+      "id": "home_office_tower",
+      "height": 125.00001330530593
+    },
+    {
+      "id": "settlement_information",
+      "height": 125.00006008263709
+    },
+    {
+      "id": "vivian_store",
+      "height": 125.00003927599053
+    },
+    {
+      "id": "julian_furniture",
+      "height": 125.00003993568433
+    },
+    {
+      "id": "node_finance",
+      "height": 124.99994561538674
+    },
+    {
+      "id": "midnight_pub",
+      "height": 125.00000516701343
+    },
+    {
+      "id": "data_ink_bookstore",
+      "height": 125.00000901332903
+    },
+    {
+      "id": "claire_apparel",
+      "height": 125.00002548074596
+    }
+  ],
+  "shelterSeat": 31.999999849015865,
+  "characterHeight": 97.42548914950729,
+  "busDoor": 140.00000503827943,
+  "blocked": [
+    {
+      "id": "home_office_tower",
+      "frontFree": true
+    },
+    {
+      "id": "settlement_information",
+      "frontFree": true
+    },
+    {
+      "id": "vivian_store",
+      "frontFree": true
+    },
+    {
+      "id": "julian_furniture",
+      "frontFree": true
+    },
+    {
+      "id": "cipher_securities",
+      "frontFree": true
+    },
+    {
+      "id": "node_finance",
+      "frontFree": true
+    },
+    {
+      "id": "midnight_pub",
+      "frontFree": true
+    },
+    {
+      "id": "data_ink_bookstore",
+      "frontFree": true
+    },
+    {
+      "id": "claire_apparel",
+      "frontFree": true
+    }
+  ]
+}

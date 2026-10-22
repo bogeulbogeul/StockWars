@@ -1,0 +1,19 @@
+{
+  "door_shift_x": -0.1249999850988388,
+  "door_center_x": 0.4699999988079071,
+  "step_center_x": 0.4699999988079071,
+  "moved_objects": [
+    "Boarding_Door_Frame",
+    "Boarding_Door_Glass",
+    "Boarding_Door_Lower_Panel",
+    "Boarding_Door_Frame.001",
+    "Boarding_Door_Glass.001",
+    "Boarding_Door_Lower_Panel.001",
+    "Boarding_Door_Centre_Seal",
+    "Door_Handle",
+    "Door_Handle.001"
+  ],
+  "step_and_wheels_unchanged": true,
+  "wheel_roll_preserved": true,
+  "game_modified": false
+}

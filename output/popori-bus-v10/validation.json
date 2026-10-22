@@ -1,0 +1,17 @@
+{
+  "removed": [
+    "Rear_Service_Panel",
+    "Rear_Engine_Vent",
+    "Rear_Engine_Vent.001",
+    "Rear_Engine_Vent.002",
+    "Rear_Engine_Vent.003",
+    "Rear_Service_Panel.001",
+    "Rear_Engine_Vent.004",
+    "Rear_Engine_Vent.005",
+    "Rear_Engine_Vent.006",
+    "Rear_Engine_Vent.007"
+  ],
+  "wheel_roll_preserved": true,
+  "door_step_and_wheel_clearance_preserved": true,
+  "game_modified": false
+}

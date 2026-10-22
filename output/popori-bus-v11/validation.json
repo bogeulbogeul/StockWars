@@ -1,0 +1,15 @@
+{
+  "door_step_center_x": 0.396,
+  "features": [
+    "continuous outer frame",
+    "real glazing ring openings",
+    "inset blue glass",
+    "rubber seals",
+    "inset lower panels",
+    "hinges",
+    "mounted pull handles",
+    "sill and anti-slip inlays"
+  ],
+  "wheel_roll_preserved": true,
+  "game_modified": false
+}

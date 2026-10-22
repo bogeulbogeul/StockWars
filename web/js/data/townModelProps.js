@@ -1,5 +1,6 @@
 import { TOWN_GARDEN_PROPS } from './townGardenProps.js';
 import { TOWN_BOUNDARY_PROPS } from './townBoundaryProps.js';
+import { scaleTownProp } from './townObjectScale.js';
 
 // Front ground-contact coordinates. Keep doors and the central walking lane clear.
 export const TOWN_MODEL_PROPS = [
@@ -27,7 +28,7 @@ export const TOWN_MODEL_PROPS = [
         x: 1650, y: 2050, width: 110, rotation: 0 },
     ...TOWN_GARDEN_PROPS,
     ...TOWN_BOUNDARY_PROPS
-];
+].map(scaleTownProp);
 
 export function propAssetUrl(file) {
     return new URL(`../../assets/props/3d/${file}`, import.meta.url).href;
