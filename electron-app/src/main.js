@@ -3,7 +3,8 @@ const { resetTestStorage } = require('./test-reset.cjs');
 const path = require('node:path');
 const fs = require('node:fs');
 const { PresenceClient } = require('./presence-client.cjs');
-let win, presence;
+const { DemoLifecycle } = require('./demo-lifecycle.cjs');
+let win, presence, demo;
 let quitting = false;
 let tutorialActive = false;
 const hasLock = app.requestSingleInstanceLock();
@@ -36,7 +37,8 @@ if (hasLock) app.whenReady().then(async () => {
   let url = '';
   try { url = serverUrl(); } catch (error) { dialog.showErrorBox('서버 설정 오류', error.message); }
   presence = new PresenceClient({ url, tokenFile: path.join(app.getPath('userData'), 'presence-session.json') });
-  if (serverConfig().deleteTestUserOnExit === true && presence.token) {
+  demo = new DemoLifecycle({ markerFile: path.join(app.getPath('userData'), 'demo-ended.json'), presence });
+  if (!demo.status().ended && serverConfig().deleteTestUserOnExit === true && presence.token) {
     try { await presence.stop({ deleteUser: true }); }
     catch (error) { dialog.showErrorBox('온라인 테스트 초기화 실패', error.message); quitting = true; app.quit(); return; }
   }
@@ -56,6 +58,29 @@ if (hasLock) app.whenReady().then(async () => {
     });
   }
   const trusted = (event) => event.sender === win.webContents && event.senderFrame === win.webContents.mainFrame;
+  const demoAction = action => async event => {
+    if (!trusted(event)) return { error: '접근 불가' };
+    try { return await action(); } catch (error) { return { error: error.message }; }
+  };
+  ipcMain.handle('demo:status', demoAction(() => demo.status()));
+  ipcMain.handle('demo:mark', demoAction(() => { tutorialActive = false; return demo.mark(); }));
+  ipcMain.handle('demo:end-screen', demoAction(async () => {
+    if (!demo.status().ended) throw new Error('데모 종료 상태가 아닙니다.');
+    await win.loadFile(path.join(webRoot, 'demo-end.html'));
+    return { success: true };
+  }));
+  ipcMain.handle('demo:discard', demoAction(() => {
+    if (!demo.status().ended) throw new Error('데모 종료 상태가 아닙니다.');
+    return demo.discard();
+  }));
+  ipcMain.handle('demo:restart', demoAction(async () => {
+    // Navigation destroys all old timers before a fresh game is initialized.
+    if (!demo.status().complete) throw new Error('기록 삭제를 먼저 완료해 주세요.');
+    await resetTestStorage(session.defaultSession);
+    demo.restart();
+    await win.loadFile(path.join(webRoot, 'index.html'));
+    return { success: true };
+  }));
   ipcMain.handle('presence:local-mode', (event, enabled) => trusted(event) && typeof enabled === 'boolean'
     ? presence.setLocalMode(enabled) : { error: '잘못된 모드입니다.' });
   ipcMain.handle('presence:nickname', (event, nickname) => trusted(event) && typeof nickname === 'string' && Array.from(nickname.normalize('NFKC').trim()).length <= 10
@@ -90,7 +115,7 @@ if (hasLock) app.whenReady().then(async () => {
     ? presence.chat('send', text) : { error: '메시지는 1~500자로 입력해 주세요.' });
   win.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
   win.webContents.on('will-navigate', event => event.preventDefault());
-  win.loadFile(path.join(webRoot, 'index.html'));
+  win.loadFile(path.join(webRoot, demo.status().ended ? 'demo-end.html' : 'index.html'));
 });
 app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
 app.on('window-all-closed', () => app.quit());
@@ -101,7 +126,10 @@ app.on('before-quit', event => {
   const cleanup = async () => {
     // Stop renderer writes before clearing its storage.
     if (win && !win.isDestroyed()) win.destroy();
-    try { await presence.stop({ deleteUser: serverConfig().deleteTestUserOnExit === true }); }
+    try {
+      if (demo?.status().ended) await demo.discard();
+      else await presence.stop({ deleteUser: serverConfig().deleteTestUserOnExit === true });
+    }
     catch (error) { dialog.showErrorBox('온라인 테스트 기록 삭제 실패', error.message + '\n다음 실행 시 다시 삭제를 시도합니다.'); }
     if (serverConfig().resetGameplayOnLaunch === true) await resetTestStorage(session.defaultSession);
   };

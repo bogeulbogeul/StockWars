@@ -1,7 +1,7 @@
 /* CSS module router. Import order preserves the existing cascade. */
 @import './modules/base.css';
 
-@import './modules/player-profile.css'; @import './modules/player-titles.css';
+@import './modules/player-profile.css';
 @import './modules/settings.css'; @import './modules/level-up.css';
 @import './modules/toasts.css'; @import './modules/smartphone.css';
 @import './modules/minimized-phone.css'; @import './modules/market/market-header.css';
@@ -38,3 +38,5 @@
 @import './modules/vivian-model.css';
 @import './modules/crayon-title.css';
 @import './modules/opening-sequence.css';
+@import './modules/demo-end.css';
+@import url('./modules/diary.css');

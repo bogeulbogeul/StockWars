@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>스마트폰 디자인 미리보기</title>
+    <link rel="stylesheet" href="./css/modules/base.css">
+    <link rel="stylesheet" href="./css/modules/smartphone.css">
+    <style>
+        body { margin: 0; min-height: 100vh; background: #e9e5df; color: #514638; overflow: auto; }
+        header { text-align: center; padding: 20px 16px 8px; }
+        h1 { margin: 0 0 8px; font-size: 18px; }
+        p { margin: 0; font-size: 13px; line-height: 1.6; }
+        #preview { display: flex; justify-content: center; }
+        .device-container { width: 100%; padding: 24px; }
+        body.phone-view-active .phone-shell { width: min(390px, calc(100vw - 56px)); height: min(840px, calc(100dvh - 150px)); min-height: 440px; flex-shrink: 0; }
+        #floatingPhoneBtn { display: none; }
+    </style>
+</head>
+<body class="phone-view-active">
+    <header>
+        <h1>스마트폰 디자인 미리보기</h1>
+        <p>✅ 단색 크림 배경 · 검은색 틀 유지<br>✅ 칭호 앱 이름: 발자국 · 기능 준비 중</p>
+    </header>
+    <main id="preview" aria-label="스마트폰 홈 디자인"></main>
+    <script type="module">
+        import { getSmartphoneShellHtml } from './js/components/smartphone/SmartphoneShellTemplate.js';
+        document.querySelector('#preview').innerHTML = getSmartphoneShellHtml();
+    </script>
+</body>
+</html>

@@ -53,17 +53,17 @@ test('stock selection requires clicking the recommended row without a dialogue s
     assert.ok(step.targetSelector.includes('stock-item-row'));
 });
 
-test('phone app tour introduces all five apps before requiring the stock app to open', () => {
+test('phone app tour introduces the four remaining apps before requiring the stock app to open', () => {
     const steps = buildAnnaScenario({});
     const start = steps.findIndex(step => step.id === 'open_phone') + 1;
-    const tour = steps.slice(start, start + 5);
-    assert.deepEqual(tour.map(step => step.appIntroTarget), ['#iconStockApp', '#iconBubbleApp', '#iconMemoApp', '#iconAchieveApp', '#iconSettingsApp']);
+    const tour = steps.slice(start, start + 4);
+    assert.deepEqual(tour.map(step => step.appIntroTarget), ['#iconStockApp', '#iconBubbleApp', '#iconMemoApp', '#iconSettingsApp']);
     assert.ok(tour.every(step => step.requiresManualAction === false && !step.actionBtnText && !step.targetSelector));
     assert.ok(tour.every(step => describeTutorialStep(step).text === step.text));
     assert.match(tour[2].text, /준비 중/);
-    assert.match(tour[4].text, /버전 안내/);
-    assert.equal(steps[start + 5].id, 'launch_stock_app');
-    assert.equal(steps[start + 5].requiresManualAction, true);
+    assert.match(tour[3].text, /버전 안내/);
+    assert.equal(steps[start + 4].id, 'launch_stock_app');
+    assert.equal(steps[start + 4].requiresManualAction, true);
 });
 
 test('HTS home explains each region before asking for a direct market-tab click', () => {

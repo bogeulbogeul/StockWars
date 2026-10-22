@@ -106,7 +106,6 @@ export function buildAnnaScenario({
             ['stock', '#iconStockApp', '사이퍼M', '사이퍼M은 주식을 사고파는 앱이에요.\n종목 가격과 내 계좌를 확인할 수 있어요.'],
             ['bubble', '#iconBubbleApp', 'Bubble', 'Bubble에서는 친구를 추가하고\n다른 플레이어와 채팅할 수 있어요.'],
             ['memo', '#iconMemoApp', '메모', '메모는 투자 생각과 매매 일지를 적을 공간이에요.\n아직 준비 중이에요.'],
-            ['achievements', '#iconAchieveApp', '업적', '도전 목표의 진행 상황과 획득한 칭호를 확인해 보세요.\n목표를 달성하면 칭호 컬렉션에 추가돼요.'],
             ['settings', '#iconSettingsApp', '설정', '이 설정 앱은 아직 버전 안내만 보여줘요.\n게임 설정은 화면 위 톱니바퀴에서 바꿀 수 있어요.']
         ].map(([id, appIntroTarget, name, text]) => ({
             id: `phone_app_intro_${id}`, expression: 'Smile', speaker: '모아',

@@ -1,0 +1,30 @@
+{
+  "tool": "built-in image_gen",
+  "status": "Discarded by user on 2026-10-22. Project image copies removed; never use these candidates as approved assets or future style references.",
+  "icons": [
+    {
+      "id": "stock",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A mint-green rounded square tile with one simple ivory three-bar rising chart and a single small green leaf accent; no coins, no currency marks."
+    },
+    {
+      "id": "chat",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A peach-pink rounded square tile with two overlapping plump ivory and pale coral speech bubbles; three simple coral dots in the front bubble."
+    },
+    {
+      "id": "tasks",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A butter-yellow rounded square tile with an ivory checklist sheet, two bold mint checkmarks and short warm brown lines, one small coral pencil."
+    },
+    {
+      "id": "footsteps",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A lavender rounded square tile with two small cream-colored rounded shoe-sole footprints stepping diagonally upward and one tiny warm yellow star; simple solid shoe silhouettes, not animal paws or bare human feet."
+    },
+    {
+      "id": "map",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A pale sky-blue rounded square tile with a simple folded cream map, a mint green path and a coral location pin; no actual town map, no text."
+    },
+    {
+      "id": "settings",
+      "prompt": "Use case: stylized-concept. Create ONE square raster smartphone app icon for a cute bright cozy fairy-village game. Straight-on flat 2D view. Consistent friendly rounded illustration, crisp clean edges, large readable shapes, pastel flat fills, restrained warm brown fine outlines, minimal simple cel shadow, no noisy texture, no gradients, no glossy 3D. One rounded-square colored tile occupies exactly 88% of the square canvas width and height, centered, corner radius about 22% of tile width. Main emblem fits inside central 60% of tile. Outside tile genuinely transparent. No text, letters, labels, phone mockup, extra icons, watermark or outer drop shadow. Intended to display at 80px against plain cream #fff5e4 inside a black phone frame. Subject: A pale sage-green rounded square tile with a single large ivory softly rounded six-tooth gear and a peach center hole."
+    }
+  ]
+}

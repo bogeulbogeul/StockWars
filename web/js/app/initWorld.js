@@ -43,11 +43,6 @@ export function initWorld() {
             }
         });
         this.cipherLobby = new CipherLobby(this.appContainer);
-        this.cipherLobby.getQuestReward = () => this.getNpcReward?.('agent_k');
-        this.cipherLobby.onClaimReward = id => this.claimNpcReward?.(id,'agent_k');
-        this.cipherLobby.getQuestOffers = giver => this.getQuestOffers?.(giver) || [];
-        this.cipherLobby.onAcceptQuest = (id, giver) => this.acceptQuest?.(id, giver);
-        this.cipherLobby.competitionRoom.onMatchFinished = result => this.recordQuestEvent?.('arena', result);
         this.cipherLobby.trainingRoom.onAnalyze=(stockId)=>{
             // Keep the shared analysis overlay inside the active modal's top layer.
             this.cipherLobby.trainingRoom.dialog.append(this.detailedChartModal.modal);

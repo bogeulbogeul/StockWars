@@ -1,5 +1,10 @@
 const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('stockWarsDesktop', {
+  demoStatus: () => ipcRenderer.invoke('demo:status'),
+  markDemoComplete: () => ipcRenderer.invoke('demo:mark'),
+  showDemoEnd: () => ipcRenderer.invoke('demo:end-screen'),
+  discardDemoRecords: () => ipcRenderer.invoke('demo:discard'),
+  restartDemo: () => ipcRenderer.invoke('demo:restart'),
   setTutorialActive: active => ipcRenderer.invoke('app:tutorial-active', active),
   quit: () => ipcRenderer.invoke('app:quit')
 });

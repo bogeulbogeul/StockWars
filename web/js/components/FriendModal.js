@@ -210,7 +210,6 @@ export class FriendModal {
                                 <span class="status-indicator ${f.isOnline ? 'online' : 'offline'}">${f.isOnline ? '온라인' : '오프라인'}</span>
                             </div>
                             <div class="friend-sub-info">
-                                <span>칭호: ${f.title}</span> | 
                                 <span>자산: ${f.netWorth.toLocaleString()}G</span>
                             </div>
                         </div>
@@ -332,7 +331,6 @@ export class FriendModal {
                 <div class="friend-avatar">${r.avatar}</div>
                 <div class="friend-info">
                     <span class="friend-name">${r.name}</span>
-                    <span class="friend-sub-info">${r.title}</span>
                 </div>
                 <button class="btn-primary-sm btn-quick-add" data-name="${r.name}">+ 친구 추가</button>
             </div>
@@ -405,7 +403,6 @@ export class FriendModal {
                     <tr>
                         <th>순위</th>
                         <th>트레이더</th>
-                        <th>칭호</th>
                         <th>${catHeader}</th>
                     </tr>
                 </thead>
@@ -419,7 +416,6 @@ export class FriendModal {
                                 <span class="avatar">${item.avatar}</span>
                                 <span class="name">${item.name}</span>
                             </td>
-                            <td><span class="rank-title-badge">${item.title}</span></td>
                             <td class="val-col">${valFormatter(item)}</td>
                         </tr>
                     `).join('')}

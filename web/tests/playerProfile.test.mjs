@@ -34,7 +34,7 @@ test('profile safely renders current data, refreshes changes, and handles an unr
     assert.equal(field('stamina').textContent, '1.5 / 3');
     assert.equal(field('totalNetWorth').textContent, '3,700 G');
     assert.equal(field('level').textContent, 'Lv. 1');
-    assert.equal(field('equippedTitle').textContent, '칭호 없음');
+    assert.equal(field('equippedTitle'), undefined);
     assert.equal(field('profitLoss').dataset.direction, 'negative');
     market.totalProfitLoss = 400;
     modal.update();

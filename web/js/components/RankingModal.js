@@ -154,7 +154,6 @@ export class RankingModal {
                     <tr>
                         <th>순위</th>
                         <th>트레이더</th>
-                        <th>신용/칭호</th>
                         <th>${catHeader}</th>
                     </tr>
                 </thead>
@@ -168,7 +167,6 @@ export class RankingModal {
                                 <span class="avatar">${escape(item.avatar || '👤')}</span>
                                 <span class="name">${escape(item.name)}${item.isMe ? ' (나)' : ''}</span>
                             </td>
-                            <td><span class="rank-title-badge">${escape(item.title || '트레이더')}</span></td>
                             <td class="val-col">${valFormatter(item)}</td>
                         </tr>
                     `).join('')}

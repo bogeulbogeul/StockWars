@@ -1,5 +1,5 @@
 {
   "presenceUrl": "https://stockwars-demo-presence.onrender.com",
-  "resetGameplayOnLaunch": true,
-  "deleteTestUserOnExit": true
+  "resetGameplayOnLaunch": false,
+  "deleteTestUserOnExit": false
 }

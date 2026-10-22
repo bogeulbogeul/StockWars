@@ -30,7 +30,7 @@ export class FriendManager {
         if (fp >= 1500) {
             return { level: 4, name: '혈맹 (Blood Alliance)', minFp: 1500, maxFp: 2000, badge: '👑', desc: '찌라시 공유 일 2회 가능' };
         } else if (fp >= 500) {
-            return { level: 3, name: '신뢰 (Trust)', minFp: 500, maxFp: 1499, badge: '💎', desc: '특별 칭호 & 추가 소셜 혜택' };
+            return { level: 3, name: '신뢰 (Trust)', minFp: 500, maxFp: 1499, badge: '💎', desc: '추가 소셜 혜택' };
         } else if (fp >= 100) {
             return { level: 2, name: '교류 (Interaction)', minFp: 100, maxFp: 499, badge: '⭐', desc: '찌라시 공유 보너스 확률' };
         } else {

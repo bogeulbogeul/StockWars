@@ -33,6 +33,7 @@ class PresenceClient {
 
   command(action, channelId, pose) {
     const operation = async () => {
+      if (this.deletionLocked) return { error: '데모가 종료되었습니다.' };
       if (this.localMode) {
         if (action === 'join') this.desiredChannel = 'town-1';
         if (action === 'leave' || action === 'disconnect') this.desiredChannel = null;
@@ -77,6 +78,7 @@ class PresenceClient {
   }
   chat(action, text, options = {}) {
     const operation = async () => {
+      if (this.deletionLocked) return { error: '데모가 종료되었습니다.' };
       if (this.localMode) return { error: '로컬 개발자 모드에서는 온라인 소셜 기능을 사용할 수 없습니다.' };
       if (!this.url) return { error: '테스트 서버 주소 미설정' };
       try {
@@ -105,6 +107,7 @@ class PresenceClient {
   }
   arena(input) {
     const operation = async () => {
+      if (this.deletionLocked) return { error: '데모가 종료되었습니다.' };
       if (this.localMode) return { error: '로컬 개발자 모드에서는 온라인 대결을 사용할 수 없습니다.' };
       if (!this.url) return { error: '온라인 서버 주소가 설정되지 않았습니다.' };
       try {
@@ -128,7 +131,8 @@ class PresenceClient {
     if (!deleteUser) return this.command('disconnect');
     // Drain pending writes before deleting, without creating a replacement session.
     await this.queue;
-    if (!this.token || !this.url) return { success: true };
+    if (!this.token) return { success: true };
+    if (!this.url) throw new Error('온라인 서버 주소가 없어 기록을 삭제할 수 없습니다.');
     const result = await this.request('forget');
     if (!result.deleted) throw new Error('서버 업데이트가 필요합니다. 유저 기록 삭제를 확인하지 못했습니다.');
     fs.rmSync(this.tokenFile, { force: true });
@@ -142,6 +146,7 @@ class PresenceClient {
   }
   setLocalMode(enabled) {
     const operation = async () => {
+      if (this.deletionLocked) return { error: '데모가 종료되었습니다.' };
       if (enabled === !!this.localMode) return this.state();
       if (enabled && this.snapshot && this.url) {
         try { await this.request('disconnect'); } catch { /* Server expires disconnected sessions. */ }

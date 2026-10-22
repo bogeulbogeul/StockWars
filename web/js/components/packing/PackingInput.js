@@ -1,5 +1,5 @@
 import { footprint, canPlace, placeItem } from './PackingLogic.js';
-import { artHtml } from './PackingView.js';
+import { artHtml } from './PackingView.js?v=whole-loaf-20261022';
 import { hitsArtwork } from './PackingHitTest.js?v=grab-area-2';
 
 export class PackingInput {

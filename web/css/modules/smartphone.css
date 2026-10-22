@@ -203,8 +203,12 @@ body.phone-view-active .phone-screen {
 
 #homeScreen {
     padding: 32px 24px;
-    background: radial-gradient(circle at top right, #1e2638, #0a0d14);
+    background: #fff5e4;
 }
+
+#homeScreen .app-label { color: #514638; }
+
+.phone-screen:has(#homeScreen.active) { background: #fff5e4; }
 
 .app-grid {
     display: grid;
@@ -240,6 +244,7 @@ body.phone-view-active .phone-screen {
 .memo-app-bg { background: linear-gradient(135deg, #ffb347, #ffcc33); }
 .achieve-app-bg { background: linear-gradient(135deg, #11998e, #38ef7d); }
 .option-app-bg { background: linear-gradient(135deg, #757f9a, #d7dde8); }
+.map-app-bg { background: #bce3cf; }
 
 .app-badge {
     position: absolute;

@@ -45,21 +45,4 @@
 
 .rent-quest { max-height: calc(100 * var(--game-vh) - 230px); overflow-y: auto; pointer-events: auto; }
 .rent-quest-details [hidden] { display: none; }
-.quest-tabs { display: flex; gap: 6px; margin: 12px 0; }
-.quest-tabs button, .side-quest-list button { border: 1px solid #40566a; border-radius: 6px; padding: 8px; color: #e6f1ff; background: #182636; font: inherit; font-size: 13px; cursor: pointer; }
-.quest-tabs button[aria-pressed="true"], .side-quest-list button { border-color: #00d5ef; background: #0c3944; }
-.side-quest-list details { padding: 12px 0; border-top: 1px solid #ffffff18; }
-.side-quest-list summary { display: flex; justify-content: space-between; align-items: center; gap: 8px; cursor: pointer; font-size: 15px; font-weight: 700; line-height: 1.5; }
-.side-quest-list summary span { color: #70e9b0; white-space: nowrap; font-size: 12px; }
-.side-quest-list p { font-size: 14px; line-height: 1.65; margin: 10px 0; color: #c2cddd; }
-.side-quest-list .side-quest-reward { color: #ffdb78; font-size: 13px; }
-.side-quest-list .side-quest-done { color: #70e9b0; }
 @media (max-width: 700px), (max-height: 650px) { .rent-quest { max-height: calc(100 * var(--game-vh) - 195px); } }
-
-.npc-quest-offers { margin:12px 0; max-height:300px; overflow-y:auto; }
-.npc-quest-offers[hidden] { display:none; }
-.npc-quest-offer { padding:14px 0; border-top:1px solid #ffffff25; display:grid; gap:8px; }
-.npc-quest-offer strong { font-size:18px; }.npc-quest-offer p { font-size:16px; line-height:1.65; margin:0; }
-.npc-quest-offer small { color:#ffdb78; font-size:14px; }
-.npc-quest-offer button { justify-self:start; padding:9px 16px; border:1px solid #00d5ef; border-radius:6px; background:#0c3944; color:#edf4ff; font:inherit; cursor:pointer; }
-#annaDialogueModalOverlay .npc-quest-offers { pointer-events:auto; }

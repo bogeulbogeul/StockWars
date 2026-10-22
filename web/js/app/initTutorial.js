@@ -1,4 +1,5 @@
 import { playRecoveryDrinkEffect } from '../components/RecoveryDrinkEffect.js';
+import { grantDiary } from './DiarySave.js';
 import { annaTradeTab } from '../components/tutorial/annaTradeFocus.js';
 import { marketEngine } from '../engine/marketEngine.js';
 import { toastManager } from '../components/ToastManager.js';
@@ -128,10 +129,12 @@ export function initTutorial() {
                 }
                 if (this.userProfile) this.userProfile.firstTutorialCompleted = true;
                 const reward = this.itemEngine.claimTutorialReward(skipped);
+                const diary = grantDiary(this);
                 this.itemGameplay.sync();
                 toastManager.show(skipped ? (reward ? '⏩ 튜토리얼 건너뛰기 · 정착 지원금 +2,000G 지급 (기본 지원금 총 7,000G)' : '⏩ 튜토리얼을 건너뛰었습니다. 정착 지원금은 이미 지급됐어요.') : reward
                     ? '🎉 튜토리얼 완료! 정착 보너스 +2,000G가 입금되었습니다.'
                     : '🎉 모아 매니저와의 첫 실전 매매 튜토리얼을 완수했습니다!');
+                if (diary) toastManager.show('📖 모아: 정착 지원금과 함께 이 일기장도 드릴게요. 쉬러 가기 전에 오늘의 발자취를 저장해 보세요.');
             }
         });
 }

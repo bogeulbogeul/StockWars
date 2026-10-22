@@ -5,11 +5,9 @@ import { playRecoveryDrinkEffect } from '../components/RecoveryDrinkEffect.js';
 import { applyPlayerTrait } from '../engine/PlayerTrait.js';
 import { LevelUpNotice } from '../components/LevelUpNotice.js';
 import { ItemCenter } from '../components/ItemCenter.js';
-import { SideQuestEngine } from '../engine/SideQuestEngine.js';
 import { RentQuestTracker } from '../components/RentQuestTracker.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
-import { titleName } from '../data/playerTitles.js';
 
 const SAVE_KEY = 'stockwars-item-gameplay-v1';
 
@@ -37,6 +35,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         market.orderBooks = new Map(saved.market.orderBooks || []);
         market.bookRevision = saved.market.bookRevision || 0;
         app.userProfile = saved.profile;
+        // Backfill the diary without granting settlement money again.
+        if (saved.items.tutorialRewardClaimed) app.userProfile.diaryReceived = true;
     }
 
     // Ensure all 72 stocks from INITIAL_STOCKS are present in market.stocks & metadata is updated
@@ -71,46 +71,9 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     });
     let gameStarted = false;
-    const sideQuests = new SideQuestEngine(() => engine.state, market);
-    const rentQuest = new RentQuestTracker(app.appContainer, { onClaimQuest: id => {
-        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return;
-        if (sideQuests.list().find(quest=>quest.id===id)) {
-            toastManager.show('의뢰한 NPC에게 돌아가 말을 걸어 보상을 받으세요.',true);return;
-        }
-        const result = sideQuests.claim(id);
-        toastManager.show(result.message, result.success);
-        if (result.success) sync();
-    } });
+    const rentQuest = new RentQuestTracker(app.appContainer);
     const updateQuest = () => {
-        const quests = sideQuests.active();
-        rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true, quests);
-        app.smartphoneUI.achievementAppModule?.update(sideQuests.titleCollection(), sideQuests.equippedTitle());
-    };
-    if (app.smartphoneUI.achievementAppModule) app.smartphoneUI.achievementAppModule.onEquipTitle = id => {
-        if (!gameStarted || !sideQuests.equipTitle(id).success) return;
-        updateQuest(); save();
-    };
-    app.getProfileTitles = () => ({
-        owned: sideQuests.titleCollection().filter(quest => quest.claimed && titleName(quest.id)).map(quest => quest.id),
-        equipped: sideQuests.equippedTitle()
-    });
-    app.getQuestOffers = giver => gameStarted && app.userProfile?.firstTutorialCompleted === true ? sideQuests.offers(giver) : [];
-    app.getNpcReward = giver => gameStarted && app.userProfile?.firstTutorialCompleted === true
-        ? sideQuests.active().find(quest=>quest.giver===giver&&quest.ready&&!quest.claimed) : null;
-    app.claimNpcReward = (id,giver) => {
-        if(app.getNpcReward(giver)?.id!==id)return {success:false};
-        const result=sideQuests.claim(id);if(result.success)sync();return result;
-    };
-    app.acceptQuest = (id, giver) => {
-        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return { success: false, message: '튜토리얼 이후 의뢰를 받을 수 있어요.' };
-        const result = sideQuests.accept(id, giver);
-        if (result.success) { updateQuest(); rentQuest.setTab('side'); save(); }
-        toastManager.show(result.message, result.success);
-        return result;
-    };
-    app.recordQuestEvent = (event, key) => {
-        if (!gameStarted || app.userProfile?.firstTutorialCompleted !== true) return;
-        if (sideQuests.record(event, key)) { updateQuest(); save(); }
+        rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true);
     };
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
@@ -118,7 +81,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     let lastSaved = 0;
     let storageWarning = false;
     function save(force = true) {
-        if (!gameStarted || !app.userProfile?.nickname) return false;
+        if (app.demoEnded || !gameStarted || !app.userProfile?.nickname) return false;
         if (!force && Date.now() - lastSaved < 1000) return;
         try {
             localStorage.setItem(saveKey, JSON.stringify({ items: engine.state, profile: app.userProfile,
@@ -228,16 +191,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
         sync();
     };
-    let observedTrades = market.tradeHistory.length;
-    market.subscribe(() => {
-        if (market.tradeHistory.length < observedTrades) observedTrades = 0;
-        const trades = market.tradeHistory.slice(observedTrades);
-        observedTrades = market.tradeHistory.length;
-        for (const trade of trades) {
-            if (trade.quantity > 0 && ['sell', 'liquidate'].includes(trade.side)) app.recordQuestEvent('trade', trade);
-        }
-        updateQuest(); save(false);
-    });
+    market.subscribe(() => { updateQuest(); save(false); });
     window.addEventListener('pagehide', () => save());
     engine.tick();
     sync();

@@ -4,6 +4,8 @@
  * Renders the 7-day weekly financial settlement report card with stamps and grading.
  */
 
+import { isFinalSettlement } from '../app/DemoLifecycle.js';
+
 export class SettlementModal {
     constructor(container, callbacks = {}) {
         this.container = container;
@@ -45,7 +47,7 @@ export class SettlementModal {
                         </div>
                         <div class="receipt-row rent-deduct">
                             <span>월세 (현금 차감)</span>
-                            <span id="settleRentDeduction">-5,000 G</span>
+                            <span id="settleRentDeduction">-2,000잎</span>
                         </div>
                         <div class="receipt-divider"></div>
                         <div class="receipt-row final-net">
@@ -87,16 +89,17 @@ export class SettlementModal {
     initEventListeners() {
         this.btnClose?.addEventListener('click', () => {
             this.close();
-            if (this.callbacks.onClose) this.callbacks.onClose();
+            if (this.callbacks.onClose) this.callbacks.onClose(this.finalSettlement);
         });
 
         this.modal?.addEventListener('click', (e) => {
-            if (e.target === this.modal) this.close();
+            if (e.target === this.modal && !this.finalSettlement) this.close();
         });
     }
 
     open(state) {
         if (!state) return;
+        this.finalSettlement = isFinalSettlement(state);
         const finalRemain = state.cash - state.targetRent;
         const isSuccess = finalRemain >= 0;
 
@@ -126,7 +129,7 @@ export class SettlementModal {
             this.resultGrade.style.color = isSuccess ? 'var(--accent-yellow)' : 'var(--accent-red)';
         }
 
-        if (this.btnClose) this.btnClose.textContent = state.rentPaid ? '확인 및 데모 클리어' : '확인';
+        if (this.btnClose) this.btnClose.textContent = this.finalSettlement ? '정산 확인 · 데모 마치기' : '확인';
         this.modal?.classList.remove('hidden');
     }
 

@@ -18,26 +18,32 @@ export function getSmartphoneShellHtml() {
                                 <div class="app-icon stock-app-bg">
                                     <span class="app-emoji">📈</span>
                                 </div>
-                                <div class="app-label">사이퍼M</div>
+                                <div class="app-label">잎새증권</div>
                             </div>
                             <div class="app-icon-item" id="iconBubbleApp">
                                 <div class="app-icon bubble-app-bg">
                                     <span class="app-emoji">💬</span>
                                     <span class="app-badge" style="display: none;">0</span>
                                 </div>
-                                <div class="app-label">Bubble</div>
+                                <div class="app-label">도란도란</div>
                             </div>
                             <div class="app-icon-item" id="iconMemoApp">
                                 <div class="app-icon memo-app-bg">
                                     <span class="app-emoji">📝</span>
                                 </div>
-                                <div class="app-label">메모</div>
+                                <div class="app-label">할 일 리스트</div>
                             </div>
-                            <div class="app-icon-item" id="iconAchieveApp">
+                            <div class="app-icon-item" id="iconTitleCollectionApp">
                                 <div class="app-icon achieve-app-bg">
                                     <span class="app-emoji">🏆</span>
                                 </div>
-                                <div class="app-label">업적</div>
+                                <div class="app-label">발자국</div>
+                            </div>
+                            <div class="app-icon-item" id="iconMapApp">
+                                <div class="app-icon map-app-bg">
+                                    <span class="app-emoji">🗺️</span>
+                                </div>
+                                <div class="app-label">마을 지도</div>
                             </div>
                             <div class="app-icon-item" id="iconSettingsApp">
                                 <div class="app-icon option-app-bg">
@@ -48,7 +54,6 @@ export function getSmartphoneShellHtml() {
                         </div>
                     </div>
 
-                    <div id="achievementApp" class="os-screen hidden" aria-label="업적과 칭호"></div>
 
                     <!-- 사이퍼M HTS Main Application -->
                     <div id="stockApp" class="os-screen hidden">
@@ -56,7 +61,7 @@ export function getSmartphoneShellHtml() {
                             <div class="app-title-area">
                                 <div class="app-logo">
                                     <span class="logo-icon">📈</span>
-                                    <span class="logo-text">사이퍼M</span>
+                                    <span class="logo-text">잎새증권</span>
                                 </div>
                             </div>
                         </div>

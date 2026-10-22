@@ -147,24 +147,6 @@ export function annaLaterLessons({ nickname, stockName, stockId, recommendationL
             tracker: '4/4 • 생활비와 투자금 나누기', requiresManualAction: false
         },
         {
-            id: 'side_quest_hint_anna', expression: 'Smile', speaker: '전담 매니저 모아',
-            text: '파트너, 이제 제법 트레이더다워졌는데요? 마침 부탁하고 싶은 일이 있어요.',
-            tracker: '4/4 • 모아의 작은 부탁', requiresManualAction: false,
-            example: { label: '서브퀘스트', rows: ['모아와 대화하면 의뢰를 확인할 수 있어요.'] }
-        },
-        {
-            id: 'side_quest_hint_friends', expression: 'Smile', speaker: '전담 매니저 모아',
-            text: '저뿐 아니라 마을 친구들도 도움이 필요한 모양이에요. 이야기를 나누다가 의뢰가 있는지 살짝 물어보세요.',
-            tracker: '4/4 • 마을 친구들의 의뢰', requiresManualAction: false,
-            example: { label: '의뢰 찾기', rows: ['마을 친구들과 대화하고 원하는 의뢰를 수락하세요.'] }
-        },
-        {
-            id: 'side_quest_hint_rewards', expression: 'Happy', speaker: '전담 매니저 모아',
-            text: '의뢰를 완료하고 보상을 받으면 특별한 칭호도 얻을 수 있어요! 준비되면 저에게 다시 말을 걸어 주세요. 제 부탁부터 들려드릴게요.',
-            tracker: '4/4 • 의뢰 보상과 칭호', requiresManualAction: false,
-            example: { label: '칭호 획득과 장착', rows: ['의뢰 달성 → 보상 받기', '스마트폰 → 칭호 도감에서 장착'] }
-        },
-        {
             id: 'tutorial_completed',
             expression: 'Happy',
             speaker: "전담 매니저 모아",

@@ -16,6 +16,7 @@ import { WardrobeModal } from '../components/WardrobeModal.js';
 import { FriendModal } from '../components/FriendModal.js';
 import { RankingModal } from '../components/RankingModal.js';
 import { AnnaDialogueModal } from '../components/AnnaDialogueModal.js';
+import { finishDemo } from './DemoLifecycle.js';
 
 export function initInterface() {
         // Main in-game status and navigation HUD.
@@ -57,7 +58,6 @@ export function initInterface() {
         this.tradeModal = new TradeModal(this.appContainer, {
             onOrderScreenOpened: () => this.annaTutorial?.notifyOrderScreenOpened(),
             onTutorialSubtab: tab => {
-                if (tab === 'Info') this.recordQuestEvent?.('company', this.tradeModal.selectedStockId);
                 const tutorial = this.annaTutorial;
                 if (!tutorial?.isActive) return;
                 const step = tutorial.historyCursor != null ? tutorial.dialogueHistory[tutorial.historyCursor] : tutorial.steps[tutorial.currentStepIdx];
@@ -124,7 +124,7 @@ export function initInterface() {
             getNewsItem: (id) => marketEngine.news.find(n => n.id === id), onOpenTradeModal: (stockId) => this.openTradeModal(stockId)
         });
         this.settlementModal = new SettlementModal(this.appContainer, {
-            onClose: () => toastManager.show('7일차 정산 보고서 확인 완료')
+            onClose: final => { if (final) { marketEngine.stopEngine(); void finishDemo(this); } }
         });
 
         // Friend & Social System Modal (MOD_GDD_09)
@@ -137,11 +137,11 @@ export function initInterface() {
 
         this.settingsModal = new SettingsModal(this.appContainer, {
             onQuit: () => this.quit(),
+            canQuit: () => true,
             isTutorialActive: () => this.isTutorialNavigationBlocked()
         });
         this.playerProfileModal = new PlayerProfileModal(this.appContainer, {
             getProfile: () => this.userProfile,
-            getTitles: () => this.getProfileTitles?.(),
             getPlayerLevel: () => this.itemEngine?.playerLevel() ?? 1,
             getLevelProgress: () => this.itemEngine?.playerLevelProgress(),
             getMarketState: () => marketEngine.getState(),
@@ -161,10 +161,6 @@ export function initInterface() {
 
         // Manager Anna Interactive Dialogue Modal (MOD_GDD_07_1)
         this.annaDialogueModal = new AnnaDialogueModal(this.appContainer, {
-            getQuestReward: () => this.getNpcReward?.('anna'),
-            onClaimReward: id => this.claimNpcReward?.(id,'anna'),
-            getQuestOffers: giver => this.getQuestOffers?.(giver) || [],
-            onAcceptQuest: (id, giver) => this.acceptQuest?.(id, giver),
             onGainStamina: (amount) => {
                 const max = this.mainHUD.stamina.max;
                 const next = Math.min(max, this.mainHUD.stamina.current + amount);
@@ -174,7 +170,7 @@ export function initInterface() {
 
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
-            onRumorOpened: (item, decoded) => { this.recordQuestEvent?.('rumor', item.id); this.annaTutorial?.explainOpenedRumor(item, decoded); },
+            onRumorOpened: (item, decoded) => { this.annaTutorial?.explainOpenedRumor(item, decoded); },
             onRumorClosed: () => {
                 const tutorial = this.annaTutorial;
                 if (tutorial?.isActive && tutorial.historyCursor == null && tutorial.steps[tutorial.currentStepIdx]?.id === 'rumor_actual_close') tutorial.nextStep();

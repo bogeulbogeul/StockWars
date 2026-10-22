@@ -7,8 +7,6 @@ export function applyPlayerTrait(state, profile) {
     const key = trait.key || Object.keys(TRAITS_DATA).find(key => TRAITS_DATA[key].title === trait.title);
     if (!key) return;
     trait.key = key;
-    // Backfill existing profiles, but preserve an explicit unequip or another selected title.
-    if (state.equippedTitle === undefined) state.equippedTitle = `trait_${key}`;
     if (state.appliedTrait === key) return;
     if (key in state.baseStats) {
         // Old saves may already have received the bonus; never add it twice.

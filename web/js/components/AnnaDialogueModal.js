@@ -46,7 +46,6 @@ export class AnnaDialogueModal {
                             </div>
                         </div>
 
-                        <div class="npc-quest-offers" id="annaQuestOffers" hidden></div>
                         <div class="anna-vn-options" id="annaVnOptions">
                             <button class="anna-vn-choice" data-action="briefing">📊 일일 시장 브리핑</button>
                             <button class="anna-vn-choice" data-action="advice">💼 포트폴리오 진단</button>
@@ -94,40 +93,7 @@ export class AnnaDialogueModal {
         } else {
             this.speechText.textContent = `"어서 오세요, 파트너님! 오늘 시장 준비는 잘 되고 계신가요? 어떤 도움이 필요하신가요?"`;
         }
-        this.resetQuestChoices();
         this.modalOverlay.classList.remove('hidden');
-        const reward=this.callbacks.getQuestReward?.();
-        if(reward&&this.callbacks.onClaimReward?.(reward.id)?.success){
-            this.setExpression('Happy');
-            this.speechText.textContent=`정말 잘하셨어요, 파트너님! ${reward.id==='challenge_profit_streak_v1'?'세 번 연속으로 수익을 챙기셨네요. 꾸준히 판단한 노력이 보이네요!':'손실과 수수료까지 이겨 내고 수익을 쌓으셨네요. 멋진 첫 성과예요!'} 약속한 ${reward.gold}G와 ${reward.exp} EXP를 드릴게요.`;
-            this.questChoices([['감사합니다',()=>this.show()]]);
-        }
-    }
-
-    resetQuestChoices(){
-        this.modalOverlay.querySelector('#annaVnOptions').hidden=false;
-        const area=this.modalOverlay.querySelector('#annaQuestOffers');area.replaceChildren();area.hidden=true;
-        const old=this.modalOverlay.querySelector('[data-anna-request]');old?.remove();
-        if(this.callbacks.getQuestOffers?.('anna')?.length){
-            const button=document.createElement('button');button.className='anna-vn-choice';button.dataset.annaRequest='';button.textContent='부탁할 일이 있나요?';button.onclick=()=>this.offerQuest();this.modalOverlay.querySelector('#annaVnOptions').prepend(button);
-        }
-    }
-    questChoices(options){
-        this.modalOverlay.querySelector('#annaVnOptions').hidden=true;
-        const area=this.modalOverlay.querySelector('#annaQuestOffers');area.replaceChildren();area.hidden=false;
-        for(const [label,action] of options){const button=document.createElement('button');button.className='anna-vn-choice';button.textContent=label;button.onclick=action;area.append(button);}
-    }
-    offerQuest(){
-        const quest=this.callbacks.getQuestOffers?.('anna')?.[0];if(!quest){this.show();return;}
-        this.setExpression('Smile');
-        this.speechText.textContent=quest.id==='challenge_net_profit_v1'
-            ?'파트너님, 이제 직접 투자로 성과를 쌓아 볼까요? 주식을 팔아 얻은 이익에서 손실과 수수료를 빼고 1,000G를 모아 보세요. 알바비나 보상금은 빼고요. 해내시면 제가 선물을 준비할게요!'
-            :'지난번 성과가 멋졌어요! 이번에는 한 번에 순이익 100G 이상인 매도를 세 번 연속 해볼까요? 중간에 100G를 못 넘기면 처음부터 다시 세어야 해요. 꾸준한 판단력을 보여 주세요!';
-        this.questChoices([['맡겨 주세요',()=>{
-            const result=this.callbacks.onAcceptQuest?.(quest.id,'anna');if(!result?.success)return;
-            this.speechText.textContent='좋아요, 응원할게요! 목표를 달성하면 저에게 다시 말을 걸어 주세요. 보상은 그때 직접 드릴게요.';
-            this.questChoices([['알겠어요',()=>this.show()]]);
-        }],['다음에 할게요',()=>this.show()]]);
     }
 
     hide() {

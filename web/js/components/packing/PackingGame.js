@@ -1,7 +1,7 @@
 import { createSession } from './PackingData.js?v=patterns-20-v1';
 import { placeItem, resetOrder, finishOrder } from './PackingLogic.js';
-import { shellHtml, renderPacking } from './PackingView.js';
-import { PackingInput } from './PackingInput.js?v=first-grab-1';
+import { shellHtml, renderPacking } from './PackingView.js?v=whole-loaf-20261022';
+import { PackingInput } from './PackingInput.js?v=whole-loaf-20261022';
 
 export class PackingGame {
     constructor({ onOpen = () => {}, onClose = () => {} } = {}) {

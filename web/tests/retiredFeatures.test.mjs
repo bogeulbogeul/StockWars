@@ -17,6 +17,7 @@ test('production module graph resolves without retired screens or warehouse modu
         if (visited.has(file)) return;
         visited.add(file);
         assert.ok(fs.existsSync(file), file);
+        assert.doesNotMatch(file, /SideQuestEngine|SideQuestList|NpcQuestOffers|AchievementApp|TitleBadge|sideQuests\.js|playerTitles\.js/);
         assert.doesNotMatch(file, /components[\\/]TitleScreen|TopDemoBar|DeveloperFriend|Logistics|WarehouseGeometry/);
         const source = fs.readFileSync(file, 'utf8');
         for (const [, relative] of source.matchAll(/(?:from\s+|import\s*\(?)["'](\.[^"']+)["']/g)) {
@@ -34,6 +35,8 @@ test('warehouse, contracts and passes are absent from active content', () => {
     const steps = buildAnnaScenario({});
     assert.equal(steps.some(s => /logistics/.test(s.id)), false);
     assert.equal(steps.at(-1).id, 'tutorial_completed');
+    assert.equal(steps.some(s => /side_quest|phone_app_intro_achievements/.test(s.id)), false);
+    assert.ok(steps.findIndex(s => s.id === 'stock_basics_budget') < steps.findIndex(s => s.id === 'tutorial_completed'));
     assert.equal(steps[steps.findIndex(s => s.id === 'server_enter') + 1].id, 'stock_basics_budget');
 });
 

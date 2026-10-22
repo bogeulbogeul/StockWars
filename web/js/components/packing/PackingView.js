@@ -1,6 +1,6 @@
 import { footprint, isOrderComplete } from './PackingLogic.js';
 const ATLAS_URL = new URL('../../../assets/items/packing-v1/items.png', import.meta.url).href;
-const BREAD_URL = new URL('../../../assets/items/packing-v1/popori-bread-v2.png', import.meta.url).href;
+const BREAD_URL = new URL('../../../assets/items/packing-v1/popori-bread-v2.png?v=whole-loaf-20261022', import.meta.url).href;
 // Display windows into the original atlas; source pixels remain untouched.
 const ART_REGIONS = [[20, 40, 390, 350], [440, 40, 350, 350], [920, 35, 155, 355],
     [1180, 130, 450, 255], [1665, 25, 275, 370], [10, 490, 410, 235],

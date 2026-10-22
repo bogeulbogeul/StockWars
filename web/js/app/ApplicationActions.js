@@ -3,6 +3,7 @@ import { marketEngine } from '../engine/marketEngine.js';
 import { weatherService } from '../engine/weatherService.js';
 import { timeOfDayService } from '../engine/timeOfDayService.js';
 import { toastManager } from '../components/ToastManager.js';
+import { DiaryModal } from '../components/DiaryModal.js';
 
 export const applicationActions = {
     async enterGame() {
@@ -31,6 +32,11 @@ export const applicationActions = {
     },
 
     updateAll(state) {
+        if (this.demoEnded) return;
+        if (state.day >= 7 && this.userProfile?.nickname && !this.demoSettlementShown) {
+            this.demoSettlementShown = true;
+            queueMicrotask(() => this.openSettlement());
+        }
         this.syncTutorialNavigation();
         this.annaTutorial?.notifyMarketUpdated(state);
         this.mainHUD.updateState(state);
@@ -122,9 +128,11 @@ export const applicationActions = {
     },
 
     async quit() {
-        this.itemGameplay?.save();
         if (this.isTutorialNavigationBlocked()) return { error: '튜토리얼 완료 후 게임을 종료할 수 있어요.' };
-        return window.stockWarsDesktop?.quit?.();
+        this.settingsModal?.dialog.close();
+        this.diaryModal ||= new DiaryModal(this);
+        this.diaryModal.open();
+        return {};
     },
 
 
@@ -139,6 +147,8 @@ export const applicationActions = {
 
 
     openSettlement() {
+        if (this.demoEnded) return;
+        if (marketEngine.day >= 7) this.demoSettlementShown = true;
         this.settlementModal.open(marketEngine.settleRent());
         this.itemGameplay.save();
     },

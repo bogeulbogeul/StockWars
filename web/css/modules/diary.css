@@ -1,0 +1,8 @@
+.diary-dialog { width: min(480px, calc(100vw - 64px)); padding: 28px; border: 2px solid #ad9065; border-radius: 16px; background: #fff5dc; color: #493b2b; font: 16px/1.7 system-ui, sans-serif; }
+.diary-dialog::backdrop { background: #142019aa; }
+.diary-dialog h2 { margin-top: 0; }
+.diary-dialog [role="status"] { min-height: 54px; }
+.diary-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.diary-actions button { padding: 10px 14px; border: 1px solid #8a714e; border-radius: 8px; background: #f3e4bf; color: inherit; font: inherit; cursor: pointer; }
+.diary-actions button:focus-visible { outline: 3px solid #46734c; outline-offset: 3px; }
+.diary-actions button:disabled { opacity: .5; cursor: default; }

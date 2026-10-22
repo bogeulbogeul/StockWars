@@ -10,11 +10,13 @@ import { initInterface } from './app/initInterface.js';
 import { initWorld } from './app/initWorld.js';
 import { initTutorial } from './app/initTutorial.js';
 import { showTitleScreen } from './app/TitleScreen.js';
+import { resumeDemoEnd } from './app/DemoLifecycle.js';
 
 class StockWarsApplication {
     constructor() {
         this.appContainer = document.getElementById('app') || document.body;
         this.userProfile = null;
+        marketEngine.targetRent = 2000;
         this.initComponents();
         this.playerSocial = new PlayerSocial(this);
         installItemGameplay(this, marketEngine);
@@ -33,6 +35,7 @@ class StockWarsApplication {
     }
 }
 Object.assign(StockWarsApplication.prototype, worldNavigation, applicationActions);
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    if (await resumeDemoEnd()) return;
     window.stockWarsApp = new StockWarsApplication();
 });
