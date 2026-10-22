@@ -69,7 +69,7 @@ export class RumorPopup {
                             <div class="rumor-stock-meta">
                                 <span class="rumor-stock-icon" id="rumorStockIcon">🏢</span>
                                 <div>
-                                    <span class="rumor-stock-name" id="rumorStockName">클라우드 베리</span>
+                                    <span class="rumor-stock-name" id="rumorStockName">베리클라우드</span>
                                     <span class="rumor-stock-sector" id="rumorStockSector">IT/기술</span>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ export class RumorPopup {
         }
 
         // Target Stock and Enterprise Change Info
-        const stockNameVal = item.targetStockName || '클라우드 베리';
+        const stockNameVal = item.targetStockName || '베리클라우드';
         const sectorVal = item.targetSector || 'IT/기술';
         const changeVal = item.targetChange || '+18.5% ~ +25.0% 급등 예상';
         const isNegative = changeVal.includes('-') || changeVal.includes('하락') || changeVal.includes('악재');

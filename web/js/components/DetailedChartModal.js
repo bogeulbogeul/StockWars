@@ -30,7 +30,7 @@ export class DetailedChartModal {
                     <div class="modal-header">
                         <div class="modal-header-left">
                             <div class="modal-stock-title">
-                                <span id="detailedModalStockName" class="stock-name">클라우드 베리</span>
+                                <span id="detailedModalStockName" class="stock-name">베리클라우드</span>
                                 <span id="detailedModalStockCode" class="stock-code">CLOUDBERRY</span>
                                 <span id="detailedModalStockSector" class="stock-sector-badge">IT</span>
                             </div>

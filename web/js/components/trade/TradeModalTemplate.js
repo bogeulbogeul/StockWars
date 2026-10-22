@@ -9,7 +9,7 @@ export function getTradeModalHtml() {
             <div class="modal-card">
                 <div class="modal-header">
                     <div class="modal-stock-title">
-                        <span id="modalStockName" class="stock-name">클라우드 베리</span>
+                        <span id="modalStockName" class="stock-name">베리클라우드</span>
                         <button class="fav-btn" id="btnFavoriteStock" title="관심 종목 토글">⭐</button>
                         <span id="modalStockCode" class="stock-code">CLOUDBERRY</span>
                         <span id="modalStockSector" class="stock-sector-badge">IT</span>

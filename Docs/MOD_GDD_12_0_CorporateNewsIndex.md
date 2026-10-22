@@ -1,5 +1,7 @@
 # StockWars GDD: [MOD_GDD_12_0] 기업 뉴스 이벤트 시스템 인덱스 (Corporate News Events Index)
 
+> **2026-10-22 회사명 갱신:** 현재 72종과 대응되는 회사명은 [새 이름 대응표](STOCK_NAMES_2026-10-22.md)를 반영했다. 아래 확장·과거 원고의 채택 및 구현 상태는 바뀌지 않으며, 괄호의 영문명은 이전 별칭이다. 미매핑 예비 종목은 이름 변경 대상에서 제외한다.
+
 > **2026-10-16 대조 결과:** 상장·대기 96종은 원고 분류다. 현재 일반 시장은 JS 초기 종목·뉴스와 로컬 틱이며 IPO 이동에 따른 자동 뉴스 매칭은 미구현 확장안이다. 아레나 뉴스는 별도 서버 이벤트다. 문서 완비와 런타임 적용 완료를 구분한다.
 
 **버전:** v2.5.0 (종목 리스트 전체 확장 완료)
@@ -30,11 +32,11 @@
 
 | 문서 번호 | 섹터 명칭 | 상장 종목 수 (Active + IPO Pool) | 주요 수록 종목 | 문서 링크 |
 | :--- | :--- | :---: | :--- | :--- |
-| **12-1** | **IT 섹터** | 12개 | 클라우드 베리, 시냅스 망, 테크 돔, 모모 솔루션 등 | [MOD_GDD_12_1_CorporateNews_IT.md](MOD_GDD_12_1_CorporateNews_IT.md) |
-| **12-2** | **엔터 섹터** | 12개 | 스타더스트, 로열 미디어, 시네마 홀릭, 스튜디오 루나 등 | [MOD_GDD_12_2_CorporateNews_Entertainment.md](MOD_GDD_12_2_CorporateNews_Entertainment.md) |
-| **12-3** | **인프라 섹터** | 12개 | S-커넥트, 메트로 링크, 글로벌 루트, 에어 링크 등 | [MOD_GDD_12_3_CorporateNews_Infrastructure.md](MOD_GDD_12_3_CorporateNews_Infrastructure.md) |
-| **12-4** | **바이오 섹터** | 12개 | 포레스트 랩, 화이트 메디, 퓨어 사이언스, 뉴런 바이오 등 | [MOD_GDD_12_4_CorporateNews_Bio.md](MOD_GDD_12_4_CorporateNews_Bio.md) |
+| **12-1** | **IT 섹터** | 12개 | 베리클라우드, 모아네트웍스, 포코시스템, 모모랩스 등 | [MOD_GDD_12_1_CorporateNews_IT.md](MOD_GDD_12_1_CorporateNews_IT.md) |
+| **12-2** | **엔터 섹터** | 12개 | 스텔라뮤직, 벨로미디어, 모네시네마, 루나스튜디오 등 | [MOD_GDD_12_2_CorporateNews_Entertainment.md](MOD_GDD_12_2_CorporateNews_Entertainment.md) |
+| **12-3** | **인프라 섹터** | 12개 | 이음네트웍스, 메트로 링크, 글로벌 루트, 에어리링크 등 | [MOD_GDD_12_3_CorporateNews_Infrastructure.md](MOD_GDD_12_3_CorporateNews_Infrastructure.md) |
+| **12-4** | **바이오 섹터** | 12개 | 포레바이오, 화이트 메디, 퓨어 사이언스, 뉴로랩스 등 | [MOD_GDD_12_4_CorporateNews_Bio.md](MOD_GDD_12_4_CorporateNews_Bio.md) |
 | **12-5** | **항공우주 섹터** | 12개 | 윙스 로직스, 스카이 넷, 에어 캐리어, 블루 스카이 등 | [MOD_GDD_12_5_CorporateNews_Aerospace.md](MOD_GDD_12_5_CorporateNews_Aerospace.md) |
-| **12-6** | **유통 섹터** | 12개 | 모닝 브루, 에브리 마트, 리테일 프로, 오가닉 테이블 등 | [MOD_GDD_12_6_CorporateNews_Distribution.md](MOD_GDD_12_6_CorporateNews_Distribution.md) |
-| **12-7** | **에너지 섹터** | 12개 | 윈드 힐, 솔라 퓨처, 아쿠아 에너지, 선 라이트 등 | [MOD_GDD_12_7_CorporateNews_Energy.md](MOD_GDD_12_7_CorporateNews_Energy.md) |
-| **12-8** | **금융 섹터** | 12개 | 코지 페이, 세이프 뱅크, 로열 캐피탈, 민트 자산운용 등 | [MOD_GDD_12_8_CorporateNews_Finance.md](MOD_GDD_12_8_CorporateNews_Finance.md) |
+| **12-6** | **유통 섹터** | 12개 | 모닝브루, 에브리 마트, 리테일 프로, 그로브테이블 등 | [MOD_GDD_12_6_CorporateNews_Distribution.md](MOD_GDD_12_6_CorporateNews_Distribution.md) |
+| **12-7** | **에너지 섹터** | 12개 | 브리즈파워, 솔라 퓨처, 아쿠아 에너지, 솔라온 등 | [MOD_GDD_12_7_CorporateNews_Energy.md](MOD_GDD_12_7_CorporateNews_Energy.md) |
+| **12-8** | **금융 섹터** | 12개 | 코지페이, 오롯은행, 로열 캐피탈, 민트자산운용 등 | [MOD_GDD_12_8_CorporateNews_Finance.md](MOD_GDD_12_8_CorporateNews_Finance.md) |

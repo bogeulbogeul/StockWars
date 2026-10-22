@@ -9,7 +9,7 @@ import { compactAnnaLessons } from './compactAnnaLessons.js';
 
 export function buildAnnaScenario({
     nickname = '파트너',
-    targetStock = { id: 'CLOUDBERRY', name: '클라우드 베리' },
+    targetStock = { id: 'CLOUDBERRY', name: '베리클라우드' },
     reason = null,
     callbacks = {},
     highlightElement = () => {},

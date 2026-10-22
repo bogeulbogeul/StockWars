@@ -104,7 +104,7 @@ export function getVivianStoreHtml({allowLayoutEditing=false} = {}) {
                                 <span>상점 소비 주가 연동 안내</span>
                             </div>
                             <div class="stock-link-desc">
-                                잡화점 아이템 구매액은 납품사인 <b>[모닝 브루]</b> 및 <b>[포레스트 랩]</b>의 분기 매출로 직결되어 주가 상승 모멘텀을 형성합니다.
+                                잡화점 아이템 구매액은 납품사인 <b>[모닝브루]</b> 및 <b>[포레바이오]</b>의 분기 매출로 직결되어 주가 상승 모멘텀을 형성합니다.
                             </div>
                         </div>
                     </div>

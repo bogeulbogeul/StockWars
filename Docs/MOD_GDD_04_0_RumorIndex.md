@@ -1,5 +1,7 @@
 # StockWars GDD: [MOD_GDD_04_0] 유니버설 찌라시 라이브러리 인덱스
 
+> **2026-10-22 회사명 갱신:** 현재 72종과 대응되는 회사명은 [새 이름 대응표](STOCK_NAMES_2026-10-22.md)를 반영했다. 아래 확장·과거 원고의 채택 및 구현 상태는 바뀌지 않으며, 괄호의 영문명은 이전 별칭이다. 미매핑 예비 종목은 이름 변경 대상에서 제외한다.
+
 **버전:** v5.1.0
 **상태:** 번호 체계 재정의 및 섹터별 분할 완료
 **관리 대상:** 상장 상용 종목의 전 종목 유니버설 찌라시 라이브러리
@@ -23,11 +25,11 @@
 
 | 문서 번호 | 섹터 명칭 | 주요 수록 종목 | 문서 링크 |
 | :--- | :--- | :--- | :--- |
-| **04-1** | **IT 섹터** | 클라우드 베리, 모모 솔루션, 패치워크 등 9종 | [MOD_GDD_04_1_Rumor_IT.md](MOD_GDD_04_1_Rumor_IT.md) |
-| **04-2** | **엔터 섹터** | 스타더스트, 스튜디오 루나, 넥스트 원 등 9종 | [MOD_GDD_04_2_Rumor_Entertainment.md](MOD_GDD_04_2_Rumor_Entertainment.md) |
-| **04-3** | **인프라 섹터** | S-커넥트, 에어 링크, 웨이브 통신 등 9종 | [MOD_GDD_04_3_Rumor_Infrastructure.md](MOD_GDD_04_3_Rumor_Infrastructure.md) |
-| **04-4** | **바이오 섹터** | 포레스트 랩, 뉴런 바이오, 라이프 큐어 등 9종 | [MOD_GDD_04_4_Rumor_Bio.md](MOD_GDD_04_4_Rumor_Bio.md) |
-| **04-5** | **항공우주 섹터** | 윙스 로지스, 오비탈 테크, 코스모스 X 등 9종 | [MOD_GDD_04_5_Rumor_Aerospace.md](MOD_GDD_04_5_Rumor_Aerospace.md) |
-| **04-6** | **유통 섹터** | 모닝 브루, 오가닉 테이블, 스윗 베이커리 등 9종 | [MOD_GDD_04_6_Rumor_Distribution.md](MOD_GDD_04_6_Rumor_Distribution.md) |
-| **04-7** | **에너지 섹터** | 윈드 힐, 선 라이트, 에코 배터리 등 9종 | [MOD_GDD_04_7_Rumor_Energy.md](MOD_GDD_04_7_Rumor_Energy.md) |
-| **04-8** | **금융 섹터** | 코지 페이, 민트 자산운용, 골드 포켓 등 9종 | [MOD_GDD_04_8_Rumor_Finance.md](MOD_GDD_04_8_Rumor_Finance.md) |
+| **04-1** | **IT 섹터** | 베리클라우드, 모모랩스, 스티치랩 등 9종 | [MOD_GDD_04_1_Rumor_IT.md](MOD_GDD_04_1_Rumor_IT.md) |
+| **04-2** | **엔터 섹터** | 스텔라뮤직, 루나스튜디오, 넥스트 원 등 9종 | [MOD_GDD_04_2_Rumor_Entertainment.md](MOD_GDD_04_2_Rumor_Entertainment.md) |
+| **04-3** | **인프라 섹터** | 이음네트웍스, 에어리링크, 나루통신 등 9종 | [MOD_GDD_04_3_Rumor_Infrastructure.md](MOD_GDD_04_3_Rumor_Infrastructure.md) |
+| **04-4** | **바이오 섹터** | 포레바이오, 뉴로랩스, 라이프 큐어 등 9종 | [MOD_GDD_04_4_Rumor_Bio.md](MOD_GDD_04_4_Rumor_Bio.md) |
+| **04-5** | **항공우주 섹터** | 윙고로지스, 오르빗테크, 코스모랩스 등 9종 | [MOD_GDD_04_5_Rumor_Aerospace.md](MOD_GDD_04_5_Rumor_Aerospace.md) |
+| **04-6** | **유통 섹터** | 모닝브루, 그로브테이블, 밀리베이커리 등 9종 | [MOD_GDD_04_6_Rumor_Distribution.md](MOD_GDD_04_6_Rumor_Distribution.md) |
+| **04-7** | **에너지 섹터** | 브리즈파워, 솔라온, 리프에너지 등 9종 | [MOD_GDD_04_7_Rumor_Energy.md](MOD_GDD_04_7_Rumor_Energy.md) |
+| **04-8** | **금융 섹터** | 코지페이, 민트자산운용, 포켓금융 등 9종 | [MOD_GDD_04_8_Rumor_Finance.md](MOD_GDD_04_8_Rumor_Finance.md) |

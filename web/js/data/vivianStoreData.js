@@ -24,7 +24,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         desc: '고농축 타우린과 카페인이 함유된 국민 에너지 드링크. 찌뿌둥한 피로를 날려버립니다.',
         effects: ['❤️ 하트 1개 즉시 회복', '⚡ 최대 하트 수는 회복력에 따라 3~5개'],
-        linkedStock: { id: 'MORNINGBREW', name: '모닝 브루', note: '소비 시 모닝 브루 실적 기여' }
+        linkedStock: { id: 'MORNINGBREW', name: '모닝브루', note: '소비 시 모닝브루 실적 기여' }
     },
     {
         id: 'item_premium_rumor',
@@ -50,7 +50,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         desc: '찌라시의 비유와 은어를 더 구체적인 단서로 풀어주는 소형 도구. 보관함에서 확인하기를 눌러 열람한 찌라시 한 건을 선택하면 해석 단계가 1 올라가며 해당 정보에 유지됩니다. 분석력 자체와 정보의 진위는 바뀌지 않습니다.',
         effects: ['🔎 열람 찌라시 1건 해석 +1단계 (최대 5)', '📌 해당 정보에 유지 · 진위 보장 없음'],
-        linkedStock: { id: 'CLOUDBERRY', name: '클라우드 베리', note: '분산 암호 인프라 부품 사용' }
+        linkedStock: { id: 'CLOUDBERRY', name: '베리클라우드', note: '분산 암호 인프라 부품 사용' }
     },
     {
         id: 'item_focus_pill',
@@ -63,7 +63,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         desc: '뇌세포의 집중도를 극대화하여 차트의 글리치와 미세 체결 틱을 감지하는 알약.',
         effects: ['🧠 120분간 [분석력] +2 Bonus', '👁️ 글리치 감지 강화'],
-        linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '천연 바이오 농축액 납품' }
+        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '천연 바이오 농축액 납품' }
     },
     {
         id: 'item_stabilizer',
@@ -76,7 +76,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         desc: '극심한 변동성 속에서도 심박수를 안정시켜 뇌동매매를 방지하는 신경안정제.',
         effects: ['💼 120분간 [운용력] +2 Bonus', '📊 1회 주문 가능 수량 소폭 확장'],
-        linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '포레스트 랩 바이오 성분' }
+        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 바이오 성분' }
     },
     {
         id: 'item_vitamin_complex',
@@ -89,7 +89,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: true,
         desc: '필수 비타민과 미네랄이 집약된 영양제. 피로 누적을 방지하고 회복력을 끌어올립니다.',
         effects: ['🛡️ 120분간 [회복력] +2 Bonus', '💖 회복력 0~1: 하트 3개 / 2~3: 4개 / 4 이상: 5개', '빈 하트 추가 · 즉시 회복 없음 · 만료 시 초과 체력만 차감'],
-        linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '포레스트 랩 정품 납품' }
+        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 정품 납품' }
     },
 
     // 2. 주간 특수 매대 (Weekly Shelf)
@@ -104,7 +104,7 @@ export const VIVIAN_SHOP_CATALOG = [
         instantUsable: false,
         desc: '봉봉 상점의 특제 에너지 드링크를 매일 아침 오피스 메일함으로 직배송해 주는 정기 구독권.',
         effects: ['💌 7일간 매일 드링크 1개 Mail 지급'],
-        linkedStock: { id: 'MORNINGBREW', name: '모닝 브루', note: '모닝 브루 정기 구독 납품' }
+        linkedStock: { id: 'MORNINGBREW', name: '모닝브루', note: '모닝브루 정기 구독 납품' }
     },
 
     {
@@ -151,7 +151,7 @@ export const VIVIAN_SHOP_CATALOG = [
         reqUnlock: { trustLevel: 3, profit: 20000, conditionDesc: '수익 20,000G + 신뢰 Lv.3' },
         desc: '봉봉의 개인 비밀 연구실에서 증류된 초고순도 각성 앰플. 즉각적인 폭발력을 냅니다.',
         effects: ['💖 하트 1개 즉시 회복 (일일 1회)'],
-        linkedStock: { id: 'FORESTLAB', name: '포레스트 랩', note: '고순도 농축 바이오 앰플' }
+        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '고순도 농축 바이오 앰플' }
     },
     {
         id: 'item_darknet_key',
@@ -222,7 +222,7 @@ export const VIVIAN_DIALOGUES = {
         '골드가 부족하군요. 생활비를 남겨 두고 다시 찾아오세요.'
     ],
     talk: [
-        '잡화점 팁: 우리 가게에서 물건을 많이 사면, 납품사인 [모닝 브루]와 [포레스트 랩]의 매출이 올라서 주가도 뛴다는 소문이 있어요.',
+        '잡화점 팁: 우리 가게에서 물건을 많이 사면, 납품사인 [모닝브루]와 [포레바이오]의 매출이 올라서 주가도 뛴다는 소문이 있어요.',
         '비밀 매대를 열고 싶다면 꾸준히 수익을 내고 저와의 신뢰도를 쌓아보세요.',
         '요즘 마을 펍이 폐쇄되고 증권사 아레나 쪽으로 사람들이 몰리더군요. 정보의 출처를 잘 가려야 합니다.'
     ]
