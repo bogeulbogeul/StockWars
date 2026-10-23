@@ -6,6 +6,7 @@ import { installPackingEntrance } from './PackingEntrance.js';
 import { installVivianModelEntrance } from './VivianModelEntrance.js';
 import { installBankModelEntrance } from './BankModelEntrance.js';
 import { installInformationModelEntrance } from './InformationModelEntrance.js';
+import { isExhibitionMode } from './exhibition/Mode.js';
 // Install the 3D renderer independently of stage input and UI.
 async function installTownModels() {
     const town = window.stockWarsApp?.townStage;
@@ -35,5 +36,6 @@ requestAnimationFrame(draw);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (isExhibitionMode()) return;
     void installTownModels().catch(error => console.error('Town renderer initialization:', error));
 });

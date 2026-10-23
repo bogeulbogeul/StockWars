@@ -1,0 +1,21 @@
+{
+  "samples": 181,
+  "arms": {
+    "L": {
+      "span": 0.49639979004859924,
+      "minSpan": 0.49639955163002014,
+      "maxSpan": 0.496399849653244,
+      "maxEdgeIncrease": 3.921985626220703e-05,
+      "minEdgeChange": -4.011392593383789e-05,
+      "maximumLengthIncreasePercent": 1.200738719564498e-05
+    },
+    "R": {
+      "span": 0.49491000175476074,
+      "minSpan": 0.4949098527431488,
+      "maxSpan": 0.4949101507663727,
+      "maxEdgeIncrease": 0.0001556873321533203,
+      "minEdgeChange": -0.00017255544662475586,
+      "maximumLengthIncreasePercent": 3.0108830162411948e-05
+    }
+  }
+}

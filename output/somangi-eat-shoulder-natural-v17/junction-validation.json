@@ -1,0 +1,12 @@
+{
+  "samples": 181,
+  "maximumUneditedVertexDifference": 1.1920928955078125e-07,
+  "maximumHeadDifference": 1.1920928955078125e-07,
+  "maximumPalmDifference": 5.960464477539063e-08,
+  "maximumOverallBoundsDifference": 1.1920928955078125e-07,
+  "headBoundaryEdgesSharedWithSleeve": 390,
+  "openHeadSleeveBoundaryEdges": 0,
+  "minimumLowerSleeveOverlap": 0.0036392381789482897,
+  "maximumLowerSleeveMotion": 0,
+  "gameInstalled": false
+}

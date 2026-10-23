@@ -1,0 +1,457 @@
+[
+  {
+    "frame": 1,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 2,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 3,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 4,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 5,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 6,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 7,
+    "forwardClearanceOffset": 0.04481696974341125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 8,
+    "forwardClearanceOffset": 0.04481696636310721,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 9,
+    "forwardClearanceOffset": 0.0448170718887335,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 10,
+    "forwardClearanceOffset": 0.044817188893509205,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 11,
+    "forwardClearanceOffset": 0.04481741469459198,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 12,
+    "forwardClearanceOffset": 0.044817172725148166,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 13,
+    "forwardClearanceOffset": 0.04481751224637674,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 14,
+    "forwardClearanceOffset": 0.04480821604845024,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 15,
+    "forwardClearanceOffset": 0.04479879045976125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 16,
+    "forwardClearanceOffset": 0.04478950187735474,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 17,
+    "forwardClearanceOffset": 0.04478032857581747,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 18,
+    "forwardClearanceOffset": 0.04477101873452248,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 19,
+    "forwardClearanceOffset": 0.04476147610706842,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 20,
+    "forwardClearanceOffset": 0.044697845829191826,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 21,
+    "forwardClearanceOffset": 0.044634121336351903,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 22,
+    "forwardClearanceOffset": 0.04457020120500947,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 23,
+    "forwardClearanceOffset": 0.044506410632874624,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 24,
+    "forwardClearanceOffset": 0.04444277061510475,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 25,
+    "forwardClearanceOffset": 0.04437917147204955,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 26,
+    "forwardClearanceOffset": 0.044370660602098475,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 27,
+    "forwardClearanceOffset": 0.04436225918939328,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 28,
+    "forwardClearanceOffset": 0.04435387410611656,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 29,
+    "forwardClearanceOffset": 0.04434584093670839,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 30,
+    "forwardClearanceOffset": 0.04433745146302419,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 31,
+    "forwardClearanceOffset": 0.04432892986768515,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 32,
+    "forwardClearanceOffset": 0.04430909033494383,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 33,
+    "forwardClearanceOffset": 0.04428876614427872,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 34,
+    "forwardClearanceOffset": 0.047135009336538344,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 35,
+    "forwardClearanceOffset": 0.05696810588701305,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 36,
+    "forwardClearanceOffset": 0.06135644017148832,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 37,
+    "forwardClearanceOffset": 0.061350843044724476,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 38,
+    "forwardClearanceOffset": 0.061360890858284986,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 39,
+    "forwardClearanceOffset": 0.061370704942784945,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 40,
+    "forwardClearanceOffset": 0.061380870186349176,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 41,
+    "forwardClearanceOffset": 0.06139068235322419,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 42,
+    "forwardClearanceOffset": 0.06140074058991461,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 43,
+    "forwardClearanceOffset": 0.06141090673923254,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 44,
+    "forwardClearanceOffset": 0.061400733883643074,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 45,
+    "forwardClearanceOffset": 0.06139068624626452,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 46,
+    "forwardClearanceOffset": 0.06411806570886046,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 47,
+    "forwardClearanceOffset": 0.07385198601297714,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 48,
+    "forwardClearanceOffset": 0.07833218553290598,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 49,
+    "forwardClearanceOffset": 0.07833414115318614,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 50,
+    "forwardClearanceOffset": 0.07833833327955574,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 51,
+    "forwardClearanceOffset": 0.07834254461617561,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 52,
+    "forwardClearanceOffset": 0.07834649449954777,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 53,
+    "forwardClearanceOffset": 0.07835070565368028,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 54,
+    "forwardClearanceOffset": 0.07835489598431121,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 55,
+    "forwardClearanceOffset": 0.07819291475784727,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 56,
+    "forwardClearanceOffset": 0.07758037337978373,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 57,
+    "forwardClearanceOffset": 0.07728723959779125,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 58,
+    "forwardClearanceOffset": 0.07728353405480791,
+    "attentionBlend": 0.0
+  },
+  {
+    "frame": 59,
+    "forwardClearanceOffset": 0.07721246008572268,
+    "attentionBlend": 0.0006789219232253147
+  },
+  {
+    "frame": 60,
+    "forwardClearanceOffset": 0.07683258835199401,
+    "attentionBlend": 0.0050877700617283925
+  },
+  {
+    "frame": 61,
+    "forwardClearanceOffset": 0.07611839602481683,
+    "attentionBlend": 0.016052246093750038
+  },
+  {
+    "frame": 62,
+    "forwardClearanceOffset": 0.07527914783022459,
+    "attentionBlend": 0.035493827160493804
+  },
+  {
+    "frame": 63,
+    "forwardClearanceOffset": 0.07464174571407999,
+    "attentionBlend": 0.06452018831983054
+  },
+  {
+    "frame": 64,
+    "forwardClearanceOffset": 0.07456064336169464,
+    "attentionBlend": 0.10351562500000024
+  },
+  {
+    "frame": 65,
+    "forwardClearanceOffset": 0.07544183875823345,
+    "attentionBlend": 0.152231475453318
+  },
+  {
+    "frame": 66,
+    "forwardClearanceOffset": 0.0776259070504885,
+    "attentionBlend": 0.20987654320987645
+  },
+  {
+    "frame": 67,
+    "forwardClearanceOffset": 0.0813460273885724,
+    "attentionBlend": 0.27520751953125056
+  },
+  {
+    "frame": 68,
+    "forwardClearanceOffset": 0.08661452049611672,
+    "attentionBlend": 0.3466194058641978
+  },
+  {
+    "frame": 69,
+    "forwardClearanceOffset": 0.09301548679684411,
+    "attentionBlend": 0.4222359362943673
+  },
+  {
+    "frame": 70,
+    "forwardClearanceOffset": 0.09974085177570922,
+    "attentionBlend": 0.4999999999999999
+  },
+  {
+    "frame": 71,
+    "forwardClearanceOffset": 0.10857497933203407,
+    "attentionBlend": 0.5777640637056333
+  },
+  {
+    "frame": 72,
+    "forwardClearanceOffset": 0.11610897313053868,
+    "attentionBlend": 0.6533805941358026
+  },
+  {
+    "frame": 73,
+    "forwardClearanceOffset": 0.12149877933286567,
+    "attentionBlend": 0.72479248046875
+  },
+  {
+    "frame": 74,
+    "forwardClearanceOffset": 0.12412979814367507,
+    "attentionBlend": 0.7901234567901233
+  },
+  {
+    "frame": 75,
+    "forwardClearanceOffset": 0.12314723503851253,
+    "attentionBlend": 0.8477685245466825
+  },
+  {
+    "frame": 76,
+    "forwardClearanceOffset": 0.12482669610329598,
+    "attentionBlend": 0.8964843750000001
+  },
+  {
+    "frame": 77,
+    "forwardClearanceOffset": 0.12631801023514466,
+    "attentionBlend": 0.9354798116801702
+  },
+  {
+    "frame": 78,
+    "forwardClearanceOffset": 0.1272976460945694,
+    "attentionBlend": 0.9645061728395061
+  },
+  {
+    "frame": 79,
+    "forwardClearanceOffset": 0.12785513426744166,
+    "attentionBlend": 0.9839477539062508
+  },
+  {
+    "frame": 80,
+    "forwardClearanceOffset": 0.12814990239472368,
+    "attentionBlend": 0.9949122299382713
+  },
+  {
+    "frame": 81,
+    "forwardClearanceOffset": 0.12823917779824234,
+    "attentionBlend": 0.9993210780767756
+  },
+  {
+    "frame": 82,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 83,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 84,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 85,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 86,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 87,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 88,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 89,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 90,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  },
+  {
+    "frame": 91,
+    "forwardClearanceOffset": 0.12825238746526502,
+    "attentionBlend": 1.0
+  }
+]

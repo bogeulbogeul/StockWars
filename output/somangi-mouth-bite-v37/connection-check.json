@@ -1,0 +1,2986 @@
+{
+  "externalConnectionTriangles": 3880,
+  "samples": [
+    {
+      "frame": 1.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 1.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 2.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 2.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 3.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 3.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 4.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 4.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 5.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 5.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 6.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 6.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 7.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 7.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 8.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 8.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 9.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 9.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 10.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 10.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 11.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 11.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 12.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 12.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 13.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 13.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 14.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 14.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 15.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 15.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 16.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 16.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 17.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 17.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 18.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 18.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 19.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 19.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 20.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 20.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 21.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 21.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 22.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 22.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 23.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 23.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 24.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 24.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 25.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 25.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 26.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286687818354739
+    },
+    {
+      "frame": 26.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866868464557739
+    },
+    {
+      "frame": 27.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28668749218425754
+    },
+    {
+      "frame": 27.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866884640861108
+    },
+    {
+      "frame": 28.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866884640861108
+    },
+    {
+      "frame": 28.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866876394609533
+    },
+    {
+      "frame": 29.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866880652616305
+    },
+    {
+      "frame": 29.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866877420639616
+    },
+    {
+      "frame": 30.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28668836031340883
+    },
+    {
+      "frame": 30.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866878348053032
+    },
+    {
+      "frame": 31.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866886870329188
+    },
+    {
+      "frame": 31.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866890588262722
+    },
+    {
+      "frame": 32.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866901240180764
+    },
+    {
+      "frame": 32.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866922643996585
+    },
+    {
+      "frame": 33.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28669465331339955
+    },
+    {
+      "frame": 33.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28670469621843914
+    },
+    {
+      "frame": 34.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867119070129234
+    },
+    {
+      "frame": 34.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867349910469928
+    },
+    {
+      "frame": 35.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867588097091814
+    },
+    {
+      "frame": 35.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2868180989081603
+    },
+    {
+      "frame": 36.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2868787975389871
+    },
+    {
+      "frame": 36.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2870223142482264
+    },
+    {
+      "frame": 37.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28716949593149005
+    },
+    {
+      "frame": 37.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2874973843063271
+    },
+    {
+      "frame": 38.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2878255641987478
+    },
+    {
+      "frame": 38.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2885127695856241
+    },
+    {
+      "frame": 39.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28920260457474856
+    },
+    {
+      "frame": 39.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29054433744375846
+    },
+    {
+      "frame": 40.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2918907559552483
+    },
+    {
+      "frame": 40.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29431857113007875
+    },
+    {
+      "frame": 41.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29676641285722666
+    },
+    {
+      "frame": 41.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30086273732280533
+    },
+    {
+      "frame": 42.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3050188578142588
+    },
+    {
+      "frame": 42.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3114820415078333
+    },
+    {
+      "frame": 43.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3181169706746603
+    },
+    {
+      "frame": 43.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32772096960949565
+    },
+    {
+      "frame": 44.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3324770420899839
+    },
+    {
+      "frame": 44.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3137175153631028
+    },
+    {
+      "frame": 45.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2982241978557887
+    },
+    {
+      "frame": 45.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2760868348503289
+    },
+    {
+      "frame": 46.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.23688794677045777
+    },
+    {
+      "frame": 46.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.19739725066550243
+    },
+    {
+      "frame": 47.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.15917012770709382
+    },
+    {
+      "frame": 47.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.1294376070222327
+    },
+    {
+      "frame": 48.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10724515097876267
+    },
+    {
+      "frame": 48.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.08759662914361904
+    },
+    {
+      "frame": 49.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.0629320201320771
+    },
+    {
+      "frame": 49.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.05427683787247597
+    },
+    {
+      "frame": 50.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.04635760572398585
+    },
+    {
+      "frame": 50.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.05279451643570533
+    },
+    {
+      "frame": 51.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.059766054607512595
+    },
+    {
+      "frame": 51.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.08273382788380867
+    },
+    {
+      "frame": 52.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10471907689945989
+    },
+    {
+      "frame": 52.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.12433252458301147
+    },
+    {
+      "frame": 53.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.1522492222942158
+    },
+    {
+      "frame": 53.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.18971001083937533
+    },
+    {
+      "frame": 54.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.22881831723586118
+    },
+    {
+      "frame": 54.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.26833688930001043
+    },
+    {
+      "frame": 55.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2952495320295427
+    },
+    {
+      "frame": 55.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31034324975628375
+    },
+    {
+      "frame": 56.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32882701061921554
+    },
+    {
+      "frame": 56.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32971874479041274
+    },
+    {
+      "frame": 57.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31975822972092044
+    },
+    {
+      "frame": 57.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3128256382767944
+    },
+    {
+      "frame": 58.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30608447618291373
+    },
+    {
+      "frame": 58.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3017161810764931
+    },
+    {
+      "frame": 59.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29741824888580254
+    },
+    {
+      "frame": 59.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30119203440449266
+    },
+    {
+      "frame": 60.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3050188578142588
+    },
+    {
+      "frame": 60.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3114820415078333
+    },
+    {
+      "frame": 61.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3181169706746603
+    },
+    {
+      "frame": 61.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32772096960949565
+    },
+    {
+      "frame": 62.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3324770420899839
+    },
+    {
+      "frame": 62.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3137175153631028
+    },
+    {
+      "frame": 63.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2982241978557887
+    },
+    {
+      "frame": 63.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2760868348503289
+    },
+    {
+      "frame": 64.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.23688794677045777
+    },
+    {
+      "frame": 64.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.19739725066550243
+    },
+    {
+      "frame": 65.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.15917012770709382
+    },
+    {
+      "frame": 65.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.1294376070222327
+    },
+    {
+      "frame": 66.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10724515097876267
+    },
+    {
+      "frame": 66.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.08759662914361904
+    },
+    {
+      "frame": 67.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.0629320201320771
+    },
+    {
+      "frame": 67.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.05427683787247597
+    },
+    {
+      "frame": 68.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.04635760572398585
+    },
+    {
+      "frame": 68.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.05279451643570533
+    },
+    {
+      "frame": 69.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.059766054607512595
+    },
+    {
+      "frame": 69.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.08273382788380867
+    },
+    {
+      "frame": 70.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10471907689945989
+    },
+    {
+      "frame": 70.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.12433252458301147
+    },
+    {
+      "frame": 71.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.1522492222942158
+    },
+    {
+      "frame": 71.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.18971001083937533
+    },
+    {
+      "frame": 72.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.22881831723586118
+    },
+    {
+      "frame": 72.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.26833688930001043
+    },
+    {
+      "frame": 73.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2952495320295427
+    },
+    {
+      "frame": 73.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31034324975628375
+    },
+    {
+      "frame": 74.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32882701061921554
+    },
+    {
+      "frame": 74.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3334748916208307
+    },
+    {
+      "frame": 75.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32700580564591897
+    },
+    {
+      "frame": 75.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3313638544554543
+    },
+    {
+      "frame": 76.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31456842473395397
+    },
+    {
+      "frame": 76.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2976664692385359
+    },
+    {
+      "frame": 77.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.27675259220473036
+    },
+    {
+      "frame": 77.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.23681318944482968
+    },
+    {
+      "frame": 78.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.19679913002040486
+    },
+    {
+      "frame": 78.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.16041748846309317
+    },
+    {
+      "frame": 79.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.12780102696347032
+    },
+    {
+      "frame": 79.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10860753023397961
+    },
+    {
+      "frame": 80.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.08412549951280744
+    },
+    {
+      "frame": 80.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.06665045576127658
+    },
+    {
+      "frame": 81.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.0506226644347042
+    },
+    {
+      "frame": 81.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.04989343077488122
+    },
+    {
+      "frame": 82.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.0491718454705648
+    },
+    {
+      "frame": 82.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.06349266845867467
+    },
+    {
+      "frame": 83.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.07918595588101415
+    },
+    {
+      "frame": 83.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.10595300307986832
+    },
+    {
+      "frame": 84.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.1226883305224851
+    },
+    {
+      "frame": 84.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.15360302858262542
+    },
+    {
+      "frame": 85.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.18897361522659326
+    },
+    {
+      "frame": 85.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2288743730511056
+    },
+    {
+      "frame": 86.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.26889366316541524
+    },
+    {
+      "frame": 86.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.294742965585354
+    },
+    {
+      "frame": 87.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3111391072437329
+    },
+    {
+      "frame": 87.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32776271535056234
+    },
+    {
+      "frame": 88.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3289961714304248
+    },
+    {
+      "frame": 88.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32044514603149094
+    },
+    {
+      "frame": 89.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31219361235427073
+    },
+    {
+      "frame": 89.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30664953549932067
+    },
+    {
+      "frame": 90.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30122473865420835
+    },
+    {
+      "frame": 90.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2978336602164767
+    },
+    {
+      "frame": 91.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29448329677066887
+    },
+    {
+      "frame": 91.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2925398216295798
+    },
+    {
+      "frame": 92.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29060819843568997
+    },
+    {
+      "frame": 92.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2895704960690269
+    },
+    {
+      "frame": 93.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28853315082599407
+    },
+    {
+      "frame": 93.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28801550195948966
+    },
+    {
+      "frame": 94.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2875014279996117
+    },
+    {
+      "frame": 94.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28726207613332194
+    },
+    {
+      "frame": 95.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.287021386406504
+    },
+    {
+      "frame": 95.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2869195395098563
+    },
+    {
+      "frame": 96.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2868175586822663
+    },
+    {
+      "frame": 96.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867755610995312
+    },
+    {
+      "frame": 97.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28673430072084627
+    },
+    {
+      "frame": 97.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867187545175698
+    },
+    {
+      "frame": 98.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28670318795277344
+    },
+    {
+      "frame": 98.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28669774793039954
+    },
+    {
+      "frame": 99.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28669095868694683
+    },
+    {
+      "frame": 99.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28669257174933577
+    },
+    {
+      "frame": 100.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2866888840733007
+    },
+    {
+      "frame": 100.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28669465307404096
+    },
+    {
+      "frame": 101.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867000671250211
+    },
+    {
+      "frame": 101.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867387928765241
+    },
+    {
+      "frame": 102.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2867784420941953
+    },
+    {
+      "frame": 102.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28688578172814216
+    },
+    {
+      "frame": 103.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.286998616434336
+    },
+    {
+      "frame": 103.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28722427121361904
+    },
+    {
+      "frame": 104.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2874750957329627
+    },
+    {
+      "frame": 104.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28791018578871186
+    },
+    {
+      "frame": 105.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2884088360414112
+    },
+    {
+      "frame": 105.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.28920802754313685
+    },
+    {
+      "frame": 106.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29014320455340903
+    },
+    {
+      "frame": 106.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2915519032184379
+    },
+    {
+      "frame": 107.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.29321668754364244
+    },
+    {
+      "frame": 107.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.2956092748474626
+    },
+    {
+      "frame": 108.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.298431602671709
+    },
+    {
+      "frame": 108.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.30231386729811555
+    },
+    {
+      "frame": 109.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3068653505274763
+    },
+    {
+      "frame": 109.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3128711561740758
+    },
+    {
+      "frame": 110.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.31983061871167345
+    },
+    {
+      "frame": 110.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.32864398729135974
+    },
+    {
+      "frame": 111.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.33869873771885933
+    },
+    {
+      "frame": 111.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.35092234858187094
+    },
+    {
+      "frame": 112.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.364634935679468
+    },
+    {
+      "frame": 112.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3806562773176115
+    },
+    {
+      "frame": 113.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.3983020871810546
+    },
+    {
+      "frame": 113.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.41817088266518904
+    },
+    {
+      "frame": 114.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.4396895902357925
+    },
+    {
+      "frame": 114.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.4630878946707598
+    },
+    {
+      "frame": 115.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.4880526067084685
+    },
+    {
+      "frame": 115.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.5143317197626943
+    },
+    {
+      "frame": 116.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.542029158273426
+    },
+    {
+      "frame": 116.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.5703106480108383
+    },
+    {
+      "frame": 117.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.5998041388063451
+    },
+    {
+      "frame": 117.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.6290626303819877
+    },
+    {
+      "frame": 118.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.6593237321525122
+    },
+    {
+      "frame": 118.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.6884939411108236
+    },
+    {
+      "frame": 119.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.7184481080393821
+    },
+    {
+      "frame": 119.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.74648336124465
+    },
+    {
+      "frame": 120.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.7751136455309289
+    },
+    {
+      "frame": 120.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.8010743338166677
+    },
+    {
+      "frame": 121.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.8274668652376598
+    },
+    {
+      "frame": 121.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.8505641200370987
+    },
+    {
+      "frame": 122.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.8739598993143677
+    },
+    {
+      "frame": 122.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.8936101824543106
+    },
+    {
+      "frame": 123.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9134390484907561
+    },
+    {
+      "frame": 123.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9292734123998354
+    },
+    {
+      "frame": 124.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9452155212888658
+    },
+    {
+      "frame": 124.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9571137790066236
+    },
+    {
+      "frame": 125.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9690655642098077
+    },
+    {
+      "frame": 125.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9771805697822344
+    },
+    {
+      "frame": 126.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9853224196298641
+    },
+    {
+      "frame": 126.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.990080941598328
+    },
+    {
+      "frame": 127.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9948455149803183
+    },
+    {
+      "frame": 127.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9969537305132715
+    },
+    {
+      "frame": 128.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9990698253497614
+    },
+    {
+      "frame": 128.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9995317715325681
+    },
+    {
+      "frame": 129.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999598233739374
+    },
+    {
+      "frame": 129.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999739921419128
+    },
+    {
+      "frame": 130.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 130.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 131.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 131.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 132.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 132.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 133.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 133.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 134.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 134.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 135.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 135.5,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    },
+    {
+      "frame": 136.0,
+      "invertedCandidateTriangles": 0,
+      "visibleInvertedTriangles": {
+        "front": 0,
+        "left": 0,
+        "right": 0,
+        "rear": 0
+      },
+      "minAreaRatio": 0.9999935359350325
+    }
+  ]
+}

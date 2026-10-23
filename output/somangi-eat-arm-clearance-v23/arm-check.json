@@ -1,0 +1,457 @@
+[
+  {
+    "frame": 1,
+    "distalInsideSamples": 2042,
+    "depth": -0.16615944099612534
+  },
+  {
+    "frame": 2,
+    "distalInsideSamples": 2046,
+    "depth": -0.1662532773334533
+  },
+  {
+    "frame": 3,
+    "distalInsideSamples": 2057,
+    "depth": -0.1652242704294622
+  },
+  {
+    "frame": 4,
+    "distalInsideSamples": 2086,
+    "depth": -0.1667051143012941
+  },
+  {
+    "frame": 5,
+    "distalInsideSamples": 2151,
+    "depth": -0.1701558488421142
+  },
+  {
+    "frame": 6,
+    "distalInsideSamples": 2223,
+    "depth": -0.16039106366224587
+  },
+  {
+    "frame": 7,
+    "distalInsideSamples": 2350,
+    "depth": -0.17166163981892169
+  },
+  {
+    "frame": 8,
+    "distalInsideSamples": 2490,
+    "depth": -0.17463904339820147
+  },
+  {
+    "frame": 9,
+    "distalInsideSamples": 2650,
+    "depth": -0.17044336162507534
+  },
+  {
+    "frame": 10,
+    "distalInsideSamples": 2803,
+    "depth": -0.17127748159691691
+  },
+  {
+    "frame": 11,
+    "distalInsideSamples": 2967,
+    "depth": -0.18341898545622826
+  },
+  {
+    "frame": 12,
+    "distalInsideSamples": 3121,
+    "depth": -0.18848725594580173
+  },
+  {
+    "frame": 13,
+    "distalInsideSamples": 3268,
+    "depth": -0.18923144321888685
+  },
+  {
+    "frame": 14,
+    "distalInsideSamples": 3376,
+    "depth": -0.19731474295258522
+  },
+  {
+    "frame": 15,
+    "distalInsideSamples": 3420,
+    "depth": -0.20345414243638515
+  },
+  {
+    "frame": 16,
+    "distalInsideSamples": 3488,
+    "depth": -0.21726332558318973
+  },
+  {
+    "frame": 17,
+    "distalInsideSamples": 3483,
+    "depth": -0.22353735473006964
+  },
+  {
+    "frame": 18,
+    "distalInsideSamples": 3465,
+    "depth": -0.24147062189877033
+  },
+  {
+    "frame": 19,
+    "distalInsideSamples": 3426,
+    "depth": -0.25853317230939865
+  },
+  {
+    "frame": 20,
+    "distalInsideSamples": 3240,
+    "depth": -0.2789513897150755
+  },
+  {
+    "frame": 21,
+    "distalInsideSamples": 3059,
+    "depth": -0.30329292453825474
+  },
+  {
+    "frame": 22,
+    "distalInsideSamples": 2881,
+    "depth": -0.330325098708272
+  },
+  {
+    "frame": 23,
+    "distalInsideSamples": 2614,
+    "depth": -0.354186637327075
+  },
+  {
+    "frame": 24,
+    "distalInsideSamples": 2405,
+    "depth": -0.3787036738358438
+  },
+  {
+    "frame": 25,
+    "distalInsideSamples": 2206,
+    "depth": -0.3988390164449811
+  },
+  {
+    "frame": 26,
+    "distalInsideSamples": 2197,
+    "depth": -0.40189804043620825
+  },
+  {
+    "frame": 27,
+    "distalInsideSamples": 2191,
+    "depth": -0.40393028408288956
+  },
+  {
+    "frame": 28,
+    "distalInsideSamples": 2153,
+    "depth": -0.40565429208800197
+  },
+  {
+    "frame": 29,
+    "distalInsideSamples": 2145,
+    "depth": -0.4076888170093298
+  },
+  {
+    "frame": 30,
+    "distalInsideSamples": 2128,
+    "depth": -0.4095288661774248
+  },
+  {
+    "frame": 31,
+    "distalInsideSamples": 2109,
+    "depth": -0.41156476584728807
+  },
+  {
+    "frame": 32,
+    "distalInsideSamples": 2127,
+    "depth": -0.421997984405607
+  },
+  {
+    "frame": 33,
+    "distalInsideSamples": 2152,
+    "depth": -0.4304663296788931
+  },
+  {
+    "frame": 34,
+    "distalInsideSamples": 2092,
+    "depth": -0.43332525342702866
+  },
+  {
+    "frame": 35,
+    "distalInsideSamples": 1896,
+    "depth": -0.4020199328660965
+  },
+  {
+    "frame": 36,
+    "distalInsideSamples": 1831,
+    "depth": -0.3836861103773117
+  },
+  {
+    "frame": 37,
+    "distalInsideSamples": 1847,
+    "depth": -0.3929353915154934
+  },
+  {
+    "frame": 38,
+    "distalInsideSamples": 1840,
+    "depth": -0.3822927102446556
+  },
+  {
+    "frame": 39,
+    "distalInsideSamples": 1835,
+    "depth": -0.3776656985282898
+  },
+  {
+    "frame": 40,
+    "distalInsideSamples": 1845,
+    "depth": -0.3754018358886242
+  },
+  {
+    "frame": 41,
+    "distalInsideSamples": 1824,
+    "depth": -0.3683163980022073
+  },
+  {
+    "frame": 42,
+    "distalInsideSamples": 1824,
+    "depth": -0.3660994069650769
+  },
+  {
+    "frame": 43,
+    "distalInsideSamples": 1815,
+    "depth": -0.363122352398932
+  },
+  {
+    "frame": 44,
+    "distalInsideSamples": 1825,
+    "depth": -0.3656855374574661
+  },
+  {
+    "frame": 45,
+    "distalInsideSamples": 1829,
+    "depth": -0.36837080866098404
+  },
+  {
+    "frame": 46,
+    "distalInsideSamples": 1798,
+    "depth": -0.3829570058733225
+  },
+  {
+    "frame": 47,
+    "distalInsideSamples": 1636,
+    "depth": -0.3603484183549881
+  },
+  {
+    "frame": 48,
+    "distalInsideSamples": 1565,
+    "depth": -0.3347495570778847
+  },
+  {
+    "frame": 49,
+    "distalInsideSamples": 1580,
+    "depth": -0.33461572928354144
+  },
+  {
+    "frame": 50,
+    "distalInsideSamples": 1571,
+    "depth": -0.3352050017565489
+  },
+  {
+    "frame": 51,
+    "distalInsideSamples": 1568,
+    "depth": -0.33570127189159393
+  },
+  {
+    "frame": 52,
+    "distalInsideSamples": 1579,
+    "depth": -0.33523627649992704
+  },
+  {
+    "frame": 53,
+    "distalInsideSamples": 1559,
+    "depth": -0.33428616262972355
+  },
+  {
+    "frame": 54,
+    "distalInsideSamples": 1568,
+    "depth": -0.33265488781034946
+  },
+  {
+    "frame": 55,
+    "distalInsideSamples": 1576,
+    "depth": -0.3375322395004332
+  },
+  {
+    "frame": 56,
+    "distalInsideSamples": 1676,
+    "depth": -0.3521855128929019
+  },
+  {
+    "frame": 57,
+    "distalInsideSamples": 1718,
+    "depth": -0.3585228528827429
+  },
+  {
+    "frame": 58,
+    "distalInsideSamples": 1720,
+    "depth": -0.3599436329677701
+  },
+  {
+    "frame": 59,
+    "distalInsideSamples": 1730,
+    "depth": -0.36364643182605505
+  },
+  {
+    "frame": 60,
+    "distalInsideSamples": 1747,
+    "depth": -0.36444474291056395
+  },
+  {
+    "frame": 61,
+    "distalInsideSamples": 1797,
+    "depth": -0.37648492865264416
+  },
+  {
+    "frame": 62,
+    "distalInsideSamples": 1876,
+    "depth": -0.38024359382689
+  },
+  {
+    "frame": 63,
+    "distalInsideSamples": 1997,
+    "depth": -0.3916879128664732
+  },
+  {
+    "frame": 64,
+    "distalInsideSamples": 2108,
+    "depth": -0.39333501085639
+  },
+  {
+    "frame": 65,
+    "distalInsideSamples": 2219,
+    "depth": -0.37890087999403477
+  },
+  {
+    "frame": 66,
+    "distalInsideSamples": 2343,
+    "depth": -0.37702087638899684
+  },
+  {
+    "frame": 67,
+    "distalInsideSamples": 2471,
+    "depth": -0.36749443341977894
+  },
+  {
+    "frame": 68,
+    "distalInsideSamples": 2690,
+    "depth": -0.34883943386375904
+  },
+  {
+    "frame": 69,
+    "distalInsideSamples": 2910,
+    "depth": -0.32109338231384754
+  },
+  {
+    "frame": 70,
+    "distalInsideSamples": 3094,
+    "depth": -0.2932006400078535
+  },
+  {
+    "frame": 71,
+    "distalInsideSamples": 3327,
+    "depth": -0.26803368516266346
+  },
+  {
+    "frame": 72,
+    "distalInsideSamples": 3460,
+    "depth": -0.24261495657265186
+  },
+  {
+    "frame": 73,
+    "distalInsideSamples": 3536,
+    "depth": -0.2286888831295073
+  },
+  {
+    "frame": 74,
+    "distalInsideSamples": 3562,
+    "depth": -0.22227459819987416
+  },
+  {
+    "frame": 75,
+    "distalInsideSamples": 3542,
+    "depth": -0.21863700449466705
+  },
+  {
+    "frame": 76,
+    "distalInsideSamples": 3523,
+    "depth": -0.2120864074677229
+  },
+  {
+    "frame": 77,
+    "distalInsideSamples": 3457,
+    "depth": -0.2071190793067217
+  },
+  {
+    "frame": 78,
+    "distalInsideSamples": 3387,
+    "depth": -0.19780675508081913
+  },
+  {
+    "frame": 79,
+    "distalInsideSamples": 3256,
+    "depth": -0.1895618666894734
+  },
+  {
+    "frame": 80,
+    "distalInsideSamples": 3116,
+    "depth": -0.187841578386724
+  },
+  {
+    "frame": 81,
+    "distalInsideSamples": 2965,
+    "depth": -0.18345617689192295
+  },
+  {
+    "frame": 82,
+    "distalInsideSamples": 2803,
+    "depth": -0.17128491029143333
+  },
+  {
+    "frame": 83,
+    "distalInsideSamples": 2642,
+    "depth": -0.1704432643018663
+  },
+  {
+    "frame": 84,
+    "distalInsideSamples": 2484,
+    "depth": -0.17463929951190948
+  },
+  {
+    "frame": 85,
+    "distalInsideSamples": 2350,
+    "depth": -0.17166163981892169
+  },
+  {
+    "frame": 86,
+    "distalInsideSamples": 2223,
+    "depth": -0.16039106366224587
+  },
+  {
+    "frame": 87,
+    "distalInsideSamples": 2151,
+    "depth": -0.1701558488421142
+  },
+  {
+    "frame": 88,
+    "distalInsideSamples": 2086,
+    "depth": -0.1667051143012941
+  },
+  {
+    "frame": 89,
+    "distalInsideSamples": 2057,
+    "depth": -0.1652242704294622
+  },
+  {
+    "frame": 90,
+    "distalInsideSamples": 2046,
+    "depth": -0.1662532773334533
+  },
+  {
+    "frame": 91,
+    "distalInsideSamples": 2042,
+    "depth": -0.16615944099612534
+  }
+]

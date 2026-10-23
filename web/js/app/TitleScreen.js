@@ -3,7 +3,7 @@ import { animateTitle } from './TitleMotion.js';
 import { playBusArrival } from './arrival/BusArrival.js';
 
 // Artwork and hit target share one aspect-ratio box at every viewport size.
-export function showTitleScreen(onStart) {
+export function showTitleScreen(onStart, { opening = true } = {}) {
     const screen = document.createElement('section');
     screen.className = 'crayon-title';
     screen.setAttribute('aria-label', 'StockWars 시작 화면');
@@ -36,7 +36,7 @@ export function showTitleScreen(onStart) {
     button.addEventListener('click', async () => {
         button.disabled = true;
         stopMotion();
-        await playOpening(screen);
+        if (opening) await playOpening(screen);
         await playBusArrival(screen);
         window.removeEventListener('keydown', blockWorldInput, true);
         window.removeEventListener('keyup', blockWorldInput, true);
