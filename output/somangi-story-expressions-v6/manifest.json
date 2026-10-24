@@ -1,0 +1,183 @@
+{
+  "source": "somangi-rear-junction-v43",
+  "headBodyGeometryChanged": false,
+  "rigAndMotionChanged": false,
+  "expressionSwitchImplemented": false,
+  "expressions": [
+    {
+      "id": "smile",
+      "label": "기본 미소",
+      "storyUse": "평소 대화·첫 인사",
+      "texture": "textures/smile.png",
+      "materials": [
+        "Expression_smile_skin",
+        "Expression_smile_ink"
+      ],
+      "originalSmileMouthPreserved": true,
+      "model": "models/smile.glb"
+    },
+    {
+      "id": "happy",
+      "label": "기쁨",
+      "storyUse": "반가운 소식·즐거운 순간",
+      "texture": "textures/happy.png",
+      "materials": [
+        "Expression_happy_skin",
+        "Expression_happy_ink"
+      ],
+      "originalSmileMouthPreserved": true,
+      "model": "models/happy.glb"
+    },
+    {
+      "id": "neutral",
+      "label": "차분함",
+      "storyUse": "설명을 듣거나 일상 대화",
+      "texture": "textures/neutral.png",
+      "materials": [
+        "Expression_neutral_skin",
+        "Expression_neutral_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/neutral.glb"
+    },
+    {
+      "id": "curious",
+      "label": "궁금함",
+      "storyUse": "마을 구경·새 물건을 발견할 때",
+      "texture": "textures/curious.png",
+      "materials": [
+        "Expression_curious_skin",
+        "Expression_curious_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/curious.glb"
+    },
+    {
+      "id": "surprised",
+      "label": "놀람",
+      "storyUse": "예상하지 못한 말·새로운 발견",
+      "texture": "textures/surprised.png",
+      "materials": [
+        "Expression_surprised_skin",
+        "Expression_surprised_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/surprised.glb"
+    },
+    {
+      "id": "worried",
+      "label": "걱정",
+      "storyUse": "처음 하는 알바·불확실한 선택",
+      "texture": "textures/worried.png",
+      "materials": [
+        "Expression_worried_skin",
+        "Expression_worried_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/worried.glb"
+    },
+    {
+      "id": "teary",
+      "label": "울먹임",
+      "storyUse": "속상한 일·위로가 필요한 순간",
+      "texture": "textures/teary.png",
+      "materials": [
+        "Expression_teary_skin",
+        "Expression_teary_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/teary.glb"
+    },
+    {
+      "id": "pout",
+      "label": "삐침",
+      "storyUse": "가벼운 불만·장난스러운 대화",
+      "texture": "textures/pout.png",
+      "materials": [
+        "Expression_pout_skin",
+        "Expression_pout_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/pout.glb"
+    },
+    {
+      "id": "determined",
+      "label": "결심",
+      "storyUse": "해볼게·새로운 도전",
+      "texture": "textures/determined.png",
+      "materials": [
+        "Expression_determined_skin",
+        "Expression_determined_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/determined.glb"
+    },
+    {
+      "id": "shy",
+      "label": "쑥스러움",
+      "storyUse": "칭찬이나 감사 인사를 받을 때",
+      "texture": "textures/shy.png",
+      "materials": [
+        "Expression_shy_skin",
+        "Expression_shy_ink"
+      ],
+      "originalSmileMouthPreserved": true,
+      "model": "models/shy.glb"
+    },
+    {
+      "id": "relieved",
+      "label": "안도",
+      "storyUse": "도움받은 뒤·긴장이 풀릴 때",
+      "texture": "textures/relieved.png",
+      "materials": [
+        "Expression_relieved_skin",
+        "Expression_relieved_ink"
+      ],
+      "originalSmileMouthPreserved": true,
+      "model": "models/relieved.glb"
+    },
+    {
+      "id": "touched",
+      "label": "감동",
+      "storyUse": "따뜻한 배려·고마운 마음",
+      "texture": "textures/touched.png",
+      "materials": [
+        "Expression_touched_skin",
+        "Expression_touched_ink"
+      ],
+      "originalSmileMouthPreserved": true,
+      "model": "models/touched.glb"
+    },
+    {
+      "id": "sleepy",
+      "label": "졸림",
+      "storyUse": "첫날 귀가·취침 직전",
+      "texture": "textures/sleepy.png",
+      "materials": [
+        "Expression_sleepy_skin",
+        "Expression_sleepy_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/sleepy.glb"
+    },
+    {
+      "id": "delicious",
+      "label": "맛있음",
+      "storyUse": "꿀 쿠키·음식을 맛보는 순간",
+      "texture": "textures/delicious.png",
+      "materials": [
+        "Expression_delicious_skin",
+        "Expression_delicious_ink"
+      ],
+      "originalSmileMouthPreserved": false,
+      "model": "models/delicious.glb"
+    }
+  ],
+  "staticExpressionModels": true,
+  "expressionCount": 14,
+  "removedExpressions": [
+    "sad",
+    "proud"
+  ],
+  "eyeSizePolicy": "Keep the accepted eye sizes. Only teary is matched to the original smile eyes."
+}

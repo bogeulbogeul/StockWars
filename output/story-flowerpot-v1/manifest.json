@@ -1,0 +1,59 @@
+{
+  "status": "P1: model created; visual acceptance and gameplay contact pending",
+  "reference": "reference.png: adopted flowerpot in left column",
+  "glb": "StoryFlowerpot.glb",
+  "dimensions_H": [
+    0.40400001406669617,
+    0.40400001406669617,
+    0.39899998903274536
+  ],
+  "ground_origin": [
+    0,
+    0,
+    0
+  ],
+  "plant_anchor_blender_Z_up": [
+    0,
+    0,
+    0.359
+  ],
+  "plant_anchor_glTF_Y_up": [
+    0,
+    0.359,
+    0
+  ],
+  "components": [
+    {
+      "name": "Pot_Hollow_Body",
+      "vertices": 5090,
+      "triangles": 10176,
+      "non_manifold_edges": 0,
+      "finite": true,
+      "signed_volume": 0.007805597230521365
+    },
+    {
+      "name": "Saucer",
+      "vertices": 3554,
+      "triangles": 7104,
+      "non_manifold_edges": 0,
+      "finite": true,
+      "signed_volume": 0.003010035093394962
+    },
+    {
+      "name": "Soil",
+      "vertices": 1538,
+      "triangles": 3072,
+      "non_manifold_edges": 0,
+      "finite": true,
+      "signed_volume": 0.001207546939593141
+    }
+  ],
+  "glb_bytes": 369412,
+  "roundtrip_import": "passed: 3 meshes, anchor, bounds, ground",
+  "scale_reference": "output\\somangi-neck-smooth-v8\\walk.glb",
+  "reference_pose": "REST, Somangi_Body vertex Z bounds excluding separate growth props",
+  "reference_body_height": 1.8997970819473267,
+  "character_scale": 0.5263720054643846,
+  "scale_status": "Provisional pot size H=0.399; archived character inspection only",
+  "game_installed": false
+}

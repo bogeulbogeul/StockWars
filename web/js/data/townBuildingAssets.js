@@ -7,7 +7,6 @@ const assets = {
     home_office_tower: ['OfficeBuilding-door-v2', 1060, 1484, 230, 62, 600, 1341, 0.338],
     vivian_store: ['VivianStore-door-v3', 1774, 887, 227, 62, 1359, 738, 0.485],
     julian_furniture: ['MordenFrame-single-story-v1', 1536, 1024, 146, 162, 1245, 701, 0.737],
-    claire_apparel: ['SalonDeTail-single-story-v3', 1215, 1295, 58, 196, 1101, 919, 0.802],
     data_ink_bookstore: ['BookStore-single-story-v1', 1536, 1024, 76, 140, 1385, 745, 0.157],
     cipher_securities: ['CipherBuilding-door-v2', 1024, 1536, 32, 38, 963, 1383, 0.5],
     node_finance: ['BankBuilding-single-story-v1', 1402, 1122, 98, 264, 1205, 647, 0.5],

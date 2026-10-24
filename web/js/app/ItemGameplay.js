@@ -154,7 +154,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         pause() { gameStarted = false; levelUpNotice.close(); updateQuest(); },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
         purchase(id, quantity, instant, { deferDrinkEffect = false } = {}) {
-            const r = engine.purchase(id, quantity, instant);
+            const r = engine.purchase(id, quantity, instant, { vending: deferDrinkEffect });
             sync();
             app.itemCenter.showStatBoost(r);
             if (r.success && instant && id === 'item_energy_drink' && !deferDrinkEffect) void playRecoveryDrinkEffect();

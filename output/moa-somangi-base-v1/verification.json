@@ -1,0 +1,18 @@
+{
+  "source": "somangi-game-v1/somangi-walk.blend",
+  "originalVertices": 132191,
+  "maximumOriginalVertexChange": 0,
+  "originalBonesAndWalkPreserved": true,
+  "additions": [
+    "Moa_Leaf",
+    "Moa_LeafStem",
+    "Moa_GreenVest"
+  ],
+  "uniformSkinSRGB8": [
+    255,
+    219,
+    163
+  ],
+  "leafDetail": "Sculpted central groove and three pairs of shallow lateral folds",
+  "gameInstalled": false
+}

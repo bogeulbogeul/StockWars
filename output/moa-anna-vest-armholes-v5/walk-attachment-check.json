@@ -1,0 +1,12 @@
+{
+  "scope": "This Moa output only; original Somangi sources unchanged",
+  "rootLoopError": 0.0,
+  "shoulderLocalTranslationsZero": true,
+  "frames": 31,
+  "seconds": 0.75,
+  "retainedSwingDegrees": {
+    "legs": 18,
+    "arms": 8
+  },
+  "originalIssue": "Accumulated Body translation and compensating arm translations separated shoulder roots"
+}

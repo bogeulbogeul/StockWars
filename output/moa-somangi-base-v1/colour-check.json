@@ -1,0 +1,78 @@
+{
+  "head": {
+    "sampledFaces": 11345,
+    "medianSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "minimumSRGB": [
+      0.2902,
+      0.26667,
+      0.27451
+    ],
+    "maximumSRGB": [
+      1.0,
+      0.85882,
+      0.71373
+    ],
+    "nearWhiteFaces": 0
+  },
+  "torso": {
+    "sampledFaces": 99260,
+    "medianSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "minimumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "maximumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "nearWhiteFaces": 0
+  },
+  "arms": {
+    "sampledFaces": 14277,
+    "medianSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "minimumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "maximumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "nearWhiteFaces": 0
+  },
+  "legs": {
+    "sampledFaces": 139401,
+    "medianSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "minimumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "maximumSRGB": [
+      1.0,
+      0.85882,
+      0.63922
+    ],
+    "nearWhiteFaces": 0
+  }
+}

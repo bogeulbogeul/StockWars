@@ -1,0 +1,14 @@
+{
+  "copiedBodyVertices": 22523,
+  "copiedBodyFaces": 38322,
+  "sameBodyWeights": true,
+  "skinOffset": 0.006,
+  "outwardThickness": 0.005,
+  "bindingRadius": 0.004,
+  "sourceOliveSRGB": [
+    0.6509804129600525,
+    0.6901960968971252,
+    0.20784315466880798
+  ],
+  "boundaryLoops": 2
+}

@@ -1,0 +1,22 @@
+{
+  "Moa_Leaf_Calm": {
+    "loopPositionError": 0.0,
+    "quarterCycleMovement": 0.055409893993495024
+  },
+  "Moa_Leaf_Curious": {
+    "loopPositionError": 0.0,
+    "quarterCycleMovement": 0.09369988677935381
+  },
+  "Moa_Leaf_Happy": {
+    "loopPositionError": 0.0,
+    "quarterCycleMovement": 0.2325938097389201
+  },
+  "Moa_Leaf_Sad": {
+    "loopPositionError": 0.0,
+    "quarterCycleMovement": 0.03816829979038097
+  },
+  "Moa_Leaf_Surprised": {
+    "loopPositionError": 0.0,
+    "quarterCycleMovement": 0.06040433868869328
+  }
+}

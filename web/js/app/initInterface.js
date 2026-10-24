@@ -1,4 +1,4 @@
-import { VIVIAN_SHOP_CATALOG } from '../data/vivianStoreData.js';
+import { VIVIAN_ITEM_REGISTRY } from '../data/vivianStoreData.js';
 import { marketEngine } from '../engine/marketEngine.js';
 import { toastManager } from '../components/ToastManager.js';
 import { MainHUD } from '../components/MainHUD.js';
@@ -12,7 +12,6 @@ import { NewsDetailModal } from '../components/NewsDetailModal.js';
 import { SettlementModal } from '../components/SettlementModal.js';
 import { InventoryModal } from '../components/InventoryModal.js?v=vivian-effects-1';
 import { FurnitureEditModal } from '../components/FurnitureEditModal.js?v=default-layout-v4';
-import { WardrobeModal } from '../components/WardrobeModal.js';
 import { FriendModal } from '../components/FriendModal.js';
 import { RankingModal } from '../components/RankingModal.js';
 import { AnnaDialogueModal } from '../components/AnnaDialogueModal.js';
@@ -31,7 +30,6 @@ export function initInterface() {
 
         // 3. 3D Isometric Rooftop Office Stage Background
         this.officeStage = new OfficeStage(this.appContainer, {
-            onOpenWardrobe: () => this.wardrobeModal.open(this.inventoryModal.items),
             onOpenComputer: () => { this.smartphoneUI.showPhone(); this.smartphoneUI.showStockApp(); },
             onRoomMessage: message => toastManager.show(message),
             onFurnitureEdit: () => this.furnitureEditModal.open(),
@@ -177,13 +175,13 @@ export function initInterface() {
             },
             getAnalysisLevel: () => this.itemEngine?.stats().analysis ?? 1,
             getDecoderTargets: () => this.itemEngine?.decoderTargets() ?? [],
-            decodeRumor: rumorId => {
-                const result = this.itemEngine.use('item_crypto_decoder', { rumorId });
+            decodeRumor: (rumorId, powderId = 'item_crypto_decoder') => {
+                const result = this.itemEngine.use(powderId, { rumorId });
                 this.itemGameplay.sync();
                 return result;
             },
             onActivateItem: item => {
-                if (!VIVIAN_SHOP_CATALOG.some(product => product.id === item.id)) return false;
+                if (!VIVIAN_ITEM_REGISTRY.some(product => product.id === item.id)) return false;
                 this.itemGameplay.activate(item.id);
                 return true;
             },
@@ -206,15 +204,6 @@ export function initInterface() {
                 } else {
                     toastManager.show(`✨ [${item.name}] 아이템을 사용했습니다.`, true);
                 }
-            }
-        });
-
-        // Wardrobe & Dressing Room Modal (Owned Apparel Management)
-        this.wardrobeModal = new WardrobeModal(this.appContainer, {
-            onShowToast: (msg, isSuccess) => toastManager.show(msg, isSuccess),
-            onEquipChange: (item) => {
-                const invItem = this.inventoryModal.items.find(i => i.id === item.id);
-                if (invItem) invItem.isEquipped = item.isEquipped;
             }
         });
 

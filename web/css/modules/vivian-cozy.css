@@ -1,0 +1,151 @@
+/* The flower on the current clay shop becomes its sign, shelf stamp and receipt seal. */
+.flower-shop {
+    --ink: #5d4736; --muted: #88715b; --coral: #c87460; --wood: #c69e69;
+    position: absolute; z-index: 2; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; width: min(1160px, calc(100% - 48px));
+    height: min(790px, 92dvh); min-height: 0; overflow: hidden;
+    color: var(--ink); background: #f6f0e4; border: 1px solid #e3d3bb;
+    border-radius: 32px 32px 22px 22px; box-shadow: 0 22px 80px #30231f55, 0 0 0 100vmax #342a234d;
+    font-family: var(--font-sans, sans-serif); font-size: 14px; line-height: 1.5;
+}
+.flower-shop.hidden { display: none; }
+.flower-shop *, .flower-shop *::before, .flower-shop *::after { box-sizing: border-box; }
+.flower-shop :is(h1,h2,p) { margin: 0; }
+.flower-shop button, .flower-shop input { font: inherit; }
+.flower-shop button { cursor: pointer; }
+.flower-shop button:disabled { opacity: .45; cursor: not-allowed; }
+.flower-shop :is(button,input,summary):focus-visible { outline: 3px solid #926443; outline-offset: 4px; }
+.flower-shop-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 30px; background: #fffaf0; border-bottom: 1px solid #e7dac8; flex-shrink: 0; }
+.flower-brand { display: flex; align-items: center; gap: 15px; }
+.flower-emblem { display: block; color: #d8927e; width: 57px; height: 57px; filter: drop-shadow(0 3px 0 #b8785630); }
+.flower-emblem svg, .flower-tiny-flower svg { display: block; width: 100%; height: 100%; }
+.flower-shop h1 { color: #654b37; font-size: 28px; font-weight: 800; letter-spacing: -1.1px; }
+.flower-utilities { display: flex; align-items: center; gap: 22px; }
+.flower-wallet { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.flower-wallet span { font-size: 11px; color: var(--muted); }
+.flower-wallet strong { font-size: 18px; font-variant-numeric: tabular-nums; }
+.flower-close { border: 1px solid #dcc9af; border-radius: 50%; background: #f7eee0; color: #82634d; width: 42px; height: 42px; }
+.flower-close:hover { background: #efd9c5; }
+.flower-shop-main { display: grid; grid-template-columns: minmax(0, 1fr) 330px; flex: 1; min-height: 0; }
+.flower-display { display: flex; flex-direction: column; min-width: 0; min-height: 0; background: #f4eddf; }
+.flower-shop h2 { font-size: 21px; font-weight: 800; letter-spacing: -.7px; }
+.flower-tiny-flower { width: 34px; height: 34px; color: #dfb6a0; transform: rotate(15deg); }
+.flower-categories { display: flex; gap: 20px; padding: 0 28px; border-bottom: 1px solid #e2d5c1; flex-shrink: 0; }
+.flower-shop .vivian-tab-btn { display: flex; align-items: center; gap: 7px; padding: 10px 0 13px; border: 0; border-bottom: 3px solid transparent; background: none; color: #917e68; font-size: 13px; white-space: nowrap; }
+.flower-shop .vivian-tab-btn span { color: #af9880; font-size: 10px; }
+.flower-shop .vivian-tab-btn.active { color: #9f5946; border-bottom-color: #c67e66; font-weight: 800; }
+.flower-shop .vivian-tab-btn:hover { color: #8f523e; }
+.flower-shelf-scroll { min-height: 0; flex: 1; overflow-y: auto; padding: 20px 22px; scrollbar-width: thin; scrollbar-color: #cbb38d #f4eddf; }
+.flower-shelf-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px 0; }
+.flower-shop .vivian-item-card {
+    appearance: none; position: relative; min-width: 0; display: flex; flex-direction: column;
+    align-items: stretch; padding: 12px 10px 10px; border: 0; border-radius: 0; color: var(--ink);
+    background: transparent;
+    box-shadow: none; overflow: visible; cursor: pointer; text-align: center; transition: none;
+}
+.flower-shop .vivian-item-card:hover { transform: none; box-shadow: none; border: 0; }
+.flower-goods-art { position: relative; display: flex; justify-content: center; align-items: center; height: 100px; margin: 0 5px 8px; border-radius: 50% 50% 18px 18px; background: #eee3cf; transition: background .18s; font-size: 50px; }
+.flower-goods-art .item-artwork { width: 84px; height: 84px; object-fit: contain; filter: drop-shadow(0 7px 3px #7f61352a); transition: transform .18s; }
+.flower-shop .vivian-item-card:hover .flower-goods-art { background: #e8d7bd; }
+.flower-shop .vivian-item-card:hover .item-artwork { transform: translateY(-4px) rotate(-3deg); }
+.flower-shop .vivian-item-card.selected .flower-goods-art { background: #f0ceba; box-shadow: inset 0 0 0 2px #d59b80; }
+.flower-goods-check { position: absolute; right: 4px; top: 4px; display: none; align-items: center; justify-content: center; width: 23px; height: 23px; border-radius: 50%; background: #b9735a; color: #fff8e9; font-size: 13px; }
+.selected .flower-goods-check { display: flex; }
+.flower-goods-label { display: flex; flex-direction: column; justify-content: center; min-height: 59px; padding: 7px 5px; background: #fffaf0; border: 1px solid #e4d2b6; border-radius: 5px; transform: rotate(-2deg); }
+.flower-shop .vivian-item-card:nth-child(even) .flower-goods-label { transform: rotate(2deg); }
+.flower-goods-name { font-size: 12px; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+.flower-goods-price { font-size: 13px; font-weight: 800; color: #946247; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.flower-goods-stock { display: block; min-height: 33px; margin-top: 5px; margin-bottom: 7px; color: #7b7657; font-size: 10px; }
+.flower-shop .vivian-item-card.locked { opacity: .75; }
+.flower-shop .vivian-item-card.sold-out .flower-goods-art { filter: grayscale(.8); }
+.flower-goods-stock.empty { color: #a55e4d; }
+.flower-order { background: #e8d6bb; border-left: 1px solid #d5b990; min-height: 0; overflow-y: auto; padding: 20px 18px; scrollbar-width: thin; scrollbar-color: #c2a27c #e8d6bb; }
+.flower-order-paper { position: relative; min-height: 100%; padding: 20px; background: #fffdf4; border-radius: 5px 5px 0 0; box-shadow: 0 6px 16px #81633d1a; }
+.flower-order-paper::after { content: ''; display: block; height: 10px; position: absolute; left: 0; right: 0; bottom: -9px; background: linear-gradient(135deg,#fffdf4 25%,transparent 25%) -5px 0 / 10px 10px, linear-gradient(225deg,#fffdf4 25%,transparent 25%) -5px 0 / 10px 10px; }
+.flower-order-top { display: flex; justify-content: space-between; align-items: center; color: #9d7253; font-size: 12px; letter-spacing: 1px; padding-bottom: 12px; border-bottom: 1px dashed #d8c7ac; }
+.flower-order-top > span:last-child { width: 25px; height: 25px; color: #d4947e; }
+.flower-product-stage { height: 112px; display: flex; align-items: center; justify-content: center; margin: 14px 0 12px; font-size: 60px; background: radial-gradient(ellipse at center, #f2e6d0 0%, #f2e6d0 45%, transparent 46%); }
+.flower-product-stage .item-artwork { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 5px #8a69432a); }
+.flower-order-product h2 { margin: 9px 0; font-size: 19px; line-height: 1.4; }
+.flower-order-product p { font-size: 12px; line-height: 1.75; color: #82705b; overflow-wrap: anywhere; }
+.flower-shop .effect-tag { background: #edf0df; color: #66704e; border-radius: 5px; padding: 4px 6px; font-size: 10px; line-height: 1.5; }
+.flower-shop .effect-tag.linked { background: #ede6d7; color: #806e57; }
+.flower-quantity { border-top: 1px dashed #d8c7ac; padding-top: 14px; margin-top: 16px; }
+.flower-quantity-controls { display: flex; align-items: stretch; gap: 10px; }
+.flower-stepper { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; flex: 1; min-width: 0; height: 46px; padding: 3px; background: #f5eee1; border: 1px solid #dfccb1; border-radius: 13px; }
+.flower-stepper button { display: grid; place-items: center; border: 0; border-radius: 9px; background: #fffaf0; color: #79563e; font-size: 20px; line-height: 1; }
+.flower-stepper button:hover { background: #ecd9c0; }
+.flower-stepper input { appearance: textfield; border: 0; background: transparent; color: #5e4835; width: 100%; min-width: 0; height: 38px; text-align: center; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; padding: 0; border-radius: 6px; }
+.flower-stepper input::-webkit-inner-spin-button { appearance: none; }
+.flower-max { min-width: 56px; padding: 0 12px; border: 1px solid #dfccb1; border-radius: 13px; background: #fffaf0; color: #806247; font-size: 12px !important; }
+.flower-total { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0 14px; }
+.flower-total span { font-size: 12px; }
+.flower-total strong { font-size: 23px; font-variant-numeric: tabular-nums; letter-spacing: -.7px; }
+.flower-buy { width: 100%; padding: 13px 16px; border: 0; border-radius: 12px; background: #b76f57; color: #fffaf0; display: flex; justify-content: center; font-weight: 700 !important; box-shadow: 0 3px 0 #955740; }
+.flower-buy:hover { background: #a75f49; }
+.vivian-store-overlay:has(.flower-shop:not(.hidden)) .vivian-welcome-dialogue { visibility: hidden; }
+.vivian-store-overlay:has(.flower-shop:not(.hidden)) { background: #43352535; backdrop-filter: blur(6px); }
+.vivian-store-overlay:has(.flower-shop) .vivian-receipt { border-radius: 16px; border-color: #d7b893; background: #fffaf0; color: #634b36; }
+.vivian-store-overlay:has(.flower-shop) .vivian-receipt h2 { color: #ac6951; }
+.vivian-store-overlay:has(.flower-shop) .vivian-receipt button { background: #b76f57; }
+@media (max-width: 900px) {
+    .flower-shop { width: calc(100% - 24px); }
+    .flower-shop-main { grid-template-columns: minmax(0,1fr) 290px; }
+    .flower-shelf-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .flower-categories { gap: 12px; padding: 0 18px; }
+    .flower-shop .vivian-tab-btn { font-size: 11px; gap: 4px; }
+    .flower-order { padding: 14px 12px; }
+    .flower-order-paper { padding: 16px; }
+}
+@media (max-width: 620px) {
+    .flower-shop { height: 96dvh; width: calc(100% - 16px); border-radius: 22px; }
+    .flower-shop-heading { padding: 14px 16px; gap: 10px; }
+    .flower-brand { gap: 9px; }
+    .flower-emblem { width: 36px; height: 36px; }
+    .flower-shop h1 { font-size: 21px; }
+    .flower-utilities { gap: 10px; }
+    .flower-wallet strong { font-size: 14px; }
+    .flower-close { width: 34px; height: 34px; }
+    .flower-shop-main { display: block; overflow-y: auto; }
+    .flower-display { min-height: 380px; }
+    .flower-shelf-scroll { overflow: visible; padding: 16px 12px; }
+    .flower-shelf-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px 0; }
+    .flower-shop .vivian-item-card { padding: 8px 5px; }
+    .flower-goods-art { height: 75px; margin: 0 0 8px; }
+    .flower-goods-art .item-artwork { width: 64px; height: 64px; }
+    .flower-goods-name { font-size: 10px; }
+    .flower-goods-label { min-height: 66px; padding: 5px; }
+    .flower-goods-price { font-size: 12px; }
+    .flower-goods-stock { font-size: 9px; }
+    .flower-order { overflow: visible; border: 0; border-top: 1px solid #d5b990; padding: 20px; }
+    .flower-product-stage { height: 100px; }
+    .flower-order-paper { padding: 20px; }
+    .flower-order-product h2 { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) { .flower-shop * { transition: none !important; } }
+/* Keep checkout visible while long product details scroll independently. */
+.flower-order { overflow: hidden; }
+.flower-order-paper { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.flower-order-top, .flower-checkout { flex-shrink: 0; }
+.flower-order-details { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #dcc5a3 #fffdf4; }
+.flower-product-stage { height: 94px; margin: 10px 0; }
+.flower-product-stage .item-artwork { width: 86px; height: 86px; }
+.flower-quantity { margin-top: 10px; padding-top: 10px; }
+.flower-order-product p { font-size: 11px; }
+@media (max-width: 620px) {
+    .flower-order { overflow: visible; }
+    .flower-order-paper { height: auto; }
+    .flower-order-details { overflow: visible; }
+    .flower-order-product p { font-size: 12px; }
+}
+.flower-max:hover { background: #f0e2ce; }
+
+.flower-shop .flower-stepper :is(button,input):focus-visible,
+.flower-shop .flower-max:focus-visible { outline: none; box-shadow: none; }
+
+/* Wide loaf needs a wider display box to match the visual weight of upright products. */
+.flower-goods-art .item-artwork-popori-bread { width: min(150px, 100%); height: 84px; }
+.flower-product-stage .item-artwork-popori-bread { width: min(170px, 100%); height: 86px; }
+@media (max-width: 620px) {
+    .flower-goods-art .item-artwork-popori-bread { width: 100%; height: 64px; }
+}

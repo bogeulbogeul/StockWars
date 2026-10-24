@@ -8,7 +8,7 @@ toastManager.show=()=>{};
 test('authoritative purchase success receives original quantity; failure has no receipt',()=>{
     for (const success of [true,false]) {
         let receipt;
-        const room={selectedItemId:'item_energy_drink',quantity:2,
+        const room={selectedItemId:'item_honey_cookie',quantity:2,
             callbacks:{onPurchaseItem:()=>({success,message:'result'})},
             showReceipt:(...args)=>receipt=args,updateHeaderInfo(){},renderItemsGrid(){},selectItem(){this.quantity=1;}};
         VivianStoreModal.prototype.executePurchase.call(room,true);
@@ -22,7 +22,7 @@ test('receipt shows total and delivery mode and restores shopping focus on dismi
     const room={receiptEl:{hidden:true,querySelector:id=>fields[id]??=( {textContent:''})},shopPanel:{inert:false},
         receiptClose:{focus(){}},btnBuy:{focus(){focused=true;}}};
     VivianStoreModal.prototype.showReceipt.call(room,{name:'상품',price:500},2,false);
-    assert.equal(fields['#vivianReceiptTotal'].textContent,'1,000 G');
+    assert.equal(fields['#vivianReceiptTotal'].textContent,'1,000잎');
     assert.match(fields['#vivianReceiptDelivery'].textContent,/소지품/);
     assert.equal(room.shopPanel.inert,true);
     VivianStoreModal.prototype.hideReceipt.call(room);

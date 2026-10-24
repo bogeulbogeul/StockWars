@@ -1,0 +1,20 @@
+{
+  "id": "salon-new-design-v5",
+  "status": "separate-floor design previews; not applied to gameplay",
+  "generator": "built-in image_gen",
+  "floor1Preview": "salon-new-floor-1-owner-v5.png",
+  "floor1NpcFreeDraft": "salon-new-floor-1-background-v5.png",
+  "floor2": "salon-new-floor-2-v5.png",
+  "ownerSource": "../../../../output/npc-animal-individual-2026-10-14/claire-character-v1.png",
+  "floor1": {
+    "facilities": ["two styling stations", "shampoo station", "straight reception counter", "screen-vertical staircase", "exit carpet by open floor boundary"],
+    "owner": "Claire, composed behind counter in preview",
+    "previewNpcBaked": true,
+    "npcFreeDraftStairs": "orientation before final preview correction; not final gameplay-ready background"
+  },
+  "floor2DisplaySlots": {"regular":3,"limited":1,"merchandiseBaked":false,"productImages":"separate weekly rotating content"},
+  "references": ["SalonDeTail-v2.png exterior appearance", "single-floor-isometric-guide-v5.png geometry", "Claire original character sheet appearance"],
+  "olderInteriorReferenceUsed": false,
+  "qa": "visually inspected new room composition, owner/counter placement, floor boundaries and four empty display positions; exact collision/grid registration and separated NPC foreground composition remain pending",
+  "prompts": ["salon-new-floors-v5.prompt.txt","salon-new-floor-1-owner-v5.prompt.txt"]
+}

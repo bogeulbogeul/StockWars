@@ -1,8 +1,9 @@
-import { VIVIAN_SHOP_CATALOG } from '../data/vivianStoreData.js';
+import { COOKIE_ID, normalizeCookieSet, eatCookie } from './CookieSets.js';
+import { VIVIAN_SHOP_CATALOG, VIVIAN_ITEM_REGISTRY } from '../data/vivianStoreData.js';
 
 export const DAY = 86400000;
 export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
-const catalog = new Map(VIVIAN_SHOP_CATALOG.map(i => [i.id, i]));
+const catalog = new Map(VIVIAN_ITEM_REGISTRY.map(i => [i.id, i]));
 const buffs = { item_focus_pill: 'analysis', item_stabilizer: 'management', item_vitamin_complex: 'recovery' };
 const statNames = { analysis: '분석력', management: '운용력', recovery: '회복력' };
 const fail = message => ({ success: false, message });
@@ -58,6 +59,13 @@ export class ItemEngine {
         if (!this.blackSwanEnabled) {
             this.state.swanActive = false;
             this.state.swanEnd = 0;
+        }
+        this.state.inventory.forEach(normalizeCookieSet);
+        for (const item of this.state.inventory) {
+            if (item.id === 'item_crypto_decoder') {
+                const current = catalog.get(item.id);
+                Object.assign(item, { name: current.name, desc: current.desc, effects: current.effects });
+            }
         }
         this.normalizeStamina();
     }
@@ -130,7 +138,10 @@ export class ItemEngine {
         if (!this.canAdd(id, qty)) return false;
         const entry = this.state.inventory.find(i => i.id === id);
         if (entry) entry.quantity += qty;
-        else this.state.inventory.push({ ...catalog.get(id), id, quantity: qty, maxStack: 99 });
+        else {
+            const item = catalog.get(id) || {};
+            this.state.inventory.push({ ...item, id, name: item.inventoryName || item.name, price: item.price, ...(item.packSize ? {cookieSet: true, openedRemaining: 4, actionLabel: '쿠키 1개 꺼내 먹기'} : {}), quantity: qty, maxStack: 99 });
+        }
         return true;
     }
     consume(id, qty = 1) {
@@ -140,22 +151,24 @@ export class ItemEngine {
         if (!entry.quantity) this.state.inventory.splice(this.state.inventory.indexOf(entry), 1);
         return true;
     }
-    purchase(id, quantity = 1, instant = false) {
+    purchase(id, quantity = 1, instant = false, { vending = false } = {}) {
         this.tick();
         const item = catalog.get(id);
+        if (!(vending && id === 'item_energy_drink') && !VIVIAN_SHOP_CATALOG.some(product => product.id === id)) return fail('현재 잡화점에서 판매하지 않는 상품입니다.');
         if (!item || !Number.isInteger(quantity) || quantity < 1 || quantity > 99) return fail('구매 수량을 확인하세요.');
         if (!this.unlocked(item)) return fail(item.reqUnlock.conditionDesc);
         if (item.dailyLimit && (this.state.purchases[id] || 0) + quantity > item.dailyLimit) return fail('일일 구매 제한을 초과했습니다.');
         if (id === 'item_lotto_ticket' && lottoClosed(this.now())) return fail('로또 판매 중지: 토요일 19:00~21:05 (데모 KST).');
         if (this.market.cash < item.price * quantity) return fail('골드가 부족합니다.');
-        if (!this.canAdd(id, quantity)) return fail('가방 공간 또는 묶음 수량이 부족합니다.');
+        const delivered = quantity;
+        if (!this.canAdd(id, delivered)) return fail('가방 공간 또는 묶음 수량이 부족합니다.');
         if (instant) {
             if (quantity !== 1) return fail('즉시 사용은 한 번에 1개씩 가능합니다.');
             const check = this.canUse(id);
             if (!check.success) return check;
         }
         this.market.cash -= item.price * quantity;
-        this.add(id, quantity);
+        this.add(id, delivered);
         this.state.purchases[id] = (this.state.purchases[id] || 0) + quantity;
         this.state.affinity = Math.min(300, this.state.affinity + 5 * quantity);
         if (id === 'item_lotto_ticket') {
@@ -175,13 +188,15 @@ export class ItemEngine {
     canUse(id) {
         const s = this.state;
         if (!catalog.has(id)) return fail('사용 기능이 없는 아이템입니다.');
-        if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
+        if (catalog.get(id)?.recoveryFood || id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             if (id === 'item_caffeine_shot' && s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
             if (id === 'item_caffeine_shot' && s.caffeineDay === dayKey(this.now())) return fail('카페인은 하루 1회만 사용할 수 있습니다.');
         }
+        if (catalog.get(id)?.recoveryFood && s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 먹거리는 보관됩니다.');
         if (buffs[id] && this.active(buffs[id])) return fail('같은 강화 효과가 이미 적용 중입니다.');
         if (id.startsWith('item_logistics_quickpass')) return fail('폐기된 물류 패스입니다. 보유 기록만 유지됩니다.');
         if (id === 'item_weekly_drink_ration' && s.deliveries.length) return fail('드링크 배급권이 이미 적용 중입니다.');
+        if (id === 'item_moon_powder' && !this.decoderTargets().length) return fail('해석할 찌라시를 먼저 열람하세요. 이미 최대 해석인 찌라시는 제외됩니다.');
         if (id === 'item_crypto_decoder' && !this.decoderTargets().length && !s.reports.some(r => r.revealed < r.parts.length)) return fail('더 풀어볼 정보가 없습니다. 찌라시를 먼저 열람하세요.');
         if (id === 'item_darknet_key' && !s.reports.some(r => r.revealed < r.parts.length)) return fail('해독할 보고서가 없습니다. 유료 찌라시를 먼저 사용하세요.');
         if (id === 'item_escape_capsule' && s.escape) return fail('탈출 캡슐이 이미 대기 중입니다.');
@@ -197,7 +212,7 @@ export class ItemEngine {
         let rumorId;
         let statBoost;
         let consume = true;
-        if (id === 'item_energy_drink' || id === 'item_caffeine_shot') {
+        if (catalog.get(id)?.recoveryFood || id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             const before = s.stamina;
             s.stamina = Math.min(this.maxStamina(), s.stamina + this.recoveryAmount());
             if (id === 'item_caffeine_shot') s.caffeineDay = dayKey(now);
@@ -239,11 +254,11 @@ export class ItemEngine {
             // Demo progression supplies a route to analysis Lv.5 without an unimplemented bookstore.
             s.baseStats.analysis = Math.max(s.baseStats.analysis, (s.appliedTrait === 'analysis' ? 1 : 0) + Math.floor(s.decryptions / 10));
             message += ' · 해석 3단계의 찌라시가 보관함에 도착했습니다.';
-        } else if (id === 'item_crypto_decoder' && !options.reportId && this.decoderTargets().length) {
+        } else if ((id === 'item_crypto_decoder' || id === 'item_moon_powder') && !options.reportId && this.decoderTargets().length) {
             const target = options.rumorId ? this.decoderTargets().find(i => i.id === options.rumorId) : this.decoderTargets()[0];
             if (!target) return fail('해석할 찌라시를 선택하세요.');
             const before = Math.min(5, Math.max(1, this.stats().analysis, target.interpretationLevel || 1));
-            target.interpretationLevel = before + 1;
+            target.interpretationLevel = id === 'item_moon_powder' ? 5 : before + 1;
             s.decryptions++;
             message = `찌라시 한 건의 해석 단계 ${before} → ${target.interpretationLevel} · 해당 정보에 유지됩니다. 진위는 보장하지 않습니다.`;
         } else if (id === 'item_crypto_decoder' || id === 'item_darknet_key') {
@@ -260,7 +275,10 @@ export class ItemEngine {
         } else if (id === 'item_gas_mask') { s.mask = !s.mask; consume = false; message = `디지털 방독면 ${s.mask ? '장착' : '해제'}`;
         } else if (id === 'item_escape_capsule') { s.escape = true; message += ' · 다음 폭락 직전 자동 청산 대기';
         } else if (id === 'item_lotto_ticket') { consume = false; message = '아이템 센터의 로또 탭에서 번호·결과·당첨금을 확인하세요.'; }
-        if (consume) this.consume(id);
+        if (consume) {
+            if (id === COOKIE_ID) eatCookie(s.inventory);
+            else this.consume(id);
+        }
         else { const entry = s.inventory.find(i => i.id === id); entry.isEquipped = id === 'item_gas_mask' ? s.mask : id === 'item_black_swan_alarm' ? s.alarm : false; }
         return { ...ok(message), ...(rumorId ? { rumorId } : {}), ...(statBoost ? { statBoost } : {}) };
     }

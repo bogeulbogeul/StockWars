@@ -1,229 +1,42 @@
-/**
- * Vivian Store Data & Item Registry
- * Reference: MOD_GDD_03_1_VivianStore.md / MOD_GDD_03_4_Bookstore.md / MOD_GDD_03_0_ShopIndex.md
- * Handles daily rotation shelves, weekly special stock, secret shelf conditions, and NPC dialogue scripts.
- */
+import { VIVIAN_LEGACY_CATALOG } from './vivianLegacyCatalog.js';
 
-export const VIVIAN_TABS = {
-    daily: { id: 'daily', name: '일일 보급 매대', icon: '⚡', desc: '매일 00:00 갱신 소모품 및 유틸리티 도구' },
-    weekly: { id: 'weekly', name: '주간 특수 매대', icon: '📅', desc: '매주 월요일 갱신 기간제 패스 및 배급권' },
-    secret: { id: 'secret', name: '비밀 매대 (Under)', icon: '🔒', desc: '트레이더 신뢰도 및 생존 업적 전용 은밀한 보급품' }
-};
-
+// 2026-10-24: one continuous shelf. Prices adopt the 2026-10-22 draft.
+const foods = [
+    ['honey_cookie', '꿀 쿠키', '🍪'], ['petal_tea', '꽃잎 차', '🌸'],
+    ['apple_juice', '사과 주스', '🍎'], ['popori_bread', '포포리빵', '🍞'],
+    ['berry_juice', '꽃꿀 베리 주스', '🫐'], ['herb_tea', '허브 차', '🌿'],
+    ['dew_jelly', '이슬 젤리', '🍮'], ['honey_candy', '꽃꿀 사탕', '🍬']
+].map(([key, name, icon]) => ({
+    id: `item_${key}`, name, icon, category: 'consumable', rarity: 'common',
+    price: key === 'honey_cookie' ? 800 : 200, instantUsable: true, recoveryFood: true,
+    ...(key === 'honey_cookie' ? { packSize: 4, purchaseUnit: '상자', inventoryName: '꿀 쿠키 4개입 세트' } : {}),
+    desc: key === 'honey_cookie' ? '꿀 쿠키 4개입 한 상자예요. 가방에는 세트로 담기며 하나씩 꺼내 먹을 때마다 하트 1칸을 회복해요.' : `${name}. 잠시 쉬며 즐길 수 있는 포포리 마을의 먹거리예요.`,
+    effects: key === 'honey_cookie' ? ['1상자 4개입 · 800잎', '낱개 1개 사용 시 하트 1칸 회복'] : ['하트 1칸 회복'], linkedStock: null
+}));
+const previous = id => VIVIAN_LEGACY_CATALOG.find(item => item.id === id);
 export const VIVIAN_SHOP_CATALOG = [
-    // 1. 일일 보급 매대 (Daily Shelf)
-    {
-        id: 'item_energy_drink',
-        tab: 'daily',
-        name: '에너지 드링크',
-        category: 'consumable',
-        rarity: 'common',
-        icon: '🥤',
-        price: 500,
-        dailyLimit: 2,
-        instantUsable: true,
-        desc: '고농축 타우린과 카페인이 함유된 국민 에너지 드링크. 찌뿌둥한 피로를 날려버립니다.',
-        effects: ['❤️ 하트 1개 즉시 회복', '⚡ 최대 하트 수는 회복력에 따라 3~5개'],
-        linkedStock: { id: 'MORNINGBREW', name: '모닝브루', note: '소비 시 모닝브루 실적 기여' }
-    },
-    {
-        id: 'item_premium_rumor',
-        tab: 'daily',
-        name: '유료 찌라시 (Premium)',
-        category: 'intel',
-        rarity: 'rare',
-        icon: '📜',
-        price: 2000,
-        instantUsable: false,
-        desc: '다크넷 정보원과 증권가 브로커가 은밀히 교환한 신뢰도 높은 기업 내부 루머.',
-        effects: ['🔍 신뢰도 높은 정보 — 찌라시 해독률 50% 보장'],
-        linkedStock: null
-    },
-    {
-        id: 'item_crypto_decoder',
-        tab: 'daily',
-        name: '암호 해독기',
-        category: 'intel',
-        rarity: 'uncommon',
-        icon: '💻',
-        price: 1200,
-        instantUsable: true,
-        desc: '찌라시의 비유와 은어를 더 구체적인 단서로 풀어주는 소형 도구. 보관함에서 확인하기를 눌러 열람한 찌라시 한 건을 선택하면 해석 단계가 1 올라가며 해당 정보에 유지됩니다. 분석력 자체와 정보의 진위는 바뀌지 않습니다.',
-        effects: ['🔎 열람 찌라시 1건 해석 +1단계 (최대 5)', '📌 해당 정보에 유지 · 진위 보장 없음'],
-        linkedStock: { id: 'CLOUDBERRY', name: '베리클라우드', note: '분산 암호 인프라 부품 사용' }
-    },
-    {
-        id: 'item_focus_pill',
-        tab: 'daily',
-        name: '각성제 (Focus Pill)',
-        category: 'consumable',
-        rarity: 'uncommon',
-        icon: '💊',
-        price: 3000,
-        instantUsable: true,
-        desc: '뇌세포의 집중도를 극대화하여 차트의 글리치와 미세 체결 틱을 감지하는 알약.',
-        effects: ['🧠 120분간 [분석력] +2 Bonus', '👁️ 글리치 감지 강화'],
-        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '천연 바이오 농축액 납품' }
-    },
-    {
-        id: 'item_stabilizer',
-        tab: 'daily',
-        name: '안정제 (Stabilizer)',
-        category: 'consumable',
-        rarity: 'uncommon',
-        icon: '🧪',
-        price: 3000,
-        instantUsable: true,
-        desc: '극심한 변동성 속에서도 심박수를 안정시켜 뇌동매매를 방지하는 신경안정제.',
-        effects: ['💼 120분간 [운용력] +2 Bonus', '📊 1회 주문 가능 수량 소폭 확장'],
-        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 바이오 성분' }
-    },
-    {
-        id: 'item_vitamin_complex',
-        tab: 'daily',
-        name: '비타민 컴플렉스',
-        category: 'consumable',
-        rarity: 'uncommon',
-        icon: '💊',
-        price: 3000,
-        instantUsable: true,
-        desc: '필수 비타민과 미네랄이 집약된 영양제. 피로 누적을 방지하고 회복력을 끌어올립니다.',
-        effects: ['🛡️ 120분간 [회복력] +2 Bonus', '💖 회복력 0~1: 하트 3개 / 2~3: 4개 / 4 이상: 5개', '빈 하트 추가 · 즉시 회복 없음 · 만료 시 초과 체력만 차감'],
-        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 정품 납품' }
-    },
+    ...foods,
+    { ...previous('item_crypto_decoder'), name: '별가루', price: 500, icon: '✨',
+      desc: '열람한 찌라시 한 건을 골라 해석을 돕는 가루예요. 소문의 진위는 보장하지 않아요.',
+      effects: ['선택한 찌라시 한 건의 해석 단계 +1'], linkedStock: null },
+    { id: 'item_moon_powder', name: '달가루', price: 2000, icon: '🌙', category: 'intel', rarity: 'rare', instantUsable: true,
+      desc: '선택한 찌라시 한 건을 분석력 MAX 기준으로 해석하는 가루예요. 플레이어의 분석력은 바뀌지 않으며 소문의 진위를 보장하지 않아요.',
+      effects: ['찌라시 한 건을 분석력 MAX 기준으로 해석'], linkedStock: null },
+    { ...previous('item_lotto_ticket'), price: 500,
+      desc: '번호 6개가 발급되는 마을 로또예요. 번호 변경과 당첨 확인은 아이템 센터에서 할 수 있어요.' },
+    { ...previous('item_premium_rumor'), name: '봉인된 소식 봉투', price: 1000, icon: '✉️',
+      desc: '마을에 도착한 기업 소식을 담은 봉투예요. 열어 보아도 소문의 진위는 따로 확인해야 해요.',
+      effects: ['봉투를 열어 기업 소식 확인'], actionType: 'use', actionLabel: '봉투 열기' }
+].map(({ tab, reqUnlock, ...item }) => item);
 
-    // 2. 주간 특수 매대 (Weekly Shelf)
-    {
-        id: 'item_weekly_drink_ration',
-        tab: 'weekly',
-        name: '주간 드링크 배급권',
-        category: 'consumable',
-        rarity: 'rare',
-        icon: '📦',
-        price: 3000,
-        instantUsable: false,
-        desc: '봉봉 상점의 특제 에너지 드링크를 매일 아침 오피스 메일함으로 직배송해 주는 정기 구독권.',
-        effects: ['💌 7일간 매일 드링크 1개 Mail 지급'],
-        linkedStock: { id: 'MORNINGBREW', name: '모닝브루', note: '모닝브루 정기 구독 납품' }
-    },
-
-    {
-        id: 'item_lotto_ticket',
-        tab: 'weekly',
-        name: '주간 로또',
-        category: 'etc',
-        rarity: 'common',
-        icon: '🎟️',
-        price: 1000, // Temporary demo price; not specified by the Lotto GDD.
-        instantUsable: false,
-        actionType: 'lotto',
-        actionLabel: '번호·당첨 확인',
-        desc: '구매 즉시 자동 번호 발급. 아이템 센터에서 판매 마감 전 번호를 직접 변경할 수 있습니다. 현재는 저장 파일별 로컬 데모 추첨이며 가격은 임시 1,000G입니다.',
-        effects: ['🎲 1~45 중 서로 다른 6개 번호', '📅 토요일 21:00 추첨 (데모 시각 KST)', '🏆 6개 일치 시 1등, 미당첨 시 이월 · 토요일 19:00~21:05 판매 중지'],
-        linkedStock: null
-    },
-
-    // 3. 비밀 매대 (Secret Shelf)
-    {
-        id: 'item_black_swan_alarm',
-        tab: 'secret',
-        name: '블랙 스완 조기 경보기',
-        category: 'etc',
-        rarity: 'legendary',
-        icon: '🚨',
-        price: 20000,
-        instantUsable: false,
-        reqUnlock: { profit: 10000, survivals: 1, conditionDesc: '수익 10,000G + 블랙 스완 1회 생존' },
-        desc: '딥웹 알고리즘이 시장 폭락 전조 징후를 감지하여 24시간 전부터 경보 카운트다운을 울립니다.',
-        effects: ['🚨 [블랙 스완] 발생 24시간 전부터 실시간 카운트다운 표시'],
-        linkedStock: null
-    },
-    {
-        id: 'item_caffeine_shot',
-        tab: 'secret',
-        name: '초고농축 카페인',
-        category: 'consumable',
-        rarity: 'epic',
-        icon: '🧪',
-        price: 2500,
-        dailyLimit: 1,
-        instantUsable: true,
-        reqUnlock: { trustLevel: 3, profit: 20000, conditionDesc: '수익 20,000G + 신뢰 Lv.3' },
-        desc: '봉봉의 개인 비밀 연구실에서 증류된 초고순도 각성 앰플. 즉각적인 폭발력을 냅니다.',
-        effects: ['💖 하트 1개 즉시 회복 (일일 1회)'],
-        linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '고순도 농축 바이오 앰플' }
-    },
-    {
-        id: 'item_darknet_key',
-        tab: 'secret',
-        name: '다크넷 해독키',
-        category: 'intel',
-        rarity: 'epic',
-        icon: '🗝️',
-        price: 4000,
-        instantUsable: true,
-        reqUnlock: { analysisLevel: 5, decryptions: 50, conditionDesc: '분석 Lv.5 + 해독 50회' },
-        desc: '모든 암호화된 기사와 찌라시 텍스트의 모자이크를 100% 완전 무결하게 복원합니다.',
-        effects: ['✨ 암호화된 텍스트 100% 완벽 복원'],
-        linkedStock: null
-    },
-    {
-        id: 'item_gas_mask',
-        tab: 'secret',
-        name: '디지털 방독면',
-        category: 'apparel',
-        rarity: 'rare',
-        icon: '🎭',
-        price: 10000,
-        instantUsable: false,
-        desc: '폭락장의 패닉 셀 노이즈와 글리치 왜곡을 차단하여 차트의 진짜 저점을 식별하게 합니다.',
-        effects: ['🛡️ [블랙 스완] 발생 시 차트 가독성 70% 복구'],
-        linkedStock: null
-    },
-    {
-        id: 'item_escape_capsule',
-        tab: 'secret',
-        name: '긴급 탈출 캡슐',
-        category: 'consumable',
-        rarity: 'rare',
-        icon: '🛟',
-        price: 5000,
-        instantUsable: false,
-        desc: '블랙 스완 대폭락 시 최적 지점에서 자동 손절하는 비상 도구.',
-        effects: ['🛟 [블랙 스완] 대폭락 시 최적 지점 자동 손절'],
-        linkedStock: null
-    }
-];
-
+// Preserve old ownership and use behavior without putting retired goods back on sale.
+export const VIVIAN_ITEM_REGISTRY = [...new Map([...VIVIAN_LEGACY_CATALOG, ...VIVIAN_SHOP_CATALOG].map(item => [item.id, item])).values()];
 export const VIVIAN_DIALOGUES = {
-    greet: [
-        '증시라는 전쟁터로 다시 들어가시려고요? 제대로 된 보급 없이는 1분도 못 버티고 깡통 차게 될 텐데요.',
-        '어서 와요. 오늘의 일일 보급품이 막 도착했습니다. 마진콜 당하기 전에 챙겨두시죠.',
-        '차트 보느라 눈이 충혈됐군요. 몬스터 에너지 드링크 한 캔 마시고 정신 차려요.'
-    ],
-    consume: [
-        '뉴로-부스터와 에너지 드링크요? 뇌세포를 가불해서 쓰는 거지만... 뭐, 수익만 난다면 남는 장사 아니겠어요?',
-        '기력 회복엔 이게 직효죠. 마시고 곧바로 마을이나 증권사로 달려가세요!'
-    ],
-    hardware: [
-        '제 물건들은 단순한 장비가 아니라 당신의 생존 확률 그 자체입니다. 제대로 무장하고 나가시죠.',
-        '데이터 해독기와 방독면... 혹시 큰 변동성을 노리고 계신가요? 탁월한 선택입니다.'
-    ],
-    secret: [
-        '쉿... 이건 아무한테나 보여주는 물건이 아니에요. 당신의 트레이딩 실적을 보고 특별히 열어드리는 겁니다.',
-        '비밀 매대의 아이템들은 블랙 스완과 폭락장에서도 당신의 시드를 지켜줄 비장의 카드죠.'
-    ],
-    done: [
-        '보급은 끝났습니다. 이제 나가서 그 숫자 조각들이나 잔뜩 긁어모아 오시죠.',
-        '좋은 거래였습니다. 매일 00시에 새 보급품이 들어오니 내일 또 들르세요.'
-    ],
-    poor: [
-        '지금 가진 골드에 맞춰 필요한 물건부터 골라 보세요.',
-        '골드가 부족하군요. 생활비를 남겨 두고 다시 찾아오세요.'
-    ],
-    talk: [
-        '잡화점 팁: 우리 가게에서 물건을 많이 사면, 납품사인 [모닝브루]와 [포레바이오]의 매출이 올라서 주가도 뛴다는 소문이 있어요.',
-        '비밀 매대를 열고 싶다면 꾸준히 수익을 내고 저와의 신뢰도를 쌓아보세요.',
-        '요즘 마을 펍이 폐쇄되고 증권사 아레나 쪽으로 사람들이 몰리더군요. 정보의 출처를 잘 가려야 합니다.'
-    ]
+    greet: ['어서 와요. 선반에 물건들을 채워 두었어요. 천천히 둘러보세요.'],
+    consume: ['잠깐 쉬어 가도 괜찮아요. 맛있게 드세요.'],
+    hardware: ['찌라시 해석에는 별가루가 도움이 될 거예요. 소문의 진위는 따로 살펴보세요.'],
+    secret: ['모든 판매 상품은 같은 선반에 있어요. 마음에 드는 물건을 골라 주세요.'],
+    done: ['고마워요. 오늘도 좋은 하루 보내세요!'],
+    poor: ['가진 잎에 맞춰 필요한 물건부터 골라 보세요.'],
+    talk: ['달콤한 간식과 따뜻한 차를 준비했어요. 편하게 둘러보세요.']
 };

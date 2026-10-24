@@ -20,7 +20,6 @@ export function villagePathRoutes() {
         [door('settlement_information'), [1400, 2160], [1750, 2160]],
         [door('julian_furniture'), [850, 1840], [1140, 1840]],
         [door('home_office_tower'), [898, 1000], [1140, 1000]],
-        [door('claire_apparel'), [850, 1400], [1140, 1400]],
         [door('vivian_store'), [2150, 1190], [2400, 1190]],
         [door('midnight_pub'), [2600, 980], [2400, 980]],
         [door('data_ink_bookstore'), [2600, 1530], [2400, 1530]],

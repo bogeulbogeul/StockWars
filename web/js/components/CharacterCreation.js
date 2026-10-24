@@ -1,12 +1,12 @@
 /**
- * CharacterCreation Component (트레이더 자격 등록 & 아바타 설정 키오스크)
+ * CharacterCreation Component (트레이더 자격 등록 & 주민 등록 키오스크)
  * Unity equivalent: UICharacterCreation.cs / CharacterCreationSystem.cs
  * Modular architecture:
  * - PersonalityTestStep: Step 2 TPT investment diagnostics
  * - TraderIDCardStep: Step 3 Hologram pass ceremony
  */
 
-import { BASE_CHARACTER_STYLES as CHARACTER_STYLES, characterFaceSVG, updateCharacterSprite } from './CharacterSprite.js';
+import { updateCharacterSprite } from './CharacterSprite.js';
 import { PersonalityTestStep } from './character/PersonalityTestStep.js';
 import { TraderIDCardStep } from './character/TraderIDCardStep.js';
 import { registerNickname } from '../engine/NicknameRegistration.js';
@@ -16,7 +16,7 @@ export class CharacterCreation {
         this.container = container;
         this.callbacks = callbacks || {};
 
-        // Customization State
+        // Legacy profile fields retained for save compatibility
         this.shape = 'square';
         this.styleId = 'dog';
         this.gender = 'male';
@@ -40,10 +40,10 @@ export class CharacterCreation {
             <div id="characterCreationModal" class="char-create-overlay hidden">
                 <div class="char-create-kiosk">
                     <div class="kiosk-header">
-                        <h2 class="kiosk-title">아바타 설정</h2>
+                        <h2 class="kiosk-title">주민 등록</h2>
                     </div>
 
-                    <!-- STEP 1: AVATAR CUSTOMIZATION -->
+                    <!-- STEP 1: NICKNAME REGISTRATION -->
                     <div class="char-step-view active" id="charStep1">
                         <div class="char-creator-grid">
                             <div class="avatar-preview-box">
@@ -68,17 +68,6 @@ export class CharacterCreation {
                                     <div class="nickname-input-group">
                                         <input type="text" id="inputNickname" value="사이퍼 트레이더" maxlength="10" placeholder="닉네임 입력 (최대 10글자)">
                                         <button class="random-btn" id="btnRandomNick" title="랜덤 닉네임 생성">🎲</button>
-                                    </div>
-                                </div>
-
-                                <div class="control-group" id="shapeControlGroup">
-                                    <label class="control-label">캐릭터 선택</label>
-                                    <div class="shape-swatch-group">
-                                        ${CHARACTER_STYLES.map(style => `
-                                            <button type="button" class="shape-swatch-btn character-face-btn ${style.id === this.styleId ? 'active' : ''}" data-style-id="${style.id}" aria-label="${style.label}" title="${style.label}" aria-pressed="${style.id === this.styleId}">
-                                                ${characterFaceSVG(style.id)}
-                                            </button>
-                                        `).join('')}
                                     </div>
                                 </div>
 
@@ -195,12 +184,6 @@ export class CharacterCreation {
     }
 
     initEventListeners() {
-        this.modal.querySelectorAll('[data-style-id]').forEach(button => {
-            button.addEventListener('click', () => {
-                this.styleId = button.dataset.styleId;
-                this.updateAvatarPreview();
-            });
-        });
         this.btnRotLeft?.addEventListener('click', () => {
             const idx = this.directions.indexOf(this.direction);
             this.direction = this.directions[(idx - 1 + this.directions.length) % this.directions.length];
@@ -259,7 +242,7 @@ export class CharacterCreation {
 
     setStep(step) {
         this.currentStep = step;
-        const titles = { 1: '아바타 설정', 2: '투자 성향 진단', 3: '트레이더 자격증' };
+        const titles = { 1: '주민 등록', 2: '투자 성향 진단', 3: '트레이더 자격증' };
         this.modal.querySelector('.kiosk-title').textContent = titles[step];
         this.charStep1?.classList.toggle('active', step === 1);
         this.charStep1?.classList.toggle('hidden', step !== 1);
@@ -276,11 +259,7 @@ export class CharacterCreation {
             this.avatarFigure.style.transform = 'scale(2)';
             this.avatarFigure.style.transformOrigin = 'center';
         }
-        this.modal.querySelectorAll('[data-style-id]').forEach(button => {
-            const selected = button.dataset.styleId === this.styleId;
-            button.classList.toggle('active', selected);
-            button.setAttribute('aria-pressed', String(selected));
-        });
+
     }
 
     showIdCardCeremony() {

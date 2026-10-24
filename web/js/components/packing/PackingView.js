@@ -1,6 +1,7 @@
+import { shopFlowerMark } from '../store/ShopFlowerMark.js';
 import { footprint, isOrderComplete } from './PackingLogic.js';
 const ATLAS_URL = new URL('../../../assets/items/packing-v1/items.png', import.meta.url).href;
-const BREAD_URL = new URL('../../../assets/items/packing-v1/popori-bread-v2.png?v=whole-loaf-20261022', import.meta.url).href;
+import { POPORI_BREAD_URL as BREAD_URL } from '../../data/packingArtworkAssets.js';
 // Display windows into the original atlas; source pixels remain untouched.
 const ART_REGIONS = [[20, 40, 390, 350], [440, 40, 350, 350], [920, 35, 155, 355],
     [1180, 130, 450, 255], [1665, 25, 275, 370], [10, 490, 410, 235],
@@ -21,7 +22,7 @@ export function artHtml(item) {
 export function shellHtml() {
     return `<div class="packing-shell">
         <header class="packing-header">
-            <div class="packing-brand"><span class="packing-flower" aria-hidden="true">✿</span>
+            <div class="packing-brand"><span class="packing-flower" aria-hidden="true">${shopFlowerMark}</span>
                 <div><h1 id="packing-title">잡화점 포장 알바</h1><p>물건을 끌어 상자에 쏙 담아주세요</p></div></div>
             <div class="packing-progress" aria-label="포장 진행"><strong></strong><div class="packing-stamps" aria-hidden="true"></div></div>
             <button type="button" data-action="close" class="packing-close" aria-label="포장 알바 나가기" title="나갔다 돌아오면 이어서 할 수 있어요">✕</button>
@@ -35,7 +36,7 @@ export function shellHtml() {
             </section>
             <section class="packing-tray" aria-labelledby="packing-tray-title"><h2 id="packing-tray-title">담을 물건</h2>
                 <p class="packing-remaining"></p><div class="packing-tray-items"></div>
-                <p class="packing-tray-note">꺼낼 물건은 이곳으로 끌어오세요</p></section>
+            </section>
         </main>
         <footer class="packing-footer"><p class="packing-instruction">끌어서 담기 · 선택 후 칸 누르기도 가능</p>
             <div class="packing-controls">

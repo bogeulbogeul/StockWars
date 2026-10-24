@@ -163,7 +163,6 @@ export const TownStageMethods2 = {
                 case 'home_office_tower': if (this.callbacks.onReturnOffice) this.callbacks.onReturnOffice(); break;
                 case 'vivian_store': if (this.callbacks.onOpenStore) this.callbacks.onOpenStore(); break;
                 case 'julian_furniture': if (this.callbacks.onOpenFurniture) this.callbacks.onOpenFurniture(); break;
-                case 'claire_apparel': if (this.callbacks.onOpenApparel) this.callbacks.onOpenApparel(); break;
                 case 'data_ink_bookstore': if (this.callbacks.onOpenBookstore) this.callbacks.onOpenBookstore(); break;
                 case 'cipher_securities': if (this.callbacks.onOpenSecurities) this.callbacks.onOpenSecurities(); break;
                 case 'node_finance': if (this.callbacks.onOpenBank) this.callbacks.onOpenBank(); break;

@@ -1,0 +1,36 @@
+{
+  "reference": "smile",
+  "adjustedExpression": "teary",
+  "referenceEyeBounds": [
+    [
+      139,
+      267,
+      172,
+      320
+    ],
+    [
+      327,
+      268,
+      361,
+      320
+    ]
+  ],
+  "adjustedEyeBounds": [
+    [
+      139,
+      267,
+      172,
+      320
+    ],
+    [
+      327,
+      268,
+      361,
+      320
+    ]
+  ],
+  "renderedEyeSizeAndPositionMatch": true,
+  "other13ExpressionsUnchanged": true,
+  "tearShapePreserved": true,
+  "tearPositionAdjustedBelowEyes": true
+}

@@ -14,7 +14,7 @@ export class CipherLobbyScene {
         this.buildRoom = options.buildRoom || buildCipherLobby;
         this.canStand = options.canStand || lobbyCanStand;
         this.nearbyDoor = options.nearbyDoor || nearbyLobbyDoor;
-        this.defaultHint = options.hint || 'WASD / 방향키 이동 · Shift 달리기 · 1 인사 · 2 먹기 · 아래 출입구 / Esc 마을';
+        this.defaultHint = options.hint || 'WASD / 방향키 이동 · Shift 달리기 · 2 먹기 · 아래 출입구 / Esc 마을';
         this.roomLabel = options.label || '증권사 로비';
         this.createInteraction = options.createInteraction;
         this.automaticExit = options.automaticExit !== false;
@@ -60,7 +60,7 @@ export class CipherLobbyScene {
         this.environmentTarget = applyGameLighting(this.scene, this.renderer, true);
         this.room = this.buildRoom(this.scene);
         await Promise.all([this.room.userData.shellReady, this.room.userData.deskReady, this.room.userData.doorsReady,
-            this.room.userData.entryMatReady, this.room.userData.agentKReady,
+            this.room.userData.entryMatReady, this.room.userData.agentKReady, this.room.userData.moaReady,
             this.room.userData.boardFrameReady, this.room.userData.seatingReady, this.room.userData.furnitureReady]);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
@@ -204,6 +204,7 @@ export class CipherLobbyScene {
                 : this.interaction?.idleHint || this.defaultHint;
         }
         this.room.userData.marketBoard?.update(performance.now());
+        this.room.userData.update?.(dt);
         if (this.automaticExit && z >= LOBBY.exitZ && Math.abs(x) < LOBBY.exitHalfWidth && !this.exitPending) void this.exit();
     }
 

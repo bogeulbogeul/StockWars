@@ -1,0 +1,26 @@
+:root { font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; color: #4c2b1a; background: #dce3cf; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; background: radial-gradient(ellipse at 28% 25%, #f2f1dc, transparent 60%), linear-gradient(160deg, #d8e3cd, #bbcbb0); }
+header { display: flex; justify-content: space-between; align-items: center; padding: 32px 5%; color: #78846b; }
+header > span { font-size: 19px; font-weight: 700; }
+header small { font-size: 12px; }
+main { min-height: 75svh; display: grid; place-items: center; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid #805530; outline-offset: 5px; border-radius: 10px; }
+.notice { position: fixed; bottom: 34px; left: 50%; transform: translateX(-50%); width: min(1050px, 90%); min-height: 210px; padding: 34px 34px 40px; border: 20px solid transparent; border-image: url('../../web/assets/ui/dialogue-v1/somang/dialogue-panel.png') 40 fill stretch; }
+.name { position: absolute; top: -40px; left: 22px; min-width: 124px; min-height: 48px; display: grid; place-items: center; padding: 10px 30px; background: url('../../web/assets/ui/dialogue-v1/somang/nameplate.png') center / 100% 100% no-repeat; font-size: 18px; font-weight: 700; }
+p { margin: 0; font-size: 21px; line-height: 1.9; letter-spacing: -.035em; padding-right: 35px; overflow-wrap: anywhere; }
+strong { font-weight: 700; color: #718256; }
+#next { position: absolute; bottom: 0; right: 18px; display: flex; align-items: center; gap: 13px; min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: #886c50; font-size: 12px; }
+#next img { width: 22px; height: 22px; object-fit: contain; }
+#next:hover { color: #4c2b1a; transform: translateY(2px); }
+#reopen { background: #fff8eb; color: #4c2b1a; border: 1px solid #b19570; border-radius: 20px; padding: 14px 24px; }
+[hidden] { display: none !important; }
+@media (max-width: 600px) {
+  header { padding: 24px 6%; }
+  header small { font-size: 10px; }
+  .notice { bottom: 22px; width: 94%; min-height: 225px; padding: 27px 8px 40px; border-width: 16px; }
+  .name { left: 4px; top: -36px; min-width: 108px; min-height: 44px; font-size: 16px; }
+  p { font-size: 17px; line-height: 1.85; padding-right: 2px; }
+  #next { right: 0; bottom: -3px; }
+}

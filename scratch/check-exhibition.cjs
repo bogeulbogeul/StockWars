@@ -42,6 +42,26 @@ const server = http.createServer((req, res) => {
                     return { beat: app.plan[app.state.cursor], cursor: app.state.cursor, flags: app.state.flags, ended: app.view.root.dataset.ended };
                 });
                 if (info.ended) break;
+                if (await page.evaluate(() => window.stockWarsExhibition.arrival.active)) {
+                    await page.keyboard.press('f');
+                    assert.equal(await page.evaluate(() => window.stockWarsExhibition.state.moaCalls || 0), 0);
+                    await page.keyboard.down('a');
+                    await page.waitForFunction(() => window.stockWarsExhibition.arrival.near());
+                    await page.keyboard.up('a');
+                    await page.keyboard.down('f');
+                    await page.keyboard.down('f');
+                    assert.equal(await page.evaluate(() => window.stockWarsExhibition.state.moaCalls), 1);
+                    await page.keyboard.up('f');
+                    await page.reload(); await ready();
+                    assert.equal(await page.evaluate(() => window.stockWarsExhibition.state.moaCalls), 1);
+                    await page.keyboard.press('f');
+                    assert.equal(await page.evaluate(() => window.stockWarsExhibition.state.moaCalls), 2);
+                    assert.equal(await page.evaluate(() => !!window.stockWarsExhibition.state.flags.moaAwake), false);
+                    await page.screenshot({path:`scratch/exhibition-${order}-sleep-talk.png`});
+                    await page.keyboard.press('f'); await ready();
+                    assert.equal(await page.evaluate(() => window.stockWarsExhibition.state.flags.moaAwake), true);
+                    continue;
+                }
                 const { beat } = info;
                 if (beat.kind === 'line') {
                     await page.evaluate(() => document.querySelector('.exhibition-panel button').click()); continue;
@@ -118,7 +138,7 @@ const server = http.createServer((req, res) => {
         await page.screenshot({ path: 'scratch/exhibition-mobile.png' });
         assert.equal(await page.locator('.exhibition-phone').isVisible(), false);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-        assert.ok(await page.locator('.exhibition-text').evaluate(e=>parseFloat(getComputedStyle(e).fontSize)) >= 16);
+        assert.ok(await page.locator('.exhibition-text').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize)) >= 16);
         assert.deepEqual(errors, []); assert.deepEqual(missing, []); console.log('Mobile reset, asset requests and runtime errors: PASS');
     } catch (error) {
         console.log('Failure state:', await page.evaluate(() => ({ state: window.stockWarsExhibition?.state,

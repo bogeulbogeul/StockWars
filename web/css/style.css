@@ -15,7 +15,7 @@
 @import './modules/anna-portrait.css'; @import './modules/rent-quest.css';
 @import './modules/sky-background.css'; @import './modules/sky-weather.css';
 @import './modules/office-stage.css'; @import './modules/town-gateway-modal.css';
-@import './modules/cipher-lobby.css'; @import './modules/salon-interior.css';
+@import './modules/cipher-lobby.css';
 @import './modules/town/town-base.css';
 @import './modules/town/town-buildings.css'; @import './modules/town/town-building-assets.css';
 @import './modules/town/town-benches.css'; @import './modules/town/town-props.css';
@@ -25,7 +25,7 @@
 @import './modules/settlement-modal.css'; @import './modules/inventory-modal.css?v=vivian-items-1';
 @import './modules/item-center.css'; @import './modules/lotto-panel.css';
 @import './modules/rumor-popup.css'; @import './modules/furniture-edit.css';
-@import './modules/wardrobe-modal.css'; @import './modules/salon-style-shop.css';
+
 @import './modules/vivian-store.css?v=vivian-items-1';
 
 @import './modules/town/town-models.css';
@@ -46,3 +46,4 @@
 @import './modules/dialogue/tutorial-focus.css';
 @import './modules/dialogue/dialogue-placement.css';
 @import './modules/exhibition.css';
+@import './modules/vivian-cozy.css?v=flower-shop-2';

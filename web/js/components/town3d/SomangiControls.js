@@ -6,10 +6,7 @@ export function createSomangiControls(layer, play, blocked) {
     window.addEventListener('keydown', event => {
         if (event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey || blocked()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
-        const action = event.code === 'Digit1' || event.key === '1' ? 'wave'
-            : event.code === 'Digit2' || event.key === '2' ? 'eat'
-                : event.code === 'Digit3' || event.key === '3' ? 'crab'
-                    : event.code === 'Space' || event.key === ' ' ? 'jump' : null;
+        const action = event.code === 'Digit2' || event.key === '2' ? 'eat' : null;
         if (action && play(action)) event.preventDefault();
     });
     return hint;

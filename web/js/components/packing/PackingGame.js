@@ -46,7 +46,7 @@ export class PackingGame {
         this.render();
         this.dialog.showModal();
         this.focusStart();
-        this.say('물건을 선택하고 끌어 담아보세요. 시간제한은 없어요.');
+        this.say('');
     }
 
     close() { this.input.cancel(); this.dialog.close(); }

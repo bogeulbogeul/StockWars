@@ -67,7 +67,7 @@ export class HomeModelScene {
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.setControlsHint('WASD / 방향키 이동 · Space 점프 · Q/E 시점 회전 · 현관 / Esc 나가기');
+        this.player.setControlsHint('WASD / 방향키 이동 · 2 먹기 · Q/E 시점 회전 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);

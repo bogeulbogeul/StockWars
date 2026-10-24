@@ -1,0 +1,517 @@
+[
+  {
+    "path": "assets/buildings/3d/ClothingStore-clean.glb",
+    "bytes": 4435016,
+    "sha256": "7771f1d0f1c5ee31841f9f294531e94037f552866922950cdb2c118ecf7c40f3"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/dryer-a.png",
+    "bytes": 496129,
+    "sha256": "8c44932c0e4194e7c208396fc20f2fd97394405c93f3ea6616c4415140a52968"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/dryer-b.png",
+    "bytes": 512261,
+    "sha256": "24b5600aa21c979cbd050861a735f790b88656ff9d9c65cd949982bfdbc01e35"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/manifest.json",
+    "bytes": 747,
+    "sha256": "caf6b3adf1a89cc369d89068a9f52528444822733d0daf120c73213e3d69f8fe"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/prompts.txt",
+    "bytes": 3416,
+    "sha256": "cceb3e3d3c577d83a6d7d3db5a25fad36aa3265b8e6575b6f709939dcdced86a"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/scissors-closed.png",
+    "bytes": 459556,
+    "sha256": "70bf3ac4ab0d70084fc7cacef8601df87a5f6db4369ca121355ef4fb86defcff"
+  },
+  {
+    "path": "assets/effects/salon-makeover-v1/scissors-open.png",
+    "bytes": 531383,
+    "sha256": "abe0a506be487a29e63b5fa7a580abfcb041d222eaa15c84457b060a243d4081"
+  },
+  {
+    "path": "assets/interiors/salon/salon-clean-redraw-v22.prompt.txt",
+    "bytes": 4750,
+    "sha256": "58e1e9a86168b280e22a84940205c43724ca988af16b3fe169ae2b8d594f2d2f"
+  },
+  {
+    "path": "assets/interiors/salon/salon-entry-stairs-v7.json",
+    "bytes": 894,
+    "sha256": "d89177701c4b20fa0a578f29720f8f6648a71101f95cd0089de872b01dafde28"
+  },
+  {
+    "path": "assets/interiors/salon/salon-entry-stairs-v7.prompt.txt",
+    "bytes": 3973,
+    "sha256": "4363af73c2bfa81e2a6833bb1c88bbb456563ba30d71e099ad522f8ce70eb162"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-circulation-v6.png",
+    "bytes": 1840170,
+    "sha256": "e4cc87aef8dfcd9a016ffb7dd0cebb2b4a7b527fb9cd28b04ba5b05b2564292b"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-clean-redraw-v22.png",
+    "bytes": 1843637,
+    "sha256": "4eb6a55296d356217679282d3339141724fc1e55b030aa9cea3639f9c1174c9c"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-entry-stairs-v7.png",
+    "bytes": 1858597,
+    "sha256": "7164ae2290547f3cb2be11f679d94851f10ce2cd001d5bf7d5db6164ba026fbe"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-owner-preview-v4.png",
+    "bytes": 2030654,
+    "sha256": "1c111d62ca205c15cf3d9d2ef8aee87bed2c2fe3d0fe2293835478e98a3c0ce0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-right-edge-landing-v9.png",
+    "bytes": 2036896,
+    "sha256": "e53730c71951dd8b54a68ffae9396642d12b4a73971ad066e9dfde0ba96675ec"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-right-edge-landing-v9.prompt.txt",
+    "bytes": 2336,
+    "sha256": "e56f870a47927966d54f7ce90fbb11831de00783f5cb2cde9336e0957d518ba2"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-top-landing-v8.png",
+    "bytes": 1875444,
+    "sha256": "bf0f35d730439f4412b2a990ef5f83bfe2592ed2a43aa867a25ea7a8af8236bc"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-top-landing-v8.prompt.txt",
+    "bytes": 1519,
+    "sha256": "ed60576b142329dde984d1b321cc11a12b48d4185c3b4a385da11f621b4141b0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-v3.png",
+    "bytes": 1940408,
+    "sha256": "4869e7d593b30c1bbb858a5fa21e16a02457ba89373fdff5cd2069e40de4f1cf"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-v4.json",
+    "bytes": 817,
+    "sha256": "f78f00547e173911b6574e84cac1404414b674ca6331dfb880143d51dea9a6ff"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-v4.png",
+    "bytes": 1910738,
+    "sha256": "ec78361d9f0732894562070e7e6a37cc4ce91c856d367502183204580248060e"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-v4.prompt.txt",
+    "bytes": 3869,
+    "sha256": "65d5aa6fb392f999d9f46126d364b7504d5c9b5f8e3e4adcc0653720b2eb8353"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-wall-height-stairs-v10.png",
+    "bytes": 1842597,
+    "sha256": "ba6f0b1e856e2086d2c5e3abd2ed8a3d65271e446eaccaec0de2ca172ab33787"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-wall-height-stairs-v10.prompt.txt",
+    "bytes": 2397,
+    "sha256": "5dca9d19c76abc7c47fe8e4139e69e6049a21d20965e373956e59510ba5f397b"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-1-wide-landing-v23.png",
+    "bytes": 1883637,
+    "sha256": "eed2c2825ebdc3c66f0394feffe61c547afcc0bf9b874aee7842f82dfcd584c9"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-aligned-guardrails-v15.png",
+    "bytes": 1908359,
+    "sha256": "7ae02a3aab094cb7c3b518ae79f99328b8d77ecc1cb36e1ecca7875f7be60f3f"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-aligned-guardrails-v15.prompt.txt",
+    "bytes": 2411,
+    "sha256": "e6c531d6e3fe3c8d4ba109cf2cc22ef33f86b186914d25b1a7876542a7620383"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-boutique-redesign-v19.png",
+    "bytes": 1956670,
+    "sha256": "89359d7be1e6bd5cb93a70212640a363886602345b8d89d00be2070385ad6774"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-boutique-redesign-v19.prompt.txt",
+    "bytes": 3105,
+    "sha256": "521ac99f9cc254ab44b85729ba40195a5e84746bcaab3be8e0211f27fd073a22"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-clean-redraw-v22.png",
+    "bytes": 1875810,
+    "sha256": "369857a8ae054bb973afce3db640af1f778bf6b6c8b6f3469c31c8e5c3b53a5a"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-column-floor-joints-v18.png",
+    "bytes": 1877031,
+    "sha256": "5f07328331c3d7af99c2fd45d751226188ba9aad26f47c19b3c1fd8325b7fd1d"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-column-floor-joints-v18.prompt.txt",
+    "bytes": 1728,
+    "sha256": "c106650f53721eb2803708a7c09cc6bac4fcbbcca879d629927239bdb957b12c"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-descending-stairwell-v16.png",
+    "bytes": 1921391,
+    "sha256": "0309cbf77de24f229f064e2a34167e0014a2cc00e0c7294d263b5420f5745072"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-descending-stairwell-v16.prompt.txt",
+    "bytes": 2264,
+    "sha256": "3e65c287396c5f236596fc0a6b532203832bf6bdb56b4d1a221645bb985f340a"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-display-layout-v12.png",
+    "bytes": 2002637,
+    "sha256": "92d1b13336a400701c5c8bcd07effb29b4cc41f380f7d32895f91ddcd0c4bf26"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-display-layout-v12.prompt.txt",
+    "bytes": 2202,
+    "sha256": "3b33c7bb126ba7e18c2b916f809427940b8db8d2650b351b4b624bdb0e9ae8d0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-entry-stairs-v7.png",
+    "bytes": 1953125,
+    "sha256": "9a38b6ab2703e7e15485eb14ce4ede5029f0ed5d50bd7e54b02ab08d57d93e9e"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-inset-stairs-v14.png",
+    "bytes": 1906512,
+    "sha256": "fe2948d69f77507e82cd1ebb673c9794b95fab9cec8fdd3957dc68323455af16"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-inset-stairs-v14.prompt.txt",
+    "bytes": 2044,
+    "sha256": "7dcbf29f60de844ce59120cce6f62618bb3bd4e53f405dc72106f0e868c70c71"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-landing-clearance-v28.png",
+    "bytes": 1882532,
+    "sha256": "31d3b74484cacc755a9e5137ad72e16291f8ed82f65037112b0eb8a22846f612"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-landing-clearance-v28.prompt.txt",
+    "bytes": 1892,
+    "sha256": "507a5115e64b9c00fb6e9a1f247eb533b23eff160033204a47db99a51f679af1"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-open-landing-v13.png",
+    "bytes": 2051315,
+    "sha256": "6eaa001755668dc5ecc2b85b501c06a781742c7bc012f64355c35b4a57c725b0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-open-landing-v13.prompt.txt",
+    "bytes": 3952,
+    "sha256": "a620ccf18b1361ce11add5ccbc17f3ad880b5fc8a01d97e821c1302fc45faa63"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-premium-v6.png",
+    "bytes": 1940372,
+    "sha256": "7daba9c36ba5da090acf431bae48d8904d1e329317b4af8a2036cfa55935e6b0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-premium-v6.prompt.txt",
+    "bytes": 1336,
+    "sha256": "8bb5c863585c03d00a8a9f37f7ffaa8be4694ddd08af7bc6fe5b250dfd3c60c6"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-right-edge-stairs-v11.png",
+    "bytes": 2005953,
+    "sha256": "ce719dd1be349788813d18fe895afff8190f484216939eeba84b8f53b767dd0f"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-right-edge-stairs-v11.prompt.txt",
+    "bytes": 1959,
+    "sha256": "8d747b675e12836137ddefc157632a4039422d85272a2507397a9b1ccb026087"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-sconce-restored-v27.png",
+    "bytes": 2029674,
+    "sha256": "64d340b3a3195abec6fdba6f3d308c4da78d848c10f9cde6a1ce1c656908c6d9"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-sconce-restored-v27.prompt.txt",
+    "bytes": 940,
+    "sha256": "3c6805a31e31efd0edf84ef0bd8a7e006cc242a4ba216380d59f4c52500c3af9"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-direction-v17.png",
+    "bytes": 1879386,
+    "sha256": "94c2eb60d6244ec07fc62a13e7bbd1abf0c77230747ec421f62260b6bb199957"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-direction-v17.prompt.txt",
+    "bytes": 2134,
+    "sha256": "80898fa10e6da70f7a5f2d94d978bbe4b52ac347a62f3f39f64bc65407883597"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-edge-cleanup-v21.png",
+    "bytes": 1950016,
+    "sha256": "c6bbca4c760fb7b4909fe82c2aa3f8cd633db001ca156a71254a6a3c4a336eff"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-edge-cleanup-v21.prompt.txt",
+    "bytes": 1263,
+    "sha256": "04eb7c9d93d729d54cb6623a092594f70d099dfa2dcd1812b8b99958cf2cad35"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-polish-v29.png",
+    "bytes": 1898304,
+    "sha256": "4cbf96b702fba902f9436e3c039cf27051af8d38d042ba1df734c0caf133d459"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-polish-v29.prompt.txt",
+    "bytes": 1701,
+    "sha256": "78d40a5b5199815e177ef344e13f3d794a4cafe52920df70bc9f4cfe80c1c5bf"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-return-rail-v20.png",
+    "bytes": 1959794,
+    "sha256": "19d157f92a8756cfafd8a628840eadddc091b25460654d0112b98c2165b6416a"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-stair-return-rail-v20.prompt.txt",
+    "bytes": 1810,
+    "sha256": "4a8d22fce34d0148a9b9efd3469316bc924df8003199186a6f0771be87327642"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-trim-cleanup-v25.png",
+    "bytes": 1892691,
+    "sha256": "70a9daa6227a48b4160aab4c8759bf5f8634f36452f255d3f56f404f715a7a2a"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-trim-cleanup-v25.prompt.txt",
+    "bytes": 1180,
+    "sha256": "68fcc85f6e91101cf043e5ea8caf54588e3a30036b1ed101e2c4d052aec4ffcb"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-v3.png",
+    "bytes": 1868900,
+    "sha256": "be20ad80fc3366223cb91d0b9fd8d909b453b81a9421a87087c728c576f53975"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-v4.png",
+    "bytes": 1911889,
+    "sha256": "9f86700979e80ab524d03aaf987284537af90d5239c9ebd7fbf74ba77d2c2d3f"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-v4.prompt.txt",
+    "bytes": 1318,
+    "sha256": "37938caabf5864dae873a0a53cda90884518173b376b7abcda5952c6f4af65d6"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-wall-detail-v24.png",
+    "bytes": 1885484,
+    "sha256": "3a5eec2ba37def26ea912fce80c994f060e3b5e05742cb503c16b02d13b2eedb"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-wall-detail-v24.prompt.txt",
+    "bytes": 2103,
+    "sha256": "127a98139c64e52dd8dba34e75eb9b1639f6d7ea93650aa58f681d40699fc015"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-wide-landing-v23.png",
+    "bytes": 1896818,
+    "sha256": "78a871c851c0c1b60e00db581332e8db4fce1c2b2021a1a85144e123feae16a7"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-window-removal-v26.png",
+    "bytes": 1924755,
+    "sha256": "a9f21260a72e513309b6e102bff11f752d6432c3edbfebcb8f51509548251d1b"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floor-2-window-removal-v26.prompt.txt",
+    "bytes": 1511,
+    "sha256": "9e3ec19e4b7f3dfd7d284d8d4bcbf74d255847e48dfcb1cb0da24540d7da0dca"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floors-v3.prompt.txt",
+    "bytes": 5781,
+    "sha256": "31d1f1f43f10efaaa2473249a5c441e2f25bed4e137b5c321c80599e7613d0a0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floors-v6.json",
+    "bytes": 1128,
+    "sha256": "1aba659bc0bf31488c0f5613ad835fed1fe95768f1a0e73b380c15dd7ed9ad95"
+  },
+  {
+    "path": "assets/interiors/salon/salon-floors-v6.prompt.txt",
+    "bytes": 6433,
+    "sha256": "5671ca41874e4b45c5f60f246836b770c53ea509f55afe3e55721fc7cd739f00"
+  },
+  {
+    "path": "assets/interiors/salon/salon-ground-floor-v2.png",
+    "bytes": 1988503,
+    "sha256": "a4593fb0c1f48dd14b5f551a445541dd31382c0a27847927d9bdae7323235474"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floor-1-background-v5.png",
+    "bytes": 1788952,
+    "sha256": "49c6cbc0ab7b8e0b262365c6f68126a4d3ed732419d097333990bc483e0c2dda"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floor-1-owner-v5.png",
+    "bytes": 1751531,
+    "sha256": "484ab0866b28b971540d6f8f214048404deb7456989cbd04e90ae015db1be2b3"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floor-1-owner-v5.prompt.txt",
+    "bytes": 1888,
+    "sha256": "d58e218cbd11831be1c08fef3b93b09c78527b5252c8388dff20bf6975f4a330"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floor-2-v5.png",
+    "bytes": 1781342,
+    "sha256": "07c65720354b6d339d583597d13c3ea9006d8d54e31725d67049d5e11e8a17d0"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floors-v5.json",
+    "bytes": 1397,
+    "sha256": "a544a37f3b8ac0af9bc54f1ac83e34eb3b21c10bb0bb1e5f76e976e22ddeaec9"
+  },
+  {
+    "path": "assets/interiors/salon/salon-new-floors-v5.prompt.txt",
+    "bytes": 4930,
+    "sha256": "fd4745556eb76fc39272594f1e6c74c0c3b4104ec3e5634dd452d3456381b6ac"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v1.json",
+    "bytes": 2085,
+    "sha256": "fd2860fea568110aacd46f3545c884482ec21769c3a68ddf8bbe5b19190d9991"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v1.png",
+    "bytes": 1966483,
+    "sha256": "a6f0eeae87e6a40937a417da236689f4c4da9c6e85d7082075aa52e0bb0c54cc"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v1.prompt.txt",
+    "bytes": 3935,
+    "sha256": "b7e7f3d109b561457b0d6782489be2af5ef2b5cc6b6ccdbc038c343d335b8083"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v10-owner.png",
+    "bytes": 1243985,
+    "sha256": "5b523e2b996af70a5dd4c76a528d60dd0e5b59e0a3ab719678783e5016a00f2d"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v9-background.png",
+    "bytes": 1313797,
+    "sha256": "2b998c503590f95fc9e5f18112297372fb317093fd8b0345bc9091730323a007"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v9-background.prompt.txt",
+    "bytes": 671,
+    "sha256": "415b57a0598eb75b163ea808352c114164fc7e08624ce1b67e5b57fcd630b038"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v9-owner.png",
+    "bytes": 1370841,
+    "sha256": "4d9e4292a96941495c46c4a9c8d3f2f07318ba4412c630deb0798a8942f53778"
+  },
+  {
+    "path": "assets/interiors/salon/salon-room-package-v9.notes.txt",
+    "bytes": 2185,
+    "sha256": "e5c00dab1ac6b2a3dd1f201a5d4c82103de20a1d25f05452f4cb700a777337c4"
+  },
+  {
+    "path": "assets/interiors/salon/salon-separated-floors-v3.json",
+    "bytes": 1815,
+    "sha256": "6b20be34858928adb9a633251cae80ceb4fa74573bd9ad98bf948a9a92087d19"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v3.png",
+    "bytes": 1961058,
+    "sha256": "745e360793c57f6af6faa69acf0636ae3d444b9597c7e591c410e52ab015276f"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v3.prompt.txt",
+    "bytes": 3065,
+    "sha256": "d81a54197baf59f3b4ad07563c53de8d6d4937f7201b19ee472931399803dc74"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v4.png",
+    "bytes": 1907486,
+    "sha256": "05d0880da2ca4f2d4847f436edc670363fd59b858e75065c3f42d7248447d5b6"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v4.prompt.txt",
+    "bytes": 1148,
+    "sha256": "b839836dcbce1052bfb0b3710169ccf4155b3fb5d00ed33dc93c827667674581"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v5.png",
+    "bytes": 1917265,
+    "sha256": "c5c88d58d2c9a1a355e3277812aff979de7cafa8edfd199268fa89e6ed316298"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v5.prompt.txt",
+    "bytes": 1775,
+    "sha256": "7c18772aaeb1f04252e4fd30df712db9503ecb2822e461d22fe23447fae27f63"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v6.png",
+    "bytes": 1901187,
+    "sha256": "dd5201d5c0127114a9bd915d42aecb3be5d72f5235bf877397aa5caf79e784f4"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v6.prompt.txt",
+    "bytes": 1778,
+    "sha256": "2c97dc8957bd0dbf618821f9443bad0243e97cb95bc0a4943ef8c1f3db8cf74d"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v7.png",
+    "bytes": 1883872,
+    "sha256": "e1bf92255e6f88ce6fa9590ae433be7f9e44b9ad99f150a0d6223f579aff17ee"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v7.prompt.txt",
+    "bytes": 1339,
+    "sha256": "58850b994276cb2e59397cd4a7dc8020c6d8afa9e8ca7e3a010423370db19497"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v8.png",
+    "bytes": 1896844,
+    "sha256": "80d8573da2944f17d5c22000ae1ff0f28854cabad874213d8728a8575dd1c4bc"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-beauty-v8.prompt.txt",
+    "bytes": 1162,
+    "sha256": "083661c79b89aab78eeb9b238a1aab36c8ba236f4e576df713aada57396f2641"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-exterior-v1.png",
+    "bytes": 1306935,
+    "sha256": "7d028d4664273379e3344ade8eb07b218f730893ff2d12228e72e3a8354f9ff7"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-exterior-v1.prompt.txt",
+    "bytes": 2117,
+    "sha256": "c910ca773dbcd5042c59d1d713e102b058f81fc3f98d958de278889b90afe2bf"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-interior-v1.png",
+    "bytes": 2012477,
+    "sha256": "6d163103f50ce6d71c48bf0d8378d246d88f3d1d84ab72d065c99ecc5f0984f7"
+  },
+  {
+    "path": "assets/interiors/salon/salon-single-story-interior-v1.prompt.txt",
+    "bytes": 3192,
+    "sha256": "5ae897c7e474ac7de56374d41bfe3d271099f1417402adb5997e6a045ca51371"
+  },
+  {
+    "path": "assets/interiors/salon/salon-wide-landing-v23.prompt.txt",
+    "bytes": 4646,
+    "sha256": "84f029ecf2b82f9d37940e2e0edf2e24cc279306717d8da4650e214f21474003"
+  }
+]

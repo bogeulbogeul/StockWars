@@ -5,7 +5,6 @@ import { CharacterCreation } from '../components/CharacterCreation.js?v=retireme
 import { ServerSelectModal } from '../components/ServerSelectModal.js';
 import { TownStage } from '../components/TownStage.js';
 import { CipherLobby } from '../components/CipherCanvasLobby.js';
-import { SalonInterior } from '../components/salon/SalonInterior.js';
 import { VivianStoreModal } from '../components/store/VivianStoreModal.js?v=vivian-effects-1';
 import { initPackingGame } from './PackingEntrance.js';
 
@@ -37,11 +36,6 @@ export function initWorld() {
             }
         });
 
-        this.salonInterior = new SalonInterior(this.appContainer, {
-            onClose: () => {
-                if (document.body.classList.contains('town-mode-active')) this.enterTown(null, 'claire_apparel');
-            }
-        });
         this.cipherLobby = new CipherLobby(this.appContainer);
         this.cipherLobby.trainingRoom.onAnalyze=(stockId)=>{
             // Keep the shared analysis overlay inside the active modal's top layer.
@@ -66,7 +60,7 @@ export function initWorld() {
             },
             onPurchaseDrink: instant => this.itemGameplay.purchase('item_energy_drink', 1, instant, { deferDrinkEffect: true }),
             onDrinkCollected: () => playRecoveryDrinkEffect(),
-            isInputBlocked: () => this.packingGame?.isOpen === true || this.salonInterior?.isOpen === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
+            isInputBlocked: () => this.packingGame?.isOpen === true || this.playerSocial?.dialog.open === true || this.cipherLobby?.isOpen === true || this.cipherLobby?.competitionRoom.dialog.open === true || this.cipherLobby?.trainingRoom.dialog.open === true || this.settingsModal?.dialog.open === true || this.playerProfileModal?.dialog.open === true || this.vivianStoreModal?.isOpen === true,
 onReturnOffice: () => this.enterOffice(),
             onHeal: () => {
                 const result = this.itemGameplay.restOnBench();
@@ -75,7 +69,6 @@ onReturnOffice: () => this.enterOffice(),
             },
             onOpenStore: () => this.openVivianStore(),
             onOpenFurniture: () => toastManager.show('🛋️ [모던 프레임 가구점] 우디: "8x8 오피스를 품격 있게 바꿔줄 맞춤형 데스크와 인테리어 소품을 둘러보세요."'),
-            onOpenApparel: () => this.salonInterior.open(),
             onOpenBookstore: () => toastManager.show('📚 [데이터 잉크 서점] 사서 소담: "영구 스탯을 강화해주는 투자 전문 도서와 섹터별 심층 인사이트 리포트입니다."'),
             onOpenSecurities: () => {
                 this.cipherLobby.open();

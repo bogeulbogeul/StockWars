@@ -21,7 +21,6 @@ const doorBaselines = {
     node_finance: [390, 109.0978],
     midnight_pub: [390, 93.8552],
     data_ink_bookstore: [350, 96.0223],
-    claire_apparel: [340, 105.9140]
 };
 
 export function scaleTownBuilding(definition) {

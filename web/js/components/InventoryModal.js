@@ -1,12 +1,14 @@
+import { renderInventoryDetail } from './inventory/InventoryDetail.js';
+import { cookiePresentation, eatCookie } from '../engine/CookieSets.js';
 import { bindingLabel } from '../app/GameKeys.js';
 import { gameKey } from '../app/GameKeys.js';
 /**
  * InventoryModal Component
  * Unity equivalent: UIInventoryModal.cs / ItemStorageKernel.cs
- * Manages player bag, consumables, apparel, furniture, and documents.
+ * Manages player bag, consumables, furniture, and documents.
  */
 
-import { ITEM_CATEGORIES, ITEM_RARITIES, DEFAULT_INVENTORY_ITEMS } from '../data/inventoryData.js';
+import { ITEM_CATEGORIES, DEFAULT_INVENTORY_ITEMS } from '../data/inventoryData.js';
 import { RumorPopup, rumorDecryption } from './inventory/RumorPopup.js';
 import { itemIconHtml } from '../data/itemArtwork.js';
 
@@ -91,7 +93,7 @@ export class InventoryModal {
 
     initEventListeners() {
         this.btnClose?.addEventListener('click', () => this.close());
-        
+
         this.modal?.addEventListener('click', (e) => {
             if (e.target === this.modal) this.close();
         });
@@ -126,6 +128,7 @@ export class InventoryModal {
     }
 
     getItemPresentation(item) {
+        if (item.cookieSet) return cookiePresentation(item);
         if (item.category !== 'intel' || !item.targetStockId) return item;
         const decoded = rumorDecryption(item.intelReport || item.desc || '', item, this.callbacks.getAnalysisLevel?.() ?? 1);
         const detailed = item.isRead && decoded.level === 5;
@@ -140,7 +143,7 @@ export class InventoryModal {
 
     getFilteredItems() {
         return this.items.filter(item => {
-            if (this.giftMode ? !this.giftMode.eligible(item) : item.category === 'apparel') return false;
+            if (item.category === 'apparel' || (this.giftMode && !this.giftMode.eligible(item))) return false;
             const matchesCat = this.activeCategory === 'all' || item.category === this.activeCategory;
             const visible = this.getItemPresentation(item);
             const matchesSearch = !this.searchQuery ||
@@ -161,7 +164,7 @@ export class InventoryModal {
             gridHtml += `
                 <div class="inv-slot ${isSelected ? 'active' : ''}" data-category="${item.category}" data-id="${item.id}" data-rarity="${item.rarity}" title="${visible.name}">
                     <span class="inv-item-icon">${itemIconHtml(item)}</span>
-                    ${item.quantity > 1 ? `<span class="inv-qty-badge">x${item.quantity}</span>` : ''}
+                    ${item.cookieSet ? `<span class="inv-qty-badge">${item.quantity}세트 · ${item.openedRemaining}/4개</span>` : item.quantity > 1 ? `<span class="inv-qty-badge">x${item.quantity}</span>` : ''}
                     ${item.isEquipped ? `<span class="inv-equipped-badge">장착</span>` : ''}
                 </div>
             `;
@@ -202,88 +205,12 @@ export class InventoryModal {
         this.renderDetail(item);
     }
 
-    renderDetail(item) {
-        if (!item) {
-            this.detailContainer.innerHTML = `
-                <div class="inv-detail-empty">
-                    <div class="empty-icon">🎒</div>
-                    <div>${this.giftMode?'보낼 수 있는 아이템이 없습니다.':'선택된 아이템이 없습니다.'}</div>
-                </div>
-            `;
-            return;
-        }
-
-        const rarity = ITEM_RARITIES[item.rarity] || ITEM_RARITIES.common;
-        const category = ITEM_CATEGORIES[item.category] || ITEM_CATEGORIES.etc;
-        const visible = this.getItemPresentation(item);
-
-        let actionBtnText = item.actionLabel || '사용하기';
-        let actionClass = 'inv-btn-primary';
-
-        if (item.category === 'apparel') {
-            actionBtnText = item.isEquipped ? '장착 해제' : '착용하기';
-        } else if (item.category === 'intel') {
-            actionBtnText = '확인하기';
-        }
-
-        const readBadgeHtml = item.isRead
-            ? `<span style="font-size: 11px; color: #ff8a80; background: rgba(255,59,92,0.15); border: 1px solid rgba(255,59,92,0.3); padding: 1px 6px; border-radius: 4px; margin-left: 6px;">열람 완료</span>`
-            : '';
-
-        this.detailContainer.innerHTML = `
-            <div class="inv-detail-preview">
-                <div class="inv-preview-box" style="border-color: ${rarity.color}; box-shadow: 0 0 20px ${rarity.glow}">
-                    <span>${itemIconHtml(item)}</span>
-                </div>
-                <div class="inv-detail-name">${visible.name}</div>
-                <div class="inv-detail-tags">
-                    <span class="inv-rarity-tag" style="background: ${rarity.color}">${rarity.name}</span>
-                    <span class="inv-category-tag">${category.icon} ${category.name}</span>
-                    ${readBadgeHtml}
-                </div>
-            </div>
-
-            <div class="inv-detail-desc">${visible.desc}</div>
-
-            ${visible.effects && visible.effects.length > 0 ? `
-                <div class="inv-detail-effects">
-                    ${visible.effects.map(eff => `<div class="inv-effect-item">${eff}</div>`).join('')}
-                </div>
-            ` : ''}
-
-            <div class="inv-detail-price-row">
-                <span>상점 가치 / 매각가</span>
-                <span class="inv-price-val">💰 ${(item.price || 0).toLocaleString()} G</span>
-            </div>
-
-            <div class="inv-actions">
-                <button class="${actionClass}" id="btnInvActionPrimary">${actionBtnText}</button>
-                <button class="inv-btn-secondary" id="btnInvActionDiscard">버리기</button>
-            </div>
-        `;
-
-        // Action button event handlers
-        if(this.giftMode){
-            const mode=this.giftMode,actions=this.detailContainer.querySelector('.inv-actions');actions.replaceChildren();
-            const info=document.createElement('p');info.style.cssText='font-size:12px;color:#9bdfe8;line-height:1.5';info.textContent=`보유 ${item.quantity}개 · 오늘 남은 선물 ${mode.remaining()}/3개 · 찌라시 포함 하루 총 3개 · 1회 1개 전달 · 원본 1개 소모`;
-            actions.before(info);
-            if(item.category==='intel'){const read=document.createElement('button');read.className='inv-btn-secondary';read.textContent=item.isRead?'찌라시 다시 보기':'찌라시 열람';read.disabled=!!mode.busy;read.onclick=()=>this.handleItemAction(item);actions.append(read);}
-            const send=document.createElement('button');send.className='inv-btn-primary';send.dataset.giftSend='';send.textContent=`선택한 아이템 1개 선물하기`;send.disabled=!!mode.busy||mode.remaining()<=0;
-            send.onclick=async()=>{if(mode.busy)return;mode.busy=true;this.renderDetail(item);try{await mode.send(item);}finally{mode.busy=false;if(this.giftMode===mode)this.renderGrid();}};actions.append(send);
-            return;
-        }
-        document.getElementById('btnInvActionPrimary')?.addEventListener('click', () => {
-            this.handleItemAction(item);
-        });
-
-        document.getElementById('btnInvActionDiscard')?.addEventListener('click', () => {
-            this.discardItem(item.id);
-        });
-    }
+    renderDetail(item) { renderInventoryDetail.call(this, item); }
 
     handleItemAction(item) {
-        if (item.id === 'item_crypto_decoder') {
-            this.openDecoderPicker();
+        if (!item || item.category === 'apparel') return;
+        if (item.id === 'item_crypto_decoder' || item.id === 'item_moon_powder') {
+            this.openDecoderPicker(item.id);
             return;
         }
         if (this.callbacks.onActivateItem?.(item) === true) {
@@ -296,11 +223,6 @@ export class InventoryModal {
         }
         if (item.category === 'consumable') {
             this.useConsumable(item);
-        } else if (item.category === 'apparel') {
-            item.isEquipped = !item.isEquipped;
-            const msg = item.isEquipped ? `👗 [${item.name}] 착용 완료!` : `👔 [${item.name}] 장착 해제되었습니다.`;
-            if (this.callbacks.onShowToast) this.callbacks.onShowToast(msg, true);
-            this.renderGrid();
         } else if (item.category === 'furniture') {
             if (this.callbacks.onShowToast) {
                 this.callbacks.onShowToast(`🛋️ [${item.name}] 오피스 가구 배치 모드로 전환합니다.`);
@@ -324,12 +246,12 @@ export class InventoryModal {
         }
     }
 
-    openDecoderPicker() {
+    openDecoderPicker(powderId = 'item_crypto_decoder') {
         this.decoderDialog?.remove();
         const dialog = document.createElement('dialog');
         this.decoderDialog = dialog;
         dialog.className = 'rumor-decoder-picker';
-        dialog.innerHTML = '<h3>해석할 찌라시 선택</h3><p>한 건을 선택하면 해독기 1개를 사용해 해석 단계를 올립니다.</p><div class="rumor-decoder-targets"></div><p role="status"></p><button type="button" class="inv-btn-secondary">취소</button>';
+        dialog.innerHTML = '<h3>해석할 찌라시 선택</h3><p>한 건을 선택하면 가루 1개를 사용해 해당 찌라시를 해석합니다.</p><div class="rumor-decoder-targets"></div><p role="status"></p><button type="button" class="inv-btn-secondary">취소</button>';
         const list = dialog.querySelector('.rumor-decoder-targets');
         const targets = this.callbacks.getDecoderTargets?.() ?? [];
         targets.forEach((item, index) => {
@@ -339,14 +261,14 @@ export class InventoryModal {
             button.type = 'button';
             button.className = 'rumor-decoder-option';
             const title = document.createElement('strong');
-            title.textContent = `${index + 1}. ${visible.name} · 해석 ${decoded.level} → ${decoded.level + 1}`;
+            title.textContent = `${index + 1}. ${visible.name} · 해석 ${decoded.level} → ${powderId === 'item_moon_powder' ? 'MAX' : decoded.level + 1}`;
             const preview = document.createElement('span');
             preview.textContent = decoded.text;
             button.append(title, preview);
             button.onclick = () => {
-                const result = this.callbacks.decodeRumor?.(item.id);
+                const result = this.callbacks.decodeRumor?.(item.id, powderId);
                 if (!result?.success) {
-                    dialog.querySelector('[role=status]').textContent = result?.message || '해독기를 사용할 수 없습니다.';
+                    dialog.querySelector('[role=status]').textContent = result?.message || '가루를 사용할 수 없습니다.';
                     return;
                 }
                 dialog.close();
@@ -370,8 +292,13 @@ export class InventoryModal {
             this.callbacks.onShowToast?.('이 아이템은 아직 사용할 수 없습니다.', false);
             return;
         }
-        
-        // Decrement or remove item
+
+        // A set remains in the bag until its last cookie is eaten.
+        if (item.cookieSet) {
+            eatCookie(this.items);
+            this.renderGrid();
+            return;
+        }
         if (item.quantity > 1) {
             item.quantity -= 1;
         } else {

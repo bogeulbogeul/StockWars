@@ -1,0 +1,18 @@
+{
+  "objects": [
+    "Somangi_SmoothBody",
+    "Somangi_WholeArmRig",
+    "Moa_Leaf",
+    "Moa_LeafStem"
+  ],
+  "clothes": false,
+  "bodyColour": "#FFDBA3",
+  "walk": "v5 fixed shoulder attachment",
+  "leafMoods": [
+    "Calm",
+    "Happy",
+    "Sad",
+    "Curious",
+    "Surprised"
+  ]
+}

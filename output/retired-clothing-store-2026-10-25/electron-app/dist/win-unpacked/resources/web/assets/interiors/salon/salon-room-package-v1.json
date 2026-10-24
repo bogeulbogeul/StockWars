@@ -1,0 +1,35 @@
+{
+  "id": "salon-de-tail-v1",
+  "version": 1,
+  "role": "facility",
+  "sellableRoom": false,
+  "layout": "fixed",
+  "asset": "salon-room-package-v1.png",
+  "canvas": { "width": 1536, "height": 1024 },
+  "view": "orthographic-isometric-cutaway",
+  "intendedLogicalFloor": { "gx": 8, "gy": 8 },
+  "intendedCommonProjection": { "halfWidth": 33.75, "halfHeight": 19.1, "artScale": 2.4 },
+  "standingCharacterHeight": { "commonUnits": 90, "sourcePixels": 216 },
+  "runtimeGeometry": "../../../js/components/salon/SalonRoomGeometry.js",
+  "runtimeScene": "../../../js/components/salon/SalonInterior.js",
+  "coordinates": "source-image-pixels; furniture collision uses measured ground footprints",
+  "physics": { "furniture": "static", "player": "kinematic", "bodyCount": 9, "playerRadiusX": 24, "playerRadiusY": 12, "maxMovementSubstep": 3 },
+  "composition": "one integrated image; runtime silhouette masks redraw foreground regions for actor occlusion; outline clip excludes exterior haze",
+  "references": [
+    "../../buildings/topdown-v1/SalonDeTail-v2.png",
+    "../cipher/cipher-lobby-package-clean-v7.png"
+  ],
+  "guides": ["../../../../../Docs/ART_STYLE_GUIDE.md", "../../../../../Docs/ROOM_PACKAGE_GUIDE.md"],
+  "generator": "built-in image_gen",
+  "prompts": "salon-room-package-v1.prompt.txt",
+  "status": "provisional-playable-package",
+  "qa": {
+    "fixedFurnitureAndClearCenter": "checked",
+    "footprintCollisionAndApproachRoutes": "passed automated tests",
+    "browserChecks": "passed: WASD movement, click routing, seat/stand-up, 900x650 and 1600x900 click mapping, collision overlay, exit/re-entry, main game entry callback and salon-front return callback",
+    "exactCommonGridEdges": "pending: generated floor and furniture edges retain small projection deviations; artwork is not warped to conceal these",
+    "seatMotionAndOcclusion": "existing seated sprite used for provisional alignment; final salon-specific poses remain unverified",
+    "stylePurchaseAndGrooming": "not implemented; readiness guidance only",
+    "legacyInventoryAndEconomy": "unchanged"
+  }
+}

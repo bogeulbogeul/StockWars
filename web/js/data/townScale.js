@@ -5,7 +5,7 @@ export const TOWN_CHARACTER_HEIGHT = CHARACTER_HEIGHT;
 export const TOWN_BUILDING_HEIGHTS = Object.fromEntries(Object.entries({
     home_office_tower: 7, cipher_securities: 8, node_finance: 4,
     vivian_store: 3, julian_furniture: 3.2,
-    claire_apparel: 3.4, data_ink_bookstore: 3,
+    data_ink_bookstore: 3,
     midnight_pub: 3, barter_pawn_shop: 3.5
 }).map(([id, ratio]) => [id, ratio * CHARACTER_HEIGHT]));
 

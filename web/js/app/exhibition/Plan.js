@@ -1,7 +1,7 @@
 import { dialogue, segment } from './Script.js';
 
 // Keep original dialogue; only implement its missing interactive connections here.
-export function buildPlan(chapters, order = 'packing') {
+export function buildPlan(chapters, order = 'packing', includeRetiredTour = false) {
     const plan = [];
     const action = (id, place, title, extra = {}) => plan.push({ kind: 'action', id, place, title, ...extra });
     const add = (n, place, from, to) => {
@@ -15,9 +15,9 @@ export function buildPlan(chapters, order = 'packing') {
     add(1, 'arrival'); add(2, 'arrival');
     action('walk', 'tree', '포포리 나무로 가기');
     const tour = [['포포리 나무', 'tree'], ['집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
-        ['가구점', 'furniture'], ['보니 옷장', 'clothes'], ['새벽달 펍', 'pub'], ['서점', 'bookstore'],
+        ['가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['새벽달 펍', 'pub'], ['서점', 'bookstore'],
         ['우체국', 'post'], ['잎새 증권', 'stockOutside'], ['은행', 'bankOutside'], ['포포리 안내소', 'informationOutside']];
-    tour.forEach(([name, place], i) => add(3, place, `### ${name}`, tour[i + 1] ? `### ${tour[i + 1][0]}` : undefined));
+    tour.forEach(([name, place], i) => place && add(3, place, `### ${name}`, tour[i + 1] ? `### ${tour[i + 1][0]}` : undefined));
     add(4, 'information', undefined, '[화면]'); action('nickname', 'information', '입주 신청서에 서명하기');
     add(4, 'information', '[화면]');
     add(5, 'information', undefined, '[화면]'); action('phone', 'information', '휴대폰 받기');
@@ -69,4 +69,13 @@ export function buildPlan(chapters, order = 'packing') {
     action('diaryWritten', 'home', '첫 기록 남기기');
     add(20, 'home', '[다이어리 첫 기록', '[선택지]'); action('asleep', 'home', '오늘은 쉬기');
     return plan;
+}
+
+// Old saves used numeric scene positions. Remove only the retired tour's offset.
+export function migrateClothingTour(state, chapters) {
+    if (state.clothingStoreRemoved) return;
+    const oldPlan = buildPlan(chapters, state.order, true);
+    const removedBefore = oldPlan.slice(0, state.cursor).filter(scene => scene.place === 'retiredClothing').length;
+    state.cursor = Math.max(0, state.cursor - removedBefore);
+    state.clothingStoreRemoved = true;
 }

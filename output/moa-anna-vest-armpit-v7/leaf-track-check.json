@@ -1,0 +1,30 @@
+{
+  "Moa_Leaf_Calm": [
+    "Leaf.Base",
+    "Leaf.Tip"
+  ],
+  "Moa_Leaf_Curious": [
+    "Leaf.Base",
+    "Leaf.Tip"
+  ],
+  "Moa_Leaf_Happy": [
+    "Leaf.Base",
+    "Leaf.Tip"
+  ],
+  "Moa_Leaf_Sad": [
+    "Leaf.Base",
+    "Leaf.Tip"
+  ],
+  "Moa_Leaf_Surprised": [
+    "Leaf.Base",
+    "Leaf.Tip"
+  ],
+  "Walk_InPlace.001": [
+    "Arm.L",
+    "Arm.R",
+    "Body",
+    "Head",
+    "Leg.L",
+    "Leg.R"
+  ]
+}

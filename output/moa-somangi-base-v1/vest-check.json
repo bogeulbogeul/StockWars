@@ -1,0 +1,9 @@
+{
+  "bodyVerticesUnchanged": true,
+  "sampledSurfacePoints": 6321,
+  "radialSurfaceClearance": 0.018,
+  "fabricThickness": 0.014,
+  "rigBone": "Body",
+  "openFront": true,
+  "gameInstalled": false
+}

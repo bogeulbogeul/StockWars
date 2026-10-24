@@ -1,3 +1,4 @@
+import { VIVIAN_SHOP_CATALOG } from '../js/data/vivianStoreData.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ItemEngine, DAY, ITEM_BALANCE, lottoClosed, nextDraw } from '../js/engine/ItemEngine.js';
@@ -13,7 +14,12 @@ function fixture(date = '2026-09-28T12:00:00+09:00') {
     engine.state.baseStats.analysis = 5; engine.state.decryptions = 50;
     return { engine, market, advance: ms => { now += ms; engine.tick(); }, set: t => { now = Date.parse(t); engine.tick(); } };
 }
-const purchase = (e,id,n=1) => assert.equal(e.purchase(id,n).success,true,id);
+// Retired goods are seeded as pre-existing ownership, never repurchased.
+const purchase = (e,id,n=1) => {
+    if (id === 'item_energy_drink') assert.equal(e.purchase(id,n,false,{vending:true}).success,true,id);
+    else if (VIVIAN_SHOP_CATALOG.some(item => item.id === id)) assert.equal(e.purchase(id,n).success,true,id);
+    else assert.equal(e.add(id,n),true,id);
+};
 const use = (e,id) => assert.equal(e.use(id).success,true,id);
 
 
@@ -33,8 +39,8 @@ test('drinks heal one heart and caffeine enforces daily use across reloads', () 
     e.add('item_caffeine_shot'); assert.equal(e.use('item_caffeine_shot').success,false);
     const restored=new ItemEngine({market:f.market,clock:e.clock,state:JSON.parse(JSON.stringify(e.state))});
     assert.equal(restored.use('item_caffeine_shot').success,false);
-    assert.equal(e.purchase('item_energy_drink').success,false);
-    f.advance(DAY); assert.equal(e.purchase('item_energy_drink').success,true);
+    assert.equal(e.purchase('item_energy_drink',1,false,{vending:true}).success,false);
+    f.advance(DAY); assert.equal(e.purchase('item_energy_drink',1,false,{vending:true}).success,true);
     use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,3);
 });
 
@@ -51,13 +57,13 @@ test('all three buffs affect stats, trading or labor and expire after 120 minute
     assert.equal(m.buyStock('CLOUDBERRY',110).success,false);
 });
 
-test('ability items report the specific stat increase for inventory and instant use', () => {
+test('previously owned ability items still report their stat increases', () => {
     for (const instant of [false, true]) {
         for (const [id, stat, name] of [['item_focus_pill', 'analysis', '분석력'], ['item_stabilizer', 'management', '운용력'], ['item_vitamin_complex', 'recovery', '회복력']]) {
             const { engine } = fixture();
             const before = engine.stats()[stat];
-            const bought = engine.purchase(id, 1, instant);
-            const result = instant ? bought : engine.use(id);
+            engine.add(id);
+            const result = engine.use(id);
             assert.equal(result.success, true);
             assert.deepEqual(result.statBoost, { stat, name, before, after: before + 2, amount: 2, durationMinutes: 120 });
             assert.match(result.message, new RegExp(`${name}이 2 올랐습니다`));
@@ -159,8 +165,8 @@ test('lottery sales boundaries, distinct numbers, manual validation, draw and on
     assert.equal(e.changeTicket(ticket.id,[1,2,3,4,5,6]).success,true);
     set('2026-10-03T19:00:00+09:00'); assert.equal(e.purchase('item_lotto_ticket').success,false);
     assert.equal(e.changeTicket(ticket.id,[2,3,4,5,6,7]).success,false);
-    set('2026-10-03T21:00:00+09:00'); assert.equal(e.state.draws.length,1); assert.equal(ticket.prize,375);
-    const cash=m.cash; assert.equal(e.claimPrize(ticket.id).success,true); assert.equal(m.cash,cash+375);
+    set('2026-10-03T21:00:00+09:00'); assert.equal(e.state.draws.length,1); assert.equal(ticket.prize,187);
+    const cash=m.cash; assert.equal(e.claimPrize(ticket.id).success,true); assert.equal(m.cash,cash+187);
     assert.equal(e.claimPrize(ticket.id).success,false); e.tick(); assert.equal(e.state.draws.length,1);
     assert.equal(e.state.inventory.some(i=>i.id==='item_lotto_ticket'),false);
     assert.equal(lottoClosed(Date.parse('2026-10-03T21:04:59+09:00')),true);
@@ -169,9 +175,9 @@ test('lottery sales boundaries, distinct numbers, manual validation, draw and on
 
 test('lottery no winner rolls entire pool forward and restored draws are never duplicated', () => {
     const {engine:e,market:m,set}=fixture(); purchase(e,'item_lotto_ticket'); e.changeTicket(e.state.tickets[0].id,[40,41,42,43,44,45]);
-    set('2026-10-03T21:01:00+09:00'); assert.equal(e.state.rollover,500);
+    set('2026-10-03T21:01:00+09:00'); assert.equal(e.state.rollover,250);
     const restored=new ItemEngine({market:m,clock:e.clock,state:JSON.parse(JSON.stringify(e.state)),random:()=>0}); restored.tick();
-    assert.equal(restored.state.draws.length,1); assert.equal(restored.state.rollover,500);
+    assert.equal(restored.state.draws.length,1); assert.equal(restored.state.rollover,250);
 });
 
 test('realized sale profit, not unrealized gains or labor wages, unlocks profit milestones', () => {
@@ -185,7 +191,7 @@ test('energy drinks can be bought and consumed at full stamina without exceeding
     const { engine, market } = fixture();
     const cash = market.cash, stamina = engine.maxStamina();
     engine.state.stamina = stamina;
-    const result = engine.purchase('item_energy_drink', 1, true);
+    const result = engine.purchase('item_energy_drink', 1, true, {vending:true});
     assert.equal(result.success, true);
     assert.ok(market.cash < cash);
     assert.equal(engine.state.stamina, stamina);

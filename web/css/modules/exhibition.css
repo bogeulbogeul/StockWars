@@ -17,6 +17,10 @@
 .exhibition-ui button:focus-visible, .exhibition-ui input:focus-visible { outline: 3px solid #478346; outline-offset: 3px; }
 .exhibition-ui button:disabled { opacity: .6; cursor: wait; }
 .exhibition-reset { font-size: 12px !important; }
+.exhibition-moa-marker { position: fixed; transform: translate(-50%, -100%); background: #fff4dbe8;
+    border: 2px solid #af9971; border-radius: 14px; padding: 10px 14px; font-weight: 700; pointer-events: none; }
+.exhibition-arrival-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.exhibition-arrival-controls button { touch-action: none; min-width: 46px; }
 .exhibition-panel { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
     width: min(850px, calc(100% - 32px)); max-height: min(65vh, 640px); overflow-y: auto;
     box-sizing: border-box; pointer-events: auto; padding: 23px 30px; border: 3px solid #b69c72;

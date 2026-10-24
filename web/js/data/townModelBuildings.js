@@ -19,8 +19,7 @@ export const TOWN_MODEL_BUILDINGS = [
         x: 2600, y: 850, width: 390, rotation: 0 },
     { id: 'data_ink_bookstore', name: '데이터 잉크 서점', file: 'Bookstore-clean.glb', nativeMaterials: true,
         x: 2600, y: 1450, width: 350, rotation: 0 },
-    { id: 'claire_apparel', name: '옷가게', file: 'ClothingStore-clean.glb', nativeMaterials: true,
-        x: 850, y: 1320, width: 340, rotation: 0 }
+
 ].map(scaleTownBuilding);
 
 // Temporary tuning for a front-facing village view inspired by the reference.

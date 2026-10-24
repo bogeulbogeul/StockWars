@@ -1,0 +1,8 @@
+{
+  "samples": 271,
+  "collisionSamples": {
+    "distalArmHead": 0,
+    "foodHead": 0,
+    "foodBody": 0
+  }
+}

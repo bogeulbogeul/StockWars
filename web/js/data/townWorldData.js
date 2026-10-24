@@ -46,19 +46,6 @@ export const TOWN_BUILDINGS = [
         actionText: '가구점 입장'
     },
     {
-        id: 'claire_apparel',
-        available: true,
-        name: '살롱 드 테일',
-        sign: '살롱 드 테일',
-        category: '그루밍 / 스타일',
-        icon: '🪮',
-        width: 240,
-        height: 230,
-        colorTheme: 'magenta',
-        desc: '동물 트레이더의 완성형 스타일을 미리 보고 선택하는 그루밍 살롱입니다. 스타일리스트 보니가 맞이하는 살롱 내부를 둘러보세요.',
-        actionText: '살롱 입장'
-    },
-    {
         id: 'data_ink_bookstore',
         available: false,
         name: '데이터 잉크 서점',

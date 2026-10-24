@@ -1,0 +1,8 @@
+{
+  "modifiedVestVertices": 59041,
+  "sourceTopologyUVMaterialsPreserved": true,
+  "bodyVerticesChanged": 0,
+  "localChange": "Raise and shorten upper side openings; reduce front/back clearance",
+  "targetShoulderX": 0.255,
+  "armholeCenterZ": -0.1
+}

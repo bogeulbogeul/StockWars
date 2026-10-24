@@ -5,6 +5,17 @@ import { parseChapters } from '../js/app/exhibition/Script.js';
 import { buildPlan } from '../js/app/exhibition/Plan.js';
 import { freshState, complete, persist, loadState, SAVE_KEY, assets } from '../js/app/exhibition/State.js';
 import { isExhibitionMode } from '../js/app/exhibition/Mode.js';
+import { nearSleepingMoa, nextMoaCall } from '../js/app/exhibition/Arrival.js';
+
+test('Moa ignores distant calls and wakes on the third nearby interaction only', () => {
+    assert.equal(nearSleepingMoa({ x: 1080, y: 2355 }), false);
+    assert.equal(nearSleepingMoa({ x: 1040, y: 2355 }), true);
+    let count = nextMoaCall(0, false); assert.equal(count, 0);
+    count = nextMoaCall(count, true); assert.equal(count, 1);
+    count = nextMoaCall(count, true); assert.equal(count, 2);
+    count = nextMoaCall(count, true); assert.equal(count, 3);
+    assert.equal(nextMoaCall(count, true), 3);
+});
 
 const chapters = parseChapters(['opening', 'activities-and-ending'].map(name =>
     readFileSync(new URL(`../assets/exhibition/${name}.txt`, import.meta.url), 'utf8')).join('\n'));

@@ -1,0 +1,227 @@
+/* Bottom Purchase Drawer */
+.vivian-purchase-drawer {
+    padding: 14px 20px;
+    background: rgba(12, 18, 26, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.drawer-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.drawer-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.drawer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.drawer-rarity-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #90a4ae;
+}
+
+.drawer-item-desc {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 2px 0 4px;
+}
+
+.drawer-effects-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.effect-tag {
+    font-size: 10.5px;
+    padding: 2px 6px;
+    background: rgba(0, 230, 118, 0.1);
+    color: #00e676;
+    border-radius: 4px;
+}
+
+.effect-tag.linked {
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+}
+
+.drawer-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.drawer-qty-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.qty-stepper {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.qty-input {
+    width: 38px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.qty-max-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.drawer-price-group {
+    text-align: right;
+}
+
+.price-subtext {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.price-total {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffd600;
+    font-family: var(--font-mono, monospace);
+}
+
+.drawer-actions-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-vivian-buy, .btn-vivian-consume {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-vivian-buy {
+    background: linear-gradient(135deg, #00e676, #00b0ff);
+    color: #041014;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+}
+
+.btn-vivian-buy:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 230, 118, 0.45);
+}
+
+.btn-vivian-consume {
+    background: linear-gradient(135deg, #ff9100, #ff3d00);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 145, 0, 0.3);
+}
+
+.btn-vivian-consume:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 145, 0, 0.45);
+}
+
+/* 3. Footer */
+.vivian-store-footer {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.key-badge {
+    padding: 1px 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-mono, monospace);
+}
+
+.footer-inv-btn {
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+@keyframes vivianFadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+

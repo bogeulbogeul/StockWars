@@ -7,11 +7,12 @@ import { BANK_ROOM, bankCanStand } from '../../data/bankModelRoom.js';
 import { buildInformationModelRoom } from '../../components/information3d/InformationModelRoom.js';
 import { buildBankModelRoom } from '../../components/bank3d/BankModelRoom.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
+import { placeSomangi } from './SomangiPresentation.js';
 
 const positions = { arrival: [1080, 2355], tree: [1660, 1430], bench: [1460, 1420], notice: [1650, 2140],
     homeOutside: [900, 1040], storeOutside: [2150, 1240], stockOutside: [2150, 1900],
     bankOutside: [2600, 2190], informationOutside: [1400, 2190], furniture: [850, 1900],
-    clothes: [850, 1460], pub: [2600, 990], bookstore: [2600, 1590], post: [1760, 1550] };
+    pub: [2600, 990], bookstore: [2600, 1590], post: [1760, 1550] };
 
 export class ExhibitionScenes {
     constructor(container) {
@@ -56,7 +57,7 @@ export class ExhibitionScenes {
             this.rooms.set(place, room);
         }
         await room.ready;
-        if (this.place === place) room.show();
+        if (this.place === place) { room.show(); placeSomangi(this, room); }
     }
     setTime(sunset) {
         document.body.classList.toggle('exhibition-sunset', sunset);

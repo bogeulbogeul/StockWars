@@ -1,0 +1,14 @@
+{
+  "source": "somangi-story-expressions-v6",
+  "restVerticesUnchanged": true,
+  "bones": [
+    "Body",
+    "Arm.L",
+    "Arm.R",
+    "Head",
+    "Leg.L",
+    "Leg.R"
+  ],
+  "seconds": 0.75,
+  "straightArms": true
+}

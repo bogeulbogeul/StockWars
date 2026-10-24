@@ -1,6 +1,6 @@
-import { VIVIAN_SHOP_CATALOG } from '../../data/vivianStoreData.js';
+import { VIVIAN_ITEM_REGISTRY } from '../../data/vivianStoreData.js';
 import { settingsStore } from '../../engine/SettingsStore.js';
-export const VENDING_ITEM = VIVIAN_SHOP_CATALOG.find(item => item.id === 'item_energy_drink');
+export const VENDING_ITEM = VIVIAN_ITEM_REGISTRY.find(item => item.id === 'item_energy_drink');
 
 // Payment delivers immediately; collecting is presentation only, so closing cannot lose an item.
 export class VendingCycle {
