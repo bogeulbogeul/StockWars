@@ -1,9 +1,5 @@
-import fs from 'node:fs';
 import assert from 'node:assert/strict';
-// Load engine alone to isolate decoder behavior from the market timer.
-const source = fs.readFileSync(new URL('../js/engine/ItemEngine.js', import.meta.url), 'utf8').replace(/^import .*;\r?$/gm, '');
-const catalog = [{ id: 'item_crypto_decoder', name: '해독기' }, { id: 'item_premium_rumor', name: '유료 찌라시' }];
-const { ItemEngine } = await import('data:text/javascript;base64,' + Buffer.from(`const VIVIAN_SHOP_CATALOG=${JSON.stringify(catalog)};\n${source}`).toString('base64'));
+import { ItemEngine } from '../js/engine/ItemEngine.js';
 const engine = new ItemEngine({ clock: () => 1000, market: {} });
 engine.tick = () => {};
 engine.state.inventory = [{ id: 'item_crypto_decoder', quantity: 5 }, { id: 'rumor', category: 'intel', targetStockId: 'CLOUDBERRY', isRead: false }];

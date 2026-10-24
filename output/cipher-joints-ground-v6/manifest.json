@@ -1,0 +1,17 @@
+{
+  "groundedBases": [
+    "Wing_Corner_Foot",
+    "Wing_Corner_Foot.001",
+    "Wing_Corner_Foot.002",
+    "Wing_Corner_Foot.003",
+    "Wing_Corner_Foot.004",
+    "Wing_Corner_Foot.005",
+    "Wing_Corner_Foot.006",
+    "Wing_Corner_Foot.007",
+    "Portico_Column_Plinth",
+    "Portico_Column_Plinth.001",
+    "Portico_Column_Plinth.002",
+    "Portico_Column_Plinth.003"
+  ],
+  "sha256": "2a47fdf6a00f9efc91d8127265c5ad060e92a951f340e0a2f4da58c694236656"
+}

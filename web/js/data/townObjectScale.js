@@ -13,11 +13,11 @@ export const TOWN_OBJECT_HEIGHTS = {
 };
 
 const doorBaselines = {
-    home_office_tower: [320, 115.0988],
+    home_office_tower: [320, 115.29412218], // Latest house + right mailbox, measured door surround.
     settlement_information: [370, 99.6577],
-    vivian_store: [370, 105.0850],
+    vivian_store: [425.5, 105.0850], // 15% wider shop; door and vertical scale unchanged.
     julian_furniture: [448.5, 105.6297],
-    cipher_securities: [370, 104.3659],
+    cipher_securities: [370, 71.90457021], // Adopted single-storey v4 GLB door/frame measurement.
     node_finance: [390, 109.0978],
     midnight_pub: [390, 93.8552],
     data_ink_bookstore: [350, 96.0223],

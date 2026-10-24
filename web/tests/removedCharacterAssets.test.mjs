@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { SOMANGI_MODELS } from '../js/data/somangiModels.js';
+import { createHash } from 'node:crypto';
+import { GLTFLoader } from '../vendor/three/GLTFLoader.js';
+import { moaAssetUrl, MOA_LEAF_MOODS } from '../js/data/moaModels.js';
+import { SOMANGI_MODELS, SOMANGI_EXPRESSIONS, somangiAssetUrl } from '../js/data/somangiModels.js';
 import * as THREE from '../vendor/three/three.module.js';
 import { SomangiPlayer } from '../js/components/town3d/SomangiPlayer.js';
 import { addCipherAgentK } from '../js/components/cipher3d/CipherAgentK.js';
-import { addSleepingAnna } from '../js/components/town3d/SleepingAnna.js';
 import { addVivianShopkeeper } from '../js/components/store3d/VivianShopkeeper.js';
 import { GROUND_PROJECTION } from '../js/data/townModelBuildings.js';
 import { EMPTY_CHARACTER_IMAGE } from '../js/data/characterAsset.js';
@@ -16,7 +18,7 @@ test('runtime source no longer requests deleted character files', () => {
         const root = new URL(directory, import.meta.url);
         for (const file of readdirSync(root, { recursive: true })) {
             if (!/\.(js|css)$/.test(file)) continue;
-            assert.doesNotMatch(readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8'), /assets\/characters\/(?!(?:manager-park|dog-rgb-motion-v1)\/)/, file);
+            assert.doesNotMatch(readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8'), /assets\/characters\/(?!(?:manager-park|dog-rgb-motion-v1|3d\/(?:somangi|moa))\/)/, file);
         }
     }
 });
@@ -43,45 +45,100 @@ test('only the installed RGB dog is visible; other saved styles remain transpare
     assert.equal(requests, CHARACTER_STYLES.length);
 });
 
-test('retired character model, texture and motion directories are absent', () => {
-    assert.deepEqual(SOMANGI_MODELS, {});
-    for (const name of ['somangi', 'agent-k', 'anna', 'bongbong']) {
+function readModel(url) {
+    const data = readFileSync(new URL(url));
+    assert.equal(data.toString('ascii', 0, 4), 'glTF');
+    assert.equal(data.readUInt32LE(4), 2);
+    assert.equal(data.readUInt32LE(8), data.length);
+    return JSON.parse(data.toString('utf8', 20, 20 + data.readUInt32LE(12)));
+}
+
+test('only approved Somangi walk/eat and standing Moa assets are reintroduced', () => {
+    assert.deepEqual(Object.keys(SOMANGI_MODELS).sort(), ['eat', 'walk']);
+    for (const { file, clip } of Object.values(SOMANGI_MODELS)) {
+        const model = readModel(somangiAssetUrl(file));
+        assert.ok(model.animations.some(animation => animation.name === clip), clip);
+    }
+    const moa = readModel(moaAssetUrl('moa.glb'));
+    for (const mood of MOA_LEAF_MOODS) {
+        assert.ok(moa.animations.some(animation => animation.name === `Moa_Leaf_${mood[0].toUpperCase()}${mood.slice(1)}`), mood);
+    }
+    for (const entry of [...moa.nodes, ...(moa.meshes || [])]) {
+        assert.doesNotMatch(entry.name || '', /vest|clothes|apron|Anna_Vest/i);
+    }
+    assert.equal(SOMANGI_EXPRESSIONS.length, 14);
+    for (const assetUrl of [somangiAssetUrl, moaAssetUrl]) {
+        const manifest = JSON.parse(readFileSync(new URL(assetUrl('manifest.json')), 'utf8'));
+        for (const [file, expected] of Object.entries(manifest.files)) {
+            const data = readFileSync(new URL(assetUrl(file.replaceAll('\\', '/'))));
+            assert.equal(createHash('sha256').update(data).digest('hex'), expected, file);
+        }
+        for (const expression of SOMANGI_EXPRESSIONS) {
+            for (const suffix of ['', '-specular']) {
+                const png = readFileSync(new URL(assetUrl(`faces/${expression}${suffix}.png`)));
+                assert.equal(png.toString('hex', 0, 8), '89504e470d0a1a0a');
+            }
+        }
+    }
+    for (const name of ['agent-k', 'anna', 'bongbong']) {
         assert.equal(existsSync(new URL(`../assets/characters/3d/${name}/`, import.meta.url)), false, name);
+    }
+    for (const file of ['jump.glb', 'wave.glb', 'crab.glb', 'office-sit.glb']) {
+        assert.equal(existsSync(new URL(somangiAssetUrl(file))), false, file);
     }
 });
 
-test('NPC setup leaves room scenes empty instead of restoring replacement models', async () => {
+test('Tori and Bongbong setup still leaves room scenes empty', async () => {
     const scene = new THREE.Scene();
-    for (const setup of [addCipherAgentK, addSleepingAnna, addVivianShopkeeper]) {
+    for (const setup of [addCipherAgentK, addVivianShopkeeper]) {
         assert.equal(await setup(scene), null);
         assert.equal(scene.children.length, 0);
     }
 });
 
-test('player retains only an empty moving camera anchor and no playable motions', async t => {
-    const previousDocument = globalThis.document;
-    globalThis.document = { createElement: () => ({}) };
-    t.after(() => { globalThis.document = previousDocument; });
+test('Somangi loads walk/eat, follows movement and blocks manual eating during dialogue', async t => {
+    // Fake downloads only: exercise the real clone, animation and controller paths.
+    t.mock.method(GLTFLoader.prototype, 'loadAsync', async () => ({
+        scene: new THREE.Group(),
+        animations: Object.values(SOMANGI_MODELS).map(({ clip }) => new THREE.AnimationClip(clip, 1, []))
+    }));
+    const hint = {};
+    const priorDocument = globalThis.document;
+    t.after(() => { globalThis.document = priorDocument; });
+    globalThis.document = { createElement: () => hint };
+    const priorWindow = globalThis.window;
+    globalThis.window = { addEventListener() {} };
+    t.after(() => { globalThis.window = priorWindow; });
     const scene = new THREE.Scene();
-    const controller = { renderPosition: { x: 100, y: 200 }, facing: 'right', somangiCrabManual: true };
-    const player = new SomangiPlayer(scene, { playerController: controller });
+    let blocked = false;
+    const controller = { renderPosition: { x: 100, y: 200 }, facing: 'right' };
+    const town = { playerController: controller, callbacks: { isInputBlocked: () => blocked } };
+    const player = new SomangiPlayer(scene, town, { append(element) { assert.equal(element, hint); } });
     await player.ready;
-    assert.deepEqual(scene.children, [player.root]);
-    assert.equal(player.root.children.length, 0);
-    assert.equal(player.variants.size, 0);
-    assert.equal(player.hint.hidden, true);
-    for (const action of ['walk', 'wave', 'eat', 'jump', 'crab', 'office-sit']) {
-        assert.equal(player.play(action), false);
-        player.setState(action);
-        assert.equal(player.root.children.length, 0);
-    }
-    controller.renderPosition = { x: 320, y: 180 };
-    player.update();
-    assert.equal(player.root.position.x, 320);
-    assert.equal(player.root.position.z, 180 / GROUND_PROJECTION);
+    // Avoid image decoding in Node; expression textures are checked against manifests above.
+    player.setExpression = async () => true;
+    assert.equal(player.variants.size, 2);
+    assert.equal(player.root.children.length, 2);
+    assert.equal(player.state, 'idle');
+    controller.renderPosition = { x: 120, y: 200 };
+    player.update(.1);
+    assert.equal(player.state, 'walk');
+    assert.equal(player.play('eat'), false);
+    player.update(.1);
+    assert.equal(player.state, 'idle');
+    blocked = true;
+    assert.equal(player.play('eat'), false);
+    blocked = false;
+    assert.equal(player.play('eat'), true);
+    assert.equal(player.state, 'eat');
+    assert.equal(player.play('eat'), false);
+    const eating = player.variants.get('eat');
+    eating.mixer.update(1.1);
+    assert.equal(player.state, 'idle');
+    for (const action of ['wave', 'jump', 'crab', 'office-sit']) assert.equal(player.play(action), false);
+    assert.equal(player.root.position.x, 120);
+    assert.equal(player.root.position.z, 200 / GROUND_PROJECTION);
     assert.equal(player.root.rotation.y, Math.PI / 2);
-    assert.equal(controller.somangiCrab, false);
-    assert.equal(controller.somangiCrabSuspended, true);
 });
 
 test('information room preserves furniture but contains no embedded Moa meshes', () => {

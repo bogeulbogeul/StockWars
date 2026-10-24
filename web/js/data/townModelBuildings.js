@@ -2,7 +2,7 @@
 import { scaleTownBuilding } from './townObjectScale.js';
 // Placement remains interim in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
-    { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 48,
+    { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 36.47058729,
         x: 850, y: 900, width: 320, rotation: 0 },
     { id: 'settlement_information', name: '정착 안내소', file: 'Information-clean.glb', nativeMaterials: true,
         x: 1400, y: 2050, width: 370, rotation: 0 },

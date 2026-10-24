@@ -23,15 +23,22 @@ const server = http.createServer((req, res) => {
         page.on('pageerror', e=>errors.push(e.message));
         await page.goto('http://127.0.0.1:8109/');
         await page.waitForFunction(()=>window.stockWarsApp?.townModelScene?.status.hidden,null,{timeout:90000});
+        await page.evaluate(()=>document.body.classList.add('town-model-mode'));
+        await page.waitForFunction(()=>{
+            const scene=window.stockWarsApp?.townModelScene;
+            return scene?.player?.root?.parent && scene?.sleepingAnna !== undefined;
+        },null,{timeout:90000});
         const report=await page.evaluate(async()=>{
             const {TOWN_MODEL_BUILDINGS}=await import('/js/data/townModelBuildings.js');
             const THREE=await import('/vendor/three/three.module.js');
             const app=window.stockWarsApp;
+            document.body.classList.add('town-model-mode');
             const def=TOWN_MODEL_BUILDINGS.find(b=>b.id==='data_ink_bookstore');
             const model=app.townModelScene.scene.getObjectByName(def.id);
             const bounds=new THREE.Box3().setFromObject(model);
             const names=[]; model.traverse(o=>names.push(o.name));
-            return {file:def.file,native:def.nativeMaterials,width:bounds.max.x-bounds.min.x,
+            return {file:def.file,native:def.nativeMaterials,width:bounds.max.x-bounds.min.x,expectedWidth:def.width,
+                pitched:names.some(n=>n.startsWith('Pitched_Roof_Main_Right_Front')) && names.some(n=>n.startsWith('Wing_Ridge_Cap')) && !names.some(n=>n.startsWith('Curved_Honey_Roof_Edge')),
                 roof:names.some(n=>n.startsWith('Smooth_Plum_Tile')),
                 books:names.filter(n=>n.startsWith('Front_Sign_Book_Relief')).length===6 && names.some(n=>n.startsWith('Front_Sign_Page_Engraving')),
                 sign:names.includes('Side_Sign_Rounded_Wood_Frame') && names.some(n=>n.startsWith('Side_Sign_Page_Engraving')),
@@ -43,12 +50,12 @@ const server = http.createServer((req, res) => {
                 highlightsRemoved:!names.some(n=>n.startsWith('Display_Glass_Soft_Highlight')),
                 window:names.includes('Display_Continuous_Timber_Frame') && names.includes('Display_Inner_Rebate') && names.includes('Display_Recessed_Glass') && names.filter(n=>n.startsWith('Display_Book_Bound_Spine')).length===3 && names.filter(n=>n.startsWith('Display_Book_Gilt_Diamond')).length===3,
                 rear:names.includes('Windowless_Rear_Walls'),
-                blocked:!app.townStage.playerController.canStand(def.x,def.y-80)};
+                blocked:!app.townStage.playerController.canStand(def.x,def.y)};
         });
         assert.equal(report.file,'Bookstore-clean.glb');
-        assert(Math.abs(report.width-350)<1);
-        for(const key of ['native','roof','books','sign','door','steps','side','sideFinish','window','sillRemoved','highlightsRemoved','rear','blocked']) assert(report[key],key);
-        await page.screenshot({path:'output/bookstore-exterior-clean-v1/game.png'});
+        assert(Math.abs(report.width-report.expectedWidth)<1);
+        for(const key of ['native','roof','pitched','books','sign','door','steps','side','sideFinish','window','sillRemoved','highlightsRemoved','rear','blocked']) assert(report[key],key);
+        await page.screenshot({path:'output/bookstore-roof-pitched-v2/game.png'});
         await page.setViewportSize({width:900,height:700});
         await page.waitForTimeout(250);
         assert(await page.locator('.town-model-layer').isVisible());

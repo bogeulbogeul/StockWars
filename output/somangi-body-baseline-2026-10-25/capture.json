@@ -1,0 +1,48 @@
+{
+  "source": "web\\assets\\characters\\3d\\somangi\\walk.glb",
+  "sha256": "e2cba5f95b742f7e9b26cd2376419f52fea441a34b148e1ddd2a5667c01c9a79",
+  "runtimeSHA256": "e2cba5f95b742f7e9b26cd2376419f52fea441a34b148e1ddd2a5667c01c9a79",
+  "runtimeIdentical": true,
+  "pose": "Authored rest pose; all imported actions/NLA muted",
+  "views": {
+    "front": [
+      0,
+      -6,
+      0
+    ],
+    "right": [
+      6,
+      0,
+      0
+    ],
+    "back": [
+      0,
+      6,
+      0
+    ]
+  },
+  "projection": "orthographic",
+  "orthographicScale": 2.4,
+  "resolution": [
+    900,
+    1000
+  ],
+  "boundsBlenderXYZ": {
+    "min": [
+      -0.5883409976959229,
+      -0.5238119959831238,
+      -0.9506415724754333
+    ],
+    "max": [
+      0.5873029828071594,
+      0.5262140035629272,
+      0.9494190216064453
+    ]
+  },
+  "dimensionsBlenderXYZ": [
+    1.1756439805030823,
+    1.050025999546051,
+    1.9000605940818787
+  ],
+  "sourceUnchanged": true
+}
