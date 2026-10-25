@@ -1,3 +1,4 @@
+import { faceConversation } from '../components/town3d/ConversationFacing.js';
 import { installTownMoaWake } from './TownMoaWake.js';
 import { GROUND_PROJECTION } from '../data/townModelBuildings.js';
 import { TOWN_MODEL_BUILDINGS } from '../data/townModelBuildings.js';
@@ -47,7 +48,7 @@ export function installInformationModelEntrance(app) {
             canStand: informationCanStand,
             nearbyDoor: (x, z) => Math.hypot(x - MOA_INFORMATION_POSITION.x, z - MOA_INFORMATION_POSITION.z) < 105
                 ? { id: 'moa', label: '모아', hint: 'F · 모아와 이야기' } : null,
-            onDoorEnter: () => { void app.informationModelScene.room.userData.moa.setMood('happy'); app.annaDialogueModal?.show(); },
+            onDoorEnter: () => { const scene = app.informationModelScene; faceConversation(scene.player, scene.room.userData.moa); void scene.room.userData.moa.setMood('happy'); app.annaDialogueModal?.show(); },
             stageId: 'informationModelStage', label: '모아 안내소',
             hint: 'WASD 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
         });

@@ -1,0 +1,42 @@
+{
+  "initial": {
+    "growth": {
+      "val": "1000.00",
+      "diffPct": 0,
+      "unit": "pt",
+      "members": 16
+    },
+    "leaf": {
+      "val": "2487.89",
+      "diffPct": 0.11126924569802045,
+      "unit": "pts"
+    },
+    "originalLeaf": {
+      "val": "2487.89",
+      "diffPct": 0.11126924569802045,
+      "unit": "pts"
+    },
+    "cash": 5000,
+    "portfolio": 0
+  },
+  "updated": {
+    "index": {
+      "val": "1006.25",
+      "diffPct": 0.6250000000000089,
+      "unit": "pt",
+      "members": 16
+    },
+    "cash": 5000,
+    "portfolio": 0
+  },
+  "exhibition": {
+    "index": {
+      "val": "1000.00",
+      "diffPct": 2.075227970980431,
+      "unit": "pt",
+      "members": 16
+    },
+    "unchanged": true
+  },
+  "errors": []
+}

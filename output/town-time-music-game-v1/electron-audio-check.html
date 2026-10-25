@@ -1,0 +1,10 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>Local audio check</title>
+<body><button type="button">오디오 검사 시작</button>
+<script type="module">
+import {getTownMusic} from '../../electron-app/dist/win-unpacked/resources/web/js/engine/TownMusic.js';
+const music=getTownMusic();
+const model={music,scene:{userData:{skyTimeOfDay:'dawn'}}};
+window.stockWarsApp={townModelScene:model};
+window.stockWarsExhibition={arrival:{active:true}};
+const tick=()=>{music.update(model.scene.userData.skyTimeOfDay);requestAnimationFrame(tick);};tick();
+</script></body></html>

@@ -1,0 +1,448 @@
+[
+  {
+    "cursor": 56,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n검수…… 이렇게 불러드리면 되죠?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "검수…… 이렇게 불러드리면 되죠?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 57,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n응.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "응.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 58,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n좋은 이름이네요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "좋은 이름이네요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 59,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n그런데 거기는 못 썼어.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그런데 거기는 못 썼어.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 60,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n태어난 소망이요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "태어난 소망이요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 61,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n응. 아직 모르거든.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "응. 아직 모르거든.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 62,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n그 칸은 비워둬도 괜찮아요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그 칸은 비워둬도 괜찮아요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 63,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n그래도 주민이 될 수 있어?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그래도 주민이 될 수 있어?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 64,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n그럼요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 65,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n검수님, 포포리 마을의 주민이 되신 걸 환영해요!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "검수님, 포포리 마을의 주민이 되신 걸 환영해요!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 66,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n아, 그리고 드릴 게 있어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "아, 그리고 드릴 게 있어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 67,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n휴대폰?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "휴대폰?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 68,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n네. 포포리에서 지내는 동안 필요할 거예요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "네. 포포리에서 지내는 동안 필요할 거예요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 69,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n여기로 연락하면 돼?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기로 연락하면 돼?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 70,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n그럼요. 제 연락처도 넣어뒀어요. 도움이 필요하면 연락해 주세요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼요. 제 연락처도 넣어뒀어요. 도움이 필요하면 연락해 주세요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 71,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "검수\n\n정류장에서 자고 있어도?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "검수",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "정류장에서 자고 있어도?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 72,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n……이번에는 꼭 받을게요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "……이번에는 꼭 받을게요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 73,
+    "kind": "action",
+    "id": "phone",
+    "place": "information",
+    "theme": false,
+    "text": "포포리의 첫날\n\n휴대폰 받기\n\n모아가 건넨 휴대폰을 두 손으로 받아요.\n\n확인",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "포포리의 첫날",
+        "weight": "500",
+        "size": "15px"
+      },
+      {
+        "tag": "H1",
+        "text": "휴대폰 받기",
+        "weight": "500",
+        "size": "23px"
+      },
+      {
+        "tag": "P",
+        "text": "모아가 건넨 휴대폰을 두 손으로 받아요.",
+        "weight": "500",
+        "size": "19px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "확인",
+        "weight": "500",
+        "size": "16px"
+      }
+    ]
+  },
+  {
+    "cursor": 74,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n한번 열어볼래요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "한번 열어볼래요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 75,
+    "kind": "action",
+    "id": "openPhone",
+    "place": "information",
+    "theme": false,
+    "text": "포포리의 첫날\n\n휴대폰 열어보기\n\n연락처에는 모아가 처음으로 들어 있어요.\n\n휴대폰 열기",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "포포리의 첫날",
+        "weight": "500",
+        "size": "15px"
+      },
+      {
+        "tag": "H1",
+        "text": "휴대폰 열어보기",
+        "weight": "500",
+        "size": "23px"
+      },
+      {
+        "tag": "P",
+        "text": "연락처에는 모아가 처음으로 들어 있어요.",
+        "weight": "500",
+        "size": "19px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "휴대폰 열기",
+        "weight": "500",
+        "size": "16px"
+      }
+    ]
+  }
+]

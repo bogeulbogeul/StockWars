@@ -9,7 +9,7 @@
 .moa-movement-guide strong { font-size: 19px; }
 .moa-movement-guide p { margin: 9px 0; }
 .moa-movement-guide kbd { font: inherit; font-weight: 700; background: #edf1df; border-radius: 5px; padding: 3px 6px; }
-.exhibition-ui > .moa-movement-guide { top: 88px; }
+.exhibition-ui > .moa-movement-guide { top: 24px; }
 @media (max-width: 600px) {
     .moa-movement-guide { top: auto; bottom: 12px; left: 12px; width: calc(100% - 24px); padding: 12px 16px; font-size: 13px; }
     .exhibition-ui > .moa-movement-guide { top: auto; bottom: 12px; }

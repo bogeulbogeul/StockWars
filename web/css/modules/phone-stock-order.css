@@ -1,0 +1,18 @@
+.stock-app .stock-toggle { display: flex; gap: 5px; margin: 8px 0; }
+.stock-toggle button { flex: 1; padding: 9px 2px; font-size: 14px; }
+.stock-detail-content > label { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; gap: 8px; }
+.stock-detail-content input, .stock-detail-content select { max-width: 58%; }
+.stock-stepper { display: flex; align-items: center; gap: 4px; max-width: 70%; }
+.stock-stepper input { max-width: 58%; text-align: center; }
+.stock-quick { display: flex; flex-wrap: wrap; gap: 4px; }
+.stock-quick button { flex: 1; padding: 8px 4px; font-size: 13px; }
+.stock-estimate { background: #faf7ee; border: 1px solid #dadccd; border-radius: 10px; padding: 10px; }
+.stock-estimate > strong { display: block; font-size: 32px; margin: 5px 0; }
+.stock-estimate small { font-size: 14px; }
+.stock-pending { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; padding: 8px 0; border-bottom: 1px solid #deded1; }
+.stock-pending span { flex: 1; }
+.stock-execute { display: flex; gap: 8px; margin-top: 12px; }
+.stock-app .stock-execute button { flex: 1; padding: 12px 0; font-weight: 700; color: white; background: #bc7166; border: 0; }
+.stock-app .stock-execute button[data-execute="sell"] { background: #698eac; }
+.stock-detail-content [data-result] { padding: 8px; background: #e4ead9; border-radius: 8px; }
+.stock-detail-content [data-result]:empty { display: none; }

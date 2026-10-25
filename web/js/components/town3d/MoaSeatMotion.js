@@ -14,6 +14,7 @@ export function createMoaSeatMotion(moa, stop) {
     const seated = legs.map(bone => ({ position: bone.position.clone(), rotation: bone.quaternion.clone() }));
     // Stand on the open platform, beyond the seat front and beside Somangi.
     const destination = new Vector3(origin.x, floor, seat.max.z + 44);
+    moa.standDestination = destination.clone();
     let elapsed = 0, moving = false, resolve;
     function apply(t) {
         const unfold = smooth(.35, 1, t);

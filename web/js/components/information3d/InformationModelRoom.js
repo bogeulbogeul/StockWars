@@ -3,6 +3,7 @@ import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { INFORMATION_MODEL_URL } from '../../data/informationModelRoom.js';
 import { MoaCharacter } from '../town3d/MoaCharacter.js';
 import { MOA_INFORMATION_POSITION } from '../../data/moaModels.js';
+import { seatMoaOnBench } from '../town3d/MoaBenchPose.js';
 
 export function buildInformationModelRoom(scene) {
     const room = new THREE.Group();
@@ -24,5 +25,15 @@ export function buildInformationModelRoom(scene) {
         room.add(model);
         return model;
     });
+    room.userData.seatMoa = async () => {
+        await Promise.all([moa.ready, room.userData.shellReady]);
+        if (moa.root.userData.seated) return;
+        const seat = room.getObjectByName('Seat_Sage_Cushion');
+        if (!seat) throw new Error('안내소 의자 좌판을 찾지 못했어요.');
+        const center = new THREE.Box3().setFromObject(seat).getCenter(new THREE.Vector3());
+        moa.root.position.set(center.x, 0, center.z); moa.root.rotation.y = 0;
+        seatMoaOnBench(moa, room, { seat, forwardOffset: 3 });
+        await moa.setMood('calm', 'smile');
+    };
     return room;
 }

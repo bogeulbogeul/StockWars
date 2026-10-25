@@ -1,4 +1,6 @@
 import { gameKey } from '../../app/GameKeys.js';
+import { moveTownBody, recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { TOWN_WORLD_WIDTH, TOWN_WORLD_HEIGHT, townEntrance } from '../../data/townLayout.js';
@@ -25,6 +27,7 @@ export class TownPlayerController {
     }
 
     handleKeyDown(e) {
+        if (this.scriptedWalking) return;
         if (e.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
         const key = gameKey(e);
         if (key === 'shift') this.keysHeld.add(key);
@@ -77,6 +80,9 @@ export class TownPlayerController {
     }
 
     update(dt, width = window.innerWidth, height = window.innerHeight) {
+        if (this.scriptedWalking) { this.updateCamera(width, height, dt); return; }
+        if (this.modelCollisionReady && !this.isResting
+            && document.body.classList.contains('town-model-mode')) recoverTownBody(this);
         let dx = 0, dy = 0;
         if (!this.isResting) {
             if (this.keysHeld.has('a')) dx--;
@@ -91,13 +97,9 @@ export class TownPlayerController {
                 (x, z) => this.canStand(x, z * GROUND_PROJECTION));
         }
         if (dx || dy) {
-            const distance = (this.somangiCrab ? 14 : running ? 504 : 280) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
+            const distance = (this.somangiCrab ? 14 : running ? SOMANGI_MOVEMENT.townRun : SOMANGI_MOVEMENT.townWalk) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
             // Substeps prevent tunnelling through narrow footprints; axes slide along walls.
-            const steps = Math.max(1, Math.ceil(distance / 8));
-            for (let i = 0; i < steps; i++) {
-                if (this.canStand(this.charPosX + dx * distance / steps, this.charPosY)) this.charPosX += dx * distance / steps;
-                if (this.canStand(this.charPosX, this.charPosY + dy * distance / steps)) this.charPosY += dy * distance / steps;
-            }
+            moveTownBody(this, dx * distance, dy * distance);
             if (dx) this.charFacing = Math.sign(dx);
             this.facing = dy < 0 ? 'up' : dy > 0 ? 'down' : dx < 0 ? 'left' : 'right';
         }

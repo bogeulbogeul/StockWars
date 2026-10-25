@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>현재 종목 아이콘</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:32px;background:#f5f0e5;color:#30382f;font-family:'Malgun Gothic',sans-serif}h1{margin:0 0 10px;font-size:28px}p{margin:0 0 24px;color:#626c5f;font-size:16px}.board{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}.sector{min-width:0}.sector h2{margin:0 0 10px;text-align:center;font-size:17px;padding:12px;background:#e4ead8;border-radius:12px}.cell{display:flex;gap:10px;align-items:center;min-height:91px;margin-bottom:8px;padding:12px 9px;border:1px solid #dfddcf;background:#fffaf1;border-radius:12px}.cell strong{display:block;font-size:14px;line-height:1.5;overflow-wrap:anywhere}.cell small{display:block;font-size:9px;color:#68715f;overflow-wrap:anywhere;margin-top:4px}.stock-brand{display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;border-radius:11px;background:var(--brand-color);color:#fffaf2}.stock-brand svg{width:31px;height:31px}
+</style>
+<h1>게임에 적용된 종목 아이콘 · 72개 기업</h1>
+<p>모든 종목에 업종별 공통 아이콘 적용 · 실제 게임 SVG</p>
+<div class="board"></div>
+<script type="module">
+import { INITIAL_STOCKS } from '../../web/js/data/stocksData.js';
+import { stockBrand, shortSectorName } from '../../web/js/components/phone/stock/StockBrand.js';
+const sectors = ['IT','Entertainment','Infrastructure','Bio','Aerospace','Retail','Energy','Finance'];
+const board = document.querySelector('.board');
+for (const sector of sectors) {
+    const column = document.createElement('section'); column.className = 'sector';
+    const title = document.createElement('h2'); title.textContent = shortSectorName(sector); column.append(title);
+    for (const stock of INITIAL_STOCKS.filter(stock => stock.sector === sector)) {
+        const cell = document.createElement('div'); cell.className = 'cell'; cell.innerHTML = stockBrand(stock);
+        const label = document.createElement('span'), name = document.createElement('strong'), id = document.createElement('small');
+        name.textContent = stock.name; id.textContent = stock.id; label.append(name, id); cell.append(label); column.append(cell);
+    }
+    board.append(column);
+}
+document.body.dataset.ready = 'true';
+</script></html>

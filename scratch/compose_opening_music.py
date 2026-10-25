@@ -8,14 +8,17 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--full-opening', action='store_true')
-FULL = parser.parse_args().full_opening
-OUT = ROOT / 'output' / ('opening-music-140s-v1' if FULL else 'opening-music-v2')
+parser.add_argument('--short-opening', action='store_true')
+args = parser.parse_args()
+FULL = args.full_opening or args.short_opening
+SHORT = args.short_opening
+OUT = ROOT / 'output' / ('opening-music-110s-v1' if SHORT else 'opening-music-140s-v1' if FULL else 'opening-music-v2')
 OUT.mkdir(parents=True, exist_ok=True)
 SR = 44100
 BPM = 66
 BEAT = 60 / BPM
 LEAD_IN = 1.0
-DURATION = 140 if FULL else LEAD_IN + 64 * BEAT + 7
+DURATION = 110 if SHORT else 140 if FULL else LEAD_IN + 64 * BEAT + 7
 mix = np.zeros((int(DURATION * SR), 2), dtype=np.float64)
 rng = np.random.default_rng(21)
 
@@ -81,7 +84,7 @@ melody = [
 
 if FULL:
     # Reprise the opening, linger in the reflective phrase, then return home.
-    order = list(range(16)) + list(range(8)) + list(range(4, 16))
+    order = list(range(16)) + ([] if SHORT else list(range(8))) + list(range(4, 16))
     chords = [chords[index] for index in order]
     melody = [melody[index] for index in order]
 
@@ -103,11 +106,11 @@ for bar, ((bass, voicing), phrase) in enumerate(zip(chords, melody)):
 # Close with an audible two-bar coda instead of leaving the render tail empty.
 for beat, pitch, velocity in [(64, 74, .065), (65, 71, .062),
                               (66, 69, .056), (67, 71, .052), (69, 67, .075)]:
-    note(pitch, beat + (80 if FULL else 0), 2.4, velocity, 'box', pan=.12)
+    note(pitch, beat + (48 if SHORT else 80 if FULL else 0), 2.4, velocity, 'box', pan=.12)
 for beat, pitch in [(64, 43), (64.1, 55), (65, 59), (66, 62),
                     (67, 59), (68, 55), (69, 43), (69.05, 55),
                     (69.1, 59), (69.15, 62)]:
-    note(pitch, beat + (80 if FULL else 0), 2.5, .055 if pitch > 50 else .10, pan=-.1)
+    note(pitch, beat + (48 if SHORT else 80 if FULL else 0), 2.5, .055 if pitch > 50 else .10, pan=-.1)
 
 dry = mix.copy()
 for delay, gain in [(.113, .13), (.229, .10), (.367, .075), (.541, .055), (.793, .035)]:

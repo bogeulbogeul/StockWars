@@ -23,10 +23,10 @@ function setup() {
     return { frame, skip, music, run: context.playOpening(screen), timer: () => pending };
 }
 
-test('plays all six scenes for 140 seconds then completes', async () => {
+test('plays all six scenes for 110 seconds then completes', async () => {
     const state = setup();
     assert.equal(state.music.playCount, 1);
-    assert.match(state.music.src, /first-little-journey-140s.mp3$/);
+    assert.match(state.music.src, /first-little-journey-110s.mp3$/);
     let completed = false;
     state.run.then(() => { completed = true; });
     let total = 0;
@@ -40,7 +40,7 @@ test('plays all six scenes for 140 seconds then completes', async () => {
         state.timer().fn();
     }
     await state.run;
-    assert.equal(total, 140000);
+    assert.equal(total, 110000);
     assert.equal(completed, true);
     assert.equal(state.timer(), null);
     assert.equal(state.music.pauseCount, 1);

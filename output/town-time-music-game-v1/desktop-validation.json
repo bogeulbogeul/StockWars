@@ -1,0 +1,89 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "stages": [
+    {
+      "stage": "dawn",
+      "voices": 1,
+      "gain": 1,
+      "loop": true,
+      "duration": 80
+    },
+    {
+      "stage": "day",
+      "voices": 1,
+      "gain": 1,
+      "loop": true,
+      "duration": 57.6
+    },
+    {
+      "stage": "sunset",
+      "voices": 1,
+      "gain": 1,
+      "loop": true,
+      "duration": 72
+    },
+    {
+      "stage": "night",
+      "voices": 1,
+      "gain": 1,
+      "loop": true,
+      "duration": 90
+    }
+  ],
+  "rapid": {
+    "stage": "night",
+    "reused": true,
+    "gains": [
+      0.8743221759796143,
+      0.12567740678787231
+    ]
+  },
+  "indoors": {
+    "inside": {
+      "same": true,
+      "indoors": true,
+      "volume": 0.3869379162788391
+    },
+    "outside": 0.5489553809165955
+  },
+  "clock": {
+    "manual": "day",
+    "story": "sunset"
+  },
+  "visibilityHandler": {
+    "hidden": "suspended",
+    "visible": "running"
+  },
+  "loops": [
+    {
+      "stage": "dawn",
+      "rms": 0.06410137689097897,
+      "seam": 0.000244140625,
+      "finite": true
+    },
+    {
+      "stage": "day",
+      "rms": 0.08259906750186118,
+      "seam": 0.003387451171875,
+      "finite": true
+    },
+    {
+      "stage": "sunset",
+      "rms": 0.06590038779865325,
+      "seam": 0.00115966796875,
+      "finite": true
+    },
+    {
+      "stage": "night",
+      "rms": 0.09089381666641065,
+      "seam": 0.00067138671875,
+      "finite": true
+    }
+  ],
+  "failure": {
+    "stage": "night",
+    "retry": true,
+    "hasOld": true
+  },
+  "errors": []
+}

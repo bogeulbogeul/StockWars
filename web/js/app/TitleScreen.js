@@ -1,6 +1,7 @@
 import { playOpening } from './OpeningSequence.js';
 import { animateTitle } from './TitleMotion.js';
 import { playBusArrival } from './arrival/BusArrival.js';
+import { getTownMusic } from '../engine/TownMusic.js';
 
 // Artwork and hit target share one aspect-ratio box at every viewport size.
 export function showTitleScreen(onStart, { opening = true } = {}) {
@@ -17,6 +18,8 @@ export function showTitleScreen(onStart, { opening = true } = {}) {
     document.body.append(screen);
     const stopMotion = animateTitle(screen.querySelector('.crayon-title__art'));
     document.body.classList.add('title-screen-active');
+    const music = getTownMusic();
+    music.setTitleActive(true, screen);
     const app = document.getElementById('app');
     if (app) app.inert = true;
     const button = screen.querySelector('button');
@@ -24,11 +27,14 @@ export function showTitleScreen(onStart, { opening = true } = {}) {
     const blockWorldInput = event => {
         event.stopImmediatePropagation();
         if (event.type === 'keydown' && ['Enter', ' '].includes(event.key)) {
+            if (event.target === music.control) return;
             event.preventDefault();
             if (!event.repeat) screen.querySelector('button')?.click();
-        } else if (event.key === 'Tab') {
+        } else if (event.type === 'keydown' && event.key === 'Tab') {
             event.preventDefault();
-            screen.querySelector('button')?.focus({ preventScroll: true });
+            const buttons = [...screen.querySelectorAll('button:not(:disabled)')];
+            const next = (buttons.indexOf(document.activeElement) + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length;
+            buttons[next]?.focus({ preventScroll: true });
         }
     };
     window.addEventListener('keydown', blockWorldInput, true);
@@ -36,14 +42,16 @@ export function showTitleScreen(onStart, { opening = true } = {}) {
     button.addEventListener('click', async () => {
         button.disabled = true;
         stopMotion();
+        music.setTitleActive(false);
         if (opening) await playOpening(screen);
         await playBusArrival(screen);
+        await onStart();
         window.removeEventListener('keydown', blockWorldInput, true);
         window.removeEventListener('keyup', blockWorldInput, true);
         if (app) app.inert = false;
         screen.remove();
         document.body.classList.remove('title-screen-active');
-        onStart();
+        window.dispatchEvent(new Event('stockwars-arrival-finished'));
     }, { once: true });
     button.focus({ preventScroll: true });
 }

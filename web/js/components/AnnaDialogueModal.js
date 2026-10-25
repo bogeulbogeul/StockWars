@@ -1,3 +1,4 @@
+import { createDialogueNext } from './dialogue/DialogueNext.js';
 /**
  * AnnaDialogueModal.js
  * StockWars Manager Anna Interactive Dialogue System (MOD_GDD_07_1)
@@ -27,9 +28,6 @@ export class AnnaDialogueModal {
                             <div class="vn-nameplate">
                                 <span class="vn-speaker-name">모아</span>
                             </div>
-                            <div class="vn-controls">
-                                <button class="vn-btn vn-collapse-btn" id="btnCloseAnnaVn" title="대화 마치기">✕ 닫기</button>
-                            </div>
                         </div>
 
                         <div class="vn-dialogue-body">
@@ -52,14 +50,22 @@ export class AnnaDialogueModal {
 
     initDOM() {
         this.modalOverlay = document.getElementById('annaDialogueModalOverlay');
-        this.btnCloseModal = document.getElementById('btnCloseAnnaVn');
+        const panel = this.modalOverlay.querySelector('.vn-dialogue-box');
+        panel.classList.add('dialogue-has-next');
+        this.btnCloseModal = createDialogueNext(() => this.hide(), { label: '대화 마치기' });
+        this.btnCloseModal.id = 'btnCloseAnnaVn'; panel.append(this.btnCloseModal);
         this.speechText = document.getElementById('annaSpeechText');
         this.portrait = document.getElementById('annaVnPortrait');
         this.optionBtns = this.modalOverlay.querySelectorAll('.anna-vn-choice');
     }
 
     initEventListeners() {
-        this.btnCloseModal?.addEventListener('click', () => this.hide());
+        window.addEventListener('keydown', event => {
+            if (this.modalOverlay.classList.contains('hidden') || event.code !== 'KeyF'
+                || event.ctrlKey || event.altKey || event.metaKey) return;
+            event.preventDefault(); event.stopImmediatePropagation();
+            if (!event.repeat) this.btnCloseModal.click();
+        }, true);
         this.modalOverlay?.addEventListener('click', (e) => {
             if (e.target === this.modalOverlay) this.hide();
         });

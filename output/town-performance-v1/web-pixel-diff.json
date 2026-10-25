@@ -1,0 +1,77 @@
+[
+  {
+    "image": "web-0-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-1-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-10-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-11-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-12-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-13-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-14-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-2-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-3-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-4-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-5-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-6-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-7-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-8-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "web-9-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  }
+]

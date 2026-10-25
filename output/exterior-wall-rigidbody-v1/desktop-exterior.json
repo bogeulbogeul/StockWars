@@ -1,0 +1,136 @@
+{
+  "buildings": [
+    {
+      "id": "home_office_tower",
+      "bodies": 59,
+      "entrance": {
+        "x": 864,
+        "y": 1056
+      },
+      "contact": {
+        "x": 839.6998557332921,
+        "y": 966.8103820580905,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "settlement_information",
+      "bodies": 34,
+      "entrance": {
+        "x": 1500,
+        "y": 2304
+      },
+      "contact": {
+        "x": 1288.9250535080423,
+        "y": 2133.6660999974597,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "vivian_store",
+      "bodies": 39,
+      "entrance": {
+        "x": 2676,
+        "y": 1536
+      },
+      "contact": {
+        "x": 2700.0000223750294,
+        "y": 1443.6891792712877,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "julian_furniture",
+      "bodies": 32,
+      "entrance": {
+        "x": 708,
+        "y": 2004
+      },
+      "contact": {
+        "x": 733.636965061293,
+        "y": 1917.5348458715637,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "cipher_securities",
+      "bodies": 111,
+      "entrance": {
+        "x": 1752,
+        "y": 1104
+      },
+      "contact": {
+        "x": 1750.000003526714,
+        "y": 768.6242076075981,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "node_finance",
+      "bodies": 31,
+      "entrance": {
+        "x": 2424,
+        "y": 2340
+      },
+      "contact": {
+        "x": 2450,
+        "y": 2247.534845871563,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "midnight_pub",
+      "bodies": 75,
+      "entrance": {
+        "x": 2664,
+        "y": 1056
+      },
+      "contact": {
+        "x": 2685.4665817715586,
+        "y": 967.1504364564191,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "data_ink_bookstore",
+      "bodies": 58,
+      "entrance": {
+        "x": 2676,
+        "y": 2004
+      },
+      "contact": {
+        "x": 2742.993868327587,
+        "y": 1892.715189396085,
+        "clearance": 40
+      },
+      "recovered": true
+    },
+    {
+      "id": "post_office",
+      "bodies": 47,
+      "entrance": {
+        "x": 732,
+        "y": 1500
+      },
+      "contact": {
+        "x": 908.0508420506095,
+        "y": 1447.3723095472503,
+        "clearance": 40
+      },
+      "recovered": true
+    }
+  ],
+  "reachableCells": 21330,
+  "frontContact": {
+    "x": 839.6998557303298,
+    "y": 970.2961551292583
+  },
+  "errors": []
+}

@@ -114,3 +114,10 @@ body .crayon-dialogue .vivian-stock-link-box {
     border-color: #c6af86;
 }
 body .crayon-dialogue .vivian-stock-link-box :is(div, span, b) { color: #63452f; }
+
+/* Keep every story/guide element consistent, including semantic headings,
+   strong text, nameplates and choices that otherwise restore bold defaults. */
+body :is(.crayon-dialogue, .exhibition-panel, .moa-movement-guide),
+body :is(.crayon-dialogue, .exhibition-panel, .moa-movement-guide) * {
+    font-weight: 500 !important;
+}

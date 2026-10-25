@@ -12,6 +12,7 @@ export async function getArrivalVillage() {
     if (live) {
         await live.ready;
         live.arrivalActive = true;
+        live.dialogueOcclusion?.reset();
         await live.sleepingAnna?.setAwake(false);
         return { scene: live.scene, landscape: live.landscape, live, owned: false };
     }

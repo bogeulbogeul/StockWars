@@ -21,6 +21,7 @@ export class PhoneHome {
         });
         this.dialog.addEventListener('close', () => {
             clearInterval(this.timer);
+            this.appCleanup?.(); this.appCleanup = null;
             this.opener?.focus?.({ preventScroll: true });
         });
         this.dialog.addEventListener('click', event => {
@@ -51,20 +52,24 @@ export class PhoneHome {
     }
     close() { this.dialog.close(); }
     showHome(focus = true) {
+        this.appCleanup?.(); this.appCleanup = null;
         this.home.hidden = false; this.detail.hidden = true;
         if (focus) this.dialog.querySelector(`[data-phone-app="${this.activeApp || 'stock'}"]:not([hidden])`)?.focus();
     }
     openApp(id) {
         const app = PHONE_APPS.find(item => item[0] === id);
         if (!app || (id === 'stock' && !this.canUseStock())) return;
+        this.appCleanup?.(); this.appCleanup = null;
         this.activeApp = id; this.home.hidden = true; this.detail.hidden = false;
         const title = this.detail.querySelector('h2'); title.textContent = app[1];
         const content = this.detail.querySelector('.cozy-phone__content'); content.replaceChildren();
-        if (!this.renderApp?.(id, content)) {
+        const mounted = this.renderApp?.(id, content);
+        if (typeof mounted === 'function') this.appCleanup = mounted;
+        if (!mounted) {
             const message = document.createElement('p');
             message.textContent = '새 화면을 준비하고 있어요.'; content.append(message);
         }
-        title.focus();
+        if (id === 'stock' && mounted) content.querySelector('h2')?.focus(); else title.focus();
     }
     updateClock() {
         const now = new Date();

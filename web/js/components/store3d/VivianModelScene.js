@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
@@ -9,6 +10,11 @@ import { VIVIAN_MODEL_URL, VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS, VIVIAN_SPAWN,
 import { gameKey } from '../../app/GameKeys.js';
 import { VivianRoomCamera } from './VivianRoomCamera.js';
 import { addVivianShopkeeper } from './VivianShopkeeper.js';
+import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js';
+import { recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { createCharacterBodies, charactersCanStand } from '../town3d/CharacterBodies.js';
+import { SeatInteraction } from '../town3d/SeatInteraction.js';
+import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class VivianModelScene {
@@ -92,11 +98,15 @@ export class VivianModelScene {
         this.room.add(carpet);
         this.scene.add(this.room);
         this.shopkeeper = await addVivianShopkeeper(this.room);
+        this.characterBodies = createCharacterBodies(this.room);
+        installIndoorFurnitureBodies(this, (x,z) => vivianCanStand(x,z)
+            && charactersCanStand(this.characterBodies,x,z));
         this.roomCamera.update(0, this.room);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
+        this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
         this.player.setControlsHint('WASD 이동 · F 계산대 이용 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
@@ -139,6 +149,7 @@ export class VivianModelScene {
     }
 
     show() {
+        this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
         this.layer.classList.remove('hidden');
@@ -152,6 +163,7 @@ export class VivianModelScene {
     }
 
     hide() {
+        this.seatInteraction?.reset();
         this.active = false;
         this.controller.keysHeld.clear();
         this.controller.isMoving = false;
@@ -180,12 +192,14 @@ export class VivianModelScene {
     update(dt) {
         this.roomCamera.update(dt, this.room);
         const c = this.controller, keys = c.keysHeld;
+        if(this.seatInteraction?.update(dt))return;
+        if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         ({ dx, dz } = this.roomCamera.movement(dx, dz));
-        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, vivianCanStand);
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, this.canStand);
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         let x = oldX, z = oldZ;
         if (length) {
@@ -193,8 +207,8 @@ export class VivianModelScene {
             dz *= speed * dt / length;
             const steps = Math.max(1, Math.ceil(Math.hypot(dx, dz) / 5));
             for (let i = 0; i < steps; i++) {
-                if (vivianCanStand(x + dx / steps, z)) x += dx / steps;
-                if (vivianCanStand(x, z + dz / steps)) z += dz / steps;
+                if (this.canStand(x + dx / steps, z)) x += dx / steps;
+                if (this.canStand(x, z + dz / steps)) z += dz / steps;
             }
             c.facing = Math.abs(dz) >= Math.abs(dx) ? (dz > 0 ? 'down' : 'up') : dx > 0 ? 'right' : 'left';
         }

@@ -24,9 +24,11 @@ export function createSleepEffect(root) {
             depthTest: false, depthWrite: false, toneMapped: false }));
         sprite.renderOrder = 20; group.add(sprite); return sprite;
     });
-    let time = 0;
+    let time = 0, sleeping = true, enabled = true;
+    const syncVisibility = () => { group.visible = sleeping && enabled; };
     return {
-        setSleeping(sleeping) { group.visible = sleeping; },
+        setSleeping(value) { sleeping = value; syncVisibility(); },
+        setEnabled(value) { enabled = value; syncVisibility(); },
         update(dt) {
             if (!group.visible) return;
             time += Math.min(Math.max(dt || 0, 0), .1);

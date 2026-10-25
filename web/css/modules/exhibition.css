@@ -17,8 +17,6 @@
 .exhibition-ui button:focus-visible, .exhibition-ui input:focus-visible { outline: 3px solid #478346; outline-offset: 3px; }
 .exhibition-ui button:disabled { opacity: .6; cursor: wait; }
 .exhibition-reset { font-size: 12px !important; }
-.exhibition-moa-marker { position: fixed; transform: translate(-50%, -100%); background: #fff4dbe8;
-    border: 2px solid #af9971; border-radius: 14px; padding: 10px 14px; font-weight: 700; pointer-events: none; }
 .exhibition-arrival-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 .exhibition-arrival-controls button { touch-action: none; min-width: 46px; }
 .exhibition-panel { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
@@ -28,6 +26,7 @@
 .exhibition-speaker { color: #60834b; font-size: 15px; font-weight: 800; margin: 0 0 10px; }
 .exhibition-panel h1 { font-size: 23px; margin: 8px 0 15px; color: #493b2e; }
 .exhibition-text { white-space: pre-line; line-height: 1.85; font-size: 19px; margin: 8px 0 18px; color: #493b2e; }
+.exhibition-panel :is(.exhibition-text, h1) { font-weight: 500; }
 .exhibition-choices { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; margin-top: 16px; }
 .exhibition-form { display: flex; gap: 10px; flex-wrap: wrap; }
 .exhibition-form input { flex: 1; min-width: 120px; background: white; color: #493b2e; border: 2px solid #baa67d;

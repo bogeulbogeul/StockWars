@@ -7,6 +7,10 @@ import { ExhibitionView, el } from './View.js';
 import { ExhibitionActivities } from './Activities.js';
 import { ExhibitionArrival } from './Arrival.js';
 import { presentSomangi } from './SomangiPresentation.js';
+import { routeSeatKey } from '../../components/town3d/SeatInteraction.js';
+import { createSessionStorage } from './SessionStorage.js';
+import { waitForInformationTalk } from './InformationTalk.js';
+import { routeExhibitionJump } from './JumpInput.js';
 
 const PLACE_NAMES = { arrival: '버스 정류장', tree: '포포리 나무', bench: '광장 벤치', notice: '주민 게시판',
     home: '소망이네 집', information: '모아 안내소', bank: '차곡 은행', store: '봉봉 잡화점', stock: '토리 증권사',
@@ -15,12 +19,18 @@ const PLACE_NAMES = { arrival: '버스 정류장', tree: '포포리 나무', ben
     pub: '도란 쉼터', bookstore: '소담 서점', post: '두리 우체국 안내' };
 
 export class Exhibition {
-    constructor(container, chapters, storage = localStorage) {
+    constructor(container, chapters, storage = createSessionStorage()) {
         this.storage = storage; this.chapters = chapters;
         this.state = loadState(storage) || freshState();
         migrateClothingTour(this.state, chapters);
         this.scenes = new ExhibitionScenes(container);
-        this.view = new ExhibitionView(() => this.confirmRestart());
+        this.view = new ExhibitionView(() => this.confirmRestart(), {
+            canTrade: () => !this.busy && this.plan?.[this.state.cursor]?.id === 'trade',
+            onTrade: data => {
+                this.view.phoneHome.close(); this.next('trade', data);
+                return !!this.state.flags.trade;
+            }
+        });
         this.activities = new ExhibitionActivities(this); this.rebuild();
         this.arrival = new ExhibitionArrival(this);
         // Arrival borrows the same live village as the exhibition, without legacy saves/presence.
@@ -29,6 +39,16 @@ export class Exhibition {
         window.addEventListener('keydown', event => {
             if (!this.started || this.activities.game?.isOpen || event.ctrlKey || event.metaKey || event.altKey) return;
             if (this.arrival.active) return;
+            if (this.scenes.informationAwaitingTalk) return;
+            if (routeExhibitionJump(event, this)) return;
+            if (this.scenes.tourActive) return;
+            if (routeSeatKey(event)) return;
+            const next = this.view.panel.querySelector('.dialogue-next-triangle');
+            if (next && event.code === 'KeyF') {
+                event.preventDefault(); event.stopImmediatePropagation();
+                if (!event.repeat) next.click();
+                return;
+            }
             const input = event.target.closest?.('input, textarea, select, button');
             if (input || document.querySelector('dialog[open]')) return;
             if (event.code === 'KeyP' && !event.repeat) {
@@ -45,34 +65,44 @@ export class Exhibition {
         try { persist(this.storage, this.state); return true; }
         catch { this.view.error('진행을 저장하지 못했어요. 브라우저 저장 공간을 확인하고 다시 눌러주세요.'); return false; }
     }
-    async start() {
+    async start({ showArrivalGuide = false } = {}) {
+        // Each bus arrival starts a new three-call encounter; explicit resume keeps its count.
+        if (showArrivalGuide && this.state.cursor === 0) {
+            this.state.flags.moaAwake = false;
+            this.state.moaCalls = 0;
+        }
         this.started = true; this.view.root.hidden = false;
-        if (this.state.cursor || this.state.nickname) {
-            this.view.clear('포포리의 첫날'); this.view.text('이전에 하던 전시 체험이 있어요.');
-            this.view.choices([['이어서 하기', () => this.render()], ['새로 시작하기', () => this.restart()]]);
-        } else await this.render();
+        // Always restore the world before handing input back from the title.
+        // A resume prompt here left the borrowed village canvas in an unshown scene.
+        await this.render({ showArrivalGuide });
     }
-    async render() {
+    async render({ showArrivalGuide = false } = {}) {
         if (this.state.flags.asleep) { this.ending(); return; }
         this.rebuild();
         const beat = this.plan[this.state.cursor];
         if (!beat) { this.view.clear('진행 위치를 확인할 수 없어요'); this.view.choices([['처음부터', () => this.restart()]]); return; }
         this.busy = true;
-        this.view.sync(this.state); this.view.clear('다음 장면으로 이동하고 있어요…');
+        this.view.sync(this.state); this.view.clear(null);
         this.view.location.textContent = PLACE_NAMES[beat.place] || '포포리 마을';
         this.scenes.setTime(!!this.state.flags.sunset);
-        await this.scenes.show(beat.place);
-        if (beat.place === 'arrival' && this.state.flags.moaAwake) {
+        const tour = beat.chapter === 3 || beat.id === 'walk';
+        this.view.panel.hidden = true;
+        await this.scenes.show(beat.place, { preservePosition: showArrivalGuide && beat.place === 'arrival', tour });
+        if (this.scenes.informationAwaitingTalk) await waitForInformationTalk(this.scenes);
+        const moaWasCalled = this.state.flags.moaAwake && this.state.moaCalls >= 3;
+        if (beat.place === 'arrival' && moaWasCalled) {
             await this.scenes.ready;
             await this.scenes.townModelScene.sleepingAnna?.setAwake(true, { immediate: true });
         }
-        if (this.state.cursor === 0 && !this.state.flags.moaAwake) {
+        if (this.state.cursor === 0 && !moaWasCalled) {
             this.busy = false;
-            this.arrival.start(); this.view.sync(this.state); return;
+            this.arrival.start({ showGuide: showArrivalGuide }); this.view.sync(this.state); return;
         }
         this.arrival.stop();
+        this.view.panel.hidden = true;
         await presentSomangi(this.scenes, beat);
         this.busy = false;
+        this.view.panel.hidden = false;
         if (beat.kind === 'line') this.view.line(beat, () => this.next());
         else this.activities.run(beat);
         this.view.sync(this.state);
@@ -93,7 +123,7 @@ export class Exhibition {
         if (!complete(this.state, 'asleep')) return;
         if (!this.save()) { this.state = previous; return; }
         this.busy = true;
-        this.view.clear(null, this.state.nickname); this.view.text('소망이는 바닥에 몸을 누이고 조용히 눈을 감았어요.');
+        this.activities.say('소망이', '오늘은 푹 자야겠다. 내일은 또 어떤 하루가 기다릴까…….');
         this.view.panel.append(el('p', 'exhibition-sleeping', '오늘의 작은 발걸음을 기억하며…'));
         await new Promise(resolve => setTimeout(resolve, 2200));
         document.body.classList.add('exhibition-night');
@@ -117,6 +147,9 @@ export class Exhibition {
     }
     restart() {
         this.arrival.stop();
+        this.scenes.informationEntered = false;
+        this.scenes.informationAwaitingTalk = false;
+        if (this.scenes.townModelScene.sleepingAnna) this.scenes.townModelScene.sleepingAnna.root.visible = true;
         try { this.storage.removeItem(SAVE_KEY); }
         catch { this.view.error('전시 저장을 초기화하지 못했어요.'); return; }
         this.state = freshState(); this.activities.game && (this.activities.game.session = null);
@@ -129,8 +162,8 @@ export async function startExhibition() {
     document.body.classList.add('exhibition-mode', 'town-model-mode');
     const chapters = await loadScript();
     const app = new Exhibition(document.getElementById('app'), chapters);
-    // Exhibition starts at arrival; retain the title/bus and omit the long prologue.
+    // Normal play includes the full opening before the bus arrives.
     if (new URLSearchParams(location.search).get('skipOpening') === '1') await app.start();
-    else showTitleScreen(() => app.start(), { opening: false });
+    else showTitleScreen(() => app.start({ showArrivalGuide: true }));
     return app;
 }

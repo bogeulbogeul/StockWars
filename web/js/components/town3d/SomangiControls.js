@@ -1,3 +1,5 @@
+import { gameKey } from '../../app/GameKeys.js';
+
 export function createSomangiControls(layer, play, blocked) {
     const hint = document.createElement('p');
     hint.className = 'somangi-controls';
@@ -6,7 +8,9 @@ export function createSomangiControls(layer, play, blocked) {
     window.addEventListener('keydown', event => {
         if (event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey || blocked()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
-        const action = event.code === 'Digit2' || event.key === '2' ? 'eat' : null;
+        const jumping = gameKey(event) === 'space';
+        if (jumping && event.target?.closest?.('button, a[href]')) return;
+        const action = jumping ? 'jump' : event.code === 'Digit2' || event.key === '2' ? 'eat' : null;
         if (action && play(action)) event.preventDefault();
     });
     return hint;

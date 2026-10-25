@@ -1,5 +1,6 @@
 import * as THREE from '../../../vendor/three/three.module.js';
-import { configureGameRenderer, addGameEnvironment } from '../../components/lighting/GameLighting.js';
+import { addGameEnvironment } from '../../components/lighting/GameLighting.js';
+import { acquireArrivalRenderer } from './ArrivalRenderer.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { GROUND_PROJECTION, TOWN_CAMERA } from '../../data/townModelBuildings.js';
 import { TOWN_BUS_ROAD } from '../../data/townBusRoad.js';
@@ -24,15 +25,21 @@ function disposeModel(root) {
 
 export function createArrivalView(host) {
     const camera = new THREE.PerspectiveCamera(TOWN_CAMERA.fieldOfView, 1, 1, 20000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
-    configureGameRenderer(renderer);
-    host.append(renderer.domElement);
+    let renderer, rendererLease;
     const loader = new GLTFLoader();
-    let disposed = false, bus, mixer, clip, village, environment, removeForest;
+    let disposed = false, bus, mixer, clip, village, environment, removeForest, playerVisibility;
     const busScale = TOWN_BUS_MODEL_SCALE, stopX = TOWN_BUS_ROAD.stopX;
     const busZ = (TOWN_BUS_ROAD.centerY - TOWN_BUS_ROAD.width / 4) / GROUND_PROJECTION;
+    const busBounds = new THREE.Box3(), viewFrustum = new THREE.Frustum(), viewProjection = new THREE.Matrix4();
     const centerX = 1650, centerZ = 4300;
+    const releaseVillage = () => {
+        if (!village?.live) return;
+        village.live.arrivalActive = false;
+        if (playerVisibility !== undefined && village.live.player?.root) {
+            village.live.player.root.visible = playerVisibility;
+        }
+        village.live.sleepingAnna?.setSleepEffectEnabled(true);
+    };
     const cleanupVillage = () => {
         if (!village?.owned) return;
         disposeModel(village.scene);
@@ -57,7 +64,15 @@ export function createArrivalView(host) {
         }),
         getArrivalVillage().then(result => {
             village = result;
-            if (disposed) { cleanupVillage(); return; }
+            if (disposed) { releaseVillage(); cleanupVillage(); return; }
+            if (village.live?.player?.root) {
+                playerVisibility = village.live.player.root.visible;
+                village.live.player.root.visible = false;
+            }
+            village.live?.sleepingAnna?.setSleepEffectEnabled(false);
+            rendererLease = acquireArrivalRenderer(host, village.live);
+            renderer = rendererLease.renderer;
+            resize();
             if (!village.scene.environment) {
                 environment = addGameEnvironment(village.scene, renderer);
             }
@@ -66,6 +81,7 @@ export function createArrivalView(host) {
         })
     ]).then(() => { if (!disposed) village.scene.add(bus); });
     const resize = () => {
+        if (!renderer) return;
         const { width, height } = host.getBoundingClientRect();
         renderer.setSize(width, height);
         camera.aspect = width / Math.max(1, height);
@@ -81,8 +97,9 @@ export function createArrivalView(host) {
     resize();
     return {
         ready,
-        render(distance, playerView = 0) {
+        render(distance, playerView = 0, stopped = distance >= 10) {
             if (disposed || !bus || !village) return;
+            if (village.live?.player?.root) village.live.player.root.visible = stopped && playerVisibility;
             // The coach faces -X and always enters from screen right.
             bus.position.x = stopX + 3000 * (1 - distance / 10);
             const t = playerView * playerView * (3 - 2 * playerView);
@@ -93,6 +110,12 @@ export function createArrivalView(host) {
             const pitch = THREE.MathUtils.degToRad(TOWN_CAMERA.pitchDegrees);
             camera.position.set(targetX, Math.sin(pitch) * d, targetZ + Math.cos(pitch) * d);
             camera.lookAt(targetX, 0, targetZ);
+            camera.updateMatrixWorld();
+            bus.updateMatrixWorld(true);
+            viewProjection.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+            viewFrustum.setFromProjectionMatrix(viewProjection);
+            const busVisible = viewFrustum.intersectsBox(busBounds.setFromObject(bus));
+            village.live?.sleepingAnna?.setSleepEffectEnabled(stopped && distance > 10 && !busVisible);
             village.live?.player?.update(0);
             village.live?.sleepingAnna?.update(1 / 60);
             if (clip) mixer.setTime(distance * 300 / (Math.PI * 2 * .39 * busScale) * clip.duration);
@@ -105,10 +128,12 @@ export function createArrivalView(host) {
             const front = bus.localToWorld(new THREE.Vector3(2, 0, 0)).project(camera);
             host.dataset.screenX = center.x.toFixed(4);
             host.dataset.frontScreenX = front.x.toFixed(4);
+            host.dataset.busVisible = String(busVisible);
+            return { busVisible };
         },
         dispose() {
             disposed = true;
-            if (village?.live) village.live.arrivalActive = false;
+            releaseVillage();
             observer.disconnect();
             mixer?.stopAllAction();
             if (bus) mixer?.uncacheRoot(bus);
@@ -120,9 +145,7 @@ export function createArrivalView(host) {
                 village.scene.environment = null;
                 environment.dispose();
             }
-            renderer.dispose();
-            renderer.forceContextLoss();
-            renderer.domElement.remove();
+            rendererLease?.dispose();
         }
     };
 }

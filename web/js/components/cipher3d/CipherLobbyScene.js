@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
@@ -6,6 +7,11 @@ import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { LOBBY, lobbyCanStand, nearbyLobbyDoor } from '../../data/cipherLobbyRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
+import { createCharacterBodies, charactersCanStand } from '../town3d/CharacterBodies.js';
+import { recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js';
+import { SeatInteraction } from '../town3d/SeatInteraction.js';
+import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
 
 // Independent preview scene: the retained 2D brokerage and account state are untouched.
 export class CipherLobbyScene {
@@ -66,6 +72,12 @@ export class CipherLobbyScene {
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
+        this.characterBodies = createCharacterBodies(this.room);
+        const sceneryCanStand = this.canStand;
+        this.canStand = (x, z) => sceneryCanStand(x, z)
+            && charactersCanStand(this.characterBodies, x, z);
+        installIndoorFurnitureBodies(this, this.canStand);
+        this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
         if(this.createInteraction)this.interaction=await this.createInteraction(this);
         this.player.setControlsHint(this.defaultHint);
         this.player.root.traverse(object => { if (object.isMesh) object.castShadow = true; });
@@ -114,6 +126,7 @@ export class CipherLobbyScene {
     }
 
     show() {
+        this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
         this.layer.classList.remove('hidden');
@@ -128,6 +141,7 @@ export class CipherLobbyScene {
     }
 
     hide() {
+        this.seatInteraction?.reset();
         this.interaction?.reset();
         this.trainingRoomScene?.hide();
         this.simulationRoomScene?.hide();
@@ -171,6 +185,11 @@ export class CipherLobbyScene {
     update(dt) {
         const LOBBY = this.layout;
         const c = this.controller, keys = c.keysHeld;
+        if(this.seatInteraction?.update(dt)){
+            this.room.userData.marketBoard?.update(performance.now());
+            this.room.userData.update?.(dt);return;
+        }
+        if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
         if(this.interaction?.update(dt)) {
             this.room.userData.marketBoard?.update(performance.now());
@@ -180,7 +199,7 @@ export class CipherLobbyScene {
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION,
             (x, z) => this.canStand(x, z));
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         if(length && !this.blocked() && this.interaction?.tryEnter(dx/length,dz/length,oldX,oldZ))return;
         let x = oldX, z = oldZ;

@@ -1,4 +1,6 @@
+import { faceConversation, clearConversationFacing } from '../../components/town3d/ConversationFacing.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
+import { recoverTownBody } from '../../components/town3d/TownBodyMovement.js';
 
 // Clear floor beside the counters keeps the actor visible above the dialogue panel.
 const dialoguePositions = { home: [0, -115], store: [-165, -95], information: [210, -80], bank: [245, -90], stock: [240, -110] };
@@ -7,6 +9,7 @@ export function placeSomangi(scenes, scene) {
     if (!position || !scene.controller) return;
     const [x, z] = position;
     Object.assign(scene.controller, { charPosX: x, charPosY: z * GROUND_PROJECTION });
+    if (scene.controller.canStand) recoverTownBody(scene.controller);
     scene.player?.update(0);
 }
 
@@ -20,7 +23,8 @@ export function expressionForBeat(beat) {
 }
 export async function presentSomangi(scenes, beat) {
     const scene = scenes.rooms.get(scenes.place) || scenes.townModelScene;
-    const moa = scene?.room?.userData.moa || (scenes.place === 'arrival' ? scenes.townModelScene.sleepingAnna : null);
+    const moa = scene?.room?.userData.moa || (scenes.place === 'arrival' || beat.chapter === 3 || beat.id === 'walk'
+        ? scenes.townModelScene.sleepingAnna : null);
     if (moa) {
         await moa.ready;
         const text = beat.speaker?.includes('모아') ? beat.text || '' : '';
@@ -32,5 +36,9 @@ export async function presentSomangi(scenes, beat) {
     if (!player) return;
     await player.ready;
     await player.setExpression(expressionForBeat(beat));
-    player.faceCamera(scene.camera);
+    if (moa) faceConversation(player, moa);
+    else {
+        clearConversationFacing(scenes.townModelScene.player, scenes.townModelScene.sleepingAnna);
+        player.faceCamera(scene.camera);
+    }
 }

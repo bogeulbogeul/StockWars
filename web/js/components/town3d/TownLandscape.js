@@ -78,6 +78,7 @@ export class TownLandscape {
         const bounds = new THREE.Box3().setFromObject(model);
         const size = bounds.getSize(new THREE.Vector3());
         const shadow = this.shadow(Math.max(25, size.x * 1.15), Math.max(30, size.z * 1.1));
+        model.contactShadow = shadow;
         shadow.position.x = (bounds.min.x + bounds.max.x) / 2;
         shadow.position.z = (bounds.min.z + bounds.max.z) / 2;
     }

@@ -1,0 +1,682 @@
+{
+  "radius": 38,
+  "animation": [
+    {
+      "name": "eat",
+      "radius": 40.23193078613863,
+      "minHeight": -1.3028179779439597e-7,
+      "maxHeight": 99.99999955824806
+    },
+    {
+      "name": "walk",
+      "radius": 31.225620512455052,
+      "minHeight": -0.006312216164396034,
+      "maxHeight": 100.97737799642707
+    }
+  ],
+  "town": {
+    "bodies": 2578,
+    "samples": 41248,
+    "approaches": 875,
+    "recoveries": 146,
+    "affected": [
+      "village_bus_stop",
+      "shop_garden_tree",
+      "garden_tree_west_gate",
+      "garden_tree_west_meadow",
+      "garden_tree_west_garden",
+      "garden_tree_home_orchard",
+      "garden_tree_back_grove",
+      "garden_tree_bank_grove",
+      "garden_flowers_home_1",
+      "garden_flowers_post_1",
+      "garden_flowers_furniture_1",
+      "garden_flowers_bank_1",
+      "garden_flowers_finance_1",
+      "garden_flowers_bus_stop_1",
+      "garden_flowers_tree_west_1",
+      "garden_flowers_entry_1",
+      "home_flowers",
+      "garden_flowers_post_0",
+      "garden_flowers_post_2",
+      "garden_flowers_bank_0",
+      "garden_flowers_bank_2",
+      "garden_flowers_store_0",
+      "garden_flowers_tree_west_0",
+      "garden_flowers_tree_west_2",
+      "garden_flowers_book_seat_2",
+      "garden_flowers_home_0",
+      "garden_flowers_home_2",
+      "garden_flowers_information_0",
+      "garden_flowers_information_2",
+      "garden_flowers_book_0",
+      "garden_flowers_bus_stop_0",
+      "garden_flowers_bus_stop_2",
+      "garden_flowers_home_seat_0",
+      "garden_flowers_home_seat_2",
+      "garden_flowers_furniture_0",
+      "garden_flowers_furniture_2",
+      "garden_flowers_finance_0",
+      "garden_flowers_finance_2",
+      "garden_flowers_pub_0",
+      "garden_flowers_tree_east_2",
+      "garden_flowers_entry_0",
+      "garden_flowers_entry_2",
+      "plaza_bench_west",
+      "plaza_bench_east",
+      "garden_bench_home",
+      "garden_bench_book",
+      "garden_bench_gate",
+      "plaza_notice_board",
+      "plaza_tree"
+    ],
+    "issues": [
+      {
+        "id": "village_bus_stop",
+        "mesh": "Sign_Frame_Fastener002",
+        "x": 1188.6145280232988,
+        "z": 5277.445649806218,
+        "distance": 37
+      },
+      {
+        "id": "village_bus_stop",
+        "mesh": "Sign_Inset",
+        "x": 1191.469274970417,
+        "z": 5276.97637278322,
+        "distance": 37
+      },
+      {
+        "id": "village_bus_stop",
+        "mesh": "Sign_Outer_Frame",
+        "x": 1186.1843575418995,
+        "z": 5271.657937927395,
+        "distance": 28
+      },
+      {
+        "id": "village_bus_stop",
+        "mesh": "Sign_Outer_Frame",
+        "x": 1195.1843575418995,
+        "z": 5271.657937927395,
+        "distance": 37
+      },
+      {
+        "id": "village_bus_stop",
+        "mesh": "Smooth_Stone_Platform",
+        "x": 825.5474841203887,
+        "z": 5234.116039480074,
+        "distance": 28
+      },
+      {
+        "id": "shop_garden_tree",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2876.738340971079,
+        "z": 3672.6290384424065,
+        "distance": 28
+      },
+      {
+        "id": "shop_garden_tree",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2867.738340971079,
+        "z": 3672.6290384424065,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_west_gate",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 674.9574951540739,
+        "z": 4699.156453159592,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_west_gate",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 683.9574951540739,
+        "z": 4699.156453159592,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_west_meadow",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 664.9574951540739,
+        "z": 3763.8759197506006,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_west_meadow",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 673.9574951540739,
+        "z": 3763.8759197506006,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_west_garden",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 674.9574951540739,
+        "z": 2668.9133440522683,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_west_garden",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 683.9574951540739,
+        "z": 2668.9133440522683,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_home_orchard",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 1106.7383409710797,
+        "z": 1938.938293586713,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_home_orchard",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 1097.7383409710797,
+        "z": 1938.938293586713,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_home_orchard",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 1254.9574951540737,
+        "z": 1938.938293586713,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_home_orchard",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 1263.9574951540737,
+        "z": 1938.938293586713,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_back_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2246.738340971079,
+        "z": 1893.3148529326158,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_back_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2237.738340971079,
+        "z": 1893.3148529326158,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_back_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2394.9574951540735,
+        "z": 1893.3148529326158,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_back_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2403.9574951540735,
+        "z": 1893.3148529326158,
+        "distance": 37
+      },
+      {
+        "id": "garden_tree_bank_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2914.9574951540735,
+        "z": 5086.955698719419,
+        "distance": 28
+      },
+      {
+        "id": "garden_tree_bank_grove",
+        "mesh": "Grounded_Short_Trunk",
+        "x": 2923.9574951540735,
+        "z": 5086.955698719419,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Flower_Stem002",
+        "x": 705.4491274307005,
+        "z": 2477.8003346957257,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Golden_Flower_Centre002",
+        "x": 706.6344098789006,
+        "z": 2477.800334737398,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Rounded_Flower_Petal010",
+        "x": 711.3822062222548,
+        "z": 2477.4203662892623,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Rounded_Flower_Petal011",
+        "x": 707.4563979200989,
+        "z": 2474.685951042531,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Rounded_Flower_Petal012",
+        "x": 705.1842480950484,
+        "z": 2476.255509142259,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Rounded_Flower_Petal013",
+        "x": 705.3224422952981,
+        "z": 2479.9599642092485,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Rounded_Flower_Petal014",
+        "x": 708.4244839344436,
+        "z": 2480.679885827731,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Small_Leaf004",
+        "x": 706.1891147575269,
+        "z": 2478.1296417436083,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Small_Leaf005",
+        "x": 702.6511854141846,
+        "z": 2477.471028884027,
+        "distance": 28
+      },
+      {
+        "id": "garden_flowers_home_1",
+        "mesh": "Small_Leaf005",
+        "x": 711.6511854141846,
+        "z": 2477.471028884027,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Flower_Stem002",
+        "x": 685.4491274307005,
+        "z": 3586.4499425902873,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Golden_Flower_Centre002",
+        "x": 686.6344098789006,
+        "z": 3586.4499426319594,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Rounded_Flower_Petal010",
+        "x": 691.3822062222548,
+        "z": 3586.0699741838243,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Rounded_Flower_Petal011",
+        "x": 687.4563979200989,
+        "z": 3583.335558937092,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Rounded_Flower_Petal012",
+        "x": 685.1842480950484,
+        "z": 3584.9051170368202,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Rounded_Flower_Petal013",
+        "x": 685.3224422952981,
+        "z": 3588.60957210381,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Rounded_Flower_Petal014",
+        "x": 688.4244839344436,
+        "z": 3589.3294937222927,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Small_Leaf004",
+        "x": 686.1891147575269,
+        "z": 3586.77924963817,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Small_Leaf005",
+        "x": 682.6511854141846,
+        "z": 3586.120636778589,
+        "distance": 28
+      },
+      {
+        "id": "garden_flowers_post_1",
+        "mesh": "Small_Leaf005",
+        "x": 691.6511854141846,
+        "z": 3586.120636778589,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Flower_Stem002",
+        "x": 1055.4491274307006,
+        "z": 4626.664389503703,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Golden_Flower_Centre002",
+        "x": 1056.6344098789004,
+        "z": 4626.664389545375,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Rounded_Flower_Petal010",
+        "x": 1061.3822062222548,
+        "z": 4626.28442109724,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Rounded_Flower_Petal011",
+        "x": 1057.4563979200989,
+        "z": 4623.550005850508,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Rounded_Flower_Petal012",
+        "x": 1055.1842480950484,
+        "z": 4625.119563950237,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Rounded_Flower_Petal013",
+        "x": 1055.322442295298,
+        "z": 4628.8240190172255,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Rounded_Flower_Petal014",
+        "x": 1058.4244839344437,
+        "z": 4629.543940635708,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Small_Leaf004",
+        "x": 1056.189114757527,
+        "z": 4626.993696551586,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Small_Leaf005",
+        "x": 1052.6511854141845,
+        "z": 4626.335083692004,
+        "distance": 28
+      },
+      {
+        "id": "garden_flowers_furniture_1",
+        "mesh": "Small_Leaf005",
+        "x": 1061.6511854141845,
+        "z": 4626.335083692004,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Flower_Stem002",
+        "x": 2725.4491274307,
+        "z": 5206.082085810738,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Golden_Flower_Centre002",
+        "x": 2726.6344098789004,
+        "z": 5206.08208585241,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Rounded_Flower_Petal010",
+        "x": 2731.382206222255,
+        "z": 5205.702117404275,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Rounded_Flower_Petal011",
+        "x": 2727.456397920099,
+        "z": 5202.967702157543,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Rounded_Flower_Petal012",
+        "x": 2725.184248095048,
+        "z": 5204.537260257272,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Rounded_Flower_Petal013",
+        "x": 2725.322442295298,
+        "z": 5208.24171532426,
+        "distance": 37
+      },
+      {
+        "id": "garden_flowers_bank_1",
+        "mesh": "Rounded_Flower_Petal014",
+        "x": 2728.4244839344437,
+        "z": 5208.961636942743,
+        "distance": 37
+      }
+    ],
+    "expectedObjects": 194,
+    "registeredObjects": 194,
+    "characters": [
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 46.44017521934251,
+        "vertexRadius": 46.56574481797804,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      }
+    ],
+    "standingCharacters": [
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 46.44017521934251,
+        "vertexRadius": 46.56574481797804,
+        "rootRadius": 30.987839693302522,
+        "leaks": [
+          {
+            "x": 1087.407025209094,
+            "z": 5359.235933551558
+          },
+          {
+            "x": 1055.4758525590114,
+            "z": 5365.587438696595
+          },
+          {
+            "x": 1023.5446799089289,
+            "z": 5359.235933551558
+          }
+        ]
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "place": "home",
+      "bodies": 26,
+      "samples": 416,
+      "approaches": 10,
+      "recoveries": 4,
+      "affected": [],
+      "issues": [],
+      "characters": []
+    },
+    {
+      "place": "store",
+      "bodies": 673,
+      "samples": 10768,
+      "approaches": 37,
+      "recoveries": 119,
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "bongbong-character",
+          "registered": false,
+          "radius": 30.937010047549578,
+          "vertexRadius": 30.96090361060807,
+          "rootRadius": 30.98783969330288,
+          "leaks": [
+            {
+              "x": -67.96432266033119,
+              "z": -157.56320870975912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "place": "information",
+      "bodies": 1508,
+      "samples": 24128,
+      "approaches": 56,
+      "recoveries": 214,
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "moa-character",
+          "registered": true,
+          "radius": 30.93701004754959,
+          "vertexRadius": 30.960903610608106,
+          "rootRadius": 30.9878396933029,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "bank",
+      "bodies": 6429,
+      "samples": 102864,
+      "approaches": 2022,
+      "recoveries": 338,
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "chagok-character",
+          "registered": true,
+          "radius": 30.93701432753584,
+          "vertexRadius": 34.9878995145402,
+          "rootRadius": 35.78903226203587,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "stock",
+      "bodies": 404,
+      "samples": 6464,
+      "approaches": 51,
+      "recoveries": 67,
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "tori-character",
+          "registered": true,
+          "radius": 30.937010047549578,
+          "vertexRadius": 34.98789695589618,
+          "rootRadius": 35.78903226203587,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "training",
+      "bodies": 553,
+      "samples": 8848,
+      "approaches": 61,
+      "recoveries": 160,
+      "affected": [],
+      "issues": [],
+      "characters": []
+    },
+    {
+      "place": "simulation",
+      "bodies": 604,
+      "samples": 9664,
+      "approaches": 45,
+      "recoveries": 180,
+      "affected": [],
+      "issues": [],
+      "characters": []
+    }
+  ],
+  "npcIssues": [
+    {
+      "name": "moa-character",
+      "registered": true,
+      "radius": 46.44017521934251,
+      "vertexRadius": 46.56574481797804,
+      "rootRadius": 30.987839693302522,
+      "leaks": [
+        {
+          "x": 1087.407025209094,
+          "z": 5359.235933551558
+        },
+        {
+          "x": 1055.4758525590114,
+          "z": 5365.587438696595
+        },
+        {
+          "x": 1023.5446799089289,
+          "z": 5359.235933551558
+        }
+      ]
+    },
+    {
+      "name": "bongbong-character",
+      "registered": false,
+      "radius": 30.937010047549578,
+      "vertexRadius": 30.96090361060807,
+      "rootRadius": 30.98783969330288,
+      "leaks": [
+        {
+          "x": -67.96432266033119,
+          "z": -157.56320870975912
+        }
+      ]
+    }
+  ],
+  "issueGroups": 51,
+  "errors": []
+}

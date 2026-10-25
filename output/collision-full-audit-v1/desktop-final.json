@@ -1,0 +1,536 @@
+{
+  "radius": 42,
+  "animation": [
+    {
+      "name": "eat",
+      "radius": 40.23193078613863,
+      "minHeight": -1.3028179779439597e-7,
+      "maxHeight": 99.99999955824806
+    },
+    {
+      "name": "walk",
+      "radius": 31.225620512454828,
+      "minHeight": -0.006312216164396034,
+      "maxHeight": 100.97737799642707
+    }
+  ],
+  "town": {
+    "bodies": 2627,
+    "samples": 84064,
+    "approaches": 1739,
+    "recoveries": 75,
+    "recoverySkippedOutsideBoundary": [
+      "boundary_tree_north_inner_0",
+      "boundary_tree_north_inner_1",
+      "boundary_tree_north_inner_2",
+      "boundary_tree_north_inner_3",
+      "boundary_tree_north_inner_4",
+      "boundary_tree_north_inner_5",
+      "boundary_tree_north_inner_6",
+      "boundary_tree_north_inner_7",
+      "boundary_tree_north_inner_8",
+      "boundary_tree_north_inner_9",
+      "boundary_tree_north_inner_10",
+      "boundary_tree_north_inner_11",
+      "boundary_tree_north_inner_12",
+      "boundary_tree_north_outer_0",
+      "boundary_tree_north_outer_1",
+      "boundary_tree_north_outer_2",
+      "boundary_tree_north_outer_3",
+      "boundary_tree_north_outer_4",
+      "boundary_tree_north_outer_5",
+      "boundary_tree_north_outer_6",
+      "boundary_tree_north_outer_7",
+      "boundary_tree_north_outer_8",
+      "boundary_tree_north_outer_9",
+      "boundary_tree_north_outer_10",
+      "boundary_tree_north_outer_11",
+      "boundary_tree_north_outer_12",
+      "boundary_tree_north_outer_13",
+      "boundary_tree_north_outer_14",
+      "boundary_tree_north_backdrop_0",
+      "boundary_tree_north_backdrop_1",
+      "boundary_tree_north_backdrop_2",
+      "boundary_tree_north_backdrop_3",
+      "boundary_tree_north_backdrop_4",
+      "boundary_tree_north_backdrop_5",
+      "boundary_tree_north_backdrop_6",
+      "boundary_tree_north_backdrop_7",
+      "boundary_tree_north_backdrop_8",
+      "boundary_tree_north_backdrop_9",
+      "boundary_tree_north_backdrop_10",
+      "boundary_tree_north_backdrop_11",
+      "boundary_tree_north_backdrop_12",
+      "boundary_tree_north_backdrop_13",
+      "boundary_tree_north_backdrop_14",
+      "boundary_tree_north_backdrop_15",
+      "boundary_tree_north_backdrop_16",
+      "boundary_tree_west_0",
+      "boundary_tree_west_1",
+      "boundary_tree_west_2",
+      "boundary_tree_west_3",
+      "boundary_tree_west_4",
+      "boundary_tree_west_5",
+      "boundary_tree_west_6",
+      "boundary_tree_west_7",
+      "boundary_tree_west_8",
+      "boundary_tree_west_9",
+      "boundary_tree_west_10",
+      "boundary_tree_west_11",
+      "boundary_tree_east_0",
+      "boundary_tree_east_1",
+      "boundary_tree_east_2",
+      "boundary_tree_east_3",
+      "boundary_tree_east_4",
+      "boundary_tree_east_5",
+      "boundary_tree_east_6",
+      "boundary_tree_east_7",
+      "boundary_tree_east_8",
+      "boundary_tree_east_9",
+      "boundary_tree_east_10",
+      "boundary_tree_east_11",
+      "boundary_tree_west_outer_0",
+      "boundary_tree_west_outer_1",
+      "boundary_tree_west_outer_2",
+      "boundary_tree_west_outer_3",
+      "boundary_tree_west_outer_4",
+      "boundary_tree_west_outer_5",
+      "boundary_tree_west_outer_6",
+      "boundary_tree_west_outer_7",
+      "boundary_tree_west_outer_8",
+      "boundary_tree_west_outer_9",
+      "boundary_tree_west_outer_10",
+      "boundary_tree_west_outer_11",
+      "boundary_tree_west_outer_12",
+      "boundary_tree_east_outer_0",
+      "boundary_tree_east_outer_1",
+      "boundary_tree_east_outer_2",
+      "boundary_tree_east_outer_3",
+      "boundary_tree_east_outer_4",
+      "boundary_tree_east_outer_5",
+      "boundary_tree_east_outer_6",
+      "boundary_tree_east_outer_7",
+      "boundary_tree_east_outer_8",
+      "boundary_tree_east_outer_9",
+      "boundary_tree_east_outer_10",
+      "boundary_tree_east_outer_11",
+      "boundary_tree_east_outer_12",
+      "boundary_tree_west_backdrop_0",
+      "boundary_tree_west_backdrop_1",
+      "boundary_tree_west_backdrop_2",
+      "boundary_tree_west_backdrop_3",
+      "boundary_tree_west_backdrop_4",
+      "boundary_tree_west_backdrop_5",
+      "boundary_tree_west_backdrop_6",
+      "boundary_tree_west_backdrop_7",
+      "boundary_tree_west_backdrop_8",
+      "boundary_tree_west_backdrop_9",
+      "boundary_tree_west_backdrop_10",
+      "boundary_tree_west_backdrop_11",
+      "boundary_tree_east_backdrop_0",
+      "boundary_tree_east_backdrop_1",
+      "boundary_tree_east_backdrop_2",
+      "boundary_tree_east_backdrop_3",
+      "boundary_tree_east_backdrop_4",
+      "boundary_tree_east_backdrop_5",
+      "boundary_tree_east_backdrop_6",
+      "boundary_tree_east_backdrop_7",
+      "boundary_tree_east_backdrop_8",
+      "boundary_tree_east_backdrop_9",
+      "boundary_tree_east_backdrop_10",
+      "boundary_tree_east_backdrop_11"
+    ],
+    "affected": [],
+    "issues": [],
+    "expectedObjects": 194,
+    "registeredObjects": 194,
+    "missingObjects": [],
+    "characters": [
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      }
+    ],
+    "standingCharacters": [
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      }
+    ],
+    "motionCharacters": [
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588756,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.48876323588756,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.48876323588675,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 34.48876323588675,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.41623134916828,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.41623134916828,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 34.18119727442525,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 34.18119727442525,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 33.74510192301199,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 33.74510192301199,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 33.06419251274103,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 33.06419251274103,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 32.08694403432308,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 32.08694403432308,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827267,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.98783969330256,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.98783969330256,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      },
+      {
+        "name": "moa-character",
+        "registered": true,
+        "radius": 30.987839693302522,
+        "boxRadius": 46.63471688581711,
+        "vertexRadius": 46.75970450827273,
+        "rootRadius": 30.987839693302522,
+        "leaks": []
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "place": "home",
+      "initialPositionLegal": true,
+      "bodies": 26,
+      "samples": 832,
+      "approaches": 14,
+      "recoveries": 4,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": []
+    },
+    {
+      "place": "store",
+      "initialPositionLegal": true,
+      "bodies": 674,
+      "samples": 21568,
+      "approaches": 32,
+      "recoveries": 120,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "bongbong-character",
+          "registered": true,
+          "radius": 30.98783969330288,
+          "boxRadius": 30.937010047549578,
+          "vertexRadius": 30.96090361060807,
+          "rootRadius": 30.98783969330288,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "information",
+      "initialPositionLegal": true,
+      "bodies": 1521,
+      "samples": 48672,
+      "approaches": 56,
+      "recoveries": 227,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "moa-character",
+          "registered": true,
+          "radius": 30.9878396933029,
+          "boxRadius": 30.93701004754959,
+          "vertexRadius": 30.960903610608106,
+          "rootRadius": 30.9878396933029,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "bank",
+      "initialPositionLegal": true,
+      "bodies": 6437,
+      "samples": 205984,
+      "approaches": 1974,
+      "recoveries": 346,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "chagok-character",
+          "registered": true,
+          "radius": 35.78903226203587,
+          "boxRadius": 30.93701432753584,
+          "vertexRadius": 34.9878995145402,
+          "rootRadius": 35.78903226203587,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "stock",
+      "initialPositionLegal": true,
+      "bodies": 405,
+      "samples": 12960,
+      "approaches": 51,
+      "recoveries": 68,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": [
+        {
+          "name": "tori-character",
+          "registered": true,
+          "radius": 35.78903226203587,
+          "boxRadius": 30.937010047549578,
+          "vertexRadius": 34.98789695589618,
+          "rootRadius": 35.78903226203587,
+          "leaks": []
+        }
+      ]
+    },
+    {
+      "place": "training",
+      "initialPositionLegal": true,
+      "bodies": 555,
+      "samples": 17760,
+      "approaches": 61,
+      "recoveries": 162,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": []
+    },
+    {
+      "place": "simulation",
+      "initialPositionLegal": true,
+      "bodies": 606,
+      "samples": 19392,
+      "approaches": 44,
+      "recoveries": 181,
+      "recoverySkippedOutsideBoundary": [],
+      "affected": [],
+      "issues": [],
+      "characters": []
+    }
+  ],
+  "npcIssues": [],
+  "issueGroups": 0,
+  "errors": []
+}

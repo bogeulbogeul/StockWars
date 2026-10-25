@@ -12,13 +12,13 @@ const trees = [
 
 const flowerBeds = [
     ['home', 650, 1080], ['post', 630, 1560],
-    ['furniture', 650, 2010], ['information', 980, 2260],
+    ['furniture', 1000, 2010], ['information', 980, 2260],
     ['bank', 2670, 2270], ['finance', 2100, 1090],
     ['book', 2900, 2000], ['store', 2900, 1560],
-    ['pub', 2900, 1060], ['bus_stop', 770, 2370],
+    ['pub', 2900, 1060], ['bus_stop', 770, 2290],
     ['tree_west', 1450, 1550], ['tree_east', 2050, 1550],
     ['home_seat', 1050, 1160], ['book_seat', 2870, 1800],
-    ['entry', 1950, 2350]
+    ['entry', 2100, 2270]
 ];
 
 export const TOWN_GARDEN_PROPS = [
@@ -35,7 +35,7 @@ export const TOWN_GARDEN_PROPS = [
     { id: 'garden_bench_home', name: '주거 구역 벤치', file: 'Bench-clean.glb', nativeMaterials: true,
         x: 1050, y: 1200, width: 125, rotation: 0 },
     { id: 'garden_bench_book', name: '서점 옆 벤치', file: 'Bench-clean.glb', nativeMaterials: true,
-        x: 2880, y: 1760, width: 125, rotation: 0 },
+        x: 2960, y: 1760, width: 125, rotation: 0 },
     { id: 'garden_bench_gate', name: '정류장 쉼터 벤치', file: 'Bench-clean.glb', nativeMaterials: true,
-        x: 1460, y: 2450, width: 125, rotation: 0 }
+        x: 800, y: 2190, width: 125, rotation: 0 }
 ];

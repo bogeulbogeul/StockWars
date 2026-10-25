@@ -1,4 +1,3 @@
 .moa-wake-dialogue { z-index: 1215; }
-.moa-wake-dialogue .vn-dialogue-box { width: min(850px, 100%); }
-.moa-wake-dialogue__actions { display: flex; justify-content: flex-end; }
+.moa-wake-dialogue .vn-dialogue-box { position: relative; width: min(850px, 100%); }
 .moa-wake-dialogue .vn-dialogue-text { min-height: 2em; }

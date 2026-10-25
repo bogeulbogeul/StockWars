@@ -1,0 +1,1640 @@
+{
+  "buildings": {
+    "home_office_tower": {
+      "width": 347.25684400086345,
+      "expected": 347.2568440008635,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 211,
+      "doorHeight": 124.9999999976645,
+      "doorAlignment": 2.9623663522215793e-9
+    },
+    "settlement_information": {
+      "width": 416.7899423175945,
+      "expected": 416.78994231759486,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 253,
+      "doorHeight": 125.00000000410033,
+      "doorAlignment": 0
+    },
+    "vivian_store": {
+      "width": 506.13788837607626,
+      "expected": 506.13788837607655,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 244
+    },
+    "julian_furniture": {
+      "width": 516.4776678154151,
+      "expected": 516.4776678154151,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 306,
+      "doorHeight": 125.0000000051599
+    },
+    "cipher_securities": {
+      "width": 774.3134326612205,
+      "expected": 774.3134326612203,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 659,
+      "doorHeight": 124.99999999987199,
+      "doorAlignment": 7.028802428976633e-9
+    },
+    "node_finance": {
+      "width": 441.28963546145314,
+      "expected": 441.28963546145303,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 257,
+      "doorHeight": 124.99999999593871
+    },
+    "midnight_pub": {
+      "width": 545.7764649011528,
+      "expected": 545.776464901153,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 339,
+      "doorHeight": 125.00000000584072
+    },
+    "data_ink_bookstore": {
+      "width": 455.62332916416244,
+      "expected": 455.6233291641629,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 340
+    },
+    "post_office": {
+      "width": 371.2923733673174,
+      "expected": 371.2923733673174,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 214,
+      "doorHeight": 124.99999999697141,
+      "doorAlignment": 3.3753337902453495e-9
+    }
+  },
+  "overlaps": [],
+  "clock": [
+    "2026-10-18T15:00:00Z",
+    "2026-10-18T18:00:00Z",
+    "2026-10-18T21:30:00Z",
+    "2026-10-19T03:15:30Z"
+  ],
+  "clockAdvanced": true,
+  "blockedPathSamples": [
+    {
+      "routeIndex": 0,
+      "x": 2063.6363636363635,
+      "y": 1635.4545454545455
+    },
+    {
+      "routeIndex": 0,
+      "x": 2072.2727272727275,
+      "y": 1630.909090909091
+    },
+    {
+      "routeIndex": 0,
+      "x": 2080.909090909091,
+      "y": 1626.3636363636363
+    },
+    {
+      "routeIndex": 0,
+      "x": 2089.5454545454545,
+      "y": 1621.8181818181818
+    },
+    {
+      "routeIndex": 0,
+      "x": 2098.181818181818,
+      "y": 1617.2727272727273
+    },
+    {
+      "routeIndex": 0,
+      "x": 2106.818181818182,
+      "y": 1612.7272727272727
+    },
+    {
+      "routeIndex": 0,
+      "x": 2115.4545454545455,
+      "y": 1608.1818181818182
+    },
+    {
+      "routeIndex": 0,
+      "x": 2124.090909090909,
+      "y": 1603.6363636363637
+    },
+    {
+      "routeIndex": 0,
+      "x": 2132.7272727272725,
+      "y": 1599.090909090909
+    },
+    {
+      "routeIndex": 0,
+      "x": 2141.3636363636365,
+      "y": 1594.5454545454545
+    },
+    {
+      "routeIndex": 0,
+      "x": 2150,
+      "y": 1590
+    },
+    {
+      "routeIndex": 0,
+      "x": 2150,
+      "y": 1590
+    },
+    {
+      "routeIndex": 0,
+      "x": 2152.777777777778,
+      "y": 1580.5555555555557
+    },
+    {
+      "routeIndex": 2,
+      "x": 1127.5,
+      "y": 2341.25
+    },
+    {
+      "routeIndex": 2,
+      "x": 1129,
+      "y": 2331.5
+    },
+    {
+      "routeIndex": 2,
+      "x": 1130.5,
+      "y": 2321.75
+    },
+    {
+      "routeIndex": 2,
+      "x": 1132,
+      "y": 2312
+    },
+    {
+      "routeIndex": 2,
+      "x": 1133.5,
+      "y": 2302.25
+    },
+    {
+      "routeIndex": 2,
+      "x": 1135,
+      "y": 2292.5
+    },
+    {
+      "routeIndex": 2,
+      "x": 1136.5,
+      "y": 2282.75
+    },
+    {
+      "routeIndex": 3,
+      "x": 1470,
+      "y": 1490
+    },
+    {
+      "routeIndex": 3,
+      "x": 1480,
+      "y": 1490
+    },
+    {
+      "routeIndex": 3,
+      "x": 1490,
+      "y": 1490
+    },
+    {
+      "routeIndex": 3,
+      "x": 1500,
+      "y": 1490
+    },
+    {
+      "routeIndex": 4,
+      "x": 2000,
+      "y": 1490
+    },
+    {
+      "routeIndex": 4,
+      "x": 2010,
+      "y": 1490
+    },
+    {
+      "routeIndex": 4,
+      "x": 2020,
+      "y": 1490
+    },
+    {
+      "routeIndex": 4,
+      "x": 2030,
+      "y": 1490
+    },
+    {
+      "routeIndex": 5,
+      "x": 1750,
+      "y": 1318
+    },
+    {
+      "routeIndex": 5,
+      "x": 1750,
+      "y": 1308
+    },
+    {
+      "routeIndex": 5,
+      "x": 1750,
+      "y": 1298
+    },
+    {
+      "routeIndex": 5,
+      "x": 1750,
+      "y": 1288
+    },
+    {
+      "routeIndex": 5,
+      "x": 1750,
+      "y": 1278
+    },
+    {
+      "routeIndex": 8,
+      "x": 908.2352941176471,
+      "y": 1991.764705882353
+    },
+    {
+      "routeIndex": 8,
+      "x": 917.9411764705883,
+      "y": 1992.0588235294117
+    },
+    {
+      "routeIndex": 8,
+      "x": 927.6470588235294,
+      "y": 1992.3529411764705
+    },
+    {
+      "routeIndex": 8,
+      "x": 937.3529411764706,
+      "y": 1992.6470588235295
+    },
+    {
+      "routeIndex": 8,
+      "x": 947.0588235294117,
+      "y": 1992.9411764705883
+    },
+    {
+      "routeIndex": 8,
+      "x": 956.7647058823529,
+      "y": 1993.235294117647
+    },
+    {
+      "routeIndex": 8,
+      "x": 966.4705882352941,
+      "y": 1993.5294117647059
+    },
+    {
+      "routeIndex": 8,
+      "x": 976.1764705882352,
+      "y": 1993.8235294117646
+    },
+    {
+      "routeIndex": 8,
+      "x": 985.8823529411765,
+      "y": 1994.1176470588234
+    },
+    {
+      "routeIndex": 8,
+      "x": 1024.7058823529412,
+      "y": 1995.2941176470588
+    },
+    {
+      "routeIndex": 8,
+      "x": 1034.4117647058824,
+      "y": 1995.5882352941176
+    },
+    {
+      "routeIndex": 8,
+      "x": 1044.1176470588234,
+      "y": 1995.8823529411766
+    },
+    {
+      "routeIndex": 8,
+      "x": 1053.8235294117646,
+      "y": 1996.1764705882354
+    },
+    {
+      "routeIndex": 8,
+      "x": 1063.5294117647059,
+      "y": 1996.4705882352941
+    },
+    {
+      "routeIndex": 8,
+      "x": 1073.235294117647,
+      "y": 1996.764705882353
+    },
+    {
+      "routeIndex": 8,
+      "x": 1082.9411764705883,
+      "y": 1997.0588235294117
+    },
+    {
+      "routeIndex": 8,
+      "x": 1092.6470588235295,
+      "y": 1997.3529411764705
+    },
+    {
+      "routeIndex": 8,
+      "x": 1102.3529411764705,
+      "y": 1997.6470588235295
+    },
+    {
+      "routeIndex": 10,
+      "x": 700,
+      "y": 1510
+    },
+    {
+      "routeIndex": 10,
+      "x": 700,
+      "y": 1510
+    },
+    {
+      "routeIndex": 10,
+      "x": 710,
+      "y": 1510
+    },
+    {
+      "routeIndex": 10,
+      "x": 720,
+      "y": 1510
+    },
+    {
+      "routeIndex": 10,
+      "x": 730,
+      "y": 1510
+    },
+    {
+      "routeIndex": 11,
+      "x": 2150,
+      "y": 1590
+    }
+  ],
+  "blockedPathCorners": [
+    {
+      "routeIndex": 0,
+      "x": 2071.5960457414044,
+      "y": 1631.2652390834714
+    },
+    {
+      "routeIndex": 0,
+      "x": 2079.3029312816175,
+      "y": 1627.029378272833
+    },
+    {
+      "routeIndex": 0,
+      "x": 2086.742797050538,
+      "y": 1622.574843657612
+    },
+    {
+      "routeIndex": 0,
+      "x": 2093.9156430481644,
+      "y": 1617.901635237808
+    },
+    {
+      "routeIndex": 0,
+      "x": 2100.821469274499,
+      "y": 1613.0097530134221
+    },
+    {
+      "routeIndex": 0,
+      "x": 2107.4602757295397,
+      "y": 1607.8991969844528
+    },
+    {
+      "routeIndex": 0,
+      "x": 2113.832062413288,
+      "y": 1602.5699671509008
+    },
+    {
+      "routeIndex": 0,
+      "x": 2119.9368293257435,
+      "y": 1597.0220635127666
+    },
+    {
+      "routeIndex": 0,
+      "x": 2125.7745764669057,
+      "y": 1591.2554860700495
+    },
+    {
+      "routeIndex": 0,
+      "x": 2131.345303836775,
+      "y": 1585.2702348227504
+    },
+    {
+      "routeIndex": 0,
+      "x": 2136.649011435351,
+      "y": 1579.066309770868
+    },
+    {
+      "routeIndex": 0,
+      "x": 2141.6856992626344,
+      "y": 1572.6437109144028
+    },
+    {
+      "routeIndex": 0,
+      "x": 2146.4553673186247,
+      "y": 1566.0024382533554
+    },
+    {
+      "routeIndex": 0,
+      "x": 2150.958015603322,
+      "y": 1559.1424917877252
+    },
+    {
+      "routeIndex": 0,
+      "x": 2155.1936441167263,
+      "y": 1552.0638715175123
+    },
+    {
+      "routeIndex": 8,
+      "x": 910.1938382419485,
+      "y": 1991.7459633950257
+    },
+    {
+      "routeIndex": 8,
+      "x": 916.8579413139582,
+      "y": 1992.025998221635
+    },
+    {
+      "routeIndex": 10,
+      "x": 708.7361400675006,
+      "y": 1504.3300000000002
+    },
+    {
+      "routeIndex": 10,
+      "x": 710.29377289954,
+      "y": 1505.52
+    },
+    {
+      "routeIndex": 10,
+      "x": 711.9979058792419,
+      "y": 1506.57
+    },
+    {
+      "routeIndex": 10,
+      "x": 713.8485390066062,
+      "y": 1507.48
+    },
+    {
+      "routeIndex": 10,
+      "x": 715.8456722816331,
+      "y": 1508.25
+    },
+    {
+      "routeIndex": 10,
+      "x": 717.9893057043224,
+      "y": 1508.88
+    },
+    {
+      "routeIndex": 10,
+      "x": 720.2794392746741,
+      "y": 1509.37
+    },
+    {
+      "routeIndex": 10,
+      "x": 722.7160729926884,
+      "y": 1509.72
+    },
+    {
+      "routeIndex": 10,
+      "x": 725.2992068583652,
+      "y": 1509.93
+    },
+    {
+      "routeIndex": 10,
+      "x": 728.0288408717043,
+      "y": 1510
+    }
+  ],
+  "reachableEntrances": {
+    "home_office_tower": true,
+    "settlement_information": true,
+    "vivian_store": true,
+    "julian_furniture": true,
+    "cipher_securities": true,
+    "node_finance": true,
+    "midnight_pub": true,
+    "data_ink_bookstore": true,
+    "post_office": true
+  },
+  "informationClearance": {
+    "furniture": 260.05977424586325,
+    "busStop": 166.22327934462933,
+    "board": 16.26586035104947
+  },
+  "roadObstructions": [],
+  "propBodies": [
+    {
+      "id": "village_bus_stop",
+      "count": 28,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_tree",
+      "count": 327,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "shop_garden_tree",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_flowers_west",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_flowers_east",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "home_flowers",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "shop_flowers",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_bench_west",
+      "count": 8,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_bench_east",
+      "count": 8,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "plaza_notice_board",
+      "count": 18,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_west_gate",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_west_meadow",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_west_garden",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_home_orchard",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_back_grove",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_pub_grove",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_book_grove",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_tree_bank_grove",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_post_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_post_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_post_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_furniture_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_furniture_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_furniture_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_information_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_information_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_information_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bank_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bank_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bank_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_finance_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_finance_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_finance_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_store_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_store_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_store_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_pub_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_pub_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_pub_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bus_stop_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bus_stop_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_bus_stop_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_west_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_west_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_west_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_east_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_east_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_tree_east_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_seat_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_seat_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_home_seat_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_seat_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_seat_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_book_seat_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_entry_0",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_entry_1",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_flowers_entry_2",
+      "count": 27,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_bench_home",
+      "count": 8,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_bench_book",
+      "count": 8,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "garden_bench_gate",
+      "count": 8,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_inner_12",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_12",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_13",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_outer_14",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_12",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_13",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_14",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_15",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_north_backdrop_16",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_outer_12",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_outer_12",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_west_backdrop_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_0",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_1",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_2",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_3",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_4",
+      "count": 7,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_5",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_6",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_7",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_8",
+      "count": 6,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_9",
+      "count": 4,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_10",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    },
+    {
+      "id": "boundary_tree_east_backdrop_11",
+      "count": 1,
+      "solid": true,
+      "type": "static"
+    }
+  ],
+  "errors": []
+}

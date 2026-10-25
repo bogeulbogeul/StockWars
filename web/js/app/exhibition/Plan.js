@@ -1,4 +1,5 @@
 import { dialogue, segment } from './Script.js';
+import { TOUR_ORDER } from './TourOrder.js';
 
 // Keep original dialogue; only implement its missing interactive connections here.
 export function buildPlan(chapters, order = 'packing', includeRetiredTour = false) {
@@ -10,14 +11,23 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
         for (const line of lines) if (n === 14 && line.text.startsWith('정답을 맞히는 시험은 아닙니다.')) {
             line.text = '몇 가지 정보를 함께 읽어볼 겁니다. 결과와 관계없이 계좌를 만들 수 있으니 편하게 답해주세요.';
         }
+        if (n === 2 && !includeRetiredTour) for (const line of lines) {
+            if (line.text === '준비됐어요? 먼저 마을 가운데로 가볼까요?') {
+                line.text = '준비됐어요? 가까운 가구점부터 둘러볼까요?';
+            }
+        }
         plan.push(...lines);
     };
     add(1, 'arrival'); add(2, 'arrival');
-    action('walk', 'tree', '포포리 나무로 가기');
     const tour = [['포포리 나무', 'tree'], ['소망이네 집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
         ['우디 가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['도란 쉼터', 'pub'], ['소담 서점', 'bookstore'],
         ['두리 우체국', 'post'], ['토리 증권사', 'stockOutside'], ['차곡 은행', 'bankOutside'], ['모아 안내소', 'informationOutside']];
-    tour.forEach(([name, place], i) => place && add(3, place, `### ${name}`, tour[i + 1] ? `### ${tour[i + 1][0]}` : undefined));
+    const orderedTour = includeRetiredTour ? tour : TOUR_ORDER.map(place => tour.find(stop => stop[1] === place));
+    action('walk', orderedTour[0][1], `${orderedTour[0][0]}으로 가기`);
+    orderedTour.forEach(([name, place]) => {
+        const sourceIndex = tour.findIndex(stop => stop[0] === name);
+        if (place) add(3, place, `### ${name}`, tour[sourceIndex + 1] ? `### ${tour[sourceIndex + 1][0]}` : undefined);
+    });
     add(4, 'information', undefined, '[화면]'); action('nickname', 'information', '입주 신청서에 서명하기');
     add(4, 'information', '[화면]');
     add(5, 'information', undefined, '[화면]'); action('phone', 'information', '휴대폰 받기');

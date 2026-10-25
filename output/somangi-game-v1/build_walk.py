@@ -14,8 +14,13 @@ bpy.ops.object.mode_set(mode='OBJECT')
 groups={name:body.vertex_groups.new(name=name) for name in ['Leg.L','Leg.R']};bg=body.vertex_groups['Body']
 for v in body.data.vertices:
  if v.co.z>=-.54:continue
- t=max(0,min(1,(-v.co.z-.54)/.10));weight=t*t*(3-2*t)
- groups['Leg.L' if v.co.x>0 else 'Leg.R'].add([v.index],weight,'REPLACE')
+ # Blend continuously between the two hips instead of assigning opposite
+ # transforms across the crotch centreline. Feet retain one rigid leg influence.
+ t=max(0,min(1,(-v.co.z-.54)/.20));weight=t*t*(3-2*t)
+ h=max(0,min(1,(v.co.z+.76)/.12));width=.12*h*h*(3-2*h)
+ u=max(-1,min(1,v.co.x/max(width,1e-7)));left=.5+.75*u-.25*u*u*u
+ groups['Leg.L'].add([v.index],weight*left,'REPLACE')
+ groups['Leg.R'].add([v.index],weight*(1-left),'REPLACE')
  if weight<1:bg.add([v.index],1-weight,'REPLACE')
  else:bg.remove([v.index])
 scene.render.fps=40;scene.frame_start=1;scene.frame_end=31
@@ -26,6 +31,9 @@ def world_pose(name,angle,shift=0):
 for frame in range(1,32):
  scene.frame_set(frame);phase=2*math.pi*(frame-1)/30;wave=math.sin(phase)
  root=rig.pose.bones['Body'];root.location=(0,0,0)
+ # Recompute the parent before assigning world-space child poses. Otherwise the
+ # previous frame's ground correction is baked inversely into the leg location.
+ bpy.context.view_layer.update()
  for side,sign in [('L',1),('R',-1)]:
   world_pose('Leg.'+side,math.radians(18)*wave*sign,.030*max(0,wave*sign))
   world_pose('Arm.'+side,-math.radians(8)*wave*sign)
@@ -41,4 +49,4 @@ scene.frame_set(1);assert np.array_equal(raw,np.array([v.co[:] for v in body.dat
 bpy.ops.object.select_all(action='DESELECT');rig.select_set(True);body.select_set(True)
 bpy.ops.wm.save_as_mainfile(filepath=str(P/'somangi-walk.blend'))
 bpy.ops.export_scene.gltf(filepath=str(P/'walk.glb'),use_selection=True,export_format='GLB',export_skins=True,export_animations=True,export_animation_mode='SCENE',export_frame_range=True,export_cameras=False,export_lights=False)
-(P/'walk-build.json').write_text(json.dumps(dict(source='somangi-story-expressions-v6',restVerticesUnchanged=True,bones=list(rig.pose.bones.keys()),seconds=.75,straightArms=True),indent=2))
+(P/'walk-build.json').write_text(json.dumps(dict(source='somangi-story-expressions-v6',restVerticesUnchanged=True,bones=list(rig.pose.bones.keys()),seconds=.75,straightArms=True,hipWeights='continuous two-hip blend through crotch; rigid feet'),indent=2))

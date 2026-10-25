@@ -10,6 +10,8 @@ import { buildBankModelRoom } from '../../components/bank3d/BankModelRoom.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
 import { TOWN_MODEL_PROPS } from '../../data/townModelProps.js';
 import { placeSomangi } from './SomangiPresentation.js';
+import { walkVillageTour } from './TourWalk.js';
+import { enterInformationAfterMoa } from './InformationEntry.js';
 
 const outside = id => {
     const b = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
@@ -41,17 +43,30 @@ export class ExhibitionScenes {
         const draw = () => { this.townModelScene.draw(); this.frame = requestAnimationFrame(draw); };
         draw(); this.container = container;
     }
-    async show(place) {
+    async show(place, { preservePosition = false, tour = false } = {}) {
         if (place === this.place) return;
+        const previousMoa = this.rooms.get(this.place)?.room?.userData.moa || this.townModelScene.sleepingAnna;
+        if (previousMoa && !previousMoa.root.userData.sleeping) await previousMoa.setMood('calm', 'smile');
+        const walking = tour && positions[this.place] && positions[place];
+        if (walking) await walkVillageTour(this, positions[place]);
+        if (place === 'information' && this.place === 'informationOutside' && !this.informationEntered) await enterInformationAfterMoa(this);
         this.place = place;
         for (const room of this.rooms.values()) room.hide();
         this.townStage.containerEl.classList.add('hidden');
         if (positions[place]) {
             const [x, y] = positions[place];
-            Object.assign(this.townStage.playerController, { charPosX: x, charPosY: y });
+            if (!preservePosition && !walking) Object.assign(this.townStage.playerController, { charPosX: x, charPosY: y });
             this.townStage.containerEl.classList.remove('hidden');
             this.townModelScene.draw(); return;
         }
+        const room = await this.prepareRoom(place);
+        if (this.place === place) {
+            room.show();
+            this.informationAwaitingTalk = place === 'information';
+            if (!this.informationAwaitingTalk) placeSomangi(this, room);
+        }
+    }
+    async prepareRoom(place) {
         let room = this.rooms.get(place);
         if (!room) {
             const back = () => this.show('homeOutside');
@@ -69,7 +84,7 @@ export class ExhibitionScenes {
             this.rooms.set(place, room);
         }
         await room.ready;
-        if (this.place === place) { room.show(); placeSomangi(this, room); }
+        return room;
     }
     setTime(sunset) {
         document.body.classList.toggle('exhibition-sunset', sunset);

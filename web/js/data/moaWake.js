@@ -1,3 +1,5 @@
+export const MOA_APPROACH_AREA = Object.freeze({ minX: 900, maxX: 1180, minY: 2270, maxY: 2410 });
+export function outsideMoaApproach(x, y) { return x < MOA_APPROACH_AREA.minX || x > MOA_APPROACH_AREA.maxX || y < MOA_APPROACH_AREA.minY || y > MOA_APPROACH_AREA.maxY; }
 export const MOA_WAKE_CALLS = 3;
 export const MOA_SLEEP_TALK = [
     '모아가 의자에 앉아 꾸벅꾸벅 졸고 있어요.',

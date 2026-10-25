@@ -1,3 +1,4 @@
+import { conversationYaw } from './ConversationFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { loadCharacterAsset } from './SomangiAssets.js';
 import { SomangiExpressions } from './SomangiExpressions.js';
@@ -39,5 +40,14 @@ export class MoaCharacter {
         }
         return this.expressions.set(expression);
     }
-    update(dt) { this.mixer?.update(Math.min(Math.max(dt || 0, 0), .1)); }
+    faceTarget(target) {
+        this.conversationTarget = target;
+        if (this.root.userData.seated) return;
+        const yaw = conversationYaw(this.root, target);
+        if (yaw !== null) this.root.rotation.y = yaw;
+    }
+    update(dt) {
+        this.mixer?.update(Math.min(Math.max(dt || 0, 0), .1));
+        if (this.conversationTarget && !this.root.userData.seated) this.faceTarget(this.conversationTarget);
+    }
 }

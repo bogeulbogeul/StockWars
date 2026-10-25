@@ -1,0 +1,9 @@
+.bus-stop-seat-action {
+    position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
+    padding:10px 18px;border:2px solid #665747;border-radius:16px;
+    background:#fff8e8;color:#4f4538;font-family:inherit;font-size:16px;font-weight:700;line-height:1.4;
+    box-shadow:0 3px 0 #66574733;cursor:pointer;pointer-events:auto;z-index:20;white-space:nowrap;
+}
+.bus-stop-seat-action[hidden]{display:none;}
+.bus-stop-seat-action:focus-visible{outline:3px solid #6c9b75;outline-offset:3px;}
+.seat-action{top:94px;right:16px;bottom:auto;left:auto;transform:none;}

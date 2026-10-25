@@ -16,6 +16,14 @@ def install(source,target,clip):
  raw=source.read_bytes();length=struct.unpack_from('<I',raw,12)[0];doc=json.loads(raw[20:20+length]);binary=bytearray(raw[28+length:])
  assert len(doc['animations'])==1
  doc['animations'][0]['name']=clip
+ if clip=='Walk_InPlace':
+  inputs={s['input'] for s in doc['animations'][0]['samplers']}
+  start=min(doc['accessors'][i]['min'][0] for i in inputs)
+  for i in inputs:
+   accessor=doc['accessors'][i];view=doc['bufferViews'][accessor['bufferView']]
+   times=np.frombuffer(binary,dtype='<f4',count=accessor['count'],offset=view.get('byteOffset',0)+accessor.get('byteOffset',0))
+   times-=start;accessor['min']=[float(times.min())];accessor['max']=[float(times.max())]
+   del times
  while len(binary)%4:binary.append(0)
  data=(F/'smile-specular.png').read_bytes();offset=len(binary);binary.extend(data)
  view=len(doc['bufferViews']);doc['bufferViews'].append(dict(buffer=0,byteOffset=offset,byteLength=len(data)))

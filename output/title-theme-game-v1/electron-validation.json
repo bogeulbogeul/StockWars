@@ -1,0 +1,28 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "native": true,
+  "title": {
+    "keys": [
+      "title"
+    ],
+    "seconds": 84.5,
+    "sampleRate": 32000,
+    "loop": true,
+    "parent": "crayon-title"
+  },
+  "opening": {
+    "titleActive": false,
+    "active": false,
+    "gain": 0,
+    "controlHidden": true
+  },
+  "town": {
+    "stage": "day",
+    "voices": [
+      "day"
+    ],
+    "controlVisible": true,
+    "parent": "BODY"
+  },
+  "errors": []
+}

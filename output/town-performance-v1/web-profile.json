@@ -1,0 +1,151 @@
+{
+  "results": [
+    {
+      "place": "arrival",
+      "enabled": false,
+      "frameMs": {
+        "mean": 29.964166666666674,
+        "p95": 50.100000000000364
+      },
+      "drawMs": {
+        "mean": 29.987499994039535,
+        "p95": 56.89999997615814
+      },
+      "calls": 5857,
+      "triangles": 9204058
+    },
+    {
+      "place": "arrival",
+      "enabled": true,
+      "frameMs": {
+        "mean": 22.260000000794722,
+        "p95": 50
+      },
+      "drawMs": {
+        "mean": 21.718333341677983,
+        "p95": 50.89999997615814
+      },
+      "calls": 3865,
+      "triangles": 5846963
+    },
+    {
+      "place": "plaza",
+      "enabled": false,
+      "frameMs": {
+        "mean": 30.756666667064017,
+        "p95": 50
+      },
+      "drawMs": {
+        "mean": 30.665833328167597,
+        "p95": 46.699999928474426
+      },
+      "calls": 5853,
+      "triangles": 9204050
+    },
+    {
+      "place": "plaza",
+      "enabled": true,
+      "frameMs": {
+        "mean": 16.619166666865354,
+        "p95": 16.799999999999272
+      },
+      "drawMs": {
+        "mean": 9.003333337108295,
+        "p95": 12.799999952316284
+      },
+      "calls": 1845,
+      "triangles": 2973293
+    },
+    {
+      "place": "north",
+      "enabled": false,
+      "frameMs": {
+        "mean": 30.248333333730685,
+        "p95": 50.10000000000218
+      },
+      "drawMs": {
+        "mean": 30.244999994834263,
+        "p95": 50
+      },
+      "calls": 5422,
+      "triangles": 8819394
+    },
+    {
+      "place": "north",
+      "enabled": true,
+      "frameMs": {
+        "mean": 16.74249999999999,
+        "p95": 16.799999999999272
+      },
+      "drawMs": {
+        "mean": 5.4083333323399225,
+        "p95": 7.699999928474426
+      },
+      "calls": 1021,
+      "triangles": 1860525
+    }
+  ],
+  "pictures": [
+    {
+      "place": "arrival",
+      "aspect": 1.6
+    },
+    {
+      "place": "arrival",
+      "aspect": 0.6
+    },
+    {
+      "place": "arrival",
+      "aspect": 2.2
+    },
+    {
+      "place": "plaza",
+      "aspect": 1.6
+    },
+    {
+      "place": "plaza",
+      "aspect": 0.6
+    },
+    {
+      "place": "plaza",
+      "aspect": 2.2
+    },
+    {
+      "place": "north",
+      "aspect": 1.6
+    },
+    {
+      "place": "north",
+      "aspect": 0.6
+    },
+    {
+      "place": "north",
+      "aspect": 2.2
+    },
+    {
+      "place": "west",
+      "aspect": 1.6
+    },
+    {
+      "place": "west",
+      "aspect": 0.6
+    },
+    {
+      "place": "west",
+      "aspect": 2.2
+    },
+    {
+      "place": "east",
+      "aspect": 1.6
+    },
+    {
+      "place": "east",
+      "aspect": 0.6
+    },
+    {
+      "place": "east",
+      "aspect": 2.2
+    }
+  ],
+  "errors": []
+}

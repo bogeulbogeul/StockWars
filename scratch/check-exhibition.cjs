@@ -26,8 +26,10 @@ const server = http.createServer((req, res) => {
     try {
         await page.goto(url.replace('&skipOpening=1', ''));
         await page.getByRole('button', {name:'게임 시작',exact:true}).click();
+        await page.waitForSelector('.opening-sequence iframe');
+        assert.equal(await page.locator('.opening-sequence iframe').count(), 1);
+        await page.locator('.opening-sequence__skip').click();
         await page.waitForSelector('.bus-arrival');
-        assert.equal(await page.locator('.opening-sequence iframe').count(), 0);
         await page.locator('.opening-sequence__skip').click(); await ready();
         for (const order of ['packing', 'stock']) {
             await page.goto(url); await ready();

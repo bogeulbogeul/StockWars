@@ -1,0 +1,17 @@
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.argv[2] || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+
+
+
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});try{const page=await browser.newPage();page.setDefaultTimeout(120000);page.on("pageerror",e=>console.error(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.sleepingAnna);await page.evaluate(async()=>{const a=window.stockWarsExhibition;a.arrival.stop();a.scenes.townModelScene.renderer.setPixelRatio(.35);await a.scenes.townModelScene.sleepingAnna.setAwake(true,{immediate:true});const c=a.scenes.townStage.playerController;c.charPosX=900;c.charPosY=2355;a.scenes.townModelScene.player.update(0);const {walkVillageTour}=await import('/js/app/exhibition/TourWalk.js');window.done=false;window.tour=walkVillageTour(a.scenes,[1200,2390]).then(()=>window.done=true);});await page.waitForTimeout(1200);const idle=await page.evaluate(()=>{const a=window.stockWarsExhibition,c=a.scenes.townStage.playerController;return {x:c.charPosX,y:c.charPosY,state:a.scenes.townModelScene.player.state,active:a.scenes.tourActive,done:window.done}});assert.equal(idle.x,900);assert.equal(idle.y,2355);assert(idle.active&&!idle.done);await page.keyboard.down('a');await page.waitForTimeout(400);await page.keyboard.up('a');const moved=await page.evaluate(()=>window.stockWarsExhibition.scenes.townStage.playerController.charPosX);assert(moved<900);await page.waitForTimeout(3500);assert.equal(await page.evaluate(()=>window.done),false);await page.evaluate(async()=>{const a=window.stockWarsExhibition,c=a.scenes.townStage.playerController,m=a.scenes.townModelScene.sleepingAnna;const {GROUND_PROJECTION:P}=await import('/js/data/townModelBuildings.js');c.charPosX=m.root.position.x-110;c.charPosY=m.root.position.z*P;await window.tour;});const end=await page.evaluate(()=>({done:window.done,active:window.stockWarsExhibition.scenes.tourActive,state:window.stockWarsExhibition.scenes.townModelScene.player.state}));assert(end.done&&!end.active&&end.state==='idle');console.log(JSON.stringify({idle,moved,end}));}finally{await browser.close();server.close()}})().catch(e=>{console.error(e);server.close();process.exitCode=1});
+
+

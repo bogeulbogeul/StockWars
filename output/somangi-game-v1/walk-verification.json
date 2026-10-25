@@ -1,7 +1,12 @@
 {
   "frames": 31,
-  "footMin": -0.9506416916847229,
-  "footMax": -0.9506415128707886,
-  "maxArmLengthError": 8.936814176185859e-08,
-  "restVerticesUnchanged": true
+  "footMin": -0.9506416320800781,
+  "footMax": -0.9506415724754333,
+  "maxArmLengthError": 8.505560805671664e-08,
+  "restVerticesUnchanged": true,
+  "heightMin": 1.9000605940818787,
+  "heightMax": 1.9186314344406128,
+  "maxTorsoLengthError": 5.5449234648285994e-09,
+  "loopVertexError": 0.0,
+  "maxFootShapeError": 9.59118449384011e-08
 }

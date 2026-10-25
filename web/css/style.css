@@ -1,3 +1,4 @@
+@import './modules/residence-application.css';
 /* CSS module router. Import order preserves the existing cascade. */
 @import './modules/base.css';
 @import './modules/player-profile.css';
@@ -27,7 +28,7 @@
 @import './modules/town/town-models.css';
 @import './modules/town/current-world.css';
 @import './modules/packing.css';
-@import './modules/town/somangi-controls.css';
+@import './modules/town/somangi-controls.css'; @import './modules/town/bus-stop-seat.css';
 @import './modules/home-model.css';
 @import './modules/cipher-lobby.css';
 @import './modules/vivian-model.css';
@@ -41,8 +42,12 @@
 @import './modules/dialogue/dialogue-shell.css';
 @import './modules/dialogue/tutorial-focus.css';
 @import './modules/dialogue/dialogue-placement.css';
-@import './modules/exhibition.css'; @import './modules/moa-movement-guide.css'; @import './modules/dialogue/moa-wake.css';
+@import './modules/exhibition.css'; @import './modules/moa-movement-guide.css'; @import './modules/dialogue/moa-wake.css'; @import './modules/dialogue/dialogue-next.css';
 @import './modules/vivian-cozy.css?v=flower-shop-2';
 @import './modules/rumor-quiz.css'; @import './modules/rumor-letter.css';
 @import './modules/retired-interface.css';
 @import './modules/phone-home.css';
+@import './modules/phone-stock.css';
+
+
+

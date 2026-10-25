@@ -78,3 +78,16 @@ test('renamed tour retains every introduction and selected branches do not leak 
     assert.ok(next.some(b => b.text === '먼저 잡화점 일을 해볼래.'));
     assert.ok(!next.some(b => b.text === '주식 투자가 어떤 건지 배워보고 싶어.'));
 });
+
+test('tour starts near the stop, visits each place once and preserves its original dialogue', () => {
+    const current = buildPlan(chapters), historical = buildPlan(chapters, 'packing', true);
+    const tour = current.filter(b => b.chapter === 3);
+    const visits = tour.filter((b, i) => i === 0 || b.place !== tour[i - 1].place).map(b => b.place);
+    assert.equal(visits[0], 'furniture');
+    assert.equal(visits.at(-1), 'informationOutside');
+    assert.equal(visits.length, 10);
+    assert.equal(new Set(visits).size, 10);
+    assert.equal(current.find(b => b.id === 'walk').place, visits[0]);
+    const original = historical.filter(b => b.chapter === 3 && b.place !== 'retiredClothing');
+    assert.deepEqual(tour.map(b => `${b.place}:${b.text}`).sort(), original.map(b => `${b.place}:${b.text}`).sort());
+});

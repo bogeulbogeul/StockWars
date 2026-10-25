@@ -1,0 +1,398 @@
+{
+  "flowers": [
+    {
+      "id": "plaza_flowers_west",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "plaza_flowers_east",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "home_flowers",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "shop_flowers",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_home_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_home_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_home_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_post_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_post_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_post_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_furniture_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_furniture_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_furniture_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_information_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_information_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_information_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bank_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bank_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bank_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_finance_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_finance_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_finance_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_book_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_book_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_book_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_store_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_store_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_store_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_pub_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_pub_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_pub_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bus_stop_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bus_stop_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_bus_stop_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_tree_west_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_tree_west_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_tree_west_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_tree_east_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_tree_east_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_tree_east_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_home_seat_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_home_seat_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_home_seat_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_book_seat_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_book_seat_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_book_seat_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": false
+    },
+    {
+      "id": "garden_flowers_entry_0",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_entry_1",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    },
+    {
+      "id": "garden_flowers_entry_2",
+      "visible": true,
+      "passThrough": true,
+      "ground": 0,
+      "overhead": 0,
+      "centerWalkable": true
+    }
+  ],
+  "solidBenchPreserved": true,
+  "errors": []
+}

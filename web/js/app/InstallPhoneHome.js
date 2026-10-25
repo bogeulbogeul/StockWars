@@ -1,7 +1,10 @@
 import { PhoneHome } from '../components/phone/PhoneHome.js';
+import { phoneStockSource } from './PhoneStockSource.js';
+import { mountStockPhoneApp } from '../components/phone/stock/MountStockApp.js';
 
 export function installPhoneHome(app) {
-    const phone = new PhoneHome({ onOpen: () => {
+    const source = phoneStockSource(app);
+    const phone = new PhoneHome({ renderApp: (id, content) => mountStockPhoneApp(phone, source, id, content), onOpen: () => {
         app.townStage?.playerController?.keysHeld.clear();
         app.officeStage?.keysHeld.clear();
     } });

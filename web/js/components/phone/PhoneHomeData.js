@@ -6,6 +6,7 @@ export const PHONE_APPS = [
     ['map', '지도', 'sage'], ['settings', '설정', 'blue']
 ];
 const shapes = {
+    home: '<path d="m3 22 21-18 21 18-4 4-4-4v21H11V22l-4 4Z"/><path d="M20 28h8v15h-8Z" fill="#f5f0e5"/>',
     stock: '<path d="M7 28 19 17l8 6L41 8M31 8h10v10" fill="none" stroke="currentColor" stroke-width="4"/><rect x="7" y="34" width="7" height="8" rx="2"/><rect x="20" y="29" width="7" height="13" rx="2"/><rect x="33" y="23" width="7" height="19" rx="2"/>',
     news: '<rect x="8" y="5" width="33" height="38" rx="3"/><rect x="13" y="11" width="11" height="11" rx="1" fill="#86a5b9"/><path d="M29 12h6m-6 6h6M14 28h21M14 34h21M14 39h16" stroke="#9b9c91" stroke-width="2.5"/>',
     achievements: '<path d="m12 5 5 18h14l5-18H26l-2 9-2-9Z" fill="#c76c60"/><path d="m16 5 6 17h4L22 5"/><circle cx="24" cy="30" r="14" fill="#e4aa39"/><path d="m24 19 3.3 6.6 7.3 1.1-5.3 5.1 1.3 7.3-6.6-3.5-6.6 3.5 1.3-7.3-5.3-5.1 7.3-1.1Z"/>',

@@ -10,5 +10,6 @@
     "Leg.R"
   ],
   "seconds": 0.75,
-  "straightArms": true
+  "straightArms": true,
+  "hipWeights": "smooth depth and lateral falloff; torso-anchored crotch"
 }

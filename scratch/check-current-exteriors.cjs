@@ -31,6 +31,8 @@ const server=http.createServer((req,res)=>{
             const {TOWN_MODEL_BUILDINGS}=await import('/js/data/townModelBuildings.js');
             const {koreaClockSeconds}=await import('/js/components/town3d/BuildingClock.js');
             const {villagePathRoutes,TOWN_ARRIVAL}=await import('/js/data/townLandscapeLayout.js');
+            const {TOWN_MODEL_PROPS}=await import('/js/data/townModelProps.js');
+            const {TOWN_BUS_ROAD}=await import('/js/data/townBusRoad.js');
             const s=window.stockWarsApp.townModelScene,p=s.town.playerController;
             const gap=(a,b)=>{
                 const x=new THREE.Box3().setFromObject(s.scene.getObjectByName(a));
@@ -95,6 +97,20 @@ const server=http.createServer((req,res)=>{
                 visited.has(key(Math.round((d.x+(d.entranceOffsetX||0))/step),Math.round((d.y+70)/step)))]));
             result.informationClearance={furniture:gap('settlement_information','julian_furniture'),
                 busStop:gap('settlement_information','village_bus_stop'),board:gap('settlement_information','plaza_notice_board')};
+            result.roadObstructions=[];
+            result.propBodies = TOWN_MODEL_PROPS.map(d => {
+                const model = s.scene.getObjectByName(d.id);
+                const bodies = s.collisionFootprints.filter(b => b.id === d.id && b.type === 'static');
+                return { id: d.id, count: bodies.length,
+                    solid: bodies.every(b => !p.canStand((b.minX+b.maxX)/2,(b.minY+b.maxY)/2)),
+                    type: model.userData.rigidBody?.type };
+            });
+            const roadMin=TOWN_BUS_ROAD.centerY-TOWN_BUS_ROAD.width/2-TOWN_BUS_ROAD.shoulder;
+            const roadMax=TOWN_BUS_ROAD.centerY+TOWN_BUS_ROAD.width/2+TOWN_BUS_ROAD.shoulder;
+            for(const d of TOWN_MODEL_PROPS){
+                const b=new THREE.Box3().setFromObject(s.scene.getObjectByName(d.id));
+                if(b.min.z*.4383711467890774<roadMax&&b.max.z*.4383711467890774>roadMin)result.roadObstructions.push(d.id);
+            }
             return result;
         });
         fs.writeFileSync(`${output}/${prefix}-checks.json`,JSON.stringify({...report,errors},null,2));
@@ -105,8 +121,14 @@ const server=http.createServer((req,res)=>{
             if(v.doorAlignment!==undefined)assert(v.doorAlignment<1,id+' door alignment');
         }
         assert.deepEqual(report.overlaps,[]);assert(report.clockAdvanced);assert.deepEqual(errors,[]);
-        assert.deepEqual(report.blockedPathSamples,[],'Walking paths must remain clear');
-        assert.deepEqual(report.blockedPathCorners,[],'Rounded path corners must remain clear');
+        if(output.includes('rigidbody')) {
+            assert(report.propBodies.every(b => b.type === 'static' && b.count > 0 && b.solid),
+                'Every prop must have blocking fixed bodies');
+        } else {
+            assert.deepEqual(report.blockedPathSamples,[],'Walking paths must remain clear');
+            assert.deepEqual(report.blockedPathCorners,[],'Rounded path corners must remain clear');
+        }
+        if(output.includes('road-clear'))assert.deepEqual(report.roadObstructions,[],'Carriageway and shoulders must have no props');
         assert(Object.values(report.reachableEntrances).every(Boolean),'Every entrance must be reachable from arrival');
         if(output.includes('information-building-spacing')){
             assert(report.informationClearance.furniture>150,'Furniture/information lawn gap');
