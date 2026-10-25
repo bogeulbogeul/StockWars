@@ -18,8 +18,9 @@ export function createConversationCamera({ fitWidth = false, worldCoordinates = 
         },
         update(camera, player, moa, dt) {
             baseFov ??= camera.fov; shotFov ??= baseFov;
+            const plaza = !!player?.root.userData.plazaConversation;
             const active = player?.storyTarget === moa?.root && !moa?.root.userData.sleeping
-                && !moa?.root.userData.seated && !player.town.playerController.scriptedWalking;
+                && (!moa?.root.userData.seated || plaza) && !player.town.playerController.scriptedWalking;
             const duration = active ? .8 : 1.1;
             blend = MathUtils.clamp(blend + (active ? 1 : -1) * Math.min(dt || 0, .05) / duration, 0, 1);
             if (!blend && faceFraming) { camera.fov = baseFov; camera.updateProjectionMatrix(); }
@@ -35,6 +36,11 @@ export function createConversationCamera({ fitWidth = false, worldCoordinates = 
                 side.set(-axis.z, 0, axis.x);
                 if (!wasActive) sideSign = side.z < 0 ? -1 : 1;
                 side.multiplyScalar(sideSign);
+                if (plaza && moa.root.userData.seated) {
+                    side.x += Math.sin(moa.root.rotation.y) * .8;
+                    side.z += Math.cos(moa.root.rotation.y) * .8;
+                    side.normalize();
+                }
                 let distance = fitWidth ? Math.max(520, (playerPosition.distanceTo(residentPosition) + 90)
                     / (2 * Math.tan(MathUtils.degToRad(camera.fov) / 2) * camera.aspect) * 1.15) : 520;
                 if (faceFraming) {
@@ -43,8 +49,17 @@ export function createConversationCamera({ fitWidth = false, worldCoordinates = 
                     shotFov = MathUtils.clamp(MathUtils.radToDeg(2 * Math.atan(Math.tan(MathUtils.degToRad(61)) / camera.aspect)), 40, 105);
                     distance = Math.max(130, (playerPosition.distanceTo(residentPosition) / 2 + 70)
                         / (Math.tan(MathUtils.degToRad(shotFov / 2)) * camera.aspect) * 1.35);
+                    if (plaza) {
+                        shotFov = 45;
+                        distance = Math.max(550, (playerPosition.distanceTo(residentPosition) + 160)
+                            / (2 * Math.tan(MathUtils.degToRad(shotFov / 2)) * camera.aspect) * 1.25);
+                    }
                 }
-                shotPosition.copy(center).addScaledVector(side, distance); shotPosition.y += faceFraming ? 42 : 170;
+                shotPosition.copy(center).addScaledVector(side, distance); shotPosition.y += plaza ? 150 : faceFraming ? 42 : 170;
+                if (plaza) {
+                    camera.userData.plazaViewpoint ||= new Vector3();
+                    camera.userData.plazaViewpoint.copy(shotPosition);
+                }
                 camera.position.copy(shotPosition); camera.lookAt(center);
                 shotRotation.copy(camera.quaternion);
             }

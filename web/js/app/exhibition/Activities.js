@@ -1,5 +1,6 @@
 import { mountInvestmentExam } from './InvestmentExam.js';
 import { waitForSeedPot, waitForFirstDiary } from './HomeFinale.js';
+import { showFirstPhonePrompt } from './FirstPhonePrompt.js';
 import { startMoaReturn } from './MoaReturn.js';
 import { mountInvestmentCertificate } from './InvestmentCertificate.js';
 import { mountBankApplication } from './BankApplication.js';
@@ -59,7 +60,6 @@ export class ExhibitionActivities {
         try {
             await receivePhone(this.app);
             complete(this.state, 'phone'); this.app.save(); this.view.sync(this.state);
-            this.phoneIntroduced = true;
             this.app.busy = false; this.next('phone');
         } catch (error) {
             this.app.busy = false; this.view.panel.hidden = false;
@@ -67,18 +67,7 @@ export class ExhibitionActivities {
         }
     }
     openPhone() {
-        if (!this.state.flags.phoneReady || this.phoneIntroduced) { this.next('openPhone'); return; }
-        this.view.phonePromptAllowed = true;
-        this.view.line({ speaker: '소망이', text: '어디 보자…….' }, () => {
-            if (this.openingPhone) return;
-            if (this.view.openPhone()) {
-                this.openingPhone = true;
-                this.view.phoneHome.dialog.addEventListener('close', () => {
-                    this.view.phonePromptAllowed = false;
-                    this.openingPhone = false; this.next('openPhone');
-                }, { once: true });
-            }
-        });
+        showFirstPhonePrompt(this.app);
     }
     moaFarewell() {
         this.app.scenes.moaBenchJourney ||= sendMoaToPlazaBench(this.app.scenes)

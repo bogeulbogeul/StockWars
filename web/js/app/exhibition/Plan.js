@@ -12,7 +12,7 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
         if (place === 'bench' && [12, 15, 16].includes(n) && !plan.some(b => b.chapter === n && b.place === 'bench') && lines[0])
             lines[0].plazaTalk = true;
         for (const line of lines) if (n === 5 && line.text === '한번 열어볼래요?') {
-            line.text = '은행 상담까지 마치면 스마트폰을 사용해 보세요. 필요한 일이 생기면 저에게 연락해도 돼요.';
+            line.text = '필요한 일이 생기면 스마트폰으로 저에게 연락해도 돼요.';
         }
         for (const line of lines) if (!legacy && line.text === '마을을 둘러보는 동안 이름은 생각해봤어요?')
             line.text = '안내소로 오는 동안 이름은 생각해봤어요?';
@@ -43,7 +43,8 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     add(4, 'information', undefined, '[화면]'); action('nickname', 'information', '입주 신청서에 서명하기');
     add(4, 'information', '[화면]');
     add(5, 'information', undefined, '[화면]'); action('phone', 'information', '휴대폰 받기');
-    add(5, 'information', '[화면]', '[조작]'); action('openPhone', 'information', '휴대폰 열어보기');
+    action('openPhone', 'information', '휴대폰 열어보기');
+    add(5, 'information', '[화면]', '[조작]');
     add(5, 'information', '[조작]');
     if (!legacy) {
         VILLAGE_MAP_STEPS.forEach(([, text], i) => plan.push({ kind: 'line', speaker: '모아', text,

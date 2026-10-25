@@ -1,0 +1,695 @@
+{
+  "frames": 988,
+  "duration": 20.95470690727234,
+  "errors": [],
+  "arrivedHome": true,
+  "usedKeyboardMovement": true,
+  "samples": [
+    {
+      "time": 1792968612630,
+      "place": "town",
+      "dist": 2107.9929987207734,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968612901,
+      "place": "town",
+      "dist": 2114.9414250806103,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968612929,
+      "place": "town",
+      "dist": 2112.9613186847505,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968612977,
+      "place": "town",
+      "dist": 2116.8952084253638,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613129,
+      "place": "town",
+      "dist": 2083.5245927657616,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613286,
+      "place": "town",
+      "dist": 2056.3622513825617,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613446,
+      "place": "town",
+      "dist": 2029.3259560860558,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613603,
+      "place": "town",
+      "dist": 2005.389717411524,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613758,
+      "place": "town",
+      "dist": 1975.6343915098055,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968613921,
+      "place": "town",
+      "dist": 1951.945509992942,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614075,
+      "place": "town",
+      "dist": 1922.5120404632198,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614229,
+      "place": "town",
+      "dist": 1896.1705478153492,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614384,
+      "place": "town",
+      "dist": 1867.1067580796794,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614545,
+      "place": "town",
+      "dist": 1841.1130732855922,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614707,
+      "place": "town",
+      "dist": 1815.3123793536327,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968614861,
+      "place": "town",
+      "dist": 1789.6779049546471,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615018,
+      "place": "town",
+      "dist": 1803.7861510124092,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615178,
+      "place": "town",
+      "dist": 1755.18970352808,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615299,
+      "place": "town",
+      "dist": 1762.5473966350567,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615346,
+      "place": "town",
+      "dist": 1757.022459563451,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615501,
+      "place": "town",
+      "dist": 1708.8764527074554,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615664,
+      "place": "town",
+      "dist": 1667.6367459290984,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615816,
+      "place": "town",
+      "dist": 1632.79527894863,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968615978,
+      "place": "town",
+      "dist": 1599.6967700873101,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616145,
+      "place": "town",
+      "dist": 1561.0401828148051,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616298,
+      "place": "town",
+      "dist": 1528.9700611861813,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616455,
+      "place": "town",
+      "dist": 1499.7060095988547,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616614,
+      "place": "town",
+      "dist": 1473.335027687689,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616769,
+      "place": "town",
+      "dist": 1439.5282676349775,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968616921,
+      "place": "town",
+      "dist": 1413.6711623580243,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617028,
+      "place": "town",
+      "dist": 1396.8148995713618,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617088,
+      "place": "town",
+      "dist": 1381.3077240599548,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617148,
+      "place": "town",
+      "dist": 1389.817858513786,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617208,
+      "place": "town",
+      "dist": 1381.3077240599548,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617266,
+      "place": "town",
+      "dist": 1387.6360043575553,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617295,
+      "place": "town",
+      "dist": 1379.8217263548281,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617455,
+      "place": "town",
+      "dist": 1341.8185554277059,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617498,
+      "place": "town",
+      "dist": 1339.6549266509978,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617523,
+      "place": "town",
+      "dist": 1335.9025467980243,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617687,
+      "place": "town",
+      "dist": 1305.2908948734932,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617845,
+      "place": "town",
+      "dist": 1274.7235672175518,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968617999,
+      "place": "town",
+      "dist": 1244.1835143881053,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618165,
+      "place": "town",
+      "dist": 1210.3284248249133,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618328,
+      "place": "town",
+      "dist": 1176.5217738734268,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618484,
+      "place": "town",
+      "dist": 1146.1818131773298,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618636,
+      "place": "town",
+      "dist": 1112.52315085017,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618788,
+      "place": "town",
+      "dist": 1085.6836921405632,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968618940,
+      "place": "town",
+      "dist": 1052.2104584444994,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619094,
+      "place": "town",
+      "dist": 1022.1576541411217,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619253,
+      "place": "town",
+      "dist": 988.8921413982921,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619411,
+      "place": "town",
+      "dist": 962.3578815590255,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619564,
+      "place": "town",
+      "dist": 932.6093367954622,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619721,
+      "place": "town",
+      "dist": 896.4318381215118,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968619887,
+      "place": "town",
+      "dist": 858.6003833178969,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620048,
+      "place": "town",
+      "dist": 828.643371114474,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620213,
+      "place": "town",
+      "dist": 798.8282138392279,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620369,
+      "place": "town",
+      "dist": 762.5650621001835,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620532,
+      "place": "town",
+      "dist": 733.0551823881867,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620692,
+      "place": "town",
+      "dist": 695.0435696006646,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968620851,
+      "place": "town",
+      "dist": 665.111452806416,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621008,
+      "place": "town",
+      "dist": 635.3132576513775,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621168,
+      "place": "town",
+      "dist": 608.9756347589764,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621322,
+      "place": "town",
+      "dist": 573.0366264217568,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621474,
+      "place": "town",
+      "dist": 534.8527045775649,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621637,
+      "place": "town",
+      "dist": 501.56895418822916,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621791,
+      "place": "town",
+      "dist": 471.87362046391297,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968621958,
+      "place": "town",
+      "dist": 439.1283020977578,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622118,
+      "place": "town",
+      "dist": 413.2081339654863,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622278,
+      "place": "town",
+      "dist": 374.6731707477502,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622436,
+      "place": "town",
+      "dist": 344.68661632611736,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622595,
+      "place": "town",
+      "dist": 311.74593923423305,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622749,
+      "place": "town",
+      "dist": 285.73949216113084,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968622905,
+      "place": "town",
+      "dist": 250.70741149773596,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968623068,
+      "place": "town",
+      "dist": 211.1445776541457,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968623222,
+      "place": "town",
+      "dist": 177.87284126972241,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968623375,
+      "place": "town",
+      "dist": 148.62380069409514,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968623528,
+      "place": "town",
+      "dist": 120.52579593660579,
+      "entry": false,
+      "scripted": false
+    },
+    {
+      "time": 1792968623689,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968623842,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968623994,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624163,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624327,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624480,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624647,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624812,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968624964,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625127,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625281,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625434,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625590,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625744,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968625906,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968626072,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968626229,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968626389,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968626547,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968626711,
+      "place": "town",
+      "dist": null,
+      "entry": true,
+      "scripted": true
+    },
+    {
+      "time": 1792968627036,
+      "place": "home",
+      "dist": null,
+      "entry": false,
+      "scripted": false
+    }
+  ]
+}

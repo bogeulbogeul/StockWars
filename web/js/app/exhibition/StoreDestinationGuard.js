@@ -8,7 +8,9 @@ export function otherStoreTripEntrance(c, buildings = TOWN_MODEL_BUILDINGS, allo
 }
 
 export function atStoreEntrance(c, buildings = TOWN_MODEL_BUILDINGS) {
-    return otherStoreTripEntrance(c, buildings, null)?.id === 'vivian_store';
+    const store = buildings.find(b => b.id === 'vivian_store');
+    return !!store && Math.abs(c.charPosX - store.x - (store.entranceOffsetX || 0)) < 85
+        && c.charPosY >= store.y - 10 && c.charPosY < store.y + 165;
 }
 
 export function createStoreDestinationGuard(scenes, { allowedBuilding = 'vivian_store', text = '우선 잡화점으로 가보자.' } = {}) {

@@ -1,5 +1,6 @@
 import { TOWN_ARRIVAL } from '../../data/townLandscapeLayout.js';
 import { exhibitionSkyTime } from '../../data/exhibitionSkyTime.js';
+import { HOME_STORY_STOP } from '../../data/homeModelRoom.js';
 import { TownModelScene } from '../../components/town3d/TownModelScene.js';
 import { HomeModelScene } from '../../components/home3d/HomeModelScene.js';
 import { CipherLobbyScene } from '../../components/cipher3d/CipherLobbyScene.js';
@@ -18,7 +19,7 @@ import { leaveBankAfterMoa } from './BankExit.js';
 import { enterHomeAfterMoa } from './HomeEntry.js';
 import { enterStoreDoorOnFoot } from '../StoreDoorEntry.js';
 import { enterExteriorDoorOnFoot } from '../ExteriorDoorEntry.js';
-import { enterBuildingOnFoot } from '../OnFootNavigation.js';
+import { enterBuildingOnFoot, walkRoomTo } from '../OnFootNavigation.js';
 import { STORY_BUILDINGS, leaveStoryBuilding } from './BuildingTravel.js';
 import { waitForDestination } from './DestinationWalk.js';
 import { leaveHomeWithMoa } from './HomeDeparture.js';
@@ -76,7 +77,12 @@ export class ExhibitionScenes {
             await walkVillageTour(this, positions.bankOutside, { requireInteraction: false });
             this.place = 'bankOutside';
         }
-        if (STORY_BUILDINGS[this.place] && this.place !== place) await leaveStoryBuilding(this);
+        if (STORY_BUILDINGS[this.place] && this.place !== place) {
+            await leaveStoryBuilding(this);
+            // The door traversal already reached this exterior; do not wait for
+            // another walk back to its generic approach marker before speaking.
+            if (place === this.place) preservePosition = true;
+        }
         if (this.place === 'bankOutside' && place === 'home') {
             await walkVillageTour(this, positions.homeOutside);
             this.place = 'homeOutside';
@@ -85,7 +91,9 @@ export class ExhibitionScenes {
         if (walking) await walkVillageTour(this, positions[place]);
         const target = STORY_BUILDINGS[place];
         if (target && positions[this.place] && this.place !== target.outside) {
-            await waitForDestination(this, positions[target.outside], target.label);
+            const returningHome = place === 'home' && this.place === 'storeOutside';
+            await waitForDestination(this, positions[target.outside], target.label,
+                returningHome ? { guidanceTitle: '집으로 돌아가 보자' } : {});
             this.place = target.outside;
         } else if (!target && positions[place] && positions[this.place] && !walking && !preservePosition) {
             await waitForDestination(this, positions[place], place === 'notice' ? '게시판' : place === 'bench' ? '벤치' : '목적지');
@@ -121,6 +129,7 @@ export class ExhibitionScenes {
         const room = await this.prepareRoom(place);
         if (this.place === place) {
             room.show();
+            if (place === 'home') await walkRoomTo(room, HOME_STORY_STOP);
             if (place === 'store') await room.greetingReady;
             this.storeAwaitingTalk = place === 'store';
             this.informationAwaitingTalk = place === 'information';

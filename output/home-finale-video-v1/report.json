@@ -1,0 +1,11 @@
+{
+  "frames": 3569,
+  "duration": 59.87770199775696,
+  "errors": [],
+  "result": {
+    "planted": true,
+    "diaryWritten": true,
+    "asleep": true,
+    "demoEnded": true
+  }
+}

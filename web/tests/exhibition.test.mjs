@@ -38,9 +38,10 @@ test('returning from work requires talking to Moa before the first bench line', 
     }
 });
 
-test('both activity choices unlock the phone only after the bank farewell', () => {
+test('phone unlocks immediately on receipt while the bank farewell still sends Moa to the plaza', () => {
     for (const order of ['packing', 'stock']) {
         const plan = buildPlan(chapters, order);
+        assert.equal(plan[plan.findIndex(b => b.id === 'phone') + 1].id, 'openPhone');
         const farewell = plan.findIndex(b => b.id === 'moaFarewell');
         assert(farewell > plan.findIndex(b => b.id === 'loan'));
         assert.equal(plan[farewell].place, 'bankOutside');
@@ -51,7 +52,7 @@ test('both activity choices unlock the phone only after the bank farewell', () =
         assert(mapHint.text.includes(order === 'stock' ? '증권사를' : '잡화점을'));
         assert(!mapHint.text.includes(order === 'stock' ? '잡화점' : '증권사'));
         const state = freshState(); complete(state, 'phone');
-        assert(!state.flags.phoneReady);
+        assert(state.flags.phoneReady);
         complete(state, 'phoneReady'); assert(state.flags.phoneReady);
     }
 });

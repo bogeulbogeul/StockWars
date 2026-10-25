@@ -1,4 +1,4 @@
-import { conversationYaw } from './ConversationFacing.js';
+import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
 import { MathUtils, Quaternion, Vector3 } from '../../../vendor/three/three.module.js';
 import { createSleepEffect } from './SleepEffect.js';
 import { createMoaSeatMotion } from './MoaSeatMotion.js';
@@ -43,7 +43,9 @@ export async function addSleepingAnna(scene, stop) {
         if (head) {
             head.quaternion.copy(rest);
             const yaw = !sleeping && moa.root.userData.seated ? conversationYaw(moa.root, moa.conversationTarget) : null;
-            if (yaw !== null) {
+            if (yaw !== null && moa.root.userData.conversationOpenCamera) {
+                faceConversationPartner(moa.root, moa.conversationTarget);
+            } else if (yaw !== null) {
                 const local = Math.atan2(Math.sin(yaw - moa.root.rotation.y), Math.cos(yaw - moa.root.rotation.y));
                 head.quaternion.multiply(turn.setFromAxisAngle(up, MathUtils.clamp(local, -.55, .55)));
             }

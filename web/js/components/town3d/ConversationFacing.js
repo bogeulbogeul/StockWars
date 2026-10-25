@@ -26,7 +26,16 @@ export function conversationYaw(root, target) {
     target.getWorldPosition(point);
     root.parent?.worldToLocal(point);
     const x = point.x - root.position.x, z = point.z - root.position.z;
-    return Math.hypot(x, z) > .01 ? Math.atan2(x, z) : null;
+    if (Math.hypot(x, z) <= .01) return null;
+    const yaw = Math.atan2(x, z);
+    const camera = root.userData.conversationOpenCamera;
+    if (!camera) return yaw;
+    if (camera.userData.plazaViewpoint) point.copy(camera.userData.plazaViewpoint);
+    else camera.getWorldPosition(point);
+    root.parent?.worldToLocal(point);
+    const towardCamera = Math.atan2(point.x - root.position.x, point.z - root.position.z);
+    const delta = Math.atan2(Math.sin(towardCamera - yaw), Math.cos(towardCamera - yaw));
+    return yaw + delta * .7;
 }
 export function faceConversation(player, resident) {
     const root = resident?.root || resident;

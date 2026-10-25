@@ -51,6 +51,7 @@ export function complete(state, id, data = {}) {
     if (id === 'diaryWritten' && !f.planted) return false;
     if (id === 'asleep' && !(f.diaryWritten && f.planted && f.trade && f.packing)) return false;
     signProfileDocument(state, id);
+    if (id === 'phone') f.phoneReady = true;
     f[id] = true;
     return true;
 }

@@ -1,7 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { otherStoreTripEntrance } from '../js/app/exhibition/StoreDestinationGuard.js';
+import { atStoreEntrance, otherStoreTripEntrance } from '../js/app/exhibition/StoreDestinationGuard.js';
 import { TOWN_MODEL_BUILDINGS } from '../js/data/townModelBuildings.js';
+
+test('direct shop entry accepts the full door interaction approach without requiring the board', () => {
+    const store = TOWN_MODEL_BUILDINGS.find(b => b.id === 'vivian_store');
+    const charPosX = store.x + (store.entranceOffsetX || 0);
+    assert(atStoreEntrance({ charPosX, charPosY: store.y + 150 }));
+    assert(!atStoreEntrance({ charPosX, charPosY: store.y + 170 }));
+});
 
 test('shop trip reminder recognizes every other entrance including offset doors', () => {
     for (const b of TOWN_MODEL_BUILDINGS) {

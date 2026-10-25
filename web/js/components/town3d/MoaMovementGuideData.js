@@ -4,7 +4,7 @@ export function movementGuideContent({ follow, door, receive, smartphone, bankTa
     if (finalePot) return { label: '씨앗 심기 안내', title: '가방에서 화분을 사용해 보자',
         rows: [{ keys: [bindingLabel('i')], text: '가방 열기' }, { text: '씨앗용 화분을 선택하고 사용하기를 눌러 주세요.' }] };
     if (firstDiary) return { label: '첫 일기 쓰기 안내', title: '오늘을 일기에 남겨 보자',
-        rows: [{ keys: [bindingLabel('j')], text: '다이어리 열기' }, { text: '오늘의 기록 남기기를 눌러 첫 일기를 써 보세요.' }] };
+        rows: [{ keys: ['J'], text: '다이어리 열기' }, { text: '오늘의 기록 남기기를 눌러 첫 일기를 써 보세요.' }] };
     if (inventoryRumor) return { label: '찌라시 열기 안내', title: '가방에서 소식봉투를 열어보자',
         rows: [{ keys: [bindingLabel('i')], text: '가방 열기' }, { text: '소식봉투를 선택하고 찌라시 열기를 눌러 주세요.' }] };
     if (stockCounter) return { label: '증권사 안내데스크 안내', title: '안내데스크에서 토리에게 말을 걸어보자',

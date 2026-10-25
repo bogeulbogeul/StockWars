@@ -53,7 +53,7 @@ export class ExhibitionView {
             stock: !!state.flags.certificate
         });
         this.wallet.hidden = !state.flags.bank; this.assets.hidden = !state.flags.certificate;
-        this.phone.hidden = !state.flags.phoneReady;
+        this.phone.hidden = !(state.flags.phone || state.flags.phoneReady);
         this.syncPhoneAvailability();
         this.wallet.textContent = `보유 ${state.cash.toLocaleString()}잎`;
         this.assets.textContent = `자산 ${assets(state).toLocaleString()}잎`;
@@ -82,7 +82,7 @@ export class ExhibitionView {
         this.syncPhoneAvailability();
     }
     canOpenPhone() {
-        return !!this.state?.flags.phoneReady
+        return !!(this.state?.flags.phone || this.state?.flags.phoneReady)
             && (!this.computerRequired || this.computerPowerRequested)
             && (this.phonePromptAllowed || this.panel.hidden || !this.panel.classList.contains('dialogue-has-next'))
             && !document.querySelector('.moa-wake-dialogue:not(.hidden)');

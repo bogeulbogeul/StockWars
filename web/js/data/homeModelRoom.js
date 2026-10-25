@@ -21,4 +21,5 @@ export const HOME_SPAWN = {
     x: (HOME_ROOM_BOUNDS.doorLeft + HOME_ROOM_BOUNDS.doorRight) / 2 * HOME_MODEL_SCALE,
     z: 0.725 * HOME_MODEL_SCALE
 };
+export const HOME_STORY_STOP = Object.freeze({ x: -40, z: -55 });
 export const HOME_EXIT_Z = (HOME_ROOM_BOUNDS.maxZ + HOME_ROOM_BOUNDS.entryDepth) * HOME_MODEL_SCALE - 32;

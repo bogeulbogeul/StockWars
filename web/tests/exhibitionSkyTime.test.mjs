@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { exhibitionSkyTime } from '../js/data/exhibitionSkyTime.js';
+import { exhibitionSkyTime, hasExhibitionSunset } from '../js/data/exhibitionSkyTime.js';
+
+test('either activity order prepares sunset as soon as both activities finish', () => {
+    assert.equal(hasExhibitionSunset({ packing: true }), false);
+    assert.equal(hasExhibitionSunset({ trade: true }), false);
+    assert.equal(hasExhibitionSunset({ packing: true, trade: true }), true);
+    assert.equal(hasExhibitionSunset({ sunset: true }), true);
+    assert.equal(hasExhibitionSunset({}), false);
+});
 
 test('first day stays daytime until the script sunset flag', () => {
     assert.equal(exhibitionSkyTime(), 'day');

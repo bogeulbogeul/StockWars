@@ -1,6 +1,7 @@
 import { installExhibitionInventory } from './Inventory.js';
 import { installDiary } from '../InstallDiary.js';
 import { gameKey } from '../GameKeys.js';
+import { hasExhibitionSunset } from '../../data/exhibitionSkyTime.js';
 import { exhibitionMapPosition } from '../../components/phone/map/MapData.js';
 import { installVillageBoard } from '../InstallVillageBoard.js';
 import { createTourPlayerControls } from './TourPlayerControls.js';
@@ -24,7 +25,6 @@ import { presentLessonBoard } from './ToriLessonBoard.js';
 import { presentVillageMap } from './VillageMapIntro.js';
 import { createStoreDestinationGuard, atStoreEntrance } from './StoreDestinationGuard.js';
 import { showSleepEnding } from './SleepEnding.js';
-import { installTutorialSkip } from './TutorialSkip.js';
 import { stageStoreRewardConversation } from './StoreRewardStaging.js';
 import { waitForPlazaMoaTalk } from './PlazaMoaTalk.js';
 import { REVIEW_TRAVEL_CANCELLED } from './ReviewTravel.js';
@@ -43,7 +43,7 @@ export class Exhibition {
         migrateClothingTour(this.state, chapters);
         migrateTourDialogue(this.state, chapters);
         this.scenes = new ExhibitionScenes(container);
-        this.scenes.setTime(!!this.state.flags.sunset, { asleep: !!this.state.flags.asleep, immediate: true });
+        this.scenes.setTime(hasExhibitionSunset(this.state.flags), { asleep: !!this.state.flags.asleep, immediate: true });
         this.view = new ExhibitionView(() => this.confirmRestart(), {
             mapPosition: () => exhibitionMapPosition(this.scenes),
             canTrade: () => !this.busy && this.plan?.[this.state.cursor]?.id === 'trade',
@@ -68,7 +68,6 @@ export class Exhibition {
         });
         this.scenes.updateVillageBoard = this.updateVillageBoard;
         this.arrival = new ExhibitionArrival(this);
-        this.tutorialSkip = installTutorialSkip(this);
         // Arrival borrows the same live village as the exhibition, without legacy saves/presence.
         window.stockWarsApp = this.scenes;
         window.stockWarsExhibition = this;
@@ -137,13 +136,21 @@ export class Exhibition {
         this.view.sync(this.state); this.view.clear(null);
         this.view.location.textContent = beat.place === 'homeOutside' && !this.state.flags.nickname
             ? '앞으로 지낼 집' : PLACE_NAMES[beat.place] || '포포리 마을';
-        this.scenes.setTime(!!this.state.flags.sunset);
+        const sunset = hasExhibitionSunset(this.state.flags);
+        // Prepare the outdoor sky while still indoors, before the second activity's exit.
+        this.scenes.setTime(sunset, { immediate: sunset && !this.state.flags.sunset });
         const tour = beat.chapter === 3 || beat.id === 'walk';
         const previousStore = this.scenes.rooms.get('store');
         if (previousStore) previousStore.rewardConversationActive = !!beat.storeRewardConversation;
         this.view.panel.hidden = true;
         this.scenes.plazaReturnPending = !!beat.plazaTalk;
         await this.scenes.show(beat.place, { preservePosition: showArrivalGuide && beat.place === 'arrival', tour });
+        if (beat.id === 'notice' && this.scenes.storeEntryRequested) {
+            this.scenes.storeEntryRequested = false;
+            // The player is already at the store door, rather than at the optional board.
+            this.scenes.place = 'storeOutside'; this.busy = false;
+            this.next('notice'); return;
+        }
         if (this.scenes.informationAwaitingTalk) await waitForInformationTalk(this.scenes);
         if (this.scenes.bankAwaitingTalk) await waitForBankTalk(this.scenes);
         if (this.scenes.storeAwaitingTalk) await waitForStoreTalk(this.scenes);
@@ -230,6 +237,8 @@ export class Exhibition {
         this.view.choices([['처음부터 시작', () => this.restart()], ['계속하기', () => this.render()]]);
     }
     restart() {
+        this.cancelPhonePrompt?.();
+        this.scenes.storeEntryRequested = false;
         this.arrival.stop();
         if (this.scenes.moaBenchJourneyToken) this.scenes.moaBenchJourneyToken.cancelled = true;
         this.scenes.moaPlazaRestore?.(); this.scenes.moaPlazaRestore = null;

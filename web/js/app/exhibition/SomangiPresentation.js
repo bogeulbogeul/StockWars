@@ -11,8 +11,9 @@ export function expressionForBeat(beat) {
 }
 export async function presentSomangi(scenes, beat) {
     const scene = scenes.rooms.get(scenes.place) || scenes.townModelScene;
-    const moa = scene?.room?.userData.moa || (['arrival', 'bankOutside', 'bench'].includes(scenes.place) || beat.chapter === 3 || beat.id === 'walk'
+    const resident = scene?.room?.userData.moa || (['arrival', 'bankOutside', 'bench'].includes(scenes.place) || beat.chapter === 3 || beat.id === 'walk'
         ? scenes.townModelScene.sleepingAnna : null);
+    const moa = resident?.root.visible === false ? null : resident;
     if (moa) {
         await moa.ready;
         const text = beat.speaker?.includes('모아') ? beat.text || '' : '';
@@ -23,6 +24,10 @@ export async function presentSomangi(scenes, beat) {
     const player = scene?.player;
     if (!player) return;
     await player.ready;
+    // Keep the plaza two-shot open to the audience while retaining partner gaze.
+    player.root.userData.plazaConversation = scenes.place === 'bench' && !!moa;
+    player.root.userData.conversationOpenCamera = scenes.place === 'bench' && moa ? scene.camera : null;
+    if (moa) moa.root.userData.conversationOpenCamera = scenes.place === 'bench' ? scene.camera : null;
     await player.setExpression(expressionForBeat(beat));
     if (scenes.place === 'bank' && scene.room?.userData.chagok) {
         player.faceTarget(scene.room.userData.chagok);

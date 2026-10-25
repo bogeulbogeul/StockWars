@@ -3,18 +3,18 @@ import { createTourPlayerControls } from './TourPlayerControls.js';
 import { resolveTourStop } from './TourRoute.js';
 import { setGuidanceContent } from '../../components/town3d/GuidanceCard.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
-import { createStoreDestinationGuard, createMoaDestinationGuard, createStockDestinationGuard } from './StoreDestinationGuard.js';
+import { atStoreEntrance, createStoreDestinationGuard, createMoaDestinationGuard, createStockDestinationGuard } from './StoreDestinationGuard.js';
 import { reviewTravelWait } from './ReviewTravel.js';
 
 // Scene changes wait for actual WASD movement; they never place the player
 // at a story location just because the dialogue advanced.
-export async function waitForDestination(scenes, destination, title) {
+export async function waitForDestination(scenes, destination, title, { guidanceTitle } = {}) {
     const c = scenes.townStage.playerController;
     const goal = resolveTourStop({ x: destination[0], y: destination[1] }, c.sceneryCanStand);
     scenes.tourActive = true; scenes.townModelScene.player.holdFacing();
     const guide = document.createElement('aside'); guide.className = 'moa-movement-guide';
     guide.setAttribute('role', 'region'); guide.setAttribute('aria-label', '목적지 이동 안내');
-    setGuidanceContent(guide, { title: `${title}까지 걸어가 보자`, rows: [{ keys: ['W', 'A', 'S', 'D'], text: '이동' }] });
+    setGuidanceContent(guide, { title: guidanceTitle || `${title}까지 걸어가 보자`, rows: [{ keys: ['W', 'A', 'S', 'D'], text: '이동' }] });
     scenes.townStage.viewportEl.append(guide);
     const guard = scenes.plazaReturnPending ? createMoaDestinationGuard(scenes)
         : title === '증권사' ? createStockDestinationGuard(scenes)
@@ -25,6 +25,9 @@ export async function waitForDestination(scenes, destination, title) {
     let enteredAtDoor = false;
     const controls = createTourPlayerControls(c, { onInteract: () => {
         if (guard?.interact()) return;
+        if (title === '게시판' && atStoreEntrance(c)) {
+            scenes.storeEntryRequested = true; enteredAtDoor = true; return;
+        }
         if (building && Math.abs(c.charPosX - building.x - (building.entranceOffsetX || 0)) < 85
             && c.charPosY >= building.y - 10 && c.charPosY < building.y + 165) enteredAtDoor = true;
     },
