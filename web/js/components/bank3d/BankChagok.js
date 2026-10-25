@@ -9,6 +9,7 @@ export async function addBankChagok(room) {
     const { model } = await loadCharacterAsset(modelUrl);
     const root = new THREE.Group();
     root.name = 'chagok-character';
+    root.userData.seated = true;
     root.position.set(CHAGOK_POSITION.x, CHAGOK_POSITION.seatY, CHAGOK_POSITION.z);
     const scale = SOMANGI_HEIGHT / SOMANGI_REFERENCE_HEIGHT;
     model.scale.setScalar(scale);

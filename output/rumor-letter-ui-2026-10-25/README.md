@@ -11,3 +11,13 @@
 - [읽기 화면](web-reading.png) · [퀴즈·승급 화면](web-promotion.png) · [모바일](web-mobile.png).
 - [웹 브라우저 검증](web-browser.json) · [기존 실행본 리소스 검증](desktop-browser.json): 실제 앱 초기화 후 게임 컴포넌트·CSS에서 단계별 서로 다른 문항, 오답 재접속·재도전 +1, 사본·단계 변경 뒤 +0, 승급·본문 갱신·모바일 겹침 방지를 확인했다. 양쪽 JS 예외 0건.
 - [동기화 해시](sync-manifest.json): UI·CSS 총 4개 파일, 웹과 기존 실행본 리소스 동일. 설치 프로그램 재빌드·Electron 직접 실행은 포함하지 않는다. 게임 재실행이 필요하다.
+
+## 중복 검수 캡처 정리 — 2026-10-26
+
+✅ 삭제 완료. 대조표의 web 캡처와 환경별 검증 기록은 보존했다.
+
+아래 desktop PNG는 동일 폴더 web PNG와 SHA-256까지 일치해 사용자 승인으로 삭제한다. 환경별 JSON 검증 기록과 촬영 스크립트는 별도로 유지한다. 기존 `desktop-*.png` 안내는 아래 대응 web PNG를 따른다. 이 대조표는 기존 촬영 시점의 이미지 내용 일치를 기록하며 새 플레이 검증을 의미하지 않는다.
+
+| 삭제 desktop 캡처 | 보존 web 캡처 | SHA-256 |
+|---|---|---|
+| `desktop-wrong.png` | [web-wrong.png](web-wrong.png) | `a60bb035b0ffa23b2ac4f1dc325ceea6201a9c7c342f9669ba9770cec48e8dc8` |

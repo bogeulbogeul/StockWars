@@ -7,6 +7,7 @@ import { CipherLobbyScene } from '../components/cipher3d/CipherLobbyScene.js';
 import { buildInformationModelRoom } from '../components/information3d/InformationModelRoom.js';
 import { gameKey } from './GameKeys.js';
 import { MOA_INFORMATION_POSITION, MOA_TOWN_POSITION } from '../data/moaModels.js';
+import { enterBuildingOnFoot, leaveBuildingOnFoot } from './OnFootNavigation.js';
 
 export function installInformationModelEntrance(app) {
     const building = TOWN_MODEL_BUILDINGS.find(b => b.id === 'settlement_information');
@@ -29,20 +30,17 @@ export function installInformationModelEntrance(app) {
         && Math.abs(town.playerController.charPosX - building.x) < 85
         && town.playerController.charPosY >= building.y + 15
         && town.playerController.charPosY < building.y + 145;
-    app.enterInformationModel = () => {
-        if (!inTown()) return;
+    let entering = false;
+    app.enterInformationModel = async () => {
+        if (entering || !near()) return;
+        entering = true;
+        try {
         const player = town.playerController;
         player.keysHeld.clear();
         player.isMoving = false;
         app.informationModelScene ||= new CipherLobbyScene(app.appContainer, async () => {
-            const entered = await app.enterTown(null, 'settlement_information');
-            if (entered === false) return;
-            player.charPosX = building.x;
-            player.charPosY = building.y + 85;
-            player.keysHeld.clear();
-            player.isMoving = false;
-            player.facing = 'down';
-            player.updateCamera(town.viewportEl.clientWidth, town.viewportEl.clientHeight, 0, true);
+            await leaveBuildingOnFoot({ room: app.informationModelScene, town: app.townModelScene,
+                id: building.id, showTown: () => app.enterTown(null, building.id, { fromDoor: true }) });
         }, {
             layout: INFORMATION_ROOM, buildRoom: buildInformationModelRoom,
             canStand: informationCanStand,
@@ -54,11 +52,14 @@ export function installInformationModelEntrance(app) {
         });
         app.informationModelScene.ready.then(() => app.informationModelScene.renderer?.domElement
             .setAttribute('aria-label', '모아 안내소 3D 화면'));
+        await app.informationModelScene.ready;
+        await enterBuildingOnFoot(app.townModelScene, building.id);
         for (const key of ['homeModelScene', 'bankModelScene', 'vivianModelScene', 'cipherLobbyScene']) app[key]?.hide();
         town.hide();
         app.officeStage?.hide?.();
         document.body.classList.remove('town-mode-active');
         app.informationModelScene.show();
+        } finally { entering = false; }
     };
     town.callbacks.onOpenInformation = app.enterInformationModel;
     window.addEventListener('keydown', event => {

@@ -37,7 +37,7 @@ test('legacy earned stats and spent/unspent point history survive retirement and
     assert.equal(state.appliedTrait, 'management');
     assert.deepEqual(state.buffs, original.buffs);
     assert.equal(engine.maxStamina(), 3);
-    assert.equal(engine.portfolioSlots(), 5);
+    assert.equal(engine.portfolioSlots(), Infinity);
     const restored = new ItemEngine({ state: structuredClone(state) });
     assert.deepEqual(restored.state.legacyAbilities, state.legacyAbilities);
 });

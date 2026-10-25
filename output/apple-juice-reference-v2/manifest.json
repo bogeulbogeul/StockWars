@@ -1,0 +1,6 @@
+{
+  "id": "item_apple_juice",
+  "file": "item_apple_juice.glb",
+  "sha256": "c93603a016576a236606ae3d67cd1c14b52df6ce17296d2d453e196d30a81a8c",
+  "reference": "web/assets/items/packing-v1/items.png [920,35,155,355]"
+}

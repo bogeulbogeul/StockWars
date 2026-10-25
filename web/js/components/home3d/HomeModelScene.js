@@ -13,6 +13,8 @@ import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js
 import { recoverTownBody } from '../town3d/TownBodyMovement.js';
 import { SeatInteraction } from '../town3d/SeatInteraction.js';
 import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
+import { createConversationCamera } from '../town3d/ConversationCamera.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class HomeModelScene {
@@ -37,6 +39,7 @@ export class HomeModelScene {
         this.scene.background = new THREE.Color(0x000000);
         this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new HomeRoomCamera(this.camera);
+        this.conversationCamera = createConversationCamera({ fitWidth: true });
         this.bindInput();
         this.ready = this.initialize().catch(error => {
             this.failed = true;
@@ -156,7 +159,9 @@ export class HomeModelScene {
 
     update(dt) {
         this.roomCamera.update(dt, this.room);
+        this.room.userData.update?.(dt);
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) { this.player?.update(dt); return; }
         if(this.seatInteraction?.update(dt))return;
         if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
@@ -190,9 +195,12 @@ export class HomeModelScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            this.conversationCamera.update(this.camera, this.player, this.room.userData.moa, dt);
+            this.roomCamera.updateWalls(this.room, Math.atan2(this.camera.position.x, this.camera.position.z));
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

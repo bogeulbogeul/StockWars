@@ -1,4 +1,5 @@
-import { VillageBoard } from '../components/VillageBoard.js?v=readable-v6';
+import { setInteractionGuidance } from '../components/town3d/GuidanceCard.js';
+import { VillageBoard } from '../components/VillageBoard.js?v=readable-v7';
 import { TOWN_MODEL_PROPS } from '../data/townModelProps.js';
 
 export function installVillageBoard(app, { canInteract, onRead, onOpen, host } = {}) {
@@ -7,7 +8,7 @@ export function installVillageBoard(app, { canInteract, onRead, onOpen, host } =
     app.villageBoard = board;
     const prop = TOWN_MODEL_PROPS.find(item => item.id === 'plaza_notice_board');
     const button = document.createElement('button'); button.className = 'board-launch'; button.hidden = true;
-    button.textContent = 'F · 게시판 살펴보기'; (host || town.viewportEl).append(button);
+    setInteractionGuidance(button, 'F', '게시판 살펴보기'); (host || town.viewportEl).append(button);
     const available = () => !town.containerEl.classList.contains('hidden') && (canInteract ? canInteract() : !town.callbacks.isInputBlocked?.())
         && !document.body.classList.contains('title-screen-active')
         && !document.querySelector('dialog[open],.modal-overlay:not(.hidden)')

@@ -1,0 +1,16 @@
+{
+  "search": 72,
+  "sectors": 8,
+  "buySell": true,
+  "feePreview": true,
+  "limitCancel": true,
+  "levelLocks": true,
+  "expandedChart": true,
+  "infoMetrics": 8,
+  "separateNews": true,
+  "fullNewsBody": true,
+  "phoneCleanup": true,
+  "guidedFirstTrade": true,
+  "exhibitionSessionSeparated": true,
+  "errors": []
+}

@@ -1,0 +1,8 @@
+js/components/phone/tasks/TasksApp.js
+js/components/phone/tasks/TaskNotes.js
+js/components/phone/tasks/TasksViews.js
+js/components/phone/tasks/StoryTasks.js
+js/components/phone/stock/MountStockApp.js
+js/app/exhibition/PhoneStockSource.js
+css/modules/phone-home.css
+css/modules/phone-tasks.css

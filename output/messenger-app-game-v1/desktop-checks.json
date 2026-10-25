@@ -1,0 +1,13 @@
+{
+  "realRegistryRoundTrip": true,
+  "offlineExplained": true,
+  "search": true,
+  "request": true,
+  "accept": true,
+  "create": true,
+  "send": true,
+  "escaped": true,
+  "mobile": true,
+  "home": true,
+  "errors": []
+}

@@ -9,7 +9,7 @@ export function createSomangiControls(layer, play, blocked) {
         if (event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey || blocked()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
         const jumping = gameKey(event) === 'space';
-        if (jumping && event.target?.closest?.('button, a[href]')) return;
+        if (jumping && event.target?.closest?.('button:not(.phone-launcher), a[href]')) return;
         const action = jumping ? 'jump' : event.code === 'Digit2' || event.key === '2' ? 'eat' : null;
         if (action && play(action)) event.preventDefault();
     });

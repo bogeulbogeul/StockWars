@@ -22,9 +22,9 @@ function roundedRoute(route) {
     return points;
 }
 
-export function createTourPaths() {
+export function createTourPaths({ routes = villagePathRoutes() } = {}) {
     const segments = [], candidates = [];
-    for (const [index, route] of villagePathRoutes().entries()) {
+    for (const [index, route] of routes.entries()) {
         const points = roundedRoute(route), radius = 25 * (index === 0 ? 1.15 : index === 2 ? 1 : .76);
         for (let i = 1; i < points.length; i++) {
             const a = points[i - 1], b = points[i];

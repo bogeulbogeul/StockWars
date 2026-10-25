@@ -26,9 +26,9 @@ export function createDialogueOcclusion(scene) {
     return {
         queries,
         prepare(root) { queries.prepare(root); },
-        update(camera, actors) {
+        update(camera, actors, { includeRoot = () => true } = {}) {
             const hits = new Set();
-            const roots = scene.children.filter(root => root.userData.dialogueOccluder && root.visible);
+            const roots = scene.children.filter(root => root.userData.dialogueOccluder && root.visible && includeRoot(root));
             scene.updateMatrixWorld(true);
             right.set(1, 0, 0).applyQuaternion(camera.quaternion);
             for (const actor of actors) {

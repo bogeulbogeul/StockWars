@@ -1,0 +1,1455 @@
+{
+  "radius": 32,
+  "diameter": 64,
+  "collisionHeight": 102,
+  "states": {
+    "idle": {
+      "samples": [
+        {
+          "width": 61.874020095099155,
+          "depth": 55.26276370059203,
+          "height": 99.99999968852995,
+          "sliceWidth": 61.874020095099155,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987839693302874,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874020095099155,
+                77.05628637796619,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.335197274243185,
+                22.286451905116078,
+                8.956340530134607
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.61110010995599,
+                28.125361548125568
+              ]
+            }
+          ]
+        }
+      ],
+      "maxWidth": 61.874020095099155,
+      "maxDepth": 55.26276370059203,
+      "maxHeight": 99.99999968852995,
+      "maxRadial": 30.987839693302874
+    },
+    "walk": {
+      "samples": [
+        {
+          "width": 61.874023441461574,
+          "depth": 55.26276370059203,
+          "height": 99.99999968852998,
+          "sliceWidth": 61.874023441461574,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987841672945255,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874023441461574,
+                77.05628800869025,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520138169163,
+                22.28644938387913,
+                8.956340664360685
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.611100109956,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402312306722,
+          "depth": 55.26276370059203,
+          "height": 100.53430616700447,
+          "sliceWidth": 61.87402312306722,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.05194402428093,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402312306722,
+                77.08830360610153,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.335201202873606,
+                22.387310542916403,
+                9.578526099364801
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.145406588430504,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.874022012833905,
+          "depth": 55.26276370059203,
+          "height": 100.84416631732768,
+          "sliceWidth": 61.874022012833905,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.13586266822436,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874022012833905,
+                77.07923505932689,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520022296628,
+                22.43086552801767,
+                10.184520004634077
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.4552667387537,
+                28.696946668674215
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.874024780619536,
+          "depth": 55.26276370059203,
+          "height": 100.95144471760165,
+          "sliceWidth": 61.874024780619536,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.20514877227434,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874024780619536,
+                77.0541744670028,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520281940061,
+                22.434658123800066,
+                10.615052448208989
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.56254513902767,
+                29.743267197649033
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.874023054690454,
+          "depth": 55.26276370059203,
+          "height": 100.97111638132466,
+          "sliceWidth": 61.874023054690454,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.231530589362535,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874023054690454,
+                77.04217836095302,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520136225894,
+                22.43120457234608,
+                10.771894984155614
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.5822168027507,
+                30.41739858643266
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402478061891,
+          "depth": 55.26276370059203,
+          "height": 100.95144470679801,
+          "sliceWidth": 61.87402478061891,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.205148761408946,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402478061891,
+                77.05417447146945,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.335202819400095,
+                22.434658124728653,
+                10.615052384751337
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.56254512822404,
+                29.743266912180225
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.874022012834,
+          "depth": 55.26276370059203,
+          "height": 100.8441663250727,
+          "sliceWidth": 61.874022012834,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.13586267171623,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874022012834,
+                77.07923505835541,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520022296636,
+                22.430865528765743,
+                10.184520027217356
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.455266746498744,
+                28.69694672222975
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402312306624,
+          "depth": 55.26276370059203,
+          "height": 100.53430609378836,
+          "sliceWidth": 61.87402312306624,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.05194401235272,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402312306624,
+                77.08830360583124,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520120287271,
+                22.387310531118562,
+                9.578525994743618
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.14540651521438,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.874023441461574,
+          "depth": 55.26276370059203,
+          "height": 99.99999968852998,
+          "sliceWidth": 61.874023441461574,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987841672945255,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.874023441461574,
+                77.05628800869025,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520138169163,
+                22.28644938387913,
+                8.956340664360685
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.611100109956,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402420264033,
+          "depth": 55.26276370059203,
+          "height": 100.53548066767269,
+          "sliceWidth": 61.87402420264033,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.998121915625116,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402420264033,
+                77.09061321748047,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.3352024358878,
+                22.165528940636328,
+                9.58752279633292
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.146581089098724,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402477464968,
+          "depth": 55.26276370059203,
+          "height": 100.8502989179708,
+          "sliceWidth": 61.87402477464968,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.08050095440306,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402477464968,
+                77.07936747277587,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520268748462,
+                22.098035712863705,
+                10.185228687314329
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.461399339396834,
+                28.70013956779146
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.8740246213215,
+          "depth": 55.26276370059203,
+          "height": 100.95819965147288,
+          "sliceWidth": 61.8740246213215,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.150747309359836,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.8740246213215,
+                77.05131706773346,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520270659969,
+                22.0869552226209,
+                10.62607778843132
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.5693000728989,
+                29.746948440138944
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402219747208,
+          "depth": 55.26276370059203,
+          "height": 100.97738050632768,
+          "sliceWidth": 61.87402219747208,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.17754761896345,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402219747208,
+                77.03738240103056,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.335200131797876,
+                22.093028906313023,
+                10.781182283157953
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.58848092775371,
+                30.420647628584714
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402462132222,
+          "depth": 55.26276370059203,
+          "height": 100.9581996773935,
+          "sliceWidth": 61.87402462132222,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.1507473402526,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402462132222,
+                77.05131705156305,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.3352027066002,
+                22.0869552312086,
+                10.626077971693984
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.56930009881953,
+                29.74694923913888
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402477465318,
+          "depth": 55.26276370059203,
+          "height": 100.85029901306811,
+          "sliceWidth": 61.87402477465318,
+          "sliceDepth": 55.26276370059203,
+          "radial": 31.08050099681348,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402477465318,
+                77.07936746184569,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33520268748756,
+                22.098035674130045,
+                10.185228964383032
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.46139943449414,
+                28.700140212566055
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402420264118,
+          "depth": 55.26276370059203,
+          "height": 100.53548096815322,
+          "sliceWidth": 61.87402420264118,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.99812196741203,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402420264118,
+                77.09061322198441,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.3352024358886,
+                22.165528907516475,
+                9.587523208523201
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.14658138957926,
+                28.125361548125568
+              ]
+            }
+          ]
+        }
+      ],
+      "maxWidth": 61.874024780619536,
+      "maxDepth": 55.26276370059203,
+      "maxHeight": 100.97738050632768,
+      "maxRadial": 31.231530589362535
+    },
+    "sideways": {
+      "samples": [
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 99.99999968852998,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444362,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.611100109956,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.15531676588661,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.76641718731264,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.30094178790496,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444361,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.91204220933099,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.39355382328122,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.00465424470725,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.42522171714289,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444361,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.0363221385689,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.39355381009594,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187413,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                51.004654231521975,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.30094179311786,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187413,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.91204221454389,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.15531674167724,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187413,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.76641716310326,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 99.99999968852998,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444362,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.19394737603491,
+                50.611100109956,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.04544602182654,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.95214604897258,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.28645036418741,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.60808364372664,
+                50.65654644325257,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.10461777567417,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444362,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187417,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                36.6953968929446,
+                50.71571819710019,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.14047045887006,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187424,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                37.40750774982449,
+                50.75157088029607,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.151475225068,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.286450364187427,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                37.65605987084933,
+                50.76257564649403,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.140470471509,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.0562872244436,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972565,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.28645036418742,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                37.40750804251293,
+                50.751570892935035,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.10461780223721,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444361,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.28645036418742,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                36.695397356505836,
+                50.715718223663245,
+                28.125361548125568
+              ]
+            }
+          ]
+        },
+        {
+          "width": 61.87402108872168,
+          "depth": 55.26276370059203,
+          "height": 100.04544606476432,
+          "sliceWidth": 61.87402108872168,
+          "sliceDepth": 55.26276370059203,
+          "radial": 30.987840129769012,
+          "count": 136782,
+          "parts": [
+            {
+              "name": "Original_whole_arms_without_elbow_cuts",
+              "size": [
+                61.87402108872168,
+                77.05628722444361,
+                55.26276370059203
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_1",
+              "size": [
+                31.210846585802294,
+                11.952146048972573,
+                4.508066072351895
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_2",
+              "size": [
+                35.33519902895174,
+                22.28645036418742,
+                8.956340664360686
+              ]
+            },
+            {
+              "name": "Original_whole_arms_without_elbow_cuts_3",
+              "size": [
+                35.608084442765104,
+                50.65654648619035,
+                28.125361548125568
+              ]
+            }
+          ]
+        }
+      ],
+      "maxWidth": 61.87402108872168,
+      "maxDepth": 55.26276370059203,
+      "maxHeight": 100.42522171714289,
+      "maxRadial": 30.987840129769012
+    }
+  },
+  "gap": 92.49999809265137,
+  "legalCenterX": [
+    217.5,
+    249
+  ]
+}

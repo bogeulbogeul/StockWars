@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "exhibition receipt and I shortcut",
+    "story rumor and shop image",
+    "normal rumor receipt",
+    "read and existing interpretation popup",
+    "Escape layering",
+    "input blocking",
+    "30-unit capacity and overflow rejection",
+    "mobile and landscape bounds"
+  ]
+}

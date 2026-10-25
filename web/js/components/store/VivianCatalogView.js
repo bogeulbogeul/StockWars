@@ -1,5 +1,6 @@
 import { VIVIAN_SHOP_CATALOG } from '../../data/vivianStoreData.js';
 import { itemIconHtml } from '../../data/itemArtwork.js';
+import { updateShopProductArt } from '../store3d/ShopProductArt.js';
 
 // Catalog selection and quantity calculations shared by the shop controller.
 export class VivianCatalogView {
@@ -47,6 +48,7 @@ export class VivianCatalogView {
                 </button>
             `;
         }).join('');
+        updateShopProductArt(this);
     }
 
     selectItem(itemId) {
@@ -66,6 +68,7 @@ export class VivianCatalogView {
 
         // Update Drawer UI
         if (this.drawerItemIcon) this.drawerItemIcon.innerHTML = itemIconHtml(item);
+        updateShopProductArt(this);
         if (this.drawerItemName) this.drawerItemName.textContent = item.name;
         if (this.drawerItemDesc) this.drawerItemDesc.textContent = item.desc;
         if (this.drawerEffectsRow) {

@@ -1,0 +1,14 @@
+.cozy-phone-launch.phone-launcher,
+.exhibition-ui > .exhibition-phone.phone-launcher {
+    width: 72px; height: 112px; padding: 0; border: 0; border-radius: 14px;
+    background: transparent; box-shadow: none; cursor: pointer;
+    display: grid; place-items: center; touch-action: manipulation;
+}
+.phone-launcher svg { display: block; width: 64px; height: 100px; pointer-events: none; }
+.cozy-phone-launch.phone-launcher:hover,
+.exhibition-ui > .exhibition-phone.phone-launcher:hover { background: #f5f0e52b; }
+.phone-launcher:focus-visible { outline: 3px solid #78a477; outline-offset: 3px; }
+.cozy-phone-launch.phone-launcher[hidden],
+.exhibition-ui > .exhibition-phone.phone-launcher[hidden] { display: none !important; }
+
+body:has(.cozy-phone[open]) .phone-launcher { visibility: hidden !important; pointer-events: none; }

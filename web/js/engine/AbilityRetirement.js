@@ -1,5 +1,5 @@
 // Shared baseline rules, independent of character level and legacy personality stats.
-export const COMMON_PLAYER_RULES = Object.freeze({ portfolioSlots: 5, maxStamina: 3, laborCost: 1 });
+export const COMMON_PLAYER_RULES = Object.freeze({ portfolioSlots: Infinity, maxStamina: 3, laborCost: 1 });
 export const RETIRED_ABILITY_ITEMS = new Set(['item_stabilizer', 'item_vitamin_complex']);
 
 export function preserveLegacyAbilities(state, level) {

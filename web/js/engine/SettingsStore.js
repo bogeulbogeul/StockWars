@@ -15,6 +15,7 @@ export class SettingsStore {
         try { this.value = normalizeSettings(JSON.parse(globalThis.localStorage?.getItem(KEY) || '{}')); } catch { /* Keep defaults if storage is unavailable. */ }
     }
     apply() {
+        if (!globalThis.document?.body) return;
         document.body.classList.toggle('settings-reduced-motion', this.value.reducedMotion);
         document.body.classList.toggle('settings-hide-weather', !this.value.showWeather);
     }
@@ -26,3 +27,6 @@ export class SettingsStore {
     }
 }
 export const settingsStore = new SettingsStore();
+export function prefersReducedMotion() { return settingsStore.value.reducedMotion || !!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches; }
+if (globalThis.document?.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => settingsStore.apply(), { once: true });
+else settingsStore.apply();

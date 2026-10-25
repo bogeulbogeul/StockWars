@@ -1,9 +1,14 @@
-// Begin only after the visitor sits on the stool opposite Moa's desk.
+export { waitForBankTalk } from './BankTalk.js';
+
+// Begin only after the visitor sits on the stool opposite the counter.
 export function waitForInformationTalk(scenes) {
-    const room = scenes.rooms.get('information');
+    return waitForCounterSeat(scenes, 'information', 'informationAwaitingTalk');
+}
+function waitForCounterSeat(scenes, place, waitingFlag) {
+    const room = scenes.rooms.get(place);
     const c = room.controller;
     const visitorSeat = room.seatInteraction.seats.find(seat => seat.meshes.some(mesh => mesh.name === 'Round_Sage_Cushion'));
-    if (!visitorSeat) throw new Error('모아 맞은편 의자를 찾지 못했어요.');
+    if (!visitorSeat) throw new Error('창구 맞은편 의자를 찾지 못했어요.');
     visitorSeat.forward.set(0, 0, -1);
     return new Promise(resolve => {
         const onKey = event => {
@@ -16,7 +21,7 @@ export function waitForInformationTalk(scenes) {
         const checkSeat = () => {
             if (room.active && c.busSeated && room.seatInteraction.selected === visitorSeat) {
                 c.keysHeld.clear(); c.isMoving = false;
-                scenes.informationAwaitingTalk = false;
+                scenes[waitingFlag] = false;
                 window.removeEventListener('keydown', onKey, true);
                 resolve();
             } else requestAnimationFrame(checkSeat);

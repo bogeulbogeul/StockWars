@@ -1,0 +1,145 @@
+@import url('./lesson-computer.css');
+/* Wide stock workspace. The phone home and narrow screens keep their shell. */
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) {
+        width: min(1440px, calc(100vw - 40px)); height: min(960px, calc(100dvh - 40px));
+        inset: 0; margin: auto;
+    }
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__shell {
+        height: 100%; aspect-ratio: auto; padding: 38px 8px 8px; border-radius: 22px;
+    }
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__shell::before,
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__shell::after,
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__speaker,
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__status { display: none; }
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__close { top: 0; right: 10px; }
+    .cozy-phone.cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__screen { border-radius: 14px; }
+    .cozy-phone__detail--stock { padding-top: 8px; }
+    .cozy-phone__detail--stock > .cozy-phone__back { margin: 0 20px 8px; }
+    .cozy-phone .stock-app.stock-app {
+        display: grid; grid-template-columns: 160px minmax(0, 1fr);
+        grid-template-rows: auto auto minmax(0, 1fr); font-size: 16px;
+    }
+    .stock-app .stock-header { grid-column: 2; padding: 10px 24px; text-align: left; }
+    .stock-app .stock-indices { grid-column: 2; padding: 8px 18px; font-size: 15px; gap: 14px; }
+    .stock-app .stock-indices > div { padding: 10px 14px; }
+    .stock-app .stock-body { grid-column: 2; grid-row: 3; padding: 12px 18px; }
+    .stock-app .stock-nav {
+        grid-column: 1; grid-row: 1 / -1; flex-direction: column; align-self: stretch;
+        justify-content: flex-start; gap: 8px; padding: 20px 12px;
+        border-top: 0; border-right: 1px solid #dadbce; background: #e9eddf;
+    }
+    .stock-app .stock-nav::before { content: '토리 증권사'; font-size: 18px; font-weight: 800; padding: 8px 4px 24px; }
+    .stock-app .stock-nav button { flex: 0 0 auto; flex-direction: row; gap: 10px; padding: 14px 10px; border-radius: 10px; text-align: left; }
+    .stock-app .stock-nav button[aria-current="page"] { background: #d1dfc8; color: #355b3b; font-weight: 800; }
+    .stock-app [data-screen="home"] { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 12px 20px; }
+    .stock-app [data-screen="home"] .stock-summary,
+    .stock-app [data-screen="home"] h3 { grid-column: 1 / -1; }
+    .stock-app .stock-summary { padding: 24px !important; }
+    .stock-app .stock-summary dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .stock-app .stock-summary dl > div { display: block; }
+    .stock-app .stock-summary dd { text-align: left; margin-top: 6px; }
+    .stock-app [data-stock-list] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
+    .stock-app .stock-row { margin: 0; }
+    .stock-app [data-stock-list] > .stock-notice { grid-column: 1 / -1; }
+    .stock-app .stock-body:has(.stock-detail-header) { grid-row: 3; }
+    .stock-app:has(.stock-detail-header) .stock-indices { grid-row: 2; }
+    .stock-app .stock-detail-header > div { text-align: left; padding-left: 18px; }
+    .stock-app .stock-detail-header > p { width: auto; margin-left: auto; }
+    .stock-app .stock-detail-content:has(.stock-chart-panel) { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 22px; align-content: start; }
+    .stock-app .stock-chart-panel { min-width: 0; overflow-x: auto; }
+    .stock-app .stock-chart { min-height: 240px; height: clamp(240px, 39dvh, 400px); }
+    .stock-app .stock-quote { padding-block: 9px !important; }
+    .stock-app h3 { margin-block: 12px 8px; }
+    .stock-app .stock-detail-header > p { margin-block: 0 6px; }
+    .stock-app .stock-subtabs { margin-block: 4px 8px; }
+    .stock-app .stock-summary { padding: 18px !important; }
+    .stock-app .stock-book button { padding-block: 7px; }
+    .stock-app .stock-book-panel h3 { margin-top: 0; }
+    .stock-app .stock-book button { padding: 9px 12px; }
+    .stock-app .stock-info-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stock-app .stock-nav[hidden] { display: flex !important; }
+    .stock-app [data-screen="account"] { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; align-content: start; }
+    .stock-app [data-screen="account"] > :not(.stock-holding) { grid-column: 1 / -1; }
+    .stock-app .stock-holding { margin: 0; }
+    .stock-app [data-panel="order"] { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-content: start; width: 100%; max-width: none; margin: 0; }
+    .stock-app .stock-order-fields, .stock-app .stock-order-review { min-width: 0; }
+    .stock-app .stock-order-fields > .stock-toggle:first-child { margin-top: 0; }
+    .stock-app .stock-order-review .stock-execute { position: sticky; bottom: 0; background: #f5f0e5; padding-block: 8px; z-index: 1; }
+    .stock-app .stock-order-review .stock-execute button { min-height: 48px; }
+}
+
+@media (min-width: 1440px) and (min-height: 600px) {
+    .stock-app [data-stock-list] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1000px) and (min-height: 600px) and (max-height: 760px) {
+    .stock-app .stock-order-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; align-content: start; }
+    .stock-app .stock-order-fields > .stock-toggle:first-child,
+    .stock-app .stock-order-fields > label:has([data-qty]),
+    .stock-app .stock-order-fields > .stock-quick,
+    .stock-app .stock-order-fields > [data-account],
+    .stock-app .stock-order-fields > .stock-notice { grid-column: 1 / -1; }
+    .stock-app .stock-order-fields > label { flex-wrap: wrap; }
+    .stock-app .stock-order-fields > p, .stock-app .stock-order-fields > label,
+    .stock-app .stock-order-fields > .stock-toggle { margin: 0; }
+    .stock-app .stock-order-fields button { padding-block: 5px; }
+    .stock-app .stock-order-fields > .stock-toggle { grid-column: 1 / -1; }
+    .stock-app .stock-order-fields > p:not([data-account]) { grid-column: 1 / -1; }
+    .stock-app .stock-order-fields > .stock-toggle button { white-space: nowrap; padding-inline: 3px; }
+    .stock-app .stock-order-review .stock-estimate { padding: 8px; }
+    .stock-app .stock-order-review p { margin-block: 3px; }
+    .stock-app .stock-order-review .stock-execute { margin-top: 4px; padding-block: 4px; }
+    .stock-app .stock-order-review .stock-execute button { min-height: 40px; padding-block: 8px; }
+}
+
+/* Order forms use a compact window instead of the market list's tall canvas. */
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has([data-panel="order"]) {
+        width: min(1180px, calc(100vw - 40px));
+        height: min(700px, calc(100dvh - 40px));
+    }
+}
+
+/* Home and chart use their own compact canvases, independent of the market list. */
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has(.stock-body[data-screen="home"]) {
+        width: min(1180px, calc(100vw - 40px));
+        height: min(700px, calc(100dvh - 40px));
+    }
+    .cozy-phone.cozy-phone:has([data-panel="chart"]) {
+        width: min(1180px, calc(100vw - 40px));
+        height: min(760px, calc(100dvh - 40px));
+    }
+    .stock-app [data-panel="chart"] .stock-chart { height: clamp(220px, 32dvh, 320px); min-height: 220px; }
+    .stock-app [data-panel="chart"] .stock-book button { padding-block: 3px; }
+    .stock-app [data-panel="chart"] .stock-book-panel h3 { margin: 0 0 6px; }
+    .stock-app [data-panel="chart"] .stock-primary { margin-block: 8px; padding-block: 9px !important; }
+}
+
+/* Account height follows holdings/history rather than filling an empty canvas. */
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has(.stock-body[data-screen="account"]) {
+        width: min(1180px, calc(100vw - 40px)); height: fit-content;
+        max-height: calc(100dvh - 40px);
+    }
+    .cozy-phone.cozy-phone:has(.stock-body[data-screen="account"]) .cozy-phone__shell,
+    .cozy-phone.cozy-phone:has(.stock-body[data-screen="account"]) .cozy-phone__screen { height: auto; }
+    .cozy-phone:has(.stock-body[data-screen="account"]) .stock-app.stock-app { height: auto; }
+    .stock-app .stock-body[data-screen="account"] { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: calc(100dvh - 280px); overflow-y: auto; }
+    .stock-app [data-screen="account"] > h3 { margin-block: 4px; }
+    .stock-app [data-screen="account"] > p { margin-block: 0; }
+    .stock-app [data-screen="account"] .stock-history { margin-top: 0; }
+}
+
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has(.stock-body[data-screen="history"]) { width: min(1180px, calc(100vw - 40px)); height: min(700px, calc(100dvh - 40px)); }
+    .stock-app [data-screen="history"] .stock-history { margin-top: 0; }
+    .stock-app [data-screen="history"] .stock-history > h3 { margin-top: 0; }
+}
+
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone .stock-app .stock-nav .stock-power-off { display: flex; margin-top: auto; border: 1px solid #b8bcae; background: #f5f0e5; color: #465244; font-size: 14px; }
+    .cozy-phone .stock-app .stock-nav .stock-power-off:hover { background: #dedfcf; }
+    .stock-app .stock-power-off svg { width: 20px; height: 20px; flex-shrink: 0; }
+}

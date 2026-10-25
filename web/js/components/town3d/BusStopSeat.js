@@ -1,3 +1,5 @@
+import { gameKey } from '../../app/GameKeys.js';
+import { setInteractionGuidance } from './GuidanceCard.js';
 import {Box3} from '../../../vendor/three/three.module.js';
 import {GROUND_PROJECTION as P} from '../../data/townModelBuildings.js';
 import {PLAYER_BODY_RADIUS as R} from './CharacterBodies.js';
@@ -24,7 +26,7 @@ export class BusStopSeat {
         if(event.code==='KeyE'&&this.near()){
             event.preventDefault();event.stopImmediatePropagation();if(!event.repeat)this.toggle();return true;
         }
-        if(this.c.busSeated&&this.c.activeSeat===this&&/^Key[WASD]$/.test(event.code)&&!this.stand()){
+        if(this.c.busSeated&&this.c.activeSeat===this&&['w','a','s','d'].includes(gameKey(event))&&!this.stand()){
             event.preventDefault();event.stopImmediatePropagation();return true;
         }
         return false;
@@ -83,6 +85,6 @@ export class BusStopSeat {
         }
         this.c.supportHeight=busStopSupportHeight(this.platform,this.c.charPosX,this.c.charPosY);
         this.button.hidden=!this.enabled()||!this.near();
-        this.button.textContent=this.c.busSeated?'E · 일어나기':'E · 정류장 의자에 앉기';
+        setInteractionGuidance(this.button, 'E', this.c.busSeated ? '일어나기' : '정류장 의자에 앉기');
     }
 }

@@ -6,7 +6,8 @@ body #annaDialogueModalOverlay .vn-dialogue-box.crayon-dialogue {
     border: 20px solid transparent !important;
     border-image: var(--dialogue-panel) 40 fill stretch !important;
     border-radius: 28px !important;
-    background: none !important;
+    background: #fffaf0 !important;
+    background-clip: padding-box !important;
     color: #4c2b1a !important;
     box-shadow: none !important;
     backdrop-filter: none !important;

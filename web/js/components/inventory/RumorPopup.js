@@ -74,7 +74,7 @@ export class RumorPopup {
 
     initEventListeners() {
         this.btnClose?.addEventListener('click', () => this.close());
-        this.btnConfirm?.addEventListener('click', () => this.close());
+        this.btnConfirm?.addEventListener('click', () => this.storyQuiz ? this.storyQuiz() : this.close());
         this.modal?.addEventListener('click', (e) => {
             if (e.target === this.modal) this.close();
         });
@@ -82,6 +82,8 @@ export class RumorPopup {
 
     open(item, onValueDropped) {
         if (!item) return;
+        this.storyQuiz = null; this.btnConfirm.textContent = '편지 접어 두기';
+        this.quizCard.host.hidden = false;
         this.currentItem = item;
         this.onValueDroppedCallback = onValueDropped;
 
@@ -107,6 +109,15 @@ export class RumorPopup {
         if (this.onValueDroppedCallback) {
             this.onValueDroppedCallback(item, { isFirstRead, previousPrice, newPrice: newPriceVal, readCount: item.readCount });
         }
+    }
+
+    openStory(item, onQuiz = null) {
+        this.currentItem = item;
+        this.storyQuiz = onQuiz; this.btnConfirm.textContent = onQuiz ? '내용 확인 퀴즈' : '편지 접어 두기';
+        this.nameText.textContent = item.name;
+        this.docText.textContent = item.letterText || item.desc;
+        this.quizCard.host.hidden = true;
+        this.modal.classList.remove('hidden');
     }
 
     refreshInterpretation() {

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "js/engine/ItemEngine.js",
+    "sha256": "9b489ab8f5c5ca0f3f040efdaac5a776cfac850677470a3b5b0ccd3ac34d9735"
+  },
+  {
+    "path": "js/engine/RumorPowderValue.js",
+    "sha256": "90e41cc0755c9e384be7b72df8e875a7a253b55b020e856f19a9d0cf7fd4c34c"
+  },
+  {
+    "path": "js/data/vivianStoreData.js",
+    "sha256": "84124fac385bf9120da13dbb78b80187082a74bf01a4315945f6b2a279df9c37"
+  }
+]

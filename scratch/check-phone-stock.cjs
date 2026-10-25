@@ -77,6 +77,7 @@ const server = http.createServer((req, res) => {
         await page.locator('.stock-app [data-related]').click();
         assert.equal(await page.locator('.stock-app').count(), 0);
         assert.equal(await page.locator('.stock-news').count(), 1);
+        await page.locator('.news-list-card[data-news-id="ui-body-check"]').click();
         assert.match(await page.locator('.stock-news').textContent(), /본문 보존 검수[\s\S]*원문 첫 문단[\s\S]*원문 둘째 문단/);
         await page.locator('.stock-news [data-news-stock="CLOUDBERRY"]').first().click();
         assert.equal(await page.locator('.stock-detail-header').isVisible(), true);

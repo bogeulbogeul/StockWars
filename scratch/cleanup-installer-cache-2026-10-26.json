@@ -1,0 +1,90 @@
+{
+  "InstallerFiles": 3,
+  "CacheDirectories": 14,
+  "CacheFiles": 17,
+  "DeletedBytes": 375450065.0,
+  "ProtectedFilesHashVerified": 3285,
+  "Result": "passed",
+  "Files": [
+    {
+      "Path": "electron-app\\dist\\StockWars Demo Setup 1.0.9.exe",
+      "Bytes": 374886884
+    },
+    {
+      "Path": "electron-app\\dist\\StockWars Demo Setup 1.0.9.exe.blockmap",
+      "Bytes": 390557
+    },
+    {
+      "Path": "electron-app\\dist\\builder-debug.yml",
+      "Bytes": 7312
+    },
+    {
+      "Path": "output\\bank-redesign-v2\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 11681
+    },
+    {
+      "Path": "output\\cipher-exterior-blender-v1\\__pycache__\\exterior_geometry.cpython-313.pyc",
+      "Bytes": 9219
+    },
+    {
+      "Path": "output\\cipher-full-reference-v18\\__pycache__\\fit.cpython-313.pyc",
+      "Bytes": 5855
+    },
+    {
+      "Path": "output\\cipher-grand-single-v4\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 9109
+    },
+    {
+      "Path": "output\\cipher-proportions-v19\\__pycache__\\fit.cpython-313.pyc",
+      "Bytes": 7288
+    },
+    {
+      "Path": "output\\cipher-proportions-v19\\__pycache__\\shape.cpython-313.pyc",
+      "Bytes": 6485
+    },
+    {
+      "Path": "output\\cipher-reference-architecture-v20\\__pycache__\\projection.cpython-313.pyc",
+      "Bytes": 4393
+    },
+    {
+      "Path": "output\\cipher-reference-architecture-v20\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 22229
+    },
+    {
+      "Path": "output\\cipher-reference-match-v14\\__pycache__\\camera_fit.cpython-313.pyc",
+      "Bytes": 8553
+    },
+    {
+      "Path": "output\\cipher-roof-clean-v24\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 13669
+    },
+    {
+      "Path": "output\\cipher-roof-grid-clean-v12\\__pycache__\\polygon_finish.cpython-313.pyc",
+      "Bytes": 5887
+    },
+    {
+      "Path": "output\\cipher-roof-traced-v17\\__pycache__\\polygon_finish.cpython-313.pyc",
+      "Bytes": 5883
+    },
+    {
+      "Path": "output\\cipher-roof-traced-v17\\__pycache__\\roof_geometry.cpython-313.pyc",
+      "Bytes": 17678
+    },
+    {
+      "Path": "output\\furniture-redesign-v2\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 14146
+    },
+    {
+      "Path": "output\\home-door-mailbox-detail-v5\\__pycache__\\mailbox.cpython-313.pyc",
+      "Bytes": 6677
+    },
+    {
+      "Path": "output\\home-roof-crafted-v6\\__pycache__\\roof.cpython-313.pyc",
+      "Bytes": 7958
+    },
+    {
+      "Path": "scratch\\__pycache__\\author-ent-rumors.cpython-312.pyc",
+      "Bytes": 8602
+    }
+  ]
+}

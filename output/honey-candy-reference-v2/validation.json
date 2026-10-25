@@ -1,0 +1,19 @@
+{
+  "id": "item_honey_candy",
+  "reimported": true,
+  "meshCount": 6,
+  "embeddedPrints": 0,
+  "degenerateFaces": 0,
+  "triangles": 59856,
+  "boundsMin": [
+    -0.8421392440795898,
+    -0.1784999966621399,
+    0.03150000050663948
+  ],
+  "boundsMax": [
+    0.8422509431838989,
+    0.1784999966621399,
+    0.7684999704360962
+  ],
+  "sha256": "21dfa04cea33f0bbe7be8681d91fb7aa33369f74031c5ac9653fbf42d7e17c83"
+}

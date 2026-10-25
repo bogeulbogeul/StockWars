@@ -1,9 +1,14 @@
+import { getTownMusic } from '../engine/TownMusic.js';
+
 const durations = [12, 16, 19, 19, 21, 23];
 
 export function playOpening(screen) {
     // Called directly by the title click, so playback has a user gesture.
     const music = new Audio(new URL('../../assets/opening/first-little-journey-110s.mp3', import.meta.url).href);
-    music.volume = .55;
+    const settings = getTownMusic();
+    const updateVolume = () => { music.volume = settings.muted ? 0 : .55 * settings.volume; };
+    updateVolume();
+    const unsubscribe = settings.subscribe(updateVolume);
     music.play().catch(() => { /* Audio restrictions must not block the opening. */ });
     return new Promise(resolve => {
         screen.classList.add('opening-sequence');
@@ -19,6 +24,7 @@ export function playOpening(screen) {
         const finish = () => {
             if (finished) return;
             finished = true;
+            unsubscribe();
             music.pause();
             music.currentTime = 0;
             music.removeAttribute('src');

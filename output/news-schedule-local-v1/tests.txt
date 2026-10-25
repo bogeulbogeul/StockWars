@@ -1,0 +1,25 @@
+✔ first-day achievements read saved milestones without claiming money, titles or quests (0.584ms)
+✔ growth achievements use actual player level and unique correct-event history, including partial progress (0.1871ms)
+✔ map uses all nine current buildings and can project the whole playable world (0.5856ms)
+✔ outdoor coordinates stay live while indoor rooms use the correct village building (0.2947ms)
+✔ received, unsigned and submitted documents remain distinct and survive saved story reload (2.3233ms)
+✔ failed receipt save rolls back and legacy signed flags are read without invented receipt dates (0.1966ms)
+✔ analysis UI reads live normal proficiency and handles max level and exhibition values honestly (0.3615ms)
+✔ task notes survive restart and stay separate from exhibition records (2.9978ms)
+✔ invalid records are rejected and storage failures retain session notes (0.2288ms)
+✔ story tasks reflect real flags without mutating story or granting rewards (0.3073ms)
+✔ only the five device-local wall-clock boundaries publish, newest first (13.8834ms)
+✔ first visit includes only already elapsed slots today, never all manuscripts (0.4987ms)
+✔ reload preserves choices and deadlines; missed slots catch up once with original timestamps (1.7845ms)
+✔ clock rollback does not issue the same local slot twice (0.2478ms)
+✔ random pool does not repeat until all 288 manuscripts have been used (1812.6202ms)
+✔ random selection uses the remaining pool and does not mutate manuscripts (1.1198ms)
+✔ invalid save falls back to current-day slots without affecting other saves (0.1981ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1997.8227

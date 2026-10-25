@@ -1,3 +1,4 @@
+import { gameKey } from './GameKeys.js';
 import { stepAsideForMoa } from '../components/town3d/SomangiStepAside.js';
 import { faceConversation, clearConversationFacing } from '../components/town3d/ConversationFacing.js';
 import { createMoaWakeDialogue } from '../components/dialogue/MoaWakeDialogue.js';
@@ -12,7 +13,7 @@ export function installTownMoaWake(app, { inTown, nearMoa }) {
     const reminder = createMoaWakeDialogue();
     let warnedOutside = false;
     window.addEventListener('keydown', event => {
-        if (!reminder.isOpen || !['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'Space'].includes(event.code)) return;
+        if (!reminder.isOpen || !['w', 'a', 's', 'd', 'f', 'space'].includes(gameKey(event))) return;
         event.preventDefault(); event.stopImmediatePropagation();
         if (event.code === 'KeyF' && !event.repeat) reminder.hide();
     }, true);

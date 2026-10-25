@@ -3,7 +3,7 @@
 const LEGACY_VIEWS = [
     'smartphoneUI', 'tradeModal', 'detailedChartModal', 'newsDetailModal',
     'settlementModal', 'friendModal', 'rankingModal', 'settingsModal',
-    'playerProfileModal', 'inventoryModal', 'furnitureEditModal',
+    'playerProfileModal', 'furnitureEditModal',
     'serverSelectModal', 'characterCreation', 'playerSocial', 'itemCenter', 'cipherLobby'
 ];
 const ROOT_KEYS = ['modal', 'modalOverlay', 'dialog', 'overlay', 'panel', 'giftPanel', 'encounterHint',

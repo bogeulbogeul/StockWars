@@ -1,4 +1,5 @@
 import { TOWN_ARRIVAL } from '../../data/townLandscapeLayout.js';
+import { exhibitionSkyTime } from '../../data/exhibitionSkyTime.js';
 import { TownModelScene } from '../../components/town3d/TownModelScene.js';
 import { HomeModelScene } from '../../components/home3d/HomeModelScene.js';
 import { CipherLobbyScene } from '../../components/cipher3d/CipherLobbyScene.js';
@@ -9,9 +10,18 @@ import { buildInformationModelRoom } from '../../components/information3d/Inform
 import { buildBankModelRoom } from '../../components/bank3d/BankModelRoom.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
 import { TOWN_MODEL_PROPS } from '../../data/townModelProps.js';
-import { placeSomangi } from './SomangiPresentation.js';
 import { walkVillageTour } from './TourWalk.js';
 import { enterInformationAfterMoa } from './InformationEntry.js';
+import { leaveInformationForBank } from './InformationExit.js';
+import { enterBankOnFoot } from './BankEntry.js';
+import { leaveBankAfterMoa } from './BankExit.js';
+import { enterHomeAfterMoa } from './HomeEntry.js';
+import { enterStoreDoorOnFoot } from '../StoreDoorEntry.js';
+import { enterExteriorDoorOnFoot } from '../ExteriorDoorEntry.js';
+import { enterBuildingOnFoot } from '../OnFootNavigation.js';
+import { STORY_BUILDINGS, leaveStoryBuilding } from './BuildingTravel.js';
+import { waitForDestination } from './DestinationWalk.js';
+import { leaveHomeWithMoa } from './HomeDeparture.js';
 
 const outside = id => {
     const b = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
@@ -51,29 +61,76 @@ export class ExhibitionScenes {
         if (place === this.place) return;
         const previousMoa = this.rooms.get(this.place)?.room?.userData.moa || this.townModelScene.sleepingAnna;
         if (previousMoa && !previousMoa.root.userData.sleeping) await previousMoa.setMood('calm', 'smile');
+        if (this.place === 'bank' && place === 'bankOutside') {
+            await leaveBankAfterMoa(this);
+            preservePosition = true;
+        }
+        if (this.place === 'information' && (place === 'bank' || place === 'home')) {
+            await leaveInformationForBank(this);
+            const destination = place === 'home' ? 'homeOutside' : 'bankOutside';
+            await walkVillageTour(this, positions[destination], { requireInteraction: false });
+            this.place = destination;
+        }
+        if (this.place === 'home' && place === 'bank') {
+            await leaveHomeWithMoa(this);
+            await walkVillageTour(this, positions.bankOutside, { requireInteraction: false });
+            this.place = 'bankOutside';
+        }
+        if (STORY_BUILDINGS[this.place] && this.place !== place) await leaveStoryBuilding(this);
+        if (this.place === 'bankOutside' && place === 'home') {
+            await walkVillageTour(this, positions.homeOutside);
+            this.place = 'homeOutside';
+        }
         const walking = tour && positions[this.place] && positions[place];
         if (walking) await walkVillageTour(this, positions[place]);
+        const target = STORY_BUILDINGS[place];
+        if (target && positions[this.place] && this.place !== target.outside) {
+            await waitForDestination(this, positions[target.outside], target.label);
+            this.place = target.outside;
+        } else if (!target && positions[place] && positions[this.place] && !walking && !preservePosition) {
+            await waitForDestination(this, positions[place], place === 'notice' ? '게시판' : place === 'bench' ? '벤치' : '목적지');
+        }
         if (place === 'information' && this.place === 'informationOutside' && !this.informationEntered) await enterInformationAfterMoa(this);
+        else if (place === 'information' && this.place === 'informationOutside') await enterBuildingOnFoot(this.townModelScene, target.id);
+        if (place === 'bank' && this.place === 'bankOutside') {
+            if (!this.bankEntered) await enterBankOnFoot(this);
+            else await enterBuildingOnFoot(this.townModelScene, target.id);
+            this.bankEntered = true;
+        }
+        const homeEntry = place === 'home' && this.place === 'homeOutside' && !this.homeEntered;
+        if (homeEntry) await enterHomeAfterMoa(this);
+        else if (place === 'home') await enterBuildingOnFoot(this.townModelScene, target.id);
+        if (place === 'home') this.homeEntered = true;
+        if (place === 'store' && positions[this.place]) {
+            await this.prepareRoom('store');
+            await enterStoreDoorOnFoot(this.townModelScene);
+        }
+        if (place === 'stock' && positions[this.place]) {
+            if (this.place !== 'stockOutside') await walkVillageTour(this, positions.stockOutside);
+            this.place = 'stockOutside';
+            await this.prepareRoom('stock');
+            await enterExteriorDoorOnFoot(this.townModelScene, 'cipher_securities');
+        }
         this.place = place;
         for (const room of this.rooms.values()) room.hide();
         this.townStage.containerEl.classList.add('hidden');
         if (positions[place]) {
-            const [x, y] = positions[place];
-            if (!preservePosition && !walking) Object.assign(this.townStage.playerController, { charPosX: x, charPosY: y });
             this.townStage.containerEl.classList.remove('hidden');
             this.townModelScene.draw(); return;
         }
         const room = await this.prepareRoom(place);
         if (this.place === place) {
             room.show();
+            if (place === 'store') await room.greetingReady;
+            this.storeAwaitingTalk = place === 'store';
             this.informationAwaitingTalk = place === 'information';
-            if (!this.informationAwaitingTalk) placeSomangi(this, room);
+            this.bankAwaitingTalk = place === 'bank';
         }
     }
     async prepareRoom(place) {
         let room = this.rooms.get(place);
         if (!room) {
-            const back = () => this.show('homeOutside');
+            const back = () => this.show(STORY_BUILDINGS[place].outside, { preservePosition: true });
             if (place === 'home') room = new HomeModelScene(this.container, back);
             else if (place === 'store') room = new VivianModelScene(this.container, back, () => {});
             else {
@@ -90,7 +147,10 @@ export class ExhibitionScenes {
         await room.ready;
         return room;
     }
-    setTime(sunset) {
-        document.body.classList.toggle('exhibition-sunset', sunset);
+    setTime(sunset, { asleep = false, immediate = false } = {}) {
+        const stage = exhibitionSkyTime({ sunset, asleep });
+        this.townModelScene.scene.userData.storySkyTime = stage;
+        document.body.classList.toggle('exhibition-sunset', stage === 'sunset');
+        this.townModelScene.landscape?.sky.update(performance.now(), immediate);
     }
 }

@@ -42,14 +42,8 @@ export class VillageBoard {
         const notice = VILLAGE_NOTICES.find(item => item.id === id) || VILLAGE_NOTICES[0];
         for (const button of this.list.children) button.setAttribute('aria-pressed', String(button.dataset.notice === notice.id));
         this.paper.innerHTML = `<span class="board-category">${notice.category}</span><h2>${notice.title}</h2><p class="board-author">${notice.author}</p><div class="board-body">${notice.paragraphs.map(text => `<p>${text}</p>`).join('')}</div><p class="board-location">⌖ ${notice.location}</p>`;
-        if (notice.id === 'packing' && this.onRead) {
-            const button = document.createElement('button'); button.type = 'button'; button.className = 'board-read'; button.textContent = '공고를 읽었어요 · 잡화점으로';
-            button.onclick = () => { const done = this.onRead; this.onRead = null; this.close(); done(); };
-            this.paper.append(button);
-        }
+        if (notice.id === 'packing') this.readPacking = true;
         this.preview.innerHTML = this.paper.innerHTML;
-        const read = this.preview.querySelector('.board-read');
-        if (read) read.onclick = () => { const done = this.onRead; this.close(); done?.(); };
         const enlarge = document.createElement('button'); enlarge.type = 'button';
         enlarge.className = 'board-enlarge'; enlarge.textContent = '공고문 크게 보기 ↗';
         enlarge.onclick = () => this.select(notice.id);
@@ -59,7 +53,11 @@ export class VillageBoard {
     }
     open({ onRead = null } = {}) {
         if (this.dialog.open) return;
-        this.onRead = onRead; this.onOpen(); this.select('packing', { expand: false }); this.dialog.showModal();
+        this.onRead = onRead; this.readPacking = false; this.onOpen(); this.select('packing', { expand: false }); this.dialog.showModal();
     }
-    close() { this.onRead = null; this.reader.close(); this.dialog.close(); }
+    close() {
+        if (!this.dialog.open) return;
+        const onRead = this.readPacking ? this.onRead : null;
+        this.onRead = null; this.reader.close(); this.dialog.close(); onRead?.();
+    }
 }

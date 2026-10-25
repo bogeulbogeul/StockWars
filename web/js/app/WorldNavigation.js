@@ -2,9 +2,15 @@ import { toastManager } from '../components/ToastManager.js';
 import { registerNickname } from '../engine/NicknameRegistration.js';
 import { HomeModelScene } from '../components/home3d/HomeModelScene.js';
 import { TOWN_MODEL_BUILDINGS } from '../data/townModelBuildings.js';
+import { enterBuildingOnFoot, leaveBuildingOnFoot } from './OnFootNavigation.js';
 
 export const worldNavigation = {
-    async enterTown(server = null, spawnLocation = null) {
+    async enterTown(server = null, spawnLocation = null, { fromDoor = false } = {}) {
+        const interior = [this.cipherLobbyScene?.trainingRoomScene, this.cipherLobbyScene?.simulationRoomScene,
+            this.homeModelScene, this.bankModelScene, this.informationModelScene, this.vivianModelScene, this.cipherLobbyScene]
+            .find(scene => scene?.active);
+        if (interior && !fromDoor) { await interior.exit(); return true; }
+        if (!fromDoor && document.body.classList.contains('town-mode-active')) return true;
         const bridge = this.isLocalSession ? null : window.stockWarsPresence;
         if (this.isLocalSession) server = { id: 'local', name: '로컬 마을', ping: 0 };
         if (bridge) {
@@ -48,31 +54,37 @@ export const worldNavigation = {
         this.vivianStoreModal?.open();
     },
 
-    enterOffice() {
+    async enterOffice() {
+        if (this.homeModelScene?.active) return true;
+        if (this.homeEntryActive) return false;
+        const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
+        const returningFromTown = document.body.classList.contains('town-mode-active');
+        if (returningFromTown) {
+            const c = this.townStage.playerController;
+            if (Math.abs(c.charPosX - home.x - (home.entranceOffsetX || 0)) >= 85
+                || c.charPosY < home.y + 15 || c.charPosY >= home.y + 145) return false;
+        } else if (['informationModelScene', 'bankModelScene', 'vivianModelScene', 'cipherLobbyScene']
+            .some(key => this[key]?.active)) return false;
+        this.homeEntryActive = true;
+        try {
+        this.homeModelScene ||= new HomeModelScene(this.appContainer, async () => {
+            await leaveBuildingOnFoot({ room: this.homeModelScene, town: this.townModelScene,
+                id: home.id, showTown: () => this.enterTown(null, home.id, { fromDoor: true }) });
+        });
+        await this.homeModelScene.ready;
+        if (returningFromTown) await enterBuildingOnFoot(this.townModelScene, home.id);
         this.informationModelScene?.hide();
         this.bankModelScene?.hide();
         this.vivianModelScene?.hide();
         this.cipherLobbyScene?.hide();
-        const returningFromTown = document.body.classList.contains('town-mode-active');
         void window.stockWarsPresence?.leave();
         this.serverSelectModal?.close();
         this.townStage?.hide();
         this.officeStage?.hide?.();
-        this.homeModelScene ||= new HomeModelScene(this.appContainer, async () => {
-            const entered = await this.enterTown();
-            if (entered === false) return;
-            const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
-            const player = this.townStage.playerController;
-            player.charPosX = home.x + (home.entranceOffsetX || 0);
-            player.charPosY = home.y + 65;
-            player.keysHeld.clear();
-            player.isMoving = false;
-            player.facing = 'down';
-            player.updateCamera(this.townStage.viewportEl.clientWidth, this.townStage.viewportEl.clientHeight, 0, true);
-        });
         this.homeModelScene.show();
         document.body.classList.remove('town-mode-active');
         if (returningFromTown) toastManager.show('소망이네 집으로 돌아왔습니다.', true);
+        } finally { this.homeEntryActive = false; }
     },
 
     toggleStage() {
@@ -80,7 +92,9 @@ export const worldNavigation = {
         if (isTownActive) {
             this.enterOffice();
         } else {
-            this.enterTown();
+            const interior = ['homeModelScene', 'informationModelScene', 'bankModelScene', 'vivianModelScene', 'cipherLobbyScene']
+                .map(key => this[key]).find(scene => scene?.active);
+            if (interior) void interior.exit(); else this.enterTown();
         }
     },
 

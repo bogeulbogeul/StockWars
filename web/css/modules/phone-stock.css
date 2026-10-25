@@ -1,3 +1,4 @@
+@import './stock-desktop.css?v=desktop-v1';
 @import './phone-stock-order.css';
 .cozy-phone__detail--stock { display: flex; flex-direction: column; overflow: hidden; padding: 4px 0 0; }
 .cozy-phone__detail--stock > h2 { display: none; }
@@ -127,4 +128,88 @@
     .cozy-phone:has(.cozy-phone__detail--stock) .cozy-phone__status { padding: 5px 12px 0; font-size: 12px; }
     .stock-body:has(.stock-detail-header) { display: block; overflow: auto; }
     .stock-detail-content { overflow: visible; }
+}
+
+/* Sector filters share the exact palette used by company pictograms. */
+.stock-app .stock-filters button[style] { background: var(--sector-color); color: #172019; border-color: var(--sector-color); }
+.stock-app .stock-filters button[style][aria-pressed="true"] { background: var(--sector-color); color: #172019; outline: 2px solid #30382f; outline-offset: 2px; font-weight: 800; }
+
+.stock-app .stock-nav .stock-power-off { display: none; }
+
+.stock-app .stock-lesson-dock { flex-shrink: 0; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; padding: 12px 16px; border-top: 2px solid #9bb391; background: #eaf0df; }
+.stock-app .stock-lesson-dock[hidden] { display: none; }
+.stock-lesson-dock > div { display: flex; align-items: baseline; gap: 10px; grid-column: 1 / -1; }
+.stock-lesson-dock strong { color: #416c49; }
+.cozy-phone .stock-app .stock-lesson-dock p { margin: 0; font-size: 15px; line-height: 1.6; }
+.stock-app .stock-lesson-dock button { align-self: end; padding: 8px 14px; background: #658c62; color: #fffaf1; white-space: nowrap; }
+@media (min-width: 1000px) and (min-height: 600px) {
+    .cozy-phone.cozy-phone:has(.stock-app--lesson) { height: min(860px, calc(100dvh - 40px)); }
+    .cozy-phone .stock-app.stock-app--lesson { grid-template-rows: auto auto minmax(0, 1fr) auto; }
+    .stock-app--lesson .stock-lesson-dock { grid-column: 2; grid-row: 4; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 16px 20px; min-height: 90px; }
+    .stock-app--lesson .stock-lesson-dock > div { grid-column: auto; flex-direction: column; gap: 3px; }
+    .stock-app--lesson .stock-lesson-dock > button { align-self: center; }
+    .cozy-phone .stock-app--lesson .stock-lesson-dock p { font-size: 17px; }
+}
+
+.stock-app .stock-recommendations { padding: 12px; margin-bottom: 14px; border: 1px solid #b4c5a5; border-radius: 12px; background: #eaf0df; }
+.stock-app .stock-recommendations h3 { margin-top: 0; }
+.stock-app .stock-recommendations > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.stock-app .stock-recommendations button { display: flex; align-items: center; gap: 9px; text-align: left; padding: 10px; }
+.stock-app .stock-recommendations button > span:last-child { min-width: 0; }
+.stock-app .stock-lesson-target { outline: 2px solid #648956; outline-offset: -2px; }
+.stock-app .stock-lesson-dock .stock-lesson-copy { display: block; grid-column: 1; }
+.stock-app .stock-lesson-copy > small { margin-bottom: 4px; color: #526848; font-weight: 700; }
+.stock-app .stock-lesson-dock .stock-lesson-actions { grid-column: 2; display: flex; gap: 6px; flex-wrap: wrap; align-self: end; }
+.stock-app .stock-lesson-actions [data-lesson-prev] { background: #f8f6ed; color: #47643e; }
+.stock-lesson-dock button[hidden] { display: none; }
+@media (max-width: 480px) {
+    .stock-app .stock-recommendations > div { grid-template-columns: 1fr; }
+    .stock-app .stock-lesson-dock { gap: 4px; padding: 8px 10px; }
+    .cozy-phone .stock-app .stock-lesson-dock p { font-size: 14px; }
+    .stock-app .stock-lesson-dock .stock-lesson-actions { grid-column: 1 / -1; justify-content: flex-end; }
+    .stock-app .stock-lesson-dock button { padding: 5px 10px; }
+}
+@media (min-width: 1000px) and (min-height: 600px) {
+    .stock-app .stock-recommendations > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stock-app--lesson .stock-lesson-dock .stock-lesson-copy { grid-column: 2; }
+    .stock-app--lesson .stock-lesson-dock .stock-lesson-actions { grid-column: 3; align-self: center; }
+}
+
+@media (min-width: 1000px) and (min-height: 600px) { .stock-app--lesson .stock-lesson-dock .stock-lesson-actions { flex-direction: row; } }
+
+/* Give the teacher's speech a distinct, high-contrast dialogue card. */
+.stock-app .stock-lesson-dock { margin: 8px; border: 2px solid #54734b; border-top: 5px solid #54734b; border-radius: 12px; background: #fffdf3; padding: 14px 16px; }
+.stock-lesson-dock > div:first-child > strong { background: #3c633c; color: #fffdf3; border-radius: 8px; padding: 5px 12px; font-size: 18px; }
+.stock-app .stock-lesson-copy > small { color: #40543b; font-size: 14px; margin-bottom: 7px; }
+.cozy-phone .stock-app .stock-lesson-dock p { color: #20291e; font-size: 18px; font-weight: 700; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
+.stock-app .stock-lesson-dock [data-lesson-next] { background: #3c633c; font-weight: 800; border-color: #3c633c; min-height: 42px; }
+@media (min-width: 1000px) and (min-height: 600px) {
+    .stock-app--lesson .stock-lesson-dock { margin: 8px 14px 12px; padding: 18px 20px; min-height: 128px; gap: 22px; }
+    .cozy-phone .stock-app--lesson .stock-lesson-dock p { font-size: 22px; line-height: 1.6; }
+    .stock-app--lesson .stock-lesson-dock .stock-lesson-actions button { font-size: 16px; padding: 11px 16px; }
+}
+@media (max-height: 500px) {
+    .stock-app .stock-lesson-dock { margin: 4px; padding: 8px 12px; }
+    .cozy-phone .stock-app .stock-lesson-dock p { font-size: 16px; line-height: 1.45; }
+}
+
+.stock-chart { cursor: crosshair; }
+.stock-chart-cursor line { stroke: #3e5941; stroke-width: 1; stroke-dasharray: 3 2; }
+.stock-chart-cursor circle { fill: #3e5941; stroke: #fffdf3; stroke-width: 2; }
+.stock-chart-cursor .stock-chart-tooltip { fill: #304b35; stroke: #fffdf3; stroke-width: .6; }
+.stock-chart-cursor .stock-chart-tooltip-text { fill: #fffdf3; font-weight: 700; }
+.cozy-phone .stock-app .stock-chart-readout { font-weight: 700; color: #304b35; }
+
+/* Expansion reserves a visibly larger chart canvas; order book follows below. */
+.stock-app .stock-detail-content:has(.stock-chart--expanded) { display: block; overflow: auto; }
+.stock-app .stock-chart--expanded { width: 100%; min-width: 0; height: min(58dvh, 520px); min-height: 300px; }
+@media (min-width: 1000px) and (min-height: 600px) {
+    .stock-app .stock-detail-content:has(.stock-chart--expanded) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .stock-app [data-panel="chart"] .stock-chart--expanded { height: min(58dvh, 520px); min-height: 420px; }
+}
+
+.stock-app .stock-detail-content:has(.stock-chart--expanded) .stock-chart-panel { overflow: visible; }
+@media (min-width: 1000px) and (min-height: 600px) {
+    .stock-app .stock-detail-content:has(.stock-chart--expanded) { display: block; }
+    .stock-app .stock-detail-content:has(.stock-chart--expanded) .stock-book-panel { margin-top: 18px; }
 }

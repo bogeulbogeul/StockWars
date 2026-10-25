@@ -1,0 +1,176 @@
+{
+  "rows": [
+    {
+      "index": 0,
+      "name": "bank-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 90,
+          "leaves": 9,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 1,
+      "name": "furniture-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 90,
+          "leaves": 9,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 2,
+      "name": "pub-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 3,
+      "name": "cipher-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 81,
+          "leaves": 18,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 4,
+      "name": "bookstore-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 5,
+      "name": "post-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 6,
+      "name": "information-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 99,
+          "leaves": 0,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 72,
+          "leaves": 27,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 7,
+      "name": "home-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 90,
+          "leaves": 9,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 63,
+          "leaves": 36,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    },
+    {
+      "index": 8,
+      "name": "store-door-dark-interior",
+      "checks": [
+        {
+          "offset": 0,
+          "checked": 97,
+          "leaves": 2,
+          "misses": []
+        },
+        {
+          "offset": 80,
+          "checked": 63,
+          "leaves": 36,
+          "misses": []
+        }
+      ],
+      "closedHidden": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "source": "output\\somangi-game-v1\\somangi-walk.blend",
+  "restVerticesSHA256": "1402aa64f52a3bc3a61d83b6ccd3ddcd5b0ea33db0dcbb36b650639537ee0bdb",
+  "restVerticesUnchanged": true,
+  "clips": {
+    "FloorSleep_Down": 3.2,
+    "FloorSleep_Idle": 4.0,
+    "FloorSleep_Up": 3.2
+  },
+  "floorZ": -0.950641572,
+  "sleepExpression": "sleepy (existing v6); embedded in GLB",
+  "gameInstalled": false,
+  "wholeArms": true
+}

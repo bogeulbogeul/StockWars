@@ -14,3 +14,17 @@ P1 · ✅ 웹·기존 실행본 적용 및 자동 검증 / ⏳ 사용자 최종 
 - `web-furniture.json`, `desktop-furniture.json`에 벽 구간 수·접근/출구 결과가 있다. `web-home.png`, `web-information.png`의 실제 벽 접근 렌더를 열어 확인했다. 다른 방 렌더도 같은 폴더에 보존했다.
 
 기존 실행본 resources/web에 변경 모듈 3개를 동기화했다. 설치 프로그램은 재빌드하지 않았다. 사용자 최종 플레이 검수는 별도다.
+
+## 중복 검수 캡처 정리 — 2026-10-26
+
+✅ 삭제 완료. 대조표의 web 캡처와 환경별 검증 기록은 보존했다.
+
+아래 desktop PNG는 동일 폴더 web PNG와 SHA-256까지 일치해 사용자 승인으로 삭제한다. 환경별 JSON 검증 기록과 촬영 스크립트는 별도로 유지한다. 기존 `desktop-*.png` 안내는 아래 대응 web PNG를 따른다. 이 대조표는 기존 촬영 시점의 이미지 내용 일치를 기록하며 새 플레이 검증을 의미하지 않는다.
+
+| 삭제 desktop 캡처 | 보존 web 캡처 | SHA-256 |
+|---|---|---|
+| `desktop-store.png` | [web-store.png](web-store.png) | `d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac` |
+| `desktop-bank.png` | [web-bank.png](web-bank.png) | `ca386911c5c4c0d13e29d05c56e121de268bb5a6735f2a72378814f125b31db5` |
+| `desktop-information.png` | [web-information.png](web-information.png) | `612be2ed0bc44ad8b2faafa849c1702ee6b57391604b13015d79434007c5731c` |
+| `desktop-stock.png` | [web-stock.png](web-stock.png) | `d528324c52bc918125714a0bffb751ebf393b8a574bb4d0dc3c05c96cb23a336` |
+| `desktop-home.png` | [web-home.png](web-home.png) | `64e1f640d16bcb89828da65b7129e5eac6c6d957440d5f287fb392a58577be69` |

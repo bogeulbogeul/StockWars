@@ -1,0 +1,101 @@
+{
+  "results": [
+    {
+      "app": "stock",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "news",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "achievements",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "messenger",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "tasks",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "profile",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "map",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "settings",
+      "width": 1280,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "stock",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "news",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "achievements",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "messenger",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "tasks",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "profile",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "map",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    },
+    {
+      "app": "settings",
+      "width": 390,
+      "homeVisible": true,
+      "returned": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>업적 앱 디자인</title><link rel="stylesheet" href="../messenger-app-design-v1/preview.css"><link rel="stylesheet" href="../../web/css/modules/phone-achievements.css"><style>.phone{height:770px}.app{padding-top:10px}.phone-achievements h3{margin-top:4px}footer{line-height:1.8}</style><body><header class="board-title"><span>SMARTPHONE · ACHIEVEMENTS</span><h1>차곡차곡 모은 나의 발자취</h1><p>업적 목록과 상세 화면 · 달성 상태는 디자인용 예시입니다.</p></header><main id="previews"></main><footer>파스텔 배지 · 실제 진행도 · 자동 달성 · 상단 홈 화면 복귀</footer><script type="module">
+import {mountAchievementsApp} from '../../web/js/components/phone/achievements/AchievementsApp.js';
+import {storyAchievements} from '../../web/js/components/phone/achievements/AchievementData.js';
+const state={flags:{nickname:true,bank:true,certificate:true}};
+for(const [i,title] of ['업적 목록','업적 상세'].entries()){
+ const section=document.createElement('section');section.className='sample';section.innerHTML=`<h2>${title}</h2><div class="phone cozy-phone"><i class="speaker"></i><div class="screen"><div class="status">19:06 <span>▂▄▆ ▰</span></div><button class="home">‹ 홈 화면</button><div class="app"><div class="content"></div></div></div></div>`;document.querySelector('main').append(section);const detail=section.querySelector('.app'),host=section.querySelector('.content');mountAchievementsApp({detail},host,{achievements:()=>storyAchievements(state)});if(i)host.querySelector('[data-achievement="license"]').click();
+}
+document.body.dataset.ready='true';
+</script></body></html>

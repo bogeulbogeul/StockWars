@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
 import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
@@ -78,7 +79,8 @@ export class CipherLobbyScene {
             && charactersCanStand(this.characterBodies, x, z);
         installIndoorFurnitureBodies(this, this.canStand);
         this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
-        if(this.createInteraction)this.interaction=await this.createInteraction(this);
+        const createInteraction = this.createInteraction || this.room.userData.createInteraction;
+        if(createInteraction)this.interaction=await createInteraction(this);
         this.player.setControlsHint(this.defaultHint);
         this.player.root.traverse(object => { if (object.isMesh) object.castShadow = true; });
         this.status.hidden = true;
@@ -180,11 +182,15 @@ export class CipherLobbyScene {
             LOBBY.camera.targetZ + Math.cos(pitch) * distance);
         this.camera.lookAt(0, LOBBY.camera.targetY, LOBBY.camera.targetZ);
         this.camera.updateProjectionMatrix();
+        this.room?.userData.cameraRig?.setBase(this.camera);
     }
 
     update(dt) {
         const LOBBY = this.layout;
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) {
+            this.player?.update(dt); this.room.userData.update?.(dt); return;
+        }
         if(this.seatInteraction?.update(dt)){
             this.room.userData.marketBoard?.update(performance.now());
             this.room.userData.update?.(dt);return;
@@ -233,9 +239,13 @@ export class CipherLobbyScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            const app = window.stockWarsExhibition;
+            this.room.userData.cameraRig?.update(this.camera, this.player, dt,
+                app?.scenes.place === 'bank' && !app.scenes.bankAwaitingTalk);
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

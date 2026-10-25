@@ -1,6 +1,6 @@
 .stock-app .stock-toggle { display: flex; gap: 5px; margin: 8px 0; }
 .stock-toggle button { flex: 1; padding: 9px 2px; font-size: 14px; }
-.stock-detail-content > label { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; gap: 8px; }
+.stock-detail-content > label, .stock-order-fields > label { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; gap: 8px; }
 .stock-detail-content input, .stock-detail-content select { max-width: 58%; }
 .stock-stepper { display: flex; align-items: center; gap: 4px; max-width: 70%; }
 .stock-stepper input { max-width: 58%; text-align: center; }

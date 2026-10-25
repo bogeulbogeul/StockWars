@@ -14,7 +14,7 @@ export const MOA_ARRIVAL = Object.freeze({ ...MOA_TOWN_POSITION, radius: 80 });
 export function nearSleepingMoa(position) {
     return Math.hypot(position.x - MOA_ARRIVAL.x, position.y - MOA_ARRIVAL.y) <= MOA_ARRIVAL.radius;
 }
-const arrivalKey = event => /^Key[WASDF]$/.test(event.code) ? event.code.slice(3).toLowerCase() : event.key.toLowerCase();
+const arrivalKey = gameKey;
 const DIRECTIONS = { w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
 export const ARRIVAL_LIMITS = MOA_APPROACH_AREA;
 
@@ -31,7 +31,7 @@ export class ExhibitionArrival {
                 if (arrivalKey(event) === 'f' && !event.repeat) this.reminder.hide();
                 return;
             }
-            if (gameKey(event) === 'space' && !event.target.closest?.('button, a[href]')) {
+            if (gameKey(event) === 'space' && !event.target.closest?.('button:not(.phone-launcher), a[href]')) {
                 event.preventDefault(); event.stopImmediatePropagation();
                 if (!event.repeat) this.app.scenes.townModelScene.player?.play('jump', { scripted: true });
                 return;
@@ -47,6 +47,7 @@ export class ExhibitionArrival {
             this.keys.delete(arrivalKey(event)); this.rememberPosition();
         }, true);
         window.addEventListener('blur', () => this.keys.clear());
+        window.addEventListener('stockwars-settings-changed', () => this.keys.clear());
         document.addEventListener('visibilitychange', () => { if (document.hidden) this.keys.clear(); });
     }
     start({ showGuide = false } = {}) {

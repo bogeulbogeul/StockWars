@@ -4,7 +4,7 @@ import { seatUiBlocked } from '../../components/town3d/SeatControls.js';
 // The exhibition owns keyboard capture, so forward jump before its catch-all.
 export function routeExhibitionJump(event, app) {
     if (gameKey(event) !== 'space' || !app.started || app.arrival.active) return false;
-    if (event.target?.closest?.('input, textarea, select, button, a[href], [contenteditable="true"]') || seatUiBlocked()) return false;
+    if (event.target?.closest?.('input, textarea, select, button:not(.phone-launcher), a[href], [contenteditable="true"]') || seatUiBlocked()) return false;
     const scenes = app.scenes;
     if (app.activities.game?.isOpen || (app.busy && !scenes.tourActive)) return false;
     const owner = scenes.tourActive ? scenes.townModelScene : scenes.rooms.get(scenes.place) || scenes.townModelScene;

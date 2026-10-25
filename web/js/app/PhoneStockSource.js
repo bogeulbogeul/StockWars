@@ -1,15 +1,34 @@
 import { marketEngine as engine } from '../engine/marketEngine.js';
 import { calculateGrowthIndex } from '../engine/GrowthIndex.js';
+import { normalProfile } from '../components/phone/profile/ProfileData.js';
+import { normalMapPosition } from '../components/phone/map/MapData.js';
+import { playerAchievements } from '../components/phone/achievements/AchievementData.js';
+import { scheduledNewsRuntime } from './ScheduledNewsRuntime.js';
 
 export function phoneStockSource(app) {
+    const newsFeed = scheduledNewsRuntime('standard');
+    Object.defineProperty(engine, 'news', { configurable: true, get: () => newsFeed.news() });
     return {
+        achievements: () => playerAchievements(app),
+        mapPosition: () => normalMapPosition(app),
+        profile: () => normalProfile(app),
+        profileIdentity: async () => {
+            if (app.isLocalSession || !globalThis.stockWarsPresence?.state) return null;
+            const result = await globalThis.stockWarsPresence.state();
+            return result?.error ? null : result?.snapshot?.playerId ?? null;
+        },
+        messengerOnline: () => !app.isLocalSession && !!globalThis.stockWarsChat,
         recent: [...(app.smartphoneUI.homeTab?.recentlyViewedIds || [])],
         onFavorites: favorites => { app.smartphoneUI.stockListTab.favorites = new Set(favorites); },
         getState: () => {
             const state = engine.getState();
             return { ...state, sproutIndex: calculateGrowthIndex(state.stocks) };
         },
-        subscribe: listener => engine.subscribe(listener),
+        subscribe: listener => {
+            const marketOff = engine.subscribe(listener);
+            const newsOff = newsFeed.subscribe(() => listener(engine.getState()));
+            return () => { marketOff(); newsOff(); };
+        },
         history: id => engine.getChartHistory(id), book: id => engine.getOrderBook(id),
         pending: id => engine.limitOrders.filter(order => order.stockId === id),
         cancel: id => engine.cancelLimitOrder(id),

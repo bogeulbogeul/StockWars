@@ -24,6 +24,7 @@ import { createConversationCamera } from './ConversationCamera.js';
 import { createDialogueOcclusion } from './DialogueOcclusion.js';
 import { TownRenderCulling } from './TownRenderCulling.js';
 import { TownStaticBatches } from './TownStaticBatches.js';
+import { ExteriorDoorProximity } from './ExteriorDoors.js';
 
 // Separate from the retained sprite stage: both use the same ground coordinates.
 export class TownModelScene {
@@ -98,6 +99,7 @@ export class TownModelScene {
             model.name = definition.id;
             model.userData.walkThrough = definition.file.startsWith('Flowers-mini-');
             model.userData.dialogueOccluder = true;
+            model.userData.entryOccluder = /Tree|Popori/i.test(definition.file);
             this.landscape.wrap(model);
             this.landscape.addContactShadow(model);
             if (TOWN_MODEL_BUILDINGS.some(building => building.id === definition.id)) {
@@ -132,6 +134,7 @@ export class TownModelScene {
         installJumpCollision(controller, controller.canStand, this.jumpCollisionBodies);
         this.busSeat=new BusStopSeat(this,this.scene.getObjectByName('village_bus_stop'));
         this.seatInteraction=new SeatInteraction(this,townSeatSurfaces(this.scene));
+        this.exteriorDoors = new ExteriorDoorProximity(this.scene);
         this.renderCulling.batches = new TownStaticBatches(this.scene);
         this.draw();
     }
@@ -189,14 +192,18 @@ export class TownModelScene {
         // before rendering, including the shelter stand-up motion.
         this.busSeat?.update();
         this.player?.update(dt);
-        this.conversationCamera ||= createConversationCamera();
+        if (!this.entryActive && !document.body.classList.contains('title-screen-active')) {
+            this.exteriorDoors?.update(this.player.root.position.x, this.player.root.position.z);
+        }
+        this.conversationCamera ||= createConversationCamera({ faceFraming: true });
         this.conversationCamera.update(this.camera, this.player, this.sleepingAnna, dt);
         const wallTime = Date.now();
         for (const clock of this.buildingClocks) clock.update(wallTime);
         this.landscape.update(x, z, this.town.playerController.renderPosition);
         this.dialogueOcclusion ||= createDialogueOcclusion(this.scene);
-        if (this.entryActive || document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
-        else this.dialogueOcclusion.update(this.camera, [this.player, this.sleepingAnna], dt);
+        if (document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
+        else this.dialogueOcclusion.update(this.camera, [this.player, this.sleepingAnna],
+            this.entryActive ? { includeRoot: root => root.userData.entryOccluder } : undefined);
         this.renderCulling.render(this.renderer, this.scene, this.camera, this.landscape.center.value);
     }
 }

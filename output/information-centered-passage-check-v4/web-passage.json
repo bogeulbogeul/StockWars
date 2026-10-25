@@ -1,0 +1,271 @@
+{
+  "enteredSideways": true,
+  "allLegal": true,
+  "exitedSideways": true,
+  "samples": [
+    {
+      "x": 231,
+      "z": 250,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 241,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 237.99400000000017,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 228.9940000000002,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 222.2440000000002,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 219.9895000000001,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 217.73500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 210.98500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 204.23500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 197.48500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 190.73500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 183.98500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 177.23500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 170.48500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 163.73500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 156.98500000000024,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 150.24850000000026,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 143.49850000000026,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 141.24400000000017,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 134.49400000000017,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 132.25300000000013,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 125.50300000000013,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 118.75300000000013,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 112.00300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 105.25300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 98.50300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 91.75300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 85.00300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 78.25300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 71.50300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 64.75300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 58.00300000000014,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 51.25300000000014,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 42.25300000000014,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 33.25300000000014,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 24.253000000000142,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 15.253000000000142,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": 6.253000000000143,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -2.746999999999857,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -11.746999999999858,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -20.746999999999858,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -29.746999999999858,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -38.74699999999986,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 231,
+      "z": -47.74699999999986,
+      "sideways": false,
+      "legal": true
+    }
+  ]
+}

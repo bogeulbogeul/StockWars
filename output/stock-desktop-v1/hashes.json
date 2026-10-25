@@ -1,0 +1,9 @@
+{
+  "css/modules/phone-stock.css": "2c4ba92a15a3442dff2f088336edddbe409224ce4354d2c1f2d5a8bcd03aedfd",
+  "css/modules/phone-stock-order.css": "55a97c069ac2f37ecb9bd4609e89dfad4ff4980da70d814332f30901769c3fa0",
+  "css/modules/stock-desktop.css": "16363735a56cd14ebc0db2a0034378e60f182f55980bfd1ce39cc07e96351f46",
+  "js/components/phone/stock/StockApp.js": "3b95bba1b358325a6230515e8b9049997e420a6c523fde18f507754ce5020346",
+  "js/components/phone/stock/StockOrder.js": "69b81a4f9763d4586d60ad77af450ccbbb576ae9f95450a027393273b1cf8af7",
+  "js/components/phone/stock/StockBrand.js": "7f9fe0e33e1cd540786f3a723f2414393f2ae0996efa619a367b5356bdf9e51c",
+  "js/components/phone/stock/StockScreens.js": "ee3525a8be0d484d5f675f9b99c49d9735f67bee04db522b28550794dce25bbd"
+}

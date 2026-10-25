@@ -1,0 +1,7 @@
+{
+  "id": "item_dew_jelly",
+  "file": "item_dew_jelly.glb",
+  "sha256": "386caafcde34d72d2d317c3fba08ab277bbabbc8a40f3f70b00416526e863daa",
+  "reference": "web/assets/items/packing-v1/items.png [1210,430,340,330]",
+  "paperPleats": 18
+}

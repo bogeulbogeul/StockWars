@@ -1,5 +1,6 @@
 import { initializePlayerGrowth, playerLevelProgress } from './PlayerGrowth.js';
 import { migrateRumorStages } from './RumorStageMigration.js';
+import { reduceRumorPowderValue } from './RumorPowderValue.js';
 import { COMMON_PLAYER_RULES, RETIRED_ABILITY_ITEMS, preserveLegacyAbilities } from './AbilityRetirement.js';
 import { initializeAnalysisGrowth, analysisProgress, beginInterpretationQuiz, submitInterpretationQuiz } from './AnalysisGrowth.js';
 import { AUTHORED_RUMOR_ITEMS, drawAuthoredRumor } from '../data/rumorCatalog.js';
@@ -125,8 +126,7 @@ export class ItemEngine {
     recoveryAmount() { return 1; }
     laborCost() { return COMMON_PLAYER_RULES.laborCost; }
     canAdd(id, qty = 1) {
-        const entry = this.state.inventory.find(i => i.id === id);
-        return entry ? entry.quantity + qty <= 99 : this.state.inventory.length < 24 && qty <= 99;
+        return Number.isInteger(qty) && qty > 0 && this.state.inventory.reduce((n, item) => n + (item.quantity ?? 1), 0) + qty <= 30;
     }
     add(id, qty = 1) {
         if (!this.canAdd(id, qty)) return false;
@@ -231,8 +231,9 @@ export class ItemEngine {
             if (!target) return fail('해석할 찌라시를 선택하세요.');
             const before = rumorLevel(target, this.stats().analysis);
             target.interpretationLevel = id === 'item_moon_powder' ? maxRumorLevel(target) : before + 1;
+            const value = reduceRumorPowderValue(target);
             s.decryptions++;
-            message = `찌라시 한 건의 해석 단계 ${before} → ${target.interpretationLevel} · 해당 정보에 유지됩니다. 진위는 보장하지 않습니다.`;
+            message = `해석 ${before} → ${target.interpretationLevel} · 매각 가치 ${value.before.toLocaleString()} → ${value.after.toLocaleString()}잎 · 진위는 보장하지 않습니다.`;
         } else if (id === 'item_crypto_decoder' || id === 'item_darknet_key') {
             const report = options.reportId ? s.reports.find(r => r.id === options.reportId && r.revealed < r.parts.length) : s.reports.find(r => r.revealed < r.parts.length);
             if (!report) return fail('해독 대상 보고서를 선택하세요.');

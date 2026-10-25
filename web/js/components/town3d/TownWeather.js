@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from '../../engine/SettingsStore.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { TOWN_WEATHER_PROFILES, townWeather } from '../../data/townWeatherProfiles.js';
 
@@ -57,7 +58,7 @@ export class TownWeather {
         this.uniforms.amount.value = immediate ? target : THREE.MathUtils.damp(this.uniforms.amount.value, target, 2, elapsed / 1000);
         if (mode) this.uniforms.mode.value = mode;
         this.mesh.visible = this.uniforms.amount.value > .001;
-        this.uniforms.time.value = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : now / 1000;
+        this.uniforms.time.value = prefersReducedMotion() ? 0 : now / 1000;
         this.uniforms.aspect.value = this.scene.userData.weatherAspect || innerWidth / Math.max(1, innerHeight);
         this.category = category;
     }

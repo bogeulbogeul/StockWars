@@ -1,10 +1,19 @@
 /* Adopted 2D phone: HTML/CSS shell and flat SVG pictograms. */
+@import './phone-launcher.css';
+@import './phone-news.css';
+@import './phone-settings.css';
+@import './phone-messenger.css';
+@import './phone-tasks.css';
+@import './phone-profile.css';
+@import './phone-map.css';
+@import './phone-achievements.css';
 .cozy-phone {
     zoom: calc(1 / var(--game-ui-scale, 1));
     --phone-ink: #35352f;
     --phone-paper: #f5f0e5;
     width: min(390px, calc(100vw - 28px), calc((100dvh - 24px) * .55));
     max-width: none; max-height: none; padding: 0; border: 0; margin: auto;
+    position: fixed; inset: 0;
     background: transparent; color: var(--phone-ink); overflow: visible;
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
     font-size: 14px; line-height: 1.5;
@@ -31,18 +40,20 @@
 [data-phone-weather][data-weather="cloud"], [data-phone-weather][data-weather="snow"], [data-phone-weather][data-weather="rain"] { color: #819ba5; }
 .cozy-phone__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 8px; padding: 0 4%; margin-top: 23%; }
 .cozy-phone__app { display: flex; min-width: 0; align-items: center; flex-direction: column; gap: 7px; padding: 0; border: 0; background: transparent; font-size: .9em !important; font-weight: 600 !important; white-space: nowrap; }
-.cozy-phone__tile { width: 100%; aspect-ratio: 1; border-radius: 24%; display: grid; place-items: center; color: #fcf8ed; }
+.cozy-phone__tile { position: relative; width: 100%; aspect-ratio: 1; border-radius: 24%; display: grid; place-items: center; color: #fcf8ed; }
 .cozy-phone__tile svg { width: 71%; height: 71%; }
 .cozy-phone__tile--sage { background: #96ae88; }
 .cozy-phone__tile--blue { background: #91aec4; }
 .cozy-phone__tile--yellow { background: #f1cf78; }
 .cozy-phone__tile--peach { background: #e6a98d; }
+.cozy-phone__tile--lavender { background: #ab9acb; }
+.cozy-phone__tile--rose { background: #d79bb6; }
+.cozy-phone__tile--mint { background: #83bcb4; }
+.cozy-phone__tile--slate { background: #aaa79f; }
+.cozy-phone__lock { position: absolute; right: -3px; bottom: -3px; display: grid; place-items: center; width: 22px; height: 22px; background: #f5f0e5; color: #474d40; border: 1px solid #c4c9b9; border-radius: 7px; }
+.cozy-phone__lock svg { width: 15px; height: 15px; }
 .cozy-phone__app:hover .cozy-phone__tile { outline: 2px solid #666b5e; outline-offset: 2px; }
-.cozy-phone__dots { display: flex; gap: 7px; justify-content: center; margin-top: auto; padding-top: 14px; }
-.cozy-phone__dots i { width: 7px; height: 7px; border-radius: 50%; background: #c0beb4; }
-.cozy-phone__dots i:first-child { background: #4a4a42; }
-.cozy-phone__home-key { flex-shrink: 0; height: 34px; border: 0; background: transparent; display: grid; place-items: center; width: 100%; padding: 0; }
-.cozy-phone__home-key span { background: #383a33; width: 35%; height: 4px; border-radius: 5px; }
+.cozy-phone .cozy-phone__notice { margin: auto 12px 0; padding-top: 10px; font-size: 12px; line-height: 1.5; text-align: center; color: #56684f; }
 .cozy-phone__detail { flex: 1; min-height: 0; overflow-y: auto; padding: 15px 20px; }
 .cozy-phone__back { border: 0; background: transparent; padding: 5px 0; }
 .cozy-phone__detail h2 { font-size: 1.4em; margin: 18px 0; color: var(--phone-ink); }
@@ -61,6 +72,5 @@
     .cozy-phone__date { margin-top: 2px; gap: 3px; }
     [data-phone-weather] { width: 18px; height: 18px; }
     .cozy-phone__grid { margin-top: 9%; gap: 12px 5px; }
-    .cozy-phone__home-key { height: 24px; }
     .cozy-phone__close { width: 25px; height: 25px; font-size: 20px !important; }
 }

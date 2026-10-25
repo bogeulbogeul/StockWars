@@ -1,0 +1,8 @@
+{
+  "id": "item_premium_rumor",
+  "file": "item_premium_rumor.glb",
+  "sha256": "10907983852817919dd242cd39b055202387b7b777bbdf06d8aee45356b75acc",
+  "reference": "web/assets/items/paper-v4/sealed-news.svg",
+  "closedEnvelope": true,
+  "paperBodyThickness": 0.01
+}

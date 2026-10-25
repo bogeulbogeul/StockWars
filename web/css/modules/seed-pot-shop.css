@@ -1,0 +1,4 @@
+.seed-pot-shop { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; padding: 0; border: 0; background: transparent; overflow: hidden; }
+.seed-pot-shop::backdrop { background: #43352555; }
+.seed-pot-shop .flower-goods-art svg { width: 100%; height: 100%; }
+.seed-pot-shop #drawerItemIcon svg { width: 100%; height: 100%; }

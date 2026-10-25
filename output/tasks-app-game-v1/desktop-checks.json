@@ -1,0 +1,15 @@
+{
+  "add": true,
+  "toggle": true,
+  "pin": true,
+  "filters": true,
+  "reloadPersisted": true,
+  "delete": true,
+  "storySteps": true,
+  "storyAutoRefresh": true,
+  "storyReadOnly": true,
+  "domainSeparated": true,
+  "mobile": true,
+  "home": true,
+  "errors": []
+}

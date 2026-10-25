@@ -1,0 +1,13 @@
+{
+  "reachablePosition": {
+    "x": -305.7499812546601,
+    "z": -23.82336972221227
+  },
+  "nearbyOnly": true,
+  "keyboardAndButton": true,
+  "movementAndStoryBlocked": true,
+  "escapeReturns": true,
+  "hideCloses": true,
+  "mobileFits": true,
+  "errors": []
+}

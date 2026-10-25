@@ -4,7 +4,7 @@ import { playBusArrival } from './arrival/BusArrival.js';
 import { getTownMusic } from '../engine/TownMusic.js';
 
 // Artwork and hit target share one aspect-ratio box at every viewport size.
-export function showTitleScreen(onStart, { opening = true } = {}) {
+export function showTitleScreen(onStart, { opening = true, arrival = true, buttonLabel = '', buttonImage = '', intro = null } = {}) {
     const screen = document.createElement('section');
     screen.className = 'crayon-title';
     screen.setAttribute('aria-label', 'StockWars 시작 화면');
@@ -19,17 +19,34 @@ export function showTitleScreen(onStart, { opening = true } = {}) {
     const stopMotion = animateTitle(screen.querySelector('.crayon-title__art'));
     document.body.classList.add('title-screen-active');
     const music = getTownMusic();
-    music.setTitleActive(true, screen);
+    if (!intro) music.setTitleActive(true, screen);
     const app = document.getElementById('app');
     if (app) app.inert = true;
     const button = screen.querySelector('button');
+    if (buttonLabel) {
+        button.setAttribute('aria-label', buttonLabel);
+        if (!buttonImage) {
+            button.replaceChildren(document.createTextNode(buttonLabel));
+            button.classList.add('crayon-title__text-button');
+        }
+    }
+    if (buttonImage) button.querySelector('img').src = buttonImage;
+    let ready = !intro;
+    if (intro) {
+        button.disabled = true;
+        void intro(screen).finally(() => {
+            ready = true;
+            button.disabled = false;
+            music.setTitleActive(true, screen);
+            button.focus({ preventScroll: true });
+        });
+    }
     // World controls also listen on window; keep title input out of the world.
     const blockWorldInput = event => {
         event.stopImmediatePropagation();
         if (event.type === 'keydown' && ['Enter', ' '].includes(event.key)) {
-            if (event.target === music.control) return;
             event.preventDefault();
-            if (!event.repeat) screen.querySelector('button')?.click();
+            if (ready && !event.repeat) screen.querySelector('button')?.click();
         } else if (event.type === 'keydown' && event.key === 'Tab') {
             event.preventDefault();
             const buttons = [...screen.querySelectorAll('button:not(:disabled)')];
@@ -44,7 +61,7 @@ export function showTitleScreen(onStart, { opening = true } = {}) {
         stopMotion();
         music.setTitleActive(false);
         if (opening) await playOpening(screen);
-        await playBusArrival(screen);
+        if (arrival) await playBusArrival(screen);
         await onStart();
         window.removeEventListener('keydown', blockWorldInput, true);
         window.removeEventListener('keyup', blockWorldInput, true);

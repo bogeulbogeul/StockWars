@@ -6,6 +6,7 @@ const FADE = 6, VOLUME = .55;
 const ASSET_ROOT = new URL('../../assets/audio/town-time-v1/', import.meta.url);
 const TITLE_URL = new URL('../../assets/audio/title-theme-v1/small-leaf-tomorrow.wav', import.meta.url);
 const MUTE_KEY = 'stockwars-town-music-muted-v1';
+const VOLUME_KEY = 'stockwars-town-music-volume-v1';
 
 // Assets are uncompressed PCM16 WAV. Read samples directly: the packaged
 // Electron 28 native decodeAudioData path crashes on these long WAV files.
@@ -45,6 +46,12 @@ export class TownMusic {
         this.active = false;
         this.retryAt = 0;
         try { this.muted = localStorage.getItem(MUTE_KEY) === '1'; } catch { this.muted = false; }
+        this.volume = 1;
+        this.listeners = new Set();
+        try {
+            const saved = localStorage.getItem(VOLUME_KEY);
+            if (saved !== null && Number.isFinite(Number(saved))) this.volume = Math.max(0, Math.min(1, Number(saved)));
+        } catch { /* optional preference */ }
         this.unlock = event => {
             if (event.isTrusted && !(event.type === 'keydown' && event.repeat)) void this.activate();
         };
@@ -84,33 +91,30 @@ export class TownMusic {
         if (!this.master) return;
         const p = this.master.gain, now = this.context.currentTime;
         p.cancelScheduledValues(now);
-        p.setTargetAtTime(this.active && !this.muted ? VOLUME * (this.indoors ? .7 : 1) : 0, now, .18);
+        p.setTargetAtTime(this.active && !this.muted ? VOLUME * this.volume * (this.indoors ? .7 : 1) : 0, now, .18);
     }
 
-    installControl() {
-        if (this.control) return;
-        const button = document.createElement('button');
-        button.type = 'button'; button.className = 'town-music-toggle';
-        button.addEventListener('click', () => {
-            this.muted = !this.muted;
-            try { localStorage.setItem(MUTE_KEY, this.muted ? '1' : '0'); } catch { /* optional preference */ }
-            this.refreshControl(); this.updateMaster();
-            void this.activate();
-        });
-        document.body.append(button); this.control = button; this.refreshControl();
+    subscribe(listener) {
+        this.listeners.add(listener);
+        return () => this.listeners.delete(listener);
     }
-
-    refreshControl() {
-        if (!this.control) return;
-        this.control.textContent = this.muted ? '♫ 음악 꺼짐' : '♫ 음악 켜짐';
-        this.control.setAttribute('aria-label', this.muted ? '배경음악 켜기' : '배경음악 끄기');
-        this.control.setAttribute('aria-pressed', String(!this.muted));
+    setMuted(muted) {
+        this.muted = !!muted;
+        try { localStorage.setItem(MUTE_KEY, this.muted ? '1' : '0'); } catch { /* optional preference */ }
+        this.updateMaster();
+        for (const listener of this.listeners) listener();
+        if (!this.muted) void this.activate();
+    }
+    setVolume(volume) {
+        if (!Number.isFinite(volume)) return;
+        this.volume = Math.max(0, Math.min(1, volume));
+        try { localStorage.setItem(VOLUME_KEY, String(this.volume)); } catch { /* optional preference */ }
+        this.updateMaster();
+        for (const listener of this.listeners) listener();
     }
 
     setTitleActive(active, host = document.body) {
         this.titleActive = active;
-        this.installControl();
-        host.append(this.control);
         if (!active && this.context) {
             const voice = this.voices.get('title'), now = this.context.currentTime;
             if (voice) {
@@ -135,8 +139,6 @@ export class TownMusic {
         if (this.titleActive) { stage = 'title'; active = true; indoors = false; }
         const changed = active !== this.active || indoors !== this.indoors;
         this.stage = stage; this.active = active; this.indoors = indoors;
-        if (active) this.installControl();
-        if (this.control) this.control.hidden = !active;
         if (changed) this.updateMaster();
         if (!active || !this.context || document.hidden) return;
         const now = this.context.currentTime;

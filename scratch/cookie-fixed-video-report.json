@@ -1,0 +1,12 @@
+{
+  "frames": 286,
+  "result": {
+    "frames": 293,
+    "breadFrames": 0,
+    "minGap": 1.1999999999112703,
+    "foodIds": [
+      "item_honey_cookie"
+    ]
+  },
+  "errors": []
+}

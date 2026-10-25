@@ -8,7 +8,7 @@ export function mountInvestmentExam(panel, { name, question, index, total, onAns
         <div class="residence-document-meta"><span>토리 증권사 · 정보 읽기</span><span>투자 입문 과정</span></div>
         <header class="exam-heading"><p>첫 투자 준비</p><h1>투자 자격시험</h1><div class="exam-candidate"><span>응시자 <strong></strong></span><span class="exam-progress"></span></div></header>
         <progress class="exam-progress-bar" aria-label="현재 문항"></progress>
-        <p class="exam-guide">정답 수와 관계없이 세 문항을 마치면 자격증을 받아요.</p>
+        <p class="exam-guide">15종 중 무작위로 뽑힌 세 문항을 모두 맞히면 분석력 2로 시작해요. 그 외에는 분석력 1로 시작하며, 자격증은 정답 수와 관계없이 받아요.</p>
         <section class="exam-passage"><h2>자료 읽기</h2><p></p></section>
         <fieldset class="exam-options"><legend></legend></fieldset>
         <p class="exam-error" role="alert"></p>

@@ -1,7 +1,9 @@
+import { showRumorReceipt } from './InventoryAccess.js';
 import { ItemEngine } from '../engine/ItemEngine.js';
 import { showItemUseNotice } from '../components/ItemUseNotice.js';
 import { toastManager } from '../components/ToastManager.js';
 import { playRecoveryDrinkEffect } from '../components/RecoveryDrinkEffect.js';
+import { isModelFood, playConsumedFood } from './ConsumedFoodMotion.js';
 import { ItemCenter } from '../components/ItemCenter.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
@@ -80,7 +82,11 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             return false;
         }
     }
+    let observedRumors = null;
     function sync() {
+        const rumors = new Map(engine.state.inventory.filter(i=>i.category==='intel').map(i=>[i.id,i.quantity??1]));
+        if(observedRumors && [...rumors].some(([id,n])=>n>(observedRumors.get(id)||0))) showRumorReceipt();
+        observedRumors=rumors;
         const level = engine.playerLevel();
         if (gameStarted && level > observedLevel) toastManager.showLevelUp(level);
         observedLevel = level;
@@ -118,6 +124,10 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     const activate = id => {
         const result = engine.use(id);
         sync();
+        if (result.success && isModelFood(id)) {
+            app.inventoryModal.close(); app.itemCenter.dialog.close();
+            void playConsumedFood(app, id); toastManager.show(result.message, true); return result;
+        }
         if (result.success && id === 'item_energy_drink') {
             app.itemCenter.dialog.close();
             void playRecoveryDrinkEffect();
@@ -143,6 +153,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
             const r = engine.purchase(id, quantity, instant, { vending: deferDrinkEffect });
             sync();
             app.itemCenter.showStatBoost(r);
+            if (r.success && instant && isModelFood(id)) void playConsumedFood(app, id);
             if (r.success && instant && id === 'item_energy_drink' && !deferDrinkEffect) void playRecoveryDrinkEffect();
             return r;
         },
@@ -164,7 +175,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         baseUpdateStamina(engine.state.stamina, engine.maxStamina());
     };
     const oldAdd = app.inventoryModal.addItem.bind(app.inventoryModal);
-    app.inventoryModal.addItem = item => { const r = oldAdd(item); engine.state.inventory = app.inventoryModal.items; save(); return r; };
+    app.inventoryModal.addItem = item => { const r = oldAdd(item); engine.state.inventory = app.inventoryModal.items; sync(); return r; };
     const oldDiscard = app.inventoryModal.discardItem.bind(app.inventoryModal);
     app.inventoryModal.discardItem = id => {
         if (id === 'item_lotto_ticket') { toastManager.show('로또 응모권은 추첨 기록과 연결되어 버릴 수 없습니다.', false); return; }

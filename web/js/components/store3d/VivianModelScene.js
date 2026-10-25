@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
 import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
@@ -15,10 +16,15 @@ import { recoverTownBody } from '../town3d/TownBodyMovement.js';
 import { createCharacterBodies, charactersCanStand } from '../town3d/CharacterBodies.js';
 import { SeatInteraction } from '../town3d/SeatInteraction.js';
 import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
+import { greetBongbong } from './BongbongGreeting.js';
+import { createConversationCamera } from '../town3d/ConversationCamera.js';
+import { installBongbongTalk } from './BongbongTalk.js';
+import { addVivianProductDisplay } from './VivianProductDisplay.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class VivianModelScene {
-    constructor(container, onExit, onShop) {
+    constructor(container, onExit, onShop, { onWork } = {}) {
+        this.onWork = onWork;
         this.onShop = onShop;
         this.onExit = onExit;
         this.active = false;
@@ -29,7 +35,7 @@ export class VivianModelScene {
         this.layer = document.createElement('section');
         this.layer.id = 'vivianModelStage';
         this.layer.className = 'home-model-stage hidden';
-        this.layer.setAttribute('aria-label', '기둥 장식과 빈 진열대, 냉장고, 포장대가 있는 잡화점 내부');
+        this.layer.setAttribute('aria-label', '간식과 차를 진열한 장식장, 주스와 젤리가 든 냉장고, 포장대가 있는 잡화점 내부');
         this.status = document.createElement('p');
         this.status.className = 'home-model-status';
         this.status.setAttribute('role', 'status');
@@ -40,6 +46,7 @@ export class VivianModelScene {
         this.scene.background = new THREE.Color(0x000000);
         this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new VivianRoomCamera(this.camera);
+        this.conversationCamera = createConversationCamera({ fitWidth: true, worldCoordinates: true });
         this.bindInput();
         this.ready = this.initialize().catch(error => {
             this.failed = true;
@@ -101,12 +108,14 @@ export class VivianModelScene {
         this.characterBodies = createCharacterBodies(this.room);
         installIndoorFurnitureBodies(this, (x,z) => vivianCanStand(x,z)
             && charactersCanStand(this.characterBodies,x,z));
+        this.productDisplay = await addVivianProductDisplay(this.room);
         this.roomCamera.update(0, this.room);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
         this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
+        this.bongbongTalk = installBongbongTalk(this, this.onWork);
         this.player.setControlsHint('WASD 이동 · F 계산대 이용 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
@@ -116,7 +125,7 @@ export class VivianModelScene {
     }
 
     blocked() {
-        return !!document.querySelector('dialog[open], .modal-overlay:not(.hidden)')
+        return this.greetingActive || !!document.querySelector('dialog[open], .modal-overlay:not(.hidden)')
             || document.body.classList.contains('phone-view-active');
     }
 
@@ -160,9 +169,16 @@ export class VivianModelScene {
         this.layer.focus({ preventScroll: true });
         this.resize();
         if (this.player?.state !== 'loading' && this.room && this.player) this.startLoop();
+        this.greetingReady = this.ready.then(async () => {
+            if (!this.active) return;
+            await greetBongbong(this); if (this.active) this.bongbongTalk.ready();
+        })
+            .catch(error => { console.error('봉봉 인사:', error); });
     }
 
     hide() {
+        this.awaitingPackingWorktop = false;
+        this.cancelGreeting?.(); this.greetingActive = false; this.bongbongTalk?.hide();
         this.seatInteraction?.reset();
         this.active = false;
         this.controller.keysHeld.clear();
@@ -192,6 +208,7 @@ export class VivianModelScene {
     update(dt) {
         this.roomCamera.update(dt, this.room);
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) { this.player?.update(dt); return; }
         if(this.seatInteraction?.update(dt))return;
         if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
@@ -225,9 +242,11 @@ export class VivianModelScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            this.conversationCamera.update(this.camera, this.player, this.workstationGuideActive ? null : { root: this.shopkeeper }, dt);
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

@@ -9,6 +9,7 @@ const sectors = {
     Energy: ['#63a579', '에너지', '<path d="M8 38C3 14 20 6 42 5c-1 22-11 37-31 34l20-20Z"/>'],
     Finance: ['#9775c8', '금융', '<rect x="5" y="10" width="38" height="29" rx="5"/><path d="M5 18h38" stroke="#9775c8" stroke-width="5"/><path d="M12 31h11" stroke="#9775c8" stroke-width="3"/>']
 };
+export const sectorColor = key => sectors[key]?.[0] || sectors.IT[0];
 export const shortSectorName = key => sectors[key]?.[1] || key;
 export function stockBrand(stock) {
     const [color, , shape] = sectors[stock.sector] || sectors.IT;

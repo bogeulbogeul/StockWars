@@ -1,25 +1,32 @@
-import { Box3, Group, Vector3, MathUtils, Mesh, Matrix4, MeshBasicMaterial, DoubleSide } from '../../../vendor/three/three.module.js';
+import { Box3, Group, Vector3, MathUtils } from '../../../vendor/three/three.module.js';
+import { createDoorwayBlackout } from '../../components/town3d/DoorwayBlackout.js';
 
-export function createInformationDoor(building) {
-    if (building.informationDoor) return building.informationDoor;
-    const panel = building.getObjectByName('Central_Wood_Door');
+export function createInformationDoor(building, { id = 'information', panelName = 'Central_Wood_Door',
+    isPart = part => /^Door_(Brass_Hinge|Continuous_Panel_Moulding|Recessed_Panel)/.test(part.name) || part.name === 'Brass_Handle',
+    approachDistance = 100, hingeName = 'Door_Brass_Hinge', darkFill = () => false } = {}) {
+    const key = `${id}Door`;
+    if (building[key]) return building[key];
+    const panel = building.getObjectByName(panelName);
     if (!panel) throw new Error('안내소 문을 찾지 못했어요.');
+    const hinge = building.getObjectByName(hingeName);
+    if (!hinge) throw new Error(`문 경첩을 찾지 못했어요: ${hingeName}`);
     building.updateMatrixWorld(true);
     const box = new Box3().setFromObject(panel), center = box.getCenter(new Vector3());
-    const scale = building.getWorldScale(new Vector3());
-    const inside = new Mesh(panel.geometry,
-        new MeshBasicMaterial({ color: 0x000000, side: DoubleSide, toneMapped: false }));
-    inside.name = 'information-door-dark-interior';
-    new Matrix4().copy(building.matrixWorld).invert().multiply(panel.matrixWorld)
-        .decompose(inside.position, inside.quaternion, inside.scale);
-    inside.position.z -= .2 / scale.z;
-    inside.visible = false; building.add(inside);
-    const pivot = new Group(); pivot.name = 'information-opening-door';
-    pivot.position.copy(building.worldToLocal(new Vector3(box.min.x, box.min.y, center.z)));
+    // The authored hinge origin is the pin axis, not the edge of the door panel.
+    const hingePosition = building.worldToLocal(hinge.getWorldPosition(new Vector3()));
+    const direction = hingePosition.x > building.worldToLocal(center.clone()).x ? 1 : -1;
+    const panelMeshes = new Set(); panel.traverse(part => { if (part.isMesh) panelMeshes.add(part); });
+    const darkMeshes = new Set(panelMeshes);
+    building.traverse(part => { if (part.isMesh && darkFill(part)) darkMeshes.add(part); });
+    const inside = createDoorwayBlackout(building, [panel], {
+        name: `${id}-door-dark-interior`, frontParts: [...darkMeshes]
+    });
+    const pivot = new Group(); pivot.name = `${id}-opening-door`;
+    pivot.position.copy(hingePosition);
     building.add(pivot);
     const parts = [];
     building.traverse(part => {
-        if (part.isMesh && (part === panel || /^Door_(Brass_Hinge|Continuous_Panel_Moulding|Recessed_Panel)/.test(part.name) || part.name === 'Brass_Handle')) parts.push(part);
+        if (part.isMesh && (panelMeshes.has(part) || isPart(part))) parts.push(part);
     });
     for (const part of parts) { part.userData.dynamicDoor = true; pivot.attach(part); }
     const animate = (target, duration = .55) => new Promise(resolve => {
@@ -34,6 +41,7 @@ export function createInformationDoor(building) {
         };
         requestAnimationFrame(tick);
     });
-    building.informationDoor = { center, floorY: box.min.y, open: () => animate(-Math.PI * .48), close: () => animate(0) };
-    return building.informationDoor;
+    building[key] = { center, width: box.max.x - box.min.x, floorY: box.min.y, approachDistance,
+        open: () => animate(direction * Math.PI * .48), close: () => animate(0) };
+    return building[key];
 }

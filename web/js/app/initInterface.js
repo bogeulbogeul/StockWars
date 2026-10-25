@@ -1,7 +1,7 @@
 import { VIVIAN_ITEM_REGISTRY } from '../data/vivianStoreData.js';
 import { marketEngine } from '../engine/marketEngine.js';
 import { toastManager } from '../components/ToastManager.js';
-import { MainHUD } from '../components/MainHUD.js';
+import { MainHUD } from '../components/MainHUD.js?v=heart-hud-v1';
 import { PlayerProfileModal } from '../components/PlayerProfileModal.js?v=retirement';
 import { SettingsModal } from '../components/SettingsModal.js';
 import { OfficeStage } from '../components/OfficeStage.js?v=door-seam-v2';
@@ -10,7 +10,7 @@ import { TradeModal } from '../components/TradeModal.js';
 import { DetailedChartModal } from '../components/DetailedChartModal.js';
 import { NewsDetailModal } from '../components/NewsDetailModal.js';
 import { SettlementModal } from '../components/SettlementModal.js';
-import { InventoryModal } from '../components/InventoryModal.js?v=vivian-effects-1';
+import { GameInventory as InventoryModal } from '../components/inventory/GameInventory.js';
 import { FurnitureEditModal } from '../components/FurnitureEditModal.js?v=default-layout-v4';
 import { FriendModal } from '../components/FriendModal.js';
 import { RankingModal } from '../components/RankingModal.js';
@@ -168,6 +168,7 @@ export function initInterface() {
 
         // Inventory Modal (Player Bag & Item Storage)
         this.inventoryModal = new InventoryModal(this.appContainer, {
+            onChanged: () => this.itemGameplay?.sync(),
             onRumorOpened: (item, decoded) => { this.annaTutorial?.explainOpenedRumor(item, decoded); },
             onRumorClosed: () => {
                 const tutorial = this.annaTutorial;

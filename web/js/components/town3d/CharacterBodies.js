@@ -1,7 +1,9 @@
 import { Box3, Vector3 } from '../../../vendor/three/three.module.js';
 
 const NPC_NAMES = new Set(['moa-character', 'tori-character', 'chagok-character', 'bongbong-character']);
-export const PLAYER_BODY_RADIUS = 42;
+// Current scaled/deformed Somangi: sampled walking envelope radius 31.24.
+// Round outward to retain a sub-unit clearance without the old 42-unit padding.
+export const PLAYER_BODY_RADIUS = 32;
 export const PLAYER_BODY_HEIGHT = 102;
 
 // Kinematic NPC bodies follow their current world transforms, including the

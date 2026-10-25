@@ -10,7 +10,7 @@ export async function stepAsideForMoa(player, resident) {
     const c = player.town.playerController;
     if (c.scriptedWalking) return false;
     const start = { x: c.charPosX, y: c.charPosY };
-    const left = resident.root.position.x - 65;
+    const left = resident.root.position.x - 145;
     const standing = resident.standDestination || resident.root.position;
     const clearance = PLAYER_BODY_RADIUS + (resident.root.userData.rigidBody?.radius || 42) + 8;
     const legalSegment = (a, b) => {

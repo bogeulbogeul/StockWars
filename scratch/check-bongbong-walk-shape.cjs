@@ -1,0 +1,15 @@
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.argv[2] || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+
+
+
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.sleepingAnna);const result=await page.evaluate(async()=>{const r=await window.stockWarsExhibition.scenes.prepareRoom('store');const {Box3,Vector3}=await import('/vendor/three/three.module.js');const {bongbongWalkAction}=await import('/js/components/store3d/BongbongWalk.js');const root=r.shopkeeper,mixer=root.userData.greetingMixer;const native=root.userData.walkAction;const sample=action=>{action.reset().play();const rows=[];for(let frame=0;frame<32;frame++){mixer.setTime(action.getClip().duration*frame/32);root.updateMatrixWorld(true);const box=new Box3(),v=new Vector3();root.traverse(m=>{if(!m.isMesh||!m.geometry?.attributes.position)return;m.skeleton?.update();for(let i=0;i<m.geometry.attributes.position.count;i++){m.getVertexPosition(i,v).applyMatrix4(m.matrixWorld);box.expandByPoint(v)}});rows.push({height:box.max.y-box.min.y,foot:box.min.y});}action.stop();return {min:Math.min(...rows.map(r=>r.height)),max:Math.max(...rows.map(r=>r.height)),footMin:Math.min(...rows.map(r=>r.foot)),footMax:Math.max(...rows.map(r=>r.foot))};};const before=sample(native);const action=bongbongWalkAction(root,r.player);const after=sample(action);const scales=[];root.traverse(o=>{if(o.isBone)scales.push(o.scale.toArray())});return {before,after,clip:action.getClip().name,source:r.player.variants.get('walk').action.getClip().name,rootScale:root.scale.toArray(),boneScales:scales,reused:bongbongWalkAction(root,r.player)===action}});assert(result.before.max-result.before.min>10);assert(result.after.max-result.after.min<3);assert(Math.abs(result.after.footMax-result.after.footMin)<3);assert(result.reused);assert(result.boneScales.every(s=>s.every(n=>Math.abs(n-1)<1e-6)));assert.deepEqual(errors,[]);console.log(JSON.stringify({result,errors}));}finally{await browser.close();server.close()}})().catch(e=>{console.error(e);server.close();process.exitCode=1});

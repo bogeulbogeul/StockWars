@@ -14,6 +14,7 @@ import { resumeDemoEnd } from './app/DemoLifecycle.js';
 import { isExhibitionMode } from './app/exhibition/Mode.js';
 import { retireNeonInterface } from './app/RetireNeonInterface.js';
 import { installPhoneHome } from './app/InstallPhoneHome.js';
+import { MoneyHUD } from './components/MoneyHUD.js?v=3';
 
 class StockWarsApplication {
     constructor() {
@@ -28,6 +29,9 @@ class StockWarsApplication {
         this.onlineSocialSync=new OnlineSocialSync(this);
         retireNeonInterface(this);
         installPhoneHome(this);
+        this.moneyHUD = new MoneyHUD();
+        this.moneyHUD.update(marketEngine.getState());
+        marketEngine.subscribe(state => this.moneyHUD.update(state));
         showTitleScreen(() => {
             // The current 3D town is already mounted; retain the active session.
         });

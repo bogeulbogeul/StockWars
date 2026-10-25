@@ -19,10 +19,11 @@ export function installIndoorFurnitureBodies(owner, baseCanStand) {
     owner.furnitureBodies = createTownPropBodies(owner.room, 'indoor-furniture', {
         includeMesh: isFurnitureMesh, minHeight: 6
     });
-    owner.canStand = (x, z) => baseCanStand(x, z) && !owner.furnitureBodies.some(body =>
-        x > body.minX - PLAYER_BODY_RADIUS && x < body.maxX + PLAYER_BODY_RADIUS
-        && z > body.minY / GROUND_PROJECTION - PLAYER_BODY_RADIUS
-        && z < body.maxY / GROUND_PROJECTION + PLAYER_BODY_RADIUS);
+    owner.canStand = (x, z) => baseCanStand(x, z) && !owner.furnitureBodies.some(body => {
+        const nx = Math.max(body.minX, Math.min(body.maxX, x));
+        const nz = Math.max(body.minY / GROUND_PROJECTION, Math.min(body.maxY / GROUND_PROJECTION, z));
+        return Math.hypot(x - nx, z - nz) < PLAYER_BODY_RADIUS;
+    });
     installIndoorWallBodies(owner, owner.canStand);
     owner.jumpCollisionBodies = createJumpBodies(owner.room, 'indoor-overhead');
     const groundCanStand = owner.canStand;

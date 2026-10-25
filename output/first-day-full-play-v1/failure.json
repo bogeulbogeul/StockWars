@@ -1,0 +1,860 @@
+{
+  "error": "Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'exitZ')\n    at state (eval at evaluate (:311:30), <anonymous>:35:135)\n    at Object.state (eval at evaluate (:311:30), <anonymous>:53:913)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:21)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "checkpoints": [
+    {
+      "cursor": 0,
+      "place": "arrival",
+      "text": "……음?",
+      "time": 1792961748088
+    },
+    {
+      "cursor": 1,
+      "place": "arrival",
+      "text": "어……!",
+      "time": 1792961752815
+    },
+    {
+      "cursor": 2,
+      "place": "arrival",
+      "text": "왔다! 드디어 왔어요!",
+      "time": 1792961753057
+    },
+    {
+      "cursor": 3,
+      "place": "arrival",
+      "text": "……나?",
+      "time": 1792961753299
+    },
+    {
+      "cursor": 4,
+      "place": "arrival",
+      "text": "네! 혹시 안내문 보고 오셨어요? 포포리 마을에서 새 주민을 찾는다는 안내문이요!",
+      "time": 1792961753540
+    },
+    {
+      "cursor": 5,
+      "place": "arrival",
+      "text": "응. 정류장에 붙어 있던 거.",
+      "time": 1792961753787
+    },
+    {
+      "cursor": 6,
+      "place": "arrival",
+      "text": "다행이다…… 아무도 못 봤으면 어쩌나 했어요.",
+      "time": 1792961754016
+    },
+    {
+      "cursor": 7,
+      "place": "arrival",
+      "text": "여기서 기다리고 있었어?",
+      "time": 1792961754263
+    },
+    {
+      "cursor": 8,
+      "place": "arrival",
+      "text": "네. 버스가 올 때마다요. 혹시 제가 없을 때 오시면 어디로 가야 할지 모르실 테니까.",
+      "time": 1792961754516
+    },
+    {
+      "cursor": 9,
+      "place": "arrival",
+      "text": "그런데 자고 있었잖아.",
+      "time": 1792961754759
+    },
+    {
+      "cursor": 10,
+      "place": "arrival",
+      "text": "……오늘은 조금 졸았어요.",
+      "time": 1792961755001
+    },
+    {
+      "cursor": 11,
+      "place": "arrival",
+      "text": "아, 인사부터 해야 하는데!",
+      "time": 1792961755246
+    },
+    {
+      "cursor": 12,
+      "place": "arrival",
+      "text": "포포리 마을에 오신 걸 환영해요. 저는 정착 안내를 맡은 모아예요!",
+      "time": 1792961755494
+    },
+    {
+      "cursor": 13,
+      "place": "arrival",
+      "text": "이름은 안내소에서 천천히 정해도 돼요.",
+      "time": 1792961755744
+    },
+    {
+      "cursor": 14,
+      "place": "arrival",
+      "text": "좋아. 같이 가자.",
+      "time": 1792961755988
+    },
+    {
+      "cursor": 15,
+      "place": "arrival",
+      "text": "먼저 제가 일하는 안내소로 가요. 마을은 지도를 보면서 짧게 소개해 드릴게요.",
+      "time": 1792961756266
+    },
+    {
+      "cursor": 16,
+      "place": "informationOutside",
+      "id": "walk",
+      "time": 1792961756534
+    },
+    {
+      "cursor": 17,
+      "place": "information",
+      "text": "그럼 입주 신청을 해볼까요?",
+      "time": 1792961761028
+    },
+    {
+      "cursor": 18,
+      "place": "information",
+      "text": "안내소로 오는 동안 이름은 생각해봤어요?",
+      "time": 1792961769401
+    },
+    {
+      "cursor": 19,
+      "place": "information",
+      "text": "정했다면 여기, 신청인 서명 칸에 적어주세요.",
+      "time": 1792961769646
+    },
+    {
+      "cursor": 20,
+      "place": "information",
+      "id": "nickname",
+      "time": 1792961769887
+    },
+    {
+      "cursor": 21,
+      "place": "information",
+      "text": "[닉네임]…… 이렇게 불러드리면 되죠?",
+      "time": 1792961775610
+    },
+    {
+      "cursor": 22,
+      "place": "information",
+      "text": "응.",
+      "time": 1792961775852
+    },
+    {
+      "cursor": 23,
+      "place": "information",
+      "text": "좋은 이름이네요.",
+      "time": 1792961776106
+    },
+    {
+      "cursor": 24,
+      "place": "information",
+      "text": "그런데 거기는 못 썼어.",
+      "time": 1792961776348
+    },
+    {
+      "cursor": 25,
+      "place": "information",
+      "text": "태어난 소망이요?",
+      "time": 1792961776588
+    },
+    {
+      "cursor": 26,
+      "place": "information",
+      "text": "응. 아직 모르거든.",
+      "time": 1792961776836
+    },
+    {
+      "cursor": 27,
+      "place": "information",
+      "text": "그 칸은 비워둬도 괜찮아요.",
+      "time": 1792961777061
+    },
+    {
+      "cursor": 28,
+      "place": "information",
+      "text": "그래도 주민이 될 수 있어?",
+      "time": 1792961777291
+    },
+    {
+      "cursor": 29,
+      "place": "information",
+      "text": "그럼요.",
+      "time": 1792961777549
+    },
+    {
+      "cursor": 30,
+      "place": "information",
+      "text": "[닉네임]님, 포포리 마을의 주민이 되신 걸 환영해요!",
+      "time": 1792961777805
+    },
+    {
+      "cursor": 31,
+      "place": "information",
+      "text": "아, 그리고 드릴 게 있어요.",
+      "time": 1792961778037
+    },
+    {
+      "cursor": 32,
+      "place": "information",
+      "text": "휴대폰?",
+      "time": 1792961778272
+    },
+    {
+      "cursor": 33,
+      "place": "information",
+      "text": "네. 포포리에서 지내는 동안 필요할 거예요.",
+      "time": 1792961778498
+    },
+    {
+      "cursor": 34,
+      "place": "information",
+      "text": "여기로 연락하면 돼?",
+      "time": 1792961778741
+    },
+    {
+      "cursor": 35,
+      "place": "information",
+      "text": "그럼요. 제 연락처도 넣어뒀어요. 도움이 필요하면 연락해 주세요.",
+      "time": 1792961778980
+    },
+    {
+      "cursor": 36,
+      "place": "information",
+      "text": "정류장에서 자고 있어도?",
+      "time": 1792961779228
+    },
+    {
+      "cursor": 37,
+      "place": "information",
+      "text": "……이번에는 꼭 받을게요.",
+      "time": 1792961779484
+    },
+    {
+      "cursor": 38,
+      "place": "information",
+      "id": "phone",
+      "time": 1792961779724
+    },
+    {
+      "cursor": 39,
+      "place": "information",
+      "text": "은행 상담까지 마치면 스마트폰을 사용해 보세요. 필요한 일이 생기면 저에게 연락해도 돼요.",
+      "time": 1792961781589
+    },
+    {
+      "cursor": 41,
+      "place": "information",
+      "text": "여기서 연락처를 확인할 수 있어요. 앞으로 알게 될 이웃들도 하나씩 늘어나겠죠?",
+      "time": 1792961781818
+    },
+    {
+      "cursor": 42,
+      "place": "information",
+      "text": "지금은 모아가 처음이네.",
+      "time": 1792961782058
+    },
+    {
+      "cursor": 43,
+      "place": "information",
+      "text": "그러네요. 첫 연락처가 저라니 기쁜데요!",
+      "time": 1792961782300
+    },
+    {
+      "cursor": 44,
+      "place": "information",
+      "text": "이곳이 앞으로 지낼 집이에요. 안내를 마치면 바로 가서 안쪽도 보여드릴게요.",
+      "time": 1792961782559
+    },
+    {
+      "cursor": 45,
+      "place": "information",
+      "text": "차곡 은행에서는 생활 계좌와 정착 자금을 상담할 수 있어요. 집을 본 뒤 함께 들러요.",
+      "time": 1792961782790
+    },
+    {
+      "cursor": 46,
+      "place": "information",
+      "text": "봉봉 잡화점에서는 물건을 사고 포장 알바도 할 수 있어요. 일을 해보고 싶으면 게시판 공고부터 살펴보세요.",
+      "time": 1792961783032
+    },
+    {
+      "cursor": 47,
+      "place": "information",
+      "text": "여기는 토리 증권사예요. 주식이 궁금하면 토리에게 배울 수 있어요. 다른 장소는 필요할 때 천천히 찾아가 봐요.",
+      "time": 1792961783268
+    },
+    {
+      "cursor": 48,
+      "place": "information",
+      "text": "그럼 먼저 집으로 가 볼까요? 제가 문을 열고 안쪽을 보여드릴게요.",
+      "time": 1792961783510
+    },
+    {
+      "cursor": 49,
+      "place": "home",
+      "text": "……여기서 지내는구나.",
+      "time": 1792961783751
+    },
+    {
+      "cursor": 50,
+      "place": "home",
+      "text": "네. 앞으로 어떤 집으로 꾸밀지 천천히 생각해봐요.",
+      "time": 1792961821909
+    },
+    {
+      "cursor": 51,
+      "place": "home",
+      "text": "일단 앉아서 쉴 곳이 있으면 좋겠어.",
+      "time": 1792961822135
+    },
+    {
+      "cursor": 52,
+      "place": "home",
+      "text": "나중에 가구점에 들르면 마음에 드는 걸 찾아봐요.",
+      "time": 1792961822363
+    },
+    {
+      "cursor": 53,
+      "place": "home",
+      "text": "그러려면 잎부터 벌어야겠네.",
+      "time": 1792961822591
+    },
+    {
+      "cursor": 54,
+      "place": "home",
+      "text": "그럼 이제 생활에 필요한 잎 이야기를 해볼까요?",
+      "time": 1792961822821
+    },
+    {
+      "cursor": 55,
+      "place": "home",
+      "text": "당분간 생활할 돈은 가지고 왔어요?",
+      "time": 1792961823048
+    },
+    {
+      "cursor": 56,
+      "place": "home",
+      "text": "아니…… 가진 건 이 씨앗이랑 편지뿐이야.",
+      "time": 1792961823277
+    },
+    {
+      "cursor": 57,
+      "place": "home",
+      "text": "그렇군요. 먹을 것도 사고, 집세도 내려면 잎이 필요하겠네요.",
+      "time": 1792961823504
+    },
+    {
+      "cursor": 58,
+      "place": "home",
+      "text": "여기서 일하면 벌 수 있어?",
+      "time": 1792961823731
+    },
+    {
+      "cursor": 59,
+      "place": "home",
+      "text": "네. 주민들의 일을 도와주고 보수를 받을 수 있어요.",
+      "time": 1792961823957
+    },
+    {
+      "cursor": 60,
+      "place": "home",
+      "text": "그럼 일부터 구해야겠다.",
+      "time": 1792961824184
+    },
+    {
+      "cursor": 61,
+      "place": "home",
+      "text": "일거리도 같이 알아봐요. 다만 보수를 받기 전까지 생활할 돈이 필요할 테니, 먼저 은행에서 상담을 받아보는 건 어때요?",
+      "time": 1792961824412
+    },
+    {
+      "cursor": 62,
+      "place": "home",
+      "text": "은행에서 돈을 빌리는 거야?",
+      "time": 1792961824642
+    },
+    {
+      "cursor": 63,
+      "place": "home",
+      "text": "네. 빌린 잎은 나중에 갚아야 하니까, 설명을 듣고 결정하면 돼요.",
+      "time": 1792961824866
+    },
+    {
+      "cursor": 64,
+      "place": "home",
+      "text": "……같이 가줄 거지?",
+      "time": 1792961825095
+    },
+    {
+      "cursor": 65,
+      "place": "home",
+      "text": "그럼요. 차곡에게 소개해 드릴게요.",
+      "time": 1792961825321
+    },
+    {
+      "cursor": 66,
+      "place": "bank",
+      "text": "차곡, 새로 이사 온 주민을 소개해 드리려고 왔어요.",
+      "time": 1792961825547
+    },
+    {
+      "cursor": 67,
+      "place": "bank",
+      "text": "이쪽은 [닉네임]님이에요.",
+      "time": 1792961866715
+    },
+    {
+      "cursor": 68,
+      "place": "bank",
+      "text": "어서 오세요, [닉네임]님. 저는 차곡입니다.",
+      "time": 1792961866957
+    },
+    {
+      "cursor": 69,
+      "place": "bank",
+      "text": "안녕.",
+      "time": 1792961867202
+    },
+    {
+      "cursor": 70,
+      "place": "bank",
+      "text": "처음 생활할 자금이 필요해서 같이 상담받으러 왔어요.",
+      "time": 1792961867457
+    },
+    {
+      "cursor": 71,
+      "place": "bank",
+      "text": "그렇군요. 우선 이쪽으로 오세요.",
+      "time": 1792961867715
+    },
+    {
+      "cursor": 72,
+      "place": "bank",
+      "text": "먼저 잎을 보관하고 주고받을 계좌부터 만들어드릴까요?",
+      "time": 1792961867974
+    },
+    {
+      "cursor": 73,
+      "place": "bank",
+      "text": "일해서 받은 돈도 거기에 넣을 수 있어?",
+      "time": 1792961868232
+    },
+    {
+      "cursor": 74,
+      "place": "bank",
+      "text": "물론이죠. 얼마나 모았는지도 확인할 수 있고요.",
+      "time": 1792961868490
+    },
+    {
+      "cursor": 75,
+      "place": "bank",
+      "text": "응. 만들래.",
+      "time": 1792961868733
+    },
+    {
+      "cursor": 76,
+      "place": "bank",
+      "id": "bank",
+      "time": 1792961869009
+    },
+    {
+      "cursor": 77,
+      "place": "bank",
+      "text": "계좌가 준비됐습니다. 이제 휴대폰으로도 잔액을 확인할 수 있어요.",
+      "time": 1792961870634
+    },
+    {
+      "cursor": 78,
+      "place": "bank",
+      "text": "그럼 처음 생활에 필요한 자금을 이야기해볼까요? 새 주민에게는 정착 자금으로 5,000잎을 빌려드릴 수 있습니다.",
+      "time": 1792961870862
+    },
+    {
+      "cursor": 79,
+      "place": "bank",
+      "text": "그걸로 집세도 내고, 먹을 것도 사는 거야?",
+      "time": 1792961871120
+    },
+    {
+      "cursor": 80,
+      "place": "bank",
+      "text": "네. 필요한 곳에 나눠 쓰시면 됩니다. 다만 선물로 드리는 잎은 아니에요. 나중에 갚아야 하는 돈입니다.",
+      "time": 1792961871364
+    },
+    {
+      "cursor": 81,
+      "place": "bank",
+      "text": "언제까지 갚아야 해?",
+      "time": 1792961871618
+    },
+    {
+      "cursor": 82,
+      "place": "bank",
+      "id": "loan",
+      "time": 1792961871862
+    },
+    {
+      "cursor": 83,
+      "place": "bank",
+      "text": "모르는 부분이 있으면 물어봐도 괜찮아요.",
+      "time": 1792961873622
+    },
+    {
+      "cursor": 84,
+      "place": "bank",
+      "text": "설명을 다 들으신 뒤 결정하세요. 천천히 기다리겠습니다.",
+      "time": 1792961873863
+    },
+    {
+      "cursor": 85,
+      "place": "bank",
+      "text": "5,000잎을 계좌에 넣어드렸습니다. 확인해보시겠어요?",
+      "time": 1792961874121
+    },
+    {
+      "cursor": 86,
+      "place": "bank",
+      "text": "들어왔어.",
+      "time": 1792961874350
+    },
+    {
+      "cursor": 87,
+      "place": "bank",
+      "text": "처음에는 쓸 곳이 많을 겁니다. 물건을 사기 전에 집세처럼 꼭 필요한 몫부터 남겨두세요.",
+      "time": 1792961874590
+    },
+    {
+      "cursor": 88,
+      "place": "bank",
+      "text": "전부 써버리면 안 되는 거네.",
+      "time": 1792961874850
+    },
+    {
+      "cursor": 89,
+      "place": "bank",
+      "text": "네. 앞으로 벌 돈도 생기겠지만, 아직 들어오지 않은 돈까지 미리 쓰지는 않는 게 좋겠죠.",
+      "time": 1792961875106
+    },
+    {
+      "cursor": 90,
+      "place": "bank",
+      "text": "이제 당장 필요한 준비는 할 수 있겠네요.",
+      "time": 1792961875368
+    },
+    {
+      "cursor": 91,
+      "place": "bank",
+      "text": "고마워, 차곡.",
+      "time": 1792961875611
+    },
+    {
+      "cursor": 92,
+      "place": "bank",
+      "text": "포포리 생활이 편안해지길 바랍니다. 궁금한 게 생기면 다시 들르세요.",
+      "time": 1792961875898
+    },
+    {
+      "cursor": 93,
+      "place": "bankOutside",
+      "text": "모아, 이제 일은 어디서 구하면 돼?",
+      "time": 1792961876156
+    },
+    {
+      "cursor": 94,
+      "place": "bankOutside",
+      "text": "마을 게시판에 주민들의 부탁이 붙어 있어요. 일을 도와주면 보수를 받을 수 있죠.",
+      "time": 1792961882919
+    },
+    {
+      "cursor": 95,
+      "place": "bankOutside",
+      "text": "내가 할 수 있는 일도 있을까?",
+      "time": 1792961883173
+    },
+    {
+      "cursor": 96,
+      "place": "bankOutside",
+      "text": "봉봉이 잡화점 일을 도와줄 사람을 찾고 있었어요. 처음에도 할 수 있는지 같이 살펴봐요.",
+      "time": 1792961883429
+    },
+    {
+      "cursor": 97,
+      "place": "bankOutside",
+      "text": "그리고 토리 증권사에서는 주식 투자도 배울 수 있어요.",
+      "time": 1792961883688
+    },
+    {
+      "cursor": 98,
+      "place": "bankOutside",
+      "text": "그것도 잎을 버는 방법이야?",
+      "time": 1792961883930
+    },
+    {
+      "cursor": 99,
+      "place": "bankOutside",
+      "text": "네. 다만 일을 하고 보수를 받는 것과는 달라요. 투자한 잎을 잃을 수도 있어서, 먼저 배우는 게 좋아요.",
+      "time": 1792961884218
+    },
+    {
+      "cursor": 100,
+      "place": "bankOutside",
+      "text": "배울 게 많네…….",
+      "time": 1792961884460
+    },
+    {
+      "cursor": 101,
+      "place": "bankOutside",
+      "text": "집도 둘러보고 생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?",
+      "time": 1792961884701
+    },
+    {
+      "cursor": 102,
+      "place": "bankOutside",
+      "id": "order",
+      "time": 1792961884963
+    },
+    {
+      "cursor": 103,
+      "place": "bankOutside",
+      "text": "먼저 잡화점 일을 해볼래.",
+      "time": 1792961885018
+    },
+    {
+      "cursor": 104,
+      "place": "bankOutside",
+      "text": "좋아요. 마을 게시판에서 봉봉의 공고를 읽어보세요. 어떤 일인지 확인하고 잡화점으로 가면 돼요.",
+      "time": 1792961885280
+    },
+    {
+      "cursor": 105,
+      "place": "bankOutside",
+      "text": "잡화점을 찾기 어려우면 스마트폰의 지도앱을 열어보세요. 지도에서 잡화점을 선택하면 위치를 확인할 수 있어요.",
+      "time": 1792961885521
+    },
+    {
+      "cursor": 106,
+      "place": "bankOutside",
+      "text": "저는 광장 벤치에 가 있을게요. 마치면 거기서 다시 만나요.",
+      "time": 1792961885779
+    },
+    {
+      "cursor": 107,
+      "place": "bankOutside",
+      "text": "또 자고 있는 거 아니지?",
+      "time": 1792961886007
+    },
+    {
+      "cursor": 108,
+      "place": "bankOutside",
+      "text": "……이번에는 앉아서 기다리기만 할게요.",
+      "time": 1792961886236
+    },
+    {
+      "cursor": 110,
+      "place": "notice",
+      "id": "notice",
+      "time": 1792961886598
+    },
+    {
+      "cursor": 111,
+      "place": "store",
+      "text": "어서 오세요! 찾으시는 게 있나요?",
+      "time": 1792961908916
+    },
+    {
+      "cursor": 112,
+      "place": "store",
+      "text": "게시판 보고 왔어. 일할 사람을 찾는다고 해서.",
+      "time": 1792961919240
+    },
+    {
+      "cursor": 113,
+      "place": "store",
+      "text": "아, 공고 보고 오셨구나! 저는 이 가게 주인 봉봉이에요. 이름이 어떻게 되세요?",
+      "time": 1792961919509
+    },
+    {
+      "cursor": 114,
+      "place": "store",
+      "text": "[닉네임]이야. 오늘 이사 왔어.",
+      "time": 1792961919768
+    },
+    {
+      "cursor": 115,
+      "place": "store",
+      "text": "반가워요, [닉네임]님. 포포리에 오신 걸 환영해요!",
+      "time": 1792961920038
+    },
+    {
+      "cursor": 116,
+      "place": "store",
+      "text": "그런데 이런 일은 처음인데, 괜찮아?",
+      "time": 1792961920310
+    },
+    {
+      "cursor": 117,
+      "place": "store",
+      "text": "그럼요. 제가 알려드릴게요. 오늘은 주문받은 물건을 상자에 담는 일을 도와주시면 돼요.",
+      "time": 1792961920596
+    },
+    {
+      "cursor": 118,
+      "place": "store",
+      "text": "일을 마치면 보수를 드릴게요. 시작해볼까요?",
+      "time": 1792961920858
+    },
+    {
+      "cursor": 119,
+      "place": "store",
+      "text": "좋아. 해볼게.",
+      "time": 1792961920936
+    },
+    {
+      "cursor": 120,
+      "place": "store",
+      "id": "packing",
+      "time": 1792961921497
+    },
+    {
+      "cursor": 121,
+      "place": "store",
+      "text": "잘했어요! 빈틈없이 딱 맞네요.",
+      "time": 1792961934011
+    },
+    {
+      "cursor": 122,
+      "place": "store",
+      "text": "생각보다 퍼즐 같아.",
+      "time": 1792961939389
+    },
+    {
+      "cursor": 123,
+      "place": "store",
+      "text": "그렇죠? 그럼 다음 상자도 부탁할게요.",
+      "time": 1792961939643
+    },
+    {
+      "cursor": 124,
+      "place": "store",
+      "text": "고생했어요. 덕분에 주문을 모두 준비했네요.",
+      "time": 1792961939902
+    },
+    {
+      "cursor": 125,
+      "place": "store",
+      "text": "다 담아놓으니까 뿌듯하다.",
+      "time": 1792961940171
+    },
+    {
+      "cursor": 126,
+      "place": "store",
+      "text": "자, 이건 오늘 일한 보수예요.",
+      "time": 1792961940444
+    },
+    {
+      "cursor": 127,
+      "place": "store",
+      "id": "wage",
+      "time": 1792961940718
+    },
+    {
+      "cursor": 128,
+      "place": "store",
+      "text": "내가 번 잎이네…….",
+      "time": 1792961942594
+    },
+    {
+      "cursor": 129,
+      "place": "store",
+      "text": "네. [닉네임]님이 도와주신 몫이에요.",
+      "time": 1792961942838
+    },
+    {
+      "cursor": 130,
+      "place": "store",
+      "text": "다음에도 일하러 와도 돼?",
+      "time": 1792961943083
+    },
+    {
+      "cursor": 131,
+      "place": "store",
+      "text": "그럼요. 도와주시면 저야 반갑죠!",
+      "time": 1792961943353
+    },
+    {
+      "cursor": 132,
+      "place": "store",
+      "text": "아, 잠깐만요. 이것도 전해드려야겠네요.",
+      "time": 1792961943625
+    },
+    {
+      "cursor": 133,
+      "place": "store",
+      "text": "이것도 내 거야?",
+      "time": 1792961943887
+    },
+    {
+      "cursor": 134,
+      "place": "store",
+      "text": "어떤 손님이 맡기고 가셨어요. 오늘 포장을 도와준 분께 전해달라고요.",
+      "time": 1792961944158
+    },
+    {
+      "cursor": 135,
+      "place": "store",
+      "text": "누가?",
+      "time": 1792961944428
+    },
+    {
+      "cursor": 136,
+      "place": "store",
+      "text": "이름은 말씀하지 않으셨어요. 저도 처음 보는 손님이었고요.",
+      "time": 1792961944701
+    },
+    {
+      "cursor": 137,
+      "place": "store",
+      "text": "안에 뭐가 들었는데?",
+      "time": 1792961944976
+    },
+    {
+      "cursor": 138,
+      "place": "store",
+      "text": "저도 열어보진 않았어요.",
+      "time": 1792961945248
+    },
+    {
+      "cursor": 139,
+      "place": "store",
+      "id": "envelope",
+      "time": 1792961945520
+    },
+    {
+      "cursor": 140,
+      "place": "store",
+      "text": "……모아한테 물어봐야겠다.",
+      "time": 1792961947115
+    },
+    {
+      "cursor": 141,
+      "place": "store",
+      "text": "모아를 만나러 가세요?",
+      "time": 1792961947390
+    },
+    {
+      "cursor": 142,
+      "place": "store",
+      "text": "응. 일 끝나면 광장 벤치에서 만나기로 했어.",
+      "time": 1792961947666
+    },
+    {
+      "cursor": 143,
+      "place": "store",
+      "text": "그럼 잘 다녀오세요. 오늘 도와줘서 고마워요!",
+      "time": 1792961947941
+    }
+  ],
+  "errors": [],
+  "state": null,
+  "body": "출입문으로 걸어가 잡화점 밖으로 나가보자\n\nW A S D 이동\n\nF 문 가까이에서 열기\n\n현금\n5,500\n잎\n체력\n2 / 3\n잡화점 알바 건너뛰기\n찌라시가 가방에 들어왔어요. [I] 키로 가방을 열어 확인하세요."
+}

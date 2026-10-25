@@ -1,0 +1,11 @@
+.tutorial-stage-skip, .packing-game .tutorial-stage-skip {
+    position: fixed; top: 180px; right: 24px; z-index: 30;
+    padding: 9px 15px; border: 1px solid #c9b68c; border-radius: 18px;
+    background: #fff8e9; color: #655b44; font: inherit; font-size: 13px;
+    pointer-events: auto; cursor: pointer;
+}
+.tutorial-stage-skip:disabled, .exhibition-ui .tutorial-stage-skip:disabled {
+    opacity: 1; background: #fff8e9; color: #96876d; border-color: #d5c8af; cursor: default;
+}
+.tutorial-stage-skip[hidden] { display: none; }
+@media (max-width: 600px) { .tutorial-stage-skip { right: 12px; top: 162px; font-size: 12px; } }

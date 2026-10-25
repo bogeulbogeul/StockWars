@@ -1,0 +1,3733 @@
+{
+  "summary": {
+    "reviewed": 255,
+    "candidates": 0,
+    "candidate_bytes": 0,
+    "preserved": 222,
+    "changed_or_missing": 0,
+    "images_deleted_or_modified": 33,
+    "deleted": 33,
+    "deleted_bytes": 9279781
+  },
+  "rows": [
+    {
+      "path": "output/black-cat-sprite-test/v1/base.png",
+      "bytes": 810165,
+      "sha256": "1cbe726432d5b2b78f521cdc81fceb7952f25d533ff9b0852897d538c9d9862e",
+      "copies": [
+        "output/black-cat-sprite-test/v1/run/base-source.png",
+        "output/black-cat-sprite-test/v2/base.png",
+        "output/black-cat-sprite-test/v2/run/base-source.png",
+        "output/black-cat-sprite-test/v3/base.png",
+        "output/black-cat-sprite-test/v3/run/base-source.png",
+        "output/black-cat-sprite-test/v4/base.png",
+        "output/black-cat-sprite-test/v4/run/base-source.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/base.png",
+      "bytes": 810165,
+      "sha256": "1cbe726432d5b2b78f521cdc81fceb7952f25d533ff9b0852897d538c9d9862e",
+      "copies": [
+        "output/black-cat-sprite-test/v1/base.png",
+        "output/black-cat-sprite-test/v1/run/base-source.png",
+        "output/black-cat-sprite-test/v2/run/base-source.png",
+        "output/black-cat-sprite-test/v3/base.png",
+        "output/black-cat-sprite-test/v3/run/base-source.png",
+        "output/black-cat-sprite-test/v4/base.png",
+        "output/black-cat-sprite-test/v4/run/base-source.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/base.png",
+      "bytes": 810165,
+      "sha256": "1cbe726432d5b2b78f521cdc81fceb7952f25d533ff9b0852897d538c9d9862e",
+      "copies": [
+        "output/black-cat-sprite-test/v1/base.png",
+        "output/black-cat-sprite-test/v1/run/base-source.png",
+        "output/black-cat-sprite-test/v2/base.png",
+        "output/black-cat-sprite-test/v2/run/base-source.png",
+        "output/black-cat-sprite-test/v3/run/base-source.png",
+        "output/black-cat-sprite-test/v4/base.png",
+        "output/black-cat-sprite-test/v4/run/base-source.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/base.png",
+      "bytes": 810165,
+      "sha256": "1cbe726432d5b2b78f521cdc81fceb7952f25d533ff9b0852897d538c9d9862e",
+      "copies": [
+        "output/black-cat-sprite-test/v1/base.png",
+        "output/black-cat-sprite-test/v1/run/base-source.png",
+        "output/black-cat-sprite-test/v2/base.png",
+        "output/black-cat-sprite-test/v2/run/base-source.png",
+        "output/black-cat-sprite-test/v3/base.png",
+        "output/black-cat-sprite-test/v3/run/base-source.png",
+        "output/black-cat-sprite-test/v4/run/base-source.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/title-crayon-v1/stockwars-somangi-start-button.png",
+      "bytes": 2220080,
+      "sha256": "634e64526d3553236c3537120c85791ab93ab4b7c630ec96493fa6f505a9ea9b",
+      "copies": [
+        "web/assets/title/somangi-crayon-start.png",
+        "electron-app/dist/win-unpacked/resources/web/assets/title/somangi-crayon-start.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-door-resize-v1/securities.png",
+      "bytes": 1507157,
+      "sha256": "0a071022b756791e1fe3bfaa5e7cb9b07439a0473d7ca11a665504d9b476dd34",
+      "copies": [
+        "output/retired-cipher-images-2026-10-20/electron-app/dist/win-unpacked/resources/web/assets/buildings/topdown-v1/CipherBuilding-door-v2.png",
+        "output/retired-cipher-images-2026-10-20/web/assets/buildings/topdown-v1/CipherBuilding-door-v2.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/world-tree-concept-v1/world-tree.png",
+      "bytes": 1994981,
+      "sha256": "fa22ff50b45c76ca1b03ca875fd91794bd8e4a3aa0e1cabd4f9b03316ce1b524",
+      "copies": [
+        "output/world-tree-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/bookshop-exterior-concept-v1/bookshop.png",
+      "bytes": 1989583,
+      "sha256": "1f53aeb6fc0c52fce343eb9539f9be19e869e9371bdfd2f8c2e9746f387b67ca",
+      "copies": [
+        "output/bookshop-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-8.png",
+      "bytes": 360051,
+      "sha256": "4385ca1a415b24029651ed233c03856ca8f175f7c82c5db3b82b932b73cadd30",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-8.png",
+        "output/all-seats-v1/web-seat-8.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-8.png",
+        "output/town-performance-v1/all-seats/desktop-seat-8.png",
+        "output/town-performance-v1/all-seats/web-seat-8.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-9.png",
+      "bytes": 358114,
+      "sha256": "989aa24c927ef256a55550e13f413215181c178b4f1fc05056baa8ccd6a39788",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-9.png",
+        "output/all-seats-v1/web-seat-9.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-9.png",
+        "output/town-performance-v1/all-seats/desktop-seat-9.png",
+        "output/town-performance-v1/all-seats/web-seat-9.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-6.png",
+      "bytes": 350741,
+      "sha256": "aed3f7dc69fc9b08f36e8e547819c5f9f453e39548d7bd1ce84599016fac1b68",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-6.png",
+        "output/all-seats-v1/web-seat-6.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-6.png",
+        "output/town-performance-v1/all-seats/desktop-seat-6.png",
+        "output/town-performance-v1/all-seats/web-seat-6.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-5.png",
+      "bytes": 349301,
+      "sha256": "75f0d5986dda966ecb91805deea125d63f4fb925d14c8db53a57fbe5f9fe0ade",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-5.png",
+        "output/all-seats-v1/web-seat-5.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-5.png",
+        "output/town-performance-v1/all-seats/desktop-seat-5.png",
+        "output/town-performance-v1/all-seats/web-seat-5.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/house-multiview-v1/back-no-window.png",
+      "bytes": 1713786,
+      "sha256": "9b8023cd57ef7d58d0343096d4d451617c2c197826f28ad7541865d9856f8cb3",
+      "copies": [
+        "output/house-multiview-v1/back.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/bus-stop-concept-v1/bus-stop.png",
+      "bytes": 1676471,
+      "sha256": "80cd2492d1408bfa82259d72f87bee63db789ff73d2795ee632d82da48e07c8e",
+      "copies": [
+        "output/bus-stop-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/settlement-office-multiview-v1/back-no-window.png",
+      "bytes": 1600905,
+      "sha256": "12ab223d42f9696445676c98ad88afa6751890f4734420c95872a390d4903a3f",
+      "copies": [
+        "output/settlement-office-multiview-v1/back.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-11.png",
+      "bytes": 313476,
+      "sha256": "f685f1b6738f231df841548bc0684f83c5223fe09acc588861355c205d7bc395",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-11.png",
+        "output/all-seats-v1/web-seat-11.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-11.png",
+        "output/town-performance-v1/all-seats/desktop-seat-11.png",
+        "output/town-performance-v1/all-seats/web-seat-11.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-10.png",
+      "bytes": 313471,
+      "sha256": "54f7471bc41f86f0b7e1519a2a505761dd4995c40db3831147ed35faac1e1034",
+      "copies": [
+        "output/all-seats-v1/desktop-seat-10.png",
+        "output/all-seats-v1/web-seat-10.png",
+        "output/bookstore-performance-v3/all-seats/web-seat-10.png",
+        "output/town-performance-v1/all-seats/desktop-seat-10.png",
+        "output/town-performance-v1/all-seats/web-seat-10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/electronic-board-concept-v1/electronic-board-blank.png",
+      "bytes": 1554218,
+      "sha256": "13ac55548b4bd4e32c668ff2d290f02ea60dc298e65114c19dbdcdbc5e4b5e5f",
+      "copies": [
+        "output/electronic-board-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/vegetation-simple-v1/world-tree.png",
+      "bytes": 1552315,
+      "sha256": "d8d93dd1c97f12b68541d527a8a80fc9ff232345544fbcb4ec2647204e3e2b59",
+      "copies": [
+        "output/world-tree-simple-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/flower-clump-concept-v1/flowers.png",
+      "bytes": 1539657,
+      "sha256": "ac7cd69bd6556e0f7ee853e572de93664f4339da61df98f4ad4d2a34d3af65fc",
+      "copies": [
+        "output/flower-clump-multiview-v1/front.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-3.png",
+      "bytes": 492129,
+      "sha256": "96995a656541d8af969d1b0c2e49b161fb4b4decfd7afdf137af36c4bf31883c",
+      "copies": [
+        "output/bookstore-performance-v3/all-seats/web-seat-3.png",
+        "output/town-performance-v1/all-seats/desktop-seat-3.png",
+        "output/town-performance-v1/all-seats/web-seat-3.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/web-store.png",
+        "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+        "output/indoor-furniture-rigidbody-v1/web-store.png",
+        "output/indoor-wall-rigidbody-v1/desktop-store.png",
+        "output/indoor-wall-rigidbody-v1/web-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-store.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/web-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/desktop-store.png",
+        "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+        "output/indoor-furniture-rigidbody-v1/web-store.png",
+        "output/indoor-wall-rigidbody-v1/desktop-store.png",
+        "output/indoor-wall-rigidbody-v1/web-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/desktop-store.png",
+        "output/exterior-wall-rigidbody-v1/web-store.png",
+        "output/indoor-furniture-rigidbody-v1/web-store.png",
+        "output/indoor-wall-rigidbody-v1/desktop-store.png",
+        "output/indoor-wall-rigidbody-v1/web-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-store.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/web-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/desktop-store.png",
+        "output/exterior-wall-rigidbody-v1/web-store.png",
+        "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+        "output/indoor-wall-rigidbody-v1/desktop-store.png",
+        "output/indoor-wall-rigidbody-v1/web-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/desktop-store.png",
+        "output/exterior-wall-rigidbody-v1/web-store.png",
+        "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+        "output/indoor-furniture-rigidbody-v1/web-store.png",
+        "output/indoor-wall-rigidbody-v1/web-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-wall-rigidbody-v1/web-store.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/web-store.png",
+      "bytes": 147521,
+      "sha256": "d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac",
+      "copies": [
+        "output/collision-regression-v1/exterior-wall/desktop-store.png",
+        "output/collision-regression-v1/exterior-wall/web-store.png",
+        "output/exterior-wall-rigidbody-v1/desktop-store.png",
+        "output/exterior-wall-rigidbody-v1/web-store.png",
+        "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+        "output/indoor-furniture-rigidbody-v1/web-store.png",
+        "output/indoor-wall-rigidbody-v1/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/desktop-store.png",
+        "output/jump-regression-v1/exterior-wall/web-store.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/vegetation-simple-v1/flowers.png",
+      "bytes": 1247981,
+      "sha256": "f23c5f5fa2d213f49d200d0077e7ec49333fab96c05a4b640402f2bd57e7c286",
+      "copies": [
+        "output/flower-clump-simple-multiview-v1/reference.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+      "bytes": 359351,
+      "sha256": "ca386911c5c4c0d13e29d05c56e121de268bb5a6735f2a72378814f125b31db5",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-bank.png",
+        "output/indoor-wall-rigidbody-v1/desktop-bank.png",
+        "output/indoor-wall-rigidbody-v1/web-bank.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-bank.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/web-bank.png",
+      "bytes": 359351,
+      "sha256": "ca386911c5c4c0d13e29d05c56e121de268bb5a6735f2a72378814f125b31db5",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+        "output/indoor-wall-rigidbody-v1/desktop-bank.png",
+        "output/indoor-wall-rigidbody-v1/web-bank.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-bank.png",
+      "bytes": 359351,
+      "sha256": "ca386911c5c4c0d13e29d05c56e121de268bb5a6735f2a72378814f125b31db5",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+        "output/exterior-wall-rigidbody-v1/web-bank.png",
+        "output/indoor-wall-rigidbody-v1/web-bank.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-wall-rigidbody-v1/web-bank.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/web-bank.png",
+      "bytes": 359351,
+      "sha256": "ca386911c5c4c0d13e29d05c56e121de268bb5a6735f2a72378814f125b31db5",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+        "output/exterior-wall-rigidbody-v1/web-bank.png",
+        "output/indoor-wall-rigidbody-v1/desktop-bank.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-information.png",
+      "bytes": 352825,
+      "sha256": "612be2ed0bc44ad8b2faafa849c1702ee6b57391604b13015d79434007c5731c",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-information.png",
+        "output/indoor-wall-rigidbody-v1/desktop-information.png",
+        "output/indoor-wall-rigidbody-v1/web-information.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-information.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-information.png",
+      "bytes": 352825,
+      "sha256": "612be2ed0bc44ad8b2faafa849c1702ee6b57391604b13015d79434007c5731c",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-information.png",
+        "output/exterior-wall-rigidbody-v1/web-information.png",
+        "output/indoor-wall-rigidbody-v1/web-information.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-wall-rigidbody-v1/web-information.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-side.png",
+      "bytes": 968888,
+      "sha256": "330a323b9a64e3844021390538427b3419491b2e16dae6e58632dbac521f71b2",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/web-seat-2-side.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/information-sofa-seat-penetration-check-v1/web-seat-2-side.png",
+      "producer": "scratch/check-information-sofa-penetration.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/web-seat-2-side.png",
+      "bytes": 968888,
+      "sha256": "330a323b9a64e3844021390538427b3419491b2e16dae6e58632dbac521f71b2",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-side.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-side.png",
+      "bytes": 945730,
+      "sha256": "e7f3133c0ec0377808b3f31ab8eaa2827230678c56a2fee0be723b4f53e3d886",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/web-seat-1-side.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/information-sofa-seat-penetration-check-v1/web-seat-1-side.png",
+      "producer": "scratch/check-information-sofa-penetration.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/web-seat-1-side.png",
+      "bytes": 945730,
+      "sha256": "e7f3133c0ec0377808b3f31ab8eaa2827230678c56a2fee0be723b4f53e3d886",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-side.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+      "bytes": 313753,
+      "sha256": "d528324c52bc918125714a0bffb751ebf393b8a574bb4d0dc3c05c96cb23a336",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-stock.png",
+        "output/indoor-wall-rigidbody-v1/desktop-stock.png",
+        "output/indoor-wall-rigidbody-v1/web-stock.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-stock.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/web-stock.png",
+      "bytes": 313753,
+      "sha256": "d528324c52bc918125714a0bffb751ebf393b8a574bb4d0dc3c05c96cb23a336",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+        "output/indoor-wall-rigidbody-v1/desktop-stock.png",
+        "output/indoor-wall-rigidbody-v1/web-stock.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-stock.png",
+      "bytes": 313753,
+      "sha256": "d528324c52bc918125714a0bffb751ebf393b8a574bb4d0dc3c05c96cb23a336",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+        "output/exterior-wall-rigidbody-v1/web-stock.png",
+        "output/indoor-wall-rigidbody-v1/web-stock.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-wall-rigidbody-v1/web-stock.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/web-stock.png",
+      "bytes": 313753,
+      "sha256": "d528324c52bc918125714a0bffb751ebf393b8a574bb4d0dc3c05c96cb23a336",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+        "output/exterior-wall-rigidbody-v1/web-stock.png",
+        "output/indoor-wall-rigidbody-v1/desktop-stock.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/sigeureujabeujong-sit-v1/right-isometric-sit-short-legs-v2.png",
+      "bytes": 852599,
+      "sha256": "775029dfe6a9cff122a6c803a588a57f59feb52c0267fa1227ca97d1a301fff0",
+      "copies": [
+        "output/sigeureujabeujong-unified-v1/pose-extract/raw/right_sit.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-12.png",
+      "bytes": 279130,
+      "sha256": "ebe0ea27d6e268da0e31b15df5fcedcf4270a7d7212f24fea929681e26727361",
+      "copies": [
+        "output/bookstore-performance-v3/all-seats/web-seat-12.png",
+        "output/town-performance-v1/all-seats/desktop-seat-12.png",
+        "output/town-performance-v1/all-seats/web-seat-12.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/sigeureujabeujong-sit-v1/front-sit-short-legs-v2.png",
+      "bytes": 779911,
+      "sha256": "0a728ed0f8022b08420fa179367c23a13390550a66d3b2094d4db10d82e67825",
+      "copies": [
+        "output/sigeureujabeujong-unified-v1/pose-extract/raw/down_sit.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/building-retouch-final/FinanceBuilding-material-v1.png",
+      "bytes": 732742,
+      "sha256": "9b81aa0f09869ecdbdfe7ef4f26e01df304cdf1b9747ce1f11e27fb11c92e201",
+      "copies": [
+        "output/building-retouch-v1/FinanceBuilding-after.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Comparison page dynamically builds material-v1 filenames",
+      "evidence": [
+        "output/building-retouch-final/comparison.html"
+      ]
+    },
+    {
+      "path": "output/building-retouch-final/StoreBuilding-material-v1.png",
+      "bytes": 727844,
+      "sha256": "4e66f3be529b5a48f83186187491fb4bdf82cf0e085d590fe6d90ab32dc64343",
+      "copies": [
+        "output/building-retouch-v1/StoreBuilding-after.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Comparison page dynamically builds material-v1 filenames",
+      "evidence": [
+        "output/building-retouch-final/comparison.html"
+      ]
+    },
+    {
+      "path": "output/building-retouch-final/HomeBuilding-material-v1.png",
+      "bytes": 715617,
+      "sha256": "912f53c75a04d0b0742e8baf46334e36abfc49c40e797b08d1385890e9e2d129",
+      "copies": [
+        "output/building-retouch-v1/HomeBuilding-after.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Comparison page dynamically builds material-v1 filenames",
+      "evidence": [
+        "output/building-retouch-final/comparison.html"
+      ]
+    },
+    {
+      "path": "output/sigeureujabeujong-carry-leg-fix-v2/run/raw/right_carry.takes/fixed-fourth.png",
+      "bytes": 699628,
+      "sha256": "69074bb267ac0c8a0a28edb0f6ff08a294a3b4f248a0f9a437aa8c102d4a070f",
+      "copies": [
+        "output/sigeureujabeujong-carry-leg-fix-v2/fourth-source/raw/right_carry.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/building-retouch-final/FunitueStoreBuilding-material-v1.png",
+      "bytes": 648492,
+      "sha256": "d07fd8bd28282920df3e616029ca7ffae53d9050d89788b4a183e30a99ad9893",
+      "copies": [
+        "output/building-retouch-v1/FunitueStoreBuilding-after.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Comparison page dynamically builds material-v1 filenames",
+      "evidence": [
+        "output/building-retouch-final/comparison.html"
+      ]
+    },
+    {
+      "path": "output/building-retouch-final/InformationBuilding-material-v1.png",
+      "bytes": 641777,
+      "sha256": "69f3d34db2fe9cb6452e780edb76b90127ee064693c7e43d00faf4fb4e3b56b5",
+      "copies": [
+        "output/building-retouch-v1/InformationBuilding-after.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Comparison page dynamically builds material-v1 filenames",
+      "evidence": [
+        "output/building-retouch-final/comparison.html"
+      ]
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-back.png",
+      "bytes": 637852,
+      "sha256": "a13577482d3b444dfb883a2792039c903076571b93c7d0a23766348ca11ad951",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/web-seat-1-back.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/information-sofa-seat-penetration-check-v1/web-seat-1-back.png",
+      "producer": "scratch/check-information-sofa-penetration.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/web-seat-1-back.png",
+      "bytes": 637852,
+      "sha256": "a13577482d3b444dfb883a2792039c903076571b93c7d0a23766348ca11ad951",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-back.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-training.png",
+      "bytes": 277473,
+      "sha256": "6b93ddde05815b2743e6fb750703950f629cdc9a50ee867ae1236ec893bd192e",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-training.png",
+        "output/indoor-wall-rigidbody-v1/desktop-training.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-training.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/web-training.png",
+      "bytes": 277473,
+      "sha256": "6b93ddde05815b2743e6fb750703950f629cdc9a50ee867ae1236ec893bd192e",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-training.png",
+        "output/indoor-wall-rigidbody-v1/desktop-training.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-training.png",
+      "bytes": 277473,
+      "sha256": "6b93ddde05815b2743e6fb750703950f629cdc9a50ee867ae1236ec893bd192e",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-training.png",
+        "output/exterior-wall-rigidbody-v1/web-training.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-back.png",
+      "bytes": 549943,
+      "sha256": "d532aa0d5d204d4a74880a3b8f25edb3ea8ee4d382277bfad419033d7bd15f1e",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/web-seat-2-back.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/information-sofa-seat-penetration-check-v1/web-seat-2-back.png",
+      "producer": "scratch/check-information-sofa-penetration.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/information-sofa-seat-penetration-check-v1/web-seat-2-back.png",
+      "bytes": 549943,
+      "sha256": "d532aa0d5d204d4a74880a3b8f25edb3ea8ee4d382277bfad419033d7bd15f1e",
+      "copies": [
+        "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-back.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-home.png",
+      "bytes": 142189,
+      "sha256": "64e1f640d16bcb89828da65b7129e5eac6c6d957440d5f287fb392a58577be69",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-home.png",
+        "output/indoor-wall-rigidbody-v1/desktop-home.png",
+        "output/indoor-wall-rigidbody-v1/web-home.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/exterior-wall-rigidbody-v1/web-home.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-home.png",
+      "bytes": 142189,
+      "sha256": "64e1f640d16bcb89828da65b7129e5eac6c6d957440d5f287fb392a58577be69",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-home.png",
+        "output/exterior-wall-rigidbody-v1/web-home.png",
+        "output/indoor-wall-rigidbody-v1/web-home.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-wall-rigidbody-v1/web-home.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/town-bus-setback-v8/player-popori-tree.png",
+      "bytes": 413127,
+      "sha256": "9a1e4ac9dd437fd5cf907735bd9c30ac4eff18d7cd5cf7dd4f76bef51fabbc3e",
+      "copies": [
+        "output/town-player-view-v1/player-popori-tree.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-player-view-v1/player-popori-tree.png",
+      "bytes": 413127,
+      "sha256": "9a1e4ac9dd437fd5cf907735bd9c30ac4eff18d7cd5cf7dd4f76bef51fabbc3e",
+      "copies": [
+        "output/town-bus-setback-v8/player-popori-tree.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-bank.png",
+      "bytes": 361472,
+      "sha256": "d5f7e5b9e30d83a39448ab8921b1a166dc0c32b88d0a4f63dbd019f678969a2d",
+      "copies": [
+        "output/jump-check-v1/web-jump-bank.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-bank.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-bank.png",
+      "bytes": 361472,
+      "sha256": "d5f7e5b9e30d83a39448ab8921b1a166dc0c32b88d0a4f63dbd019f678969a2d",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-bank.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-bank.png",
+      "bytes": 360804,
+      "sha256": "675f8446f3e83966e5fed0c9ea6dfe94c6b81602059919a1bdb065dae0fdda43",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/web-bank.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-bank.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/web-bank.png",
+      "bytes": 360804,
+      "sha256": "675f8446f3e83966e5fed0c9ea6dfe94c6b81602059919a1bdb065dae0fdda43",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/desktop-bank.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-information.png",
+      "bytes": 352075,
+      "sha256": "942f09f229a543d2dc15e9e203870f3fbf740d4e1e58772112a37a64d7ba1387",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/web-information.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-information.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-information.png",
+      "bytes": 350881,
+      "sha256": "7e72a1f68c1c708eba718f49a4fecd9b4207a5f32ba9fdbb2e1b6aa23b9d41ee",
+      "copies": [
+        "output/jump-check-v1/web-jump-information.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-information.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-information.png",
+      "bytes": 350881,
+      "sha256": "7e72a1f68c1c708eba718f49a4fecd9b4207a5f32ba9fdbb2e1b6aa23b9d41ee",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-information.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/town-bus-setback-v8/player-bus-stop.png",
+      "bytes": 326293,
+      "sha256": "f0630fef8b8a4fe029b7d036965c829ecd2dbe6c1861e07f6121bf99279201ea",
+      "copies": [
+        "output/town-path-junction-v9/player-bus-stop.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/town-path-junction-v9/player-bus-stop.png",
+      "bytes": 326293,
+      "sha256": "f0630fef8b8a4fe029b7d036965c829ecd2dbe6c1861e07f6121bf99279201ea",
+      "copies": [
+        "output/town-bus-setback-v8/player-bus-stop.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-stock.png",
+      "bytes": 316274,
+      "sha256": "80586f43e823c817e5e2f2b55c3b1f631bdc98b4e8c072837634e0757d9cc92a",
+      "copies": [
+        "output/jump-check-v1/web-jump-stock.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-stock.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-stock.png",
+      "bytes": 316274,
+      "sha256": "80586f43e823c817e5e2f2b55c3b1f631bdc98b4e8c072837634e0757d9cc92a",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-stock.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-stock.png",
+      "bytes": 315489,
+      "sha256": "b2c35cc02f2919e43ee2daa5db27fb91fcf21bb19f16f7250c4edcfef2c29719",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/web-stock.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-stock.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/web-stock.png",
+      "bytes": 315489,
+      "sha256": "b2c35cc02f2919e43ee2daa5db27fb91fcf21bb19f16f7250c4edcfef2c29719",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/desktop-stock.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/down_walk-contact.png",
+      "bytes": 153505,
+      "sha256": "0eb1019cae12df641a627723e418f41c638540241beecfe5dc73534248a65929",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/down_walk-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/down_walk-contact.png",
+      "bytes": 153505,
+      "sha256": "0eb1019cae12df641a627723e418f41c638540241beecfe5dc73534248a65929",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_walk-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/down_walk-contact.png",
+      "bytes": 153505,
+      "sha256": "0eb1019cae12df641a627723e418f41c638540241beecfe5dc73534248a65929",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_walk-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/down_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/town-performance-v2/all-seats/web-seat-13.png",
+      "bytes": 300268,
+      "sha256": "bc85bb93971d46a4e5105f887d3ae334933e4004c594700cea1f334346d71ae8",
+      "copies": [
+        "output/all-seats-v1/web-seat-13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/web-simulation.png",
+      "bytes": 296222,
+      "sha256": "a443b1e7e907b5c1e1707447e4ef0dfe1a4a863a3ac84239b71e9fc69ec5e81b",
+      "copies": [
+        "output/indoor-wall-rigidbody-v1/desktop-simulation.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/desktop-simulation.png",
+      "bytes": 296222,
+      "sha256": "a443b1e7e907b5c1e1707447e4ef0dfe1a4a863a3ac84239b71e9fc69ec5e81b",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/web-simulation.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/exterior-wall-rigidbody-v1/desktop-simulation.png",
+      "bytes": 296113,
+      "sha256": "6dca4fab5100ee5a13014285e453f51f26736d9851ad3feeb2d0e876256742d3",
+      "copies": [
+        "output/indoor-wall-rigidbody-v1/web-simulation.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-wall-rigidbody-v1/web-simulation.png",
+      "bytes": 296113,
+      "sha256": "6dca4fab5100ee5a13014285e453f51f26736d9851ad3feeb2d0e876256742d3",
+      "copies": [
+        "output/exterior-wall-rigidbody-v1/desktop-simulation.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-training.png",
+      "bytes": 279372,
+      "sha256": "4a5b47ea71f378e65947dae5d6ce92a9d05abd108d58dc2bf6d3f77702a4eb6a",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/web-training.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-training.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/web-training.png",
+      "bytes": 279372,
+      "sha256": "4a5b47ea71f378e65947dae5d6ce92a9d05abd108d58dc2bf6d3f77702a4eb6a",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/desktop-training.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/buddy-hop-corrective-v24/side/070.png",
+      "bytes": 277496,
+      "sha256": "3e93924079ba4a4fe768fb6289675d7965565fe0623d7b148e48110ffbcea50e",
+      "copies": [
+        "output/buddy-restored-v24/seated.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/no-paw-pads-v1/comparison-final.png",
+      "bytes": 275171,
+      "sha256": "e8d7b3c7f5ea59316c6514a9ba0d2b0908b4ac5b4a25ba3f13b9578aa20459ba",
+      "copies": [
+        "output/no-paw-pads-v1/comparison.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/up_walk-contact.png",
+      "bytes": 125317,
+      "sha256": "ed45f09c622ae481239f85daf0365bf0754397fd0cf274f2f66e2e7d1b573098",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/up_walk-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/up_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/up_walk-contact.png",
+      "bytes": 125317,
+      "sha256": "ed45f09c622ae481239f85daf0365bf0754397fd0cf274f2f66e2e7d1b573098",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/up_walk-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/up_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/up_walk-contact.png",
+      "bytes": 125317,
+      "sha256": "ed45f09c622ae481239f85daf0365bf0754397fd0cf274f2f66e2e7d1b573098",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/up_walk-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/up_walk-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/00.png",
+      "bytes": 41292,
+      "sha256": "8450ae1d0feb0cc4d0107a0a1598505746a41a0cd08a63a7d436129f89fbe432",
+      "copies": [
+        "output/somangi-sideways-v1/preview/side/00.png",
+        "output/somangi-sideways-v1/preview/side/15.png",
+        "output/somangi-walk-height-fixed-preview/side/15.png",
+        "output/somangi-walk-hip-seam-v2/side/00.png",
+        "output/somangi-walk-hip-seam-v2/side/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/15.png",
+      "bytes": 41292,
+      "sha256": "8450ae1d0feb0cc4d0107a0a1598505746a41a0cd08a63a7d436129f89fbe432",
+      "copies": [
+        "output/somangi-sideways-v1/preview/side/00.png",
+        "output/somangi-sideways-v1/preview/side/15.png",
+        "output/somangi-walk-height-fixed-preview/side/00.png",
+        "output/somangi-walk-hip-seam-v2/side/00.png",
+        "output/somangi-walk-hip-seam-v2/side/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/00.png",
+      "bytes": 41292,
+      "sha256": "8450ae1d0feb0cc4d0107a0a1598505746a41a0cd08a63a7d436129f89fbe432",
+      "copies": [
+        "output/somangi-sideways-v1/preview/side/00.png",
+        "output/somangi-sideways-v1/preview/side/15.png",
+        "output/somangi-walk-height-fixed-preview/side/00.png",
+        "output/somangi-walk-height-fixed-preview/side/15.png",
+        "output/somangi-walk-hip-seam-v2/side/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/15.png",
+      "bytes": 41292,
+      "sha256": "8450ae1d0feb0cc4d0107a0a1598505746a41a0cd08a63a7d436129f89fbe432",
+      "copies": [
+        "output/somangi-sideways-v1/preview/side/00.png",
+        "output/somangi-sideways-v1/preview/side/15.png",
+        "output/somangi-walk-height-fixed-preview/side/00.png",
+        "output/somangi-walk-height-fixed-preview/side/15.png",
+        "output/somangi-walk-hip-seam-v2/side/00.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-store.png",
+      "bytes": 147204,
+      "sha256": "4703bb6514bf1cebc8a20591dd0d6c59b52b80e0d818dafb2db74d5f9c49f864",
+      "copies": [
+        "output/jump-check-v1/web-jump-store.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-store.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-store.png",
+      "bytes": 147204,
+      "sha256": "4703bb6514bf1cebc8a20591dd0d6c59b52b80e0d818dafb2db74d5f9c49f864",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-store.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/indoor-furniture-rigidbody-v1/desktop-home.png",
+      "bytes": 143430,
+      "sha256": "a9c029088cf430d65b027dfc2b89f926a6a4a63cf6ec57197094d4f71c2be432",
+      "copies": [
+        "output/indoor-furniture-rigidbody-v1/web-home.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/indoor-furniture-rigidbody-v1/web-home.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-home.png",
+      "bytes": 142228,
+      "sha256": "15c604cc041fb59d3f0e4f21b633c6046d6709f7d44d79d3348778ecb77b6b12",
+      "copies": [
+        "output/jump-check-v1/web-jump-home.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-home.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-home.png",
+      "bytes": 142228,
+      "sha256": "15c604cc041fb59d3f0e4f21b633c6046d6709f7d44d79d3348778ecb77b6b12",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-home.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/rumor-quiz-stamp-2026-10-25/desktop-wrong.png",
+      "bytes": 63263,
+      "sha256": "e03569225c1deeb8a0895f3de26b444c294e03e7c4b3bcfcbff9429bc0cfcf78",
+      "copies": [
+        "output/rumor-quiz-minimal-2026-10-25/web-wrong.png",
+        "output/rumor-quiz-stamp-2026-10-25/web-wrong.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/rumor-quiz-stamp-2026-10-25/web-wrong.png",
+      "producer": "scratch/check-rumor-stamp.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/rumor-quiz-minimal-2026-10-25/web-quiz-open.png",
+      "bytes": 59021,
+      "sha256": "69a4f30eded23858f379ec064257286548caf2f9c6b86fb61905d5dd7b693b0a",
+      "copies": [
+        "output/rumor-quiz-stamp-2026-10-25/desktop-quiz-open.png",
+        "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/rumor-quiz-stamp-2026-10-25/desktop-quiz-open.png",
+      "bytes": 59021,
+      "sha256": "69a4f30eded23858f379ec064257286548caf2f9c6b86fb61905d5dd7b693b0a",
+      "copies": [
+        "output/rumor-quiz-minimal-2026-10-25/web-quiz-open.png",
+        "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png",
+      "producer": "scratch/check-rumor-stamp.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png",
+      "bytes": 59021,
+      "sha256": "69a4f30eded23858f379ec064257286548caf2f9c6b86fb61905d5dd7b693b0a",
+      "copies": [
+        "output/rumor-quiz-minimal-2026-10-25/web-quiz-open.png",
+        "output/rumor-quiz-stamp-2026-10-25/desktop-quiz-open.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/00.png",
+      "bytes": 57926,
+      "sha256": "6ef81922c1cbb0891fcb52db1c457804f23e4e78095a05575fdfeb6cf749e111",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/00.png",
+        "output/somangi-walk-hip-seam-v2/front/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/00.png",
+      "bytes": 57926,
+      "sha256": "6ef81922c1cbb0891fcb52db1c457804f23e4e78095a05575fdfeb6cf749e111",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/00.png",
+        "output/somangi-walk-hip-seam-v2/front/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/15.png",
+      "bytes": 57926,
+      "sha256": "6ef81922c1cbb0891fcb52db1c457804f23e4e78095a05575fdfeb6cf749e111",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/00.png",
+        "output/somangi-walk-hip-seam-v2/front/00.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/down_sit-contact.png",
+      "bytes": 48622,
+      "sha256": "c8d787337552f99b0a0ba5a333e67de42cff2c19c5d27fe90f04ed47ba83d81d",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/down_sit-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/down_sit-contact.png",
+      "bytes": 48622,
+      "sha256": "c8d787337552f99b0a0ba5a333e67de42cff2c19c5d27fe90f04ed47ba83d81d",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_sit-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/down_sit-contact.png",
+      "bytes": 48622,
+      "sha256": "c8d787337552f99b0a0ba5a333e67de42cff2c19c5d27fe90f04ed47ba83d81d",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_sit-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/down_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/down_idle-contact.png",
+      "bytes": 48036,
+      "sha256": "dfba22d7839346509b43f2a3d129cbbadad03f8caf24d038fd4dc52d5587dc4a",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/down_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/down_idle-contact.png",
+      "bytes": 48036,
+      "sha256": "dfba22d7839346509b43f2a3d129cbbadad03f8caf24d038fd4dc52d5587dc4a",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/down_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/down_idle-contact.png",
+      "bytes": 48036,
+      "sha256": "dfba22d7839346509b43f2a3d129cbbadad03f8caf24d038fd4dc52d5587dc4a",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/down_idle-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/down_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/right_sit-contact.png",
+      "bytes": 43488,
+      "sha256": "2412deee37d3d10444303319e55ed8122e2496695aaf6a7e5a159a2c0c3587c5",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/right_sit-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/right_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/right_sit-contact.png",
+      "bytes": 43488,
+      "sha256": "2412deee37d3d10444303319e55ed8122e2496695aaf6a7e5a159a2c0c3587c5",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/right_sit-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/right_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/right_sit-contact.png",
+      "bytes": 43488,
+      "sha256": "2412deee37d3d10444303319e55ed8122e2496695aaf6a7e5a159a2c0c3587c5",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/right_sit-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/right_sit-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/up_idle-contact.png",
+      "bytes": 42636,
+      "sha256": "78c453a9424a3197ab0bd772e48d138f1b6402ee922ea528ba2d9c2b0719565b",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/up_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/up_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/up_idle-contact.png",
+      "bytes": 42636,
+      "sha256": "78c453a9424a3197ab0bd772e48d138f1b6402ee922ea528ba2d9c2b0719565b",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/up_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/up_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/up_idle-contact.png",
+      "bytes": 42636,
+      "sha256": "78c453a9424a3197ab0bd772e48d138f1b6402ee922ea528ba2d9c2b0719565b",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/up_idle-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/up_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v2/run/qa/right_idle-contact.png",
+      "bytes": 38875,
+      "sha256": "6b4dbd6469502bb5490448413885e3629e00ad5bb66345b5f46f9e04fc3a2c46",
+      "copies": [
+        "output/black-cat-sprite-test/v3/run/qa/right_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/right_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v3/run/qa/right_idle-contact.png",
+      "bytes": 38875,
+      "sha256": "6b4dbd6469502bb5490448413885e3629e00ad5bb66345b5f46f9e04fc3a2c46",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/right_idle-contact.png",
+        "output/black-cat-sprite-test/v4/run/qa/right_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/black-cat-sprite-test/v4/run/qa/right_idle-contact.png",
+      "bytes": 38875,
+      "sha256": "6b4dbd6469502bb5490448413885e3629e00ad5bb66345b5f46f9e04fc3a2c46",
+      "copies": [
+        "output/black-cat-sprite-test/v2/run/qa/right_idle-contact.png",
+        "output/black-cat-sprite-test/v3/run/qa/right_idle-contact.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Character input/base or QA contact sheet retained with each version"
+    },
+    {
+      "path": "output/rumor-quiz-stamp-2026-10-25/desktop-correct-stamp.png",
+      "bytes": 77646,
+      "sha256": "435c7b1b62a6fa408c65ed72c0e7bdb13db348eeff69ac328ad3568e909f9283",
+      "copies": [
+        "output/rumor-quiz-stamp-2026-10-25/web-correct-stamp.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/rumor-quiz-stamp-2026-10-25/web-correct-stamp.png",
+      "producer": "scratch/check-rumor-stamp.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/rumor-quiz-stamp-2026-10-25/web-correct-stamp.png",
+      "bytes": 77646,
+      "sha256": "435c7b1b62a6fa408c65ed72c0e7bdb13db348eeff69ac328ad3568e909f9283",
+      "copies": [
+        "output/rumor-quiz-stamp-2026-10-25/desktop-correct-stamp.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/rumor-olive-ui-2026-10-25/desktop-wrong.png",
+      "bytes": 68718,
+      "sha256": "a6d14051554faa219856c13315b42eca21f34e1c93aa89524f988bae1e3b9e89",
+      "copies": [
+        "output/rumor-olive-ui-2026-10-25/web-wrong.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/rumor-olive-ui-2026-10-25/web-wrong.png",
+      "producer": "scratch/check-rumor-olive.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/rumor-letter-ui-2026-10-25/desktop-wrong.png",
+      "bytes": 65433,
+      "sha256": "a60bb035b0ffa23b2ac4f1dc325ceea6201a9c7c342f9669ba9770cec48e8dc8",
+      "copies": [
+        "output/rumor-letter-ui-2026-10-25/web-wrong.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/rumor-letter-ui-2026-10-25/web-wrong.png",
+      "producer": "scratch/check-rumor-letter.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/rumor-result-visible-2026-10-25/web-quiz-open.png",
+      "bytes": 59009,
+      "sha256": "bbdab69de11cb465a4e4ba8855bbf13fa8bf90f861722a0c293b94f018d6b872",
+      "copies": [
+        "output/rumor-stamp-only-2026-10-25/web-quiz-open.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/rumor-stamp-only-2026-10-25/web-quiz-open.png",
+      "bytes": 59009,
+      "sha256": "bbdab69de11cb465a4e4ba8855bbf13fa8bf90f861722a0c293b94f018d6b872",
+      "copies": [
+        "output/rumor-result-visible-2026-10-25/web-quiz-open.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Concept/adopted art, source motion edit, or distinct historical comparison; preserve source path"
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/04.png",
+      "bytes": 58607,
+      "sha256": "67db298a2b8b10bc51980530379c81bde89dd7ee2f371ba5cdb72728b7b14a69",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/11.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/11.png",
+      "bytes": 58607,
+      "sha256": "67db298a2b8b10bc51980530379c81bde89dd7ee2f371ba5cdb72728b7b14a69",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/04.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/05.png",
+      "bytes": 58605,
+      "sha256": "ad56035bdedfa98b01ea79447eed540209b1f8c2346406440a5c64313108f520",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/10.png",
+      "bytes": 58605,
+      "sha256": "ad56035bdedfa98b01ea79447eed540209b1f8c2346406440a5c64313108f520",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/05.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/07.png",
+      "bytes": 58407,
+      "sha256": "8cceffc720c1d7dffe254e1cbd9ea0d100dc77560f06a68bac946b9e269f1dc2",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/08.png",
+      "bytes": 58407,
+      "sha256": "8cceffc720c1d7dffe254e1cbd9ea0d100dc77560f06a68bac946b9e269f1dc2",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/20.png",
+      "bytes": 58382,
+      "sha256": "40aad06a7ee5664030cf7a649bfcf7039e9699af89dbcf44798c97eb26c721b0",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/25.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/25.png",
+      "bytes": 58382,
+      "sha256": "40aad06a7ee5664030cf7a649bfcf7039e9699af89dbcf44798c97eb26c721b0",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/20.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/06.png",
+      "bytes": 58349,
+      "sha256": "43530d964b2c0a81fff045516e84fe85618399934c30b6e44010ca814b31c5b4",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/09.png",
+      "bytes": 58349,
+      "sha256": "43530d964b2c0a81fff045516e84fe85618399934c30b6e44010ca814b31c5b4",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/21.png",
+      "bytes": 58323,
+      "sha256": "25b3a133ff3c0ffc658afeae7faa44d8a8276ff257b77ca259d631315af65cac",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/24.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/24.png",
+      "bytes": 58323,
+      "sha256": "25b3a133ff3c0ffc658afeae7faa44d8a8276ff257b77ca259d631315af65cac",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/21.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/22.png",
+      "bytes": 58318,
+      "sha256": "0209fed29b2fadeadd3d68b1a8692e41f470822d5c56e3fd79380ff4584a6ae8",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/23.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/23.png",
+      "bytes": 58318,
+      "sha256": "0209fed29b2fadeadd3d68b1a8692e41f470822d5c56e3fd79380ff4584a6ae8",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/22.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/03.png",
+      "bytes": 58279,
+      "sha256": "7e5061776dc7dbb5bcbfae72a35bcbe864dee52bfc551096ae72148e759ddb22",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/12.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/12.png",
+      "bytes": 58279,
+      "sha256": "7e5061776dc7dbb5bcbfae72a35bcbe864dee52bfc551096ae72148e759ddb22",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/03.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/07.png",
+      "bytes": 58255,
+      "sha256": "0f6911a22a337af7cc3aa09aa3c3188201d1ea0ff9274c913b1b69c29e52e895",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/08.png",
+      "bytes": 58255,
+      "sha256": "0f6911a22a337af7cc3aa09aa3c3188201d1ea0ff9274c913b1b69c29e52e895",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/06.png",
+      "bytes": 58186,
+      "sha256": "d339d68016c7c4f5e25ea0612648a19f5fc2f190fc5e43a25eaef129234c4cb1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/09.png",
+      "bytes": 58186,
+      "sha256": "d339d68016c7c4f5e25ea0612648a19f5fc2f190fc5e43a25eaef129234c4cb1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/02.png",
+      "bytes": 58175,
+      "sha256": "de53878f836b8b51468b9da407fa499cd98082c84d58e0c600207efe5d843513",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/13.png",
+      "bytes": 58175,
+      "sha256": "de53878f836b8b51468b9da407fa499cd98082c84d58e0c600207efe5d843513",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/02.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/01.png",
+      "bytes": 58098,
+      "sha256": "07c43eb9c8b70869f449d9a3ea2d39ab7baba20976cd1f6acc11e6116771c1af",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/14.png",
+      "bytes": 58098,
+      "sha256": "07c43eb9c8b70869f449d9a3ea2d39ab7baba20976cd1f6acc11e6116771c1af",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/01.png",
+      "bytes": 58091,
+      "sha256": "7616946cad422abc23e2a1d737ec1e56a0ace227fe5e763aab5048de4363c63d",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/14.png",
+      "bytes": 58091,
+      "sha256": "7616946cad422abc23e2a1d737ec1e56a0ace227fe5e763aab5048de4363c63d",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/18.png",
+      "bytes": 58055,
+      "sha256": "43f961b7f64469e21755d0d40ff16346470df15101f52e4cae7cb09ca2877220",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/front/27.png",
+      "bytes": 58055,
+      "sha256": "43f961b7f64469e21755d0d40ff16346470df15101f52e4cae7cb09ca2877220",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/front/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/18.png",
+      "bytes": 57989,
+      "sha256": "2b7c8a8642c2fdca7a072f018259d24d267737ec5d13952f0913acd879f924a1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/front/27.png",
+      "bytes": 57989,
+      "sha256": "2b7c8a8642c2fdca7a072f018259d24d267737ec5d13952f0913acd879f924a1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/front/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/05.png",
+      "bytes": 56704,
+      "sha256": "5861a0856c1215b060aaa868d04f68bd34ed6e05b9bf903a53348f0f2823a9d0",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/10.png",
+      "bytes": 56704,
+      "sha256": "5861a0856c1215b060aaa868d04f68bd34ed6e05b9bf903a53348f0f2823a9d0",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/05.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/07.png",
+      "bytes": 56625,
+      "sha256": "b482872e78088f7a2e381c5f8c8205b1b49110516fc0635db7029a4dbe757c25",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/08.png",
+      "bytes": 56625,
+      "sha256": "b482872e78088f7a2e381c5f8c8205b1b49110516fc0635db7029a4dbe757c25",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/20.png",
+      "bytes": 56616,
+      "sha256": "915c477ccf8586434203d3f49536812381fe408be60c7b00ee3b76f562eb6894",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/25.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/25.png",
+      "bytes": 56616,
+      "sha256": "915c477ccf8586434203d3f49536812381fe408be60c7b00ee3b76f562eb6894",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/20.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/21.png",
+      "bytes": 56582,
+      "sha256": "b1ba57a0ebaf1b73b1ee0b39203333f5310e3cbda70d293fc699e5f167a7a71e",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/24.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/24.png",
+      "bytes": 56582,
+      "sha256": "b1ba57a0ebaf1b73b1ee0b39203333f5310e3cbda70d293fc699e5f167a7a71e",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/21.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/06.png",
+      "bytes": 56581,
+      "sha256": "3c553955c3c64b7ef5160f1a037a2f76f3d33f1d23513c470f9ea947b1f1ad21",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/09.png",
+      "bytes": 56581,
+      "sha256": "3c553955c3c64b7ef5160f1a037a2f76f3d33f1d23513c470f9ea947b1f1ad21",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/22.png",
+      "bytes": 56463,
+      "sha256": "d9f0eb7aeed40c94a992641f34b966718df1ebc6e76470ab1f54994236cfd418",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/23.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/23.png",
+      "bytes": 56463,
+      "sha256": "d9f0eb7aeed40c94a992641f34b966718df1ebc6e76470ab1f54994236cfd418",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/22.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/18.png",
+      "bytes": 56443,
+      "sha256": "6b89d1db5f69c90facb05b94587ea545c142d09d74f7840eef65ebab7056dea2",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/27.png",
+      "bytes": 56443,
+      "sha256": "6b89d1db5f69c90facb05b94587ea545c142d09d74f7840eef65ebab7056dea2",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/04.png",
+      "bytes": 56431,
+      "sha256": "398ba2e925062d35392cee9a9ea713fa63eb168089ec2ff28b35f239c264012d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/11.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/11.png",
+      "bytes": 56431,
+      "sha256": "398ba2e925062d35392cee9a9ea713fa63eb168089ec2ff28b35f239c264012d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/04.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/16.png",
+      "bytes": 56256,
+      "sha256": "b8feb814b0e5b9cb983ca33ce7b89c6d5bc862cdaaf31d76bd498092370c3415",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/29.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/29.png",
+      "bytes": 56256,
+      "sha256": "b8feb814b0e5b9cb983ca33ce7b89c6d5bc862cdaaf31d76bd498092370c3415",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/16.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/02.png",
+      "bytes": 56210,
+      "sha256": "1d6743aa6ae1d7c00c4003a576fcc2bfe0ce62dfcfc41a13771d95cafffc7822",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/13.png",
+      "bytes": 56210,
+      "sha256": "1d6743aa6ae1d7c00c4003a576fcc2bfe0ce62dfcfc41a13771d95cafffc7822",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/02.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/01.png",
+      "bytes": 56174,
+      "sha256": "f476a78a9ee21965383bbad55be4f44c1539f62cced531db15877b68268c6a6d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/14.png",
+      "bytes": 56174,
+      "sha256": "f476a78a9ee21965383bbad55be4f44c1539f62cced531db15877b68268c6a6d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/00.png",
+      "bytes": 55813,
+      "sha256": "32c4fd714710a67d91ebc0d77d66e7c94a7ba4aeb79e6121f4d516ddbb51c87c",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/15.png",
+      "bytes": 55813,
+      "sha256": "32c4fd714710a67d91ebc0d77d66e7c94a7ba4aeb79e6121f4d516ddbb51c87c",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/back/00.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/22.png",
+      "bytes": 47346,
+      "sha256": "036f44ac724ecd9d1490e71120ecf493cf88d8fa1ae5d06d730cd59efd5b292d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/23.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/23.png",
+      "bytes": 47346,
+      "sha256": "036f44ac724ecd9d1490e71120ecf493cf88d8fa1ae5d06d730cd59efd5b292d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/22.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/21.png",
+      "bytes": 47287,
+      "sha256": "c011458b7db0ca43b7fc15de1affc768a23181ee524cd2a95097f48e0dfec179",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/24.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/24.png",
+      "bytes": 47287,
+      "sha256": "c011458b7db0ca43b7fc15de1affc768a23181ee524cd2a95097f48e0dfec179",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/21.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/20.png",
+      "bytes": 47135,
+      "sha256": "0a5b1940e96d8e1f008055e3f5040bfe279c7c54bb97ddacb0f127832448e380",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/25.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/25.png",
+      "bytes": 47135,
+      "sha256": "0a5b1940e96d8e1f008055e3f5040bfe279c7c54bb97ddacb0f127832448e380",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/20.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/19.png",
+      "bytes": 46844,
+      "sha256": "062edd22a556d14d662a666576586ba26c07b2c0e2d7e57d9f624b5f3cb22a52",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/26.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/26.png",
+      "bytes": 46844,
+      "sha256": "062edd22a556d14d662a666576586ba26c07b2c0e2d7e57d9f624b5f3cb22a52",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/19.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/06.png",
+      "bytes": 46792,
+      "sha256": "f24eb69c418d7819823851596fa07cbc20a229f0dc4c21a78f512a48f85da943",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/09.png",
+      "bytes": 46792,
+      "sha256": "f24eb69c418d7819823851596fa07cbc20a229f0dc4c21a78f512a48f85da943",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/07.png",
+      "bytes": 46575,
+      "sha256": "94b100778ae088e68e1d2f3f75f245d6c41d1103b1f0d6b5c17b093f2fad8091",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/08.png",
+      "bytes": 46575,
+      "sha256": "94b100778ae088e68e1d2f3f75f245d6c41d1103b1f0d6b5c17b093f2fad8091",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/05.png",
+      "bytes": 46534,
+      "sha256": "ec970660fda6dc0007a55ef4cf3f99423a268de7e4f7173e9f01aaac6dc1ce7a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/10.png",
+      "bytes": 46534,
+      "sha256": "ec970660fda6dc0007a55ef4cf3f99423a268de7e4f7173e9f01aaac6dc1ce7a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/05.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/18.png",
+      "bytes": 46530,
+      "sha256": "ee9e457f0de5fe8161e5c43fd7c282bcc3e44f6895e0532f6252d1d4127f90b7",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/27.png",
+      "bytes": 46530,
+      "sha256": "ee9e457f0de5fe8161e5c43fd7c282bcc3e44f6895e0532f6252d1d4127f90b7",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/04.png",
+      "bytes": 45953,
+      "sha256": "4f0ed54a2fa9fc5d044ce909f08d505dc98cdd4770d8c325c5ebb282a2f20fd1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/11.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/11.png",
+      "bytes": 45953,
+      "sha256": "4f0ed54a2fa9fc5d044ce909f08d505dc98cdd4770d8c325c5ebb282a2f20fd1",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/04.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/03.png",
+      "bytes": 45931,
+      "sha256": "da589a4f0549eac93fc77c865a26d0b03f1e447a5e2787fe5308b82fb7d13473",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/12.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/12.png",
+      "bytes": 45931,
+      "sha256": "da589a4f0549eac93fc77c865a26d0b03f1e447a5e2787fe5308b82fb7d13473",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/03.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/16.png",
+      "bytes": 45484,
+      "sha256": "c01676efb0946db1ffaf97da747dbe8e09807adb5ba22129961c79e853aa1e0d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/29.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/29.png",
+      "bytes": 45484,
+      "sha256": "c01676efb0946db1ffaf97da747dbe8e09807adb5ba22129961c79e853aa1e0d",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/16.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/02.png",
+      "bytes": 45384,
+      "sha256": "7ed6a07a2aa6b2e375ebe6800984a8f3960c856661c9699a1183f028b60875ed",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/13.png",
+      "bytes": 45384,
+      "sha256": "7ed6a07a2aa6b2e375ebe6800984a8f3960c856661c9699a1183f028b60875ed",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/02.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/01.png",
+      "bytes": 44814,
+      "sha256": "9bf6d13887d5b83ea120aedeb293a3815eab11fbe6a30860348a1ab6aa0f9f3a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/14.png",
+      "bytes": 44814,
+      "sha256": "9bf6d13887d5b83ea120aedeb293a3815eab11fbe6a30860348a1ab6aa0f9f3a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/00.png",
+      "bytes": 44673,
+      "sha256": "339b9c4165b0e003565b96e1b9e253d4a306d8f9a7d007bbd37fd25beb2e12c4",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/15.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/15.png",
+      "bytes": 44673,
+      "sha256": "339b9c4165b0e003565b96e1b9e253d4a306d8f9a7d007bbd37fd25beb2e12c4",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/00.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/07.png",
+      "bytes": 44342,
+      "sha256": "4923aecc246af46de6adbcc4920a2d8b3c959096043a253d3abf1642106a4250",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/08.png",
+      "bytes": 44342,
+      "sha256": "4923aecc246af46de6adbcc4920a2d8b3c959096043a253d3abf1642106a4250",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/06.png",
+      "bytes": 44243,
+      "sha256": "1e4f7dd77b45eb86765b20a40da696c7ae7d42df6d2c5c1d69fa81e037e11473",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/09.png",
+      "bytes": 44243,
+      "sha256": "1e4f7dd77b45eb86765b20a40da696c7ae7d42df6d2c5c1d69fa81e037e11473",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/07.png",
+      "bytes": 44182,
+      "sha256": "7148a5ac2509820487d8b9ddfc4be91604a4bd96bd35b4fce9b83d31fe0a67fc",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/08.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/08.png",
+      "bytes": 44182,
+      "sha256": "7148a5ac2509820487d8b9ddfc4be91604a4bd96bd35b4fce9b83d31fe0a67fc",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/07.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/06.png",
+      "bytes": 44140,
+      "sha256": "88d6d95d6ffcab359c2031916152225585b8b90e8e4cd9846b7e31e08e7914b6",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/09.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/09.png",
+      "bytes": 44140,
+      "sha256": "88d6d95d6ffcab359c2031916152225585b8b90e8e4cd9846b7e31e08e7914b6",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/06.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/05.png",
+      "bytes": 44043,
+      "sha256": "526101889aacd6a06ffc6a2392f5a2cb39a838bb15138eb992ebf886db1bfe0e",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/10.png",
+      "bytes": 44043,
+      "sha256": "526101889aacd6a06ffc6a2392f5a2cb39a838bb15138eb992ebf886db1bfe0e",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/05.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/05.png",
+      "bytes": 44029,
+      "sha256": "766493c96a942b3749b75f167a638ec5a3b5b784a1769e77834a803255b51163",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/10.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/10.png",
+      "bytes": 44029,
+      "sha256": "766493c96a942b3749b75f167a638ec5a3b5b784a1769e77834a803255b51163",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/05.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/22.png",
+      "bytes": 43965,
+      "sha256": "cecfa9a25332d917b4e1eccf2a995c772822930833fd76567ffa092fe21fc826",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/23.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/23.png",
+      "bytes": 43965,
+      "sha256": "cecfa9a25332d917b4e1eccf2a995c772822930833fd76567ffa092fe21fc826",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/22.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/22.png",
+      "bytes": 43921,
+      "sha256": "4a79d7b1a4dfe90805c702608d8367a0c8d0ad570791d7da2a23da521d63b768",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/23.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/23.png",
+      "bytes": 43921,
+      "sha256": "4a79d7b1a4dfe90805c702608d8367a0c8d0ad570791d7da2a23da521d63b768",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/22.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/21.png",
+      "bytes": 43902,
+      "sha256": "657cb1010cb76b7f418ac8747454a93aa9897cca59be1e281a7662998c5f3c79",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/24.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/24.png",
+      "bytes": 43902,
+      "sha256": "657cb1010cb76b7f418ac8747454a93aa9897cca59be1e281a7662998c5f3c79",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/21.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/21.png",
+      "bytes": 43827,
+      "sha256": "d9b12b009b105ee878595c879367cd7aa35bd4ecc03e10265571964a4ff26a22",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/24.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/24.png",
+      "bytes": 43827,
+      "sha256": "d9b12b009b105ee878595c879367cd7aa35bd4ecc03e10265571964a4ff26a22",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/21.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/20.png",
+      "bytes": 43598,
+      "sha256": "78a3ad84fa010b0bd187f604e8cb57346f5db66efd314c5e8751bff3372fe703",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/25.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/25.png",
+      "bytes": 43598,
+      "sha256": "78a3ad84fa010b0bd187f604e8cb57346f5db66efd314c5e8751bff3372fe703",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/20.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/20.png",
+      "bytes": 43564,
+      "sha256": "e7635444d0bfa124abab36ec6ce4b5cb16eeeb30d337b20a85894ec0c9b33c04",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/25.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/25.png",
+      "bytes": 43564,
+      "sha256": "e7635444d0bfa124abab36ec6ce4b5cb16eeeb30d337b20a85894ec0c9b33c04",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/20.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/04.png",
+      "bytes": 43435,
+      "sha256": "64b1833b15ae3fdebf11e384d358c85a2f5d4039d94bdd6d16e6709572ca3b87",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/11.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/11.png",
+      "bytes": 43435,
+      "sha256": "64b1833b15ae3fdebf11e384d358c85a2f5d4039d94bdd6d16e6709572ca3b87",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/04.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/03.png",
+      "bytes": 43048,
+      "sha256": "af04bc9d9f8efc4d02de08a8e137ef0baf7b77e724172386431cc2f6f0407b78",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/12.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/12.png",
+      "bytes": 43048,
+      "sha256": "af04bc9d9f8efc4d02de08a8e137ef0baf7b77e724172386431cc2f6f0407b78",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/03.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/03.png",
+      "bytes": 42959,
+      "sha256": "2406d0a0e6b31f0d3f90cc5d6203777192dee8a17723b77e5e9b60826725d97a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/12.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/12.png",
+      "bytes": 42959,
+      "sha256": "2406d0a0e6b31f0d3f90cc5d6203777192dee8a17723b77e5e9b60826725d97a",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/03.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/18.png",
+      "bytes": 42927,
+      "sha256": "4cdc3f5598d9ebdce88119d774aa67c9abee3867b2b8f3234718b2c0682ede12",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/27.png",
+      "bytes": 42927,
+      "sha256": "4cdc3f5598d9ebdce88119d774aa67c9abee3867b2b8f3234718b2c0682ede12",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/18.png",
+      "bytes": 42884,
+      "sha256": "05e986cad031578badb8943a49d133bb25f642f6803628b2cd2e85990e9bab41",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/27.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/27.png",
+      "bytes": 42884,
+      "sha256": "05e986cad031578badb8943a49d133bb25f642f6803628b2cd2e85990e9bab41",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/18.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/02.png",
+      "bytes": 42690,
+      "sha256": "45f50ce9ccce7b0b647ce2075a8fb318ca1408351fcfcc27896651261ba1479f",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/13.png",
+      "bytes": 42690,
+      "sha256": "45f50ce9ccce7b0b647ce2075a8fb318ca1408351fcfcc27896651261ba1479f",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/02.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/02.png",
+      "bytes": 42577,
+      "sha256": "64c32fca2fe8038c0febda961981d1575de825301af5b82bee563f64f075baba",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/13.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/13.png",
+      "bytes": 42577,
+      "sha256": "64c32fca2fe8038c0febda961981d1575de825301af5b82bee563f64f075baba",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/02.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/01.png",
+      "bytes": 42055,
+      "sha256": "6d19c582482a7998cee047fb6f17f7e51c8f852634b8acb4f7a037fffa35e14b",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-height-fixed-preview/side/14.png",
+      "bytes": 42055,
+      "sha256": "6d19c582482a7998cee047fb6f17f7e51c8f852634b8acb4f7a037fffa35e14b",
+      "copies": [
+        "output/somangi-walk-height-fixed-preview/side/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/01.png",
+      "bytes": 41999,
+      "sha256": "7198100d05200a364aae4a589b2fbbad63eca64883f352a80a857da198e99688",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/14.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/somangi-walk-hip-seam-v2/side/14.png",
+      "bytes": 41999,
+      "sha256": "7198100d05200a364aae4a589b2fbbad63eca64883f352a80a857da198e99688",
+      "copies": [
+        "output/somangi-walk-hip-seam-v2/side/01.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Numbered motion/inspection sequence; glob/index-based packaging requires path and frame count",
+      "evidence": [
+        "output/somangi-walk-height-fixed-preview/package.py",
+        "output/somangi-walk-hip-seam-v2/README.md"
+      ]
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-training.png",
+      "bytes": 9822,
+      "sha256": "778a5ed5980a8509bd8c56fe66501f2490473d23219948e68d75ac6756ab02ec",
+      "copies": [
+        "output/jump-check-v1/web-jump-training.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-training.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-training.png",
+      "bytes": 9822,
+      "sha256": "778a5ed5980a8509bd8c56fe66501f2490473d23219948e68d75ac6756ab02ec",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-training.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    },
+    {
+      "path": "output/jump-check-v1/desktop-jump-simulation.png",
+      "bytes": 7964,
+      "sha256": "5bded34b2837b9f9ee9812a4393137927325b970fc71a52eb71b1c0e412fc522",
+      "copies": [
+        "output/jump-check-v1/web-jump-simulation.png"
+      ],
+      "status": "deleted",
+      "verified_unchanged": true,
+      "preserved_copy": "output/jump-check-v1/web-jump-simulation.png",
+      "producer": "web/tests/arrivalBench.browser.cjs",
+      "literal_references": [],
+      "preserved_hash_verified": true,
+      "reason": "Redundant desktop verification screenshot; identical same-folder web capture retained",
+      "record_policy": "Keep desktop/web JSON reports and producer; record screenshot equivalence in folder README when deleting",
+      "deleted": true
+    },
+    {
+      "path": "output/jump-check-v1/web-jump-simulation.png",
+      "bytes": 7964,
+      "sha256": "5bded34b2837b9f9ee9812a4393137927325b970fc71a52eb71b1c0e412fc522",
+      "copies": [
+        "output/jump-check-v1/desktop-jump-simulation.png"
+      ],
+      "status": "preserve",
+      "verified_unchanged": true,
+      "reason": "Retain web canonical capture, non-identical pair, or distinct test-stage evidence"
+    }
+  ]
+}

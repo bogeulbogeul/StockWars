@@ -28,7 +28,7 @@ test('failed instant uses and full bags never charge gold or consume an item', (
     assert.equal(e.purchase('item_caffeine_shot',1,true).success,false);
     assert.equal(e.purchase('item_crypto_decoder',1,true).success,false);
     assert.equal(m.cash,cash); assert.equal(e.state.inventory.length,0);
-    e.state.inventory=Array.from({length:24},(_,i)=>({id:`other${i}`,quantity:1}));
+    e.state.inventory=Array.from({length:30},(_,i)=>({id:`other${i}`,quantity:1}));
     assert.equal(e.purchase('item_focus_pill').success,false); assert.equal(m.cash,cash);
 });
 
@@ -53,7 +53,7 @@ test('analysis buff remains temporary; retired ability buffs never affect common
     purchase(e,'item_focus_pill',2); use(e,'item_focus_pill');
     assert.equal(e.use('item_focus_pill').success,false);
     assert.deepEqual(e.stats(),{analysis:5});
-    assert.equal(e.orderLimit(),100); assert.equal(e.portfolioSlots(),5);
+    assert.equal(e.orderLimit(),100); assert.equal(e.portfolioSlots(),Infinity);
     assert.equal(e.maxStamina(),3); assert.equal(e.laborCost(),1);
     advance(ITEM_BALANCE.buffMs); assert.deepEqual(e.stats(),{analysis:3});
 });
@@ -193,4 +193,21 @@ test('energy drinks can be bought and consumed at full stamina without exceeding
     engine.add('item_caffeine_shot');
     assert.equal(engine.use('item_caffeine_shot').success, false);
     assert.equal(engine.state.inventory.find(item => item.id === 'item_caffeine_shot').quantity, 1);
+});
+
+test('bag capacity counts every unit across types, rejects overflow without charging, and preserves legacy holdings', () => {
+    const { engine:e, market:m }=fixture();
+    assert.equal(e.add('item_energy_drink',29),true);
+    assert.equal(e.add('item_crypto_decoder',1),true);
+    const cash=m.cash, before=structuredClone(e.state.inventory);
+    assert.equal(e.canAdd('item_energy_drink',1),false);
+    assert.equal(e.add('item_premium_rumor'),false);
+    assert.equal(e.purchase('item_energy_drink',1,false,{vending:true}).success,false);
+    assert.equal(m.cash,cash);assert.deepEqual(e.state.inventory,before);
+    assert.equal(e.canAdd('x',0),false);assert.equal(e.canAdd('x',-1),false);
+    assert.equal(e.canAdd('x',1.5),false);
+    e.state.inventory[0].quantity=40;
+    const restored=new ItemEngine({market:m,state:structuredClone(e.state)});
+    assert.equal(restored.state.inventory.find(i=>i.id==='item_energy_drink').quantity,40);
+    assert.equal(restored.canAdd('x'),false);
 });

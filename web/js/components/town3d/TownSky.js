@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from '../../engine/SettingsStore.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { timeOfDayService } from '../../engine/timeOfDayService.js';
 import { TOWN_SKY_PALETTES } from '../../data/townSkyPalettes.js';
@@ -24,6 +25,8 @@ export class TownSky {
     currentStage(now) {
         const preview = this.scene.userData.skyTimeOfDay;
         if (TOWN_SKY_PALETTES[preview]) return preview;
+        const story = this.scene.userData.storySkyTime;
+        if (TOWN_SKY_PALETTES[story]) return story;
         if (document.body.classList.contains('exhibition-sunset')) return 'sunset';
         // Reuse the game's regional/seasonal clock without requesting location
         // or starting another service timer for each scene.
@@ -66,7 +69,7 @@ export class TownSky {
         this.context.fillStyle = gradient;
         this.context.fillRect(0, 0, this.image.width, this.image.height);
         drawTownClouds(this.context, this.image.width, this.image.height, now / 1000,
-            this.colors, matchMedia('(prefers-reduced-motion: reduce)').matches);
+            this.colors, prefersReducedMotion());
         this.texture.needsUpdate = true;
         this.lastPaint = now;
         this.lastStage = stage;

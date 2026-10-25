@@ -1,0 +1,28 @@
+{
+  "settingsApp": true,
+  "movementPresets": true,
+  "customBinding": true,
+  "reservedKeyRejected": true,
+  "conflictRejected": true,
+  "escapeCapture": true,
+  "arrowMovement": true,
+  "routed": {
+    "oldIgnored": true,
+    "tourMoved": true,
+    "tourReleased": true,
+    "arrivalMapped": true,
+    "arrivalReleased": true,
+    "heldCleared": true
+  },
+  "effectsVolume": 23,
+  "reducedMotion": true,
+  "mute": true,
+  "volume": 0.35,
+  "effectiveGain": 0.1925334334373474,
+  "restored": true,
+  "openingMuted": true,
+  "topControlRemoved": true,
+  "cleanup": true,
+  "exhibitionSaveUnchanged": true,
+  "errors": []
+}

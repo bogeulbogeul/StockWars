@@ -1,0 +1,7 @@
+{
+  "id": "item_honey_cookie",
+  "file": "item_honey_cookie.glb",
+  "sha256": "570215ce057173e942d0926785b87c6747cc06a1f4f0c598cc09d030fbcbff3b",
+  "reference": "web/assets/items/packing-v1/items.png [20,40,390,350]",
+  "cookieCount": 4
+}

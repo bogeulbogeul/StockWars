@@ -1,20 +1,8 @@
 import { faceConversation, clearConversationFacing } from '../../components/town3d/ConversationFacing.js';
-import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
-import { recoverTownBody } from '../../components/town3d/TownBodyMovement.js';
-
-// Clear floor beside the counters keeps the actor visible above the dialogue panel.
-const dialoguePositions = { home: [0, -115], store: [-165, -95], information: [210, -80], bank: [245, -90], stock: [240, -110] };
-export function placeSomangi(scenes, scene) {
-    const position = dialoguePositions[scenes.place];
-    if (!position || !scene.controller) return;
-    const [x, z] = position;
-    Object.assign(scene.controller, { charPosX: x, charPosY: z * GROUND_PROJECTION });
-    if (scene.controller.canStand) recoverTownBody(scene.controller);
-    scene.player?.update(0);
-}
 
 // Story moods reuse the approved face atlas; character geometry stays shared.
 export function expressionForBeat(beat) {
+    if (beat.yawn) return 'sleepy';
     if (beat.kind === 'action') return ({ nickname: 'shy', phone: 'curious', loan: 'worried', packing: 'determined', wage: 'happy', certificate: 'happy', rumor: 'curious', sunset: 'relieved', cookie: 'delicious', diary: 'touched', planted: 'determined' })[beat.id] || 'smile';
     if (!beat.speaker?.includes('소망')) return 'smile';
     const text = beat.text || '';
@@ -23,7 +11,7 @@ export function expressionForBeat(beat) {
 }
 export async function presentSomangi(scenes, beat) {
     const scene = scenes.rooms.get(scenes.place) || scenes.townModelScene;
-    const moa = scene?.room?.userData.moa || (scenes.place === 'arrival' || beat.chapter === 3 || beat.id === 'walk'
+    const moa = scene?.room?.userData.moa || (['arrival', 'bankOutside', 'bench'].includes(scenes.place) || beat.chapter === 3 || beat.id === 'walk'
         ? scenes.townModelScene.sleepingAnna : null);
     if (moa) {
         await moa.ready;
@@ -36,9 +24,18 @@ export async function presentSomangi(scenes, beat) {
     if (!player) return;
     await player.ready;
     await player.setExpression(expressionForBeat(beat));
-    if (moa) faceConversation(player, moa);
+    if (scenes.place === 'bank' && scene.room?.userData.chagok) {
+        player.faceTarget(scene.room.userData.chagok);
+        moa?.faceTarget(player.root);
+    }
+    else if (moa) faceConversation(player, moa);
+    else if (scenes.place === 'store' && scene.shopkeeper) faceConversation(player, scene.shopkeeper);
+    else if (scenes.place === 'stock' && scene.room?.getObjectByName('tori-character'))
+        faceConversation(player, scene.room.getObjectByName('tori-character'));
     else {
         clearConversationFacing(scenes.townModelScene.player, scenes.townModelScene.sleepingAnna);
         player.faceCamera(scene.camera);
     }
 }
+
+

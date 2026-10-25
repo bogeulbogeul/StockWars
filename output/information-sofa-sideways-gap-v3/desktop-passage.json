@@ -1,0 +1,367 @@
+{
+  "enteredSideways": true,
+  "allLegal": true,
+  "exitedSideways": true,
+  "samples": [
+    {
+      "x": 220,
+      "z": 250,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 243.98800000000006,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 234.98800000000006,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 228.23800000000006,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 225.98350000000008,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 223.7290000000001,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 216.9790000000001,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 212.48350000000016,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 205.73350000000016,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 198.9835000000002,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 192.2335000000002,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 187.73800000000028,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 180.98800000000028,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 174.23800000000028,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 169.72900000000033,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 165.23350000000042,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 158.48350000000042,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 153.97450000000046,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 147.22450000000046,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 144.95650000000032,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 142.70200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 138.20650000000032,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 135.95200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 131.45650000000032,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 129.20200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 122.45200000000044,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 115.70200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 108.95200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 102.20200000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 97.6930000000005,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 90.9430000000005,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 86.43400000000054,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 79.68400000000054,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 72.93400000000054,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 66.18400000000054,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 63.94300000000049,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 59.44750000000059,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 52.69750000000059,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 48.18850000000064,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 41.43850000000064,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 34.68850000000064,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 27.93850000000064,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 23.42950000000045,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 21.188500000000644,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 16.666000000000643,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 14.425000000000594,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 9.916000000000643,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 7.6615000000005455,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 3.152500000000594,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": 0.9115000000005447,
+      "sideways": true,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -3.597499999999407,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -6.603499999999538,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -12.615499999999471,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -18.60949999999934,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -21.61549999999947,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -27.627499999999408,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -30.615499999999475,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -36.62749999999941,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -39.633499999999536,
+      "sideways": false,
+      "legal": true
+    },
+    {
+      "x": 220,
+      "z": -45.645499999999466,
+      "sideways": false,
+      "legal": true
+    }
+  ]
+}

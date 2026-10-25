@@ -1,6 +1,26 @@
-import { Vector3 } from '../../../vendor/three/three.module.js';
+import { Vector3, Quaternion, MathUtils } from '../../../vendor/three/three.module.js';
 
 const point = new Vector3();
+const seatedHeads = new WeakMap();
+export function faceConversationPartner(root, target) {
+    if (!root || !target || root.userData.sleeping) return;
+    const yaw = conversationYaw(root, target);
+    if (yaw === null) return;
+    if (!root.userData.seated) { root.rotation.y = yaw; return; }
+    // Preserve the adopted sitting pose and chair contact; only turn the head.
+    let gaze = seatedHeads.get(root);
+    if (!gaze) {
+        const head = root.getObjectByName('Head');
+        // Baked seated assets have no separate head bone. Rotate around the
+        // existing seat anchor without changing their pose or contact height.
+        if (!head) { root.rotation.y = yaw; return; }
+        gaze = { head, rest: head.quaternion.clone() }; seatedHeads.set(root, gaze);
+    }
+    const delta = Math.atan2(Math.sin(yaw - root.rotation.y), Math.cos(yaw - root.rotation.y));
+    const parentRotation = gaze.head.parent.getWorldQuaternion(new Quaternion());
+    const axis = new Vector3(0, 1, 0).applyQuaternion(parentRotation.invert());
+    gaze.head.quaternion.copy(gaze.rest).premultiply(new Quaternion().setFromAxisAngle(axis, MathUtils.clamp(delta, -1.2, 1.2)));
+}
 export function conversationYaw(root, target) {
     if (!target) return null;
     target.getWorldPosition(point);
@@ -9,9 +29,11 @@ export function conversationYaw(root, target) {
     return Math.hypot(x, z) > .01 ? Math.atan2(x, z) : null;
 }
 export function faceConversation(player, resident) {
-    if (!player?.root || !resident?.root) return;
-    player.faceTarget(resident.root);
-    resident.faceTarget(player.root);
+    const root = resident?.root || resident;
+    if (!player?.root || !root) return;
+    player.faceTarget(root);
+    if (resident.faceTarget) resident.faceTarget(player.root);
+    else faceConversationPartner(root, player.root);
 }
 export function clearConversationFacing(player, resident) {
     if (player?.storyTarget && player.storyTarget === resident?.root) player.faceTarget(null);

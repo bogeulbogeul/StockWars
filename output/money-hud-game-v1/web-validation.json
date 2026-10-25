@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "title hidden",
+    "right top 24px",
+    "music no overlap",
+    "cash assets return",
+    "phone hide restore",
+    "320px and 360px fit",
+    "positive negative zero",
+    "isolated exhibition account",
+    "before bank hidden",
+    "bank opens cash only",
+    "certificate opens assets and return",
+    "saved unlock restored",
+    "fresh state relocks"
+  ]
+}

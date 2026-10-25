@@ -1,0 +1,75 @@
+{
+  "dimensions_H": [
+    0.3203679919242859,
+    0.23010063916444778,
+    0.3681757152080536
+  ],
+  "meshes": [
+    {
+      "name": "Pouch_Soft_Gathered_Body",
+      "triangles": 19968,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Neck_Drawstring",
+      "triangles": 4608,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Bow_Left_Loop",
+      "triangles": 1920,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Bow_Right_Loop",
+      "triangles": 1920,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Tie_Left_End",
+      "triangles": 788,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Tie_Right_End",
+      "triangles": 788,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Bow_Center_Knot",
+      "triangles": 1216,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Left_End_Knot",
+      "triangles": 1216,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Right_End_Knot",
+      "triangles": 1216,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Emblem_Right_Oval_Leaf",
+      "triangles": 1840,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Emblem_Left_Oval_Leaf",
+      "triangles": 1840,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Emblem_Sprout_Rounded_Stem",
+      "triangles": 76,
+      "non_manifold_edges": 0
+    }
+  ],
+  "status": "P1: standalone model and roundtrip checked; visual approval/game contact pending",
+  "scale": "Provisional H=1 character-relative; not final game scale",
+  "origin": "Bottom center, Blender Z-up/front -Y; glTF Y-up/front +Z",
+  "sprout_source": "information-sprout-mark-v1/Information-sprout-wall-mark.glb",
+  "game_installed": false,
+  "glb_bytes": 773800
+}

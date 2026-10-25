@@ -20,16 +20,23 @@ function screen(room, name, width, height, x, y, z, canvasWidth, canvasHeight) {
 }
 
 export class CipherMarketBoard {
-    constructor(room, box) {
+    constructor(room, box, { lesson = false } = {}) {
         const z = -LOBBY.depth / 2;
         room.userData.boardFrameReady = addCipherIndexBoardFrame(room);
         this.display = screen(room, 'market-board-screen', 440, 160, 0, 190, z + 21, 1760, 640);
         this.lastUpdate = -Infinity;
         this.history = [];
-        this.update(0);
+        this.lesson = lesson;
+        if (lesson) {
+            const { ctx, texture } = this.display;
+            ctx.fillStyle = '#fff6df'; ctx.fillRect(0, 0, 1760, 640);
+            ctx.fillStyle = '#395344'; ctx.font = '500 64px sans-serif';
+            ctx.fillText('토리의 주식 교실', 65, 100); texture.needsUpdate = true;
+        } else this.update(0);
     }
 
     update(now) {
+        if (this.lesson) return;
         if (now - this.lastUpdate < 1000) return;
         this.lastUpdate = now;
         this.index = marketEngine.stocks.size ? marketEngine.getCipherIndex() : null;

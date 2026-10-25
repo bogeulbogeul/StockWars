@@ -6,7 +6,7 @@ import { VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS, BONGBONG_POSITION } from '../..
 const modelUrl = new URL('../../../assets/characters/3d/bongbong/bongbong.glb', import.meta.url).href;
 
 export async function addVivianShopkeeper(room) {
-    const { model } = await loadCharacterAsset(modelUrl);
+    const { model, animations } = await loadCharacterAsset(modelUrl);
     const root = new THREE.Group();
     root.name = 'bongbong-character';
     root.position.set(BONGBONG_POSITION.x / VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS.floorY,
@@ -16,6 +16,9 @@ export async function addVivianShopkeeper(room) {
     model.position.y = -SOMANGI_FOOT_Y * scale;
     model.traverse(object => { if (object.isMesh) object.castShadow = object.receiveShadow = true; });
     root.add(model);
+    root.userData.greetingMixer = new THREE.AnimationMixer(model);
+    root.userData.walkAction = root.userData.greetingMixer.clipAction(animations[0]);
+    root.userData.smiling = true;
     room.add(root);
     return root;
 }

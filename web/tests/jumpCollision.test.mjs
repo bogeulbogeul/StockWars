@@ -1,3 +1,4 @@
+import {PLAYER_BODY_RADIUS as R} from '../js/components/town3d/CharacterBodies.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
@@ -38,7 +39,7 @@ test('airborne movement cannot cross overhead solids and ground walls remain sol
     const c={charPosX:-100,charPosY:0,jumpActive:true};
     installJumpCollision(c,(x)=>x<150||x>170,fixture());
     moveTownBody(c,200,0);
-    assert.ok(c.charPosX<=-82);
+    assert.ok(c.charPosX<=-(40+R));
     assert.equal(c.canStand(c.charPosX,c.charPosY),true);
     c.jumpActive=false;moveTownBody(c,200,0);
     assert.ok(c.charPosX>40&&c.charPosX<150);

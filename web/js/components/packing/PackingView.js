@@ -91,10 +91,10 @@ export function renderPacking(dialog, session, selected) {
     result.hidden = !session.awaitingNext;
     if (session.awaitingNext) {
         const done = session.completed === session.orders.length;
-        result.innerHTML = `<div class="packing-result-card"><div class="packing-parcel" aria-hidden="true">✿</div>
+        result.innerHTML = `<div class="packing-result-card"><div class="packing-parcel" aria-hidden="true">${shopFlowerMark}</div>
             <p>${session.completed} / ${session.orders.length} 상자</p><h2 id="packing-result-title">${done ? '오늘의 포장 완료!' : '상자 하나 완성!'}</h2>
             <p>${done ? '모든 물건을 정성껏 포장했어요.' : '다음에는 어떤 물건이 기다릴까요?'}</p>
-            <button type="button" class="packing-primary" data-action="${done ? 'restart' : 'next'}">${done ? '한 번 더 하기' : '다음 상자'}</button>
-            <button type="button" data-action="close">나가기</button></div>`;
+            <button type="button" class="packing-primary" data-action="${done ? 'close' : 'next'}">${done ? '나가기' : '다음 상자'}</button>
+            </div>`;
     }
 }

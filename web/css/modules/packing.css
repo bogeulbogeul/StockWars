@@ -145,3 +145,10 @@ body.ui-paused #townViewport > .packing-entry-hint { visibility: visible !import
     .packing-controls button { padding: 7px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .packing-game * { transition: none !important; } }
+
+/* Pointer tracking must never inherit UI position easing. */
+.packing-game .packing-ghost, .packing-game .packing-preview { transition: none !important; animation: none !important; }
+
+.packing-parcel > svg { display: block; width: 30px; height: 30px; }
+
+.packing-game .packing-result button:focus-visible { outline: none; }

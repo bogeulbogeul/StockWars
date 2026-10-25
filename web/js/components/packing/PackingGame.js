@@ -1,10 +1,11 @@
 import { createSession } from './PackingData.js?v=patterns-20-v1';
 import { placeItem, resetOrder, finishOrder } from './PackingLogic.js';
-import { shellHtml, renderPacking } from './PackingView.js?v=whole-loaf-20261022';
-import { PackingInput } from './PackingInput.js?v=whole-loaf-20261022';
+import { shellHtml, renderPacking } from './PackingView.js?v=result-exit-only-20261025';
+import { PackingInput } from './PackingInput.js?v=drag-response-20261025';
+import { createPackingTutorial } from './PackingTutorial.js';
 
 export class PackingGame {
-    constructor({ onOpen = () => {}, onClose = () => {} } = {}) {
+    constructor({ onOpen = () => {}, onClose = () => {}, showTutorial = false } = {}) {
         this.onOpen = onOpen;
         this.onClose = onClose;
         this.dialog = document.createElement('dialog');
@@ -13,9 +14,11 @@ export class PackingGame {
         this.dialog.innerHTML = shellHtml();
         document.body.append(this.dialog);
         this.input = new PackingInput(this);
+        this.tutorial = showTutorial ? createPackingTutorial(this) : { isOpen: false, show() {}, hide() {} };
         this.dialog.addEventListener('click', event => this.click(event));
         this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.close(); });
         this.dialog.addEventListener('close', () => {
+            this.tutorial.hide();
             this.input.cancel();
             this.onClose();
             if (this.previousFocus?.isConnected) this.previousFocus.focus({ preventScroll: true });
@@ -25,6 +28,9 @@ export class PackingGame {
             if (!this.isOpen) return;
             event.stopImmediatePropagation();
             if (event.ctrlKey || event.metaKey || event.altKey) return;
+            if (this.tutorial.isOpen && ['KeyF', 'Enter', 'Space'].includes(event.code)) {
+                event.preventDefault(); if (!event.repeat) this.tutorial.next(); return;
+            }
             if (event.key === 'Escape') {
                 event.preventDefault();
                 if (this.input.drag) { this.input.cancel(); this.say('이동을 취소했어요.'); }
@@ -47,6 +53,7 @@ export class PackingGame {
         this.dialog.showModal();
         this.focusStart();
         this.say('');
+        this.tutorial.show();
     }
 
     close() { this.input.cancel(); this.dialog.close(); }
@@ -61,6 +68,7 @@ export class PackingGame {
     }
 
     click(event) {
+        if (this.tutorial.isOpen) return;
         if (this.ignorePointerClick) return;
         const itemButton = event.target.closest('[data-item]');
         if (itemButton && !this.session.awaitingNext) {

@@ -263,7 +263,7 @@ export class MarketEngine {
             stocks: stockList,
             news: this.news,
             portfolio: portfolioList,
-            portfolioSlots: this.itemEngine ? { used: new Set(portfolioList.filter(p => p.qty > 0).map(p => p.id)).size, max: this.itemEngine.portfolioSlots(), buyCap: this.itemEngine.buyCap() } : null,
+            portfolioSlots: null,
             tradeHistory: this.tradeHistory,
             portfolioValue: portfolioValue,
             totalNetWorth: totalNetWorth,
@@ -369,10 +369,6 @@ export class MarketEngine {
             this.refreshTutorialRecommendation();
             const error = this.tutorialOrderError(stockId, side === 'short');
             if (error) return error;
-            if (this.itemEngine) {
-                const held = new Set([...this.portfolio.values()].filter(p => p.qty > 0).map(p => p.id));
-                if (!held.has(stockId) && held.size >= this.itemEngine.portfolioSlots()) return '종목 보유 슬롯이 가득 찼습니다. 기존 종목을 전량 매도해 주세요.';
-            }
             if (this.itemEngine && qty > this.itemEngine.orderLimit()) return `1회 주문 한도는 ${this.itemEngine.orderLimit()}주입니다.`;
             if ((side === 'short' || leverage >= 2) && !this.isLevel10Unlocked) return '공매도·레버리지는 레벨 10 해금 후 이용 가능합니다!';
         }

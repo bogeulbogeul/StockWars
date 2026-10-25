@@ -1,7 +1,10 @@
 import { createDialogueNext } from '../../components/dialogue/DialogueNext.js';
 import { applyDialogueTheme, clearDialogueTheme } from '../../components/dialogue/dialogueTheme.js';
 import { assets } from './State.js';
+import { MoneyHUD } from '../../components/MoneyHUD.js?v=3';
+import { HeartHUD } from '../../components/HeartHUD.js?v=1';
 import { PhoneHome } from '../../components/phone/PhoneHome.js';
+import { decoratePhoneLauncher } from '../../components/phone/PhoneLauncher.js';
 import { renderExhibitionPhoneApp } from './PhoneApps.js';
 import { exhibitionStockSource } from './PhoneStockSource.js';
 import { mountStockPhoneApp } from '../../components/phone/stock/MountStockApp.js';
@@ -22,10 +25,14 @@ export class ExhibitionView {
         this.header = el('header', 'exhibition-header');
         this.location = el('span', 'exhibition-location', '포포리 마을');
         this.wallet = el('span', 'exhibition-wallet'); this.assets = el('span', 'exhibition-assets');
-        this.phone = button('휴대폰', () => this.openPhone(), 'exhibition-phone');
+        this.phone = button('스마트폰', () => this.openPhone(), 'exhibition-phone');
+        decoratePhoneLauncher(this.phone);
         const stockSource = exhibitionStockSource(() => this.state, stockTrading);
+        this.moneyHUD = new MoneyHUD();
+        this.heartHUD = new HeartHUD();
+        this.moneySource = stockSource;
         this.phoneHome = new PhoneHome({
-            canOpen: () => !!this.state?.flags.phone,
+            canOpen: () => this.canOpenPhone(),
             canUseStock: () => !!this.state?.flags.certificate,
             renderApp: (id, content) => mountStockPhoneApp(this.phoneHome, stockSource, id, content)
                 || renderExhibitionPhoneApp(this.state, id, content)
@@ -35,13 +42,19 @@ export class ExhibitionView {
         this.panel = el('section', 'exhibition-panel');
         this.panel.setAttribute('aria-label', '이야기와 선택');
         // Keep header state detached for the existing story and phone callbacks.
-        this.root.append(this.panel); document.body.append(this.root);
+        this.root.append(this.phone, this.panel); document.body.append(this.root);
         this.root.hidden = true;
     }
     sync(state) {
         this.state = state;
+        this.heartHUD.update(state.stamina);
+        this.moneyHUD.update(this.moneySource.getState(), {
+            bank: !!state.flags.bank,
+            stock: !!state.flags.certificate
+        });
         this.wallet.hidden = !state.flags.bank; this.assets.hidden = !state.flags.certificate;
-        this.phone.hidden = !state.flags.phone;
+        this.phone.hidden = !state.flags.phoneReady;
+        this.syncPhoneAvailability();
         this.wallet.textContent = `보유 ${state.cash.toLocaleString()}잎`;
         this.assets.textContent = `자산 ${assets(state).toLocaleString()}잎`;
         this.root.dataset.stage = String(state.cursor);
@@ -65,7 +78,18 @@ export class ExhibitionView {
         this.panel.querySelector('.exhibition-speaker')?.classList.add('vn-nameplate');
         this.text(beat.text.replaceAll('[닉네임]', this.state.nickname || '???'));
         this.panel.classList.add('dialogue-has-next');
-        this.panel.append(createDialogueNext(next));
+        this.panel.append(createDialogueNext(() => { if (!this.phoneHome.dialog.open) next(); }));
+        this.syncPhoneAvailability();
+    }
+    canOpenPhone() {
+        return !!this.state?.flags.phoneReady
+            && (!this.computerRequired || this.computerPowerRequested)
+            && (this.phonePromptAllowed || this.panel.hidden || !this.panel.classList.contains('dialogue-has-next'))
+            && !document.querySelector('.moa-wake-dialogue:not(.hidden)');
+    }
+    syncPhoneAvailability() {
+        this.phone.disabled = !this.canOpenPhone();
+        this.phone.title = this.phone.disabled ? '대화가 끝난 뒤 스마트폰을 열 수 있어요.' : '스마트폰 열기 (P)';
     }
     openPhone() {
         return this.phoneHome.open();

@@ -1,0 +1,9 @@
+SETUP { allowed: true, scripted: true, blocked: true, place: 'arrival' }
+PASS launcher Space jump, no native click, P/Enter and blocked-state guards
+REAL SPACE jump
+ROOM PASS home
+ROOM PASS store
+ROOM PASS information
+ROOM PASS bank
+ROOM PASS stock
+PASS real Space after arrival and in rooms; input/busy/seated/overhead guards [ 'home', 'store', 'information', 'bank', 'stock' ]

@@ -1,3 +1,4 @@
+import {PLAYER_BODY_RADIUS as R} from '../js/components/town3d/CharacterBodies.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
@@ -39,4 +40,12 @@ test('furniture blocks high speed approaches on all sides and recovers overlaps'
     c.charPosX=0;c.charPosY=0;
     assert.equal(recoverTownBody(c),true);
     assert.equal(c.canStand(c.charPosX,c.charPosY),true);
+});
+
+test('furniture corners use the measured circular envelope rather than square padding',()=>{
+    const owner=fixture();
+    assert.equal(owner.canStand(50+R*.8,30+R*.8),true);
+    assert.equal(owner.canStand(50+R*.6,30+R*.6),false);
+    assert.equal(owner.canStand(50+R-1,0),false);
+    assert.equal(owner.canStand(50+R+1,0),true);
 });

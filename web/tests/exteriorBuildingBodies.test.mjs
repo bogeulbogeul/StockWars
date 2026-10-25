@@ -1,3 +1,4 @@
+import {PLAYER_BODY_RADIUS as R} from '../js/components/town3d/CharacterBodies.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
@@ -18,13 +19,13 @@ function fixture(){
 test('exterior bodies follow actual low walls and leave overhead eaves clear',()=>{
     const bodies=fixture(),blocked=createExteriorBuildingBlocker(bodies);
     assert.equal(bodies.length,1);assert.equal(bodies[0].mesh,'Wall');
-    assert.equal(blocked(1091,2000*P),true);
-    assert.equal(blocked(1093,2000*P),false);
-    assert.equal(blocked(1000,2081*P),true);
-    assert.equal(blocked(1000,2083*P),false);
+    assert.equal(blocked(1050+R-1,2000*P),true);
+    assert.equal(blocked(1050+R+1,2000*P),false);
+    assert.equal(blocked(1000,(2040+R-1)*P),true);
+    assert.equal(blocked(1000,(2040+R+1)*P),false);
     assert.equal(blocked(1100,2000*P),false);
-    assert.equal(blocked(1079,2069*P),true);
-    assert.equal(blocked(1081,2071*P),false);
+    assert.equal(blocked(1050+R*.68,(2040+R*.68)*P),true);
+    assert.equal(blocked(1050+R*.75,(2040+R*.75)*P),false);
 });
 
 test('all four approaches stop outside walls and embedded positions recover',()=>{

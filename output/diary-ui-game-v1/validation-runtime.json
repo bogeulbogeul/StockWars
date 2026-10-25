@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "story writing completion",
+    "cancel does not progress",
+    "J open/close",
+    "unowned blocked",
+    "phone blocked",
+    "read completed entry",
+    "responsive portrait/landscape"
+  ],
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "liveTownPosition": true,
+  "liveExhibitionPosition": true,
+  "indoorBuilding": true,
+  "search": true,
+  "filter": true,
+  "selection": true,
+  "targetPersisted": true,
+  "zoom": true,
+  "recenter": true,
+  "mobile": true,
+  "home": true,
+  "errors": []
+}

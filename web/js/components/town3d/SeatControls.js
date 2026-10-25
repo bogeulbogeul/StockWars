@@ -1,3 +1,5 @@
+import { gameKey } from '../../app/GameKeys.js';
+import { setInteractionGuidance } from './GuidanceCard.js';
 const controllers=new Set();
 export function registerSeatController(controller){
     controllers.add(controller);
@@ -23,12 +25,13 @@ export class SeatControls{
         (window.stockWarsExhibition?.view?.root||owner.layer).append(this.button);
         this.button.addEventListener('click',()=>interaction.toggle());
         window.addEventListener('keydown',e=>interaction.handleKeyDown(e),true);
-        window.addEventListener('keyup',e=>{if(/^Key[WASD]$/.test(e.code))interaction.c.keysHeld.delete(e.code.slice(3).toLowerCase());},true);
+        window.addEventListener('keyup',e=>{if(['w','a','s','d'].includes(gameKey(e)))interaction.c.keysHeld.delete(gameKey(e));},true);
         window.addEventListener('blur',()=>interaction.c.keysHeld.clear());
+        window.addEventListener('stockwars-settings-changed',()=>interaction.c.keysHeld.clear());
     }
     show(enabled,seat,selected){
         this.button.hidden=!enabled||!seat;
-        this.button.textContent=selected?'E · 일어나기':`E · ${seat?.label||'의자'}에 앉기`;
+        setInteractionGuidance(this.button, 'E', selected ? '일어나기' : `${seat?.label||'의자'}에 앉기`);
     }
     hide(){this.button.hidden=true;}
 }

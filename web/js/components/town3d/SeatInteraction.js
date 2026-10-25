@@ -1,3 +1,4 @@
+import { gameKey } from '../../app/GameKeys.js';
 import {GROUND_PROJECTION as P} from '../../data/townModelBuildings.js';
 import {PLAYER_BODY_RADIUS as R,charactersCanStand} from './CharacterBodies.js';
 import {SOMANGI_MOVEMENT} from '../../data/somangiMovement.js';
@@ -16,10 +17,11 @@ export class SeatInteraction{
         if(e.code==='KeyE'&&this.nearest()){
             e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)this.toggle();return true;
         }
-        if(/^Key[WASD]$/.test(e.code)){
+        if(['w','a','s','d'].includes(gameKey(e))){
             if(this.selected&&!this.stand()){e.preventDefault();e.stopImmediatePropagation();return true;}
+            if(window.stockWarsExhibition?.scenes?.stockExitAwaiting===this.owner)return false;
             if(window.stockWarsExhibition){
-                this.c.keysHeld.add(e.code.slice(3).toLowerCase());e.preventDefault();e.stopImmediatePropagation();return true;
+                this.c.keysHeld.add(gameKey(e));e.preventDefault();e.stopImmediatePropagation();return true;
             }
         }
         return false;
@@ -28,7 +30,8 @@ export class SeatInteraction{
     enabled(){
         const app=window.stockWarsExhibition;
         const informationEntry = app?.scenes?.informationAwaitingTalk && this.owner === app.scenes.rooms.get('information');
-        return this.visible()&&!this.c.scriptedWalking&&(!app?.busy || informationEntry)
+        const stockExit = app?.scenes?.stockExitAwaiting === this.owner;
+        return this.visible()&&!this.c.scriptedWalking&&(!app?.busy || informationEntry || stockExit)
             &&(app?app.started:!this.owner.town?.callbacks?.isInputBlocked?.())
             &&!seatUiBlocked()
             &&(!this.owner.blocked||!this.owner.blocked())

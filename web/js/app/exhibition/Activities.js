@@ -1,13 +1,27 @@
 import { mountInvestmentExam } from './InvestmentExam.js';
+import { waitForSeedPot, waitForFirstDiary } from './HomeFinale.js';
+import { startMoaReturn } from './MoaReturn.js';
 import { mountInvestmentCertificate } from './InvestmentCertificate.js';
 import { mountBankApplication } from './BankApplication.js';
 import { mountResidenceApplication } from './ResidenceApplication.js';
 import { PackingGame } from '../../components/packing/PackingGame.js';
-import { EXHIBITION } from './State.js';
-import { ACCOUNT_QUIZ } from './Quiz.js';
+import { EXHIBITION, complete } from './State.js';
+import { examQuestions } from './Quiz.js';
 import { el } from './View.js';
 import { activitySpeech, passiveActivity } from './ActivityDialogue.js';
+import { receivePhone } from './PhoneHandoff.js';
 import { receiveResidencePaper } from './ResidencePaperHandoff.js';
+import { showStorePackingOffer } from './StorePackingOffer.js';
+import { waitForPackingWorkstation } from '../../components/store3d/PackingWorkstation.js';
+import { receiveProfileDocument } from '../../components/phone/profile/ProfileData.js';
+import { sendMoaToPlazaBench } from './MoaPlazaRest.js';
+import { receiveStoreReward } from './StoreRewardHandoff.js';
+import { waitForLessonComputer } from './LessonComputer.js';
+import { waitForToriCounter } from './ToriCounter.js';
+import { receiveHoneyCookie } from './CookieHandoff.js';
+import { receiveMoaGift } from './MoaGiftHandoff.js';
+import { openSeedPotShop } from './PotShop.js';
+import { createMoaMovementGuide } from '../../components/town3d/MoaMovementGuide.js';
 
 export class ExhibitionActivities {
     constructor(controller) { this.app = controller; }
@@ -26,6 +40,7 @@ export class ExhibitionActivities {
         try {
             const paper = await receiveResidencePaper(this.app);
             this.app.busy = false; this.view.panel.hidden = false;
+            if (!receiveProfileDocument(this.app, 'residence')) { paper.returnToDesk(); this.view.choices([['서류 수령 다시 시도', () => this.nickname()]]); return; }
             mountResidenceApplication(this.view.panel, {
                 name: this.state.nickname,
                 onSubmit: name => { paper.returnToDesk(); this.state.nickname = name; this.next('nickname'); }
@@ -36,20 +51,46 @@ export class ExhibitionActivities {
         }
     }
     bank() {
+        if (!receiveProfileDocument(this.app, 'bank')) { this.view.choices([['서류 수령 다시 시도', () => this.bank()]]); return; }
         mountBankApplication(this.view.panel, { name: this.state.nickname, onSubmit: () => this.next('bank') });
     }
+    async phone() {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try {
+            await receivePhone(this.app);
+            complete(this.state, 'phone'); this.app.save(); this.view.sync(this.state);
+            this.phoneIntroduced = true;
+            this.app.busy = false; this.next('phone');
+        } catch (error) {
+            this.app.busy = false; this.view.panel.hidden = false;
+            this.view.error('휴대폰을 준비하지 못했어요.'); console.error(error);
+        }
+    }
     openPhone() {
+        if (!this.state.flags.phoneReady || this.phoneIntroduced) { this.next('openPhone'); return; }
+        this.view.phonePromptAllowed = true;
         this.view.line({ speaker: '소망이', text: '어디 보자…….' }, () => {
             if (this.openingPhone) return;
             if (this.view.openPhone()) {
                 this.openingPhone = true;
                 this.view.phoneHome.dialog.addEventListener('close', () => {
+                    this.view.phonePromptAllowed = false;
                     this.openingPhone = false; this.next('openPhone');
                 }, { once: true });
             }
         });
     }
+    moaFarewell() {
+        this.app.scenes.moaBenchJourney ||= sendMoaToPlazaBench(this.app.scenes)
+            .catch(error => { console.error('Moa plaza departure:', error); });
+        this.next('phoneReady');
+    }
+    moaReturn() {
+        void startMoaReturn(this.app.scenes).catch(error => console.error('Moa information return:', error));
+        this.next('moaReturn');
+    }
     loan() {
+        if (!receiveProfileDocument(this.app, 'loan', EXHIBITION.loan)) { this.view.choices([['서류 수령 다시 시도', () => this.loan()]]); return; }
         mountBankApplication(this.view.panel, {
             name: this.state.nickname, loanAmount: EXHIBITION.loan,
             onSubmit: () => this.next('loan')
@@ -61,42 +102,91 @@ export class ExhibitionActivities {
             ['주식 투자 배우기', () => this.chooseOrder('stock')]]);
     }
     chooseOrder(order) { this.state.order = order; this.app.rebuild(); this.next('order'); }
+    packingOffer() { showStorePackingOffer(this.app); }
+    async storeReward(id) {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try {
+            await receiveStoreReward(this.app, id);
+            this.app.busy = false; this.next(id);
+        } catch (error) {
+            this.app.busy = false; this.view.panel.hidden = false;
+            this.view.line({ speaker: '봉봉', text: '잠시만요. 건네드릴 물건을 다시 챙길게요.' }, () => this.storeReward(id));
+            console.error('Store reward handoff:', error);
+        }
+    }
+    wage() { return this.storeReward('wage'); }
+    envelope() { return this.storeReward('envelope'); }
+    grant() { return this.moaGift('grant'); }
+    diary() { return this.moaGift('diary'); }
+    async moaGift(id) {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try {
+            await receiveMoaGift(this.app, id);
+            this.app.busy = false; this.next(id);
+        } catch (error) {
+            this.app.busy = false; this.view.panel.hidden = false;
+            this.view.line({ speaker: '모아', text: '잠시만요. 건네드릴 물건을 다시 챙길게요.' }, () => this.moaGift(id));
+            console.error('Moa gift handoff:', error);
+        }
+    }
+    async cookie() {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try {
+            await receiveHoneyCookie(this.app);
+            this.app.busy = false; this.next('cookie');
+        } catch (error) {
+            this.app.busy = false; this.view.panel.hidden = false;
+            this.view.line({ speaker: '모아', text: '잠깐만요. 꿀쿠키를 꺼내 줄게요.' }, () => this.cookie());
+            console.error('Honey cookie handoff:', error);
+        }
+    }
     notice() {
         this.say('소망이', '게시판에 공고가 붙어 있네. 가까이 가서 읽어볼까?');
         this.view.text('게시판 가까이에서 F키 또는 게시판 살펴보기 버튼을 눌러 공고를 읽어보세요.');
     }
-    packing() {
-        this.say('봉봉', '상품을 상자에 빈틈없이 담아주세요. 다섯 상자예요. 서두르지 않아도 괜찮아요.');
-        this.view.choices([['포장하기', () => {
-            this.game ||= new PackingGame({ onClose: () => {
+    async packing() {
+        this.app.busy = true; this.view.panel.hidden = true; this.app.scenes.packingAwaitingWorktop = true;
+        const room = this.app.scenes.rooms.get('store');
+        let ready;
+        try { ready = await waitForPackingWorkstation(room); }
+        finally { this.app.scenes.packingAwaitingWorktop = false; this.app.busy = false; }
+        if (!ready) return;
+        this.game ||= new PackingGame({ showTutorial: true, onClose: () => {
+            this.state.packingSession = this.game.session; this.app.save();
+            if (this.game.session.completed === this.game.session.orders.length) this.next('packing');
+            else void this.packing();
+        } });
+        if (this.state.packingSession) this.game.session = this.state.packingSession;
+        this.game.open();
+        if (!this.observer) {
+            this.observer = new MutationObserver(() => {
                 this.state.packingSession = this.game.session; this.app.save();
-                if (this.game.session.completed === this.game.session.orders.length) this.next('packing');
-            } });
-            if (this.state.packingSession) this.game.session = this.state.packingSession;
-            this.game.open();
-            if (!this.observer) {
-                this.observer = new MutationObserver(() => {
-                    this.state.packingSession = this.game.session; this.app.save();
-                });
-                this.observer.observe(this.game.dialog, { childList: true, subtree: true });
-            }
-        }]]);
+            });
+            this.observer.observe(this.game.dialog, { childList: true, subtree: true });
+        }
     }
-    rumor() {
-        this.say('소망이', '봉투에는 무슨 이야기가 적혀 있을까?');
-        this.view.text('“코지페이가 다음 달 새로운 결제 서비스를 선보인대. 거래가 늘 거라는 이야기가 있지만, 아직 회사의 공식 발표는 없대.”');
-        this.view.choices([['확인된 사실과 소문을 구분하기', () => this.next('rumor')]]);
+    async rumor() {
+        this.view.panel.hidden = true;
+        const guide = createMoaMovementGuide(this.view.root, { inventoryRumor: true });
+        guide.update({ visible: true });
+        this.app.inventory.onRumorOpened = () => guide.update({ visible: false });
+        this.app.inventory.onRumorClosedEarly = () => guide.update({ visible: true });
+        let read;
+        try { read = await this.app.inventory.waitForRumorRead(); }
+        finally { guide.dispose(); this.app.inventory.onRumorOpened = null; this.app.inventory.onRumorClosedEarly = null; }
+        if (read) this.next('rumor');
     }
     certificate() {
+        const questions = examQuestions(this.state);
         const index = this.state.answers.length;
-        if (index >= ACCOUNT_QUIZ.length) {
+        if (index >= questions.length) {
             mountInvestmentCertificate(this.view.panel, {
                 name: this.state.nickname, onReceive: () => this.next('certificate')
             });
             return;
         }
         mountInvestmentExam(this.view.panel, {
-            name: this.state.nickname, question: ACCOUNT_QUIZ[index], index, total: ACCOUNT_QUIZ.length,
+            name: this.state.nickname, question: questions[index], index, total: questions.length,
             onAnswer: choice => {
                 this.state.answers.push(choice);
                 if (!this.app.save()) { this.state.answers.pop(); return false; }
@@ -105,44 +195,26 @@ export class ExhibitionActivities {
             onNext: () => { this.view.clear('투자 자격시험'); this.certificate(); }
         });
     }
-    trade() {
-        this.say('토리', '주식 앱에서 회사 소개와 현재 가격을 살펴보세요. 한 주를 고른 뒤 예상 결제액도 꼭 확인하세요. 가격이 오를 거라고 약속할 수는 없어요.');
-        this.view.choices([['토리 주식앱 열기', () => {
-            if (!this.view.openPhone()) return;
-            this.view.phoneHome.openApp('stock');
-            this.view.phoneHome.stockApp.tab = 'market';
-            this.view.phoneHome.stockApp.renderTab();
-        }]]);
+    async trade() {
+        await waitForLessonComputer(this.app);
+        this.view.phoneHome.dialog.addEventListener('close', () => {
+            if (!this.state.flags.trade && this.app.plan[this.state.cursor]?.id === 'trade') void this.trade();
+        }, { once: true });
+    }
+    async stockCounter() {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try { await waitForToriCounter(this.app.scenes); }
+        finally { this.app.busy = false; }
+        this.next('stockCounter');
     }
     pot() {
-        this.say('봉봉', `씨앗을 심을 화분을 찾나요? 이 화분은 ${EXHIBITION.pot}잎이에요.`);
-        this.view.choices([[`${EXHIBITION.pot}잎으로 화분 구매`, () => this.next('pot')]]);
+        openSeedPotShop(this.app);
     }
-    planted() {
-        this.say('소망이', '가져온 씨앗을 여기에 심어볼까? 조심조심…….');
-        this.view.choices([['씨앗 심기', async () => {
-            if (this.planting) return;
-            this.planting = true;
-            this.say('소망이', '흙을 살짝 덮어주면…… 됐다.');
-            const pot = el('div', 'exhibition-planting');
-            pot.setAttribute('role', 'img'); pot.setAttribute('aria-label', '씨앗이 흙 속으로 내려가는 화분');
-            pot.append(el('span', 'exhibition-seed'), el('span', 'exhibition-soil'), el('span', 'exhibition-pot'));
-            this.view.panel.append(pot);
-            await new Promise(resolve => setTimeout(resolve, 1600));
-            this.planting = false; this.next('planted');
-        }]]);
-    }
-    diaryWritten() {
-        this.say('소망이', '포포리에 왔다.\n내 이름을 정했다.\n처음으로 일을 하고, 주식도 샀다.\n가지고 온 씨앗을 화분에 심었다.\n그리고…… 꿀 쿠키가 맛있었다.');
-        this.view.choices([['다이어리 덮기', () => this.next('diaryWritten')]]);
-    }
+    planted() { return waitForSeedPot(this.app); }
+    diaryWritten() { return waitForFirstDiary(this.app); }
     asleep() {
-        this.say('소망이', '내일은 무슨 일이 있을까?');
-        this.view.choices([['오늘은 쉬기', () => this.app.sleep()], ['조금 더 있다가', () => {
-            this.say('소망이', '씨앗도 심었고, 오늘 이야기도 적었네. 조금만 더 바라보다 잘까?');
-            this.view.choices([['다이어리 다시 읽기', () => { this.view.text('포포리에 왔다. 처음으로 일을 하고, 주식도 샀다. 그리고 꿀 쿠키가 맛있었다.'); }],
-                ['이제 쉬기', () => this.app.sleep()]]);
-        }]]);
+        this.say('소망이', '하아암…… 너무 졸려. 이제 자야겠다.');
+        this.view.choices([['잠자기', () => this.app.sleep()]]);
     }
 }
 

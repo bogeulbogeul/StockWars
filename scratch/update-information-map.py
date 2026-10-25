@@ -2,13 +2,15 @@
 import hashlib
 import json
 import struct
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'output/information-map-current-layout-v3'
+OUT = ROOT / (sys.argv[2] if len(sys.argv) > 2 else 'output/information-map-current-layout-v3')
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCE = ROOT / 'web/assets/office/3d/Information-furnished-room.glb'
-MAP = ROOT / 'output/popori-map-current-layout-v2/map.png'
+MAP = ROOT / (sys.argv[1] if len(sys.argv) > 1 else 'output/popori-map-current-layout-v2/map.png')
+IMAGE_NAME = sys.argv[3] if len(sys.argv) > 3 else 'Popori_Current_Village_Map_v2'
 original = SOURCE.read_bytes()
 json_length = struct.unpack_from('<I', original, 12)[0]
 doc = json.loads(original[20:20 + json_length])
@@ -29,7 +31,7 @@ image_offset = (len(binary) + 3) // 4 * 4
 new_binary = binary + b'\0' * (image_offset - len(binary)) + png
 doc['bufferViews'].append({'buffer': 0, 'byteOffset': image_offset, 'byteLength': len(png)})
 image['bufferView'] = len(doc['bufferViews']) - 1
-image['name'] = 'Popori_Current_Village_Map_v2'
+image['name'] = IMAGE_NAME
 doc['buffers'][0]['byteLength'] = len(new_binary)
 json_data = json.dumps(doc, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
 json_data += b' ' * (-len(json_data) % 4)

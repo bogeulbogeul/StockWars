@@ -1,4 +1,4 @@
-import { conversationYaw } from './ConversationFacing.js';
+import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { recoverTownBody } from './TownBodyMovement.js';
@@ -9,6 +9,7 @@ import { loadSomangi } from './SomangiAssets.js';
 import { SomangiExpressions } from './SomangiExpressions.js';
 import { SomangiJump } from './SomangiJump.js';
 import { updateSomangiClearance, sidewaysYaw } from './SomangiClearance.js';
+import { SomangiEatingFood, hideEmbeddedBread } from './SomangiEatingFood.js';
 
 export class SomangiPlayer {
     constructor(scene, town, layer) {
@@ -20,6 +21,7 @@ export class SomangiPlayer {
         this.state = 'loading';
         this.jump = new SomangiJump();
         this.expressions = new SomangiExpressions();
+        this.food = new SomangiEatingFood(this);
         this.hint = createSomangiControls(layer, action => this.play(action), () => this.blocked());
         this.update();
         this.ready = this.load();
@@ -30,6 +32,7 @@ export class SomangiPlayer {
     async load() {
         await Promise.all(Object.entries(SOMANGI_MODELS).map(async ([name, definition]) => {
             const { model, animations } = await loadSomangi(name);
+            if (name === 'eat') hideEmbeddedBread(model);
             const scale = SOMANGI_HEIGHT / SOMANGI_REFERENCE_HEIGHT;
             model.scale.setScalar(scale); model.position.y = -SOMANGI_FOOT_Y * scale;
             model.visible = false; this.root.add(model); this.expressions.register(model);
@@ -59,11 +62,13 @@ export class SomangiPlayer {
         this.storyTarget = target; this.storyCamera = null;
         const yaw = conversationYaw(this.root, target);
         if (yaw !== null) this.root.rotation.y = yaw;
+        faceConversationPartner(target, this.root);
     }
     setControlsHint(text) { this.customHint = text; this.updateHint(); }
     updateHint() { this.hint.textContent = this.customHint || 'WASD 이동 · Space 점프 · 2 먹기'; }
     setState(state) {
         if (this.state === state) return;
+        if (this.state === 'eat') this.food.clear();
         if (state !== 'jump') {
             this.jump.cancel(); this.town.playerController.jumpActive = false;
             this.root.position.y = this.town.playerController.supportHeight || 0;
@@ -77,7 +82,7 @@ export class SomangiPlayer {
         variant.action.setLoop(state === 'eat' ? THREE.LoopOnce : THREE.LoopRepeat, state === 'eat' ? 1 : Infinity);
         variant.action.clampWhenFinished = state === 'eat'; variant.action.reset().play();
     }
-    play(action, { scripted = false } = {}) {
+    play(action, { scripted = false, foodId = 'item_popori_bread', foodObject } = {}) {
         if (!scripted && this.blocked()) return false;
         if (this.town.playerController.busSeated) {
             if(!scripted||action!=='eat'||!this.town.playerController.activeSeat?.stand())return false;
@@ -91,7 +96,7 @@ export class SomangiPlayer {
         }
         if (action !== 'eat' || !this.variants.has('eat') || this.state === 'walk' || this.state === 'sideways' || this.state === 'eat' || this.jump.active) return false;
         this.expressionBeforeEat = this.expressionId;
-        void this.setExpression('delicious'); this.setState('eat'); return true;
+        void this.setExpression('delicious'); this.setState('eat'); this.food.start(foodId, foodObject); return true;
     }
     update(dt = 0) {
         const c = this.town.playerController;
@@ -112,6 +117,7 @@ export class SomangiPlayer {
         c.jumpActive = this.jump.active;
         if (c.canStand) updateSomangiClearance(c, dx, dz, x, z, (px, pz) => c.canStand(px, pz * GROUND_PROJECTION));
         const previousYaw = this.root.rotation.y;
+        faceConversationPartner(this.storyTarget, this.root);
         this.root.rotation.y = this.storyYaw ?? conversationYaw(this.root, this.storyTarget) ?? (this.storyCamera ? Math.atan2(this.storyCamera.position.x - x, this.storyCamera.position.z - z)
             : ({ down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[c.facing] ?? 0));
         if (c.somangiCrab && this.storyYaw == null && !this.storyTarget && !this.storyCamera) {
@@ -132,5 +138,6 @@ export class SomangiPlayer {
             variant.mixer.timeScale = this.state === 'sideways' ? SOMANGI_MOVEMENT.sidewaysPlayback : this.state === 'walk' ? running ? SOMANGI_MOVEMENT.runPlayback : SOMANGI_MOVEMENT.walkPlayback : 1;
             variant.mixer.update(Math.min(dt, .1));
         }
+        this.food.update();
     }
 }

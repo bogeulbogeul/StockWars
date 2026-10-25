@@ -1,0 +1,14 @@
+{
+  "deviceHour": 3,
+  "clockStage": "night",
+  "initial": "day",
+  "initialPaint": "day",
+  "manualNight": "day",
+  "sunset": "sunset",
+  "resumeDay": "day",
+  "resumeSunset": "sunset",
+  "sleep": "night",
+  "restart": "day",
+  "restartStable": "day",
+  "errors": []
+}

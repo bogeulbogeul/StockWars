@@ -15,3 +15,18 @@ P1 · ✅ 웹·기존 실행본 반영 및 자동 검증 / ⏳ 사용자 최종 
 - `web-furniture.json`, `desktop-furniture.json`: 방별 추출 메시·충돌체 수·출구 도달 결과. `web-*.png`, `desktop-*.png`: 실제 실내 렌더. 잡화점·안내소 실제 화면을 열어 확인했다.
 
 기존 실행본 resources/web에 변경 모듈 5개를 동기화했다. 설치 프로그램은 재빌드하지 않았다. 모든 가구의 모든 방향을 실제 키보드로 접촉 검수한 것은 아니며 사용자 최종 플레이 확인은 별도다.
+
+## 중복 검수 캡처 정리 — 2026-10-26
+
+✅ 삭제 완료. 대조표의 web 캡처와 환경별 검증 기록은 보존했다.
+
+아래 desktop PNG는 동일 폴더 web PNG와 SHA-256까지 일치해 사용자 승인으로 삭제한다. 환경별 JSON 검증 기록과 촬영 스크립트는 별도로 유지한다. 기존 `desktop-*.png` 안내는 아래 대응 web PNG를 따른다. 이 대조표는 기존 촬영 시점의 이미지 내용 일치를 기록하며 새 플레이 검증을 의미하지 않는다.
+
+| 삭제 desktop 캡처 | 보존 web 캡처 | SHA-256 |
+|---|---|---|
+| `desktop-store.png` | [web-store.png](web-store.png) | `d8692e6dcdb3912c498b84bcfa1e1f3097bf36ed1d4474c92170b0ef0463c6ac` |
+| `desktop-bank.png` | [web-bank.png](web-bank.png) | `675f8446f3e83966e5fed0c9ea6dfe94c6b81602059919a1bdb065dae0fdda43` |
+| `desktop-information.png` | [web-information.png](web-information.png) | `942f09f229a543d2dc15e9e203870f3fbf740d4e1e58772112a37a64d7ba1387` |
+| `desktop-stock.png` | [web-stock.png](web-stock.png) | `b2c35cc02f2919e43ee2daa5db27fb91fcf21bb19f16f7250c4edcfef2c29719` |
+| `desktop-training.png` | [web-training.png](web-training.png) | `4a5b47ea71f378e65947dae5d6ce92a9d05abd108d58dc2bf6d3f77702a4eb6a` |
+| `desktop-home.png` | [web-home.png](web-home.png) | `a9c029088cf430d65b027dfc2b89f926a6a4a63cf6ec57197094d4f71c2be432` |

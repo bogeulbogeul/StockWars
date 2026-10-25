@@ -1,0 +1,86 @@
+{
+  "web": "C:\\GitHub\\StockWars\\web",
+  "executableWeb": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "files": [
+    {
+      "path": "js/data/shopItemModels.js",
+      "sha256": "fc4f197c240325406b2577f96849675943bc13d221a2c3197da6a8b93d8aa2cb"
+    },
+    {
+      "path": "js/data/vivianProductPlacements.js",
+      "sha256": "6f9698f10ef6534ffe237ed7a3b5660d1483d31860e7037a44128841d4508a38"
+    },
+    {
+      "path": "js/components/store3d/ShopItemModels.js",
+      "sha256": "65885d5b3d3562924accce7b14e3a1a2795a6fde967b886e2078c4f2123c6d50"
+    },
+    {
+      "path": "js/components/store3d/VivianProductDisplay.js",
+      "sha256": "e97c05113e72bb72da3267a3be6e79a55af8f2a744df4d316f88d77aecff214d"
+    },
+    {
+      "path": "js/components/store3d/ShopProductArt.js",
+      "sha256": "cbae9ed304ad780f78d64980c9783650ba42ff4d29b496cd77d0bece0d630fe5"
+    },
+    {
+      "path": "js/components/store3d/VivianModelScene.js",
+      "sha256": "17217c84d4432d434a16914f91ba2fa0925e1126ebdc4a5677b2e3bdf6d069a8"
+    },
+    {
+      "path": "js/components/store/VivianCatalogView.js",
+      "sha256": "172bc8e5cd0559900c85cbdf209ae84c84e5189831514512ab4828a5570a87b2"
+    },
+    {
+      "path": "js/components/store3d/ShopItemBatching.js",
+      "sha256": "8aaa0499e5d0a2772a1bf7fe9b3911e534ef9a8e954889adcf427b41d1011d24"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_apple_juice.glb",
+      "sha256": "2971c53a974502f47c12bcfdef41f6b58a048b25a9fe697ee37b09126d245aa4"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_berry_juice.glb",
+      "sha256": "b259aab8186fbcadfab570ce5408d89e28dd7da84e78048f62795b5e2dd06be8"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_crypto_decoder.glb",
+      "sha256": "f861396830c5f4c44a1ccf32cdc4c448c7a60978e33d98401dbf39d2a6fa3f88"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_dew_jelly.glb",
+      "sha256": "386caafcde34d72d2d317c3fba08ab277bbabbc8a40f3f70b00416526e863daa"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_herb_tea.glb",
+      "sha256": "79c3c0d21dd73f5fba6fc562cee79ba5f8039b126a772266662b357a6648f356"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_honey_candy.glb",
+      "sha256": "21dfa04cea33f0bbe7be8681d91fb7aa33369f74031c5ac9653fbf42d7e17c83"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_honey_cookie.glb",
+      "sha256": "570215ce057173e942d0926785b87c6747cc06a1f4f0c598cc09d030fbcbff3b"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_lotto_ticket.glb",
+      "sha256": "a39a3c40b5e3353f952f7abc897c194e6e39b769235aef21da95199103b9a5f6"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_moon_powder.glb",
+      "sha256": "5db4febafe54fa3a63a3599af9693a95a55849399af2f63e196248673287e2b5"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_petal_tea.glb",
+      "sha256": "4a1ae138fd2ce5b46fc4fdf1a2a6b4a633d5a10574756bf5faa4c2ed6ee9592f"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_popori_bread.glb",
+      "sha256": "731338430da48b1162d5cd1e92f4ac1b99ee9dc7b02e817f1a3ccf0bcf49beab"
+    },
+    {
+      "path": "assets/items/3d/refined-v2/item_premium_rumor.glb",
+      "sha256": "10907983852817919dd242cd39b055202387b7b777bbdf06d8aee45356b75acc"
+    }
+  ]
+}

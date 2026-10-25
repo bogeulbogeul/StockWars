@@ -1,0 +1,19 @@
+{
+  "id": "item_honey_cookie",
+  "glbReimport": true,
+  "cookieCount": 4,
+  "meshCount": 171,
+  "triangles": 46768,
+  "degenerateFaces": 0,
+  "boundsMin": [
+    -0.6837069988250732,
+    -0.6578531265258789,
+    0.019999999552965164
+  ],
+  "boundsMax": [
+    0.6836968064308167,
+    0.6578531265258789,
+    0.40383923053741455
+  ],
+  "sha256": "570215ce057173e942d0926785b87c6747cc06a1f4f0c598cc09d030fbcbff3b"
+}

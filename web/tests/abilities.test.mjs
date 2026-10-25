@@ -29,35 +29,36 @@ test('personality does not discount fees or increase labor rewards', () => {
     assert.equal(m.cash,before+800);
     assert.ok(m.getOrderQuote(1000,10,1,'brokerage').feeRate >= 0);
 });
-test('slots count unique stocks, block new stocks, release on full sale and survive reload', () => {
-    const {market:m,engine:e}=setup();
-    const ids=[...m.stocks.keys()].slice(0,6);
-    for(const id of ids.slice(0,5))assert.equal(m.buyStock(id,1).success,true);
-    assert.equal(m.buyStock(ids[5],1).success,false);
-    assert.equal(m.buyStock(ids[0],1).success,true);
-    m.sellStock(ids[0],1); assert.equal(m.buyStock(ids[5],1).success,false);
-    m.sellStock(ids[0],1); assert.equal(m.buyStock(ids[5],1).success,true);
-    assert.equal(m.getState().portfolioSlots.used,5);
-    applyPlayerTrait(e.state,{trait:{key:'management'}});
-    assert.equal(e.portfolioSlots(),5);
-    const restored=new ItemEngine({market:m,state:structuredClone(e.state),clock:e.clock});
-    applyPlayerTrait(restored.state,{trait:{key:'management'}});
-    assert.equal(restored.portfolioSlots(),5);
-});
-test('legacy portfolios above five slots remain owned and tradable after retirement', () => {
+test('all listed stocks can be held together and remain tradable after reload', () => {
     const { market, engine } = setup();
-    const ids = [...market.stocks.keys()].slice(0, 8);
-    engine.portfolioSlots = () => 10; // Construct a previously valid legacy portfolio.
-    for (const id of ids.slice(0, 7)) assert.equal(market.buyStock(id, 1).success, true);
-    const savedPositions = structuredClone([...market.portfolio]);
-    const restored = new ItemEngine({ market, state: structuredClone(engine.state), clock: engine.clock });
-    market.itemEngine = restored;
-    assert.equal(restored.portfolioSlots(), 5);
-    assert.deepEqual([...market.portfolio], savedPositions);
-    assert.equal(market.buyStock(ids[7], 1).success, false);
+    const ids = [...market.stocks.keys()];
+    assert.equal(ids.length, 72);
+    for (const id of ids) assert.equal(market.buyStock(id, 1).success, true, id);
+    assert.equal(new Set([...market.portfolio.values()].map(p => p.id)).size, 72);
+    assert.equal(market.getState().portfolioSlots, null);
+    const positions = structuredClone([...market.portfolio]);
+    market.itemEngine = new ItemEngine({ market, state: structuredClone(engine.state), clock: engine.clock });
+    assert.equal(market.itemEngine.portfolioSlots(), Infinity);
+    assert.deepEqual([...market.portfolio], positions);
     assert.equal(market.buyStock(ids[0], 1).success, true);
-    for (const id of ids.slice(1, 4)) assert.equal(market.sellStock(id, 1).success, true);
-    assert.equal(market.buyStock(ids[7], 1).success, true);
+    assert.equal(market.sellStock(ids[0], 1).success, true);
+});
+
+test('new symbols via limit orders and short positions ignore legacy slot limits', () => {
+    const { market, engine } = setup();
+    const ids = [...market.stocks.keys()];
+    engine.portfolioSlots = () => 5; // A legacy provider cannot reinstate the retired restriction.
+    for (const id of ids.slice(0, 6)) assert.equal(market.buyStock(id, 1).success, true);
+    assert.equal(market.placeLimitOrder('buy', ids[6], 1, 1, 1000).success, true);
+    assert.equal(market.heldQuantity(ids[6]), 1);
+    assert.equal(market.placeLimitOrder('buy', ids[7], 1, 1, 999).success, true);
+    const book = market.orderBooks.get(ids[7]); book.asks[0].price = 999;
+    market.processLimitOrders();
+    assert.equal(market.heldQuantity(ids[7]), 1);
+    market.isLevel10Unlocked = true;
+    assert.equal(market.shortStock(ids[8], 1).success, true);
+    market.cash = 0;
+    assert.equal(market.buyStock(ids[9], 1).success, false);
 });
 
 test('investment amount is unlimited at every management level',()=>{

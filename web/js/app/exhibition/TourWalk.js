@@ -8,8 +8,10 @@ import { createMoaMovementGuide } from '../../components/town3d/MoaMovementGuide
 import { tourDeparture } from './TourDeparture.js';
 import { findTourDetour } from './TourDetour.js';
 import { MathUtils } from '../../../vendor/three/three.module.js';
+import { createTourFollowReminder } from './TourFollowReminder.js';
+import { reviewTravelWait } from './ReviewTravel.js';
 
-export async function walkVillageTour(scenes, destination) {
+export async function walkVillageTour(scenes, destination, { requireInteraction = true } = {}) {
     await scenes.ready;
     const scene = scenes.townModelScene, player = scene.player, moa = scene.sleepingAnna;
     await moa.standReady;
@@ -27,20 +29,20 @@ export async function walkVillageTour(scenes, destination) {
     const action = moa.mixer.clipAction(clip);
     c.keysHeld.clear(); c.scriptedWalking = false; c.isMoving = false;
     scenes.tourActive = true;
-    let previous, leader = 0, playerMoved = false, conversationRequested = false, detourCooldown = 0, hasMoved = false;
+    let previous, leader = 0, playerMoved = false, conversationRequested = false, detourCooldown = 0, hasMoved = false, settled = false;
     let detourPlayer;
     const controls = createTourPlayerControls(c, { onInteract: () => {
         const distance = Math.hypot(c.charPosX - moa.root.position.x, c.charPosY / P - moa.root.position.z);
-        if (leader >= length && distance <= 155) conversationRequested = true;
+        if ((leader >= length || settled) && distance <= 155) conversationRequested = true;
     } });
     const guide = createMoaMovementGuide(scenes.townStage.viewportEl, { follow: true });
+    const reminder = createTourFollowReminder();
     const guideOrigin = { x: c.charPosX, y: c.charPosY };
     player.holdFacing(); moa.faceTarget(null);
     action.reset().play(); moa.root.userData.tourWalking = true;
     const speed = 180;
     try {
-        await new Promise(resolve => {
-            const tick = now => {
+        await reviewTravelWait(scenes, (now, resolve, again) => {
                 const dt = previous === undefined || document.hidden ? 0 : Math.min((now - previous) / 1000, .05);
                 previous = now;
                 controls.update(dt);
@@ -76,8 +78,9 @@ export async function walkVillageTour(scenes, destination) {
                     action.paused = true;
                 }
                 if (leader > 0) hasMoved = true;
-                guide.update({ visible: hasMoved && !playerMoved });
                 const p = routePoint(lead, leader), ahead = routePoint(lead, Math.min(length, leader + 24));
+                reminder.update(Math.hypot(c.charPosX - p.x, (c.charPosY - p.y) / P), dt);
+                guide.update({ visible: hasMoved && !playerMoved && !reminder.isOpen });
                 const ground = c.supportHeightAt?.(p.x, p.y) || 0;
                 const height = ground + (startHeight - ground) * Math.max(0, 1 - leader / Math.max(leadExit, 30));
                 moa.root.position.set(p.x, height, p.y / P);
@@ -88,13 +91,16 @@ export async function walkVillageTour(scenes, destination) {
                 }
                 else action.stop();
                 const nearby = Math.hypot(c.charPosX - p.x, (c.charPosY - p.y) / P) <= 155;
-                if (leader >= length && nearby && conversationRequested) resolve();
-                else requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
+                // A player waiting on the exact destination must not prevent
+                // arrival forever. Stop nearby rather than walking into them.
+                settled = leader >= length || (!room && length - leader < 155 && nearby);
+                if (settled) action.stop();
+                if (settled && nearby && (conversationRequested || !requireInteraction)) resolve();
+                else again();
         });
     } finally {
         guide.dispose();
+        reminder.dispose();
         controls.dispose(); scenes.tourActive = false;
         action.stop(); moa.root.userData.tourWalking = false;
         c.scriptedWalking = false; c.isMoving = false; c.keysHeld.clear();

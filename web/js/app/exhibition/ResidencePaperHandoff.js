@@ -1,26 +1,6 @@
-import { Box3, Group, Matrix4, Quaternion, Vector3, MathUtils } from '../../../vendor/three/three.module.js';
+import { Box3, Group, Matrix4, Vector3, MathUtils } from '../../../vendor/three/three.module.js';
+import { animate, arms, reach } from './HandoffMotion.js';
 import { createMoaMovementGuide } from '../../components/town3d/MoaMovementGuide.js';
-
-function animate(seconds, update) {
-    return new Promise(resolve => {
-        let previous, elapsed = 0;
-        const tick = now => {
-            const dt = previous === undefined || document.hidden ? 0 : Math.min((now - previous) / 1000, .05);
-            previous = now; elapsed += dt;
-            const t = Math.min(elapsed / seconds, 1); update(t * t * (3 - 2 * t));
-            if (t === 1) resolve(); else requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-    });
-}
-function arms(root) {
-    return ['ArmL', 'ArmR'].map(name => root.getObjectByName(name) || root.getObjectByName(name.replace('L', '.L').replace('R', '.R')))
-        .filter(Boolean).map(bone => ({ bone, rest: bone.quaternion.clone() }));
-}
-const axis = new Vector3(1, 0, 0), turn = new Quaternion();
-function reach(bones, amount) {
-    for (const { bone, rest } of bones) bone.quaternion.copy(rest).multiply(turn.setFromAxisAngle(axis, -amount));
-}
 
 export async function receiveResidencePaper(app) {
     const room = app.scenes.rooms.get('information'), moa = room.room.userData.moa;

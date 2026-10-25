@@ -1,0 +1,593 @@
+{
+  "checkpoints": [
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 0,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {},
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": []
+      },
+      "cursor": 0,
+      "place": "arrival",
+      "text": "……음?",
+      "time": 1792962085870
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 1,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 1,
+      "place": "arrival",
+      "text": "어……!",
+      "time": 1792962090743
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 2,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 2,
+      "place": "arrival",
+      "text": "왔다! 드디어 왔어요!",
+      "time": 1792962090991
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 3,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 3,
+      "place": "arrival",
+      "text": "……나?",
+      "time": 1792962091248
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 4,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 4,
+      "place": "arrival",
+      "text": "네! 혹시 안내문 보고 오셨어요? 포포리 마을에서 새 주민을 찾는다는 안내문이요!",
+      "time": 1792962091488
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 5,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 5,
+      "place": "arrival",
+      "text": "응. 정류장에 붙어 있던 거.",
+      "time": 1792962091729
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 6,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 6,
+      "place": "arrival",
+      "text": "다행이다…… 아무도 못 봤으면 어쩌나 했어요.",
+      "time": 1792962091970
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 7,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 7,
+      "place": "arrival",
+      "text": "여기서 기다리고 있었어?",
+      "time": 1792962092198
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 8,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 8,
+      "place": "arrival",
+      "text": "네. 버스가 올 때마다요. 혹시 제가 없을 때 오시면 어디로 가야 할지 모르실 테니까.",
+      "time": 1792962092438
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 9,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 9,
+      "place": "arrival",
+      "text": "그런데 자고 있었잖아.",
+      "time": 1792962092695
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 10,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 10,
+      "place": "arrival",
+      "text": "……오늘은 조금 졸았어요.",
+      "time": 1792962092921
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 11,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 11,
+      "place": "arrival",
+      "text": "아, 인사부터 해야 하는데!",
+      "time": 1792962093183
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 12,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 12,
+      "place": "arrival",
+      "text": "포포리 마을에 오신 걸 환영해요. 저는 정착 안내를 맡은 모아예요!",
+      "time": 1792962093454
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 13,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 13,
+      "place": "arrival",
+      "text": "이름은 안내소에서 천천히 정해도 돼요.",
+      "time": 1792962093699
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 14,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 14,
+      "place": "arrival",
+      "text": "좋아. 같이 가자.",
+      "time": 1792962093952
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 15,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 15,
+      "place": "arrival",
+      "text": "먼저 제가 일하는 안내소로 가요. 마을은 지도를 보면서 짧게 소개해 드릴게요.",
+      "time": 1792962094218
+    },
+    {
+      "storyState": {
+        "version": 1,
+        "cursor": 16,
+        "tourDialogueVersion": 2,
+        "clothingStoreRemoved": true,
+        "nickname": "",
+        "order": "packing",
+        "cash": 0,
+        "debt": 0,
+        "shares": [],
+        "trades": [],
+        "flags": {
+          "moaAwake": true
+        },
+        "stamina": 3,
+        "analysis": 1,
+        "answers": [],
+        "examQuestionIds": [
+          3,
+          1,
+          10
+        ],
+        "inventory": [],
+        "arrivalPosition": {
+          "x": 989.7281832946449,
+          "y": 2325.2718167053554
+        },
+        "moaCalls": 3
+      },
+      "cursor": 16,
+      "place": "informationOutside",
+      "id": "walk",
+      "time": 1792962094546
+    }
+  ],
+  "errors": []
+}

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { decodeTownWav } from '../js/engine/TownMusic.js';
+import { decodeTownWav, TownMusic } from '../js/engine/TownMusic.js';
 
 function wav() {
     // Odd-size metadata chunk exercises RIFF's required pad byte.
@@ -33,4 +33,18 @@ test('title PCM32kHz keeps the original sample rate and duration',()=>{
     const bytes=wav();new DataView(bytes).setUint32(34,32000,true);
     const buffer=decodeTownWav(context,bytes);
     assert.equal(buffer.sampleRate,32000);assert.equal(buffer.length,2);
+});
+test('music preference scales the existing master gain and preserves indoor attenuation and mute',()=>{
+    let target;
+    const player = { active: true, muted: false, volume: .4, indoors: false,
+        context: { currentTime: 1 }, master: { gain: {
+            cancelScheduledValues() {}, setTargetAtTime(value) { target = value; }
+        } } };
+    TownMusic.prototype.updateMaster.call(player);
+    assert.ok(Math.abs(target - .55 * .4) < 1e-12);
+    player.indoors = true; TownMusic.prototype.updateMaster.call(player);
+    assert.ok(Math.abs(target - .55 * .4 * .7) < 1e-12);
+    player.muted = true; TownMusic.prototype.updateMaster.call(player); assert.equal(target, 0);
+    player.muted = false; player.active = false;
+    TownMusic.prototype.updateMaster.call(player); assert.equal(target, 0);
 });

@@ -6,7 +6,7 @@ export function mountInvestmentCertificate(panel, { name = '', onReceive }) {
     const certificate = el('article', 'investment-certificate');
     certificate.setAttribute('aria-label', '포포리 마을 투자 자격증');
     certificate.innerHTML = `
-        <div class="certificate-topline"><span>포포리 마을</span><span>첫 투자 교육 수료</span></div>
+        <div class="certificate-topline"><span>포포리 마을</span><span>주식 거래 자격 확인</span></div>
         <div class="certificate-emblem" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="m32 5 17 14-6 29H21l-6-29L32 5Z" fill="#dce8eb" stroke="#7896a2" stroke-width="2"/><path d="m32 5-7 14 7 29 7-29-7-14ZM15 19h34" stroke="#7896a2" stroke-width="2"/></svg></div>
         <p class="certificate-kicker">토리 증권사</p>
         <h1>투자 자격증</h1>

@@ -36,3 +36,19 @@ node web/tests/arrivalBench.browser.cjs electron-app/dist/win-unpacked/resources
 단위/회귀 테스트 19개 통과. 낮은 돌출물 아래 걷기 유지·점프 거절, 공중 이동 차단, 충분히 높은 지붕 제외, 점프 시간/반복 입력/정확한 착지와 기존 충돌을 검사했다. `output/jump-regression-v1/exterior-wall/`에서 웹·기존 실행본 모두 건물 9곳 입구와 실내 7곳 출구/복귀 문, 잡화점 계산대 접근 회귀 검증도 통과했다.
 
 기존 실행본 resources/web에 변경 모듈 5개를 동기화했다. 설치 프로그램은 재빌드하지 않았다. 결과는 충돌 근사/검사 표본에서 검출된 위험 기준이며, 모든 표면의 연속적인 메시-메시 비관통 보증이나 모든 위치에서의 수동 플레이 완료를 뜻하지 않는다. 사용자 최종 시각·플레이 검수는 별도다.
+
+## 중복 검수 캡처 정리 — 2026-10-26
+
+✅ 삭제 완료. 대조표의 web 캡처와 환경별 검증 기록은 보존했다.
+
+아래 desktop PNG는 동일 폴더 web PNG와 SHA-256까지 일치해 사용자 승인으로 삭제한다. 환경별 JSON 검증 기록과 촬영 스크립트는 별도로 유지한다. 기존 `desktop-*.png` 안내는 아래 대응 web PNG를 따른다. 이 대조표는 기존 촬영 시점의 이미지 내용 일치를 기록하며 새 플레이 검증을 의미하지 않는다.
+
+| 삭제 desktop 캡처 | 보존 web 캡처 | SHA-256 |
+|---|---|---|
+| `desktop-jump-bank.png` | [web-jump-bank.png](web-jump-bank.png) | `d5f7e5b9e30d83a39448ab8921b1a166dc0c32b88d0a4f63dbd019f678969a2d` |
+| `desktop-jump-information.png` | [web-jump-information.png](web-jump-information.png) | `7e72a1f68c1c708eba718f49a4fecd9b4207a5f32ba9fdbb2e1b6aa23b9d41ee` |
+| `desktop-jump-stock.png` | [web-jump-stock.png](web-jump-stock.png) | `80586f43e823c817e5e2f2b55c3b1f631bdc98b4e8c072837634e0757d9cc92a` |
+| `desktop-jump-store.png` | [web-jump-store.png](web-jump-store.png) | `4703bb6514bf1cebc8a20591dd0d6c59b52b80e0d818dafb2db74d5f9c49f864` |
+| `desktop-jump-home.png` | [web-jump-home.png](web-jump-home.png) | `15c604cc041fb59d3f0e4f21b633c6046d6709f7d44d79d3348778ecb77b6b12` |
+| `desktop-jump-training.png` | [web-jump-training.png](web-jump-training.png) | `778a5ed5980a8509bd8c56fe66501f2490473d23219948e68d75ac6756ab02ec` |
+| `desktop-jump-simulation.png` | [web-jump-simulation.png](web-jump-simulation.png) | `5bded34b2837b9f9ee9812a4393137927325b970fc71a52eb71b1c0e412fc522` |

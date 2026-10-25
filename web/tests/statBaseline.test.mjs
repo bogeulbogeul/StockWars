@@ -11,7 +11,7 @@ test('all personality profiles leave ability data untouched, including old title
         applyPlayerTrait(engine.state, profile); applyPlayerTrait(engine.state, profile);
         assert.deepEqual(engine.state, before);
         assert.deepEqual(engine.stats(), { analysis: 1 });
-        assert.equal(engine.portfolioSlots(), 5);
+        assert.equal(engine.portfolioSlots(), Infinity);
         assert.equal(engine.maxStamina(), 3);
         assert.equal(engine.feeRate(0.0015), 0.0015);
         assert.equal(engine.laborReward(800), 800);

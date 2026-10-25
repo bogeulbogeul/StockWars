@@ -5,7 +5,7 @@ export function drawCipherIndex(display, index, history) {
     ctx.fillStyle = '#13272a'; ctx.fillRect(0,0,1760,640);
     ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
     ctx.fillStyle = '#efdfb8'; ctx.font = 'bold 65px sans-serif';
-    ctx.fillText('사이퍼 지수',58,69);
+    ctx.fillText('포포리 시장 현황',58,69);
     ctx.textAlign = 'right'; ctx.font = '32px sans-serif'; ctx.fillStyle = '#92b7af';
     ctx.fillText('게임 시장',1700,70);
     ctx.textAlign = 'left'; ctx.fillStyle = '#f0f1e9'; ctx.font = 'bold 126px sans-serif';

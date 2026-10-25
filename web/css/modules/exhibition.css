@@ -1,3 +1,4 @@
+@import './tutorial-skip.css'; @import './first-day-finale.css';
 .exhibition-mode { background: #dbe5d2; }
 .exhibition-world { position: fixed; inset: 0; overflow: hidden; }
 .exhibition-mode .town-model-layer { position: absolute; inset: 0; }
@@ -59,3 +60,5 @@
     .exhibition-text { font-size: 17px; }
     .exhibition-panel h1 { font-size: 20px; }
 }
+
+.exhibition-ui > .exhibition-phone { position: absolute; right: 18px; top: auto; bottom: max(18px, env(safe-area-inset-bottom)); pointer-events: auto; font-weight: 500; box-shadow: 0 3px 12px #493b2e20; }

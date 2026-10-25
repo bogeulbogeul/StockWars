@@ -1,0 +1,208 @@
+{
+  "DeletedFiles": 33,
+  "DeletedBytes": 9279781.0,
+  "PreservedWebCaptures": 33,
+  "FolderComparisonTables": 8,
+  "ProtectedFilesHashVerified": 3395,
+  "Result": "passed",
+  "Files": [
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-store.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-store.png",
+      "SHA256": "D8692E6DCDB3912C498B84BCFA1E1F3097BF36ED1D4474C92170B0EF0463C6AC",
+      "Bytes": 147521
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-store.png",
+      "SHA256": "D8692E6DCDB3912C498B84BCFA1E1F3097BF36ED1D4474C92170B0EF0463C6AC",
+      "Bytes": 147521
+    },
+    {
+      "Deleted": "output/indoor-wall-rigidbody-v1/desktop-store.png",
+      "Preserved": "output/indoor-wall-rigidbody-v1/web-store.png",
+      "SHA256": "D8692E6DCDB3912C498B84BCFA1E1F3097BF36ED1D4474C92170B0EF0463C6AC",
+      "Bytes": 147521
+    },
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-bank.png",
+      "SHA256": "CA386911C5C4C0D13E29D05C56E121DE268BB5A6735F2A72378814F125B31DB5",
+      "Bytes": 359351
+    },
+    {
+      "Deleted": "output/indoor-wall-rigidbody-v1/desktop-bank.png",
+      "Preserved": "output/indoor-wall-rigidbody-v1/web-bank.png",
+      "SHA256": "CA386911C5C4C0D13E29D05C56E121DE268BB5A6735F2A72378814F125B31DB5",
+      "Bytes": 359351
+    },
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-information.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-information.png",
+      "SHA256": "612BE2ED0BC44AD8B2FAAFA849C1702EE6B57391604B13015D79434007C5731C",
+      "Bytes": 352825
+    },
+    {
+      "Deleted": "output/indoor-wall-rigidbody-v1/desktop-information.png",
+      "Preserved": "output/indoor-wall-rigidbody-v1/web-information.png",
+      "SHA256": "612BE2ED0BC44AD8B2FAAFA849C1702EE6B57391604B13015D79434007C5731C",
+      "Bytes": 352825
+    },
+    {
+      "Deleted": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-side.png",
+      "Preserved": "output/information-sofa-seat-penetration-check-v1/web-seat-2-side.png",
+      "SHA256": "330A323B9A64E3844021390538427B3419491B2E16DAE6E58632DBAC521F71B2",
+      "Bytes": 968888
+    },
+    {
+      "Deleted": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-side.png",
+      "Preserved": "output/information-sofa-seat-penetration-check-v1/web-seat-1-side.png",
+      "SHA256": "E7F3133C0EC0377808B3F31AB8EAA2827230678C56A2FEE0BE723B4F53E3D886",
+      "Bytes": 945730
+    },
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-stock.png",
+      "SHA256": "D528324C52BC918125714A0BFFB751EBF393B8A574BB4D0DC3C05C96CB23A336",
+      "Bytes": 313753
+    },
+    {
+      "Deleted": "output/indoor-wall-rigidbody-v1/desktop-stock.png",
+      "Preserved": "output/indoor-wall-rigidbody-v1/web-stock.png",
+      "SHA256": "D528324C52BC918125714A0BFFB751EBF393B8A574BB4D0DC3C05C96CB23A336",
+      "Bytes": 313753
+    },
+    {
+      "Deleted": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-back.png",
+      "Preserved": "output/information-sofa-seat-penetration-check-v1/web-seat-1-back.png",
+      "SHA256": "A13577482D3B444DFB883A2792039C903076571B93C7D0A23766348CA11AD951",
+      "Bytes": 637852
+    },
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-training.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-training.png",
+      "SHA256": "6B93DDDE05815B2743E6FB750703950F629CDC9A50EE867AE1236EC893BD192E",
+      "Bytes": 277473
+    },
+    {
+      "Deleted": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-back.png",
+      "Preserved": "output/information-sofa-seat-penetration-check-v1/web-seat-2-back.png",
+      "SHA256": "D532AA0D5D204D4A74880A3B8F25EDB3EA8EE4D382277BFAD419033D7BD15F1E",
+      "Bytes": 549943
+    },
+    {
+      "Deleted": "output/exterior-wall-rigidbody-v1/desktop-home.png",
+      "Preserved": "output/exterior-wall-rigidbody-v1/web-home.png",
+      "SHA256": "64E1F640D16BCB89828DA65B7129E5EAC6C6D957440D5F287FB392A58577BE69",
+      "Bytes": 142189
+    },
+    {
+      "Deleted": "output/indoor-wall-rigidbody-v1/desktop-home.png",
+      "Preserved": "output/indoor-wall-rigidbody-v1/web-home.png",
+      "SHA256": "64E1F640D16BCB89828DA65B7129E5EAC6C6D957440D5F287FB392A58577BE69",
+      "Bytes": 142189
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-bank.png",
+      "Preserved": "output/jump-check-v1/web-jump-bank.png",
+      "SHA256": "D5F7E5B9E30D83A39448AB8921B1A166DC0C32B88D0A4F63DBD019F678969A2D",
+      "Bytes": 361472
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-bank.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-bank.png",
+      "SHA256": "675F8446F3E83966E5FED0C9EA6DFE94C6B81602059919A1BDB065DAE0FDDA43",
+      "Bytes": 360804
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-information.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-information.png",
+      "SHA256": "942F09F229A543D2DC15E9E203870F3FBF740D4E1E58772112A37A64D7BA1387",
+      "Bytes": 352075
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-information.png",
+      "Preserved": "output/jump-check-v1/web-jump-information.png",
+      "SHA256": "7E72A1F68C1C708EBA718F49A4FECD9B4207A5F32BA9FDBB2E1B6AA23B9D41EE",
+      "Bytes": 350881
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-stock.png",
+      "Preserved": "output/jump-check-v1/web-jump-stock.png",
+      "SHA256": "80586F43E823C817E5E2F2B55C3B1F631BDC98B4E8C072837634E0757D9CC92A",
+      "Bytes": 316274
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-stock.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-stock.png",
+      "SHA256": "B2C35CC02F2919E43EE2DAA5DB27FB91FCF21BB19F16F7250C4EDCFEF2C29719",
+      "Bytes": 315489
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-training.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-training.png",
+      "SHA256": "4A5B47EA71F378E65947DAE5D6CE92A9D05ABD108D58DC2BF6D3F77702A4EB6A",
+      "Bytes": 279372
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-store.png",
+      "Preserved": "output/jump-check-v1/web-jump-store.png",
+      "SHA256": "4703BB6514BF1CEBC8A20591DD0D6C59B52B80E0D818DAFB2DB74D5F9C49F864",
+      "Bytes": 147204
+    },
+    {
+      "Deleted": "output/indoor-furniture-rigidbody-v1/desktop-home.png",
+      "Preserved": "output/indoor-furniture-rigidbody-v1/web-home.png",
+      "SHA256": "A9C029088CF430D65B027DFC2B89F926A6A4A63CF6EC57197094D4F71C2BE432",
+      "Bytes": 143430
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-home.png",
+      "Preserved": "output/jump-check-v1/web-jump-home.png",
+      "SHA256": "15C604CC041FB59D3F0E4F21B633C6046D6709F7D44D79D3348778ECB77B6B12",
+      "Bytes": 142228
+    },
+    {
+      "Deleted": "output/rumor-quiz-stamp-2026-10-25/desktop-wrong.png",
+      "Preserved": "output/rumor-quiz-stamp-2026-10-25/web-wrong.png",
+      "SHA256": "E03569225C1DEEB8A0895F3DE26B444C294E03E7C4B3BCFCBFF9429BC0CFCF78",
+      "Bytes": 63263
+    },
+    {
+      "Deleted": "output/rumor-quiz-stamp-2026-10-25/desktop-quiz-open.png",
+      "Preserved": "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png",
+      "SHA256": "69A4F30EDED23858F379EC064257286548CAF2F9C6B86FB61905D5DD7B693B0A",
+      "Bytes": 59021
+    },
+    {
+      "Deleted": "output/rumor-quiz-stamp-2026-10-25/desktop-correct-stamp.png",
+      "Preserved": "output/rumor-quiz-stamp-2026-10-25/web-correct-stamp.png",
+      "SHA256": "435C7B1B62A6FA408C65ED72C0E7BDB13DB348EEFF69AC328AD3568E909F9283",
+      "Bytes": 77646
+    },
+    {
+      "Deleted": "output/rumor-olive-ui-2026-10-25/desktop-wrong.png",
+      "Preserved": "output/rumor-olive-ui-2026-10-25/web-wrong.png",
+      "SHA256": "A6D14051554FAA219856C13315B42ECA21F34E1C93AA89524F988BAE1E3B9E89",
+      "Bytes": 68718
+    },
+    {
+      "Deleted": "output/rumor-letter-ui-2026-10-25/desktop-wrong.png",
+      "Preserved": "output/rumor-letter-ui-2026-10-25/web-wrong.png",
+      "SHA256": "A60BB035B0FFA23B2AC4F1DC325CEEA6201A9C7C342F9669BA9770CEC48E8DC8",
+      "Bytes": 65433
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-training.png",
+      "Preserved": "output/jump-check-v1/web-jump-training.png",
+      "SHA256": "778A5ED5980A8509BD8C56FE66501F2490473D23219948E68D75AC6756AB02EC",
+      "Bytes": 9822
+    },
+    {
+      "Deleted": "output/jump-check-v1/desktop-jump-simulation.png",
+      "Preserved": "output/jump-check-v1/web-jump-simulation.png",
+      "SHA256": "5BDED34B2837B9F9EE9812A4393137927325B970FC71A52EB71B1C0E412FC522",
+      "Bytes": 7964
+    }
+  ]
+}

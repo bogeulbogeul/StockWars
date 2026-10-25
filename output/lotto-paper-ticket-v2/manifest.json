@@ -1,0 +1,16 @@
+{
+  "id": "item_lotto_ticket",
+  "file": "item_lotto_ticket.glb",
+  "sha256": "a39a3c40b5e3353f952f7abc897c194e6e39b769235aef21da95199103b9a5f6",
+  "reference": "web/assets/items/paper-v4/lotto.svg",
+  "thickness": 0.0035,
+  "notchesPerSide": 7,
+  "exampleNumbers": [
+    6,
+    12,
+    23,
+    28,
+    35,
+    42
+  ]
+}

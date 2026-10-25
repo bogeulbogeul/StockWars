@@ -1,0 +1,28 @@
+{
+  "title": "오늘은 여기서 쉬어도 돼",
+  "durationSeconds": 18,
+  "kind": "Original instrumental; softly synthesized piano and music box; no vocals or external samples",
+  "peak": 0.6,
+  "sampleRate": 44100,
+  "gameInstalled": false,
+  "perSecondRmsDb": [
+    -17.17,
+    -14.53,
+    -16.34,
+    -17.12,
+    -14.52,
+    -14.34,
+    -15.7,
+    -17.72,
+    -14.67,
+    -14.92,
+    -16.12,
+    -17.54,
+    -14.21,
+    -14.99,
+    -15.95,
+    -15.58,
+    -17.56,
+    -28.3
+  ]
+}

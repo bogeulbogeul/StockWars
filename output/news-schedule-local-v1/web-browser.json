@@ -1,0 +1,38 @@
+[
+  {
+    "timezoneId": "Asia/Seoul",
+    "mode": "standard",
+    "autoPublication": true,
+    "retainedReader": true,
+    "reload": true,
+    "dst": true,
+    "errors": []
+  },
+  {
+    "timezoneId": "Asia/Seoul",
+    "mode": "exhibition",
+    "autoPublication": true,
+    "retainedReader": true,
+    "reload": true,
+    "dst": true,
+    "errors": []
+  },
+  {
+    "timezoneId": "America/New_York",
+    "mode": "standard",
+    "autoPublication": true,
+    "retainedReader": true,
+    "reload": true,
+    "dst": true,
+    "errors": []
+  },
+  {
+    "timezoneId": "America/New_York",
+    "mode": "exhibition",
+    "autoPublication": true,
+    "retainedReader": true,
+    "reload": true,
+    "dst": true,
+    "errors": []
+  }
+]
