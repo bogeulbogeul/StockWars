@@ -14,9 +14,9 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     };
     add(1, 'arrival'); add(2, 'arrival');
     action('walk', 'tree', '포포리 나무로 가기');
-    const tour = [['포포리 나무', 'tree'], ['집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
-        ['가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['새벽달 펍', 'pub'], ['서점', 'bookstore'],
-        ['우체국', 'post'], ['잎새 증권', 'stockOutside'], ['은행', 'bankOutside'], ['포포리 안내소', 'informationOutside']];
+    const tour = [['포포리 나무', 'tree'], ['소망이네 집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
+        ['우디 가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['도란 쉼터', 'pub'], ['소담 서점', 'bookstore'],
+        ['두리 우체국', 'post'], ['토리 증권사', 'stockOutside'], ['차곡 은행', 'bankOutside'], ['모아 안내소', 'informationOutside']];
     tour.forEach(([name, place], i) => place && add(3, place, `### ${name}`, tour[i + 1] ? `### ${tour[i + 1][0]}` : undefined));
     add(4, 'information', undefined, '[화면]'); action('nickname', 'information', '입주 신청서에 서명하기');
     add(4, 'information', '[화면]');
@@ -50,7 +50,7 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
         add(14, 'stock', undefined, '[진행] 기존 투자');
         action('certificate', 'stock', '투자 자격증 발급하기');
         add(14, 'stock', '[진행] 기존 투자', '[후속 작성]');
-        action('trade', 'stock', '잎새 주식앱에서 첫 매수하기');
+        action('trade', 'stock', '토리 주식앱에서 첫 매수하기');
         action('tradeHistory', 'stock', '매수 내역 확인하기');
         if (order === 'stock') add(15, 'bench');
     };

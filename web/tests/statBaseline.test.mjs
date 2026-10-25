@@ -7,13 +7,13 @@ test('all four traits grant one stat point from zero and survive reload without 
     const keys = ['analysis', 'negotiation', 'management', 'recovery'];
     for (const key of keys) {
         const engine = new ItemEngine();
-        assert.deepEqual(engine.stats(), Object.fromEntries(keys.map(stat => [stat, 0])));
+        assert.deepEqual(engine.stats(), Object.fromEntries(keys.map(stat => [stat, stat === 'analysis' ? 1 : 0])));
         const profile = { trait: { key } };
         applyPlayerTrait(engine.state, profile);
         applyPlayerTrait(engine.state, profile);
         const restored = new ItemEngine({ state: JSON.parse(JSON.stringify(engine.state)) });
         applyPlayerTrait(restored.state, profile);
-        assert.deepEqual(restored.stats(), Object.fromEntries(keys.map(stat => [stat, stat === key ? 1 : 0])));
+        assert.deepEqual(restored.stats(), Object.fromEntries(keys.map(stat => [stat, stat === key || stat === 'analysis' ? 1 : 0])));
     }
 });
 
@@ -35,5 +35,5 @@ test('old baseline is migrated once, preserving growth, experience and missing t
     missing.baseStats = { analysis: 1, management: 1, recovery: 1 };
     const repaired = new ItemEngine({ state: missing });
     applyPlayerTrait(repaired.state, { trait: { title: '베테랑 협상가' } });
-    assert.deepEqual(repaired.stats(), { analysis: 0, negotiation: 1, management: 0, recovery: 0 });
+    assert.deepEqual(repaired.stats(), { analysis: 1, negotiation: 1, management: 0, recovery: 0 });
 });

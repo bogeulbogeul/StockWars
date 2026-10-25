@@ -1,0 +1,860 @@
+[
+  {
+    "name": "Cipher_Logo_Cream_Mount",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Navy_Plaque",
+    "materials": [
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Continuous_Brass_Border",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Chart_Bar",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Chart_Bar.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Chart_Bar.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Cipher_Logo_Single_Rising_Arrow",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.001",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.001",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.002",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.008",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.002",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.003",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.009",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.010",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.011",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.003",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.004",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.004",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.012",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.013",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.014",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.004",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.004",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.004",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.004",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.005",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.005",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.015",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.016",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.017",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.005",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.005",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.005",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.005",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.006",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.006",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.018",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.019",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.020",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.006",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.006",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.006",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.006",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Front_Window_Glass.007",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Continuous_Arch_Frame.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Brass_Arch_Inlay.007",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Lower_Mullion.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Transom.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.021",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.022",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Fanlight_Radial.023",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Mullion_Brass_Inlay.007",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Transom_Brass_Inlay.007",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Recessed_Apron.007",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Grand_Window_Sill_Brass_Line.007",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Assembly",
+    "materials": []
+  },
+  {
+    "name": "Door_Continuous_Arch_Frame",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Door_Inner_Brass_Bead",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Glass",
+    "materials": [
+      "Window_Muted_Blue"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Arch",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Transom",
+    "materials": [
+      "Trim_Cream"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Radial",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Radial.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Radial.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Fanlight_Inner_Arc",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Panel_Leaf_Left",
+    "materials": [
+      "Roof_Blue",
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Recessed_Panel_Inset",
+    "materials": [
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Panel_Continuous_Moulding",
+    "materials": [
+      "Roof_Blue"
+    ]
+  },
+  {
+    "name": "Door_Recessed_Panel_Inset.001",
+    "materials": [
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Panel_Continuous_Moulding.001",
+    "materials": [
+      "Roof_Blue"
+    ]
+  },
+  {
+    "name": "Door_Brass_Pull_Mount",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Pull_Mount.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Curved_Pull",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Kick_Plate",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Hinge",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Hinge.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Panel_Leaf_Right",
+    "materials": [
+      "Roof_Blue",
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Recessed_Panel_Inset.002",
+    "materials": [
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Panel_Continuous_Moulding.002",
+    "materials": [
+      "Roof_Blue"
+    ]
+  },
+  {
+    "name": "Door_Recessed_Panel_Inset.003",
+    "materials": [
+      "Cipher_Enamel_Navy"
+    ]
+  },
+  {
+    "name": "Door_Panel_Continuous_Moulding.003",
+    "materials": [
+      "Roof_Blue"
+    ]
+  },
+  {
+    "name": "Door_Brass_Pull_Mount.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Pull_Mount.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Curved_Pull.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Kick_Plate.001",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Hinge.002",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  },
+  {
+    "name": "Door_Brass_Hinge.003",
+    "materials": [
+      "Cipher_Satin_Brass"
+    ]
+  }
+]

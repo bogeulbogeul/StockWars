@@ -1,0 +1,10 @@
+{
+  "sha256": "d15093fa6757b77c7d1dc2ca3a0cccc2af34eb1b20201e41b6f324dfea9e8b94",
+  "wingRidgeOuterX": 2.53,
+  "wingRidgeZ": 2.38,
+  "surfaceTileWidth": 0.28,
+  "surfaceTileDepth": 0.2,
+  "tileGap": 0.005,
+  "edgeTiles": "clipped to roof boundaries",
+  "gameApplied": false
+}

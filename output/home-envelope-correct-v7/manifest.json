@@ -1,0 +1,11 @@
+{
+  "source": "home-roof-crafted-v6",
+  "envelope": "overlapping closed top flap with connected lower folds",
+  "houseDoorAndRoofUnchanged": true,
+  "gameApplied": false,
+  "files": {
+    "Home-redesign.glb": "dbb669c05deb5610237626196f94901f605141508fd7ea19483ec9d183f4644d",
+    "Home-with-right-mailbox.glb": "04d1ec4e7f0e528cc7efa7784caf415437249a7f3dc8aa044f2123d5d697b0d5",
+    "Mailbox-right.glb": "5fc952d06f637ddba43f31601a5819eb97f4e5fa92643c75d543843b9a8d455e"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "source": "vivian-door-cross-v8",
+  "roofTiles": 144,
+  "ridgeCaps": 9,
+  "overlapBands": 10,
+  "roofHalfWidth": 1.6905,
+  "roofRise": 0.7,
+  "tileThickness": 0.043,
+  "tileBevel": 0.011,
+  "nonRoofAssetsUnchanged": true,
+  "gameApplied": false,
+  "sha256": "3bd12016ce7c5248defed22eee810d7ec55ae700e2e920f56197d52ebbf7a3b4"
+}

@@ -9,10 +9,10 @@ import { ExhibitionArrival } from './Arrival.js';
 import { presentSomangi } from './SomangiPresentation.js';
 
 const PLACE_NAMES = { arrival: '버스 정류장', tree: '포포리 나무', bench: '광장 벤치', notice: '주민 게시판',
-    home: '나의 집', information: '포포리 안내소', bank: '은행', store: '봉봉 잡화점', stock: '잎새 증권',
-    homeOutside: '집 앞', storeOutside: '잡화점 앞', informationOutside: '포포리 안내소 앞',
-    bankOutside: '은행 앞', stockOutside: '잎새 증권 앞', furniture: '우디의 가구점',
-    pub: '새벽달 펍', bookstore: '소담의 서점', post: '우체국 안내' };
+    home: '소망이네 집', information: '모아 안내소', bank: '차곡 은행', store: '봉봉 잡화점', stock: '토리 증권사',
+    homeOutside: '소망이네 집 앞', storeOutside: '봉봉 잡화점 앞', informationOutside: '모아 안내소 앞',
+    bankOutside: '차곡 은행 앞', stockOutside: '토리 증권사 앞', furniture: '우디 가구점',
+    pub: '도란 쉼터', bookstore: '소담 서점', post: '두리 우체국 안내' };
 
 export class Exhibition {
     constructor(container, chapters, storage = localStorage) {
@@ -59,6 +59,10 @@ export class Exhibition {
         this.view.location.textContent = PLACE_NAMES[beat.place] || '포포리 마을';
         this.scenes.setTime(!!this.state.flags.sunset);
         await this.scenes.show(beat.place);
+        if (beat.place === 'arrival' && this.state.flags.moaAwake) {
+            await this.scenes.ready;
+            await this.scenes.townModelScene.sleepingAnna?.setAwake(true, { immediate: true });
+        }
         if (this.state.cursor === 0 && !this.state.flags.moaAwake) {
             this.busy = false;
             this.arrival.start(); this.view.sync(this.state); return;

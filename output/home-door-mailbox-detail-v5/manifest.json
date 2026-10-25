@@ -1,0 +1,11 @@
+{
+  "source": "home-door-balance-v4",
+  "door": "fine vertical recessed planks",
+  "mailboxPlacement": "right, unchanged",
+  "gameApplied": false,
+  "files": {
+    "Home-redesign.glb": "26bf239fb2856e1f978408192bc3b784fa1f952e038ea69779d6ff1c57799ec3",
+    "Home-with-right-mailbox.glb": "aac155836cd21acf58315ffb6b18e472d94eb141f9a72f56e96efd85eaa4c06c",
+    "Mailbox-right.glb": "ee437e265c48de03fb498845da354d4ad9ca1ced66179a0c7baee913e52184e4"
+  }
+}

@@ -72,7 +72,7 @@ export const worldNavigation = {
         });
         this.homeModelScene.show();
         document.body.classList.remove('town-mode-active');
-        if (returningFromTown) toastManager.show('홈 오피스로 돌아왔습니다.', true);
+        if (returningFromTown) toastManager.show('소망이네 집으로 돌아왔습니다.', true);
     },
 
     toggleStage() {

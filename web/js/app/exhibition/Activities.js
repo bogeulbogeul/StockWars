@@ -116,7 +116,7 @@ export class ExhibitionActivities {
                 this.view.text(`사용할 잎 ${s.price.toLocaleString()}잎 / 매수 후 잔액 ${(this.state.cash - s.price).toLocaleString()}잎`);
                 this.view.text('이번 전시용 첫 거래에는 수수료가 없어요. 회사의 주가가 오르거나 수익이 난다는 보장은 없어요.');
                 this.view.choices([['1주 매수', () => this.next('trade', { id: s.id, name: s.name, price: s.price })],
-                    ['다른 회사 살펴보기', () => { this.view.clear('잎새 주식앱'); this.trade(); }]]);
+                    ['다른 회사 살펴보기', () => { this.view.clear('토리 주식앱'); this.trade(); }]]);
             })); this.view.panel.append(card);
         }
     }

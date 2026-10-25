@@ -1,3 +1,4 @@
+import { TOWN_ARRIVAL } from '../../data/townLandscapeLayout.js';
 import { TownModelScene } from '../../components/town3d/TownModelScene.js';
 import { HomeModelScene } from '../../components/home3d/HomeModelScene.js';
 import { CipherLobbyScene } from '../../components/cipher3d/CipherLobbyScene.js';
@@ -9,7 +10,7 @@ import { buildBankModelRoom } from '../../components/bank3d/BankModelRoom.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
 import { placeSomangi } from './SomangiPresentation.js';
 
-const positions = { arrival: [1080, 2355], tree: [1660, 1430], bench: [1460, 1420], notice: [1650, 2140],
+const positions = { arrival: [TOWN_ARRIVAL.x, TOWN_ARRIVAL.y], tree: [1660, 1430], bench: [1460, 1420], notice: [1650, 2140],
     homeOutside: [900, 1040], storeOutside: [2150, 1240], stockOutside: [2150, 1900],
     bankOutside: [2600, 2190], informationOutside: [1400, 2190], furniture: [850, 1900],
     pub: [2600, 990], bookstore: [2600, 1590], post: [1760, 1550] };
@@ -19,7 +20,7 @@ export class ExhibitionScenes {
         this.rooms = new Map();
         const host = document.createElement('div'); host.className = 'exhibition-world';
         container.append(host);
-        const controller = { charPosX: 1080, charPosY: 2355, cameraX: 0, cameraY: 0,
+        const controller = { charPosX: TOWN_ARRIVAL.x, charPosY: TOWN_ARRIVAL.y, cameraX: 0, cameraY: 0,
             worldWidth: 6000, worldHeight: 5000, facing: 'up', keysHeld: new Set(), canStand: () => true,
             get renderPosition() { return { x: this.charPosX, y: this.charPosY }; } };
         this.townStage = { containerEl: host, viewportEl: host, playerController: controller,
@@ -49,9 +50,9 @@ export class ExhibitionScenes {
                 const options = { automaticExit: false, nearbyDoor: () => null };
                 if (place === 'information') Object.assign(options, { layout: INFORMATION_ROOM,
                     buildRoom: buildInformationModelRoom, canStand: informationCanStand,
-                    stageId: 'exhibitionInformation', label: '포포리 안내소' });
+                    stageId: 'exhibitionInformation', label: '모아 안내소' });
                 if (place === 'bank') Object.assign(options, { layout: BANK_ROOM, buildRoom: buildBankModelRoom,
-                    canStand: bankCanStand, stageId: 'exhibitionBank', label: '은행' });
+                    canStand: bankCanStand, stageId: 'exhibitionBank', label: '차곡 은행' });
                 room = new CipherLobbyScene(this.container, back, options);
             }
             this.rooms.set(place, room);

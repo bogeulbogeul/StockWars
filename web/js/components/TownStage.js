@@ -118,7 +118,7 @@ export class TownStage {
                         <div class="town-building-prompt hidden" id="townBuildingPrompt">
                             <span class="prompt-icon" id="promptIcon">🏢</span>
                             <div class="prompt-info">
-                                <span class="prompt-building-title" id="promptBuildingTitle">사이퍼 증권 본점</span>
+                                <span class="prompt-building-title" id="promptBuildingTitle">토리 증권사 본점</span>
                                 <span class="prompt-building-desc" id="promptBuildingDesc">증권사 객장 입장</span>
                             </div>
                             <span class="prompt-hotkey-btn" data-game-key="f">${bindingLabel('f')}</span>

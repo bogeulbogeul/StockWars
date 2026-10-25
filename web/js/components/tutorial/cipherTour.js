@@ -1,7 +1,7 @@
 export const CIPHER_TOUR_KEY = 'stockwars.cipher.guided-tour.v1';
 import { applyDialogueTheme } from '../dialogue/dialogueTheme.js';
 export const cipherTourSteps = [
-    { room: 'lobby', title: '사이퍼 증권에 오신 것을 환영합니다', text: '저는 토리입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
+    { room: 'lobby', title: '토리 증권사에 오신 것을 환영합니다', text: '저는 토리입니다. 로비를 소개한 뒤 트레이닝룸과 모의투자 경쟁룸에 직접 들어가 화면의 기능을 하나씩 알려드리겠습니다. 마지막에는 저와 무료 모의투자 대결을 해보겠습니다.', page: 0 },
     { room: 'lobby', title: '전광판과 휴식 공간', text: '뒤쪽 전광판은 사이퍼 지수의 현재 값과 흐름을 보여줍니다. 소파에서는 앉아서 잠시 쉴 수 있습니다. 로비 이동은 이동 키나 바닥 클릭, 가까운 시설 이용은 상호작용 키로 합니다.', page: 1 },
     { room: 'lobby', title: '회원 전용 공간과 출구', text: '위층은 회원 전용 공간이며 현재 가입 절차는 준비 중입니다. 마을로 돌아갈 때는 앞쪽 카펫으로 이동하세요. 안내는 로비의 [이용 안내]에서 다시 볼 수 있습니다.', page: 4 },
     { room: 'lobby', title: '왼쪽 트레이닝룸으로 들어가겠습니다', text: '트레이닝룸은 큰 화면으로 거래하는 증권사 HTS입니다. 이곳의 매매는 스마트폰과 같은 게임 계좌에 반영됩니다. 다음을 누르면 내부에서 기능을 살펴보겠습니다.', page: 2 },

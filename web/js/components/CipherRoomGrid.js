@@ -17,7 +17,7 @@ export function cipherFloorSvg() {
             tiles.push(`<polygon points="${points}" fill="${(u+v)%2 ? '#ecddc1' : '#fff1d8'}" stroke="#d5c5aa" stroke-width="1"/>`);
         }
     }
-    return `<svg class="cipher-lobby-shell" viewBox="0 0 1536 1024" role="img" aria-label="사이퍼 증권 로비, 16×16 타일 그리드">
+    return `<svg class="cipher-lobby-shell" viewBox="0 0 1536 1024" role="img" aria-label="토리 증권사 로비, 16×16 타일 그리드">
         <defs><clipPath id="cipher-floor-clip"><path d="M768 290 L910 356 L938 385 L938 453 L1024 504 L1090 469 L1167 473 L1458 612 L1092 817 L1092 739 L1074 731 L916 820 L916 911 L760 1000 L76 614 Z"/></clipPath></defs>
         <image href="./assets/interiors/cipher/cipher-lobby-shell-v2-draft.png" width="1536" height="1024"/>
         <g clip-path="url(#cipher-floor-clip)">${tiles.join('')}</g>

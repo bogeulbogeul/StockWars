@@ -1,3 +1,5 @@
+import { AUTHORED_RUMOR_ITEMS } from '../../data/rumorCatalog.js';
+import { STAGE_LABELS } from '../../engine/RumorInterpretation.js';
 import { describeTutorialStep, createTutorialExample, createTutorialAction } from './tutorialPresentation.js';
 // Keep the original explanations available on demand; guide one idea at a time.
 export function compactAnnaLessons(steps, { nickname, stockName }) {
@@ -74,18 +76,12 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         if (step.id === 'select_stock' && !stockName) compact.text = '구매 가능한 종목이 생기면 다시 안내할게요.';
         if (step.id.startsWith('rumor_analysis_example_')) {
             const level = Number(step.id.slice(-1));
-            const examples = [
-                '연습용: 푸른 전기 저장고와 큰 수레꾼. 이틀 뒤 잔치가 단서예요.',
-                '연습용: 친환경 에너지 업체가 배터리를 독점 공급한대요. 이틀 뒤 엑스포가 상승 단서예요.',
-                '연습용: 전고체 배터리 독점 계약 호재예요. 이틀 뒤 엑스포 발표가 상승 계기가 될 전망이에요.',
-                '연습용: 리프에너지의 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.',
-                '연습용: 리프에너지의 5조 원 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.'
-            ];
+            const examples = AUTHORED_RUMOR_ITEMS.find(item => item.rumorId === 'R10_ECOBATTERY_P1').rumorStages;
             compact.lessonTitle = `분석력 ${level}단계에서는 찌라시가 어떻게 보일까요?`;
             compact.text = `분석력 ${level}단계에서 읽으면 이렇게 보여요.\n${examples[level - 1]}`;
             compact.detailText = step.text;
-            compact.takeaway = '분석력이 높아질수록 같은 찌라시에서 기업명·사건·금액 등 더 구체적인 정보를 읽을 수 있어요. 지금은 실제 능력치를 바꾸지 않고 1~5단계의 차이를 비교하는 연습이에요.';
-            compact.cards = [[`분석력 ${level}단계`, ['비유 속 단서', '업종 · 방향', '사건 · 시점', '기업 · 근거', '금액 · 상세'][level - 1]], ['주의', '해석 ≠ 진위 보증']];
+            compact.takeaway = '분석력이 높아질수록 같은 찌라시에서 기업명·사건·금액 등 더 구체적인 정보를 읽을 수 있어요. 실제 능력치는 바꾸지 않는 연습이에요. 새 원고는 1~10단계이며 7단계부터 출처, 9단계에 확인 시점, 10단계에 원문의 한계를 읽어요.';
+            compact.cards = [[`분석력 ${level}단계`, STAGE_LABELS[level - 1]], ['주의', '해석 ≠ 진위 보증']];
         }
         const additions = [];
         if (step.id === 'stock_basics_price') {

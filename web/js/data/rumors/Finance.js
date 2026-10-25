@@ -1,0 +1,10 @@
+import { R_CIPHERCAPITAL } from './Finance/CIPHERCAPITAL.js';
+import { R_COZYPAY } from './Finance/COZYPAY.js';
+import { R_GOLDPOCKET } from './Finance/GOLDPOCKET.js';
+import { R_MINTASSET } from './Finance/MINTASSET.js';
+import { R_PAYONE } from './Finance/PAYONE.js';
+import { R_SAFEBANK } from './Finance/SAFEBANK.js';
+import { R_SMARTINVEST } from './Finance/SMARTINVEST.js';
+import { R_TRUSTBANK } from './Finance/TRUSTBANK.js';
+import { R_WEALTHMAN } from './Finance/WEALTHMAN.js';
+export const FINANCE_RUMORS = [...R_CIPHERCAPITAL, ...R_COZYPAY, ...R_GOLDPOCKET, ...R_MINTASSET, ...R_PAYONE, ...R_SAFEBANK, ...R_SMARTINVEST, ...R_TRUSTBANK, ...R_WEALTHMAN];

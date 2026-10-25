@@ -1,0 +1,21 @@
+{
+  "source": "vivian-panel-contact-v10",
+  "panels": [
+    {
+      "panel": "Left_Display_Lower_Panel",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "integratedMoldingAndInset": true
+    },
+    {
+      "panel": "Right_Display_Lower_Panel",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "integratedMoldingAndInset": true
+    }
+  ],
+  "lowerMoldingContactPreserved": true,
+  "roofDoorAndWindowsUnchanged": true,
+  "gameApplied": false,
+  "sha256": "29bcbb36b952d1c748bac86ae7576ac77154726deabdd464e4af7754925c91ca"
+}

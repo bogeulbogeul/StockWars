@@ -1,0 +1,14 @@
+{
+  "closedSolids": {
+    "Porch_Joined_Timber_Frame": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    },
+    "Foundation_Joined_Entry_Steps": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    }
+  },
+  "gameApplied": false,
+  "sha256": "03b02cd492fdf9061a4d6919f5d240f3a6e6b407667087078321aa9cff3ba7e9"
+}

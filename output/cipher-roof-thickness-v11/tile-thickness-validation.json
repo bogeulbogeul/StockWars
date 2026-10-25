@@ -1,0 +1,1601 @@
+{
+  "targetNormalThickness": 0.018,
+  "targetNormalRelief": 0.009,
+  "count": 398,
+  "minimum": 0.017999887466430664,
+  "maximum": 0.018000386655330658,
+  "tiles": [
+    {
+      "name": "Wing_Reference_Tile",
+      "normalThickness": 0.018000162206590176
+    },
+    {
+      "name": "Wing_Reference_Tile.001",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Wing_Reference_Tile.002",
+      "normalThickness": 0.018000192940235138
+    },
+    {
+      "name": "Wing_Reference_Tile.003",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.004",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.005",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.006",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.007",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.008",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.009",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.010",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.011",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.012",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.013",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.014",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.015",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.016",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.017",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.018",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.019",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.020",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.021",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.022",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.023",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.024",
+      "normalThickness": 0.01800013880711049
+    },
+    {
+      "name": "Wing_Reference_Tile.025",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.026",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.027",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.028",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.029",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.030",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.031",
+      "normalThickness": 0.01800013321917504
+    },
+    {
+      "name": "Wing_Reference_Tile.032",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.033",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.034",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.035",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.036",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.037",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.038",
+      "normalThickness": 0.018000297248363495
+    },
+    {
+      "name": "Wing_Reference_Tile.039",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.040",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.041",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.042",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.043",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.044",
+      "normalThickness": 0.017999917268753052
+    },
+    {
+      "name": "Wing_Reference_Tile.045",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.046",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.047",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.048",
+      "normalThickness": 0.017999906092882156
+    },
+    {
+      "name": "Wing_Reference_Tile.049",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.050",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.051",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.052",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.053",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.054",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.055",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.056",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.057",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.058",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.059",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.060",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.061",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.062",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.063",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.064",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.065",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.066",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.067",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.068",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.069",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.070",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.071",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.072",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.073",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.074",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.075",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.076",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.077",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.078",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.079",
+      "normalThickness": 0.0180003052810207
+    },
+    {
+      "name": "Wing_Reference_Tile.080",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.081",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.082",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.083",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.084",
+      "normalThickness": 0.018000148236751556
+    },
+    {
+      "name": "Wing_Reference_Tile.085",
+      "normalThickness": 0.018000386655330658
+    },
+    {
+      "name": "Wing_Reference_Tile.086",
+      "normalThickness": 0.018000036478042603
+    },
+    {
+      "name": "Wing_Reference_Tile.087",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.088",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Wing_Reference_Tile.089",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.090",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.091",
+      "normalThickness": 0.017999887466430664
+    },
+    {
+      "name": "Wing_Reference_Tile.092",
+      "normalThickness": 0.017999887466430664
+    },
+    {
+      "name": "Wing_Reference_Tile.093",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.094",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.095",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.096",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.097",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.098",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.099",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.100",
+      "normalThickness": 0.018000245094299316
+    },
+    {
+      "name": "Wing_Reference_Tile.101",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.102",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.103",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.104",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.105",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.106",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.107",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.108",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.109",
+      "normalThickness": 0.01800012867897749
+    },
+    {
+      "name": "Wing_Reference_Tile.110",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.111",
+      "normalThickness": 0.018000170588493347
+    },
+    {
+      "name": "Wing_Reference_Tile.112",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.113",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.114",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.115",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.116",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.117",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.118",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.119",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.120",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.121",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.122",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.123",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.124",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.125",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.126",
+      "normalThickness": 0.01800013892352581
+    },
+    {
+      "name": "Wing_Reference_Tile.127",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.128",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.129",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.130",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.131",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.132",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.133",
+      "normalThickness": 0.01800013880711049
+    },
+    {
+      "name": "Wing_Reference_Tile.134",
+      "normalThickness": 0.018000016920268536
+    },
+    {
+      "name": "Wing_Reference_Tile.135",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.136",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.137",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.138",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.139",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.140",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Wing_Reference_Tile.141",
+      "normalThickness": 0.01800001971423626
+    },
+    {
+      "name": "Wing_Reference_Tile.142",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.143",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.144",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.145",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.146",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.147",
+      "normalThickness": 0.018000293523073196
+    },
+    {
+      "name": "Wing_Reference_Tile.148",
+      "normalThickness": 0.01800037920475006
+    },
+    {
+      "name": "Wing_Reference_Tile.149",
+      "normalThickness": 0.018000230193138123
+    },
+    {
+      "name": "Wing_Reference_Tile.150",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.151",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.152",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.153",
+      "normalThickness": 0.017999917268753052
+    },
+    {
+      "name": "Wing_Reference_Tile.154",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.155",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.156",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.157",
+      "normalThickness": 0.018000133335590363
+    },
+    {
+      "name": "Wing_Reference_Tile.158",
+      "normalThickness": 0.018000196549110115
+    },
+    {
+      "name": "Wing_Reference_Tile.159",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.160",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.161",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.162",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.163",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.164",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.165",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.166",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.167",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.168",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.169",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.170",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.171",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.172",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.173",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.174",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.175",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.176",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.177",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.178",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.179",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.180",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.181",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.182",
+      "normalThickness": 0.018000126467086375
+    },
+    {
+      "name": "Wing_Reference_Tile.183",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.184",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.185",
+      "normalThickness": 0.017999976873397827
+    },
+    {
+      "name": "Wing_Reference_Tile.186",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.187",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.188",
+      "normalThickness": 0.018000324140302837
+    },
+    {
+      "name": "Wing_Reference_Tile.189",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.190",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.191",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.192",
+      "normalThickness": 0.01800025999546051
+    },
+    {
+      "name": "Wing_Reference_Tile.193",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.194",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.195",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Wing_Reference_Tile.196",
+      "normalThickness": 0.01800033450126648
+    },
+    {
+      "name": "Wing_Reference_Tile.197",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Wing_Reference_Tile.198",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.199",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.200",
+      "normalThickness": 0.017999887466430664
+    },
+    {
+      "name": "Wing_Reference_Tile.201",
+      "normalThickness": 0.017999887466430664
+    },
+    {
+      "name": "Wing_Reference_Tile.202",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.203",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.204",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.205",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.206",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.207",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Wing_Reference_Tile.208",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Wing_Reference_Tile.209",
+      "normalThickness": 0.018000245094299316
+    },
+    {
+      "name": "Wing_Reference_Tile.210",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.211",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.212",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.213",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.214",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.215",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.216",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Wing_Reference_Tile.217",
+      "normalThickness": 0.018000006675720215
+    },
+    {
+      "name": "Central_Junction_Cut_Tile",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.001",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.002",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.003",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.004",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.005",
+      "normalThickness": 0.018000245094299316
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.006",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.007",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.008",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.009",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.010",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.011",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.012",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.013",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.014",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.015",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.016",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.017",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.018",
+      "normalThickness": 0.01799994707107544
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.019",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.020",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.021",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.022",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.023",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.024",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.025",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.026",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.027",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.028",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.029",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.030",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.031",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.032",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.033",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.034",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.035",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.036",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.037",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.038",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.039",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.040",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.041",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.042",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.043",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.044",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.045",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.046",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.047",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.048",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.049",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.050",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.051",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.052",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.053",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.054",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.055",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.056",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.057",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.058",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.059",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.060",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.061",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.062",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.063",
+      "normalThickness": 0.01800021529197693
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.064",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.065",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.066",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.067",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.068",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.069",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.070",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.071",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.072",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.073",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.074",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.075",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.076",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.077",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.078",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.079",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.080",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.081",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.082",
+      "normalThickness": 0.01800014963373542
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.083",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.084",
+      "normalThickness": 0.01800014963373542
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.085",
+      "normalThickness": 0.01800014963373542
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.086",
+      "normalThickness": 0.01800014963373542
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.087",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.088",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.089",
+      "normalThickness": 0.018000149866566062
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.090",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.091",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.092",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.093",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.094",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.095",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.096",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.097",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.098",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.099",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.100",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.101",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.102",
+      "normalThickness": 0.018000349402427673
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.103",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.104",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.105",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.106",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.107",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.108",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.109",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.110",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.111",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.112",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.113",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.114",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.115",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.116",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.117",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.118",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.119",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.120",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.121",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.122",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.123",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.124",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.125",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.126",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.127",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.128",
+      "normalThickness": 0.01800014078617096
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.129",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.130",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.131",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.132",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.133",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.134",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.135",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.136",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.137",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.138",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.139",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.140",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.141",
+      "normalThickness": 0.018000155687332153
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.142",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.143",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.144",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.145",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.146",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.147",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.148",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.149",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.150",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.151",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.152",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.153",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.154",
+      "normalThickness": 0.018000364303588867
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.155",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.156",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.157",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.158",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.159",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.160",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.161",
+      "normalThickness": 0.018000125885009766
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.162",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.163",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.164",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.165",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.166",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.167",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.168",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.169",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.170",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.171",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.172",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.173",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.174",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.175",
+      "normalThickness": 0.01800018548965454
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.176",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.177",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.178",
+      "normalThickness": 0.01800006628036499
+    },
+    {
+      "name": "Central_Junction_Cut_Tile.179",
+      "normalThickness": 0.01800006628036499
+    }
+  ]
+}

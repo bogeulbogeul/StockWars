@@ -99,9 +99,11 @@ export class TownModelScene {
         await this.player.ready;
         this.sleepingAnna = await addSleepingAnna(this.scene, this.scene.getObjectByName('village_bus_stop'));
         if (this.sleepingAnna) {
-            const { x, z } = this.sleepingAnna.root.position;
-            this.collisionFootprints.push({ id: 'moa', minX: x - 22, maxX: x + 22,
-                minY: z * GROUND_PROJECTION - 22, maxY: z * GROUND_PROJECTION + 22 });
+            const position = this.sleepingAnna.root.position;
+            this.collisionFootprints.push({ id: 'moa',
+                get minX() { return position.x - 22; }, get maxX() { return position.x + 22; },
+                get minY() { return position.z * GROUND_PROJECTION - 22; },
+                get maxY() { return position.z * GROUND_PROJECTION + 22; } });
         }
         this.landscape.wrap(this.player.root);
         installModelPreviewCollision(this.town.playerController, this.collisionFootprints);

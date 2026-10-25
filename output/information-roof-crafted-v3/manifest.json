@@ -1,0 +1,20 @@
+{
+  "source": "information-redesign-v2",
+  "roof": {
+    "Main": {
+      "tiles": 144,
+      "caps": 9,
+      "bands": 10,
+      "thickness": 0.043
+    },
+    "Porch": {
+      "tiles": 24,
+      "caps": 3,
+      "bands": 4,
+      "thickness": 0.034
+    }
+  },
+  "unchangedMeshes": 66,
+  "gameApplied": false,
+  "sha256": "25c74d4d9c72086f99372759462b2c74a0c36f8f5e68152c98e4eb758727f428"
+}

@@ -6,7 +6,7 @@ export function installHomeModelEntrance(app) {
     const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
     const hint = document.createElement('p');
     hint.className = 'home-entry-hint';
-    hint.textContent = 'F · 집에 들어가기';
+    hint.textContent = 'F · 소망이네 집에 들어가기';
     hint.hidden = true;
     app.townStage.viewportEl.append(hint);
     const near = () => {

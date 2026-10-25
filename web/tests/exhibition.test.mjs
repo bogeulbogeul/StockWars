@@ -5,11 +5,11 @@ import { parseChapters } from '../js/app/exhibition/Script.js';
 import { buildPlan } from '../js/app/exhibition/Plan.js';
 import { freshState, complete, persist, loadState, SAVE_KEY, assets } from '../js/app/exhibition/State.js';
 import { isExhibitionMode } from '../js/app/exhibition/Mode.js';
-import { nearSleepingMoa, nextMoaCall } from '../js/app/exhibition/Arrival.js';
+import { nearSleepingMoa, nextMoaCall, MOA_ARRIVAL } from '../js/app/exhibition/Arrival.js';
 
 test('Moa ignores distant calls and wakes on the third nearby interaction only', () => {
-    assert.equal(nearSleepingMoa({ x: 1080, y: 2355 }), false);
-    assert.equal(nearSleepingMoa({ x: 1040, y: 2355 }), true);
+    assert.equal(nearSleepingMoa({ x: MOA_ARRIVAL.x - 160, y: MOA_ARRIVAL.y }), false);
+    assert.equal(nearSleepingMoa({ x: MOA_ARRIVAL.x - 40, y: MOA_ARRIVAL.y }), true);
     let count = nextMoaCall(0, false); assert.equal(count, 0);
     count = nextMoaCall(count, true); assert.equal(count, 1);
     count = nextMoaCall(count, true); assert.equal(count, 2);
@@ -61,10 +61,16 @@ test('new demo defaults to first day while explicit legacy and art reviews remai
     assert.equal(isExhibitionMode('?scene=bank'), false);
 });
 
-test('shipping script is the original committed text and selected branches do not leak alternatives', () => {
-    for (const name of ['opening', 'activities-and-ending']) {
-        assert.equal(readFileSync(new URL(`../assets/exhibition/${name}.txt`, import.meta.url), 'utf8'),
-            readFileSync(new URL(`../../output/opening-dialogue-v1/${name}.txt`, import.meta.url), 'utf8'));
+test('renamed tour retains every introduction and selected branches do not leak alternatives', () => {
+    const places = ['homeOutside', 'storeOutside', 'furniture', 'pub', 'bookstore', 'post', 'stockOutside', 'bankOutside', 'informationOutside'];
+    const names = ['소망이네 집', '봉봉 잡화점', '우디 가구점', '도란 쉼터', '소담 서점', '두리 우체국', '토리 증권사', '차곡 은행', '모아 안내소'];
+    for (const order of ['packing', 'stock']) {
+        const tour = buildPlan(chapters, order).filter(b => b.chapter === 3);
+        for (let i = 0; i < places.length; i++) {
+            assert.equal(tour.filter(b => b.place === places[i]).length, places[i] === 'informationOutside' ? 4 : 3, places[i]);
+            assert.ok(tour.some(b => b.place === places[i] && b.text.includes(names[i])), names[i]);
+        }
+        assert.ok(!tour.some(b => /잎새 증권|새벽달 펍|포포리 안내소/.test(b.text)));
     }
     const packing = buildPlan(chapters, 'packing');
     const orderIndex = packing.findIndex(b => b.id === 'order');

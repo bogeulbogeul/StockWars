@@ -1,0 +1,10 @@
+import { R_BYTECORE } from './IT/BYTECORE.js';
+import { R_CLOUDBERRY } from './IT/CLOUDBERRY.js';
+import { R_CYPHERLINK } from './IT/CYPHERLINK.js';
+import { R_DATAFORT } from './IT/DATAFORT.js';
+import { R_MOMOSOLUTION } from './IT/MOMOSOLUTION.js';
+import { R_NEXUSSOFT } from './IT/NEXUSSOFT.js';
+import { R_PATCHWORK } from './IT/PATCHWORK.js';
+import { R_SYNAPSENET } from './IT/SYNAPSENET.js';
+import { R_TECHDOME } from './IT/TECHDOME.js';
+export const IT_RUMORS = [...R_BYTECORE, ...R_CLOUDBERRY, ...R_CYPHERLINK, ...R_DATAFORT, ...R_MOMOSOLUTION, ...R_NEXUSSOFT, ...R_PATCHWORK, ...R_SYNAPSENET, ...R_TECHDOME];

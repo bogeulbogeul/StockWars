@@ -2,7 +2,7 @@ import { TOWN_MODEL_BUILDINGS } from './townModelBuildings.js';
 
 // The tree definition uses its front edge; its planter center is at (1659, 1205).
 export const TOWN_PLAZA = { x: 1659, y: 1205, radiusX: 300, radiusY: 132 };
-export const TOWN_ARRIVAL = { x: 1080, y: 2355 };
+export const TOWN_ARRIVAL = { x: 960, y: 2355 };
 
 // Three clear walking lanes with short door approaches and compact corners.
 export function villagePathRoutes() {

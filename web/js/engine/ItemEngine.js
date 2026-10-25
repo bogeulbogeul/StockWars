@@ -1,9 +1,11 @@
+import { AUTHORED_RUMOR_ITEMS, drawAuthoredRumor } from '../data/rumorCatalog.js';
+import { MAX_ANALYSIS, clampAnalysis, maxRumorLevel, rumorLevel, openAuthoredEnvelope } from './RumorInterpretation.js';
 import { COOKIE_ID, normalizeCookieSet, eatCookie } from './CookieSets.js';
 import { VIVIAN_SHOP_CATALOG, VIVIAN_ITEM_REGISTRY } from '../data/vivianStoreData.js';
 
 export const DAY = 86400000;
 export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
-const catalog = new Map(VIVIAN_ITEM_REGISTRY.map(i => [i.id, i]));
+const catalog = new Map([...VIVIAN_ITEM_REGISTRY, ...AUTHORED_RUMOR_ITEMS].map(i => [i.id, i]));
 const buffs = { item_focus_pill: 'analysis', item_stabilizer: 'management', item_vitamin_complex: 'recovery' };
 const statNames = { analysis: '분석력', management: '운용력', recovery: '회복력' };
 const fail = message => ({ success: false, message });
@@ -83,14 +85,15 @@ export class ItemEngine {
     notice(message) { this.state.notices.unshift(message); this.state.notices.length = Math.min(20, this.state.notices.length); }
     active(stat) { return (this.state.buffs[stat] || 0) > this.now(); }
     stats() {
-        return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
+        return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, key === 'analysis' ? clampAnalysis(this.state.baseStats[key] + (this.active(key) ? 2 : 0)) : this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
     }
     playerLevel() { return this.playerLevelProgress().level; }
     pendingStatPoints() { return Math.max(0, this.playerLevel() - 1 - (this.state.spentLevelPoints || 0)); }
     allocateLevelStat(key) {
         if (!['analysis', 'negotiation', 'management', 'recovery'].includes(key)) return fail('능력치를 선택해 주세요.');
         if (this.pendingStatPoints() < 1) return fail('사용할 성장 포인트가 없습니다.');
-        this.state.baseStats[key] += 1;
+        if (key === 'analysis' && this.statLevel(key) >= MAX_ANALYSIS) return fail('분석력은 최대 10단계예요.');
+        this.state.baseStats[key] = (key === 'analysis' ? Math.max(1, this.statLevel(key)) : this.state.baseStats[key]) + 1;
         this.state.spentLevelPoints = (this.state.spentLevelPoints || 0) + 1;
         return ok('능력치가 1 증가했습니다.');
     }
@@ -118,7 +121,7 @@ export class ItemEngine {
         return ok('벤치에서 기력을 모두 회복했습니다.');
     }
     orderLimit() { return Math.floor(ITEM_BALANCE.baseOrderLimit * (this.active('management') ? 1 + ITEM_BALANCE.managementBonus : 1)); }
-    statLevel(key) { return Math.min(5, Math.max(0, Math.floor(Number(this.state.baseStats[key]) || 0))); }
+    statLevel(key) { return Math.min(key === 'analysis' ? MAX_ANALYSIS : 5, Math.max(0, Math.floor(Number(this.state.baseStats[key]) || 0))); }
     portfolioSlots() { return (5 + 5 * this.statLevel('management')) + (this.state.appliedTrait === 'management' ? 2 : 0); }
     buyCap() { return Infinity; }
     feeRate(baseRate) { return Math.max(0, baseRate - this.statLevel('negotiation') * 0.0001) * (this.state.appliedTrait === 'negotiation' ? 0.7 : 1); }
@@ -183,7 +186,7 @@ export class ItemEngine {
     }
     decoderTargets() {
         return this.state.inventory.filter(item => item.category === 'intel' && item.isRead && item.targetStockId
-            && Math.max(this.stats().analysis, item.interpretationLevel || 1) < 5);
+            && rumorLevel(item, this.stats().analysis) < maxRumorLevel(item));
     }
     canUse(id) {
         const s = this.state;
@@ -227,38 +230,15 @@ export class ItemEngine {
             s.deliveries = Array.from({ length: 7 }, (_, i) => tomorrow + i * DAY);
             message += ' · 다음 자정부터 7일간 우편 지급';
         } else if (id === 'item_premium_rumor') {
-            const stocks = [...this.market.stocks.values()];
-            const stock = stocks[Math.floor(this.random() * stocks.length)];
-            if (!stock) return fail('종목 데이터가 없습니다.');
-            const report = { id: this.id('report'), stockId: stock.id, name: stock.name, at: now + DAY,
-                parts: [`대상 기업: ${stock.name}`, '촉매: 신규 공급 계약', '방향: 호재', '반영 시점: 24시간 후', '시장 충격: +8%', '정보 신뢰도: 확정된 데모 이벤트'], revealed: this.active('analysis') ? 4 : 3, resolved: false };
-            s.reports.push(report);
-            rumorId = report.id;
-            s.inventory.push({
-                id: rumorId, category: 'intel', name: '유료 정보원의 찌라시', icon: '📜', rarity: 'rare',
-                quantity: 1, maxStack: 1, price: 1000, isRead: true, readCount: 1,
-                actionType: 'read', actionLabel: '열람하기',
-                targetStockId: stock.id, targetStockName: stock.name, targetSector: stock.sector || '업종 정보',
-                targetChange: '+8% 상승 예상', interpretationLevel: 3,
-                intelReport: `${stock.name}에 신규 공급 계약 소식이 돌고 있어. 24시간 뒤 발표가 나면 주가가 약 8% 상승할 거라는 제보야. 돈 주고 산 얘기라도 진위는 따로 따져봐.`,
-                desc: '유료 정보원이 전한 신규 공급 계약 소문.',
-                rumorClues: [
-                    '어느 집 문 앞에 새 짐수레가 섰대. 빈손으로 온 손님은 아니라더라. 하루쯤 지나 장부가 펼쳐지면 그 집 간판도 조금 들썩일 수 있겠지. 돈 주고 들은 얘기지만 네 눈으로 확인해 봐.',
-                    `${stock.sector || '한 업종'}에서 새 납품처를 잡았다는 소문이야. 하루 뒤 계약 이야기가 밖으로 나올 거래. 바람은 위쪽이라는데 아직 이름과 숫자는 또렷하지 않아.`,
-                    `${stock.sector || '해당 업종'} 쪽 호재야. 한 업체가 신규 공급 계약을 따냈다는 제보지. 24시간 뒤 발표가 상승의 계기가 될 거라는 얘기야. 기업명과 상승 폭은 더 풀어봐야 해.`,
-                    `${stock.name}이 신규 공급 계약을 따냈다는 소문이야. 24시간 뒤 발표가 예정돼 있고 상승을 기대하는 분위기래. 정확한 폭은 마지막 단서를 더 확인해야 해.`
-                ],
-                effects: ['신규 공급 계약 · 24시간 후 반영 예상', '예상 상승 폭 +8% · 제보의 진위는 별도 확인']
-            });
-            s.decryptions++;
-            // Demo progression supplies a route to analysis Lv.5 without an unimplemented bookstore.
-            s.baseStats.analysis = Math.max(s.baseStats.analysis, (s.appliedTrait === 'analysis' ? 1 : 0) + Math.floor(s.decryptions / 10));
-            message += ' · 해석 3단계의 찌라시가 보관함에 도착했습니다.';
+            const opened = openAuthoredEnvelope(this, drawAuthoredRumor);
+            if (!opened.success) return opened;
+            rumorId = opened.rumorId;
+            message = opened.message;
         } else if ((id === 'item_crypto_decoder' || id === 'item_moon_powder') && !options.reportId && this.decoderTargets().length) {
             const target = options.rumorId ? this.decoderTargets().find(i => i.id === options.rumorId) : this.decoderTargets()[0];
             if (!target) return fail('해석할 찌라시를 선택하세요.');
-            const before = Math.min(5, Math.max(1, this.stats().analysis, target.interpretationLevel || 1));
-            target.interpretationLevel = id === 'item_moon_powder' ? 5 : before + 1;
+            const before = rumorLevel(target, this.stats().analysis);
+            target.interpretationLevel = id === 'item_moon_powder' ? maxRumorLevel(target) : before + 1;
             s.decryptions++;
             message = `찌라시 한 건의 해석 단계 ${before} → ${target.interpretationLevel} · 해당 정보에 유지됩니다. 진위는 보장하지 않습니다.`;
         } else if (id === 'item_crypto_decoder' || id === 'item_darknet_key') {

@@ -1,0 +1,15 @@
+{
+  "foundationMinZ": 0.0,
+  "foundationBoundaryEdges": 0,
+  "foundationNonManifoldEdges": 0,
+  "pairedPlinths": 2,
+  "closedOuterEaves": 2,
+  "gableBackingPresent": true,
+  "preservedMarkMargins": {
+    "left": 0.19273905456066132,
+    "right": 0.19273903965950012,
+    "bottom": 0.060460686683654785,
+    "top": 0.060460805892944336
+  },
+  "gameApplied": false
+}

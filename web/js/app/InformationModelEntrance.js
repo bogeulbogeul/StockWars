@@ -1,3 +1,5 @@
+import { installTownMoaWake } from './TownMoaWake.js';
+import { GROUND_PROJECTION } from '../data/townModelBuildings.js';
 import { TOWN_MODEL_BUILDINGS } from '../data/townModelBuildings.js';
 import { INFORMATION_ROOM, informationCanStand } from '../data/informationModelRoom.js';
 import { CipherLobbyScene } from '../components/cipher3d/CipherLobbyScene.js';
@@ -10,13 +12,17 @@ export function installInformationModelEntrance(app) {
     const town = app.townStage;
     const hint = document.createElement('p');
     hint.className = 'home-entry-hint';
-    hint.textContent = 'F · 정착 안내소 입장';
+    hint.textContent = 'F · 모아 안내소 입장';
     hint.hidden = true;
     town.viewportEl.append(hint);
     const inTown = () => !town.containerEl.classList.contains('hidden')
         && !town.callbacks.isInputBlocked?.();
-    const nearMoa = () => inTown() && Math.hypot(town.playerController.charPosX - MOA_TOWN_POSITION.x,
-        town.playerController.charPosY - MOA_TOWN_POSITION.y) < 100;
+    const nearMoa = () => {
+        const actor = app.townModelScene?.sleepingAnna?.root.position;
+        return inTown() && Math.hypot(town.playerController.charPosX - (actor?.x ?? MOA_TOWN_POSITION.x),
+            town.playerController.charPosY - (actor ? actor.z * GROUND_PROJECTION : MOA_TOWN_POSITION.y)) < 100;
+    };
+    const wake = installTownMoaWake(app, { inTown, nearMoa });
     const near = () => (document.body.classList.contains('town-model-mode')
         || document.body.classList.contains('ui-paused')) && inTown()
         && Math.abs(town.playerController.charPosX - building.x) < 85
@@ -42,11 +48,11 @@ export function installInformationModelEntrance(app) {
             nearbyDoor: (x, z) => Math.hypot(x - MOA_INFORMATION_POSITION.x, z - MOA_INFORMATION_POSITION.z) < 105
                 ? { id: 'moa', label: '모아', hint: 'F · 모아와 이야기' } : null,
             onDoorEnter: () => { void app.informationModelScene.room.userData.moa.setMood('happy'); app.annaDialogueModal?.show(); },
-            stageId: 'informationModelStage', label: '정착 안내소',
+            stageId: 'informationModelStage', label: '모아 안내소',
             hint: 'WASD / 방향키 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
         });
         app.informationModelScene.ready.then(() => app.informationModelScene.renderer?.domElement
-            .setAttribute('aria-label', '정착 안내소 3D 화면'));
+            .setAttribute('aria-label', '모아 안내소 3D 화면'));
         for (const key of ['homeModelScene', 'bankModelScene', 'vivianModelScene', 'cipherLobbyScene']) app[key]?.hide();
         town.hide();
         app.officeStage?.hide?.();
@@ -60,12 +66,13 @@ export function installInformationModelEntrance(app) {
         event.preventDefault();
         event.stopImmediatePropagation();
         if (!event.repeat) {
-            if (nearMoa()) { void app.townModelScene.sleepingAnna?.setAwake(true); app.annaDialogueModal?.show(); }
+            if (nearMoa()) { void wake.interact(); }
             else app.enterInformationModel();
         }
     }, true);
     return () => {
+        wake.update();
         const moa = nearMoa(); hint.hidden = !moa && !near();
-        hint.textContent = moa ? 'F · 모아와 이야기' : 'F · 정착 안내소 입장';
+        hint.textContent = moa ? 'F · 모아와 이야기' : 'F · 모아 안내소 입장';
     };
 }

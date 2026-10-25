@@ -16,8 +16,8 @@ export class CipherLobby {
 
         this.dialog=document.createElement('dialog');
         this.dialog.className='cipher-lobby';
-        this.dialog.setAttribute('aria-label','사이퍼 증권 로비');
-        this.dialog.innerHTML=`<div class="cipher-lobby-header"><span>사이퍼 증권 · 1층 로비</span><button class="cipher-arrange" aria-expanded="false">가구 정리</button><button class="cipher-grid-toggle" aria-pressed="false">그리드 확인</button><button class="cipher-lobby-exit">마을로 나가기 · Esc</button></div><canvas class="cipher-lobby-shell" width="1448" height="1086" role="img" aria-label="벽과 바닥이 연결된 증권사 룸"></canvas><p class="cipher-lobby-error" hidden>룸 에셋을 불러오지 못했습니다.</p>`;
+        this.dialog.setAttribute('aria-label','토리 증권사 로비');
+        this.dialog.innerHTML=`<div class="cipher-lobby-header"><span>토리 증권사 · 1층 로비</span><button class="cipher-arrange" aria-expanded="false">가구 정리</button><button class="cipher-grid-toggle" aria-pressed="false">그리드 확인</button><button class="cipher-lobby-exit">마을로 나가기 · Esc</button></div><canvas class="cipher-lobby-shell" width="1448" height="1086" role="img" aria-label="벽과 바닥이 연결된 증권사 룸"></canvas><p class="cipher-lobby-error" hidden>룸 에셋을 불러오지 못했습니다.</p>`;
         container.appendChild(this.dialog);
 
         this.canvas=this.dialog.querySelector('canvas');
@@ -102,7 +102,7 @@ export class CipherLobby {
         this.hideAgentWelcome();
         if(!this.welcomeBubble){
             const bubble=document.createElement('div');bubble.className='cipher-welcome-dialogue';bubble.setAttribute('role','status');
-            bubble.innerHTML=`<div><strong class="crayon-nameplate">토리</strong><p>사이퍼 증권에 오신 것을 환영합니다.<br>도움이 필요하시면 저에게 말을 걸어주세요.</p></div>`;
+            bubble.innerHTML=`<div><strong class="crayon-nameplate">토리</strong><p>토리 증권사에 오신 것을 환영합니다.<br>도움이 필요하시면 저에게 말을 걸어주세요.</p></div>`;
             applyDialogueTheme(bubble, 'tori');
             this.dialog.append(bubble);this.welcomeBubble=bubble;
         }

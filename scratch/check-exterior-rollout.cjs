@@ -21,7 +21,7 @@ const server=http.createServer((req,res)=>{
             const THREE=await import('/vendor/three/three.module.js');
             const {TOWN_MODEL_BUILDINGS}=await import('/js/data/townModelBuildings.js');
             const s=window.stockWarsApp.townModelScene,p=s.town.playerController;
-            const ids=['home_office_tower','cipher_securities','vivian_store','data_ink_bookstore'];const result={};
+            const ids=['home_office_tower','cipher_securities','vivian_store','data_ink_bookstore','settlement_information'];const result={};
             for(const id of ids){
                 const d=TOWN_MODEL_BUILDINGS.find(b=>b.id===id),m=s.scene.getObjectByName(id),names=[];m.traverse(o=>names.push(o.name));
                 const b=new THREE.Box3().setFromObject(m);
@@ -36,6 +36,10 @@ const server=http.createServer((req,res)=>{
                 if(id==='cipher_securities')result[id].latest=names.includes('Entry_Continuous_Three_Step_Solid')&&names.includes('Door_Continuous_Arch_Frame');
                 if(id==='vivian_store')result[id].latest=names.includes('Door_Glass_Unified_Fitted_Cross')&&!names.includes('Door_Flush_Threshold');
                 if(id==='data_ink_bookstore')result[id].latest=names.some(n=>n.startsWith('Pitched_Roof_Main_Right_Front'));
+                if(id==='settlement_information')result[id].latest=names.includes('Information_Sprout_Wall_Mark')
+                    && names.some(n=>n.startsWith('Main_Ridge_Cap')) && names.some(n=>n.startsWith('Porch_Pitched_Roof'))
+                    && names.includes('Door_Continuous_Cream_Surround') && names.filter(n=>n.startsWith('Door_Recessed_Panel')).length===4
+                    && names.includes('Entry_Continuous_Two_Step_Solid');
             }
             result.count=TOWN_MODEL_BUILDINGS.length;
             return result;

@@ -18,7 +18,7 @@ export function getSmartphoneShellHtml() {
                                 <div class="app-icon stock-app-bg">
                                     <span class="app-emoji">📈</span>
                                 </div>
-                                <div class="app-label">잎새증권</div>
+                                <div class="app-label">토리 증권사</div>
                             </div>
                             <div class="app-icon-item" id="iconBubbleApp">
                                 <div class="app-icon bubble-app-bg">
@@ -61,7 +61,7 @@ export function getSmartphoneShellHtml() {
                             <div class="app-title-area">
                                 <div class="app-logo">
                                     <span class="logo-icon">📈</span>
-                                    <span class="logo-text">잎새증권</span>
+                                    <span class="logo-text">토리 증권사</span>
                                 </div>
                             </div>
                         </div>

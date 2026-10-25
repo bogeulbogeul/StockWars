@@ -1,0 +1,10 @@
+{
+  "source": "cipher-junctions-sealed-v22",
+  "singlePedimentBeamAndSideReturns": true,
+  "boundaryEdges": 0,
+  "nonManifoldEdges": 0,
+  "blindRecess": true,
+  "roofAndMarkUnchanged": true,
+  "gameApplied": false,
+  "sha256": "b6cc6373a8302e2e778b90dd5f12b4b5dff7e604ffabd48664851d3bdf642e41"
+}

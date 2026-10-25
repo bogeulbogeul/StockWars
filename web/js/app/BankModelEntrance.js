@@ -9,7 +9,7 @@ export function installBankModelEntrance(app) {
     const town = app.townStage;
     const hint = document.createElement('p');
     hint.className = 'home-entry-hint bank-entry-hint';
-    hint.textContent = 'F · 노드 은행 입장';
+    hint.textContent = 'F · 차곡 은행 입장';
     hint.hidden = true;
     town.viewportEl.append(hint);
     const inTown = () => !town.containerEl.classList.contains('hidden')
@@ -34,11 +34,11 @@ export function installBankModelEntrance(app) {
             player.updateCamera(town.viewportEl.clientWidth, town.viewportEl.clientHeight, 0, true);
         }, {
             layout: BANK_ROOM, buildRoom: buildBankModelRoom, canStand: bankCanStand,
-            nearbyDoor: () => null, stageId: 'bankModelStage', label: '노드 은행',
+            nearbyDoor: () => null, stageId: 'bankModelStage', label: '차곡 은행',
             hint: 'WASD / 방향키 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
         });
         app.bankModelScene.ready.then(() => app.bankModelScene.renderer?.domElement
-            .setAttribute('aria-label', '노드 은행 3D 화면'));
+            .setAttribute('aria-label', '차곡 은행 3D 화면'));
         app.homeModelScene?.hide();
         app.vivianModelScene?.hide();
         app.cipherLobbyScene?.hide();

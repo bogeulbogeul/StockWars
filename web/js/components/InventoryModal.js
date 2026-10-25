@@ -1,3 +1,4 @@
+import { isAuthoredRumor } from '../engine/RumorInterpretation.js';
 import { renderInventoryDetail } from './inventory/InventoryDetail.js';
 import { cookiePresentation, eatCookie } from '../engine/CookieSets.js';
 import { bindingLabel } from '../app/GameKeys.js';
@@ -131,11 +132,11 @@ export class InventoryModal {
         if (item.cookieSet) return cookiePresentation(item);
         if (item.category !== 'intel' || !item.targetStockId) return item;
         const decoded = rumorDecryption(item.intelReport || item.desc || '', item, this.callbacks.getAnalysisLevel?.() ?? 1);
-        const detailed = item.isRead && decoded.level === 5;
+        const detailed = item.isRead && decoded.level === decoded.maxLevel;
         return {
             ...item,
             // Titles can contain both the company and the catalyst; use a neutral label.
-            name: detailed ? item.name : '익명의 찌라시',
+            name: isAuthoredRumor(item) || detailed ? item.name : '익명의 찌라시',
             desc: item.isRead ? decoded.text : '봉인된 익명 제보입니다. 열람하면 현재 분석력에 맞는 소문을 읽을 수 있습니다.',
             effects: detailed ? item.effects : [`분석 LV ${decoded.level} · ${item.isRead ? '소문의 단서를 직접 이어 보세요.' : '내용은 열람 후 확인할 수 있습니다.'}`]
         };
@@ -261,7 +262,7 @@ export class InventoryModal {
             button.type = 'button';
             button.className = 'rumor-decoder-option';
             const title = document.createElement('strong');
-            title.textContent = `${index + 1}. ${visible.name} · 해석 ${decoded.level} → ${powderId === 'item_moon_powder' ? 'MAX' : decoded.level + 1}`;
+            title.textContent = `${index + 1}. ${visible.name} · 해석 ${decoded.level} → ${powderId === 'item_moon_powder' ? decoded.maxLevel : decoded.level + 1}`;
             const preview = document.createElement('span');
             preview.textContent = decoded.text;
             button.append(title, preview);

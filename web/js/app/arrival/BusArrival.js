@@ -43,7 +43,7 @@ export function playBusArrival(screen) {
                 view.render(distance + Math.min(departure * departure * .5, 24), playerView);
                 if (progress === 1) {
                     screen.dataset.arrivalState = elapsed >= 8 ? 'departing' : 'stopped';
-                    caption.textContent = elapsed >= 8 ? '버스가 떠나고, 소망이의 첫날이 시작됩니다.' : '정류장 의자에서 안나가 꾸벅꾸벅 졸고 있어요.';
+                    caption.textContent = elapsed >= 8 ? '버스가 떠나고, 소망이의 첫날이 시작됩니다.' : '버스 정류장 안에서 모아가 꾸벅꾸벅 졸고 있어요.';
                 }
                 const duration = reduced ? 3 : 14;
                 if (elapsed >= duration) finish();

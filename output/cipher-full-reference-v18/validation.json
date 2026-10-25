@@ -1,0 +1,12 @@
+{
+  "glbHeaderAndLength": true,
+  "finiteAccessorBounds": true,
+  "clockHandNodesPresent": true,
+  "doorAssemblyPresent": true,
+  "columns": 4,
+  "stairCheekSections": 6,
+  "previewObjectsExported": false,
+  "sha256": "442e9268cdfd83ced80ffe5d47bc39062558004f1fab15fb79ba0d238d4eb0a4",
+  "gameApplied": false,
+  "visualMatch": "Full-image reference reconstruction; reference.png and front-right.png are the visual comparison. Not a pixel-identical reproduction."
+}

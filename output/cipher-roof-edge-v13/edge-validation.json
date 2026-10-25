@@ -1,0 +1,25 @@
+{
+  "target": 0.055,
+  "samples": [
+    {
+      "distanceFromRidge": 0,
+      "frontBlueBandThickness": 0.05499999999999982
+    },
+    {
+      "distanceFromRidge": 0.2925,
+      "frontBlueBandThickness": 0.05499999999999982
+    },
+    {
+      "distanceFromRidge": 0.585,
+      "frontBlueBandThickness": 0.05499999999999982
+    },
+    {
+      "distanceFromRidge": 0.8775,
+      "frontBlueBandThickness": 0.05499999999999982
+    },
+    {
+      "distanceFromRidge": 1.17,
+      "frontBlueBandThickness": 0.05499999999999982
+    }
+  ]
+}

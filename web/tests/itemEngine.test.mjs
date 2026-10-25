@@ -111,9 +111,10 @@ test('seven daily mail deliveries survive offline catch-up; claims are idempoten
     assert.equal(e.state.inventory.find(i=>i.id==='item_energy_drink').quantity,1);
 });
 
-test('premium report reveals half, decoder reveals one, darknet key reveals rest; event affects market', () => {
+test('previously saved legacy reports retain reveal and scheduled event behavior', () => {
     const {engine:e,market:m,advance}=fixture();
-    purchase(e,'item_premium_rumor'); use(e,'item_premium_rumor'); const report=e.state.reports[0];
+    const report={id:'legacy-report',stockId:'CLOUDBERRY',name:'기존 보고서',parts:Array(6).fill('보존된 단서'),revealed:3,at:e.now()+DAY,resolved:false};
+    e.state.reports.push(report);
     assert.equal(report.revealed,3); purchase(e,'item_crypto_decoder'); use(e,'item_crypto_decoder'); assert.equal(report.revealed,4);
     purchase(e,'item_darknet_key'); use(e,'item_darknet_key'); assert.equal(report.revealed,6);
     purchase(e,'item_crypto_decoder'); assert.equal(e.use('item_crypto_decoder').success,false);

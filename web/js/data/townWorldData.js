@@ -9,8 +9,8 @@ import { TOWN_PROP_POSITIONS, TOWN_LAMP_POSITIONS, TOWN_TREE_POSITIONS, TOWN_BUI
 export const TOWN_BUILDINGS = [
     {
         id: 'home_office_tower',
-        name: '홈 오피스텔',
-        sign: '홈 오피스텔',
+        name: '소망이네 집',
+        sign: '소망이네 집',
         category: '레지던스',
         icon: '🏢',
         width: 280,
@@ -35,8 +35,8 @@ export const TOWN_BUILDINGS = [
     {
         id: 'julian_furniture',
         available: false,
-        name: '모던 프레임 가구점',
-        sign: '모던 프레임',
+        name: '우디 가구점',
+        sign: '우디 가구점',
         category: '가구 / 인테리어',
         icon: '🛋️',
         width: 250,
@@ -48,8 +48,8 @@ export const TOWN_BUILDINGS = [
     {
         id: 'data_ink_bookstore',
         available: false,
-        name: '데이터 잉크 서점',
-        sign: '데이터 잉크',
+        name: '소담 서점',
+        sign: '소담 서점',
         category: '서점 / 지식',
         icon: '📚',
         width: 240,
@@ -60,8 +60,8 @@ export const TOWN_BUILDINGS = [
     },
     {
         id: 'cipher_securities',
-        name: '사이퍼 증권 본점',
-        sign: '사이퍼 증권',
+        name: '토리 증권사 본점',
+        sign: '토리 증권사',
         category: '금융 / 트레이딩',
         icon: '🏛️',
         width: 440,
@@ -74,8 +74,8 @@ export const TOWN_BUILDINGS = [
     {
         id: 'node_finance',
         available: false,
-        name: '노드 파이낸스 은행',
-        sign: '노드 파이낸스',
+        name: '차곡 은행',
+        sign: '차곡 은행',
         category: '은행 / 금융',
         icon: '🏦',
         width: 300,
@@ -87,15 +87,15 @@ export const TOWN_BUILDINGS = [
     {
         id: 'midnight_pub',
         available: false,
-        name: '미드나잇 펍',
-        sign: '미드나잇 펍',
+        name: '도란 쉼터',
+        sign: '도란 쉼터',
         category: '사교 / 정보',
         icon: '🍸',
         width: 260,
         height: 230,
         colorTheme: 'purple',
         desc: '확정형 고급 찌라시 정보 거래, 지하 정통 블랙잭 테이블 (브로커 도란)',
-        actionText: '펍 입장'
+        actionText: '도란 쉼터 입장'
     },
     {
         id: 'barter_pawn_shop',

@@ -6,24 +6,9 @@
  */
 
 import { ITEM_RARITIES } from '../../data/inventoryData.js';
-import { RUMOR_CLUES } from '../../data/rumorClues.js';
-
-export function rumorDecryption(text, item, analysis) {
-    const level = Math.min(5, Math.max(1, Math.floor(Number(analysis) || 1), Number(item.interpretationLevel) || 1));
-    const noise = [80, 60, 40, 15, 0][level - 1];
-    let content = String(text);
-    if (level < 5) {
-        content = item.rumorClues?.[level - 1] || RUMOR_CLUES[item.targetStockId]?.[level - 1];
-        // Unknown rumors keep their own event; never borrow another company's clue.
-        if (!content) {
-            content = String(text);
-            for (const name of [item.targetStockName, item.targetStockId].filter(Boolean)) content = content.replaceAll(name, level >= 4 ? name : '그 업체');
-            if (level < 4) content = content.replace(/[+\-]?\d+(?:\.\d+)?\s*(?:%|조\s*원|만\s*명|G)/g, '꽤 큰 규모');
-            content = `익명 제보야. ${content}\n${level < 3 ? '말이 부풀었을 수도 있어. 이름보다 사건의 단서를 먼저 맞춰봐.' : '사건과 발표 시점을 함께 확인해 봐.'}`;
-        }
-    }
-    return { level, noise, text: content };
-}
+import { rumorDecryption } from '../../engine/RumorDecryption.js';
+import { STAGE_LABELS } from '../../engine/RumorInterpretation.js';
+export { rumorDecryption } from '../../engine/RumorDecryption.js';
 
 export class RumorPopup {
     constructor(container, callbacks = {}) {
@@ -59,7 +44,7 @@ export class RumorPopup {
                                 <div class="rumor-name-text" id="rumorNameText">현장 찌라시</div>
                                 <div class="rumor-tags">
                                     <span class="rumor-tag" id="rumorRarityTag" style="background: #00e5ff; color: #000;">희귀</span>
-                                    <span class="rumor-tag" style="background: rgba(255, 171, 0, 0.2); color: #ffd54f;">🔒 미공개 내부 정보</span>
+                                    <span class="rumor-tag" style="background: rgba(255, 171, 0, 0.2); color: #ffd54f;">🔎 아직 확인되지 않은 제보</span>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +58,7 @@ export class RumorPopup {
                                     <span class="rumor-stock-sector" id="rumorStockSector">IT/기술</span>
                                 </div>
                             </div>
-                            <div class="rumor-change-badge positive" id="rumorChangeBadge">+20.0% 급등 예상</div>
+                            <div class="rumor-change-badge positive" id="rumorChangeBadge">미확인 현장 제보</div>
                         </div>
 
                         <!-- Secret Document Content Box -->
@@ -90,7 +75,7 @@ export class RumorPopup {
 
                         <!-- Market Impact Effects -->
                         <div class="rumor-effects-box" id="rumorEffectsBox">
-                            <div class="rumor-effects-title">📊 주가 영향 및 복선 분석</div>
+                            <div class="rumor-effects-title">🔎 비교하며 생각해 보기</div>
                             <div id="rumorEffectsList"></div>
                         </div>
 
@@ -193,24 +178,19 @@ export class RumorPopup {
         }
 
         if (this.changeBadge) {
-            this.changeBadge.textContent = decoded.level === 5 ? changeVal : decoded.level >= 3 ? (isNegative ? '하락을 암시하는 소문' : '상승을 암시하는 소문') : '행간에 숨은 단서';
-            this.changeBadge.className = `rumor-change-badge ${decoded.level >= 3 ? (isNegative ? 'negative' : 'positive') : ''}`;
+            this.changeBadge.textContent = decoded.legacy ? '기존 보유 원고 · 진위 별도 확인' : '미확인 현장 제보';
+            this.changeBadge.className = 'rumor-change-badge';
         }
-
-        if (this.docText) {
-            this.docText.textContent = decoded.text;
-        }
-        if (this.analysisStatus) this.analysisStatus.textContent = `분석 LV ${decoded.level} · ${['비유 속 단서', '업종과 흐름의 단서', '사건과 방향 파악', '기업과 근거 파악', '상세 정보 파악'][decoded.level - 1]}`;
-
+        if (this.docText) this.docText.textContent = decoded.text;
+        if (this.analysisStatus) this.analysisStatus.textContent = decoded.legacy
+            ? `이전 원고 ${decoded.level}/5단계 · 기존 보유 내용 유지`
+            : `해석 ${decoded.level}/10단계 · ${STAGE_LABELS[decoded.level - 1]}`;
         if (this.effectsList) {
             this.effectsList.replaceChildren();
-            const effects = decoded.level === 5 ? (item.effects?.length ? item.effects : [`대상 기업: ${stockNameVal} (${changeVal})`]) : decoded.level >= 3 ? [`${sectorVal} · ${isNegative ? '하락' : '상승'}을 암시하는 사건. 수치와 진위는 추가 확인이 필요합니다.`] : ['이름의 비유, 물건의 용도, 발표 시점을 이어 어떤 기업의 이야기인지 추리해 보세요.'];
-            effects.forEach(effect => {
-                const row = document.createElement('div');
-                row.className = 'rumor-effect-item';
-                row.textContent = `• ${effect}`;
-                this.effectsList.append(row);
-            });
+            const row = document.createElement('div');
+            row.className = 'rumor-effect-item';
+            row.textContent = '출처·성사 조건·확인되지 않은 내용을 뉴스와 비교해 보세요. 자세히 읽어도 진위나 수익을 보장하지 않아요.';
+            this.effectsList.append(row);
         }
 
         if (isFirstRead) {

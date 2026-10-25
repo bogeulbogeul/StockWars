@@ -1,0 +1,10 @@
+import { R_AIRLINK } from './Infrastructure/AIRLINK.js';
+import { R_CITYGRID } from './Infrastructure/CITYGRID.js';
+import { R_COREPIPE } from './Infrastructure/COREPIPE.js';
+import { R_HYPERLOOP } from './Infrastructure/HYPERLOOP.js';
+import { R_METROHUB } from './Infrastructure/METROHUB.js';
+import { R_NEXUSBRIDGE } from './Infrastructure/NEXUSBRIDGE.js';
+import { R_SCONNECT } from './Infrastructure/SCONNECT.js';
+import { R_SKYNET } from './Infrastructure/SKYNET.js';
+import { R_WAVECOMM } from './Infrastructure/WAVECOMM.js';
+export const INFRASTRUCTURE_RUMORS = [...R_AIRLINK, ...R_CITYGRID, ...R_COREPIPE, ...R_HYPERLOOP, ...R_METROHUB, ...R_NEXUSBRIDGE, ...R_SCONNECT, ...R_SKYNET, ...R_WAVECOMM];

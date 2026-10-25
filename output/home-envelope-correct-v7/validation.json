@@ -1,0 +1,17 @@
+{
+  "Home-redesign.glb": {
+    "meshes": 185,
+    "ground": 0.0,
+    "finite": true
+  },
+  "Mailbox-right.glb": {
+    "meshes": 20,
+    "ground": 0.0,
+    "finite": true
+  },
+  "Home-with-right-mailbox.glb": {
+    "meshes": 205,
+    "ground": 0.0,
+    "finite": true
+  }
+}

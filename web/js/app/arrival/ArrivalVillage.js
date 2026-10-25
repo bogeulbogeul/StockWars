@@ -8,10 +8,11 @@ import { fitTownProp } from '../../components/town3d/TownObjectFit.js';
 
 // Borrow the running village; isolated previews use the same assets and layout.
 export async function getArrivalVillage() {
-    const live = window.stockWarsApp?.townModelScene;
+    const live = window.stockWarsExhibition?.scenes?.townModelScene || window.stockWarsApp?.townModelScene;
     if (live) {
         await live.ready;
         live.arrivalActive = true;
+        await live.sleepingAnna?.setAwake(false);
         return { scene: live.scene, landscape: live.landscape, live, owned: false };
     }
     const scene = new THREE.Scene();
