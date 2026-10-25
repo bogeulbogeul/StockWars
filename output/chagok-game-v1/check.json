@@ -1,0 +1,28 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "result": {
+    "meshes": [
+      "Chagok_brown_round_glasses",
+      "Chagok_seed_shell_left",
+      "Chagok_seed_shell_right",
+      "Original_whole_arms_without_elbow_cuts",
+      "Original_whole_arms_without_elbow_cuts_1",
+      "Original_whole_arms_without_elbow_cuts_2",
+      "Original_whole_arms_without_elbow_cuts_3"
+    ],
+    "count": 1,
+    "height": 118.88856091262733,
+    "footY": -1.3028189016495162e-7,
+    "active": true,
+    "collision": true,
+    "spawnClear": true,
+    "sidePathClear": true,
+    "exitClear": true
+  },
+  "exhibition": {
+    "count": 1,
+    "active": true,
+    "failed": false
+  },
+  "errors": []
+}

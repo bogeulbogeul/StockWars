@@ -1,0 +1,49 @@
+{
+  "units": "game world units",
+  "hashes": {
+    "C:\\GitHub\\StockWars\\web\\assets\\characters\\3d\\chagok\\chagok.glb": "7245154c67a3ed310c2b4051455f9197cae717eca4ac06cc10f428b1a8589bda",
+    "C:\\GitHub\\StockWars\\web\\assets\\office\\3d\\Bank-furnished-room.glb": "8646118b10f0a03eb87e2d03cf2eeb81badb3637b06a2215a498cbaab44b43f2"
+  },
+  "method": "World-space BVH triangle intersections and nearest outward surface signed vertex samples; epsilon 0.001. Depth is sampled nearest-surface distance, not a global penetration solver.",
+  "sourceUnchanged": true,
+  "results": [
+    {
+      "chair": "Executive_Lumbar_Cushion",
+      "character": "Somangi_SmoothBody",
+      "trianglePairs": 0,
+      "characterVerticesInsideChair": {
+        "count": 0,
+        "maximumDepth": 0,
+        "deepestPoint": null
+      },
+      "chairVerticesInsideCharacter": {
+        "count": 0,
+        "maximumDepth": 0,
+        "deepestPoint": null
+      }
+    },
+    {
+      "chair": "Executive_Seat",
+      "character": "Somangi_SmoothBody",
+      "trianglePairs": 3136,
+      "characterVerticesInsideChair": {
+        "count": 32964,
+        "maximumDepth": 9.480927467346191,
+        "deepestPoint": [
+          -5.696337699890137,
+          111.91908264160156,
+          54.496620178222656
+        ]
+      },
+      "chairVerticesInsideCharacter": {
+        "count": 24,
+        "maximumDepth": 6.266957759857178,
+        "deepestPoint": [
+          8.43995475769043,
+          112.5970687866211,
+          63.98944854736328
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "removedFeet": [
+    "Corner_Grounded_Foot",
+    "Corner_Grounded_Foot.001",
+    "Corner_Grounded_Foot.002",
+    "Corner_Grounded_Foot.003"
+  ],
+  "unchangedMeshes": 247,
+  "glbReload": true,
+  "porchBasesPreserved": 2,
+  "gameApplied": false,
+  "sha256": "6905a00d67d1ba6dfd0ada0048584c0b79e1f932468c0ebec16bd0400562e3ec"
+}

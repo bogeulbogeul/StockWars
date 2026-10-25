@@ -31,6 +31,9 @@ export class Exhibition {
             if (this.arrival.active) return;
             const input = event.target.closest?.('input, textarea, select, button');
             if (input || document.querySelector('dialog[open]')) return;
+            if (event.code === 'KeyP' && !event.repeat) {
+                event.preventDefault(); this.view.openPhone(); return;
+            }
             event.stopImmediatePropagation();
             if (event.key === 'Enter' && !event.repeat) {
                 event.preventDefault(); this.view.panel.querySelector('button')?.click();

@@ -36,35 +36,35 @@ export const TPT_QUESTIONS = [
 export const TRAITS_DATA = {
     analysis: {
         title: "예리한 분석가",
-        statName: "분석력 +1",
+        statName: "투자 성향",
         statColor: "#00e5ff",
         icon: "📊",
-        bonusDesc: "찌라시 해독률 보너스 및 노이즈 필터링 강화",
-        effect: "찌라시 해석 단계 +1 (진위 보증 아님)"
+        bonusDesc: "성향에 따른 능력치 보너스는 없습니다",
+        effect: "분석력은 정보 해석 테스트와 찌라시 퀴즈로 성장해요"
     },
     negotiation: {
         title: "베테랑 협상가",
-        statName: "협상력 +1",
+        statName: "투자 성향",
         statColor: "#ffd600",
         icon: "🤝",
-        bonusDesc: "매매 수수료 할인 및 노동 보상 증가",
-        effect: "거래 수수료 추가 -30% · 대출 기능 준비 중"
+        bonusDesc: "성향에 따른 능력치 보너스는 없습니다",
+        effect: "분석력은 정보 해석 테스트와 찌라시 퀴즈로 성장해요"
     },
     management: {
         title: "공격적 자산가",
-        statName: "운용력 +1",
+        statName: "투자 성향",
         statColor: "#ff4081",
         icon: "💰",
-        bonusDesc: "보유 가능 종목 수 증대",
-        effect: "포트폴리오 종목 슬롯 +2개"
+        bonusDesc: "성향에 따른 능력치 보너스는 없습니다",
+        effect: "분석력은 정보 해석 테스트와 찌라시 퀴즈로 성장해요"
     },
     recovery: {
         title: "불굴의 트레이더",
-        statName: "회복력 +1",
+        statName: "투자 성향",
         statColor: "#00e676",
         icon: "⚡",
-        bonusDesc: "최대 하트 증가 및 활동 효율 향상",
-        effect: "회복력 +1 · 회복력 2단계부터 최대 하트 증가"
+        bonusDesc: "성향에 따른 능력치 보너스는 없습니다",
+        effect: "분석력은 정보 해석 테스트와 찌라시 퀴즈로 성장해요"
     }
 };
 

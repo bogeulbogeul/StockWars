@@ -1,0 +1,22 @@
+[
+  {
+    "path": "js/engine/AnalysisGrowth.js",
+    "sha256": "99832405d2c751166b38dacf6a1e166e8033551390518789d66e14f08996f95d"
+  },
+  {
+    "path": "js/engine/AnalysisGrowthMigration.js",
+    "sha256": "2b829305b44b0b2179ff8fa65597cd425f9526f5f38a09f52ee103faab81c811"
+  },
+  {
+    "path": "js/engine/RumorInterpretation.js",
+    "sha256": "1277511e405b87d901f814458805d2921ecae17085d3d9ebdd7e24d4da4406dd"
+  },
+  {
+    "path": "js/engine/ItemEngine.js",
+    "sha256": "cdf7b47feec1a428b63a754569b34cf2513d903a54d64f7d361605bdfc8d2044"
+  },
+  {
+    "path": "js/components/inventory/RumorQuizCard.js",
+    "sha256": "246cd70fdd252469333348b726af24041e0b2bc20454414630b9d623cd972782"
+  }
+]

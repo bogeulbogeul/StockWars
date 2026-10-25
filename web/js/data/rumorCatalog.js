@@ -12,9 +12,9 @@ export const AUTHORED_RUMOR_ITEMS = AUTHORED_RUMORS.map((event, index) => {
     return {
         ...event, id: event.rumorId, category: 'intel', icon: '📜', rarity,
         quantity: 1, maxStack: 1, price: RUMOR_BALANCE[rarity].price,
-        rumorSchema: 2, interpretationLevel: 1,
+        rumorSchema: 3, interpretationLevel: 1,
         desc: '봉인된 현장 제보예요. 단서를 읽고 뉴스와 비교해 보세요.',
-        intelReport: event.rumorStages[9], effects: ['자세한 해석도 진위나 수익을 보장하지 않아요.'],
+        intelReport: event.rumorStages[4], effects: ['자세한 해석도 진위나 수익을 보장하지 않아요.'],
         actionType: 'read', actionLabel: '열람하기'
     };
 });

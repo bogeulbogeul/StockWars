@@ -1,0 +1,12 @@
+{
+  "roof": {
+    "tiles": 166,
+    "mainRidgeCaps": 12,
+    "porchRidgeCaps": 4,
+    "mainPeak": 2.22,
+    "porchPeak": 1.98
+  },
+  "source": "bank-exterior-clean-v1",
+  "gameApplied": false,
+  "sha256": "278b4a19db4ad1acf466760e5f46c7ba755ab4ba4b30c25ea28d3482ba8ffec5"
+}

@@ -174,6 +174,17 @@ export function initInterface() {
                 if (tutorial?.isActive && tutorial.historyCursor == null && tutorial.steps[tutorial.currentStepIdx]?.id === 'rumor_actual_close') tutorial.nextStep();
             },
             getAnalysisLevel: () => this.itemEngine?.stats().analysis ?? 1,
+            getAnalysisProgress: () => this.itemEngine?.analysisProgress(),
+            beginRumorQuiz: itemId => {
+                const result = this.itemEngine.beginRumorQuiz(itemId);
+                this.itemGameplay.sync();
+                return result;
+            },
+            submitRumorQuiz: (itemId, questionKey, choiceIndex) => {
+                const result = this.itemEngine.submitRumorQuiz(itemId, questionKey, choiceIndex);
+                this.itemGameplay.sync();
+                return result;
+            },
             getDecoderTargets: () => this.itemEngine?.decoderTargets() ?? [],
             decodeRumor: (rumorId, powderId = 'item_crypto_decoder') => {
                 const result = this.itemEngine.use(powderId, { rumorId });

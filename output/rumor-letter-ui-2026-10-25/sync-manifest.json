@@ -1,0 +1,18 @@
+[
+  {
+    "path": "css/style.css",
+    "sha256": "b4bfd78ec8ac3df66f3642955b8c23ee555aad8261e754cd48fcaec387ce5e99"
+  },
+  {
+    "path": "css/modules/rumor-letter.css",
+    "sha256": "7ecdbaed499f01eb48c86ae64ab092bd3858f3f868d92b9923986c462c8442ac"
+  },
+  {
+    "path": "js/components/inventory/RumorPopup.js",
+    "sha256": "d485eecb10eeee7ce6d5e0716d0c04e08bfca24c45e962fa8e91a6ee65340539"
+  },
+  {
+    "path": "js/components/inventory/RumorQuizCard.js",
+    "sha256": "2597f193377f110c86e5718ce8405319926de5bd82cf1faa5da3ccf2c7d9e1b7"
+  }
+]

@@ -22,7 +22,7 @@ export function enterCipherTrainingShell(lobby) {
         automaticExit: false,
         stageId: 'cipherTrainingStage',
         label: '증권사 트레이닝룸 3D 공간',
-        hint: 'WASD / 방향키 이동 · Shift 달리기 · 오른쪽 문 F / Esc 로비'
+        hint: 'WASD 이동 · Shift 달리기 · 오른쪽 문 F / Esc 로비'
     });
     lobby.trainingReturnPosition = position;
     lobby.hide();

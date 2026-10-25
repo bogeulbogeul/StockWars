@@ -8,12 +8,23 @@ import { BANK_ROOM, bankCanStand } from '../../data/bankModelRoom.js';
 import { buildInformationModelRoom } from '../../components/information3d/InformationModelRoom.js';
 import { buildBankModelRoom } from '../../components/bank3d/BankModelRoom.js';
 import { TOWN_MODEL_BUILDINGS } from '../../data/townModelBuildings.js';
+import { TOWN_MODEL_PROPS } from '../../data/townModelProps.js';
 import { placeSomangi } from './SomangiPresentation.js';
 
-const positions = { arrival: [TOWN_ARRIVAL.x, TOWN_ARRIVAL.y], tree: [1660, 1430], bench: [1460, 1420], notice: [1650, 2140],
-    homeOutside: [900, 1040], storeOutside: [2150, 1240], stockOutside: [2150, 1900],
-    bankOutside: [2600, 2190], informationOutside: [1400, 2190], furniture: [850, 1900],
-    pub: [2600, 990], bookstore: [2600, 1590], post: [1760, 1550] };
+const outside = id => {
+    const b = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
+    return [b.x + (b.entranceOffsetX || 0), b.y + 110];
+};
+const propFront = id => {
+    const p = TOWN_MODEL_PROPS.find(item => item.id === id);
+    return [p.x, p.y + 90];
+};
+const positions = { arrival: [TOWN_ARRIVAL.x, TOWN_ARRIVAL.y], tree: propFront('plaza_tree'),
+    bench: propFront('plaza_bench_west'), notice: propFront('plaza_notice_board'),
+    homeOutside: outside('home_office_tower'), storeOutside: outside('vivian_store'),
+    stockOutside: outside('cipher_securities'), bankOutside: outside('node_finance'),
+    informationOutside: outside('settlement_information'), furniture: outside('julian_furniture'),
+    pub: outside('midnight_pub'), bookstore: outside('data_ink_bookstore'), post: outside('post_office') };
 
 export class ExhibitionScenes {
     constructor(container) {

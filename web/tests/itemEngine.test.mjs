@@ -11,7 +11,7 @@ function fixture(date = '2026-09-28T12:00:00+09:00') {
     const engine = new ItemEngine({ market, clock: () => now, random: () => 0 });
     market.itemEngine = engine;
     engine.state.profit = 30000; engine.state.survivals = 1; engine.state.affinity = 200;
-    engine.state.baseStats.analysis = 5; engine.state.decryptions = 50;
+    engine.state.baseStats.analysis = 5; engine.state.analysisGrowth.level = 5; engine.state.decryptions = 50;
     return { engine, market, advance: ms => { now += ms; engine.tick(); }, set: t => { now = Date.parse(t); engine.tick(); } };
 }
 // Retired goods are seeded as pre-existing ownership, never repurchased.
@@ -44,63 +44,52 @@ test('drinks heal one heart and caffeine enforces daily use across reloads', () 
     use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,3);
 });
 
-test('all three buffs affect stats, trading or labor and expire after 120 minutes', () => {
-    const {engine:e,market:m,advance}=fixture();
+test('analysis buff remains temporary; retired ability buffs never affect common rules', () => {
+    const {engine:e,advance}=fixture();
+    e.analysisProgress(); e.state.analysisGrowth.level=3;
     e.state.baseStats.management=5;
-    for(const id of ['item_focus_pill','item_stabilizer','item_vitamin_complex']) { purchase(e,id,2); use(e,id); assert.equal(e.use(id).success,false); }
-    assert.equal(e.stats().analysis,7); assert.equal(e.stats().management,7); assert.equal(e.stats().recovery,2);
-    assert.equal(e.orderLimit(),110); assert.equal(e.laborCost(),1);
-    assert.equal(m.buyStock('CLOUDBERRY',110).success,true);
-    assert.equal(m.buyStock('CLOUDBERRY',111).success,false);
-    e.finishLabor(100); assert.equal(e.state.stamina,2);
-    advance(ITEM_BALANCE.buffMs); assert.equal(e.stats().analysis,5); assert.equal(e.laborCost(),1);
-    assert.equal(m.buyStock('CLOUDBERRY',110).success,false);
+    e.state.buffs.management = e.now() + ITEM_BALANCE.buffMs;
+    e.state.buffs.recovery = e.now() + ITEM_BALANCE.buffMs;
+    purchase(e,'item_focus_pill',2); use(e,'item_focus_pill');
+    assert.equal(e.use('item_focus_pill').success,false);
+    assert.deepEqual(e.stats(),{analysis:5});
+    assert.equal(e.orderLimit(),100); assert.equal(e.portfolioSlots(),5);
+    assert.equal(e.maxStamina(),3); assert.equal(e.laborCost(),1);
+    advance(ITEM_BALANCE.buffMs); assert.deepEqual(e.stats(),{analysis:3});
 });
 
-test('previously owned ability items still report their stat increases', () => {
-    for (const instant of [false, true]) {
-        for (const [id, stat, name] of [['item_focus_pill', 'analysis', '분석력'], ['item_stabilizer', 'management', '운용력'], ['item_vitamin_complex', 'recovery', '회복력']]) {
-            const { engine } = fixture();
-            const before = engine.stats()[stat];
-            engine.add(id);
-            const result = engine.use(id);
-            assert.equal(result.success, true);
-            assert.deepEqual(result.statBoost, { stat, name, before, after: before + 2, amount: 2, durationMinutes: 120 });
-            assert.match(result.message, new RegExp(`${name}이 2 올랐습니다`));
-            assert.equal(engine.use(id).statBoost, undefined);
-        }
+test('retired ability items preserve ownership on rejected use; analysis item still reports its effect', () => {
+    const {engine:e}=fixture();
+    for(const id of ['item_stabilizer','item_vitamin_complex']) {
+        e.add(id,2);
+        const before=structuredClone(e.state.inventory);
+        assert.equal(e.use(id).success,false);
+        assert.deepEqual(e.state.inventory,before);
     }
+    e.add('item_focus_pill');
+    const result=e.use('item_focus_pill');
+    assert.equal(result.success,true);
+    assert.deepEqual(result.statBoost,{stat:'analysis',name:'분석력',before:5,after:5,amount:0,durationMinutes:120});
 });
 
-
-test('recovery grants whole hearts, preserves current health on buffs and clamps expired capacity', () => {
+test('common hearts stay at three across legacy stats, reload, recovery and rest', () => {
     const {engine:e,market,advance}=fixture();
-    for (const [level,max] of [[0,3],[1,3],[2,4],[3,4],[4,5],[5,5],[100,5]]) {
-        e.state.baseStats.recovery=level;
-        assert.equal(e.maxStamina(),max);
+    for(const value of [0,1,2,4,5,100]) {
+        e.state.baseStats.recovery=value;
+        assert.equal(e.maxStamina(),3);
         assert.equal(e.recoveryAmount(),1); assert.equal(e.laborCost(),1);
     }
-    e.state.baseStats.recovery=2; e.state.stamina=3;
-    e.add('item_vitamin_complex',2); use(e,'item_vitamin_complex');
-    assert.equal(e.maxStamina(),5); assert.equal(e.state.stamina,3);
+    e.state.stamina=1;
     e.add('item_energy_drink',3); e.add('item_caffeine_shot');
-    use(e,'item_energy_drink'); assert.equal(e.state.stamina,4);
-    use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,5);
-    assert.equal(e.use('item_energy_drink').success,true);
-    assert.equal(e.state.stamina,5);
-    assert.equal(e.state.inventory.find(i=>i.id==='item_energy_drink').quantity,1);
-    const restored = new ItemEngine({market,clock:e.clock,state:JSON.parse(JSON.stringify(e.state))});
-    assert.equal(restored.maxStamina(),5); assert.equal(restored.state.stamina,5);
-    advance(ITEM_BALANCE.buffMs); restored.tick();
-    assert.equal(e.maxStamina(),4); assert.equal(e.state.stamina,4);
-    assert.equal(restored.state.stamina,4);
-    use(e,'item_vitamin_complex'); e.state.stamina=2;
-    advance(ITEM_BALANCE.buffMs); assert.equal(e.state.stamina,2);
-    e.state.stamina=0;
-    assert.equal(e.restOnBench().success,true); assert.equal(e.state.stamina,4);
+    use(e,'item_energy_drink'); assert.equal(e.state.stamina,2);
+    use(e,'item_caffeine_shot'); assert.equal(e.state.stamina,3);
+    const restored=new ItemEngine({market,clock:e.clock,state:structuredClone(e.state)});
+    assert.equal(restored.state.stamina,3);
+    e.state.stamina=0; advance(DAY); assert.equal(e.state.stamina,0);
+    assert.equal(e.restOnBench().success,true); assert.equal(e.state.stamina,3);
     assert.equal(e.restOnBench().success,false);
-    e.state.baseStats.recovery=4; e.advanceDay(); assert.equal(e.state.stamina,5);
-    const legacy=JSON.parse(JSON.stringify(e.state)); legacy.stamina=2.2;
+    e.advanceDay(); assert.equal(e.state.stamina,3);
+    const legacy=structuredClone(e.state); legacy.stamina=2.2;
     assert.equal(new ItemEngine({market,clock:e.clock,state:legacy}).state.stamina,3);
 });
 

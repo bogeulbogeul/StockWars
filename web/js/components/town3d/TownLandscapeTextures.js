@@ -40,34 +40,6 @@ export function createGrassTexture() {
     return map;
 }
 
-export function createSkyTexture() {
-    const [image, ctx] = canvas(2048, 1024);
-    const sky = ctx.createLinearGradient(0, 0, 0, 1024);
-    sky.addColorStop(0, '#7dc9ed');
-    sky.addColorStop(0.5, '#b1dff0');
-    sky.addColorStop(1, '#e9f2dc');
-    ctx.fillStyle = sky;
-    ctx.fillRect(0, 0, 2048, 1024);
-    const cloud = (x, y, scale) => {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.scale(scale, scale);
-        ctx.fillStyle = '#f9fcf4';
-        ctx.beginPath();
-        ctx.ellipse(0, 9, 94, 23, 0, 0, Math.PI * 2);
-        ctx.ellipse(-40, 0, 35, 30, 0, 0, Math.PI * 2);
-        ctx.ellipse(4, -13, 44, 37, 0, 0, Math.PI * 2);
-        ctx.ellipse(50, 0, 34, 25, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-    };
-    cloud(270, 58, 1.05);
-    cloud(1120, 73, 0.85);
-    cloud(1750, 60, 1.1);
-    cloud(690, 250, 0.8);
-    return texture(image);
-}
-
 export function createPathsTexture() {
     const [image, ctx] = canvas(2048);
     ctx.scale(2048 / 3700, 2048 / 2600);
@@ -76,7 +48,7 @@ export function createPathsTexture() {
     const strokeRoutes = (color, width) => {
         ctx.strokeStyle = color;
         for (const [routeIndex, route] of routes.entries()) {
-            ctx.lineWidth = width * (routeIndex === 0 ? 1.25 : 1);
+            ctx.lineWidth = width * (routeIndex === 0 ? 1.15 : routeIndex === 2 ? 1 : .76);
             ctx.beginPath();
             ctx.moveTo(...route[0]);
             for (let index = 1; index < route.length - 1; index++) {
@@ -84,7 +56,7 @@ export function createPathsTexture() {
                 const before = Math.hypot(corner[0] - previous[0], corner[1] - previous[1]);
                 const after = Math.hypot(next[0] - corner[0], next[1] - corner[1]);
                 if (!before || !after) continue;
-                const radius = Math.min(28, before / 2, after / 2);
+                const radius = Math.min(100, before / 2, after / 2);
                 ctx.lineTo(corner[0] + (previous[0] - corner[0]) * radius / before,
                     corner[1] + (previous[1] - corner[1]) * radius / before);
                 ctx.quadraticCurveTo(...corner,
@@ -95,8 +67,8 @@ export function createPathsTexture() {
             ctx.stroke();
         }
     };
-    strokeRoutes('#d1bc8b', 74);
-    strokeRoutes('#e5ce98', 68);
+    strokeRoutes('#d1bc8b', 58);
+    strokeRoutes('#e5ce98', 54);
     const { x: plazaX, y: plazaY, radiusX: rx, radiusY: ry } = TOWN_PLAZA;
     ctx.fillStyle = '#e5ce98';
     ctx.beginPath();

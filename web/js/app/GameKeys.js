@@ -19,8 +19,6 @@ export function gameKey(event) {
     const bindings = settingsStore.value.keyBindings;
     const action = Object.keys(bindings).find(action => bindings[action] === code);
     if (action) return action;
-    const arrow = { ArrowUp: 'w', ArrowLeft: 'a', ArrowDown: 's', ArrowRight: 'd' }[code];
-    if (arrow) return arrow;
     // A former action key must stop triggering its previous command.
     if (Object.values(DEFAULT_KEY_BINDINGS).includes(code)) return '';
     if (/^Key[A-Z]$/.test(code)) return code.slice(3).toLowerCase();

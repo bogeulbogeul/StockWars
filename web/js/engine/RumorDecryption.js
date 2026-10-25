@@ -21,5 +21,5 @@ function legacyDecryption(text, item, analysis) {
 export function rumorDecryption(text, item, analysis) {
     if (!isAuthoredRumor(item)) return { ...legacyDecryption(text, item, analysis), maxLevel: 5, legacy: true };
     const level = rumorLevel(item, analysis);
-    return { level, maxLevel: 10, noise: 0, text: item.rumorStages[level - 1], legacy: false };
+    return { level, maxLevel: 5, noise: 0, text: item.rumorStages[level - 1], legacy: false };
 }

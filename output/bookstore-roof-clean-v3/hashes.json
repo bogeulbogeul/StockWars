@@ -1,0 +1,14 @@
+[
+  {
+    "Path": "C:\\GitHub\\StockWars\\output\\bookstore-roof-clean-v3\\Bookstore-clean.glb",
+    "Hash": "49CA36C6AEB855C4B87278D72BB785110CD45492E5132D173150375075A2F681"
+  },
+  {
+    "Path": "C:\\GitHub\\StockWars\\web\\assets\\buildings\\3d\\Bookstore-clean.glb",
+    "Hash": "49CA36C6AEB855C4B87278D72BB785110CD45492E5132D173150375075A2F681"
+  },
+  {
+    "Path": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web\\assets\\buildings\\3d\\Bookstore-clean.glb",
+    "Hash": "49CA36C6AEB855C4B87278D72BB785110CD45492E5132D173150375075A2F681"
+  }
+]

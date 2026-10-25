@@ -12,6 +12,8 @@ import { initTutorial } from './app/initTutorial.js';
 import { showTitleScreen } from './app/TitleScreen.js';
 import { resumeDemoEnd } from './app/DemoLifecycle.js';
 import { isExhibitionMode } from './app/exhibition/Mode.js';
+import { retireNeonInterface } from './app/RetireNeonInterface.js';
+import { installPhoneHome } from './app/InstallPhoneHome.js';
 
 class StockWarsApplication {
     constructor() {
@@ -24,6 +26,8 @@ class StockWarsApplication {
         setPlayerCharacterStyle(this.userProfile?.styleId);
         this.bindEngine();
         this.onlineSocialSync=new OnlineSocialSync(this);
+        retireNeonInterface(this);
+        installPhoneHome(this);
         showTitleScreen(() => {
             // The current 3D town is already mounted; retain the active session.
         });

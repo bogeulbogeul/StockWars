@@ -1,0 +1,17 @@
+{
+  "source": "post-office-envelope-match-v3",
+  "sharedEnvelopeSource": "C:\\GitHub\\StockWars\\output\\home-envelope-correct-v7\\Home-correct-envelope.blend",
+  "sameShapeAndMaterials": true,
+  "uniformSignScale": 3.071428571428571,
+  "parts": [
+    "Post_Sign_Shared_Mailbox_Envelope_Overlapping_Paper_Flap",
+    "Post_Sign_Shared_Mailbox_Envelope_Emblem",
+    "Post_Sign_Shared_Mailbox_Envelope_Continuous_V_Crease",
+    "Post_Sign_Shared_Mailbox_Envelope_Connected_Lower_Fold.001",
+    "Post_Sign_Shared_Mailbox_Envelope_Connected_Lower_Fold"
+  ],
+  "unchangedMeshes": 202,
+  "frameAndMailboxUnchanged": true,
+  "gameApplied": false,
+  "sha256": "64658d83c89fa48f5b5f6236a526579c1ebeda8cf569fa2681f7c52da54ec6c6"
+}

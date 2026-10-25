@@ -1,0 +1,19 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-game-v1\\somangi-walk.blend",
+  "sourceSHA256": "b460fe7fd2e5f5a44d004b60c121b0561df8e5a5a2e791bdb7c363af0774bff6",
+  "accessorySource": "C:\\GitHub\\StockWars\\output\\agent-k-glasses-v6\\Agent-K.blend",
+  "accessorySourceSHA256": "92f378526e45c8787f93b95634802cbbb3c8b9677a196f6f4f8d0a5534c42c87",
+  "vertices": 132191,
+  "maximumBodyVertexChange": 0,
+  "skinSRGB": "#B8C2D9",
+  "accessories": [
+    "Glasses smooth frame",
+    "Crystal collar",
+    "AgentK_Crystal"
+  ],
+  "clothes": false,
+  "gameInstalled": false,
+  "crystalAndCollarOffsetZ": -0.055,
+  "walkPreserved": true,
+  "face": "Somangi baseline U smile"
+}

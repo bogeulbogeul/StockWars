@@ -7,7 +7,7 @@ import { ItemEngine, DAY } from '../js/engine/ItemEngine.js';
 import { rumorDecryption } from '../js/engine/RumorDecryption.js';
 import { InventoryModal } from '../js/components/InventoryModal.js';
 
-test('all 72 companies have four events and all 2880 texts match company manuscripts', () => {
+test('all 72 companies have four events and all 1440 texts match company manuscripts', () => {
     assert.equal(AUTHORED_RUMOR_ITEMS.length, 288);
     assert.equal(new Set(AUTHORED_RUMOR_ITEMS.map(i => i.id)).size, 288);
     for (const stock of INITIAL_STOCKS) {
@@ -17,14 +17,14 @@ test('all 72 companies have four events and all 2880 texts match company manuscr
         assert.equal(items.filter(i => i.rumorDirection === 'negative').length, 2);
         const document = fs.readFileSync(items[0].sourceDocument, 'utf8');
         assert.deepEqual(items.flatMap(i => i.rumorStages), [...document.matchAll(/^> (.+)$/gm)].map(m => m[1]));
-        for (const item of items) for (let level = 1; level <= 10; level++) {
-            const result = rumorDecryption(item.intelReport, item, level);
+        for (const item of items) for (let level = 1; level <= 5; level++) {
+            const result = rumorDecryption(item.intelReport, { ...item, interpretationLevel: level }, 1);
             assert.equal(result.text, item.rumorStages[level - 1]);
             assert.equal(result.level, level);
-            const view = InventoryModal.prototype.getItemPresentation.call({ callbacks: { getAnalysisLevel: () => level } }, { ...item, isRead: true });
+            const view = InventoryModal.prototype.getItemPresentation.call({ callbacks: { getAnalysisLevel: () => 1 } }, { ...item, interpretationLevel: level, isRead: true });
             assert.equal(view.desc, result.text);
             assert.ok(!view.name.includes(stock.name));
-            if (level < 4) assert.ok(!JSON.stringify(view.effects).includes(stock.name));
+            if (level < 2) assert.ok(!JSON.stringify(view.effects).includes(stock.name));
         }
     }
 });
@@ -43,7 +43,7 @@ test('envelopes create independent authored holdings without market events or st
     assert.ok(a.success && b.success);
     assert.notEqual(a.rumorId, b.rumorId);
     const first = engine.state.inventory.find(i => i.id === a.rumorId);
-    assert.equal(first.rumorStages.length, 10);
+    assert.equal(first.rumorStages.length, 5);
     assert.ok(first.isRead);
     assert.equal(first.interpretationLevel, 1);
     assert.equal(engine.state.reports.length, 0);
@@ -53,11 +53,11 @@ test('envelopes create independent authored holdings without market events or st
     assert.equal(market.stocks.get(first.targetStockId).price, price);
 });
 
-test('powders stop at ten, affect only selected holdings and preserve saves', () => {
+test('powders stop at five, affect only selected holdings and preserve saves', () => {
     const { engine, market } = fixture();
     engine.state.inventory.push(...['first', 'second'].map(id => ({ ...structuredClone(AUTHORED_RUMOR_ITEMS[0]), id, isRead: true })));
     assert.ok(engine.purchase('item_crypto_decoder', 9).success);
-    for (let level = 2; level <= 10; level++) {
+    for (let level = 2; level <= 5; level++) {
         assert.ok(engine.use('item_crypto_decoder', { rumorId: 'first' }).success);
         assert.equal(engine.state.inventory[0].interpretationLevel, level);
         assert.equal(engine.stats().analysis, 1);
@@ -67,7 +67,7 @@ test('powders stop at ten, affect only selected holdings and preserve saves', ()
     assert.equal(engine.use('item_moon_powder', { rumorId: 'first' }).success, false);
     assert.equal(engine.state.inventory.find(i => i.id === 'item_moon_powder').quantity, 1);
     assert.ok(engine.use('item_moon_powder', { rumorId: 'second' }).success);
-    assert.equal(engine.state.inventory[1].interpretationLevel, 10);
+    assert.equal(engine.state.inventory[1].interpretationLevel, 5);
     const saved = JSON.stringify(engine.state);
     const restored = new ItemEngine({ market, state: JSON.parse(saved), blackSwanEnabled: false, clock: () => 1000 });
     assert.equal(JSON.stringify(restored.state), saved);
@@ -77,7 +77,8 @@ test('powders stop at ten, affect only selected holdings and preserve saves', ()
 test('legacy text, quantities and levels survive; high stats are clamped without deleting saved growth', () => {
     const { engine, market } = fixture();
     engine.state.baseStats.analysis = 20;
-    assert.equal(engine.stats().analysis, 10);
+    delete engine.state.analysisGrowth;
+    assert.equal(engine.stats().analysis, 5);
     assert.equal(engine.state.baseStats.analysis, 20);
     const legacy = { id: 'old', category: 'intel', targetStockId: 'CLOUDBERRY', interpretationLevel: 5, price: 777, quantity: 2, intelReport: '보존된 원문' };
     engine.state.inventory.push(legacy);

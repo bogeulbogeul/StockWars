@@ -1,0 +1,99 @@
+{
+  "buildings": {
+    "home_office_tower": {
+      "width": 347.25684400086345,
+      "expected": 347.2568440008635,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 211,
+      "doorHeight": 124.9999999976645,
+      "doorAlignment": 2.9623663522215793e-9
+    },
+    "settlement_information": {
+      "width": 416.78994231759475,
+      "expected": 416.78994231759486,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 253,
+      "doorHeight": 125.00000000410033,
+      "doorAlignment": 0
+    },
+    "vivian_store": {
+      "width": 506.13788837607626,
+      "expected": 506.13788837607655,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 244
+    },
+    "julian_furniture": {
+      "width": 516.4776678154151,
+      "expected": 516.4776678154151,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 306,
+      "doorHeight": 125.0000000051599
+    },
+    "cipher_securities": {
+      "width": 774.3134326612205,
+      "expected": 774.3134326612203,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 599,
+      "doorHeight": 124.99999999987199,
+      "doorAlignment": 7.028802428976633e-9
+    },
+    "node_finance": {
+      "width": 441.28963546145314,
+      "expected": 441.28963546145303,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 257,
+      "doorHeight": 124.99999999593871
+    },
+    "midnight_pub": {
+      "width": 545.7764649011528,
+      "expected": 545.776464901153,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 339,
+      "doorHeight": 125.00000000584072
+    },
+    "data_ink_bookstore": {
+      "width": 455.62332916416244,
+      "expected": 455.6233291641629,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 327
+    },
+    "post_office": {
+      "width": 371.2923733673174,
+      "expected": 371.2923733673174,
+      "blocked": true,
+      "frontClear": true,
+      "nodes": 214,
+      "doorHeight": 124.99999999697141,
+      "doorAlignment": 3.3753337902453495e-9
+    }
+  },
+  "overlaps": [],
+  "clock": [
+    "2026-10-18T15:00:00Z",
+    "2026-10-18T18:00:00Z",
+    "2026-10-18T21:30:00Z",
+    "2026-10-19T03:15:30Z"
+  ],
+  "clockAdvanced": true,
+  "blockedPathSamples": [],
+  "reachableEntrances": {
+    "home_office_tower": true,
+    "settlement_information": true,
+    "vivian_store": true,
+    "julian_furniture": true,
+    "cipher_securities": true,
+    "node_finance": true,
+    "midnight_pub": true,
+    "data_ink_bookstore": true,
+    "post_office": true
+  },
+  "errors": []
+}

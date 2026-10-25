@@ -1,0 +1,29 @@
+{
+  "frames": 365,
+  "actions": [
+    {
+      "action": "approached",
+      "time": 2.85
+    },
+    {
+      "action": "F",
+      "count": 1,
+      "time": 4.246
+    },
+    {
+      "action": "F",
+      "count": 2,
+      "time": 6.253
+    },
+    {
+      "action": "F",
+      "count": 3,
+      "time": 8.266
+    },
+    {
+      "action": "stood",
+      "time": 9.569
+    }
+  ],
+  "errors": []
+}

@@ -3,7 +3,7 @@ export const LOBBY = {
     width: 900, depth: 608, wallHeight: 300, radius: 22,
     spawn: { x: 0, z: 169 }, exitZ: 266, exitHalfWidth: 72,
     desk: { x: 0, z: -65, width: 310, depth: 100, height: 72 },
-    agentK: { x: 0, z: -205, bodyHeight: 110, radius: 31 },
+    agentK: { x: 0, z: -205, bodyHeight: 100, radius: 31 },
     waitingAreas: [-1,1].map(side => ({ side: side < 0 ? 'left' : 'right',
         benchX: side*390, benchZ: 70, benchRotation: -side*Math.PI/2,
         benchHalfWidth: 44, benchHalfDepth: 54, plantX: side*390, plantZ: 220 })),
@@ -18,6 +18,7 @@ export const LOBBY = {
 export function lobbyCanStand(x, z) {
     const { width, depth, radius, desk } = LOBBY;
     if (Math.abs(x) > width / 2 - radius || Math.abs(z) > depth / 2 - radius) return false;
+    if (Math.hypot(x - LOBBY.agentK.x, z - LOBBY.agentK.z) < LOBBY.agentK.radius + radius) return false;
     for (const area of LOBBY.waitingAreas) {
         if (Math.abs(x-area.benchX) < area.benchHalfWidth+radius
             && Math.abs(z-area.benchZ) < area.benchHalfDepth+radius) return false;

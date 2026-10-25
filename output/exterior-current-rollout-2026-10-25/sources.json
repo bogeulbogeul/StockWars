@@ -1,0 +1,39 @@
+{
+  "home_office_tower": [
+    "home-envelope-correct-v7",
+    "Home-with-right-mailbox.glb",
+    "Home-inset-window.glb"
+  ],
+  "settlement_information": [
+    "information-corner-foot-remove-v8",
+    "Information-clean.glb"
+  ],
+  "vivian_store": [
+    "vivian-panel-molding-v11",
+    "VivianStore-clean.glb"
+  ],
+  "julian_furniture": [
+    "furniture-redesign-v2",
+    "Furniture-clean.glb"
+  ],
+  "cipher_securities": [
+    "cipher-pediment-solid-v23",
+    "CipherSecurities-clock.glb"
+  ],
+  "node_finance": [
+    "bank-timber-roof-fit-v7",
+    "Bank-clean.glb"
+  ],
+  "data_ink_bookstore": [
+    "bookstore-roof-pitched-v2",
+    "Bookstore-clean.glb"
+  ],
+  "midnight_pub": [
+    "pub-timber-fit-v5",
+    "Pub-clean.glb"
+  ],
+  "post_office": [
+    "post-office-sign-match-v4",
+    "PostOffice.glb"
+  ]
+}

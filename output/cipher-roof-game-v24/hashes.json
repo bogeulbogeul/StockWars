@@ -1,0 +1,14 @@
+[
+  {
+    "Path": "C:\\GitHub\\StockWars\\output\\cipher-roof-clean-v24\\CipherSecurities-clock.glb",
+    "Hash": "1B8152B9DBB3D5596B65DDBE8E56D7320EC3A9351B72838CD8E456E7FDCFCE66"
+  },
+  {
+    "Path": "C:\\GitHub\\StockWars\\web\\assets\\buildings\\3d\\CipherSecurities-clock.glb",
+    "Hash": "1B8152B9DBB3D5596B65DDBE8E56D7320EC3A9351B72838CD8E456E7FDCFCE66"
+  },
+  {
+    "Path": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web\\assets\\buildings\\3d\\CipherSecurities-clock.glb",
+    "Hash": "1B8152B9DBB3D5596B65DDBE8E56D7320EC3A9351B72838CD8E456E7FDCFCE66"
+  }
+]

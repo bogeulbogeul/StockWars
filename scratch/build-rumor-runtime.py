@@ -28,7 +28,7 @@ def build():
                 direction, slot, title, body = sections[i:i+4]
                 event_id = re.search(r'^사건 ID: `([^`]+)`', body, re.M)[1]
                 stages = re.findall(r'^> (.+)$', body, re.M)
-                assert len(stages) == len(set(stages)) == 10, event_id
+                assert len(stages) == len(set(stages)) == 5, event_id
                 assert event_id not in seen
                 seen.add(event_id)
                 events.append(dict(rumorId=event_id, targetStockId=path.stem,
@@ -49,7 +49,7 @@ def build():
     source = '\n'.join(f"import {{ {v} }} from '{p}';" for v,p in sector_imports)
     source += '\nexport const AUTHORED_RUMORS = [' + ', '.join('...'+v for v,p in sector_imports) + '];\n'
     (target.parent / 'authoredRumors.js').write_text(source, encoding='utf-8')
-    print('Compiled 72 companies / 288 events / 2880 exact stage texts')
+    print('Compiled 72 companies / 288 events / 1440 exact stage texts')
 
 
 if __name__ == '__main__':

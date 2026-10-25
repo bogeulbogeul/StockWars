@@ -3,15 +3,15 @@ import assert from 'node:assert/strict';
 import { SideQuestEngine } from '../js/engine/SideQuestEngine.js';
 import { applyPlayerTrait } from '../js/engine/PlayerTrait.js';
 
-test('all starting traits keep their stat bonus without granting a title', () => {
+test('starting traits grant neither ability bonuses nor titles', () => {
     for (const key of ['analysis', 'negotiation', 'management', 'recovery']) {
         const state = { baseStats: { analysis: 0, negotiation: 0, management: 0, recovery: 0 } };
         applyPlayerTrait(state, { trait: { key } });
-        assert.equal(state.baseStats[key], 1);
-        assert.equal(state.appliedTrait, key);
+        assert.equal(state.baseStats[key], 0);
+        assert.equal(state.appliedTrait, undefined);
         assert.equal(Object.hasOwn(state, 'equippedTitle'), false);
         applyPlayerTrait(state, { trait: { key } });
-        assert.equal(state.baseStats[key], 1);
+        assert.equal(state.baseStats[key], 0);
     }
 });
 

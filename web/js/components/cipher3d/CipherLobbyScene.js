@@ -14,7 +14,7 @@ export class CipherLobbyScene {
         this.buildRoom = options.buildRoom || buildCipherLobby;
         this.canStand = options.canStand || lobbyCanStand;
         this.nearbyDoor = options.nearbyDoor || nearbyLobbyDoor;
-        this.defaultHint = options.hint || 'WASD / 방향키 이동 · Shift 달리기 · 2 먹기 · 아래 출입구 / Esc 마을';
+        this.defaultHint = options.hint || 'WASD 이동 · Shift 달리기 · 2 먹기 · 아래 출입구 / Esc 마을';
         this.roomLabel = options.label || '증권사 로비';
         this.createInteraction = options.createInteraction;
         this.automaticExit = options.automaticExit !== false;
@@ -99,7 +99,7 @@ export class CipherLobbyScene {
                 }
             }
             if (key === 'escape' && !event.repeat) { event.preventDefault(); void this.exit(); return; }
-            const action = { arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key;
+            const action = key;
             if (['w', 'a', 's', 'd', 'shift'].includes(action)) {
                 event.preventDefault();
                 this.controller.keysHeld.add(action);
@@ -107,7 +107,7 @@ export class CipherLobbyScene {
         });
         window.addEventListener('keyup', event => {
             const key = gameKey(event);
-            this.controller.keysHeld.delete({ arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key);
+            this.controller.keysHeld.delete(key);
             this.interaction?.onKeyRelease();
         });
         window.addEventListener('blur', () => this.controller.keysHeld.clear());

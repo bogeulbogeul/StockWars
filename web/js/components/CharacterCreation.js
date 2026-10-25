@@ -124,8 +124,8 @@ export class CharacterCreation {
                                             <span class="id-trait-tag" id="idCardTrait">📊 예리한 분석가</span>
                                         </div>
                                         <div class="id-bonus-box">
-                                            <span class="bonus-lbl">성향 고유 보너스</span>
-                                            <span class="bonus-val" id="idCardBonusVal">분석력 +1 • 찌라시 해독률 강화</span>
+                                            <span class="bonus-lbl">성향 안내</span>
+                                            <span class="bonus-val" id="idCardBonusVal">분석력은 정보 해석 테스트와 찌라시 퀴즈로 성장해요</span>
                                         </div>
                                     </div>
                                 </div>

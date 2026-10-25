@@ -1,0 +1,12 @@
+{
+  "source": "cipher-pediment-solid-v23",
+  "roof": {
+    "tiles": 388,
+    "straightRidgeX": 0.37661857822739897,
+    "mainPeak": 2.735290753800207,
+    "mainFront": -2.147271712610679,
+    "mainRear": 1.60680328863632
+  },
+  "gameApplied": false,
+  "sha256": "1b8152b9dbb3d5596b65ddbe8e56d7320ec3a9351b72838cd8e456e7fdcfce66"
+}

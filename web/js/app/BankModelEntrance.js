@@ -35,7 +35,7 @@ export function installBankModelEntrance(app) {
         }, {
             layout: BANK_ROOM, buildRoom: buildBankModelRoom, canStand: bankCanStand,
             nearbyDoor: () => null, stageId: 'bankModelStage', label: '차곡 은행',
-            hint: 'WASD / 방향키 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
+            hint: 'WASD 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
         });
         app.bankModelScene.ready.then(() => app.bankModelScene.renderer?.domElement
             .setAttribute('aria-label', '차곡 은행 3D 화면'));

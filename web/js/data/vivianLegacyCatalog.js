@@ -12,7 +12,7 @@ export const VIVIAN_LEGACY_CATALOG = [
         dailyLimit: 2,
         instantUsable: true,
         desc: '고농축 타우린과 카페인이 함유된 국민 에너지 드링크. 찌뿌둥한 피로를 날려버립니다.',
-        effects: ['❤️ 하트 1개 즉시 회복', '⚡ 최대 하트 수는 회복력에 따라 3~5개'],
+        effects: ['❤️ 하트 1개 즉시 회복', '⚡ 공통 최대 하트 3개'],
         linkedStock: { id: 'MORNINGBREW', name: '모닝브루', note: '소비 시 모닝브루 실적 기여' }
     },
     {
@@ -64,7 +64,7 @@ export const VIVIAN_LEGACY_CATALOG = [
         price: 3000,
         instantUsable: true,
         desc: '극심한 변동성 속에서도 심박수를 안정시켜 뇌동매매를 방지하는 신경안정제.',
-        effects: ['💼 120분간 [운용력] +2 Bonus', '📊 1회 주문 가능 수량 소폭 확장'],
+        effects: ['사용 종료 · 보유 기록 보존'],
         linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 바이오 성분' }
     },
     {
@@ -76,8 +76,8 @@ export const VIVIAN_LEGACY_CATALOG = [
         icon: '💊',
         price: 3000,
         instantUsable: true,
-        desc: '필수 비타민과 미네랄이 집약된 영양제. 피로 누적을 방지하고 회복력을 끌어올립니다.',
-        effects: ['🛡️ 120분간 [회복력] +2 Bonus', '💖 회복력 0~1: 하트 3개 / 2~3: 4개 / 4 이상: 5개', '빈 하트 추가 · 즉시 회복 없음 · 만료 시 초과 체력만 차감'],
+        desc: '이전 능력치 강화 상품입니다. 사용은 종료되었으며 보유 기록은 유지됩니다.',
+        effects: ['사용 종료 · 보유 기록 보존'],
         linkedStock: { id: 'FORESTLAB', name: '포레바이오', note: '포레바이오 정품 납품' }
     },
 

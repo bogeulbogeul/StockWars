@@ -4,7 +4,7 @@ export function annaLaterLessons({ nickname, stockName, stockId, recommendationL
             id: 'portfolio_slots_guide',
             expression: 'Smile',
             speaker: '전담 매니저 모아',
-            text: '종목 보유 슬롯은 서로 다른 종목을 담을 수 있는 자리예요. 같은 종목을 여러 주 보유해도 슬롯은 하나만 사용해요. 예를 들어 A기업 10주와 B기업 1주를 갖고 있다면 2칸을 쓰는 거죠. 주식 수와 종목 수를 구분해 주세요. 기본 슬롯은 5칸이고, 운용력을 한 단계 올릴 때마다 5칸씩 늘어나요.',
+            text: '종목 보유 슬롯은 서로 다른 종목을 담을 수 있는 자리예요. 같은 종목을 여러 주 보유해도 슬롯은 하나만 사용해요. 예를 들어 A기업 10주와 B기업 1주를 갖고 있다면 2칸을 쓰는 거죠. 주식 수와 종목 수를 구분해 주세요. 종목 슬롯은 모든 주민에게 공통으로 5칸이에요.',
             tracker: '2/4 • 종목 보유 슬롯 알아보기',
             requiresManualAction: false,
             onEnter: () => {
@@ -17,7 +17,7 @@ export function annaLaterLessons({ nickname, stockName, stockId, recommendationL
             id: 'portfolio_slots_capacity',
             expression: 'Standard',
             speaker: '전담 매니저 모아',
-            text: '슬롯 자리가 모두 찼을 때 새로운 종목을 매수하려면 보유 종목 하나를 전량 매도하거나 슬롯을 늘려야 해요. 일부만 팔면 그 종목을 계속 보유하므로 자리가 비지 않아요. 같은 종목의 추가 매수는 새 슬롯을 쓰지 않지만 현금은 확인해야 해요. 내 계좌에서 사용 중인 슬롯과 최대 슬롯을 확인할 수 있어요.',
+            text: '슬롯 자리가 모두 찼을 때 새로운 종목을 매수하려면 보유 종목 하나를 전량 매도해 자리를 비워야 해요. 일부만 팔면 그 종목을 계속 보유하므로 자리가 비지 않아요. 같은 종목의 추가 매수는 새 슬롯을 쓰지 않지만 현금은 확인해야 해요. 내 계좌에서 사용 중인 슬롯과 최대 슬롯을 확인할 수 있어요.',
             tracker: '2/4 • 슬롯을 비우는 방법',
             requiresManualAction: false
         },
@@ -25,8 +25,8 @@ export function annaLaterLessons({ nickname, stockName, stockId, recommendationL
             id: 'portfolio_slots_trait',
             expression: 'Smile',
             speaker: '전담 매니저 모아',
-            text: '공격적 자산가 성향에는 종목 슬롯 +2칸 보너스가 적용돼요. 슬롯이 늘어나도 투자할 현금이 늘어나는 것은 아니니, 여러 종목을 살 때는 생활비와 남은 현금도 함께 살펴보세요.',
-            tracker: '2/4 • 성향과 종목 슬롯',
+            text: '레벨이나 투자 성향에 따른 추가 슬롯은 없어요. 여러 종목을 살 때는 생활비와 남은 현금도 함께 살펴보세요.',
+            tracker: '2/4 • 슬롯과 투자 예산',
             requiresManualAction: false,
             onEnter: () => cleanupHighlights()
         },

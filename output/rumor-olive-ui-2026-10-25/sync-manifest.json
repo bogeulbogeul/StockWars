@@ -1,0 +1,18 @@
+[
+  {
+    "path": "css/modules/rumor-letter.css",
+    "sha256": "c1ec0d0005554a28bb002cbdf5bea8d9d778fb0cb1e49875ee3ac2f4f99cbdf1"
+  },
+  {
+    "path": "js/components/inventory/RumorPopup.js",
+    "sha256": "b5667c79bf10622194f4b49ded582c15dac4a17d90da965653349c794eb9df0b"
+  },
+  {
+    "path": "js/data/itemArtwork.js",
+    "sha256": "170a48aba10b9f24535b97875f8d26ff5a2e4e5be9c87b30a5d96af97738a8f5"
+  },
+  {
+    "path": "assets/items/paper-v4/sealed-news.svg",
+    "sha256": "62773d34f02584df04829607771d83b33556a28a2f87721aefb611c21d736bf8"
+  }
+]

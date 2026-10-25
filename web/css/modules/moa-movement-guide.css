@@ -3,21 +3,14 @@
     width: min(390px, calc(100% - 48px)); box-sizing: border-box;
     padding: 18px 22px; border: 2px solid #b7c7a0; border-radius: 20px;
     background: #fff9eaf5; color: #3d5140; box-shadow: 0 6px 24px #263c3320;
-    font: 15px/1.65 'Malgun Gothic', sans-serif; pointer-events: auto;
+    font: 15px/1.65 'Malgun Gothic', sans-serif; pointer-events: none;
 }
 .moa-movement-guide[hidden] { display: none; }
 .moa-movement-guide strong { font-size: 19px; }
 .moa-movement-guide p { margin: 9px 0; }
-.moa-movement-guide kbd { font-family: inherit; font-size: 14px; font-weight: 700; background: #edf1df; border-radius: 5px; padding: 3px 6px; }
-.moa-movement-guide button { border: 1px solid #8da17e; background: #eff3e5; color: #3d5140; border-radius: 10px; padding: 9px 12px; font: inherit; cursor: pointer; }
-.moa-movement-guide button:disabled { opacity: .6; cursor: default; }
-.moa-movement-guide__controls { display: flex; gap: 8px; margin: 10px 0; touch-action: none; }
-.moa-movement-guide__controls button { min-width: 43px; touch-action: none; }
-.moa-movement-guide__status { min-height: 25px; }
+.moa-movement-guide kbd { font: inherit; font-weight: 700; background: #edf1df; border-radius: 5px; padding: 3px 6px; }
 .exhibition-ui > .moa-movement-guide { top: 88px; }
-.moa-movement-guide--inline { position: static; width: 100%; box-shadow: none; padding: 14px 18px; }
 @media (max-width: 600px) {
     .moa-movement-guide { top: auto; bottom: 12px; left: 12px; width: calc(100% - 24px); padding: 12px 16px; font-size: 13px; }
     .exhibition-ui > .moa-movement-guide { top: auto; bottom: 12px; }
-    .moa-movement-guide--inline { width: 100%; padding: 10px 14px; }
 }

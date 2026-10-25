@@ -1,0 +1,28 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "result": {
+    "meshes": [
+      "K_tall_crown_triangular_crystal_v2",
+      "K_tall_crown_triangular_crystal_v2_1",
+      "K_tall_crown_triangular_crystal_v2_2",
+      "K_tall_crown_triangular_crystal_v2_3",
+      "K_tall_crown_triangular_crystal_v2_4",
+      "K_tall_crown_triangular_crystal_v2_5",
+      "Glasses_smooth_frame",
+      "Original_whole_arms_without_elbow_cuts",
+      "Original_whole_arms_without_elbow_cuts_1",
+      "Original_whole_arms_without_elbow_cuts_2",
+      "Original_whole_arms_without_elbow_cuts_3"
+    ],
+    "count": 1,
+    "height": 128.71387245458413,
+    "footY": -1.3028189016495162e-7,
+    "active": true,
+    "collision": true,
+    "spawnClear": true,
+    "sidePathClear": true,
+    "trainingDoor": "training",
+    "competitionDoor": "competition"
+  },
+  "errors": []
+}

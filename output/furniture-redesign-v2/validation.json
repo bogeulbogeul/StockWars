@@ -1,0 +1,16 @@
+{
+  "glbReload": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "roofTiles": 212,
+  "mainRidgeCaps": 9,
+  "wingRidgeCaps": 10,
+  "valleyLiners": 2,
+  "newRoofAndTimberClosed": true,
+  "doubleDoorLeaves": 2,
+  "showcaseMullions": 2,
+  "doorCenterX": -1.0349999964237213,
+  "doorHeight": 1.1048396527767181,
+  "modelWidth": 4.565000057220459,
+  "gameApplied": false
+}

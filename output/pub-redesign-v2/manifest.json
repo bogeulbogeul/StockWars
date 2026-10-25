@@ -1,0 +1,14 @@
+{
+  "source": "pub-exterior-clean-v1",
+  "concept": "pub-redesign-concept-v1/concept.png",
+  "roof": {
+    "tiles": 166,
+    "mainRidgeCaps": 12,
+    "porchRidgeCaps": 4,
+    "mainPeak": 2.22,
+    "porchPeak": 1.98
+  },
+  "chimneyTrimmedMeshes": 8,
+  "gameApplied": false,
+  "sha256": "b9018b0c0e2978e70519aa81edcdb55c79a9a0544ba8490f0c9217eda52f57c8"
+}

@@ -1,12 +1,13 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { BANK_MODEL_URL, BANK_MODEL_SCALE } from '../../data/bankModelRoom.js';
+import { addBankChagok } from './BankChagok.js';
 
 export function buildBankModelRoom(scene) {
     const room = new THREE.Group();
     room.name = 'node-bank-interior';
     scene.add(room);
-    room.userData.shellReady = new GLTFLoader().loadAsync(BANK_MODEL_URL).then(gltf => {
+    const shellReady = new GLTFLoader().loadAsync(BANK_MODEL_URL).then(gltf => {
         const model = gltf.scene;
         model.name = 'bank-furnished-room';
         model.scale.setScalar(BANK_MODEL_SCALE);
@@ -18,5 +19,7 @@ export function buildBankModelRoom(scene) {
         room.add(model);
         return model;
     });
+    room.userData.chagokReady = addBankChagok(room);
+    room.userData.shellReady = Promise.all([shellReady, room.userData.chagokReady]).then(([model]) => model);
     return room;
 }

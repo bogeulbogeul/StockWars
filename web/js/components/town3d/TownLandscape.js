@@ -1,6 +1,9 @@
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
-import { createGrassTexture, createSkyTexture, createPathsTexture, createContactShadowTexture } from './TownLandscapeTextures.js';
+import { createGrassTexture, createPathsTexture, createContactShadowTexture } from './TownLandscapeTextures.js';
+import { TownSky } from './TownSky.js';
+import { TownWeather } from './TownWeather.js';
+import { TownGroundSnow } from './TownGroundSnow.js';
 import { applyTownRoadSurface } from './TownRoadSurface.js';
 
 // Presentation-only bend. Ground coordinates, collisions and model files stay flat.
@@ -12,7 +15,8 @@ export class TownLandscape {
         this.root = new THREE.Group();
         this.root.name = 'town-landscape';
         scene.add(this.root);
-        scene.background = createSkyTexture();
+        this.sky = new TownSky(scene);
+        this.weather = new TownWeather(scene);
         this.shadowMap = createContactShadowTexture();
         this.ground = this.plane(26000, 26000, createGrassTexture(), 0, false, 256);
         this.ground.name = 'village-grass-ground';
@@ -21,6 +25,7 @@ export class TownLandscape {
         this.pathsMap = createPathsTexture();
         this.blendPathsIntoGround();
         applyTownRoadSurface(this.ground.material);
+        this.snow = new TownGroundSnow(scene, this.ground.material);
         this.playerShadow = this.shadow(75, 55);
         this.playerShadow.visible = false;
     }
@@ -105,6 +110,9 @@ export class TownLandscape {
     }
 
     update(centerX, centerZ, playerPosition) {
+        this.sky.update();
+        this.weather.update();
+        this.snow.update();
         this.center.value = centerZ;
         this.ground.position.x = centerX;
         this.ground.position.z = centerZ;

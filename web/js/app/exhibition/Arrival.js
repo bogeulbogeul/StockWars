@@ -1,3 +1,4 @@
+import { createMoaWakeDialogue } from '../../components/dialogue/MoaWakeDialogue.js';
 import { Vector3 } from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { MOA_TOWN_POSITION } from '../../data/moaModels.js';
@@ -11,24 +12,25 @@ export const MOA_ARRIVAL = Object.freeze({ ...MOA_TOWN_POSITION, radius: 80 });
 export function nearSleepingMoa(position) {
     return Math.hypot(position.x - MOA_ARRIVAL.x, position.y - MOA_ARRIVAL.y) <= MOA_ARRIVAL.radius;
 }
-const DIRECTIONS = { w: [0, -1], arrowup: [0, -1], s: [0, 1], arrowdown: [0, 1],
-    a: [-1, 0], arrowleft: [-1, 0], d: [1, 0], arrowright: [1, 0] };
+const arrivalKey = event => /^Key[WASDF]$/.test(event.code) ? event.code.slice(3).toLowerCase() : event.key.toLowerCase();
+const DIRECTIONS = { w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
 
 export class ExhibitionArrival {
     constructor(app) {
         this.app = app; this.keys = new Set(); this.active = false;
+        this.dialogue = createMoaWakeDialogue(() => this.talk());
         window.addEventListener('keydown', event => {
             if (!this.active || event.ctrlKey || event.metaKey || event.altKey
                 || event.target.closest?.('input, textarea, select') || document.querySelector('dialog[open]')) return;
-            const key = event.key.toLowerCase();
-            if (!DIRECTIONS[key] && key !== 'f' && key !== 'enter') return;
+            const key = arrivalKey(event);
+            if (!DIRECTIONS[key] && key !== 'f') return;
             event.preventDefault(); event.stopImmediatePropagation();
             if (DIRECTIONS[key]) this.keys.add(key);
-            if ((key === 'f' || key === 'enter') && !event.repeat) this.talk();
+            if (key === 'f' && !event.repeat) this.talk();
         }, true);
         window.addEventListener('keyup', event => {
             if (!this.active) return;
-            this.keys.delete(event.key.toLowerCase()); this.rememberPosition();
+            this.keys.delete(arrivalKey(event)); this.rememberPosition();
         }, true);
         window.addEventListener('blur', () => this.keys.clear());
         document.addEventListener('visibilitychange', () => { if (document.hidden) this.keys.clear(); });
@@ -42,6 +44,7 @@ export class ExhibitionArrival {
             c.charPosX = Math.max(900, Math.min(1180, p.x));
             c.charPosY = Math.max(2270, Math.min(2410, p.y));
         } else Object.assign(c, { charPosX: TOWN_ARRIVAL.x, charPosY: TOWN_ARRIVAL.y });
+        this.moved = Math.hypot(c.charPosX - TOWN_ARRIVAL.x, c.charPosY - TOWN_ARRIVAL.y) > .5;
         this.marker = el('div', 'exhibition-moa-marker', '모아 · 잠들어 있어요');
         this.app.view.root.append(this.marker);
         this.drawPanel();
@@ -52,13 +55,15 @@ export class ExhibitionArrival {
             let dx = 0, dy = 0;
             for (const key of this.keys) { const d = DIRECTIONS[key]; if (d) { dx += d[0]; dy += d[1]; } }
             const length = Math.hypot(dx, dy);
+            const before = { x: c.charPosX, y: c.charPosY };
             if (length && !document.hidden) {
                 c.charPosX = Math.max(900, Math.min(1180, c.charPosX + dx / length * 165 * dt));
                 c.charPosY = Math.max(2270, Math.min(2410, c.charPosY + dy / length * 165 * dt));
                 c.facing = Math.abs(dx) > Math.abs(dy) ? dx > 0 ? 'right' : 'left' : dy > 0 ? 'down' : 'up';
             }
+            if (Math.hypot(c.charPosX - before.x, c.charPosY - before.y) > .01) { this.moved = true; this.dialogue.hide(); }
             const near = this.near();
-            this.guide.update({ near, count: this.app.state.moaCalls || 0 });
+            this.guide.update({ visible: !this.moved });
             const scene = this.app.scenes.townModelScene;
             const point = new Vector3(MOA_ARRIVAL.x, 175, MOA_ARRIVAL.y / GROUND_PROJECTION).project(scene.camera);
             this.marker.style.left = `${(point.x + 1) * innerWidth / 2}px`;
@@ -79,12 +84,8 @@ export class ExhibitionArrival {
         const view = this.app.view;
         this.guide?.dispose();
         view.panel.hidden = true;
-        this.guide = createMoaMovementGuide(view.root, {
-            onInteract: () => this.talk(),
-            onDirection: (key, held) => { if (held) this.keys.add(key); else { this.keys.delete(key); this.rememberPosition(); } }
-        });
-        this.talkButton = this.guide.interactButton;
-        this.guide.update({ near: this.near(), count: this.app.state.moaCalls || 0 });
+        this.guide = createMoaMovementGuide(view.root);
+        this.guide.update({ visible: !this.moved });
     }
 
     async talk() {
@@ -100,10 +101,10 @@ export class ExhibitionArrival {
             await moa?.standReady;
             void this.app.render();
         }
-        else this.drawPanel();
+        else this.dialogue.show(this.app.state.moaCalls);
     }
     stop() {
         this.active = false; this.keys.clear(); cancelAnimationFrame(this.frame); this.marker?.remove();
-        this.guide?.dispose(); this.app.view.panel.hidden = false;
+        this.guide?.dispose(); this.dialogue?.hide(); this.app.view.panel.hidden = false;
     }
 }

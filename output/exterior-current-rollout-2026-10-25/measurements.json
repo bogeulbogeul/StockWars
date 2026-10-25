@@ -1,0 +1,557 @@
+{
+  "home_office_tower": {
+    "latest": {
+      "width": 2.7224937927973096,
+      "centerX": 0.1187531226748314,
+      "doors": [
+        {
+          "name": "Home_Arched_Wood_Door002",
+          "height": 0.919999971985817,
+          "centerX": 0.4299999922513962
+        },
+        {
+          "name": "Home_Arched_Wood_Door002_1",
+          "height": 0.4049999862909317,
+          "centerX": 0.4687499701976776
+        },
+        {
+          "name": "Home_Continuous_Door_Threshold",
+          "height": 0.05000000074505806,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Continuous_Wood_Door_Frame",
+          "height": 0.9800000488758087,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Door_Brass_Escutcheon",
+          "height": 0.05200000940313276,
+          "centerX": 0.22499999403953552
+        },
+        {
+          "name": "Home_Door_Round_Window_Rim",
+          "height": 0.2740000290716831,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Door_Window_Inner_Reveal",
+          "height": 0.23600000143051147,
+          "centerX": 0.4299999922513962
+        }
+      ]
+    },
+    "old": {
+      "width": 2.720000062137842,
+      "centerX": 0.11999998800456524,
+      "doors": [
+        {
+          "name": "Home_Arched_Wood_Door",
+          "height": 0.919999971985817,
+          "centerX": 0.4299999922513962
+        },
+        {
+          "name": "Home_Continuous_Door_Threshold",
+          "height": 0.05000000074505806,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Continuous_Wood_Door_Frame",
+          "height": 0.9800000488758087,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Door_Brass_Escutcheon",
+          "height": 0.05200000940313276,
+          "centerX": 0.22499999403953552
+        },
+        {
+          "name": "Home_Door_Round_Window_Rim",
+          "height": 0.2740000290716831,
+          "centerX": 0.4300000071525574
+        },
+        {
+          "name": "Home_Door_Window_Inner_Reveal",
+          "height": 0.23600000143051147,
+          "centerX": 0.4299999922513962
+        }
+      ]
+    }
+  },
+  "settlement_information": {
+    "latest": {
+      "width": 3.380999982357025,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Wood_Door",
+          "height": 0.9820000603795052,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Continuous_Cream_Surround",
+          "height": 1.013999991118908,
+          "centerX": 0
+        }
+      ]
+    },
+    "old": {
+      "width": 3.380999982357025,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Wood_Door",
+          "height": 0.950000062584877,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Continuous_Cream_Surround",
+          "height": 0.9819999933242798,
+          "centerX": 0
+        }
+      ]
+    }
+  },
+  "vivian_store": {
+    "latest": {
+      "width": 3.4040001550763845,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Arched_Wood_Door",
+          "height": 0.8550000041723251,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Continuous_Arch_Frame",
+          "height": 0.9119999781250954,
+          "centerX": 0
+        }
+      ]
+    },
+    "old": {
+      "width": 3.4040001550763845,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Arched_Wood_Door",
+          "height": 0.8550000041723251,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Continuous_Arch_Frame",
+          "height": 0.9119999781250954,
+          "centerX": 0
+        }
+      ]
+    }
+  },
+  "julian_furniture": {
+    "latest": {
+      "width": 4.565000057220459,
+      "centerX": -0.0065000057220458984,
+      "doors": [
+        {
+          "name": "Door_Cream_Arch",
+          "height": 0.4150000214576721,
+          "centerX": -1.035000002533197
+        },
+        {
+          "name": "Door_Cream_Arch_Jamb",
+          "height": 0.7949999868869781,
+          "centerX": -1.4691250324249268
+        },
+        {
+          "name": "Door_Cream_Arch_Jamb001",
+          "height": 0.7949999868869781,
+          "centerX": -0.6008749604225159
+        },
+        {
+          "name": "Entry_Double_Door_Leaf",
+          "height": 1.1048396527767181,
+          "centerX": -1.233374963462353
+        },
+        {
+          "name": "Entry_Double_Door_Leaf001",
+          "height": 1.1048396527767181,
+          "centerX": -0.8366249730587008
+        }
+      ]
+    },
+    "old": {
+      "width": 4.542500192444566,
+      "centerX": 0.01725005789649825,
+      "doors": [
+        {
+          "name": "Door_Cream_Arch",
+          "height": 0.4150000214576721,
+          "centerX": -1.035000002533197
+        },
+        {
+          "name": "Door_Cream_Arch_Jamb",
+          "height": 0.7599999904632568,
+          "centerX": -1.4691250324249268
+        },
+        {
+          "name": "Door_Cream_Arch_Jamb001",
+          "height": 0.7599999904632568,
+          "centerX": -0.6008749604225159
+        },
+        {
+          "name": "Entry_Double_Door_Leaf",
+          "height": 1.0698396563529968,
+          "centerX": -1.233374963462353
+        },
+        {
+          "name": "Entry_Double_Door_Leaf001",
+          "height": 1.0698396563529968,
+          "centerX": -0.8366249730587008
+        }
+      ]
+    }
+  },
+  "cipher_securities": {
+    "latest": {
+      "width": 6.5332190628859745,
+      "centerX": 2.984822633500528e-8,
+      "doors": [
+        {
+          "name": "Door_Additional_Fanlight_Radial",
+          "height": 0.18772679567337036,
+          "centerX": 0.40427830815315247
+        },
+        {
+          "name": "Door_Additional_Fanlight_Radial001",
+          "height": 0.18772679567337036,
+          "centerX": 0.06155739724636078
+        },
+        {
+          "name": "Door_Continuous_Arch_Frame",
+          "height": 1.0546793435484858,
+          "centerX": 0.23291784524917603
+        },
+        {
+          "name": "Door_Fanlight_Arch",
+          "height": 0.3617641728566241,
+          "centerX": 0.23291784524917603
+        },
+        {
+          "name": "Door_Fanlight_Inner_Arc",
+          "height": 0.15600489962054098,
+          "centerX": 0.23291784524917603
+        },
+        {
+          "name": "Door_Fanlight_Radial",
+          "height": 0.25796413302748533,
+          "centerX": 0.372833059037993
+        },
+        {
+          "name": "Door_Fanlight_Radial001",
+          "height": 0.35518763720961033,
+          "centerX": 0.23291784524917603
+        },
+        {
+          "name": "Door_Fanlight_Radial002",
+          "height": 0.25796413302748533,
+          "centerX": 0.09300263146035903
+        },
+        {
+          "name": "Door_Fanlight_Transom",
+          "height": 0.02784131082707475,
+          "centerX": 0.23291784524917603
+        },
+        {
+          "name": "Door_Inner_Brass_Bead",
+          "height": 0.9677880103418772,
+          "centerX": 0.23291770517826116
+        },
+        {
+          "name": "Reference_Door_Leaf_Left",
+          "height": 0.5838238307109407,
+          "centerX": 0.032227858901023865
+        },
+        {
+          "name": "Reference_Door_Leaf_Right",
+          "height": 0.5838238307109407,
+          "centerX": 0.433607816696167
+        },
+        {
+          "name": "Reference_Door_Recess_End",
+          "height": 0.008436760713828484,
+          "centerX": 0.032227858901023865
+        },
+        {
+          "name": "Reference_Door_Recess_End001",
+          "height": 0.008436760713828484,
+          "centerX": 0.032227858901023865
+        },
+        {
+          "name": "Reference_Door_Recess_End002",
+          "height": 0.008436760713828484,
+          "centerX": 0.433607816696167
+        },
+        {
+          "name": "Reference_Door_Recess_End003",
+          "height": 0.008436760713828484,
+          "centerX": 0.433607816696167
+        },
+        {
+          "name": "Reference_Door_Vertical_Recess",
+          "height": 0.47077128208965746,
+          "centerX": -0.07869213819503784
+        },
+        {
+          "name": "Reference_Door_Vertical_Recess001",
+          "height": 0.47077128208965746,
+          "centerX": 0.14314785599708557
+        },
+        {
+          "name": "Reference_Door_Vertical_Recess002",
+          "height": 0.47077128208965746,
+          "centerX": 0.3226878345012665
+        },
+        {
+          "name": "Reference_Door_Vertical_Recess003",
+          "height": 0.47077128208965746,
+          "centerX": 0.5445278286933899
+        }
+      ]
+    },
+    "old": {
+      "width": 6.432650014182643,
+      "centerX": 2.3783463198867594e-8,
+      "doors": [
+        {
+          "name": "Door_Continuous_Arch_Frame",
+          "height": 1.2500998377799988,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Fanlight_Arch",
+          "height": 0.42879509925842285,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Fanlight_Inner_Arc",
+          "height": 0.18491089344024658,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Fanlight_Radial",
+          "height": 0.30576205253601074,
+          "centerX": 0.1488459724932909
+        },
+        {
+          "name": "Door_Fanlight_Radial001",
+          "height": 0.42100000381469727,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Fanlight_Radial002",
+          "height": 0.30576205253601074,
+          "centerX": -0.1488459724932909
+        },
+        {
+          "name": "Door_Fanlight_Transom",
+          "height": 0.032999999821186066,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Inner_Brass_Bead",
+          "height": 1.1471084952354431,
+          "centerX": -1.4901161193847656e-7
+        },
+        {
+          "name": "Door_Brass_Kick_Plate",
+          "height": 0.035999998450279236,
+          "centerX": -0.2134999930858612
+        },
+        {
+          "name": "Door_Brass_Kick_Plate001",
+          "height": 0.035999998450279236,
+          "centerX": 0.2134999930858612
+        }
+      ]
+    }
+  },
+  "node_finance": {
+    "latest": {
+      "width": 3.410000567901106,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Double_Door_Leaf",
+          "height": 0.9659190624952316,
+          "centerX": -0.16700000665150583
+        },
+        {
+          "name": "Central_Double_Door_Leaf001",
+          "height": 0.9659190624952316,
+          "centerX": 0.16700000665150583
+        },
+        {
+          "name": "Door_Continuous_Cream_Arch",
+          "height": 1.0379999428987503,
+          "centerX": 0
+        }
+      ]
+    },
+    "old": {
+      "width": 3.359999895095825,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Central_Double_Door_Leaf",
+          "height": 0.9399190694093704,
+          "centerX": -0.16700000665150583
+        },
+        {
+          "name": "Central_Double_Door_Leaf001",
+          "height": 0.9399190694093704,
+          "centerX": 0.16700000665150583
+        },
+        {
+          "name": "Door_Cream_Frame",
+          "height": 0.3999999761581421,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Cream_Frame_Jamb",
+          "height": 0.6100000143051147,
+          "centerX": -0.36500000953674316
+        },
+        {
+          "name": "Door_Cream_Frame_Jamb001",
+          "height": 0.6100000143051147,
+          "centerX": 0.36500000953674316
+        }
+      ]
+    }
+  },
+  "data_ink_bookstore": {
+    "latest": {
+      "width": 4.079999953508377,
+      "centerX": -0.26500000059604645,
+      "doors": [
+        {
+          "name": "Door_Continuous_Arch_Surround",
+          "height": 1.1800000369548798,
+          "centerX": -0.9199999868869781
+        },
+        {
+          "name": "Door_Recess_Shadow",
+          "height": 1.1070000231266022,
+          "centerX": -0.9199999868869781
+        }
+      ]
+    },
+    "old": {
+      "width": 4.079999953508377,
+      "centerX": -0.26500000059604645,
+      "doors": [
+        {
+          "name": "Door_Continuous_Arch_Surround",
+          "height": 1.1800000369548798,
+          "centerX": -0.9199999868869781
+        },
+        {
+          "name": "Door_Recess_Shadow",
+          "height": 1.1070000231266022,
+          "centerX": -0.9199999868869781
+        }
+      ]
+    }
+  },
+  "midnight_pub": {
+    "latest": {
+      "width": 4.356768089251591,
+      "centerX": 0.11601587249990652,
+      "doors": [
+        {
+          "name": "Door_Frame",
+          "height": 0.45500004291534424,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Frame_Jamb",
+          "height": 0.5979999899864197,
+          "centerX": -0.42750000953674316
+        },
+        {
+          "name": "Door_Frame_Jamb001",
+          "height": 0.5979999899864197,
+          "centerX": 0.42750000953674316
+        },
+        {
+          "name": "Double_Arch_Door_Left",
+          "height": 0.9978371113538742,
+          "centerX": -0.20300000300630927
+        },
+        {
+          "name": "Double_Arch_Door_Right",
+          "height": 0.9978371113538742,
+          "centerX": 0.20300000300630927
+        }
+      ]
+    },
+    "old": {
+      "width": 4.030000030994415,
+      "centerX": 0.14500001072883606,
+      "doors": [
+        {
+          "name": "Door_Frame",
+          "height": 0.45500004291534424,
+          "centerX": 0
+        },
+        {
+          "name": "Door_Frame_Jamb",
+          "height": 0.5699999928474426,
+          "centerX": -0.42750000953674316
+        },
+        {
+          "name": "Door_Frame_Jamb001",
+          "height": 0.5699999928474426,
+          "centerX": 0.42750000953674316
+        },
+        {
+          "name": "Double_Arch_Door_Left",
+          "height": 0.9698371142148972,
+          "centerX": -0.20300000300630927
+        },
+        {
+          "name": "Double_Arch_Door_Right",
+          "height": 0.9698371142148972,
+          "centerX": 0.20300000300630927
+        }
+      ]
+    }
+  },
+  "post_office": {
+    "latest": {
+      "width": 3.505000114440918,
+      "centerX": 0,
+      "doors": [
+        {
+          "name": "Collection_Door_Fine_Reveal",
+          "height": 0.38999998569488525,
+          "centerX": 1.0199999809265137
+        },
+        {
+          "name": "Door_Continuous_Arch_Surround",
+          "height": 1.1800000369548798,
+          "centerX": -0.9199999868869781
+        },
+        {
+          "name": "Door_Recess_Shadow",
+          "height": 1.1070000231266022,
+          "centerX": -0.9199999868869781
+        },
+        {
+          "name": "Service_Door_Lock",
+          "height": 0.03400000802825165,
+          "centerX": 1.1349999904632568
+        }
+      ]
+    }
+  }
+}

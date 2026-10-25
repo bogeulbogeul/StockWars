@@ -413,7 +413,7 @@ export class MarketEngine {
         const stock = this.stocks.get(stockId);
         const plan = this.getExecutionPreview(side, stockId, requested, leverage, venue, options.limitPrice ?? null);
         if (!plan.quantity) return { success: false, quantity: 0, reason: plan.reason,
-            msg: plan.reason === 'buyCap' ? '종목별 투자 한도를 초과했습니다. 수량을 줄이거나 운용력을 올려 주세요.' : '체결 가능한 물량·현금·보유 수량이 없습니다. 주문은 체결되지 않았습니다.' };
+            msg: plan.reason === 'buyCap' ? '종목별 투자 한도를 초과했습니다. 주문 수량을 줄여 주세요.' : '체결 가능한 물량·현금·보유 수량이 없습니다. 주문은 체결되지 않았습니다.' };
         const book = this.ensureOrderBook(stockId);
         let profit = null, proceeds = null, collateral = 0;
         if (side === 'sell') {

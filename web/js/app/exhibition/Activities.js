@@ -47,9 +47,9 @@ export class ExhibitionActivities {
     openPhone() {
         this.view.text('연락처에는 모아가 처음으로 들어 있어요.');
         this.view.choices([['휴대폰 열기', () => {
-            this.view.openPhone();
-            const dialog = document.querySelector('.exhibition-phone-dialog');
-            dialog.addEventListener('close', () => this.next('openPhone'), { once: true });
+            if (this.view.openPhone()) {
+                this.view.phoneHome.dialog.addEventListener('close', () => this.next('openPhone'), { once: true });
+            }
         }]]);
     }
     loan() {

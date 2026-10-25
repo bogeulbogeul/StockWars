@@ -1,0 +1,18 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "progress": {
+    "level": 2,
+    "current": 0,
+    "required": 30,
+    "max": false,
+    "totalCorrect": 20,
+    "remainingToMax": 130
+  },
+  "wrongRetry": true,
+  "reloadDedupe": true,
+  "copyDedupe": true,
+  "promotionRefresh": true,
+  "mobile": true,
+  "errors": [],
+  "presentation": "production components/CSS after real application bootstrap"
+}

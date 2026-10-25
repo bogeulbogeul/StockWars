@@ -15,6 +15,7 @@ export function enterCipherSimulationShell(lobby,competition){
             createInteraction:createCipherChairInteraction,
             nearbyDoor:nearbySimulationReturnDoor,onDoorEnter:()=>void simulation.exit(),automaticExit:false,
             onConfirm:()=>{
+                if (competition.interfaceRetired) return;
                 document.body.classList.add('cipher-facility-active');
                 simulation.controller.keysHeld.clear();simulation.controller.isMoving=false;
                 competition.open();

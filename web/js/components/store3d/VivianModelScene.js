@@ -97,7 +97,7 @@ export class VivianModelScene {
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.setControlsHint('WASD / 방향키 이동 · F 계산대 이용 · 현관 / Esc 나가기');
+        this.player.setControlsHint('WASD 이동 · F 계산대 이용 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -125,7 +125,7 @@ export class VivianModelScene {
                 return;
             }
             if (key === 'escape' && !event.repeat) { event.preventDefault(); void this.exit(); return; }
-            const action = { arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key;
+            const action = key;
             if (['w', 'a', 's', 'd', 'shift'].includes(action)) {
                 event.preventDefault();
                 this.controller.keysHeld.add(action);
@@ -133,7 +133,7 @@ export class VivianModelScene {
         });
         window.addEventListener('keyup', event => {
             const key = gameKey(event);
-            this.controller.keysHeld.delete({ arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key);
+            this.controller.keysHeld.delete(key);
         });
         window.addEventListener('blur', () => this.controller.keysHeld.clear());
     }

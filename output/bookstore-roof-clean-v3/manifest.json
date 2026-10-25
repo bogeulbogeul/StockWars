@@ -1,0 +1,10 @@
+{
+  "source": "bookstore-roof-pitched-v2",
+  "tiles": 194,
+  "closedValleys": 2,
+  "mainRidgeCaps": 8,
+  "wingRidgeCaps": 8,
+  "unchangedMeshes": 94,
+  "gameApplied": false,
+  "sha256": "49ca36c6aeb855c4b87278d72bb785110cd45492e5132d173150375075a2f681"
+}

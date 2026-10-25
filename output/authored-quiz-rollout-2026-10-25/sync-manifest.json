@@ -1,0 +1,302 @@
+[
+  {
+    "path": "js/data/authoredRumorQuizzes.js",
+    "sha256": "00f9154edceefb8f219ab0bf62b308573874e9ab826f079c502088c6d62c5acc"
+  },
+  {
+    "path": "js/engine/RumorQuizQuestions.js",
+    "sha256": "d2bb2a0121298430eea93cd3bcd4dc93e915b2d32002edec40f47758353d755b"
+  },
+  {
+    "path": "js/engine/AnalysisGrowth.js",
+    "sha256": "1706100770fc362ca2792d0c339c2079f7c34edd577fcb79005a47f53d58b4d1"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/AEROCORE.js",
+    "sha256": "b3e0e4437753c6bfebbcbb7012ceaf7c4fae25f445b48c988127ba1375fd2c0f"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/AURORAAERO.js",
+    "sha256": "bb7052527ff7c4b22f601eb083708256e7c7b99e5326807fa47c0749fe07e22a"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/COSMOSX.js",
+    "sha256": "851e4378a229d417b3023206b9325af2a778524dfaf4fc9d0be4df5719fdbc6a"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/GRAVITY.js",
+    "sha256": "5ff9a4e3a0c71e29239bd17080babac7fe9522f488ab35e661e5f56eca0c9981"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/LUNARBASE.js",
+    "sha256": "2e32e737c670505356e34dc7c677148a200fcc493f74f791e766ab9d3546c1db"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/ORBITALTECH.js",
+    "sha256": "adf4ec63e255034d02db32e518c38f55792c521d68e1a86af730df737e17e790"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/SKYLINE.js",
+    "sha256": "537028baa9ced464958975a0f4c956469c89b95a2b4aad88ebca4920df63bafc"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/STARJET.js",
+    "sha256": "d8fbf51e2e596d0052682882ce61181e773ee7f26551c806b9ad6058efe210f4"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Aerospace/WINGSLOGIS.js",
+    "sha256": "89910332c9ca93080e6f710f46a47dfae94731938e6b0fe63ffd7c982f14c06f"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/BIONICS.js",
+    "sha256": "dd9bce4e935d455fb472aca77acf610b2da45c3bfeb4e589a6c7cf6171380a99"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/CELLHEALTH.js",
+    "sha256": "fff53436da5a617f01e43b9ee79325700834a67ff900c25f79f4be960193fea2"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/FORESTLAB.js",
+    "sha256": "1ad2c06def50b1f9bb10e293d6ca69c2090f0f4a763b31fade089a2b9163ea43"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/GENEFORCE.js",
+    "sha256": "e6649d2b6d78bd6b859df8298a786ee4741069fb44b6080d5c8a2ec3c5b717cb"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/LIFECURE.js",
+    "sha256": "b91cc8a939e98b961bfd36ec0cefacd6b14b3356a5a8e033dc949a9b20f03555"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/NEURONBIO.js",
+    "sha256": "6a38f8279f11840251f7f6d87ca7000c6821ab20f0e6e1f351bd72a86404bb42"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/ORGANICLAB.js",
+    "sha256": "f3f8111666c9dd758b6f12700e4a5fb9536ae0e58a61e70764d79fc110e38be2"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/PHARMAX.js",
+    "sha256": "f808a1ae3e325260f101ea46ea64cd564ed3a13aa181b068029f1525d956c3e3"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Bio/VITALMED.js",
+    "sha256": "649f51e0ac659a8bcfac88bfdd5fcc21efb614f56ff8450f8a619f491e1e9753"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/CLEANENERGY.js",
+    "sha256": "07245a4ef7b20deda338d51d3d81263b59ce5df3ebecd6c401307f3d2d535b61"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/ECOBATTERY.js",
+    "sha256": "762865def777af371fb889f599819b80086e6b3c4142cf508aaf5a48b78a09ef"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/GREENPOWER.js",
+    "sha256": "e9471c71f26554e5871ea8b4ac4d931246831089fbc28804d3d2c2142c1498d5"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/HYDROGENX.js",
+    "sha256": "52b310c2ef297205bd9b4218892d203df652fb858c3a15e69b2d7416aafa0410"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/NUCLEARPLUS.js",
+    "sha256": "afea3fdcc0dc05c47b4a583777c48bb36ef7d6e7c3caabc251a6f823a67d7d37"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/SOLARGRID.js",
+    "sha256": "f7064fe2e74738bc862105875e47c8eee7428126c767758aca6bae2c8e4ffddd"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/SUNLIGHT.js",
+    "sha256": "3fedcbb38f4779eadeea3a6b0be6805d60c9371996c3aba64d045e9d652c2a27"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/THERMOCORE.js",
+    "sha256": "ad02be19d6ae0efa9077cf9c8ab68f639f79318110c827ebfca73bd879e77f95"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Energy/WINDHILL.js",
+    "sha256": "1d53013dbdad7f8965999b28b0e06d85b6132deebb6028baa27dfe1fa6f08bd1"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/CINEMAHOLIC.js",
+    "sha256": "556f98a299e9e84821577f64792fbce872ab5417c58b7bd1faeb7c3c11c39c8b"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/DARKHORSE.js",
+    "sha256": "81f8d06bd35f17d5bfe66ae861dd4ee3dd49faa262048b86a104f51f61f392da"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/NEXTONE.js",
+    "sha256": "5dd92dfce5f668fd6e9a5a8c13316f34a5dd6385146fc04d8d1069ed14f8256e"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/POPCORE.js",
+    "sha256": "f9dda754f49825f5c41a62db313605761c9173869683bea7a857ec666481b3e0"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/ROYALMEDIA.js",
+    "sha256": "87a0d6cab12b62d58d5d304dcd2ff722be924a0c335fb791dda11d87c54ec11f"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/SOCIALMIX.js",
+    "sha256": "e1d8a3199fc4ecaec40cbfe98290f2154f1c2006a9981a082315fda74fa5f459"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/STARDUST.js",
+    "sha256": "8adabc6cd7d5efa5bbed28971f839cdf4585edba2d4d2c6997854866f5e04696"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/STUDIOLUNA.js",
+    "sha256": "fe8f9eb7039cf2181539234df2f08d31dce7ad91709ed47ad1d3c9b987132a5b"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Entertainment/VISUALART.js",
+    "sha256": "7d8424195482c187656cb02a13731f37e599be8dc0e32d87ebbcbb4fe85483ee"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/CIPHERCAPITAL.js",
+    "sha256": "e6cbb194cc199b2a36962c39c6d8fb3f887af2e413591b941b4dbfbe8773b37e"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/COZYPAY.js",
+    "sha256": "49af133d295c8b7da5349f7c087c33605f18a8a175abb2a14774b94689e881c8"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/GOLDPOCKET.js",
+    "sha256": "dcfbd2906eb8420d759d94d419649e1d3684614342820ed467bf7b1fa4b73046"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/MINTASSET.js",
+    "sha256": "4a352dfb6e632c30251134e38154f782c1716918494b615f624c01f30a59fdba"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/PAYONE.js",
+    "sha256": "2129a1aee33cbe3ded2032e0488bc19914ff16ce2096eddaf5a6921dd1a180da"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/SAFEBANK.js",
+    "sha256": "43561e6a2b4a882af1ce42faf698e63ac77399af53779ec7f5fde50f6dcfb226"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/SMARTINVEST.js",
+    "sha256": "2c07ef62725b548eaed7077e26fc98bb09601eadc74ada9332e243497a081b80"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/TRUSTBANK.js",
+    "sha256": "345e1dc1bfa8479e602bf0e1b938b0858983e714bdf1315ef2e3aa1e4ed30f5a"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Finance/WEALTHMAN.js",
+    "sha256": "22d0020cd31f0ffd6b51a31fbcb855402b5ba04268301468ff709683f7c2d0ab"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/AIRLINK.js",
+    "sha256": "7f7041169cc312ca727b95d57f502bae29c4f2a8807ff8a35e62bb06632ee0e6"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/CITYGRID.js",
+    "sha256": "cf29e97c4c8d341d06b798b9bf9265ebd1e7a032b5c8ab233b3279ab195e8d3c"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/COREPIPE.js",
+    "sha256": "2ada43980a6e14e40065baab0fb4eab3cd1a8f487480988126d733a8173a83da"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/HYPERLOOP.js",
+    "sha256": "b418e870b04faafc1183d1374833e8f48c2b2aeead777e988b21af5a25525d97"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/METROHUB.js",
+    "sha256": "1a285d22d4824f31f149c07bf47a6aa2db1fdf6c9f1b596b4ca0e63f60c636db"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/NEXUSBRIDGE.js",
+    "sha256": "9f1d46921ef09f85cfeaa646dc567fe37eaa510b9a148a416576921d24517b99"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/SCONNECT.js",
+    "sha256": "bec930af74b5dfe9c54bf5c14facae8538b69a381fd7b1c608e9a2a9db145a23"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/SKYNET.js",
+    "sha256": "396bb5f3315f139351050fbcc93c95f209f0d0f8087846158b84794467aa03af"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Infrastructure/WAVECOMM.js",
+    "sha256": "41c5086c23c78619dd48ed98a61773ede766f76836814a4800b672ce142d9339"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/BYTECORE.js",
+    "sha256": "dca50304b5c814d0f7a5a47d7f2427f5c73ac4e7e62265091082d0467e50a9a4"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/CLOUDBERRY.js",
+    "sha256": "5750129ba1f85988f2ca32fd39eb081d4f27af40f7d55d8b66a1bdb82e49f731"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/CYPHERLINK.js",
+    "sha256": "eb8450fcf46bf096186d5598e87c9a51b5d5e0b3711ff71b4ce199aa9404d3c9"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/DATAFORT.js",
+    "sha256": "0da16d789cd56252457e9f446e094b79aa6da6976b446069c6f5d81b3f78d9ec"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/MOMOSOLUTION.js",
+    "sha256": "796b42d82dacccbd589457b65d18e625405c07f23ba9483d5e5aa40cb418a523"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/NEXUSSOFT.js",
+    "sha256": "f4400647354885444d4c2c7d755b83065bbba86057b4d84a59035b4406a7d17f"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/PATCHWORK.js",
+    "sha256": "6e05e4aaff6956e0aa0f88f27fec6b8c7bf163f546a879a2716dae28f6317de9"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/SYNAPSENET.js",
+    "sha256": "248b83069975f8c07e295abc3e331deb4131a3d73f76e61e1b52352bff49c074"
+  },
+  {
+    "path": "js/data/rumorQuizzes/IT/TECHDOME.js",
+    "sha256": "a57bc55ddda0612f173b93a7321b6e0fbc337ba0c387f9a5753e7ae784017eda"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/BOXHUB.js",
+    "sha256": "941ef9c3980695b71e36706d2100d832ca377bf67a948d335095d467ec6a8f45"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/CITYMART.js",
+    "sha256": "2e384d40cf6f73040d0fcbfc679f43c379bc9313fc6cbb9a1ece53d966ea8dce"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/FRESHMARKET.js",
+    "sha256": "a0ee67c1c24cb46d673735d9243a9bfc7d91bef0382ee2c95276e071ec8f8df4"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/LIFESTYLE.js",
+    "sha256": "d57b0c7bc9467ad4a17e171a273379c1e1ae230d552e6a8af4b3603e9e142970"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/MORNINGBREW.js",
+    "sha256": "536371729bb33926013f6c3d0cdedcca7999694db155c0a5a3da929ca33cbdf0"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/ORGANICTABLE.js",
+    "sha256": "9ef2a4c84360fc4a1a263f1d8cc1c088d8db5cd68e59f14eee0e1dee68905353"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/QUICKDELIVERY.js",
+    "sha256": "937963cba5f4f21a67f4c245eb7bc377cb161a179ebaec70f1d8665b707a7d77"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/STOREMASTER.js",
+    "sha256": "d5c7c5daf700bb3064cfe158d85372049bfd4bd62570420a06ed61e807f0c8e5"
+  },
+  {
+    "path": "js/data/rumorQuizzes/Retail/SWEETBAKERY.js",
+    "sha256": "0ee7a47450564e627fb725595c6e7be2badc1608a500e5426bbb2c97c05b80cf"
+  }
+]

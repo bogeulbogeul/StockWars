@@ -1,13 +1,17 @@
+import { initializePlayerGrowth, playerLevelProgress } from './PlayerGrowth.js';
+import { migrateRumorStages } from './RumorStageMigration.js';
+import { COMMON_PLAYER_RULES, RETIRED_ABILITY_ITEMS, preserveLegacyAbilities } from './AbilityRetirement.js';
+import { initializeAnalysisGrowth, analysisProgress, beginInterpretationQuiz, submitInterpretationQuiz } from './AnalysisGrowth.js';
 import { AUTHORED_RUMOR_ITEMS, drawAuthoredRumor } from '../data/rumorCatalog.js';
-import { MAX_ANALYSIS, clampAnalysis, maxRumorLevel, rumorLevel, openAuthoredEnvelope } from './RumorInterpretation.js';
+import { clampAnalysis, maxRumorLevel, rumorLevel, openAuthoredEnvelope } from './RumorInterpretation.js';
 import { COOKIE_ID, normalizeCookieSet, eatCookie } from './CookieSets.js';
 import { VIVIAN_SHOP_CATALOG, VIVIAN_ITEM_REGISTRY } from '../data/vivianStoreData.js';
 
 export const DAY = 86400000;
 export const ITEM_BALANCE = { buffMs: 120 * 60000, baseOrderLimit: 100, managementBonus: 0.1, quickGold: 560, quickExp: 70, swanDrop: 0.2, swanDuration: 60000 };
 const catalog = new Map([...VIVIAN_ITEM_REGISTRY, ...AUTHORED_RUMOR_ITEMS].map(i => [i.id, i]));
-const buffs = { item_focus_pill: 'analysis', item_stabilizer: 'management', item_vitamin_complex: 'recovery' };
-const statNames = { analysis: '분석력', management: '운용력', recovery: '회복력' };
+const buffs = { item_focus_pill: 'analysis' };
+const statNames = { analysis: '분석력' };
 const fail = message => ({ success: false, message });
 const ok = message => ({ success: true, message });
 const kst = time => new Date(time + 9 * 3600000);
@@ -42,19 +46,13 @@ export class ItemEngine {
             version: 1, offset: 0, lastNow: clock(), inventory: [], stamina: 3, affinity: 35,
             purchases: {}, purchaseDay: '', caffeineDay: '', buffs: {}, passUntil: 0,
             deliveries: [], mail: [], reports: [], nextId: 1, decryptions: 0, profit: 0,
-            baseStats: { analysis: 0, negotiation: 0, management: 0, recovery: 0 }, statSchema: 2, exp: 0,
+            baseStats: { analysis: 0, negotiation: 0, management: 0, recovery: 0 }, statSchema: 2, exp: 0, playerExpCurveVersion: 2,
             alarm: false, mask: false, escape: false, survivals: 0,
             swanAt: clock() + 2 * DAY, swanEnd: 0, swanActive: false,
             tickets: [], draws: [], pools: {}, rollover: 0, notices: []
         };
-        if (this.state.statSchema !== 2) {
-            // Remove the old starting point while preserving earned growth and trait bonuses.
-            this.state.baseStats = Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key =>
-                [key, Math.max(0, (Number(this.state.baseStats?.[key]) || 0) - (key === 'negotiation' ? 0 : 1))]));
-            // Reconcile legacy traits after the saved profile becomes available.
-            delete this.state.appliedTrait;
-            this.state.statSchema = 2;
-        }
+        initializePlayerGrowth(this.state);
+        preserveLegacyAbilities(this.state, this.playerLevel());
         // Preserve a local game's weekly numbering, including older saved tickets.
         this.state.lottoFirstRound ??= [...this.state.tickets, ...this.state.draws]
             .reduce((first, entry) => Math.min(first, entry.round), nextDraw(this.state.lastNow));
@@ -69,6 +67,8 @@ export class ItemEngine {
                 Object.assign(item, { name: current.name, desc: current.desc, effects: current.effects });
             }
         }
+        migrateRumorStages(this.state);
+        initializeAnalysisGrowth(this.state);
         this.normalizeStamina();
     }
     lottoRoundNumber(round = nextDraw(this.now())) {
@@ -85,27 +85,18 @@ export class ItemEngine {
     notice(message) { this.state.notices.unshift(message); this.state.notices.length = Math.min(20, this.state.notices.length); }
     active(stat) { return (this.state.buffs[stat] || 0) > this.now(); }
     stats() {
-        return Object.fromEntries(['analysis', 'negotiation', 'management', 'recovery'].map(key => [key, key === 'analysis' ? clampAnalysis(this.state.baseStats[key] + (this.active(key) ? 2 : 0)) : this.state.baseStats[key] + (this.active(key) ? 2 : 0)]));
+        return { analysis: clampAnalysis(this.analysisProgress().level + (this.active('analysis') ? 2 : 0)) };
     }
+    analysisProgress() { return analysisProgress(this.state); }
+    beginRumorQuiz(itemId) { return beginInterpretationQuiz(this, itemId); }
+    submitRumorQuiz(itemId, questionKey, choiceIndex) { return submitInterpretationQuiz(this, itemId, questionKey, choiceIndex); }
     playerLevel() { return this.playerLevelProgress().level; }
-    pendingStatPoints() { return Math.max(0, this.playerLevel() - 1 - (this.state.spentLevelPoints || 0)); }
+    pendingStatPoints() { return 0; }
     allocateLevelStat(key) {
-        if (!['analysis', 'negotiation', 'management', 'recovery'].includes(key)) return fail('능력치를 선택해 주세요.');
-        if (this.pendingStatPoints() < 1) return fail('사용할 성장 포인트가 없습니다.');
-        if (key === 'analysis' && this.statLevel(key) >= MAX_ANALYSIS) return fail('분석력은 최대 10단계예요.');
-        this.state.baseStats[key] = (key === 'analysis' ? Math.max(1, this.statLevel(key)) : this.state.baseStats[key]) + 1;
-        this.state.spentLevelPoints = (this.state.spentLevelPoints || 0) + 1;
-        return ok('능력치가 1 증가했습니다.');
+        return fail(key === 'analysis' ? '분석력은 찌라시 해석 확인 퀴즈로 성장해요.' : '레벨업 능력치 포인트 배분은 종료되었어요.');
     }
     playerLevelProgress() {
-        let exp = Number(this.state.exp);
-        if (!Number.isFinite(exp) || exp < 0) exp = 0;
-        let level = 1;
-        while (level < 20 && exp >= 100 * level ** 1.5) {
-            exp -= 100 * level ** 1.5;
-            level++;
-        }
-        return { level, currentExp: exp, maxExp: level < 20 ? 100 * level ** 1.5 : null };
+        return playerLevelProgress(this.state);
     }
     progress() { return { profit: this.state.profit, survivals: this.state.survivals, analysisLevel: this.stats().analysis, decryptions: this.state.decryptions, trustLevel: this.state.affinity >= 200 ? 3 : this.state.affinity >= 100 ? 2 : 1 }; }
     unlocked(item) { const p = this.progress(); return !item.reqUnlock || Object.entries(item.reqUnlock).every(([key, n]) => key === 'conditionDesc' || p[key] >= n); }
@@ -120,19 +111,19 @@ export class ItemEngine {
         this.state.stamina = this.maxStamina();
         return ok('벤치에서 기력을 모두 회복했습니다.');
     }
-    orderLimit() { return Math.floor(ITEM_BALANCE.baseOrderLimit * (this.active('management') ? 1 + ITEM_BALANCE.managementBonus : 1)); }
-    statLevel(key) { return Math.min(key === 'analysis' ? MAX_ANALYSIS : 5, Math.max(0, Math.floor(Number(this.state.baseStats[key]) || 0))); }
-    portfolioSlots() { return (5 + 5 * this.statLevel('management')) + (this.state.appliedTrait === 'management' ? 2 : 0); }
+    orderLimit() { return ITEM_BALANCE.baseOrderLimit; }
+    statLevel(key) { return key === 'analysis' ? this.analysisProgress().level : 0; }
+    portfolioSlots() { return COMMON_PLAYER_RULES.portfolioSlots; }
     buyCap() { return Infinity; }
-    feeRate(baseRate) { return Math.max(0, baseRate - this.statLevel('negotiation') * 0.0001) * (this.state.appliedTrait === 'negotiation' ? 0.7 : 1); }
-    laborReward(gold) { return Math.round(gold * (1 + this.statLevel('negotiation') * 0.05)); }
-    maxStamina() { const recovery = this.stats().recovery; return recovery >= 4 ? 5 : recovery >= 2 ? 4 : 3; }
+    feeRate(baseRate) { return Math.max(0, baseRate); }
+    laborReward(gold) { return Math.round(gold); }
+    maxStamina() { return COMMON_PLAYER_RULES.maxStamina; }
     normalizeStamina() {
         // Round old fractional saves up once so the migration does not lose a partial heart.
         this.state.stamina = Math.max(0, Math.min(this.maxStamina(), Math.ceil(this.state.stamina)));
     }
     recoveryAmount() { return 1; }
-    laborCost() { return 1; }
+    laborCost() { return COMMON_PLAYER_RULES.laborCost; }
     canAdd(id, qty = 1) {
         const entry = this.state.inventory.find(i => i.id === id);
         return entry ? entry.quantity + qty <= 99 : this.state.inventory.length < 24 && qty <= 99;
@@ -190,6 +181,7 @@ export class ItemEngine {
     }
     canUse(id) {
         const s = this.state;
+        if (RETIRED_ABILITY_ITEMS.has(id)) return fail('이전 능력치 강화 상품은 사용이 종료되었어요. 보유 기록은 유지돼요.');
         if (!catalog.has(id)) return fail('사용 기능이 없는 아이템입니다.');
         if (catalog.get(id)?.recoveryFood || id === 'item_energy_drink' || id === 'item_caffeine_shot') {
             if (id === 'item_caffeine_shot' && s.stamina >= this.maxStamina()) return fail('체력이 가득 찼습니다. 아이템은 보관됩니다.');
@@ -219,12 +211,12 @@ export class ItemEngine {
             const before = s.stamina;
             s.stamina = Math.min(this.maxStamina(), s.stamina + this.recoveryAmount());
             if (id === 'item_caffeine_shot') s.caffeineDay = dayKey(now);
-            message = `하트 ${s.stamina - before}개 회복 (${s.stamina}/${this.maxStamina()} · 회복력 ${this.stats().recovery})`;
+            message = `하트 ${s.stamina - before}개 회복 (${s.stamina}/${this.maxStamina()})`;
         } else if (buffs[id]) {
             const stat = buffs[id], before = this.stats()[stat];
             s.buffs[stat] = now + ITEM_BALANCE.buffMs;
-            statBoost = { stat, name: statNames[stat], before, after: this.stats()[stat], amount: 2, durationMinutes: ITEM_BALANCE.buffMs / 60000 };
-            message = `${statNames[stat]}이 2 올랐습니다! (${before} → ${statBoost.after}) · ${statBoost.durationMinutes}분간 적용`;
+            statBoost = { stat, name: statNames[stat], before, after: this.stats()[stat], amount: this.stats()[stat] - before, durationMinutes: ITEM_BALANCE.buffMs / 60000 };
+            message = `${statNames[stat]} +${statBoost.amount} (${before} → ${statBoost.after}) · ${statBoost.durationMinutes}분간 적용 · 최대 Lv.5`;
         } else if (id === 'item_weekly_drink_ration') {
             const tomorrow = Date.parse(dayKey(now) + 'T00:00:00+09:00') + DAY;
             s.deliveries = Array.from({ length: 7 }, (_, i) => tomorrow + i * DAY);
@@ -249,7 +241,6 @@ export class ItemEngine {
             const linkedRumor = s.inventory.find(item => item.id === report.id && item.targetStockId);
             if (linkedRumor) linkedRumor.interpretationLevel = id === 'item_darknet_key' ? 5 : Math.min(5, Math.max(this.stats().analysis, linkedRumor.interpretationLevel || 3) + 1);
             s.decryptions += report.revealed - before;
-            s.baseStats.analysis = Math.max(s.baseStats.analysis, (s.appliedTrait === 'analysis' ? 1 : 0) + Math.floor(s.decryptions / 10));
             message += ` · 보고서 단서 ${report.revealed}/${report.parts.length} 확인 · 진위 보장 없음`;
         } else if (id === 'item_black_swan_alarm') { s.alarm = !s.alarm; consume = false; message = `조기 경보기 ${s.alarm ? '활성화' : '해제'}`;
         } else if (id === 'item_gas_mask') { s.mask = !s.mask; consume = false; message = `디지털 방독면 ${s.mask ? '장착' : '해제'}`;
@@ -312,7 +303,7 @@ export class ItemEngine {
         this.market.cash += reward;
         this.state.exp += exp;
         this.normalizeStamina();
-        const cost = this.statLevel('recovery') >= 5 && this.random() < 0.1 ? 0 : this.laborCost();
+        const cost = this.laborCost();
         this.state.stamina = Math.max(0, this.state.stamina - cost);
         return { goldReward: reward, staminaCost: cost };
     }

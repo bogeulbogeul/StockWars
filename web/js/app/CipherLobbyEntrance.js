@@ -51,7 +51,7 @@ export function installCipherLobbyEntrance(app) {
     }, true);
     if (new URLSearchParams(location.search).get('scene') === 'cipher-lobby') enter();
     return () => {
-        hint.hidden = !inTown();
-        hint.textContent = near() ? 'F · 증권사 로비 입장' : 'L · 증권사 로비 시점 확인';
+        hint.hidden = !inTown() || !near();
+        hint.textContent = 'F · 증권사 로비 입장';
     };
 }

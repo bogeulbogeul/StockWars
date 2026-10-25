@@ -43,7 +43,7 @@ export class SomangiPlayer {
     setExpression(id) { return this.expressions.set(id); }
     faceCamera(camera) { this.storyCamera = camera; }
     setControlsHint(text) { this.customHint = text; this.updateHint(); }
-    updateHint() { this.hint.textContent = this.customHint || 'WASD / 방향키 이동 · 2 먹기'; }
+    updateHint() { this.hint.textContent = this.customHint || 'WASD 이동 · 2 먹기'; }
     setState(state) {
         if (this.state === state) return;
         for (const variant of this.variants.values()) { variant.action.stop(); variant.model.visible = false; }

@@ -1,6 +1,8 @@
 // Native room unit = 100 game units, matching the adopted Somangi comparison.
 export const BANK_MODEL_URL = new URL('../../assets/office/3d/Bank-furnished-room.glb', import.meta.url).href;
 export const BANK_MODEL_SCALE = 100;
+// Original Sit_Idle pose at the cushion top; preserve the inward placement.
+export const CHAGOK_POSITION = { x: 0, z: -103, seatY: 64.00000343, radius: 31 };
 export const BANK_ROOM = {
     width: 828, depth: 628, wallHeight: 280,
     spawn: { x: 0, z: 235, facing: 'up' }, exitZ: 316, exitHalfWidth: 30,
@@ -26,6 +28,7 @@ export function bankCanStand(x, z) {
     const inRoom = Math.abs(x) <= 376 - radius && z >= -276 + radius && z <= 300 - radius;
     const inExit = Math.abs(x) <= 50 - radius && z >= 260 && z <= 338;
     if (!inRoom && !inExit) return false;
+    if (Math.hypot(x - CHAGOK_POSITION.x, z - CHAGOK_POSITION.z) < radius + CHAGOK_POSITION.radius) return false;
     return !BANK_OBSTACLES.some(b => x > b.minX - radius && x < b.maxX + radius
         && z > b.minZ - radius && z < b.maxZ + radius);
 }

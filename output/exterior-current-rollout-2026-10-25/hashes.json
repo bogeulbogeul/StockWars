@@ -1,0 +1,56 @@
+{
+  "home_office_tower": {
+    "source": "output\\home-envelope-correct-v7\\Home-with-right-mailbox.glb",
+    "sha256": "04d1ec4e7f0e528cc7efa7784caf415437249a7f3dc8aa044f2123d5d697b0d5",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "settlement_information": {
+    "source": "output\\information-corner-foot-remove-v8\\Information-clean.glb",
+    "sha256": "6905a00d67d1ba6dfd0ada0048584c0b79e1f932468c0ebec16bd0400562e3ec",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "vivian_store": {
+    "source": "output\\vivian-panel-molding-v11\\VivianStore-clean.glb",
+    "sha256": "29bcbb36b952d1c748bac86ae7576ac77154726deabdd464e4af7754925c91ca",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "julian_furniture": {
+    "source": "output\\furniture-redesign-v2\\Furniture-clean.glb",
+    "sha256": "691e6d57f31b23b260affe5a58f9732bee1ff62b6aba25a25a7de701b8a978e3",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "cipher_securities": {
+    "source": "output\\cipher-pediment-solid-v23\\CipherSecurities-clock.glb",
+    "sha256": "b6cc6373a8302e2e778b90dd5f12b4b5dff7e604ffabd48664851d3bdf642e41",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "node_finance": {
+    "source": "output\\bank-timber-roof-fit-v7\\Bank-clean.glb",
+    "sha256": "a0cfcaf78e777f9183027debb25ad66794891b3783487286cc84ac161fa31cbf",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "data_ink_bookstore": {
+    "source": "output\\bookstore-roof-pitched-v2\\Bookstore-clean.glb",
+    "sha256": "91962e722865fff88d38a6e7dd36ad39a8d2389b3e3e937614eef3c285d1c997",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "midnight_pub": {
+    "source": "output\\pub-timber-fit-v5\\Pub-clean.glb",
+    "sha256": "3e6417ce757123dd9abbe5addaf3ae8b436e11ef3fba8dd22af7f091ca5b2cf0",
+    "webMatches": true,
+    "desktopMatches": true
+  },
+  "post_office": {
+    "source": "output\\post-office-sign-match-v4\\PostOffice.glb",
+    "sha256": "64658d83c89fa48f5b5f6236a526579c1ebeda8cf569fa2681f7c52da54ec6c6",
+    "webMatches": true,
+    "desktopMatches": true
+  }
+}

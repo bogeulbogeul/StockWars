@@ -13,14 +13,15 @@ export const TOWN_OBJECT_HEIGHTS = {
 };
 
 const doorBaselines = {
-    home_office_tower: [320, 115.29412218], // Latest house + right mailbox, measured door surround.
-    settlement_information: [370, 99.6577],
+    home_office_tower: [320, 115.18851447], // v7 house + mailbox, measured door surround.
+    settlement_information: [370, 110.96716908],
     vivian_store: [425.5, 105.0850], // 15% wider shop; door and vertical scale unchanged.
-    julian_furniture: [448.5, 105.6297],
-    cipher_securities: [370, 71.90457021], // Adopted single-storey v4 GLB door/frame measurement.
-    node_finance: [390, 109.0978],
-    midnight_pub: [390, 93.8552],
+    julian_furniture: [448.5, 108.54777175],
+    cipher_securities: [370, 59.73033406], // v23 door/frame, including authored transforms.
+    node_finance: [390, 110.47166324],
+    midnight_pub: [390, 89.32228327],
     data_ink_bookstore: [350, 96.0223],
+    post_office: [350, 117.83166889],
 };
 
 export function scaleTownBuilding(definition) {

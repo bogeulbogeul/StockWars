@@ -1,0 +1,10 @@
+{
+  "source": "post-office-exterior-v1",
+  "roofTiles": 128,
+  "ridgeCaps": 8,
+  "overlapBands": 9,
+  "signScaleXZ": 0.8,
+  "unchangedFittingMeshes": 48,
+  "gameApplied": false,
+  "sha256": "d67d891050332320054c410cdf0b4ca2b33ba399bb0b14bc99bfe4bf8753fa80"
+}

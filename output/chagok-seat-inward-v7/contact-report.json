@@ -1,0 +1,26 @@
+{
+  "units": "game world units",
+  "hashes": {
+    "C:\\GitHub\\StockWars\\output\\chagok-original-sit-v6\\chagok-seated.glb": "c408eca14aee7789d6fc021147088b8a8275bb23b03c1286d10d4bd0b3025184",
+    "C:\\GitHub\\StockWars\\web\\assets\\office\\3d\\Bank-furnished-room.glb": "8646118b10f0a03eb87e2d03cf2eeb81badb3637b06a2215a498cbaab44b43f2"
+  },
+  "method": "World-space BVH triangle intersections and signed vertex candidates confirmed by majority parity of three ray directions; epsilon 0.001. Depth is sampled nearest-surface distance, not a global penetration solver.",
+  "sourceUnchanged": true,
+  "results": [
+    {
+      "chair": "Executive_Seat",
+      "character": "Somangi_SmoothBody",
+      "trianglePairs": 0,
+      "characterVerticesInsideChair": {
+        "count": 0,
+        "maximumDepth": 0,
+        "deepestPoint": null
+      },
+      "chairVerticesInsideCharacter": {
+        "count": 0,
+        "maximumDepth": 0,
+        "deepestPoint": null
+      }
+    }
+  ]
+}

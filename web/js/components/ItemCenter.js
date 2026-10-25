@@ -2,7 +2,7 @@ import { dayKey } from '../engine/ItemEngine.js';
 import { getItemArtwork } from '../data/itemArtwork.js';
 import { rumorDecryption } from './inventory/RumorPopup.js';
 import { LottoPanel } from './LottoPanel.js';
-const statNames = { analysis: '분석', management: '운용', recovery: '회복' };
+const statNames = { analysis: '분석력' };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 const time = ms => new Date(ms).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
@@ -55,7 +55,7 @@ export class ItemCenter {
     feedback(message) { this.dialog.querySelector('[role=status]').textContent = message; }
     refreshStatus() {
         const e = this.engine, s = e.state, stats = e.stats();
-        this.launch.title = `분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery} · 체력 ${s.stamina}/${e.maxStamina()}`;
+        this.launch.title = `분석력 ${stats.analysis} · 체력 ${s.stamina}/${e.maxStamina()}`;
         const swanActive = e.blackSwanEnabled && s.swanActive;
         const countdown = e.blackSwanEnabled && s.alarm && s.swanAt - e.now() <= 86400000 && !swanActive ? `블랙 스완까지 ${Math.max(0, Math.ceil((s.swanAt-e.now())/1000))}초` : '';
         this.banner.textContent = swanActive ? `블랙 스완 · ${s.mask ? '방독면: 차트 가독성 70% 복구' : '차트 노이즈 발생'}${e.active('analysis') ? ' · 분석 강화: 글리치 감지' : ''}` : countdown;
@@ -89,8 +89,8 @@ export class ItemCenter {
         const goods = s.inventory.filter(i => getItemArtwork(i.id)).map(i => `<button data-use="${escape(i.id)}"><img src="${getItemArtwork(i.id)}" alt="">${escape(i.name)} ×${i.quantity} ${i.isEquipped ? '해제' : '사용'}</button>`).join('');
         this.dialog.querySelector('main').innerHTML = `
           <p>데모 시각(KST): ${time(now)} · 날짜 ${dayKey(now)}</p>
-          <section><h3>현재 효과</h3><p>체력 ${s.stamina}/${e.maxStamina()} · 분석 ${stats.analysis} / 운용 ${stats.management} / 회복 ${stats.recovery}<br>1회 매수 한도 ${e.orderLimit()}주 · 노동 체력 ${e.laborCost()}칸 · 드링크/카페인 회복 ${e.recoveryAmount()}칸<br>누적 실현 수익 ${s.profit.toLocaleString()}G · 해독 ${s.decryptions}회 · 생존 ${s.survivals}회 · EXP ${s.exp}</p>
-          <p>${Object.entries(s.buffs).filter(([,end])=>end>now).map(([key,end])=>`${escape(statNames[key] || key)} +2: ${Math.ceil((end-now)/60000)}분 남음`).join(' / ') || '적용 중인 스탯 강화 없음'}</p>
+          <section><h3>현재 효과</h3><p>체력 ${s.stamina}/${e.maxStamina()} · 분석력 ${stats.analysis}<br>1회 매수 한도 ${e.orderLimit()}주 · 노동 체력 ${e.laborCost()}칸 · 드링크/카페인 회복 ${e.recoveryAmount()}칸<br>누적 실현 수익 ${s.profit.toLocaleString()}G · 해독 ${s.decryptions}회 · 생존 ${s.survivals}회 · EXP ${s.exp}</p>
+          <p>${Object.entries(s.buffs).filter(([key,end])=>key === 'analysis' && end>now).map(([key,end])=>`${escape(statNames[key] || key)} +2: ${Math.ceil((end-now)/60000)}분 남음`).join(' / ') || '적용 중인 스탯 강화 없음'}</p>
           <p>탈출 캡슐: ${s.escape?'대기 중':'없음'} · 경보기: ${s.alarm?'켜짐':'꺼짐'} · 방독면: ${s.mask?'장착':'해제'}</p>
           <p>보유 상품 사용</p><div class="item-center-actions">${goods || '가방이 비어 있습니다.'}</div></section>
           <section><h3>정보 · 해독</h3><label>해독 대상 <select id="itemReportTarget">${reportOptions || '<option value="">대상 없음</option>'}</select></label>${reports || '<p>유료 찌라시를 사용하면 보고서가 도착합니다.</p>'}</section>

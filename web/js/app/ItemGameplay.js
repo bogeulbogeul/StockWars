@@ -2,10 +2,7 @@ import { ItemEngine } from '../engine/ItemEngine.js';
 import { showItemUseNotice } from '../components/ItemUseNotice.js';
 import { toastManager } from '../components/ToastManager.js';
 import { playRecoveryDrinkEffect } from '../components/RecoveryDrinkEffect.js';
-import { applyPlayerTrait } from '../engine/PlayerTrait.js';
-import { LevelUpNotice } from '../components/LevelUpNotice.js';
 import { ItemCenter } from '../components/ItemCenter.js';
-import { RentQuestTracker } from '../components/RentQuestTracker.js';
 import { friendManager } from '../engine/FriendManager.js';
 import { INITIAL_STOCKS } from '../data/stocksData.js?v=v72';
 
@@ -61,20 +58,8 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     });
     // Black Swan events are excluded from the current demo build, including continued saves.
     const engine = new ItemEngine({ market, state: saved?.items, blackSwanEnabled: false });
-    applyPlayerTrait(engine.state, app.userProfile);
-    const levelUpNotice = new LevelUpNotice(app.appContainer, {
-        getState: () => ({ level: engine.playerLevel(), points: engine.pendingStatPoints(), stats: engine.state.baseStats }),
-        onConfirm: key => {
-            const result = engine.allocateLevelStat(key);
-            if (result.success) sync();
-            return result;
-        }
-    });
+    let observedLevel = engine.playerLevel();
     let gameStarted = false;
-    const rentQuest = new RentQuestTracker(app.appContainer);
-    const updateQuest = () => {
-        rentQuest.update(market.getState(), gameStarted && app.userProfile?.firstTutorialCompleted === true);
-    };
     app.itemEngine = engine;
     app.mainHUD.callbacks.getTime = () => engine.now();
     market.itemEngine = engine;
@@ -96,8 +81,9 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
     }
     function sync() {
-        updateQuest();
-        if (gameStarted && engine.pendingStatPoints() > 0) levelUpNotice.show();
+        const level = engine.playerLevel();
+        if (gameStarted && level > observedLevel) toastManager.showLevelUp(level);
+        observedLevel = level;
         app.inventoryModal.items = engine.state.inventory;
         app.mainHUD.updateStamina(engine.state.stamina);
         app.vivianStoreModal.affinity = engine.state.affinity;
@@ -151,7 +137,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
     app.itemGameplay = {
         sync, save,
         start() { gameStarted = true; sync(); },
-        pause() { gameStarted = false; levelUpNotice.close(); updateQuest(); },
+        pause() { gameStarted = false; },
         restOnBench() { const result = engine.restOnBench(); if (result.success) sync(); return result; },
         purchase(id, quantity, instant, { deferDrinkEffect = false } = {}) {
             const r = engine.purchase(id, quantity, instant, { vending: deferDrinkEffect });
@@ -163,8 +149,7 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         activate,
         reset() {
             engine.state = new ItemEngine({ market, blackSwanEnabled: engine.blackSwanEnabled }).state;
-            applyPlayerTrait(engine.state, app.userProfile);
-            levelUpNotice.close();
+            observedLevel = engine.playerLevel();
             engine.state.stamina = engine.maxStamina();
             app.itemCenter.dialog.close();
             app.itemCenter.boostDialog.close();
@@ -191,14 +176,14 @@ export function installItemGameplay(app, market, { saveKey = SAVE_KEY } = {}) {
         }
         sync();
     };
-    market.subscribe(() => { updateQuest(); save(false); });
+    market.subscribe(() => save(false));
     window.addEventListener('pagehide', () => save());
     engine.tick();
     sync();
     app.itemTimer = setInterval(() => {
         const day = engine.state.purchaseDay, cash = market.cash, active = engine.state.swanActive;
         engine.tick();
-        if (day !== engine.state.purchaseDay || cash !== market.cash || active !== engine.state.swanActive || app.mainHUD.stamina?.current !== engine.state.stamina || app.mainHUD.stamina?.max !== engine.maxStamina()) sync();
+        if (engine.playerLevel() !== observedLevel || day !== engine.state.purchaseDay || cash !== market.cash || active !== engine.state.swanActive || app.mainHUD.stamina?.current !== engine.state.stamina || app.mainHUD.stamina?.max !== engine.maxStamina()) sync();
         app.itemCenter.refreshStatus();
         save(false);
     }, 1000);

@@ -23,7 +23,7 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         social_and_ranking_guide: ['아직 보유 중이면 평가 손익, 팔면 실현 손익이에요.', [['평가 손익', '현재 가격 기준'], ['실현 손익', '매도한 결과']]],
         portfolio_slots_guide: ['같은 종목은 여러 주를 사도 슬롯 1칸만 써요.', [['A기업 10주', '1칸'], ['B기업 1주', '1칸'], ['합계', '2칸']]],
         portfolio_slots_capacity: ['새 종목을 담으려면 빈 슬롯이 필요해요.', [['일부 매도', '슬롯 유지'], ['전량 매도', '슬롯 1칸 확보']]],
-        portfolio_slots_trait: ['공격적 자산가는 슬롯 2칸을 추가로 받아요.', [['성향 보너스', '+2칸'], ['현금', '별도로 필요']]],
+        portfolio_slots_trait: ['레벨과 성향에 관계없이 같은 슬롯 규칙을 사용해요.', [['종목 슬롯', '공통 5칸'], ['현금', '별도로 필요']]],
         trade_history_guide: ['[거래 내역]에서 방금 산 기록을 확인하세요.', [['거래 기록', '언제 · 몇 주 · 얼마에']]],
         trade_history_fees: ['수수료를 뺀 실제 거래 결과를 확인하세요.', [['체결 금액', '실제로 거래한 금액'], ['수수료', '거래 비용']]],
         news_tab_guide: ['이번에는 아래쪽 [공시 뉴스]를 눌러 주세요.'],
@@ -98,9 +98,9 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
             additions.push(extra('stock_profit_example', '400G에 산 1주, 수수료를 빼기 전 손익이에요.', [['450G에 매도', '+50G', 'positive'], ['350G에 매도', '−50G', 'negative']], '2/4 • 1주 손익 예시'));
             additions.push({ ...extra('stock_profit_fees', '2주로 100G를 벌었어도 수수료가 4G라면 실제 이익은 96G예요.', [['수수료를 뺀 예시', '100G − 수수료 4G = 96G']], '2/4 • 수수료를 뺀 실제 이익'),
                 example: { label: '예시 · 400G에 산 주식 2주를 450G에 판 경우', rows: ['1주당 50G 이익 × 2주 = 100G'] },
-                detailText: '수수료 4G는 계산을 설명하기 위한 예시예요. 실제 수수료는 거래 금액·거래 장소·협상력에 따라 달라져요.' });
+                detailText: '수수료 4G는 계산을 설명하기 위한 예시예요. 실제 수수료는 거래 금액·거래 장소에 따라 달라져요.' });
         }
-        if (step.id === 'portfolio_slots_guide') additions.push(extra('portfolio_slots_growth', '운용력을 올리면 더 많은 종목을 보유할 수 있어요.', [['기본', '5칸'], ['운용력 +1', '슬롯 +5칸']], '2/4 • 슬롯 늘리기'));
+        if (step.id === 'portfolio_slots_guide') additions.push(extra('portfolio_slots_growth', '종목 슬롯은 모두에게 공통으로 5칸이에요.', [['공통', '5칸'], ['레벨·성향', '추가 슬롯 없음']], '2/4 • 공통 슬롯 규칙'));
         if (step.id === 'stock_basics_budget') additions.push(extra('stock_basics_diversification', '한 종목에 전부 투자하면 손해도 한곳에 몰려요.', [['여러 종목', '한 기업에 대한 의존 감소'], ['주의', '함께 하락할 수 있음']], '4/4 • 나눠 투자하기'));
         return [compact, ...additions];
     });

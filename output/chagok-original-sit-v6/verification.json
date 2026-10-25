@@ -1,0 +1,16 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-sit-v1\\somangi-sit.blend",
+  "sourceSHA256": "47e68e298952e39e8c90621267da29511a44fe38f33a3efd824a0a2529aa313f",
+  "clip": "Sit_Idle",
+  "frame": 1,
+  "maximumPoseVertexDifferenceAfterTranslation": 5.960464477539063e-08,
+  "rigidTranslation": [
+    0.0,
+    -0.2800000011920929,
+    0.7529350519180298
+  ],
+  "additionalLegRotation": 0,
+  "additionalLegLift": 0,
+  "undersideDeformation": false,
+  "sourceUnchanged": true
+}

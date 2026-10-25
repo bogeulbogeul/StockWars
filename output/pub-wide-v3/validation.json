@@ -1,0 +1,14 @@
+{
+  "glbReload": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "closedRoofAndChimneyCollar": true,
+  "tiles": 166,
+  "ridgeCaps": 16,
+  "crescent": true,
+  "beerSign": true,
+  "lanterns": 2,
+  "doubleDoorLeaves": 2,
+  "latticeMeshes": 40,
+  "gameApplied": false
+}

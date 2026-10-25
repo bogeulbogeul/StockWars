@@ -49,7 +49,7 @@ export function installInformationModelEntrance(app) {
                 ? { id: 'moa', label: '모아', hint: 'F · 모아와 이야기' } : null,
             onDoorEnter: () => { void app.informationModelScene.room.userData.moa.setMood('happy'); app.annaDialogueModal?.show(); },
             stageId: 'informationModelStage', label: '모아 안내소',
-            hint: 'WASD / 방향키 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
+            hint: 'WASD 이동 · Shift 달리기 · 아래 출입구 / Esc 마을'
         });
         app.informationModelScene.ready.then(() => app.informationModelScene.renderer?.domElement
             .setAttribute('aria-label', '모아 안내소 3D 화면'));

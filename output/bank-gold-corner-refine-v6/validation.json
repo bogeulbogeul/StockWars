@@ -1,0 +1,10 @@
+{
+  "source": "bank-eaves-joint-v3",
+  "bulkyCornerRemoved": true,
+  "thinFittedGoldTiles": 4,
+  "tileThickness": 0.035,
+  "cornerOuterX": 0.723,
+  "unchangedMeshes": 248,
+  "gameApplied": false,
+  "sha256": "9e302b0cec7e9f0bf14054a1721cf4d6706d456126317c7b2cd7a37880594e77"
+}

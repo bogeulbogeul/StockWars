@@ -1,0 +1,7 @@
+{
+  "glbReload": true,
+  "closedRoofTilesRidgesValleys": true,
+  "valleyParts": 2,
+  "ridgeCaps": 16,
+  "finitePositions": true
+}
