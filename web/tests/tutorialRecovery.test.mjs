@@ -30,7 +30,7 @@ test('full stamina consumes the gift without overflowing; full inventory allows 
     assert.equal(engine.state.stamina, engine.maxStamina());
     const blocked = createEngine();
     blocked.state.stamina = 2;
-    blocked.state.inventory = Array.from({ length: 24 }, (_, i) => ({ id: `full_${i}`, quantity: 1 }));
+    blocked.state.inventory = Array.from({ length: 30 }, (_, i) => ({ id: `full_${i}`, quantity: 1 }));
     assert.equal(blocked.claimTutorialRecoveryDrink().success, false);
     assert.equal(blocked.state.tutorialRecoveryDrinkClaimed, undefined);
     assert.equal(blocked.state.stamina, 2);

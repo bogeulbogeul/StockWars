@@ -32,7 +32,7 @@ test('fixed bodies include low solids and exclude overhead roofs', () => {
 });
 
 test('prop bodies block movement from all four directions without tunnelling', async () => {
-    globalThis.document = { body: { classList: { contains: () => true } } };
+    globalThis.document = { body: { classList: { contains: () => true, toggle() {} } } };
     const { TownPlayerController } = await import('../js/components/town/TownPlayerController.js');
     const body = {type:'static', minX:990, maxX:1010, minY:1490, maxY:1510};
     for (const [x,y,key] of [[950,1500,'d'],[1050,1500,'a'],[1000,1450,'s'],[1000,1550,'w']]) {

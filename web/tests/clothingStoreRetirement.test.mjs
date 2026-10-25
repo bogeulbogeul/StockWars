@@ -18,7 +18,7 @@ test('removed clothing store has no building, entrance or tour scenes', () => {
 });
 test('old tour cursors retain every surviving scene and migration runs once', () => {
     for (const order of ['packing', 'stock']) {
-        const old = buildPlan(chapters, order, true), current = buildPlan(chapters, order);
+        const old = buildPlan(chapters, order, true), current = buildPlan(chapters, order, false, true);
         for (let cursor = 0; cursor < old.length; cursor++) {
             const state = { order, cursor, cash: 1234, flags: { wage: true } };
             migrateClothingTour(state, chapters);

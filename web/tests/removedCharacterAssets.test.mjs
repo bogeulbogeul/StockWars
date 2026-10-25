@@ -18,7 +18,7 @@ test('runtime source no longer requests deleted character files', () => {
         const root = new URL(directory, import.meta.url);
         for (const file of readdirSync(root, { recursive: true })) {
             if (!/\.(js|css)$/.test(file)) continue;
-            assert.doesNotMatch(readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8'), /assets\/characters\/(?!(?:manager-park|dog-rgb-motion-v1|3d\/(?:somangi|moa))\/)/, file);
+            assert.doesNotMatch(readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8'), /assets\/characters\/(?!(?:manager-park|dog-rgb-motion-v1|3d\/(?:somangi|moa|tori|bongbong|chagok))\/)/, file);
         }
     }
 });
@@ -53,8 +53,8 @@ function readModel(url) {
     return JSON.parse(data.toString('utf8', 20, 20 + data.readUInt32LE(12)));
 }
 
-test('only approved Somangi walk/eat and standing Moa assets are reintroduced', () => {
-    assert.deepEqual(Object.keys(SOMANGI_MODELS).sort(), ['eat', 'walk']);
+test('approved Somangi walk/eat/sideways and clothing-free Moa assets are installed', () => {
+    assert.deepEqual(Object.keys(SOMANGI_MODELS).sort(), ['eat', 'sideways', 'walk']);
     for (const { file, clip } of Object.values(SOMANGI_MODELS)) {
         const model = readModel(somangiAssetUrl(file));
         assert.ok(model.animations.some(animation => animation.name === clip), clip);
@@ -80,7 +80,7 @@ test('only approved Somangi walk/eat and standing Moa assets are reintroduced', 
             }
         }
     }
-    for (const name of ['agent-k', 'anna', 'bongbong']) {
+    for (const name of ['agent-k', 'anna']) {
         assert.equal(existsSync(new URL(`../assets/characters/3d/${name}/`, import.meta.url)), false, name);
     }
     for (const file of ['jump.glb', 'wave.glb', 'crab.glb', 'office-sit.glb']) {
@@ -88,11 +88,19 @@ test('only approved Somangi walk/eat and standing Moa assets are reintroduced', 
     }
 });
 
-test('Tori and Bongbong setup still leaves room scenes empty', async () => {
-    const scene = new THREE.Scene();
-    for (const setup of [addCipherAgentK, addVivianShopkeeper]) {
-        assert.equal(await setup(scene), null);
-        assert.equal(scene.children.length, 0);
+test('approved Tori, Bongbong and Chagok assets load into their rooms', async t => {
+    t.mock.method(GLTFLoader.prototype, 'loadAsync', async url => {
+        const data = readModel(url);
+        assert.ok(data.meshes.length > 0);
+        return {scene: new THREE.Group(), animations: (data.animations || []).map(a => new THREE.AnimationClip(a.name, 1, []))};
+    });
+    const {addBankChagok} = await import('../js/components/bank3d/BankChagok.js');
+    for (const [setup, name] of [[addCipherAgentK, 'tori-character'], [addVivianShopkeeper, 'bongbong-character'], [addBankChagok, 'chagok-character']]) {
+        const scene = new THREE.Scene(), root = await setup(scene);
+        assert.equal(root.name, name);
+        assert.equal(root.parent, scene);
+        assert.equal(root.children.length, 1);
+        assert.ok(root.children[0].scale.x > 0);
     }
 });
 
@@ -117,8 +125,10 @@ test('Somangi loads walk/eat, follows movement and blocks manual eating during d
     await player.ready;
     // Avoid image decoding in Node; expression textures are checked against manifests above.
     player.setExpression = async () => true;
-    assert.equal(player.variants.size, 2);
-    assert.equal(player.root.children.length, 2);
+    let foodId;
+    t.mock.method(player.food, 'start', id => {foodId = id;});
+    assert.equal(player.variants.size, 3);
+    assert.equal(player.root.children.length, 3);
     assert.equal(player.state, 'idle');
     controller.renderPosition = { x: 120, y: 200 };
     player.update(.1);
@@ -131,11 +141,14 @@ test('Somangi loads walk/eat, follows movement and blocks manual eating during d
     blocked = false;
     assert.equal(player.play('eat'), true);
     assert.equal(player.state, 'eat');
+    assert.equal(foodId, 'item_popori_bread');
     assert.equal(player.play('eat'), false);
     const eating = player.variants.get('eat');
     eating.mixer.update(1.1);
     assert.equal(player.state, 'idle');
-    for (const action of ['wave', 'jump', 'crab', 'office-sit']) assert.equal(player.play(action), false);
+    assert.equal(player.play('jump'), true);
+    player.jump.cancel(); player.setState('idle');
+    for (const action of ['wave', 'crab', 'office-sit']) assert.equal(player.play(action), false);
     assert.equal(player.root.position.x, 120);
     assert.equal(player.root.position.z, 200 / GROUND_PROJECTION);
     assert.equal(player.root.rotation.y, Math.PI / 2);

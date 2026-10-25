@@ -71,7 +71,8 @@ test('instant drinking restores stamina; rejected purchases do not charge', () =
     assert.equal(poor.engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, false);
     assert.equal(poor.market.cash, 0);
     const full = setup();
-    full.engine.add(VENDING_ITEM.id, 99);
+    assert.equal(full.engine.add(VENDING_ITEM.id, 30), true);
+    assert.equal(full.engine.state.inventory[0].quantity, 30);
     assert.equal(full.engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, false);
     assert.equal(full.market.cash, 2000);
 });
