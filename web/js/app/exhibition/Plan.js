@@ -11,22 +11,19 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
         for (const line of lines) if (n === 14 && line.text.startsWith('정답을 맞히는 시험은 아닙니다.')) {
             line.text = '몇 가지 정보를 함께 읽어볼 겁니다. 결과와 관계없이 계좌를 만들 수 있으니 편하게 답해주세요.';
         }
-        if (n === 2 && !includeRetiredTour) for (const line of lines) {
-            if (line.text === '준비됐어요? 먼저 마을 가운데로 가볼까요?') {
-                line.text = '준비됐어요? 가까운 가구점부터 둘러볼까요?';
-            }
-        }
         plan.push(...lines);
     };
     add(1, 'arrival'); add(2, 'arrival');
     const tour = [['포포리 나무', 'tree'], ['소망이네 집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
         ['우디 가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['도란 쉼터', 'pub'], ['소담 서점', 'bookstore'],
-        ['두리 우체국', 'post'], ['토리 증권사', 'stockOutside'], ['차곡 은행', 'bankOutside'], ['모아 안내소', 'informationOutside']];
+        ['두리 우체국', 'post'], ['토리 증권사', 'stockOutside'], ['차곡 은행', 'bankOutside'],
+        ['주민 게시판', 'notice'], ['모아 안내소', 'informationOutside']];
     const orderedTour = includeRetiredTour ? tour : TOUR_ORDER.map(place => tour.find(stop => stop[1] === place));
     action('walk', orderedTour[0][1], `${orderedTour[0][0]}으로 가기`);
     orderedTour.forEach(([name, place]) => {
-        const sourceIndex = tour.findIndex(stop => stop[0] === name);
-        if (place) add(3, place, `### ${name}`, tour[sourceIndex + 1] ? `### ${tour[sourceIndex + 1][0]}` : undefined);
+        const headings = chapters.get(3).lines.filter(line => line.startsWith('### '));
+        const sourceIndex = headings.indexOf(`### ${name}`);
+        if (place && sourceIndex >= 0) add(3, place, `### ${name}`, headings[sourceIndex + 1]);
     });
     add(4, 'information', undefined, '[화면]'); action('nickname', 'information', '입주 신청서에 서명하기');
     add(4, 'information', '[화면]');
@@ -85,7 +82,22 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
 export function migrateClothingTour(state, chapters) {
     if (state.clothingStoreRemoved) return;
     const oldPlan = buildPlan(chapters, state.order, true);
-    const removedBefore = oldPlan.slice(0, state.cursor).filter(scene => scene.place === 'retiredClothing').length;
-    state.cursor = Math.max(0, state.cursor - removedBefore);
+    const current = buildPlan(chapters, state.order);
+    const scene = oldPlan.slice(state.cursor).find(beat => beat.place !== 'retiredClothing');
+    const index = current.findIndex(beat => scene?.kind === 'action'
+        ? beat.id === scene.id : JSON.stringify(beat) === JSON.stringify(scene));
+    state.cursor = index >= 0 ? index : current.length;
     state.clothingStoreRemoved = true;
+}
+
+export function migrateTourDialogue(state, chapters) {
+    if (state.tourDialogueVersion === 1) return;
+    const plan = buildPlan(chapters, state.order);
+    const walk = plan.findIndex(beat => beat.id === 'walk');
+    const oldSignature = plan.findIndex(beat => beat.id === 'nickname') - 3;
+    // The noticeboard adds three lines. Registered visitors keep their progress;
+    // unfinished tours resume at the first stop so reordered places are not missed.
+    if (state.cursor >= oldSignature) state.cursor += 3;
+    else if (state.cursor >= walk) state.cursor = walk;
+    state.tourDialogueVersion = 1;
 }

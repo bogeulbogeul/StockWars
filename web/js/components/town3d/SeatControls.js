@@ -1,4 +1,8 @@
 const controllers=new Set();
+export function registerSeatController(controller){
+    controllers.add(controller);
+    return ()=>controllers.delete(controller);
+}
 export function routeSeatKey(event){
     for(const controller of controllers)if(controller.handleKeyDown(event))return true;
     return false;
@@ -13,7 +17,7 @@ export function seatUiBlocked(){
 }
 export class SeatControls{
     constructor(interaction,owner){
-        controllers.add(interaction);
+        this.unregister=registerSeatController(interaction);
         this.button=document.createElement('button');this.button.hidden=true;
         this.button.className='bus-stop-seat-action seat-action';this.button.setAttribute('aria-keyshortcuts','E');
         (window.stockWarsExhibition?.view?.root||owner.layer).append(this.button);

@@ -2,7 +2,7 @@ export const SAVE_KEY = 'stockwars.exhibition.first-day.v1';
 // Exhibition balancing only. These are not the long-term economy specification.
 export const EXHIBITION = Object.freeze({ wage: 500, pot: 100, loan: 5000, grant: 2000 });
 export function freshState() {
-    return { version: 1, cursor: 0, clothingStoreRemoved: true, nickname: '', order: 'packing', cash: 0, debt: 0,
+    return { version: 1, cursor: 0, tourDialogueVersion: 1, clothingStoreRemoved: true, nickname: '', order: 'packing', cash: 0, debt: 0,
         shares: [], trades: [], flags: {}, analysis: 1, answers: [] };
 }
 export function loadState(storage) {

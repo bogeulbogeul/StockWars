@@ -6,6 +6,7 @@ export function createTourPlayerControls(controller, { onInteract } = {}) {
     const held = new Set();
     const directions = { KeyW: [0, -1], KeyA: [-1, 0], KeyS: [0, 1], KeyD: [1, 0] };
     const down = event => {
+        if (document.querySelector('dialog[open]')) return;
         if (event.ctrlKey || event.metaKey || event.altKey || event.target.closest?.('input, textarea, select')) return;
         if (event.code === 'KeyF') {
             event.preventDefault(); event.stopImmediatePropagation();
@@ -24,8 +25,9 @@ export function createTourPlayerControls(controller, { onInteract } = {}) {
     window.addEventListener('blur', clear);
     document.addEventListener('visibilitychange', visibility);
     return {
+        clear,
         update(dt) {
-            if (document.hidden) return;
+            if (document.hidden || document.querySelector('dialog[open]')) { clear(); return; }
             let dx = 0, dy = 0;
             for (const key of held) { dx += directions[key][0]; dy += directions[key][1]; }
             const length = Math.hypot(dx, dy), x = controller.charPosX, y = controller.charPosY;

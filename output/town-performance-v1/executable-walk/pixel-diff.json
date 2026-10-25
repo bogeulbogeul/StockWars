@@ -1,0 +1,47 @@
+[
+  {
+    "image": "entry-0-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "entry-300-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "entry-600-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "north-0-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "north-300-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "north-600-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "plaza-0-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "plaza-300-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  },
+  {
+    "image": "plaza-600-baseline.png",
+    "differentPixels": 0,
+    "bbox": null
+  }
+]

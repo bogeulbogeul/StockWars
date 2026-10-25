@@ -199,7 +199,7 @@ export class CipherLobbyScene {
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION,
             (x, z) => this.canStand(x, z));
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? SOMANGI_MOVEMENT.indoorWalk * SOMANGI_MOVEMENT.sidewaysFactor : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         if(length && !this.blocked() && this.interaction?.tryEnter(dx/length,dz/length,oldX,oldZ))return;
         let x = oldX, z = oldZ;

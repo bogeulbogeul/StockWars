@@ -1,0 +1,548 @@
+{
+  "place": "actual VivianModelScene",
+  "fps": 30,
+  "route": {
+    "x": -180,
+    "startZ": -175,
+    "endZ": 160,
+    "entryZ": -145,
+    "exitZ": 25,
+    "length": 170
+  },
+  "phases": [
+    "walk",
+    "sideways",
+    "walk"
+  ],
+  "frames": [
+    {
+      "state": "walk",
+      "x": -180,
+      "z": -169,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": -163,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": -157,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": -151,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -145,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -140.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -136,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -131.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -127,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -122.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -118,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -113.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -109,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -104.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -100,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -95.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -91,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -86.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -82,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -77.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -73,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -68.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -64,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -59.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -55,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -50.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -46,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -41.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -37,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -32.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -28,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -23.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -19,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -14.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -10,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -5.500000000000001,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": -1.0000000000000009,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": 3.499999999999999,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": 7.999999999999999,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": 12.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": 17,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": -180,
+      "z": 21.5,
+      "legal": true,
+      "yaw": 1.5707963267948966,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 25.999999999999996,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 31.999999999999996,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 38,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 44.00000000000001,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 50.00000000000001,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 56.00000000000001,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 62.00000000000001,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 68,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 74,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 80,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 86,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 92,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 98,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 103.99999999999999,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 109.99999999999999,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 115.99999999999999,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 121.99999999999999,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 127.99999999999999,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 134,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 140,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 146,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 152,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 158,
+      "legal": true,
+      "yaw": 0,
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": -180,
+      "z": 164,
+      "legal": true,
+      "yaw": 0,
+      "done": true
+    }
+  ],
+  "errors": []
+}

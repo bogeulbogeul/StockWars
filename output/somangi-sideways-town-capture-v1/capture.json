@@ -1,0 +1,356 @@
+{
+  "place": "actual TownModelScene, furniture exterior and woodland boundary",
+  "fps": 30,
+  "route": {
+    "x": 562,
+    "startZ": 3855,
+    "endZ": 4480,
+    "entryZ": 4000,
+    "exitZ": 4340,
+    "length": 340
+  },
+  "phases": [
+    "walk",
+    "sideways",
+    "walk"
+  ],
+  "frames": [
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 3881.6136737148895,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 3908.2273474297795,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 3934.841021144669,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 3961.454694859559,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 3988.0683685744484,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4014.682042289338,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4034.642297575506,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4054.6624336418085,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4074.622688927976,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4094.5829442141435,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4114.543199500311,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4134.503454786479,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4154.463710072646,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4174.423965358814,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4194.384220644981,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4214.344475931149,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4234.304731217317,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4254.264986503484,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4274.225241789652,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4294.185497075819,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4314.1457523619865,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "sideways",
+      "x": 562,
+      "z": 4334.1060076481535,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4354.0662629343215,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4380.679936649211,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4407.293610364101,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4433.907284078992,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4460.520957793883,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": false
+    },
+    {
+      "state": "walk",
+      "x": 562,
+      "z": 4487.134631508774,
+      "legal": true,
+      "enabled": true,
+      "busy": false,
+      "keys": [
+        "s"
+      ],
+      "done": true
+    }
+  ],
+  "errors": []
+}

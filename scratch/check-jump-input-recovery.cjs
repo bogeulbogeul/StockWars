@@ -11,7 +11,8 @@ const server=http.createServer((req,res)=>{
  try{
   const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/?demo=first-day&skipOpening=1`);
-  await page.waitForFunction(()=>window.stockWarsExhibition?.arrival.active,null,{timeout:60000});
+  try { await page.waitForFunction(()=>window.stockWarsExhibition?.arrival.active,null,{timeout:20000}); }
+  catch(error){console.log('BOOT DIAGNOSTIC',await page.evaluate(()=>({started:window.stockWarsExhibition?.started,cursor:window.stockWarsExhibition?.state?.cursor,busy:window.stockWarsExhibition?.busy,tour:window.stockWarsExhibition?.scenes?.tourActive,body:document.body.innerText.slice(0,1200)})),errors);throw error;}
   const before=await page.evaluate(async()=>{
    const a=window.stockWarsExhibition,s=a.scenes;await s.ready;await s.townModelScene.player.ready;
    cancelAnimationFrame(s.frame);a.arrival.stop();a.busy=false;

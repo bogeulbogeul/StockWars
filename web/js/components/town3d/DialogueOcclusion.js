@@ -1,4 +1,5 @@
 import { Box3, Raycaster, Vector3 } from '../../../vendor/three/three.module.js';
+import { createOcclusionQueries } from './OcclusionQueries.js';
 
 // Temporarily hide the blocking instance, preserving its original visibility.
 // Materials and collisions stay untouched, including shared tree materials.
@@ -6,6 +7,7 @@ export function createDialogueOcclusion(scene) {
     const ray = new Raycaster(), bounds = new WeakMap(), hidden = new Map();
     const target = new Vector3(), direction = new Vector3(), right = new Vector3();
     const hitPoint = new Vector3(), projected = new Vector3();
+    const queries = createOcclusionQueries();
     function begin(root) {
         const meshes = [];
         root.traverse(mesh => {
@@ -22,6 +24,8 @@ export function createDialogueOcclusion(scene) {
         hidden.delete(root);
     }
     return {
+        queries,
+        prepare(root) { queries.prepare(root); },
         update(camera, actors) {
             const hits = new Set();
             const roots = scene.children.filter(root => root.userData.dialogueOccluder && root.visible);
@@ -46,11 +50,7 @@ export function createDialogueOcclusion(scene) {
                         const point = ray.ray.intersectBox(box, hitPoint);
                         return point && point.distanceTo(camera.position) <= ray.far;
                     });
-                    for (const hit of ray.intersectObjects(candidates, true)) {
-                        let root = hit.object;
-                        while (root.parent && !root.userData.dialogueOccluder) root = root.parent;
-                        if (root.userData.dialogueOccluder) hits.add(root);
-                    }
+                    for (const root of candidates) if (queries.intersects(root, ray)) hits.add(root);
                 }
             }
             for (const root of hits) if (!hidden.has(root)) begin(root);

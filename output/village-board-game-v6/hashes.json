@@ -1,0 +1,20 @@
+[
+  {
+    "file": "css/village-board.css",
+    "web": "df81f1877c8370c88e38ad2a1c17e5a8e75d14c00836f6906bdaec8a4e65c9ac",
+    "desktop": "df81f1877c8370c88e38ad2a1c17e5a8e75d14c00836f6906bdaec8a4e65c9ac",
+    "equal": true
+  },
+  {
+    "file": "js/components/VillageBoard.js",
+    "web": "9843b7c02ce337466ef9f16c29fda980c4eb5a30cdbc29a88541ef3765cc1790",
+    "desktop": "9843b7c02ce337466ef9f16c29fda980c4eb5a30cdbc29a88541ef3765cc1790",
+    "equal": true
+  },
+  {
+    "file": "js/app/InstallVillageBoard.js",
+    "web": "1f42ccadd6207c4100b3278a84a62e1e5c1335a188122771f6e887d7af73964e",
+    "desktop": "1f42ccadd6207c4100b3278a84a62e1e5c1335a188122771f6e887d7af73964e",
+    "equal": true
+  }
+]

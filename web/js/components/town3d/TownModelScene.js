@@ -23,6 +23,7 @@ import { getTownMusic } from '../../engine/TownMusic.js';
 import { createConversationCamera } from './ConversationCamera.js';
 import { createDialogueOcclusion } from './DialogueOcclusion.js';
 import { TownRenderCulling } from './TownRenderCulling.js';
+import { TownStaticBatches } from './TownStaticBatches.js';
 
 // Separate from the retained sprite stage: both use the same ground coordinates.
 export class TownModelScene {
@@ -65,6 +66,7 @@ export class TownModelScene {
         this.layer.prepend(this.renderer.domElement);
         this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         this.landscape = new TownLandscape(this.scene);
+        this.dialogueOcclusion = createDialogueOcclusion(this.scene);
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.viewport);
         this.resize();
@@ -105,6 +107,7 @@ export class TownModelScene {
                     definition.id==='village_bus_stop'?{includeMesh:busStopSolidMesh}:{}));
             }
             this.scene.add(model);
+            this.dialogueOcclusion.prepare(model);
             this.renderCulling.add(model);
             this.renderCulling.add(model.contactShadow);
             this.jumpCollisionBodies.push(...createJumpBodies(model, definition.id, {
@@ -129,6 +132,7 @@ export class TownModelScene {
         installJumpCollision(controller, controller.canStand, this.jumpCollisionBodies);
         this.busSeat=new BusStopSeat(this,this.scene.getObjectByName('village_bus_stop'));
         this.seatInteraction=new SeatInteraction(this,townSeatSurfaces(this.scene));
+        this.renderCulling.batches = new TownStaticBatches(this.scene);
         this.draw();
     }
 
@@ -191,7 +195,7 @@ export class TownModelScene {
         for (const clock of this.buildingClocks) clock.update(wallTime);
         this.landscape.update(x, z, this.town.playerController.renderPosition);
         this.dialogueOcclusion ||= createDialogueOcclusion(this.scene);
-        if (document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
+        if (this.entryActive || document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
         else this.dialogueOcclusion.update(this.camera, [this.player, this.sleepingAnna], dt);
         this.renderCulling.render(this.renderer, this.scene, this.camera, this.landscape.center.value);
     }

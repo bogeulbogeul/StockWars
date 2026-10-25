@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseChapters } from '../js/app/exhibition/Script.js';
-import { buildPlan } from '../js/app/exhibition/Plan.js';
+import { buildPlan, migrateTourDialogue } from '../js/app/exhibition/Plan.js';
 import { freshState, complete, persist, loadState, SAVE_KEY, assets } from '../js/app/exhibition/State.js';
 import { isExhibitionMode } from '../js/app/exhibition/Mode.js';
 import { nearSleepingMoa, nextMoaCall, MOA_ARRIVAL } from '../js/app/exhibition/Arrival.js';
@@ -63,7 +63,7 @@ test('new demo defaults to first day while explicit legacy and art reviews remai
 
 test('renamed tour retains every introduction and selected branches do not leak alternatives', () => {
     const places = ['homeOutside', 'storeOutside', 'furniture', 'pub', 'bookstore', 'post', 'stockOutside', 'bankOutside', 'informationOutside'];
-    const names = ['소망이네 집', '봉봉 잡화점', '우디 가구점', '도란 쉼터', '소담 서점', '두리 우체국', '토리 증권사', '차곡 은행', '모아 안내소'];
+    const names = ['앞으로 지낼 집', '봉봉 잡화점', '우디 가구점', '도란 쉼터', '소담 서점', '두리 우체국', '토리 증권사', '차곡 은행', '모아 안내소'];
     for (const order of ['packing', 'stock']) {
         const tour = buildPlan(chapters, order).filter(b => b.chapter === 3);
         for (let i = 0; i < places.length; i++) {
@@ -85,9 +85,30 @@ test('tour starts near the stop, visits each place once and preserves its origin
     const visits = tour.filter((b, i) => i === 0 || b.place !== tour[i - 1].place).map(b => b.place);
     assert.equal(visits[0], 'furniture');
     assert.equal(visits.at(-1), 'informationOutside');
-    assert.equal(visits.length, 10);
-    assert.equal(new Set(visits).size, 10);
+    assert.deepEqual(visits, ['furniture', 'post', 'homeOutside', 'tree', 'stockOutside', 'pub',
+        'storeOutside', 'bookstore', 'bankOutside', 'notice', 'informationOutside']);
     assert.equal(current.find(b => b.id === 'walk').place, visits[0]);
     const original = historical.filter(b => b.chapter === 3 && b.place !== 'retiredClothing');
     assert.deepEqual(tour.map(b => `${b.place}:${b.text}`).sort(), original.map(b => `${b.place}:${b.text}`).sort());
+});
+
+test('dialogue does not reveal the player name before signing', () => {
+    const plan = buildPlan(chapters);
+    const unsigned = plan.slice(0, plan.findIndex(beat => beat.id === 'nickname'));
+    assert.ok(unsigned.filter(beat => beat.kind === 'line').every(beat => !/소망|\[닉네임\]/.test(beat.text)));
+});
+
+test('updated dialogue keeps registered saves at the same action and restarts unfinished tours once', () => {
+    const plan = buildPlan(chapters);
+    const signed = { ...freshState(), cursor: plan.findIndex(beat => beat.id === 'phone') - 3 };
+    delete signed.tourDialogueVersion;
+    migrateTourDialogue(signed, chapters);
+    assert.equal(plan[signed.cursor].id, 'phone');
+    const touring = { ...freshState(), cursor: plan.findIndex(beat => beat.chapter === 3) + 4 };
+    delete touring.tourDialogueVersion;
+    migrateTourDialogue(touring, chapters);
+    assert.equal(plan[touring.cursor].id, 'walk');
+    const once = structuredClone(touring);
+    migrateTourDialogue(touring, chapters);
+    assert.deepEqual(touring, once);
 });

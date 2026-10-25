@@ -7,6 +7,7 @@ import { EXHIBITION } from './State.js';
 import { ACCOUNT_QUIZ } from './Quiz.js';
 import { el } from './View.js';
 import { activitySpeech, passiveActivity } from './ActivityDialogue.js';
+import { receiveResidencePaper } from './ResidencePaperHandoff.js';
 
 export class ExhibitionActivities {
     constructor(controller) { this.app = controller; }
@@ -20,11 +21,19 @@ export class ExhibitionActivities {
         if (this[id]) { this[id](); return; }
         if (!passiveActivity(this.app, id)) throw new Error(`Unknown story activity: ${id}`);
     }
-    nickname() {
-        mountResidenceApplication(this.view.panel, {
-            name: this.state.nickname,
-            onSubmit: name => { this.state.nickname = name; this.next('nickname'); }
-        });
+    async nickname() {
+        this.app.busy = true; this.view.panel.hidden = true;
+        try {
+            const paper = await receiveResidencePaper(this.app);
+            this.app.busy = false; this.view.panel.hidden = false;
+            mountResidenceApplication(this.view.panel, {
+                name: this.state.nickname,
+                onSubmit: name => { paper.returnToDesk(); this.state.nickname = name; this.next('nickname'); }
+            });
+        } catch (error) {
+            this.app.busy = false; this.view.panel.hidden = false;
+            this.view.error('신청서를 준비하지 못했어요. 다시 시작해 주세요.'); console.error(error);
+        }
     }
     bank() {
         mountBankApplication(this.view.panel, { name: this.state.nickname, onSubmit: () => this.next('bank') });
@@ -53,8 +62,8 @@ export class ExhibitionActivities {
     }
     chooseOrder(order) { this.state.order = order; this.app.rebuild(); this.next('order'); }
     notice() {
-        this.say('소망이', '봉봉 잡화점에서 포장을 도와줄 사람을 찾는구나. 처음이어도 괜찮다니 가볼까?');
-        this.view.choices([['공고를 읽고 잡화점으로', () => this.next('notice')]]);
+        this.say('소망이', '게시판에 공고가 붙어 있네. 가까이 가서 읽어볼까?');
+        this.view.text('게시판 가까이에서 F키 또는 게시판 살펴보기 버튼을 눌러 공고를 읽어보세요.');
     }
     packing() {
         this.say('봉봉', '상품을 상자에 빈틈없이 담아주세요. 다섯 상자예요. 서두르지 않아도 괜찮아요.');

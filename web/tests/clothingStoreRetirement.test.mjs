@@ -22,7 +22,8 @@ test('old tour cursors retain every surviving scene and migration runs once', ()
         for (let cursor = 0; cursor < old.length; cursor++) {
             const state = { order, cursor, cash: 1234, flags: { wage: true } };
             migrateClothingTour(state, chapters);
-            if (old[cursor].place !== 'retiredClothing') assert.deepEqual(current[state.cursor], old[cursor]);
+            if (old[cursor].id === 'walk') assert.equal(current[state.cursor].id, 'walk');
+            else if (old[cursor].place !== 'retiredClothing') assert.deepEqual(current[state.cursor], old[cursor]);
             const once = structuredClone(state); migrateClothingTour(state, chapters);
             assert.deepEqual(state, once); assert.equal(state.cash, 1234);
         }

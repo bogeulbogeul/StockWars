@@ -19,6 +19,7 @@ export function buildInformationModelRoom(scene) {
         model.scale.setScalar(100);
         model.position.y = -2.2;
         model.traverse(object => {
+            if (object.userData.interiorFrontCutaway) object.visible = false;
             if (!object.isMesh) return;
             object.castShadow = object.receiveShadow = true;
         });

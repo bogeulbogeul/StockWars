@@ -1,0 +1,113 @@
+{
+  "environment": {
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) stockwars-electron/1.0.9 Chrome/120.0.6099.291 Electron/28.3.3 Safari/537.36",
+    "url": "file:///C:/GitHub/StockWars/electron-app/dist/win-unpacked/resources/web/index.html",
+    "viewport": [
+      1264,
+      741
+    ],
+    "dpr": 1,
+    "hidden": false,
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "music": "day"
+  },
+  "summary": [
+    {
+      "route": "entry",
+      "enabled": false,
+      "frame": {
+        "frames": 265,
+        "meanMs": 33.55622641509443,
+        "fps": 29.80072871215862,
+        "p95Ms": 83.5,
+        "p99Ms": 100.10000000000582,
+        "over33Ms": 80,
+        "over50Ms": 70
+      },
+      "meanCalls": 5853,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "entry",
+      "enabled": true,
+      "frame": {
+        "frames": 331,
+        "meanMs": 22.832930513595112,
+        "fps": 43.796393082551674,
+        "p95Ms": 66.60000000000582,
+        "p99Ms": 66.80000000001746,
+        "over33Ms": 43,
+        "over50Ms": 33
+      },
+      "meanCalls": 2922.669983204323,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "plaza",
+      "enabled": false,
+      "frame": {
+        "frames": 274,
+        "meanMs": 32.51496350364965,
+        "fps": 30.75507065809115,
+        "p95Ms": 83.39999999999418,
+        "p99Ms": 100.10000000000582,
+        "over33Ms": 81,
+        "over50Ms": 65
+      },
+      "meanCalls": 5853,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "plaza",
+      "enabled": true,
+      "frame": {
+        "frames": 356,
+        "meanMs": 19.542134831460594,
+        "fps": 51.17148196061542,
+        "p95Ms": 33.39999999999418,
+        "p99Ms": 33.5,
+        "over33Ms": 3,
+        "over50Ms": 2
+      },
+      "meanCalls": 2033.838089976322,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "north",
+      "enabled": false,
+      "frame": {
+        "frames": 260,
+        "meanMs": 30.993076923076966,
+        "fps": 32.265270159588944,
+        "p95Ms": 66.80000000001746,
+        "p99Ms": 100.10000000000582,
+        "over33Ms": 72,
+        "over50Ms": 64
+      },
+      "meanCalls": 5528.012096774193,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "north",
+      "enabled": true,
+      "frame": {
+        "frames": 382,
+        "meanMs": 18.212303664921404,
+        "fps": 54.90793577783865,
+        "p95Ms": 33.39999999999418,
+        "p99Ms": 33.5,
+        "over33Ms": 3,
+        "over50Ms": 1
+      },
+      "meanCalls": 1190.9022752192982,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    }
+  ],
+  "errors": []
+}

@@ -28,7 +28,8 @@ export class TownRenderCulling {
     }
 
     render(renderer, scene, camera, centerZ) {
-        if (!this.enabled) { renderer.render(scene, camera); return; }
+        const render = () => this.batches ? this.batches.render(renderer, scene, camera) : renderer.render(scene, camera);
+        if (!this.enabled) { render(); return; }
         camera.updateMatrixWorld();
         this.matrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
         this.frustum.setFromProjectionMatrix(this.matrix);
@@ -36,6 +37,7 @@ export class TownRenderCulling {
         const bend = z => .00018 * Math.max(0, centerZ - z - 1100) ** 2;
         try {
             for (const { root, owner, bounds } of this.entries) {
+                if (root.userData.dynamicDoor) continue;
                 if (!root.visible || (owner && !owner.visible)) continue;
                 this.bent.copy(bounds);
                 this.bent.min.y -= bend(bounds.min.z);
@@ -45,7 +47,7 @@ export class TownRenderCulling {
                     hidden.push(root);
                 }
             }
-            renderer.render(scene, camera);
+            render();
         } finally {
             for (const root of hidden) root.visible = true;
         }

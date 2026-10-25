@@ -1,6 +1,8 @@
+import { installVillageBoard } from '../InstallVillageBoard.js';
+import { createTourPlayerControls } from './TourPlayerControls.js';
 import { showTitleScreen } from '../TitleScreen.js';
 import { loadScript } from './Script.js';
-import { buildPlan, migrateClothingTour } from './Plan.js';
+import { buildPlan, migrateClothingTour, migrateTourDialogue } from './Plan.js';
 import { SAVE_KEY, freshState, loadState, persist, complete } from './State.js';
 import { ExhibitionScenes } from './Scenes.js';
 import { ExhibitionView, el } from './View.js';
@@ -23,6 +25,7 @@ export class Exhibition {
         this.storage = storage; this.chapters = chapters;
         this.state = loadState(storage) || freshState();
         migrateClothingTour(this.state, chapters);
+        migrateTourDialogue(this.state, chapters);
         this.scenes = new ExhibitionScenes(container);
         this.view = new ExhibitionView(() => this.confirmRestart(), {
             canTrade: () => !this.busy && this.plan?.[this.state.cursor]?.id === 'trade',
@@ -32,6 +35,14 @@ export class Exhibition {
             }
         });
         this.activities = new ExhibitionActivities(this); this.rebuild();
+        this.updateVillageBoard = installVillageBoard(this.scenes, {
+            host: this.view.root,
+            canInteract: () => !!this.started && !this.busy && !this.arrival?.active
+                && !this.scenes.informationAwaitingTalk && !this.scenes.tourActive,
+            onRead: () => this.plan[this.state.cursor]?.id === 'notice' ? () => this.next('notice') : null,
+            onOpen: () => this.noticeControls?.clear()
+        });
+        this.scenes.updateVillageBoard = this.updateVillageBoard;
         this.arrival = new ExhibitionArrival(this);
         // Arrival borrows the same live village as the exhibition, without legacy saves/presence.
         window.stockWarsApp = this.scenes;
@@ -40,9 +51,11 @@ export class Exhibition {
             if (!this.started || this.activities.game?.isOpen || event.ctrlKey || event.metaKey || event.altKey) return;
             if (this.arrival.active) return;
             if (this.scenes.informationAwaitingTalk) return;
+            if (this.scenes.receivingApplication) return;
             if (routeExhibitionJump(event, this)) return;
             if (this.scenes.tourActive) return;
             if (routeSeatKey(event)) return;
+            if (this.noticeControls && /^Key[WASD]$/.test(event.code)) return;
             const next = this.view.panel.querySelector('.dialogue-next-triangle');
             if (next && event.code === 'KeyF') {
                 event.preventDefault(); event.stopImmediatePropagation();
@@ -81,9 +94,11 @@ export class Exhibition {
         this.rebuild();
         const beat = this.plan[this.state.cursor];
         if (!beat) { this.view.clear('진행 위치를 확인할 수 없어요'); this.view.choices([['처음부터', () => this.restart()]]); return; }
+        this.noticeControls?.dispose(); this.noticeControls = null;
         this.busy = true;
         this.view.sync(this.state); this.view.clear(null);
-        this.view.location.textContent = PLACE_NAMES[beat.place] || '포포리 마을';
+        this.view.location.textContent = beat.place === 'homeOutside' && !this.state.flags.nickname
+            ? '앞으로 지낼 집' : PLACE_NAMES[beat.place] || '포포리 마을';
         this.scenes.setTime(!!this.state.flags.sunset);
         const tour = beat.chapter === 3 || beat.id === 'walk';
         this.view.panel.hidden = true;
@@ -105,6 +120,10 @@ export class Exhibition {
         this.view.panel.hidden = false;
         if (beat.kind === 'line') this.view.line(beat, () => this.next());
         else this.activities.run(beat);
+        if (beat.id === 'notice') {
+            this.noticeControls = createTourPlayerControls(this.scenes.townStage.playerController,
+                { onInteract: () => this.updateVillageBoard.interact() });
+        }
         this.view.sync(this.state);
     }
     next(id, data) {

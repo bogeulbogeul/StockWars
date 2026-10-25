@@ -1,0 +1,1140 @@
+{
+  "buildings": [
+    {
+      "id": "home_office_tower",
+      "name": "소망이네 집",
+      "bodies": 59,
+      "bounds": {
+        "minX": 644.5468002920011,
+        "maxX": 973.6284220004317,
+        "minZ": 1895.4935400344857,
+        "maxZ": 2167.113431069617
+      }
+    },
+    {
+      "id": "settlement_information",
+      "name": "모아 안내소",
+      "bodies": 35,
+      "bounds": {
+        "minX": 1328.9250535080423,
+        "maxX": 1715.3895677008334,
+        "minZ": 4715.940396938619,
+        "maxZ": 5018.578471950691
+      }
+    },
+    {
+      "id": "vivian_store",
+      "name": "봉봉 잡화점",
+      "bodies": 39,
+      "bounds": {
+        "minX": 2472.468420227624,
+        "maxX": 2927.531579772376,
+        "minZ": 2908.3445119617554,
+        "maxZ": 3253.3033796722934
+      }
+    },
+    {
+      "id": "julian_furniture",
+      "name": "우디 가구점",
+      "bodies": 32,
+      "bounds": {
+        "minX": 611.3341563320031,
+        "maxX": 1086.8839273553194,
+        "minZ": 4049.1176177629372,
+        "maxZ": 4334.226862139234
+      }
+    },
+    {
+      "id": "cipher_securities",
+      "name": "토리 증권사",
+      "bodies": 118,
+      "bounds": {
+        "minX": 1362.8432837191658,
+        "maxX": 2137.156716239459,
+        "minZ": 1793.3640460543866,
+        "maxZ": 2281.172032577466
+      }
+    },
+    {
+      "id": "node_finance",
+      "name": "차곡 은행",
+      "bodies": 31,
+      "bounds": {
+        "minX": 2249.4138416393484,
+        "maxX": 2655.115550146226,
+        "minZ": 4742.134837589675,
+        "maxZ": 5087.013632931837
+      }
+    },
+    {
+      "id": "midnight_pub",
+      "name": "도란 쉼터",
+      "bodies": 75,
+      "bounds": {
+        "minX": 2443.768814432187,
+        "maxX": 2927.1643491109303,
+        "minZ": 1853.0591723418465,
+        "maxZ": 2166.2365270626815
+      }
+    },
+    {
+      "id": "data_ink_bookstore",
+      "name": "소담 서점",
+      "bodies": 58,
+      "bounds": {
+        "minX": 2549.800647376047,
+        "maxX": 2908.2690015474877,
+        "minZ": 4053.370806613535,
+        "maxZ": 4334.226862139233
+      }
+    },
+    {
+      "id": "post_office",
+      "name": "우체국",
+      "bodies": 48,
+      "bounds": {
+        "minX": 630.5084781520973,
+        "maxX": 969.4915218479027,
+        "minZ": 2995.285754947701,
+        "maxZ": 3262.076006767949
+      }
+    }
+  ],
+  "legal": 96210,
+  "narrow": 260,
+  "buildingPairs": [],
+  "samples": [
+    {
+      "x": 536,
+      "z": 4048,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4060,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4072,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4084,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4096,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4108,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4120,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4132,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4144,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4156,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4168,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4180,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4192,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4204,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4216,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4228,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4240,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4252,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4264,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 536,
+      "z": 4276,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4012,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4024,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4036,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4048,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4060,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4072,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4084,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4096,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4108,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4120,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4132,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4144,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4156,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4168,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4180,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4192,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4204,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4216,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4228,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4240,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4252,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4264,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4276,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4288,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 548,
+      "z": 4300,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 2968,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 2980,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 2992,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3004,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3016,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3028,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3040,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3052,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3064,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3076,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3088,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3100,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3112,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3124,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3136,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3148,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3160,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3172,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3184,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3196,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3208,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 3220,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "post_office"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4012,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4024,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4036,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4048,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4060,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4072,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4084,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4096,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4108,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4120,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4132,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4144,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    },
+    {
+      "x": 560,
+      "z": 4156,
+      "axis": {
+        "x": 0,
+        "z": 1
+      },
+      "left": [],
+      "right": [
+        "julian_furniture"
+      ],
+      "pair": false
+    }
+  ]
+}

@@ -49,3 +49,7 @@ node web/tests/arrivalBench.browser.cjs electron-app/dist/win-unpacked/resources
 ```
 
 성능 측정은 다른 브라우저 검증을 동시에 실행하지 않은 상태에서 수행한다.
+
+## 후속: 기존 실행본 직접 이동 검증
+
+2026-10-25 사용자 요청으로 기존 StockWars Demo.exe 자체(Electron28.3.3)를 실행해 실제 WASD 왕복을 비교했다. 입구29.8→43.8FPS, 광장30.8→51.2FPS, 북쪽32.3→54.9FPS였으며 긴 프레임도 감소했다. 입구의 일부 끊김은 남는다. 실제 실행본의 동일 프레임9쌍은 픽셀 차이0개였다. 절차·수치·한계·원시 자료는 [실행본 직접 검증](executable-walk/README.md)을 따른다.

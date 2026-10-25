@@ -1,0 +1,74 @@
+[
+  {
+    "name": "entry-0-baseline.png",
+    "differentPixels": 645,
+    "fraction": 0.0006886434684569262,
+    "over8": 106,
+    "maxChannel": 43,
+    "meanChannel": 0.0035592368620349962
+  },
+  {
+    "name": "entry-300-baseline.png",
+    "differentPixels": 744,
+    "fraction": 0.000794342233382873,
+    "over8": 160,
+    "maxChannel": 55,
+    "meanChannel": 0.005358251194360455
+  },
+  {
+    "name": "entry-600-baseline.png",
+    "differentPixels": 406,
+    "fraction": 0.0004334717026256,
+    "over8": 158,
+    "maxChannel": 57,
+    "meanChannel": 0.0038361178018073423
+  },
+  {
+    "name": "north-0-baseline.png",
+    "differentPixels": 431,
+    "fraction": 0.00046016330993013205,
+    "over8": 148,
+    "maxChannel": 126,
+    "meanChannel": 0.004853245984158709
+  },
+  {
+    "name": "north-300-baseline.png",
+    "differentPixels": 431,
+    "fraction": 0.00046016330993013205,
+    "over8": 160,
+    "maxChannel": 169,
+    "meanChannel": 0.005233690360272638
+  },
+  {
+    "name": "north-600-baseline.png",
+    "differentPixels": 479,
+    "fraction": 0.0005114111959548335,
+    "over8": 164,
+    "maxChannel": 169,
+    "meanChannel": 0.005305935644043572
+  },
+  {
+    "name": "plaza-0-baseline.png",
+    "differentPixels": 551,
+    "fraction": 0.0005882830249918857,
+    "over8": 226,
+    "maxChannel": 53,
+    "meanChannel": 0.005017666285154626
+  },
+  {
+    "name": "plaza-300-baseline.png",
+    "differentPixels": 531,
+    "fraction": 0.0005669297391482602,
+    "over8": 296,
+    "maxChannel": 56,
+    "meanChannel": 0.005806670197076594
+  },
+  {
+    "name": "plaza-600-baseline.png",
+    "differentPixels": 652,
+    "fraction": 0.0006961171185021951,
+    "over8": 441,
+    "maxChannel": 37,
+    "meanChannel": 0.008819262941514772
+  }
+]

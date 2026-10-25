@@ -27,7 +27,8 @@ export class SeatInteraction{
     visible(){return this.owner.town?!this.owner.town.containerEl.classList.contains('hidden'):this.owner.active;}
     enabled(){
         const app=window.stockWarsExhibition;
-        return this.visible()&&!this.c.scriptedWalking&&!app?.busy
+        const informationEntry = app?.scenes?.informationAwaitingTalk && this.owner === app.scenes.rooms.get('information');
+        return this.visible()&&!this.c.scriptedWalking&&(!app?.busy || informationEntry)
             &&(app?app.started:!this.owner.town?.callbacks?.isInputBlocked?.())
             &&!seatUiBlocked()
             &&(!this.owner.blocked||!this.owner.blocked())
@@ -56,6 +57,7 @@ export class SeatInteraction{
     nearest(){
         if(this.selected)return this.selected;
         if(this.c.busSeated)return null;
+        if(this.owner.town&&this.owner.busSeat?.enabled()&&this.owner.busSeat.near())return null;
         const range=this.owner.town?245:145;
         return this.seats.filter(s=>Math.hypot(this.c.charPosX-s.center.x,this.c.charPosY/P-s.center.z)<=range
             &&!this.occupied(s)&&this.exits(s).length)

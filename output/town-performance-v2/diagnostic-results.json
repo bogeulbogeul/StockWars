@@ -1,0 +1,6029 @@
+{
+  "environment": {
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) stockwars-electron/1.0.9 Chrome/120.0.6099.291 Electron/28.3.3 Safari/537.36",
+    "url": "file:///C:/GitHub/StockWars/electron-app/dist/win-unpacked/resources/web/index.html",
+    "viewport": [
+      1264,
+      741
+    ],
+    "dpr": 1,
+    "hidden": false,
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "music": "day"
+  },
+  "runs": [
+    {
+      "pass": 0,
+      "enabled": true,
+      "route": "entry",
+      "start": {
+        "x": 1960,
+        "y": 2290
+      },
+      "turn": {
+        "x": 1960,
+        "y": 1689.6100000083413
+      },
+      "end": {
+        "x": 1960,
+        "y": 2292.729999983309
+      },
+      "frame": {
+        "frames": 157,
+        "meanMs": 24.441401273885347,
+        "fps": 40.914184452609916,
+        "p95Ms": 66.79999999999927,
+        "p99Ms": 83.40000000000146,
+        "over33Ms": 22,
+        "over50Ms": 17
+      },
+      "draw": {
+        "frames": 157,
+        "meanMs": 16.357961786021093,
+        "fps": 61.13231055806494,
+        "p95Ms": 68.30000007152557,
+        "p99Ms": 85.40000009536743,
+        "over33Ms": 23,
+        "over50Ms": 18
+      },
+      "illegalFrames": 0,
+      "hiddenFrames": 0,
+      "movingFrames": 157,
+      "meanCalls": 2940.566878980892,
+      "meanTriangles": 5787079.5859872615,
+      "samples": [
+        {
+          "ms": 66.70000000000073,
+          "x": 1960,
+          "y": 2272.4999999999995,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.2999999523162842,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 12.399999976158142
+          },
+          "calls": 4106,
+          "triangles": 7546624,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2266.8299999833102,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 7.800000071525574
+          },
+          "calls": 4096,
+          "triangles": 7508316,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2262.839999991655,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 57.199999928474426
+          },
+          "calls": 4087,
+          "triangles": 7504296,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2245.3399999916546,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 12
+          },
+          "calls": 4085,
+          "triangles": 7482231,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2240.4749999999995,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 11
+          },
+          "calls": 4088,
+          "triangles": 7480215,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2236.2049999833102,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.6000000238418579,
+            "render": 7.600000023841858
+          },
+          "calls": 4081,
+          "triangles": 7473463,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2232.2499999999995,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 75.19999992847443
+          },
+          "calls": 4075,
+          "triangles": 7472399,
+          "hidden": false
+        },
+        {
+          "ms": 66.79999999999927,
+          "x": 1960,
+          "y": 2214.749999999999,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 10.899999976158142
+          },
+          "calls": 4041,
+          "triangles": 7440407,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2210.4100000083436,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 7.399999976158142
+          },
+          "calls": 4034,
+          "triangles": 7423731,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2207.2950000166884,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 64.89999997615814
+          },
+          "calls": 4025,
+          "triangles": 7419603,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000073,
+          "x": 1960,
+          "y": 2189.795000016688,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0,
+            "occlusion": 1.3000000715255737,
+            "render": 11.700000047683716
+          },
+          "calls": 3958,
+          "triangles": 7385469,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2184.7550000250326,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 10.600000023841858
+          },
+          "calls": 3934,
+          "triangles": 7375009,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2178.910000008343,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 7.5
+          },
+          "calls": 3908,
+          "triangles": 7362230,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2173.065000033377,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 66.89999997615814
+          },
+          "calls": 3886,
+          "triangles": 7348906,
+          "hidden": false
+        },
+        {
+          "ms": 66.79999999999927,
+          "x": 1960,
+          "y": 2155.5650000333767,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.20000004768371582,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 8.200000047683716
+          },
+          "calls": 3803,
+          "triangles": 7315958,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2151.260000050066,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7999999523162842,
+            "render": 6.900000095367432
+          },
+          "calls": 3777,
+          "triangles": 7289506,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2145.4150000333766,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.5999999046325684,
+            "render": 55.10000002384186
+          },
+          "calls": 3756,
+          "triangles": 7280018,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 2127.915000033376,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 10.199999928474426
+          },
+          "calls": 3697,
+          "triangles": 7222530,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2123.785000008342,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 9.600000023841858
+          },
+          "calls": 3665,
+          "triangles": 7203090,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2119.3400000333763,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.19999992847442627,
+            "occlusion": 0.9000000953674316,
+            "render": 6.600000023841858
+          },
+          "calls": 3650,
+          "triangles": 7197646,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2113.495000016687,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 70.79999995231628
+          },
+          "calls": 3628,
+          "triangles": 7169846,
+          "hidden": false
+        },
+        {
+          "ms": 66.79999999999927,
+          "x": 1960,
+          "y": 2095.9950000166864,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.600000023841858,
+            "render": 11.5
+          },
+          "calls": 3544,
+          "triangles": 7114413,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2091.1299999833077,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 6.600000023841858
+          },
+          "calls": 3517,
+          "triangles": 7105197,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2087.3149999916523,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 57.800000071525574
+          },
+          "calls": 3487,
+          "triangles": 7090885,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2069.814999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 9
+          },
+          "calls": 3419,
+          "triangles": 7065357,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2066.209999966618,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 7.600000023841858
+          },
+          "calls": 3406,
+          "triangles": 7061537,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2062.3949999749625,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.6000000238418579,
+            "render": 8.100000023841858
+          },
+          "calls": 3399,
+          "triangles": 7057385,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2056.5499999999965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 6.200000047683716
+          },
+          "calls": 3383,
+          "triangles": 7036753,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2050.704999983307,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 82.5
+          },
+          "calls": 3364,
+          "triangles": 7026733,
+          "hidden": false
+        },
+        {
+          "ms": 83.39999999999782,
+          "x": 1960,
+          "y": 2033.2049999833073,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.2000000476837158,
+            "render": 7.199999928474426
+          },
+          "calls": 3288,
+          "triangles": 6961065,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2028.864999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.5999999046325684,
+            "render": 45.299999952316284
+          },
+          "calls": 3277,
+          "triangles": 6951149,
+          "hidden": false
+        },
+        {
+          "ms": 33.5,
+          "x": 1960,
+          "y": 2011.4700000166856,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 9.899999976158142
+          },
+          "calls": 3203,
+          "triangles": 6910105,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2007.410000008341,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 7.100000023841858
+          },
+          "calls": 3184,
+          "triangles": 6898197,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2004.4700000166856,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 6
+          },
+          "calls": 3178,
+          "triangles": 6895465,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1999.710000008341,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 5.899999976158142
+          },
+          "calls": 3166,
+          "triangles": 6888901,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1993.8649999916518,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8000000715255737,
+            "render": 6.300000071525574
+          },
+          "calls": 3136,
+          "triangles": 6855617,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1988.0200000166858,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 92.30000007152557
+          },
+          "calls": 3115,
+          "triangles": 6841969,
+          "hidden": false
+        },
+        {
+          "ms": 83.40000000000146,
+          "x": 1960,
+          "y": 1970.520000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 2.1999999284744263,
+            "render": 8.399999976158142
+          },
+          "calls": 3054,
+          "triangles": 5226629,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1966.4249999999968,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.5999999046325684,
+            "render": 43.39999997615814
+          },
+          "calls": 3033,
+          "triangles": 5216701,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 1949.239999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2999999523162842,
+            "render": 8.200000047683716
+          },
+          "calls": 2908,
+          "triangles": 5125837,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1945.7049999833073,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 8.200000047683716
+          },
+          "calls": 2898,
+          "triangles": 5121093,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1940.3850000083412,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 7.600000023841858
+          },
+          "calls": 2855,
+          "triangles": 5091325,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1934.539999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.100000023841858,
+            "render": 6.200000047683716
+          },
+          "calls": 2825,
+          "triangles": 5078741,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1928.7299999833074,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 9.100000023841858
+          },
+          "calls": 2785,
+          "triangles": 5064337,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1922.8850000083414,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 34.60000002384186
+          },
+          "calls": 2751,
+          "triangles": 5052385,
+          "hidden": false
+        },
+        {
+          "ms": 33.39999999999782,
+          "x": 1960,
+          "y": 1910.320000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 8.600000023841858
+          },
+          "calls": 2699,
+          "triangles": 5034957,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1905.3499999999967,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 7.899999976158142
+          },
+          "calls": 2652,
+          "triangles": 5020393,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1899.5049999833075,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7000000476837158,
+            "render": 5.200000047683716
+          },
+          "calls": 2611,
+          "triangles": 4981525,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1893.695000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 5.100000023841858
+          },
+          "calls": 2571,
+          "triangles": 4965593,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1876.1950000166862,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 7.5
+          },
+          "calls": 2414,
+          "triangles": 4888381,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1870.6649999916522,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 7.200000047683716
+          },
+          "calls": 2380,
+          "triangles": 4877049,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1864.8200000166862,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.100000023841858,
+            "render": 5.200000047683716
+          },
+          "calls": 2352,
+          "triangles": 4856897,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1858.974999999997,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.099999904632568
+          },
+          "calls": 2290,
+          "triangles": 4836815,
+          "hidden": false
+        },
+        {
+          "ms": 33.39999999999782,
+          "x": 1960,
+          "y": 1845.2899999916524,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.9000000953674316,
+            "render": 5.699999928474426
+          },
+          "calls": 2205,
+          "triangles": 4769739,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1841.474999999997,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6.699999928474426
+          },
+          "calls": 2197,
+          "triangles": 4764951,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1835.5950000166863,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 6.400000095367432
+          },
+          "calls": 2190,
+          "triangles": 4758775,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1829.8200000166862,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.600000023841858
+          },
+          "calls": 2176,
+          "triangles": 4755833,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1823.974999999997,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 4.5
+          },
+          "calls": 2163,
+          "triangles": 4753325,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1810.1850000083416,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 7
+          },
+          "calls": 2116,
+          "triangles": 4701869,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1806.474999999997,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 5.899999976158142
+          },
+          "calls": 2103,
+          "triangles": 4695469,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1800.5950000166863,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 5
+          },
+          "calls": 2079,
+          "triangles": 4674465,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1794.749999999997,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.19999992847442627,
+            "occlusion": 0.8000000715255737,
+            "render": 4.399999976158142
+          },
+          "calls": 2051,
+          "triangles": 4666985,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1788.9049999833078,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.199999928474426
+          },
+          "calls": 2022,
+          "triangles": 4655825,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1775.5700000166862,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6.899999976158142
+          },
+          "calls": 1977,
+          "triangles": 4676117,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1771.4049999833076,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 5.899999976158142
+          },
+          "calls": 1970,
+          "triangles": 4671869,
+          "hidden": false
+        },
+        {
+          "ms": 16.80000000000291,
+          "x": 1960,
+          "y": 1765.595000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6
+          },
+          "calls": 1960,
+          "triangles": 4690833,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1759.7149999916521,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.19999992847442627,
+            "occlusion": 0.6000000238418579,
+            "render": 4
+          },
+          "calls": 1961,
+          "triangles": 4697889,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1753.9049999833076,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 3.899999976158142
+          },
+          "calls": 1964,
+          "triangles": 4700589,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1740.3600000083413,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.7000000476837158,
+            "render": 7.799999952316284
+          },
+          "calls": 1914,
+          "triangles": 3147089,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1736.370000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 5.5
+          },
+          "calls": 1907,
+          "triangles": 3143909,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1730.5249999999967,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 5.099999904632568
+          },
+          "calls": 1901,
+          "triangles": 3124529,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1724.6799999833074,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7999999523162842,
+            "render": 4.200000047683716
+          },
+          "calls": 1897,
+          "triangles": 3109761,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1718.870000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.5,
+            "render": 3.799999952316284
+          },
+          "calls": 1891,
+          "triangles": 3105217,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1707.5299999833073,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 5.700000047683716
+          },
+          "calls": 1861,
+          "triangles": 3089909,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1705.045000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.20000004768371582,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 4.799999952316284
+          },
+          "calls": 1860,
+          "triangles": 3076381,
+          "hidden": false
+        },
+        {
+          "ms": 16.80000000000291,
+          "x": 1960,
+          "y": 1701.3350000083412,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.799999952316284
+          },
+          "calls": 1855,
+          "triangles": 3074429,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1695.5249999999967,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.3999999761581421,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 5
+          },
+          "calls": 1848,
+          "triangles": 3073009,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1689.6100000083413,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 6.100000023841858
+          },
+          "calls": 1842,
+          "triangles": 3065893,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1700.2149999916521,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6.600000023841858
+          },
+          "calls": 1855,
+          "triangles": 3074429,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1703.0499999999968,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 5.600000023841858
+          },
+          "calls": 1861,
+          "triangles": 3078521,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1707.1800000250307,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.20000004768371582,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 5.200000047683716
+          },
+          "calls": 1861,
+          "triangles": 3089909,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1712.9899999916522,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 4.899999976158142
+          },
+          "calls": 1884,
+          "triangles": 3097353,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1718.8350000083415,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 4
+          },
+          "calls": 1891,
+          "triangles": 3105217,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1724.6800000250307,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 3.9000000953674316
+          },
+          "calls": 1897,
+          "triangles": 3109761,
+          "hidden": false
+        },
+        {
+          "ms": 33.30000000000291,
+          "x": 1960,
+          "y": 1738.295000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2999999523162842,
+            "render": 5.799999952316284
+          },
+          "calls": 1909,
+          "triangles": 3145937,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1742.1800000250305,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 5.399999976158142
+          },
+          "calls": 1916,
+          "triangles": 3148121,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1748.0249999999965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 5.5
+          },
+          "calls": 1936,
+          "triangles": 4694893,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1753.8700000166857,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.6000000238418579,
+            "render": 4.5
+          },
+          "calls": 1964,
+          "triangles": 4700589,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1759.6800000250303,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 4
+          },
+          "calls": 1961,
+          "triangles": 4697889,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1769.0950000166856,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 4.700000047683716
+          },
+          "calls": 1970,
+          "triangles": 4675113,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1771.3700000166857,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 5.799999952316284
+          },
+          "calls": 1970,
+          "triangles": 4671869,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1777.2499999999964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 5.699999928474426
+          },
+          "calls": 1982,
+          "triangles": 4676273,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1783.0950000166856,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 5.700000047683716
+          },
+          "calls": 1997,
+          "triangles": 4666376,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1788.8700000166857,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.299999952316284
+          },
+          "calls": 2022,
+          "triangles": 4655825,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1794.7499999999964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 4.200000047683716
+          },
+          "calls": 2051,
+          "triangles": 4666985,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1810.2200000166858,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 7
+          },
+          "calls": 2116,
+          "triangles": 4701869,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1813.370000016686,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.0999999046325684,
+            "render": 6
+          },
+          "calls": 2126,
+          "triangles": 4723285,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1818.0950000166858,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 5.299999952316284
+          },
+          "calls": 2140,
+          "triangles": 4727877,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1823.9050000250304,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 4.5
+          },
+          "calls": 2163,
+          "triangles": 4753325,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1829.785000008341,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 4.699999928474426
+          },
+          "calls": 2176,
+          "triangles": 4755833,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1844.7999999999963,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 4.399999976158142
+          },
+          "calls": 2204,
+          "triangles": 4769611,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1847.285000008341,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6.799999952316284
+          },
+          "calls": 2230,
+          "triangles": 4776103,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1853.1649999916517,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 6.699999928474426
+          },
+          "calls": 2260,
+          "triangles": 4816979,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1858.9749999999963,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 4.600000023841858
+          },
+          "calls": 2290,
+          "triangles": 4836815,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1864.8200000166855,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 4.5
+          },
+          "calls": 2352,
+          "triangles": 4856897,
+          "hidden": false
+        },
+        {
+          "ms": 33.30000000000291,
+          "x": 1960,
+          "y": 1879.7999999999963,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.1999999284744263,
+            "render": 8.799999952316284
+          },
+          "calls": 2438,
+          "triangles": 4917801,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1883.510000008341,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.5999999046325684,
+            "render": 5.100000023841858
+          },
+          "calls": 2474,
+          "triangles": 4929977,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1888.1999999999964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 7.100000023841858
+          },
+          "calls": 2524,
+          "triangles": 4950569,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1893.9749999999965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.100000023841858
+          },
+          "calls": 2571,
+          "triangles": 4965593,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1899.8550000250304,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 5
+          },
+          "calls": 2611,
+          "triangles": 4981525,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1915.3950000166858,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1,
+            "render": 9.299999952316284
+          },
+          "calls": 2712,
+          "triangles": 5037413,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1919.3499999999965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 7.700000047683716
+          },
+          "calls": 2731,
+          "triangles": 5042001,
+          "hidden": false
+        },
+        {
+          "ms": 16.80000000000291,
+          "x": 1960,
+          "y": 1923.1999999999964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 7.299999952316284
+          },
+          "calls": 2751,
+          "triangles": 5052385,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1929.0450000166857,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8000000715255737,
+            "render": 5.600000023841858
+          },
+          "calls": 2800,
+          "triangles": 5067157,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1934.8899999916516,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 5.399999976158142
+          },
+          "calls": 2826,
+          "triangles": 5079029,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1952.3899999916514,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 6
+          },
+          "calls": 2928,
+          "triangles": 5138345,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1957.849999999996,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.9000000953674316,
+            "render": 8.700000047683716
+          },
+          "calls": 2969,
+          "triangles": 5156969,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1963.6950000166853,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.8999999761581421,
+            "render": 5.600000023841858
+          },
+          "calls": 3022,
+          "triangles": 5211969,
+          "hidden": false
+        },
+        {
+          "ms": 16.80000000000291,
+          "x": 1960,
+          "y": 1969.5399999916513,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 40.700000047683716
+          },
+          "calls": 3044,
+          "triangles": 5222877,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1984.2049999833066,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 8
+          },
+          "calls": 3097,
+          "triangles": 6826149,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1987.5299999833067,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 9.600000023841858
+          },
+          "calls": 3114,
+          "triangles": 6841781,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1992.9549999833066,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 8.5
+          },
+          "calls": 3136,
+          "triangles": 6855617,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1998.6950000166853,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 6.5
+          },
+          "calls": 3161,
+          "triangles": 6886297,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2004.574999999996,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.5999999046325684,
+            "render": 67.10000002384186
+          },
+          "calls": 3178,
+          "triangles": 6895465,
+          "hidden": false
+        },
+        {
+          "ms": 66.79999999999927,
+          "x": 1960,
+          "y": 2022.0749999999957,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 9.400000095367432
+          },
+          "calls": 3253,
+          "triangles": 6940185,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2027.3249999999957,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 6.199999928474426
+          },
+          "calls": 3268,
+          "triangles": 6948577,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2033.170000016685,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 52.39999997615814
+          },
+          "calls": 3288,
+          "triangles": 6961065,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 2050.6700000166848,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 9.800000071525574
+          },
+          "calls": 3364,
+          "triangles": 7026733,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2054.6249999999955,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 8.700000047683716
+          },
+          "calls": 3374,
+          "triangles": 7032513,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2059.91000000834,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 6.699999928474426
+          },
+          "calls": 3393,
+          "triangles": 7056241,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2065.7550000250294,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 65.89999997615814
+          },
+          "calls": 3406,
+          "triangles": 7061537,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000073,
+          "x": 1960,
+          "y": 2083.25500002503,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 10.5
+          },
+          "calls": 3472,
+          "triangles": 7085297,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2087.6650000333743,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 6.600000023841858
+          },
+          "calls": 3488,
+          "triangles": 7091729,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2093.5100000083403,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 56.40000009536743
+          },
+          "calls": 3538,
+          "triangles": 7111745,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2111.0100000083407,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 10.800000071525574
+          },
+          "calls": 3620,
+          "triangles": 7165776,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2115.4549999833066,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 9.600000023841858
+          },
+          "calls": 3631,
+          "triangles": 7171370,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2119.3049999833065,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 6.799999952316284
+          },
+          "calls": 3649,
+          "triangles": 7197550,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2124.5549999833065,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 70.29999995231628
+          },
+          "calls": 3673,
+          "triangles": 7204994,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2142.054999983307,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.1999999284744263,
+            "render": 12.200000047683716
+          },
+          "calls": 3746,
+          "triangles": 7275586,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2147.0249999999965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 6.899999976158142
+          },
+          "calls": 3761,
+          "triangles": 7282650,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2151.0149999916516,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 58
+          },
+          "calls": 3776,
+          "triangles": 7289218,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 2168.514999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1.3000000715255737,
+            "render": 12.100000023841858
+          },
+          "calls": 3860,
+          "triangles": 7337362,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2173.414999991652,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 10.199999928474426
+          },
+          "calls": 3887,
+          "triangles": 7349094,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2177.4399999916523,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 10.5
+          },
+          "calls": 3903,
+          "triangles": 7361250,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2181.9899999916524,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 7.100000023841858
+          },
+          "calls": 3926,
+          "triangles": 7371466,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2187.8349999666184,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 84.40000009536743
+          },
+          "calls": 3947,
+          "triangles": 7380265,
+          "hidden": false
+        },
+        {
+          "ms": 83.40000000000146,
+          "x": 1960,
+          "y": 2205.334999966619,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1.3000000715255737,
+            "render": 9.600000023841858
+          },
+          "calls": 4017,
+          "triangles": 7418003,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2209.4649999499297,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.5,
+            "render": 50.5
+          },
+          "calls": 4033,
+          "triangles": 7422279,
+          "hidden": false
+        },
+        {
+          "ms": 50.10000000000218,
+          "x": 1960,
+          "y": 2226.96499994993,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 11.800000071525574
+          },
+          "calls": 4058,
+          "triangles": 7449959,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2231.6199999749642,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 11.100000023841858
+          },
+          "calls": 4070,
+          "triangles": 7471411,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 2237.46499994993,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 10.600000023841858
+          },
+          "calls": 4085,
+          "triangles": 7474215,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2243.2399999499303,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 7.799999952316284
+          },
+          "calls": 4093,
+          "triangles": 7482855,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2249.1199999749642,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 79.89999997615814
+          },
+          "calls": 4093,
+          "triangles": 7486315,
+          "hidden": false
+        },
+        {
+          "ms": 83.40000000000146,
+          "x": 1960,
+          "y": 2266.6199999749647,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.20000004768371582,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1,
+            "render": 8.799999952316284
+          },
+          "calls": 4097,
+          "triangles": 7508456,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2272.394999974965,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 43.89999997615814
+          },
+          "calls": 4106,
+          "triangles": 7546624,
+          "hidden": false
+        },
+        {
+          "ms": 33.39999999999782,
+          "x": 1960,
+          "y": 2289.0199999749643,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 8.700000047683716
+          },
+          "calls": 4136,
+          "triangles": 7563660,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2292.729999983309,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 11.399999976158142
+          },
+          "calls": 4153,
+          "triangles": 7567404,
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "pass": 1,
+      "enabled": true,
+      "route": "entry",
+      "start": {
+        "x": 1960,
+        "y": 2290
+      },
+      "turn": {
+        "x": 1960,
+        "y": 1687.15999984145
+      },
+      "end": {
+        "x": 1960,
+        "y": 2294.759999883174
+      },
+      "frame": {
+        "frames": 155,
+        "meanMs": 25.078709677419358,
+        "fps": 39.87445976538382,
+        "p95Ms": 66.70000000000073,
+        "p99Ms": 83.40000000000146,
+        "over33Ms": 26,
+        "over50Ms": 18
+      },
+      "draw": {
+        "frames": 155,
+        "meanMs": 17.47935483455658,
+        "fps": 57.210349550373905,
+        "p95Ms": 72.5,
+        "p99Ms": 84.10000002384186,
+        "over33Ms": 23,
+        "over50Ms": 20
+      },
+      "illegalFrames": 0,
+      "hiddenFrames": 0,
+      "movingFrames": 155,
+      "meanCalls": 2949.574193548387,
+      "meanTriangles": 5799188.051612903,
+      "samples": [
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2272.4999999999995,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.1999999284744263,
+            "render": 13.600000023841858
+          },
+          "calls": 4106,
+          "triangles": 7546624,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2266.9699999749655,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 11.300000071525574
+          },
+          "calls": 4096,
+          "triangles": 7508316,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2262.4549999833102,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.19999992847442627,
+            "occlusion": 0.8000000715255737,
+            "render": 8.200000047683716
+          },
+          "calls": 4085,
+          "triangles": 7501836,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2258.185000008344,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 76.39999997615814
+          },
+          "calls": 4077,
+          "triangles": 7495547,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000073,
+          "x": 1960,
+          "y": 2240.6850000083436,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.2999999523162842,
+            "render": 11.600000023841858
+          },
+          "calls": 4089,
+          "triangles": 7482055,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2235.749999999999,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.19999992847442627,
+            "occlusion": 1,
+            "render": 12.200000047683716
+          },
+          "calls": 4081,
+          "triangles": 7473463,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2230.7799999833096,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 60.89999997615814
+          },
+          "calls": 4065,
+          "triangles": 7451915,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2213.279999983309,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.5,
+            "render": 12.799999952316284
+          },
+          "calls": 4037,
+          "triangles": 7439655,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2207.785000008343,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 13
+          },
+          "calls": 4026,
+          "triangles": 7421055,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2202.535000008343,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7999999523162842,
+            "render": 8.700000047683716
+          },
+          "calls": 4009,
+          "triangles": 7415539,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2198.8949999749643,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 73.30000007152557
+          },
+          "calls": 3996,
+          "triangles": 7407667,
+          "hidden": false
+        },
+        {
+          "ms": 66.80000000000291,
+          "x": 1960,
+          "y": 2181.394999974964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.7000000476837158,
+            "render": 10.699999928474426
+          },
+          "calls": 3922,
+          "triangles": 7370390,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2176.669999974964,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 8.700000047683716
+          },
+          "calls": 3901,
+          "triangles": 7360874,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2173.1349999666195,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 62.200000047683716
+          },
+          "calls": 3886,
+          "triangles": 7348906,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000073,
+          "x": 1960,
+          "y": 2155.634999966619,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.5,
+            "render": 12.299999952316284
+          },
+          "calls": 3803,
+          "triangles": 7315958,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2150.454999941585,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.399999976158142,
+            "render": 14.199999928474426
+          },
+          "calls": 3773,
+          "triangles": 7287894,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2144.6449999749634,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.100000023841858,
+            "render": 9
+          },
+          "calls": 3754,
+          "triangles": 7279642,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2139.4649999499293,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.9000000953674316,
+            "render": 70.89999997615814
+          },
+          "calls": 3736,
+          "triangles": 7254870,
+          "hidden": false
+        },
+        {
+          "ms": 66.60000000000218,
+          "x": 1960,
+          "y": 2121.964999949929,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.600000023841858,
+            "render": 10.899999976158142
+          },
+          "calls": 3657,
+          "triangles": 7199922,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2117.239999949929,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.9000000953674316,
+            "render": 11.399999976158142
+          },
+          "calls": 3638,
+          "triangles": 7177814,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 2112.5499999582735,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 55.89999997615814
+          },
+          "calls": 3628,
+          "triangles": 7169846,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2095.049999958273,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.5,
+            "render": 8.899999976158142
+          },
+          "calls": 3541,
+          "triangles": 7113897,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2091.0599999248943,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 10
+          },
+          "calls": 3517,
+          "triangles": 7105197,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2086.999999958273,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 9.799999952316284
+          },
+          "calls": 3486,
+          "triangles": 7090849,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2082.0999999582727,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1,
+            "render": 6.5
+          },
+          "calls": 3469,
+          "triangles": 7083821,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2076.289999949928,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 82.79999995231628
+          },
+          "calls": 3446,
+          "triangles": 7073981,
+          "hidden": false
+        },
+        {
+          "ms": 83.5,
+          "x": 1960,
+          "y": 2058.7899999499277,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 1.5999999046325684,
+            "render": 8.799999952316284
+          },
+          "calls": 3387,
+          "triangles": 7038101,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2054.834999924894,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 46.89999997615814
+          },
+          "calls": 3375,
+          "triangles": 7032701,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 2037.334999924894,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.899999976158142,
+            "render": 12
+          },
+          "calls": 3308,
+          "triangles": 6973329,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2032.0499999165493,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 10.5
+          },
+          "calls": 3285,
+          "triangles": 6959393,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2026.7649999082046,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.0999999046325684,
+            "render": 9.799999952316284
+          },
+          "calls": 3266,
+          "triangles": 6947545,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 2020.9199998915153,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1,
+            "render": 7.400000095367432
+          },
+          "calls": 3248,
+          "triangles": 6938333,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2015.0749999165494,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 83.40000009536743
+          },
+          "calls": 3221,
+          "triangles": 6919025,
+          "hidden": false
+        },
+        {
+          "ms": 83.40000000000146,
+          "x": 1960,
+          "y": 1997.5749999165496,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 1.7999999523162842,
+            "render": 9.399999976158142
+          },
+          "calls": 3153,
+          "triangles": 6867081,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1993.3399999082048,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 47.10000002384186
+          },
+          "calls": 3136,
+          "triangles": 6855617,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1975.839999908205,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1.600000023841858,
+            "render": 10.300000071525574
+          },
+          "calls": 3061,
+          "triangles": 5245669,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1971.2199998915157,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1.100000023841858,
+            "render": 9.199999928474426
+          },
+          "calls": 3057,
+          "triangles": 5227193,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1965.864999908205,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 8.800000071525574
+          },
+          "calls": 3031,
+          "triangles": 5215313,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1960.0549998998604,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 6.600000023841858
+          },
+          "calls": 2993,
+          "triangles": 5174201,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1954.2099998831711,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 58
+          },
+          "calls": 2936,
+          "triangles": 5142525,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1936.7099998831713,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.2999999523162842,
+            "render": 9.5
+          },
+          "calls": 2835,
+          "triangles": 5083949,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1932.544999891516,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 7.700000047683716
+          },
+          "calls": 2818,
+          "triangles": 5074857,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1929.3599998831714,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.5
+          },
+          "calls": 2802,
+          "triangles": 5070097,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1924.2849998831714,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6.800000071525574
+          },
+          "calls": 2756,
+          "triangles": 5054257,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1918.4749998748268,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 40.09999990463257
+          },
+          "calls": 2725,
+          "triangles": 5040969,
+          "hidden": false
+        },
+        {
+          "ms": 33.5,
+          "x": 1960,
+          "y": 1903.844999891516,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.5,
+            "render": 6.300000071525574
+          },
+          "calls": 2643,
+          "triangles": 5015625,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1900.869999891516,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 8.100000023841858
+          },
+          "calls": 2619,
+          "triangles": 5001265,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1895.1299998581374,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 7.600000023841858
+          },
+          "calls": 2581,
+          "triangles": 4969701,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1889.2849998831714,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.19999992847442627,
+            "occlusion": 1,
+            "render": 5.5
+          },
+          "calls": 2540,
+          "triangles": 4954441,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1883.4399998664821,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.700000047683716
+          },
+          "calls": 2474,
+          "triangles": 4929977,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1865.9399998664824,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.5,
+            "render": 6.599999904632568
+          },
+          "calls": 2353,
+          "triangles": 4856933,
+          "hidden": false
+        },
+        {
+          "ms": 16.80000000000291,
+          "x": 1960,
+          "y": 1862.2649998664824,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 7.600000023841858
+          },
+          "calls": 2324,
+          "triangles": 4846765,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1856.4549998581379,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 5.5
+          },
+          "calls": 2283,
+          "triangles": 4834315,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1850.6099998414486,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.2000000476837158,
+            "render": 6.700000047683716
+          },
+          "calls": 2253,
+          "triangles": 4800311,
+          "hidden": false
+        },
+        {
+          "ms": 33.39999999999782,
+          "x": 1960,
+          "y": 1837.029999858138,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 2,
+            "render": 6.799999952316284
+          },
+          "calls": 2195,
+          "triangles": 4763019,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1833.0749998748272,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 5.399999976158142
+          },
+          "calls": 2186,
+          "triangles": 4758007,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1827.229999858138,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.1999999284744263,
+            "render": 6.899999976158142
+          },
+          "calls": 2168,
+          "triangles": 4754377,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1821.3849998414487,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 5.099999904632568
+          },
+          "calls": 2154,
+          "triangles": 4731365,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1815.5749998748272,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.700000047683716
+          },
+          "calls": 2129,
+          "triangles": 4723889,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1801.9949998497934,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.3000000715255737,
+            "render": 6.800000071525574
+          },
+          "calls": 2085,
+          "triangles": 4691353,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1798.0399998664827,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6.199999928474426
+          },
+          "calls": 2059,
+          "triangles": 4670505,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1792.1949998497935,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 6.300000071525574
+          },
+          "calls": 2040,
+          "triangles": 4662917,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1786.3499998748275,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 4.5
+          },
+          "calls": 2016,
+          "triangles": 4652905,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1780.539999866483,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6
+          },
+          "calls": 1993,
+          "triangles": 4682656,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1764.6499998748277,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.2999999523162842,
+            "render": 5.399999976158142
+          },
+          "calls": 1960,
+          "triangles": 4709505,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1761.9199998497938,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.1999999284744263,
+            "render": 6.399999976158142
+          },
+          "calls": 1957,
+          "triangles": 4693609,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1757.1599998414492,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8000000715255737,
+            "render": 5.700000047683716
+          },
+          "calls": 1961,
+          "triangles": 4697169,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1751.3149998664833,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.2999999523162842,
+            "occlusion": 2.100000023841858,
+            "render": 7.600000023841858
+          },
+          "calls": 1958,
+          "triangles": 4701433,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1745.469999849794,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.0999999046325684,
+            "render": 8.199999928474426
+          },
+          "calls": 1921,
+          "triangles": 4690421,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 1727.9699998497942,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.5,
+            "render": 7.5
+          },
+          "calls": 1896,
+          "triangles": 3123269,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1722.1599998414497,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 6.799999952316284
+          },
+          "calls": 1892,
+          "triangles": 3108709,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1716.3499998331051,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6.700000047683716
+          },
+          "calls": 1891,
+          "triangles": 3105217,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1710.5049998164159,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6.299999952316284
+          },
+          "calls": 1882,
+          "triangles": 3095481,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1698.779999816416,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.600000023841858
+          },
+          "calls": 1855,
+          "triangles": 3074477,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1692.93499984145,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 6.5
+          },
+          "calls": 1845,
+          "triangles": 3067681,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1687.15999984145,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 6.399999976158142
+          },
+          "calls": 1840,
+          "triangles": 3065909,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1698.9199998497947,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.0999999046325684,
+            "render": 6.699999928474426
+          },
+          "calls": 1855,
+          "triangles": 3074477,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1704.6599998414501,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6
+          },
+          "calls": 1860,
+          "triangles": 3076381,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1710.5749998748288,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 5.5
+          },
+          "calls": 1882,
+          "triangles": 3095481,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1716.3499998748289,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 4.300000071525574
+          },
+          "calls": 1891,
+          "triangles": 3105217,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1722.2299998581395,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 4.100000023841858
+          },
+          "calls": 1892,
+          "triangles": 3108709,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1729.544999849795,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 4.700000047683716
+          },
+          "calls": 1900,
+          "triangles": 3124037,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1733.8849998414503,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 5.5
+          },
+          "calls": 1904,
+          "triangles": 3141753,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1739.7299998581395,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 6
+          },
+          "calls": 1914,
+          "triangles": 3147089,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1745.539999866484,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 5.199999928474426
+          },
+          "calls": 1921,
+          "triangles": 4690421,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1751.38499984145,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 4.799999952316284
+          },
+          "calls": 1959,
+          "triangles": 4701621,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1757.264999866484,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.8000000715255737,
+            "render": 4.800000071525574
+          },
+          "calls": 1961,
+          "triangles": 4697169,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1763.0749998748286,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 4.100000023841858
+          },
+          "calls": 1960,
+          "triangles": 4695077,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1773.3299998581394,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 4.5
+          },
+          "calls": 1971,
+          "triangles": 4673597,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1775.3249998748288,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 6.399999976158142
+          },
+          "calls": 1976,
+          "triangles": 4675929,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1780.6099998414502,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 5.800000071525574
+          },
+          "calls": 1993,
+          "triangles": 4682656,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1786.4549998581394,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 5.700000047683716
+          },
+          "calls": 2016,
+          "triangles": 4652905,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1792.264999866484,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8000000715255737,
+            "render": 4.5
+          },
+          "calls": 2040,
+          "triangles": 4662917,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1798.1449998497947,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 4
+          },
+          "calls": 2060,
+          "triangles": 4670793,
+          "hidden": false
+        },
+        {
+          "ms": 50.10000000000218,
+          "x": 1960,
+          "y": 1815.6449998497944,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.5999999046325684,
+            "render": 4
+          },
+          "calls": 2130,
+          "triangles": 4724177,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1820.3699998497943,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 6.099999904632568
+          },
+          "calls": 2153,
+          "triangles": 4731177,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1826.179999858139,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 4.799999952316284
+          },
+          "calls": 2167,
+          "triangles": 4754093,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1832.0249998331049,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.5999999046325684,
+            "render": 4.200000047683716
+          },
+          "calls": 2180,
+          "triangles": 4756937,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1844.3799998581387,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6000000238418579,
+            "render": 4.799999952316284
+          },
+          "calls": 2202,
+          "triangles": 4769195,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1849.5599998414493,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 5.600000023841858
+          },
+          "calls": 2238,
+          "triangles": 4792967,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1855.4049998581386,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 6.700000047683716
+          },
+          "calls": 2276,
+          "triangles": 4826111,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1861.2499998331045,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 4.700000047683716
+          },
+          "calls": 2314,
+          "triangles": 4841629,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1867.059999841449,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6999999284744263,
+            "render": 4.899999976158142
+          },
+          "calls": 2362,
+          "triangles": 4863549,
+          "hidden": false
+        },
+        {
+          "ms": 33.29999999999927,
+          "x": 1960,
+          "y": 1879.8699998497937,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 4.600000023841858
+          },
+          "calls": 2438,
+          "triangles": 4917801,
+          "hidden": false
+        },
+        {
+          "ms": 16.799999999999272,
+          "x": 1960,
+          "y": 1884.5949998497936,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 6.799999952316284
+          },
+          "calls": 2476,
+          "triangles": 4930257,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1890.4399998247595,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 6.399999976158142
+          },
+          "calls": 2542,
+          "triangles": 4957273,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1896.2849998414488,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.6999999284744263,
+            "render": 5.199999928474426
+          },
+          "calls": 2593,
+          "triangles": 4972789,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1902.0949998497933,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 0.7000000476837158,
+            "render": 4.899999976158142
+          },
+          "calls": 2636,
+          "triangles": 5012617,
+          "hidden": false
+        },
+        {
+          "ms": 33.400000000001455,
+          "x": 1960,
+          "y": 1915.2549998581378,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 7
+          },
+          "calls": 2712,
+          "triangles": 5037413,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1919.6299998581378,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 5.799999952316284
+          },
+          "calls": 2731,
+          "triangles": 5042001,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 1925.4749998331038,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 7.599999904632568
+          },
+          "calls": 2760,
+          "triangles": 5055009,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1931.2849998414483,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.5999999046325684,
+            "render": 5.600000023841858
+          },
+          "calls": 2810,
+          "triangles": 5071601,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1937.1299998581376,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8000000715255737,
+            "render": 5.300000071525574
+          },
+          "calls": 2837,
+          "triangles": 5084981,
+          "hidden": false
+        },
+        {
+          "ms": 33.39999999999782,
+          "x": 1960,
+          "y": 1952.0049998581376,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 9.699999928474426
+          },
+          "calls": 2926,
+          "triangles": 5137969,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1955.9599998414483,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 9.199999928474426
+          },
+          "calls": 2951,
+          "triangles": 5148697,
+          "hidden": false
+        },
+        {
+          "ms": 16.600000000002183,
+          "x": 1960,
+          "y": 1960.5099998414482,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 8.099999904632568
+          },
+          "calls": 3005,
+          "triangles": 5187401,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1966.3199998497928,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.6000000238418579,
+            "render": 6.100000023841858
+          },
+          "calls": 3032,
+          "triangles": 5216413,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1972.1649998247588,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 58.60000002384186
+          },
+          "calls": 3060,
+          "triangles": 5227697,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 1989.6649998247585,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 7.200000047683716
+          },
+          "calls": 3126,
+          "triangles": 6849845,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000000728,
+          "x": 1960,
+          "y": 1992.8849998414478,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.1999999284744263,
+            "render": 9.599999904632568
+          },
+          "calls": 3136,
+          "triangles": 6855617,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 1997.8899998247584,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7999999523162842,
+            "render": 6.199999928474426
+          },
+          "calls": 3154,
+          "triangles": 6882629,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2003.699999833103,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 60.5
+          },
+          "calls": 3177,
+          "triangles": 6895277,
+          "hidden": false
+        },
+        {
+          "ms": 50.099999999998545,
+          "x": 1960,
+          "y": 2021.1999998331028,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.1999999284744263,
+            "render": 11.099999904632568
+          },
+          "calls": 3250,
+          "triangles": 6938709,
+          "hidden": false
+        },
+        {
+          "ms": 16.599999999998545,
+          "x": 1960,
+          "y": 2025.819999849792,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 9.5
+          },
+          "calls": 3263,
+          "triangles": 6946981,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2029.7049998581367,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 6.100000023841858
+          },
+          "calls": 3280,
+          "triangles": 6954513,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2034.5349998414474,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 71.20000004768372
+          },
+          "calls": 3295,
+          "triangles": 6966517,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2052.034999841447,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.100000023841858,
+            "render": 11.299999952316284
+          },
+          "calls": 3371,
+          "triangles": 7032921,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2056.5499998331024,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0.09999990463256836,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 9.599999904632568
+          },
+          "calls": 3383,
+          "triangles": 7036753,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2061.6249998331023,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.19999992847442627,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 0.7999999523162842,
+            "render": 6.399999976158142
+          },
+          "calls": 3397,
+          "triangles": 7057009,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2067.504999816413,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7000000476837158,
+            "render": 66.20000004768372
+          },
+          "calls": 3409,
+          "triangles": 7061389,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2085.0049998164136,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0,
+            "occlusion": 1.7000000476837158,
+            "render": 10.899999976158142
+          },
+          "calls": 3480,
+          "triangles": 7089505,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2090.569999849792,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 7.5
+          },
+          "calls": 3515,
+          "triangles": 7105125,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2096.414999824758,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7999999523162842,
+            "render": 61.700000047683716
+          },
+          "calls": 3546,
+          "triangles": 7114889,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2113.9149998247585,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0.09999990463256836,
+            "landscape": 0,
+            "occlusion": 1.2000000476837158,
+            "render": 10.299999952316284
+          },
+          "calls": 3629,
+          "triangles": 7170130,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2119.4099997997246,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1,
+            "render": 10.800000071525574
+          },
+          "calls": 3650,
+          "triangles": 7197646,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2125.2899998247585,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 51.60000002384186
+          },
+          "calls": 3680,
+          "triangles": 7210062,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2142.789999824759,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 1.2000000476837158,
+            "render": 9.600000023841858
+          },
+          "calls": 3747,
+          "triangles": 7276686,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2146.884999799725,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 10.600000023841858
+          },
+          "calls": 3760,
+          "triangles": 7282462,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2151.6799998164142,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.7999999523162842,
+            "render": 7.099999904632568
+          },
+          "calls": 3780,
+          "triangles": 7292302,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2157.489999824759,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8999999761581421,
+            "render": 74.5
+          },
+          "calls": 3812,
+          "triangles": 7318530,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000437,
+          "x": 1960,
+          "y": 2174.9899998247593,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.600000023841858,
+            "render": 12.299999952316284
+          },
+          "calls": 3896,
+          "triangles": 7355814,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2180.204999858138,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0.10000002384185791,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 7.699999928474426
+          },
+          "calls": 3913,
+          "triangles": 7363802,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2183.494999849793,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 58.60000002384186
+          },
+          "calls": 3932,
+          "triangles": 7373721,
+          "hidden": false
+        },
+        {
+          "ms": 66.80000000000291,
+          "x": 1960,
+          "y": 2200.9949998497937,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1.399999976158142,
+            "render": 10.600000023841858
+          },
+          "calls": 4001,
+          "triangles": 7410511,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2206.034999883172,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.09999990463256836,
+            "occlusion": 1,
+            "render": 12.199999928474426
+          },
+          "calls": 4019,
+          "triangles": 7418427,
+          "hidden": false
+        },
+        {
+          "ms": 16.60000000000582,
+          "x": 1960,
+          "y": 2211.8449998497936,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.20000004768371582,
+            "occlusion": 1,
+            "render": 12.200000047683716
+          },
+          "calls": 4036,
+          "triangles": 7439467,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2217.689999866483,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0.10000002384185791,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 64.20000004768372
+          },
+          "calls": 4053,
+          "triangles": 7447963,
+          "hidden": false
+        },
+        {
+          "ms": 66.69999999999709,
+          "x": 1960,
+          "y": 2235.1899998664835,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 1,
+            "render": 12.200000047683716
+          },
+          "calls": 4081,
+          "triangles": 7473463,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2240.229999858139,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0.10000002384185791,
+            "occlusion": 0.8999999761581421,
+            "render": 7.5
+          },
+          "calls": 4087,
+          "triangles": 7477943,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2246.109999883173,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.7000000476837158,
+            "render": 59.5
+          },
+          "calls": 4091,
+          "triangles": 7483731,
+          "hidden": false
+        },
+        {
+          "ms": 50,
+          "x": 1960,
+          "y": 2263.6099998831733,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.9000000953674316,
+            "render": 11.399999976158142
+          },
+          "calls": 4089,
+          "triangles": 7504768,
+          "hidden": false
+        },
+        {
+          "ms": 16.700000000004366,
+          "x": 1960,
+          "y": 2268.1599998831734,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 10.600000023841858
+          },
+          "calls": 4102,
+          "triangles": 7512784,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2272.3949998497947,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.10000002384185791,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.8000000715255737,
+            "render": 7.399999976158142
+          },
+          "calls": 4106,
+          "triangles": 7546624,
+          "hidden": false
+        },
+        {
+          "ms": 16.69999999999709,
+          "x": 1960,
+          "y": 2277.2599998831734,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0.09999990463256836,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 0.6000000238418579,
+            "render": 78.69999992847443
+          },
+          "calls": 4116,
+          "triangles": 7550608,
+          "hidden": false
+        },
+        {
+          "ms": 66.70000000000437,
+          "x": 1960,
+          "y": 2294.759999883174,
+          "legal": true,
+          "moving": true,
+          "playerState": "walk",
+          "parts": {
+            "seats": 0,
+            "busSeat": 0,
+            "player": 0,
+            "landscape": 0,
+            "occlusion": 2.200000047683716,
+            "render": 16.100000023841858
+          },
+          "calls": 4166,
+          "triangles": 7572148,
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

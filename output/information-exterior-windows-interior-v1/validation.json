@@ -1,0 +1,17 @@
+{
+  "windowGroups": 3,
+  "sourceComponentsPerWindow": 4,
+  "removedOldWindowNodes": [
+    1,
+    235,
+    307,
+    308,
+    309,
+    376,
+    381,
+    382
+  ],
+  "originalNodesAndBinaryPreserved": true,
+  "sha256": "b5e46075789f2f40e80cd6f8b98251e6320367910fd969c47025af63e9243e7c",
+  "targetsMatch": true
+}

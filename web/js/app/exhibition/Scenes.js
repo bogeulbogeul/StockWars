@@ -40,7 +40,11 @@ export class ExhibitionScenes {
             callbacks: { isInputBlocked: () => true } };
         this.townModelScene = new TownModelScene(this.townStage);
         this.ready = this.townModelScene.ready;
-        const draw = () => { this.townModelScene.draw(); this.frame = requestAnimationFrame(draw); };
+        let previous;
+        const draw = now => {
+            const dt = previous === undefined ? 0 : Math.min((now - previous) / 1000, .05); previous = now;
+            window.stockWarsExhibition?.noticeControls?.update(dt);
+            this.updateVillageBoard?.(); this.townModelScene.draw(); this.frame = requestAnimationFrame(draw); };
         draw(); this.container = container;
     }
     async show(place, { preservePosition = false, tour = false } = {}) {

@@ -16,7 +16,7 @@ def install(source,target,clip):
  raw=source.read_bytes();length=struct.unpack_from('<I',raw,12)[0];doc=json.loads(raw[20:20+length]);binary=bytearray(raw[28+length:])
  assert len(doc['animations'])==1
  doc['animations'][0]['name']=clip
- if clip=='Walk_InPlace':
+ if clip in ['Walk_InPlace','Sideways']:
   inputs={s['input'] for s in doc['animations'][0]['samplers']}
   start=min(doc['accessors'][i]['min'][0] for i in inputs)
   for i in inputs:
@@ -39,6 +39,8 @@ def install(source,target,clip):
  j=json.dumps(doc,separators=(',',':')).encode();j+=b' '*((-len(j))%4)
  (D/target).write_bytes(struct.pack('<III',0x46546c67,2,28+len(j)+len(binary))+struct.pack('<II',len(j),0x4e4f534a)+j+struct.pack('<II',len(binary),0x004e4942)+binary)
 install(P/'walk.glb','walk.glb','Walk_InPlace')
+sideways=P.parent/'somangi-sideways-v1/sideways.glb'
+if sideways.exists():install(sideways,'sideways.glb','Sideways')
 install(P.parent/'somangi-rear-junction-v43/somangi-eat.glb','eat.glb','Eat')
 files={str(f.relative_to(D)):hashlib.sha256(f.read_bytes()).hexdigest() for f in D.rglob('*') if f.is_file() and f.name!='manifest.json'}
 (D/'manifest.json').write_text(json.dumps(dict(sourceGeometry='somangi-rear-junction-v43',sourceExpressions='somangi-story-expressions-v6',height=100,referenceHeight=1.9000606,footY=-.95064157,expressions=ids,removed=['sad','proud'],files=files),indent=2))

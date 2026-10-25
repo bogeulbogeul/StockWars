@@ -8,6 +8,7 @@ import { createSomangiControls } from './SomangiControls.js';
 import { loadSomangi } from './SomangiAssets.js';
 import { SomangiExpressions } from './SomangiExpressions.js';
 import { SomangiJump } from './SomangiJump.js';
+import { updateSomangiClearance, sidewaysYaw } from './SomangiClearance.js';
 
 export class SomangiPlayer {
     constructor(scene, town, layer) {
@@ -84,42 +85,51 @@ export class SomangiPlayer {
         if (action === 'jump') {
             const c = this.town.playerController;
             if (!(c.canJumpAt?.(c.charPosX,c.charPosY) ?? c.canStand?.(c.charPosX,c.charPosY) ?? true)) return false;
-            if (!this.variants.has('walk') || !['idle', 'walk'].includes(this.state) || this.town.playerController.isResting || !this.jump.start()) return false;
+            if (!this.variants.has('walk') || !['idle', 'walk', 'sideways'].includes(this.state) || this.town.playerController.isResting || !this.jump.start()) return false;
             c.jumpActive = true;
             this.setState('jump'); return true;
         }
-        if (action !== 'eat' || !this.variants.has('eat') || this.state === 'walk' || this.state === 'eat' || this.jump.active) return false;
+        if (action !== 'eat' || !this.variants.has('eat') || this.state === 'walk' || this.state === 'sideways' || this.state === 'eat' || this.jump.active) return false;
         this.expressionBeforeEat = this.expressionId;
         void this.setExpression('delicious'); this.setState('eat'); return true;
     }
     update(dt = 0) {
         const c = this.town.playerController;
-        if(c.busSeated)return;
+        if(c.busSeated){c.somangiCrab=false;c.somangiCrabAuto=false;return;}
         if ((c.modelCollisionReady || c.indoorCollisionReady) && !c.isResting && !c.scriptedWalking) recoverTownBody(c);
-        c.somangiCrab = c.somangiCrabManual = c.somangiCrabAuto = false;
-        c.somangiCrabSuspended = true;
+        c.somangiCrabManual = false;
+        c.somangiCrabSuspended = this.state === 'loading' || this.state === 'eat';
         const p = c.renderPosition;
-        if(c.supportHeightAt)c.supportHeight=c.supportHeightAt(p.x,p.y);
+        if(c.scriptedWalking && Number.isFinite(c.scriptedSupportHeight)) c.supportHeight=c.scriptedSupportHeight;
+        else if(c.supportHeightAt)c.supportHeight=c.supportHeightAt(p.x,p.y);
         const x = p.x, z = p.y / GROUND_PROJECTION;
-        const distance = this.previous ? Math.hypot(x - this.previous.x, z - this.previous.z) : 0;
+        const dx = this.previous ? x - this.previous.x : 0, dz = this.previous ? z - this.previous.z : 0;
+        const distance = Math.hypot(dx, dz);
         this.previous = { x, z };
         const moving = c.scriptedWalking ? c.isMoving !== false : (distance > .02 && distance < 100 && !c.resting);
         if (moving) { this.storyYaw = null; this.storyCamera = null; this.storyTarget = null; }
         this.root.position.set(p.x, (c.supportHeight||0)+this.jump.update(Math.min(Math.max(dt, 0), .1)), p.y / GROUND_PROJECTION);
         c.jumpActive = this.jump.active;
+        if (c.canStand) updateSomangiClearance(c, dx, dz, x, z, (px, pz) => c.canStand(px, pz * GROUND_PROJECTION));
+        const previousYaw = this.root.rotation.y;
         this.root.rotation.y = this.storyYaw ?? conversationYaw(this.root, this.storyTarget) ?? (this.storyCamera ? Math.atan2(this.storyCamera.position.x - x, this.storyCamera.position.z - z)
             : ({ down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[c.facing] ?? 0));
+        if (c.somangiCrab && this.storyYaw == null && !this.storyTarget && !this.storyCamera) {
+            this.root.rotation.y = sidewaysYaw(c.somangiTravelAxis, this.sidewaysFacing ?? previousYaw);
+            this.sidewaysFacing = this.root.rotation.y;
+        } else this.sidewaysFacing = null;
         if (this.state === 'loading') return;
+        const movingState = c.somangiCrab ? 'sideways' : 'walk';
         if (this.state === 'jump') {
-            if (!this.jump.active) this.setState(moving ? 'walk' : 'idle');
-        } else if (moving && this.state !== 'walk') {
+            if (!this.jump.active) this.setState(moving ? movingState : 'idle');
+        } else if (moving && this.state !== movingState) {
             if (this.state === 'eat') void this.setExpression(this.expressionBeforeEat || 'smile');
-            this.setState('walk');
-        } else if (!moving && this.state === 'walk') this.setState('idle');
+            this.setState(movingState);
+        } else if (!moving && (this.state === 'walk' || this.state === 'sideways')) this.setState('idle');
         const variant = this.variants.get(this.state);
         if (variant) {
             const running = c.isRunning || c.keysHeld?.has('shift');
-            variant.mixer.timeScale = this.state === 'walk' ? running ? SOMANGI_MOVEMENT.runPlayback : SOMANGI_MOVEMENT.walkPlayback : 1;
+            variant.mixer.timeScale = this.state === 'sideways' ? SOMANGI_MOVEMENT.sidewaysPlayback : this.state === 'walk' ? running ? SOMANGI_MOVEMENT.runPlayback : SOMANGI_MOVEMENT.walkPlayback : 1;
             variant.mixer.update(Math.min(dt, .1));
         }
     }

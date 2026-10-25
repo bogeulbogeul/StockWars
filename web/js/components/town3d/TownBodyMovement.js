@@ -1,6 +1,15 @@
+import { updateSomangiClearance } from './SomangiClearance.js';
+import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
+
 // Shared by ordinary play and the exhibition's separate arrival controller.
 export function moveTownBody(controller, dx, dy, limits) {
     if(controller.busSeated&&(dx||dy)&&!controller.activeSeat?.stand())return;
+    if (dx || dy) {
+        updateSomangiClearance(controller, dx, dy / P, controller.charPosX, controller.charPosY / P,
+            (x, z) => controller.canStand(x, z * P));
+        if (controller.somangiCrab) { dx *= SOMANGI_MOVEMENT.sidewaysFactor; dy *= SOMANGI_MOVEMENT.sidewaysFactor; }
+    }
     const steps = Math.max(1, Math.ceil(Math.hypot(dx, dy) / 8));
     const legal = (x, y) => (!limits || (x >= limits.minX && x <= limits.maxX
         && y >= limits.minY && y <= limits.maxY)) && controller.canStand(x, y);

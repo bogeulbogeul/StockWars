@@ -3,6 +3,7 @@ import {GROUND_PROJECTION as P} from '../../data/townModelBuildings.js';
 import {PLAYER_BODY_RADIUS as R} from './CharacterBodies.js';
 import {busStopPlatform,busStopSupportHeight} from './BusStopGround.js';
 import {createBusStopSeatPose} from './BusStopSeatPose.js';
+import {registerSeatController,seatKeyAvailable,seatUiBlocked} from './SeatControls.js';
 
 export class BusStopSeat {
     constructor(owner,stop){
@@ -12,24 +13,29 @@ export class BusStopSeat {
         this.bounds=new Box3().setFromObject(stop.getObjectByName('Bench_Seat'));
         this.state='standing';this.c.activeSeat=this;
         this.button=document.createElement('button');
-        this.button.className='bus-stop-seat-action';this.button.hidden=true;
+        this.button.className='bus-stop-seat-action seat-action';this.button.hidden=true;
         this.button.setAttribute('aria-keyshortcuts','E');
         this.button.addEventListener('click',()=>this.toggle());owner.layer.append(this.button);
-        window.addEventListener('keydown',event=>{
-            if(!this.enabled()||event.repeat||event.ctrlKey||event.altKey||event.metaKey
-                ||event.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
-            if(event.code==='KeyE'&&this.near()){
-                event.preventDefault();event.stopImmediatePropagation();this.toggle();
-            }else if(this.c.busSeated&&/^Key[WASD]$/.test(event.code))this.stand();
-        },true);
+        this.unregister=registerSeatController(this);
+        window.addEventListener('keydown',event=>this.handleKeyDown(event),true);
+    }
+    handleKeyDown(event){
+        if(!this.enabled()||!seatKeyAvailable(event))return false;
+        if(event.code==='KeyE'&&this.near()){
+            event.preventDefault();event.stopImmediatePropagation();if(!event.repeat)this.toggle();return true;
+        }
+        if(this.c.busSeated&&this.c.activeSeat===this&&/^Key[WASD]$/.test(event.code)&&!this.stand()){
+            event.preventDefault();event.stopImmediatePropagation();return true;
+        }
+        return false;
     }
     enabled(){
         const app=window.stockWarsExhibition;
         return document.body.classList.contains('town-model-mode')
             &&!this.owner.town.containerEl.classList.contains('hidden')&&!this.c.scriptedWalking
-            &&!document.body.classList.contains('phone-view-active')
-            &&!document.querySelector('dialog[open]')
-            &&(app?app.arrival.active:!this.owner.town.callbacks?.isInputBlocked?.());
+            &&!seatUiBlocked()
+            &&(app?app.started&&(app.arrival.active||(!app.busy&&!app.scenes.tourActive))
+                :!this.owner.town.callbacks?.isInputBlocked?.());
     }
     near(){
         if(this.c.busSeated)return this.c.activeSeat===this;

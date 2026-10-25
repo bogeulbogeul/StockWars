@@ -5,12 +5,14 @@ import { createMoaMovementGuide } from '../../components/town3d/MoaMovementGuide
 import { createCharacterBodies } from '../../components/town3d/CharacterBodies.js';
 import { tourRoute, routeLength, routePoint } from './TourRoute.js';
 import { roundTourRoute } from './TourCurve.js';
+import { walkPlayerIntoInformation } from './InformationPlayerEntry.js';
 
 async function walkToDoor(moa, target, controller) {
     const start = { x: moa.root.position.x, y: moa.root.position.z * P };
     const goal = { x: target.x, y: target.z * P };
     const clearance = 42 + (moa.root.userData.rigidBody?.radius || 42) + 8;
-    const legal = (x, y) => Math.hypot(x - controller.charPosX, (y - controller.charPosY) / P) >= clearance
+    const initialGap = Math.hypot(start.x - controller.charPosX, start.y / P - controller.charPosY / P);
+    const legal = (x, y) => Math.hypot(x - controller.charPosX, (y - controller.charPosY) / P) >= Math.min(clearance, initialGap)
         && (controller.sceneryCanStand(x, y) || (Math.abs(x - target.x) < 48 && y >= goal.y - 8 && y <= start.y + 8));
     const route = roundTourRoute(tourRoute(start, goal, legal, { step: 12 }), legal), length = routeLength(route);
     const clip = moa.animations.find(clip => clip.name.startsWith('Walk_InPlace'));
@@ -43,6 +45,7 @@ export async function enterInformationAfterMoa(scenes) {
     const definition = TOWN_MODEL_BUILDINGS.find(b => b.id === 'settlement_information');
     const building = town.scene.getObjectByName(definition.id), door = createInformationDoor(building);
     await moa.setMood('calm', 'smile');
+    town.entryActive = true; town.dialogueOcclusion?.reset();
     player.holdFacing(); moa.faceTarget(null);
     await door.open();
     await walkToDoor(moa, { x: door.center.x, z: door.center.z - 25 }, c);
@@ -50,6 +53,7 @@ export async function enterInformationAfterMoa(scenes) {
     await room.room.userData.seatMoa();
     room.characterBodies = createCharacterBodies(room.room);
     await door.close();
+    town.entryActive = false;
     const guide = createMoaMovementGuide(scenes.townStage.viewportEl, { door: true });
     guide.update({ visible: true }); scenes.tourActive = true;
     let opened = false, previous;
@@ -66,10 +70,13 @@ export async function enterInformationAfterMoa(scenes) {
             requestAnimationFrame(tick);
         });
         guide.dispose(); controls.dispose();
+        town.entryActive = true; town.dialogueOcclusion?.reset();
         await door.open();
+        await walkPlayerIntoInformation(player, door);
         scenes.informationEntered = true;
         void door.close();
     } finally {
         guide.dispose(); controls.dispose(); scenes.tourActive = false;
+        town.entryActive = false;
     }
 }

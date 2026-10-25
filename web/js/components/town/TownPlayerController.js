@@ -97,7 +97,7 @@ export class TownPlayerController {
                 (x, z) => this.canStand(x, z * GROUND_PROJECTION));
         }
         if (dx || dy) {
-            const distance = (this.somangiCrab ? 14 : running ? SOMANGI_MOVEMENT.townRun : SOMANGI_MOVEMENT.townWalk) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
+            const distance = (running && !this.somangiCrab ? SOMANGI_MOVEMENT.townRun : SOMANGI_MOVEMENT.townWalk) * Math.min(dt, 0.1) / Math.hypot(dx, dy);
             // Substeps prevent tunnelling through narrow footprints; axes slide along walls.
             moveTownBody(this, dx * distance, dy * distance);
             if (dx) this.charFacing = Math.sign(dx);
