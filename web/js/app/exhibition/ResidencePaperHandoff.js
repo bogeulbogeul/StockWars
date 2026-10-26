@@ -1,3 +1,4 @@
+import { animationDialogue } from './AnimationDialogue.js';
 import { Box3, Group, Matrix4, Vector3, MathUtils } from '../../../vendor/three/three.module.js';
 import { animate, arms, reach } from './HandoffMotion.js';
 import { createMoaMovementGuide } from '../../components/town3d/MoaMovementGuide.js';
@@ -31,28 +32,32 @@ export async function receiveResidencePaper(app) {
         if (!['KeyF', 'Escape'].includes(event.code)) return;
         event.preventDefault(); event.stopImmediatePropagation();
         if (event.code === 'KeyF' && ready && !event.repeat) {
-            ready = false; guide.update({ visible: false }); finishReceive();
+            ready = false; guide.update({ visible: false }); advance.next();
         }
     };
     app.scenes.receivingApplication = true;
     window.addEventListener('keydown', onKey, true);
     let receivedSuccessfully = false;
     const restorePaper = () => { for (const { mesh, visible } of originals) mesh.visible = visible; };
+    const advance = animationDialogue(app, { speaker: '모아', text: '입주 신청서예요. 이름을 적어주세요.' });
+    advance.onAdvance(finishReceive);
     try {
         await animate(1.15, t => {
             paper.position.lerpVectors(origin, offered, t); paper.position.y += Math.sin(t * Math.PI) * 18;
             paper.rotation.x = -.12 * t; reach(moaArms, .65 * Math.sin(t * Math.PI / 2));
-        });
+        }, advance.signal);
         ready = true; guide.update({ visible: true });
         await received;
         await animate(.65, t => {
             paper.position.lerpVectors(offered, held, t); paper.position.y += Math.sin(t * Math.PI) * 10;
             paper.rotation.x = MathUtils.lerp(-.12, -.55, t);
             reach(playerArms, .75 * Math.sin(t * Math.PI / 2)); reach(moaArms, .65 * (1 - t));
-        });
+        }, advance.signal);
+        await advance.wait();
         receivedSuccessfully = true;
         return { returnToDesk: restorePaper };
     } finally {
+        advance.dispose();
         guide.dispose(); paper.removeFromParent();
         reach(moaArms, 0); reach(playerArms, 0);
         window.removeEventListener('keydown', onKey, true);

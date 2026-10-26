@@ -1,0 +1,48 @@
+{
+  "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "results": [
+    {
+      "label": "bus-arrival",
+      "fps": 25.9,
+      "p95": 100.1,
+      "over25ms": 47
+    },
+    {
+      "label": "training",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "simulation",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "stock-simulation",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "stock-chart",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "packing",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "opening",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    }
+  ],
+  "errors": []
+}

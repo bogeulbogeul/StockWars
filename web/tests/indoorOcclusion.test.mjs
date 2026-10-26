@@ -37,3 +37,42 @@ test('render wrapper hides blockers for the render and restores even if the rend
     } } }), /render test/);
     assert.equal(calls, 1); assert.equal(f.front.visible, true);
 });
+
+test('dialogue hides foreground furniture for either speaker and restores when speech ends', () => {
+    const f = fixture(); f.front.visible = false;
+    const desk = new Mesh(new BoxGeometry(150, 100, 20), f.front.material);
+    desk.name = 'Counter'; desk.position.set(0, 60, 100); f.room.add(desk);
+    const behind = desk.clone(); behind.position.z = -100; f.room.add(behind);
+    const occlusion = createIndoorOcclusion(f.room);
+    occlusion.update(f.camera, [f.actor], { speaking: false });
+    assert.equal(desk.visible, true);
+    occlusion.update(f.camera, [f.actor], { speaking: true });
+    assert.equal(desk.visible, false); assert.equal(behind.visible, true);
+    assert.equal(f.floor.visible, true); assert.equal(desk.material.side, FrontSide);
+    occlusion.update(f.camera, [f.actor], { speaking: false });
+    assert.equal(desk.visible, true); assert.equal(f.front.visible, false);
+});
+
+test('dialogue never hides the other character or reveals authored hidden furniture', () => {
+    const f = fixture(); f.front.visible = false;
+    const resident = new Group(); resident.name = 'tori-character'; f.room.add(resident);
+    const body = new Mesh(new BoxGeometry(80, 100, 30), f.front.material);
+    body.position.set(0, 60, 100); resident.add(body);
+    const hidden = body.clone(); hidden.visible = false; f.room.add(hidden);
+    const occlusion = createIndoorOcclusion(f.room);
+    occlusion.update(f.camera, [f.actor, resident], { speaking: true }); occlusion.reset();
+    assert.equal(body.visible, true); assert.equal(hidden.visible, false);
+});
+
+test('counter body, top and attached decoration hide together without floating pieces', () => {
+    const f = fixture(); f.front.visible = false;
+    const body = new Mesh(new BoxGeometry(150,100,20), f.front.material);
+    body.name = 'Counter_Cream_Body'; body.position.set(0,60,100); f.room.add(body);
+    const top = body.clone(); top.name = 'Counter_Honey_Top'; top.position.x = 250; f.room.add(top);
+    const ornament = top.clone(); ornament.name = 'Counter_Flower_Center'; ornament.visible = false; f.room.add(ornament);
+    const occlusion = createIndoorOcclusion(f.room);
+    occlusion.update(f.camera, [f.actor], { speaking:true });
+    assert.equal(body.visible, false); assert.equal(top.visible, false);
+    occlusion.reset();
+    assert.equal(body.visible,true); assert.equal(top.visible,true); assert.equal(ornament.visible,false);
+});

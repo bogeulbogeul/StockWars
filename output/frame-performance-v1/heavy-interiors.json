@@ -1,0 +1,245 @@
+{
+  "results": [
+    {
+      "label": "store",
+      "fps": 49,
+      "p95": 33.400000000001455,
+      "times": {
+        "townDraw": {
+          "ms": 0.01,
+          "calls": 172
+        },
+        "roomUpdate": {
+          "ms": 0.05,
+          "calls": 172
+        },
+        "roomRender": {
+          "ms": 2.38,
+          "calls": 172
+        }
+      },
+      "render": {
+        "frame": 313,
+        "calls": 226,
+        "triangles": 3613320,
+        "points": 0,
+        "lines": 0
+      },
+      "objects": 53,
+      "pixelRatio": 0.5,
+      "meshes": [
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 199808,
+          "instances": 4,
+          "material": "Freshly baked golden crust"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 199808,
+          "instances": 4,
+          "material": "Freshly baked golden crust"
+        },
+        {
+          "name": "Bongbong_RoundedBud",
+          "n": 142684,
+          "instances": 1,
+          "material": "Bongbong coral bud"
+        },
+        {
+          "name": "Bongbong_RoundedBud",
+          "n": 142684,
+          "instances": 1,
+          "material": "Bongbong coral bud"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 111360,
+          "instances": 4,
+          "material": "Ruby berry juice"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 111360,
+          "instances": 4,
+          "material": "Ruby berry juice"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 67200,
+          "instances": 4,
+          "material": "Fine biscuit pores"
+        },
+        {
+          "name": "static-render-instances",
+          "n": 67200,
+          "instances": 4,
+          "material": "Fine biscuit pores"
+        },
+        {
+          "name": "Hollow_smooth_glass_bottle",
+          "n": 60864,
+          "instances": 1,
+          "material": "Clear bottle glass"
+        },
+        {
+          "name": "Hollow_smooth_glass_bottle",
+          "n": 60864,
+          "instances": 1,
+          "material": "Clear bottle glass"
+        },
+        {
+          "name": "Hollow_smooth_glass_bottle",
+          "n": 60864,
+          "instances": 1,
+          "material": "Clear bottle glass"
+        }
+      ]
+    },
+    {
+      "label": "stock",
+      "fps": 59,
+      "p95": 16.799999999999272,
+      "times": {
+        "townDraw": {
+          "ms": 0.02,
+          "calls": 206
+        },
+        "roomUpdate": {
+          "ms": 0.07,
+          "calls": 206
+        },
+        "roomRender": {
+          "ms": 0.82,
+          "calls": 206
+        }
+      },
+      "render": {
+        "frame": 482,
+        "calls": 130,
+        "triangles": 1097398,
+        "points": 0,
+        "lines": 0
+      },
+      "objects": 12,
+      "pixelRatio": 0.5,
+      "meshes": [
+        {
+          "name": "Glasses_smooth_frame",
+          "n": 333640,
+          "instances": 1,
+          "material": "K charcoal glasses"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_3",
+          "n": 225145,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin.001"
+        },
+        {
+          "name": "Rounded_Groove_Surface",
+          "n": 121344,
+          "instances": 1,
+          "material": "Uniform_Colors_Rounded_Profile"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts",
+          "n": 33458,
+          "instances": 1,
+          "material": "Expression_smile_skin"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts",
+          "n": 33458,
+          "instances": 1,
+          "material": "Expression_smile_skin"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_2",
+          "n": 5632,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin"
+        },
+        {
+          "name": "Original_whole_arms_without_elbow_cuts_2",
+          "n": 5632,
+          "instances": 1,
+          "material": "Hidden shoulder original matte skin"
+        },
+        {
+          "name": "Sofa_Back_Cushion",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Blue_Cushion"
+        },
+        {
+          "name": "Sofa_Back_Cushion",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Blue_Cushion"
+        },
+        {
+          "name": "Sofa_Seat_Cushion",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Blue_Cushion"
+        },
+        {
+          "name": "Sofa_Seat_Cushion",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Blue_Cushion"
+        },
+        {
+          "name": "Sofa_Rounded_Arm",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Warm_Ivory"
+        },
+        {
+          "name": "Sofa_Rounded_Arm001",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Warm_Ivory"
+        },
+        {
+          "name": "Sofa_Ivory_Back",
+          "n": 2976,
+          "instances": 1,
+          "material": "Sofa_Warm_Ivory"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

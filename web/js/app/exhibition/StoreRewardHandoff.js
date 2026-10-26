@@ -1,3 +1,4 @@
+import { animationDialogue } from './AnimationDialogue.js';
 import { Box3, Group, Vector3 } from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { animate, arms, reach } from './HandoffMotion.js';
@@ -25,21 +26,25 @@ export async function receiveStoreReward(app, id) {
     const key = event => {
         if (event.ctrlKey || event.metaKey || event.altKey || !['KeyF', 'Escape'].includes(event.code)) return;
         event.preventDefault(); event.stopImmediatePropagation();
-        if (ready && event.code === 'KeyF' && !event.repeat) { ready = false; guide.update({ visible: false }); accept(); }
+        if (ready && event.code === 'KeyF' && !event.repeat) { ready = false; guide.update({ visible: false }); advance.next(); }
     };
     app.scenes.receivingItem = true; window.addEventListener('keydown', key, true);
     room.rewardHandoffActive = id;
+    const advance = animationDialogue(app, { speaker: '봉봉', text: id === 'wage' ? '수고했어요! 약속한 300잎이에요.' : '이 소식봉투도 가져가세요. 손님이 맡기고 갔어요.' });
+    advance.onAdvance(accept);
     try {
         await animate(.85, t => {
             item.position.lerpVectors(start, offered, t); item.position.y += Math.sin(Math.PI * t) * 10;
             item.rotation.y = Math.atan2(room.camera.position.x - item.position.x, room.camera.position.z - item.position.z);
             reach(giving, .65 * t);
-        });
+        }, advance.signal);
         ready = true; guide.update({ visible: true }); await received;
         await animate(.65, t => {
             item.position.lerpVectors(offered, held, t); reach(giving, .65 * (1 - t)); reach(receiving, .7 * t);
-        });
+        }, advance.signal);
+        await advance.wait();
     } finally {
+        advance.dispose();
         guide.dispose(); reach(giving, 0); reach(receiving, 0); item.removeFromParent();
         model.traverse(mesh => { mesh.geometry?.dispose(); for (const m of [mesh.material].flat()) m?.dispose(); });
         window.removeEventListener('keydown', key, true); app.scenes.receivingItem = false;

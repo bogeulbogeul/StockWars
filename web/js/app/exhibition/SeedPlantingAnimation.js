@@ -5,7 +5,10 @@ export function playSeedPlanting() {
     dialog.addEventListener('cancel', event => event.preventDefault());
     document.body.append(dialog); dialog.showModal();
     return new Promise((resolve, reject) => {
+        let finished = false;
         const finish = error => {
+            if (finished) return; finished = true;
+            frame.onerror = null;
             window.removeEventListener('message', message); dialog.remove();
             if (error) reject(error); else resolve();
         };

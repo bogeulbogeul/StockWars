@@ -1,3 +1,5 @@
+import { TownStaticBatches } from '../../components/town3d/TownStaticBatches.js';
+import { FrameBudget } from '../../components/town3d/FrameBudget.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { addGameEnvironment } from '../../components/lighting/GameLighting.js';
 import { acquireArrivalRenderer } from './ArrivalRenderer.js';
@@ -27,7 +29,7 @@ export function createArrivalView(host) {
     const camera = new THREE.PerspectiveCamera(TOWN_CAMERA.fieldOfView, 1, 1, 20000);
     let renderer, rendererLease;
     const loader = new GLTFLoader();
-    let disposed = false, bus, mixer, clip, village, environment, removeForest, playerVisibility;
+    let disposed = false, bus, busBatches, mixer, clip, village, environment, removeForest, playerVisibility;
     const busScale = TOWN_BUS_MODEL_SCALE, stopX = TOWN_BUS_ROAD.stopX;
     const busZ = (TOWN_BUS_ROAD.centerY - TOWN_BUS_ROAD.width / 4) / GROUND_PROJECTION;
     const busBounds = new THREE.Box3(), viewFrustum = new THREE.Frustum(), viewProjection = new THREE.Matrix4();
@@ -55,14 +57,38 @@ export function createArrivalView(host) {
     const ready = Promise.all([
         load('../../../assets/cinematics/bus/Popori-bus-animated.glb', gltf => {
             bus = gltf.scene;
+            const fastGlass = new Map();
+            bus.traverse(mesh => {
+                if (!mesh.isMesh) return;
+                const material = original => {
+                    if (!original.transmission && !original.transparent) return original;
+                    if (!fastGlass.has(original)) {
+                        const copy = original.clone();
+                        if (copy.transmission > 0) { copy.transmission = 0; copy.transparent = true; copy.opacity = Math.min(copy.opacity, .24); copy.depthWrite = false; }
+                        copy.forceSinglePass = true; fastGlass.set(original, copy);
+                    }
+                    return fastGlass.get(original);
+                };
+                mesh.material = Array.isArray(mesh.material) ? mesh.material.map(material) : material(mesh.material);
+            });
             bus.rotation.y = Math.PI;
             bus.scale.setScalar(busScale);
             bus.position.set(stopX + 3000, 0, busZ);
             mixer = new THREE.AnimationMixer(bus);
             clip = gltf.animations.find(a => a.name === 'Wheel_Roll') || gltf.animations[0];
             if (clip) mixer.clipAction(clip).play();
+            // Merge rigid bodywork in bus-local coordinates; animated wheels
+            // keep their own meshes and clips and the original nodes remain.
+            for (const animation of gltf.animations) for (const track of animation.tracks) {
+                const name = THREE.PropertyBinding.parseTrackName(track.name).nodeName;
+                bus.traverse(node => { if (node.name === name || node.uuid === name) node.userData.renderAnimated = true; });
+            }
+            const position = bus.position.clone(), rotation = bus.quaternion.clone(), scale = bus.scale.clone();
+            bus.position.set(0, 0, 0); bus.quaternion.identity(); bus.scale.set(1, 1, 1); bus.updateMatrixWorld(true);
+            busBatches = new TownStaticBatches(bus, { roots: [bus], maxTriangles: 8192 });
+            bus.position.copy(position); bus.quaternion.copy(rotation); bus.scale.copy(scale); bus.updateMatrixWorld(true);
         }),
-        getArrivalVillage().then(result => {
+        getArrivalVillage().then(async result => {
             village = result;
             if (disposed) { releaseVillage(); cleanupVillage(); return; }
             if (village.live?.player?.root) {
@@ -77,12 +103,16 @@ export function createArrivalView(host) {
                 environment = addGameEnvironment(village.scene, renderer);
             }
             host.dataset.villageModels = String(village.scene.children.filter(o => o.name).length);
-            removeForest = addArrivalForest(village.scene, village.landscape);
+            removeForest = await addArrivalForest(village.scene, village.landscape);
+            if (disposed) { removeForest(); releaseVillage(); cleanupVillage(); }
         })
     ]).then(() => { if (!disposed) village.scene.add(bus); });
+    let frameBudget;
     const resize = () => {
         if (!renderer) return;
         const { width, height } = host.getBoundingClientRect();
+        frameBudget ||= new FrameBudget(renderer, village?.scene);
+        frameBudget.resize(width, height);
         renderer.setSize(width, height);
         camera.aspect = width / Math.max(1, height);
         const visibleHeight = Math.max(3000, 4400 / camera.aspect);
@@ -99,6 +129,7 @@ export function createArrivalView(host) {
         ready,
         render(distance, playerView = 0, stopped = distance >= 10) {
             if (disposed || !bus || !village) return;
+            frameBudget?.tick(performance.now());
             if (village.live?.player?.root) village.live.player.root.visible = stopped && playerVisibility;
             // The coach faces -X and always enters from screen right.
             bus.position.x = stopX + 3000 * (1 - distance / 10);
@@ -123,7 +154,13 @@ export function createArrivalView(host) {
             host.dataset.wheelTime = mixer.time.toFixed(4);
             village.landscape.update(targetX, targetZ, { x: TOWN_ARRIVAL.x, y: TOWN_ARRIVAL.y });
             village.landscape.playerShadow.visible = false;
-            renderer.render(village.scene, camera);
+            const draw = () => village.renderCulling
+                ? village.renderCulling.render(renderer, village.scene, camera, village.landscape.center.value)
+                : renderer.render(village.scene, camera);
+            const render = () => removeForest?.render ? removeForest.render(draw, camera.position.y > 1300) : draw();
+            if (busBatches) busBatches.render(renderer, village.scene, camera, render);
+            else render();
+            rendererLease.reveal();
             const center = bus.position.clone().project(camera);
             const front = bus.localToWorld(new THREE.Vector3(2, 0, 0)).project(camera);
             host.dataset.screenX = center.x.toFixed(4);
@@ -146,6 +183,10 @@ export function createArrivalView(host) {
                 environment.dispose();
             }
             rendererLease?.dispose();
+            if (village?.live?.frameBudget && frameBudget) {
+                village.live.frameBudget.scale = Math.min(village.live.frameBudget.scale, frameBudget.scale);
+                village.live.frameBudget.apply(); village.live.frameBudget.reset();
+            }
         }
     };
 }

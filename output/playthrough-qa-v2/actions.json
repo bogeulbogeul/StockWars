@@ -1,0 +1,87 @@
+[
+  {
+    "id": "load-replay",
+    "start": 64601,
+    "end": 64602
+  },
+  {
+    "id": "opening",
+    "start": 73561,
+    "end": 105549
+  },
+  {
+    "id": "wake-information",
+    "start": 105549,
+    "end": 118960
+  },
+  {
+    "id": "status",
+    "start": 238182,
+    "end": 238184
+  },
+  {
+    "id": "home-align",
+    "start": 251388,
+    "end": 251392
+  },
+  {
+    "id": "bank",
+    "start": 279835,
+    "end": 303810
+  },
+  {
+    "id": "store-status",
+    "start": 347188,
+    "end": 347191
+  },
+  {
+    "id": "packing-status",
+    "start": 430508,
+    "end": 430519
+  },
+  {
+    "id": "packing-rest",
+    "start": 460177,
+    "end": 487729
+  },
+  {
+    "id": "rumor",
+    "start": 487729,
+    "end": 503098
+  },
+  {
+    "id": "stock-exam",
+    "start": 503098,
+    "end": 523995
+  },
+  {
+    "id": "stock-lesson",
+    "start": 523995,
+    "end": 560090
+  },
+  {
+    "id": "gifts-status",
+    "start": 691270,
+    "end": 691272
+  },
+  {
+    "id": "gifts-rest",
+    "start": 717389,
+    "end": 729923
+  },
+  {
+    "id": "home-finale",
+    "start": 729923,
+    "end": 784853
+  },
+  {
+    "id": "gifts-rest",
+    "start": 717389,
+    "end": 784853
+  },
+  {
+    "id": "save-recording",
+    "start": 840896,
+    "end": 843152
+  }
+]

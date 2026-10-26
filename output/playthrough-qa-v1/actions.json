@@ -1,0 +1,197 @@
+[
+  {
+    "id": "status",
+    "start": 107767,
+    "end": 107770
+  },
+  {
+    "id": "intro-rest",
+    "start": 147558,
+    "end": 168222
+  },
+  {
+    "id": "arrival-status",
+    "start": 315121,
+    "end": 315127
+  },
+  {
+    "id": "input-audit",
+    "start": 370714,
+    "end": 371184
+  },
+  {
+    "id": "wake-continue",
+    "start": 389952,
+    "end": 394074
+  },
+  {
+    "id": "information-entry",
+    "start": 411901,
+    "end": 418279
+  },
+  {
+    "id": "info-seat",
+    "start": 458797,
+    "end": 458800
+  },
+  {
+    "id": "residence-and-phone",
+    "start": 470687,
+    "end": 478826
+  },
+  {
+    "id": "status",
+    "start": 742079,
+    "end": 742082
+  },
+  {
+    "id": "home-f",
+    "start": 765413,
+    "end": 767031
+  },
+  {
+    "id": "home-bank",
+    "start": 781670,
+    "end": 789073
+  },
+  {
+    "id": "bank-state",
+    "start": 812235,
+    "end": 812239
+  },
+  {
+    "id": "bank-front",
+    "start": 819251,
+    "end": 820827
+  },
+  {
+    "id": "bank-forms",
+    "start": 836413,
+    "end": 845984
+  },
+  {
+    "id": "choose-packing",
+    "start": 852244,
+    "end": 859674
+  },
+  {
+    "id": "store-route-road",
+    "start": 914818,
+    "end": 927799
+  },
+  {
+    "id": "store-talk",
+    "start": 935736,
+    "end": 937493
+  },
+  {
+    "id": "store-approach",
+    "start": 954667,
+    "end": 961355
+  },
+  {
+    "id": "packing-guide",
+    "start": 977575,
+    "end": 980395
+  },
+  {
+    "id": "packing-play",
+    "start": 1002026,
+    "end": 1019744
+  },
+  {
+    "id": "packing-reward",
+    "start": 1034622,
+    "end": 1042649
+  },
+  {
+    "id": "exit-store",
+    "start": 1052718,
+    "end": 1054193
+  },
+  {
+    "id": "to-moa",
+    "start": 1074060,
+    "end": 1081954
+  },
+  {
+    "id": "rumor-read",
+    "start": 1093983,
+    "end": 1103670
+  },
+  {
+    "id": "to-stock",
+    "start": 1110957,
+    "end": 1120070
+  },
+  {
+    "id": "stock-exam",
+    "start": 1132363,
+    "end": 1149026
+  },
+  {
+    "id": "training-enter",
+    "start": 1163456,
+    "end": 1174283
+  },
+  {
+    "id": "training-computer",
+    "start": 1190560,
+    "end": 1201567
+  },
+  {
+    "id": "first-buy",
+    "start": 1218356,
+    "end": 1228064
+  },
+  {
+    "id": "exit-state",
+    "start": 1263208,
+    "end": 1263213
+  },
+  {
+    "id": "stock-lobby-exit",
+    "start": 1276039,
+    "end": 1288749
+  },
+  {
+    "id": "evening-gifts",
+    "start": 1309904,
+    "end": 1328900
+  },
+  {
+    "id": "diary-gift-farewell",
+    "start": 1338908,
+    "end": 1345992
+  },
+  {
+    "id": "buy-pot",
+    "start": 1358285,
+    "end": 1367702
+  },
+  {
+    "id": "pot-pay",
+    "start": 1382206,
+    "end": 1389455
+  },
+  {
+    "id": "return-home",
+    "start": 1414474,
+    "end": 1431757
+  },
+  {
+    "id": "plant-diary",
+    "start": 1448406,
+    "end": 1461578
+  },
+  {
+    "id": "sleep-ending",
+    "start": 1480133,
+    "end": 1493206
+  },
+  {
+    "id": "save-video",
+    "start": 1514789,
+    "end": 1517864
+  }
+]

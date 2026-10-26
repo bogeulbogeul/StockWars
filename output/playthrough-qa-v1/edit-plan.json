@@ -1,0 +1,258 @@
+[
+  {
+    "id": "title-opening",
+    "sourceStart": 44,
+    "sourceEnd": 56,
+    "editedStart": 0,
+    "editedEnd": 12,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/00.mp4"
+  },
+  {
+    "id": "opening-bus",
+    "sourceStart": 147.5,
+    "sourceEnd": 170,
+    "editedStart": 12,
+    "editedEnd": 34.5,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/01.mp4"
+  },
+  {
+    "id": "moa-wake",
+    "sourceStart": 380,
+    "sourceEnd": 396,
+    "editedStart": 34.5,
+    "editedEnd": 50.5,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/02.mp4"
+  },
+  {
+    "id": "information",
+    "sourceStart": 411.7,
+    "sourceEnd": 420,
+    "editedStart": 50.5,
+    "editedEnd": 58.80000000000001,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/03.mp4"
+  },
+  {
+    "id": "seat",
+    "sourceStart": 457,
+    "sourceEnd": 460,
+    "editedStart": 58.80000000000001,
+    "editedEnd": 61.799999999999955,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/04.mp4"
+  },
+  {
+    "id": "residence-phone",
+    "sourceStart": 470.5,
+    "sourceEnd": 480.5,
+    "editedStart": 61.80000000000001,
+    "editedEnd": 71.79999999999995,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/05.mp4"
+  },
+  {
+    "id": "phone-map",
+    "sourceStart": 511,
+    "sourceEnd": 528,
+    "editedStart": 71.80000000000001,
+    "editedEnd": 88.79999999999995,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/06.mp4"
+  },
+  {
+    "id": "home-f",
+    "sourceStart": 765.413,
+    "sourceEnd": 767.731,
+    "editedStart": 88.80000000000001,
+    "editedEnd": 91.11799999999994,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/07.mp4"
+  },
+  {
+    "id": "home-bank",
+    "sourceStart": 781.67,
+    "sourceEnd": 789.773,
+    "editedStart": 91.118,
+    "editedEnd": 99.22100000000012,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/08.mp4"
+  },
+  {
+    "id": "bank-front",
+    "sourceStart": 819.251,
+    "sourceEnd": 821.527,
+    "editedStart": 99.22100000000006,
+    "editedEnd": 101.49700000000007,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/09.mp4"
+  },
+  {
+    "id": "bank-forms",
+    "sourceStart": 836.413,
+    "sourceEnd": 846.6840000000001,
+    "editedStart": 101.49700000000013,
+    "editedEnd": 111.76800000000026,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/10.mp4"
+  },
+  {
+    "id": "choose-packing",
+    "sourceStart": 852.244,
+    "sourceEnd": 860.374,
+    "editedStart": 111.7680000000002,
+    "editedEnd": 119.89800000000025,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/11.mp4"
+  },
+  {
+    "id": "store-route-road",
+    "sourceStart": 914.818,
+    "sourceEnd": 928.499,
+    "editedStart": 119.8980000000002,
+    "editedEnd": 133.57900000000018,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/12.mp4"
+  },
+  {
+    "id": "store-approach",
+    "sourceStart": 954.667,
+    "sourceEnd": 962.0550000000001,
+    "editedStart": 133.57900000000024,
+    "editedEnd": 140.9670000000002,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/13.mp4"
+  },
+  {
+    "id": "packing-play",
+    "sourceStart": 1002.026,
+    "sourceEnd": 1020.4440000000001,
+    "editedStart": 140.96700000000027,
+    "editedEnd": 159.38500000000033,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/14.mp4"
+  },
+  {
+    "id": "packing-reward",
+    "sourceStart": 1034.622,
+    "sourceEnd": 1043.349,
+    "editedStart": 159.3850000000004,
+    "editedEnd": 168.1120000000003,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/15.mp4"
+  },
+  {
+    "id": "exit-store",
+    "sourceStart": 1052.718,
+    "sourceEnd": 1054.893,
+    "editedStart": 168.11200000000025,
+    "editedEnd": 170.28700000000026,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/16.mp4"
+  },
+  {
+    "id": "to-moa",
+    "sourceStart": 1074.06,
+    "sourceEnd": 1082.654,
+    "editedStart": 170.2870000000002,
+    "editedEnd": 178.8810000000003,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/17.mp4"
+  },
+  {
+    "id": "rumor-read",
+    "sourceStart": 1093.983,
+    "sourceEnd": 1104.3700000000001,
+    "editedStart": 178.88100000000026,
+    "editedEnd": 189.26800000000048,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/18.mp4"
+  },
+  {
+    "id": "to-stock",
+    "sourceStart": 1110.957,
+    "sourceEnd": 1120.77,
+    "editedStart": 189.26800000000043,
+    "editedEnd": 199.08100000000036,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/19.mp4"
+  },
+  {
+    "id": "stock-exam",
+    "sourceStart": 1132.363,
+    "sourceEnd": 1149.726,
+    "editedStart": 199.0810000000003,
+    "editedEnd": 216.44400000000041,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/20.mp4"
+  },
+  {
+    "id": "training-enter",
+    "sourceStart": 1163.456,
+    "sourceEnd": 1174.983,
+    "editedStart": 216.44400000000036,
+    "editedEnd": 227.97100000000046,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/21.mp4"
+  },
+  {
+    "id": "training-computer",
+    "sourceStart": 1190.56,
+    "sourceEnd": 1202.267,
+    "editedStart": 227.9710000000004,
+    "editedEnd": 239.67800000000057,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/22.mp4"
+  },
+  {
+    "id": "first-buy",
+    "sourceStart": 1218.356,
+    "sourceEnd": 1228.7640000000001,
+    "editedStart": 239.6780000000005,
+    "editedEnd": 250.0860000000007,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/23.mp4"
+  },
+  {
+    "id": "stock-lobby-exit",
+    "sourceStart": 1276.039,
+    "sourceEnd": 1289.449,
+    "editedStart": 250.08600000000064,
+    "editedEnd": 263.4960000000008,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/24.mp4"
+  },
+  {
+    "id": "evening-gifts",
+    "sourceStart": 1309.904,
+    "sourceEnd": 1329.6000000000001,
+    "editedStart": 263.4960000000007,
+    "editedEnd": 283.1920000000009,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/25.mp4"
+  },
+  {
+    "id": "diary-gift-farewell",
+    "sourceStart": 1338.908,
+    "sourceEnd": 1346.692,
+    "editedStart": 283.19200000000086,
+    "editedEnd": 290.976000000001,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/26.mp4"
+  },
+  {
+    "id": "buy-pot",
+    "sourceStart": 1358.285,
+    "sourceEnd": 1368.402,
+    "editedStart": 290.97600000000097,
+    "editedEnd": 301.093000000001,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/27.mp4"
+  },
+  {
+    "id": "pot-pay",
+    "sourceStart": 1382.206,
+    "sourceEnd": 1390.155,
+    "editedStart": 301.0930000000009,
+    "editedEnd": 309.04200000000105,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/28.mp4"
+  },
+  {
+    "id": "return-home",
+    "sourceStart": 1414.474,
+    "sourceEnd": 1432.457,
+    "editedStart": 309.042000000001,
+    "editedEnd": 327.0250000000012,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/29.mp4"
+  },
+  {
+    "id": "plant-diary",
+    "sourceStart": 1448.406,
+    "sourceEnd": 1462.278,
+    "editedStart": 327.02500000000117,
+    "editedEnd": 340.8970000000013,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/30.mp4"
+  },
+  {
+    "id": "sleep-ending",
+    "sourceStart": 1480.133,
+    "sourceEnd": 1493.906,
+    "editedStart": 340.89700000000124,
+    "editedEnd": 354.6700000000012,
+    "file": "C:\\GitHub\\StockWars\\output\\playthrough-qa-v1/clips/31.mp4"
+  }
+]

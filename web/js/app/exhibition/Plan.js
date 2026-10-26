@@ -1,3 +1,4 @@
+import { shortenDemoDialogue } from './ShortDialogue.js';
 import { dialogue, segment } from './Script.js';
 import { TOUR_ORDER } from './TourOrder.js';
 import { VILLAGE_MAP_STEPS } from './VillageMapIntro.js';
@@ -73,7 +74,7 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     const packing = () => {
         action('notice', 'notice', '봉봉 잡화점 구인 공고 읽기');
         add(11, 'store', undefined, '[모션] 봉봉이 포장할');
-        plan.push({ kind: 'line', speaker: '봉봉', text: '일을 마치면 보수를 드릴게요. 시작해볼까요?',
+        plan.push({ kind: 'line', speaker: '봉봉', text: '상자 3개를 포장하면 보수 300잎을 드릴게요. 시작해볼까요?',
             chapter: 11, place: 'store', packingOffer: true });
         add(11, 'store', '### 해볼게', '봉봉: “그럼 첫 상자'); action('packing', 'store', '포장 알바 시작하기');
         const rewardStart = plan.length;
@@ -118,7 +119,7 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     add(20, 'home', '[선택 버튼]', '[다이어리 첫 기록');
     action('diaryWritten', 'home', '첫 기록 남기기');
     action('asleep', 'home', '잠자기');
-    return plan;
+    return legacy ? plan : shortenDemoDialogue(plan, order);
 }
 
 // Old saves used numeric scene positions. Remove only the retired tour's offset.

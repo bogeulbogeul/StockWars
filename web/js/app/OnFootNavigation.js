@@ -1,3 +1,4 @@
+import { quickFade, positionOutside } from './QuickTravel.js';
 import { GROUND_PROJECTION as P } from '../data/townModelBuildings.js';
 import { HOME_SPAWN, HOME_EXIT_Z } from '../data/homeModelRoom.js';
 import { VIVIAN_EXIT_Z } from '../data/vivianModelRoom.js';
@@ -71,57 +72,20 @@ export async function walkRoute(route, update, speed = 145) {
 
 export async function enterBuildingOnFoot(town, id) {
     await town.ready; await town.player.ready;
-    const door = buildingDoor(town, id); town.entryActive = true; town.dialogueOcclusion?.reset();
-    try {
-        await walkPlayerIntoInformation(town.player, door, { stopBeforeDoor: 55 });
-        town.town.playerController.scriptedWalking = true; town.town.playerController.isMoving = false;
-        await door.open(); await walkPlayerIntoInformation(town.player, door); void door.close();
-    } finally {
-        town.entryActive = false; town.town.playerController.scriptedWalking = false;
-        town.town.playerController.isMoving = false;
-    }
+    town.town.playerController.keysHeld.clear();
+    town.town.playerController.isMoving = false;
+    town.player.setState('idle');
 }
 
 export async function leaveBuildingOnFoot({ room, town, id, showTown }) {
     if (room.doorTravelActive) return;
     room.doorTravelActive = true;
-    const wasExitPending = room.exitPending;
-    room.exitPending = true;
-    const c = town.town.playerController;
     try {
         await town.ready; await town.player.ready;
-        await walkRoomTo(room, roomExitPoint(room, id));
-        const door = buildingDoor(town, id);
-        // The two scenes meet inside the dark door. Only change coordinate
-        // systems while the exterior actor is hidden at that same threshold.
-        town.player.root.visible = false;
-        town.entryActive = true; town.dialogueOcclusion?.reset();
-        // Prepare the hidden actor before showing the exterior. Otherwise its
-        // normal collision recovery pushes it out of the doorway while Moa
-        // emerges, and the follow camera shakes with those position changes.
-        c.charPosX = door.center.x; c.charPosY = (door.center.z - 10) * P;
-        c.keysHeld.clear(); c.facing = 'down'; c.scriptedWalking = true; c.isMoving = false;
-        c.scriptedSupportHeight = doorwayHeight(door, door.center.z - 10);
-        town.player.storyYaw = town.player.storyTarget = town.player.storyCamera = null;
-        town.conversationCamera?.reset(town.camera);
-        town.player.update(0);
-        if (await showTown() === false) return;
-        room.hide();
-        // Show the exterior first, so the opening motion is visible before emergence.
-        await door.open();
-        town.player.root.visible = true; c.isMoving = true;
-        await walkRoute([{ x: c.charPosX, y: c.charPosY },
-            { x: c.charPosX, y: (door.center.z + 190) * P }], (point, ahead, dt) => {
-            c.charPosX = point.x; c.charPosY = point.y;
-            c.scriptedSupportHeight = doorwayHeight(door, point.y / P);
-            town.player.update(dt);
+        if (room.seatInteraction?.stand() === false) throw new Error('의자에서 일어날 공간이 없어요.');
+        await quickFade(async () => {
+            positionOutside(town, id);
+            if (await showTown() !== false) room.hide();
         });
-        c.isMoving = false; town.player.setState('idle');
-        await door.close();
-    } finally {
-        room.exitPending = wasExitPending;
-        room.doorTravelActive = false; town.entryActive = false; town.player.root.visible = true;
-        c.scriptedWalking = false; c.isMoving = false; c.keysHeld.clear(); delete c.scriptedSupportHeight;
-        town.player.setState('idle');
-    }
+    } finally { room.doorTravelActive = false; town.entryActive = false; }
 }

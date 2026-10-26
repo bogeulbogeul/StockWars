@@ -1,3 +1,4 @@
+import { bindCinematicDialogue } from '../CinematicDialogue.js';
 import { showTitleScreen } from '../TitleScreen.js';
 
 // Return to a clean title; session-only exhibition progress resets on reload.
@@ -16,16 +17,18 @@ export function playFirstNight(screen) {
     frame.tabIndex = -1;
     screen.append(frame);
     return new Promise(resolve => {
-        let timer;
+        let finished = false;
+        const cleanup = bindCinematicDialogue(frame, () => finish());
         const finish = () => {
-            clearTimeout(timer);
+            if (finished) return;
+            finished = true;
+            cleanup();
             frame.onload = frame.onerror = null;
             frame.remove();
             screen.classList.remove('opening-sequence');
             art.hidden = false;
             resolve();
         };
-        frame.onload = () => { timer = setTimeout(finish, 18000); };
         frame.onerror = finish;
         frame.src = new URL('../../../assets/ending/first-night-v1/scene.html', import.meta.url).href;
     });

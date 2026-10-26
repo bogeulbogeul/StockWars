@@ -1,0 +1,126 @@
+{
+  "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "results": [
+    {
+      "place": "town",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7130000000000001,
+      "scale": 0.7130000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "town",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7380000000000001,
+      "scale": 0.7380000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "information",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8250000000000001,
+      "scale": 0.8250000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "information",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8500000000000001,
+      "scale": 0.8500000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "bank",
+      "moving": false,
+      "fps": 58.9,
+      "p95": 16.8,
+      "over25ms": 4,
+      "ratio": 0.8,
+      "scale": 0.8,
+      "shadows": 1024
+    },
+    {
+      "place": "bank",
+      "moving": true,
+      "fps": 58.7,
+      "p95": 16.8,
+      "over25ms": 4,
+      "ratio": 0.7095,
+      "scale": 0.7095,
+      "shadows": 1024
+    },
+    {
+      "place": "home",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7345,
+      "scale": 0.7345,
+      "shadows": 1024
+    },
+    {
+      "place": "home",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7595000000000001,
+      "scale": 0.7595000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "store",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7845000000000001,
+      "scale": 0.7845000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "store",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8095000000000001,
+      "scale": 0.8095000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "stock",
+      "moving": false,
+      "fps": 59.4,
+      "p95": 16.8,
+      "over25ms": 1,
+      "ratio": 0.5338448,
+      "scale": 0.5338448,
+      "shadows": 1024
+    },
+    {
+      "place": "stock",
+      "moving": true,
+      "fps": 58.9,
+      "p95": 16.8,
+      "over25ms": 3,
+      "ratio": 0.5338448,
+      "scale": 0.5338448,
+      "shadows": 1024
+    }
+  ],
+  "errors": []
+}

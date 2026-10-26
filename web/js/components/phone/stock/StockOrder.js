@@ -9,7 +9,7 @@ export class StockOrder {
         this.qty = host.querySelector('[data-qty]'); this.price = host.querySelector('[data-price]'); this.type = host.querySelector('[data-type]');
         if (source.orderPolicy) {
             const note = document.createElement('p'); note.className = 'stock-notice'; note.textContent = source.policyNote;
-            host.prepend(note);
+            host.querySelector('.stock-order-fields').prepend(note);
             this.qty.value = source.orderPolicy.quantity; this.qty.readOnly = true;
             this.type.disabled = !!source.orderPolicy.marketOnly;
             host.querySelectorAll('[data-step], [data-qty-set]').forEach(button => { button.disabled = true; });

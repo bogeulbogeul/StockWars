@@ -89,13 +89,13 @@ test('any valid solution is accepted, not only the authored answer', () => {
     assert.ok(isOrderComplete(order));
 });
 
-test('five-order sessions never repeat patterns and cannot finish twice or finish early', () => {
+test('three-order sessions never repeat patterns and cannot finish twice or finish early', () => {
     for (let n = 0; n < 50; n++) {
         const session = createSession();
-        assert.equal(session.orders.length, 5);
-        assert.equal(new Set(session.orders.map(o => o.patternIndex)).size, 5);
+        assert.equal(session.orders.length, 3);
+        assert.equal(new Set(session.orders.map(o => o.patternIndex)).size, 3);
         assert.equal(finishOrder(session), false);
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             solve(session.orders[i]);
             assert.ok(finishOrder(session));
             assert.equal(session.completed, i + 1);

@@ -8,7 +8,16 @@ const droplets=Array.from({length:12},(_,i)=>{
  el.setAttribute('fill',i%2?'#82b7cc':'#bddae3');
  byId('drops').append(el);return el;
 });
-let time=0,last=0,paused=false,raf;
+let time=0,last=0,paused=false,raf,stage=0,ready=false,completed=false;
+const starts=[0,3.4,6,9.5], ends=[3.35,5.95,9.4,12];
+const caption=byId('caption');caption.setAttribute('role','button');caption.tabIndex=0;caption.style.cursor='pointer';
+const next=event=>{
+ if(!ready||completed||(event.type==='keydown'&&(!['Enter',' '].includes(event.key)||event.repeat)))return;
+ event.preventDefault();event.stopPropagation();
+ if(stage<3){stage++;time=reduced?ends[stage]:starts[stage];last=0;paused=false;cancelAnimationFrame(raf);draw(time);if(!reduced)raf=requestAnimationFrame(tick);}
+ else{completed=true;cancelAnimationFrame(raf);draw(12);window.parent.postMessage({type:'seed-planting-complete'},'*');}
+};
+caption.addEventListener('click',next);caption.addEventListener('keydown',next);
 function draw(t){
  byId('pat').style.opacity=fade(t,3.4);
  byId('water').style.opacity=fade(t,6);
@@ -29,20 +38,20 @@ function draw(t){
  byId('status').textContent=t>=12?'씨앗 심기 완료 · 싹이 나기 전 모습':`씨앗 심기 · ${Math.floor(t)} / 12초 · 무음 시안`;
 }
 function tick(now){
- if(last&&!paused)time=Math.min(12,time+(now-last)/1000);
+ if(last&&!paused)time=Math.min(ends[stage],time+Math.min((now-last)/1000,.05));
  last=now;draw(time);
- if(time<12)raf=requestAnimationFrame(tick);
- else{byId('pause').disabled=true;window.parent.postMessage({type:'seed-planting-complete'},'*');}
+ if(time<ends[stage])raf=requestAnimationFrame(tick);
+ else byId('pause').disabled=true;
 }
 function start(){
- cancelAnimationFrame(raf);time=0;last=0;paused=false;
+ cancelAnimationFrame(raf);stage=0;completed=false;time=0;last=0;paused=false;
  byId('pause').disabled=false;byId('pause').textContent='일시정지';
  raf=requestAnimationFrame(tick);
 }
 byId('replay').onclick=start;
 byId('pause').onclick=()=>{paused=!paused;byId('pause').textContent=paused?'계속 재생':'일시정지';};
 Promise.all([...document.images].map(img=>img.decode())).then(()=>{
- byId('replay').disabled=false;
- if(reduced){time=12;draw(time);window.parent.postMessage({type:'seed-planting-complete'},'*');}else start();
+ byId('replay').disabled=false;ready=true;
+ if(reduced){time=ends[stage];draw(time);}else start();
 }).catch(()=>{window.parent.postMessage({type:'seed-planting-error'},'*');byId('caption').textContent='이미지를 불러오지 못했습니다. 페이지를 새로고침해 주세요.';});
 

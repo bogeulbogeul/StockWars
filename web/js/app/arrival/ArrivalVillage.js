@@ -1,3 +1,7 @@
+import { TownRenderCulling } from '../../components/town3d/TownRenderCulling.js';
+import { TownStaticBatches } from '../../components/town3d/TownStaticBatches.js';
+import { StaticInstances } from '../../components/town3d/StaticInstances.js';
+import { StaticRenderLod } from '../../components/town3d/StaticRenderLod.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { addGameLights } from '../../components/lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
@@ -14,11 +18,12 @@ export async function getArrivalVillage() {
         live.arrivalActive = true;
         live.dialogueOcclusion?.reset();
         await live.sleepingAnna?.setAwake(false);
-        return { scene: live.scene, landscape: live.landscape, live, owned: false };
+        return { scene: live.scene, landscape: live.landscape, renderCulling: live.renderCulling, live, owned: false };
     }
     const scene = new THREE.Scene();
     addGameLights(scene);
     const landscape = new TownLandscape(scene);
+    const renderCulling = new TownRenderCulling();
     const definitions = [
         ...TOWN_MODEL_BUILDINGS.map(d => ({ ...d, url: modelAssetUrl(d.file) })),
         ...TOWN_MODEL_PROPS.map(d => ({ ...d, url: propAssetUrl(d.file) }))
@@ -36,10 +41,13 @@ export async function getArrivalVillage() {
         fitTownProp(model, d, scale);
         model.position.set(d.x - center.x * scale, -bounds.min.y * scale,
             d.y / GROUND_PROJECTION - bounds.max.z * scale);
-        model.name = d.id;
+        model.name = d.id; model.userData.dialogueOccluder = true;
         landscape.wrap(model);
         landscape.addContactShadow(model);
-        scene.add(model);
+        scene.add(model); renderCulling.add(model); renderCulling.add(model.contactShadow);
     }));
-    return { scene, landscape, owned: true };
+    renderCulling.lod = new StaticRenderLod(scene); await renderCulling.lod.load();
+    renderCulling.instances = new StaticInstances(scene, scene.children.filter(root => root.userData.dialogueOccluder));
+    renderCulling.batches = new TownStaticBatches(scene);
+    return { scene, landscape, renderCulling, owned: true };
 }

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "load-promo",
+    "start": 22857,
+    "end": 22858
+  },
+  {
+    "id": "opening",
+    "start": 38844,
+    "end": 72423
+  },
+  {
+    "id": "wake-information",
+    "start": 72423,
+    "end": 85915
+  },
+  {
+    "id": "residence-phone-map",
+    "start": 85916,
+    "end": 107505
+  },
+  {
+    "id": "bank",
+    "start": 107506,
+    "end": 136141
+  },
+  {
+    "id": "store",
+    "start": 136142,
+    "end": 195435
+  },
+  {
+    "id": "rumor",
+    "start": 195435,
+    "end": 213440
+  },
+  {
+    "id": "stock-exam",
+    "start": 213441,
+    "end": 234716
+  },
+  {
+    "id": "stock-lesson",
+    "start": 234717,
+    "end": 273381
+  },
+  {
+    "id": "gifts",
+    "start": 273382,
+    "end": 303680
+  },
+  {
+    "id": "home-finale",
+    "start": 303680,
+    "end": 360214
+  },
+  {
+    "id": "film",
+    "start": 38843,
+    "end": 360214
+  },
+  {
+    "id": "stock-promo-rest",
+    "start": 488607,
+    "end": 511372
+  },
+  {
+    "id": "save-promo",
+    "start": 542580,
+    "end": 544239
+  }
+]

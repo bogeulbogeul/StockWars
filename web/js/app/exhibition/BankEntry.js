@@ -8,16 +8,5 @@ export function createBankDoor(building) {
 
 export async function enterBankOnFoot(scenes) {
     await scenes.prepareRoom('bank');
-    const town = scenes.townModelScene, moa = town.sleepingAnna, player = town.player;
-    const door = createBankDoor(town.scene.getObjectByName('node_finance'));
-    town.entryActive = true; scenes.tourActive = true; town.dialogueOcclusion?.reset();
-    player.holdFacing(); moa.faceTarget(null);
-    try {
-        await door.open();
-        await walkMoaThroughDoor(moa, door, scenes.townStage.playerController);
-        await walkPlayerIntoInformation(player, door);
-        void door.close();
-    } finally {
-        town.entryActive = false; scenes.tourActive = false;
-    }
+    scenes.townModelScene.sleepingAnna.root.visible = false;
 }

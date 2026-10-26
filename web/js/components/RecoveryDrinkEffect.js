@@ -1,5 +1,4 @@
-import { settingsStore } from '../engine/SettingsStore.js';
-
+import { waitForCaption } from '../app/exhibition/AnimationDialogue.js';
 export async function playRecoveryDrinkEffect() {
     const effect = document.createElement('dialog');
     effect.className = 'recovery-drink-effect';
@@ -17,11 +16,11 @@ export async function playRecoveryDrinkEffect() {
     document.body.append(effect);
     effect.showModal();
     const timers = sources.slice(1).map((source, index) => setTimeout(() => { image.src = source; }, (index + 1) * 1000 / 12));
-    const audio = new Audio(new URL('../../assets/effects/energy-drink-opening-v1/can-open-fizz.wav', import.meta.url).href);
-    audio.volume = settingsStore.value.effectsVolume / 100;
-    try { if (audio.volume > 0) await audio.play(); } catch {}
-    await new Promise(resolve => setTimeout(resolve, 2200));
+    const caption = document.createElement('p');
+    caption.textContent = '꿀꺽…… 기운이 조금 돌아오는 것 같아.';
+    caption.style.cssText = 'padding:14px 22px;border-radius:14px;background:#fff6e6;color:#302419;cursor:pointer;max-width:85vw;text-align:center';
+    effect.append(caption);
+    await waitForCaption(caption);
     timers.forEach(clearTimeout);
     effect.remove();
-    audio.pause();
 }

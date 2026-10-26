@@ -1,0 +1,11 @@
+{
+  "companyFirst": true,
+  "reviewGate": true,
+  "realBudget": 500,
+  "choiceCount": 6,
+  "previous": true,
+  "contexts": true,
+  "mobile": true,
+  "tradeOnce": true,
+  "errors": []
+}

@@ -1,0 +1,5 @@
+file 'C:/GitHub/StockWars/output/playthrough-qa-v2/clips/playthrough-0.mp4'
+file 'C:/GitHub/StockWars/output/playthrough-qa-v2/clips/playthrough-1.mp4'
+file 'C:/GitHub/StockWars/output/playthrough-qa-v2/clips/playthrough-2.mp4'
+file 'C:/GitHub/StockWars/output/playthrough-qa-v2/clips/playthrough-3.mp4'
+file 'C:/GitHub/StockWars/output/playthrough-qa-v2/clips/playthrough-4.mp4'

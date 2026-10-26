@@ -15,7 +15,7 @@ export function addGameLights(scene, shadows = false) {
     key.position.set(...profile.direction);
     key.castShadow = shadows;
     key.shadow.intensity = profile.shadowIntensity;
-    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.mapSize.set(1024, 1024);
     Object.assign(key.shadow.camera, { left: -800, right: 800, top: 800, bottom: -800, near: 1, far: 3000 });
     key.shadow.bias = -.0004;
     scene.add(ambient, key);
@@ -38,6 +38,7 @@ export function addGameEnvironment(scene, renderer) {
 export function applyGameLighting(scene, renderer, shadows = false) {
     configureGameRenderer(renderer);
     addGameLights(scene, shadows);
+    scene.userData.gameShadows = shadows;
     renderer.shadowMap.enabled = shadows;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     return addGameEnvironment(scene, renderer);

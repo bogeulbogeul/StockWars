@@ -1,15 +1,8 @@
-import { getTownMusic } from '../engine/TownMusic.js';
+import { bindCinematicDialogue } from './CinematicDialogue.js';
 
-const durations = [12, 16, 19, 19, 21, 23];
+const sceneCount = 6;
 
 export function playOpening(screen) {
-    // Called directly by the title click, so playback has a user gesture.
-    const music = new Audio(new URL('../../assets/opening/first-little-journey-110s.mp3', import.meta.url).href);
-    const settings = getTownMusic();
-    const updateVolume = () => { music.volume = settings.muted ? 0 : .55 * settings.volume; };
-    updateVolume();
-    const unsubscribe = settings.subscribe(updateVolume);
-    music.play().catch(() => { /* Audio restrictions must not block the opening. */ });
     return new Promise(resolve => {
         screen.classList.add('opening-sequence');
         screen.innerHTML = `
@@ -19,30 +12,21 @@ export function playOpening(screen) {
             </button>`;
         const frame = screen.querySelector('iframe');
         const skip = screen.querySelector('button');
-        let timer;
+        let index = 0;
+        const cleanup = bindCinematicDialogue(frame, () => {
+            if (index + 1 < sceneCount) play(++index);
+            else finish();
+        });
         let finished = false;
         const finish = () => {
             if (finished) return;
             finished = true;
-            unsubscribe();
-            music.pause();
-            music.currentTime = 0;
-            music.removeAttribute('src');
-            music.load();
-            clearTimeout(timer);
+            cleanup();
             frame.onload = null;
             frame.onerror = null;
             resolve();
         };
         const play = index => {
-            frame.onload = () => {
-                if (finished) return;
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                    if (index + 1 < durations.length) play(index + 1);
-                    else finish();
-                }, durations[index] * 1000);
-            };
             frame.onerror = finish;
             frame.src = new URL(`../../assets/opening/opening-scene-${String(index + 1).padStart(2, '0')}-v1/scene.html`, import.meta.url).href;
         };

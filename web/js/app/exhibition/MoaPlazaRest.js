@@ -1,3 +1,4 @@
+import { quickFade } from '../QuickTravel.js';
 import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
 import { townSeatSurfaces } from '../../components/town3d/SeatSurfaces.js';
 import { applySeatPose } from '../../components/town3d/SeatPose.js';
@@ -20,42 +21,7 @@ export async function sendMoaToPlazaBench(scenes) {
     town.player.holdFacing(); moa.faceTarget(null); await moa.setMood('calm', 'smile');
     const front = seat.center.clone().addScaledVector(seat.forward, 110);
     const goal = resolveTourStop({ x: front.x, y: front.z * P }, c.sceneryCanStand);
-    const paths = createTourPaths(), clearance = PLAYER_BODY_RADIUS + (moa.root.userData.rigidBody?.radius || 42) + 8;
-    let { route } = tourDeparture({ x: moa.root.position.x, y: moa.root.position.z * P }, goal, c, paths, clearance);
-    // Connect the paved route's final anchor to the bench approach.
-    route.push(goal);
-    const action = moa.mixer.clipAction(moa.animations.find(clip => clip.name.startsWith('Walk_InPlace')));
-    let progress = 0, length = routeLength(route), previous, cooldown = 0;
-    action.reset().play(); moa.root.userData.tourWalking = true;
-    try {
-        await new Promise(resolve => {
-            const tick = now => {
-                if (journey.cancelled) { resolve(); return; }
-                const dt = previous === undefined || document.hidden ? 0 : Math.min((now - previous) / 1000, .05);
-                previous = now; cooldown = Math.max(0, cooldown - dt);
-                let next = Math.min(length, progress + 180 * dt);
-                let point = routePoint(route, next);
-                const gap = p => Math.hypot(p.x - c.charPosX, (p.y - c.charPosY) / P);
-                if (gap(point) < clearance && gap(point) < gap(routePoint(route, progress))) {
-                    if (!cooldown) {
-                        const detour = findTourDetour(route, progress, c, paths, clearance);
-                        cooldown = .6;
-                        if (detour) { route = detour; progress = 0; length = routeLength(route); }
-                    }
-                    next = progress; point = routePoint(route, progress); action.paused = true;
-                } else { action.paused = false; progress = next; }
-                moa.root.position.set(point.x, c.supportHeightAt?.(point.x, point.y) || 0, point.y / P);
-                const ahead = routePoint(route, Math.min(length, progress + 24));
-                if (progress < length) {
-                    const yaw = Math.atan2(ahead.x - point.x, (ahead.y - point.y) / P);
-                    const delta = Math.atan2(Math.sin(yaw - moa.root.rotation.y), Math.cos(yaw - moa.root.rotation.y));
-                    moa.root.rotation.y += Math.max(-4 * dt, Math.min(4 * dt, delta));
-                    requestAnimationFrame(tick);
-                } else resolve();
-            };
-            requestAnimationFrame(tick);
-        });
-    } finally { action.stop(); moa.root.userData.tourWalking = false; }
+    await quickFade(async () => { moa.root.position.set(goal.x, c.supportHeightAt?.(goal.x, goal.y) || 0, goal.y / P); });
     if (journey.cancelled) return;
     const start = moa.root.position.clone(), rotation = moa.root.quaternion.clone();
     const bones = ['LegL', 'LegR'].map(name => moa.root.getObjectByName(name));

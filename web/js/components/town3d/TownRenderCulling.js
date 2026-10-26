@@ -28,7 +28,9 @@ export class TownRenderCulling {
     }
 
     render(renderer, scene, camera, centerZ) {
-        const render = () => this.batches ? this.batches.render(renderer, scene, camera) : renderer.render(scene, camera);
+        const native = () => this.batches ? this.batches.render(renderer, scene, camera) : renderer.render(scene, camera);
+        const instances = () => this.instances ? this.instances.render(native) : native();
+        const render = () => this.lod ? this.lod.render(instances) : instances();
         if (!this.enabled) { render(); return; }
         camera.updateMatrixWorld();
         this.matrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);

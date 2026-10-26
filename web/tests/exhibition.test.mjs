@@ -46,10 +46,10 @@ test('phone unlocks immediately on receipt while the bank farewell still sends M
         assert(farewell > plan.findIndex(b => b.id === 'loan'));
         assert.equal(plan[farewell].place, 'bankOutside');
         assert.equal(plan[farewell - 1].speaker, '모아');
-        assert.match(plan[farewell - 1].text, /앉아서 기다리기/);
+        assert.match(plan[farewell - 1].text, /나무 아래 벤치에서 기다릴게요/);
         assert.equal(plan.filter(b => b.id === 'moaFarewell').length, 1);
-        const mapHint = plan.find(b => b.place === 'bankOutside' && b.text?.includes('스마트폰의 지도앱'));
-        assert(mapHint.text.includes(order === 'stock' ? '증권사를' : '잡화점을'));
+        const mapHint = plan.find(b => b.place === 'bankOutside' && b.text?.includes('휴대폰 지도'));
+        assert(mapHint.text.includes('위치는 휴대폰 지도에서 확인하세요'));
         assert(!mapHint.text.includes(order === 'stock' ? '잡화점' : '증권사'));
         const state = freshState(); complete(state, 'phone');
         assert(state.flags.phoneReady);
@@ -94,8 +94,8 @@ for (const order of ['packing', 'stock']) test(`${order} first reaches sleep onl
         if (beat.id === 'certificate') state.answers = examQuestions(state).map(q => q.answer);
         assert.equal(complete(state, beat.id, beat.id === 'trade' ? { id: 'DEMO', name: '회사', price: 500 } : {}), true, beat.id);
     }
-    assert.equal(state.cash, 6900); assert.equal(state.debt, 5000);
-    assert.equal(assets(state), 7400); assert.equal(state.analysis, 2);
+    assert.equal(state.cash, 6700); assert.equal(state.debt, 5000);
+    assert.equal(assets(state), 7200); assert.equal(state.analysis, 2);
     assert.equal(state.flags.asleep, true);
     assert.equal(state.trades.length, 1);
 });
@@ -157,14 +157,14 @@ test('go straight to information, show home interior next, then bank before acti
         assert(home > plan.findLastIndex(b => b.mapIntro)); assert(home < bank);
         assert(plan.findIndex(b => b.id === 'order') > plan.findIndex(b => b.id === 'loan'));
         assert.equal(plan.find(b => b.id === 'order').place, 'bankOutside');
-        assert.equal(plan.filter(b => b.chapter === 9 && b.place === 'home').length, 5);
+        assert.equal(plan.filter(b => b.chapter === 9 && b.place === 'home').length, 2);
     }
 });
 
 test('dialogue does not reveal the player name before signing', () => {
     const plan = buildPlan(chapters);
     const unsigned = plan.slice(0, plan.findIndex(beat => beat.id === 'nickname'));
-    assert.ok(unsigned.filter(beat => beat.kind === 'line').every(beat => !/소망|\[닉네임\]/.test(beat.text)));
+    assert.ok(unsigned.filter(beat => beat.kind === 'line').every(beat => !/소망이|\[닉네임\]/.test(beat.text)));
 });
 
 test('updated dialogue keeps registered saves at the same action and restarts unfinished tours once', () => {

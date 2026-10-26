@@ -44,15 +44,28 @@ export function bindChartPointer(host, history, period) {
         output.textContent = label;
         host.dataset.chartCursorRatio = String(ratio); host.dataset.chartCursorPeriod = period;
     };
-    svg.onpointermove = svg.onpointerdown = event => {
+    let pointerFrame = null, pointerPosition;
+    const updatePointer = () => {
+        pointerFrame = null;
+        if (!svg.isConnected || !pointerPosition) return;
+        const event = pointerPosition;
         const matrix = svg.getScreenCTM(); if (!matrix) return;
         // getScreenCTM includes SVG letterboxing, zoom and chart expansion.
         const point = svg.createSVGPoint(); point.x = event.clientX; point.y = event.clientY;
         const local = point.matrixTransform(matrix.inverse());
         show(Math.max(0, Math.min(1, (local.x - 36) / 280)));
     };
+    svg.onpointermove = event => {
+        pointerPosition = { clientX: event.clientX, clientY: event.clientY };
+        if (pointerFrame == null) pointerFrame = requestAnimationFrame(updatePointer);
+    };
+    svg.onpointerdown = event => {
+        pointerPosition = { clientX: event.clientX, clientY: event.clientY };
+        updatePointer();
+    };
     svg.onpointerleave = event => {
         if (event.pointerType === 'touch') return;
+        cancelAnimationFrame(pointerFrame); pointerFrame = null; pointerPosition = null;
         cursor.setAttribute('visibility', 'hidden'); output.textContent = hint;
         delete host.dataset.chartCursorRatio; delete host.dataset.chartCursorPeriod;
     };

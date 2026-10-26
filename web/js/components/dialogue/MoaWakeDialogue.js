@@ -17,6 +17,8 @@ export function createMoaWakeDialogue() {
     let advance = hide;
     const text = overlay.querySelector('.vn-dialogue-text');
     panel.append(createDialogueNext(() => advance?.()));
+    text.style.cursor = 'pointer';
+    text.addEventListener('click', () => advance?.());
     document.body.append(overlay);
     return {
         element: overlay,

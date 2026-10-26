@@ -1,5 +1,8 @@
+import { getIndoorRenderer, attachIndoorRenderer } from '../town3d/IndoorRenderer.js';
+import { FrameBudget } from '../town3d/FrameBudget.js';
+import { worldRenderVisible } from '../town3d/WorldRenderVisibility.js';
 import * as THREE from '../../../vendor/three/three.module.js';
-import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
+import { renderIndoorWithOcclusion, prepareIndoorRendering } from '../town3d/IndoorOcclusion.js';
 import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
@@ -57,13 +60,13 @@ export class VivianModelScene {
     }
 
     async initialize() {
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        this.renderer = getIndoorRenderer();
+        this.frameBudget = new FrameBudget(this.renderer, this.scene);
         this.renderer.setClearColor(0x000000, 1);
         this.renderer.outputColorSpace = THREE.SRGBColorSpace;
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '잡화점 내부 3D 화면');
-        this.layer.prepend(this.renderer.domElement);
+
         this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         const gltf = await new GLTFLoader().loadAsync(VIVIAN_MODEL_URL);
         this.room = gltf.scene;
@@ -117,6 +120,7 @@ export class VivianModelScene {
         this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
         this.bongbongTalk = installBongbongTalk(this, this.onWork);
         this.player.setControlsHint('WASD 이동 · F 계산대 이용 · 현관 / Esc 나가기');
+        prepareIndoorRendering(this);
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -158,6 +162,7 @@ export class VivianModelScene {
     }
 
     show() {
+        attachIndoorRenderer(this);
         this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
@@ -201,6 +206,7 @@ export class VivianModelScene {
         if (!this.renderer || !this.active) return;
         const width = this.layer.clientWidth, height = this.layer.clientHeight;
         if (!width || !height) return;
+        this.frameBudget.resize(width, height);
         this.renderer.setSize(width, height);
         this.roomCamera.resize(width / height);
     }
@@ -242,6 +248,13 @@ export class VivianModelScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
+            if (!worldRenderVisible() || this.renderer.domElement.parentNode !== this.layer) {
+                this.lastTime = now;
+                this.frameBudget.reset();
+                this.frame = requestAnimationFrame(draw);
+                return;
+            }
+            this.frameBudget.tick(now);
             const dt = Math.min(.05, (now - this.lastTime) / 1000);
             this.update(dt);
             this.lastTime = now;

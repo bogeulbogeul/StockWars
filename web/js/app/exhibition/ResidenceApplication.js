@@ -1,3 +1,4 @@
+import { waitForCaption } from './AnimationDialogue.js';
 import { el } from './View.js';
 
 export function mountResidenceApplication(panel, { name = '', onSubmit }) {
@@ -47,13 +48,11 @@ export function mountResidenceApplication(panel, { name = '', onSubmit }) {
         narration.textContent = '소망 칸 앞에서 잠시 펜을 멈췄어요.';
         wish.classList.add('residence-wish-pause');
         wish.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-        await new Promise(resolve => setTimeout(resolve, 1600));
+        await waitForCaption(narration);
         if (!panel.contains(form)) return;
         narration.textContent = '';
         wish.classList.remove('residence-wish-pause');
         form.classList.add('residence-handed');
-        await new Promise(resolve => setTimeout(resolve, 2200));
-        if (!panel.contains(form)) return;
         onSubmit(value);
     });
     panel.append(form);

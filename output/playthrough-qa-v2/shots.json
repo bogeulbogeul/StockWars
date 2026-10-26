@@ -1,0 +1,54 @@
+[
+  {
+    "file": "01-title.png",
+    "time": 73.89102416992188
+  },
+  {
+    "file": "02-eyes-closed.png",
+    "time": 80.97644555664063
+  },
+  {
+    "file": "03-eyes-open.png",
+    "time": 83.23450634765625
+  },
+  {
+    "file": "04-counter.png",
+    "time": 118.96008251953126
+  },
+  {
+    "file": "05-home-dialogue.png",
+    "time": 279.83532421875
+  },
+  {
+    "file": "06-store-dialogue.png",
+    "time": 369.61325854492185
+  },
+  {
+    "file": "07-packing-done.png",
+    "time": 474.6664245605469
+  },
+  {
+    "file": "08-plaza-dialogue.png",
+    "time": 495.9912109375
+  },
+  {
+    "file": "09-training-dialogue.png",
+    "time": 535.2681809082031
+  },
+  {
+    "file": "10-order-fixed.png",
+    "time": 550.5597153320313
+  },
+  {
+    "file": "11-diary.png",
+    "time": 770.8763864746094
+  },
+  {
+    "file": "12-ending.png",
+    "time": 779.3048142089843
+  },
+  {
+    "file": "13-title-return.png",
+    "time": 784.8523081054688
+  }
+]

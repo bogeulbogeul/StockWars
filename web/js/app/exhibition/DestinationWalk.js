@@ -14,7 +14,7 @@ export async function waitForDestination(scenes, destination, title, { guidanceT
     scenes.tourActive = true; scenes.townModelScene.player.holdFacing();
     const guide = document.createElement('aside'); guide.className = 'moa-movement-guide';
     guide.setAttribute('role', 'region'); guide.setAttribute('aria-label', '목적지 이동 안내');
-    setGuidanceContent(guide, { title: guidanceTitle || `${title}까지 걸어가 보자`, rows: [{ keys: ['W', 'A', 'S', 'D'], text: '이동' }] });
+    setGuidanceContent(guide, { title: guidanceTitle || `${title}까지 걸어가 보자`, rows: [{ keys: ['W', 'A', 'S', 'D'], text: '이동 · 문 앞에서 F로 들어가기' }] });
     scenes.townStage.viewportEl.append(guide);
     const guard = scenes.plazaReturnPending ? createMoaDestinationGuard(scenes)
         : title === '증권사' ? createStockDestinationGuard(scenes)
@@ -37,7 +37,10 @@ export async function waitForDestination(scenes, destination, title, { guidanceT
             const dt = previous === undefined || document.hidden ? 0 : Math.min((now - previous) / 1000, .05);
             previous = now; controls.update(dt);
             if (Math.hypot(c.charPosX - origin.x, c.charPosY - origin.y) > .5) guide.hidden = true;
-            if (enteredAtDoor || Math.hypot(c.charPosX - goal.x, (c.charPosY - goal.y) / P) < 110) resolve();
+            if (enteredAtDoor || (!building && Math.hypot(c.charPosX - goal.x, (c.charPosY - goal.y) / P) < 110)) {
+                if (building && enteredAtDoor) scenes.doorEntryRequested = buildingId;
+                resolve();
+            }
             else again();
     }); } finally { controls.dispose(); guard?.dispose(); guide.remove(); scenes.tourActive = false; }
 }

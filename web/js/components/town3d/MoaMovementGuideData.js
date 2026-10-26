@@ -26,8 +26,8 @@ export function movementGuideContent({ follow, door, receive, smartphone, bankTa
         return { label: `${item} 받기 안내`, title: `${item}${receive === 'phone' ? '을' : '를'} 받아보자`,
             rows: [{ keys: ['F'], text: `${item} 받기` }] };
     }
-    if (door) return { label: '이동 안내', title: '문을 열고 들어가 보자',
-        rows: [movement, { keys: ['F'], text: '문 가까이에서 열기' }] };
+    if (door) return { label: '이동 안내', title: '문 앞에서 들어가 보자',
+        rows: [movement, { keys: ['F'], text: '문 가까이에서 출입하기' }] };
     if (follow) return { label: '이동 안내', title: '모아를 따라가 보자', rows: [movement] };
     return { label: '이동 안내', title: '모아에게 다가가 보세요',
         rows: [movement, { keys: ['F'], text: '가까이에서 세 번 눌러 모아 깨우기' }] };

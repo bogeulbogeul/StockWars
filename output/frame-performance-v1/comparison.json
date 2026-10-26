@@ -1,0 +1,53 @@
+{
+  "results": [
+    {
+      "label": "town-original",
+      "fps": 48,
+      "p95": 50,
+      "render": {
+        "frame": 331,
+        "calls": 1326,
+        "triangles": 5836463,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "label": "town-optimized",
+      "fps": 52,
+      "p95": 33.399999999999636,
+      "render": {
+        "frame": 597,
+        "calls": 754,
+        "triangles": 4344385,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "label": "information-original",
+      "fps": 37,
+      "p95": 33.400000000001455,
+      "render": {
+        "frame": 233,
+        "calls": 559,
+        "triangles": 860072,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "label": "information-optimized",
+      "fps": 43,
+      "p95": 33.400000000001455,
+      "render": {
+        "frame": 456,
+        "calls": 195,
+        "triangles": 860072,
+        "points": 0,
+        "lines": 0
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,3 +1,4 @@
+import { OcclusionReuse } from './OcclusionReuse.js';
 import { Box3, Raycaster, Vector3 } from '../../../vendor/three/three.module.js';
 import { createOcclusionQueries } from './OcclusionQueries.js';
 
@@ -8,6 +9,7 @@ export function createDialogueOcclusion(scene) {
     const target = new Vector3(), direction = new Vector3(), right = new Vector3();
     const hitPoint = new Vector3(), projected = new Vector3();
     const queries = createOcclusionQueries();
+    const reuse = new OcclusionReuse();
     function begin(root) {
         const meshes = [];
         root.traverse(mesh => {
@@ -25,10 +27,11 @@ export function createDialogueOcclusion(scene) {
     }
     return {
         queries,
-        prepare(root) { queries.prepare(root); },
+        prepare(root) { queries.prepare(root); reuse.invalidate(); },
         update(camera, actors, { includeRoot = () => true } = {}) {
             const hits = new Set();
             const roots = scene.children.filter(root => root.userData.dialogueOccluder && root.visible && includeRoot(root));
+            if (!reuse.shouldUpdate(camera, actors, roots)) return;
             scene.updateMatrixWorld(true);
             right.set(1, 0, 0).applyQuaternion(camera.quaternion);
             for (const actor of actors) {
@@ -56,7 +59,7 @@ export function createDialogueOcclusion(scene) {
             for (const root of hits) if (!hidden.has(root)) begin(root);
             for (const [root, meshes] of hidden) if (!hits.has(root)) restore(root, meshes);
         },
-        reset() { for (const [root, meshes] of hidden) restore(root, meshes); },
+        reset() { reuse.invalidate(); for (const [root, meshes] of hidden) restore(root, meshes); },
         dispose() { for (const [root, meshes] of hidden) restore(root, meshes); }
     };
 }

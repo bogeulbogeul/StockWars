@@ -31,3 +31,14 @@
 ## 중복 검수 캡처 33개 승인 삭제
 
 ✅ 완료 — 후보 33개를 사용자 승인으로 삭제했다. 같은 폴더의 web PNG와 SHA-256이 일치하는 desktop PNG만 대상이며 9,279,781바이트(약 9.28MB)를 확보했다. web PNG·환경별 JSON·현재 원본·게임 파일·촬영 스크립트는 유지했고, 검수 폴더 8곳의 README에 파일명·해시 대조표를 남겼다. 삭제 전후 보호 파일 3,395개의 SHA-256 일치를 확인했다. 상세 목록은 `Docs/DUPLICATE_IMAGE_255_REVIEW_2026-10-26.md`, 검증 결과는 `scratch/capture-33-deletion-2026-10-26.json`에 있다.
+
+## 과거 브라우저 검수 프로필 캐시 정리
+
+✅ 완료 — 추가 정리 요청에 따라 사용 중이지 않은 과거 검수 프로필 3곳의 디스크/GPU/코드 캐시만 삭제했다. `bookstore-performance-v3/profile`, `town-performance-v1/executable-walk/profile`, `town-performance-v2/profile` 아래 `Cache`, `GPUCache`, `DawnCache`, `Code Cache`, `Shared Dictionary/cache`가 대상이다. 각 프로필의 기존 디버깅 포트가 비활성 상태임을 확인했다.
+
+- 삭제: 15개 디렉터리·101개 파일·72,625,296바이트(약 72.6MB).
+- 보존: 프로필의 Local Storage·IndexedDB 등 저장 파일과 설정, 검수 JSON/로그/캡처, 제작 원본, 현재 웹·실행본 및 최신 1.0.10 설치 프로그램.
+- 새 다이어리 `.blend1` 2개는 현재 `.blend`와 내용이 달라 이번 정리에서 유지했다. 나머지 ZIP 10개도 원본 중복으로 확정되지 않아 유지했다.
+- 검증: 현재 웹·`electron-app/dist` 전체·`.blend` 원본·다이어리 백업·프로필의 비캐시 파일 총 3,378개 SHA-256이 삭제 전후 동일했다. 삭제 캐시 경로 부재도 확인했다. 게임 소스 변경이 없어 플레이 테스트는 수행하지 않았다.
+
+삭제 목록과 검증 결과는 `scratch/browser-cache-cleanup-2026-10-26.json`에 기록했다. 캐시는 같은 프로필로 검수 브라우저를 다시 실행하면 재생성될 수 있다.

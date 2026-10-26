@@ -1,3 +1,4 @@
+import { animationDialogue } from './AnimationDialogue.js';
 import { Vector3 } from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { shopItemModelUrl } from '../../data/shopItemModels.js';
@@ -21,25 +22,29 @@ export async function receiveHoneyCookie(app) {
     const key = event => {
         if (event.ctrlKey || event.metaKey || event.altKey || !['KeyF', 'Escape'].includes(event.code)) return;
         event.preventDefault(); event.stopImmediatePropagation();
-        if (ready && event.code === 'KeyF' && !event.repeat) { ready = false; guide.update({ visible: false }); accept(); }
+        if (ready && event.code === 'KeyF' && !event.repeat) { ready = false; guide.update({ visible: false }); advance.next(); }
     };
     app.scenes.receivingItem = true; window.addEventListener('keydown', key, true);
+    const advance = animationDialogue(app, { speaker: '소망이', text: '꿀 쿠키…… 달콤하다. 잠깐 쉬어 가도 좋겠어.' });
+    advance.onAdvance(accept);
     try {
         await animate(.9, t => {
             cookie.position.lerpVectors(start, offered, t); cookie.position.y += Math.sin(t * Math.PI) * 8;
             reach(giver, .65 * t);
-        });
+        }, advance.signal);
         ready = true; guide.update({ visible: true }); await received;
         await animate(.65, t => {
             cookie.position.lerpVectors(offered, held, t); reach(giver, .65 * (1 - t)); reach(receiver, .75 * t);
-        });
+        }, advance.signal);
         reach(receiver,0); await player.setExpression('smile'); player.setState('idle');
         if (!player.play('eat',{scripted:true,foodId:'item_honey_cookie',foodObject:cookie})) throw new Error('쿠키 먹기 모션을 재생하지 못했어요.');
         await player.food.ready;
         const eating=player.variants.get('eat');
-        await animate(eating.action.getClip().duration+.1,()=>{});
+        await animate(eating.action.getClip().duration+.1,()=>{}, advance.signal);
         player.setState('idle'); await player.setExpression('smile');
+        await advance.wait();
     } finally {
+        advance.dispose();
         guide.dispose(); reach(giver, 0); reach(receiver, 0); cookie.removeFromParent();
         source.traverse(mesh => { mesh.geometry?.dispose(); for (const material of [mesh.material].flat()) material?.dispose(); });
         window.removeEventListener('keydown', key, true); app.scenes.receivingItem = false;

@@ -1,0 +1,184 @@
+{
+  "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "results": [
+    {
+      "place": "town",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7130000000000001,
+      "scale": 0.7130000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "town",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7380000000000001,
+      "scale": 0.7380000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "information",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8250000000000001,
+      "scale": 0.8250000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "information",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8500000000000001,
+      "scale": 0.8500000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "bank",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.675,
+      "scale": 0.675,
+      "shadows": 1024
+    },
+    {
+      "place": "bank",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7000000000000001,
+      "scale": 0.7000000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "home",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7345,
+      "scale": 0.7345,
+      "shadows": 1024
+    },
+    {
+      "place": "home",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7595000000000001,
+      "scale": 0.7595000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "store",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.7845000000000001,
+      "scale": 0.7845000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "store",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.8095000000000001,
+      "scale": 0.8095000000000001,
+      "shadows": 1024
+    },
+    {
+      "place": "stock",
+      "moving": false,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.525,
+      "scale": 0.525,
+      "shadows": 1024
+    },
+    {
+      "place": "stock",
+      "moving": true,
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0,
+      "ratio": 0.55,
+      "scale": 0.55,
+      "shadows": 1024
+    },
+    {
+      "label": "training",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "simulation",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "stock-simulation",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "stock-chart",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "packing",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "opening",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "cpu": 4.491701244318634,
+      "render": {
+        "frame": 725,
+        "calls": 1373,
+        "triangles": 4367838,
+        "points": 0,
+        "lines": 0
+      },
+      "ratio": 0.675,
+      "label": "bus-arrival",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    },
+    {
+      "label": "first-night",
+      "fps": 59.9,
+      "p95": 16.8,
+      "over25ms": 0
+    }
+  ],
+  "errors": [],
+  "note": "1280x800 DPR1 AMD Radeon D3D11 Edge; warmed samples. Bank/stock use final conservative budget. Startup loading is outside these samples."
+}

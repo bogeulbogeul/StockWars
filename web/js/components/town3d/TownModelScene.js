@@ -1,3 +1,7 @@
+import { FrameBudget } from './FrameBudget.js';
+import { StaticRenderLod } from './StaticRenderLod.js';
+import { worldRenderVisible } from './WorldRenderVisibility.js';
+import { StaticInstances } from './StaticInstances.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
@@ -22,6 +26,7 @@ import { busStopSolidMesh, busStopPlatform } from './BusStopGround.js';
 import { getTownMusic } from '../../engine/TownMusic.js';
 import { createConversationCamera } from './ConversationCamera.js';
 import { createDialogueOcclusion } from './DialogueOcclusion.js';
+import { isCharacterSpeaking } from './SpeechVisibility.js';
 import { TownRenderCulling } from './TownRenderCulling.js';
 import { TownStaticBatches } from './TownStaticBatches.js';
 import { ExteriorDoorProximity } from './ExteriorDoors.js';
@@ -57,8 +62,8 @@ export class TownModelScene {
     }
 
     async initialize() {
-        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+        this.frameBudget = new FrameBudget(this.renderer, this.scene);
         this.renderer.outputColorSpace = THREE.SRGBColorSpace;
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.toneMappingExposure = 1;
@@ -135,6 +140,9 @@ export class TownModelScene {
         this.busSeat=new BusStopSeat(this,this.scene.getObjectByName('village_bus_stop'));
         this.seatInteraction=new SeatInteraction(this,townSeatSurfaces(this.scene));
         this.exteriorDoors = new ExteriorDoorProximity(this.scene);
+        this.renderCulling.lod = new StaticRenderLod(this.scene);
+        await this.renderCulling.lod.load();
+        this.renderCulling.instances = new StaticInstances(this.scene, this.scene.children.filter(root => root.userData.dialogueOccluder));
         this.renderCulling.batches = new TownStaticBatches(this.scene);
         this.draw();
     }
@@ -146,6 +154,7 @@ export class TownModelScene {
         if (this.width === width && this.height === height) return;
         this.width = width;
         this.height = height;
+        this.frameBudget.resize(width, height);
         this.renderer.setSize(width, height);
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
@@ -164,7 +173,8 @@ export class TownModelScene {
         const dt = (now - this.lastDrawTime) / 1000;
         this.lastDrawTime = now;
         this.seatInteraction?.update(dt);
-        if (this.arrivalActive || !this.renderer || this.town.containerEl.classList.contains('hidden')) return;
+        if (this.arrivalActive || !this.renderer || this.town.containerEl.classList.contains('hidden') || !worldRenderVisible()) { this.frameBudget?.reset(); return; }
+        this.frameBudget.tick(now);
         this.resize();
         const { cameraX, cameraY } = this.town.playerController;
         const preview = document.body.classList.contains('town-model-mode');
@@ -203,7 +213,7 @@ export class TownModelScene {
         this.dialogueOcclusion ||= createDialogueOcclusion(this.scene);
         if (document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
         else this.dialogueOcclusion.update(this.camera, [this.player, this.sleepingAnna],
-            this.entryActive ? { includeRoot: root => root.userData.entryOccluder } : undefined);
+            this.entryActive && !isCharacterSpeaking() ? { includeRoot: root => root.userData.entryOccluder } : undefined);
         this.renderCulling.render(this.renderer, this.scene, this.camera, this.landscape.center.value);
     }
 }

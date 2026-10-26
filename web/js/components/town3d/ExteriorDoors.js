@@ -100,16 +100,10 @@ export function createExteriorDoor(building, definition = EXTERIOR_DOORS[buildin
     };
     return building[key] = { center: worldBox.getCenter(new Vector3()), width: worldBox.max.x - worldBox.min.x,
         floorY: worldBox.min.y, approachDistance: 180, panels,
-        get isOpen() { return target !== 0; }, open: () => move(Math.PI * .48), close: () => move(0) };
+        get isOpen() { return target !== 0; }, open: () => Promise.resolve(), close: () => Promise.resolve() };
 }
 
 export class ExteriorDoorProximity {
     constructor(scene) { this.doors = Object.keys(EXTERIOR_DOORS).map(id => scene.getObjectByName(id)).filter(Boolean).map(b => createExteriorDoor(b)); }
-    update(x, z) {
-        for (const door of this.doors) {
-            const near = Math.abs(x - door.center.x) < door.width / 2 + (door.isOpen ? 65 : 40)
-                && z > door.center.z - 30 && z < door.center.z + (door.isOpen ? 180 : 140);
-            if (near) void door.open(); else void door.close();
-        }
-    }
+    update() {}
 }

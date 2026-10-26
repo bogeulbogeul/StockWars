@@ -1,0 +1,444 @@
+{
+  "DeletedDirectories": 15,
+  "DeletedFiles": 101,
+  "DeletedBytes": 72625296.0,
+  "ProtectedFilesHashVerified": 3378,
+  "Profiles": [
+    {
+      "Profile": "output\\bookstore-performance-v3\\profile",
+      "Active": false
+    },
+    {
+      "Profile": "output\\town-performance-v1\\executable-walk\\profile",
+      "Active": false
+    },
+    {
+      "Profile": "output\\town-performance-v2\\profile",
+      "Active": false
+    }
+  ],
+  "Directories": [
+    "output\\bookstore-performance-v3\\profile\\Cache",
+    "output\\bookstore-performance-v3\\profile\\GPUCache",
+    "output\\bookstore-performance-v3\\profile\\DawnCache",
+    "output\\bookstore-performance-v3\\profile\\Code Cache",
+    "output\\bookstore-performance-v3\\profile\\Shared Dictionary\\cache",
+    "output\\town-performance-v1\\executable-walk\\profile\\Cache",
+    "output\\town-performance-v1\\executable-walk\\profile\\GPUCache",
+    "output\\town-performance-v1\\executable-walk\\profile\\DawnCache",
+    "output\\town-performance-v1\\executable-walk\\profile\\Code Cache",
+    "output\\town-performance-v1\\executable-walk\\profile\\Shared Dictionary\\cache",
+    "output\\town-performance-v2\\profile\\Cache",
+    "output\\town-performance-v2\\profile\\GPUCache",
+    "output\\town-performance-v2\\profile\\DawnCache",
+    "output\\town-performance-v2\\profile\\Code Cache",
+    "output\\town-performance-v2\\profile\\Shared Dictionary\\cache"
+  ],
+  "Files": [
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\f_000001",
+      "Bytes": 11476456
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\f_000002",
+      "Bytes": 48256
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Cache\\Cache_Data\\index",
+      "Bytes": 524656
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\f_000001",
+      "Bytes": 16976
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\f_000002",
+      "Bytes": 16424
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\f_000003",
+      "Bytes": 17336
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\f_000004",
+      "Bytes": 16744
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\GPUCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\DawnCache\\data_0",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\DawnCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\DawnCache\\data_2",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\DawnCache\\data_3",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\DawnCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Code Cache\\js\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Code Cache\\js\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Code Cache\\wasm\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Code Cache\\wasm\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Shared Dictionary\\cache\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\bookstore-performance-v3\\profile\\Shared Dictionary\\cache\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\f_000001",
+      "Bytes": 11476456
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\f_000002",
+      "Bytes": 48256
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Cache\\Cache_Data\\index",
+      "Bytes": 524656
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\f_000001",
+      "Bytes": 17336
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\f_000002",
+      "Bytes": 16744
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\f_000003",
+      "Bytes": 16976
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\f_000004",
+      "Bytes": 16424
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\GPUCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\DawnCache\\data_0",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\DawnCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\DawnCache\\data_2",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\DawnCache\\data_3",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\DawnCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Code Cache\\js\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Code Cache\\js\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Code Cache\\wasm\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Code Cache\\wasm\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Shared Dictionary\\cache\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v1\\executable-walk\\profile\\Shared Dictionary\\cache\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\f_000001",
+      "Bytes": 11476456
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\f_000002",
+      "Bytes": 48256
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Cache\\Cache_Data\\index",
+      "Bytes": 524656
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\data_0",
+      "Bytes": 45056
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\data_2",
+      "Bytes": 1056768
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\data_3",
+      "Bytes": 4202496
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000001",
+      "Bytes": 17336
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000002",
+      "Bytes": 16744
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000003",
+      "Bytes": 16976
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000004",
+      "Bytes": 16424
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000005",
+      "Bytes": 17356
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000006",
+      "Bytes": 16760
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000007",
+      "Bytes": 18208
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000008",
+      "Bytes": 19864
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000009",
+      "Bytes": 19312
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000a",
+      "Bytes": 18608
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000b",
+      "Bytes": 16640
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000c",
+      "Bytes": 18584
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000d",
+      "Bytes": 16908
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000e",
+      "Bytes": 17028
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_00000f",
+      "Bytes": 17312
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000010",
+      "Bytes": 17416
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000011",
+      "Bytes": 17704
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000012",
+      "Bytes": 19604
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000013",
+      "Bytes": 21232
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000014",
+      "Bytes": 20668
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000015",
+      "Bytes": 19956
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000016",
+      "Bytes": 17944
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000017",
+      "Bytes": 17312
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\f_000018",
+      "Bytes": 17944
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\GPUCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\DawnCache\\data_0",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\DawnCache\\data_1",
+      "Bytes": 270336
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\DawnCache\\data_2",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\DawnCache\\data_3",
+      "Bytes": 8192
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\DawnCache\\index",
+      "Bytes": 262512
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Code Cache\\js\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Code Cache\\js\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Code Cache\\wasm\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Code Cache\\wasm\\index-dir\\the-real-index",
+      "Bytes": 48
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Shared Dictionary\\cache\\index",
+      "Bytes": 24
+    },
+    {
+      "Path": "output\\town-performance-v2\\profile\\Shared Dictionary\\cache\\index-dir\\the-real-index",
+      "Bytes": 48
+    }
+  ],
+  "Result": "passed"
+}

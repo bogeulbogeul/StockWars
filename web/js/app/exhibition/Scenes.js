@@ -1,3 +1,5 @@
+import { quickFade, waitForDoorF } from '../QuickTravel.js';
+import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
 import { TOWN_ARRIVAL } from '../../data/townLandscapeLayout.js';
 import { exhibitionSkyTime } from '../../data/exhibitionSkyTime.js';
 import { HOME_STORY_STOP } from '../../data/homeModelRoom.js';
@@ -98,6 +100,8 @@ export class ExhibitionScenes {
         } else if (!target && positions[place] && positions[this.place] && !walking && !preservePosition) {
             await waitForDestination(this, positions[place], place === 'notice' ? '게시판' : place === 'bench' ? '벤치' : '목적지');
         }
+        if (target) await waitForDoorF(this, target.id);
+        const finishEntry = async () => {
         if (place === 'information' && this.place === 'informationOutside' && !this.informationEntered) await enterInformationAfterMoa(this);
         else if (place === 'information' && this.place === 'informationOutside') await enterBuildingOnFoot(this.townModelScene, target.id);
         if (place === 'bank' && this.place === 'bankOutside') {
@@ -129,12 +133,15 @@ export class ExhibitionScenes {
         const room = await this.prepareRoom(place);
         if (this.place === place) {
             room.show();
-            if (place === 'home') await walkRoomTo(room, HOME_STORY_STOP);
-            if (place === 'store') await room.greetingReady;
+            if (place === 'home') { room.controller.charPosX = HOME_STORY_STOP.x; room.controller.charPosY = HOME_STORY_STOP.z * P; room.player.update(0); }
+
             this.storeAwaitingTalk = place === 'store';
             this.informationAwaitingTalk = place === 'information';
             this.bankAwaitingTalk = place === 'bank';
         }
+        };
+        if (target) await quickFade(finishEntry); else await finishEntry();
+        if (place === 'store') await this.rooms.get('store').greetingReady;
     }
     async prepareRoom(place) {
         let room = this.rooms.get(place);

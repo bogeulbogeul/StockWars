@@ -1,3 +1,4 @@
+import { waitForCaption } from './AnimationDialogue.js';
 import { el } from './View.js';
 
 export function mountBankApplication(panel, { name = '', onSubmit, loanAmount = null }) {
@@ -69,7 +70,8 @@ export function mountBankApplication(panel, { name = '', onSubmit, loanAmount = 
         button.textContent = '신청서를 건네는 중…';
         form.querySelector('.bank-application-status').textContent = '이름을 서명하고 차곡이에게 신청서를 건넸어요.';
         signature.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const status = form.querySelector('.bank-application-status');
+        await waitForCaption(status);
         if (!panel.contains(form)) return;
         onSubmit();
         // Restore the form if saving failed and the controller kept this step open.

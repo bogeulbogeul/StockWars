@@ -1,0 +1,138 @@
+[
+  {
+    "name": "title",
+    "time": 121.548
+  },
+  {
+    "name": "title-end",
+    "time": 129.557
+  },
+  {
+    "name": "opening-1",
+    "time": 129.631
+  },
+  {
+    "name": "opening-1-end",
+    "time": 136.667
+  },
+  {
+    "name": "opening-2",
+    "time": 137.05
+  },
+  {
+    "name": "opening-2-end",
+    "time": 145.748
+  },
+  {
+    "name": "village",
+    "time": 150.915
+  },
+  {
+    "name": "village-end",
+    "time": 160.969
+  },
+  {
+    "name": "anna-dialogue",
+    "time": 167.507
+  },
+  {
+    "name": "anna-dialogue-end",
+    "time": 174.083
+  },
+  {
+    "name": "nickname-handoff-start",
+    "time": 180.724
+  },
+  {
+    "name": "nickname-accept",
+    "time": 183.329
+  },
+  {
+    "name": "nickname-handoff-end",
+    "time": 184.799
+  },
+  {
+    "name": "application",
+    "time": 184.96
+  },
+  {
+    "name": "application-end",
+    "time": 192.315
+  },
+  {
+    "name": "phone-handoff-start",
+    "time": 195.999
+  },
+  {
+    "name": "phone-accept",
+    "time": 198.601
+  },
+  {
+    "name": "phone-handoff-end",
+    "time": 200.042
+  },
+  {
+    "name": "one-box",
+    "time": 274.325
+  },
+  {
+    "name": "one-box-end",
+    "time": 283.508
+  },
+  {
+    "name": "wage-handoff-start",
+    "time": 293.965
+  },
+  {
+    "name": "wage-accept",
+    "time": 296.571
+  },
+  {
+    "name": "wage-handoff-end",
+    "time": 298.012
+  },
+  {
+    "name": "envelope-handoff-start",
+    "time": 301.847
+  },
+  {
+    "name": "envelope-accept",
+    "time": 304.447
+  },
+  {
+    "name": "envelope-handoff-end",
+    "time": 305.893
+  },
+  {
+    "name": "broker-room",
+    "time": 369.698
+  },
+  {
+    "name": "broker-room-end",
+    "time": 374.494
+  },
+  {
+    "name": "broker-company",
+    "time": 374.657
+  },
+  {
+    "name": "broker-company-end",
+    "time": 380.34
+  },
+  {
+    "name": "broker-chart",
+    "time": 380.371
+  },
+  {
+    "name": "broker-chart-end",
+    "time": 388.422
+  },
+  {
+    "name": "broker-order",
+    "time": 390.98
+  },
+  {
+    "name": "broker-order-end",
+    "time": 397.474
+  }
+]

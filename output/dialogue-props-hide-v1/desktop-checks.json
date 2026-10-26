@@ -1,0 +1,30 @@
+{
+  "rooms": [
+    {
+      "place": "home",
+      "hidden": 3,
+      "restored": true
+    },
+    {
+      "place": "information",
+      "hidden": 12,
+      "restored": true
+    },
+    {
+      "place": "bank",
+      "hidden": 8,
+      "restored": true
+    },
+    {
+      "place": "store",
+      "hidden": 11,
+      "restored": true
+    },
+    {
+      "place": "stock",
+      "hidden": 9,
+      "restored": true
+    }
+  ],
+  "errors": []
+}

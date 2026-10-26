@@ -31,6 +31,24 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
         }
     }
     if (buttonImage) button.querySelector('img').src = buttonImage;
+    let simulationActive = false;
+    if (!intro && !buttonLabel) {
+        const art = screen.querySelector('.crayon-title__art');
+        art.classList.add('crayon-title__art--choices');
+        button.replaceChildren(document.createTextNode('시작하기'));
+        button.setAttribute('aria-label', '시작하기');
+        button.classList.add('crayon-title__text-button');
+        const simulation = document.createElement('button');
+        simulation.type = 'button'; simulation.className = 'crayon-title__simulation';
+        simulation.textContent = '주식 시뮬레이션 체험하기';
+        art.append(simulation);
+        simulation.onclick = async () => {
+            if (simulationActive || button.disabled) return;
+            simulationActive = true; simulation.disabled = true;
+            try { await (await import('./TitleSimulation.js')).openTitleSimulation(); }
+            finally { simulationActive = false; simulation.disabled = false; simulation.focus({ preventScroll: true }); }
+        };
+    }
     let ready = !intro;
     if (intro) {
         button.disabled = true;
@@ -43,13 +61,14 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
     }
     // World controls also listen on window; keep title input out of the world.
     const blockWorldInput = event => {
+        if (simulationActive) return;
         event.stopImmediatePropagation();
         if (event.type === 'keydown' && ['Enter', ' '].includes(event.key)) {
             event.preventDefault();
-            if (ready && !event.repeat) screen.querySelector('button')?.click();
+            if (ready && !event.repeat) (event.target?.matches('.bus-arrival__caption') ? event.target : document.activeElement?.matches('.crayon-title button') ? document.activeElement : button).click();
         } else if (event.type === 'keydown' && event.key === 'Tab') {
             event.preventDefault();
-            const buttons = [...screen.querySelectorAll('button:not(:disabled)')];
+            const buttons = [...screen.querySelectorAll('button:not(:disabled), .bus-arrival__caption[tabindex="0"]')];
             const next = (buttons.indexOf(document.activeElement) + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length;
             buttons[next]?.focus({ preventScroll: true });
         }
@@ -57,7 +76,8 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
     window.addEventListener('keydown', blockWorldInput, true);
     window.addEventListener('keyup', blockWorldInput, true);
     button.addEventListener('click', async () => {
-        button.disabled = true;
+        if (simulationActive) return;
+        screen.querySelectorAll('button').forEach(button => { button.disabled = true; });
         stopMotion();
         music.setTitleActive(false);
         if (opening) await playOpening(screen);

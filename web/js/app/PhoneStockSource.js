@@ -5,7 +5,8 @@ import { normalMapPosition } from '../components/phone/map/MapData.js';
 import { playerAchievements } from '../components/phone/achievements/AchievementData.js';
 import { scheduledNewsRuntime } from './ScheduledNewsRuntime.js';
 
-export function phoneStockSource(app) {
+export function phoneStockSource(app, engineOverride = engine) {
+    const engine = engineOverride;
     const newsFeed = scheduledNewsRuntime('standard');
     Object.defineProperty(engine, 'news', { configurable: true, get: () => newsFeed.news() });
     return {

@@ -1,0 +1,8 @@
+{
+  "delayedForestMs": 2500,
+  "loadingCanvasHidden": true,
+  "firstFrameBuildings": 9,
+  "captionStages": 3,
+  "skipRestoresCanvas": true,
+  "errors": []
+}

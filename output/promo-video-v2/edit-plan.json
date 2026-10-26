@@ -1,0 +1,119 @@
+[
+  {
+    "id": "opening-1",
+    "sourceStart": 129.711,
+    "sourceEnd": 136.667,
+    "duration": 6.96,
+    "continuous": false,
+    "editedStart": 0,
+    "editedEnd": 6.96
+  },
+  {
+    "id": "opening-2",
+    "sourceStart": 137.13000000000002,
+    "sourceEnd": 145.748,
+    "duration": 8.64,
+    "continuous": false,
+    "editedStart": 6.96,
+    "editedEnd": 15.600000000000001
+  },
+  {
+    "id": "village",
+    "sourceStart": 151.075,
+    "sourceEnd": 160.969,
+    "duration": 9.92,
+    "continuous": false,
+    "editedStart": 15.600000000000001,
+    "editedEnd": 25.520000000000003
+  },
+  {
+    "id": "anna-dialogue",
+    "sourceStart": 167.667,
+    "sourceEnd": 173.843,
+    "duration": 6.2,
+    "continuous": false,
+    "editedStart": 25.520000000000003,
+    "editedEnd": 31.720000000000002
+  },
+  {
+    "id": "paper-and-application",
+    "sourceStart": 180.60399999999998,
+    "sourceEnd": 192.435,
+    "duration": 11.84,
+    "continuous": true,
+    "editedStart": 31.720000000000002,
+    "editedEnd": 43.56
+  },
+  {
+    "id": "phone-full-handoff",
+    "sourceStart": 195.879,
+    "sourceEnd": 200.162,
+    "duration": 4.32,
+    "continuous": true,
+    "editedStart": 43.56,
+    "editedEnd": 47.88
+  },
+  {
+    "id": "one-box",
+    "sourceStart": 274.325,
+    "sourceEnd": 283.628,
+    "duration": 9.32,
+    "continuous": true,
+    "editedStart": 47.88,
+    "editedEnd": 57.2
+  },
+  {
+    "id": "wage-and-envelope-full",
+    "sourceStart": 293.84499999999997,
+    "sourceEnd": 306.013,
+    "duration": 12.2,
+    "continuous": true,
+    "editedStart": 57.2,
+    "editedEnd": 69.4
+  },
+  {
+    "id": "broker-room",
+    "sourceStart": 369.77799999999996,
+    "sourceEnd": 374.494,
+    "duration": 4.72,
+    "continuous": false,
+    "editedStart": 69.4,
+    "editedEnd": 74.12
+  },
+  {
+    "id": "broker-company",
+    "sourceStart": 374.73699999999997,
+    "sourceEnd": 380.34,
+    "duration": 5.64,
+    "continuous": false,
+    "editedStart": 74.12,
+    "editedEnd": 79.76
+  },
+  {
+    "id": "broker-chart",
+    "sourceStart": 380.45099999999996,
+    "sourceEnd": 388.422,
+    "duration": 8,
+    "continuous": false,
+    "editedStart": 79.76,
+    "editedEnd": 87.76
+  },
+  {
+    "id": "broker-order",
+    "sourceStart": 391.06,
+    "sourceEnd": 397.474,
+    "duration": 6.44,
+    "continuous": false,
+    "editedStart": 87.76,
+    "editedEnd": 94.2
+  },
+  {
+    "id": "end-title",
+    "sourceStart": 122.048,
+    "sourceEnd": 128.048,
+    "duration": 6,
+    "continuous": false,
+    "editedStart": 94.2,
+    "editedEnd": 100.2
+  }
+]

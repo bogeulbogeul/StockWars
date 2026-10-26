@@ -1,3 +1,4 @@
+import { waitForAnimationLine } from './AnimationDialogue.js';
 import { installExhibitionInventory } from './Inventory.js';
 import { installDiary } from '../InstallDiary.js';
 import { gameKey } from '../GameKeys.js';
@@ -170,7 +171,10 @@ export class Exhibition {
         if (beat.storeRewardConversation) await stageStoreRewardConversation(store);
         if (beat.plazaTalk) await waitForPlazaMoaTalk(this.scenes, { stand: !!(this.state.flags.packing && this.state.flags.trade) });
         if (beat.trainingLesson) await startToriLesson(this.scenes);
-        if (beat.yawn) await playSomangiYawn(this.scenes);
+        if (beat.yawn) {
+            this.yawnAdvance = new AbortController();
+            void playSomangiYawn(this.scenes, this.yawnAdvance.signal).catch(error => console.error('하품 연출:', error));
+        }
         await presentSomangi(this.scenes, beat);
         presentLessonBoard(this.scenes, beat);
         this.busy = false;
@@ -191,6 +195,7 @@ export class Exhibition {
     }
     next(id, data) {
         if (this.busy || this.arrival.active || this.view.phoneHome.dialog.open) return;
+        this.yawnAdvance?.abort(); this.yawnAdvance = null;
         const previous = structuredClone(this.state);
         if (id && !this.state.flags[id] && !complete(this.state, id, data)) {
             this.view.error('아직 준비가 끝나지 않았어요. 앞의 활동을 확인해 주세요.'); return;
@@ -210,12 +215,10 @@ export class Exhibition {
         if (!complete(this.state, 'asleep')) return;
         if (!this.save()) { this.state = previous; return; }
         this.busy = true;
-        this.activities.say('소망이', '오늘은 푹 자야겠다. 내일은 또 어떤 하루가 기다릴까…….');
-        this.view.panel.append(el('p', 'exhibition-sleeping', '오늘의 작은 발걸음을 기억하며…'));
-        await new Promise(resolve => setTimeout(resolve, 2200));
+        await waitForAnimationLine(this, { text: '오늘 하루도 끝났네.' });
         document.body.classList.add('exhibition-night');
         this.scenes.setTime(false, { asleep: true });
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await waitForAnimationLine(this, { text: '이제 푹 자야겠다.' });
         this.busy = false; this.ending();
     }
     ending() {

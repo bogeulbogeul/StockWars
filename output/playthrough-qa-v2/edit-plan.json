@@ -1,0 +1,144 @@
+{
+  "playthrough": [
+    {
+      "sourceStart": 73.56,
+      "sourceEnd": 145,
+      "editedStart": 0,
+      "editedEnd": 71.44
+    },
+    {
+      "sourceStart": 277.5,
+      "sourceEnd": 326,
+      "editedStart": 71.44,
+      "editedEnd": 119.94
+    },
+    {
+      "sourceStart": 369.3,
+      "sourceEnd": 383,
+      "editedStart": 119.94,
+      "editedEnd": 133.64
+    },
+    {
+      "sourceStart": 460,
+      "sourceEnd": 582,
+      "editedStart": 133.64,
+      "editedEnd": 255.64
+    },
+    {
+      "sourceStart": 717.3,
+      "sourceEnd": 786,
+      "editedStart": 255.64,
+      "editedEnd": 324.3399999999999
+    }
+  ],
+  "highlights": [
+    {
+      "sourceStart": 73.56,
+      "sourceEnd": 87.56,
+      "editedStart": 0,
+      "editedEnd": 14
+    },
+    {
+      "sourceStart": 90,
+      "sourceEnd": 101,
+      "editedStart": 14,
+      "editedEnd": 25
+    },
+    {
+      "sourceStart": 106,
+      "sourceEnd": 112,
+      "editedStart": 25,
+      "editedEnd": 31
+    },
+    {
+      "sourceStart": 120,
+      "sourceEnd": 127,
+      "editedStart": 31,
+      "editedEnd": 38
+    },
+    {
+      "sourceStart": 280,
+      "sourceEnd": 285,
+      "editedStart": 38,
+      "editedEnd": 43
+    },
+    {
+      "sourceStart": 292,
+      "sourceEnd": 300,
+      "editedStart": 43,
+      "editedEnd": 51
+    },
+    {
+      "sourceStart": 370,
+      "sourceEnd": 375,
+      "editedStart": 51,
+      "editedEnd": 56
+    },
+    {
+      "sourceStart": 464,
+      "sourceEnd": 475,
+      "editedStart": 56,
+      "editedEnd": 67
+    },
+    {
+      "sourceStart": 495,
+      "sourceEnd": 502,
+      "editedStart": 67,
+      "editedEnd": 74
+    },
+    {
+      "sourceStart": 510,
+      "sourceEnd": 517,
+      "editedStart": 74,
+      "editedEnd": 81
+    },
+    {
+      "sourceStart": 534,
+      "sourceEnd": 540,
+      "editedStart": 81,
+      "editedEnd": 87
+    },
+    {
+      "sourceStart": 547,
+      "sourceEnd": 554,
+      "editedStart": 87,
+      "editedEnd": 94
+    },
+    {
+      "sourceStart": 720,
+      "sourceEnd": 725,
+      "editedStart": 94,
+      "editedEnd": 99
+    },
+    {
+      "sourceStart": 740,
+      "sourceEnd": 744,
+      "editedStart": 99,
+      "editedEnd": 103
+    },
+    {
+      "sourceStart": 760,
+      "sourceEnd": 767,
+      "editedStart": 103,
+      "editedEnd": 110
+    },
+    {
+      "sourceStart": 770,
+      "sourceEnd": 773,
+      "editedStart": 110,
+      "editedEnd": 113
+    },
+    {
+      "sourceStart": 774,
+      "sourceEnd": 781,
+      "editedStart": 113,
+      "editedEnd": 120
+    },
+    {
+      "sourceStart": 783,
+      "sourceEnd": 785,
+      "editedStart": 120,
+      "editedEnd": 122
+    }
+  ]
+}

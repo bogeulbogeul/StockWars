@@ -37,7 +37,7 @@ export const PACKING_PATTERNS = [
     ['AABBC', 'AABBC', 'DDDEC', 'IJJEK']
 ];
 
-export const PACKING_GOAL = 5; // Playtest length, not an economic balance value.
+export const PACKING_GOAL = 3; // Playtest length, not an economic balance value.
 
 export function shuffled(values, random = Math.random) {
     const copy = [...values];
@@ -63,8 +63,8 @@ export function createOrder(patternIndex, random = Math.random) {
 export function createSession(random = Math.random) {
     // Mix compact and fuller orders, then shuffle; no difficulty progression.
     const ids = PACKING_PATTERNS.map((_, i) => i);
-    const compact = shuffled(ids.filter(i => PACKING_PATTERNS[i].length * PACKING_PATTERNS[i][0].length <= 16), random).slice(0, 3);
-    const fuller = shuffled(ids.filter(i => PACKING_PATTERNS[i].length * PACKING_PATTERNS[i][0].length > 16), random).slice(0, 2);
+    const compact = shuffled(ids.filter(i => PACKING_PATTERNS[i].length * PACKING_PATTERNS[i][0].length <= 16), random).slice(0, 2);
+    const fuller = shuffled(ids.filter(i => PACKING_PATTERNS[i].length * PACKING_PATTERNS[i][0].length > 16), random).slice(0, 1);
     const orders = shuffled([...compact, ...fuller], random).map(id => createOrder(id, random));
     return { orders, completed: 0, awaitingNext: false };
 }

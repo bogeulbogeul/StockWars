@@ -1,5 +1,4 @@
 import { VIVIAN_ITEM_REGISTRY } from '../../data/vivianStoreData.js';
-import { settingsStore } from '../../engine/SettingsStore.js';
 export const VENDING_ITEM = VIVIAN_ITEM_REGISTRY.find(item => item.id === 'item_energy_drink');
 
 // Payment delivers immediately; collecting is presentation only, so closing cannot lose an item.
@@ -73,18 +72,14 @@ export class TownVendingModal {
             button.onclick = () => {
                 const result = this.cycle.buy(this.callbacks.onPurchaseDrink, button.dataset.buy === 'drink');
                 if (!result?.success) { this.message(result?.message || '구매할 수 없습니다.'); this.refresh(); return; }
-                const sound = new Audio(new URL('../../../assets/effects/vending-can-rattle.wav', import.meta.url).href);
-                sound.volume = settingsStore.value.effectsVolume / 100;
-                if (sound.volume > 0) void sound.play().catch(() => {});
+
                 this.message('덜컹! 드링크가 내려오고 있어요.'); this.refresh();
                 setTimeout(() => { this.cycle.finish(); this.message('배출구를 눌러 드링크를 꺼내세요.'); this.refresh(); }, 850);
             };
         });
         this.dialog.querySelector('[data-collect]').onclick = () => {
             if (!this.cycle.collect()) return;
-            const sound = new Audio(new URL('../../../assets/effects/vending-can-collect.wav', import.meta.url).href);
-            sound.volume = settingsStore.value.effectsVolume / 100;
-            if (sound.volume > 0) void sound.play().catch(() => {});
+
             if (this.cycle.instant) {
                 setTimeout(() => this.callbacks.onDrinkCollected?.(), 1050);
             }

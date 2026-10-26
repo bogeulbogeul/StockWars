@@ -4,12 +4,14 @@ import { mergeGeometries } from '../../../vendor/three/BufferGeometryUtils.js';
 // Render-only copies. The authored scene remains the source of truth for
 // collisions, seats, occlusion, names, clock hands, and visibility.
 export class TownStaticBatches {
-    constructor(scene) {
+    constructor(scene, options) {
+        const roots = Array.isArray(options) ? options : options?.roots || scene.children.filter(o => o.userData.dialogueOccluder);
+        this.maxTriangles = options?.maxTriangles || 512;
         this.enabled = true;
         this.groups = [];
         this.bufferBytes = 0;
         const groups = new Map();
-        for (const root of scene.children.filter(o => o.userData.dialogueOccluder)) {
+        for (const root of roots) {
             root.traverse(mesh => {
                 if (!this.eligible(mesh, root)) return;
                 const geometry = mesh.geometry, material = mesh.material;
@@ -29,16 +31,16 @@ export class TownStaticBatches {
 
     eligible(mesh, root) {
         const g = mesh.geometry, m = mesh.material;
-        if (!mesh.isMesh || mesh.userData.dynamicDoor || mesh.isSkinnedMesh || mesh.morphTargetInfluences || Array.isArray(m)
+        if (!mesh.isMesh || mesh.userData.renderInstanced || mesh.isInstancedMesh || mesh.userData.dynamicDoor || mesh.isSkinnedMesh || mesh.morphTargetInfluences || Array.isArray(m)
             || !m?.isMeshStandardMaterial || m.transparent || m.opacity !== 1 || m.transmission
             || m.wireframe || g.groups.length > 1 || g.drawRange.start !== 0
             || g.drawRange.count !== Infinity || mesh.matrixWorld.determinant() <= 0) return false;
         // Keep large sculpted parts on the native path and bound copied memory.
-        if ((g.index?.count || g.attributes.position.count) > 512 * 3) return false;
+        if ((g.index?.count || g.attributes.position.count) > this.maxTriangles * 3) return false;
         // Instanced buffers and animated subtrees must retain their own renderer.
         if (Object.values(g.attributes).some(a => a.isInterleavedBufferAttribute || a.isInstancedBufferAttribute)) return false;
         for (let node = mesh; node && node !== root; node = node.parent) {
-            if (/^Clock_(Hour|Minute)/.test(node.name)) return false;
+            if (node.isBone || node.userData.renderAnimated || node.userData.dynamicDoor || /^(moa-character|chagok-character|tori-character|bongbong-character|Clock_(Hour|Minute))/.test(node.name)) return false;
         }
         return true;
     }
@@ -85,8 +87,9 @@ export class TownStaticBatches {
         this.bufferBytes += bytes;
     }
 
-    render(renderer, scene, camera) {
-        if (!this.enabled || !this.groups.length) { renderer.render(scene, camera); return; }
+    render(renderer, scene, camera, draw) {
+        const render = draw || (() => renderer.render(scene, camera));
+        if (!this.enabled || !this.groups.length) { render(); return; }
         const hidden = [];
         try {
             const e = camera.matrixWorldInverse?.elements || [0,0,0,0,0,0,0,0,0,0,1];
@@ -125,7 +128,7 @@ export class TownStaticBatches {
                 }
             }
             for (const mesh of hidden) mesh.visible = false;
-            renderer.render(scene, camera);
+            render();
         } finally {
             for (const mesh of hidden) mesh.visible = true;
             for (const { batch } of this.groups) batch.visible = false;

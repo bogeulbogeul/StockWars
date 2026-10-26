@@ -98,13 +98,17 @@ export class TownLandscape {
                     shader.vertexShader = 'uniform float villageCenterZ;\n' + shader.vertexShader;
                     shader.vertexShader = shader.vertexShader.replace('#include <project_vertex>', `
                         #include <project_vertex>
-                        vec4 villageWorldPosition = modelMatrix * vec4(transformed, 1.0);
+                        vec4 villageLocalPosition = vec4(transformed, 1.0);
+                        #ifdef USE_INSTANCING
+                            villageLocalPosition = instanceMatrix * villageLocalPosition;
+                        #endif
+                        vec4 villageWorldPosition = modelMatrix * villageLocalPosition;
                         float villageBend = max(0.0, villageCenterZ - villageWorldPosition.z - 1100.0);
                         mvPosition += viewMatrix * vec4(0.0, -0.00018 * villageBend * villageBend, 0.0, 0.0);
                         gl_Position = projectionMatrix * mvPosition;
                     `);
                 };
-                material.customProgramCacheKey = () => cacheKey() + '-village-bend-v1';
+                material.customProgramCacheKey = () => cacheKey() + '-village-bend-v2';
                 material.needsUpdate = true;
             }
         });

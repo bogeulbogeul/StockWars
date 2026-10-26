@@ -1,0 +1,19 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Head,Malgun Gothic,48,&H0040513C,&H0040513C,&H18E6F6FF,&H18E6F6FF,-1,0,0,0,100,100,1,0,3,15,0,8,160,160,64,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:04.50,0:00:10.90,Head,,0,0,0,,{\fad(220,220)}포포리에서 시작되는 나의 첫날
+Dialogue: 0,0:00:12.50,0:00:17.50,Head,,0,0,0,,{\fad(220,220)}새로운 마을, 새로운 만남
+Dialogue: 0,0:00:22.50,0:00:26.50,Head,,0,0,0,,{\fad(220,220)}주민들과 인사를 나누고
+Dialogue: 0,0:00:31.50,0:00:36.50,Head,,0,0,0,,{\fad(220,220)}직접 포장하며 첫 수입을 만들어요
+Dialogue: 0,0:00:50.50,0:00:53.70,Head,,0,0,0,,{\fad(220,220)}어떤 회사인지 살펴보고
+Dialogue: 0,0:00:54.50,0:00:59.70,Head,,0,0,0,,{\fad(220,220)}차트를 읽고, 내 판단으로 첫 투자
+Dialogue: 0,0:01:07.50,0:01:12.50,Head,,0,0,0,,{\fad(220,220)}작은 씨앗과 함께 자라는 하루

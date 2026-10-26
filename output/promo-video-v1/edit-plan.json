@@ -1,0 +1,107 @@
+[
+  {
+    "id": "brand",
+    "sourceStart": 502.209,
+    "duration": 4,
+    "editedStart": 0,
+    "editedEnd": 4
+  },
+  {
+    "id": "opening",
+    "sourceStart": 44.81355419921875,
+    "duration": 8,
+    "editedStart": 4,
+    "editedEnd": 12
+  },
+  {
+    "id": "village",
+    "sourceStart": 65.15,
+    "duration": 10,
+    "editedStart": 12,
+    "editedEnd": 22
+  },
+  {
+    "id": "residents-welcome",
+    "sourceStart": 77.7,
+    "duration": 4,
+    "editedStart": 22,
+    "editedEnd": 26
+  },
+  {
+    "id": "residents-plaza",
+    "sourceStart": 202,
+    "duration": 5,
+    "editedStart": 26,
+    "editedEnd": 31
+  },
+  {
+    "id": "packing",
+    "sourceStart": 167.39807446289063,
+    "duration": 13,
+    "editedStart": 31,
+    "editedEnd": 44
+  },
+  {
+    "id": "first-wage",
+    "sourceStart": 180.89807446289063,
+    "duration": 6,
+    "editedStart": 44,
+    "editedEnd": 50
+  },
+  {
+    "id": "company",
+    "sourceStart": 414.654,
+    "duration": 4,
+    "editedStart": 50,
+    "editedEnd": 54
+  },
+  {
+    "id": "chart",
+    "sourceStart": 419.661,
+    "duration": 6,
+    "editedStart": 54,
+    "editedEnd": 60
+  },
+  {
+    "id": "order",
+    "sourceStart": 489.046,
+    "duration": 3,
+    "editedStart": 60,
+    "editedEnd": 63
+  },
+  {
+    "id": "account",
+    "sourceStart": 494.986,
+    "duration": 4,
+    "editedStart": 63,
+    "editedEnd": 67
+  },
+  {
+    "id": "seed",
+    "sourceStart": 337.4927373046875,
+    "duration": 9,
+    "editedStart": 67,
+    "editedEnd": 76
+  },
+  {
+    "id": "diary",
+    "sourceStart": 346.1927373046875,
+    "duration": 2.48,
+    "editedStart": 76,
+    "editedEnd": 78.48
+  },
+  {
+    "id": "sleep",
+    "sourceStart": 350.29361328125003,
+    "duration": 4.52,
+    "editedStart": 78.48,
+    "editedEnd": 83
+  },
+  {
+    "id": "start",
+    "sourceStart": 503.209,
+    "duration": 7,
+    "editedStart": 83,
+    "editedEnd": 90
+  }
+]

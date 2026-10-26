@@ -1,0 +1,394 @@
+{
+  "errors": [],
+  "missing": [],
+  "state": {
+    "version": 1,
+    "cursor": 78,
+    "tourDialogueVersion": 2,
+    "clothingStoreRemoved": true,
+    "nickname": "소망",
+    "order": "packing",
+    "cash": 6350,
+    "debt": 5000,
+    "shares": [
+      {
+        "id": "CLOUDBERRY",
+        "name": "베리클라우드",
+        "price": 850,
+        "quantity": 1
+      }
+    ],
+    "trades": [
+      {
+        "id": "CLOUDBERRY",
+        "name": "베리클라우드",
+        "price": 850,
+        "quantity": 1,
+        "side": "buy"
+      }
+    ],
+    "flags": {
+      "moaAwake": true,
+      "walk": true,
+      "nickname": true,
+      "phoneReady": true,
+      "phone": true,
+      "openPhone": true,
+      "bank": true,
+      "loan": true,
+      "order": true,
+      "notice": true,
+      "packing": true,
+      "wage": true,
+      "envelope": true,
+      "storyRumorQuizPassed": true,
+      "rumor": true,
+      "stockCounter": true,
+      "certificate": true,
+      "trade": true,
+      "tradeHistory": true,
+      "sunset": true,
+      "cookie": true,
+      "grant": true,
+      "diary": true,
+      "moaReturn": true,
+      "pot": true,
+      "planted": true,
+      "diaryWritten": true,
+      "asleep": true
+    },
+    "stamina": 3,
+    "analysis": 2,
+    "answers": [
+      3,
+      2,
+      0
+    ],
+    "examQuestionIds": [
+      14,
+      4,
+      9
+    ],
+    "inventory": [
+      {
+        "id": "exhibition-first-rumor",
+        "artworkId": "item_premium_rumor",
+        "name": "손님이 맡긴 소식봉투",
+        "category": "intel",
+        "quantity": 1,
+        "actionLabel": "찌라시 열기",
+        "desc": "봉봉에게 받은 소식봉투예요. 열어서 어떤 소식이 담겨 있는지 확인해 보세요.",
+        "letterText": "코지페이가 다음 달 새로운 결제 서비스를 선보인대. 거래가 늘 거라는 이야기가 있지만, 아직 회사의 공식 발표는 없대."
+      },
+      {
+        "id": "exhibition-diary",
+        "name": "다이어리",
+        "category": "book",
+        "quantity": 1,
+        "usable": false,
+        "desc": "모아에게 받은 빈 다이어리예요. 포포리에서의 하루와 씨앗 이야기를 적어갈 거예요."
+      },
+      {
+        "id": "exhibition-seed-pot",
+        "name": "씨앗용 화분",
+        "icon": "<img class=\"item-artwork\" src=\"assets/items/story/flowerpot.png\" alt=\"\">",
+        "category": "furniture",
+        "quantity": 1,
+        "usable": false,
+        "desc": "가져온 씨앗을 심은 화분이에요.",
+        "actionLabel": "사용하기"
+      }
+    ],
+    "moaCalls": 3,
+    "arrivalPosition": {
+      "x": 1023.0630000000006,
+      "y": 2355
+    },
+    "profileDocuments": {
+      "residence": {
+        "receivedAt": "2026-10-26T13:30:14.980Z",
+        "signedAt": "2026-10-26T13:30:16.280Z",
+        "name": "소망"
+      },
+      "bank": {
+        "receivedAt": "2026-10-26T13:30:47.180Z",
+        "signedAt": "2026-10-26T13:30:47.947Z",
+        "name": "소망"
+      },
+      "loan": {
+        "receivedAt": "2026-10-26T13:30:51.452Z",
+        "amount": 5000,
+        "signedAt": "2026-10-26T13:30:53.140Z",
+        "name": "소망"
+      }
+    },
+    "packingSession": {
+      "orders": [
+        {
+          "patternIndex": 18,
+          "width": 4,
+          "height": 5,
+          "items": [
+            {
+              "id": "C",
+              "name": "사과 주스",
+              "width": 1,
+              "height": 3,
+              "art": 2,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "B",
+              "name": "꽃잎 차",
+              "width": 2,
+              "height": 2,
+              "art": 1,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "G",
+              "name": "반짝가루",
+              "width": 1,
+              "height": 1,
+              "art": 6,
+              "rotated": false,
+              "x": 3,
+              "y": 3
+            },
+            {
+              "id": "K",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 3,
+              "y": 4
+            },
+            {
+              "id": "H",
+              "name": "달빛가루",
+              "width": 1,
+              "height": 1,
+              "art": 7,
+              "rotated": false,
+              "x": 1,
+              "y": 4
+            },
+            {
+              "id": "I",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "D",
+              "name": "포포리빵",
+              "width": 3,
+              "height": 1,
+              "art": 3,
+              "rotated": false,
+              "x": 1,
+              "y": 2
+            },
+            {
+              "id": "A",
+              "name": "꿀 쿠키",
+              "width": 2,
+              "height": 2,
+              "art": 0,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "F",
+              "name": "허브 차",
+              "width": 2,
+              "height": 1,
+              "art": 5,
+              "rotated": false,
+              "x": 1,
+              "y": 3
+            }
+          ]
+        },
+        {
+          "patternIndex": 14,
+          "width": 3,
+          "height": 5,
+          "items": [
+            {
+              "id": "J",
+              "name": "꽃꿀 사탕",
+              "width": 2,
+              "height": 1,
+              "art": 9,
+              "rotated": false,
+              "x": 1,
+              "y": 4
+            },
+            {
+              "id": "G",
+              "name": "반짝가루",
+              "width": 1,
+              "height": 1,
+              "art": 6,
+              "rotated": false,
+              "x": 2,
+              "y": 3
+            },
+            {
+              "id": "H",
+              "name": "달빛가루",
+              "width": 1,
+              "height": 1,
+              "art": 7,
+              "rotated": false,
+              "x": 0,
+              "y": 4
+            },
+            {
+              "id": "D",
+              "name": "포포리빵",
+              "width": 3,
+              "height": 1,
+              "art": 3,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "E",
+              "name": "꽃꿀 베리 주스",
+              "width": 1,
+              "height": 2,
+              "art": 4,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "name": "꽃잎 차",
+              "width": 2,
+              "height": 2,
+              "art": 1,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "F",
+              "name": "허브 차",
+              "width": 2,
+              "height": 1,
+              "art": 5,
+              "rotated": false,
+              "x": 0,
+              "y": 3
+            }
+          ]
+        },
+        {
+          "patternIndex": 15,
+          "width": 4,
+          "height": 4,
+          "items": [
+            {
+              "id": "K",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 3,
+              "y": 3
+            },
+            {
+              "id": "B",
+              "name": "꽃잎 차",
+              "width": 2,
+              "height": 2,
+              "art": 1,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "C",
+              "name": "사과 주스",
+              "width": 1,
+              "height": 3,
+              "art": 2,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "J",
+              "name": "꽃꿀 사탕",
+              "width": 2,
+              "height": 1,
+              "art": 9,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "G",
+              "name": "반짝가루",
+              "width": 1,
+              "height": 1,
+              "art": 6,
+              "rotated": false,
+              "x": 3,
+              "y": 0
+            },
+            {
+              "id": "H",
+              "name": "달빛가루",
+              "width": 1,
+              "height": 1,
+              "art": 7,
+              "rotated": false,
+              "x": 3,
+              "y": 1
+            },
+            {
+              "id": "I",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 3,
+              "y": 2
+            },
+            {
+              "id": "D",
+              "name": "포포리빵",
+              "width": 3,
+              "height": 1,
+              "art": 3,
+              "rotated": false,
+              "x": 0,
+              "y": 3
+            }
+          ]
+        }
+      ],
+      "completed": 3,
+      "awaitingNext": true,
+      "tutorialSeen": true
+    }
+  }
+}

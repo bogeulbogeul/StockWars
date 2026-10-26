@@ -46,7 +46,10 @@ export class PackingInput {
         drag.clientX = event.clientX;
         drag.clientY = event.clientY;
         if (Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY) > 5) drag.moved = true;
-        if (drag.moved) this.paint();
+        if (drag.moved && this.paintFrame == null) this.paintFrame = requestAnimationFrame(() => {
+            this.paintFrame = null;
+            if (this.drag) this.paint();
+        });
     }
 
     target() {
@@ -101,6 +104,7 @@ export class PackingInput {
     }
 
     cancel() {
+        cancelAnimationFrame(this.paintFrame); this.paintFrame = null;
         const pointerId = this.drag?.pointerId;
         this.drag = null;
         const dialog = this.game.dialog;

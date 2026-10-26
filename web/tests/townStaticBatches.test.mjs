@@ -92,3 +92,15 @@ test('camera direction reorders indices and hidden parts are removed without cha
     assert.deepEqual(batch.geometry.attributes.position.array, vertices);
     assert.equal(members[0].mesh.visible, false);
 });
+test('animated prop subtrees stay native and a nested draw restores source visibility', () => {
+    const {scene, root, renderer} = fixture();
+    const animated = new Group(); animated.userData.renderAnimated = true; root.add(animated);
+    const geometry = new BoxGeometry(), material = new MeshStandardMaterial(); geometry.clearGroups();
+    for (let i=0;i<5;i++) animated.add(new Mesh(geometry, material));
+    scene.updateMatrixWorld(true);
+    const batches = new TownStaticBatches(scene, {roots:[root], maxTriangles:8192});
+    assert(batches.groups.every(group => group.members.every(member => !member.parents.includes(animated))));
+    let nativeCalls=0;renderer.render=()=>nativeCalls++;
+    assert.throws(()=>batches.render(renderer,scene,{},()=>{assert(animated.children.every(mesh=>mesh.visible));throw Error('nested draw');}),/nested draw/);
+    assert.equal(nativeCalls,0);assert(root.children.every(mesh=>mesh.visible));
+});

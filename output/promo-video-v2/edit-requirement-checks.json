@@ -1,0 +1,12 @@
+{
+  "openingFirstTwo": true,
+  "fullHandoffs": [
+    "nickname",
+    "phone",
+    "wage",
+    "envelope"
+  ],
+  "onePackingBoxShown": true,
+  "chart": "securities training room, new footage",
+  "duration": 100.2
+}

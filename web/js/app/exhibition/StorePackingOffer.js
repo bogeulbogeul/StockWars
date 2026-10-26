@@ -2,7 +2,7 @@ import { waitForStoreTalk } from './StoreTalk.js';
 
 export function showStorePackingOffer(app) {
     const view = app.view;
-    view.line({ speaker: '봉봉', text: '일을 마치면 보수를 드릴게요. 시작해볼까요?' }, () => {});
+    view.line({ speaker: '봉봉', text: '상자 3개를 포장하면 300잎이에요. 시작해볼까요?' }, () => {});
     view.panel.querySelector('.dialogue-next-triangle').remove();
     view.choices([
         ['해볼게요', () => app.next()],

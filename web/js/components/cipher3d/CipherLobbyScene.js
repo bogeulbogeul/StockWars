@@ -1,5 +1,8 @@
+import { getIndoorRenderer, attachIndoorRenderer } from '../town3d/IndoorRenderer.js';
+import { FrameBudget } from '../town3d/FrameBudget.js';
+import { worldRenderVisible } from '../town3d/WorldRenderVisibility.js';
 import * as THREE from '../../../vendor/three/three.module.js';
-import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
+import { renderIndoorWithOcclusion, prepareIndoorRendering } from '../town3d/IndoorOcclusion.js';
 import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
 import { applyGameLighting } from '../lighting/GameLighting.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
@@ -57,13 +60,13 @@ export class CipherLobbyScene {
     }
 
     async initialize() {
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        this.renderer = getIndoorRenderer();
+        this.frameBudget = new FrameBudget(this.renderer, this.scene);
         this.renderer.setClearColor(0x000000, 1);
         this.renderer.outputColorSpace = THREE.SRGBColorSpace;
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '증권사 로비 3D 화면');
-        this.layer.prepend(this.renderer.domElement);
+
         this.environmentTarget = applyGameLighting(this.scene, this.renderer, true);
         this.room = this.buildRoom(this.scene);
         await Promise.all([this.room.userData.shellReady, this.room.userData.deskReady, this.room.userData.doorsReady,
@@ -83,6 +86,7 @@ export class CipherLobbyScene {
         if(createInteraction)this.interaction=await createInteraction(this);
         this.player.setControlsHint(this.defaultHint);
         this.player.root.traverse(object => { if (object.isMesh) object.castShadow = true; });
+        prepareIndoorRendering(this);
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -128,6 +132,7 @@ export class CipherLobbyScene {
     }
 
     show() {
+        attachIndoorRenderer(this);
         this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
@@ -169,6 +174,7 @@ export class CipherLobbyScene {
         if (!this.renderer || !this.active) return;
         const width = this.layer.clientWidth, height = this.layer.clientHeight;
         if (!width || !height) return;
+        this.frameBudget.resize(width, height);
         this.renderer.setSize(width, height);
         const aspect = width / height;
         this.camera.aspect = aspect;
@@ -239,6 +245,13 @@ export class CipherLobbyScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
+            if (!worldRenderVisible() || this.renderer.domElement.parentNode !== this.layer) {
+                this.lastTime = now;
+                this.frameBudget.reset();
+                this.frame = requestAnimationFrame(draw);
+                return;
+            }
+            this.frameBudget.tick(now);
             const dt = Math.min(.05, (now - this.lastTime) / 1000);
             this.update(dt);
             this.lastTime = now;

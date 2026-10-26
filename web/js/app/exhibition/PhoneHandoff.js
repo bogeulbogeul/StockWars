@@ -1,3 +1,4 @@
+import { animationDialogue } from './AnimationDialogue.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { Group, Box3, Vector3 } from '../../../vendor/three/three.module.js';
 import { animate, arms, reach } from './HandoffMotion.js';
@@ -29,20 +30,24 @@ export async function receivePhone(app) {
     const key = event => {
         if (!['KeyF', 'Escape'].includes(event.code) || event.ctrlKey || event.metaKey || event.altKey) return;
         event.preventDefault(); event.stopImmediatePropagation();
-        if (event.code === 'KeyF' && ready && !event.repeat) { ready = false; guide.update({ visible: false }); resolve(); }
+        if (event.code === 'KeyF' && ready && !event.repeat) { ready = false; guide.update({ visible: false }); advance.next(); }
     };
     app.scenes.receivingItem = true; window.addEventListener('keydown', key, true);
+    const advance = animationDialogue(app, { speaker: '모아', text: '휴대폰도 받아주세요. 필요한 일이 생기면 연락해요.' });
+    advance.onAdvance(resolve);
     try {
         await animate(1.15, t => {
             phone.position.lerpVectors(origin, offered, t); phone.position.y += Math.sin(t * Math.PI) * 18;
             phone.rotation.x = -.65 * t; reach(giver, .65 * t);
-        });
+        }, advance.signal);
         ready = true; guide.update({ visible: true }); await received;
         await animate(.65, t => {
             phone.position.lerpVectors(offered, held, t); phone.rotation.x = -.65 - .35 * t;
             reach(giver, .65 * (1 - t)); reach(receiver, .75 * t);
-        });
+        }, advance.signal);
+        await advance.wait();
     } finally {
+        advance.dispose();
         guide.dispose(); reach(giver, 0); reach(receiver, 0); phone.removeFromParent();
         phone.traverse(mesh => { mesh.geometry?.dispose(); mesh.material?.dispose(); });
         window.removeEventListener('keydown', key, true); app.scenes.receivingItem = false;

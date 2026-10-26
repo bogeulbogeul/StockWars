@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "label": "town",
+      "fps": 51,
+      "p95": 33.399999999999636,
+      "times": {
+        "townPlayer": {
+          "ms": 0.02,
+          "calls": 179
+        },
+        "townOcclusion": {
+          "ms": 0.54,
+          "calls": 179
+        },
+        "townRender": {
+          "ms": 3.96,
+          "calls": 179
+        },
+        "townDraw": {
+          "ms": 4.79,
+          "calls": 179
+        }
+      },
+      "render": {
+        "frame": 244,
+        "calls": 754,
+        "triangles": 4344385,
+        "points": 0,
+        "lines": 0
+      },
+      "objects": 379,
+      "pixelRatio": 0.636056
+    },
+    {
+      "label": "information",
+      "fps": 37,
+      "p95": 33.399999999999636,
+      "times": {
+        "townDraw": {
+          "ms": 0.01,
+          "calls": 138
+        },
+        "roomUpdate": {
+          "ms": 0.2,
+          "calls": 138
+        },
+        "roomRender": {
+          "ms": 9.01,
+          "calls": 138
+        }
+      },
+      "render": {
+        "frame": 170,
+        "calls": 195,
+        "triangles": 860072,
+        "points": 0,
+        "lines": 0
+      },
+      "objects": 34,
+      "pixelRatio": 0.7395999999999999
+    },
+    {
+      "label": "plaza",
+      "fps": 57,
+      "p95": 16.80000000000109,
+      "times": {
+        "townPlayer": {
+          "ms": 0.02,
+          "calls": 201
+        },
+        "townOcclusion": {
+          "ms": 0.28,
+          "calls": 201
+        },
+        "townRender": {
+          "ms": 3.35,
+          "calls": 201
+        },
+        "townDraw": {
+          "ms": 4.1,
+          "calls": 201
+        }
+      },
+      "render": {
+        "frame": 453,
+        "calls": 732,
+        "triangles": 4279360,
+        "points": 0,
+        "lines": 0
+      },
+      "objects": 379,
+      "pixelRatio": 0.5
+    }
+  ],
+  "errors": []
+}

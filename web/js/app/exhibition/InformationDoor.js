@@ -42,6 +42,6 @@ export function createInformationDoor(building, { id = 'information', panelName 
         requestAnimationFrame(tick);
     });
     building[key] = { center, width: box.max.x - box.min.x, floorY: box.min.y, approachDistance,
-        open: () => animate(direction * Math.PI * .48), close: () => animate(0) };
+        open: () => Promise.resolve(), close: () => Promise.resolve() };
     return building[key];
 }
