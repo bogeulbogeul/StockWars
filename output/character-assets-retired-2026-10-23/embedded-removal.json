@@ -1,0 +1,13 @@
+{
+  "removed": [
+    "Anna_PlumpLeaf",
+    "Anna_Vest",
+    "Eating_Torso",
+    "Rigid_Arm.L",
+    "Rigid_Arm.R",
+    "Somangi_Body"
+  ],
+  "remainingNodes": 383,
+  "sourceBytes": 25840220,
+  "resultBytes": 9680776
+}

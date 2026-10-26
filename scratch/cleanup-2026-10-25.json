@@ -1,0 +1,607 @@
+[
+  {
+    "Path": "electron-app\\preview-dist",
+    "Files": 628,
+    "Bytes": 526097657.0
+  },
+  {
+    "Path": "electron-app\\dist-town-sync",
+    "Files": 621,
+    "Bytes": 526056490.0
+  },
+  {
+    "Path": "output\\all-eight-consistency-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 11390.0
+  },
+  {
+    "Path": "output\\anna-model-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 1603.0
+  },
+  {
+    "Path": "output\\anna-motion-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 5471.0
+  },
+  {
+    "Path": "output\\badger-color-lock-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 13942.0
+  },
+  {
+    "Path": "output\\badger-walk-fix-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 11578.0
+  },
+  {
+    "Path": "output\\bookstore-exterior-clean-v1\\__pycache__",
+    "Files": 4,
+    "Bytes": 20556.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\__pycache__",
+    "Files": 6,
+    "Bytes": 12696.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\data\\__pycache__",
+    "Files": 1,
+    "Bytes": 385.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\mat_wrapper\\__pycache__",
+    "Files": 1,
+    "Bytes": 1943.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\misc\\__pycache__",
+    "Files": 2,
+    "Bytes": 622.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\typing\\__pycache__",
+    "Files": 1,
+    "Bytes": 4632.0
+  },
+  {
+    "Path": "output\\building-retouch-v2\\runtime\\cv2\\utils\\__pycache__",
+    "Files": 1,
+    "Bytes": 634.0
+  },
+  {
+    "Path": "output\\cat-dog-baseline-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 14848.0
+  },
+  {
+    "Path": "output\\cat-rear-tail-heels-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 14851.0
+  },
+  {
+    "Path": "output\\cat-rear-tail-swing-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 14851.0
+  },
+  {
+    "Path": "output\\cat-style-unified-v6\\__pycache__",
+    "Files": 1,
+    "Bytes": 5063.0
+  },
+  {
+    "Path": "output\\cat-tail-color-portrait-v19\\__pycache__",
+    "Files": 1,
+    "Bytes": 5504.0
+  },
+  {
+    "Path": "output\\cipher-exterior-blender-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 9219.0
+  },
+  {
+    "Path": "output\\clothing-exterior-clean-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 6417.0
+  },
+  {
+    "Path": "output\\dog-carry-order-v5\\__pycache__",
+    "Files": 1,
+    "Bytes": 14875.0
+  },
+  {
+    "Path": "output\\dog-diagonal-walk-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 14877.0
+  },
+  {
+    "Path": "output\\dog-hidden-hand-v9\\__pycache__",
+    "Files": 1,
+    "Bytes": 14875.0
+  },
+  {
+    "Path": "output\\dog-motion-match-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 15808.0
+  },
+  {
+    "Path": "output\\dog-neutral-fix-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 14875.0
+  },
+  {
+    "Path": "output\\dog-rgb-face-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 14872.0
+  },
+  {
+    "Path": "output\\dog-shoulder-fix-v6\\__pycache__",
+    "Files": 1,
+    "Bytes": 14876.0
+  },
+  {
+    "Path": "output\\forest-friends\\sprites-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 20286.0
+  },
+  {
+    "Path": "output\\moa-anna-vest-armholes-v5\\__pycache__",
+    "Files": 2,
+    "Bytes": 7921.0
+  },
+  {
+    "Path": "output\\moa-anna-vest-armpit-v7\\__pycache__",
+    "Files": 1,
+    "Bytes": 2022.0
+  },
+  {
+    "Path": "output\\moa-anna-vest-closefit-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 7080.0
+  },
+  {
+    "Path": "output\\moa-anna-vest-fit-v6\\__pycache__",
+    "Files": 1,
+    "Bytes": 7785.0
+  },
+  {
+    "Path": "output\\moa-body-surface-vest-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 14114.0
+  },
+  {
+    "Path": "output\\moa-expression-assets-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 18394.0
+  },
+  {
+    "Path": "output\\moa-somangi-base-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 13448.0
+  },
+  {
+    "Path": "output\\moa-tailored-vest-v15\\__pycache__",
+    "Files": 1,
+    "Bytes": 11558.0
+  },
+  {
+    "Path": "output\\moa-user-vest-fit-v14\\__pycache__",
+    "Files": 1,
+    "Bytes": 4521.0
+  },
+  {
+    "Path": "output\\moa-user-vest-neckline-v13\\__pycache__",
+    "Files": 1,
+    "Bytes": 4526.0
+  },
+  {
+    "Path": "output\\motion-color-restore-v2\\__pycache__",
+    "Files": 3,
+    "Bytes": 14831.0
+  },
+  {
+    "Path": "output\\post-office-exterior-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 9667.0
+  },
+  {
+    "Path": "output\\pub-bar-open-right-v1\\__pycache__",
+    "Files": 14,
+    "Bytes": 78002.0
+  },
+  {
+    "Path": "output\\rabbit-dog-baseline-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 14958.0
+  },
+  {
+    "Path": "output\\rabbit-face-rear-cleanup-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 14983.0
+  },
+  {
+    "Path": "output\\rabbit-face-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 2547.0
+  },
+  {
+    "Path": "output\\rabbit-portrait-design-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 14949.0
+  },
+  {
+    "Path": "output\\rabbit-tail-occlusion-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 14816.0
+  },
+  {
+    "Path": "output\\rabbit-tail-tip-sway-v5\\__pycache__",
+    "Files": 1,
+    "Bytes": 14934.0
+  },
+  {
+    "Path": "output\\rabbit-unified-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 2137.0
+  },
+  {
+    "Path": "output\\red-fox-carry-consistency-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 14977.0
+  },
+  {
+    "Path": "output\\red-fox-carry-lines-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 14971.0
+  },
+  {
+    "Path": "output\\red-fox-carry-walk-face-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 14975.0
+  },
+  {
+    "Path": "output\\red-fox-design-match-v8\\__pycache__",
+    "Files": 1,
+    "Bytes": 14972.0
+  },
+  {
+    "Path": "output\\red-fox-dog-baseline-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 14972.0
+  },
+  {
+    "Path": "output\\red-fox-rear-shading-v7\\__pycache__",
+    "Files": 1,
+    "Bytes": 14972.0
+  },
+  {
+    "Path": "output\\red-fox-rear-shape-v5\\__pycache__",
+    "Files": 1,
+    "Bytes": 14970.0
+  },
+  {
+    "Path": "output\\red-fox-tail-root-v6\\__pycache__",
+    "Files": 1,
+    "Bytes": 14969.0
+  },
+  {
+    "Path": "output\\somangi-armpit-clean-v8\\__pycache__",
+    "Files": 5,
+    "Bytes": 27636.0
+  },
+  {
+    "Path": "output\\somangi-bench-down-v1\\__pycache__",
+    "Files": 3,
+    "Bytes": 11707.0
+  },
+  {
+    "Path": "output\\somangi-consume-scale-v5\\__pycache__",
+    "Files": 1,
+    "Bytes": 1886.0
+  },
+  {
+    "Path": "output\\somangi-consume-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 1880.0
+  },
+  {
+    "Path": "output\\somangi-continuous-shoulder-v41\\__pycache__",
+    "Files": 2,
+    "Bytes": 7973.0
+  },
+  {
+    "Path": "output\\somangi-eat-arm-clearance-v23\\__pycache__",
+    "Files": 2,
+    "Bytes": 7969.0
+  },
+  {
+    "Path": "output\\somangi-eat-attention-v25\\__pycache__",
+    "Files": 2,
+    "Bytes": 7961.0
+  },
+  {
+    "Path": "output\\somangi-eat-belly-contour-v13\\__pycache__",
+    "Files": 6,
+    "Bytes": 44916.0
+  },
+  {
+    "Path": "output\\somangi-eat-drink-grip-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 1887.0
+  },
+  {
+    "Path": "output\\somangi-eat-drink-shoulder-v2\\__pycache__",
+    "Files": 2,
+    "Bytes": 13924.0
+  },
+  {
+    "Path": "output\\somangi-eat-drink-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 1882.0
+  },
+  {
+    "Path": "output\\somangi-eat-equal-bites-v22\\__pycache__",
+    "Files": 3,
+    "Bytes": 10080.0
+  },
+  {
+    "Path": "output\\somangi-eat-finish-third-v21\\__pycache__",
+    "Files": 2,
+    "Bytes": 7967.0
+  },
+  {
+    "Path": "output\\somangi-eat-mouth-reference-v10\\__pycache__",
+    "Files": 3,
+    "Bytes": 16500.0
+  },
+  {
+    "Path": "output\\somangi-eat-original-collar-v15\\__pycache__",
+    "Files": 6,
+    "Bytes": 41947.0
+  },
+  {
+    "Path": "output\\somangi-eat-original-smile-v11\\__pycache__",
+    "Files": 3,
+    "Bytes": 18050.0
+  },
+  {
+    "Path": "output\\somangi-eat-reference-v9\\__pycache__",
+    "Files": 3,
+    "Bytes": 16267.0
+  },
+  {
+    "Path": "output\\somangi-eat-retarget-v34\\__pycache__",
+    "Files": 2,
+    "Bytes": 7959.0
+  },
+  {
+    "Path": "output\\somangi-eat-rigid-arms-v24\\__pycache__",
+    "Files": 2,
+    "Bytes": 7963.0
+  },
+  {
+    "Path": "output\\somangi-eat-round-belly-v12\\__pycache__",
+    "Files": 4,
+    "Bytes": 22635.0
+  },
+  {
+    "Path": "output\\somangi-eat-round-body-v20\\__pycache__",
+    "Files": 4,
+    "Bytes": 16011.0
+  },
+  {
+    "Path": "output\\somangi-eat-sealed-junction-v16\\__pycache__",
+    "Files": 3,
+    "Bytes": 10969.0
+  },
+  {
+    "Path": "output\\somangi-eat-shoulder-contact-v14\\__pycache__",
+    "Files": 6,
+    "Bytes": 47842.0
+  },
+  {
+    "Path": "output\\somangi-eat-shoulder-natural-v17\\__pycache__",
+    "Files": 4,
+    "Bytes": 21098.0
+  },
+  {
+    "Path": "output\\somangi-eat-soft-waist-v19\\__pycache__",
+    "Files": 4,
+    "Bytes": 21809.0
+  },
+  {
+    "Path": "output\\somangi-eat-surface-polish-v18\\__pycache__",
+    "Files": 5,
+    "Bytes": 26886.0
+  },
+  {
+    "Path": "output\\somangi-eat-unbent-v35\\__pycache__",
+    "Files": 2,
+    "Bytes": 7955.0
+  },
+  {
+    "Path": "output\\somangi-eat-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 17217.0
+  },
+  {
+    "Path": "output\\somangi-eat-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 6412.0
+  },
+  {
+    "Path": "output\\somangi-eat-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 11679.0
+  },
+  {
+    "Path": "output\\somangi-eat-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 2415.0
+  },
+  {
+    "Path": "output\\somangi-gentle-eat-v27\\__pycache__",
+    "Files": 3,
+    "Bytes": 23200.0
+  },
+  {
+    "Path": "output\\somangi-gentle-final-v29\\__pycache__",
+    "Files": 3,
+    "Bytes": 12385.0
+  },
+  {
+    "Path": "output\\somangi-hidden-shoulder-v39\\__pycache__",
+    "Files": 2,
+    "Bytes": 7965.0
+  },
+  {
+    "Path": "output\\somangi-joint-polish-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 16756.0
+  },
+  {
+    "Path": "output\\somangi-jump-sit-low-v2\\__pycache__",
+    "Files": 3,
+    "Bytes": 11713.0
+  },
+  {
+    "Path": "output\\somangi-jump-sit-v1\\__pycache__",
+    "Files": 3,
+    "Bytes": 11701.0
+  },
+  {
+    "Path": "output\\somangi-local-shoulder-v42\\__pycache__",
+    "Files": 3,
+    "Bytes": 26215.0
+  },
+  {
+    "Path": "output\\somangi-marked-boundary-mesh-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 16575.0
+  },
+  {
+    "Path": "output\\somangi-mouth-bite-v37\\__pycache__",
+    "Files": 2,
+    "Bytes": 7955.0
+  },
+  {
+    "Path": "output\\somangi-native-gentle-eat-v28\\__pycache__",
+    "Files": 3,
+    "Bytes": 11882.0
+  },
+  {
+    "Path": "output\\somangi-original-motion-mesh-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 17423.0
+  },
+  {
+    "Path": "output\\somangi-original-shape-v26\\__pycache__",
+    "Files": 3,
+    "Bytes": 22555.0
+  },
+  {
+    "Path": "output\\somangi-preserve-body-v7\\__pycache__",
+    "Files": 4,
+    "Bytes": 25165.0
+  },
+  {
+    "Path": "output\\somangi-rear-junction-v43\\__pycache__",
+    "Files": 2,
+    "Bytes": 7961.0
+  },
+  {
+    "Path": "output\\somangi-rigid-whole-arms-v38\\__pycache__",
+    "Files": 2,
+    "Bytes": 7967.0
+  },
+  {
+    "Path": "output\\somangi-shoulder-ik-v30\\__pycache__",
+    "Files": 3,
+    "Bytes": 9753.0
+  },
+  {
+    "Path": "output\\somangi-shoulder-preserved-v31\\__pycache__",
+    "Files": 3,
+    "Bytes": 14263.0
+  },
+  {
+    "Path": "output\\somangi-sit-v1\\__pycache__",
+    "Files": 2,
+    "Bytes": 8045.0
+  },
+  {
+    "Path": "output\\somangi-smooth-armpit-v33\\__pycache__",
+    "Files": 5,
+    "Bytes": 25331.0
+  },
+  {
+    "Path": "output\\somangi-smooth-side-seam-v40\\__pycache__",
+    "Files": 3,
+    "Bytes": 15032.0
+  },
+  {
+    "Path": "output\\somangi-smooth-walk-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 12786.0
+  },
+  {
+    "Path": "output\\somangi-soft-connections-v36\\__pycache__",
+    "Files": 2,
+    "Bytes": 7967.0
+  },
+  {
+    "Path": "output\\somangi-story-expressions-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 5811.0
+  },
+  {
+    "Path": "output\\somangi-story-expressions-v2\\__pycache__",
+    "Files": 1,
+    "Bytes": 5989.0
+  },
+  {
+    "Path": "output\\somangi-story-expressions-v3\\__pycache__",
+    "Files": 1,
+    "Bytes": 7052.0
+  },
+  {
+    "Path": "output\\somangi-story-expressions-v4\\__pycache__",
+    "Files": 1,
+    "Bytes": 7760.0
+  },
+  {
+    "Path": "output\\somangi-story-expressions-v6\\rebuild\\__pycache__",
+    "Files": 1,
+    "Bytes": 7768.0
+  },
+  {
+    "Path": "output\\somangi-twohand-mouth-v6\\__pycache__",
+    "Files": 5,
+    "Bytes": 30824.0
+  },
+  {
+    "Path": "output\\somangi-vest-v1\\__pycache__",
+    "Files": 1,
+    "Bytes": 12922.0
+  },
+  {
+    "Path": "output\\somangi-whole-arm-v32\\__pycache__",
+    "Files": 4,
+    "Bytes": 19241.0
+  },
+  {
+    "Path": "output\\somangi-whole-root-base-v35\\__pycache__",
+    "Files": 5,
+    "Bytes": 25608.0
+  },
+  {
+    "Path": "output\\style-unification-v3\\__pycache__",
+    "Files": 2,
+    "Bytes": 11674.0
+  },
+  {
+    "Path": "scratch\\__pycache__",
+    "Files": 1,
+    "Bytes": 9193.0
+  }
+]

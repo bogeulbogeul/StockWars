@@ -1,0 +1,15 @@
+{
+  "samples": 97,
+  "clips": [
+    "Walk_InPlace"
+  ],
+  "durationSeconds": 0.8,
+  "floorPenetration": 0.00016480684280395508,
+  "supportGap": 0.0016150474548339844,
+  "loopError": 0.0,
+  "durationSource": "Exported GLB animation time accessor",
+  "timeRangeSeconds": [
+    0.03333333333333333,
+    0.8333333333333334
+  ]
+}

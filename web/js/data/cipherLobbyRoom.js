@@ -3,7 +3,7 @@ export const LOBBY = {
     width: 900, depth: 608, wallHeight: 300, radius: 22,
     spawn: { x: 0, z: 169 }, exitZ: 266, exitHalfWidth: 72,
     desk: { x: 0, z: -65, width: 310, depth: 100, height: 72 },
-    agentK: { x: 0, z: -205, bodyHeight: 110, radius: 31 },
+    agentK: { x: 0, z: -205, bodyHeight: 100, radius: 31 },
     waitingAreas: [-1,1].map(side => ({ side: side < 0 ? 'left' : 'right',
         benchX: side*390, benchZ: 70, benchRotation: -side*Math.PI/2,
         benchHalfWidth: 44, benchHalfDepth: 54, plantX: side*390, plantZ: 220 })),

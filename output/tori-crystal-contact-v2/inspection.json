@@ -1,0 +1,40 @@
+{
+  "sourceSHA256": "2f807b1571e78f97a544ac2d20f2a9f9fca6edb9290a561b01c078c5f72c7a64",
+  "sourceUnchanged": true,
+  "meshes": {
+    "AgentK_Crystal": {
+      "boundaryEdges": 60,
+      "nonmanifoldEdges": 60,
+      "zeroAreaFaces": 0
+    },
+    "Crystal collar": {
+      "boundaryEdges": 1920,
+      "nonmanifoldEdges": 1920,
+      "zeroAreaFaces": 0
+    },
+    "Glasses smooth frame": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    },
+    "Somangi_SmoothBody": {
+      "boundaryEdges": 8734,
+      "nonmanifoldEdges": 8734,
+      "zeroAreaFaces": 0
+    },
+    "Icosphere": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    }
+  },
+  "views": [
+    "gem-front",
+    "gem-angle",
+    "gem-side",
+    "gem-back",
+    "face-angle",
+    "face-side"
+  ],
+  "scope": "Rest pose, topology and six close-up renders; not animated contact verification"
+}

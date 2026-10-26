@@ -1,0 +1,9 @@
+{
+  "glbReload": true,
+  "closedNewRoofMeshes": true,
+  "finitePositions": true,
+  "centralRidgeStraight": true,
+  "clockAndDoorPreserved": true,
+  "tiles": 388,
+  "gameApplied": false
+}

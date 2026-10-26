@@ -1,0 +1,116 @@
+{
+  "variants": {
+    "Closed": {
+      "dimensions_H": [
+        0.22749999165534973,
+        0.3284999877214432,
+        0.0442500002682209
+      ],
+      "meshes": [
+        {
+          "name": "Back_Cover",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Block",
+          "triangles": 428
+        },
+        {
+          "name": "Front_Cover",
+          "triangles": 428
+        },
+        {
+          "name": "Rounded_Spine",
+          "triangles": 428
+        },
+        {
+          "name": "Blank_Cover_Label",
+          "triangles": 428
+        },
+        {
+          "name": "Bookmark_Ribbon",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line.001",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line.002",
+          "triangles": 428
+        }
+      ],
+      "glb_bytes": 92460,
+      "checks": "Closed positive-volume meshes; independent GLB import mesh count and bounds recorded"
+    },
+    "Open": {
+      "dimensions_H": [
+        0.44699999690055847,
+        0.3199999928474426,
+        0.025499999523162842
+      ],
+      "meshes": [
+        {
+          "name": "Open_Cover",
+          "triangles": 428
+        },
+        {
+          "name": "Open_Page_Block",
+          "triangles": 428
+        },
+        {
+          "name": "Blank_Writing_Page",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line.001",
+          "triangles": 428
+        },
+        {
+          "name": "Open_Cover.001",
+          "triangles": 428
+        },
+        {
+          "name": "Open_Page_Block.001",
+          "triangles": 428
+        },
+        {
+          "name": "Blank_Writing_Page.001",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line.002",
+          "triangles": 428
+        },
+        {
+          "name": "Page_Edge_Line.003",
+          "triangles": 428
+        },
+        {
+          "name": "Center_Binding",
+          "triangles": 428
+        },
+        {
+          "name": "Bookmark_Ribbon",
+          "triangles": 428
+        }
+      ],
+      "glb_bytes": 112764,
+      "checks": "Closed positive-volume meshes; independent GLB import mesh count and bounds recorded"
+    }
+  },
+  "game_installed": false,
+  "status": "P1: standalone props produced; user visual approval and hand contact pending",
+  "design": "Sage cover, ivory blank pages, beige bookmark; no text, dates or logo",
+  "scale": "Provisional H=1 character-relative units; final game scale pending",
+  "origin": "Bottom center, lying flat; Blender Z-up, heading +Y; glTF Y-up, heading -Z",
+  "animation": "Two static props; no opening rig/animation or writing UI"
+}

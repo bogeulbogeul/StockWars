@@ -1,4 +1,7 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
@@ -7,10 +10,21 @@ import { VIVIAN_MODEL_URL, VIVIAN_MODEL_SCALE, VIVIAN_ROOM_BOUNDS, VIVIAN_SPAWN,
     VIVIAN_EXIT_Z, VIVIAN_ROOM_RATIO, vivianCanStand } from '../../data/vivianModelRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
 import { VivianRoomCamera } from './VivianRoomCamera.js';
+import { addVivianShopkeeper } from './VivianShopkeeper.js';
+import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js';
+import { recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { createCharacterBodies, charactersCanStand } from '../town3d/CharacterBodies.js';
+import { SeatInteraction } from '../town3d/SeatInteraction.js';
+import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
+import { greetBongbong } from './BongbongGreeting.js';
+import { createConversationCamera } from '../town3d/ConversationCamera.js';
+import { installBongbongTalk } from './BongbongTalk.js';
+import { addVivianProductDisplay } from './VivianProductDisplay.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class VivianModelScene {
-    constructor(container, onExit, onShop) {
+    constructor(container, onExit, onShop, { onWork } = {}) {
+        this.onWork = onWork;
         this.onShop = onShop;
         this.onExit = onExit;
         this.active = false;
@@ -21,7 +35,7 @@ export class VivianModelScene {
         this.layer = document.createElement('section');
         this.layer.id = 'vivianModelStage';
         this.layer.className = 'home-model-stage hidden';
-        this.layer.setAttribute('aria-label', '기둥 장식과 빈 진열대, 냉장고, 포장대가 있는 잡화점 내부');
+        this.layer.setAttribute('aria-label', '간식과 차를 진열한 장식장, 주스와 젤리가 든 냉장고, 포장대가 있는 잡화점 내부');
         this.status = document.createElement('p');
         this.status.className = 'home-model-status';
         this.status.setAttribute('role', 'status');
@@ -32,6 +46,7 @@ export class VivianModelScene {
         this.scene.background = new THREE.Color(0x000000);
         this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new VivianRoomCamera(this.camera);
+        this.conversationCamera = createConversationCamera({ fitWidth: true, worldCoordinates: true });
         this.bindInput();
         this.ready = this.initialize().catch(error => {
             this.failed = true;
@@ -49,10 +64,7 @@ export class VivianModelScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '잡화점 내부 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 2));
-        const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         const gltf = await new GLTFLoader().loadAsync(VIVIAN_MODEL_URL);
         this.room = gltf.scene;
         this.room.name = 'vivian-room';
@@ -92,12 +104,19 @@ export class VivianModelScene {
         carpet.add(carpetBorder);
         this.room.add(carpet);
         this.scene.add(this.room);
+        this.shopkeeper = await addVivianShopkeeper(this.room);
+        this.characterBodies = createCharacterBodies(this.room);
+        installIndoorFurnitureBodies(this, (x,z) => vivianCanStand(x,z)
+            && charactersCanStand(this.characterBodies,x,z));
+        this.productDisplay = await addVivianProductDisplay(this.room);
         this.roomCamera.update(0, this.room);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.setControlsHint('WASD / 방향키 이동 · F 계산대 이용 · 현관 / Esc 나가기');
+        this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
+        this.bongbongTalk = installBongbongTalk(this, this.onWork);
+        this.player.setControlsHint('WASD 이동 · F 계산대 이용 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -106,7 +125,7 @@ export class VivianModelScene {
     }
 
     blocked() {
-        return !!document.querySelector('dialog[open], .modal-overlay:not(.hidden)')
+        return this.greetingActive || !!document.querySelector('dialog[open], .modal-overlay:not(.hidden)')
             || document.body.classList.contains('phone-view-active');
     }
 
@@ -125,7 +144,7 @@ export class VivianModelScene {
                 return;
             }
             if (key === 'escape' && !event.repeat) { event.preventDefault(); void this.exit(); return; }
-            const action = { arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key;
+            const action = key;
             if (['w', 'a', 's', 'd', 'shift'].includes(action)) {
                 event.preventDefault();
                 this.controller.keysHeld.add(action);
@@ -133,12 +152,13 @@ export class VivianModelScene {
         });
         window.addEventListener('keyup', event => {
             const key = gameKey(event);
-            this.controller.keysHeld.delete({ arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key);
+            this.controller.keysHeld.delete(key);
         });
         window.addEventListener('blur', () => this.controller.keysHeld.clear());
     }
 
     show() {
+        this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
         this.layer.classList.remove('hidden');
@@ -149,9 +169,17 @@ export class VivianModelScene {
         this.layer.focus({ preventScroll: true });
         this.resize();
         if (this.player?.state !== 'loading' && this.room && this.player) this.startLoop();
+        this.greetingReady = this.ready.then(async () => {
+            if (!this.active) return;
+            await greetBongbong(this); if (this.active) this.bongbongTalk.ready();
+        })
+            .catch(error => { console.error('봉봉 인사:', error); });
     }
 
     hide() {
+        this.awaitingPackingWorktop = false;
+        this.cancelGreeting?.(); this.greetingActive = false; this.bongbongTalk?.hide();
+        this.seatInteraction?.reset();
         this.active = false;
         this.controller.keysHeld.clear();
         this.controller.isMoving = false;
@@ -180,12 +208,15 @@ export class VivianModelScene {
     update(dt) {
         this.roomCamera.update(dt, this.room);
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) { this.player?.update(dt); return; }
+        if(this.seatInteraction?.update(dt))return;
+        if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         ({ dx, dz } = this.roomCamera.movement(dx, dz));
-        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, vivianCanStand);
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, this.canStand);
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? SOMANGI_MOVEMENT.indoorWalk * SOMANGI_MOVEMENT.sidewaysFactor : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         let x = oldX, z = oldZ;
         if (length) {
@@ -193,8 +224,8 @@ export class VivianModelScene {
             dz *= speed * dt / length;
             const steps = Math.max(1, Math.ceil(Math.hypot(dx, dz) / 5));
             for (let i = 0; i < steps; i++) {
-                if (vivianCanStand(x + dx / steps, z)) x += dx / steps;
-                if (vivianCanStand(x, z + dz / steps)) z += dz / steps;
+                if (this.canStand(x + dx / steps, z)) x += dx / steps;
+                if (this.canStand(x, z + dz / steps)) z += dz / steps;
             }
             c.facing = Math.abs(dz) >= Math.abs(dx) ? (dz > 0 ? 'down' : 'up') : dx > 0 ? 'right' : 'left';
         }
@@ -211,9 +242,11 @@ export class VivianModelScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            this.conversationCamera.update(this.camera, this.player, this.workstationGuideActive ? null : { root: this.shopkeeper }, dt);
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

@@ -3,7 +3,7 @@ const path = require('node:path');
 const http = require('node:http');
 const assert = require('node:assert/strict');
 const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
-const root = path.resolve(process.env.CHECK_GAME_ROOT || 'web');
+const root = path.resolve(process.argv[2] || process.env.CHECK_GAME_ROOT || 'web');
 const server = http.createServer((req, res) => {
     if (req.url === '/favicon.ico') return res.writeHead(204).end();
     const file = path.resolve(root, '.' + decodeURIComponent(req.url.split('?')[0] === '/' ? '/index.html' : req.url.split('?')[0]));
@@ -25,6 +25,12 @@ const server = http.createServer((req, res) => {
         await page.goto('http://127.0.0.1:8106/');
         await page.waitForFunction(() => window.stockWarsApp?.townModelScene?.buildingClocks?.length === 1
             && window.stockWarsApp.townModelScene.status.hidden, null, { timeout: 90000 });
+        await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player?.root?.parent
+            && window.stockWarsApp.townModelScene.sleepingAnna !== undefined,null,{timeout:90000});
+        await page.evaluate(()=>{
+            document.body.classList.add('town-model-mode','ui-paused');
+            window.stockWarsApp.townStage.containerEl.classList.remove('hidden');
+        });
         const report = await page.evaluate(async () => {
             const { koreaClockSeconds } = await import('/js/components/town3d/BuildingClock.js');
             const THREE = await import('/vendor/three/three.module.js');
@@ -55,24 +61,44 @@ const server = http.createServer((req, res) => {
             clock.update(Date.parse('2026-10-19T03:16:30Z'));
             if (before.angleTo(clock.hands[1].object.quaternion) < .1) throw Error('Clock did not advance');
             const player = s.town.playerController;
-            player.charPosX = 2030; player.charPosY = 1810;
-            const canStand = player.canStand(2030, 1810);
+            const {TOWN_MODEL_BUILDINGS}=await import('/js/data/townModelBuildings.js');
+            const def=TOWN_MODEL_BUILDINGS.find(b=>b.id==='cipher_securities');
+            player.charPosX = def.x; player.charPosY = def.y+50;
+            const canStand = player.canStand(def.x, def.y+50);
+            const blocked = !player.canStand(def.x,def.y);
             s.draw();
             const model = s.scene.getObjectByName('cipher_securities');
             const bounds = new THREE.Box3().setFromObject(model);
-            return { checks, canStand, width: bounds.max.x-bounds.min.x,
+            const names=[];model.traverse(o=>names.push(o.name));
+            const footprint=s.collisionFootprints.find(b=>b.maxY===def.y && b.minX<def.x && b.maxX>def.x);
+            const overlap=s.collisionFootprints.slice(0,TOWN_MODEL_BUILDINGS.length).filter(b=>b!==footprint
+                && b.minX<footprint.maxX && b.maxX>footprint.minX && b.minY<footprint.maxY && b.maxY>footprint.minY);
+            return { checks, canStand, blocked, width: bounds.max.x-bounds.min.x,expectedWidth:def.width,
+                noBuildingOverlap:overlap.length===0,
+                cleanStairs:names.includes('Entry_Continuous_Three_Step_Solid') && !names.some(n=>n.startsWith('Grand_Entry_Step')),
+                groundedBases:names.filter(n=>n.startsWith('Portico_Column_Plinth')).length===4
+                    && names.filter(n=>n.startsWith('Wing_Corner_Foot')).length===8,
+                tiles:names.some(n=>n.startsWith('Blue_Clay_Roof_Tile')),
+                fascia:names.some(n=>n.startsWith('Continuous_Cream_Pediment_Frame')),
+                windows:names.filter(n=>n.startsWith('Grand_Window_Fanlight_Transom')).length===8,
+                columns:names.filter(n=>n.startsWith('Portico_Column') && !n.includes('Capital') && !n.includes('Plinth')).length===4,
+                wings:names.filter(n=>n.startsWith('Single_Storey_Wing')).length===2,
+                panelDoors:names.filter(n=>n.startsWith('Door_Panel_Leaf')).length===2
+                    && names.filter(n=>n.startsWith('Door_Recessed_Panel_Inset')).length===4
+                    && names.some(n=>n.startsWith('Door_Continuous_Arch_Frame'))
+                    && names.filter(n=>n.startsWith('Door_Brass_Curved_Pull')).length===2,
+                retiredRoof:!names.includes('Roof_Smooth_Blue'),
                 handCount: clock.hands.length, source: model.getObjectByName('Clock_Face')?.name };
         });
         assert.equal(report.canStand, true);
-        assert(Math.abs(report.width-370)<1);
+        assert(Math.abs(report.width-report.expectedWidth)<1);
+        for(const key of ['blocked','tiles','fascia','windows','columns','wings','panelDoors','cleanStairs','groundedBases','retiredRoof','noBuildingOverlap']) assert(report[key],key);
         await page.waitForTimeout(300);
-        await page.screenshot({ path: 'scratch/cipher-exterior-clock-game.png' });
-        await page.keyboard.press('f');
-        await page.waitForFunction(() => window.stockWarsApp.cipherLobbyScene?.player?.state === 'idle', null, { timeout: 90000 });
-        assert(await page.locator('#cipherLobbyStage').isVisible());
-        await page.keyboard.press('Escape');
-        await page.waitForFunction(() => !window.stockWarsApp.townStage.containerEl.classList.contains('hidden'));
+        await page.screenshot({ path: 'output/cipher-joints-ground-v6/game.png' });
+        await page.setViewportSize({width:900,height:700});
+        await page.waitForTimeout(250);
+        assert(await page.locator('.town-model-layer').isVisible());
         assert.equal(errors.length, 0, errors.join('\n'));
-        console.log('PASS', JSON.stringify(report), 'F entry / Escape return; no browser errors');
+        console.log('PASS', JSON.stringify(report), 'small viewport; no browser errors');
     } finally { await browser.close(); server.close(); }
 })().catch(error => { console.error(error); server.close(); process.exitCode = 1; });

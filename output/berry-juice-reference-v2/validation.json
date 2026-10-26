@@ -1,0 +1,19 @@
+{
+  "id": "item_berry_juice",
+  "reimported": true,
+  "meshCount": 8,
+  "embeddedPrints": 1,
+  "degenerateFaces": 0,
+  "triangles": 110016,
+  "boundsMin": [
+    -0.4599994122982025,
+    -0.4636993706226349,
+    0.0
+  ],
+  "boundsMax": [
+    0.4599994122982025,
+    0.4599994122982025,
+    1.2339999675750732
+  ],
+  "sha256": "b259aab8186fbcadfab570ce5408d89e28dd7da84e78048f62795b5e2dd06be8"
+}

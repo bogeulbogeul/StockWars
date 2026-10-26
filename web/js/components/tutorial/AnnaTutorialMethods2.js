@@ -198,10 +198,10 @@ export const AnnaTutorialMethods2 = {
         const end = this.steps.findIndex(step => step.id === 'close_inventory_guide');
         if (end < 0) return;
         const base = { speaker: '모아', expression: 'Smile', tracker: '3/4 • 실제 찌라시와 분석력', requiresManualAction: false, actualRumor: true };
-        const previews = [1, 2, 3, 4, 5].map(level => rumorDecryption(item.intelReport || item.desc || '', { ...item, interpretationLevel: 1 }, level));
+        const previews = Array.from({ length: decoded.maxLevel || 10 }, (_, index) => index + 1).map(level => rumorDecryption(item.intelReport || item.desc || '', { ...item, interpretationLevel: 1 }, level));
         const lessons = [
             { ...base, id: 'rumor_actual_level', rumorPreview: previews[0], text: '먼저 분석력 1단계에서는 이 찌라시가 어떻게 보이는지 살펴볼게요.' },
-            { ...base, id: 'rumor_actual_clues', text: '이 글에서 기업을 가리키는 표현, 어떤 사건인지, 언제 영향을 줄지를 찾아보세요. 낮은 단계에서는 기업명이 비유로 가려질 수 있어요.', example: { label: '분석력에 따른 차이', rows: ['업종과 흐름 → 사건과 방향 → 기업과 근거 → 상세 정보', '분석력과 이 찌라시에 유지된 해석 단계 중 높은 단계가 적용돼요.'] } },
+            { ...base, id: 'rumor_actual_clues', text: '이 글에서 기업을 가리키는 표현, 어떤 사건인지, 언제 영향을 줄지를 찾아보세요. 낮은 단계에서는 기업명이 비유로 가려질 수 있어요.', example: { label: '분석력에 따른 차이', rows: ['수수께끼 → 사건·핵심 조건 → 출처·경쟁·시점·정보의 한계', '분석력과 이 찌라시에 유지된 해석 단계 중 높은 단계가 적용돼요.'] } },
             { ...base, id: 'rumor_actual_quiz', rumorPreview: previews[0], requiresManualAction: true,
                 ...buildRumorQuiz(previews[0].text) },
             { ...base, id: 'rumor_actual_feedback', text: '비유는 추리의 단서이며 사실의 보증은 아니에요. 이제 같은 찌라시의 분석력별 차이를 볼게요.' },

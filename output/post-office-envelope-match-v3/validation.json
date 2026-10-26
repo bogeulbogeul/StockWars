@@ -1,0 +1,9 @@
+{
+  "sameSourceGeometry": true,
+  "sharedEnvelopeParts": 5,
+  "glbReload": true,
+  "buildingSignUnchanged": true,
+  "roofTilesPreserved": 128,
+  "finitePositions": true,
+  "gameApplied": false
+}

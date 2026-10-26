@@ -1,0 +1,10 @@
+import { R_BIONICS } from './Bio/BIONICS.js';
+import { R_CELLHEALTH } from './Bio/CELLHEALTH.js';
+import { R_FORESTLAB } from './Bio/FORESTLAB.js';
+import { R_GENEFORCE } from './Bio/GENEFORCE.js';
+import { R_LIFECURE } from './Bio/LIFECURE.js';
+import { R_NEURONBIO } from './Bio/NEURONBIO.js';
+import { R_ORGANICLAB } from './Bio/ORGANICLAB.js';
+import { R_PHARMAX } from './Bio/PHARMAX.js';
+import { R_VITALMED } from './Bio/VITALMED.js';
+export const BIO_RUMORS = [...R_BIONICS, ...R_CELLHEALTH, ...R_FORESTLAB, ...R_GENEFORCE, ...R_LIFECURE, ...R_NEURONBIO, ...R_ORGANICLAB, ...R_PHARMAX, ...R_VITALMED];

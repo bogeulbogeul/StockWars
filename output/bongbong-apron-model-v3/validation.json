@@ -1,0 +1,9 @@
+{
+  "body_vertex_positions_unchanged": true,
+  "apron_triangles": 8400,
+  "bud_triangles": 864,
+  "body_triangles": 73602,
+  "apron_separate_meshes": 14,
+  "rig": "Original Somangi_Rig / Body; flower follows Head",
+  "status": "Model and static render preview; not installed in game; full motion contact review pending"
+}

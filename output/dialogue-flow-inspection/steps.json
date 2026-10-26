@@ -1,0 +1,1228 @@
+[
+  {
+    "cursor": 0,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n……음?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "……음?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 1,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n어……!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "어……!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 2,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n왔다! 드디어 왔어요!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "왔다! 드디어 왔어요!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 3,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n……나?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "……나?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 4,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n네! 혹시 안내문 보고 오셨어요? 포포리 마을에서 새 주민을 찾는다는 안내문이요!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "네! 혹시 안내문 보고 오셨어요? 포포리 마을에서 새 주민을 찾는다는 안내문이요!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 5,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n응. 정류장에 붙어 있던 거.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "응. 정류장에 붙어 있던 거.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 6,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n다행이다…… 아무도 못 봤으면 어쩌나 했어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "다행이다…… 아무도 못 봤으면 어쩌나 했어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 7,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n여기서 기다리고 있었어?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기서 기다리고 있었어?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 8,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n네. 버스가 올 때마다요. 혹시 제가 없을 때 오시면 어디로 가야 할지 모르실 테니까.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "네. 버스가 올 때마다요. 혹시 제가 없을 때 오시면 어디로 가야 할지 모르실 테니까.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 9,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n그런데 자고 있었잖아.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그런데 자고 있었잖아.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 10,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n……오늘은 조금 졸았어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "……오늘은 조금 졸았어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 11,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n아, 인사부터 해야 하는데!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "아, 인사부터 해야 하는데!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 12,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n포포리 마을에 오신 걸 환영해요. 저는 정착 안내를 맡은 모아예요!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "포포리 마을에 오신 걸 환영해요. 저는 정착 안내를 맡은 모아예요!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 13,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n이름이 뭐예요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "이름이 뭐예요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 14,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n아직 못 정했어.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "아직 못 정했어.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 15,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n그럼 마을을 둘러보는 동안 생각해보는 건 어때요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼 마을을 둘러보는 동안 생각해보는 건 어때요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 16,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "소망이\n\n바로 정하지 않아도 돼?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "바로 정하지 않아도 돼?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 17,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n그럼요. 앞으로 계속 불릴 이름인데, 천천히 생각해봐요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼요. 앞으로 계속 불릴 이름인데, 천천히 생각해봐요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 18,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n우선 어떤 곳인지 보여드릴게요. 같이 가요!",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "우선 어떤 곳인지 보여드릴게요. 같이 가요!",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 19,
+    "kind": "line",
+    "place": "arrival",
+    "theme": true,
+    "text": "모아\n\n준비됐어요? 가까운 가구점부터 둘러볼까요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "준비됐어요? 가까운 가구점부터 둘러볼까요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 20,
+    "kind": "action",
+    "id": "walk",
+    "place": "furniture",
+    "theme": false,
+    "text": "포포리의 첫날\n\n우디 가구점으로 가기\n\n모아를 따라 마을을 둘러봐요. 다음 장소로 함께 이동합니다.\n\n확인",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "포포리의 첫날",
+        "weight": "500",
+        "size": "15px"
+      },
+      {
+        "tag": "H1",
+        "text": "우디 가구점으로 가기",
+        "weight": "500",
+        "size": "23px"
+      },
+      {
+        "tag": "P",
+        "text": "모아를 따라 마을을 둘러봐요. 다음 장소로 함께 이동합니다.",
+        "weight": "500",
+        "size": "19px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "확인",
+        "weight": "500",
+        "size": "16px"
+      }
+    ]
+  },
+  {
+    "cursor": 21,
+    "kind": "line",
+    "place": "furniture",
+    "theme": true,
+    "text": "모아\n\n여기는 우디가 운영하는 우디 가구점이에요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 우디가 운영하는 우디 가구점이에요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 22,
+    "kind": "line",
+    "place": "furniture",
+    "theme": true,
+    "text": "소망이\n\n내 집에 놓을 것도 여기서 고르면 돼?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "내 집에 놓을 것도 여기서 고르면 돼?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 23,
+    "kind": "line",
+    "place": "furniture",
+    "theme": true,
+    "text": "모아\n\n그럼요. 어떤 방에서 지내고 싶은지 천천히 생각해봐요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼요. 어떤 방에서 지내고 싶은지 천천히 생각해봐요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 24,
+    "kind": "line",
+    "place": "post",
+    "theme": true,
+    "text": "모아\n\n편지나 선물을 보내고 싶으면 두리 우체국으로 오세요. 두리가 도와줄 거예요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "편지나 선물을 보내고 싶으면 두리 우체국으로 오세요. 두리가 도와줄 거예요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 25,
+    "kind": "line",
+    "place": "post",
+    "theme": true,
+    "text": "소망이\n\n받을 때도 여기로 와?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "받을 때도 여기로 와?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 26,
+    "kind": "line",
+    "place": "post",
+    "theme": true,
+    "text": "모아\n\n받는 건 집 앞 우편함을 확인하면 돼요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "받는 건 집 앞 우편함을 확인하면 돼요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 27,
+    "kind": "line",
+    "place": "homeOutside",
+    "theme": true,
+    "text": "모아\n\n여기가 앞으로 지낼 소망이네 집이에요. 빌려서 지내는 집이고, 집주인분은 세계여행을 떠나셨어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기가 앞으로 지낼 소망이네 집이에요. 빌려서 지내는 집이고, 집주인분은 세계여행을 떠나셨어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 28,
+    "kind": "line",
+    "place": "homeOutside",
+    "theme": true,
+    "text": "소망이\n\n세계여행?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "세계여행?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 29,
+    "kind": "line",
+    "place": "homeOutside",
+    "theme": true,
+    "text": "모아\n\n네. 가끔 편지나 기념품도 보내주신대요. 어떤 곳을 여행하고 계실지 궁금하죠?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "네. 가끔 편지나 기념품도 보내주신대요. 어떤 곳을 여행하고 계실지 궁금하죠?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 30,
+    "kind": "line",
+    "place": "stockOutside",
+    "theme": true,
+    "text": "모아\n\n여기는 토리 증권사예요. 주식 투자를 배울 수 있는 곳이죠.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 토리 증권사예요. 주식 투자를 배울 수 있는 곳이죠.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 31,
+    "kind": "line",
+    "place": "stockOutside",
+    "theme": true,
+    "text": "소망이\n\n한 번도 해본 적 없는데.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "한 번도 해본 적 없는데.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 32,
+    "kind": "line",
+    "place": "stockOutside",
+    "theme": true,
+    "text": "모아\n\n처음이라면 토리에게 물어보세요. 어디서부터 시작하면 되는지 알려줄 거예요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "처음이라면 토리에게 물어보세요. 어디서부터 시작하면 되는지 알려줄 거예요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 33,
+    "kind": "line",
+    "place": "pub",
+    "theme": true,
+    "text": "모아\n\n여기는 도란이 운영하는 도란 쉼터예요. 새벽에 문을 열어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 도란이 운영하는 도란 쉼터예요. 새벽에 문을 열어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 34,
+    "kind": "line",
+    "place": "pub",
+    "theme": true,
+    "text": "소망이\n\n다들 자고 있을 때?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "다들 자고 있을 때?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 35,
+    "kind": "line",
+    "place": "pub",
+    "theme": true,
+    "text": "모아\n\n아직 잠들기 아쉬운 날도 있잖아요. 그럴 때 들러보세요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "아직 잠들기 아쉬운 날도 있잖아요. 그럴 때 들러보세요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 36,
+    "kind": "line",
+    "place": "storeOutside",
+    "theme": true,
+    "text": "모아\n\n여기는 봉봉 잡화점이에요. 생활에 필요한 물건이나 먹을 걸 살 수 있어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 봉봉 잡화점이에요. 생활에 필요한 물건이나 먹을 걸 살 수 있어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 37,
+    "kind": "line",
+    "place": "storeOutside",
+    "theme": true,
+    "text": "소망이\n\n먹을 것도?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "먹을 것도?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 38,
+    "kind": "line",
+    "place": "storeOutside",
+    "theme": true,
+    "text": "모아\n\n네! 나중에 포포리빵도 먹어봐요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "네! 나중에 포포리빵도 먹어봐요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 39,
+    "kind": "line",
+    "place": "tree",
+    "theme": true,
+    "text": "모아\n\n저 큰 나무 보이죠? 포포리 나무예요. 우리 마을 이름도 저 나무에서 따왔어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "저 큰 나무 보이죠? 포포리 나무예요. 우리 마을 이름도 저 나무에서 따왔어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 40,
+    "kind": "line",
+    "place": "tree",
+    "theme": true,
+    "text": "소망이\n\n엄청 크다…….",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "엄청 크다…….",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 41,
+    "kind": "line",
+    "place": "tree",
+    "theme": true,
+    "text": "모아\n\n길이 헷갈리면 저 나무를 찾아오세요. 여기서 다시 출발하면 돼요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "길이 헷갈리면 저 나무를 찾아오세요. 여기서 다시 출발하면 돼요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 42,
+    "kind": "line",
+    "place": "bookstore",
+    "theme": true,
+    "text": "모아\n\n여기는 소담이 운영하는 소담 서점이에요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 소담이 운영하는 소담 서점이에요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 43,
+    "kind": "line",
+    "place": "bookstore",
+    "theme": true,
+    "text": "소망이\n\n무슨 책부터 읽어야 할까?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "무슨 책부터 읽어야 할까?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 44,
+    "kind": "line",
+    "place": "bookstore",
+    "theme": true,
+    "text": "모아\n\n마음에 드는 제목부터 찾아봐요. 소담에게 물어봐도 좋고요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "마음에 드는 제목부터 찾아봐요. 소담에게 물어봐도 좋고요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 45,
+    "kind": "line",
+    "place": "bankOutside",
+    "theme": true,
+    "text": "모아\n\n여기는 차곡 은행이에요. 차곡에게 계좌를 만들거나 생활 자금을 상담할 수 있어요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "여기는 차곡 은행이에요. 차곡에게 계좌를 만들거나 생활 자금을 상담할 수 있어요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 46,
+    "kind": "line",
+    "place": "bankOutside",
+    "theme": true,
+    "text": "소망이\n\n혼자 가도 괜찮아?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "혼자 가도 괜찮아?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 47,
+    "kind": "line",
+    "place": "bankOutside",
+    "theme": true,
+    "text": "모아\n\n그럼요. 처음에는 제가 같이 가드릴게요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼요. 처음에는 제가 같이 가드릴게요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 48,
+    "kind": "line",
+    "place": "informationOutside",
+    "theme": true,
+    "text": "모아\n\n마지막으로, 여기가 제가 일하는 모아 안내소예요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "마지막으로, 여기가 제가 일하는 모아 안내소예요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 49,
+    "kind": "line",
+    "place": "informationOutside",
+    "theme": true,
+    "text": "소망이\n\n정류장에서 일하는 게 아니었어?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "소망이",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "정류장에서 일하는 게 아니었어?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 50,
+    "kind": "line",
+    "place": "informationOutside",
+    "theme": true,
+    "text": "모아\n\n아니에요! 거기는 누가 오나 기다리러 나가 있었던 거예요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "아니에요! 거기는 누가 오나 기다리러 나가 있었던 거예요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 51,
+    "kind": "line",
+    "place": "informationOutside",
+    "theme": true,
+    "text": "모아\n\n앞으로 궁금한 게 생기면 여기로 찾아오세요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "앞으로 궁금한 게 생기면 여기로 찾아오세요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 52,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n그럼 입주 신청을 해볼까요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "그럼 입주 신청을 해볼까요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 53,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n마을을 둘러보는 동안 이름은 생각해봤어요?",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "마을을 둘러보는 동안 이름은 생각해봤어요?",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 54,
+    "kind": "line",
+    "place": "information",
+    "theme": true,
+    "text": "모아\n\n정했다면 여기, 신청인 서명 칸에 적어주세요.",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "모아",
+        "weight": "500",
+        "size": "20px"
+      },
+      {
+        "tag": "P",
+        "text": "정했다면 여기, 신청인 서명 칸에 적어주세요.",
+        "weight": "500",
+        "size": "20px"
+      }
+    ]
+  },
+  {
+    "cursor": 55,
+    "kind": "action",
+    "id": "nickname",
+    "place": "information",
+    "theme": false,
+    "text": "정착 서식 제01호\n입주 신청용\n\n포포리 마을 · 정착 안내소\n\n입주 신청서\n\n아래와 같이 포포리 마을 입주를 신청합니다.\n\n입주 마을\n포포리 마을\n안내 담당\n모아\n신청인 이름\n필수\n\n마을에서 불리고 싶은 이름을 적어주세요.\n\n서명\n\n0 / 12자\n\n소망\n서명하고 제출하기\n→\n포포리 마을 정착 안내소 귀중",
+    "styles": [
+      {
+        "tag": "P",
+        "text": "포포리 마을 · 정착 안내소",
+        "weight": "500",
+        "size": "11px"
+      },
+      {
+        "tag": "H1",
+        "text": "입주 신청서",
+        "weight": "500",
+        "size": "30px"
+      },
+      {
+        "tag": "P",
+        "text": "아래와 같이 포포리 마을 입주를 신청합니다.",
+        "weight": "500",
+        "size": "12px"
+      },
+      {
+        "tag": "STRONG",
+        "text": "포포리 마을",
+        "weight": "500",
+        "size": "13px"
+      },
+      {
+        "tag": "STRONG",
+        "text": "모아",
+        "weight": "500",
+        "size": "13px"
+      },
+      {
+        "tag": "P",
+        "text": "마을에서 불리고 싶은 이름을 적어주세요.",
+        "weight": "500",
+        "size": "10px"
+      },
+      {
+        "tag": "P",
+        "text": "0 / 12자",
+        "weight": "500",
+        "size": "10px"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "서명하고 제출하기 →",
+        "weight": "500",
+        "size": "14px"
+      }
+    ]
+  }
+]

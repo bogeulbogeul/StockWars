@@ -1,0 +1,52 @@
+:root { color-scheme: light; font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; color: #513e2f; background: #e9e8db; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; background: radial-gradient(ellipse at 20% 15%, #f8f4e7, transparent 55%), radial-gradient(ellipse at 85% 95%, #c8d0b8, transparent 60%), #e5e6d8; }
+.preview-header, .preview-footer { position: fixed; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 16px; color: #78806c; font-size: 12px; letter-spacing: .08em; }
+.preview-header { top: 34px; align-items: center; }
+.preview-header span:first-child { font-size: 19px; font-weight: 800; color: #647655; letter-spacing: -.05em; }
+.preview-footer { bottom: 28px; font-size: 10px; }
+main { min-height: 100svh; display: grid; place-items: center; padding: 100px 20px; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 3px solid #765c36; outline-offset: 5px; }
+.reopen { padding: 16px 28px; border: 1px solid #879879; border-radius: 22px; color: #526346; background: #fff9e9; }
+dialog { padding: 0; border: 0; background: transparent; color: inherit; overflow: visible; width: min(640px, calc(100% - 32px)); max-height: calc(100svh - 100px); }
+dialog::backdrop { background: #45503e18; backdrop-filter: blur(5px); }
+.paper { position: relative; padding: 43px 46px 30px; border: 2px solid #d2c5a6; border-radius: 35px 29px 33px 26px; background: #fffbee; box-shadow: 0 7px 0 #d5ccb5, 0 24px 60px #43503924; }
+.paper::before { content: ""; position: absolute; inset: 9px; border: 1px solid #e8dfc9; border-radius: 27px 22px 26px 20px; pointer-events: none; }
+.tab { position: absolute; top: -19px; left: 40px; padding: 10px 26px; background: #b8cc9f; color: #435537; font-size: 14px; font-weight: 800; border: 2px solid #94ad7c; border-radius: 12px 10px 14px 9px; transform: rotate(-2deg); box-shadow: 0 3px 0 #90a87926; }
+.close { position: absolute; right: 22px; top: 18px; width: 44px; height: 44px; border: 0; background: transparent; color: #938671; font-size: 30px; border-radius: 50%; }
+.close:hover { background: #eee7d5; color: #513e2f; }
+.symbol { display: grid; place-items: center; margin: 0 auto 16px; width: 51px; height: 51px; border: 2px solid #aaba8f; border-radius: 18px 21px 17px 21px; background: #edf0dc; color: #72875b; font: italic 700 33px Georgia, serif; transform: rotate(-5deg); }
+.eyebrow { margin: 0 0 12px; text-align: center; color: #7b8a60; font-size: 12px; font-weight: 700; letter-spacing: .13em; }
+h1 { margin: 0 0 19px; text-align: center; font-size: 27px; letter-spacing: -.065em; line-height: 1.4; }
+.intro { margin: 0; text-align: center; font-size: 15px; color: #82725e; line-height: 1.9; letter-spacing: -.035em; }
+.rule { height: 1px; margin: 28px 0; background: repeating-linear-gradient(90deg, #d7cbb2 0 4px, transparent 4px 9px); }
+.information { display: flex; gap: 16px; align-items: flex-start; }
+.number { padding-top: 2px; color: #94a479; font-size: 14px; font-weight: 800; }
+h2 { font-size: 17px; letter-spacing: -.045em; margin: 0 0 10px; }
+.information p { font-size: 14px; line-height: 1.9; margin: 0; color: #82725e; letter-spacing: -.035em; }
+aside { display: flex; align-items: center; gap: 16px; margin: 26px 0 30px; padding: 17px 23px; border-radius: 17px 13px 18px 12px; background: #f0efdb; color: #76835d; }
+aside > span { font-size: 24px; color: #a3b281; }
+aside p { margin: 0; font-size: 13px; line-height: 1.8; }
+footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.sender { font-size: 11px; color: #9b8c76; letter-spacing: -.04em; }
+.confirm { min-height: 48px; padding: 12px 26px; border: 2px solid #91a476; border-radius: 17px 14px 18px 13px; background: #bacd9c; box-shadow: 0 3px 0 #8f9e73; color: #3f5130; font-size: 15px; font-weight: 800; }
+.confirm span { margin-left: 15px; }
+.confirm:hover { background: #c8d9ad; }
+.confirm:active { transform: translateY(2px); box-shadow: 0 1px 0 #8f9e73; }
+@media (max-width: 560px) {
+  dialog { max-height: calc(100svh - 70px); overflow-y: auto; padding: 22px 0 10px; }
+  .paper { padding: 40px 24px 24px; }
+  .tab { left: 26px; }
+  h1 { font-size: 23px; }
+  .intro { font-size: 13px; }
+  .information p { font-size: 13px; }
+  .information { gap: 11px; }
+  .desktop-break { display: none; }
+  aside { padding: 16px; }
+  footer { flex-direction: column; gap: 20px; }
+  .confirm { width: 100%; }
+  .preview-header { top: 18px; }
+  .preview-header span:last-child, .preview-footer span:nth-child(2) { display: none; }
+  .preview-footer { bottom: 14px; font-size: 9px; }
+}

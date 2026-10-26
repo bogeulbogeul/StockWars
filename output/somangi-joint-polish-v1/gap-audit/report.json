@@ -1,0 +1,45 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-joint-polish-v1\\somangi-walk.glb",
+  "sha256": "7d8f132e63db48454091d6a9eeee223c9c02e108e6f0834652b5534529134e2a",
+  "sourceUnchanged": true,
+  "samples": 601,
+  "exportedGlb": true,
+  "duplicatePositionPairs": 7950,
+  "maximumGap": 0,
+  "gapRelativeToHeight": 0.0,
+  "loopError": 0.0,
+  "zones": {
+    "neck": {
+      "maximumGap": 0,
+      "phase": 0,
+      "restPosition": null
+    },
+    "left_shoulder": {
+      "maximumGap": 0,
+      "phase": 0,
+      "restPosition": null
+    },
+    "right_shoulder": {
+      "maximumGap": 0,
+      "phase": 0,
+      "restPosition": null
+    },
+    "left_hip": {
+      "maximumGap": 0,
+      "phase": 0,
+      "restPosition": null
+    },
+    "right_hip": {
+      "maximumGap": 0,
+      "phase": 0,
+      "restPosition": null
+    }
+  },
+  "thresholdModelUnits": 2e-06,
+  "passesBoundaryContinuity": true,
+  "visualReview": {
+    "views": 4,
+    "phasesPerView": 8,
+    "result": "Underarm dark slits and jagged thigh shading reduced; natural crease shading remains"
+  }
+}

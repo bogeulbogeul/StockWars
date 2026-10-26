@@ -1,0 +1,1022 @@
+[
+  {
+    "Path": "output/black-cat-sprite-test/v1/base.png",
+    "Bytes": 810165
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/base.png",
+    "Bytes": 810165
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/base.png",
+    "Bytes": 810165
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/base.png",
+    "Bytes": 810165
+  },
+  {
+    "Path": "output/title-crayon-v1/stockwars-somangi-start-button.png",
+    "Bytes": 2220080
+  },
+  {
+    "Path": "output/town-door-resize-v1/securities.png",
+    "Bytes": 1507157
+  },
+  {
+    "Path": "output/world-tree-concept-v1/world-tree.png",
+    "Bytes": 1994981
+  },
+  {
+    "Path": "output/bookshop-exterior-concept-v1/bookshop.png",
+    "Bytes": 1989583
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-8.png",
+    "Bytes": 360051
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-9.png",
+    "Bytes": 358114
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-6.png",
+    "Bytes": 350741
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-5.png",
+    "Bytes": 349301
+  },
+  {
+    "Path": "output/house-multiview-v1/back-no-window.png",
+    "Bytes": 1713786
+  },
+  {
+    "Path": "output/bus-stop-concept-v1/bus-stop.png",
+    "Bytes": 1676471
+  },
+  {
+    "Path": "output/settlement-office-multiview-v1/back-no-window.png",
+    "Bytes": 1600905
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-11.png",
+    "Bytes": 313476
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-10.png",
+    "Bytes": 313471
+  },
+  {
+    "Path": "output/electronic-board-concept-v1/electronic-board-blank.png",
+    "Bytes": 1554218
+  },
+  {
+    "Path": "output/vegetation-simple-v1/world-tree.png",
+    "Bytes": 1552315
+  },
+  {
+    "Path": "output/flower-clump-concept-v1/flowers.png",
+    "Bytes": 1539657
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-3.png",
+    "Bytes": 492129
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/web-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/web-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/web-store.png",
+    "Bytes": 147521
+  },
+  {
+    "Path": "output/vegetation-simple-v1/flowers.png",
+    "Bytes": 1247981
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-bank.png",
+    "Bytes": 359351
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/web-bank.png",
+    "Bytes": 359351
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-bank.png",
+    "Bytes": 359351
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/web-bank.png",
+    "Bytes": 359351
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-information.png",
+    "Bytes": 352825
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-information.png",
+    "Bytes": 352825
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-side.png",
+    "Bytes": 968888
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/web-seat-2-side.png",
+    "Bytes": 968888
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-side.png",
+    "Bytes": 945730
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/web-seat-1-side.png",
+    "Bytes": 945730
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-stock.png",
+    "Bytes": 313753
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/web-stock.png",
+    "Bytes": 313753
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-stock.png",
+    "Bytes": 313753
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/web-stock.png",
+    "Bytes": 313753
+  },
+  {
+    "Path": "output/sigeureujabeujong-sit-v1/right-isometric-sit-short-legs-v2.png",
+    "Bytes": 852599
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-12.png",
+    "Bytes": 279130
+  },
+  {
+    "Path": "output/sigeureujabeujong-sit-v1/front-sit-short-legs-v2.png",
+    "Bytes": 779911
+  },
+  {
+    "Path": "output/building-retouch-final/FinanceBuilding-material-v1.png",
+    "Bytes": 732742
+  },
+  {
+    "Path": "output/building-retouch-final/StoreBuilding-material-v1.png",
+    "Bytes": 727844
+  },
+  {
+    "Path": "output/building-retouch-final/HomeBuilding-material-v1.png",
+    "Bytes": 715617
+  },
+  {
+    "Path": "output/sigeureujabeujong-carry-leg-fix-v2/run/raw/right_carry.takes/fixed-fourth.png",
+    "Bytes": 699628
+  },
+  {
+    "Path": "output/building-retouch-final/FunitueStoreBuilding-material-v1.png",
+    "Bytes": 648492
+  },
+  {
+    "Path": "output/building-retouch-final/InformationBuilding-material-v1.png",
+    "Bytes": 641777
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-1-back.png",
+    "Bytes": 637852
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/web-seat-1-back.png",
+    "Bytes": 637852
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-training.png",
+    "Bytes": 277473
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/web-training.png",
+    "Bytes": 277473
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-training.png",
+    "Bytes": 277473
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/desktop-seat-2-back.png",
+    "Bytes": 549943
+  },
+  {
+    "Path": "output/information-sofa-seat-penetration-check-v1/web-seat-2-back.png",
+    "Bytes": 549943
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-home.png",
+    "Bytes": 142189
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-home.png",
+    "Bytes": 142189
+  },
+  {
+    "Path": "output/town-bus-setback-v8/player-popori-tree.png",
+    "Bytes": 413127
+  },
+  {
+    "Path": "output/town-player-view-v1/player-popori-tree.png",
+    "Bytes": 413127
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-bank.png",
+    "Bytes": 361472
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-bank.png",
+    "Bytes": 361472
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-bank.png",
+    "Bytes": 360804
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/web-bank.png",
+    "Bytes": 360804
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-information.png",
+    "Bytes": 352075
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-information.png",
+    "Bytes": 350881
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-information.png",
+    "Bytes": 350881
+  },
+  {
+    "Path": "output/town-bus-setback-v8/player-bus-stop.png",
+    "Bytes": 326293
+  },
+  {
+    "Path": "output/town-path-junction-v9/player-bus-stop.png",
+    "Bytes": 326293
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-stock.png",
+    "Bytes": 316274
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-stock.png",
+    "Bytes": 316274
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-stock.png",
+    "Bytes": 315489
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/web-stock.png",
+    "Bytes": 315489
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/down_walk-contact.png",
+    "Bytes": 153505
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/down_walk-contact.png",
+    "Bytes": 153505
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/down_walk-contact.png",
+    "Bytes": 153505
+  },
+  {
+    "Path": "output/town-performance-v2/all-seats/web-seat-13.png",
+    "Bytes": 300268
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/web-simulation.png",
+    "Bytes": 296222
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/desktop-simulation.png",
+    "Bytes": 296222
+  },
+  {
+    "Path": "output/exterior-wall-rigidbody-v1/desktop-simulation.png",
+    "Bytes": 296113
+  },
+  {
+    "Path": "output/indoor-wall-rigidbody-v1/web-simulation.png",
+    "Bytes": 296113
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-training.png",
+    "Bytes": 279372
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/web-training.png",
+    "Bytes": 279372
+  },
+  {
+    "Path": "output/buddy-hop-corrective-v24/side/070.png",
+    "Bytes": 277496
+  },
+  {
+    "Path": "output/no-paw-pads-v1/comparison-final.png",
+    "Bytes": 275171
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/up_walk-contact.png",
+    "Bytes": 125317
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/up_walk-contact.png",
+    "Bytes": 125317
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/up_walk-contact.png",
+    "Bytes": 125317
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/00.png",
+    "Bytes": 41292
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/15.png",
+    "Bytes": 41292
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/00.png",
+    "Bytes": 41292
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/15.png",
+    "Bytes": 41292
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-store.png",
+    "Bytes": 147204
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-store.png",
+    "Bytes": 147204
+  },
+  {
+    "Path": "output/indoor-furniture-rigidbody-v1/desktop-home.png",
+    "Bytes": 143430
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-home.png",
+    "Bytes": 142228
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-home.png",
+    "Bytes": 142228
+  },
+  {
+    "Path": "output/rumor-quiz-stamp-2026-10-25/desktop-wrong.png",
+    "Bytes": 63263
+  },
+  {
+    "Path": "output/rumor-quiz-minimal-2026-10-25/web-quiz-open.png",
+    "Bytes": 59021
+  },
+  {
+    "Path": "output/rumor-quiz-stamp-2026-10-25/desktop-quiz-open.png",
+    "Bytes": 59021
+  },
+  {
+    "Path": "output/rumor-quiz-stamp-2026-10-25/web-quiz-open.png",
+    "Bytes": 59021
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/00.png",
+    "Bytes": 57926
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/00.png",
+    "Bytes": 57926
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/15.png",
+    "Bytes": 57926
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/down_sit-contact.png",
+    "Bytes": 48622
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/down_sit-contact.png",
+    "Bytes": 48622
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/down_sit-contact.png",
+    "Bytes": 48622
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/down_idle-contact.png",
+    "Bytes": 48036
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/down_idle-contact.png",
+    "Bytes": 48036
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/down_idle-contact.png",
+    "Bytes": 48036
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/right_sit-contact.png",
+    "Bytes": 43488
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/right_sit-contact.png",
+    "Bytes": 43488
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/right_sit-contact.png",
+    "Bytes": 43488
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/up_idle-contact.png",
+    "Bytes": 42636
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/up_idle-contact.png",
+    "Bytes": 42636
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/up_idle-contact.png",
+    "Bytes": 42636
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v2/run/qa/right_idle-contact.png",
+    "Bytes": 38875
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v3/run/qa/right_idle-contact.png",
+    "Bytes": 38875
+  },
+  {
+    "Path": "output/black-cat-sprite-test/v4/run/qa/right_idle-contact.png",
+    "Bytes": 38875
+  },
+  {
+    "Path": "output/rumor-quiz-stamp-2026-10-25/desktop-correct-stamp.png",
+    "Bytes": 77646
+  },
+  {
+    "Path": "output/rumor-quiz-stamp-2026-10-25/web-correct-stamp.png",
+    "Bytes": 77646
+  },
+  {
+    "Path": "output/rumor-olive-ui-2026-10-25/desktop-wrong.png",
+    "Bytes": 68718
+  },
+  {
+    "Path": "output/rumor-letter-ui-2026-10-25/desktop-wrong.png",
+    "Bytes": 65433
+  },
+  {
+    "Path": "output/rumor-result-visible-2026-10-25/web-quiz-open.png",
+    "Bytes": 59009
+  },
+  {
+    "Path": "output/rumor-stamp-only-2026-10-25/web-quiz-open.png",
+    "Bytes": 59009
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/04.png",
+    "Bytes": 58607
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/11.png",
+    "Bytes": 58607
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/05.png",
+    "Bytes": 58605
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/10.png",
+    "Bytes": 58605
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/07.png",
+    "Bytes": 58407
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/08.png",
+    "Bytes": 58407
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/20.png",
+    "Bytes": 58382
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/25.png",
+    "Bytes": 58382
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/06.png",
+    "Bytes": 58349
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/09.png",
+    "Bytes": 58349
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/21.png",
+    "Bytes": 58323
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/24.png",
+    "Bytes": 58323
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/22.png",
+    "Bytes": 58318
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/23.png",
+    "Bytes": 58318
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/03.png",
+    "Bytes": 58279
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/12.png",
+    "Bytes": 58279
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/07.png",
+    "Bytes": 58255
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/08.png",
+    "Bytes": 58255
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/06.png",
+    "Bytes": 58186
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/09.png",
+    "Bytes": 58186
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/02.png",
+    "Bytes": 58175
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/13.png",
+    "Bytes": 58175
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/01.png",
+    "Bytes": 58098
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/14.png",
+    "Bytes": 58098
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/01.png",
+    "Bytes": 58091
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/14.png",
+    "Bytes": 58091
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/18.png",
+    "Bytes": 58055
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/front/27.png",
+    "Bytes": 58055
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/18.png",
+    "Bytes": 57989
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/front/27.png",
+    "Bytes": 57989
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/05.png",
+    "Bytes": 56704
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/10.png",
+    "Bytes": 56704
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/07.png",
+    "Bytes": 56625
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/08.png",
+    "Bytes": 56625
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/20.png",
+    "Bytes": 56616
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/25.png",
+    "Bytes": 56616
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/21.png",
+    "Bytes": 56582
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/24.png",
+    "Bytes": 56582
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/06.png",
+    "Bytes": 56581
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/09.png",
+    "Bytes": 56581
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/22.png",
+    "Bytes": 56463
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/23.png",
+    "Bytes": 56463
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/18.png",
+    "Bytes": 56443
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/27.png",
+    "Bytes": 56443
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/04.png",
+    "Bytes": 56431
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/11.png",
+    "Bytes": 56431
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/16.png",
+    "Bytes": 56256
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/29.png",
+    "Bytes": 56256
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/02.png",
+    "Bytes": 56210
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/13.png",
+    "Bytes": 56210
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/01.png",
+    "Bytes": 56174
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/14.png",
+    "Bytes": 56174
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/00.png",
+    "Bytes": 55813
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/back/15.png",
+    "Bytes": 55813
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/22.png",
+    "Bytes": 47346
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/23.png",
+    "Bytes": 47346
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/21.png",
+    "Bytes": 47287
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/24.png",
+    "Bytes": 47287
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/20.png",
+    "Bytes": 47135
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/25.png",
+    "Bytes": 47135
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/19.png",
+    "Bytes": 46844
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/26.png",
+    "Bytes": 46844
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/06.png",
+    "Bytes": 46792
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/09.png",
+    "Bytes": 46792
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/07.png",
+    "Bytes": 46575
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/08.png",
+    "Bytes": 46575
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/05.png",
+    "Bytes": 46534
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/10.png",
+    "Bytes": 46534
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/18.png",
+    "Bytes": 46530
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/27.png",
+    "Bytes": 46530
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/04.png",
+    "Bytes": 45953
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/11.png",
+    "Bytes": 45953
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/03.png",
+    "Bytes": 45931
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/12.png",
+    "Bytes": 45931
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/16.png",
+    "Bytes": 45484
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/29.png",
+    "Bytes": 45484
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/02.png",
+    "Bytes": 45384
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/13.png",
+    "Bytes": 45384
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/01.png",
+    "Bytes": 44814
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/14.png",
+    "Bytes": 44814
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/00.png",
+    "Bytes": 44673
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/rear-opposite/opposite-side/15.png",
+    "Bytes": 44673
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/07.png",
+    "Bytes": 44342
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/08.png",
+    "Bytes": 44342
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/06.png",
+    "Bytes": 44243
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/09.png",
+    "Bytes": 44243
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/07.png",
+    "Bytes": 44182
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/08.png",
+    "Bytes": 44182
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/06.png",
+    "Bytes": 44140
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/09.png",
+    "Bytes": 44140
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/05.png",
+    "Bytes": 44043
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/10.png",
+    "Bytes": 44043
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/05.png",
+    "Bytes": 44029
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/10.png",
+    "Bytes": 44029
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/22.png",
+    "Bytes": 43965
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/23.png",
+    "Bytes": 43965
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/22.png",
+    "Bytes": 43921
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/23.png",
+    "Bytes": 43921
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/21.png",
+    "Bytes": 43902
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/24.png",
+    "Bytes": 43902
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/21.png",
+    "Bytes": 43827
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/24.png",
+    "Bytes": 43827
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/20.png",
+    "Bytes": 43598
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/25.png",
+    "Bytes": 43598
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/20.png",
+    "Bytes": 43564
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/25.png",
+    "Bytes": 43564
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/04.png",
+    "Bytes": 43435
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/11.png",
+    "Bytes": 43435
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/03.png",
+    "Bytes": 43048
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/12.png",
+    "Bytes": 43048
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/03.png",
+    "Bytes": 42959
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/12.png",
+    "Bytes": 42959
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/18.png",
+    "Bytes": 42927
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/27.png",
+    "Bytes": 42927
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/18.png",
+    "Bytes": 42884
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/27.png",
+    "Bytes": 42884
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/02.png",
+    "Bytes": 42690
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/13.png",
+    "Bytes": 42690
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/02.png",
+    "Bytes": 42577
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/13.png",
+    "Bytes": 42577
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/01.png",
+    "Bytes": 42055
+  },
+  {
+    "Path": "output/somangi-walk-height-fixed-preview/side/14.png",
+    "Bytes": 42055
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/01.png",
+    "Bytes": 41999
+  },
+  {
+    "Path": "output/somangi-walk-hip-seam-v2/side/14.png",
+    "Bytes": 41999
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-training.png",
+    "Bytes": 9822
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-training.png",
+    "Bytes": 9822
+  },
+  {
+    "Path": "output/jump-check-v1/desktop-jump-simulation.png",
+    "Bytes": 7964
+  },
+  {
+    "Path": "output/jump-check-v1/web-jump-simulation.png",
+    "Bytes": 7964
+  }
+]

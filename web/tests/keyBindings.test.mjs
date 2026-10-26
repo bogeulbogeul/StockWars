@@ -7,7 +7,7 @@ import { TownPlayerController } from '../js/components/town/TownPlayerController
 import { SettingsModal } from '../js/components/SettingsModal.js';
 
 const event = (code, extra = {}) => ({ code, key: code, preventDefault() {}, stopPropagation() {}, ...extra });
-test('physical rebindings replace previous commands and preserve Korean layout and arrow controls', () => {
+test('physical rebindings replace previous commands and preserve Korean layout without arrow movement', () => {
     const before = settingsStore.value;
     try {
         settingsStore.value = { ...before, keyBindings: { ...DEFAULT_KEY_BINDINGS, w: 'KeyZ', f: 'KeyQ', shift: 'Space', i: 'KeyB' } };
@@ -17,7 +17,7 @@ test('physical rebindings replace previous commands and preserve Korean layout a
         assert.equal(gameKey(event('KeyB')), 'i');
         assert.equal(gameKey(event('Space')), 'shift');
         assert.equal(gameKey(event('ShiftRight')), '');
-        assert.equal(gameKey(event('ArrowUp')), 'w');
+        assert.equal(gameKey(event('ArrowUp')), 'arrowup');
         assert.equal(gameKey(event('KeyQ', { ctrlKey: true })), '');
         assert.equal(gameKey(event('KeyQ', { isComposing: true })), '');
         assert.equal(bindingLabel('f'), 'Q');

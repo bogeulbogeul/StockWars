@@ -1,0 +1,2 @@
+// Shared shop sign used by purchase and packing screens.
+export const shopFlowerMark = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><ellipse cx="50" cy="28" rx="17" ry="23"/><ellipse cx="50" cy="28" rx="17" ry="23" transform="rotate(72 50 50)"/><ellipse cx="50" cy="28" rx="17" ry="23" transform="rotate(144 50 50)"/><ellipse cx="50" cy="28" rx="17" ry="23" transform="rotate(216 50 50)"/><ellipse cx="50" cy="28" rx="17" ry="23" transform="rotate(288 50 50)"/></g><circle cx="50" cy="50" r="14" fill="#f3d689"/></svg>`;

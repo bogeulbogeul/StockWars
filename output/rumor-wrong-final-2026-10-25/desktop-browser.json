@@ -1,0 +1,8 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "wrongRevealsAnswer": true,
+  "wrongLocksChoices": true,
+  "reloadAndCopyNoReward": true,
+  "separateEventCorrectReward": 1,
+  "errors": []
+}

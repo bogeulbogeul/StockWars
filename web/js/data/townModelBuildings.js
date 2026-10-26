@@ -2,25 +2,26 @@
 import { scaleTownBuilding } from './townObjectScale.js';
 // Placement remains interim in the existing town's ground-coordinate system.
 export const TOWN_MODEL_BUILDINGS = [
-    { id: 'home_office_tower', name: '집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 48,
-        x: 850, y: 900, width: 320, rotation: 0 },
-    { id: 'settlement_information', name: '정착 안내소', file: 'Information-clean.glb', nativeMaterials: true,
-        x: 1400, y: 2050, width: 370, rotation: 0 },
+    { id: 'home_office_tower', name: '소망이네 집', file: 'Home-inset-window.glb', nativeMaterials: true, entranceOffsetX: 36.58373925,
+        x: 800, y: 950, width: 320, rotation: 0 },
+    { id: 'settlement_information', name: '모아 안내소', file: 'Information-clean.glb', nativeMaterials: true,
+        x: 1520, y: 2200, width: 370, rotation: 0 },
     { id: 'vivian_store', name: '봉봉 잡화점', file: 'VivianStore-clean.glb', nativeMaterials: true,
-        x: 2150, y: 1100, width: 370, rotation: 0 },
-    { id: 'julian_furniture', name: '모던 프레임', file: 'Furniture-clean.glb', nativeMaterials: true,
-        x: 850, y: 1760, width: 448.5, rotation: 0 },
-    { id: 'cipher_securities', name: '사이퍼 증권', file: 'CipherSecurities-clock.glb',
-        nativeMaterials: true, clock: true,
-        x: 2150, y: 1760, width: 370, rotation: 0 },
-    { id: 'node_finance', name: '노드 은행', file: 'Bank-clean.glb', nativeMaterials: true,
-        x: 2600, y: 2050, width: 390, rotation: 0 },
-    { id: 'midnight_pub', name: '미드나잇 펍', file: 'Pub-clean.glb', nativeMaterials: true,
-        x: 2600, y: 850, width: 390, rotation: 0 },
-    { id: 'data_ink_bookstore', name: '데이터 잉크 서점', file: 'Bookstore-clean.glb', nativeMaterials: true,
-        x: 2600, y: 1450, width: 350, rotation: 0 },
-    { id: 'claire_apparel', name: '옷가게', file: 'ClothingStore-clean.glb', nativeMaterials: true,
-        x: 850, y: 1320, width: 340, rotation: 0 }
+        x: 2700, y: 1430, width: 370, rotation: 0 },
+    { id: 'julian_furniture', name: '우디 가구점', file: 'Furniture-clean.glb', nativeMaterials: true, entranceOffsetX: -101.04758541,
+        x: 850, y: 1900, width: 448.5, rotation: 0 },
+    { id: 'cipher_securities', name: '토리 증권사', file: 'CipherSecurities-clock.glb',
+        nativeMaterials: true, clock: true, entranceOffsetX: 13.19098455,
+        x: 1750, y: 1000, width: 370, rotation: 0 },
+    { id: 'node_finance', name: '차곡 은행', file: 'Bank-clean.glb', nativeMaterials: true,
+        x: 2450, y: 2230, width: 390, rotation: 0 },
+    { id: 'midnight_pub', name: '도란 쉼터', file: 'Pub-clean.glb', nativeMaterials: true, entranceOffsetX: -10.38525493,
+        x: 2700, y: 950, width: 390, rotation: 0 },
+    { id: 'data_ink_bookstore', name: '소담 서점', file: 'Bookstore-clean.glb', nativeMaterials: true,
+        x: 2700, y: 1900, width: 350, rotation: 0 },
+    { id: 'post_office', name: '우체국', file: 'PostOffice.glb', nativeMaterials: true, entranceOffsetX: -91.86875461,
+        x: 800, y: 1430, width: 350, rotation: 0 },
+
 ].map(scaleTownBuilding);
 
 // Temporary tuning for a front-facing village view inspired by the reference.

@@ -1,0 +1,48 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-game-v1\\somangi-walk.blend",
+  "sourceSHA256": "b460fe7fd2e5f5a44d004b60c121b0561df8e5a5a2e791bdb7c363af0774bff6",
+  "accessorySource": "C:\\GitHub\\StockWars\\output\\tori-crystal-clean-v3\\tori.blend",
+  "accessorySourceSHA256": "07e58d88677fa0a51b3a4d26dc09a2e4a5cce1637eb509f495abcaad5e2dc119",
+  "vertices": 132191,
+  "maximumBodyVertexChange": 0,
+  "skinSRGB": "#EFC977",
+  "accessories": [
+    "Chagok brown round glasses",
+    "Chagok seed shell left",
+    "Chagok seed shell right"
+  ],
+  "clothes": false,
+  "ledger": false,
+  "gameInstalled": false,
+  "animationNames": [
+    "Somangi_WholeArmRig"
+  ],
+  "meshes": {
+    "Chagok brown round glasses": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    },
+    "Chagok seed shell left": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    },
+    "Chagok seed shell right": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    },
+    "Somangi_SmoothBody": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    },
+    "Icosphere": {
+      "boundaryEdges": 0,
+      "nonmanifoldEdges": 0,
+      "zeroAreaFaces": 0
+    }
+  },
+  "scope": "Body coordinates unchanged; exported GLB reload, topology, rest-pose renders. Animated contact not fully reviewed."
+}

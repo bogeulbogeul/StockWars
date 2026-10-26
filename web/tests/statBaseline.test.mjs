@@ -3,37 +3,32 @@ import assert from 'node:assert/strict';
 import { ItemEngine } from '../js/engine/ItemEngine.js';
 import { applyPlayerTrait } from '../js/engine/PlayerTrait.js';
 
-test('all four traits grant one stat point from zero and survive reload without duplication', () => {
-    const keys = ['analysis', 'negotiation', 'management', 'recovery'];
-    for (const key of keys) {
+test('all personality profiles leave ability data untouched, including old title-only profiles', () => {
+    for (const key of ['analysis','negotiation','management','recovery']) {
         const engine = new ItemEngine();
-        assert.deepEqual(engine.stats(), Object.fromEntries(keys.map(stat => [stat, 0])));
-        const profile = { trait: { key } };
-        applyPlayerTrait(engine.state, profile);
-        applyPlayerTrait(engine.state, profile);
-        const restored = new ItemEngine({ state: JSON.parse(JSON.stringify(engine.state)) });
-        applyPlayerTrait(restored.state, profile);
-        assert.deepEqual(restored.stats(), Object.fromEntries(keys.map(stat => [stat, stat === key ? 1 : 0])));
+        const before = structuredClone(engine.state);
+        const profile = { trait: { key, title: '이전 투자 성향' } };
+        applyPlayerTrait(engine.state, profile); applyPlayerTrait(engine.state, profile);
+        assert.deepEqual(engine.state, before);
+        assert.deepEqual(engine.stats(), { analysis: 1 });
+        assert.equal(engine.portfolioSlots(), Infinity);
+        assert.equal(engine.maxStamina(), 3);
+        assert.equal(engine.feeRate(0.0015), 0.0015);
+        assert.equal(engine.laborReward(800), 800);
     }
 });
 
-test('old baseline is migrated once, preserving growth, experience and missing trait bonus', () => {
+test('pre-schema saves preserve raw stats and old personality without subtracting points', () => {
     const state = new ItemEngine().state;
-    delete state.statSchema;
+    delete state.statSchema; delete state.abilityRetirementVersion;
+    delete state.analysisGrowth;
     state.baseStats = { analysis: 4, management: 2, recovery: 1 };
-    state.appliedTrait = 'management';
-    state.exp = 170;
+    state.appliedTrait = 'management'; state.exp = 170;
+    const before = structuredClone(state.baseStats);
     const engine = new ItemEngine({ state });
-    applyPlayerTrait(engine.state, { trait: { title: '공격적 자산가' } });
-    assert.deepEqual(engine.stats(), { analysis: 3, negotiation: 0, management: 1, recovery: 0 });
-    assert.equal(engine.state.exp, 170);
-    const restored = new ItemEngine({ state: JSON.parse(JSON.stringify(engine.state)) });
-    applyPlayerTrait(restored.state, { trait: { key: 'management' } });
-    assert.deepEqual(restored.stats(), engine.stats());
-    const missing = new ItemEngine().state;
-    delete missing.statSchema;
-    missing.baseStats = { analysis: 1, management: 1, recovery: 1 };
-    const repaired = new ItemEngine({ state: missing });
-    applyPlayerTrait(repaired.state, { trait: { title: '베테랑 협상가' } });
-    assert.deepEqual(repaired.stats(), { analysis: 0, negotiation: 1, management: 0, recovery: 0 });
+    assert.deepEqual(state.baseStats, before);
+    assert.equal(state.appliedTrait, 'management');
+    assert.equal(state.exp, 170);
+    assert.deepEqual(engine.stats(), { analysis: 4 });
+    assert.deepEqual(new ItemEngine({ state: structuredClone(state) }).stats(), engine.stats());
 });

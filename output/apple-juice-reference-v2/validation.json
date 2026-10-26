@@ -1,0 +1,19 @@
+{
+  "id": "item_apple_juice",
+  "reimported": true,
+  "meshCount": 7,
+  "embeddedPrints": 1,
+  "degenerateFaces": 0,
+  "triangles": 13168,
+  "boundsMin": [
+    -0.24500000476837158,
+    -0.2475000023841858,
+    0.0
+  ],
+  "boundsMax": [
+    0.24500000476837158,
+    0.24500000476837158,
+    1.3830000162124634
+  ],
+  "sha256": "c93603a016576a236606ae3d67cd1c14b52df6ce17296d2d453e196d30a81a8c"
+}

@@ -1,0 +1,10 @@
+{
+  "articles": 288,
+  "companies": 72,
+  "fullArticleReads": 288,
+  "manuscriptMatch": true,
+  "reset": true,
+  "errors": [],
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "scope": "HTTP browser imports, real MarketEngine and isolated NewsDetailModal; retired UI not restored"
+}

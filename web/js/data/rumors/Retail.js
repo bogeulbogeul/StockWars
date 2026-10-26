@@ -1,0 +1,10 @@
+import { R_BOXHUB } from './Retail/BOXHUB.js';
+import { R_CITYMART } from './Retail/CITYMART.js';
+import { R_FRESHMARKET } from './Retail/FRESHMARKET.js';
+import { R_LIFESTYLE } from './Retail/LIFESTYLE.js';
+import { R_MORNINGBREW } from './Retail/MORNINGBREW.js';
+import { R_ORGANICTABLE } from './Retail/ORGANICTABLE.js';
+import { R_QUICKDELIVERY } from './Retail/QUICKDELIVERY.js';
+import { R_STOREMASTER } from './Retail/STOREMASTER.js';
+import { R_SWEETBAKERY } from './Retail/SWEETBAKERY.js';
+export const RETAIL_RUMORS = [...R_BOXHUB, ...R_CITYMART, ...R_FRESHMARKET, ...R_LIFESTYLE, ...R_MORNINGBREW, ...R_ORGANICTABLE, ...R_QUICKDELIVERY, ...R_STOREMASTER, ...R_SWEETBAKERY];

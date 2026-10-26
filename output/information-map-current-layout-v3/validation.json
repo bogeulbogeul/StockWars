@@ -1,0 +1,12 @@
+{
+  "mapSource": "C:\\GitHub\\StockWars\\output\\popori-map-current-layout-v2\\map.png",
+  "mapSha256": "0ce4367b72ffbbec1e66fd79c9c1a81b80220c3aba6b4fe4b9c8bdeeb6af070d",
+  "modelSha256": "c4bb1cc7b7d019a589e07204d5b85d2c5e69b338aa078f4fb684a871234eedb6",
+  "geometryAndOriginalDataPreserved": true,
+  "mapEmbedded": true,
+  "targets": [
+    "C:\\GitHub\\StockWars\\web\\assets\\office\\3d\\Information-furnished-room.glb",
+    "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web\\assets\\office\\3d\\Information-furnished-room.glb"
+  ],
+  "targetHashesMatch": true
+}

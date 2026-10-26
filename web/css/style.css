@@ -1,9 +1,9 @@
+@import './modules/residence-application.css';
 /* CSS module router. Import order preserves the existing cascade. */
 @import './modules/base.css';
-
 @import './modules/player-profile.css';
-@import './modules/settings.css'; @import './modules/level-up.css';
-@import './modules/toasts.css'; @import './modules/smartphone.css';
+@import './modules/settings.css';
+@import './modules/notices.css'; @import './modules/smartphone.css';
 @import './modules/minimized-phone.css'; @import './modules/market/market-header.css';
 @import './modules/market/market-list.css'; @import './modules/market/market-portfolio.css';
 @import './modules/trade-modal.css'; @import './modules/detailed-chart.css';
@@ -12,32 +12,39 @@
 @import './modules/ranking-modal.css';
 @import './modules/character/kiosk-base.css'; @import './modules/character/avatar-customizer.css?v=animal-faces-1';
 @import './modules/character/personality-test.css'; @import './modules/character/id-card.css';
-@import './modules/visual-novel.css'; @import './modules/anna-portrait.css';
-@import './modules/anna-dialogue.css'; @import './modules/rent-quest.css';
+@import './modules/anna-portrait.css';
 @import './modules/sky-background.css'; @import './modules/sky-weather.css';
 @import './modules/office-stage.css'; @import './modules/town-gateway-modal.css';
-@import './modules/cipher-lobby.css'; @import './modules/salon-interior.css';
+@import './modules/cipher-lobby.css';
 @import './modules/town/town-base.css';
 @import './modules/town/town-buildings.css'; @import './modules/town/town-building-assets.css';
 @import './modules/town/town-benches.css'; @import './modules/town/town-props.css';
 @import './modules/town/town-character.css'; @import './modules/town/town-topdown.css';
 @import './modules/town/town-modal.css';
-
 @import './modules/settlement-modal.css'; @import './modules/inventory-modal.css?v=vivian-items-1';
 @import './modules/item-center.css'; @import './modules/lotto-panel.css';
 @import './modules/rumor-popup.css'; @import './modules/furniture-edit.css';
-@import './modules/wardrobe-modal.css'; @import './modules/salon-style-shop.css';
 @import './modules/vivian-store.css?v=vivian-items-1';
-
 @import './modules/town/town-models.css';
 @import './modules/town/current-world.css';
 @import './modules/packing.css';
-@import './modules/town/somangi-controls.css';
+@import './modules/town/somangi-controls.css'; @import './modules/town/bus-stop-seat.css';
 @import './modules/home-model.css';
 @import './modules/cipher-lobby.css';
 @import './modules/vivian-model.css';
 @import './modules/crayon-title.css';
 @import './modules/opening-sequence.css';
 @import './modules/demo-end.css';
-@import url('./modules/diary.css');
+@import url('./modules/diary.css?v=write-v1');
 @import './modules/bus-arrival.css';
+@import './modules/dialogue/crayon-dialogue.css';
+@import './modules/dialogue/crayon-layout.css';
+@import './modules/dialogue/dialogue-shell.css';
+@import './modules/dialogue/tutorial-focus.css';
+@import './modules/dialogue/dialogue-placement.css';
+@import './modules/exhibition.css'; @import './modules/village-map-intro.css'; @import './modules/moa-movement-guide.css'; @import './modules/dialogue/moa-wake.css'; @import './modules/dialogue/dialogue-next.css';
+@import './modules/vivian-cozy.css?v=flower-shop-2'; @import './modules/seed-pot-shop.css';
+@import './modules/rumor-quiz.css'; @import './modules/rumor-letter.css';
+@import './modules/retired-interface.css';
+@import './modules/phone-home.css';
+@import './modules/phone-stock.css';

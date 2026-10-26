@@ -1,10 +1,18 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { buildCipherLobby } from './CipherLobbyBlockout.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { LOBBY, lobbyCanStand, nearbyLobbyDoor } from '../../data/cipherLobbyRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
+import { createCharacterBodies, charactersCanStand } from '../town3d/CharacterBodies.js';
+import { recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js';
+import { SeatInteraction } from '../town3d/SeatInteraction.js';
+import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
 
 // Independent preview scene: the retained 2D brokerage and account state are untouched.
 export class CipherLobbyScene {
@@ -13,7 +21,7 @@ export class CipherLobbyScene {
         this.buildRoom = options.buildRoom || buildCipherLobby;
         this.canStand = options.canStand || lobbyCanStand;
         this.nearbyDoor = options.nearbyDoor || nearbyLobbyDoor;
-        this.defaultHint = options.hint || 'WASD / 방향키 이동 · Shift 달리기 · 1 인사 · 2 먹기 · 아래 출입구 / Esc 마을';
+        this.defaultHint = options.hint || 'WASD 이동 · Shift 달리기 · 2 먹기 · 아래 출입구 / Esc 마을';
         this.roomLabel = options.label || '증권사 로비';
         this.createInteraction = options.createInteraction;
         this.automaticExit = options.automaticExit !== false;
@@ -56,25 +64,23 @@ export class CipherLobbyScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '증권사 로비 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 1.5));
-        const sun = new THREE.DirectionalLight(0xffffff, 2);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        sun.castShadow = true;
-        sun.shadow.mapSize.set(2048, 2048);
-        Object.assign(sun.shadow.camera, { left: -800, right: 800, top: 800, bottom: -800, near: 1, far: 3000 });
-        sun.shadow.bias = -.0004;
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer, true);
         this.room = this.buildRoom(this.scene);
         await Promise.all([this.room.userData.shellReady, this.room.userData.deskReady, this.room.userData.doorsReady,
-            this.room.userData.entryMatReady, this.room.userData.agentKReady,
+            this.room.userData.entryMatReady, this.room.userData.agentKReady, this.room.userData.moaReady,
             this.room.userData.boardFrameReady, this.room.userData.seatingReady, this.room.userData.furnitureReady]);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        if(this.createInteraction)this.interaction=await this.createInteraction(this);
+        this.characterBodies = createCharacterBodies(this.room);
+        const sceneryCanStand = this.canStand;
+        this.canStand = (x, z) => sceneryCanStand(x, z)
+            && charactersCanStand(this.characterBodies, x, z);
+        installIndoorFurnitureBodies(this, this.canStand);
+        this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
+        const createInteraction = this.createInteraction || this.room.userData.createInteraction;
+        if(createInteraction)this.interaction=await createInteraction(this);
         this.player.setControlsHint(this.defaultHint);
         this.player.root.traverse(object => { if (object.isMesh) object.castShadow = true; });
         this.status.hidden = true;
@@ -107,7 +113,7 @@ export class CipherLobbyScene {
                 }
             }
             if (key === 'escape' && !event.repeat) { event.preventDefault(); void this.exit(); return; }
-            const action = { arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key;
+            const action = key;
             if (['w', 'a', 's', 'd', 'shift'].includes(action)) {
                 event.preventDefault();
                 this.controller.keysHeld.add(action);
@@ -115,13 +121,14 @@ export class CipherLobbyScene {
         });
         window.addEventListener('keyup', event => {
             const key = gameKey(event);
-            this.controller.keysHeld.delete({ arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key);
+            this.controller.keysHeld.delete(key);
             this.interaction?.onKeyRelease();
         });
         window.addEventListener('blur', () => this.controller.keysHeld.clear());
     }
 
     show() {
+        this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
         this.layer.classList.remove('hidden');
@@ -136,6 +143,7 @@ export class CipherLobbyScene {
     }
 
     hide() {
+        this.seatInteraction?.reset();
         this.interaction?.reset();
         this.trainingRoomScene?.hide();
         this.simulationRoomScene?.hide();
@@ -174,11 +182,20 @@ export class CipherLobbyScene {
             LOBBY.camera.targetZ + Math.cos(pitch) * distance);
         this.camera.lookAt(0, LOBBY.camera.targetY, LOBBY.camera.targetZ);
         this.camera.updateProjectionMatrix();
+        this.room?.userData.cameraRig?.setBase(this.camera);
     }
 
     update(dt) {
         const LOBBY = this.layout;
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) {
+            this.player?.update(dt); this.room.userData.update?.(dt); return;
+        }
+        if(this.seatInteraction?.update(dt)){
+            this.room.userData.marketBoard?.update(performance.now());
+            this.room.userData.update?.(dt);return;
+        }
+        if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
         if(this.interaction?.update(dt)) {
             this.room.userData.marketBoard?.update(performance.now());
@@ -188,7 +205,7 @@ export class CipherLobbyScene {
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION,
             (x, z) => this.canStand(x, z));
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? SOMANGI_MOVEMENT.indoorWalk * SOMANGI_MOVEMENT.sidewaysFactor : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         if(length && !this.blocked() && this.interaction?.tryEnter(dx/length,dz/length,oldX,oldZ))return;
         let x = oldX, z = oldZ;
@@ -212,6 +229,7 @@ export class CipherLobbyScene {
                 : this.interaction?.idleHint || this.defaultHint;
         }
         this.room.userData.marketBoard?.update(performance.now());
+        this.room.userData.update?.(dt);
         if (this.automaticExit && z >= LOBBY.exitZ && Math.abs(x) < LOBBY.exitHalfWidth && !this.exitPending) void this.exit();
     }
 
@@ -221,9 +239,13 @@ export class CipherLobbyScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            const app = window.stockWarsExhibition;
+            this.room.userData.cameraRig?.update(this.camera, this.player, dt,
+                app?.scenes.place === 'bank' && !app.scenes.bankAwaitingTalk);
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

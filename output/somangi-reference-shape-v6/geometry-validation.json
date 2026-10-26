@@ -1,0 +1,179 @@
+[
+  {
+    "file": "walk.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.04708952654222105
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825162116736
+      }
+    ],
+    "sourceHash": "a59b6c929131e07647d3c138a8722249f4ac9237d0ce538cdb02c02e1390d6b5",
+    "outputHash": "88747171067e3a101980d2e9107bc5efb04401e83fedea1f485b663ddc072d50",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "wave.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.04708952654222105
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825162116736
+      }
+    ],
+    "sourceHash": "8656179d15951a6e27d3b61a31be418f5e93700d37a761d667ac5aeffa1b6f0b",
+    "outputHash": "7cd83f3a7309a807c91b4c57e94f6a8b81e476a13567e5f0e6545b4c3271e8a2",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Wave_Happy"
+    ]
+  },
+  {
+    "file": "eat.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.04708952654222105
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825162116736
+      }
+    ],
+    "sourceHash": "3ebc8587140aa6a22f0b7d7e2b1981b9fe4128237203dc8bccf52bca87ea3649",
+    "outputHash": "242f3a6055f21c89b6ab3b1ed105751138b8fd36b92edd3cb072665605558262",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Eat"
+    ]
+  },
+  {
+    "file": "jump.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.04708952654222105
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825162116736
+      }
+    ],
+    "sourceHash": "cf8d0366637609ce74daf9c5eba7b1edd4a66f45073380bcbdad3c9dbb6a4032",
+    "outputHash": "00a554e30c1b776abfa8e986ecbeeb2cd9668475879af7aea54bfa1785442f58",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Jump"
+    ]
+  },
+  {
+    "file": "crab.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.04708952654222105
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825162116736
+      }
+    ],
+    "sourceHash": "0820ebe9fc2d53587d8ca43adc42c0b75ac4aa94324b9965c58bd666f46c3bc6",
+    "outputHash": "fd548fd8677a5a79a99641158765d382513cc05d9c50222883b0b6da2581dfe1",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ]
+  },
+  {
+    "file": "office-sit.glb",
+    "changes": [
+      {
+        "mesh": "Eating_Torso",
+        "counts": {
+          "torso": 6208,
+          "legs": 0,
+          "rearNape": 0
+        },
+        "maxDisplacement": 0.047089527713913615
+      },
+      {
+        "mesh": "Somangi_Body",
+        "counts": {
+          "torso": 0,
+          "legs": 17094,
+          "rearNape": 6248
+        },
+        "maxDisplacement": 0.06646825184073626
+      }
+    ],
+    "sourceHash": "b943438c4cc144c8ed595bab92ae05159ef65f3f806084abb8de6072187048c8",
+    "outputHash": "b7f863eecf5553df9e16aaec09ae04fa1984a1960e69515f36a9bd4f9c7bf077",
+    "rigWeightsClipsUvIndicesUnchanged": true,
+    "clips": [
+      "Office_Sit"
+    ]
+  }
+]

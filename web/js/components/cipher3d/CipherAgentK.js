@@ -1,23 +1,20 @@
 import * as THREE from '../../../vendor/three/three.module.js';
-import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
+import { loadCharacterAsset } from '../town3d/SomangiAssets.js';
+import { SOMANGI_REFERENCE_HEIGHT, SOMANGI_FOOT_Y } from '../../data/somangiModels.js';
 import { LOBBY } from '../../data/cipherLobbyRoom.js';
 
-// Fixed staff placement. Keep the source rest pose rather than playing a walk.
+const modelUrl = new URL('../../../assets/characters/3d/tori/tori.glb', import.meta.url).href;
+
 export async function addCipherAgentK(room) {
-    const url = new URL('../../../assets/characters/3d/agent-k/Agent-K.glb', import.meta.url).href;
-    const { scene: model } = await new GLTFLoader().loadAsync(url);
-    model.name = 'cipher-agent-k';
-    // Same body units as Somangi; the crystal is additional height.
-    model.scale.setScalar(LOBBY.agentK.bodyHeight / 1.95);
-    model.updateMatrixWorld(true);
-    const ground = new THREE.Box3().setFromObject(model).min.y;
-    model.position.set(LOBBY.agentK.x, -ground, LOBBY.agentK.z);
-    model.traverse(object => {
-        if (!object.isMesh) return;
-        object.castShadow = true;
-        object.receiveShadow = true;
-        object.frustumCulled = false;
-    });
-    room.add(model);
-    return model;
+    const { model } = await loadCharacterAsset(modelUrl);
+    const root = new THREE.Group();
+    root.name = 'tori-character';
+    root.position.set(LOBBY.agentK.x, 0, LOBBY.agentK.z);
+    const scale = LOBBY.agentK.bodyHeight / SOMANGI_REFERENCE_HEIGHT;
+    model.scale.setScalar(scale);
+    model.position.y = -SOMANGI_FOOT_Y * scale;
+    model.traverse(object => { if (object.isMesh) object.castShadow = object.receiveShadow = true; });
+    root.add(model);
+    room.add(root);
+    return root;
 }

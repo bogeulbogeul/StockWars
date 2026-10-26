@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>내 가방 · 인벤토리 시안</title><link rel="stylesheet" href="./css/modules/inventory-ui.css"><style>body{margin:0;min-height:100dvh;background:#e5e7db;display:grid;place-items:center;font:14px 'Malgun Gothic',sans-serif;color:#56614b}main{text-align:center}button{font:inherit;padding:12px 22px;border:1px solid #acb699;border-radius:12px;background:#faf7eb;color:#56614b;cursor:pointer}#notice{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);padding:10px 20px;background:#fff9e9;border:1px solid #d8d3c0;border-radius:14px;z-index:3;pointer-events:none}#notice:empty{display:none}</style></head><body><main><h1>내 가방</h1><p>아이보리 인벤토리 · 디자인 미리보기</p><button id="open">가방 열기</button><p>예시 아이템으로 구성한 시안입니다. 게임 보유품은 변경하지 않습니다.</p></main><script type="module">
+import { InventoryUI } from './js/components/inventory/InventoryUI.js';
+const items=[
+ {id:'item_honey_cookie',name:'꿀 쿠키',category:'consumable',quantity:4,desc:'달콤한 꿀 향이 담긴 쿠키예요.',actionLabel:'먹기'},
+ {id:'item_energy_drink',name:'에너지 드링크',category:'consumable',quantity:2,desc:'하루를 힘차게 보내고 싶을 때 꺼내 드는 음료예요.',actionLabel:'마시기'},
+ {id:'item_premium_rumor',name:'봉인된 찌라시',category:'intel',quantity:3,desc:'아직 열어보지 않은 소식 봉투. 어떤 이야기가 담겨 있을까요?',actionLabel:'열람하기'},
+ {id:'item_crypto_decoder',name:'별가루',category:'consumable',quantity:5,desc:'찌라시 속 단서를 조금 더 선명하게 만들어 주는 가루예요.',actionLabel:'사용하기'},
+ {id:'item_petal_tea',name:'꽃잎차',category:'consumable',quantity:1,desc:'은은한 꽃향기가 감도는 따뜻한 차예요.',actionLabel:'마시기'},
+ {id:'item_moon_powder',name:'달가루',category:'consumable',quantity:1,desc:'찌라시의 숨겨진 이야기를 살펴볼 때 사용하는 가루예요.'},
+ {id:'item_popori_bread',name:'포포리 빵',category:'consumable',quantity:1,desc:'상점에서 만나는 포근한 포포리 빵이에요.',actionLabel:'먹기'},
+ {id:'item_honey_candy',name:'꿀 사탕',category:'consumable',quantity:2,desc:'달콤한 꿀맛이 나는 작은 사탕이에요.',actionLabel:'먹기'}
+];
+const inventory=new InventoryUI(document.body,{items,onAction(item){document.querySelector('#notice').textContent=`시안 미리보기: ${item.name} · 실제 아이템은 사용되지 않습니다.`;}});
+const notice=document.createElement('p');notice.id='notice';notice.setAttribute('role','status');inventory.dialog.append(notice);
+document.querySelector('#open').onclick=()=>inventory.open();window.inventoryPreview=inventory;inventory.open();
+</script></body></html>

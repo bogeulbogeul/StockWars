@@ -1,0 +1,65 @@
+[
+  {
+    "file": "walk.glb",
+    "sourceHash": "246f8a3226aba60190faf9acd0e7e2adcabb16035af29c31551abe58925aca53",
+    "outputHash": "3f48c892c4108feea29e0a7392554460fe6b7c3c6a05dcc931dc0a3e2ce462fc",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Walk_InPlace"
+    ]
+  },
+  {
+    "file": "wave.glb",
+    "sourceHash": "ae1c068d2466becacb556ac5b7d36c1ace8d61d4f7c00d392dd7ad392e689d85",
+    "outputHash": "2c249f390d30095fc6b38cec1834582e8a47ea3ddfd101cf9b368ef74c485885",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Wave_Happy"
+    ]
+  },
+  {
+    "file": "eat.glb",
+    "sourceHash": "c2db5a273f1e3810199bf06ddcbaa38083c7b66948acf359d02b675fd32446db",
+    "outputHash": "f4c3b51726098861da8e66f0a829f6e25d994ff6ff6316b3132a1dfd07785918",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Eat"
+    ]
+  },
+  {
+    "file": "jump.glb",
+    "sourceHash": "1b7a7569adcf411e903cf45e8dc39a9e1f4781761c042a68ddbdd3e5f59a44ca",
+    "outputHash": "4c8f87de6cf5e761ceb02ceca60ba0852d7039eca9ef8cc1dc27b85994ae96dd",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Jump"
+    ]
+  },
+  {
+    "file": "crab.glb",
+    "sourceHash": "2273d34e06d5085a7ab45c668e5c4fd39323429652e2dd47984f856c82981f2f",
+    "outputHash": "46161cdb7ef5cebc84593d759663f441688dc335236b786949725d4bb20f3948",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ]
+  },
+  {
+    "file": "office-sit.glb",
+    "sourceHash": "2bd9460032335c0524ed1c5bca9af1de4a5ac2f2327d226309eca38710b1ca44",
+    "outputHash": "9ffd7fe75d8ca527fa45a0f4a87e4159d0dafc0e3368727587f803dc216c189f",
+    "changedLowerHeadVertices": 7906,
+    "bodyThicknessArmsLegsRigAnimationUnchanged": true,
+    "clips": [
+      "Office_Sit"
+    ]
+  }
+]

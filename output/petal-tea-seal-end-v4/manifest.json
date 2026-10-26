@@ -1,0 +1,8 @@
+{
+  "id": "item_petal_tea",
+  "file": "item_petal_tea.glb",
+  "sha256": "4a1ae138fd2ce5b46fc4fdf1a2a6b4a633d5a10574756bf5faa4c2ed6ee9592f",
+  "reference": "web/assets/items/packing-v1/items.png [440,40,350,350]",
+  "paperThickness": 0.004,
+  "material": "matte uncoated printed paperboard"
+}

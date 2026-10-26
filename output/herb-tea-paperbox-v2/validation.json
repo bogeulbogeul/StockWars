@@ -1,0 +1,19 @@
+{
+  "id": "item_herb_tea",
+  "reimported": true,
+  "meshCount": 7,
+  "embeddedPrints": 3,
+  "degenerateFaces": 0,
+  "triangles": 84,
+  "boundsMin": [
+    -0.7200000286102295,
+    -0.2720000147819519,
+    -0.0010000000474974513
+  ],
+  "boundsMax": [
+    0.7200000286102295,
+    0.2619999945163727,
+    0.6399999856948853
+  ],
+  "sha256": "79c3c0d21dd73f5fba6fc562cee79ba5f8039b126a772266662b357a6648f356"
+}

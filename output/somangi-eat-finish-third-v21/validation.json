@@ -1,0 +1,13 @@
+{
+  "characterGeometryHashUnchanged": true,
+  "maximumFoodPositionDifference": 0,
+  "maximumFirstTwoBitesFoodTransformDifference": 1.862645149230957e-09,
+  "maximumFoodRotationDifference": 0,
+  "maximumFirstTwoBitesScaleDifference": 0,
+  "foodGoneSeconds": 1.9,
+  "foodGoneFrame": 58,
+  "exportedEmptyFoodSamples": 67,
+  "maximumConsumptionScaleAfterThirdBite": 0,
+  "maximumFoodChildExtentAfterThirdBite": 0,
+  "gameInstalled": false
+}

@@ -1,0 +1,15 @@
+{
+  "id": "salon-ground-floor-v4",
+  "status": "art-preview; runtime replacement and collider registration pending",
+  "background": "salon-floor-1-v4.png",
+  "ownerPreview": "salon-floor-1-owner-preview-v4.png",
+  "ownerSource": "../../../../output/npc-animal-individual-2026-10-14/claire-character-v1.png",
+  "canvas": [1536,1024],
+  "changes": ["screen-vertical straight stairs", "wide customer counter front facing carpet", "carpet moved nearer front-left boundary", "Claire behind counter in presentation preview"],
+  "stairOrientation": "screen vertical, user-requested exception to floor-axis-parallel flight direction",
+  "npcBakedIntoBackground": false,
+  "npcBakedIntoPreview": true,
+  "generator": "built-in image_gen",
+  "prompts": "salon-floor-1-v4.prompt.txt",
+  "secondFloor": "salon-floor-2-v4.png"
+}

@@ -1,0 +1,2576 @@
+[
+  {
+    "name": "Roof_Plane_Central_Right",
+    "lo": -0.05500005646853534,
+    "hi": 1.5005282794078312e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.001",
+    "lo": -0.05500005646853534,
+    "hi": 1.5005282794078312e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.002",
+    "lo": -0.05500005646853534,
+    "hi": 4.169479606019877e-08,
+    "vertices": 168
+  },
+  {
+    "name": "Roof_Plane_Central_Right.003",
+    "lo": -0.05499994273880904,
+    "hi": 1.3223097550252305e-07,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Plane_Central_Right.004",
+    "lo": -0.055000053752943145,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.005",
+    "lo": -0.055000053752943145,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.006",
+    "lo": -0.055000053752943145,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.007",
+    "lo": -0.05500004429242322,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.008",
+    "lo": -0.05500004429242322,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.009",
+    "lo": -0.05500004429242322,
+    "hi": 4.851334445277189e-08,
+    "vertices": 192
+  },
+  {
+    "name": "Roof_Plane_Central_Right.010",
+    "lo": -0.055000221329200016,
+    "hi": 1.2304002927621127e-07,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Plane_Central_Right.011",
+    "lo": -0.055000221329200016,
+    "hi": 1.2304002927621127e-07,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Plane_Central_Right.012",
+    "lo": -0.055000221329200016,
+    "hi": 1.2304002927621127e-07,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Plane_Central_Right.013",
+    "lo": -0.0550001296954461,
+    "hi": 3.5054558811253855e-08,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Plane_Central_Right.014",
+    "lo": -0.0550001296954461,
+    "hi": 3.5054558811253855e-08,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Plane_Central_Right.015",
+    "lo": -0.0550001296954461,
+    "hi": 3.5054558811253855e-08,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Plane_Central_Right.016",
+    "lo": -0.055000082611616596,
+    "hi": 4.851334445277189e-08,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.017",
+    "lo": -0.055000082611616596,
+    "hi": 4.851334445277189e-08,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.018",
+    "lo": -0.055000082611616596,
+    "hi": 4.851334445277189e-08,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.019",
+    "lo": -0.05537412398058783,
+    "hi": 0.0003656604944732855,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.020",
+    "lo": -0.05537412398058783,
+    "hi": 0.0003656604944732855,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.021",
+    "lo": -0.05537412398058783,
+    "hi": 0.0003656604944732855,
+    "vertices": 248
+  },
+  {
+    "name": "Roof_Plane_Central_Right.022",
+    "lo": -0.055000053752943145,
+    "hi": 0.0004067308229060984,
+    "vertices": 128
+  },
+  {
+    "name": "Roof_Plane_Central_Right.023",
+    "lo": -0.055000053752943145,
+    "hi": 0.0004067308229060984,
+    "vertices": 128
+  },
+  {
+    "name": "Roof_Plane_Central_Right.024",
+    "lo": -0.055000053752943145,
+    "hi": 0.0004067308229060984,
+    "vertices": 128
+  },
+  {
+    "name": "Roof_Plane_Central_Right.025",
+    "lo": -0.05500017244671085,
+    "hi": 8.723201583293871e-08,
+    "vertices": 200
+  },
+  {
+    "name": "Roof_Plane_Central_Right.026",
+    "lo": -0.05500017244671085,
+    "hi": 8.723201583293871e-08,
+    "vertices": 200
+  },
+  {
+    "name": "Roof_Plane_Central_Right.027",
+    "lo": -0.05500017244671085,
+    "hi": 8.723201583293871e-08,
+    "vertices": 176
+  },
+  {
+    "name": "Roof_Plane_Central_Right.028",
+    "lo": -0.05499994273880904,
+    "hi": 1.3223097550252305e-07,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Plane_Central_Right.029",
+    "lo": -0.055000013836736805,
+    "hi": 8.360191428025132e-08,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Plane_Central_Right.030",
+    "lo": -0.055000013836736805,
+    "hi": 8.360191428025132e-08,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Plane_Central_Right.031",
+    "lo": -0.055000013836736805,
+    "hi": 8.360191428025132e-08,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Plane_Central_Right.032",
+    "lo": -0.05540671062673663,
+    "hi": 1.3993283420887792e-07,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Plane_Central_Right.033",
+    "lo": -0.05540671062673663,
+    "hi": 1.3993283420887792e-07,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Plane_Central_Right.034",
+    "lo": -0.05540671062673663,
+    "hi": 1.3993283420887792e-07,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right",
+    "lo": -0.013124348584665047,
+    "hi": 0.013124389054661734,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.001",
+    "lo": -0.013124480359021806,
+    "hi": 0.013124491601446131,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.002",
+    "lo": -0.013124388060585801,
+    "hi": 0.013124506274460934,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.003",
+    "lo": -0.013124556331253423,
+    "hi": 0.013124505036449463,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.004",
+    "lo": -0.013124342421475532,
+    "hi": 0.01312439903273166,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.005",
+    "lo": -0.013124377306330981,
+    "hi": 0.013124385286952034,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.006",
+    "lo": -0.013124524026324025,
+    "hi": 0.013124383921470084,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.007",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.008",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.009",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.010",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.011",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.012",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.013",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.014",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.015",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.016",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.017",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.018",
+    "lo": -0.013124435105793975,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.019",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.020",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.021",
+    "lo": -0.013124348837997513,
+    "hi": 0.013124382461854989,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.022",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.023",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.024",
+    "lo": -0.01312441236210482,
+    "hi": 0.013124393417027758,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.025",
+    "lo": -0.013124484340502285,
+    "hi": 0.013124403607099655,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.026",
+    "lo": -0.01312447206688816,
+    "hi": 0.013124415186199556,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.027",
+    "lo": -0.01312445423716202,
+    "hi": 0.013124427459813237,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.028",
+    "lo": -0.013124416346735224,
+    "hi": 0.013124428621202888,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.029",
+    "lo": -0.013124300298545055,
+    "hi": 0.013124491550843498,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.030",
+    "lo": -0.013124300298545055,
+    "hi": 0.013124491550843498,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.031",
+    "lo": -0.013124300298545055,
+    "hi": 0.013124491550843498,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.032",
+    "lo": -0.013124480662167759,
+    "hi": 0.013124317291196341,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.033",
+    "lo": -0.013124480662167759,
+    "hi": 0.013124317291196341,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.034",
+    "lo": -0.013124480662167759,
+    "hi": 0.013124317291196341,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.035",
+    "lo": -0.01312440869822229,
+    "hi": 0.013124491550843498,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.036",
+    "lo": -0.01312440869822229,
+    "hi": 0.013124491550843498,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.037",
+    "lo": -0.01312440869822229,
+    "hi": 0.013124491550843498,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.038",
+    "lo": -0.01312443186482204,
+    "hi": 0.013124509380569638,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.039",
+    "lo": -0.01312443186482204,
+    "hi": 0.013124509380569638,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.040",
+    "lo": -0.01312443186482204,
+    "hi": 0.013124509380569638,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.041",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.042",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.043",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.044",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.045",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.046",
+    "lo": -0.01312435716268956,
+    "hi": 0.013124432619024962,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.047",
+    "lo": -0.013124485685759524,
+    "hi": 0.013124381248944772,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.048",
+    "lo": -0.013124485685759524,
+    "hi": 0.013124381248944772,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.049",
+    "lo": -0.013124485685759524,
+    "hi": 0.013124381248944772,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.050",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.051",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.052",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.053",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.054",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.055",
+    "lo": -0.013124399506478479,
+    "hi": 0.013124432619024962,
+    "vertices": 112
+  },
+  {
+    "name": "Roof_Tile_Central_Right.056",
+    "lo": -0.01312441372181361,
+    "hi": 0.013124510798514955,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.057",
+    "lo": -0.01312441372181361,
+    "hi": 0.013124510798514955,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.058",
+    "lo": -0.01312441372181361,
+    "hi": 0.013124510798514955,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.059",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.060",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.061",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.062",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.063",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.064",
+    "lo": -0.01312432754253301,
+    "hi": 0.013124395396092225,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.065",
+    "lo": -0.013124356001300352,
+    "hi": 0.013124516098071304,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.066",
+    "lo": -0.013124343727686227,
+    "hi": 0.013124533927797444,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.067",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.068",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.069",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.070",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.071",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.072",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.073",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.074",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.075",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.076",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.077",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.078",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.079",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.080",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.081",
+    "lo": -0.013124572650707655,
+    "hi": 0.013124532370516029,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.082",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.083",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.084",
+    "lo": -0.013124378007167259,
+    "hi": 0.013124543423355117,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.085",
+    "lo": -0.013124563155149982,
+    "hi": 0.013124553613427015,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.086",
+    "lo": -0.013124550881535857,
+    "hi": 0.013124565192526916,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.087",
+    "lo": -0.013124533051809717,
+    "hi": 0.013124339047561495,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.088",
+    "lo": -0.013124487963179554,
+    "hi": 0.013124340208951146,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.089",
+    "lo": -0.013124453807063396,
+    "hi": 0.01312443193140389,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.090",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.091",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.092",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.093",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.094",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.095",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.096",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.097",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.098",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124574195232164,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.099",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.100",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.101",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.102",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.103",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.104",
+    "lo": -0.013124435977337257,
+    "hi": 0.013124339974603938,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.105",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.106",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.107",
+    "lo": -0.01312439760620876,
+    "hi": 0.013124463637161465,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.108",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.109",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.110",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.111",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.112",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.113",
+    "lo": -0.01312428207618499,
+    "hi": 0.013124574195232164,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.114",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.115",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.116",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.117",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.118",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.119",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124456478631696,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.120",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.121",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.122",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.123",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.124",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.125",
+    "lo": -0.013124434815947605,
+    "hi": 0.013124598695963385,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.126",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.127",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.128",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.129",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.130",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.131",
+    "lo": -0.013124260910698293,
+    "hi": 0.01312452220587046,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.132",
+    "lo": -0.013124422542333924,
+    "hi": 0.013124474308357836,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.133",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.134",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.135",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.136",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.137",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.138",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.139",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.140",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.141",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.142",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.143",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.144",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.145",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.146",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.147",
+    "lo": -0.013124413046776251,
+    "hi": 0.01312447290300156,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.148",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.149",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.150",
+    "lo": -0.013124456821814512,
+    "hi": 0.01312448380391551,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.151",
+    "lo": -0.013124403551218577,
+    "hi": 0.013124493993987407,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.152",
+    "lo": -0.013124391277604452,
+    "hi": 0.013124505573087308,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.153",
+    "lo": -0.013124373447878313,
+    "hi": 0.01312451784670099,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.154",
+    "lo": -0.013124544759013368,
+    "hi": 0.01312451900809064,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.155",
+    "lo": -0.01312451342650256,
+    "hi": 0.013124333921548548,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.156",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.157",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.158",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.159",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.160",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.161",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.162",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.163",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.164",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.165",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.166",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.167",
+    "lo": -0.013124457225648367,
+    "hi": 0.013124365627305679,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.168",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.169",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.170",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.171",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.172",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.173",
+    "lo": -0.01312449559677642,
+    "hi": 0.013124476185376377,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.174",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.175",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.176",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.177",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.178",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.179",
+    "lo": -0.013124494435387213,
+    "hi": 0.01312435846877591,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.180",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.181",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.182",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.183",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.184",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.185",
+    "lo": -0.013124494435387213,
+    "hi": 0.013124323537619276,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.186",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.187",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.188",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.189",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.190",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.191",
+    "lo": -0.013124450508146701,
+    "hi": 0.01312435846877591,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.192",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.193",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.194",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.195",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.196",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.197",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312437629850205,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.198",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.199",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.200",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.201",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.202",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.203",
+    "lo": -0.013124482161773532,
+    "hi": 0.01312433185115669,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.204",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.205",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.206",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.207",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.208",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.209",
+    "lo": -0.013124470484038753,
+    "hi": 0.013124461400726872,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.210",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.211",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.212",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.213",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.214",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.215",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.216",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.217",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.218",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124385794060167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.219",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.220",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.221",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.222",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.223",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.224",
+    "lo": -0.013124472666215414,
+    "hi": 0.013124374893145774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.225",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.226",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.227",
+    "lo": -0.01312451644125412,
+    "hi": 0.013124563063770633,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.228",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.229",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.230",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.231",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.232",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.233",
+    "lo": -0.013124526753800936,
+    "hi": 0.01312440513096469,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.234",
+    "lo": -0.01312446317065774,
+    "hi": 0.01312439598413162,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.235",
+    "lo": -0.01312445089704406,
+    "hi": 0.013124407563231522,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.236",
+    "lo": -0.01312443306731792,
+    "hi": 0.013124419836845647,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.237",
+    "lo": -0.013124387978687757,
+    "hi": 0.013124420998234854,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.238",
+    "lo": -0.013124373017779689,
+    "hi": 0.013124551111104221,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.239",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.240",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.241",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.242",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.243",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.244",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.245",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.246",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.247",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.248",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.249",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.250",
+    "lo": -0.01312450296905654,
+    "hi": 0.013124492159997558,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.251",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.252",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.253",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.254",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.255",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.256",
+    "lo": -0.01312443080140202,
+    "hi": 0.01312437817552059,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.257",
+    "lo": -0.013124354026663898,
+    "hi": 0.013124575658332027,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.258",
+    "lo": -0.013124580171629319,
+    "hi": 0.013124593488058167,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.259",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124526202783038,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.260",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124526202783038,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.261",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124526202783038,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.262",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124515052278074,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.263",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124515052278074,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.264",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124515052278074,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.265",
+    "lo": -0.013124376032530805,
+    "hi": 0.013124526202783038,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.266",
+    "lo": -0.013124376032530805,
+    "hi": 0.013124526202783038,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.267",
+    "lo": -0.013124376032530805,
+    "hi": 0.013124526202783038,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.268",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124331851955162,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.269",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124331851955162,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.270",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124331851955162,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.271",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124263739278774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.272",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124263739278774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.273",
+    "lo": -0.013124570676071201,
+    "hi": 0.013124263739278774,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.274",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124331851955162,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.275",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124331851955162,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.276",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124331851955162,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.277",
+    "lo": -0.013124415372689047,
+    "hi": 0.013124526202783038,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.278",
+    "lo": -0.013124415372689047,
+    "hi": 0.013124526202783038,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.279",
+    "lo": -0.013124415372689047,
+    "hi": 0.013124526202783038,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.280",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124526202783038,
+    "vertices": 152
+  },
+  {
+    "name": "Roof_Tile_Central_Right.281",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124526202783038,
+    "vertices": 152
+  },
+  {
+    "name": "Roof_Tile_Central_Right.282",
+    "lo": -0.013124422468409946,
+    "hi": 0.013124526202783038,
+    "vertices": 152
+  },
+  {
+    "name": "Roof_Tile_Central_Right.283",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.284",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.285",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.286",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.287",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.288",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124536392854935,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.289",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.290",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.291",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.292",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.293",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.294",
+    "lo": -0.013124561180513528,
+    "hi": 0.013124527431577881,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.295",
+    "lo": -0.013124548906899847,
+    "hi": 0.013124386334208538,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.296",
+    "lo": -0.013124531077173707,
+    "hi": 0.01312431058877328,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.297",
+    "lo": -0.013124485988543544,
+    "hi": 0.013124314314531427,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.298",
+    "lo": -0.013124432637218852,
+    "hi": 0.013124453101248434,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.299",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.300",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.301",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.302",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.303",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.304",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.305",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.306",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.307",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.308",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.309",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.310",
+    "lo": -0.013124562588496147,
+    "hi": 0.013124470930974574,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.311",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.312",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.313",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.314",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.315",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.316",
+    "lo": -0.013124490420841184,
+    "hi": 0.013124356946497606,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.317",
+    "lo": -0.013124413646103505,
+    "hi": 0.01312447764847624,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.318",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.319",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.320",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.321",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.322",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.323",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.324",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.325",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.326",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.327",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.328",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.329",
+    "lo": -0.01312440137248938,
+    "hi": 0.01312449547820238,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.330",
+    "lo": -0.013124391876931707,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.331",
+    "lo": -0.013124391876931707,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.332",
+    "lo": -0.013124391876931707,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.333",
+    "lo": -0.013124391876931707,
+    "hi": 0.013124416746342682,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.334",
+    "lo": -0.013124391876931707,
+    "hi": 0.013124416746342682,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.335",
+    "lo": -0.013124391876931707,
+    "hi": 0.013124416746342682,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.336",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.337",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.338",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.339",
+    "lo": -0.013124435651969968,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.340",
+    "lo": -0.013124435651969968,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.341",
+    "lo": -0.013124435651969968,
+    "hi": 0.01312442785344059,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.342",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.343",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.344",
+    "lo": -0.013124417529809751,
+    "hi": 0.013124514354955874,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.345",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.346",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.347",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.348",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.349",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.350",
+    "lo": -0.013124382381374033,
+    "hi": 0.013124438043512043,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.351",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.352",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.353",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.354",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.355",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.356",
+    "lo": -0.013124397246423669,
+    "hi": 0.013124340858859718,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.357",
+    "lo": -0.013124370520426254,
+    "hi": 0.013124449622612389,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.358",
+    "lo": -0.013124260876952842,
+    "hi": 0.013124385115393267,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.359",
+    "lo": -0.01312453064707464,
+    "hi": 0.013124355091392648,
+    "vertices": 104
+  },
+  {
+    "name": "Roof_Tile_Central_Right.360",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124313434083046,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.361",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124313434083046,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.362",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124446550905944,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.363",
+    "lo": -0.013124340650892519,
+    "hi": 0.013124381449443945,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.364",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.365",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.366",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.367",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.368",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.369",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.370",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124313434083046,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.371",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124313434083046,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.372",
+    "lo": -0.013124474446220002,
+    "hi": 0.013124446550905944,
+    "vertices": 120
+  },
+  {
+    "name": "Roof_Tile_Central_Right.373",
+    "lo": -0.013124340650892519,
+    "hi": 0.013124381449443945,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.374",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.375",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.376",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.377",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.378",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.379",
+    "lo": -0.0131245128173485,
+    "hi": 0.013124420234901013,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.380",
+    "lo": -0.013124467728718336,
+    "hi": 0.013124360516983957,
+    "vertices": 96
+  },
+  {
+    "name": "Roof_Tile_Central_Right.381",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.382",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.383",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.384",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.385",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.386",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.387",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.388",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.389",
+    "lo": -0.013124307795110646,
+    "hi": 0.013124348159996746,
+    "vertices": 72
+  },
+  {
+    "name": "Roof_Tile_Central_Right.390",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.391",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.392",
+    "lo": -0.013124344058091264,
+    "hi": 0.013124349503414567,
+    "vertices": 80
+  },
+  {
+    "name": "Roof_Tile_Central_Right.393",
+    "lo": -0.013124421573079914,
+    "hi": 0.013124237759105872,
+    "vertices": 80
+  }
+]

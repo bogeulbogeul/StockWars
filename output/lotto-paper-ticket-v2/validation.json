@@ -1,0 +1,19 @@
+{
+  "id": "item_lotto_ticket",
+  "reimported": true,
+  "meshCount": 1,
+  "embeddedPrints": 1,
+  "degenerateFaces": 0,
+  "triangles": 42332,
+  "boundsMin": [
+    -0.949999988079071,
+    -0.01575000025331974,
+    0.0
+  ],
+  "boundsMax": [
+    0.949999988079071,
+    0.0017500000540167093,
+    0.9800000190734863
+  ],
+  "sha256": "a39a3c40b5e3353f952f7abc897c194e6e39b769235aef21da95199103b9a5f6"
+}

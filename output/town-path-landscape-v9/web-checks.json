@@ -1,0 +1,46 @@
+{
+  "routes": [
+    {
+      "name": "stop-information",
+      "previousLength": 469.0205514776643,
+      "length": 441.4608804229648,
+      "seconds": 2.452560446794249,
+      "previousSeconds": 2.6056697304314684,
+      "reductionPercent": 5.8760049997536035
+    },
+    {
+      "name": "information-home",
+      "previousLength": 3404.2407358202086,
+      "length": 3404.2407358202086,
+      "seconds": 18.91244853233449,
+      "previousSeconds": 18.91244853233449,
+      "reductionPercent": 0
+    },
+    {
+      "name": "home-bank",
+      "previousLength": 4238.00942585465,
+      "length": 4242.371538292399,
+      "seconds": 23.568730768291108,
+      "previousSeconds": 23.54449681030361,
+      "reductionPercent": -0.10292833260676648
+    },
+    {
+      "name": "information-bank",
+      "previousLength": 954.2354744975165,
+      "length": 954.2354744975165,
+      "seconds": 5.301308191652869,
+      "previousSeconds": 5.301308191652869,
+      "reductionPercent": 0
+    },
+    {
+      "name": "bank-store",
+      "previousLength": 2741.16826880751,
+      "length": 2741.16826880751,
+      "seconds": 15.228712604486166,
+      "previousSeconds": 15.228712604486166,
+      "reductionPercent": 0
+    }
+  ],
+  "blockedLinks": [],
+  "errors": []
+}

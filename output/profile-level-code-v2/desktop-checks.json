@@ -1,0 +1,16 @@
+{
+  "actualPlayerLevel": true,
+  "actualServerCode": true,
+  "actualAnalysis": true,
+  "liveProficiency": true,
+  "maxLevel": true,
+  "receiptPending": true,
+  "originalBankForm": true,
+  "originalLoanForm": true,
+  "signatureUpdates": true,
+  "loanOnlyAfterSigning": true,
+  "documents": true,
+  "mobile": true,
+  "home": true,
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "salon-makeover-v1",
+  "source": "built-in image_gen; four individually generated transparent complete poses",
+  "canvas": {"width":1254,"height":1254},
+  "durationMs":2300,
+  "frames":["scissors-open.png","scissors-closed.png","dryer-a.png","dryer-b.png"],
+  "sequence":[[0,0],[150,1],[270,0],[390,1],[510,0],[630,1],[750,0],[870,1],[1100,2],[1240,3],[1380,2],[1520,3],[1660,2],[1800,3],[1940,2],[2080,3]],
+  "alignment":{"scissors-closed.png":{"translateXPercent":-3.1,"translateYPercent":-2}},
+  "audio":"SalonMakeoverAudio.js; snips at 150/390/630/870ms, dryer at 1100ms",
+  "reducedMotion":{"frame":2,"durationMs":700},
+  "note":"Complete raster pose playback. No SVG tool animation. Preview-only until purchase flow is enabled."
+}

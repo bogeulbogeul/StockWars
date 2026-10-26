@@ -36,8 +36,8 @@
 .crayon-title__start img { object-fit: contain; }
 .crayon-title__start:active { filter: brightness(.95); }
 .crayon-title__start:focus-visible {
-    outline: 3px dashed #365c3d;
-    outline-offset: 4px;
+    outline: none;
+    filter: brightness(1.06);
 }
 body.title-screen-active { overflow: hidden; }
 .crayon-title__frame {
@@ -49,3 +49,11 @@ body.title-screen-active { overflow: hidden; }
 }
 .crayon-title__art .crayon-title__frame[hidden] { display: none; }
 body.graphics-paused .crayon-title__art img { opacity: 1 !important; }
+.crayon-title__text-button {
+    border: clamp(2px, .25vw, 4px) solid #557348;
+    background: #fff0a6;
+    color: #355e3c;
+    box-shadow: inset 0 0 0 3px #fff6cc, 0 0 0 1px #557348;
+    font: 700 clamp(12px, 2.2vw, 34px)/1.3 'Malgun Gothic', sans-serif;
+    white-space: nowrap;
+}

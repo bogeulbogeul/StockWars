@@ -1,0 +1,75 @@
+{
+  "rows": [
+    {
+      "name": "bank-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006,
+        1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    },
+    {
+      "name": "furniture-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006,
+        1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    },
+    {
+      "name": "pub-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006,
+        1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    },
+    {
+      "name": "cipher-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006,
+        1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    },
+    {
+      "name": "bookstore-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    },
+    {
+      "name": "post-opening-door-0",
+      "open": true,
+      "angles": [
+        -1.5079644737231006
+      ],
+      "dynamic": true,
+      "loaded": 194,
+      "status": "마을 건물과 쉼터를 불러오는 중…",
+      "statusHidden": true
+    }
+  ],
+  "errors": []
+}

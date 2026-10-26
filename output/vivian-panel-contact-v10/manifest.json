@@ -1,0 +1,23 @@
+{
+  "source": "vivian-roof-crafted-v9",
+  "panels": [
+    {
+      "panel": "Left_Display_Lower_Panel",
+      "previousBottom": 0.16499999165534973,
+      "newBottom": 0.1,
+      "topUnchanged": 0.4050000011920929,
+      "modifiedVertices": 48
+    },
+    {
+      "panel": "Right_Display_Lower_Panel",
+      "previousBottom": 0.16499999165534973,
+      "newBottom": 0.1,
+      "topUnchanged": 0.4050000011920929,
+      "modifiedVertices": 48
+    }
+  ],
+  "windowSillAndDecorativeInsetUnchanged": true,
+  "roofUnchanged": true,
+  "gameApplied": false,
+  "sha256": "c80f65ad4c5ea3a238804c2c9cdc5219cc89631e2013bd0e5fb9231f63ce64e8"
+}

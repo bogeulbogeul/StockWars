@@ -1,0 +1,11 @@
+{
+  "source": "cipher-sign-seal-v21",
+  "loweredFoundationVertices": 496,
+  "foundationContactPlane": 0,
+  "pairedPlinths": 2,
+  "gableRebate": true,
+  "closedOuterEaves": 2,
+  "markUnchanged": true,
+  "gameApplied": false,
+  "sha256": "e2297a8cc15daf23d9f8365a496e2607cf5e0b6c650dc298a5bbac0a78959005"
+}

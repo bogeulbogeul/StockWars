@@ -42,30 +42,37 @@ test('vending approach is reachable and opens its own action', () => {
     TownStage.prototype.triggerAction.call(stage, stage.activeNearbyObject);
     assert.equal(opened, 1);
 });
-test('overnight drink purchases share shop limits and charge the catalog price', () => {
+test('vending purchases enforce daily limits and charge the registry price', () => {
     const { engine, market } = setup();
-    assert.ok(engine.purchase(VENDING_ITEM.id, 1).success);
+    assert.equal(engine.purchase(VENDING_ITEM.id, 1).success, false);
+    assert.equal(market.cash, 2000);
+    assert.equal(engine.state.inventory.length, 0);
+    assert.ok(engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success);
     assert.equal(market.cash, 2000 - VENDING_ITEM.price);
     assert.equal(engine.state.inventory[0].quantity, 1);
-    assert.ok(engine.purchase(VENDING_ITEM.id, 1).success);
-    assert.equal(engine.purchase(VENDING_ITEM.id, 1).success, false);
-    assert.equal(market.cash, 1000);
+    assert.ok(engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success);
+    assert.equal(engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, false);
+    assert.equal(market.cash, 2000 - 2 * VENDING_ITEM.price);
+    engine.advanceDay();
+    assert.equal(engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, true);
+    assert.equal(engine.state.inventory[0].quantity, 3);
 });
 test('instant drinking restores stamina; rejected purchases do not charge', () => {
     const { engine, market } = setup();
-    assert.equal(engine.purchase(VENDING_ITEM.id, 1, true).success, true);
+    assert.equal(engine.purchase(VENDING_ITEM.id, 1, true, { vending: true }).success, true);
     assert.equal(market.cash, 2000 - VENDING_ITEM.price);
     assert.equal(engine.state.stamina, engine.maxStamina());
     assert.equal(engine.state.inventory.length, 0);
     engine.state.stamina = 1;
-    assert.ok(engine.purchase(VENDING_ITEM.id, 1, true).success);
+    assert.ok(engine.purchase(VENDING_ITEM.id, 1, true, { vending: true }).success);
     assert.equal(engine.state.stamina, 2);
     assert.equal(engine.state.inventory.length, 0);
     const poor = setup(0);
-    assert.equal(poor.engine.purchase(VENDING_ITEM.id).success, false);
+    assert.equal(poor.engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, false);
     assert.equal(poor.market.cash, 0);
     const full = setup();
-    full.engine.add(VENDING_ITEM.id, 99);
-    assert.equal(full.engine.purchase(VENDING_ITEM.id).success, false);
+    assert.equal(full.engine.add(VENDING_ITEM.id, 30), true);
+    assert.equal(full.engine.state.inventory[0].quantity, 30);
+    assert.equal(full.engine.purchase(VENDING_ITEM.id, 1, false, { vending: true }).success, false);
     assert.equal(full.market.cash, 2000);
 });

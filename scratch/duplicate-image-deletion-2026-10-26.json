@@ -1,0 +1,20 @@
+{
+  "DeletedFiles": 2,
+  "DeletedBytes": 4988419.0,
+  "ProtectedFilesHashVerified": 3289,
+  "Result": "passed",
+  "Files": [
+    {
+      "Path": "scratch\\HomeBuilding-base.jpg",
+      "Bytes": 2437204,
+      "SHA256": "9BF0C28876677E8436976210474EEC6320EFF31131109D9A6E7B9A7C5149A447",
+      "Preserved": "output\\building-retouch-v1\\HomeBuilding-texture-0.png"
+    },
+    {
+      "Path": "scratch\\InformationBuilding-base.jpg",
+      "Bytes": 2551215,
+      "SHA256": "782E80020C1B77B5D7B7847AA47A0E6B163B225D0B95E1E1E1EDDD73168CC487",
+      "Preserved": "output\\building-retouch-v1\\InformationBuilding-texture-0.png"
+    }
+  ]
+}

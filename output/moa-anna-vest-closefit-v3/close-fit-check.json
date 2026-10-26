@@ -1,0 +1,8 @@
+{
+  "vertices": 171154,
+  "minimumRadialGap": 0.010815776923755741,
+  "maximumRadialGap": 0.037005281037514444,
+  "meanRadialGap": 0.02401589414594554,
+  "trimAndTexturePreserved": true,
+  "method": "Torso cross-section fit with retained local thickness relief"
+}

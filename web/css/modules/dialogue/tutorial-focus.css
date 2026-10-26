@@ -1,0 +1,22 @@
+/* Interaction targets remain functional; old dialogue skins and docking are gone. */
+.tutorial-pulse-target, .anna-trade-target, .cipher-tour-target {
+    outline: 3px solid #b48a4c;
+    outline-offset: 4px;
+}
+.anna-trade-dim { opacity: .3; filter: saturate(.4); }
+#annaTutorialOverlay.vn-chart-tour { z-index: 100001; }
+#annaTutorialOverlay.vn-rumor-focus { z-index: 1000001; }
+#annaTutorialOverlay.vn-phone-focus .vn-controls,
+#annaTutorialOverlay.vn-phone-focus .vn-skip-btn { display: none; }
+body:has(#annaTutorialOverlay.vn-phone-focus:not(.hidden)) #floatingPhoneBtn {
+    outline: 3px solid #b48a4c;
+    outline-offset: 4px;
+}
+.tutorial-target-shake { animation: dialogue-target-attention .5s; }
+@keyframes dialogue-target-attention {
+    0%, 100% { opacity: 1; }
+    25%, 75% { opacity: .45; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .tutorial-target-shake { animation: none; }
+}

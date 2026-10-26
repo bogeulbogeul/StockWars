@@ -1,0 +1,10 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\cipher-exterior-clock-v1\\CipherSecurities-clock.blend",
+  "roof": "pitched blue clay tiles",
+  "sha256": "348ecb70a25a3b2e994e2ff65f0f1bbb47278a5dc02f0f8bd94f394b66db6085",
+  "preserved": [
+    "Clock_Hour",
+    "Clock_Minute",
+    "Door_Assembly"
+  ]
+}

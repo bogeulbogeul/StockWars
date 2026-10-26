@@ -1,0 +1,54 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "themes": [
+    {
+      "id": "moa",
+      "accent": "#BDD6A2"
+    },
+    {
+      "id": "bongbong",
+      "accent": "#FFB99B"
+    },
+    {
+      "id": "woody",
+      "accent": "#DCBA87"
+    },
+    {
+      "id": "tori",
+      "accent": "#A9BDD8"
+    },
+    {
+      "id": "chagok",
+      "accent": "#E9CD85"
+    },
+    {
+      "id": "doran",
+      "accent": "#D2A4BD"
+    },
+    {
+      "id": "boni",
+      "accent": "#A9D9CB"
+    },
+    {
+      "id": "sodam",
+      "accent": "#C6B4DB"
+    },
+    {
+      "id": "duri",
+      "accent": "#B6DAE9"
+    },
+    {
+      "id": "somang",
+      "accent": "#E8DDC9"
+    }
+  ],
+  "errors": [],
+  "missing": [],
+  "mobileBounds": {
+    "x": 12,
+    "y": 662.203125,
+    "width": 366,
+    "height": 169.796875
+  },
+  "status": "passed"
+}

@@ -1,4 +1,5 @@
 import { createArrivalView } from './BusArrivalView.js';
+import { createBusArrivalAudio } from './BusArrivalAudio.js';
 
 // A temporary cutscene; it never adds a vehicle to the persistent town scene.
 export function playBusArrival(screen) {
@@ -10,12 +11,13 @@ export function playBusArrival(screen) {
         const stage = screen.querySelector('.bus-arrival__stage');
         const caption = screen.querySelector('.bus-arrival__caption');
         const skip = screen.querySelector('button');
-        let view, frame, finished = false, elapsed = 0, previous;
+        let view, audio, frame, finished = false, elapsed = 0, previous, departedAt;
         const finish = () => {
             if (finished) return;
             finished = true;
             clearTimeout(loadTimeout);
             cancelAnimationFrame(frame);
+            audio?.dispose();
             view?.dispose();
             screen.classList.remove('bus-arrival');
             resolve();
@@ -29,6 +31,7 @@ export function playBusArrival(screen) {
         view.ready.then(() => {
             if (finished) return;
             clearTimeout(loadTimeout);
+            audio = createBusArrivalAudio();
             screen.dataset.arrivalState = 'driving';
             const tick = now => {
                 if (finished) return;
@@ -40,13 +43,19 @@ export function playBusArrival(screen) {
                 const distance = 10 * (1 - (1 - progress) ** 3);
                 const playerView = reduced ? 1 : Math.min(Math.max((elapsed - 5) / 2, 0), 1);
                 const departure = reduced ? (elapsed > 2 ? 7 : 0) : Math.max(elapsed - 8, 0);
-                view.render(distance + Math.min(departure * departure * .5, 24), playerView);
-                if (progress === 1) {
-                    screen.dataset.arrivalState = elapsed >= 8 ? 'departing' : 'stopped';
-                    caption.textContent = elapsed >= 8 ? '버스가 떠나고, 소망이의 첫날이 시작됩니다.' : '정류장 의자에서 안나가 꾸벅꾸벅 졸고 있어요.';
+                const rendered = view.render(distance + departure * departure * .5, playerView, progress === 1);
+                const departing = reduced ? elapsed > 2 : elapsed >= 8;
+                if (departing && rendered?.busVisible === false && departedAt === undefined) {
+                    departedAt = elapsed;
+                    const focused = document.activeElement === skip;
+                    skip.remove();
+                    if (focused) { screen.tabIndex = -1; screen.focus({ preventScroll: true }); }
                 }
-                const duration = reduced ? 3 : 14;
-                if (elapsed >= duration) finish();
+                screen.dataset.arrivalState = departedAt !== undefined ? 'departed' : departing ? 'departing' : progress === 1 ? 'stopped' : 'driving';
+                audio.update({ progress, departure, departed: departedAt !== undefined });
+                caption.hidden = progress === 1 && departedAt === undefined;
+                if (departedAt !== undefined) caption.textContent = '버스 정류장 안에서 누군가 꾸벅꾸벅 졸고 있어요.';
+                if (departedAt !== undefined && elapsed - departedAt >= 2.5) finish();
                 else frame = requestAnimationFrame(tick);
             };
             frame = requestAnimationFrame(tick);

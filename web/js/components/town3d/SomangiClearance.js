@@ -1,7 +1,7 @@
 // Probe legal player-center positions; reuse each scene's existing collision radius.
 // Both sides must be close at two stations, so a lone wall/corner is not a passage.
 export function updateSomangiClearance(controller, dx, dz, x, z, canStand) {
-    if (controller.isResting || controller.somangiCrabSuspended) {
+    if (controller.isResting || controller.busSeated || controller.jumpActive || controller.scriptedWalking || controller.somangiCrabSuspended) {
         if (controller.isResting) controller.somangiCrabManual = false;
         controller.somangiCrabAuto = false;
         controller.somangiCrab = false;
@@ -28,4 +28,11 @@ export function updateSomangiClearance(controller, dx, dz, x, z, canStand) {
     }
     controller.somangiCrabAuto = narrow >= 2 || (!!controller.somangiCrabAuto && currentNarrow);
     controller.somangiCrab = !!controller.somangiCrabManual || controller.somangiCrabAuto;
+}
+
+export function sidewaysYaw(axis, currentYaw) {
+    if (!axis) return currentYaw;
+    const travel = Math.atan2(axis.x, axis.z);
+    const first = travel + Math.PI / 2, second = travel - Math.PI / 2;
+    return Math.cos(first - currentYaw) >= Math.cos(second - currentYaw) ? first : second;
 }

@@ -1,0 +1,82 @@
+{
+  "finiteMeshPositions": true,
+  "straightRoundColumns": 4,
+  "clockAndDoorNodes": true,
+  "roofLandmarks": [
+    {
+      "name": "central peak",
+      "target": [
+        593,
+        331
+      ],
+      "projected": [
+        592.9999999999998,
+        330.99999999999994
+      ],
+      "errorPixels": 2.3437142008433856e-13
+    },
+    {
+      "name": "rear ridge",
+      "target": [
+        780,
+        305
+      ],
+      "projected": [
+        780.0,
+        304.99999999999994
+      ],
+      "errorPixels": 5.684341886080802e-14
+    },
+    {
+      "name": "left gable",
+      "target": [
+        364,
+        493
+      ],
+      "projected": [
+        363.9999999999999,
+        493.0
+      ],
+      "errorPixels": 1.1368683772161603e-13
+    },
+    {
+      "name": "right gable",
+      "target": [
+        822,
+        502
+      ],
+      "projected": [
+        821.9999999999997,
+        501.99999999999994
+      ],
+      "errorPixels": 3.457650183405701e-13
+    },
+    {
+      "name": "left wing ridge",
+      "target": [
+        270,
+        418
+      ],
+      "projected": [
+        269.9999999999998,
+        418.0
+      ],
+      "errorPixels": 2.2737367544323206e-13
+    },
+    {
+      "name": "right wing ridge",
+      "target": [
+        1110,
+        443
+      ],
+      "projected": [
+        1110.0,
+        443.0
+      ],
+      "errorPixels": 0.0
+    }
+  ],
+  "foundationAndEaveFit": 0.3660599432897014,
+  "actualRender": "front-right.png",
+  "gameApplied": false
+}

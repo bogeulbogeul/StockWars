@@ -1,0 +1,124 @@
+/* Ordinary conversations use a bottom panel; guided lessons keep obstacle avoidance. */
+body #annaDialogueModalOverlay {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 24px !important;
+}
+body #annaDialogueModalOverlay .vn-dialogue-box.crayon-dialogue {
+    width: min(1050px, 100%) !important;
+    max-width: 1050px !important;
+    max-height: calc(100 * var(--game-vh) - 64px);
+    overflow-y: auto;
+    flex-direction: column !important;
+}
+body .crayon-dialogue .vn-content-wrapper { width: 100%; min-width: 0; }
+body .crayon-dialogue .vn-top-bar {
+    border: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 12px !important;
+    gap: 12px;
+    align-items: center;
+}
+body .crayon-dialogue .vn-dialogue-body { padding: 0 !important; }
+body .crayon-dialogue :is(.anna-vn-options, .npc-quest-offers, .cipher-agent-actions,
+    .vivian-npc-actions, .vn-rumor-choices) {
+    background: none !important;
+    border: 0 !important;
+    padding: 12px 0 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+body .crayon-dialogue .vn-controls { flex-wrap: wrap; }
+
+body .cipher-notice.crayon-dialogue,
+body .cipher-tour.crayon-dialogue[data-room="lobby"] {
+    position: absolute !important;
+    left: 5% !important;
+    right: 5% !important;
+    bottom: 24px !important;
+    top: auto !important;
+    width: 90% !important;
+    max-width: none !important;
+    max-height: 65%;
+    overflow-y: auto;
+    transform: none !important;
+    z-index: 30;
+    display: block !important;
+}
+body .crayon-dialogue .cipher-dialogue-body { width: 100%; min-width: 0; }
+body .crayon-dialogue .cipher-agent-identity { margin: 0 0 12px; }
+body .cipher-tour.crayon-dialogue { display: block; }
+body .crayon-dialogue .cipher-tour-top {
+    border: 0;
+    padding: 0;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+body .crayon-dialogue .cipher-tour-top > small { max-width: 100%; font-size: 14px !important; }
+body .crayon-dialogue h3 { color: #4c2b1a; font-size: 19px; }
+
+body :is(.cipher-welcome-dialogue, .vivian-welcome-dialogue).crayon-dialogue {
+    position: absolute;
+    left: 5%;
+    bottom: 24px;
+    width: 90% !important;
+    max-width: none;
+    transform: none;
+    pointer-events: none;
+    z-index: 10;
+}
+body .crayon-dialogue .vivian-dialogue-bubble {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+body .crayon-dialogue .vivian-dialogue-bubble::before,
+body .crayon-dialogue .vivian-dialogue-bubble::after { display: none; }
+body .vivian-npc-panel.crayon-dialogue { overflow-y: auto; }
+body .crayon-dialogue .vivian-nameplate { margin-bottom: 12px; }
+
+.model-dialogue-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    background: transparent;
+}
+.model-dialogue-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border: 1px solid #775a3b;
+    border-radius: 24px;
+    background: #fff8eb;
+    color: #4c2b1a;
+    font: inherit;
+    cursor: pointer;
+}
+.model-dialogue-hint[hidden], .model-dialogue-overlay.hidden { display: none !important; }
+
+@media (max-width: 640px) {
+    /* Counter the game's uniform world zoom for readable conversation text. */
+    body #annaDialogueModalOverlay, body .model-dialogue-overlay {
+        zoom: calc(1 / var(--game-ui-scale, 1));
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+    body .crayon-dialogue,
+    body #annaTutorialOverlay .vn-dialogue-box.crayon-dialogue:not(.collapsed),
+    body #annaDialogueModalOverlay .vn-dialogue-box.crayon-dialogue {
+        border-width: 14px !important;
+        padding: 6px 10px 10px !important;
+    }
+    body #annaDialogueModalOverlay { padding: 12px !important; }
+    body .crayon-dialogue :is(.vn-dialogue-text, .cipher-dialogue-text, .vivian-speech-content, p),
+    body #annaTutorialOverlay .crayon-dialogue .vn-dialogue-text { font-size: 17px !important; }
+    body .crayon-dialogue button { padding: 10px 18px !important; }
+    body .crayon-dialogue :is(.anna-vn-options, .cipher-agent-actions, .vn-rumor-choices) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

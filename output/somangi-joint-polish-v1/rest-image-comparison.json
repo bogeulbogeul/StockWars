@@ -1,0 +1,5 @@
+{
+  "sameCameraAndLighting": true,
+  "meanAbsolutePixelDifference": 0.0015128205128205128,
+  "note": "Render sampling may contribute small differences; geometric preservation is checked separately."
+}

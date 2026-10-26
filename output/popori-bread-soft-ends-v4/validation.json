@@ -1,0 +1,19 @@
+{
+  "id": "item_popori_bread",
+  "reimported": true,
+  "meshCount": 10,
+  "embeddedPrints": 4,
+  "degenerateFaces": 0,
+  "triangles": 52066,
+  "boundsMin": [
+    -1.2773538827896118,
+    -0.4918944239616394,
+    0.02500000037252903
+  ],
+  "boundsMax": [
+    1.2773538827896118,
+    0.4918944239616394,
+    0.6983153223991394
+  ],
+  "sha256": "a1f3d63ae5210861d9ace7545360287e2ce1ef2ed9553b72d108caa1ddd8ff9d"
+}

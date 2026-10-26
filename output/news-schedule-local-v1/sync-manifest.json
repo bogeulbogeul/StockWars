@@ -1,0 +1,18 @@
+[
+  {
+    "path": "js/engine/ScheduledNews.js",
+    "sha256": "cb4d4fc01c40a114c1320e1967b9ad22dee6a7d33fb40c892e8ca88c3452b849"
+  },
+  {
+    "path": "js/app/ScheduledNewsRuntime.js",
+    "sha256": "dd6c59c7b132ac2b1dee851642fe955f657f6c9cdb406873df7fe18c001e38d6"
+  },
+  {
+    "path": "js/app/PhoneStockSource.js",
+    "sha256": "343b6cd3a25523499c56eae1425135cc1ced7d68c1576130412d8723a6542db3"
+  },
+  {
+    "path": "js/app/exhibition/PhoneStockSource.js",
+    "sha256": "a7c5b9c27cc6f26c2caa628cef111c32dd8e9d034e9c8ae9781d0dbc1df06a42"
+  }
+]

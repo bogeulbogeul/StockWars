@@ -1,38 +1,62 @@
-const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
-const {chromium}=require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
-const root=path.resolve(process.argv[2]||process.env.CHECK_GAME_ROOT||'web');
-const server=http.createServer((req,res)=>{if(req.url==='/favicon.ico'){res.writeHead(204).end();return;}const file=path.join(root,decodeURIComponent(req.url.split('?')[0]==='/'?'/index.html':req.url.split('?')[0]));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}fs.readFile(file,(e,data)=>{if(e){res.writeHead(404).end();return;}res.setHeader('Content-Type',({'.js':'text/javascript','.html':'text/html','.css':'text/css','.glb':'model/gltf-binary'})[path.extname(file)]||'application/octet-stream');res.end(data);});});
-(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});try{const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(`http://127.0.0.1:${server.address().port}/`);await page.waitForFunction(()=>window.stockWarsApp?.townModelScene?.player?.state==='idle'&&window.stockWarsApp.townModelScene.loadedCount>=19,null,{timeout:90000});
-
-const state=()=>page.evaluate(()=>window.stockWarsApp.townModelScene.player.state);
-assert.equal(await state(),'idle');await page.screenshot({path:'scratch/somangi-game-idle.png'});
-await page.keyboard.press('3');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='crab');
-const crabSnapshot=()=>page.evaluate(()=>{const s=window.stockWarsApp.townModelScene,p=s.player,v=p.variants.get('crab');return {time:v.action.time,speed:v.action.timeScale,x:p.root.position.x,z:p.root.position.z,mode:s.town.playerController.somangiCrab,clip:v.action.getClip().name,visible:[...p.variants.values()].filter(v=>v.model.visible).length};});
-const still=await crabSnapshot();await page.waitForTimeout(250);assert.equal((await crabSnapshot()).time,still.time);assert.equal(still.clip,'Crab_Left');
-for(const key of ['d','s','a','w']) {const before=await crabSnapshot();await page.keyboard.down(key);await page.waitForFunction(({x,z})=>{const p=window.stockWarsApp.townModelScene.player.root.position;return Math.hypot(p.x-x,p.z-z)>.5;},before,{timeout:10000});const during=await crabSnapshot();assert.equal(await state(),'crab');assert.equal(during.visible,1);assert.ok(Math.hypot(during.x-before.x,during.z-before.z)<20);await page.keyboard.up(key);await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.variants.get('crab').action.timeScale===0);}
-await page.keyboard.down('Shift');await page.keyboard.down('d');await page.waitForTimeout(300);await page.screenshot({path:'scratch/somangi-game-crab.png'});assert.equal(await state(),'crab');await page.keyboard.up('d');await page.keyboard.up('Shift');
-await page.keyboard.press('3');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');assert.equal((await crabSnapshot()).mode,false);
-await page.keyboard.press('3');await page.keyboard.press('1');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='wave');assert.equal((await crabSnapshot()).mode,false);await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');console.log('CRAB_PASS');
-// Temporary test walls use the live scene collision list; no game asset is changed.
-await page.evaluate(()=>{const s=window.stockWarsApp.townModelScene,c=s.town.playerController;window.__clearanceWalls=s.collisionFootprints.length;const x=c.charPosX,y=c.charPosY;s.collisionFootprints.push({minX:x-50,maxX:x+120,minY:y+25,maxY:y+75},{minX:x-50,maxX:x+120,minY:y-75,maxY:y-25});});
-await page.keyboard.down('d');await page.waitForFunction(()=>{const s=window.stockWarsApp.townModelScene;return s.player.state==='crab'&&s.town.playerController.somangiCrabAuto;});await page.keyboard.up('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.variants.get('crab').action.timeScale===0);assert.equal(await state(),'crab');
-await page.evaluate(()=>window.stockWarsApp.townModelScene.collisionFootprints.splice(window.__clearanceWalls));await page.keyboard.down('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='walk');await page.keyboard.up('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');console.log('AUTO_CRAB_PASS');
-await page.keyboard.press('1');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='wave');await page.waitForTimeout(1000);await page.screenshot({path:'scratch/somangi-game-wave.png'});await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle',null,{timeout:10000});
-await page.keyboard.press('2');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='eat');await page.waitForFunction(()=>{const m=window.stockWarsApp.townModelScene.player.variants.get('eat');let yes=false;m.model.traverse(o=>{const i=o.morphTargetDictionary?.Mouth_Open;if(i!==undefined&&o.morphTargetInfluences[i]>.25)yes=true;});return yes;},null,{timeout:10000});await page.screenshot({path:'scratch/somangi-game-eat.png'});
-await page.keyboard.down('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='walk',null,{timeout:5000});assert.equal(await state(),'walk');await page.keyboard.up('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');
-await page.keyboard.press('2');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='eat');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle',null,{timeout:10000});
-
-// Jump must keep its vertical root motion while horizontal movement continues.
-await page.keyboard.press('Space');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='jump');
-await page.waitForFunction(()=>{const a=window.stockWarsApp.townModelScene.player.variants.get('jump').action;return a.time>.58&&a.time<1.05;},null,{timeout:10000});
-const airborne=await page.evaluate(async()=>{const THREE=await import('/vendor/three/three.module.js');const p=window.stockWarsApp.townModelScene.player,v=p.variants.get('jump');v.model.updateMatrixWorld(true);const box=new THREE.Box3().setFromObject(v.model,true);return {state:p.state,feet:box.min.y,time:v.action.time};});assert.equal(airborne.state,'jump');assert.ok(airborne.feet>12,JSON.stringify(airborne));
-await page.screenshot({path:'scratch/somangi-game-jump.png'});await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle',null,{timeout:10000});
-const grounded=await page.evaluate(async()=>{const THREE=await import('/vendor/three/three.module.js');const v=window.stockWarsApp.townModelScene.player.variants.get('walk');v.model.updateMatrixWorld(true);return new THREE.Box3().setFromObject(v.model,true).min.y;});assert.ok(Math.abs(grounded)<1,`Landing height ${grounded}`);
-await page.keyboard.down('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='walk');await page.keyboard.press('Space');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='jump');await page.waitForTimeout(250);assert.equal(await state(),'jump');
-await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='walk',null,{timeout:10000});await page.keyboard.up('d');await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');console.log('JUMP_PASS',JSON.stringify({airborne,grounded}));
-await page.evaluate(()=>window.stockWarsApp.enterOffice());await page.waitForFunction(()=>window.stockWarsApp.homeModelScene?.player?.state==='idle',null,{timeout:90000});
-await page.evaluate(async()=>{const s=window.stockWarsApp.homeModelScene;const {GROUND_PROJECTION}=await import('/js/data/townModelBuildings.js');const {HOME_ROOM_BOUNDS:b,HOME_MODEL_SCALE:k}=await import('/js/data/homeModelRoom.js');s.controller.charPosX=(b.doorLeft+b.doorRight)*k/2;s.controller.charPosY=(b.maxZ*k+10)*GROUND_PROJECTION;});
-await page.keyboard.down('s');await page.waitForFunction(()=>{const s=window.stockWarsApp.homeModelScene;return s.player.state==='crab'&&s.controller.somangiCrabAuto;});await page.keyboard.up('s');await page.waitForFunction(()=>window.stockWarsApp.homeModelScene.player.variants.get('crab').action.timeScale===0);await page.screenshot({path:'scratch/somangi-home-auto-crab.png'});
-await page.keyboard.down('w');await page.waitForFunction(()=>window.stockWarsApp.homeModelScene.player.state==='walk',null,{timeout:12000});await page.keyboard.up('w');await page.evaluate(()=>window.stockWarsApp.homeModelScene.exit());await page.waitForFunction(()=>window.stockWarsApp.townModelScene.player.state==='idle');console.log('HOME_AUTO_CRAB_PASS');
-
-const report=await page.evaluate(()=>{const s=window.stockWarsApp.townModelScene;return {models:s.loadedCount,playerState:s.player.state,variants:[...s.player.variants.keys()],visibleVariants:[...s.player.variants.values()].filter(v=>v.model.visible).length,rootVisible:s.player.root.visible,actorPosition:s.player.root.position.toArray()};});assert.equal(report.visibleVariants,1);assert.deepEqual(errors,[]);await page.setViewportSize({width:1000,height:750});await page.waitForTimeout(200);assert.equal(await page.locator('.somangi-controls:visible').isVisible(),true);console.log('PASS',JSON.stringify({report,errors}));}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.env.SOMANGI_WEB_ROOT || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png', '.txt': 'text/plain' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+(async () => {
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    const browser = await chromium.launch({ headless: true, channel: 'msedge' });
+    const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+    const errors = [], missing = [], requests = [];
+    page.on('pageerror', error => errors.push(error.message));
+    page.on('response', response => { if (response.status() >= 400) missing.push(response.url()); });
+    page.on('request', req => requests.push(req.url()));
+    try {
+        await page.goto(`http://127.0.0.1:${server.address().port}/?demo=first-day&skipOpening=1`);
+        await page.waitForFunction(() => window.stockWarsExhibition?.arrival.active);
+        await page.evaluate(async () => { await window.stockWarsApp.ready; await window.stockWarsApp.townModelScene.player.ready; });
+        console.log('LOADED', await page.evaluate(() => {
+            const p = window.stockWarsApp.townModelScene.player;
+            return { state: p.state, variants: [...p.variants.keys()], faces: p.expressions.materials.size };
+        }));
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.variants.size), 2);
+        await page.keyboard.down('a'); await page.waitForTimeout(180);
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.state), 'walk');
+        await page.screenshot({ path: 'scratch/somangi-game-walk.png' });
+        await page.keyboard.up('a'); await page.waitForTimeout(100);
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.state), 'idle');
+        const faces = 'smile happy neutral curious surprised worried teary pout determined shy relieved touched sleepy delicious'.split(' ');
+        for (const id of faces) assert.equal(await page.evaluate(id => window.stockWarsApp.townModelScene.player.setExpression(id), id), true);
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.setExpression('proud')), false);
+        await page.evaluate(async () => {
+            const p = window.stockWarsApp.townModelScene.player;
+            await Promise.all([p.setExpression('happy'), p.setExpression('smile')]);
+        });
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.expressionId), 'smile');
+        await page.evaluate(() => { const s = window.stockWarsApp.townModelScene; s.player.faceCamera(s.camera); });
+        await page.waitForTimeout(100); await page.screenshot({ path: 'scratch/somangi-game-town.png' });
+        assert.equal(await page.evaluate(() => window.stockWarsApp.townModelScene.player.play('eat', { scripted: true })), true);
+        await page.waitForTimeout(1000); await page.screenshot({ path: 'scratch/somangi-game-eat.png' });
+        await page.waitForFunction(() => window.stockWarsApp.townModelScene.player.state === 'idle', { timeout: 15000 });
+        for (const place of ['home', 'store', 'information', 'bank', 'stock']) {
+            await page.evaluate(async place => { window.stockWarsExhibition.arrival.stop(); await window.stockWarsApp.show(place); }, place);
+            const data = await page.evaluate(async place => {
+                const s = window.stockWarsApp.rooms.get(place); await s.player.ready; await s.player.setExpression('happy'); s.player.faceCamera(s.camera);
+                const other = window.stockWarsApp.townModelScene.player;
+                return { variants: s.player.variants.size, expression: s.player.expressionId, originalExpression: other.expressionId,
+                    sharedSkeleton: s.player.variants.get('walk').model.getObjectByProperty('isSkinnedMesh', true).skeleton === other.variants.get('walk').model.getObjectByProperty('isSkinnedMesh', true).skeleton };
+            }, place);
+            assert.equal(data.variants, 2); assert.equal(data.expression, 'happy'); assert.equal(data.originalExpression, 'smile'); assert.equal(data.sharedSkeleton, false);
+            await page.waitForTimeout(150); await page.screenshot({ path: `scratch/somangi-game-${place}.png` }); console.log('ROOM', place, data);
+        }
+        assert.deepEqual(errors, []); assert.deepEqual(missing, []);
+        assert.equal(requests.some(url => /characters\/3d\/(moa|tori|bongbong)\//.test(url)), false);
+        console.log('PASS: town walk, eat completion, 14 expressions, request race, five interiors, independent skeletons/materials, no missing assets/errors/retired NPC requests');
+    } finally { await browser.close(); server.close(); }
+})().catch(error => { console.error(error); process.exitCode = 1; });

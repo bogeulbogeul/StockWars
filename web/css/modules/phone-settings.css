@@ -1,0 +1,28 @@
+.cozy-phone .cozy-phone__detail--settings { padding: 12px 16px; }
+.cozy-phone .cozy-phone__detail--settings > h2 { font-size: 27px; font-weight: 800; margin: 20px 0; text-align: center; }
+.phone-settings { color: #353d32; }
+.phone-settings__card { background: #eef1e4; border: 1px solid #d7dfcb; border-radius: 17px; padding: 17px; }
+.phone-settings__card h3 { margin: 0 0 18px; color: #4c6a4c; font-size: 22px; }
+.phone-settings__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 26px; }
+.phone-settings__row strong { font-size: 18px; }
+.cozy-phone .phone-settings__row p { font-size: 13px; color: #67705f; line-height: 1.6; margin: 7px 0 0; word-break: keep-all; }
+.phone-settings .phone-settings__switch { flex: 0 0 64px; border: 0; border-radius: 22px; padding: 11px 13px; font-size: 15px; font-weight: 700; background: #c0c5b8; color: #364131; }
+.phone-settings .phone-settings__switch[aria-checked="true"] { background: #648966; color: #fffaf0; }
+.phone-settings__volume { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 17px; font-weight: 700; }
+.phone-settings__volume output { color: #527697; }
+.phone-settings input[type="range"] { width: 100%; accent-color: #7d9fc1; cursor: pointer; margin: 22px 0 12px; min-height: 28px; }
+.phone-settings__range-labels { display: flex; justify-content: space-between; color: #6f7866; font-size: 12px; }
+.cozy-phone .phone-settings__note { color: #6b7462; font-size: 13px; line-height: 1.8; margin: 18px 6px; }
+
+.phone-settings__card + .phone-settings__card { margin-top: 16px; }
+.phone-settings__controls { background: #e8eef5; border-color: #cfdae6; }
+.phone-settings__controls h3 { color: #537492; }
+.phone-settings__extras { background: #f7edda; border-color: #e8d9ba; }
+.phone-settings__presets { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.phone-settings__presets button, .phone-settings__binding button { border:1px solid #b9c9d6; border-radius:12px; background:#fffaf0; color:#3e5b72; padding:11px 14px; font-size:16px; font-weight:700; cursor:pointer; }
+.phone-settings__binding { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:10px 0; font-size:17px; }
+.phone-settings__binding button { min-width:72px; }
+.cozy-phone .phone-settings__help { font-size:13px; line-height:1.7; color:#586a79; margin:14px 0 0; }
+.phone-settings__extras .phone-settings__row { margin:18px 0 0; }
+
+.phone-settings__presets button[aria-pressed="true"] { background:#5c7d9c; color:#fffaf0; border-color:#5c7d9c; }

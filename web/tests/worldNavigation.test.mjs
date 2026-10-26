@@ -18,14 +18,20 @@ test('town appears only after server accepts entry, office departure releases me
         join: async () => accepted ? { snapshot: { channels: [{id: 'town-1', name: '타운 1'}], currentChannelId: 'town-1', ping: 8 } } : { error: 'offline' },
         leave: async () => { left = true; }
     };
-    let homeShown = 0, homeHidden = 0, cameraUpdates = 0;
-    const playerController = { keysHeld: new Set(['w']), isMoving: true, updateCamera() { cameraUpdates++; } };
+    let homeShown = 0, homeHidden = 0, entered = 0, departed = 0;
+    const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
+    const playerController = {charPosX: home.x + (home.entranceOffsetX || 0), charPosY: home.y + 65};
     class HomeModelScene {
         constructor(container, onExit) { this.onExit = onExit; }
-        show() { homeShown++; }
-        hide() { homeHidden++; }
+        show() { this.active = true; homeShown++; }
+        hide() { this.active = false; homeHidden++; }
     }
-    const context = vm.createContext({ HomeModelScene, TOWN_MODEL_BUILDINGS, registerNickname, window: { stockWarsPresence: bridge },
+    const context = vm.createContext({
+        async enterBuildingOnFoot(town, id) { assert.equal(id, home.id); entered++; },
+        async leaveBuildingOnFoot({room, id, showTown}) {
+            assert.equal(room, app.homeModelScene); assert.equal(id, home.id);
+            departed++; return showTown();
+        }, HomeModelScene, TOWN_MODEL_BUILDINGS, registerNickname, window: { stockWarsPresence: bridge },
         document: { body: { classList: { add: name => classes.add(name), remove: name => classes.delete(name), contains: name => classes.has(name) } } }, toastManager: { show() {} } });
     vm.runInContext(source, context);
     const app = { ...context.worldNavigation, userProfile: { nickname: '트레이더' }, townStage: { playerController, viewportEl: { clientWidth: 1200, clientHeight: 900 }, show(server) { shown = server.id; }, hide() {} },
@@ -36,7 +42,7 @@ test('town appears only after server accepts entry, office departure releases me
     assert.equal(await app.enterTown(), true);
     assert.equal(shown, 'town-1');
     assert.equal(classes.has('town-mode-active'), true);
-    app.enterOffice();
+    await app.enterOffice();
     assert.equal(left, true);
     assert.equal(classes.has('town-mode-active'), false);
     assert.equal(homeShown, 1);
@@ -44,19 +50,18 @@ test('town appears only after server accepts entry, office departure releases me
     accepted = false;
     await homeScene.onExit();
     assert.equal(classes.has('town-mode-active'), false);
-    assert.equal(cameraUpdates, 0);
+    assert.equal(departed, 1);
     accepted = true;
     await homeScene.onExit();
-    const home = TOWN_MODEL_BUILDINGS.find(building => building.id === 'home_office_tower');
     assert.equal(classes.has('town-mode-active'), true);
     assert.equal(homeHidden, 1);
-    assert.equal(playerController.charPosX, home.x + (home.entranceOffsetX || 0));
-    assert.equal(playerController.charPosY, home.y + 65);
-    assert.equal(playerController.keysHeld.size, 0);
-    assert.equal(playerController.isMoving, false);
-    assert.equal(playerController.facing, 'down');
-    assert.equal(cameraUpdates, 1);
-    app.enterOffice();
+    assert.equal(departed, 2);
+    assert.equal(entered, 1);
+    playerController.charPosX = home.x + 1000;
+    assert.equal(await app.enterOffice(), false);
+    assert.equal(entered, 1);
+    playerController.charPosX = home.x + (home.entranceOffsetX || 0);
+    await app.enterOffice();
     assert.equal(app.homeModelScene, homeScene);
     assert.equal(homeShown, 2);
 });

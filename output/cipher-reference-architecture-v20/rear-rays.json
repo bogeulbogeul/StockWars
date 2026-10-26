@@ -1,0 +1,106 @@
+[
+  {
+    "pixel": [
+      552,
+      532
+    ],
+    "object": "Grand_Rear_Windowless_Wall",
+    "point": [
+      1.3217647075653076,
+      1.58097243309021,
+      1.4521178007125854
+    ],
+    "material": "Wall_Ivory"
+  },
+  {
+    "pixel": [
+      552,
+      535
+    ],
+    "object": "Grand_Rear_Windowless_Wall",
+    "point": [
+      1.3217649459838867,
+      1.5809739828109741,
+      1.4308604001998901
+    ],
+    "material": "Wall_Ivory"
+  },
+  {
+    "pixel": [
+      552,
+      540
+    ],
+    "object": "Grand_Rear_Windowless_Wall",
+    "point": [
+      1.3217649459838867,
+      1.5809732675552368,
+      1.3954310417175293
+    ],
+    "material": "Wall_Ivory"
+  },
+  {
+    "pixel": [
+      552,
+      697
+    ],
+    "object": "Central_Foundation",
+    "point": [
+      1.3217658996582031,
+      1.5809736251831055,
+      0.28295397758483887
+    ],
+    "material": "Trim_Cream"
+  },
+  {
+    "pixel": [
+      552,
+      701
+    ],
+    "object": "Grand_Rear_Windowless_Wall",
+    "point": [
+      1.3217649459838867,
+      1.5809732675552368,
+      0.2546103596687317
+    ],
+    "material": "Wall_Ivory"
+  },
+  {
+    "pixel": [
+      560,
+      701
+    ],
+    "object": "Central_Foundation",
+    "point": [
+      1.266697883605957,
+      1.5928535461425781,
+      0.2480759620666504
+    ],
+    "material": "Trim_Cream"
+  },
+  {
+    "pixel": [
+      540,
+      532
+    ],
+    "object": "Wing_Cream_Soffit.001",
+    "point": [
+      1.4210598468780518,
+      1.5909719467163086,
+      1.4736042022705078
+    ],
+    "material": "Trim_Cream"
+  },
+  {
+    "pixel": [
+      560,
+      532
+    ],
+    "object": "Grand_Rear_Windowless_Wall",
+    "point": [
+      1.2595691680908203,
+      1.5809739828109741,
+      1.4405932426452637
+    ],
+    "material": "Wall_Ivory"
+  }
+]

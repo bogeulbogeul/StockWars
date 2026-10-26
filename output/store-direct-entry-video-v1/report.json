@@ -1,0 +1,2453 @@
+{
+  "frames": 268,
+  "duration": 21.80554485321045,
+  "errors": [],
+  "result": {
+    "place": "store",
+    "noticeComplete": true,
+    "bongbongDialogue": "봉봉\n\n어서 오세요! 찾으시는 게 있나요?",
+    "samples": [
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": false
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1530,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1528.9321278864218,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1527.8769685361005,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1527.8769685361005,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1527.8769685361005,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1523.6372619899298,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1522.5821026396086,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1519.403911825388,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1518.3360397118097,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1515.157848897589,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1511.9796580833681,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1510.9244987330467,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1510.9244987330467,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1510.9244987330467,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1506.6847921868762,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1504.568117104605,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1499.2668948264848,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1499.2668948264848,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1496.0887040122639,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1496.0887040122639,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1491.8489974660934,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1491.8489974660934,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1485.4926158376518,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1484.431100105702,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1481.252909291481,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1480.1913935595312,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1480.1913935595312,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1477.0132027453105,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1475.951687013361,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1475.951687013361,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1470.6504647352406,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1470.6504647352406,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1470.6504647352406,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1466.4107581890698,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1466.4107581890698,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1466.4107581890698,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1462.164695261271,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1462.164695261271,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1458.98650444705,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1456.8634729831504,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1453.6852821689297,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1452.6174100553515,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1452.6174100553515,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1452.6174100553515,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1448.3840598908093,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1448.3840598908093,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1444.1443533446386,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1444.1443533446386,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1440.966162530418,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1439.904646798468,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1439.904646798468,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1435.6649402522976,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1435.6649402522976,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1431.4188773244985,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1431.4188773244985,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1428.2406865102778,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1426.117655046378,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1426.117655046378,
+        "walking": true,
+        "phase": "approaching"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "opening"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1425.430754808098,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1422.2525639938772,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1421.1910482619276,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1421.1910482619276,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1418.0128574477067,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1415.8834696021788,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1415.8834696021788,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1411.643763056008,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1411.643763056008,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1411.643763056008,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1407.4040565098376,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1407.4040565098376,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1403.1707063452955,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1401.0476748813958,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "storeOutside",
+        "x": 2700,
+        "y": 1397.869484067175,
+        "walking": true,
+        "phase": "entering"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      },
+      {
+        "place": "store",
+        "x": 2700,
+        "y": 1396.9366302668082,
+        "walking": false,
+        "phase": "complete"
+      }
+    ]
+  }
+}

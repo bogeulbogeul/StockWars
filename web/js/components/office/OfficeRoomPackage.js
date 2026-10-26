@@ -23,7 +23,6 @@ export function homeFurnitureInFront(object,foot){
 }
 export const HOME_PLACES = [
     {id:'exit', label:'마을로 나가기', x:250,y:810, proximity:2, shape:[[149,475],[283,397],[283,699],[149,774]], action:'onOpenServerSelect'},
-    {id:'wardrobe', label:'옷장 열기', x:470,y:880, shape:HOME_OBJECTS[0].shape, action:'onOpenWardrobe'},
     {id:'computer', label:'컴퓨터 · 주식 거래', x:750,y:760, shape:HOME_OBJECTS[1].shape, action:'onOpenComputer'}
 ];
 export function homeGridToSource(x,y) { return {x:627+(y+.5)*68.25-(x+.5)*65.375,y:475+(x+.5)*38.125+(y+.5)*41.625}; }

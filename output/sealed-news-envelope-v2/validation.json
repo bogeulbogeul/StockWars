@@ -1,0 +1,19 @@
+{
+  "id": "item_premium_rumor",
+  "reimported": true,
+  "meshCount": 12,
+  "embeddedPrints": 0,
+  "degenerateFaces": 0,
+  "triangles": 30556,
+  "boundsMin": [
+    -0.9300000071525574,
+    -0.060499999672174454,
+    0.0
+  ],
+  "boundsMax": [
+    0.9300000071525574,
+    0.004999999888241291,
+    1.0
+  ],
+  "sha256": "10907983852817919dd242cd39b055202387b7b777bbdf06d8aee45356b75acc"
+}

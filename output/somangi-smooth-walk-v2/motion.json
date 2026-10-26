@@ -1,0 +1,107 @@
+{
+  "fps": 32,
+  "cycleSeconds": 0.75,
+  "reference": "output/somangi-walk-v4/build.py",
+  "keys": [
+    {
+      "frame": 1,
+      "groundCorrection": 0.03254902362823486
+    },
+    {
+      "frame": 2,
+      "groundCorrection": 0.03226006031036377
+    },
+    {
+      "frame": 3,
+      "groundCorrection": 0.03090614080429077
+    },
+    {
+      "frame": 4,
+      "groundCorrection": 0.027650952339172363
+    },
+    {
+      "frame": 5,
+      "groundCorrection": 0.021471619606018066
+    },
+    {
+      "frame": 6,
+      "groundCorrection": 0.011758565902709961
+    },
+    {
+      "frame": 7,
+      "groundCorrection": 0.0
+    },
+    {
+      "frame": 8,
+      "groundCorrection": 0.009071528911590576
+    },
+    {
+      "frame": 9,
+      "groundCorrection": 0.015814661979675293
+    },
+    {
+      "frame": 10,
+      "groundCorrection": 0.02221989631652832
+    },
+    {
+      "frame": 11,
+      "groundCorrection": 0.02722829580307007
+    },
+    {
+      "frame": 12,
+      "groundCorrection": 0.030727922916412354
+    },
+    {
+      "frame": 13,
+      "groundCorrection": 0.032647550106048584
+    },
+    {
+      "frame": 14,
+      "groundCorrection": 0.032363712787628174
+    },
+    {
+      "frame": 15,
+      "groundCorrection": 0.031035125255584717
+    },
+    {
+      "frame": 16,
+      "groundCorrection": 0.027769148349761963
+    },
+    {
+      "frame": 17,
+      "groundCorrection": 0.021556079387664795
+    },
+    {
+      "frame": 18,
+      "groundCorrection": 0.011928200721740723
+    },
+    {
+      "frame": 19,
+      "groundCorrection": 0.0
+    },
+    {
+      "frame": 20,
+      "groundCorrection": 0.009074389934539795
+    },
+    {
+      "frame": 21,
+      "groundCorrection": 0.01589864492416382
+    },
+    {
+      "frame": 22,
+      "groundCorrection": 0.022134125232696533
+    },
+    {
+      "frame": 23,
+      "groundCorrection": 0.027111172676086426
+    },
+    {
+      "frame": 24,
+      "groundCorrection": 0.03059995174407959
+    },
+    {
+      "frame": 25,
+      "groundCorrection": 0.03254902362823486
+    }
+  ]
+}

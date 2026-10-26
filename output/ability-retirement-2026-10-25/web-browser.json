@@ -1,0 +1,19 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "level": 3,
+  "points": 0,
+  "slots": 5,
+  "hearts": 3,
+  "restored": {
+    "level": 3,
+    "points": 0,
+    "stats": {
+      "analysis": 1
+    },
+    "spent": 1,
+    "management": 5,
+    "levelNotices": 0,
+    "allocationDialogs": 0
+  },
+  "errors": []
+}

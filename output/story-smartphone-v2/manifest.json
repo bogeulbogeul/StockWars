@@ -1,0 +1,67 @@
+{
+  "status": "P1: model and roundtrip checked; acceptance and gameplay contact pending",
+  "dimensions_blender_H": [
+    0.1850000023841858,
+    0.03350000083446503,
+    0.3199999928474426
+  ],
+  "size_status": "Provisional H=1; case width .18H, height .32H, depth .029H",
+  "origin": "Bottom center; Blender up +Z, front -Y; glTF up +Y, front +Z",
+  "materials": "Neutral black case and screen; rough matte case, subtle glass reflection; no emission",
+  "screen": "Off; no icons, text, logos or UI",
+  "meshes": [
+    {
+      "name": "Case_Rounded_Black",
+      "triangles": 2092,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Front_Black_Bezel",
+      "triangles": 2092,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Screen_Off",
+      "triangles": 1244,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Earpiece_Dark_Rim",
+      "triangles": 1244,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Earpiece",
+      "triangles": 1244,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Side_Power_Button",
+      "triangles": 428,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Side_Volume_Button",
+      "triangles": 428,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Camera_Socket",
+      "triangles": 1532,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Camera_Rim",
+      "triangles": 1532,
+      "non_manifold_edges": 0
+    },
+    {
+      "name": "Camera_Lens",
+      "triangles": 1532,
+      "non_manifold_edges": 0
+    }
+  ],
+  "glb_bytes": 254164,
+  "validation": "Finite coordinates, closed positive-volume meshes, GLB mesh/anchor/bounds roundtrip passed",
+  "game_installed": false
+}

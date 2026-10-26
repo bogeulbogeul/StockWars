@@ -1,12 +1,5 @@
-# 대기 소파 장식 쿠션 제거 v2
+# 안내소 소파 장식 쿠션 제거
 
-좌판과 등받이의 부드러운 쿠션은 유지하고 크림색/체크 장식 쿠션 두 개만 제거했다. 앞서 테이블을 옮겨 확보한 .925의 착석 여유도 유지한다. 단위는 임시 제작 단위이며 실제 캐릭터 앉기/일어서기 충돌은 미검증이다.
+사용자 요청으로 소파 위 크림색·체크무늬 작은 쿠션 두 개(Cream_Pillow, Gingham_Pillow)를 런타임 장면에서 제거했다. 원본 제작 GLB는 보존한다. 좌판·등받이·목재 프레임과 소파 두 자리 착석, 테이블·러그·화분 배치는 유지했다.
 
-✅ 독립 모델·조합 수정 / ⏳ 사용자 검수·게임 적용
-
-- `Waiting-sage-sofa-no-pillows.glb`, `Waiting-sage-sofa-no-pillows.blend`: 독립 모델
-- `sofa.png`: 소파 단독
-- `waiting-corner.png`, `Office-sofa-no-pillows-preview.blend`: 최신 대기 구역
-- `remove_pillows.py`, `manifest.json`: 재현·상태
-
-이전 쿠션 포함 모델과 게임 파일은 보존한다.
+웹과 기존 실행본 resources/web의 InformationWaitingCorner.js에 반영했다. `scratch/check-information-sofa-no-pillows.cjs`를 양쪽에서 실행해 두 쿠션 노드 부재·두 자리 착석/일어서기·실제 E키 동작·가구 충돌·지도/창구 접근을 확인했다. JavaScript 오류는 0건이며 실제 전체 화면을 열어 확인했다. 사용자 최종 검수와 설치 프로그램 재빌드는 별도다.

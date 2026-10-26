@@ -1,0 +1,5 @@
+js/components/phone/PhoneLauncher.js
+css/modules/phone-launcher.css
+css/modules/phone-home.css
+js/app/InstallPhoneHome.js
+js/app/exhibition/View.js

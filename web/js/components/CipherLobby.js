@@ -5,12 +5,12 @@ export class CipherLobby {
         this.isOpen = false;
         this.dialog = document.createElement('dialog');
         this.dialog.className = 'cipher-lobby';
-        this.dialog.setAttribute('aria-label', '사이퍼 증권 로비');
+        this.dialog.setAttribute('aria-label', '토리 증권사 로비');
         this.dialog.innerHTML = `
-            <div class="cipher-lobby-header"><span>사이퍼 증권 · 1층 로비</span>
+            <div class="cipher-lobby-header"><span>토리 증권사 · 1층 로비</span>
                 <button type="button" class="cipher-grid-toggle" aria-pressed="false">그리드 확인</button>
                 <button type="button" class="cipher-lobby-exit">마을로 나가기 · Esc</button></div>
-            <svg class="cipher-lobby-shell" viewBox="0 0 1554 1012" role="img" aria-label="사이퍼 증권 로비">
+            <svg class="cipher-lobby-shell" viewBox="0 0 1554 1012" role="img" aria-label="토리 증권사 로비">
                 <image href="./assets/interiors/cipher/cipher-lobby-shell-v8-wall-reference.png" width="1554" height="1012"/>
                 ${cipherAlignedFloor()}
                 <g transform="scale(0.9879211697 1.012)">

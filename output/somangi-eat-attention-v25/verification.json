@@ -1,0 +1,1095 @@
+{
+  "samples": 181,
+  "maximumTorsoPenetration": 0.0,
+  "armHeadCollisionSamples": 0,
+  "foodHeadCollisionSamples": 0,
+  "finalHoldError": 0.0,
+  "details": [
+    {
+      "frame": 1.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 1.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 2.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 2.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 3.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 3.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 4.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 4.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 5.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 5.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 6.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 6.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 7.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 7.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 8.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 8.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 9.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 9.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 10.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 10.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 11.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 11.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 12.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 12.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 13.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 13.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 14.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 14.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 15.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 15.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 16.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 16.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 17.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 17.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 18.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 18.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 19.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 19.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 20.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 20.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 21.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 21.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 22.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 22.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 23.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 23.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 24.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 24.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 25.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 25.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 26.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 26.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 27.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 27.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 28.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 28.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 29.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 29.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 30.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 30.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 31.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 31.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 32.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 32.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 33.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 33.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 34.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 34.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 35.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 35.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 36.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 36.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 37.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 37.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 38.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 38.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 39.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 39.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 40.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 40.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 41.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 41.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 42.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 42.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 43.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 43.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 44.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 44.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 45.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 45.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 46.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 46.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 47.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 47.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 48.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 48.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 49.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 49.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 50.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 50.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 51.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 51.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 52.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 52.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 53.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 53.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 54.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 54.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 55.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 55.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 56.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 56.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 57.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 57.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 58.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 58.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 59.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 59.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 60.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 60.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 61.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 61.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 62.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 62.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 63.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 63.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 64.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 64.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 65.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 65.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 66.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 66.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 67.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 67.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 68.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 68.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 69.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 69.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 70.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 70.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 71.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 71.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 72.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 72.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 73.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 73.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 74.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 74.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 75.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 75.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 76.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 76.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 77.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 77.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 78.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 78.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 79.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 79.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 80.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 80.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 81.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 81.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 82.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 82.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 83.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 83.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 84.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 84.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 85.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 85.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 86.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 86.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 87.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 87.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 88.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 88.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 89.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 89.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 90.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 90.5,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    },
+    {
+      "frame": 91.0,
+      "torsoPenetration": 0.0,
+      "armHeadTriangles": 0,
+      "foodHeadTriangles": 0
+    }
+  ]
+}

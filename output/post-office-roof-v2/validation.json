@@ -1,0 +1,11 @@
+{
+  "glbReload": true,
+  "closedRoofAndTimber": true,
+  "tiles": 128,
+  "ridgeCaps": 8,
+  "overlapBands": 9,
+  "envelopeSignAndMailboxPreserved": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "gameApplied": false
+}

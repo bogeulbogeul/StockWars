@@ -1,0 +1,20 @@
+{
+  "glbReload": true,
+  "finiteBounds": true,
+  "unchangedOtherMeshes": 240,
+  "integratedPanels": [
+    {
+      "side": "Left",
+      "connectedComponents": 1,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    },
+    {
+      "side": "Right",
+      "connectedComponents": 1,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    }
+  ],
+  "gameApplied": false
+}

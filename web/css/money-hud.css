@@ -1,0 +1,67 @@
+.money-hud {
+    zoom: calc(1 / var(--game-ui-scale, 1));
+    position: fixed;
+    top: max(24px, env(safe-area-inset-top));
+    right: max(24px, env(safe-area-inset-right));
+    z-index: 110;
+    box-sizing: border-box;
+    width: 260px;
+    padding: 17px 19px 15px;
+    border: 2px solid #e7d9ba;
+    border-radius: 25px;
+    background: #fff9ec;
+    color: #494b37;
+    box-shadow: 0 4px 0 #d8c9a74d, 0 8px 22px #57492b0d;
+    font: 600 13px/1.35 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+    pointer-events: none;
+    user-select: none;
+}
+.money-hud[hidden],
+body.title-screen-active .money-hud,
+body:has(dialog[open]) .money-hud,
+body:has(.exhibition-ui[hidden], .exhibition-ui[data-ended="true"]) .money-hud,
+body:has(.vivian-store-overlay:not(.hidden) #vivianShopPanel:not(.hidden)) .money-hud { display: none; }
+.money-hud__cash { display: flex; align-items: center; gap: 12px; }
+.money-hud__balance { min-width: 0; }
+.money-hud__label { display: block; color: #847b63; margin-bottom: 4px; }
+.money-hud__amount { display: flex; align-items: baseline; gap: 6px; }
+.money-hud__amount strong { font-size: 26px; font-weight: 750; letter-spacing: -.6px; }
+.money-hud__amount > span, .money-hud dd > span { color: #8b8269; font-size: 13px; }
+.money-hud strong, .money-hud dd { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.money-hud dl { border-top: 1px solid #e9dec7; padding-top: 12px; margin: 13px 0 0; }
+.money-hud dl[hidden] { display: none; }
+.money-hud dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.money-hud dl > div + div { margin-top: 8px; }
+.money-hud dt { color: #847b63; flex-shrink: 0; }
+.money-hud dd { margin: 0; text-align: right; font-size: 17px; }
+.money-hud dd > span { margin-left: 5px; }
+.money-hud dd strong { font-weight: 650; color: #646b52; }
+.money-hud [data-trend="up"] { color: #bf604d; }
+.money-hud [data-trend="down"] { color: #537ea8; }
+.money-hud [data-trend="flat"] { color: #646b52; }
+/* Bank pediment: gold rim, two symmetrical recessed oval leaves and a stem. */
+.money-hud__coin { position: relative; display: block; flex-shrink: 0; box-sizing: border-box; width: 48px; height: 48px; border-radius: 50%; background: #d6b568; border: 3px solid #dfc17d; box-shadow: inset 0 0 0 2px #b99a55; }
+.money-hud__coin b, .money-hud__coin em { position: absolute; width: 9px; height: 17px; top: 8px; background: #bc9b56; border-radius: 70% 70% 60% 60%; box-shadow: inset 1px 1px 2px #977a3f, 1px 1px 0 #e8cc85; }
+.money-hud__coin b { left: 11px; transform: rotate(-39deg); }
+.money-hud__coin em { right: 10px; transform: rotate(39deg); }
+.money-hud__coin i { position: absolute; left: 20px; top: 23px; height: 12px; width: 3px; border-radius: 3px; background: #b3914d; box-shadow: inset 1px 0 1px #99793e, 1px 1px 0 #e8cc85; }
+body:not(.title-screen-active):has(.money-hud:not([hidden])) > .town-music-toggle {
+    zoom: calc(1 / var(--game-ui-scale, 1));
+    top: calc(max(24px, env(safe-area-inset-top)) + 190px);
+    right: max(24px, env(safe-area-inset-right));
+}
+body:not(.title-screen-active):has(.money-hud[data-cash-only="true"]:not([hidden])) > .town-music-toggle {
+    top: calc(max(24px, env(safe-area-inset-top)) + 110px);
+}
+@media (max-width: 600px), (max-height: 550px) {
+    .money-hud { width: 226px; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); padding: 12px 14px; border-radius: 21px; }
+    .money-hud__cash { gap: 9px; }
+    .money-hud__amount strong { font-size: 23px; }
+    .money-hud__coin { width: 44px; height: 44px; }
+    .money-hud__coin b { left: 9px; }
+    .money-hud__coin em { right: 8px; }
+    .money-hud__coin i { left: 18px; }
+    .money-hud dd { font-size: 16px; }
+    body:not(.title-screen-active):has(.money-hud:not([hidden])) > .town-music-toggle { top: calc(max(12px, env(safe-area-inset-top)) + 174px); right: max(12px, env(safe-area-inset-right)); }
+    body:not(.title-screen-active):has(.money-hud[data-cash-only="true"]:not([hidden])) > .town-music-toggle { top: calc(max(12px, env(safe-area-inset-top)) + 100px); }
+}

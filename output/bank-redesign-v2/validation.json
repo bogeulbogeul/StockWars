@@ -1,0 +1,13 @@
+{
+  "glbReload": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "tiles": 166,
+  "mainRidgeCaps": 12,
+  "porchRidgeCaps": 4,
+  "closedNewRoofTimberDoors": true,
+  "doubleDoors": 2,
+  "engravedCoinPreserved": true,
+  "modelWidth": 3.4100005626678467,
+  "gameApplied": false
+}

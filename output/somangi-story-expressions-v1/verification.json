@@ -1,0 +1,7 @@
+{
+  "expressionModels": 16,
+  "jointsPerModel": 4,
+  "staticModels": true,
+  "faceTexturesEmbedded": true,
+  "sourceGeometryAndWeightsUnchanged": true
+}

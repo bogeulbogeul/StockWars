@@ -1,0 +1,12 @@
+{
+  "sampleCount": 147,
+  "maxGroundError": 6.008007813473881e-08,
+  "boundaryMaxVertexDelta": {
+    "downToIdle": 0.0,
+    "idleLoop": 0.0,
+    "idleToUp": 0.0,
+    "upToRest": 0.0
+  },
+  "restMeshUnchanged": true,
+  "notes": "Ground and continuity checks; not a complete self-intersection certification."
+}

@@ -1,0 +1,49 @@
+{
+  "environment": {
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) stockwars-electron/1.0.9 Chrome/120.0.6099.291 Electron/28.3.3 Safari/537.36",
+    "url": "file:///C:/GitHub/StockWars/electron-app/dist/win-unpacked/resources/web/index.html",
+    "viewport": [
+      1264,
+      741
+    ],
+    "dpr": 1,
+    "hidden": false,
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x0000164E) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "music": "day"
+  },
+  "summary": [
+    {
+      "route": "entry",
+      "enabled": false,
+      "frame": {
+        "frames": 307,
+        "meanMs": 26.03029315960912,
+        "fps": 38.4167782463429,
+        "p95Ms": 66.70000000000437,
+        "p99Ms": 83.40000000000146,
+        "over33Ms": 57,
+        "over50Ms": 43
+      },
+      "meanCalls": 2984.8453098471987,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    },
+    {
+      "route": "entry",
+      "enabled": true,
+      "frame": {
+        "frames": 303,
+        "meanMs": 28.907590759075884,
+        "fps": 34.59299006735932,
+        "p95Ms": 100,
+        "p99Ms": 116.79999999999563,
+        "over33Ms": 68,
+        "over50Ms": 56
+      },
+      "meanCalls": 1087.1980001742768,
+      "illegalFrames": 0,
+      "hiddenFrames": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,124 @@
+/* Scoped to dialogue surfaces; shops and trading controls keep their own layout. */
+body .crayon-dialogue,
+body #annaTutorialOverlay .vn-dialogue-box.crayon-dialogue:not(.collapsed),
+body #annaDialogueModalOverlay .vn-dialogue-box.crayon-dialogue {
+    box-sizing: border-box;
+    border: 20px solid transparent !important;
+    border-image: var(--dialogue-panel) 40 fill stretch !important;
+    border-radius: 28px !important;
+    background: #fffaf0 !important;
+    background-clip: padding-box !important;
+    color: #4c2b1a !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 8px 20px 12px !important;
+    text-align: left !important;
+    gap: 12px !important;
+    font-family: inherit;
+}
+
+body .crayon-dialogue .crayon-nameplate,
+body .crayon-dialogue .vn-nameplate,
+body #annaTutorialOverlay .crayon-dialogue .vn-nameplate,
+body .crayon-dialogue .vivian-nameplate,
+body .crayon-dialogue .cipher-tour-top > small {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 112px;
+    max-width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    background: var(--dialogue-nameplate) center / 100% 100% no-repeat !important;
+    color: #4c2b1a !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 8px 24px !important;
+    font-size: 17px !important;
+    font-weight: 700;
+    letter-spacing: 0;
+    box-shadow: none;
+}
+
+body .crayon-dialogue .vn-speaker-name,
+body #annaTutorialOverlay .crayon-dialogue .vn-speaker-name,
+body .crayon-dialogue .vivian-npc-name {
+    color: #4c2b1a !important;
+    font-size: 18px !important;
+    text-shadow: none !important;
+}
+
+body .crayon-dialogue :is(.vn-dialogue-text, .cipher-dialogue-text,
+    .vivian-speech-content, p),
+body #annaTutorialOverlay .crayon-dialogue .vn-dialogue-text {
+    color: #4c2b1a !important;
+    font-size: 20px !important;
+    line-height: 1.7 !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+    overflow-wrap: anywhere;
+}
+
+body .crayon-dialogue button,
+body #annaTutorialOverlay .crayon-dialogue :is(.vn-btn, .vn-action-btn, .tutorial-shortcut-btn) {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: var(--dialogue-idle) center / 100% 100% no-repeat !important;
+    color: #4c2b1a !important;
+    padding: 12px 24px !important;
+    min-height: 44px;
+    box-shadow: none !important;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-shadow: none;
+    transform: none !important;
+}
+
+body .crayon-dialogue button:is(:hover, :focus-visible, [aria-pressed="true"]),
+body .crayon-dialogue .cipher-agent-primary,
+body #annaTutorialOverlay .crayon-dialogue :is(.vn-next-btn, .vn-action-btn) {
+    background-image: var(--dialogue-choice) !important;
+}
+body .crayon-dialogue button:focus-visible {
+    outline: 2px solid #69452e !important;
+    outline-offset: 3px !important;
+    border-radius: 24px !important;
+}
+body .crayon-dialogue button:disabled { opacity: .45; cursor: default; }
+body .crayon-dialogue .vn-next-indicator {
+    display: block;
+    width: 24px;
+    height: 20px;
+    font-size: 0 !important;
+    background: var(--dialogue-arrow) center / contain no-repeat;
+}
+body .crayon-dialogue [hidden], body .crayon-dialogue[hidden], body .crayon-dialogue.hidden { display: none !important; }
+
+/* Lesson cards remain available, using ink colors that read on paper. */
+body .crayon-dialogue :is(.vn-lesson-example, .vn-lesson-card, .tutorial-next-action) {
+    background: #f2e8d5 !important;
+    border-color: #c6af86 !important;
+    color: #4c2b1a !important;
+}
+body .crayon-dialogue :is(.vn-example-line, .vn-example-label, .vn-lesson-card strong,
+    .vn-lesson-card small, .tutorial-next-action strong, .tutorial-next-action small,
+    .vn-lesson-takeaway, .vn-lesson-details, .vn-lesson-details p, .tutorial-explanation) {
+    color: #4c2b1a !important;
+}
+body .crayon-dialogue .vivian-stock-link-box {
+    background: #f2e8d5;
+    border-color: #c6af86;
+}
+body .crayon-dialogue .vivian-stock-link-box :is(div, span, b) { color: #63452f; }
+
+/* Keep every story/guide element consistent, including semantic headings,
+   strong text, nameplates and choices that otherwise restore bold defaults. */
+body :is(.crayon-dialogue, .exhibition-panel, .moa-movement-guide),
+body :is(.crayon-dialogue, .exhibition-panel, .moa-movement-guide) * {
+    font-weight: 500 !important;
+}

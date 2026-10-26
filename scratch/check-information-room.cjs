@@ -29,6 +29,10 @@ const server = http.createServer((req, res) => {
         await page.waitForFunction(() => window.stockWarsApp?.townModelScene?.status.hidden, null, { timeout: 90000 });
         const start = page.getByRole('button', { name: '게임 시작', exact: true });
         if (await start.isVisible()) await start.click();
+        for (let sequence = 0; sequence < 3; sequence++) {
+            const skip = page.getByRole('button', { name: /건너뛰기/ });
+            if (await skip.isVisible()) { await skip.click(); await page.waitForTimeout(150); }
+        }
         const approach = async () => {
             await page.evaluate(async () => {
                 const { TOWN_MODEL_BUILDINGS } = await import('/js/data/townModelBuildings.js');

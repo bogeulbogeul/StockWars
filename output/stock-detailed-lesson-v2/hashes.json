@@ -1,0 +1,8 @@
+{
+  "js/components/phone/stock/StockLessonDock.js": "ac122d25743550db78381d5d533ef75e3e55b4cd4d3fe2ccd7b61a28ead99cdd",
+  "js/components/phone/stock/StockApp.js": "9fbc3532faf38f86955e6043c8bca4fb9e68738e7c0a5c929673307ec7b71e17",
+  "js/components/phone/stock/StockScreens.js": "14a0286d8ddd4c6cbad29fdc0e6b1b236e037ba986d92dfcc30d6a0c6e02c345",
+  "js/app/exhibition/PhoneStockSource.js": "b85bd92fa951282bb54924d9f4f00e33448f0180b035ce668b71f75d0d8ff9e6",
+  "js/engine/FirstTradeBudget.js": "51d6e49898023fad14fe87c5465c8d324f531b6f26e1834dab51a28ae83281f3",
+  "css/modules/phone-stock.css": "e63dee01fdd3d7632cf24fef4fcf9543bb1458571b861eea9c591c0cb80f724e"
+}

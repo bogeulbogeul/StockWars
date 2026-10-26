@@ -1,0 +1,33 @@
+{
+  "source": "C:\\Users\\bogeu\\Downloads\\Meshy_AI_Coral_Trim_Apron_1021221613_texture.glb",
+  "source_sha256": "f406bcc0fb766266b071651b40aa6ea7dbf2c78ce304323fc6ee231b553f59b0",
+  "source_vertices": 199619,
+  "fitted_vertices": 199619,
+  "apron_triangles": 368720,
+  "source_bounds": [
+    [
+      -0.8377580046653748,
+      -0.5449990034103394,
+      -0.9502570033073425
+    ],
+    [
+      0.8346480131149292,
+      0.5466210246086121,
+      0.9497190117835999
+    ]
+  ],
+  "body_vertices_unchanged": true,
+  "fit_scale": [
+    0.48,
+    0.68,
+    0.43
+  ],
+  "fit_translation": [
+    0,
+    0,
+    -0.33
+  ],
+  "depth_fit": "Smooth torso clearance along Y only; X/Z outline retained",
+  "texture_and_material_preserved": true,
+  "decimation": false
+}

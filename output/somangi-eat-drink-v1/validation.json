@@ -1,0 +1,20 @@
+{
+  "bread": {
+    "samples": 181,
+    "meshAndUvUnchanged": true,
+    "maxSeamGap": 0,
+    "floorPenetration": 0,
+    "loopEndError": 0.0,
+    "blackEyeMaterialPreserved": true,
+    "durationSeconds": 3
+  },
+  "drink": {
+    "samples": 181,
+    "meshAndUvUnchanged": true,
+    "maxSeamGap": 0,
+    "floorPenetration": 0,
+    "loopEndError": 0.0,
+    "blackEyeMaterialPreserved": true,
+    "durationSeconds": 3
+  }
+}

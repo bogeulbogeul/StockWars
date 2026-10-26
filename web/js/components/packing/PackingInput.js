@@ -30,6 +30,11 @@ export class PackingInput {
             clientX: event.clientX, clientY: event.clientY, moved: false };
         this.game.dialog.setPointerCapture(event.pointerId);
         event.preventDefault();
+        // Keep the artwork alive throughout the gesture; rebuilding its SVG on
+        // every pointer event repeatedly invalidates image painting and layout.
+        const dialog = this.game.dialog;
+        dialog.querySelector('.packing-ghost').innerHTML = artHtml(item);
+        dialog.querySelectorAll('[data-item]').forEach(node => node.classList.toggle('dragging', node.dataset.item === item.id));
         this.paint();
     }
 
@@ -58,7 +63,6 @@ export class PackingInput {
         const { x, y, cell, rect, width, height } = this.target();
         const ghost = dialog.querySelector('.packing-ghost');
         ghost.hidden = false;
-        ghost.innerHTML = artHtml(drag.item);
         Object.assign(ghost.style, { left: `${drag.clientX - width * cell / 2}px`,
             top: `${drag.clientY - height * cell / 2}px`, width: `${width * cell}px`, height: `${height * cell}px` });
         const preview = dialog.querySelector('.packing-preview');
@@ -68,7 +72,6 @@ export class PackingInput {
         preview.classList.toggle('invalid', !canPlace(this.game.order, drag.item, x, y));
         Object.assign(preview.style, { left: `${x * cell}px`, top: `${y * cell}px`,
             width: `${width * cell}px`, height: `${height * cell}px` });
-        dialog.querySelectorAll('[data-item]').forEach(node => node.classList.toggle('dragging', node.dataset.item === drag.item.id));
     }
 
     end(event) {

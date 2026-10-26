@@ -1,0 +1,11 @@
+{
+  "newDesign": true,
+  "reference": "Somangi current body; open V neck and curved hem",
+  "originalAssetReused": false,
+  "clothThickness": 0.006,
+  "bindingRadius": 0.003,
+  "minimumEnvelopeEase": 0.01,
+  "maximumEnvelopeEase": 0.016,
+  "vertices": 12545,
+  "continuousFrontShouldersBack": true
+}

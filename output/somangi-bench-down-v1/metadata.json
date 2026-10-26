@@ -1,0 +1,18 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-jump-sit-low-v2\\somangi-jump-sit.blend",
+  "meshAndUvUnchanged": true,
+  "meshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "floorZ": -0.950643002986908,
+  "seatZ": -0.3266429603099823,
+  "benchScale": 1.7333333333333332,
+  "benchCenterY": 0.6769333333333334,
+  "seatedRootZ": 0.3222920916080475,
+  "clips": {
+    "Bench_Down": 1.2,
+    "Ground_Idle": 1,
+    "Bench_Down_Preview": 2.3
+  },
+  "groundedSeconds": 0.95,
+  "jumpArcCoefficient": 1.05,
+  "gameInstalled": false
+}

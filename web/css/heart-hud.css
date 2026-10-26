@@ -1,0 +1,23 @@
+.heart-hud {
+    zoom: calc(1 / var(--game-ui-scale, 1));
+    position: fixed; top: 24px; left: 24px; z-index: 110;
+    box-sizing: border-box; width: 208px; padding: 14px 19px 15px;
+    border: 2px solid #e7d9ba; border-radius: 24px;
+    background: #fff9ec; color: #847b63;
+    box-shadow: 0 4px 0 #d8c9a74d, 0 8px 22px #57492b0d;
+    font: 600 13px/1.35 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+    pointer-events: none; user-select: none;
+}
+.heart-hud[hidden], body.title-screen-active .heart-hud,
+body:has(dialog[open]) .heart-hud,
+body:has(.exhibition-ui[hidden], .exhibition-ui[data-ended="true"]) .heart-hud,
+body:has(.vivian-store-overlay:not(.hidden) #vivianShopPanel:not(.hidden)) .heart-hud { display: none; }
+.heart-hud__heading { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.heart-hud [data-heart-count] { font-variant-numeric: tabular-nums; }
+.heart-hud__hearts { display: flex; justify-content: space-between; gap: 10px; }
+.heart-hud__hearts svg { display: block; width: 39px; height: 39px; min-width: 0; fill: #dc8d82; }
+.heart-hud__hearts .is-empty { fill: #eee6d6; stroke: #d8ceba; stroke-width: 1.2px; }
+@media (max-width: 600px), (max-height: 550px) {
+    .heart-hud { width: 180px; padding: 11px 15px 12px; border-radius: 21px; }
+    .heart-hud__hearts svg { width: 33px; height: 33px; }
+}

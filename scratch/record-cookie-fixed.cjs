@@ -1,0 +1,27 @@
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.argv[2] || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+(async()=>{
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});
+ try{const page=await browser.newPage({viewport:{width:1280,height:800}});page.setDefaultTimeout(60000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.sleepingAnna);
+ await page.evaluate(async()=>{const a=window.stockWarsExhibition;a.arrival.stop();a.started=true;const s=a.scenes;await s.ready;const t=s.townModelScene;t.renderer.setPixelRatio(1);await t.sleepingAnna.setAwake(true,{immediate:true});const {townSeatSurfaces}=await import('/js/components/town3d/SeatSurfaces.js');const seat=townSeatSurfaces(t.scene).find(s=>s.id==='plaza_bench_west-0');t.sleepingAnna.root.position.copy(seat.center).addScaledVector(seat.forward,120);const c=s.townStage.playerController;c.charPosX=seat.center.x-100;c.charPosY=(seat.center.z+110)*.438371146789;const {sendMoaToPlazaBench}=await import('/js/app/exhibition/MoaPlazaRest.js');await sendMoaToPlazaBench(s);s.place='bench';Object.assign(a.state.flags,{trade:true,packing:true,rumor:true,sunset:true});a.state.stamina=2;a.state.cursor=a.plan.findIndex(b=>b.chapter===16&&b.plazaTalk);void a.render();});
+ await page.getByText('모아에게 말을 걸어보자',{exact:true}).waitFor();await page.keyboard.press('f');await page.waitForFunction(()=>!window.stockWarsExhibition.busy);
+ await page.evaluate(()=>{const a=window.stockWarsExhibition;a.state.cursor=a.plan.findIndex(b=>b.id==='cookie');void a.render();});await page.getByText('꿀쿠키를 받아보자',{exact:true}).waitFor();
+ await page.evaluate(async()=>{const {Box3,Sphere}=await import('/vendor/three/three.module.js');window.eatCheck={frames:0,breadFrames:0,minGap:Infinity,foodIds:[]};window.eatShots={};window.eatTimer=setInterval(()=>{const p=window.stockWarsExhibition.scenes.townModelScene.player;if(p.state!=='eat'||!p.food.item)return;const v=p.variants.get('eat'),ratio=v.action.time/v.action.getClip().duration;window.eatCheck.frames++;if(v.model.getObjectByName('bread_Prop').visible)window.eatCheck.breadFrames++;const b=new Box3().setFromObject(p.food.item).getBoundingSphere(new Sphere()),h=p.food.guard();window.eatCheck.minGap=Math.min(window.eatCheck.minGap,h.center.distanceTo(b.center)-h.radius-b.radius);if(!window.eatCheck.foodIds.includes(p.food.item.userData.foodId))window.eatCheck.foodIds.push(p.food.item.userData.foodId);for(const point of [.25,.5,.75])if(ratio>=point&&!window.eatShots[point])window.eatShots[point]=window.stockWarsExhibition.scenes.townModelScene.renderer.domElement.toDataURL('image/png');},16);});
+ const folder=path.resolve('scratch/cookie-fixed-video-frames');fs.mkdirSync(folder,{recursive:true});const frames=[],cdp=await page.context().newCDPSession(page);
+ cdp.on('Page.screencastFrame',e=>{const file=path.join(folder,String(frames.length).padStart(5,'0')+'.jpg');fs.writeFileSync(file,Buffer.from(e.data,'base64'));frames.push({file,time:e.metadata.timestamp});void cdp.send('Page.screencastFrameAck',{sessionId:e.sessionId}).catch(()=>{});});
+ await cdp.send('Page.startScreencast',{format:'jpeg',quality:92,maxWidth:1280,maxHeight:800,everyNthFrame:1});await page.waitForTimeout(1500);await page.keyboard.press('f');await page.waitForFunction(()=>window.stockWarsExhibition.state.flags.cookie);await page.waitForTimeout(1800);await cdp.send('Page.stopScreencast');
+ const result=await page.evaluate(()=>{clearInterval(window.eatTimer);return window.eatCheck});assert(result.frames>10);assert.equal(result.breadFrames,0);assert(result.minGap>=1);assert.deepEqual(result.foodIds,['item_honey_cookie']);assert.deepEqual(errors,[]);
+ const shots=await page.evaluate(()=>window.eatShots);for(const [ratio,data]of Object.entries(shots))fs.writeFileSync('scratch/cookie-fixed-'+ratio+'.png',Buffer.from(data.split(',')[1],'base64'));
+ const lines=[];for(let i=0;i<frames.length;i++){lines.push("file '"+frames[i].file.replaceAll('\\','/')+"'");if(i<frames.length-1)lines.push('duration '+Math.max(.01,frames[i+1].time-frames[i].time).toFixed(6));}fs.writeFileSync('scratch/cookie-fixed-video.txt',lines.join('\n')+'\n');fs.writeFileSync('scratch/cookie-fixed-video-report.json',JSON.stringify({frames:frames.length,result,errors},null,2));console.log(JSON.stringify({frames:frames.length,result,errors}));
+ }finally{await browser.close();server.close();}
+})().catch(e=>{console.error(e);server.close();process.exitCode=1});

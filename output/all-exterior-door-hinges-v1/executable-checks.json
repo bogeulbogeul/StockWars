@@ -1,0 +1,186 @@
+[
+  {
+    "id": "node_finance",
+    "leaves": 2,
+    "pins": 4,
+    "initialError": 3.2155984203993717e-13,
+    "pinDrift": 4.547473508864641e-13,
+    "frameDrift": 0,
+    "swing": 140.92529414404402,
+    "angles": [
+      -1.5079644737231006,
+      1.5079644737231006
+    ],
+    "restore": 3.2155984203993717e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Brass_Door_Handle",
+      "Brass_Door_Handle001",
+      "Central_Double_Door_Leaf",
+      "Central_Double_Door_Leaf001",
+      "Handle_Mount",
+      "Handle_Mount001",
+      "Handle_Mount002",
+      "Handle_Mount003"
+    ]
+  },
+  {
+    "id": "julian_furniture",
+    "leaves": 2,
+    "pins": 4,
+    "initialError": 5.086215585428499e-13,
+    "pinDrift": 2.2737367544323206e-13,
+    "frameDrift": 0,
+    "swing": 238.06107454174222,
+    "angles": [
+      -1.5079644737231006,
+      1.5079644737231006
+    ],
+    "restore": 5.086215585428499e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Brass_Door_Pull",
+      "Brass_Door_Pull001",
+      "Brass_Handle_Mount",
+      "Brass_Handle_Mount001",
+      "Brass_Handle_Mount002",
+      "Brass_Handle_Mount003",
+      "Door_Inset_Glass",
+      "Door_Inset_Glass001",
+      "Door_Lower_Inset_Panel",
+      "Door_Lower_Inset_Panel001",
+      "Entry_Double_Door_Leaf",
+      "Entry_Double_Door_Leaf001"
+    ]
+  },
+  {
+    "id": "midnight_pub",
+    "leaves": 2,
+    "pins": 4,
+    "initialError": 4.549693413077341e-13,
+    "pinDrift": 0,
+    "frameDrift": 0,
+    "swing": 149.74686719406913,
+    "angles": [
+      -1.5079644737231006,
+      1.5079644737231006
+    ],
+    "restore": 4.549693413077341e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Brass_Door_Handle",
+      "Brass_Door_Handle001",
+      "Door_Blue_Glass_Left",
+      "Door_Blue_Glass_Left_Inset_Trim",
+      "Door_Blue_Glass_Right",
+      "Door_Blue_Glass_Right_Inset_Trim",
+      "Door_Lower_Panel",
+      "Door_Lower_Panel001",
+      "Double_Arch_Door_Left",
+      "Double_Arch_Door_Right",
+      "Handle_Mount",
+      "Handle_Mount001",
+      "Handle_Mount002",
+      "Handle_Mount003"
+    ]
+  },
+  {
+    "id": "cipher_securities",
+    "leaves": 2,
+    "pins": 4,
+    "initialError": 5.084229945850415e-13,
+    "pinDrift": 6.431098710768743e-13,
+    "frameDrift": 0,
+    "swing": 46.67800940445887,
+    "angles": [
+      -1.5079644737231006,
+      1.5079644737231006
+    ],
+    "restore": 5.084229945850415e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Door_Brass_Hinge",
+      "Door_Brass_Hinge001",
+      "Door_Brass_Hinge002",
+      "Door_Brass_Hinge003",
+      "Reference_Brass_Pull_Fixing",
+      "Reference_Brass_Pull_Fixing001",
+      "Reference_Brass_Pull_Fixing002",
+      "Reference_Brass_Pull_Fixing003",
+      "Reference_Door_Leaf_Left",
+      "Reference_Door_Leaf_Right",
+      "Reference_Door_Recess_End",
+      "Reference_Door_Recess_End001",
+      "Reference_Door_Recess_End002",
+      "Reference_Door_Recess_End003",
+      "Reference_Door_Vertical_Recess",
+      "Reference_Door_Vertical_Recess001",
+      "Reference_Door_Vertical_Recess002",
+      "Reference_Door_Vertical_Recess003",
+      "Reference_Straight_Brass_Pull",
+      "Reference_Straight_Brass_Pull001"
+    ]
+  },
+  {
+    "id": "data_ink_bookstore",
+    "leaves": 1,
+    "pins": 2,
+    "initialError": 4.556346636343676e-13,
+    "pinDrift": 0,
+    "frameDrift": 0,
+    "swing": 215.3398923689862,
+    "angles": [
+      -1.5079644737231006
+    ],
+    "restore": 4.556346636343676e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Arched_Wood_Entry",
+      "Door_Arched_Glass_Bead",
+      "Door_Brass_Curved_Pull",
+      "Door_Handle_Rosette",
+      "Door_Handle_Rosette001",
+      "Door_Hinge_Barrel",
+      "Door_Hinge_Barrel001",
+      "Door_Hinge_Plate",
+      "Door_Hinge_Plate001",
+      "Door_Lower_Panel_Moulding",
+      "Door_Lower_Recessed_Panel",
+      "Entry_Inset_Glass"
+    ]
+  },
+  {
+    "id": "post_office",
+    "leaves": 1,
+    "pins": 2,
+    "initialError": 4.556346636343676e-13,
+    "pinDrift": 0,
+    "frameDrift": 0,
+    "swing": 215.3398923689862,
+    "angles": [
+      -1.5079644737231006
+    ],
+    "restore": 4.556346636343676e-13,
+    "nearOpens": true,
+    "farCloses": true,
+    "moving": [
+      "Arched_Wood_Entry",
+      "Door_Arched_Glass_Bead",
+      "Door_Brass_Curved_Pull",
+      "Door_Handle_Rosette",
+      "Door_Handle_Rosette001",
+      "Door_Hinge_Barrel",
+      "Door_Hinge_Barrel001",
+      "Door_Hinge_Plate",
+      "Door_Hinge_Plate001",
+      "Door_Lower_Panel_Moulding",
+      "Door_Lower_Recessed_Panel",
+      "Entry_Inset_Glass"
+    ]
+  }
+]

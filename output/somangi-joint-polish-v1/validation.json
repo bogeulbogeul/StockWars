@@ -1,0 +1,11 @@
+{
+  "samples": 97,
+  "clips": [
+    "Walk_InPlace"
+  ],
+  "durationSeconds": 0.75,
+  "floorPenetration": 0.00014537572860717773,
+  "supportGap": 0.0004722476005554199,
+  "loopError": 0.0,
+  "bodyShapeError": 0
+}

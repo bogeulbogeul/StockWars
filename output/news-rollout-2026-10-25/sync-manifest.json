@@ -1,0 +1,42 @@
+[
+  {
+    "path": "js/data/news/IT.js",
+    "sha256": "88bbd4fd8aae722a3c818708d98a5ee8ba92d854a872c9f2bb3b091f492a05e1"
+  },
+  {
+    "path": "js/data/news/Entertainment.js",
+    "sha256": "a03d8624c241cf3e76faa5614a9ebf70cd8da3e0d576422750b263613d82aa2a"
+  },
+  {
+    "path": "js/data/news/Infrastructure.js",
+    "sha256": "32c931158538194b63d458a573c6fdfd02416f3a192ece83dd5f83e71b6364cd"
+  },
+  {
+    "path": "js/data/news/Bio.js",
+    "sha256": "789b73e0628749c6239d2b980bf2bd30a5e18a8c0e37e5c362d73c245ce1c3f8"
+  },
+  {
+    "path": "js/data/news/Aerospace.js",
+    "sha256": "7036ac882cdff3f66f2b846392e4ed6abbff97728ad34219f1ee5c534a662029"
+  },
+  {
+    "path": "js/data/news/Retail.js",
+    "sha256": "98bec5bafea133a0d7fc57a331c04c05c5324756f08eadaccab248e444773bc4"
+  },
+  {
+    "path": "js/data/news/Energy.js",
+    "sha256": "1f75d0833940ff660cc56e2d2cc44f4104f93ecec0b00b642fff82936903164b"
+  },
+  {
+    "path": "js/data/news/Finance.js",
+    "sha256": "b9b3b31482d2a4030260df6cdc30287c123c67e42aba858168da8f4dd5215244"
+  },
+  {
+    "path": "js/data/newsCatalog.js",
+    "sha256": "6559b1c15033ef9d42fcdb4018e7b84f6189e6f1a1156641ca0a5336f040fed6"
+  },
+  {
+    "path": "js/data/stocksData.js",
+    "sha256": "47a4979148f54850e237ff6bc90c34df615d9ff3c48f79e72c14d9a5df5d5856"
+  }
+]

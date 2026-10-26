@@ -1,0 +1,54 @@
+/* Minimal structure for the new UI. No legacy docking, neon or portrait layout. */
+.vn-tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    width: calc(100 * var(--game-vw));
+    height: calc(100 * var(--game-vh));
+    z-index: 11000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+.vn-tutorial-overlay.hidden { display: none; }
+.vn-dialogue-box {
+    width: min(1050px, 100%);
+    max-height: 70%;
+    overflow-y: auto;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+}
+.vn-content-wrapper { display: flex; flex-direction: column; gap: 12px; }
+.vn-top-bar, .vn-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.vn-dialogue-text { min-height: 3.4em; white-space: pre-line; }
+.vn-indicator-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.vn-step-tracker { color: #765f45; font-size: 12px; }
+.vn-controls { flex-wrap: wrap; justify-content: flex-end; }
+.vn-prev-btn { margin-right: auto; }
+.vn-action-area:not(.hidden) { display: contents; }
+.vn-action-area.hidden, .crayon-dialogue .hidden { display: none !important; }
+.vn-lesson-visual:empty { display: none; }
+.vn-lesson-cards { display: flex; flex-wrap: wrap; gap: 10px; }
+.vn-lesson-card { flex: 1 1 100px; padding: 12px; border: 1px solid; border-radius: 12px; display: grid; gap: 6px; }
+.vn-lesson-example, .tutorial-next-action { padding: 12px; border-radius: 12px; }
+.vn-example-line { line-height: 1.6; }
+.vn-lesson-details { margin-top: 12px; }
+.vn-shortcut-only > small, .vn-shortcut-only > strong { display: none; }
+.cipher-tour { position: sticky; top: 0; z-index: 30; flex-shrink: 0; }
+.cipher-tour-content { min-width: 0; }
+.cipher-tour-top, .cipher-tour nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cipher-tour p, .cipher-welcome-dialogue p, .vivian-welcome-dialogue p { margin: 12px 0; }
+.vivian-npc-panel.crayon-dialogue { width: 320px; display: flex; flex-direction: column; gap: 12px; }
+.vivian-dialogue-bubble { min-height: 86px; }
+.vivian-nameplate { align-self: flex-start; }
+@media (max-width: 640px) {
+    body #annaTutorialOverlay {
+        zoom: calc(1 / var(--game-ui-scale, 1));
+        width: 100vw;
+        height: 100vh;
+        padding: 12px;
+    }
+}

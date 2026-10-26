@@ -1,0 +1,12 @@
+{
+  "samples": 181,
+  "maximumTwoHandGripError": 0.0030305687071087253,
+  "originalSurfaceDisplacement": 0,
+  "originalUvDisplacement": 0,
+  "mouthHeightMin": 0.038307517766952515,
+  "mouthHeightMax": 0.07986783981323242,
+  "mouthClosesAtEnd": true,
+  "beverageIncluded": false,
+  "restCapProtrusion": 0,
+  "singleEatingClip": true
+}

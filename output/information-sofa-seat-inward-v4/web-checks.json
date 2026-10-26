@@ -1,0 +1,94 @@
+{
+  "boxes": {
+    "sofa": {
+      "min": [
+        277.4999988079071,
+        0,
+        40.99999713897704
+      ],
+      "max": [
+        362.5000011920929,
+        114.25000205636024,
+        235.00000286102295
+      ]
+    },
+    "rug": {
+      "min": [
+        55.900000751018524,
+        0,
+        51.900000751018524
+      ],
+      "max": [
+        228.09999924898148,
+        2.677500023273751,
+        224.09999924898148
+      ]
+    },
+    "table": {
+      "min": [
+        98.99999928474426,
+        2.6999999999999993,
+        94.99999928474426
+      ],
+      "max": [
+        185.00000071525574,
+        45.70000071525574,
+        181.00000071525574
+      ]
+    },
+    "plant": {
+      "min": [
+        132.10573223233223,
+        45.7,
+        128.67739807069302
+      ],
+      "max": [
+        151.13007527589798,
+        68.418815356493,
+        146.63575212657452
+      ]
+    }
+  },
+  "seats": [
+    {
+      "id": "Information_Waiting_Sofa-Information_Waiting_Seat_1-0",
+      "forward": [
+        -1,
+        0,
+        2.220446049250313e-16
+      ],
+      "exits": 6,
+      "reachable": true
+    },
+    {
+      "id": "Information_Waiting_Sofa-Information_Waiting_Seat_2-0",
+      "forward": [
+        -1,
+        0,
+        2.220446049250313e-16
+      ],
+      "exits": 6,
+      "reachable": true
+    }
+  ],
+  "walkableSamples": 1858,
+  "deskReachable": true,
+  "mapReachable": true,
+  "sofaBlocks": true,
+  "tableBlocks": true,
+  "rugWalkable": true,
+  "seating": [
+    {
+      "sit": true,
+      "stand": true,
+      "height": 44.88171557019188
+    },
+    {
+      "sit": true,
+      "stand": true,
+      "height": 44.88171557019188
+    }
+  ],
+  "keyboardSitStand": true,
+  "errors": []
+}

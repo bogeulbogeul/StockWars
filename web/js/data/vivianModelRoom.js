@@ -4,6 +4,7 @@ export const VIVIAN_ROOM_RATIO = VIVIAN_MODEL_SCALE / 100;
 export const VIVIAN_ROOM_BOUNDS = { floorY: .025 };
 export const VIVIAN_SPAWN = { x: 0, z: 245 * VIVIAN_ROOM_RATIO };
 export const VIVIAN_EXIT_Z = 350 * VIVIAN_ROOM_RATIO;
+export const BONGBONG_POSITION = Object.freeze({ x: 0, z: -157.5, radius: 28 });
 
 // Blender +Y becomes Three -Z. Bounds include player radius in world units.
 export const VIVIAN_OBSTACLES = [
@@ -23,6 +24,7 @@ export function vivianCanStand(x, z) {
     const exit = Math.abs(x) <= 48 * s - r && z >= 300 * s - r - 5
         && z <= 410 * s - r;
     if (!room && !exit) return false;
+    if (Math.hypot(x - BONGBONG_POSITION.x, z - BONGBONG_POSITION.z) < BONGBONG_POSITION.radius + r) return false;
     return !VIVIAN_OBSTACLES.some(b => x > b.minX - r && x < b.maxX + r
         && z > b.minZ - r && z < b.maxZ + r);
 }

@@ -1,0 +1,52 @@
+{
+  "meshObjects": 1,
+  "parts": {
+    "Head": {
+      "surfaceVertices": 9045,
+      "capFaces": 0,
+      "cutLoops": 0
+    },
+    "Arm.L": {
+      "surfaceVertices": 5452,
+      "capFaces": 0,
+      "cutLoops": 0
+    },
+    "Arm.R": {
+      "surfaceVertices": 5763,
+      "capFaces": 0,
+      "cutLoops": 0
+    },
+    "Leg.L": {
+      "surfaceVertices": 6634,
+      "capFaces": 0,
+      "cutLoops": 0
+    },
+    "Leg.R": {
+      "surfaceVertices": 6531,
+      "capFaces": 0,
+      "cutLoops": 0
+    },
+    "Root": {
+      "surfaceVertices": 10278,
+      "capFaces": 0,
+      "cutLoops": 0
+    }
+  },
+  "originalVisibleSurface": "Preserved, cut triangles subdivided without displacement",
+  "walkSeconds": 0.75,
+  "gameInstalled": false,
+  "hipPivots": {
+    "L": [
+      0.1437435746192932,
+      0.013265741057693958,
+      -0.6536075472831726
+    ],
+    "R": [
+      -0.13835591077804565,
+      0.023749081417918205,
+      -0.6545447111129761
+    ]
+  },
+  "jointWeightTransition": "Quintic falloff; head width .42, limbs width 1.10",
+  "redundantInternalCapsRemoved": true
+}

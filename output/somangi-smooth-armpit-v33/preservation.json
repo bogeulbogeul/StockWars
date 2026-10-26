@@ -1,0 +1,14 @@
+{
+  "Body": {
+    "vertices": 29424,
+    "maxPositionError": 1.999422693188535e-06
+  },
+  "Arm.L": {
+    "vertices": 3733,
+    "maxPositionError": 2.9802322387695312e-08
+  },
+  "Arm.R": {
+    "vertices": 3902,
+    "maxPositionError": 1.9047311639042164e-07
+  }
+}

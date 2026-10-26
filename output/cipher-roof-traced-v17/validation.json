@@ -1,0 +1,12 @@
+{
+  "glbHeaderAndLength": true,
+  "finiteAccessorBounds": true,
+  "clockHandNodesPresent": true,
+  "doorAssemblyPresent": true,
+  "columns": 4,
+  "stairCheekSections": 6,
+  "previewObjectsExported": false,
+  "sha256": "be07abf7b69b874a383a81471e30c597050321ca2d262166320427ff5c9da88c",
+  "gameApplied": false,
+  "visualMatch": "See comparison.png and roof-fit.json; landmark fitting is not exact image-match approval."
+}

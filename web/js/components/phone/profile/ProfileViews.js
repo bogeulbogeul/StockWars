@@ -1,0 +1,22 @@
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const badge=d=>`<span class="profile-badge ${d.signed?'':'waiting'}">${d.signed?'서명·제출 완료':'서명 대기'}</span>`;
+const amount=v=>Number.isFinite(v)?`${v.toLocaleString('ko-KR')}잎`:'확인 중';
+export function profileView(p){
+    const bank=p.documents.find(d=>d.id==='bank'),loan=p.documents.find(d=>d.id==='loan');
+    return `<div class="profile-heading"><h3>내 정보</h3><button data-action="documents">서류함 ${p.documents.length}</button></div><section class="profile-identity"><span class="profile-avatar" aria-hidden="true">${esc([...p.name][0])}</span><div><h4>${esc(p.name)}</h4><p>${p.registered?'포포리 마을 · 입주 등록 완료':'아직 확인된 입주 서류가 없어요.'}</p></div></section>${playerIdentityView(p)}${analysisView(p.analysis)}<h4 class="profile-section">서류로 확인한 정보</h4><div class="profile-info"><div><span>생활 계좌</span><strong>${bank?.signed?'개설 완료':bank?'서명 대기':'아직 등록되지 않았어요'}</strong></div><div><span>정착 자금 대출</span><strong>${loan?.signed?amount(p.debt):loan?'서명 대기':'아직 등록되지 않았어요'}</strong></div></div><p class="profile-update">${p.documents.some(d=>!d.signed)?'새 서류가 도착했어요. 원본 서류에 서명·제출하면 정보가 반영돼요.':p.documents.length?'서명한 서류의 정보가 반영됐어요.':'서류를 받으면 서류함에 추가돼요.'}</p><p class="profile-note">서명한 서류를 바탕으로 자동 업데이트돼요.</p>`;
+}
+export function analysisView(a){
+    if(!a)return '<section class="profile-analysis"><strong>분석력</strong><p>분석력 기록을 확인할 수 없어요.</p></section>';
+    const max=a.max,tracked=Number.isFinite(a.current)&&Number.isFinite(a.required)&&a.required>0;
+    return `<section class="profile-analysis" aria-label="분석력"><div class="analysis-heading"><strong>⌕ 분석력</strong><b>Lv.${esc(a.level)}</b></div>${tracked?`<div class="analysis-label"><span>숙련도 <b>${a.current} / ${a.required}</b></span><span>다음 단계까지 ${Math.max(0,a.required-a.current)}</span></div><div class="analysis-track" role="progressbar" aria-label="분석력 숙련도" aria-valuemin="0" aria-valuemax="${a.required}" aria-valuenow="${Math.min(a.current,a.required)}"><span style="width:${Math.min(100,a.current/a.required*100)}%"></span></div>`:max?'<p class="analysis-max">최고 단계에 도달했어요.</p>':''}<p>${a.exam?'첫날 체험의 투자 시험 결과가 반영돼요. 이 체험은 숙련도를 별도로 기록하지 않아요.':max?'지금까지 쌓은 분석력을 확인해 보세요.':'해석 확인 퀴즈를 맞히면 숙련도가 쌓여요.'}</p></section>`;
+}
+export function documentsView(p,filter){return `<button class="profile-back" data-action="profile">‹ 내 정보</button><h3>서류함</h3><p class="profile-note">받은 서류 ${p.documents.length}장 · 서명 완료 ${p.documents.filter(d=>d.signed).length}장</p><nav class="profile-filters">${[['all','전체'],['waiting','서명 대기'],['signed','서명 완료']].map(([key,text])=>`<button data-filter="${key}" aria-pressed="${filter===key}">${text}</button>`).join('')}</nav>${p.documents.filter(d=>filter==='all'||(filter==='signed'?d.signed:!d.signed)).slice().reverse().map(d=>`<button class="profile-document" data-document="${d.id}"><div><span class="profile-category">${d.type}</span>${badge(d)}</div><h4>${d.title}</h4><p>${d.office}<br>${d.signed?'내 정보에 반영된 서류예요.':'받은 서류를 확인하고 서명해 주세요.'}</p></button>`).join('')||'<p class="profile-empty">표시할 서류가 없어요.</p>'}`;}
+export function documentView(d){
+    const fields=[['신청인',d.name],...(d.id==='residence'?[['신청 마을','포포리 마을']]:d.id==='bank'?[['계좌 종류','생활 계좌'],['담당 직원','차곡이']]:[['신청 금액',amount(d.amount)],['대출 용도','정착 자금']])];
+    return `<button class="profile-back" data-action="documents">‹ 서류함</button><h3>서류 확인</h3>${badge(d)}<article class="profile-paper"><p>${d.office}</p><h4>${d.title}</h4><dl>${fields.map(([key,value])=>`<div><dt>${esc(key)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl><p class="profile-reflect">반영되는 정보<br><strong>${d.reflect}</strong></p><div class="profile-signature ${d.signed?'signed':''}">${d.signed?`${esc(d.name)}　✓ 서명 완료`:'아직 서명하지 않았어요'}</div></article><p class="profile-update">${d.signed?'이 서류의 내용이 내 정보에 반영됐어요.':`${d.office}에서 원본 서류에 서명·제출하면 내 정보가 업데이트돼요.`}</p><p class="profile-note">보관된 신청 내용이에요. 서명은 원본 서류에서 진행해 주세요.</p>`;
+}
+
+export function playerIdentityView(p){
+    const l=p.level;
+    return `<section class="profile-player"><div><span>플레이어 레벨</span><strong>${l?`Lv.${esc(l.level)}`:'확인 중'}</strong></div>${l?`<p>${l.maxExp===null?'최고 레벨':`경험치 ${Math.floor(l.currentExp).toLocaleString('ko-KR')} / ${Math.ceil(l.maxExp).toLocaleString('ko-KR')} EXP`}</p>`:''}<div><span>플레이어 코드</span><strong data-player-code>${p.playerCode!=null?`#${esc(p.playerCode)}`:'코드 미발급'}</strong></div>${p.playerCode==null?'<p>서버에 연결된 플레이어에게 발급돼요.</p>':''}</section>`;
+}

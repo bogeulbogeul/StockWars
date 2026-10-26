@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { applyCleanBuildingMaterials } from './CleanBuildingMaterial.js';
 import { TOWN_MODEL_BUILDINGS, TOWN_CAMERA, TOWN_PREVIEW_FRAME, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
@@ -10,11 +11,26 @@ import { TownLandscape } from './TownLandscape.js';
 import { addSleepingAnna } from './SleepingAnna.js';
 import { BuildingClock } from './BuildingClock.js';
 import { fitTownProp } from './TownObjectFit.js';
+import { createTownPropBodies } from './TownPropBodies.js';
+import { createCharacterBodies, charactersCanStand } from './CharacterBodies.js';
+import { createExteriorBuildingBodies } from './ExteriorBuildingBodies.js';
+import { createJumpBodies, installJumpCollision } from './JumpCollision.js';
+import { BusStopSeat } from './BusStopSeat.js';
+import { SeatInteraction } from './SeatInteraction.js';
+import { townSeatSurfaces } from './SeatSurfaces.js';
+import { busStopSolidMesh, busStopPlatform } from './BusStopGround.js';
+import { getTownMusic } from '../../engine/TownMusic.js';
+import { createConversationCamera } from './ConversationCamera.js';
+import { createDialogueOcclusion } from './DialogueOcclusion.js';
+import { TownRenderCulling } from './TownRenderCulling.js';
+import { TownStaticBatches } from './TownStaticBatches.js';
+import { ExteriorDoorProximity } from './ExteriorDoors.js';
 
 // Separate from the retained sprite stage: both use the same ground coordinates.
 export class TownModelScene {
     constructor(town) {
         this.town = town;
+        this.music = getTownMusic();
         this.viewport = town.viewportEl;
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(TOWN_CAMERA.fieldOfView, 1, 1, 12000);
@@ -30,6 +46,8 @@ export class TownModelScene {
         this.labels = [];
         this.buildingClocks = [];
         this.collisionFootprints = [];
+        this.jumpCollisionBodies = [];
+        this.renderCulling = new TownRenderCulling();
         this.lastDrawTime = performance.now();
         this.ready = this.initialize().catch(error => {
             this.status.hidden = false;
@@ -47,20 +65,9 @@ export class TownModelScene {
         this.renderer.setClearColor(0, 0);
         this.renderer.domElement.setAttribute('aria-label', '건물 7곳·버스 정류장·나무·벤치·게시판·광고판');
         this.layer.prepend(this.renderer.domElement);
-        // Neutral diffuse studio environment supplies the reflections expected by
-        // the GLB's metallic/roughness materials without warm, harsh highlights.
-        const environmentScene = new THREE.Scene();
-        environmentScene.background = new THREE.Color(0xffffff);
-        const pmrem = new THREE.PMREMGenerator(this.renderer);
-        this.environmentTarget = pmrem.fromScene(environmentScene);
-        this.scene.environment = this.environmentTarget.texture;
-        this.scene.environmentIntensity = 0.8;
-        pmrem.dispose();
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xbfc6cf, 0.8));
-        const sun = new THREE.DirectionalLight(0xffffff, 0.8);
-        sun.position.set(-500, 1500, 900);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         this.landscape = new TownLandscape(this.scene);
+        this.dialogueOcclusion = createDialogueOcclusion(this.scene);
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.viewport);
         this.resize();
@@ -90,17 +97,24 @@ export class TownModelScene {
             model.position.set(definition.x - center.x * scale, -bounds.min.y * scale,
                 definition.y / GROUND_PROJECTION - bounds.max.z * scale);
             model.name = definition.id;
+            model.userData.walkThrough = definition.file.startsWith('Flowers-mini-');
+            model.userData.dialogueOccluder = true;
+            model.userData.entryOccluder = /Tree|Popori/i.test(definition.file);
             this.landscape.wrap(model);
             this.landscape.addContactShadow(model);
             if (TOWN_MODEL_BUILDINGS.some(building => building.id === definition.id)) {
-                this.collisionFootprints.push({
-                    minX: model.position.x + bounds.min.x * scale,
-                    maxX: model.position.x + bounds.max.x * scale,
-                    minY: (model.position.z + bounds.min.z * scale) * GROUND_PROJECTION,
-                    maxY: definition.y
-                });
+                this.collisionFootprints.push(...createExteriorBuildingBodies(model, definition.id));
+            } else {
+                this.collisionFootprints.push(...createTownPropBodies(model, definition.id,
+                    definition.id==='village_bus_stop'?{includeMesh:busStopSolidMesh}:{}));
             }
             this.scene.add(model);
+            this.dialogueOcclusion.prepare(model);
+            this.renderCulling.add(model);
+            this.renderCulling.add(model.contactShadow);
+            this.jumpCollisionBodies.push(...createJumpBodies(model, definition.id, {
+                supportHeight:definition.id==='village_bus_stop'?busStopPlatform(model)?.max.y||0:0
+            }));
         }));
         this.loadedCount = results.filter(result => result.status === 'fulfilled').length;
         if (this.loadedCount !== definitions.length) {
@@ -109,8 +123,19 @@ export class TownModelScene {
         } else this.status.hidden = true;
         await this.player.ready;
         this.sleepingAnna = await addSleepingAnna(this.scene, this.scene.getObjectByName('village_bus_stop'));
+        this.characterBodies = createCharacterBodies(this.scene);
         this.landscape.wrap(this.player.root);
         installModelPreviewCollision(this.town.playerController, this.collisionFootprints);
+        const controller = this.town.playerController;
+        const sceneryCanStand = controller.canStand;
+        controller.sceneryCanStand = sceneryCanStand;
+        controller.canStand = (x, y) => sceneryCanStand(x, y)
+            && charactersCanStand(this.characterBodies, x, y / GROUND_PROJECTION);
+        installJumpCollision(controller, controller.canStand, this.jumpCollisionBodies);
+        this.busSeat=new BusStopSeat(this,this.scene.getObjectByName('village_bus_stop'));
+        this.seatInteraction=new SeatInteraction(this,townSeatSurfaces(this.scene));
+        this.exteriorDoors = new ExteriorDoorProximity(this.scene);
+        this.renderCulling.batches = new TownStaticBatches(this.scene);
         this.draw();
     }
 
@@ -128,8 +153,17 @@ export class TownModelScene {
 
     draw() {
         const now = performance.now();
+        if (this.landscape) {
+            this.music.update(this.landscape.sky.currentStage(now), {
+                active: !document.body.classList.contains('title-screen-active')
+                    && (!window.stockWarsExhibition || !!window.stockWarsExhibition.started),
+                indoors: document.body.classList.contains('home-model-active')
+                    || document.body.classList.contains('cipher-lobby-active')
+            });
+        }
         const dt = (now - this.lastDrawTime) / 1000;
         this.lastDrawTime = now;
+        this.seatInteraction?.update(dt);
         if (this.arrivalActive || !this.renderer || this.town.containerEl.classList.contains('hidden')) return;
         this.resize();
         const { cameraX, cameraY } = this.town.playerController;
@@ -153,11 +187,23 @@ export class TownModelScene {
             label.style.left = `${definition.x - cameraX}px`;
             label.style.top = `${definition.y - cameraY + 20}px`;
         }
-        this.player?.update(dt);
         this.sleepingAnna?.update(dt, this.player?.root.position);
+        // Resolve the player's position against the NPC's new pose/position
+        // before rendering, including the shelter stand-up motion.
+        this.busSeat?.update();
+        this.player?.update(dt);
+        if (!this.entryActive && !document.body.classList.contains('title-screen-active')) {
+            this.exteriorDoors?.update(this.player.root.position.x, this.player.root.position.z);
+        }
+        this.conversationCamera ||= createConversationCamera({ faceFraming: true });
+        this.conversationCamera.update(this.camera, this.player, this.sleepingAnna, dt);
         const wallTime = Date.now();
         for (const clock of this.buildingClocks) clock.update(wallTime);
         this.landscape.update(x, z, this.town.playerController.renderPosition);
-        this.renderer.render(this.scene, this.camera);
+        this.dialogueOcclusion ||= createDialogueOcclusion(this.scene);
+        if (document.body.classList.contains('title-screen-active')) this.dialogueOcclusion.reset();
+        else this.dialogueOcclusion.update(this.camera, [this.player, this.sleepingAnna],
+            this.entryActive ? { includeRoot: root => root.userData.entryOccluder } : undefined);
+        this.renderCulling.render(this.renderer, this.scene, this.camera, this.landscape.center.value);
     }
 }

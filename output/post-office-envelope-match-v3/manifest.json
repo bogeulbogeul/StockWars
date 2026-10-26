@@ -1,0 +1,22 @@
+{
+  "source": "post-office-roof-v2",
+  "envelopeSource": "C:\\GitHub\\StockWars\\output\\home-envelope-correct-v7\\Home-correct-envelope.blend",
+  "sameEnvelopeGeometryAndMaterials": true,
+  "uniformScale": 2.625000018339891,
+  "targetCenter": [
+    1.0199999809265137,
+    -1.4919999837875366,
+    0.6349999904632568
+  ],
+  "parts": [
+    "Post_Shared_Mailbox_Envelope_Overlapping_Paper_Flap",
+    "Post_Shared_Mailbox_Envelope_Emblem",
+    "Post_Shared_Mailbox_Envelope_Continuous_V_Crease",
+    "Post_Shared_Mailbox_Envelope_Connected_Lower_Fold.001",
+    "Post_Shared_Mailbox_Envelope_Connected_Lower_Fold"
+  ],
+  "unchangedMeshes": 205,
+  "homeAssetChanged": false,
+  "gameApplied": false,
+  "sha256": "03a903482cc9bf17254f5214a547676a6b97c78600d925e54a0f508ec1936440"
+}

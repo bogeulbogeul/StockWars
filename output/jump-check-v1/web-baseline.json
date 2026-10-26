@@ -1,0 +1,111 @@
+{
+  "groups": [
+    {
+      "place": "town",
+      "samples": 2623964,
+      "unsafe": 26831,
+      "affected": [
+        "midnight_pub",
+        "data_ink_bookstore",
+        "village_bus_stop",
+        "shop_garden_tree",
+        "garden_tree_west_gate",
+        "garden_tree_west_meadow",
+        "garden_tree_west_garden",
+        "garden_tree_home_orchard",
+        "garden_tree_back_grove",
+        "garden_tree_pub_grove",
+        "garden_tree_book_grove",
+        "garden_tree_bank_grove",
+        "boundary_tree_west_1",
+        "boundary_tree_west_6",
+        "boundary_tree_east_4",
+        "boundary_tree_east_8",
+        "boundary_tree_east_9"
+      ],
+      "examples": [
+        {
+          "id": "midnight_pub",
+          "mesh": "Mug_Icon",
+          "x": 2983.8232067483127,
+          "z": 2108.3765040049548
+        },
+        {
+          "id": "midnight_pub",
+          "mesh": "Mug_Icon",
+          "x": 2983.8232067483127,
+          "z": 2108.359958422853
+        },
+        {
+          "id": "midnight_pub",
+          "mesh": "Mug_Icon",
+          "x": 2983.8232067483127,
+          "z": 2109.054848986295
+        },
+        {
+          "id": "midnight_pub",
+          "mesh": "Mug_Icon",
+          "x": 2983.8232067483127,
+          "z": 2108.936699850177
+        },
+        {
+          "id": "midnight_pub",
+          "mesh": "Mug_Icon",
+          "x": 2983.8232067483127,
+          "z": 2109.3452305944675
+        }
+      ]
+    },
+    {
+      "place": "home",
+      "samples": 96,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "store",
+      "samples": 18464,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "information",
+      "samples": 51680,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "bank",
+      "samples": 28344,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "stock",
+      "samples": 41064,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "training",
+      "samples": 53868,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    },
+    {
+      "place": "simulation",
+      "samples": 84104,
+      "unsafe": 0,
+      "affected": [],
+      "examples": []
+    }
+  ],
+  "unsafe": 26831,
+  "errors": []
+}

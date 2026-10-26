@@ -1,0 +1,10 @@
+import { R_CINEMAHOLIC } from './Entertainment/CINEMAHOLIC.js';
+import { R_DARKHORSE } from './Entertainment/DARKHORSE.js';
+import { R_NEXTONE } from './Entertainment/NEXTONE.js';
+import { R_POPCORE } from './Entertainment/POPCORE.js';
+import { R_ROYALMEDIA } from './Entertainment/ROYALMEDIA.js';
+import { R_SOCIALMIX } from './Entertainment/SOCIALMIX.js';
+import { R_STARDUST } from './Entertainment/STARDUST.js';
+import { R_STUDIOLUNA } from './Entertainment/STUDIOLUNA.js';
+import { R_VISUALART } from './Entertainment/VISUALART.js';
+export const ENTERTAINMENT_RUMORS = [...R_CINEMAHOLIC, ...R_DARKHORSE, ...R_NEXTONE, ...R_POPCORE, ...R_ROYALMEDIA, ...R_SOCIALMIX, ...R_STARDUST, ...R_STUDIOLUNA, ...R_VISUALART];

@@ -1,0 +1,16 @@
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.argv[2] || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});try{
+const page=await browser.newPage({viewport:{width:1280,height:800}});page.setDefaultTimeout(90000);const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.sleepingAnna);
+const before=await page.evaluate(async()=>{const a=window.stockWarsExhibition;a.arrival.stop();a.busy=false;const s=a.scenes;await s.ready;const t=s.townModelScene;await t.player.ready;t.renderer.setPixelRatio(.5);await t.sleepingAnna.setAwake(true,{immediate:true});const {TOWN_MODEL_BUILDINGS,GROUND_PROJECTION:P}=await import('/js/data/townModelBuildings.js');const b=TOWN_MODEL_BUILDINGS.find(b=>b.id==='node_finance');const c=s.townStage.playerController;c.charPosX=b.x-80;c.charPosY=b.y+170;t.sleepingAnna.root.position.set(b.x+105,0,(b.y+150)/P);s.place='bankOutside';a.state.flags.phone=true;a.view.panel.hidden=true;a.view.sync(a.state);const locked=a.view.phone.hidden&&!a.view.canOpenPhone();const action=a.plan.findIndex(b=>b.id==='moaFarewell');if(action<0)throw Error('farewell action missing');a.state.cursor=action;a.activities.moaFarewell();return {locked};});assert(before.locked);
+await page.waitForFunction(()=>window.stockWarsExhibition.scenes.moaRestingAtPlaza);const after=await page.evaluate(()=>{const a=window.stockWarsExhibition;return {ready:a.state.flags.phoneReady,hidden:a.view.phone.hidden,canOpen:a.view.canOpenPhone(),seated:a.scenes.townModelScene.sleepingAnna.root.userData.seated,pos:a.scenes.townModelScene.sleepingAnna.root.position.toArray()}});assert(after.ready);assert(!after.hidden);assert(after.canOpen);assert(after.seated);await page.evaluate(()=>window.stockWarsExhibition.view.openPhone());assert(await page.evaluate(()=>window.stockWarsExhibition.view.phoneHome.dialog.open));await page.evaluate(()=>window.stockWarsExhibition.view.phoneHome.close());assert.deepEqual(errors,[]);console.log(JSON.stringify({before,after,errors}));await page.screenshot({path:'scratch/moa-plaza-rest.png'});
+}finally{await browser.close();server.close()}})().catch(e=>{console.error(e);server.close();process.exitCode=1});

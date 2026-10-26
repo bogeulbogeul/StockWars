@@ -1,0 +1,15 @@
+.town-music-toggle {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    z-index: 120;
+    padding: 8px 12px;
+    border: 1px solid #d5cfbd;
+    border-radius: 18px;
+    background: #fff9e9;
+    color: #4b6150;
+    font: 600 13px/1.3 system-ui, sans-serif;
+    cursor: pointer;
+}
+.town-music-toggle[hidden] { display: none; }
+.town-music-toggle:focus-visible { outline: 3px solid #728b6a; outline-offset: 3px; }

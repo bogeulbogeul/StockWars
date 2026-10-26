@@ -1,0 +1,6 @@
+/* Screen retirement is independent of legacy scripts refreshing their DOM data. */
+[data-retired-neon-ui] { display: none !important; }
+.neon-interface-retired .rent-quest,
+.neon-interface-retired .device-container,
+.neon-interface-retired #floatingPhoneBtn,
+.neon-interface-retired .social-inbox-button { display: none !important; }

@@ -1,0 +1,5 @@
+js/components/phone/PhoneLauncher.js
+js/components/phone/PhoneHome.js
+js/components/town3d/SomangiControls.js
+js/app/exhibition/JumpInput.js
+js/app/exhibition/Arrival.js

@@ -1,4 +1,5 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { addGameLights } from '../../components/lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { TownLandscape } from '../../components/town3d/TownLandscape.js';
 import { TOWN_MODEL_BUILDINGS, GROUND_PROJECTION, modelAssetUrl } from '../../data/townModelBuildings.js';
@@ -7,17 +8,16 @@ import { fitTownProp } from '../../components/town3d/TownObjectFit.js';
 
 // Borrow the running village; isolated previews use the same assets and layout.
 export async function getArrivalVillage() {
-    const live = window.stockWarsApp?.townModelScene;
+    const live = window.stockWarsExhibition?.scenes?.townModelScene || window.stockWarsApp?.townModelScene;
     if (live) {
         await live.ready;
         live.arrivalActive = true;
+        live.dialogueOcclusion?.reset();
+        await live.sleepingAnna?.setAwake(false);
         return { scene: live.scene, landscape: live.landscape, live, owned: false };
     }
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xbfc6cf, .8));
-    const sun = new THREE.DirectionalLight(0xffffff, .8);
-    sun.position.set(-500, 1500, 900);
-    scene.add(sun);
+    addGameLights(scene);
     const landscape = new TownLandscape(scene);
     const definitions = [
         ...TOWN_MODEL_BUILDINGS.map(d => ({ ...d, url: modelAssetUrl(d.file) })),

@@ -1,0 +1,19 @@
+{
+  "glbReload": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "tilesCapsBands": {
+    "Main": [
+      144,
+      9,
+      10
+    ],
+    "Porch": [
+      24,
+      3,
+      4
+    ]
+  },
+  "sproutPreserved": true,
+  "gameApplied": false
+}

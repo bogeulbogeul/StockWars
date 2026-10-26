@@ -1,0 +1,21 @@
+{
+  "apps": 8,
+  "sizes": [
+    [
+      1280,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "exhibitionGates": true,
+  "firstOpenProgression": true,
+  "legacyHidden": true,
+  "errors": []
+}

@@ -1,0 +1,20 @@
+{
+  "sha256": "442e9268cdfd83ced80ffe5d47bc39062558004f1fab15fb79ba0d238d4eb0a4",
+  "reference": "reference.png",
+  "gameApplied": false,
+  "roof": {
+    "centralHalfWidth": 1.2654510050776124,
+    "centralPeak": 3.006710536900464,
+    "centralEave": 2.15,
+    "centralBack": 1.489521522442478,
+    "wingRidge": 2.2802761558793128,
+    "wingDepth": 1.495598156230611,
+    "centralRearDrop": 0.2399227599189657,
+    "wingOuterRidgeX": 2.3785077393656477
+  },
+  "tileChecks": {
+    "tileCount": 460,
+    "minimumTileThickness": 0.01799989491701126,
+    "maximumTileThickness": 0.018000403419137
+  }
+}

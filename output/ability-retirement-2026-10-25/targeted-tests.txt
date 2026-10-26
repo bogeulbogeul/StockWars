@@ -1,0 +1,47 @@
+✔ personality does not discount fees or increase labor rewards (19.5059ms)
+✔ slots count unique stocks, block new stocks, release on full sale and survive reload (2.1315ms)
+✔ legacy portfolios above five slots remain owned and tradable after retirement (1.9586ms)
+✔ investment amount is unlimited at every management level (0.6895ms)
+✔ legacy recovery never changes common heart capacity or labor costs (2.077ms)
+✔ 110 distinct correct events promote at 6,12,22,32,42,58,74,90,110; character EXP unchanged (19.003ms)
+✔ copied/gifted holdings, powder upgrades, replay and reload never repay the same event (0.5908ms)
+✔ unread, legacy, forged, deleted and invalid/stale submissions give no reward (0.3372ms)
+✔ wrong attempts resume with the same question; correct replay cannot duplicate the claim (0.3598ms)
+✔ starting levels preserve old numeric ownership and require 104/98 distinct answers (14.8697ms)
+✔ all 2880 question variants use only visible text with exactly one supported answer (64.6834ms)
+✔ point allocation and legacy report decryptions cannot bypass quiz-only growth (2.0679ms)
+✔ failed instant uses and full bags never charge gold or consume an item (3.8348ms)
+✔ drinks heal one heart and caffeine enforces daily use across reloads (1.0989ms)
+✔ analysis buff remains temporary; retired ability buffs never affect common rules (0.986ms)
+✔ retired ability items preserve ownership on rejected use; analysis item still reports its effect (0.5476ms)
+✔ common hearts stay at three across legacy stats, reload, recovery and rest (0.7466ms)
+✔ seven daily mail deliveries survive offline catch-up; claims are idempotent (0.5472ms)
+✔ previously saved legacy reports retain reveal and scheduled event behavior (0.5905ms)
+✔ alarm and mask toggle without consumption; capsule exits before shock; survival unlocks count (18.9938ms)
+✔ demo disables overdue and restored active Black Swan events without market effects (1.4478ms)
+✔ lottery sales boundaries, distinct numbers, manual validation, draw and one-time prize claim (1.3733ms)
+✔ lottery no winner rolls entire pool forward and restored draws are never duplicated (1.0721ms)
+✔ realized sale profit, not unrealized gains or labor wages, unlocks profit milestones (3.7689ms)
+✔ energy drinks can be bought and consumed at full stamina without exceeding capacity (0.3857ms)
+✔ level gains and reload never grant or spend ability points (1.9103ms)
+✔ legacy earned stats and spent/unspent point history survive retirement and reload (0.3473ms)
+✔ live gameplay does not import point allocation UI or personality stat grants (0.5515ms)
+✔ new characters need 150 EXP for level 2 and retain activity rewards (1.6432ms)
+✔ old saves preserve every level and progress ratio; reload never converts twice (1.0783ms)
+✔ invalid experience normalizes to zero (0.1632ms)
+✔ exact old level boundaries retain their levels after conversion (0.1588ms)
+✔ profile safely renders current data, refreshes changes, and handles an unregistered player (19.4909ms)
+✔ starting traits grant neither ability bonuses nor titles (0.8261ms)
+✔ legacy titles remain stored but cannot be displayed or equipped (0.7525ms)
+✔ personality result retains its key without creating or repairing ability bonuses (1.4561ms)
+✔ level choice opens once with celebration and remains open until confirmation (0.4089ms)
+✔ all personality profiles leave ability data untouched, including old title-only profiles (2.3326ms)
+✔ pre-schema saves preserve raw stats and old personality without subtracting points (0.3234ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 301.5374

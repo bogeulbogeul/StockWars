@@ -1,0 +1,38 @@
+{
+  "samples": 181,
+  "originalRestSurfaceError": 0.01890236884355545,
+  "shoulderUpperArmBodyHeadLegDisplacement": 0.0,
+  "forearmRelativeEdgeError": 0.0007532238960266113,
+  "forearmHeadCollisionSamples": 0,
+  "forearmBodyCollisionSamples": 181,
+  "foodHeadCollisionSamples": 0,
+  "foodBodyCollisionSamples": 0,
+  "holdingHandSpanVariation": 9.655952453613281e-06,
+  "foodSizeStages": [
+    [
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.6666667461395264,
+      0.6666668057441711,
+      0.6666666269302368
+    ],
+    [
+      0.3333333730697632,
+      0.3333333134651184,
+      0.3333333134651184
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ]
+}

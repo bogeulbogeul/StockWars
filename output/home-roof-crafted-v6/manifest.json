@@ -1,0 +1,20 @@
+{
+  "source": "home-door-mailbox-detail-v5",
+  "roof": {
+    "roofTiles": 112,
+    "chimneyTrimmedTiles": 9,
+    "ridgeCaps": 8,
+    "overlapBands": 9,
+    "tileThickness": 0.043,
+    "tileBevel": 0.011,
+    "ridgeCrown": 2.134,
+    "embeddedFlangeBase": 2.01
+  },
+  "doorMailboxAndHouseProportionsUnchanged": true,
+  "gameApplied": false,
+  "files": {
+    "Home-redesign.glb": "dbb669c05deb5610237626196f94901f605141508fd7ea19483ec9d183f4644d",
+    "Home-with-right-mailbox.glb": "5ff8dc4ddb037c7c3e913fe4f06d7dd63dd779717b9fff83b6c6c951afc7b47a",
+    "Mailbox-right.glb": "ee437e265c48de03fb498845da354d4ad9ca1ced66179a0c7baee913e52184e4"
+  }
+}

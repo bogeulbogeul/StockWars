@@ -1,0 +1,16 @@
+{
+  "sha256": "e27ed2aee8685ed603a5d02c94d6fdf644635e0f4496fe853ce74bee73b6aef3",
+  "gameApplied": false,
+  "reference": "approved-reference.png",
+  "cameraFit": "camera-fit.json",
+  "changed": [
+    "window proportions and spacing",
+    "clock face scale",
+    "door panels and pulls",
+    "gold window divisions",
+    "stepped cheeks",
+    "chart logo",
+    "blue material and lighting"
+  ],
+  "clockNodesPreserved": true
+}

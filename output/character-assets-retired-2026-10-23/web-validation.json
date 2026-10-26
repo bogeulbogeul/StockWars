@@ -1,0 +1,37 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "results": [
+    {
+      "key": "townModelScene",
+      "failed": false,
+      "characters": [],
+      "anchorChildren": 0
+    },
+    {
+      "key": "homeModelScene",
+      "failed": false,
+      "characters": [],
+      "anchorChildren": 0
+    },
+    {
+      "key": "vivianModelScene",
+      "failed": false,
+      "characters": [],
+      "anchorChildren": 0
+    },
+    {
+      "key": "informationModelScene",
+      "failed": false,
+      "characters": [],
+      "anchorChildren": 0
+    },
+    {
+      "key": "cipherLobbyScene",
+      "failed": false,
+      "characters": [],
+      "anchorChildren": 0
+    }
+  ],
+  "retiredRequests": [],
+  "errors": []
+}

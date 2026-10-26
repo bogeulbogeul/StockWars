@@ -1,0 +1,185 @@
+[
+  {
+    "source": "web/assets/characters/3d/somangi/walk.glb",
+    "output": "somangi-walk.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Walk_InPlace"
+    ],
+    "originalSha256": "e72512fa6f12fd10f99078bbb83cf65b1e5c87956b4aed6f3549aecb1f212a41",
+    "outputSha256": "2ad28512149d9c22788321d2e27bc448d344cf77cd775915a9ea68c566018632"
+  },
+  {
+    "source": "web/assets/characters/3d/somangi/wave.glb",
+    "output": "somangi-wave.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Wave_Happy"
+    ],
+    "originalSha256": "a0fa91f52befc98dfbdf5190c4c98f977407b3e1e6fd30c7dedfc75b60d89ed6",
+    "outputSha256": "3329f5196a54d5f4f253d08bdd19e148cf90e46cda6cb9bad34ed79754c99ecb"
+  },
+  {
+    "source": "web/assets/characters/3d/somangi/eat.glb",
+    "output": "somangi-eat.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Eat"
+    ],
+    "originalSha256": "ae32c04804677bfe84eb9342e4bffedc79a0b2a8b06f05c9b82aa8b52f8902ee",
+    "outputSha256": "0f9c57cb4d61d91850d86e4461c8c9d26c91cf9946048bb50e30afd2e9e7f7e8"
+  },
+  {
+    "source": "web/assets/characters/3d/somangi/jump.glb",
+    "output": "somangi-jump.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Jump"
+    ],
+    "originalSha256": "2861cbe6e96b0c029a3444e41f0f8d6ecf83f4c1f20aa0b5114b5b22c2393e6b",
+    "outputSha256": "5580562e1ae71c24d97baba0b950db09e57afa052c280394b97a2d4fceb3c378"
+  },
+  {
+    "source": "web/assets/characters/3d/somangi/crab.glb",
+    "output": "somangi-crab.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Crab_Enter",
+      "Crab_Exit",
+      "Crab_Left",
+      "Crab_Right"
+    ],
+    "originalSha256": "0045fffbceea754a365dea761f422f4f7eeafeb1e3900ae4129f8006e74ff649",
+    "outputSha256": "584a533d611ac48cd67f6922d08416513d8468f90ff935a6bc58944ab74f8066"
+  },
+  {
+    "source": "web/assets/characters/3d/somangi/office-sit.glb",
+    "output": "somangi-office-sit.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Office_Sit"
+    ],
+    "originalSha256": "83a62e04128fae398c950384d1218b97cc1ad7a1c94040fe68fafdd5f76dc182",
+    "outputSha256": "3470b54be3b67f63135baa9d383fcc5f4a94b6c343f8b303185e5e55e230464c"
+  },
+  {
+    "source": "web/assets/characters/3d/anna/bench-sit.glb",
+    "output": "moa-bench-sit.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Anna_Vest",
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "originalSha256": "409ba993235edde633207d2122d19fc550f484522d8c811aec21935e4c46636d",
+    "outputSha256": "b465bf60fbd694eff6689acb066bd06dd7b70c6277eef44c10280665ea5d6b22"
+  },
+  {
+    "source": "web/assets/characters/3d/anna/bench-doze.glb",
+    "output": "moa-bench-doze.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Anna_Vest",
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Bench_Seated",
+      "Bench_SitDown",
+      "Bench_StandUp",
+      "Leaf_Calm",
+      "Leaf_Happy",
+      "Leaf_Sad",
+      "Seated",
+      "Seated_Doze",
+      "Sit_Demo",
+      "SitDown",
+      "StandUp",
+      "Walk_InPlace"
+    ],
+    "originalSha256": "373781de4da26edc12a04de02c0d2a7ad0ffdcfbc9fc4b6b4376e927fef51df4",
+    "outputSha256": "aecfc4da1d5e080d7511ddb547815bc0949e399e750bd5d04eb36f20cbb24964"
+  },
+  {
+    "source": "web/assets/characters/3d/agent-k/Agent-K.glb",
+    "output": "tori.glb",
+    "ratio": 0.88,
+    "edited": [
+      "AgentK_Vest",
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [],
+    "originalSha256": "9f86982ab6ad1da6be2de93386e220f2a04e15e7471ae5fd829fbf722709f23c",
+    "outputSha256": "accc70e2019cc2e9383381267c37536be6415c9e23e0f8652e18be100eba5920"
+  },
+  {
+    "source": "web/assets/office/3d/Information-furnished-room.glb",
+    "output": "information-room.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Anna_Vest",
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [],
+    "originalSha256": "e3d882bbde9b8e5936782042508b7059dae7b4f9522a6190490fa1ce2aa2d33d",
+    "outputSha256": "b8d2d9c9004f1bc039961c75c84ba110e705767c623cb5c727694d9c6a7de2cb"
+  },
+  {
+    "source": "output/bongbong-meshy-apron-fit-v3/Bongbong-finished-apron.glb",
+    "output": "bongbong.glb",
+    "ratio": 0.88,
+    "edited": [
+      "Apron_Continuous_Waist_1",
+      "Apron_Continuous_Waist_-1",
+      "Apron_Finished_Shoulder_1",
+      "Apron_Finished_Shoulder_-1",
+      "Bongbong_Meshy_Apron",
+      "Eating_Torso"
+    ],
+    "unchangedAccessorsVerified": true,
+    "clips": [
+      "Walk_InPlace"
+    ],
+    "originalSha256": "ee728cf5a6f55d70c7cb0a31725093497ee9b4385121165acc91a6fd48f13419",
+    "outputSha256": "7cc35df7c0a9f905a565123b569523ffb638a2a929dcde7c9f341e3f91a786b8"
+  }
+]

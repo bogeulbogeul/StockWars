@@ -1,0 +1,11 @@
+js/components/phone/profile/ProfileApp.js
+js/components/phone/profile/ProfileData.js
+js/components/phone/profile/ProfileViews.js
+js/components/phone/PhoneHome.js
+js/components/phone/stock/MountStockApp.js
+js/app/PhoneStockSource.js
+js/app/exhibition/PhoneStockSource.js
+js/app/exhibition/Activities.js
+js/app/exhibition/State.js
+css/modules/phone-home.css
+css/modules/phone-profile.css

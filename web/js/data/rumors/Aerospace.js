@@ -1,0 +1,10 @@
+import { R_AEROCORE } from './Aerospace/AEROCORE.js';
+import { R_AURORAAERO } from './Aerospace/AURORAAERO.js';
+import { R_COSMOSX } from './Aerospace/COSMOSX.js';
+import { R_GRAVITY } from './Aerospace/GRAVITY.js';
+import { R_LUNARBASE } from './Aerospace/LUNARBASE.js';
+import { R_ORBITALTECH } from './Aerospace/ORBITALTECH.js';
+import { R_SKYLINE } from './Aerospace/SKYLINE.js';
+import { R_STARJET } from './Aerospace/STARJET.js';
+import { R_WINGSLOGIS } from './Aerospace/WINGSLOGIS.js';
+export const AEROSPACE_RUMORS = [...R_AEROCORE, ...R_AURORAAERO, ...R_COSMOSX, ...R_GRAVITY, ...R_LUNARBASE, ...R_ORBITALTECH, ...R_SKYLINE, ...R_STARJET, ...R_WINGSLOGIS];

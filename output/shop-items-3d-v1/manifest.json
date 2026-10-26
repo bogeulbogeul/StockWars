@@ -1,0 +1,86 @@
+[
+  {
+    "id": "item_honey_cookie",
+    "name": "꿀 쿠키",
+    "file": "item_honey_cookie.glb",
+    "triangles": 32620,
+    "sha256": "482dfc15e33750df1d27b3d1d5764d916c232c960fd8cc1eba4207f80016f1ee"
+  },
+  {
+    "id": "item_petal_tea",
+    "name": "꽃잎 차",
+    "file": "item_petal_tea.glb",
+    "triangles": 7962,
+    "sha256": "c2bdbe1819baf0b2be6c7efaa9aa2551d4b8babf162fb936827dcbbdcded8ac2"
+  },
+  {
+    "id": "item_apple_juice",
+    "name": "사과 주스",
+    "file": "item_apple_juice.glb",
+    "triangles": 3248,
+    "sha256": "26cf5f9a141dd41bbfc65dd620b527162fda77a864955afad70f3a17863738f2"
+  },
+  {
+    "id": "item_popori_bread",
+    "name": "포포리빵",
+    "file": "item_popori_bread.glb",
+    "triangles": 6024,
+    "sha256": "9b8a5a68946b6a56ccae9cc5f538966cc1aea6096fc98304ec3fd46d1f07440a"
+  },
+  {
+    "id": "item_berry_juice",
+    "name": "꽃꿀 베리 주스",
+    "file": "item_berry_juice.glb",
+    "triangles": 5404,
+    "sha256": "ac5b4edfd591703bd1b76dabd11e6a7aafbae736331d8df67ba3257c2ef5066c"
+  },
+  {
+    "id": "item_herb_tea",
+    "name": "허브 차",
+    "file": "item_herb_tea.glb",
+    "triangles": 3545,
+    "sha256": "6884f2c7b52b729ada08e371e3727db4114952c3676d8ca67af8e2fcb3b49295"
+  },
+  {
+    "id": "item_dew_jelly",
+    "name": "이슬 젤리",
+    "file": "item_dew_jelly.glb",
+    "triangles": 1912,
+    "sha256": "69ce064755fc4a39cf327b3cf1e902112643176ee3d4056ba83b2153e67d0223"
+  },
+  {
+    "id": "item_honey_candy",
+    "name": "꽃꿀 사탕",
+    "file": "item_honey_candy.glb",
+    "triangles": 4200,
+    "sha256": "90a2c49c057e4bda1cb3c790621643e8036492e07b60a4f721a9f22ec7c4f75f"
+  },
+  {
+    "id": "item_crypto_decoder",
+    "name": "별가루",
+    "file": "item_crypto_decoder.glb",
+    "triangles": 4340,
+    "sha256": "827603ba24d5e348fcdf5d9e6d58a8086e8c5ef74cd7654fa50eddb06266511e"
+  },
+  {
+    "id": "item_moon_powder",
+    "name": "달가루",
+    "file": "item_moon_powder.glb",
+    "triangles": 4397,
+    "sha256": "1248900e766574615ecc51582dcc4b99878d8266815a357fd4760d3ce79fa3b8"
+  },
+  {
+    "id": "item_lotto_ticket",
+    "name": "로또",
+    "file": "item_lotto_ticket.glb",
+    "triangles": 710,
+    "sha256": "a2fe152f169192ca2fa39267aba9ce64c6846265cae11febfdff8e68eafd01bb"
+  },
+  {
+    "id": "item_premium_rumor",
+    "name": "봉인된 소식 봉투",
+    "file": "item_premium_rumor.glb",
+    "triangles": 1775,
+    "sha256": "1dc70bedf5466734c5d5c51a64f7c7925cbd9e1bf9e9e28cba8ca5090f32585f"
+  }
+]

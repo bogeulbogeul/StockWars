@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>대사창형 안내 UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><span>포포리 마을</span><small>안내 UI 시안 · 대사창형</small></header>
+  <main>
+    <button id="reopen" hidden>안내 다시 보기</button>
+    <section class="notice" role="dialog" aria-modal="false" aria-labelledby="label" aria-describedby="message">
+      <div class="name" id="label">안내</div>
+      <p id="message">마을 생활이 궁금하다면 <strong>정착 안내소</strong>에 들러 보세요.<br>처음 시작하는 하루를 차근차근 안내해 드려요.</p>
+      <button id="next" aria-label="안내 확인하고 닫기"><span>확인</span><img src="../../web/assets/ui/dialogue-v1/somang/next-arrow.png" alt=""></button>
+    </section>
+  </main>
+  <script src="preview.js"></script>
+</body>
+</html>

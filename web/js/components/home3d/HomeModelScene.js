@@ -1,4 +1,6 @@
 import * as THREE from '../../../vendor/three/three.module.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
+import { applyGameLighting } from '../lighting/GameLighting.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { SomangiPlayer } from '../town3d/SomangiPlayer.js';
 import { updateSomangiClearance } from '../town3d/SomangiClearance.js';
@@ -7,6 +9,12 @@ import { HOME_MODEL_URL, HOME_MODEL_SCALE, HOME_ROOM_BOUNDS, HOME_SPAWN,
     HOME_EXIT_Z, homeCanStand } from '../../data/homeModelRoom.js';
 import { gameKey } from '../../app/GameKeys.js';
 import { HomeRoomCamera } from './HomeRoomCamera.js';
+import { installIndoorFurnitureBodies } from '../town3d/IndoorFurnitureBodies.js';
+import { recoverTownBody } from '../town3d/TownBodyMovement.js';
+import { SeatInteraction } from '../town3d/SeatInteraction.js';
+import { indoorSeatSurfaces } from '../town3d/SeatSurfaces.js';
+import { createConversationCamera } from '../town3d/ConversationCamera.js';
+import { renderIndoorWithOcclusion } from '../town3d/IndoorOcclusion.js';
 
 // Retains the old office's inventory and save state; owns only the new scene.
 export class HomeModelScene {
@@ -31,6 +39,7 @@ export class HomeModelScene {
         this.scene.background = new THREE.Color(0x000000);
         this.camera = new THREE.PerspectiveCamera(24, 1, 1, 5000);
         this.roomCamera = new HomeRoomCamera(this.camera);
+        this.conversationCamera = createConversationCamera({ fitWidth: true });
         this.bindInput();
         this.ready = this.initialize().catch(error => {
             this.failed = true;
@@ -48,10 +57,7 @@ export class HomeModelScene {
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.setAttribute('aria-label', '집 내부 3D 화면');
         this.layer.prepend(this.renderer.domElement);
-        this.scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ac98, 2));
-        const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-        sun.position.set(-400, 1400, 800);
-        this.scene.add(sun);
+        this.environmentTarget = applyGameLighting(this.scene, this.renderer);
         const gltf = await new GLTFLoader().loadAsync(HOME_MODEL_URL);
         this.room = gltf.scene;
         this.room.name = 'home-cement-entry';
@@ -64,12 +70,14 @@ export class HomeModelScene {
             if (object.name === 'Entrance_Floor') object.material.envMapIntensity = 0;
         });
         this.scene.add(this.room);
+        installIndoorFurnitureBodies(this, homeCanStand);
         this.roomCamera.update(0, this.room);
         const adapter = { containerEl: this.layer, playerController: this.controller,
             callbacks: { isInputBlocked: () => !this.active || this.blocked() } };
         this.player = new SomangiPlayer(this.scene, adapter, this.layer);
         await this.player.ready;
-        this.player.setControlsHint('WASD / 방향키 이동 · Space 점프 · Q/E 시점 회전 · 현관 / Esc 나가기');
+        this.seatInteraction=new SeatInteraction(this,indoorSeatSurfaces(this.room));
+        this.player.setControlsHint('WASD 이동 · 2 먹기 · Q/E 시점 회전 · 현관 / Esc 나가기');
         this.status.hidden = true;
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(this.layer);
@@ -95,7 +103,7 @@ export class HomeModelScene {
                 return;
             }
             if (key === 'escape' && !event.repeat) { event.preventDefault(); void this.exit(); return; }
-            const action = { arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key;
+            const action = key;
             if (['w', 'a', 's', 'd', 'shift'].includes(action)) {
                 event.preventDefault();
                 this.controller.keysHeld.add(action);
@@ -103,12 +111,13 @@ export class HomeModelScene {
         });
         window.addEventListener('keyup', event => {
             const key = gameKey(event);
-            this.controller.keysHeld.delete({ arrowup: 'w', arrowdown: 's', arrowleft: 'a', arrowright: 'd' }[key] || key);
+            this.controller.keysHeld.delete(key);
         });
         window.addEventListener('blur', () => this.controller.keysHeld.clear());
     }
 
     show() {
+        this.seatInteraction?.reset();
         this.active = true;
         this.exitPending = false;
         this.layer.classList.remove('hidden');
@@ -122,6 +131,7 @@ export class HomeModelScene {
     }
 
     hide() {
+        this.seatInteraction?.reset();
         this.active = false;
         this.controller.keysHeld.clear();
         this.controller.isMoving = false;
@@ -149,13 +159,17 @@ export class HomeModelScene {
 
     update(dt) {
         this.roomCamera.update(dt, this.room);
+        this.room.userData.update?.(dt);
         const c = this.controller, keys = c.keysHeld;
+        if (c.scriptedWalking) { this.player?.update(dt); return; }
+        if(this.seatInteraction?.update(dt))return;
+        if (this.furnitureBodies) recoverTownBody(c);
         if (this.blocked() || this.exitPending) keys.clear();
         let dx = Number(keys.has('d')) - Number(keys.has('a'));
         let dz = Number(keys.has('s')) - Number(keys.has('w'));
         ({ dx, dz } = this.roomCamera.movement(dx, dz));
-        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, homeCanStand);
-        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? 14 : keys.has('shift') ? 220 : 145;
+        updateSomangiClearance(c, dx, dz, c.charPosX, c.charPosY / GROUND_PROJECTION, this.canStand);
+        const length = Math.hypot(dx, dz), speed = c.somangiCrab ? SOMANGI_MOVEMENT.indoorWalk * SOMANGI_MOVEMENT.sidewaysFactor : keys.has('shift') ? SOMANGI_MOVEMENT.indoorRun : SOMANGI_MOVEMENT.indoorWalk;
         const oldX = c.charPosX, oldZ = c.charPosY / GROUND_PROJECTION;
         let x = oldX, z = oldZ;
         if (length) {
@@ -163,8 +177,8 @@ export class HomeModelScene {
             dz *= speed * dt / length;
             const steps = Math.max(1, Math.ceil(Math.hypot(dx, dz) / 5));
             for (let i = 0; i < steps; i++) {
-                if (homeCanStand(x + dx / steps, z)) x += dx / steps;
-                if (homeCanStand(x, z + dz / steps)) z += dz / steps;
+                if (this.canStand(x + dx / steps, z)) x += dx / steps;
+                if (this.canStand(x, z + dz / steps)) z += dz / steps;
             }
             c.facing = Math.abs(dz) >= Math.abs(dx) ? (dz > 0 ? 'down' : 'up') : dx > 0 ? 'right' : 'left';
         }
@@ -181,9 +195,12 @@ export class HomeModelScene {
         const draw = now => {
             this.frame = null;
             if (!this.active) return;
-            this.update(Math.min(.05, (now - this.lastTime) / 1000));
+            const dt = Math.min(.05, (now - this.lastTime) / 1000);
+            this.update(dt);
             this.lastTime = now;
-            this.renderer.render(this.scene, this.camera);
+            this.conversationCamera.update(this.camera, this.player, this.room.userData.moa, dt);
+            this.roomCamera.updateWalls(this.room, Math.atan2(this.camera.position.x, this.camera.position.z));
+            renderIndoorWithOcclusion(this);
             if (this.active) this.frame = requestAnimationFrame(draw);
         };
         this.frame = requestAnimationFrame(draw);

@@ -36,8 +36,8 @@ test('visible landscape benches expose reachable recovery actions', () => {
 
 test('screen directions, normalized diagonal speed and running', () => {
     for (const [keys, dx, dy, distance] of [
-        [['w'],0,-1,28], [['s'],0,1,28], [['a'],-1,0,28], [['d'],1,0,28],
-        [['w','d'],1,-1,28], [['w','d','shift'],1,-1,50.4]
+        [['w'],0,-1,35], [['s'],0,1,35], [['a'],-1,0,35], [['d'],1,0,35],
+        [['w','d'],1,-1,35], [['w','d','shift'],1,-1,63]
     ]) {
         const p=player(); p.keysHeld=new Set(keys); tick(p);
         assert.equal(Math.sign(p.charPosX-2000),dx); assert.equal(Math.sign(p.charPosY-1600),dy);

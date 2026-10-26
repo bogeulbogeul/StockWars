@@ -1,0 +1,18 @@
+{
+  "frames": 31,
+  "before": {
+    "triangles": 33013,
+    "maxNormalTurnsOver90": 252,
+    "maxCentreNormalTurnsOver90": 178,
+    "openLowerEdges": 0,
+    "minNormalDot": -0.9983535319489091
+  },
+  "after": {
+    "triangles": 33013,
+    "maxNormalTurnsOver90": 7,
+    "maxCentreNormalTurnsOver90": 0,
+    "openLowerEdges": 0,
+    "minNormalDot": -0.8775151581957786
+  },
+  "restVerticesIdentical": true
+}

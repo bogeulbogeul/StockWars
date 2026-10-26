@@ -1,0 +1,9 @@
+{
+  "samples": 271,
+  "allArmVerticesRigidIncludingRoots": true,
+  "maximumRigidTransformError": {
+    "Arm.L": 1.6081802378664634e-07,
+    "Arm.R": 1.5225238580995892e-07
+  },
+  "endRestError": 5.960464477539063e-08
+}

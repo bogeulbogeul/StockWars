@@ -1,0 +1,20 @@
+{
+  "glbReload": true,
+  "finiteBounds": true,
+  "unchangedOtherMeshes": 242,
+  "panelContact": [
+    {
+      "panel": "Left_Display_Lower_Panel",
+      "bottom": 0.09999999403953552,
+      "moldingSurfaceAtFront": 0.11995089799165726,
+      "contactOverlap": 0.019950903952121735
+    },
+    {
+      "panel": "Right_Display_Lower_Panel",
+      "bottom": 0.09999999403953552,
+      "moldingSurfaceAtFront": 0.11995089799165726,
+      "contactOverlap": 0.019950903952121735
+    }
+  ],
+  "gameApplied": false
+}

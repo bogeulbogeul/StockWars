@@ -1,0 +1,151 @@
+{
+  "results": [
+    {
+      "place": "arrival",
+      "enabled": false,
+      "frameMs": {
+        "mean": 28.645833332935975,
+        "p95": 33.5
+      },
+      "drawMs": {
+        "mean": 28.772499997417132,
+        "p95": 38.799999952316284
+      },
+      "calls": 5857,
+      "triangles": 9204058
+    },
+    {
+      "place": "arrival",
+      "enabled": true,
+      "frameMs": {
+        "mean": 21.32666666646798,
+        "p95": 50
+      },
+      "drawMs": {
+        "mean": 20.92000000278155,
+        "p95": 44.199999928474426
+      },
+      "calls": 3865,
+      "triangles": 5846963
+    },
+    {
+      "place": "plaza",
+      "enabled": false,
+      "frameMs": {
+        "mean": 27.837499999801306,
+        "p95": 50
+      },
+      "drawMs": {
+        "mean": 27.809166672825814,
+        "p95": 41.799999952316284
+      },
+      "calls": 5853,
+      "triangles": 9204050
+    },
+    {
+      "place": "plaza",
+      "enabled": true,
+      "frameMs": {
+        "mean": 16.624166665871932,
+        "p95": 16.799999999999272
+      },
+      "drawMs": {
+        "mean": 8.43250000377496,
+        "p95": 12.399999976158142
+      },
+      "calls": 1845,
+      "triangles": 2973293
+    },
+    {
+      "place": "north",
+      "enabled": false,
+      "frameMs": {
+        "mean": 29.479999999999986,
+        "p95": 66.59999999999854
+      },
+      "drawMs": {
+        "mean": 29.457499998807908,
+        "p95": 60.5
+      },
+      "calls": 5422,
+      "triangles": 8819394
+    },
+    {
+      "place": "north",
+      "enabled": true,
+      "frameMs": {
+        "mean": 16.639166665871926,
+        "p95": 16.799999999999272
+      },
+      "drawMs": {
+        "mean": 4.891666669646899,
+        "p95": 6
+      },
+      "calls": 1021,
+      "triangles": 1860525
+    }
+  ],
+  "pictures": [
+    {
+      "place": "arrival",
+      "aspect": 1.6
+    },
+    {
+      "place": "arrival",
+      "aspect": 0.6
+    },
+    {
+      "place": "arrival",
+      "aspect": 2.2
+    },
+    {
+      "place": "plaza",
+      "aspect": 1.6
+    },
+    {
+      "place": "plaza",
+      "aspect": 0.6
+    },
+    {
+      "place": "plaza",
+      "aspect": 2.2
+    },
+    {
+      "place": "north",
+      "aspect": 1.6
+    },
+    {
+      "place": "north",
+      "aspect": 0.6
+    },
+    {
+      "place": "north",
+      "aspect": 2.2
+    },
+    {
+      "place": "west",
+      "aspect": 1.6
+    },
+    {
+      "place": "west",
+      "aspect": 0.6
+    },
+    {
+      "place": "west",
+      "aspect": 2.2
+    },
+    {
+      "place": "east",
+      "aspect": 1.6
+    },
+    {
+      "place": "east",
+      "aspect": 0.6
+    },
+    {
+      "place": "east",
+      "aspect": 2.2
+    }
+  ],
+  "errors": []
+}

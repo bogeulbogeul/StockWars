@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "name": "player-information",
+      "frames": 56,
+      "mutations": 0,
+      "materials": 18
+    },
+    {
+      "name": "player-home",
+      "frames": 46,
+      "mutations": 0,
+      "materials": 18
+    },
+    {
+      "name": "player-store",
+      "frames": 41,
+      "mutations": 0,
+      "materials": 18
+    },
+    {
+      "name": "player-bank",
+      "frames": 43,
+      "mutations": 0,
+      "materials": 18
+    },
+    {
+      "name": "player-cipher",
+      "frames": 60,
+      "mutations": 0,
+      "materials": 18
+    },
+    {
+      "name": "moa-information",
+      "frames": 36,
+      "mutations": 0,
+      "materials": 6
+    },
+    {
+      "name": "moa-home",
+      "frames": 43,
+      "mutations": 0,
+      "materials": 6
+    },
+    {
+      "name": "moa-bank",
+      "frames": 31,
+      "mutations": 0,
+      "materials": 6
+    }
+  ],
+  "errors": []
+}

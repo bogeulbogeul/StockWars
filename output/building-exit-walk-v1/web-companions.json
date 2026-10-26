@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "place": "information",
+      "frames": 367,
+      "firstMoa": 262,
+      "firstPlayer": 324,
+      "opening": 35,
+      "finalZ": 190,
+      "active": false
+    },
+    {
+      "place": "bank",
+      "frames": 243,
+      "firstMoa": 60,
+      "firstPlayer": 190,
+      "opening": 25,
+      "finalZ": 190,
+      "active": false
+    }
+  ],
+  "errors": []
+}

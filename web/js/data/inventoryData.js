@@ -4,6 +4,7 @@
  * (Note: Furniture items are managed separately in furnitureData.js & FurnitureEditModal)
  */
 
+import { AUTHORED_RUMOR_ITEMS, drawAuthoredRumor } from './rumorCatalog.js';
 import { ADDITIONAL_RUMORS } from './additionalRumors.js';
 import { ORDINARY_RUMORS } from './ordinaryRumors.js';
 import { RUMOR_BALANCE, RUMOR_RARITY_OVERRIDES } from './rumorBalance.js';
@@ -28,7 +29,7 @@ export const ITEM_RARITIES = {
 
 export const DEFAULT_INVENTORY_ITEMS = [];
 
-export const ITEM_CATALOG_DB = [
+export const LEGACY_ITEM_CATALOG_DB = [
     ...ADDITIONAL_RUMORS,
     ...ORDINARY_RUMORS,
     {
@@ -156,7 +157,7 @@ export const ITEM_CATALOG_DB = [
         targetSector: '바이오/제약',
         targetChange: '+30.0% 이상 상한가 폭등',
         targetTimeframe: '2일 뒤 글로벌 바이오 포럼',
-        intelReport: '미드나잇 펍의 정보 브로커 도란에게 입수한 극비 첩보입니다. [니코바이오]가 개발 중인 3세대 인공 신경 이식 기술이 글로벌 임상 3상을 완벽하게 통과했습니다. 2일 뒤 해외 학회 발표와 함께 상한가 직행이 예정되어 있으니 미리 물량을 선점하세요.',
+        intelReport: '도란 쉼터의 정보 브로커 도란에게 입수한 극비 첩보입니다. [니코바이오]가 개발 중인 3세대 인공 신경 이식 기술이 글로벌 임상 3상을 완벽하게 통과했습니다. 2일 뒤 해외 학회 발표와 함께 상한가 직행이 예정되어 있으니 미리 물량을 선점하세요.',
         desc: '[니코바이오] 인공 신경 임상 3상 극비 통과. 글로벌 학회 발표 시 상한가 폭등 복선.',
         effects: [
             '🎯 대상 기업: 니코바이오 (BIONICS • 바이오/제약)',
@@ -247,32 +248,25 @@ export const ITEM_CATALOG_DB = [
         quantity: 1,
         maxStack: 1,
         price: 3000,
-        desc: '데이터 잉크 서점의 사서 소담이 추천하는 주식 투자 기초 입문서.',
+        desc: '소담 서점의 사서 소담이 추천하는 주식 투자 기초 입문서.',
         effects: ['🧠 [분석력] 스탯 영구 +1', '📚 속독 시 스테미너 1칸 소모'],
         actionType: 'read',
         actionLabel: '사용하기'
     }
 ];
 
-for (const item of ITEM_CATALOG_DB.filter(item => item.category === 'intel' && item.targetStockId)) {
+for (const item of LEGACY_ITEM_CATALOG_DB.filter(item => item.category === 'intel' && item.targetStockId)) {
     item.rarity = RUMOR_RARITY_OVERRIDES[item.id] || item.rarity;
     item.price = RUMOR_BALANCE[item.rarity].price;
 }
 
+// Old definitions remain available for saved ownership, but are never awarded again.
+export const ITEM_CATALOG_DB = [
+    ...LEGACY_ITEM_CATALOG_DB.filter(item => item.category !== 'intel'),
+    ...AUTHORED_RUMOR_ITEMS
+];
 export function getRandomRumorItem(random = Math.random) {
-    const rumors = ITEM_CATALOG_DB.filter(i => i.category === 'intel');
-    const roll = random() * 100;
-    let cumulative = 0;
-    const rarity = Object.entries(RUMOR_BALANCE).find(([, balance]) => {
-        cumulative += balance.weight;
-        return roll < cumulative;
-    })?.[0] || 'legendary';
-    const pool = rumors.filter(item => item.rarity === rarity);
-    const item = pool[Math.min(pool.length - 1, Math.floor(random() * pool.length))];
-    return {
-        ...JSON.parse(JSON.stringify(item)),
-        quantity: 1,
-        actionType: 'read',
-        actionLabel: '확인하기'
-    };
+    const item = drawAuthoredRumor(random);
+    const instance = globalThis.crypto?.randomUUID?.() || `${Date.now()}_${Math.random()}`;
+    return { ...item, id: `${item.rumorId}_${instance}`, issuedAt: Date.now() };
 }

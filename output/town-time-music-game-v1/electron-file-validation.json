@@ -1,0 +1,44 @@
+{
+  "decoded": [
+    {
+      "stage": "dawn",
+      "seconds": 80,
+      "channels": 2
+    },
+    {
+      "stage": "day",
+      "seconds": 57.6,
+      "channels": 2
+    },
+    {
+      "stage": "sunset",
+      "seconds": 72,
+      "channels": 2
+    },
+    {
+      "stage": "night",
+      "seconds": 90,
+      "channels": 2
+    }
+  ],
+  "fading": [
+    {
+      "stage": "dawn",
+      "from": 1,
+      "to": 0
+    },
+    {
+      "stage": "sunset",
+      "from": 0,
+      "to": 1
+    }
+  ],
+  "end": {
+    "stage": "sunset",
+    "voices": 1,
+    "state": "running",
+    "gain": 1,
+    "url": "file:"
+  },
+  "errors": []
+}

@@ -1,0 +1,26 @@
+/* All game instructions share one viewport card, regardless of their host. */
+body .game-guidance, body .exhibition-ui .game-guidance {
+    position: fixed; z-index: 1210; top: 24px; left: 24px; right: auto; bottom: auto;
+    transform: none; width: min(390px, calc(100vw - 48px)); box-sizing: border-box;
+    padding: 18px 22px; border: 2px solid #b7c7a0; border-radius: 20px;
+    background: #fff9eaf5; color: #3d5140; box-shadow: 0 6px 24px #263c3320;
+    font: 500 15px/1.65 'Malgun Gothic', sans-serif; text-align: left;
+    white-space: normal; pointer-events: none;
+}
+body .game-guidance strong { display: block; font: inherit; font-size: 19px; font-weight: 500; }
+body .game-guidance p { margin: 9px 0 0; font: inherit; }
+body .game-guidance kbd {
+    font: inherit; font-weight: 500; background: #edf1df; border-radius: 5px; padding: 3px 6px;
+}
+body button.game-guidance, body .exhibition-ui button.game-guidance { pointer-events: auto; cursor: pointer; }
+body button.game-guidance:hover { background: #fff9ea; border-color: #8fa77b; }
+body button.game-guidance:focus-visible { outline: 3px solid #6c9b75; outline-offset: 3px; }
+body .game-guidance[hidden] { display: none; }
+/* Avoid a duplicate nearby prompt while a tutorial card explains that control. */
+body:has(.moa-movement-guide:not([hidden])) :is(.seat-action, .board-launch) { display: none; }
+@media (max-width: 600px) {
+    body .game-guidance, body .exhibition-ui .game-guidance {
+        top: 12px; left: 12px; width: calc(100vw - 24px); padding: 12px 16px; font-size: 13px;
+    }
+    body .game-guidance strong { font-size: 17px; }
+}

@@ -1,0 +1,15 @@
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), assert = require('node:assert/strict');
+const { chromium } = require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const root = path.resolve(process.argv[2] || 'web');
+const server = http.createServer((req, res) => {
+    const file = path.resolve(root, '.' + (req.url.split('?')[0] === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0])));
+    if (!file.startsWith(root + path.sep)) return res.writeHead(403).end();
+    fs.readFile(file, (error, data) => {
+        if (error) return res.writeHead(404).end();
+        res.setHeader('Content-Type', ({ '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.png': 'image/png' })[path.extname(file)] || 'application/octet-stream'); res.end(data);
+    });
+});
+
+
+
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({headless:true,channel:'msedge'});try{const page=await browser.newPage();page.setDefaultTimeout(120000);await page.goto('http://127.0.0.1:'+server.address().port+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.sleepingAnna);const result=await page.evaluate(async()=>{const {createTourPaths}=await import('/js/app/exhibition/TourPaths.js');const {routeLength,tourDistance}=await import('/js/app/exhibition/TourRoute.js');const {TOUR_ORDER}=await import('/js/app/exhibition/TourOrder.js');const {TOWN_MODEL_BUILDINGS:B}=await import('/js/data/townModelBuildings.js');const map={homeOutside:'home_office_tower',storeOutside:'vivian_store',furniture:'julian_furniture',pub:'midnight_pub',bookstore:'data_ink_bookstore',post:'post_office',stockOutside:'cipher_securities',bankOutside:'node_finance',informationOutside:'settlement_information'};const legal=window.stockWarsExhibition.scenes.townStage.playerController.sceneryCanStand,paths=createTourPaths();let start={x:1040,y:2360};const legs=[];for(const id of TOUR_ORDER){const b=B.find(b=>b.id===map[id]);const goal=id==='tree'?{x:1751,y:1625}:{x:b.x+(b.entranceOffsetX||0),y:b.y+110};const route=paths.route(start,goal,legal);let offPath=0,blocked=0;for(let i=1;i<route.length;i++){const a=route[i-1],b=route[i],n=Math.ceil(tourDistance(a,b)/4);for(let j=1;j<=n;j++){const x=a.x+(b.x-a.x)*j/n,y=a.y+(b.y-a.y)*j/n;if(!legal(x,y))blocked++;if(i>1&&!paths.onPath(x,y))offPath++;}}legs.push({id,length:Math.round(routeLength(route)),offPath,blocked,route});start=route.at(-1);}return legs;});console.log(JSON.stringify(result.map(({route,...rest})=>rest)));assert(result.every(x=>x.offPath===0&&x.blocked===0));fs.mkdirSync('output/town-tour-paths-v3',{recursive:true});fs.writeFileSync('output/town-tour-paths-v3/routes.json',JSON.stringify(result,null,2));}finally{await browser.close();server.close()}})().catch(e=>{console.error(e);server.close();process.exitCode=1});

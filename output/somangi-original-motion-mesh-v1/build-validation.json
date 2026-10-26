@@ -1,0 +1,33 @@
+{
+  "meshObjects": 1,
+  "parts": {
+    "Arm.L": {
+      "surfaceVertices": 3696,
+      "capFaces": 423,
+      "cutLoops": 142
+    },
+    "Arm.R": {
+      "surfaceVertices": 3838,
+      "capFaces": 456,
+      "cutLoops": 153
+    },
+    "Leg.L": {
+      "surfaceVertices": 5710,
+      "capFaces": 435,
+      "cutLoops": 146
+    },
+    "Leg.R": {
+      "surfaceVertices": 5515,
+      "capFaces": 456,
+      "cutLoops": 153
+    },
+    "Root": {
+      "surfaceVertices": 22058,
+      "capFaces": 1770,
+      "cutLoops": 594
+    }
+  },
+  "originalVisibleSurface": "Preserved, cut triangles subdivided without displacement",
+  "walkSeconds": 0.75,
+  "gameInstalled": false
+}

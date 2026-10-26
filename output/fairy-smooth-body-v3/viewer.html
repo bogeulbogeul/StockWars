@@ -1,0 +1,94 @@
+<!doctype html><meta charset="utf-8"><title>매끈한 몸통·동작 검수</title>
+<style>body{margin:0;background:#bbb;font:16px sans-serif}canvas{display:block}#label{position:absolute;top:12px;left:16px;background:#fff;padding:8px;border-radius:8px}</style>
+<div id="label"></div>
+<script type="module">
+import * as T from '/web/vendor/three/three.module.js';
+import { GLTFLoader } from '/web/vendor/three/GLTFLoader.js';
+const scene=new T.Scene();scene.background=new T.Color('#b6b6b6');
+scene.add(new T.HemisphereLight(0xffffff,0x777777,2));
+const light=new T.DirectionalLight(0xffffff,3);light.position.set(-3,5,4);scene.add(light);
+const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setSize(1100,750);renderer.setPixelRatio(1);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.85;
+document.body.append(renderer.domElement);
+const camera=new T.OrthographicCamera(-1,1,1.35,-1.35,.01,100);
+let gltf,mixer,action;const center=new T.Vector3(0,.05,0);
+function render(time=0){
+ if(action){action.time=time;mixer.update(0);}
+ scene.updateMatrixWorld(true);
+ scene.traverse(o=>{if(o.isSkinnedMesh)o.skeleton.update();});
+ renderer.setScissorTest(true);
+ for(const [i,p] of [[0,[0,.05,5]],[1,[5,.05,0]]]){
+  renderer.setViewport(i*550,0,550,750);renderer.setScissor(i*550,0,550,750);
+  camera.position.copy(center).add(new T.Vector3(...p));camera.lookAt(center);renderer.render(scene,camera);
+ }
+ renderer.setScissorTest(false);
+}
+async function load(file,clip){
+ if(gltf){scene.remove(gltf.scene);mixer.stopAllAction();}
+ gltf=await new GLTFLoader().loadAsync(file);scene.add(gltf.scene);
+ gltf.scene.traverse(o=>{if(o.isMesh)o.frustumCulled=false;});
+ mixer=new T.AnimationMixer(gltf.scene);
+ const c=gltf.animations.find(c=>c.name===clip)||gltf.animations[0];
+ action=c?mixer.clipAction(c):null;if(action){action.setLoop(T.LoopOnce,1);action.clampWhenFinished=true;action.play();}
+ document.querySelector('#label').textContent=file.split('/').pop()+' · '+(c?.name||'정지');
+ const bounds=new T.Box3();
+ for(let i=0;i<=8;i++){
+  if(action){action.time=(c.duration*i/8);mixer.update(0);}
+  scene.updateMatrixWorld(true);gltf.scene.traverse(o=>{if(o.isSkinnedMesh)o.skeleton.update();});
+  bounds.union(new T.Box3().setFromObject(gltf.scene,true));
+ }
+ bounds.getCenter(center);const h=bounds.max.y-bounds.min.y;
+ camera.top=h*.60;camera.bottom=-camera.top;camera.right=camera.top*550/750;camera.left=-camera.right;camera.updateProjectionMatrix();
+ render();return {clips:gltf.animations.map(c=>({name:c.name,duration:c.duration})),duration:c?.duration||0};
+}
+function inspect(time){
+ render(time);
+ const body=gltf.scene.getObjectByName('Somangi_Body'),torso=gltf.scene.getObjectByName('Eating_Torso');
+ const pos=body.geometry.attributes.position,points=[];
+ body.geometry.computeBoundingBox();const legLimit=body.geometry.boundingBox.min.y+.6;
+ // Explicit top-rim vertices, selected separately on both sides of the midline.
+ for(const sign of [-1,1]){
+  let ymax=-Infinity;const candidates=[];
+  for(let i=0;i<pos.count;i++)if(pos.getX(i)*sign>0&&pos.getY(i)<legLimit)ymax=Math.max(ymax,pos.getY(i));
+  for(let i=0;i<pos.count;i++)if(pos.getX(i)*sign>0&&pos.getY(i)>ymax-.025&&pos.getY(i)<=ymax)candidates.push(i);
+  const count=Math.min(16,candidates.length);
+  for(let k=0;k<count;k++)points.push(candidates[Math.floor(k*candidates.length/count)]);
+ }
+ const skinIndex=torso.geometry.attributes.skinIndex.getX(0);
+ const deform=new T.Matrix4().multiplyMatrices(torso.matrixWorld,torso.bindMatrixInverse)
+  .multiply(torso.skeleton.bones[skinIndex].matrixWorld).multiply(torso.skeleton.boneInverses[skinIndex]).multiply(torso.bindMatrix);
+ const inverse=deform.clone().invert();
+ const rest=new T.Mesh(torso.geometry,new T.MeshBasicMaterial({side:T.DoubleSide}));rest.updateMatrixWorld(true);
+ const ray=new T.Raycaster(),v=new T.Vector3();let outside=0,notFinite=0;
+ for(const i of points){
+  body.getVertexPosition(i,v);v.applyMatrix4(body.matrixWorld).applyMatrix4(inverse);
+  if(!Number.isFinite(v.lengthSq()))notFinite++;
+  ray.set(v,new T.Vector3(1,0,0));
+  const hits=ray.intersectObject(rest,false);const distinct=[];
+  for(const h of hits)if(!distinct.some(d=>Math.abs(d-h.distance)<1e-5))distinct.push(h.distance);
+  if(distinct.length%2!==1)outside++;
+ }
+ // Also check each upper arm still overlaps the torso at its shoulder.
+ const shoulderSamples=[];
+ for(const name of ['Rigid_Arm.L','Rigid_Arm.R']){
+  const arm=gltf.scene.getObjectByName(name);if(!arm)continue;
+  const p=arm.geometry.attributes.position;let ymax=-Infinity;
+  for(let i=0;i<p.count;i++)ymax=Math.max(ymax,p.getY(i));
+  const ids=[];for(let i=0;i<p.count;i++)if(p.getY(i)>ymax-.06)ids.push(i);
+  let inside=0;
+  for(let k=0;k<Math.min(24,ids.length);k++){
+   const i=ids[Math.floor(k*ids.length/Math.min(24,ids.length))];
+   arm.getVertexPosition(i,v);v.applyMatrix4(arm.matrixWorld).applyMatrix4(inverse);
+   ray.set(v,new T.Vector3(1,0,0));const hits=ray.intersectObject(rest,false),d=[];
+   for(const h of hits)if(!d.some(t=>Math.abs(t-h.distance)<1e-5))d.push(h.distance);
+   if(d.length%2===1)inside++;
+  }
+  shoulderSamples.push({name,inside});
+ }
+ rest.material.dispose();
+ return {time,samples:points.length,outside,notFinite,shoulderSamples};
+}
+window.review={load,render,inspect,get canvas(){return renderer.domElement;}};
+window.ready=true;
+</script>
+

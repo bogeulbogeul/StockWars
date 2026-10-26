@@ -1,0 +1,596 @@
+{
+  "status": "installed-web-and-local-runtime-awaiting-user-review",
+  "source": "atlas.png",
+  "textBakedIn": false,
+  "portrait": false,
+  "colors": {
+    "panel": "#FFF8EB",
+    "textSuggested": "#4C2B1A"
+  },
+  "themes": {
+    "moa": {
+      "name": "모아",
+      "accentTarget": "#BDD6A2",
+      "files": {
+        "dialogue-panel": {
+          "path": "moa/dialogue-panel.png",
+          "size": [
+            550,
+            106
+          ],
+          "atlasCrop": [
+            28,
+            48,
+            578,
+            154
+          ]
+        },
+        "nameplate": {
+          "path": "moa/nameplate.png",
+          "size": [
+            184,
+            81
+          ],
+          "atlasCrop": [
+            585,
+            62,
+            769,
+            143
+          ]
+        },
+        "choice-selected": {
+          "path": "moa/choice-selected.png",
+          "size": [
+            299,
+            81
+          ],
+          "atlasCrop": [
+            779,
+            62,
+            1078,
+            143
+          ]
+        },
+        "next-arrow": {
+          "path": "moa/next-arrow.png",
+          "size": [
+            47,
+            37
+          ],
+          "atlasCrop": [
+            1090,
+            62,
+            1142,
+            143
+          ]
+        }
+      }
+    },
+    "bongbong": {
+      "name": "봉봉",
+      "accentTarget": "#FFB99B",
+      "files": {
+        "dialogue-panel": {
+          "path": "bongbong/dialogue-panel.png",
+          "size": [
+            550,
+            99
+          ],
+          "atlasCrop": [
+            28,
+            166,
+            578,
+            265
+          ]
+        },
+        "nameplate": {
+          "path": "bongbong/nameplate.png",
+          "size": [
+            184,
+            77
+          ],
+          "atlasCrop": [
+            585,
+            177,
+            769,
+            254
+          ]
+        },
+        "choice-selected": {
+          "path": "bongbong/choice-selected.png",
+          "size": [
+            299,
+            77
+          ],
+          "atlasCrop": [
+            779,
+            177,
+            1078,
+            254
+          ]
+        },
+        "next-arrow": {
+          "path": "bongbong/next-arrow.png",
+          "size": [
+            48,
+            37
+          ],
+          "atlasCrop": [
+            1090,
+            177,
+            1142,
+            254
+          ]
+        }
+      }
+    },
+    "woody": {
+      "name": "우디",
+      "accentTarget": "#DCBA87",
+      "files": {
+        "dialogue-panel": {
+          "path": "woody/dialogue-panel.png",
+          "size": [
+            550,
+            100
+          ],
+          "atlasCrop": [
+            28,
+            280,
+            578,
+            380
+          ]
+        },
+        "nameplate": {
+          "path": "woody/nameplate.png",
+          "size": [
+            184,
+            79
+          ],
+          "atlasCrop": [
+            585,
+            290,
+            769,
+            369
+          ]
+        },
+        "choice-selected": {
+          "path": "woody/choice-selected.png",
+          "size": [
+            299,
+            79
+          ],
+          "atlasCrop": [
+            779,
+            290,
+            1078,
+            369
+          ]
+        },
+        "next-arrow": {
+          "path": "woody/next-arrow.png",
+          "size": [
+            45,
+            39
+          ],
+          "atlasCrop": [
+            1090,
+            290,
+            1142,
+            369
+          ]
+        }
+      }
+    },
+    "tori": {
+      "name": "토리",
+      "accentTarget": "#A9BDD8",
+      "files": {
+        "dialogue-panel": {
+          "path": "tori/dialogue-panel.png",
+          "size": [
+            550,
+            114
+          ],
+          "atlasCrop": [
+            28,
+            396,
+            578,
+            510
+          ]
+        },
+        "nameplate": {
+          "path": "tori/nameplate.png",
+          "size": [
+            184,
+            78
+          ],
+          "atlasCrop": [
+            585,
+            416,
+            769,
+            494
+          ]
+        },
+        "choice-selected": {
+          "path": "tori/choice-selected.png",
+          "size": [
+            299,
+            78
+          ],
+          "atlasCrop": [
+            779,
+            416,
+            1078,
+            494
+          ]
+        },
+        "next-arrow": {
+          "path": "tori/next-arrow.png",
+          "size": [
+            48,
+            38
+          ],
+          "atlasCrop": [
+            1090,
+            416,
+            1142,
+            494
+          ]
+        }
+      }
+    },
+    "chagok": {
+      "name": "차곡",
+      "accentTarget": "#E9CD85",
+      "files": {
+        "dialogue-panel": {
+          "path": "chagok/dialogue-panel.png",
+          "size": [
+            550,
+            108
+          ],
+          "atlasCrop": [
+            28,
+            530,
+            578,
+            638
+          ]
+        },
+        "nameplate": {
+          "path": "chagok/nameplate.png",
+          "size": [
+            184,
+            79
+          ],
+          "atlasCrop": [
+            585,
+            542,
+            769,
+            621
+          ]
+        },
+        "choice-selected": {
+          "path": "chagok/choice-selected.png",
+          "size": [
+            299,
+            79
+          ],
+          "atlasCrop": [
+            779,
+            542,
+            1078,
+            621
+          ]
+        },
+        "next-arrow": {
+          "path": "chagok/next-arrow.png",
+          "size": [
+            47,
+            35
+          ],
+          "atlasCrop": [
+            1090,
+            542,
+            1142,
+            621
+          ]
+        }
+      }
+    },
+    "doran": {
+      "name": "도란",
+      "accentTarget": "#D2A4BD",
+      "files": {
+        "dialogue-panel": {
+          "path": "doran/dialogue-panel.png",
+          "size": [
+            550,
+            116
+          ],
+          "atlasCrop": [
+            28,
+            655,
+            578,
+            771
+          ]
+        },
+        "nameplate": {
+          "path": "doran/nameplate.png",
+          "size": [
+            184,
+            78
+          ],
+          "atlasCrop": [
+            585,
+            673,
+            769,
+            751
+          ]
+        },
+        "choice-selected": {
+          "path": "doran/choice-selected.png",
+          "size": [
+            299,
+            78
+          ],
+          "atlasCrop": [
+            779,
+            673,
+            1078,
+            751
+          ]
+        },
+        "next-arrow": {
+          "path": "doran/next-arrow.png",
+          "size": [
+            45,
+            35
+          ],
+          "atlasCrop": [
+            1090,
+            673,
+            1142,
+            751
+          ]
+        }
+      }
+    },
+    "boni": {
+      "name": "보니",
+      "accentTarget": "#A9D9CB",
+      "files": {
+        "dialogue-panel": {
+          "path": "boni/dialogue-panel.png",
+          "size": [
+            550,
+            116
+          ],
+          "atlasCrop": [
+            28,
+            785,
+            578,
+            901
+          ]
+        },
+        "nameplate": {
+          "path": "boni/nameplate.png",
+          "size": [
+            184,
+            79
+          ],
+          "atlasCrop": [
+            585,
+            804,
+            769,
+            883
+          ]
+        },
+        "choice-selected": {
+          "path": "boni/choice-selected.png",
+          "size": [
+            299,
+            79
+          ],
+          "atlasCrop": [
+            779,
+            804,
+            1078,
+            883
+          ]
+        },
+        "next-arrow": {
+          "path": "boni/next-arrow.png",
+          "size": [
+            47,
+            36
+          ],
+          "atlasCrop": [
+            1090,
+            804,
+            1142,
+            883
+          ]
+        }
+      }
+    },
+    "sodam": {
+      "name": "소담",
+      "accentTarget": "#C6B4DB",
+      "files": {
+        "dialogue-panel": {
+          "path": "sodam/dialogue-panel.png",
+          "size": [
+            550,
+            107
+          ],
+          "atlasCrop": [
+            28,
+            918,
+            578,
+            1025
+          ]
+        },
+        "nameplate": {
+          "path": "sodam/nameplate.png",
+          "size": [
+            184,
+            79
+          ],
+          "atlasCrop": [
+            585,
+            934,
+            769,
+            1013
+          ]
+        },
+        "choice-selected": {
+          "path": "sodam/choice-selected.png",
+          "size": [
+            299,
+            79
+          ],
+          "atlasCrop": [
+            779,
+            934,
+            1078,
+            1013
+          ]
+        },
+        "next-arrow": {
+          "path": "sodam/next-arrow.png",
+          "size": [
+            46,
+            34
+          ],
+          "atlasCrop": [
+            1090,
+            934,
+            1142,
+            1013
+          ]
+        }
+      }
+    },
+    "duri": {
+      "name": "두리",
+      "accentTarget": "#B6DAE9",
+      "files": {
+        "dialogue-panel": {
+          "path": "duri/dialogue-panel.png",
+          "size": [
+            550,
+            113
+          ],
+          "atlasCrop": [
+            28,
+            1048,
+            578,
+            1161
+          ]
+        },
+        "nameplate": {
+          "path": "duri/nameplate.png",
+          "size": [
+            184,
+            80
+          ],
+          "atlasCrop": [
+            585,
+            1065,
+            769,
+            1145
+          ]
+        },
+        "choice-selected": {
+          "path": "duri/choice-selected.png",
+          "size": [
+            299,
+            80
+          ],
+          "atlasCrop": [
+            779,
+            1065,
+            1078,
+            1145
+          ]
+        },
+        "next-arrow": {
+          "path": "duri/next-arrow.png",
+          "size": [
+            45,
+            34
+          ],
+          "atlasCrop": [
+            1090,
+            1065,
+            1142,
+            1145
+          ]
+        }
+      }
+    },
+    "somang": {
+      "name": "소망·내레이션",
+      "accentTarget": "#E8DDC9",
+      "files": {
+        "dialogue-panel": {
+          "path": "somang/dialogue-panel.png",
+          "size": [
+            550,
+            107
+          ],
+          "atlasCrop": [
+            28,
+            1177,
+            578,
+            1284
+          ]
+        },
+        "nameplate": {
+          "path": "somang/nameplate.png",
+          "size": [
+            184,
+            77
+          ],
+          "atlasCrop": [
+            585,
+            1191,
+            769,
+            1268
+          ]
+        },
+        "choice-selected": {
+          "path": "somang/choice-selected.png",
+          "size": [
+            299,
+            77
+          ],
+          "atlasCrop": [
+            779,
+            1191,
+            1078,
+            1268
+          ]
+        },
+        "next-arrow": {
+          "path": "somang/next-arrow.png",
+          "size": [
+            46,
+            34
+          ],
+          "atlasCrop": [
+            1090,
+            1191,
+            1142,
+            1268
+          ]
+        }
+      }
+    }
+  },
+  "notes": "Hex colors are design targets; generated paper texture varies per pixel.",
+  "common": {
+    "choiceIdle": "common/choice-idle.png"
+  }
+}

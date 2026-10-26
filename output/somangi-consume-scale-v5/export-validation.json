@@ -1,0 +1,7 @@
+{
+  "eat": {
+    "characterGeometryAndAllMorphTargetsIdentical": true,
+    "characterMorphAnimationIdentical": true,
+    "comparedAttributeBuffers": 70
+  }
+}

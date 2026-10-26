@@ -1,0 +1,31 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "result": {
+    "meshes": [
+      "Moa_Leaf",
+      "Moa_LeafStem",
+      "Original_whole_arms_without_elbow_cuts",
+      "Original_whole_arms_without_elbow_cuts_1",
+      "Original_whole_arms_without_elbow_cuts_2",
+      "Original_whole_arms_without_elbow_cuts_3"
+    ],
+    "moods": 5,
+    "clips": [
+      "Moa_Leaf_Calm",
+      "Moa_Leaf_Curious",
+      "Moa_Leaf_Happy",
+      "Moa_Leaf_Sad",
+      "Moa_Leaf_Surprised",
+      "Walk_InPlace.001"
+    ],
+    "townCollision": true
+  },
+  "interior": {
+    "separateBones": true,
+    "separateMaterials": true,
+    "updates": true,
+    "collision": true,
+    "rootCount": 1
+  },
+  "errors": []
+}

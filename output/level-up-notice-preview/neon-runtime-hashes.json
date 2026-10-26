@@ -1,0 +1,65 @@
+[
+  {
+    "file": "js/main.js",
+    "sourceSha256": "FB471EE26988D7651FFCCCF9584EA0DFCA0C071D02FD9294551178DF73A6C1D9",
+    "runtimeSha256": "52190D7C81C277410A3390E277BF9BE0A1B281760F0E261BCBA7FE77B2FCA426",
+    "equal": false,
+    "preservedInstalledBootstrap": true
+  },
+  {
+    "file": "js/app/RetireNeonInterface.js",
+    "sourceSha256": "774C31A2CB21EE63DC6EEF823FC0F7117490110D7160375E5542E42D7D490BA0",
+    "runtimeSha256": "774C31A2CB21EE63DC6EEF823FC0F7117490110D7160375E5542E42D7D490BA0",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "js/app/ItemGameplay.js",
+    "sourceSha256": "3E25C6162787E130FFAA23B94C4C8F9DECC03B7AC00116DC5C4D1291A7D7D625",
+    "runtimeSha256": "3E25C6162787E130FFAA23B94C4C8F9DECC03B7AC00116DC5C4D1291A7D7D625",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "js/app/CipherSimulationEntrance.js",
+    "sourceSha256": "200192E4C5B114B5F1FBD37CEAD14D67031B542908E6A8AAA7ABBA993CD5C353",
+    "runtimeSha256": "200192E4C5B114B5F1FBD37CEAD14D67031B542908E6A8AAA7ABBA993CD5C353",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "js/components/ToastManager.js",
+    "sourceSha256": "095D91597D89D8B077D2273788745CBB625275BD78D0B2793810394844D31064",
+    "runtimeSha256": "095D91597D89D8B077D2273788745CBB625275BD78D0B2793810394844D31064",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "js/components/ItemUseNotice.js",
+    "sourceSha256": "39D5A2C0F4D1DE58A7427E2234E69EBB63DB53741CD239789955685210AB2BA8",
+    "runtimeSha256": "39D5A2C0F4D1DE58A7427E2234E69EBB63DB53741CD239789955685210AB2BA8",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "css/style.css",
+    "sourceSha256": "9744378008179823C1677C01C90E3C84901969A3FDD41BA8204B260F8663ECE5",
+    "runtimeSha256": "9744378008179823C1677C01C90E3C84901969A3FDD41BA8204B260F8663ECE5",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "css/modules/notices.css",
+    "sourceSha256": "F0D2EAFF690D954FC9AE72A27ECC9F3B25C34407F691224C6959A870CAA97BDD",
+    "runtimeSha256": "F0D2EAFF690D954FC9AE72A27ECC9F3B25C34407F691224C6959A870CAA97BDD",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  },
+  {
+    "file": "css/modules/retired-interface.css",
+    "sourceSha256": "4376257D65483CE61441B84FE812B9D2BA7A2C7FCB0CB9F8D46DABA27FBFE9C5",
+    "runtimeSha256": "4376257D65483CE61441B84FE812B9D2BA7A2C7FCB0CB9F8D46DABA27FBFE9C5",
+    "equal": true,
+    "preservedInstalledBootstrap": false
+  }
+]

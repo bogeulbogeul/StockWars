@@ -1,0 +1,45 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-face-smooth-v1\\somangi-face-smooth.glb",
+  "sourceFaces": 79282,
+  "allOriginalFacesAssignedExactlyOnce": true,
+  "method": "Geodesic shoulder separation, untouched original surface vertices and UVs; internal cut caps only",
+  "parts": [
+    {
+      "name": "Body",
+      "sourceFaces": 64780,
+      "sourceVertices": 37053,
+      "newCapFaces": 200,
+      "newCapVertices": 2,
+      "originalVertexMaxDisplacement": 0.0,
+      "originalUvsNormalsPreserved": true
+    },
+    {
+      "name": "Arm.L",
+      "sourceFaces": 7120,
+      "sourceVertices": 4075,
+      "newCapFaces": 94,
+      "newCapVertices": 1,
+      "originalVertexMaxDisplacement": 0.0,
+      "originalUvsNormalsPreserved": true
+    },
+    {
+      "name": "Arm.R",
+      "sourceFaces": 7382,
+      "sourceVertices": 4253,
+      "newCapFaces": 106,
+      "newCapVertices": 1,
+      "originalVertexMaxDisplacement": 0.0,
+      "originalUvsNormalsPreserved": true
+    }
+  ],
+  "gameInstalled": false,
+  "glbRoundTrip": {
+    "meshObjects": [
+      "Arm.L",
+      "Arm.R",
+      "Body"
+    ],
+    "maximumOriginalVertexNearestDistance": 0.0,
+    "originalVertexSamples": 45195
+  }
+}

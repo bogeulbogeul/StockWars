@@ -1,0 +1,13 @@
+{
+  "visibleArmPositionMaxDifference": 0.0,
+  "originalHeadPositionMaxDifference": 0.0,
+  "onlySpecifiedConnectionVerticesChanged": true,
+  "changedVertices": 12283,
+  "unchangedVertices": 52948,
+  "vertexCount": 65231,
+  "materials": [
+    "Material_0",
+    "Face_ink_nonmetal",
+    "Hidden shoulder original matte skin"
+  ]
+}

@@ -2,19 +2,17 @@ import { CipherLobbyScene } from '../components/cipher3d/CipherLobbyScene.js';
 import { buildCipherSimulationShell } from '../components/cipher3d/CipherSimulationShell.js';
 import { SIMULATION_ROOM,simulationCanStand,nearbySimulationReturnDoor } from '../data/cipherSimulationRoom.js';
 import { createCipherChairInteraction } from '../components/cipher3d/CipherChairInteraction.js';
+import { walkBetweenCipherRooms } from './CipherRoomTravel.js';
 
-export function enterCipherSimulationShell(lobby,competition){
-    const position={x:lobby.controller.charPosX,y:lobby.controller.charPosY};
+export async function enterCipherSimulationShell(lobby,competition){
     if(!lobby.simulationRoomScene){
-        const simulation=new CipherLobbyScene(lobby.layer.parentElement,()=>{
-            simulation.hide();lobby.show();
-            const saved=lobby.simulationReturnPosition;
-            lobby.controller.charPosX=saved.x;lobby.controller.charPosY=saved.y;lobby.controller.facing='left';
-        },{
+        const simulation=new CipherLobbyScene(lobby.layer.parentElement,
+            ()=>walkBetweenCipherRooms(simulation,lobby,-1),{
             layout:SIMULATION_ROOM,buildRoom:buildCipherSimulationShell,canStand:simulationCanStand,
             createInteraction:createCipherChairInteraction,
             nearbyDoor:nearbySimulationReturnDoor,onDoorEnter:()=>void simulation.exit(),automaticExit:false,
             onConfirm:()=>{
+                if (competition.interfaceRetired) return;
                 document.body.classList.add('cipher-facility-active');
                 simulation.controller.keysHeld.clear();simulation.controller.isMoving=false;
                 competition.open();
@@ -30,5 +28,5 @@ export function enterCipherSimulationShell(lobby,competition){
         };
         lobby.simulationRoomScene=simulation;
     }
-    lobby.simulationReturnPosition=position;lobby.hide();lobby.simulationRoomScene.show();
+    await walkBetweenCipherRooms(lobby,lobby.simulationRoomScene,1);
 }

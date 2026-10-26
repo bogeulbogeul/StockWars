@@ -1,0 +1,7 @@
+js/engine/TownMusic.js
+js/app/OpeningSequence.js
+js/app/TitleScreen.js
+js/components/phone/settings/SettingsApp.js
+js/components/phone/stock/MountStockApp.js
+css/modules/phone-home.css
+css/modules/phone-settings.css

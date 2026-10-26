@@ -1,10 +1,16 @@
+import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
-import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
-import { SOMANGI_MODELS, SOMANGI_HEIGHT, somangiAssetUrl } from '../../data/somangiModels.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
+import { recoverTownBody } from './TownBodyMovement.js';
+import { SOMANGI_MOVEMENT } from '../../data/somangiMovement.js';
+import { SOMANGI_HEIGHT, SOMANGI_REFERENCE_HEIGHT, SOMANGI_FOOT_Y, SOMANGI_MODELS } from '../../data/somangiModels.js';
 import { createSomangiControls } from './SomangiControls.js';
+import { loadSomangi } from './SomangiAssets.js';
+import { SomangiExpressions } from './SomangiExpressions.js';
+import { SomangiJump } from './SomangiJump.js';
+import { updateSomangiClearance, sidewaysYaw } from './SomangiClearance.js';
+import { SomangiEatingFood, hideEmbeddedBread } from './SomangiEatingFood.js';
 
-// Independent local player presentation; saves, inventory and presence are untouched.
 export class SomangiPlayer {
     constructor(scene, town, layer) {
         this.town = town;
@@ -13,121 +19,125 @@ export class SomangiPlayer {
         scene.add(this.root);
         this.variants = new Map();
         this.state = 'loading';
+        this.jump = new SomangiJump();
+        this.expressions = new SomangiExpressions();
+        this.food = new SomangiEatingFood(this);
         this.hint = createSomangiControls(layer, action => this.play(action), () => this.blocked());
+        this.update();
         this.ready = this.load();
     }
-
     blocked() {
-        return this.town.containerEl.classList.contains('hidden') || this.town.buildingInfoOpen
-            || this.town.callbacks.isInputBlocked?.();
+        return this.town.playerController.scriptedWalking || this.town.containerEl?.classList.contains('hidden') || this.town.buildingInfoOpen || this.town.callbacks?.isInputBlocked?.();
     }
-
     async load() {
-        const loader = new GLTFLoader();
         await Promise.all(Object.entries(SOMANGI_MODELS).map(async ([name, definition]) => {
-            const gltf = await loader.loadAsync(somangiAssetUrl(definition.file));
-            const model = gltf.scene;
-            model.traverse(object => { if (object.isMesh) object.frustumCulled = false; });
-            // Every variant shares the same source units/origin. Never center by
-            // animated bounds: a raised hand must not shift or resize the body.
-            const scale = SOMANGI_HEIGHT / 1.95;
-            model.scale.setScalar(scale);
-            model.updateMatrixWorld(true);
-            model.position.y = -new THREE.Box3().setFromObject(model).min.y;
+            const { model, animations } = await loadSomangi(name);
+            if (name === 'eat') hideEmbeddedBread(model);
+            const scale = SOMANGI_HEIGHT / SOMANGI_REFERENCE_HEIGHT;
+            model.scale.setScalar(scale); model.position.y = -SOMANGI_FOOT_Y * scale;
+            model.visible = false; this.root.add(model); this.expressions.register(model);
             const mixer = new THREE.AnimationMixer(model);
-            const clip = gltf.animations.find(animation => animation.name === definition.clip);
-            if (!clip) throw new Error(`Missing Somangi clip: ${definition.clip}`);
+            const clip = animations.find(item => item.name === definition.clip);
+            if (!clip) throw new Error(`Missing Somangi animation: ${definition.clip}`);
             const action = mixer.clipAction(clip);
-            model.visible = false;
-            this.root.add(model);
             this.variants.set(name, { model, mixer, action });
             mixer.addEventListener('finished', () => {
-                if (this.state === name) {
-                    this.setState(this.town.playerController.isMoving && !this.blocked() ? 'walk' : 'idle');
-                }
+                if (this.state !== name) return;
+                this.setState('idle'); void this.setExpression(this.expressionBeforeEat || 'smile');
             });
         }));
-        this.setState('idle');
-        this.updateHint();
+        this.setState('idle'); this.updateHint();
     }
-
-    updateHint() {
-        const c = this.town.playerController;
-        const mode = c.somangiCrabAuto ? '자동' : c.somangiCrabManual ? '수동' : '꺼짐';
-        this.hint.textContent = `${this.controlsHint || 'WASD 이동 · Space 점프 · 1 인사 · 2 먹기'} · 좁은 곳 자동 게걸음 · 3 수동 ${mode}`;
-        this.hintMode = mode;
+    get expressionId() { return this.expressions.id; }
+    setExpression(id) { return this.expressions.set(id); }
+    faceCamera(camera) { this.storyYaw = null; this.storyTarget = null; this.storyCamera = camera; }
+    holdFacing() {
+        this.storyYaw = this.root.rotation.y;
+        this.storyTarget = this.storyCamera = null;
     }
-
-    setControlsHint(text) {
-        this.controlsHint = text;
-        this.updateHint();
+    faceTarget(target) {
+        this.storyYaw = null;
+        if(this.town.playerController.busSeated)return;
+        this.update(0);
+        this.storyTarget = target; this.storyCamera = null;
+        const yaw = conversationYaw(this.root, target);
+        if (yaw !== null) this.root.rotation.y = yaw;
+        faceConversationPartner(target, this.root);
     }
-
+    setControlsHint(text) { this.customHint = text; this.updateHint(); }
+    updateHint() { this.hint.textContent = this.customHint || 'WASD 이동 · Space 점프 · 2 먹기'; }
     setState(state) {
-        if (state === this.state) return;
-        for (const variant of this.variants.values()) {
-            variant.mixer.stopAllAction();
-            variant.model.visible = false;
+        if (this.state === state) return;
+        if (this.state === 'eat') this.food.clear();
+        if (state !== 'jump') {
+            this.jump.cancel(); this.town.playerController.jumpActive = false;
+            this.root.position.y = this.town.playerController.supportHeight || 0;
         }
+        for (const variant of this.variants.values()) { variant.action.stop(); variant.model.visible = false; }
         this.state = state;
-        this.town.playerController.somangiCrabSuspended = ['wave', 'eat', 'jump'].includes(state);
-        const variant = this.variants.get(state === 'idle' ? 'walk' : state);
+        const variant = this.variants.get(state === 'idle' || state === 'jump' ? 'walk' : state);
         if (!variant) return;
         variant.model.visible = true;
-        if (state === 'idle') return;
-        variant.action.reset();
-        const loop = state === 'walk' || state === 'crab';
-        variant.action.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, loop ? Infinity : 1);
-        variant.action.clampWhenFinished = true;
-        variant.action.play();
-        variant.mixer.update(0);
+        if (state === 'idle' || state === 'jump') return;
+        variant.action.setLoop(state === 'eat' ? THREE.LoopOnce : THREE.LoopRepeat, state === 'eat' ? 1 : Infinity);
+        variant.action.clampWhenFinished = state === 'eat'; variant.action.reset().play();
     }
-
-    play(action) {
-        if (action === 'crab') {
-            const controller = this.town.playerController;
-            if (!this.variants.has('crab') || this.blocked() || controller.isResting
-                || ['wave', 'eat', 'jump'].includes(this.state)) return false;
-            controller.somangiCrabManual = !controller.somangiCrabManual;
-            controller.somangiCrab = !!controller.somangiCrabManual || !!controller.somangiCrabAuto;
-            this.setState(controller.somangiCrab ? 'crab' : controller.isMoving ? 'walk' : 'idle');
-            this.updateHint();
-            return true;
+    play(action, { scripted = false, foodId = 'item_popori_bread', foodObject } = {}) {
+        if (!scripted && this.blocked()) return false;
+        if (this.town.playerController.busSeated) {
+            if(!scripted||action!=='eat'||!this.town.playerController.activeSeat?.stand())return false;
         }
-        if (!['wave', 'eat', 'jump'].includes(action) || !this.variants.has(action) || this.blocked()) return false;
-        const controller = this.town.playerController;
-        if (controller.isResting || (controller.isMoving && action !== 'jump')) return false;
-        if (['wave', 'eat', 'jump'].includes(this.state)) return false;
-        controller.somangiCrab = false;
-        controller.somangiCrabManual = controller.somangiCrabAuto = false;
-        this.updateHint();
-        this.setState(action);
-        return true;
+        if (action === 'jump') {
+            const c = this.town.playerController;
+            if (!(c.canJumpAt?.(c.charPosX,c.charPosY) ?? c.canStand?.(c.charPosX,c.charPosY) ?? true)) return false;
+            if (!this.variants.has('walk') || !['idle', 'walk', 'sideways'].includes(this.state) || this.town.playerController.isResting || !this.jump.start()) return false;
+            c.jumpActive = true;
+            this.setState('jump'); return true;
+        }
+        if (action !== 'eat' || !this.variants.has('eat') || this.state === 'walk' || this.state === 'sideways' || this.state === 'eat' || this.jump.active) return false;
+        this.expressionBeforeEat = this.expressionId;
+        void this.setExpression('delicious'); this.setState('eat'); this.food.start(foodId, foodObject); return true;
     }
-
-    update(dt) {
-        if (!this.variants.size || this.state === 'loading') return;
-        const controller = this.town.playerController;
-        const moving = controller.isMoving && !this.blocked();
-        if ((this.blocked() || controller.isResting) && controller.somangiCrab) {
-            controller.somangiCrab = false;
-            controller.somangiCrabManual = controller.somangiCrabAuto = false;
-            this.updateHint();
-            this.setState('idle');
+    update(dt = 0) {
+        const c = this.town.playerController;
+        if(c.busSeated){c.somangiCrab=false;c.somangiCrabAuto=false;return;}
+        if ((c.modelCollisionReady || c.indoorCollisionReady) && !c.isResting && !c.scriptedWalking) recoverTownBody(c);
+        c.somangiCrabManual = false;
+        c.somangiCrabSuspended = this.state === 'loading' || this.state === 'eat';
+        const p = c.renderPosition;
+        if(c.scriptedWalking && Number.isFinite(c.scriptedSupportHeight)) c.supportHeight=c.scriptedSupportHeight;
+        else if(c.supportHeightAt)c.supportHeight=c.supportHeightAt(p.x,p.y);
+        const x = p.x, z = p.y / GROUND_PROJECTION;
+        const dx = this.previous ? x - this.previous.x : 0, dz = this.previous ? z - this.previous.z : 0;
+        const distance = Math.hypot(dx, dz);
+        this.previous = { x, z };
+        const moving = c.scriptedWalking ? c.isMoving !== false : (distance > .02 && distance < 100 && !c.resting);
+        if (moving) { this.storyYaw = null; this.storyCamera = null; this.storyTarget = null; }
+        this.root.position.set(p.x, (c.supportHeight||0)+this.jump.update(Math.min(Math.max(dt, 0), .1)), p.y / GROUND_PROJECTION);
+        c.jumpActive = this.jump.active;
+        if (c.canStand) updateSomangiClearance(c, dx, dz, x, z, (px, pz) => c.canStand(px, pz * GROUND_PROJECTION));
+        const previousYaw = this.root.rotation.y;
+        faceConversationPartner(this.storyTarget, this.root);
+        this.root.rotation.y = this.storyYaw ?? conversationYaw(this.root, this.storyTarget) ?? (this.storyCamera ? Math.atan2(this.storyCamera.position.x - x, this.storyCamera.position.z - z)
+            : ({ down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[c.facing] ?? 0));
+        if (c.somangiCrab && this.storyYaw == null && !this.storyTarget && !this.storyCamera) {
+            this.root.rotation.y = sidewaysYaw(c.somangiTravelAxis, this.sidewaysFacing ?? previousYaw);
+            this.sidewaysFacing = this.root.rotation.y;
+        } else this.sidewaysFacing = null;
+        if (this.state === 'loading') return;
+        const movingState = c.somangiCrab ? 'sideways' : 'walk';
+        if (this.state === 'jump') {
+            if (!this.jump.active) this.setState(moving ? movingState : 'idle');
+        } else if (moving && this.state !== movingState) {
+            if (this.state === 'eat') void this.setExpression(this.expressionBeforeEat || 'smile');
+            this.setState(movingState);
+        } else if (!moving && (this.state === 'walk' || this.state === 'sideways')) this.setState('idle');
+        const variant = this.variants.get(this.state);
+        if (variant) {
+            const running = c.isRunning || c.keysHeld?.has('shift');
+            variant.mixer.timeScale = this.state === 'sideways' ? SOMANGI_MOVEMENT.sidewaysPlayback : this.state === 'walk' ? running ? SOMANGI_MOVEMENT.runPlayback : SOMANGI_MOVEMENT.walkPlayback : 1;
+            variant.mixer.update(Math.min(dt, .1));
         }
-        const hintMode = controller.somangiCrabAuto ? '자동' : controller.somangiCrabManual ? '수동' : '꺼짐';
-        if (this.hintMode !== hintMode) this.updateHint();
-        if (controller.somangiCrab) this.setState('crab');
-        else if (moving && this.state !== 'jump') this.setState('walk');
-        else if (this.state === 'walk' || this.state === 'crab') this.setState('idle');
-        if (this.blocked() && ['wave', 'eat', 'jump'].includes(this.state)) this.setState('idle');
-        const position = controller.renderPosition;
-        const distance = Math.hypot(position.x - this.root.position.x, position.y / GROUND_PROJECTION - this.root.position.z);
-        this.root.position.set(position.x, 0, position.y / GROUND_PROJECTION);
-        this.root.rotation.y = { down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[controller.facing] ?? 0;
-        const variant = this.variants.get(this.state === 'idle' ? 'walk' : this.state);
-        if (this.state === 'walk') variant.action.timeScale = controller.keysHeld.has('shift') ? 1.5 : 1;
-        if (this.state === 'crab') variant.action.timeScale = moving && dt > 0 ? Math.min(3, distance / dt / 13.5) : 0;
-        variant?.mixer.update(Math.min(dt, 0.1));
+        this.food.update();
     }
 }

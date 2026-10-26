@@ -1,0 +1,163 @@
+{
+  "seats": [
+    {
+      "place": "town",
+      "id": "plaza_bench_west-0",
+      "label": "쉼터 서쪽 벤치",
+      "pose": {
+        "underside": 32.29999955537297,
+        "top": 31.99999974587167,
+        "intersections": 0,
+        "buildingClear": true
+      }
+    },
+    {
+      "place": "town",
+      "id": "plaza_bench_east-0",
+      "label": "쉼터 동쪽 벤치",
+      "pose": {
+        "underside": 32.29999955537297,
+        "top": 31.99999974587167,
+        "intersections": 0,
+        "buildingClear": true
+      }
+    },
+    {
+      "place": "town",
+      "id": "garden_bench_home-0",
+      "label": "주거 구역 벤치",
+      "pose": {
+        "underside": 32.29999955537297,
+        "top": 31.99999974587167,
+        "intersections": 0,
+        "buildingClear": true
+      }
+    },
+    {
+      "place": "town",
+      "id": "garden_bench_book-0",
+      "label": "서점 옆 벤치",
+      "pose": {
+        "underside": 32.29999955537297,
+        "top": 31.99999974587167,
+        "intersections": 0,
+        "buildingClear": true
+      }
+    },
+    {
+      "place": "town",
+      "id": "garden_bench_gate-0",
+      "label": "정류장 쉼터 벤치",
+      "pose": {
+        "underside": 32.29999955537297,
+        "top": 31.99999974587167,
+        "intersections": 0,
+        "buildingClear": true
+      }
+    },
+    {
+      "place": "information",
+      "id": "information-furnished-room-Round_Sage_Cushion-0",
+      "label": "안내소 스툴",
+      "pose": {
+        "underside": 49.300000941753396,
+        "top": 49.000000941753385,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "information",
+      "id": "information-furnished-room-Seat_Sage_Cushion-0",
+      "label": "안내소 의자",
+      "pose": {
+        "underside": 56.80000035730522,
+        "top": 56.50000086724758,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "bank",
+      "id": "bank-furnished-room-Executive_Seat-0",
+      "occupied": true
+    },
+    {
+      "place": "bank",
+      "id": "Waiting_Sofa_Root-Single_Long_Seat-0",
+      "label": "은행 대기 소파",
+      "pose": {
+        "underside": 43.00910234133879,
+        "top": 42.7091026714683,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "bank",
+      "id": "Waiting_Sofa_Root-Single_Long_Seat-1",
+      "label": "은행 대기 소파",
+      "pose": {
+        "underside": 43.00910234133879,
+        "top": 42.7091026714683,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "stock",
+      "id": "waiting-bench-left-Sofa_Seat_Cushion-0",
+      "label": "대기 의자",
+      "pose": {
+        "underside": 49.30000054152083,
+        "top": 49.000000953674316,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "stock",
+      "id": "waiting-bench-right-Sofa_Seat_Cushion-0",
+      "label": "대기 의자",
+      "pose": {
+        "underside": 49.30000054152083,
+        "top": 49.000000953674316,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "training",
+      "id": "training-chair-center-Office_Chair_Seat_Cushion-0",
+      "label": "업무 의자",
+      "pose": {
+        "underside": 49.30000016899183,
+        "top": 49.00000058114529,
+        "intersections": 0
+      }
+    },
+    {
+      "place": "simulation",
+      "id": "simulation-chair-center-Office_Chair_Seat_Cushion-0",
+      "label": "업무 의자",
+      "pose": {
+        "underside": 49.30000016899183,
+        "top": 49.00000058114529,
+        "intersections": 0
+      }
+    }
+  ],
+  "keyboard": [
+    {
+      "place": "town",
+      "pass": true
+    },
+    {
+      "place": "information",
+      "pass": true
+    },
+    {
+      "place": "stock",
+      "pass": true
+    },
+    {
+      "place": "training",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

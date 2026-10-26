@@ -1,0 +1,7 @@
+{
+  "id": "item_popori_bread",
+  "file": "item_popori_bread.glb",
+  "sha256": "731338430da48b1162d5cd1e92f4ac1b99ee9dc7b02e817f1a3ccf0bcf49beab",
+  "reference": "web/assets/items/packing-v1/popori-bread-v2.png",
+  "wholeLoaf": true
+}

@@ -1,0 +1,12 @@
+{
+  "actualLevel": true,
+  "actualAnalysisHistory": true,
+  "storyFlags": true,
+  "filters": true,
+  "detail": true,
+  "autoRefresh": true,
+  "readOnly": true,
+  "mobile": true,
+  "home": true,
+  "errors": []
+}

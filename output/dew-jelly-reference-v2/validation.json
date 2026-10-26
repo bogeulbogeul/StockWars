@@ -1,0 +1,19 @@
+{
+  "id": "item_dew_jelly",
+  "reimported": true,
+  "meshCount": 2,
+  "embeddedPrints": 0,
+  "degenerateFaces": 0,
+  "triangles": 23520,
+  "boundsMin": [
+    -0.5180000066757202,
+    -0.5101304054260254,
+    0.03500000014901161
+  ],
+  "boundsMax": [
+    0.5180000066757202,
+    0.5101304054260254,
+    0.9700000286102295
+  ],
+  "sha256": "386caafcde34d72d2d317c3fba08ab277bbabbc8a40f3f70b00416526e863daa"
+}

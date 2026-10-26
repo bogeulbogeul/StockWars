@@ -1,0 +1,1 @@
+(()=>{const a=window.stockWarsExhibition;const info={busy:a.busy,tour:a.scenes.tourActive,dialog:[...document.querySelectorAll('dialog[open]')].map(x=>x.className),triangle:!!a.view.panel.querySelector('.dialogue-next-triangle'),active:document.activeElement?.outerHTML,write:typeof a.writeFirstDiary};a.openDiary();return info})()

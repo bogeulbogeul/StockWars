@@ -1,0 +1,11 @@
+{
+  "changedNodes": [
+    353,
+    354,
+    356
+  ],
+  "wallGeometryReusedAtScale": 0.5,
+  "allOtherNodesAndBinaryPreserved": true,
+  "sha256": "41d1b106ee42cc935f31a36c5f11a084fdf14effc050ae695d0653ac094e1cdd",
+  "targetsMatch": true
+}

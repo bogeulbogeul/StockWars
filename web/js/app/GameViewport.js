@@ -1,4 +1,5 @@
-/** Uniform game UI scale; viewport units and breakpoints use logical pixels. */
+import { isExhibitionMode } from './exhibition/Mode.js';
+/** Uniform game UI scale; exhibition uses native pixels for readable small screens. */
 export function measureGameViewport(width, height) {
     const scale = Math.min(width / 1600, height / 1080);
     return { scale, width: width / scale, height: height / scale };
@@ -6,7 +7,8 @@ export function measureGameViewport(width, height) {
 export function installGameViewport() {
     const root = document.documentElement;
     const update = () => {
-        const view = measureGameViewport(Math.max(1, window.innerWidth), Math.max(1, window.innerHeight));
+        const width = Math.max(1, window.innerWidth), height = Math.max(1, window.innerHeight);
+        const view = isExhibitionMode() ? { scale: 1, width, height } : measureGameViewport(width, height);
         root.style.zoom = String(view.scale);
         root.style.width = view.width + 'px';
         root.style.height = view.height + 'px';

@@ -1,0 +1,12 @@
+{
+  "glbHeaderAndLength": true,
+  "finiteAccessorBounds": true,
+  "clockHandNodesPresent": true,
+  "doorAssemblyPresent": true,
+  "columns": 4,
+  "stairCheekSections": 6,
+  "previewObjectsExported": false,
+  "sha256": "e27ed2aee8685ed603a5d02c94d6fdf644635e0f4496fe853ce74bee73b6aef3",
+  "gameApplied": false,
+  "visualMatch": "Not an exact-match approval; see comparison and camera-fit residuals."
+}

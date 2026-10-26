@@ -7,9 +7,8 @@ import { gameKey } from '../../app/GameKeys.js';
  * References: MOD_GDD_03_1_VivianStore.md / CORE_GDD_02_MarketEngine.md
  */
 
-import { VIVIAN_TABS, VIVIAN_SHOP_CATALOG, VIVIAN_DIALOGUES } from '../../data/vivianStoreData.js';
-import { ITEM_RARITIES } from '../../data/inventoryData.js';
-import { itemIconHtml } from '../../data/itemArtwork.js';
+import { VIVIAN_DIALOGUES } from '../../data/vivianStoreData.js';
+import { VivianPurchaseController } from './VivianPurchaseController.js';
 import { getVivianStoreHtml } from './VivianStoreTemplate.js';
 import { toastManager } from '../ToastManager.js';
 import { StorePlayerController } from './StorePlayerController.js';
@@ -18,8 +17,9 @@ import { ROOM_PLAYER_DEPTH } from './IsometricRoomGrid.js';
 import { vivianStaffRectangle } from './VivianInteriorScene.js';
 import {VivianRoomPackage,VIVIAN_PACKAGE_VIEW_SCALE,VIVIAN_SQUIRREL_URL} from './VivianRoomPackage.js';
 
-export class VivianStoreModal {
+export class VivianStoreModal extends VivianPurchaseController {
     constructor(container, callbacks = {}, {allowLayoutEditing=false} = {}) {
+        super();
         this.allowLayoutEditing = allowLayoutEditing;
         this.container = container;
         this.callbacks = callbacks; // { onCashChanged, onInventoryAdd, onStaminaHeal, onOpenInventory, onClose }
@@ -68,7 +68,6 @@ export class VivianStoreModal {
         this.portraitEl = document.getElementById('vivianPortrait');
         this.welcomeBubble = document.getElementById('vivianWelcomeBubble');
         this.speechTextEl = document.getElementById('vivianSpeechText');
-        this.tabsContainer = document.getElementById('vivianTabsContainer');
         this.shelfBannerIcon = document.getElementById('shelfBannerIcon');
         this.shelfBannerDesc = document.getElementById('shelfBannerDesc');
         this.itemsGrid = document.getElementById('vivianItemsGrid');
@@ -90,7 +89,6 @@ export class VivianStoreModal {
         // Quick NPC actions
         this.btnTalk = document.getElementById('btnVivianTalk');
         this.btnTip = document.getElementById('btnVivianTip');
-        this.btnSecretHint = document.getElementById('btnVivianSecretHint');
         this.btnOpenBag = document.getElementById('btnVivianOpenBag');
     }
 
@@ -132,19 +130,13 @@ export class VivianStoreModal {
             if (e.target === this.modalEl && this.isShopping) this.showInterior();
         });
 
-        // Tab switching
-        this.tabsContainer?.addEventListener('click', (e) => {
-            const btn = e.target.closest('.vivian-tab-btn');
-            if (btn && btn.dataset.tab) {
-                this.switchTab(btn.dataset.tab);
-            }
-        });
-
         // Item selection via grid click
         this.itemsGrid?.addEventListener('click', (e) => {
             const card = e.target.closest('.vivian-item-card');
             if (card && card.dataset.id) {
                 this.selectItem(card.dataset.id);
+                if (window.matchMedia('(max-width: 620px)').matches)
+                    this.shopPanel.querySelector('.flower-order')?.scrollIntoView({block: 'start', behavior: 'instant'});
             }
         });
 
@@ -164,7 +156,6 @@ export class VivianStoreModal {
         // NPC Dialogues
         this.btnTalk?.addEventListener('click', () => this.triggerDialogue('talk'));
         this.btnTip?.addEventListener('click', () => this.triggerDialogue('talk', 0));
-        this.btnSecretHint?.addEventListener('click', () => this.triggerDialogue('secret'));
         this.btnOpenBag?.addEventListener('click', () => {
             if (this.callbacks.onOpenInventory) this.callbacks.onOpenInventory();
         });
@@ -203,10 +194,7 @@ export class VivianStoreModal {
                 else this.close();
             } else if (!this.isShopping) {
                 return;
-            } else if (e.key === '1') this.switchTab('daily');
-            else if (e.key === '2') this.switchTab('weekly');
-            else if (e.key === '3') this.switchTab('secret');
-            else if (e.key === 'e' || e.key === 'E') {
+            } else if (e.key === 'e' || e.key === 'E') {
                 if (document.activeElement !== this.qtyInput) {
                     this.executePurchase(false);
                 }
@@ -315,271 +303,6 @@ export class VivianStoreModal {
         clearInterval(this.typewriterTimer);
         this.modalEl?.classList.add('hidden');
         if (this.callbacks.onClose) this.callbacks.onClose();
-    }
-
-    updateHeaderInfo() {
-        const shopState = this.callbacks.getShopState?.();
-        if (shopState) { this.affinity = shopState.affinity; this.purchasedCounts = shopState.purchases; }
-        const cash = this.callbacks.getCash ? this.callbacks.getCash() : 0;
-        if (this.userCashEl) this.userCashEl.textContent = `${cash.toLocaleString()} G`;
-
-        const level = this.affinity >= 200 ? 3 : (this.affinity >= 100 ? 2 : 1);
-        const max = level === 1 ? 100 : (level === 2 ? 200 : 300);
-        if (this.affinityBadgeEl) {
-            this.affinityBadgeEl.textContent = `Lv.${level} 💖 (${this.affinity}/${max})`;
-        }
-    }
-
-    switchTab(tabId) {
-        if (!VIVIAN_TABS[tabId]) return;
-        this.activeTab = tabId;
-
-        // Update tab buttons
-        const tabBtns = this.tabsContainer?.querySelectorAll('.vivian-tab-btn') || [];
-        tabBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.tab === tabId);
-        });
-
-        // Update banner
-        const tabInfo = VIVIAN_TABS[tabId];
-        if (this.shelfBannerIcon) this.shelfBannerIcon.textContent = tabInfo.icon;
-        if (this.shelfBannerDesc) this.shelfBannerDesc.textContent = tabInfo.desc;
-
-        this.renderItemsGrid();
-
-        // Select first available item in tab
-        const itemsInTab = VIVIAN_SHOP_CATALOG.filter(item => item.tab === tabId);
-        if (itemsInTab.length > 0) {
-            const hasCurrent = itemsInTab.some(i => i.id === this.selectedItemId);
-            this.selectItem(hasCurrent ? this.selectedItemId : itemsInTab[0].id);
-        }
-    }
-
-    renderItemsGrid() {
-        if (!this.itemsGrid) return;
-        const items = VIVIAN_SHOP_CATALOG.filter(item => item.tab === this.activeTab);
-
-        this.itemsGrid.innerHTML = items.map(item => {
-            const rarity = ITEM_RARITIES[item.rarity] || ITEM_RARITIES.common;
-            const purchased = this.purchasedCounts[item.id] || 0;
-            const isSoldOut = item.dailyLimit && purchased >= item.dailyLimit;
-            const isSelected = item.id === this.selectedItemId;
-            const isSecretLocked = this.isItemLocked(item);
-
-            const stockText = isSoldOut ? '품절' : (item.dailyLimit ? `잔여 ${item.dailyLimit - purchased}개` : '재고 충분');
-
-            return `
-                <div class="vivian-item-card ${isSelected ? 'selected' : ''} ${isSoldOut ? 'sold-out' : ''} ${isSecretLocked ? 'locked' : ''}"
-                     data-id="${item.id}" style="--rarity-glow: ${rarity.glow}; --rarity-color: ${rarity.color};">
-                    ${isSecretLocked ? `<div class="locked-overlay">🔒 <span>${item.reqUnlock.conditionDesc}</span></div>` : ''}
-                    <div class="card-icon-area">
-                        <span class="card-item-icon">${itemIconHtml(item)}</span>
-                        <span class="card-rarity-pill" style="color: ${rarity.color};">${rarity.name}</span>
-                    </div>
-                    <div class="card-info-area">
-                        <div class="card-item-name">${item.name}</div>
-                        <div class="card-item-summary">${item.effects[0] || ''}</div>
-                    </div>
-                    <div class="card-bottom-row">
-                        <div class="card-stock-badge ${isSoldOut ? 'empty' : ''}">${stockText}</div>
-                        <div class="card-price-tag">🪙 ${item.price.toLocaleString()} G</div>
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    selectItem(itemId) {
-        const item = VIVIAN_SHOP_CATALOG.find(i => i.id === itemId);
-        if (!item) return;
-
-        this.selectedItemId = itemId;
-        this.quantity = 1;
-
-        // Highlight selected in grid
-        const cards = this.itemsGrid?.querySelectorAll('.vivian-item-card') || [];
-        cards.forEach(card => card.classList.toggle('selected', card.dataset.id === itemId));
-
-        // Update Drawer UI
-        const rarity = ITEM_RARITIES[item.rarity] || ITEM_RARITIES.common;
-        if (this.drawerItemIcon) this.drawerItemIcon.innerHTML = itemIconHtml(item);
-        if (this.drawerItemName) this.drawerItemName.textContent = item.name;
-        if (this.drawerRarityBadge) {
-            this.drawerRarityBadge.textContent = rarity.name;
-            this.drawerRarityBadge.style.color = rarity.color;
-            this.drawerRarityBadge.style.borderColor = rarity.color;
-        }
-        if (this.drawerItemDesc) this.drawerItemDesc.textContent = item.desc;
-        if (this.drawerEffectsRow) {
-            this.drawerEffectsRow.innerHTML = item.effects.map(eff => `<span class="effect-tag">${eff}</span>`).join('');
-            if (item.linkedStock) {
-                this.drawerEffectsRow.innerHTML += `<span class="effect-tag linked">📈 ${item.linkedStock.name} 매출 연동</span>`;
-            }
-        }
-
-        // Toggle Consume button
-        if (this.btnConsume) {
-            this.btnConsume.style.display = item.instantUsable ? 'inline-flex' : 'none';
-        }
-
-        this.updatePriceCalculation();
-    }
-
-    adjustQty(delta) {
-        this.setQty(this.quantity + delta);
-    }
-
-    setQty(qty) {
-        const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
-        if (!item) return;
-
-        const purchased = this.purchasedCounts[item.id] || 0;
-        const maxAllowed = item.dailyLimit ? Math.max(1, item.dailyLimit - purchased) : 99;
-
-        this.quantity = Math.max(1, Math.min(qty, maxAllowed));
-        if (this.qtyInput) this.qtyInput.value = this.quantity;
-        this.updatePriceCalculation();
-    }
-
-    setMaxQty() {
-        const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
-        if (!item) return;
-
-        const cash = this.callbacks.getCash ? this.callbacks.getCash() : 0;
-        const affordable = Math.floor(cash / item.price);
-        const purchased = this.purchasedCounts[item.id] || 0;
-        const limitLeft = item.dailyLimit ? Math.max(0, item.dailyLimit - purchased) : 99;
-
-        const maxQty = Math.max(1, Math.min(affordable > 0 ? affordable : 1, limitLeft));
-        this.setQty(maxQty);
-    }
-
-    updatePriceCalculation() {
-        const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
-        if (!item) return;
-
-        const total = item.price * this.quantity;
-        if (this.totalPriceEl) this.totalPriceEl.textContent = `${total.toLocaleString()} G`;
-        const locked = this.isItemLocked(item);
-        if (this.btnBuy) this.btnBuy.disabled = locked;
-        if (this.btnConsume) this.btnConsume.disabled = locked;
-    }
-
-    isItemLocked(item) {
-        if (!item.reqUnlock) return false;
-        // Achievement values must come from gameplay; affinity alone cannot unlock these items.
-        const progress = {
-            ...this.callbacks.getShopProgress?.(),
-            trustLevel: this.affinity >= 200 ? 3 : (this.affinity >= 100 ? 2 : 1)
-        };
-        return Object.entries(item.reqUnlock).some(([key, required]) =>
-            key !== 'conditionDesc' && (!Number.isFinite(progress[key]) || progress[key] < required));
-    }
-
-    executePurchase(isConsume = false) {
-        if (this.receiptEl && !this.receiptEl.hidden) return;
-        const item = VIVIAN_SHOP_CATALOG.find(i => i.id === this.selectedItemId);
-        if (!item) return;
-        if (this.callbacks.onPurchaseItem) {
-            const result = this.callbacks.onPurchaseItem(item.id, this.quantity, isConsume);
-            toastManager.show(result.message, result.success);
-            if (result.success) this.showReceipt(item, this.quantity, isConsume);
-            this.updateHeaderInfo();
-            this.renderItemsGrid();
-            this.selectItem(item.id);
-            return;
-        }
-        if (this.isItemLocked(item)) {
-            toastManager.show(`🔒 ${item.reqUnlock.conditionDesc}`, false);
-            return;
-        }
-
-        const purchased = this.purchasedCounts[item.id] || 0;
-        if (item.dailyLimit && purchased + this.quantity > item.dailyLimit) {
-            toastManager.show('⚠️ [구매 제한] 일일 최대 구매 한도를 초과했습니다.');
-            return;
-        }
-
-        const totalPrice = item.price * this.quantity;
-        const currentCash = this.callbacks.getCash ? this.callbacks.getCash() : 0;
-
-        if (currentCash < totalPrice) {
-            this.triggerDialogue('poor');
-            toastManager.show('💸 [골드 부족] 결제에 필요한 골드가 부족합니다! 보유 현금과 생활비를 확인하세요.');
-            return;
-        }
-
-        // Deduct Gold
-        if (this.callbacks.onDeductCash) {
-            this.callbacks.onDeductCash(totalPrice);
-        }
-
-        // Record Daily Stock
-        this.purchasedCounts[item.id] = (this.purchasedCounts[item.id] || 0) + this.quantity;
-        this.affinity = Math.min(300, this.affinity + 5 * this.quantity);
-
-        // Instant Consumption vs Inventory Storage
-        if (isConsume && item.instantUsable) {
-            if (item.id === 'item_energy_drink' || item.id === 'item_caffeine_shot') {
-                const healAmount = this.quantity;
-                if (this.callbacks.onStaminaHeal) this.callbacks.onStaminaHeal(healAmount);
-            }
-            this.triggerDialogue('consume');
-            toastManager.show(`⚡ [즉시 사용] ${item.name} x${this.quantity}개를 섭취하여 효과가 즉시 발동되었습니다!`, true);
-        } else {
-            if (this.callbacks.onInventoryAdd) {
-                this.callbacks.onInventoryAdd({
-                    id: item.id,
-                    name: item.name,
-                    category: item.category,
-                    rarity: item.rarity,
-                    icon: item.icon,
-                    quantity: this.quantity,
-                    maxStack: 99,
-                    price: item.price,
-                    desc: item.desc,
-                    effects: item.effects,
-                    actionType: item.actionType || (item.category === 'consumable' ? 'use' : 'equip'),
-                    actionLabel: item.actionLabel || (item.category === 'consumable' ? '사용하기' : '장착하기')
-                });
-            }
-            this.triggerDialogue('done');
-            toastManager.show(`🛍️ [구매 완료] ${item.name} x${this.quantity}개가 소지품 인벤토리에 보관되었습니다. (-${totalPrice.toLocaleString()}G)`, true);
-        }
-
-        this.showReceipt(item, this.quantity, isConsume && item.instantUsable);
-
-        // Brand-Linked Consumption Callback
-        if (item.linkedStock && this.callbacks.onStockBoost) {
-            this.callbacks.onStockBoost(item.linkedStock.id, totalPrice);
-        }
-
-        this.updateHeaderInfo();
-        this.renderItemsGrid();
-        this.selectItem(item.id);
-    }
-
-    showReceipt(item, quantity, consumed) {
-        if (!this.receiptEl) return;
-        const fields = {
-            vivianReceiptDate: new Date().toLocaleString('ko-KR'),
-            vivianReceiptItem: item.name,
-            vivianReceiptQuantity: `${quantity}개`,
-            vivianReceiptPrice: `${item.price.toLocaleString()} G`,
-            vivianReceiptTotal: `${(item.price*quantity).toLocaleString()} G`,
-            vivianReceiptDelivery: consumed ? '구매한 상품을 즉시 사용했습니다.' : '구매한 상품을 소지품에 넣었습니다.'
-        };
-        for (const [id,text] of Object.entries(fields)) this.receiptEl.querySelector(`#${id}`).textContent=text;
-        this.receiptEl.hidden=false;
-        this.shopPanel.inert=true;
-        this.receiptClose.focus();
-    }
-
-    hideReceipt(restoreFocus=true) {
-        if (!this.receiptEl || this.receiptEl.hidden) return;
-        this.receiptEl.hidden=true;
-        this.shopPanel.inert=false;
-        if (restoreFocus) this.btnBuy?.focus();
     }
 
     triggerDialogue(type = 'greet', fixedIdx = null) {

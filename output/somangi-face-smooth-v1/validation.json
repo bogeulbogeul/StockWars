@@ -1,0 +1,23 @@
+{
+  "sourceHash": "73b13201c9b9ee4f1e954562da684d45ec1f912097f1314723ca7fe2e9a509f0",
+  "outputHash": "803fc7179a54bec48da297b15c66ca5937b5c16e46c5559ac7205542c803b221",
+  "reports": [
+    {
+      "vertices": 45195,
+      "triangles": 79282,
+      "changedHeadVertices": 9175,
+      "bodyVerticesExactlyPreserved": true,
+      "maxDisplacement": 0.038163714010936746,
+      "finite": true,
+      "headDimensionCompensation": [
+        1.0426028839135721,
+        1.0478194602480264,
+        1.0391289863846667
+      ]
+    }
+  ],
+  "uvTextureBytesIndicesPreserved": true,
+  "normalMapDisabled": true,
+  "method": "Welded head Laplacian smoothing with dimension compensation; pinned face and blended neck boundary",
+  "gameInstalled": false
+}

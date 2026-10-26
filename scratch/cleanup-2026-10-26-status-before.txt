@@ -1,0 +1,569 @@
+ M AGENTS.md
+ M Docs/BONGBONG_GAME_REINTRODUCTION_2026-10-25.md
+ M Docs/BUS_STOP_ARRIVAL_2026-10-21.md
+ M Docs/EXHIBITION_FIRST_DAY.md
+ M Docs/INDEX_GDD_00_MasterIndex.md
+ M Docs/MEETING_SUMMARY_2026-10-25.md
+ M Docs/MOD_GDD_12_0_CorporateNewsIndex.md
+ M Docs/SHOP_ITEM_IMAGE_STATUS.md
+ M Docs/TORI_GAME_REINTRODUCTION_2026-10-25.md
+ D output/adboard-unified-screen/AdBoard-unified.zip
+ D output/all-eight-consistency-v1/all-eight-approved-consistency.zip
+ D output/badger-color-lock-v2/badger-mouth-color-fixed.zip
+ D output/badger-walk-fix-v1/badger-walk-fixed.zip
+ D output/bank-retouch-final/BankBuilding-retouched.zip
+ D output/big-tree-retouch-final/BigTree-retouched.zip
+ D output/building-retouch-final.zip
+ D output/building-retouch-v1/building-retouched-v1.zip
+ D output/cat-clean-motion-v15/cat-pngs-v15.zip
+ D output/cat-color-consistent-v14/cat-pngs-v14.zip
+ D output/clothing-book-retouch-final/ClothingStore-BookStore-retouched.zip
+ D output/clothing-book-retouch-final/ClothingStore-flower-fixed.zip
+ D output/clothing-book-retouch-final/ClothingStore-no-planter.zip
+ D output/clothing-book-retouch-final/ClothingStore-planter-clean.zip
+ D output/clothing-book-retouch-final/ClothingStore-smooth.zip
+ D output/clothing-book-retouch-final/ClothingStore-window-fixed.zip
+ D output/forest-friends/sprites-v1/forest-friends-sprites-v1.zip
+ M output/information-sofa-no-pillows-v2/README.md
+ M output/investment-exam-v1/1280x900-feedback.png
+ M output/investment-exam-v1/1280x900.png
+ M output/investment-exam-v1/390x844-feedback.png
+ M output/investment-exam-v1/390x844.png
+ M output/investment-exam-v1/844x390-feedback.png
+ M output/investment-exam-v1/844x390.png
+ D output/pub-retouch-final/PubBuilding-retouched.zip
+ D output/rabbit-rear-locked-v1/rabbit-rear-approved-colors.zip
+ D output/somangi-story-expressions-v1/somangi-expression-models.zip
+ D output/somangi-story-expressions-v1/somangi-expression-textures.zip
+ D output/somangi-story-expressions-v2/somangi-expression-models.zip
+ D output/somangi-story-expressions-v2/somangi-expression-textures.zip
+ D output/somangi-story-expressions-v3/somangi-expression-models.zip
+ D output/somangi-story-expressions-v3/somangi-expression-textures.zip
+ D output/somangi-story-expressions-v4/somangi-expression-models.zip
+ D output/somangi-story-expressions-v4/somangi-expression-textures.zip
+ D output/somangi-story-expressions-v5/somangi-expression-models.zip
+ D output/somangi-story-expressions-v5/somangi-expression-textures.zip
+ D output/somangi-story-expressions-v6/somangi-expression-models.zip
+ D output/somangi-story-expressions-v6/somangi-expression-textures.zip
+ D output/style-unification-v3/all-animals-style-unified.zip
+ M output/village-board-game-v6/web-board.png
+ M output/village-board-v1/desktop.png
+ M output/village-board-v1/mobile-reader.png
+ M output/village-board-v1/pinned-board.png
+ M output/village-board-v2/interaction.png
+ M scratch/check-phone-home.cjs
+ M scratch/check-phone-stock.cjs
+ M scratch/residence-paper-offered.png
+ M scratch/somangi-walking-into-information.png
+ M web/assets/exhibition/activities-and-ending.txt
+ M web/css/modules/crayon-title.css
+ M web/css/modules/exhibition.css
+ M web/css/modules/moa-movement-guide.css
+ M web/css/modules/packing.css
+ M web/css/modules/phone-home.css
+ M web/css/modules/phone-stock-order.css
+ M web/css/modules/phone-stock.css
+ M web/css/style.css
+ M web/css/village-board.css
+ M web/index.html
+ M web/js/app/BankModelEntrance.js
+ M web/js/app/CipherLobbyEntrance.js
+ M web/js/app/CipherSimulationEntrance.js
+ M web/js/app/CipherTrainingEntrance.js
+ M web/js/app/InformationModelEntrance.js
+ M web/js/app/InstallPhoneHome.js
+ M web/js/app/InstallVillageBoard.js
+ M web/js/app/ItemGameplay.js
+ M web/js/app/OpeningSequence.js
+ M web/js/app/PhoneStockSource.js
+ M web/js/app/RetireNeonInterface.js
+ M web/js/app/TitleScreen.js
+ M web/js/app/TownMoaWake.js
+ M web/js/app/VivianModelEntrance.js
+ M web/js/app/WorldNavigation.js
+ M web/js/app/exhibition/Activities.js
+ M web/js/app/exhibition/Arrival.js
+ M web/js/app/exhibition/Exhibition.js
+ M web/js/app/exhibition/InformationDoor.js
+ M web/js/app/exhibition/InformationEntry.js
+ M web/js/app/exhibition/InformationPlayerEntry.js
+ M web/js/app/exhibition/InformationTalk.js
+ M web/js/app/exhibition/InvestmentCertificate.js
+ M web/js/app/exhibition/InvestmentExam.js
+ M web/js/app/exhibition/PhoneStockSource.js
+ M web/js/app/exhibition/Plan.js
+ M web/js/app/exhibition/Quiz.js
+ M web/js/app/exhibition/ResidencePaperHandoff.js
+ M web/js/app/exhibition/Scenes.js
+ M web/js/app/exhibition/SomangiPresentation.js
+ M web/js/app/exhibition/State.js
+ M web/js/app/exhibition/TourPaths.js
+ M web/js/app/exhibition/TourPlayerControls.js
+ M web/js/app/exhibition/TourWalk.js
+ M web/js/app/exhibition/View.js
+ M web/js/app/initInterface.js
+ M web/js/app/initWorld.js
+ M web/js/components/MainHUD.js
+ M web/js/components/VillageBoard.js
+ M web/js/components/bank3d/BankChagok.js
+ M web/js/components/bank3d/BankModelRoom.js
+ M web/js/components/cipher3d/CipherLobbyFixtures.js
+ M web/js/components/cipher3d/CipherLobbyScene.js
+ M web/js/components/home3d/HomeModelScene.js
+ M web/js/components/home3d/HomeRoomCamera.js
+ M web/js/components/information3d/InformationModelRoom.js
+ M web/js/components/packing/PackingGame.js
+ M web/js/components/packing/PackingInput.js
+ M web/js/components/packing/PackingPreview.js
+ M web/js/components/packing/PackingView.js
+ M web/js/components/phone/PhoneHome.js
+ M web/js/components/phone/PhoneHomeData.js
+ M web/js/components/phone/PhoneHomeTemplate.js
+ M web/js/components/phone/stock/MountStockApp.js
+ M web/js/components/phone/stock/StockApp.js
+ M web/js/components/phone/stock/StockBrand.js
+ M web/js/components/phone/stock/StockChart.js
+ M web/js/components/phone/stock/StockNews.js
+ M web/js/components/phone/stock/StockOrder.js
+ M web/js/components/phone/stock/StockScreens.js
+ M web/js/components/smartphone/PortfolioTab.js
+ M web/js/components/store/VivianCatalogView.js
+ M web/js/components/store3d/VivianModelScene.js
+ M web/js/components/store3d/VivianShopkeeper.js
+ M web/js/components/town3d/BusStopSeat.js
+ M web/js/components/town3d/CharacterBodies.js
+ M web/js/components/town3d/ConversationCamera.js
+ M web/js/components/town3d/ConversationFacing.js
+ M web/js/components/town3d/DialogueOcclusion.js
+ M web/js/components/town3d/IndoorFurnitureBodies.js
+ M web/js/components/town3d/MoaMovementGuide.js
+ M web/js/components/town3d/SeatControls.js
+ M web/js/components/town3d/SeatInteraction.js
+ M web/js/components/town3d/SeatSurfaces.js
+ M web/js/components/town3d/SomangiPlayer.js
+ M web/js/components/town3d/SomangiStepAside.js
+ M web/js/components/town3d/TownModelScene.js
+ M web/js/components/town3d/TownSky.js
+ M web/js/components/town3d/TownWeather.js
+ M web/js/components/tutorial/annaLaterLessons.js
+ M web/js/data/townLandscapeLayout.js
+ M web/js/data/vivianStoreData.js
+ M web/js/engine/AbilityRetirement.js
+ M web/js/engine/ItemEngine.js
+ M web/js/engine/KeyBindings.js
+ M web/js/engine/SettingsStore.js
+ M web/js/engine/TownMusic.js
+ M web/js/engine/marketEngine.js
+ M web/js/main.js
+ M web/packing.html
+ M web/tests/abilities.test.mjs
+ M web/tests/cipherLobbyEntrance.test.mjs
+ M web/tests/conversationCamera.test.mjs
+ M web/tests/exhibition.test.mjs
+ M web/tests/exteriorBuildingBodies.test.mjs
+ M web/tests/indoorFurnitureBodies.test.mjs
+ M web/tests/indoorWallBodies.test.mjs
+ M web/tests/itemEngine.test.mjs
+ M web/tests/jumpCollision.test.mjs
+ M web/tests/levelUp.test.mjs
+ M web/tests/statBaseline.test.mjs
+ M web/tests/townMusic.test.mjs
+ M web/tests/villageBoard.browser.cjs
+?? Docs/FILE_CLEANUP_2026-10-26.md
+?? Docs/FILE_CLEANUP_PENDING_2026-10-26.md
+?? Docs/NEWS_LOCAL_SCHEDULE_2026-10-26.md
+?? Docs/RUMOR_POWDER_VALUE_2026-10-25.md
+?? output/achievements-app-design-v1/
+?? output/achievements-app-game-v1/
+?? output/all-exterior-door-hinges-v1/
+?? output/apple-juice-clean-label-v3/
+?? output/apple-juice-reference-v2/
+?? output/berry-juice-reference-v2/
+?? output/building-exit-walk-v1/
+?? output/building-walk-audit-2026-10-25/
+?? output/building-walk-rollout-v1/
+?? output/dew-jelly-reference-v2/
+?? output/door-hinge-axis-v1/
+?? output/doorway-blackout-v1/
+?? output/doorway-opaque-characters-v1/
+?? output/exhibition-poster-v1/
+?? output/exhibition-poster-v2/
+?? output/exhibition-poster-v3/
+?? output/first-night-crayon-v1/
+?? output/heart-hud-game-v1/
+?? output/herb-tea-paperbox-v2/
+?? output/honey-candy-reference-v2/
+?? output/honey-cookie-reference-v2/
+?? output/information-centered-passage-check-v4/
+?? output/information-guidebook-ui-v2/
+?? output/information-guidebook-v1/
+?? output/information-map-choice-v3/
+?? output/information-sofa-no-pillows-v2/desktop-checks.json
+?? output/information-sofa-no-pillows-v2/desktop-room.png
+?? output/information-sofa-no-pillows-v2/desktop-seated.png
+?? output/information-sofa-no-pillows-v2/web-checks.json
+?? output/information-sofa-no-pillows-v2/web-room.png
+?? output/information-sofa-no-pillows-v2/web-seated.png
+?? output/information-sofa-seat-inward-v4/
+?? output/information-sofa-seat-penetration-check-v1/
+?? output/information-sofa-sideways-gap-v3/
+?? output/information-table-rug-centered-v4/
+?? output/information-waiting-game-v1/
+?? output/inventory-game-v1/
+?? output/inventory-ui-ivory-v1/
+?? output/lotto-paper-ticket-v2/
+?? output/map-app-design-v1/
+?? output/map-app-game-v1/
+?? output/messenger-app-design-v1/
+?? output/messenger-app-design-v2/
+?? output/messenger-app-game-v1/
+?? output/money-hud-game-v1/
+?? output/news-app-design-v1/
+?? output/news-app-game-v1/
+?? output/news-schedule-local-v1/
+?? output/packing-accept-stall-fix-v1/
+?? output/packing-drag-response-v1/
+?? output/petal-tea-paperbox-v2/
+?? output/petal-tea-seal-end-v4/
+?? output/petal-tea-side-fix-v3/
+?? output/phone-all-apps-current-v1/
+?? output/phone-all-apps-home-v1/
+?? output/phone-center-v1/
+?? output/phone-home-button-v1/
+?? output/phone-home-eight-apps-v2/
+?? output/phone-off-launcher-v1/
+?? output/phone-settings-controls-v2/
+?? output/phone-settings-music-v1/
+?? output/phone-text-home-v2/
+?? output/phone-toggle-v1/
+?? output/phone-top-home-v3/
+?? output/popori-bread-baked-v3/
+?? output/popori-bread-reference-ends-v5/
+?? output/popori-bread-reference-v2/
+?? output/popori-bread-soft-ends-v4/
+?? output/portfolio-unlimited-v1/
+?? output/profile-app-design-v1/
+?? output/profile-app-design-v2/
+?? output/profile-app-game-v1/
+?? output/profile-level-code-v2/
+?? output/reward-pouch-coin-v2/
+?? output/reward-pouch-v1/
+?? output/rumor-powder-value-2026-10-25/
+?? output/sealed-news-envelope-v2/
+?? output/shop-items-3d-v1/
+?? output/shop-items-game-v1/
+?? output/shop-items-refined-current-v2/
+?? output/short-map-home-first-v1/
+?? output/somangi-body-collision-audit-v1/
+?? output/somangi-collision-fit-v1/
+?? output/somangi-floor-sleep-v1/
+?? output/star-moon-powders-v2/
+?? output/stock-chart-pointer-v1/
+?? output/stock-desktop-v1/
+?? output/stock-detailed-lesson-v2/
+?? output/stock-lesson-dock-v1/
+?? output/story-sky-time-v1/
+?? output/tasks-app-design-v1/
+?? output/tasks-app-game-v1/
+?? output/title-return-crayon-v1/
+?? output/town-direct-routes-v8/
+?? output/village-board-readonly-v7/
+?? output/work-log-screenshots/
+?? scratch/audit-somangi-body-collision.cjs
+?? scratch/audit-somangi-collision-fit.cjs
+?? scratch/bank-moa-exits-first.png
+?? scratch/bank-player-exits-second.png
+?? scratch/bank-seat-guide.png
+?? scratch/bank-seated-conversation.png
+?? scratch/bank-talk-to-chagok.png
+?? scratch/bank-walk-through-door.png
+?? scratch/bongbong-points-workstation-story.png
+?? scratch/bongbong-points-workstation.png
+?? scratch/bongbong-walking-to-player.png
+?? scratch/bongbong-welcome-dialogue.png
+?? scratch/bongbong-work-choice.png
+?? scratch/bus-stop-both-faces-camera.png
+?? scratch/capture-achievements-design.cjs
+?? scratch/capture-exterior-door-details.cjs
+?? scratch/capture-information-table-centered.cjs
+?? scratch/capture-map-design.cjs
+?? scratch/capture-messenger-design-v2.cjs
+?? scratch/capture-messenger-design.cjs
+?? scratch/capture-news-design.cjs
+?? scratch/capture-profile-design-v2.cjs
+?? scratch/capture-profile-design.cjs
+?? scratch/capture-shop-fixtures-front.cjs
+?? scratch/capture-tasks-design.cjs
+?? scratch/check-all-building-walk.cjs
+?? scratch/check-all-exterior-door-hinges.cjs
+?? scratch/check-bank-entry.cjs
+?? scratch/check-bank-exit-order.cjs
+?? scratch/check-bank-to-home-follow.cjs
+?? scratch/check-board-tour-hidden.cjs
+?? scratch/check-bongbong-greeting.cjs
+?? scratch/check-bongbong-standard-greeting.cjs
+?? scratch/check-bongbong-walk-shape.cjs
+?? scratch/check-bongbong-workstation-guide.cjs
+?? scratch/check-bongbong-workstation-story.cjs
+?? scratch/check-both-faces-camera.cjs
+?? scratch/check-building-exits.cjs
+?? scratch/check-companion-exit-walk.cjs
+?? scratch/check-conversation-facing.cjs
+?? scratch/check-cookie-handoff.cjs
+?? scratch/check-direct-town-routes.cjs
+?? scratch/check-door-hinge-axis.cjs
+?? scratch/check-doorway-blackout.cjs
+?? scratch/check-doorway-opacity.cjs
+?? scratch/check-exterior-doors-game.cjs
+?? scratch/check-guidance-format.cjs
+?? scratch/check-heart-hud.cjs
+?? scratch/check-home-departure-smooth.cjs
+?? scratch/check-home-entry.cjs
+?? scratch/check-home-exit-camera.cjs
+?? scratch/check-home-to-bank-departure.cjs
+?? scratch/check-indoor-wall-occlusion.cjs
+?? scratch/check-information-bank-walk.cjs
+?? scratch/check-information-centered-passage.cjs
+?? scratch/check-information-dismount.cjs
+?? scratch/check-information-guidebook-ui.cjs
+?? scratch/check-information-guidebook.cjs
+?? scratch/check-information-map-choice.cjs
+?? scratch/check-information-no-push.cjs
+?? scratch/check-information-sofa-gap.cjs
+?? scratch/check-information-sofa-no-pillows.cjs
+?? scratch/check-information-sofa-penetration.cjs
+?? scratch/check-information-sofa-seat-inward.cjs
+?? scratch/check-information-waiting.cjs
+?? scratch/check-inventory-game.cjs
+?? scratch/check-inventory-ui.cjs
+?? scratch/check-lesson-computer.cjs
+?? scratch/check-moa-plaza-rest.cjs
+?? scratch/check-money-hud.cjs
+?? scratch/check-news-app.cjs
+?? scratch/check-packing-accept-detour.cjs
+?? scratch/check-packing-accept-diagonal.cjs
+?? scratch/check-packing-response.cjs
+?? scratch/check-packing-result.cjs
+?? scratch/check-packing-stage-skip.cjs
+?? scratch/check-packing-tutorial-timing.cjs
+?? scratch/check-phone-achievements.cjs
+?? scratch/check-phone-all-apps-home.cjs
+?? scratch/check-phone-all-current.cjs
+?? scratch/check-phone-handoff.cjs
+?? scratch/check-phone-home-button.cjs
+?? scratch/check-phone-launcher.cjs
+?? scratch/check-phone-map.cjs
+?? scratch/check-phone-messenger.cjs
+?? scratch/check-phone-profile-level.cjs
+?? scratch/check-phone-profile.cjs
+?? scratch/check-phone-settings-controls.cjs
+?? scratch/check-phone-settings.cjs
+?? scratch/check-phone-tasks.cjs
+?? scratch/check-phone-text-home.cjs
+?? scratch/check-phone-toggle.cjs
+?? scratch/check-phone-top-home.cjs
+?? scratch/check-scheduled-news.cjs
+?? scratch/check-shop-first-reminder.cjs
+?? scratch/check-shop-items-rollout.cjs
+?? scratch/check-shop-source-hashes.py
+?? scratch/check-short-map-home-first.cjs
+?? scratch/check-skip-moa-bank.cjs
+?? scratch/check-sleep-ending.cjs
+?? scratch/check-somangi-collision-fit.cjs
+?? scratch/check-stock-chart-pointer.cjs
+?? scratch/check-stock-desktop.cjs
+?? scratch/check-stock-detailed-lesson.cjs
+?? scratch/check-stock-layout.cjs
+?? scratch/check-stock-lesson-dock.cjs
+?? scratch/check-stock-sector-colors.cjs
+?? scratch/check-stock-trip-entry.cjs
+?? scratch/check-store-rewards-plaza.cjs
+?? scratch/check-story-building-walk.cjs
+?? scratch/check-story-sky.cjs
+?? scratch/check-tori-certificate-first.cjs
+?? scratch/check-tori-training-lesson.cjs
+?? scratch/check-tour-follow-reminder.cjs
+?? scratch/check-tutorial-skip.cjs
+?? scratch/check-unlimited-account.cjs
+?? scratch/cleanup-2026-10-26.json
+?? scratch/cleanup_unused_20261026.py
+?? scratch/create-front-capture.py
+?? scratch/debug-bank-entry.cjs
+?? scratch/debug-worktop-bounds.cjs
+?? scratch/debug-worktop-f.cjs
+?? scratch/deploy-shop-items.py
+?? scratch/document-shop-rollout.py
+?? scratch/extend-inspect.py
+?? scratch/finalize-shop-docs.py
+?? scratch/fix-rollout-test.py
+?? scratch/fix-test-title.py
+?? scratch/home-after-walk-entry.png
+?? scratch/home-before-bank-intro.png
+?? scratch/home-departure-smooth.png
+?? scratch/home-walk-through-door.png
+?? scratch/inspect-cipher-hinges.cjs
+?? scratch/inspect-shop-items.cjs
+?? scratch/inspect-shop-materials.py
+?? scratch/inspect-somangi-sleep.py
+?? scratch/lesson-computer-open.png
+?? scratch/lesson-computer-seated.png
+?? scratch/moa-follow-distance-dialogue.png
+?? scratch/moa-leads-bank-to-home.png
+?? scratch/moa-leaving-information.png
+?? scratch/moa-one-cookie-offered.png
+?? scratch/moa-plaza-rest.png
+?? scratch/moa-short-map-intro.png
+?? scratch/moa-walking-to-bank.png
+?? scratch/packing-tutorial-inside-game.png
+?? scratch/phone-offered.png
+?? scratch/phone-received-ui.png
+?? scratch/player-at-packing-worktop.png
+?? scratch/player-dismount-information.png
+?? scratch/probe-bank-entry.cjs
+?? scratch/probe-home-door-open.cjs
+?? scratch/probe-packing-worktop.cjs
+?? scratch/probe-phone-placement.cjs
+?? scratch/probe-workstation-guide-blocked.cjs
+?? scratch/shop-first-player-reminder.png
+?? scratch/sleep-ending-title.png
+?? scratch/split-shop-display.py
+?? scratch/store-envelope-handoff.png
+?? scratch/store-player-opens-door.png
+?? scratch/store-wage-handoff.png
+?? scratch/sync-shop-items-game.py
+?? scratch/tori-teaches-big-screen.png
+?? scratch/tutorial-stage-skip.png
+?? scratch/worktop-visible-before-packing.png
+?? web/assets/ending/
+?? web/assets/items/3d/
+?? web/assets/office/3d/waiting-v1/
+?? web/assets/title/flipbook-v1/return-button.png
+?? web/css/heart-hud.css
+?? web/css/information-guidebook.css
+?? web/css/modules/inventory-ui.css
+?? web/css/modules/lesson-computer.css
+?? web/css/modules/phone-achievements.css
+?? web/css/modules/phone-launcher.css
+?? web/css/modules/phone-map.css
+?? web/css/modules/phone-messenger.css
+?? web/css/modules/phone-news.css
+?? web/css/modules/phone-profile.css
+?? web/css/modules/phone-settings.css
+?? web/css/modules/phone-tasks.css
+?? web/css/modules/stock-desktop.css
+?? web/css/modules/tutorial-skip.css
+?? web/css/modules/village-map-intro.css
+?? web/css/money-hud.css
+?? web/inventory-preview.html
+?? web/js/app/CipherRoomTravel.js
+?? web/js/app/ExteriorDoorEntry.js
+?? web/js/app/InventoryAccess.js
+?? web/js/app/OnFootNavigation.js
+?? web/js/app/ScheduledNewsRuntime.js
+?? web/js/app/StoreDoorEntry.js
+?? web/js/app/exhibition/BankEntry.js
+?? web/js/app/exhibition/BankExit.js
+?? web/js/app/exhibition/BankTalk.js
+?? web/js/app/exhibition/BuildingTravel.js
+?? web/js/app/exhibition/CookieHandoff.js
+?? web/js/app/exhibition/DestinationWalk.js
+?? web/js/app/exhibition/DoorwayMoaWalk.js
+?? web/js/app/exhibition/DoorwayTraversal.js
+?? web/js/app/exhibition/HandoffMotion.js
+?? web/js/app/exhibition/HomeDeparture.js
+?? web/js/app/exhibition/HomeEntry.js
+?? web/js/app/exhibition/InformationExit.js
+?? web/js/app/exhibition/Inventory.js
+?? web/js/app/exhibition/LessonComputer.js
+?? web/js/app/exhibition/MoaPlazaRest.js
+?? web/js/app/exhibition/PhoneHandoff.js
+?? web/js/app/exhibition/PlayerSeatDismount.js
+?? web/js/app/exhibition/PlazaMoaTalk.js
+?? web/js/app/exhibition/SleepEnding.js
+?? web/js/app/exhibition/StoreDestinationGuard.js
+?? web/js/app/exhibition/StorePackingOffer.js
+?? web/js/app/exhibition/StoreRewardHandoff.js
+?? web/js/app/exhibition/StoreTalk.js
+?? web/js/app/exhibition/ToriCounter.js
+?? web/js/app/exhibition/ToriLessonBoard.js
+?? web/js/app/exhibition/ToriLessonMovement.js
+?? web/js/app/exhibition/ToriTrainingLesson.js
+?? web/js/app/exhibition/TourFollowReminder.js
+?? web/js/app/exhibition/TutorialSkip.js
+?? web/js/app/exhibition/TutorialSkipMoa.js
+?? web/js/app/exhibition/TutorialSkipState.js
+?? web/js/app/exhibition/VillageMapIntro.js
+?? web/js/components/HeartHUD.js
+?? web/js/components/MoneyHUD.js
+?? web/js/components/bank3d/BankConversationCamera.js
+?? web/js/components/bank3d/BankVisitorSeat.js
+?? web/js/components/information3d/InformationGuidebook.js
+?? web/js/components/information3d/InformationWaitingCorner.js
+?? web/js/components/inventory/GameInventory.js
+?? web/js/components/inventory/InventoryUI.js
+?? web/js/components/packing/PackingTutorial.js
+?? web/js/components/phone/PhoneLauncher.js
+?? web/js/components/phone/achievements/
+?? web/js/components/phone/map/
+?? web/js/components/phone/messenger/
+?? web/js/components/phone/news/
+?? web/js/components/phone/profile/
+?? web/js/components/phone/settings/
+?? web/js/components/phone/stock/StockLessonDock.js
+?? web/js/components/phone/tasks/
+?? web/js/components/store3d/BongbongGreeting.js
+?? web/js/components/store3d/BongbongTalk.js
+?? web/js/components/store3d/BongbongWalk.js
+?? web/js/components/store3d/BongbongWorkstationGuide.js
+?? web/js/components/store3d/PackingWorkstation.js
+?? web/js/components/store3d/ShopDialogueOcclusion.js
+?? web/js/components/store3d/ShopItemBatching.js
+?? web/js/components/store3d/ShopItemModels.js
+?? web/js/components/store3d/ShopProductArt.js
+?? web/js/components/store3d/VivianProductDisplay.js
+?? web/js/components/store3d/WorkstationRouteWait.js
+?? web/js/components/town3d/DoorwayBlackout.js
+?? web/js/components/town3d/ExteriorDoors.js
+?? web/js/components/town3d/GuidanceCard.js
+?? web/js/components/town3d/IndoorOcclusion.js
+?? web/js/components/town3d/MoaMovementGuideData.js
+?? web/js/data/bongbongTalk.js
+?? web/js/data/exhibitionSkyTime.js
+?? web/js/data/shopItemModels.js
+?? web/js/data/tourFollowReminder.js
+?? web/js/data/vivianProductPlacements.js
+?? web/js/engine/FirstTradeBudget.js
+?? web/js/engine/RumorPowderValue.js
+?? web/js/engine/ScheduledNews.js
+?? web/tests/bankConversationCamera.test.mjs
+?? web/tests/bankExit.test.mjs
+?? web/tests/bankTalk.test.mjs
+?? web/tests/bongbongGreeting.test.mjs
+?? web/tests/bongbongWorkstationGuide.test.mjs
+?? web/tests/buildingExitWalk.test.mjs
+?? web/tests/conversationFacing.test.mjs
+?? web/tests/cookieHandoff.test.mjs
+?? web/tests/doorwayBlackout.test.mjs
+?? web/tests/doorwayOpacity.test.mjs
+?? web/tests/doorwayTraversal.test.mjs
+?? web/tests/entryOcclusion.test.mjs
+?? web/tests/exhibitionSkyTime.test.mjs
+?? web/tests/exteriorDoors.test.mjs
+?? web/tests/firstTradeBudget.test.mjs
+?? web/tests/homeConversationCamera.test.mjs
+?? web/tests/homeDoor.test.mjs
+?? web/tests/indoorOcclusion.test.mjs
+?? web/tests/informationExit.test.mjs
+?? web/tests/investmentExamRandom.test.mjs
+?? web/tests/onFootNavigation.test.mjs
+?? web/tests/packingWorkstation.test.mjs
+?? web/tests/phoneAchievements.test.mjs
+?? web/tests/phoneMap.test.mjs
+?? web/tests/phoneProfile.test.mjs
+?? web/tests/phoneTasks.test.mjs
+?? web/tests/rumorPowderValue.test.mjs
+?? web/tests/scheduledNews.test.mjs
+?? web/tests/shopDialogueOcclusion.test.mjs
+?? web/tests/storeDestinationGuard.test.mjs
+?? web/tests/tourFollowReminder.test.mjs
+?? web/tests/tutorialSkip.test.mjs

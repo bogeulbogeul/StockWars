@@ -1,0 +1,4 @@
+js/components/phone/PhoneHome.js
+js/components/phone/PhoneHomeData.js
+js/components/phone/PhoneHomeTemplate.js
+css/modules/phone-home.css

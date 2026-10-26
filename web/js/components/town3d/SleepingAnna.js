@@ -1,70 +1,60 @@
-import * as THREE from '../../../vendor/three/three.module.js';
-import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
-import { SOMANGI_HEIGHT } from '../../data/somangiModels.js';
+import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
+import { MathUtils, Quaternion, Vector3 } from '../../../vendor/three/three.module.js';
+import { createSleepEffect } from './SleepEffect.js';
+import { createMoaSeatMotion } from './MoaSeatMotion.js';
+import { MoaCharacter } from './MoaCharacter.js';
+import { MOA_TOWN_POSITION } from '../../data/moaModels.js';
+import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 
-// The current shared-body Anna asset keeps its authored seat plane at y=0.
+// Current unclothed model: a local head nod, independent of leaf animation.
 export async function addSleepingAnna(scene, stop) {
-    if (!stop) return null;
-    const { scene: model, animations } = await new GLTFLoader().loadAsync(
-        new URL('../../../assets/characters/3d/anna/bench-doze.glb', import.meta.url).href);
-    model.name = 'anna-bus-stop-sleeping';
-    model.scale.setScalar(SOMANGI_HEIGHT / 1.95);
-    const seat = stop.getObjectByName('Bench_Seat');
-    if (!seat) return null;
-    const bounds = new THREE.Box3().setFromObject(seat);
-    const center = bounds.getCenter(new THREE.Vector3());
-    model.position.set(center.x, bounds.max.y, center.z);
-    scene.add(model);
-    const mixer = new THREE.AnimationMixer(model);
-    const actions = new Map(['Bench_Seated', 'Seated_Doze'].map(name => {
-        const clip = animations.find(clip => clip.name === name);
-        if (!clip) throw new Error(`Missing Moa clip: ${name}`);
-        return [name, mixer.clipAction(clip)];
-    }));
-    const face = model.getObjectByName('Somangi_Body').material;
-    const sleepingMap = face.map;
-    const smilingMap = await new THREE.TextureLoader().loadAsync(
-        new URL('../../../assets/characters/3d/anna/smile-basecolor.png', import.meta.url).href);
-    smilingMap.flipY = false;
-    smilingMap.colorSpace = THREE.SRGBColorSpace;
-    smilingMap.wrapS = sleepingMap.wrapS;
-    smilingMap.wrapT = sleepingMap.wrapT;
-    model.traverse(object => { if (object.isMesh) object.frustumCulled = false; });
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = 128;
-    const ctx = canvas.getContext('2d');
-    ctx.font = 'bold 60px sans-serif';
-    ctx.fillStyle = '#f8f1d2';
-    ctx.shadowColor = '#596777'; ctx.shadowBlur = 6;
-    ctx.fillText('Z z', 10, 82);
-    const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), depthTest: false }));
-    sprite.scale.set(42, 42, 1);
-    sprite.name = 'anna-sleep-indicator';
-    scene.add(sprite);
-    let time = 0;
-    let awake = null;
-    function setAwake(value) {
-        if (awake === value) return;
-        awake = value;
-        mixer.stopAllAction();
-        actions.get(awake ? 'Bench_Seated' : 'Seated_Doze').reset().play();
-        face.map = awake ? smilingMap : sleepingMap;
-        face.needsUpdate = true;
-        sprite.visible = !awake;
-        model.userData.moaState = awake ? 'smile' : 'doze';
-        mixer.update(0);
-    }
-    setAwake(false);
-    return {
-        model,
-        update(dt, playerPosition) {
-            time += Math.min(dt, .1);
-            if (playerPosition) {
-                const distance = Math.hypot(playerPosition.x - center.x, playerPosition.z - center.z);
-                setAwake(distance < (awake ? 170 : 130));
+    const moa = new MoaCharacter(scene, { x: MOA_TOWN_POSITION.x, z: MOA_TOWN_POSITION.y / GROUND_PROJECTION });
+    await moa.ready;
+    const seatMotion = createMoaSeatMotion(moa, stop);
+    const sleepEffect = createSleepEffect(moa.root);
+    moa.setSleepEffectEnabled = enabled => sleepEffect.setEnabled(enabled);
+    const head = moa.root.getObjectByName('Head');
+    const rest = head?.quaternion.clone();
+    const nod = new Quaternion(), axis = new Vector3(1, 0, 0);
+    const turn = new Quaternion(), up = new Vector3(0, 1, 0);
+    const update = moa.update.bind(moa);
+    const faceTarget = moa.faceTarget.bind(moa);
+    let sleeping = true, time = 0;
+    // Calls made while dreaming must not register a conversation gaze target.
+    moa.faceTarget = target => faceTarget(sleeping ? null : target);
+    moa.setAwake = (awake, { immediate = false } = {}) => {
+        const wasSleeping = sleeping;
+        sleeping = !awake;
+        if (awake) moa.standReady = seatMotion.stand(immediate || matchMedia('(prefers-reduced-motion: reduce)').matches);
+        else {
+            moa.faceTarget(null); moa.root.rotation.y = 0;
+            if (!wasSleeping) seatMotion.sit();
+        }
+        sleepEffect.setSleeping(sleeping);
+        moa.root.userData.sleeping = sleeping;
+        if (head) head.quaternion.copy(rest);
+        return moa.setMood(awake ? 'happy' : 'calm', awake ? 'smile' : 'sleepy');
+    };
+    moa.update = dt => {
+        update(dt);
+        seatMotion.update(dt);
+        sleepEffect.update(dt);
+        time += Math.min(Math.max(dt || 0, 0), .1);
+        if (head) {
+            head.quaternion.copy(rest);
+            const yaw = !sleeping && moa.root.userData.seated ? conversationYaw(moa.root, moa.conversationTarget) : null;
+            if (yaw !== null && moa.root.userData.conversationOpenCamera) {
+                faceConversationPartner(moa.root, moa.conversationTarget);
+            } else if (yaw !== null) {
+                const local = Math.atan2(Math.sin(yaw - moa.root.rotation.y), Math.cos(yaw - moa.root.rotation.y));
+                head.quaternion.multiply(turn.setFromAxisAngle(up, MathUtils.clamp(local, -.55, .55)));
             }
-            mixer.update(Math.min(dt, .1));
-            sprite.position.set(center.x + 45, bounds.max.y + 110 + 4 * Math.sin(time * 1.5), center.z);
+            if (sleeping) {
+                const dip = (1 + Math.sin(time * 1.7)) / 2;
+                head.quaternion.multiply(nod.setFromAxisAngle(axis, .12 + .16 * dip * dip));
+            }
         }
     };
+    await moa.setAwake(false);
+    return moa;
 }

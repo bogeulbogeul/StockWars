@@ -1,0 +1,12 @@
+/* Use the adopted per-character triangle artwork without button chrome or text. */
+body .crayon-dialogue button.dialogue-next-triangle {
+    position: absolute; right: 22px; bottom: 15px;
+    width: 38px; height: 30px; min-height: 0; min-width: 0;
+    padding: 0 !important; margin: 0; border: 0 !important;
+    border-radius: 0 !important; box-shadow: none !important;
+    background: var(--dialogue-arrow) center / contain no-repeat !important;
+    animation: none;
+    opacity: 1;
+}
+body .crayon-dialogue.dialogue-has-next { padding-bottom: 44px !important; }
+body .vn-dialogue-box.dialogue-has-next { position: relative; }

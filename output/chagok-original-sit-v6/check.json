@@ -1,0 +1,24 @@
+{
+  "root": "C:\\GitHub\\StockWars\\web",
+  "result": {
+    "meshes": [
+      "Chagok_brown_round_glasses",
+      "Chagok_seed_shell_left",
+      "Chagok_seed_shell_right",
+      "Somangi_SmoothBody"
+    ],
+    "count": 1,
+    "height": 106.99564901150087,
+    "footY": 59.96150032094776,
+    "seatY": 64.00000343,
+    "centerX": 0,
+    "centerZ": -95,
+    "active": true,
+    "collision": true,
+    "spawnClear": true,
+    "sidePathClear": true,
+    "exitClear": true
+  },
+  "exhibition": null,
+  "errors": []
+}

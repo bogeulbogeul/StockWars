@@ -1,0 +1,21 @@
+{
+  "sourceSHA256": "fc4d2e74ea80ebc5c67390de4e6b1f87829533b914dd86811e1550dc725691be",
+  "sourceUnchanged": true,
+  "poseDegrees": {
+    "legs": -78,
+    "arms": -35
+  },
+  "pelvisOriginalZ": -0.5483183860778809,
+  "seatWorldY": 64.00000342999999,
+  "position": {
+    "x": 0,
+    "z": -110
+  },
+  "bodyScale": 52.62990033054735,
+  "staticBakedPose": true,
+  "views": [
+    "front",
+    "side",
+    "angle"
+  ]
+}

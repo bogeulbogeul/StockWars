@@ -1,0 +1,10 @@
+{
+  "sha256": "523e7d599b98b379772864c93fc3ca8b3bdd7da7dd399d3daf18430d95bc12e2",
+  "source": "cipher-grand-single-v4",
+  "preserved": [
+    "Clock_Hour",
+    "Clock_Minute",
+    "Hinge_Left",
+    "Hinge_Right"
+  ]
+}

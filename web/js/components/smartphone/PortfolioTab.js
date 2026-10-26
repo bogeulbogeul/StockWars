@@ -14,10 +14,7 @@ export class PortfolioTab {
     updateState(state) {
         if (!state) return;
         const slotStatus = document.getElementById('portfolioSlotStatus');
-        if (slotStatus && state.portfolioSlots) {
-            const { used, max } = state.portfolioSlots;
-            slotStatus.textContent = `종목 보유 슬롯 ${used} / ${max}`;
-        }
+        if (slotStatus) { slotStatus.textContent = ''; slotStatus.hidden = true; }
         this.renderTradeHistory(state.tradeHistory || []);
         this.renderPortfolio(state.portfolio);
         this.renderSectorAllocation(state.portfolio);

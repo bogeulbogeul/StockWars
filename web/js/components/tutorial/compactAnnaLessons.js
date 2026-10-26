@@ -1,3 +1,5 @@
+import { AUTHORED_RUMOR_ITEMS } from '../../data/rumorCatalog.js';
+import { STAGE_LABELS } from '../../engine/RumorInterpretation.js';
 import { describeTutorialStep, createTutorialExample, createTutorialAction } from './tutorialPresentation.js';
 // Keep the original explanations available on demand; guide one idea at a time.
 export function compactAnnaLessons(steps, { nickname, stockName }) {
@@ -21,7 +23,7 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         social_and_ranking_guide: ['아직 보유 중이면 평가 손익, 팔면 실현 손익이에요.', [['평가 손익', '현재 가격 기준'], ['실현 손익', '매도한 결과']]],
         portfolio_slots_guide: ['같은 종목은 여러 주를 사도 슬롯 1칸만 써요.', [['A기업 10주', '1칸'], ['B기업 1주', '1칸'], ['합계', '2칸']]],
         portfolio_slots_capacity: ['새 종목을 담으려면 빈 슬롯이 필요해요.', [['일부 매도', '슬롯 유지'], ['전량 매도', '슬롯 1칸 확보']]],
-        portfolio_slots_trait: ['공격적 자산가는 슬롯 2칸을 추가로 받아요.', [['성향 보너스', '+2칸'], ['현금', '별도로 필요']]],
+        portfolio_slots_trait: ['레벨과 성향에 관계없이 같은 슬롯 규칙을 사용해요.', [['종목 슬롯', '공통 5칸'], ['현금', '별도로 필요']]],
         trade_history_guide: ['[거래 내역]에서 방금 산 기록을 확인하세요.', [['거래 기록', '언제 · 몇 주 · 얼마에']]],
         trade_history_fees: ['수수료를 뺀 실제 거래 결과를 확인하세요.', [['체결 금액', '실제로 거래한 금액'], ['수수료', '거래 비용']]],
         news_tab_guide: ['이번에는 아래쪽 [공시 뉴스]를 눌러 주세요.'],
@@ -74,18 +76,12 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
         if (step.id === 'select_stock' && !stockName) compact.text = '구매 가능한 종목이 생기면 다시 안내할게요.';
         if (step.id.startsWith('rumor_analysis_example_')) {
             const level = Number(step.id.slice(-1));
-            const examples = [
-                '연습용: 푸른 전기 저장고와 큰 수레꾼. 이틀 뒤 잔치가 단서예요.',
-                '연습용: 친환경 에너지 업체가 배터리를 독점 공급한대요. 이틀 뒤 엑스포가 상승 단서예요.',
-                '연습용: 전고체 배터리 독점 계약 호재예요. 이틀 뒤 엑스포 발표가 상승 계기가 될 전망이에요.',
-                '연습용: 리프에너지의 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.',
-                '연습용: 리프에너지의 5조 원 전고체 독점 계약. 이틀 뒤 엑스포에서 발표한대요.'
-            ];
+            const examples = AUTHORED_RUMOR_ITEMS.find(item => item.rumorId === 'R10_ECOBATTERY_P1').rumorStages;
             compact.lessonTitle = `분석력 ${level}단계에서는 찌라시가 어떻게 보일까요?`;
             compact.text = `분석력 ${level}단계에서 읽으면 이렇게 보여요.\n${examples[level - 1]}`;
             compact.detailText = step.text;
-            compact.takeaway = '분석력이 높아질수록 같은 찌라시에서 기업명·사건·금액 등 더 구체적인 정보를 읽을 수 있어요. 지금은 실제 능력치를 바꾸지 않고 1~5단계의 차이를 비교하는 연습이에요.';
-            compact.cards = [[`분석력 ${level}단계`, ['비유 속 단서', '업종 · 방향', '사건 · 시점', '기업 · 근거', '금액 · 상세'][level - 1]], ['주의', '해석 ≠ 진위 보증']];
+            compact.takeaway = '분석력이 높아질수록 같은 찌라시에서 기업명·사건·금액 등 더 구체적인 정보를 읽을 수 있어요. 실제 능력치는 바꾸지 않는 연습이에요. 새 원고는 1~10단계이며 7단계부터 출처, 9단계에 확인 시점, 10단계에 원문의 한계를 읽어요.';
+            compact.cards = [[`분석력 ${level}단계`, STAGE_LABELS[level - 1]], ['주의', '해석 ≠ 진위 보증']];
         }
         const additions = [];
         if (step.id === 'stock_basics_price') {
@@ -102,9 +98,9 @@ export function compactAnnaLessons(steps, { nickname, stockName }) {
             additions.push(extra('stock_profit_example', '400G에 산 1주, 수수료를 빼기 전 손익이에요.', [['450G에 매도', '+50G', 'positive'], ['350G에 매도', '−50G', 'negative']], '2/4 • 1주 손익 예시'));
             additions.push({ ...extra('stock_profit_fees', '2주로 100G를 벌었어도 수수료가 4G라면 실제 이익은 96G예요.', [['수수료를 뺀 예시', '100G − 수수료 4G = 96G']], '2/4 • 수수료를 뺀 실제 이익'),
                 example: { label: '예시 · 400G에 산 주식 2주를 450G에 판 경우', rows: ['1주당 50G 이익 × 2주 = 100G'] },
-                detailText: '수수료 4G는 계산을 설명하기 위한 예시예요. 실제 수수료는 거래 금액·거래 장소·협상력에 따라 달라져요.' });
+                detailText: '수수료 4G는 계산을 설명하기 위한 예시예요. 실제 수수료는 거래 금액·거래 장소에 따라 달라져요.' });
         }
-        if (step.id === 'portfolio_slots_guide') additions.push(extra('portfolio_slots_growth', '운용력을 올리면 더 많은 종목을 보유할 수 있어요.', [['기본', '5칸'], ['운용력 +1', '슬롯 +5칸']], '2/4 • 슬롯 늘리기'));
+        if (step.id === 'portfolio_slots_guide') additions.push(extra('portfolio_slots_growth', '종목 슬롯은 모두에게 공통으로 5칸이에요.', [['공통', '5칸'], ['레벨·성향', '추가 슬롯 없음']], '2/4 • 공통 슬롯 규칙'));
         if (step.id === 'stock_basics_budget') additions.push(extra('stock_basics_diversification', '한 종목에 전부 투자하면 손해도 한곳에 몰려요.', [['여러 종목', '한 기업에 대한 의존 감소'], ['주의', '함께 하락할 수 있음']], '4/4 • 나눠 투자하기'));
         return [compact, ...additions];
     });

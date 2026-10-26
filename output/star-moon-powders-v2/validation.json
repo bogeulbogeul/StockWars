@@ -1,0 +1,40 @@
+[
+  {
+    "id": "item_crypto_decoder",
+    "reimported": true,
+    "meshes": 5,
+    "embeddedPrints": 1,
+    "degenerateFaces": 0,
+    "triangles": 70412,
+    "boundsMin": [
+      -0.46000000834465027,
+      -0.24007412791252136,
+      -0.0006498414441011846
+    ],
+    "boundsMax": [
+      0.46000000834465027,
+      0.23999999463558197,
+      1.2000000476837158
+    ],
+    "sha256": "f861396830c5f4c44a1ccf32cdc4c448c7a60978e33d98401dbf39d2a6fa3f88"
+  },
+  {
+    "id": "item_moon_powder",
+    "reimported": true,
+    "meshes": 5,
+    "embeddedPrints": 1,
+    "degenerateFaces": 0,
+    "triangles": 70412,
+    "boundsMin": [
+      -0.46000000834465027,
+      -0.24007412791252136,
+      -0.0006498414441011846
+    ],
+    "boundsMax": [
+      0.46000000834465027,
+      0.23999999463558197,
+      1.2000000476837158
+    ],
+    "sha256": "5db4febafe54fa3a63a3599af9693a95a55849399af2f63e196248673287e2b5"
+  }
+]

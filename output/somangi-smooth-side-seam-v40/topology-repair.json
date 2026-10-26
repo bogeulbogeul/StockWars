@@ -1,0 +1,33 @@
+{
+  "patches": [
+    {
+      "hole": 1,
+      "owner": 1,
+      "edges": 200,
+      "vertices": 1245,
+      "faces": 1344
+    },
+    {
+      "hole": 2,
+      "owner": 0,
+      "edges": 138,
+      "vertices": 780,
+      "faces": 848
+    },
+    {
+      "hole": 3,
+      "owner": 2,
+      "edges": 216,
+      "vertices": 1365,
+      "faces": 1472
+    },
+    {
+      "hole": 4,
+      "owner": 0,
+      "edges": 160,
+      "vertices": 945,
+      "faces": 1024
+    }
+  ],
+  "remainingBoundaryEdges": 0
+}

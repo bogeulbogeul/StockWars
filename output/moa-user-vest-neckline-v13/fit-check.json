@@ -1,0 +1,21 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\moa-anna-vest-v2\\AnnaVest-source.glb",
+  "sourceVertices": 171154,
+  "scaling": [
+    "0.39 + 0.005 * normalizedHeight^2",
+    "0.42 + 0.40 * normalizedHeight^2",
+    0.36
+  ],
+  "translation": [
+    0,
+    0,
+    -0.165
+  ],
+  "originalFacesAndUVVerified": true,
+  "noRetiredGarmentLoaded": true,
+  "silhouette": "Short vest, original open armholes, shoulders tucked beneath head, slight torso ease",
+  "bodyVertexChange": 0,
+  "originalVestMaterialPreserved": true,
+  "bodyBone": "Body",
+  "gameInstalled": false
+}

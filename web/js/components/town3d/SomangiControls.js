@@ -1,15 +1,16 @@
+import { gameKey } from '../../app/GameKeys.js';
+
 export function createSomangiControls(layer, play, blocked) {
     const hint = document.createElement('p');
     hint.className = 'somangi-controls';
-    hint.textContent = '소망이 준비 중…';
-    layer.append(hint);
+    // Keep the internal hint reference used by room controllers, without a HUD.
+    hint.hidden = true;
     window.addEventListener('keydown', event => {
         if (event.defaultPrevented || event.repeat || event.ctrlKey || event.metaKey || event.altKey || blocked()) return;
         if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
-        const action = event.code === 'Digit1' || event.key === '1' ? 'wave'
-            : event.code === 'Digit2' || event.key === '2' ? 'eat'
-                : event.code === 'Digit3' || event.key === '3' ? 'crab'
-                    : event.code === 'Space' || event.key === ' ' ? 'jump' : null;
+        const jumping = gameKey(event) === 'space';
+        if (jumping && event.target?.closest?.('button:not(.phone-launcher), a[href]')) return;
+        const action = jumping ? 'jump' : event.code === 'Digit2' || event.key === '2' ? 'eat' : null;
         if (action && play(action)) event.preventDefault();
     });
     return hint;

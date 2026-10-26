@@ -1,0 +1,11 @@
+{
+  "glbReload": true,
+  "finitePositions": true,
+  "ground": 0.0,
+  "unchangedNonRoofMeshes": 81,
+  "doorGlassCrossPreserved": true,
+  "ridgeCaps": 9,
+  "overlapBands": 10,
+  "tiles": 144,
+  "gameApplied": false
+}

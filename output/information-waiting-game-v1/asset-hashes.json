@@ -1,0 +1,22 @@
+[
+  {
+    "source": "output\\information-waiting-sofa-v1\\Waiting-sage-sofa.glb",
+    "sha256": "922e88adadc562e4d2dd284e5d98335d63a948b75900c491ce5cd583b03de28b",
+    "targetsMatchOriginal": true
+  },
+  {
+    "source": "output\\information-coffee-table-v1\\Waiting-round-table.glb",
+    "sha256": "119f6cfa8d949d41cca274b15930d10466bb13c9d8889c2157c773a636aedc64",
+    "targetsMatchOriginal": true
+  },
+  {
+    "source": "output\\information-round-rug-v1\\Round-sage-rug.glb",
+    "sha256": "a09fe2fd27e9d7fb4da1c2d88ca6fa008734173e3bede1f79783ddf205886a93",
+    "targetsMatchOriginal": true
+  },
+  {
+    "source": "output\\information-potted-plant-v2\\Small-potted-plant-v2.glb",
+    "sha256": "6414306472a389d8fb3d9ece161b1ae9733260b3dc097d35a638e755c2b7cd57",
+    "targetsMatchOriginal": true
+  }
+]

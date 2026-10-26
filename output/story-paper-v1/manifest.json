@@ -1,0 +1,26 @@
+{
+  "status": "P1: model/roundtrip checked; visual acceptance and gameplay contact pending",
+  "sheet_count": 1,
+  "dimensions_blender_H": [
+    0.28999999165534973,
+    0.4099999964237213,
+    0.0008099999977275729
+  ],
+  "size_status": "Provisional H=1 character-relative unit",
+  "root_origin": "Bottom surface center, lying flat; front +Z, form heading +Y in Blender",
+  "glTF_axes": "Y-up; form front +Y, form heading -Z",
+  "uses": [
+    "resident application",
+    "bank account application",
+    "stock account application"
+  ],
+  "printed_content": "Generic lines, blank field and signature line; no title, stamp, name or signature",
+  "textures": "None; print uses flat coplanar-style geometry with 0.00001H separation",
+  "triangles": {
+    "Single_Paper_Sheet": 140,
+    "Generic_Form_Print": 212
+  },
+  "glb_bytes": 15120,
+  "validation": "Closed positive-volume sheet; finite coordinates; GLB reimport 2 meshes and bounds passed",
+  "game_installed": false
+}

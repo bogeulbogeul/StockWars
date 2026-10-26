@@ -1,0 +1,10 @@
+import { R_CLEANENERGY } from './Energy/CLEANENERGY.js';
+import { R_ECOBATTERY } from './Energy/ECOBATTERY.js';
+import { R_GREENPOWER } from './Energy/GREENPOWER.js';
+import { R_HYDROGENX } from './Energy/HYDROGENX.js';
+import { R_NUCLEARPLUS } from './Energy/NUCLEARPLUS.js';
+import { R_SOLARGRID } from './Energy/SOLARGRID.js';
+import { R_SUNLIGHT } from './Energy/SUNLIGHT.js';
+import { R_THERMOCORE } from './Energy/THERMOCORE.js';
+import { R_WINDHILL } from './Energy/WINDHILL.js';
+export const ENERGY_RUMORS = [...R_CLEANENERGY, ...R_ECOBATTERY, ...R_GREENPOWER, ...R_HYDROGENX, ...R_NUCLEARPLUS, ...R_SOLARGRID, ...R_SUNLIGHT, ...R_THERMOCORE, ...R_WINDHILL];

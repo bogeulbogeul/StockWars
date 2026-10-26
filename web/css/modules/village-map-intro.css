@@ -1,0 +1,9 @@
+.village-map-intro{position:fixed;z-index:1280;left:24px;top:24px;width:min(440px,43vw);height:min(570px,calc(100vh - 290px));padding:15px 18px;box-sizing:border-box;border:2px solid #b7c7a0;border-radius:22px;background:#fff9ea;color:#3d5140;box-shadow:0 8px 28px #263c3320;pointer-events:none}
+.village-map-intro h2{display:flex;justify-content:space-between;font:500 19px/1.4 'Malgun Gothic',sans-serif;margin:0 0 10px}
+.village-map-intro h2 span{font-size:14px;color:#77876c}
+.village-map-intro svg{display:block;width:100%;height:calc(100% - 40px);border-radius:14px}
+.village-map-intro .phone-map-label{font:500 8px 'Malgun Gothic',sans-serif;text-anchor:middle;fill:#4c614c}
+.village-map-intro .phone-map-ring{fill:none;stroke:none}
+.village-map-intro .selected .phone-map-ring{fill:#fff9eacc;stroke:#a2603e;stroke-width:2}
+.village-map-intro .selected .phone-map-label{fill:#854728;font-weight:500}
+@media(max-width:650px){.village-map-intro{top:12px;left:12px;width:calc(100vw - 24px);height:calc(100dvh - 275px);padding:10px 14px}.village-map-intro h2{font-size:16px}}

@@ -1,0 +1,19 @@
+{
+  "source": "somangi-rear-junction-v43",
+  "headBodyGeometryChanged": false,
+  "rigAndMotionChanged": false,
+  "expressionSwitchImplemented": false,
+  "expressions": [
+    {
+      "id": "teary",
+      "label": "울먹임",
+      "storyUse": "속상한 일·위로가 필요한 순간",
+      "texture": "textures/teary.png",
+      "materials": [
+        "Expression_teary_skin",
+        "Expression_teary_ink"
+      ],
+      "originalSmileMouthPreserved": false
+    }
+  ]
+}

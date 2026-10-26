@@ -1,0 +1,922 @@
+{
+  "samples": 114,
+  "headTriangleIntersectionSamples": 0,
+  "maximumPalmSurfaceDistance": {
+    "L": 0.11116492748260498,
+    "R": 0.11068591475486755
+  },
+  "details": [
+    {
+      "frame": 1.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 1.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 2.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 2.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 3.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.94367806520313e-05,
+        "R": 3.410292629268952e-05
+      }
+    },
+    {
+      "frame": 3.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.94367806520313e-05,
+        "R": 3.410292629268952e-05
+      }
+    },
+    {
+      "frame": 4.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.94367806520313e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 4.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.94367806520313e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 5.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.94367806520313e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 5.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 6.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 6.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 7.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942609954625368e-05,
+        "R": 3.413512240513228e-05
+      }
+    },
+    {
+      "frame": 7.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.520373037550598e-05,
+        "R": 1.933713792823255e-05
+      }
+    },
+    {
+      "frame": 8.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.467838051728904e-05,
+        "R": 3.929541344405152e-05
+      }
+    },
+    {
+      "frame": 8.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.10854762676172e-05,
+        "R": 4.637874735635705e-05
+      }
+    },
+    {
+      "frame": 9.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.374706521863118e-05,
+        "R": 4.446574530447833e-05
+      }
+    },
+    {
+      "frame": 9.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.215349953388795e-05,
+        "R": 4.6475375711452216e-05
+      }
+    },
+    {
+      "frame": 10.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.931363506941125e-05,
+        "R": 4.964074105373584e-05
+      }
+    },
+    {
+      "frame": 10.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.942028605611995e-05,
+        "R": 5.002444231649861e-05
+      }
+    },
+    {
+      "frame": 11.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.484829984605312e-05,
+        "R": 5.487550515681505e-05
+      }
+    },
+    {
+      "frame": 11.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.265212141443044e-05,
+        "R": 6.667381967417896e-05
+      }
+    },
+    {
+      "frame": 12.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.04030244378373e-05,
+        "R": 6.0010963352397084e-05
+      }
+    },
+    {
+      "frame": 12.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.634053715970367e-05,
+        "R": 2.7809064704342745e-05
+      }
+    },
+    {
+      "frame": 13.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.594953447347507e-05,
+        "R": 6.522088369820267e-05
+      }
+    },
+    {
+      "frame": 13.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00011636335693765432,
+        "R": 5.7416054914938286e-05
+      }
+    },
+    {
+      "frame": 14.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.35633511794731e-05,
+        "R": 6.169924017740414e-05
+      }
+    },
+    {
+      "frame": 14.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.2883956514997408e-05,
+        "R": 4.286598050384782e-05
+      }
+    },
+    {
+      "frame": 15.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.11023620472406e-06,
+        "R": 4.355143119028071e-06
+      }
+    },
+    {
+      "frame": 15.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.872136731952196e-07,
+        "R": 1.4359586202772334e-05
+      }
+    },
+    {
+      "frame": 16.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.2584637261170428e-05,
+        "R": 3.291846951469779e-05
+      }
+    },
+    {
+      "frame": 16.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.1907622138096485e-05,
+        "R": 2.8200620363350026e-06
+      }
+    },
+    {
+      "frame": 17.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.7884131011669524e-05,
+        "R": 5.840247104060836e-05
+      }
+    },
+    {
+      "frame": 17.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.1310374247841537e-05,
+        "R": 2.8501201086328365e-05
+      }
+    },
+    {
+      "frame": 18.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.836219159187749e-05,
+        "R": 5.058412170910742e-06
+      }
+    },
+    {
+      "frame": 18.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.3138608665030915e-05,
+        "R": 1.8210152120445855e-05
+      }
+    },
+    {
+      "frame": 19.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.2098083124765253e-07,
+        "R": 9.296808457293082e-06
+      }
+    },
+    {
+      "frame": 19.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 9.411900828126818e-05,
+        "R": 0.00015632832946721464
+      }
+    },
+    {
+      "frame": 20.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 9.42607584875077e-05,
+        "R": 4.02207879233174e-05
+      }
+    },
+    {
+      "frame": 20.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.105182248778874e-06,
+        "R": 4.745741171063855e-05
+      }
+    },
+    {
+      "frame": 21.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 9.879705430648755e-06,
+        "R": 7.191493932623416e-05
+      }
+    },
+    {
+      "frame": 21.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.191025148727931e-05,
+        "R": 2.232337101304438e-05
+      }
+    },
+    {
+      "frame": 22.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.1836945709073916e-05,
+        "R": 3.456947524682619e-05
+      }
+    },
+    {
+      "frame": 22.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.8353886591503397e-05,
+        "R": 0.00011347160761943087
+      }
+    },
+    {
+      "frame": 23.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.548975554527715e-05,
+        "R": 6.45342588541098e-05
+      }
+    },
+    {
+      "frame": 23.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.6461004381417297e-05,
+        "R": 4.78821402793983e-06
+      }
+    },
+    {
+      "frame": 24.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.76644524699077e-05,
+        "R": 1.3940798453404568e-05
+      }
+    },
+    {
+      "frame": 24.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00010684273729566485,
+        "R": 1.602967495273333e-05
+      }
+    },
+    {
+      "frame": 25.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.496451972750947e-05,
+        "R": 0.00013389291416388005
+      }
+    },
+    {
+      "frame": 25.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.2152168810407602e-07,
+        "R": 7.683686271775514e-05
+      }
+    },
+    {
+      "frame": 26.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.546253719832748e-05,
+        "R": 5.207123467698693e-05
+      }
+    },
+    {
+      "frame": 26.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.803065505460836e-05,
+        "R": 6.860849680379033e-05
+      }
+    },
+    {
+      "frame": 27.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00010860207839868963,
+        "R": 3.269574881414883e-05
+      }
+    },
+    {
+      "frame": 27.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00010631529585225508,
+        "R": 5.764867091784254e-05
+      }
+    },
+    {
+      "frame": 28.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.548584497068077e-05,
+        "R": 0.00011971899948548526
+      }
+    },
+    {
+      "frame": 28.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.0627041016705334e-05,
+        "R": 0.00015717862697783858
+      }
+    },
+    {
+      "frame": 29.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.7228327174671e-06,
+        "R": 0.00020437048806343228
+      }
+    },
+    {
+      "frame": 29.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.653062205761671e-05,
+        "R": 0.00018717914645094424
+      }
+    },
+    {
+      "frame": 30.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.809314850717783e-05,
+        "R": 0.0002045616420218721
+      }
+    },
+    {
+      "frame": 30.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 9.004457751871087e-06,
+        "R": 0.00018396892119199038
+      }
+    },
+    {
+      "frame": 31.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00010495040623936802,
+        "R": 0.00015924105537123978
+      }
+    },
+    {
+      "frame": 31.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.3533086277893744e-05,
+        "R": 1.6600348317297176e-05
+      }
+    },
+    {
+      "frame": 32.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.372751499839069e-07,
+        "R": 0.00011062056728405878
+      }
+    },
+    {
+      "frame": 32.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.127600419044029e-05,
+        "R": 5.57883431611117e-05
+      }
+    },
+    {
+      "frame": 33.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.858077201992273e-05,
+        "R": 6.082083928049542e-06
+      }
+    },
+    {
+      "frame": 33.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.763947580002423e-06,
+        "R": 1.2272633284737822e-05
+      }
+    },
+    {
+      "frame": 34.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.4387398045510054e-05,
+        "R": 0.0001640197733649984
+      }
+    },
+    {
+      "frame": 34.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.748599141952582e-05,
+        "R": 1.6368301658076234e-05
+      }
+    },
+    {
+      "frame": 35.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.0755323172779754e-05,
+        "R": 2.5093418116739485e-06
+      }
+    },
+    {
+      "frame": 35.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.3274462364497595e-05,
+        "R": 6.893968384247273e-05
+      }
+    },
+    {
+      "frame": 36.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.89832746097818e-05,
+        "R": 3.2716873192839557e-06
+      }
+    },
+    {
+      "frame": 36.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.733767102356069e-05,
+        "R": 2.623356704134494e-05
+      }
+    },
+    {
+      "frame": 37.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.773590030206833e-06,
+        "R": 4.143728801864199e-06
+      }
+    },
+    {
+      "frame": 37.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.025006637675688e-05,
+        "R": 2.006697286560666e-06
+      }
+    },
+    {
+      "frame": 38.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.165113493101671e-05,
+        "R": 8.231789979618043e-05
+      }
+    },
+    {
+      "frame": 38.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00011816823098342866,
+        "R": 1.8180224287789315e-05
+      }
+    },
+    {
+      "frame": 39.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.328687282395549e-05,
+        "R": 1.8314030967303552e-05
+      }
+    },
+    {
+      "frame": 39.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.1729395888978615e-05,
+        "R": 5.794340268039377e-06
+      }
+    },
+    {
+      "frame": 40.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.016473318799399e-06,
+        "R": 1.1198242646059953e-05
+      }
+    },
+    {
+      "frame": 40.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 6.486388429038925e-06,
+        "R": 1.63900858751731e-05
+      }
+    },
+    {
+      "frame": 41.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.0939378373441286e-05,
+        "R": 4.0554709812568035e-06
+      }
+    },
+    {
+      "frame": 41.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 7.055725291138515e-05,
+        "R": 4.906610774924047e-05
+      }
+    },
+    {
+      "frame": 42.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.6939347662846558e-05,
+        "R": 1.8807773813023232e-05
+      }
+    },
+    {
+      "frame": 42.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.596255191951059e-05,
+        "R": 0.00011065206490457058
+      }
+    },
+    {
+      "frame": 43.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.0561908968375064e-05,
+        "R": 2.8508866307674907e-05
+      }
+    },
+    {
+      "frame": 43.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.0385674563149223e-06,
+        "R": 1.8981729226652533e-05
+      }
+    },
+    {
+      "frame": 44.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.0002917017263825983,
+        "R": 1.9625040295068175e-05
+      }
+    },
+    {
+      "frame": 44.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 8.926940790843219e-05,
+        "R": 2.55981049122056e-05
+      }
+    },
+    {
+      "frame": 45.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.000207524819415994,
+        "R": 6.581228808499873e-05
+      }
+    },
+    {
+      "frame": 45.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.0796403229469433e-05,
+        "R": 5.8667119446909055e-05
+      }
+    },
+    {
+      "frame": 46.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.2784817196661606e-05,
+        "R": 4.30351537943352e-05
+      }
+    },
+    {
+      "frame": 46.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.120017820241628e-06,
+        "R": 8.595355757279322e-05
+      }
+    },
+    {
+      "frame": 47.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.163139940123074e-05,
+        "R": 6.710111392749241e-06
+      }
+    },
+    {
+      "frame": 47.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.1694648239645176e-05,
+        "R": 8.464173879474401e-05
+      }
+    },
+    {
+      "frame": 48.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00013894459698349237,
+        "R": 0.00012008959311060607
+      }
+    },
+    {
+      "frame": 48.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.1649335394613445e-05,
+        "R": 0.00012191258429083973
+      }
+    },
+    {
+      "frame": 49.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.244193769409321e-05,
+        "R": 0.00017075514188036323
+      }
+    },
+    {
+      "frame": 49.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.7855173508869484e-05,
+        "R": 9.437362314201891e-05
+      }
+    },
+    {
+      "frame": 50.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.552009729901329e-05,
+        "R": 1.1384182471374515e-05
+      }
+    },
+    {
+      "frame": 50.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.350196493556723e-05,
+        "R": 1.545449049444869e-05
+      }
+    },
+    {
+      "frame": 51.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.1793392079416662e-05,
+        "R": 7.641725824214518e-05
+      }
+    },
+    {
+      "frame": 51.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 5.675348802469671e-06,
+        "R": 2.4437806132482365e-05
+      }
+    },
+    {
+      "frame": 52.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 4.0806145989336073e-05,
+        "R": 8.226911450037733e-05
+      }
+    },
+    {
+      "frame": 52.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 3.188722985214554e-05,
+        "R": 7.086392724886537e-05
+      }
+    },
+    {
+      "frame": 53.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.6375329980510287e-05,
+        "R": 1.0499549716769252e-05
+      }
+    },
+    {
+      "frame": 53.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 2.980449062306434e-05,
+        "R": 5.794319076812826e-05
+      }
+    },
+    {
+      "frame": 54.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 1.1876698408741504e-05,
+        "R": 9.959503950085491e-05
+      }
+    },
+    {
+      "frame": 54.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.00013796928396914154,
+        "R": 6.591244164155796e-05
+      }
+    },
+    {
+      "frame": 55.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.000519523280672729,
+        "R": 0.00037281986442394555
+      }
+    },
+    {
+      "frame": 55.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.02471952512860298,
+        "R": 0.024451635777950287
+      }
+    },
+    {
+      "frame": 56.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.04919884726405144,
+        "R": 0.04881950840353966
+      }
+    },
+    {
+      "frame": 56.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.07497169077396393,
+        "R": 0.07471209019422531
+      }
+    },
+    {
+      "frame": 57.0,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.10256198048591614,
+        "R": 0.10212873667478561
+      }
+    },
+    {
+      "frame": 57.5,
+      "headIntersectingTriangles": 0,
+      "palmSurfaceDistance": {
+        "L": 0.11116492748260498,
+        "R": 0.11068591475486755
+      }
+    }
+  ]
+}

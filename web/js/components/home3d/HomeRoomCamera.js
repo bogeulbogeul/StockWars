@@ -27,8 +27,12 @@ export class HomeRoomCamera {
         this.camera.position.set(Math.sin(this.yaw) * this.radius, this.height,
             this.target.z + Math.cos(this.yaw) * this.radius);
         this.camera.lookAt(this.target);
+        this.updateWalls(room);
+    }
+
+    updateWalls(room, yaw = this.yaw) {
         if (!room) return;
-        const x = Math.sin(this.yaw), z = Math.cos(this.yaw);
+        const x = Math.sin(yaw), z = Math.cos(yaw);
         for (const [name, near] of [['Wall_Front', z > .35], ['Wall_Back', z < -.35],
             ['Wall_Right', x > .35], ['Wall_Left', x < -.35]]) {
             const wall = room.getObjectByName(name);

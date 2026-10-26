@@ -1,0 +1,8 @@
+{
+  "samples": 271,
+  "sharedHeadTorsoEdges": 389,
+  "openEdgesAtHeadTorsoJoin": 0,
+  "bridgeTriangles": 19871,
+  "minimumTriangleAreaRatio": 0.5614092586751457,
+  "minimumTriangleNormalAlignment": 0.7227933211936662
+}

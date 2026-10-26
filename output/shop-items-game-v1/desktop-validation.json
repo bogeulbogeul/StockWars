@@ -1,0 +1,37 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "report": {
+    "count": 32,
+    "ids": [
+      "item_petal_tea",
+      "item_herb_tea",
+      "item_popori_bread",
+      "item_honey_cookie",
+      "item_honey_candy",
+      "item_crypto_decoder",
+      "item_moon_powder",
+      "item_apple_juice",
+      "item_dew_jelly",
+      "item_berry_juice"
+    ],
+    "overlaps": [],
+    "supportErrors": [],
+    "baselineBodies": 110,
+    "decorBodies": 0,
+    "centerFree": true,
+    "exitFree": true,
+    "renderer": {
+      "frame": 37,
+      "calls": 878,
+      "triangles": 4389192,
+      "points": 0,
+      "lines": 0
+    }
+  },
+  "all12Selected": true,
+  "purchaseAndReceipt": true,
+  "mobileNoOverflow": true,
+  "realGameLoaded": true,
+  "errors": [],
+  "missing": []
+}

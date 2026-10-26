@@ -1,0 +1,52 @@
+{
+  "moods": {
+    "calm": {
+      "clip": "Moa_Leaf_Calm",
+      "seconds": 2.4,
+      "loop": true,
+      "affectedBones": [
+        "Leaf.Base",
+        "Leaf.Tip"
+      ]
+    },
+    "happy": {
+      "clip": "Moa_Leaf_Happy",
+      "seconds": 1.2,
+      "loop": true,
+      "affectedBones": [
+        "Leaf.Base",
+        "Leaf.Tip"
+      ]
+    },
+    "sad": {
+      "clip": "Moa_Leaf_Sad",
+      "seconds": 2.4,
+      "loop": true,
+      "affectedBones": [
+        "Leaf.Base",
+        "Leaf.Tip"
+      ]
+    },
+    "curious": {
+      "clip": "Moa_Leaf_Curious",
+      "seconds": 2.0,
+      "loop": true,
+      "affectedBones": [
+        "Leaf.Base",
+        "Leaf.Tip"
+      ]
+    },
+    "surprised": {
+      "clip": "Moa_Leaf_Surprised",
+      "seconds": 1.0,
+      "loop": true,
+      "affectedBones": [
+        "Leaf.Base",
+        "Leaf.Tip"
+      ]
+    }
+  },
+  "blending": "Crossfade leaf actions over the body walk; leaf-only tracks.",
+  "rootAttachment": "Head > Leaf.Base > Leaf.Tip",
+  "gameInstalled": false
+}

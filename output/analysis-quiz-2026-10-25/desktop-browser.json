@@ -1,0 +1,18 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "progress": {
+    "level": 2,
+    "current": 0,
+    "required": 6,
+    "max": false,
+    "totalCorrect": 6,
+    "remainingToMax": 104
+  },
+  "wrongRetry": true,
+  "reloadDedupe": true,
+  "copyDedupe": true,
+  "promotionRefresh": true,
+  "mobile": true,
+  "errors": [],
+  "presentation": "production components/CSS after real application bootstrap"
+}

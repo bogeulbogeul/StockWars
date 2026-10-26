@@ -1,0 +1,25 @@
+.rumor-quiz { border-top: 1px solid #756028; padding-top: 16px; color: #e6e8ec; }
+.rumor-quiz h3 { margin: 0 0 12px; font-size: 20px; }
+.rumor-quiz p { margin: 10px 0; line-height: 1.65; }
+.rumor-quiz-progress { color: #ffd67c; font-weight: 700; }
+.rumor-quiz button { font: inherit; cursor: pointer; border-radius: 9px; padding: 12px 16px; min-height: 44px; }
+.rumor-quiz-start { background: #ffb322; color: #171411; border: 0; font-weight: 700; }
+.rumor-quiz-choices { display: grid; gap: 10px; margin: 14px 0; }
+.rumor-quiz-choice { text-align: left; background: #20283b; color: #f0f3fa; border: 1px solid #66718a; line-height: 1.6; }
+.rumor-quiz-choice:hover, .rumor-quiz-choice:focus-visible { border-color: #ffd67c; background: #303b52; }
+.rumor-quiz-choice:disabled { cursor: default; opacity: .75; }
+.rumor-quiz-feedback { color: #ffe6ad; }
+.rumor-quiz-later { background: transparent; color: #d2d9e6; border: 1px solid #69748b; }
+.rumor-quiz summary { cursor: pointer; color: #c3d8f5; padding: 10px 0; }
+.rumor-quiz details p { font-size: 16px; color: #c3cbd8; }
+
+/* Reading and quiz sections scroll as full blocks rather than shrinking into each other. */
+#rumorSecretModal .rumor-body > * { flex-shrink: 0; }
+#rumorSecretModal .rumor-doc-box > * { flex-shrink: 0; }
+@media (max-width: 600px) {
+    #rumorSecretModal .rumor-body { padding: 16px; }
+    #rumorSecretModal .rumor-doc-box { padding: 14px; }
+    #rumorSecretModal .rumor-doc-text { font-size: 18px; line-height: 1.7; }
+    #rumorSecretModal .rumor-name-text { font-size: 20px; }
+    .rumor-quiz-choice { padding: 10px 12px; font-size: 15px; }
+}

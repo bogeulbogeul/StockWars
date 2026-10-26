@@ -1,0 +1,28 @@
+{
+  "Head": {
+    "originalVertices": 9044,
+    "maximumOriginalPositionDifference": 0.0
+  },
+  "Arm.L": {
+    "originalVertices": 3974,
+    "maximumOriginalPositionDifference": 0.0
+  },
+  "Arm.R": {
+    "originalVertices": 4182,
+    "maximumOriginalPositionDifference": 0.0
+  },
+  "visibleTorsoSurface": {
+    "samples": 22586,
+    "maximumSurfaceDistance": 0.011963347904384136,
+    "p99SurfaceDistance": 0.008134315442293885,
+    "p95SurfaceDistance": 0.0038694932009093463
+  },
+  "materials": [
+    "Material_0",
+    "Face_ink_nonmetal",
+    "Hidden shoulder original matte skin",
+    "Material_0.001",
+    "Face_ink_nonmetal.001",
+    "Hidden shoulder original matte skin.001"
+  ]
+}

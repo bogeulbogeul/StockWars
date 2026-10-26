@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>AudioContext baseline</title>
+<button id="start">AudioContext</button>
+<script>
+document.getElementById('start').onclick=async()=>{
+ window.audio=new AudioContext();await audio.resume();console.log('baseline context running');
+ const response=await fetch('../../electron-app/dist/win-unpacked/resources/web/assets/audio/town-time-v1/dawn-loop.wav');console.log('baseline fetch',response.status);
+ const bytes=await response.arrayBuffer();console.log('baseline bytes',bytes.byteLength);
+ const buffer=await audio.decodeAudioData(bytes);console.log('baseline decoded',buffer.duration);
+ const source=audio.createBufferSource();source.buffer=buffer;source.loop=true;source.connect(audio.destination);source.start();
+ window.baselineFinished=true;
+};
+</script>

@@ -1,0 +1,79 @@
+[
+  {
+    "file": "somangi-walk.glb",
+    "target": "web/assets/characters/3d/somangi/walk.glb",
+    "sha256": "5689f14b85947b47f4b045f48d7a130f554a7e3cde8d34cc17b03a14c819e288",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "somangi-wave.glb",
+    "target": "web/assets/characters/3d/somangi/wave.glb",
+    "sha256": "504d42bb61ac111b8f93380719b88a75db3db62448412e06257e1d0d6a1c93d2",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "somangi-eat.glb",
+    "target": "web/assets/characters/3d/somangi/eat.glb",
+    "sha256": "6ccfb5c28cb5515423ee59c3d84772077fd68630a8e5ec31805160b1fc8d6823",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "somangi-jump.glb",
+    "target": "web/assets/characters/3d/somangi/jump.glb",
+    "sha256": "74f73a1d2f0393b683abbc0e0c31b0c308e6dd46b1eb2e977e347545cb4949f9",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "somangi-crab.glb",
+    "target": "web/assets/characters/3d/somangi/crab.glb",
+    "sha256": "eb57886e016a51f7d5888fa1fb532311f87e64b44f5da085397c6375be47eaea",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "somangi-office-sit.glb",
+    "target": "web/assets/characters/3d/somangi/office-sit.glb",
+    "sha256": "e9ab2d199e193a3621cf3f74e37279e686f1fe1a363c515c18a0472131c2e4f8",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "moa-bench-sit.glb",
+    "target": "web/assets/characters/3d/anna/bench-sit.glb",
+    "sha256": "c9d94ce8a86326cca57c9962fbff92c171540919ec84da241b5a21c7704bac35",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "moa-bench-doze.glb",
+    "target": "web/assets/characters/3d/anna/bench-doze.glb",
+    "sha256": "366e1fe4503c766deaa04479387af4eb1302d1db5543e022a8a22bde0a906769",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "tori.glb",
+    "target": "web/assets/characters/3d/agent-k/Agent-K.glb",
+    "sha256": "2c4b96d52c2a85cc643c08bcd030b363853c6e3b4c01003b9b554f08c3a14fbe",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "information-room.glb",
+    "target": "web/assets/office/3d/Information-furnished-room.glb",
+    "sha256": "e70af4118e5c35f811926a475186dea0d2123c12157069de5f74f4a42f1beecf",
+    "web": true,
+    "runtime": true
+  },
+  {
+    "file": "bongbong.glb",
+    "target": "web/assets/characters/3d/bongbong/Bongbong.glb",
+    "sha256": "d291ab6316f3567e1abb7a8ecc31edac1ff421348db761cb49e1add517578bee",
+    "web": true,
+    "runtime": true
+  }
+]

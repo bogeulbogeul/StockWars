@@ -1,0 +1,15 @@
+{
+  "concept": "furniture-redesign-concept-v1/concept.png",
+  "source": "furniture-exterior-clean-v1",
+  "roof": {
+    "roofTiles": 212,
+    "mainRidgeCaps": 9,
+    "wingRidgeCaps": 10,
+    "mainHalfWidth": 1.173,
+    "mainPeak": 2.3,
+    "wingPeak": 1.94,
+    "valleyWidthX": 0.024
+  },
+  "gameApplied": false,
+  "sha256": "691e6d57f31b23b260affe5a58f9732bee1ff62b6aba25a25a7de701b8a978e3"
+}

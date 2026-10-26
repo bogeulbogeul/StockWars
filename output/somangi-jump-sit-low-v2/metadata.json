@@ -1,0 +1,20 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\somangi-sit-v1\\somangi-sit.blend",
+  "meshAndUvUnchanged": true,
+  "meshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "floorZ": -0.950643002986908,
+  "seatZ": -0.3266429603099823,
+  "benchScale": 1.7333333333333332,
+  "benchCenterY": 0.6769333333333334,
+  "seatedRootZ": 0.3222920916080475,
+  "clips": {
+    "Jump_Sit": 1.2,
+    "Town_Bench_Idle": 1,
+    "Jump_Sit_Preview": 2.3
+  },
+  "launchSeconds": 0.2,
+  "flightEndSeconds": 0.75,
+  "settleEndSeconds": 0.95,
+  "jumpArcCoefficient": 1.05,
+  "gameInstalled": false
+}

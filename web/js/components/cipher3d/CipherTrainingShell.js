@@ -10,7 +10,7 @@ export function buildCipherTrainingShell(scene) {
     const room = new THREE.Group();
     room.name = 'cipher-training-shell';
     room.userData.shellReady = addCipherLobbyShell(room, 'Cipher-training-shell');
-    room.userData.marketBoard = new CipherMarketBoard(room);
+    room.userData.marketBoard = new CipherMarketBoard(room, undefined, { lesson: true });
     room.userData.deskReady = addCipherTrainingDesks(room);
     room.userData.seatingReady = addCipherTrainingChairs(room);
     room.userData.furnitureReady = addCipherTrainingCabinet(room);

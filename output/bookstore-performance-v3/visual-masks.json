@@ -1,0 +1,34 @@
+[
+  {
+    "label": "actors--100-0",
+    "masksEqual": true
+  },
+  {
+    "label": "actors-100-0",
+    "masksEqual": true
+  },
+  {
+    "label": "actors-0-50",
+    "masksEqual": true
+  },
+  {
+    "label": "actors-0--50",
+    "masksEqual": true
+  },
+  {
+    "label": "camera-2650-230-5105.2",
+    "masksEqual": true
+  },
+  {
+    "label": "camera-2600-450-5485.2",
+    "masksEqual": true
+  },
+  {
+    "label": "camera-3000-300-5085.2",
+    "masksEqual": true
+  },
+  {
+    "label": "camera-2700-250-4065.2",
+    "masksEqual": true
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "articles": 288,
+  "search": true,
+  "sectors": 8,
+  "fullBody": true,
+  "source": true,
+  "focusReturn": true,
+  "liveUpdates": true,
+  "escapedText": true,
+  "relatedStock": true,
+  "stockFilterClear": true,
+  "mobileSizes": 2,
+  "cleanup": true,
+  "exhibitionReadOnly": true,
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "crosshair": true,
+  "tooltip": true,
+  "markerOnLine": true,
+  "letterboxCoordinates": true,
+  "refreshPreserved": true,
+  "weeklyAndYearly": true,
+  "expansionVisible": true,
+  "restore": true,
+  "mobileAndTouch": true,
+  "errors": []
+}

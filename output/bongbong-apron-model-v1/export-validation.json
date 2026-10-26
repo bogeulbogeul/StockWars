@@ -1,0 +1,8 @@
+{
+  "glb_reimport": true,
+  "mesh_objects": 22,
+  "armatures": 1,
+  "actions": [
+    "Walk_InPlace"
+  ]
+}

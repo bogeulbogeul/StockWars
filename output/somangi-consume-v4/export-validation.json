@@ -1,0 +1,12 @@
+{
+  "bread": {
+    "characterGeometryAndAllMorphTargetsIdentical": true,
+    "characterMorphAnimationIdentical": true,
+    "comparedAttributeBuffers": 70
+  },
+  "drink": {
+    "characterGeometryAndAllMorphTargetsIdentical": true,
+    "characterMorphAnimationIdentical": true,
+    "comparedAttributeBuffers": 70
+  }
+}

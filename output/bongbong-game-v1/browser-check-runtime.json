@@ -1,0 +1,20 @@
+{
+  "root": "C:\\GitHub\\StockWars\\electron-app\\dist\\win-unpacked\\resources\\web",
+  "result": {
+    "meshes": [
+      "Bongbong_RoundedBud",
+      "Original_whole_arms_without_elbow_cuts",
+      "Original_whole_arms_without_elbow_cuts_1",
+      "Original_whole_arms_without_elbow_cuts_2",
+      "Original_whole_arms_without_elbow_cuts_3"
+    ],
+    "count": 1,
+    "height": 113.6604780107032,
+    "footY": -1.3028189727037898e-7,
+    "counterCalls": 1,
+    "collision": true,
+    "entranceClear": true,
+    "scale": 75
+  },
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "samples": 181,
+  "bodyGeometryMaxDifference": 0.0,
+  "topologyUnchanged": true,
+  "bones": [
+    "Body",
+    "Arm.L",
+    "Arm.R",
+    "Head"
+  ],
+  "armBodiesRigidOutsideConnections": true,
+  "weightSumError": 3.5762786865234375e-07,
+  "fixedBodyDisplacement": 0.0,
+  "relativeEdgeLengthError": {
+    "Arm.L": 7.66720362965767e-05,
+    "Arm.R": 8.029275033372141e-05,
+    "Head": 1.971694760960485e-05
+  },
+  "distalArmHeadCollisionSamples": 0,
+  "foodHeadCollisionSamples": 0,
+  "foodBodyCollisionSamples": 0,
+  "endRestMaxDifference": 5.960464477539063e-08
+}

@@ -1,0 +1,9 @@
+{
+  "samples": 181,
+  "maximumGripSeparation": 0.0019393598471135476,
+  "scaleDecreasesMonotonically": true,
+  "finalLinearScale": 0.45999998783609203,
+  "restShapeUnchanged": true,
+  "oneEatingClipOnly": true,
+  "beverageObjectsIncluded": false
+}

@@ -1,0 +1,20 @@
+{
+  "cinematicCheckedSeparately": true,
+  "usedStoryStageSkips": false,
+  "continuousRunLastCursor": 270,
+  "continuousRunLastAction": "diaryWritten",
+  "continuousRunErrors": [],
+  "continuousRunLimit": "150-second no-progress limit during diary; not a single-session completion",
+  "resumedFromActualCheckpoint": true,
+  "resumedDiaryShortcut": "J",
+  "resumedDiaryWritten": true,
+  "resumedSleepAnimation": true,
+  "resumedDemoComplete": true,
+  "resumedBrowserErrors": [],
+  "unitTestsPassed": 29,
+  "additionalFixes": [
+    "rumor early-close guidance",
+    "hidden Moa dialogue facing",
+    "missing J guidance label"
+  ]
+}

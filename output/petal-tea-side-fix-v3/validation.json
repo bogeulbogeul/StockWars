@@ -1,0 +1,19 @@
+{
+  "id": "item_petal_tea",
+  "reimported": true,
+  "meshCount": 11,
+  "embeddedPrints": 4,
+  "degenerateFaces": 0,
+  "triangles": 198,
+  "boundsMin": [
+    -0.49000000953674316,
+    -0.3009999990463257,
+    -0.003000000026077032
+  ],
+  "boundsMax": [
+    0.49000000953674316,
+    0.30399999022483826,
+    1.2808648347854614
+  ],
+  "sha256": "3bb2e339c6815b8241b88af59faac10f4f97f763f057fbd072361214bf3d86f1"
+}

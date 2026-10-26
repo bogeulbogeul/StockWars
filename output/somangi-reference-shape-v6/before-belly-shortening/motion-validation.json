@@ -1,0 +1,95 @@
+{
+  "report": [
+    {
+      "file": "walk.glb",
+      "clip": "Walk_InPlace",
+      "duration": 0.78125,
+      "frames": 20,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "wave.glb",
+      "clip": "Wave_Happy",
+      "duration": 2.5416667461395264,
+      "frames": 63,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "eat.glb",
+      "clip": "Eat",
+      "duration": 3.0416667461395264,
+      "frames": 75,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "jump.glb",
+      "clip": "Jump",
+      "duration": 1.5416666269302368,
+      "frames": 38,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "crab.glb",
+      "clip": "Crab_Enter",
+      "duration": 0.5416666865348816,
+      "frames": 15,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "crab.glb",
+      "clip": "Crab_Exit",
+      "duration": 0.5416666865348816,
+      "frames": 15,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "crab.glb",
+      "clip": "Crab_Left",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "crab.glb",
+      "clip": "Crab_Right",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    },
+    {
+      "file": "office-sit.glb",
+      "clip": "Office_Sit",
+      "duration": 1.0416666269302368,
+      "frames": 26,
+      "outsideFrames": [],
+      "nonFinite": false,
+      "minSamples": 32,
+      "shoulderNoOverlapFrames": []
+    }
+  ],
+  "errors": []
+}

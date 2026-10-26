@@ -1,0 +1,62 @@
+[
+  {
+    "file": "js/engine/AbilityRetirement.js",
+    "sha256": "54CB552D835BE4D5D35071F1317A64BDA4311C0F580522BCB5682F291A9BACE3"
+  },
+  {
+    "file": "js/engine/ItemEngine.js",
+    "sha256": "270B3F3860EF6BA93A96C5C265C66FD9B47B38F57B49A1199994F3FFF5162357"
+  },
+  {
+    "file": "js/engine/PlayerTrait.js",
+    "sha256": "D1D90A686AA5CE6595920FC5AB15427D50418B71D307E951BE03642D4E17A399"
+  },
+  {
+    "file": "js/engine/PlayerGrowth.js",
+    "sha256": "B155239B28B046151F70AA67BA8BD83A05D477B8851775884226DB03FE9859E0"
+  },
+  {
+    "file": "js/engine/marketEngine.js",
+    "sha256": "2424E395354FADAD706BEC7940262D61A6ED662A0FA9A0D84375575241D9C441"
+  },
+  {
+    "file": "js/app/ItemGameplay.js",
+    "sha256": "BDFEA7DF53C804AED376FEE36F7F8B034D7DA777B2026F87FF897A2D7D82C0E4"
+  },
+  {
+    "file": "js/components/PlayerProfileModal.js",
+    "sha256": "102EEC131A38A1FD9D4E37DAF8BB373F883664C09829EE8D8B210C2530CB80A5"
+  },
+  {
+    "file": "js/components/ItemCenter.js",
+    "sha256": "58B3FF7BE1E5A2FAFCE763D7C53B5C6AB1C89BFE7BE2F448287007D9C009B88C"
+  },
+  {
+    "file": "js/components/CharacterCreation.js",
+    "sha256": "58B504EB5EC6F1F1AB8322EA9F1B4984C0473A5A08B0853AEA53A0A2B9FAFED7"
+  },
+  {
+    "file": "js/components/character/PersonalityTestStep.js",
+    "sha256": "292607FA0108863692B2082A55662CA11D329C8FD1A80F366DB54BE1979EFB45"
+  },
+  {
+    "file": "js/components/tutorial/annaLaterLessons.js",
+    "sha256": "BDA25DA4CFFB1F5D444B1048C3251A134C4F1A5B90DF60FCDEC02926910E69C3"
+  },
+  {
+    "file": "js/components/tutorial/compactAnnaLessons.js",
+    "sha256": "EE7A5E75E77579941B49A87054881D4F4B06C1DDE778CDAB730F53C4E28A087E"
+  },
+  {
+    "file": "js/components/tutorial/tutorialPresentation.js",
+    "sha256": "E024EA5D8907F5AC50E40B092DDFFC2C388131CF8A172C75602D7A587F843FAF"
+  },
+  {
+    "file": "js/data/vivianLegacyCatalog.js",
+    "sha256": "5FC7A9F1FA5B49AD3B44F47E9852A7F480C37336FAACCAB1221564C52B196DDF"
+  },
+  {
+    "file": "css/style.css",
+    "sha256": "D8DD3D6EA248CC1C9804E5054652436B65964F7E87C2DD9B331C680AC5EAA35B"
+  }
+]

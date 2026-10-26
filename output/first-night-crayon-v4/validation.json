@@ -1,0 +1,20 @@
+{
+  "awake.png": {
+    "size": [
+      1671,
+      941
+    ],
+    "sha256": "b65f91901d168fcd686dfdc115fd14b625c487925ee3470b01fd7d0ed0e4dcfb",
+    "webMatch": true,
+    "runtimeMatch": true
+  },
+  "asleep.png": {
+    "size": [
+      1671,
+      941
+    ],
+    "sha256": "dfb6b63ae223c936e2ddff0fbb7748db90fba2098ca2aa32e57ed0a1ca2ff551",
+    "webMatch": true,
+    "runtimeMatch": true
+  }
+}

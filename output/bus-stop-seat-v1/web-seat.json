@@ -1,0 +1,25 @@
+{
+  "seat": {
+    "platform": 11.731843993196057,
+    "seatTop": 43.73184384221192,
+    "before": {
+      "x": 946.653629210437,
+      "y": 2317.2611579703785,
+      "height": 11.731843993196057
+    }
+  },
+  "seated": {
+    "state": "seated",
+    "x": 946.653629210437,
+    "y": 2297.081391303468,
+    "rootHeight": 26.883636071116673,
+    "seatTop": 43.73184384221192,
+    "underside": 44.031844042510606,
+    "otherIntersections": 0
+  },
+  "standing": true,
+  "movementExit": true,
+  "mouseToggle": true,
+  "platformJump": true,
+  "errors": []
+}

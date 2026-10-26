@@ -1,0 +1,17 @@
+{
+  "result": {
+    "sameCanvas": true,
+    "sameEnvironment": true,
+    "exposure": 0.72,
+    "restored": true,
+    "pixel": {
+      "x": 992,
+      "y": 383
+    },
+    "pixels": {
+      "meanDifference": 0.225625,
+      "maxDifference": 27
+    }
+  },
+  "errors": []
+}

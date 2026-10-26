@@ -1,0 +1,545 @@
+{
+  "durationSeconds": 3,
+  "restMeshAndUvUnchanged": true,
+  "meshHash": "f24d66ff0466dbe987b51cbcd718b6c8c0102529214a95cea5f6ba6296382f55",
+  "foodScaleStages": [
+    1,
+    0.82,
+    0.64,
+    0.46
+  ],
+  "gripAnchor": [
+    -0.15897181630134583,
+    0.01999983936548233,
+    -0.09208331257104874
+  ],
+  "palmVertexIds": [
+    16419,
+    16426,
+    16473,
+    16491,
+    16511,
+    16529,
+    16537,
+    16538,
+    16544,
+    16553,
+    16554,
+    16573,
+    16580,
+    16583,
+    16590,
+    16594,
+    16629,
+    16632,
+    16641,
+    16642,
+    16644,
+    16645,
+    16660,
+    16661,
+    16667,
+    16680,
+    16681,
+    16682,
+    16700,
+    16717,
+    16718,
+    16719,
+    16748,
+    16751,
+    16752,
+    16771,
+    16772,
+    16773,
+    16774,
+    16775,
+    16781,
+    16791,
+    16796,
+    16797,
+    16810,
+    16811,
+    16812,
+    16814,
+    16815,
+    16823,
+    16824,
+    16827,
+    16830,
+    16845,
+    16857,
+    16859,
+    16885,
+    16886,
+    16902,
+    16904,
+    16905,
+    16907,
+    16908,
+    16925,
+    16927,
+    16929,
+    16942,
+    16955,
+    16956,
+    16959,
+    16961,
+    16962,
+    16963,
+    16964,
+    16965,
+    16985,
+    16988,
+    16989,
+    17006,
+    17007,
+    17009,
+    17010,
+    17018,
+    17019,
+    17027,
+    17037,
+    17047,
+    17049,
+    17052,
+    17053,
+    17054,
+    17060,
+    17061,
+    17073,
+    17074,
+    17075,
+    17077,
+    17079,
+    17080,
+    17081,
+    17104,
+    17110,
+    17119,
+    17120,
+    17124,
+    17125,
+    17128,
+    17130,
+    17140,
+    17145,
+    17146,
+    17149,
+    17150,
+    17165,
+    17166,
+    17169,
+    17179,
+    17189,
+    17201,
+    17204,
+    17205,
+    17209,
+    17211,
+    17216,
+    17217,
+    17230,
+    17234,
+    17235,
+    17236,
+    17237,
+    17244,
+    17249,
+    17261,
+    17265,
+    17269,
+    17276,
+    17280,
+    17283,
+    17286,
+    17295,
+    17296,
+    17305,
+    17307,
+    17331,
+    17333,
+    17335,
+    17336,
+    17344,
+    17365,
+    17366,
+    17367,
+    17368,
+    17396,
+    17404,
+    17413,
+    17423,
+    17425
+  ],
+  "sourceBody": "C:\\GitHub\\StockWars\\output\\somangi-eat-drink-grip-v3\\somangi-drink.blend",
+  "singleEatingClip": true,
+  "beverageIncluded": false,
+  "gameInstalled": false,
+  "scaleSamples": [
+    {
+      "frame": 1,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 2,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 3,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 4,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 5,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 6,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 7,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 8,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 9,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 10,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 11,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 12,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 13,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 14,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 15,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 16,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 17,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 18,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 19,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 20,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 21,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 22,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 23,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 24,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 25,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 26,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 27,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 28,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 29,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 30,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 31,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 32,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 33,
+      "relativeScale": 1.0
+    },
+    {
+      "frame": 34,
+      "relativeScale": 0.9706455999999999
+    },
+    {
+      "frame": 35,
+      "relativeScale": 0.8670878222222225
+    },
+    {
+      "frame": 36,
+      "relativeScale": 0.8200633777777779
+    },
+    {
+      "frame": 37,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 38,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 39,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 40,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 41,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 42,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 43,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 44,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 45,
+      "relativeScale": 0.8200000000000001
+    },
+    {
+      "frame": 46,
+      "relativeScale": 0.7906456
+    },
+    {
+      "frame": 47,
+      "relativeScale": 0.6870878222222219
+    },
+    {
+      "frame": 48,
+      "relativeScale": 0.6400633777777779
+    },
+    {
+      "frame": 49,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 50,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 51,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 52,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 53,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 54,
+      "relativeScale": 0.64
+    },
+    {
+      "frame": 55,
+      "relativeScale": 0.6106456
+    },
+    {
+      "frame": 56,
+      "relativeScale": 0.5070878222222226
+    },
+    {
+      "frame": 57,
+      "relativeScale": 0.46006337777777795
+    },
+    {
+      "frame": 58,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 59,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 60,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 61,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 62,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 63,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 64,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 65,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 66,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 67,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 68,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 69,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 70,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 71,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 72,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 73,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 74,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 75,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 76,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 77,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 78,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 79,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 80,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 81,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 82,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 83,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 84,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 85,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 86,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 87,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 88,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 89,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 90,
+      "relativeScale": 0.45999999999999996
+    },
+    {
+      "frame": 91,
+      "relativeScale": 0.45999999999999996
+    }
+  ]
+}

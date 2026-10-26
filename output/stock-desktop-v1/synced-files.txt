@@ -1,0 +1,7 @@
+css/modules/phone-stock.css
+css/modules/phone-stock-order.css
+css/modules/stock-desktop.css
+js/components/phone/stock/StockApp.js
+js/components/phone/stock/StockOrder.js
+js/components/phone/stock/StockBrand.js
+js/components/phone/stock/StockScreens.js

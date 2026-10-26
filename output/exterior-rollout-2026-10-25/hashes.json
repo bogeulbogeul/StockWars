@@ -1,0 +1,22 @@
+[
+  {
+    "file": "Home-inset-window.glb",
+    "sha256": "904E6A359034A70048BA5CE44F061A21B869D001652235943EB1F0DBC7CCFBDF",
+    "matched": true
+  },
+  {
+    "file": "CipherSecurities-clock.glb",
+    "sha256": "2A47FDF6A00F9EFC91D8127265C5AD060E92A951F340E0A2F4DA58C694236656",
+    "matched": true
+  },
+  {
+    "file": "VivianStore-clean.glb",
+    "sha256": "4DB42FADD440F4943D41D5B0D305F68D962CD05164C7FACEA9DD63D13C241CC3",
+    "matched": true
+  },
+  {
+    "file": "Bookstore-clean.glb",
+    "sha256": "91962E722865FFF88D38A6E7DD36AD39A8D2389B3E3E937614EEF3C285D1C997",
+    "matched": true
+  }
+]

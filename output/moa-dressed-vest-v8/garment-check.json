@@ -1,0 +1,21 @@
+{
+  "source": "C:\\GitHub\\StockWars\\output\\fairy-clothing-closefit-v5\\moa-bench-sit.glb",
+  "garment": "Anna_Vest",
+  "vertices": 171154,
+  "scale": [
+    0.96,
+    "0.84 + 0.40 * normalizedHeight^2",
+    0.96
+  ],
+  "translation": [
+    0,
+    0,
+    -0.05
+  ],
+  "retainedLegacyObjects": [
+    "Anna_Vest only"
+  ],
+  "currentBodyVertexChange": 0,
+  "currentLeafAndRigRetained": true,
+  "gameInstalled": false
+}

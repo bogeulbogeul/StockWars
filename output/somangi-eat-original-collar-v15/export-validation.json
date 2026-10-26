@@ -1,0 +1,8 @@
+{
+  "file": "somangi-eat.glb",
+  "samples": 181,
+  "headTriangles": 17698,
+  "headFoodTriangleIntersections": 0,
+  "maximumFaceClearanceViolationAlongY": 0,
+  "testedFaceClearanceAlongY": 0.01
+}

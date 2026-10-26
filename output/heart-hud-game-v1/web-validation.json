@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "existing stamina sync and recovery",
+    "exhibition default 3",
+    "empty hearts",
+    "guidance and money no overlap",
+    "320/360/600px and short landscape",
+    "phone hide restore",
+    "title hidden"
+  ]
+}
