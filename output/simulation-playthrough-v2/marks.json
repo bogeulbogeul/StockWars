@@ -1,0 +1,58 @@
+[
+  {
+    "name": "01-title",
+    "time": 2.167
+  },
+  {
+    "name": "02-start",
+    "time": 5.094
+  },
+  {
+    "name": "03-energy-company",
+    "time": 15.228
+  },
+  {
+    "name": "04-chart",
+    "time": 24.794
+  },
+  {
+    "name": "05-first-buy",
+    "time": 28.944
+  },
+  {
+    "name": "06-news-one",
+    "time": 36.443
+  },
+  {
+    "name": "07-second-buy",
+    "time": 40.706
+  },
+  {
+    "name": "08-news-two-account",
+    "time": 44.399
+  },
+  {
+    "name": "09-first-sale",
+    "time": 52.648
+  },
+  {
+    "name": "10-final-sale",
+    "time": 60.435
+  },
+  {
+    "name": "11-result",
+    "time": 60.55
+  },
+  {
+    "name": "12-history",
+    "time": 65.167
+  },
+  {
+    "name": "13-retry",
+    "time": 69.304
+  },
+  {
+    "name": "14-return-title",
+    "time": 71.845
+  }
+]

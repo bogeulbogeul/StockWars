@@ -1,0 +1,198 @@
+[
+  {
+    "id": "opening-1",
+    "source": {
+      "version": 2,
+      "start": 129.711,
+      "end": 136.667
+    },
+    "duration": 6.96,
+    "editedStart": 0,
+    "editedEnd": 6.96
+  },
+  {
+    "id": "opening-2",
+    "source": {
+      "version": 2,
+      "start": 137.13000000000002,
+      "end": 145.748
+    },
+    "duration": 8.64,
+    "editedStart": 6.96,
+    "editedEnd": 15.600000000000001
+  },
+  {
+    "id": "village",
+    "source": {
+      "version": 2,
+      "start": 151.075,
+      "end": 160.969
+    },
+    "duration": 9.92,
+    "editedStart": 15.600000000000001,
+    "editedEnd": 25.520000000000003
+  },
+  {
+    "id": "anna-dialogue",
+    "source": {
+      "version": 2,
+      "start": 167.667,
+      "end": 173.843
+    },
+    "duration": 6.2,
+    "editedStart": 25.520000000000003,
+    "editedEnd": 31.720000000000002
+  },
+  {
+    "id": "paper-and-application",
+    "source": {
+      "version": 2,
+      "start": 180.60399999999998,
+      "end": 192.435
+    },
+    "duration": 11.84,
+    "editedStart": 31.720000000000002,
+    "editedEnd": 43.56
+  },
+  {
+    "id": "phone-full-handoff",
+    "source": {
+      "version": 2,
+      "start": 195.879,
+      "end": 200.162
+    },
+    "duration": 4.32,
+    "editedStart": 43.56,
+    "editedEnd": 47.88
+  },
+  {
+    "id": "one-box",
+    "source": {
+      "version": 2,
+      "start": 274.325,
+      "end": 283.628
+    },
+    "duration": 9.32,
+    "editedStart": 47.88,
+    "editedEnd": 57.2
+  },
+  {
+    "id": "wage-and-envelope-full",
+    "source": {
+      "version": 2,
+      "start": 293.84499999999997,
+      "end": 306.013
+    },
+    "duration": 12.2,
+    "editedStart": 57.2,
+    "editedEnd": 69.4
+  },
+  {
+    "id": "broker-room",
+    "source": {
+      "version": 3,
+      "start": 265.55199999999996,
+      "end": 270.278
+    },
+    "duration": 4.76,
+    "editedStart": 69.4,
+    "editedEnd": 74.16000000000001
+  },
+  {
+    "id": "market-browse",
+    "source": {
+      "version": 3,
+      "start": 365.378,
+      "end": 369.764
+    },
+    "duration": 4.4,
+    "editedStart": 74.16000000000001,
+    "editedEnd": 78.56000000000002
+  },
+  {
+    "id": "broker-company",
+    "source": {
+      "version": 3,
+      "start": 270.518,
+      "end": 276.114
+    },
+    "duration": 5.6,
+    "editedStart": 78.56000000000002,
+    "editedEnd": 84.16000000000001
+  },
+  {
+    "id": "broker-chart",
+    "source": {
+      "version": 3,
+      "start": 276.224,
+      "end": 284.195
+    },
+    "duration": 8,
+    "editedStart": 84.16000000000001,
+    "editedEnd": 92.16000000000001
+  },
+  {
+    "id": "chart-analysis",
+    "source": {
+      "version": 3,
+      "start": 369.95099999999996,
+      "end": 374.82099999999997
+    },
+    "duration": 4.88,
+    "editedStart": 92.16000000000001,
+    "editedEnd": 97.04
+  },
+  {
+    "id": "broker-order",
+    "source": {
+      "version": 3,
+      "start": 286.83299999999997,
+      "end": 293.209
+    },
+    "duration": 6.4,
+    "editedStart": 97.04,
+    "editedEnd": 103.44000000000001
+  },
+  {
+    "id": "purchase-result",
+    "source": {
+      "version": 3,
+      "start": 293.29499999999996,
+      "end": 297.023
+    },
+    "duration": 3.76,
+    "editedStart": 103.44000000000001,
+    "editedEnd": 107.20000000000002
+  },
+  {
+    "id": "portfolio",
+    "source": {
+      "version": 3,
+      "start": 355.837,
+      "end": 360.891
+    },
+    "duration": 5.08,
+    "editedStart": 107.20000000000002,
+    "editedEnd": 112.28000000000002
+  },
+  {
+    "id": "transactions",
+    "source": {
+      "version": 3,
+      "start": 361.00899999999996,
+      "end": 365.247
+    },
+    "duration": 4.24,
+    "editedStart": 112.28000000000002,
+    "editedEnd": 116.52000000000001
+  },
+  {
+    "id": "end-title",
+    "source": {
+      "version": 2
+    },
+    "duration": 6,
+    "editedStart": 116.52000000000001,
+    "editedEnd": 122.52000000000001
+  }
+]

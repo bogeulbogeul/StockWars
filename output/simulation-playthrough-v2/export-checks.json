@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "25/1",
+        "nb_frames": "1790"
+      }
+    ],
+    "format": {
+      "duration": "71.600000",
+      "size": "6708471"
+    }
+  },
+  "fullDecodePassed": true,
+  "trim": {
+    "start": 2.017,
+    "end": 73.645
+  },
+  "edits": "startup blank frames and final tail only; no internal cuts, speed changes, overlays or audio"
+}

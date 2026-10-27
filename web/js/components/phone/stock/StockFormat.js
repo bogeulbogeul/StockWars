@@ -4,7 +4,11 @@ export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&':
 export const num = value => Number(value || 0).toLocaleString('ko-KR', { maximumFractionDigits: 2 });
 export const money = value => `${num(value)}잎`;
 export const pct = stock => stock.prevPrice > 0 ? (stock.price / stock.prevPrice - 1) * 100 : 0;
-export const change = value => `<span class="stock-${value >= 0 ? 'up' : 'down'}">${value >= 0 ? '+' : ''}${num(value)}%</span>`;
+export const change = value => {
+    // Percentages rounded to zero must not look like a negative return.
+    const shown = Math.abs(value) < .005 ? 0 : value;
+    return `<span class="stock-${shown >= 0 ? 'up' : 'down'}">${shown >= 0 ? '+' : ''}${num(shown)}%</span>`;
+};
 export const sectorName = key => SECTORS[key]?.name || key;
 export const sectorColors = ['#63a579', '#619ed4', '#efbe4e', '#dd8597', '#a584ce', '#60b7a6', '#e9a266', '#8fa857'];
 export function stockRow(stock, favorites) {

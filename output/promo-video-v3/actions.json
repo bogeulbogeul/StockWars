@@ -1,0 +1,62 @@
+[
+  {
+    "id": "opening",
+    "start": 14947,
+    "end": 55004
+  },
+  {
+    "id": "wake-information",
+    "start": 55005,
+    "end": 71778
+  },
+  {
+    "id": "residence-phone-map",
+    "start": 71779,
+    "end": 106684
+  },
+  {
+    "id": "bank",
+    "start": 106685,
+    "end": 135381
+  },
+  {
+    "id": "store",
+    "start": 135382,
+    "end": 205489
+  },
+  {
+    "id": "rumor",
+    "start": 205490,
+    "end": 223915
+  },
+  {
+    "id": "stock-exam",
+    "start": 223916,
+    "end": 245562
+  },
+  {
+    "id": "stock-lesson",
+    "start": 245562,
+    "end": 293214
+  },
+  {
+    "id": "load-run",
+    "start": 14944,
+    "end": 293214
+  },
+  {
+    "id": "inspect",
+    "start": 340050,
+    "end": 340055
+  },
+  {
+    "id": "review-resume",
+    "start": 348337,
+    "end": 348344
+  },
+  {
+    "id": "review-capture",
+    "start": 355689,
+    "end": 380364
+  }
+]

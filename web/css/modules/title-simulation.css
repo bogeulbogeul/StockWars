@@ -1,0 +1,28 @@
+.cozy-phone--simulation::backdrop { background: #dce5d8; }
+.cozy-phone.cozy-phone.cozy-phone--simulation:has(.cozy-phone__detail--stock) { width: min(1440px, calc(100vw - 24px)); height: calc(100dvh - 24px); }
+.cozy-phone.cozy-phone--simulation .cozy-phone__shell { height: 100%; aspect-ratio: auto; padding: 16px 8px 8px; border-radius: 20px; }
+.cozy-phone.cozy-phone--simulation .cozy-phone__screen { height: 100%; border-radius: 10px; }
+.cozy-phone--simulation .cozy-phone__shell::before,.cozy-phone--simulation .cozy-phone__shell::after,.cozy-phone--simulation .cozy-phone__speaker,.cozy-phone--simulation .cozy-phone__status { display: none; }
+.cozy-phone--simulation .stock-app { min-width: 0; }
+.simulation-challenge .stock-up { color: #b83c46; }
+.simulation-challenge .stock-down { color: #286fa5; }
+.simulation-challenge { flex: 0 0 auto; padding: 12px 20px; background: #edf2e4; border-block: 1px solid #c7d4be; color: #304830; font-size: 14px; }
+.simulation-heading,.simulation-metrics,.simulation-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.simulation-heading { justify-content: space-between; }
+.simulation-heading strong { font-size: 19px; }
+.simulation-metrics { margin-top: 8px; }
+.simulation-challenge p { margin: 6px 0; line-height: 1.5; font-size: 14px; }
+.simulation-news { background: #fffaf0; border-radius: 8px; padding: 8px 12px; }
+.simulation-actions p { flex: 1; min-width: 180px; }
+.simulation-challenge button { font: inherit; padding: 9px 13px; border: 1px solid #839c77; border-radius: 8px; background: #fffaf0; color: #304830; cursor: pointer; }
+.simulation-challenge button[data-sim-next],.simulation-challenge button[data-sim-finish] { background: #55784f; color: white; }
+.simulation-challenge button:disabled { opacity: .45; cursor: default; }
+.simulation-challenge button:focus-visible { outline: 3px solid #ba8741; outline-offset: 2px; }
+@media(max-width: 700px) {
+ .simulation-challenge { padding: 8px 10px; max-height: 30dvh; overflow-y: auto; font-size: 12px; }
+ .simulation-heading strong { font-size: 16px; }
+ .simulation-challenge p { font-size: 12px; }
+ .simulation-actions { gap: 6px; }
+ .simulation-actions p { flex-basis: 100%; }
+ .simulation-challenge button { padding: 7px 9px; }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "file": "stockwars-promo-v3.mp4",
+    "decoded": true,
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "25/1",
+          "nb_frames": "3063"
+        }
+      ],
+      "format": {
+        "duration": "122.520000",
+        "size": "23969746"
+      }
+    }
+  },
+  {
+    "file": "stockwars-promo-v3-clean.mp4",
+    "decoded": true,
+    "metadata": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "25/1",
+          "nb_frames": "3063"
+        }
+      ],
+      "format": {
+        "duration": "122.520000",
+        "size": "24610173"
+      }
+    }
+  }
+]

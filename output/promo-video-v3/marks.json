@@ -1,0 +1,178 @@
+[
+  {
+    "name": "title",
+    "time": 14.947
+  },
+  {
+    "name": "title-end",
+    "time": 22.963
+  },
+  {
+    "name": "opening-1",
+    "time": 23.035
+  },
+  {
+    "name": "opening-1-end",
+    "time": 30.086
+  },
+  {
+    "name": "opening-2",
+    "time": 30.473
+  },
+  {
+    "name": "opening-2-end",
+    "time": 39.164
+  },
+  {
+    "name": "village",
+    "time": 44.215
+  },
+  {
+    "name": "village-end",
+    "time": 53.91
+  },
+  {
+    "name": "anna-dialogue",
+    "time": 60.424
+  },
+  {
+    "name": "anna-dialogue-end",
+    "time": 66.959
+  },
+  {
+    "name": "nickname-handoff-start",
+    "time": 73.619
+  },
+  {
+    "name": "nickname-accept",
+    "time": 76.224
+  },
+  {
+    "name": "nickname-handoff-end",
+    "time": 77.69
+  },
+  {
+    "name": "application",
+    "time": 77.858
+  },
+  {
+    "name": "application-end",
+    "time": 85.237
+  },
+  {
+    "name": "phone-handoff-start",
+    "time": 88.92
+  },
+  {
+    "name": "phone-accept",
+    "time": 91.528
+  },
+  {
+    "name": "phone-handoff-end",
+    "time": 92.981
+  },
+  {
+    "name": "one-box",
+    "time": 168.181
+  },
+  {
+    "name": "one-box-end",
+    "time": 178.559
+  },
+  {
+    "name": "wage-handoff-start",
+    "time": 189.47
+  },
+  {
+    "name": "wage-accept",
+    "time": 192.074
+  },
+  {
+    "name": "wage-handoff-end",
+    "time": 193.526
+  },
+  {
+    "name": "envelope-handoff-start",
+    "time": 197.376
+  },
+  {
+    "name": "envelope-accept",
+    "time": 199.988
+  },
+  {
+    "name": "envelope-handoff-end",
+    "time": 201.422
+  },
+  {
+    "name": "broker-room",
+    "time": 265.472
+  },
+  {
+    "name": "broker-room-end",
+    "time": 270.278
+  },
+  {
+    "name": "broker-company",
+    "time": 270.438
+  },
+  {
+    "name": "broker-company-end",
+    "time": 276.114
+  },
+  {
+    "name": "broker-chart",
+    "time": 276.144
+  },
+  {
+    "name": "broker-chart-end",
+    "time": 284.195
+  },
+  {
+    "name": "broker-order",
+    "time": 286.753
+  },
+  {
+    "name": "broker-order-end",
+    "time": 293.209
+  },
+  {
+    "name": "purchase-result",
+    "time": 293.215
+  },
+  {
+    "name": "purchase-result-end",
+    "time": 297.023
+  },
+  {
+    "name": "portfolio",
+    "time": 355.757
+  },
+  {
+    "name": "portfolio-end",
+    "time": 360.891
+  },
+  {
+    "name": "transactions",
+    "time": 360.929
+  },
+  {
+    "name": "transactions-end",
+    "time": 365.247
+  },
+  {
+    "name": "market-browse",
+    "time": 365.298
+  },
+  {
+    "name": "market-browse-end",
+    "time": 369.764
+  },
+  {
+    "name": "chart-analysis",
+    "time": 369.871
+  },
+  {
+    "name": "chart-analysis-end",
+    "time": 378.752
+  }
+]

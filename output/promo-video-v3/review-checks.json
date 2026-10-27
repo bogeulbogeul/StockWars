@@ -1,0 +1,338 @@
+{
+  "errors": [],
+  "missing": [],
+  "state": {
+    "version": 1,
+    "cursor": 55,
+    "tourDialogueVersion": 2,
+    "clothingStoreRemoved": true,
+    "nickname": "소망",
+    "order": "packing",
+    "cash": 4450,
+    "debt": 5000,
+    "shares": [
+      {
+        "id": "CLOUDBERRY",
+        "name": "베리클라우드",
+        "price": 850,
+        "quantity": 1
+      }
+    ],
+    "trades": [
+      {
+        "id": "CLOUDBERRY",
+        "name": "베리클라우드",
+        "price": 850,
+        "quantity": 1,
+        "side": "buy"
+      }
+    ],
+    "flags": {
+      "moaAwake": true,
+      "walk": true,
+      "nickname": true,
+      "phoneReady": true,
+      "phone": true,
+      "openPhone": true,
+      "bank": true,
+      "loan": true,
+      "order": true,
+      "notice": true,
+      "packing": true,
+      "wage": true,
+      "envelope": true,
+      "storyRumorQuizPassed": true,
+      "rumor": true,
+      "stockCounter": true,
+      "certificate": true,
+      "trade": true,
+      "tradeHistory": true
+    },
+    "stamina": 2,
+    "analysis": 2,
+    "answers": [
+      0,
+      3,
+      1
+    ],
+    "examQuestionIds": [
+      13,
+      14,
+      1
+    ],
+    "inventory": [
+      {
+        "id": "exhibition-first-rumor",
+        "artworkId": "item_premium_rumor",
+        "name": "손님이 맡긴 소식봉투",
+        "category": "intel",
+        "quantity": 1,
+        "actionLabel": "찌라시 열기",
+        "desc": "봉봉에게 받은 소식봉투예요. 열어서 어떤 소식이 담겨 있는지 확인해 보세요.",
+        "letterText": "코지페이가 다음 달 새로운 결제 서비스를 선보인대. 거래가 늘 거라는 이야기가 있지만, 아직 회사의 공식 발표는 없대."
+      }
+    ],
+    "moaCalls": 3,
+    "arrivalPosition": {
+      "x": 1026.5909999999997,
+      "y": 2355
+    },
+    "profileDocuments": {
+      "residence": {
+        "receivedAt": "2026-10-27T01:18:21.764Z",
+        "signedAt": "2026-10-27T01:18:29.539Z",
+        "name": "소망"
+      },
+      "bank": {
+        "receivedAt": "2026-10-27T01:19:04.664Z",
+        "signedAt": "2026-10-27T01:19:05.430Z",
+        "name": "소망"
+      },
+      "loan": {
+        "receivedAt": "2026-10-27T01:19:08.931Z",
+        "amount": 5000,
+        "signedAt": "2026-10-27T01:19:10.617Z",
+        "name": "소망"
+      }
+    },
+    "packingSession": {
+      "orders": [
+        {
+          "patternIndex": 2,
+          "width": 4,
+          "height": 3,
+          "items": [
+            {
+              "id": "A",
+              "name": "꿀 쿠키",
+              "width": 2,
+              "height": 2,
+              "art": 0,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "J",
+              "name": "꽃꿀 사탕",
+              "width": 2,
+              "height": 1,
+              "art": 9,
+              "rotated": false,
+              "x": 2,
+              "y": 2
+            },
+            {
+              "id": "B",
+              "name": "꽃잎 차",
+              "width": 2,
+              "height": 2,
+              "art": 1,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "H",
+              "name": "달빛가루",
+              "width": 1,
+              "height": 1,
+              "art": 7,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "I",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 1,
+              "y": 2
+            }
+          ]
+        },
+        {
+          "patternIndex": 19,
+          "width": 5,
+          "height": 4,
+          "items": [
+            {
+              "id": "J",
+              "name": "꽃꿀 사탕",
+              "width": 2,
+              "height": 1,
+              "art": 9,
+              "rotated": false,
+              "x": 1,
+              "y": 3
+            },
+            {
+              "id": "K",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 4,
+              "y": 3
+            },
+            {
+              "id": "C",
+              "name": "사과 주스",
+              "width": 1,
+              "height": 3,
+              "art": 2,
+              "rotated": false,
+              "x": 4,
+              "y": 0
+            },
+            {
+              "id": "D",
+              "name": "포포리빵",
+              "width": 3,
+              "height": 1,
+              "art": 3,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "I",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 0,
+              "y": 3
+            },
+            {
+              "id": "A",
+              "name": "꿀 쿠키",
+              "width": 2,
+              "height": 2,
+              "art": 0,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "name": "꽃잎 차",
+              "width": 2,
+              "height": 2,
+              "art": 1,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "E",
+              "name": "꽃꿀 베리 주스",
+              "width": 1,
+              "height": 2,
+              "art": 4,
+              "rotated": false,
+              "x": 3,
+              "y": 2
+            }
+          ]
+        },
+        {
+          "patternIndex": 4,
+          "width": 5,
+          "height": 3,
+          "items": [
+            {
+              "id": "E",
+              "name": "꽃꿀 베리 주스",
+              "width": 1,
+              "height": 2,
+              "art": 4,
+              "rotated": false,
+              "x": 3,
+              "y": 0
+            },
+            {
+              "id": "C",
+              "name": "사과 주스",
+              "width": 1,
+              "height": 3,
+              "art": 2,
+              "rotated": false,
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "K",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 1,
+              "y": 2
+            },
+            {
+              "id": "A",
+              "name": "꿀 쿠키",
+              "width": 2,
+              "height": 2,
+              "art": 0,
+              "rotated": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "J",
+              "name": "꽃꿀 사탕",
+              "width": 2,
+              "height": 1,
+              "art": 9,
+              "rotated": false,
+              "x": 3,
+              "y": 2
+            },
+            {
+              "id": "H",
+              "name": "달빛가루",
+              "width": 1,
+              "height": 1,
+              "art": 7,
+              "rotated": false,
+              "x": 4,
+              "y": 1
+            },
+            {
+              "id": "G",
+              "name": "반짝가루",
+              "width": 1,
+              "height": 1,
+              "art": 6,
+              "rotated": false,
+              "x": 4,
+              "y": 0
+            },
+            {
+              "id": "I",
+              "name": "이슬 젤리",
+              "width": 1,
+              "height": 1,
+              "art": 8,
+              "rotated": false,
+              "x": 0,
+              "y": 2
+            }
+          ]
+        }
+      ],
+      "completed": 3,
+      "awaitingNext": true,
+      "tutorialSeen": true
+    }
+  },
+  "place": "stock"
+}

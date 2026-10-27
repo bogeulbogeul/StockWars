@@ -1,0 +1,17 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Head,Malgun Gothic,48,&H0040513C,&H0040513C,&H18E6F6FF,&H18E6F6FF,-1,0,0,0,100,100,1,0,3,15,0,8,160,160,64,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:15.95,0:00:19.40,Head,,0,0,0,,{\fad(180,180)}포포리에서 시작되는 새로운 하루
+Dialogue: 0,0:00:48.23,0:00:51.68,Head,,0,0,0,,{\fad(180,180)}상자 하나를 차근차근 채워요
+Dialogue: 0,0:01:14.51,0:01:17.96,Head,,0,0,0,,{\fad(180,180)}궁금한 회사를 찾고
+Dialogue: 0,0:01:32.51,0:01:35.96,Head,,0,0,0,,{\fad(180,180)}차트를 읽으며 내 판단으로
+Dialogue: 0,0:01:47.55,0:01:51.00,Head,,0,0,0,,{\fad(180,180)}첫 투자, 내 계좌에 남는 경험

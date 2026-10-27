@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process');
+const root=path.resolve('output/simulation-playthrough-v2'),ff=process.argv[2],probe=path.join(path.dirname(ff),'ffprobe.exe');
+const marks=JSON.parse(fs.readFileSync(root+'/marks.json'));const start=Math.max(0,marks[0].time-.15),end=marks.at(-1).time+1.8;
+const file=root+'/stock-simulation-playthrough.mp4';
+cp.execFileSync(ff,['-hide_banner','-loglevel','error','-y','-ss',String(start),'-i',root+'/raw/playthrough.webm','-t',String(end-start),'-vf','fps=25,setsar=1','-an','-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',file]);
+cp.execFileSync(ff,['-v','error','-i',file,'-f','null','-']);
+const metadata=JSON.parse(cp.execFileSync(probe,['-v','error','-show_entries','format=duration,size:stream=codec_type,codec_name,width,height,r_frame_rate,nb_frames','-of','json',file],{encoding:'utf8'}));
+fs.writeFileSync(root+'/export-checks.json',JSON.stringify({metadata,fullDecodePassed:true,trim:{start,end},edits:'startup blank frames and final tail only; no internal cuts, speed changes, overlays or audio'},null,2));
+const duration=Number(metadata.format.duration);
+cp.execFileSync(ff,['-hide_banner','-loglevel','error','-y','-i',file,'-vf','fps='+String(12/duration)+',scale=480:-1,tile=4x3','-frames:v','1',root+'/contact.jpg']);console.log(JSON.stringify(metadata));
