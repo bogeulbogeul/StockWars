@@ -20,7 +20,7 @@ for (const order of ['packing', 'stock']) test(`${order}: stage skips preserve p
     }
     assert(stages.includes('information') && stages.includes('bank') && stages.includes('stock') && stages.includes('packing'));
     assert.equal(state.nickname, '소망이'); assert(state.flags.phoneReady && state.flags.cookie);
-    assert.equal(state.cash, 7400); assert.equal(state.debt, 5000);
+    assert.equal(state.cash, 5000 + 300 + 2000 - 100); assert.equal(state.debt, 5000);
     assert.equal(state.stamina, 3); assert.equal(state.shares.length, 0); assert.equal(state.answers.length, 0);
     assert.equal(state.analysis, 1); assert(complete(state, 'asleep'));
 });

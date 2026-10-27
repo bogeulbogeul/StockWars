@@ -12,10 +12,11 @@ test('first trade uses actual cash capped at 1500 and retains the first six elig
   for(const stock of choices)assert(cash-stock.price>=0);
  }
 });
-test('every screen teaches several current features without restoring retired slot limits', () => {
+test('every screen uses one or two concise steps without restoring retired slot limits', () => {
  for (const key of ['home','market','info','chart','order','account','history']) {
   const pages=stockLessonPages(key,{firstTrade:{budget:500}});
-  assert(pages.length>=4);
+  assert(pages.length >= 1 && pages.length <= 2);
+  if (['info','chart','order'].includes(key)) assert.equal(pages.length, 2);
   for(const [title,text] of pages){assert(title);assert(text);assert.doesNotMatch(text,/공통 5칸|빈 슬롯/);}
  }
  assert.match(stockLessonPages('market',{firstTrade:{budget:500}}).map(p=>p[1]).join(' '),/500/);

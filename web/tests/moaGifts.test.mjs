@@ -12,8 +12,9 @@ for (const order of ['packing', 'stock']) test(`${order}: cookie, gifts and seed
     const cookie = plan.findIndex(b => b.id === 'cookie');
     const grant = plan.findIndex(b => b.id === 'grant');
     const diary = plan.findIndex(b => b.id === 'diary');
-    const opened = plan.findIndex(b => b.text === '이건…… 아무것도 안 적혀 있네.');
-    const seed = plan.findIndex(b => b.text === '가지고 온 씨앗을 심어보고 싶어.');
+    const opened = plan.findIndex(b => b.chapter === 17 && b.kind === 'line' && b.text.includes('오늘 기억하고 싶은 일'));
+    const seed = plan.findIndex(b => b.chapter === 18 && b.speaker === '소망이' && b.text.includes('씨앗'));
+    assert(cookie >= 0 && opened >= 0 && seed >= 0);
     assert(cookie < grant && grant < diary && diary < opened && opened < seed);
     assert(plan.slice(cookie, seed + 1).every(b => b.place === 'bench'));
     assert(!plan.slice(cookie, seed).some(b => b.text?.includes('안내소에 잠깐')));

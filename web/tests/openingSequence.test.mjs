@@ -1,67 +1,65 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import vm from 'node:vm';
+import {existsSync} from 'node:fs';
+import {playOpening} from '../js/app/OpeningSequence.js';
 
-const source = fs.readFileSync(new URL('../js/app/OpeningSequence.js', import.meta.url), 'utf8')
-    .replace(/^import .*;\r?\n/gm, '').replace('export function', 'function')
-    .replaceAll('import.meta.url', "'https://example.test/js/app/OpeningSequence.js'");
-
-function setup() {
-    const frame = {};
-    const skip = { addEventListener(type, fn) { this.click = fn; }, focus() {} };
-    let pending, listener, unsubscribed = 0;
-    const settings = {muted: false, volume: .8, subscribe(fn) {listener = fn; return () => {unsubscribed++;};}};
-    const music = { playCount: 0, pauseCount: 0, currentTime: 12,
-        play() { this.playCount++; return Promise.resolve(); },
-        pause() { this.pauseCount++; }, removeAttribute() {}, load() {} };
-    const context = vm.createContext({ URL, Audio: function(src) { music.src = src; return music; },
-        getTownMusic: () => settings,
-        setTimeout(fn, delay) { pending = { fn, delay }; return 1; },
-        clearTimeout() { pending = null; }
-    });
-    vm.runInContext(source, context);
-    const screen = { classList: { add() {} }, querySelector: tag => tag === 'iframe' ? frame : skip };
-    return { frame, skip, music, settings, notify: () => listener(), unsubscribed: () => unsubscribed, run: context.playOpening(screen), timer: () => pending };
+class Caption extends EventTarget {
+    constructor() {
+        super(); this.textContent = '대사'; this.values = {};
+        this.style = {setProperty: (key, value) => {this.values[key] = value;}};
+    }
+    setAttribute() {}
+    focus() {}
 }
-
-test('plays all six scenes for 110 seconds then completes', async () => {
-    const state = setup();
-    assert.equal(state.music.playCount, 1);
-    assert.equal(state.music.volume, .55 * .8);
-    state.settings.muted = true; state.notify();
-    assert.equal(state.music.volume, 0);
-    assert.match(state.music.src, /first-little-journey-110s.mp3$/);
-    let completed = false;
-    state.run.then(() => { completed = true; });
-    let total = 0;
+function setup(t) {
+    t.mock.method(globalThis, 'setTimeout', () => {throw Error('Opening must wait for input');});
+    const previousAudio = globalThis.Audio;
+    globalThis.Audio = class {constructor() {throw Error('Opening must remain silent');}};
+    t.after(() => {if (previousAudio === undefined) delete globalThis.Audio; else globalThis.Audio = previousAudio;});
+    const frame = new EventTarget(), skip = new EventTarget(); skip.focus = () => {};
+    const screen = {classList: {add() {}}, querySelector: tag => tag === 'iframe' ? frame : skip};
+    const run = playOpening(screen);
+    const load = () => {
+        const captions = [new Caption(), new Caption()];
+        frame.contentDocument = {querySelectorAll: () => captions, querySelector: () => null};
+        frame.dispatchEvent(new Event('load')); return captions;
+    };
+    return {frame, skip, run, load};
+}
+function input(caption, type = 'click', key, repeat = false) {
+    const event = new Event(type, {cancelable: true});
+    Object.assign(event, {key, repeat}); caption.dispatchEvent(event);
+}
+test('six silent scenes advance only after caption clicks or Enter/Space', async t => {
+    const state = setup(t); let completed = false;
+    state.run.then(() => {completed = true;});
     for (let index = 1; index <= 6; index++) {
         assert.match(state.frame.src, new RegExp(`opening-scene-0${index}-v1/scene.html$`));
-        const path = new URL(`../assets/opening/opening-scene-0${index}-v1/scene.html`, import.meta.url);
-        assert.ok(fs.existsSync(path));
-        state.frame.onload();
-        total += state.timer().delay;
-        assert.equal(completed, false);
-        state.timer().fn();
+        assert(existsSync(new URL(`../assets/opening/opening-scene-0${index}-v1/scene.html`, import.meta.url)));
+        const [first, last] = state.load();
+        assert.equal(first.values.display, 'block'); assert.equal(last.values.display, 'none');
+        input(first, 'keydown', 'Escape'); input(first, 'keydown', 'Enter', true);
+        assert.equal(first.values.display, 'block');
+        await Promise.resolve(); assert.equal(completed, false);
+        input(first, index % 2 ? 'click' : 'keydown', 'Enter');
+        assert.equal(last.values.display, 'block');
+        const before = state.frame.src;
+        input(last, 'keydown', ' ');
+        const after = state.frame.src;
+        input(last); assert.equal(state.frame.src, after); // Old listeners cannot skip another scene.
+        if (index < 6) assert.notEqual(before, after);
     }
-    await state.run;
-    assert.equal(total, 110000);
-    assert.equal(completed, true);
-    assert.equal(state.timer(), null);
-    assert.equal(state.music.pauseCount, 1);
-    assert.equal(state.unsubscribed(), 1);
-    assert.equal(state.music.currentTime, 0);
+    await state.run; assert.equal(completed, true);
 });
-
-test('skip completes once and cancels the active scene timer', async () => {
-    const state = setup();
-    state.frame.onload();
-    state.skip.click();
-    state.skip.click();
-    await state.run;
-    assert.equal(state.timer(), null);
-    assert.equal(state.frame.onload, null);
-    assert.equal(state.music.pauseCount, 1);
-    assert.equal(state.unsubscribed(), 1);
-    assert.equal(state.music.currentTime, 0);
+test('skip completes once and removes caption and frame listeners', async t => {
+    const state = setup(t), captions = state.load(); let completed = 0;
+    state.run.then(() => {completed++;});
+    state.skip.dispatchEvent(new Event('click')); await state.run;
+    const before = state.frame.src;
+    for (const caption of captions) input(caption);
+    state.skip.dispatchEvent(new Event('click'));
+    state.frame.dispatchEvent(new Event('load'));
+    await Promise.resolve();
+    assert.equal(state.frame.src, before); assert.equal(completed, 1);
+    assert.equal(state.frame.onload, null); assert.equal(state.frame.onerror, null);
 });

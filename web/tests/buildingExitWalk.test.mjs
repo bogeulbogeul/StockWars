@@ -1,46 +1,62 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Group, Mesh, BoxGeometry, MeshBasicMaterial } from '../vendor/three/three.module.js';
-import { leaveBuildingOnFoot } from '../js/app/OnFootNavigation.js';
-import { HOME_SPAWN } from '../js/data/homeModelRoom.js';
-import { GROUND_PROJECTION as P } from '../js/data/townModelBuildings.js';
+import {Group, Mesh, BoxGeometry, MeshBasicMaterial} from '../vendor/three/three.module.js';
+import {leaveBuildingOnFoot} from '../js/app/OnFootNavigation.js';
+import {TOWN_MODEL_BUILDINGS} from '../js/data/townModelBuildings.js';
 
-test('exit reveals the opening door, walks an opaque actor out, then closes and unlocks', async t => {
-    const queue = [], oldRAF = globalThis.requestAnimationFrame, oldDocument = globalThis.document;
-    globalThis.requestAnimationFrame = cb => queue.push(cb); globalThis.document = { hidden: false };
-    t.after(() => {
-        if (oldRAF === undefined) delete globalThis.requestAnimationFrame; else globalThis.requestAnimationFrame = oldRAF;
-        if (oldDocument === undefined) delete globalThis.document; else globalThis.document = oldDocument;
-    });
-    const controller = () => ({ charPosX: HOME_SPAWN.x, charPosY: 180 * P, keysHeld: new Set(), facing: 'up' });
-    const actor = c => {
-        const root = new Group(), material = new MeshBasicMaterial(); root.add(new Mesh(new BoxGeometry(), material));
-        return { root, material, ready: Promise.resolve(), setState() {}, update() { root.position.set(c.charPosX, 0, c.charPosY / P); } };
+function setup(t, {stand = true, accepted = true} = {}) {
+    const events = [], previous = globalThis.document;
+    let cover;
+    globalThis.document = {
+        createElement() {
+            cover = {style: {}, animate(frames) {
+                events.push(frames[1].opacity === 1 ? 'covered' : 'revealed');
+                return {finished: Promise.resolve()};
+            }, remove() {events.push('removed');}};
+            return cover;
+        },
+        body: {append() {events.push('cover-added');}}
     };
-    const indoor = controller(), exterior = controller(), events = [], points = [];
-    const room = { controller: indoor, ready: Promise.resolve(), canStand: () => true, exitPending: false,
-        hide() { events.push('hide'); }, seatInteraction: { stand: () => true } };
-    room.player = actor(indoor);
-    const town = { town: { playerController: exterior }, ready: Promise.resolve(), player: actor(exterior) };
-    const door = { center: { x: 800, z: 2000 }, floorY: 15,
-        async open() { assert(events.includes('show')); assert(town.entryActive); assert.equal(town.player.root.visible, false); events.push('open'); },
-        async close() { assert(exterior.charPosY / P >= 2189); events.push('close'); } };
-    const building = new Group(); building.homeDoor = door;
-    town.scene = { getObjectByName: () => building };
-    let done = false, error;
-    const promise = leaveBuildingOnFoot({ room, town, id: 'home_office_tower', showTown() { events.push('show'); return true; } })
-        .then(() => { done = true; }, e => { error = e; done = true; });
-    let now = 0;
-    for (let count = 0; !done && count < 500; count++) {
-        await Promise.resolve();
-        now += 50;
-        for (const cb of queue.splice(0)) cb(now);
-        if (exterior.scriptedWalking) points.push(exterior.charPosY / P);
-        for (const p of [room.player, town.player]) { assert.equal(p.material.opacity, 1); assert.equal(p.material.transparent, false); }
-    }
-    await promise; if (error) throw error;
-    assert(done); assert(events.indexOf('show') < events.indexOf('open'));
-    assert(points.length > 10); assert(points.some(z => z < 2000)); assert(points.some(z => z > 2150));
-    assert.equal(events.at(-1), 'close'); assert.equal(town.entryActive, false);
-    assert.equal(exterior.scriptedWalking, false); assert.equal(room.doorTravelActive, false); assert.equal(room.exitPending, false);
+    t.after(() => {if (previous === undefined) delete globalThis.document; else globalThis.document = previous;});
+    const c = {charPosX: 0, charPosY: 0, keysHeld: new Set(['w']), isMoving: true,
+        scriptedWalking: true, scriptedSupportHeight: 20};
+    const root = new Group(), material = new MeshBasicMaterial();
+    root.add(new Mesh(new BoxGeometry(), material)); root.visible = false;
+    const town = {town: {playerController: c}, entryActive: true, ready: Promise.resolve(),
+        player: {root, ready: Promise.resolve(), update() {
+            assert(events.includes('covered')); events.push('positioned');
+        }, setState(state) {assert.equal(state, 'idle');}}};
+    const room = {seatInteraction: {stand() {events.push('stand'); return stand;}}, hide() {events.push('hidden');}};
+    const run = () => leaveBuildingOnFoot({room, town, id: 'home_office_tower', showTown() {
+        assert(events.includes('covered')); assert(room.doorTravelActive);
+        events.push('shown'); return accepted;
+    }});
+    return {run, room, town, c, root, material, events};
+}
+test('exit fades to the current exterior position and releases input without door animation', async t => {
+    const state = setup(t), pending = state.run();
+    assert.equal(state.room.doorTravelActive, true);
+    await state.run(); // Duplicate exit must not create a second transition.
+    await pending;
+    assert.deepEqual(state.events, ['stand', 'cover-added', 'covered', 'positioned', 'shown', 'hidden', 'revealed', 'removed']);
+    const home = TOWN_MODEL_BUILDINGS.find(b => b.id === 'home_office_tower');
+    assert.equal(state.c.charPosX, home.x + (home.entranceOffsetX || 0));
+    assert.equal(state.c.charPosY, home.y + 110);
+    assert.equal(state.c.keysHeld.size, 0); assert.equal(state.c.isMoving, false);
+    assert.equal(state.c.scriptedWalking, false); assert.equal(state.c.facing, 'down');
+    assert.equal(state.c.scriptedSupportHeight, undefined);
+    assert.equal(state.root.visible, true); assert.equal(state.material.opacity, 1);
+    assert.equal(state.material.transparent, false);
+    assert.equal(state.room.doorTravelActive, false); assert.equal(state.town.entryActive, false);
+});
+test('a blocked stand aborts exit and clears the travel lock', async t => {
+    const state = setup(t, {stand: false});
+    await assert.rejects(state.run(), /의자에서 일어날 공간/);
+    assert.deepEqual(state.events, ['stand']);
+    assert.equal(state.room.doorTravelActive, false); assert.equal(state.town.entryActive, false);
+});
+test('rejected town display keeps the room visible and removes the fade cover', async t => {
+    const state = setup(t, {accepted: false}); await state.run();
+    assert(!state.events.includes('hidden')); assert.equal(state.events.at(-1), 'removed');
+    assert.equal(state.room.doorTravelActive, false);
 });

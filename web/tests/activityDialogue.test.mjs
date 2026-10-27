@@ -25,5 +25,5 @@ test('walking has no confirmation screen and receiving wages still awards once',
     passiveActivity({ state, view: { line: (_, next) => { advance = next; } }, next: id => complete(state, id) }, 'wage');
     assert.equal(state.cash, 0);
     advance(); advance();
-    assert.equal(state.cash, 500);
+    assert.equal(state.cash, 300);
 });
