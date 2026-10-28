@@ -16,7 +16,9 @@ export function mountStockPhoneApp(phone, source, id, content) {
     if (id === 'settings') return mountSettingsApp(phone, content);
     if (id === 'stock') {
         phone.detail.classList.add('cozy-phone__detail--stock');
-        const app = new StockApp(content, source, { onClose: () => phone.close(), openNews: stockId => {
+        const app = new StockApp(content, source, { onClose: () => phone.close(), openNews: (stockId, articleId) => {
+            phone.newsReturnStock = { id: stockId, tab: app.subtab || 'info' };
+            phone.newsOpenArticle = articleId;
             phone.newsStockFilter = stockId; phone.openApp('news');
         } });
         phone.stockApp = app;
@@ -27,11 +29,27 @@ export function mountStockPhoneApp(phone, source, id, content) {
     }
     if (id === 'news') {
         phone.detail.classList.add('cozy-phone__detail--news');
+        const returnStock = phone.newsReturnStock; phone.newsReturnStock = null;
+        const back = phone.dialog.querySelector('.cozy-phone__back');
+        const previousBack = back.onclick, previousLabel = back.textContent;
+        if (returnStock) {
+            phone.detail.classList.add('stock-news-from-trade');
+            back.textContent = '‹ 뒤로가기';
+            back.onclick = () => {
+                phone.openApp('stock');
+                phone.stockApp?.openStock(returnStock.id);
+                phone.stockApp?.renderDetail(returnStock.tab);
+            };
+        }
         const filter = phone.newsStockFilter; phone.newsStockFilter = null;
-        const cleanup = renderStockNews(content, source, { stockId: filter, onStock: stockId => {
+        const articleId = phone.newsOpenArticle; phone.newsOpenArticle = null;
+        const cleanup = renderStockNews(content, source, { stockId: filter, articleId, onStock: stockId => {
             phone.openApp('stock'); phone.stockApp?.openStock(stockId);
         } });
-        return () => { cleanup(); phone.detail.classList.remove('cozy-phone__detail--news'); };
+        return () => {
+            cleanup(); phone.detail.classList.remove('cozy-phone__detail--news', 'stock-news-from-trade');
+            if (returnStock) { back.onclick = previousBack; back.textContent = previousLabel; }
+        };
     }
     return false;
 }

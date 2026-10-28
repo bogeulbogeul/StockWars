@@ -1,0 +1,119 @@
+[
+  {
+    "label": "web",
+    "passed": true,
+    "result": "투자 체험 완료\n최종 자산 5,016잎 · +16잎 (0.32%)\n거래 내역\n다시 도전\n타이틀로\n결과 상세 · 체결 2건",
+    "layout": {
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "top": 12,
+        "right": 378,
+        "bottom": 832,
+        "left": 12
+      },
+      "panel": {
+        "x": 25,
+        "y": 68,
+        "width": 340,
+        "height": 90,
+        "top": 68,
+        "right": 365,
+        "bottom": 158,
+        "left": 25
+      },
+      "body": {
+        "x": 25,
+        "y": 268.796875,
+        "width": 340,
+        "height": 475.203125,
+        "top": 268.796875,
+        "right": 365,
+        "bottom": 744,
+        "left": 25
+      },
+      "overflow": false
+    },
+    "errors": []
+  },
+  {
+    "label": "packaged",
+    "passed": true,
+    "result": "투자 체험 완료\n최종 자산 5,014잎 · +14잎 (0.28%)\n거래 내역\n다시 도전\n타이틀로\n결과 상세 · 체결 2건",
+    "layout": {
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "top": 12,
+        "right": 378,
+        "bottom": 832,
+        "left": 12
+      },
+      "panel": {
+        "x": 25,
+        "y": 68,
+        "width": 340,
+        "height": 90,
+        "top": 68,
+        "right": 365,
+        "bottom": 158,
+        "left": 25
+      },
+      "body": {
+        "x": 25,
+        "y": 268.796875,
+        "width": 340,
+        "height": 475.203125,
+        "top": 268.796875,
+        "right": 365,
+        "bottom": 744,
+        "left": 25
+      },
+      "overflow": false
+    },
+    "errors": []
+  },
+  {
+    "label": "mobile-flow",
+    "passed": true,
+    "result": "투자 체험 완료\n최종 자산 5,016잎 · +16잎 (0.32%)\n거래 내역\n다시 도전\n타이틀로\n결과 상세 · 체결 2건",
+    "layout": {
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "top": 12,
+        "right": 378,
+        "bottom": 832,
+        "left": 12
+      },
+      "panel": {
+        "x": 25,
+        "y": 68,
+        "width": 340,
+        "height": 90,
+        "top": 68,
+        "right": 365,
+        "bottom": 158,
+        "left": 25
+      },
+      "body": {
+        "x": 25,
+        "y": 268.796875,
+        "width": 340,
+        "height": 475.203125,
+        "top": 268.796875,
+        "right": 365,
+        "bottom": 744,
+        "left": 25
+      },
+      "overflow": false
+    },
+    "errors": []
+  }
+]

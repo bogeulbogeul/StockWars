@@ -151,7 +151,13 @@ export class TownModelScene {
         const width = this.viewport.clientWidth;
         const height = this.viewport.clientHeight;
         if (!width || !height || !this.renderer) return;
-        if (this.width === width && this.height === height) return;
+        // A cinematic borrows this renderer and can restore an older size after
+        // ResizeObserver has already cached the current viewport dimensions.
+        const renderSize = this.renderer.getSize(this.viewportRenderSize ||= new THREE.Vector2());
+        if (this.width === width && this.height === height
+            && renderSize.x === width && renderSize.y === height
+            && this.renderer.domElement.style.width === `${width}px`
+            && this.renderer.domElement.style.height === `${height}px`) return;
         this.width = width;
         this.height = height;
         this.frameBudget.resize(width, height);

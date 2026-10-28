@@ -1,0 +1,1 @@
+const fs=require('fs');let p='web/js/components/phone/stock/StockInfo.js',s=fs.readFileSync(p,'utf8');s=s.replace('<button type="button" data-related>관련 공시·뉴스는 소식 앱에서 보기 ›</button>', '${infoNewsScreen(stock, news)}<button type="button" data-related>전체 관련 뉴스 보기 ›</button>');fs.writeFileSync(p,s);

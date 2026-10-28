@@ -1,0 +1,82 @@
+[
+  {
+    "packaged": false,
+    "viewport": [
+      1440,
+      1000
+    ],
+    "stock": {
+      "x": 12,
+      "y": 12,
+      "width": 1416,
+      "height": 976
+    },
+    "news": {
+      "x": 12,
+      "y": 12,
+      "width": 1416,
+      "height": 976
+    },
+    "returnsToSameCompanyInfo": true
+  },
+  {
+    "packaged": false,
+    "viewport": [
+      390,
+      844
+    ],
+    "stock": {
+      "x": 12,
+      "y": 12,
+      "width": 366,
+      "height": 820
+    },
+    "news": {
+      "x": 12,
+      "y": 12,
+      "width": 366,
+      "height": 820
+    },
+    "returnsToSameCompanyInfo": true
+  },
+  {
+    "packaged": true,
+    "viewport": [
+      1440,
+      1000
+    ],
+    "stock": {
+      "x": 12,
+      "y": 12,
+      "width": 1416,
+      "height": 976
+    },
+    "news": {
+      "x": 12,
+      "y": 12,
+      "width": 1416,
+      "height": 976
+    },
+    "returnsToSameCompanyInfo": true
+  },
+  {
+    "packaged": true,
+    "viewport": [
+      390,
+      844
+    ],
+    "stock": {
+      "x": 12,
+      "y": 12,
+      "width": 366,
+      "height": 820
+    },
+    "news": {
+      "x": 12,
+      "y": 12,
+      "width": 366,
+      "height": 820
+    },
+    "returnsToSameCompanyInfo": true
+  }
+]

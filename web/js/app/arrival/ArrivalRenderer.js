@@ -27,6 +27,9 @@ export function acquireArrivalRenderer(host, live) {
                 renderer.setPixelRatio(pixelRatio);
                 renderer.setSize(size.x, size.y);
                 parent?.insertBefore(canvas, next?.parentNode === parent ? next : null);
+                // The game window may have changed size while this canvas was
+                // borrowed. Fit the restored canvas to its current viewport.
+                live.resize?.();
             } else {
                 renderer.dispose(); renderer.forceContextLoss(); canvas.remove();
             }

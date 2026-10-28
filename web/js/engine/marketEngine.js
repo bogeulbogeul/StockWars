@@ -21,7 +21,7 @@ export class MarketEngine {
         this.targetRent = 5000; // 7-day settlement target rent
         this.day = 1;
         this.maxDays = 7;
-        
+
         // Portfolio: stockId -> { id, stock, qty, avgPrice, leverage, isShort, collateral, currentVal, profitLoss, profitLossPct }
         this.portfolio = new Map();
         this.limitOrders = [];
@@ -102,6 +102,7 @@ export class MarketEngine {
             updateGhostLiquidity(book, stock, changePct / volatility * 2, this.bookRevision);
         });
 
+        this.updateSessionNews?.();
         // Prices, ghost liquidity and pending fills become visible together.
         this.notify();
     }

@@ -7,7 +7,7 @@ import { RETAIL_NEWS } from './news/Retail.js';
 import { ENERGY_NEWS } from './news/Energy.js';
 import { FINANCE_NEWS } from './news/Finance.js';
 
-// Category describes editorial direction, never a guaranteed price movement.
+// Editorial categories also drive news shocks in live market sessions.
 export const CURRENT_NEWS = [
     ...IT_NEWS,
     ...ENTERTAINMENT_NEWS,

@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "menu": {
+        "x": 760,
+        "y": 758.796875,
+        "width": 400,
+        "height": 124
+      }
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "menu": {
+        "x": 483,
+        "y": 578.90625,
+        "width": 400,
+        "height": 92.140625
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "menu": {
+        "x": 35,
+        "y": 477.734375,
+        "width": 320,
+        "height": 116
+      }
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "menu": {
+        "x": 285.21875,
+        "y": 293.953125,
+        "width": 273.5625,
+        "height": 80
+      }
+    }
+  ],
+  "staticFrame": true,
+  "keyboardNavigation": true,
+  "simulationAndReturn": true,
+  "openingStart": true,
+  "errors": []
+}

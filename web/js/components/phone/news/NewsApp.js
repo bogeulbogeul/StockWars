@@ -67,6 +67,7 @@ export class NewsApp {
         const top = this.feed.scrollTop; this.renderList(); this.feed.scrollTop = top;
         if (this.selected && !this.readingView.hidden) {
             const current = this.allNews().find(article => article.id === this.selected.id);
+            if (!current) { this.showList(); this.selected = null; return; }
             if (current && JSON.stringify(current) !== this.selectedSignature) {
                 const reader = this.host.querySelector('.news-reader');
                 const position = reader.scrollTop;

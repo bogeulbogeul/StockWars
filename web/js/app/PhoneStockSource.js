@@ -3,12 +3,11 @@ import { calculateGrowthIndex } from '../engine/GrowthIndex.js';
 import { normalProfile } from '../components/phone/profile/ProfileData.js';
 import { normalMapPosition } from '../components/phone/map/MapData.js';
 import { playerAchievements } from '../components/phone/achievements/AchievementData.js';
-import { scheduledNewsRuntime } from './ScheduledNewsRuntime.js';
+import { attachSessionMarketNews } from './SessionMarketNews.js';
 
 export function phoneStockSource(app, engineOverride = engine) {
     const engine = engineOverride;
-    const newsFeed = scheduledNewsRuntime('standard');
-    Object.defineProperty(engine, 'news', { configurable: true, get: () => newsFeed.news() });
+    const newsFeed = attachSessionMarketNews(engine);
     return {
         achievements: () => playerAchievements(app),
         mapPosition: () => normalMapPosition(app),
@@ -22,13 +21,13 @@ export function phoneStockSource(app, engineOverride = engine) {
         recent: [...(app.smartphoneUI.homeTab?.recentlyViewedIds || [])],
         onFavorites: favorites => { app.smartphoneUI.stockListTab.favorites = new Set(favorites); },
         getState: () => {
+            newsFeed.refresh();
             const state = engine.getState();
             return { ...state, sproutIndex: calculateGrowthIndex(state.stocks) };
         },
         subscribe: listener => {
             const marketOff = engine.subscribe(listener);
-            const newsOff = newsFeed.subscribe(() => listener(engine.getState()));
-            return () => { marketOff(); newsOff(); };
+            return marketOff;
         },
         history: id => engine.getChartHistory(id), book: id => engine.getOrderBook(id),
         pending: id => engine.limitOrders.filter(order => order.stockId === id),

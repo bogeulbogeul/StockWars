@@ -26,3 +26,27 @@
  .simulation-actions p { flex-basis: 100%; }
  .simulation-challenge button { padding: 7px 9px; }
 }
+.simulation-challenge { padding: 7px 16px; font-size: 12px; }
+.simulation-heading { justify-content: flex-start; gap: 8px 18px; }
+.simulation-heading strong { font-size: 14px; }
+.simulation-metrics { margin: 0; gap: 14px; }
+.simulation-actions { margin-left: auto; gap: 6px; }
+.simulation-challenge button { padding: 5px 10px; font-size: 12px; }
+.simulation-news { background: transparent; padding: 0; margin-top: 5px; font-size: 12px; }
+.simulation-news summary { cursor: pointer; }
+.simulation-challenge p { margin: 4px 0 0; font-size: 12px; }
+.simulation-hint { color: #63715d; }
+@media(max-width: 700px) {
+ .simulation-challenge { padding: 6px 10px; max-height: 22dvh; }
+ .simulation-heading { gap: 6px 12px; }
+ .simulation-metrics { gap: 6px 12px; }
+ .simulation-metrics > span:last-child { display: none; }
+ .simulation-heading strong { font-size: 14px; }
+ .simulation-actions { margin-left: 0; }
+ .simulation-challenge button { padding: 5px 9px; }
+}
+.cozy-phone--simulation .stock-header { display: none !important; }
+.cozy-phone--simulation .stock-app .stock-indices { padding: 4px 12px; gap: 8px; font-size: 12px; }
+.cozy-phone--simulation .stock-app .stock-indices > div { padding: 4px 8px; }
+.cozy-phone--simulation .stock-app .stock-indices > div > span:first-child { width: auto; }
+.cozy-phone.cozy-phone.cozy-phone--simulation:has(.cozy-phone__detail--news) { width: min(1440px, calc(100vw - 24px)); height: calc(100dvh - 24px); }

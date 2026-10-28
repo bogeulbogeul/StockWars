@@ -1,0 +1,18 @@
+[
+  {
+    "packaged": false,
+    "initialCard": "CN_ECOBATTERY_N2@session-0",
+    "afterThreeMinutes": "CN_ECOBATTERY_P1@session-1",
+    "afterSixMinutes": "CN_ECOBATTERY_N1@session-2",
+    "expiredReaderReturnsToList": true,
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "initialCard": "CN_ECOBATTERY_P2@session-0",
+    "afterThreeMinutes": "CN_ECOBATTERY_P1@session-1",
+    "afterSixMinutes": "CN_ECOBATTERY_N2@session-2",
+    "expiredReaderReturnsToList": true,
+    "errors": []
+  }
+]

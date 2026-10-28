@@ -1,9 +1,8 @@
 import { playOpening } from './OpeningSequence.js';
-import { animateTitle } from './TitleMotion.js';
 import { playBusArrival } from './arrival/BusArrival.js';
 import { getTownMusic } from '../engine/TownMusic.js';
 
-// Artwork and hit target share one aspect-ratio box at every viewport size.
+// Static crayon artwork with a responsive two-choice menu.
 export function showTitleScreen(onStart, { opening = true, arrival = true, buttonLabel = '', buttonImage = '', intro = null } = {}) {
     const screen = document.createElement('section');
     screen.className = 'crayon-title';
@@ -11,12 +10,13 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
     screen.innerHTML = `
         <div class="crayon-title__art">
             <img src="assets/title/flipbook-v1/frame-0.png" alt="크레파스로 그린 STOCKWARS와 손 흔드는 소망이" draggable="false">
+            <nav class="crayon-title__menu" aria-label="게임 메뉴">
             <button class="crayon-title__start" type="button" aria-label="게임 시작">
                 <img src="assets/title/flipbook-v1/start-button.png" alt="" aria-hidden="true" draggable="false">
             </button>
+            </nav>
         </div>`;
     document.body.append(screen);
-    const stopMotion = animateTitle(screen.querySelector('.crayon-title__art'));
     document.body.classList.add('title-screen-active');
     const music = getTownMusic();
     if (!intro) music.setTitleActive(true, screen);
@@ -41,7 +41,7 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
         const simulation = document.createElement('button');
         simulation.type = 'button'; simulation.className = 'crayon-title__simulation';
         simulation.textContent = '주식 시뮬레이션 체험하기';
-        art.append(simulation);
+        art.querySelector('.crayon-title__menu').append(simulation);
         simulation.onclick = async () => {
             if (simulationActive || button.disabled) return;
             simulationActive = true; simulation.disabled = true;
@@ -78,7 +78,6 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
     button.addEventListener('click', async () => {
         if (simulationActive) return;
         screen.querySelectorAll('button').forEach(button => { button.disabled = true; });
-        stopMotion();
         music.setTitleActive(false);
         if (opening) await playOpening(screen);
         if (arrival) await playBusArrival(screen);

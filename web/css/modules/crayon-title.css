@@ -1,74 +1,22 @@
-.crayon-title {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483647;
-    display: grid;
-    place-items: center;
-    background: #fcf3dc;
-}
-.crayon-title__art {
-    position: relative;
-    width: min(100vw, calc(100dvh * 1672 / 941));
-    aspect-ratio: 1672 / 941;
-}
-.crayon-title__art img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    user-select: none;
-}
-.crayon-title__start {
-    z-index: 1;
-    position: absolute;
-    left: 32%;
-    top: 77.5%;
-    width: 36%;
-    height: 17.5%;
-    min-height: 24px;
-    padding: 0;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    cursor: pointer;
-    touch-action: manipulation;
-}
-.crayon-title__start:hover { filter: brightness(1.04); }
-.crayon-title__start img { object-fit: contain; }
-.crayon-title__start:active { filter: brightness(.95); }
-.crayon-title__start:focus-visible {
-    outline: none;
-    filter: brightness(1.06);
-}
+.crayon-title { position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; background: #fcf3dc; }
+.crayon-title__art { position: relative; width: min(1440px, calc(100vw - 48px), calc(94dvh * 1672 / 941)); aspect-ratio: 1672 / 941; }
+.crayon-title__art > img { display: block; width: 100%; height: 100%; user-select: none; }
+.crayon-title__menu { position: absolute; z-index: 1; top: 77%; left: 50%; transform: translateX(-50%); width: min(400px, 42%); display: grid; gap: clamp(8px, 1.2dvh, 12px); }
+.crayon-title__menu button { box-sizing: border-box; width: 100%; height: clamp(36px, 5.4dvh, 56px); padding: 0 20px; border-radius: 14px; cursor: pointer; touch-action: manipulation; font: 700 clamp(13px, 1.25vw, 19px)/1.4 'Malgun Gothic', sans-serif; letter-spacing: .02em; }
+.crayon-title__start { border: 0; background: transparent; padding: 0 !important; }
+.crayon-title__start img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.crayon-title__menu:has(.crayon-title__start img) .crayon-title__start { height: clamp(48px, 8dvh, 84px); }
+.crayon-title__text-button { border: 1px solid #426647 !important; background: #426647; color: #fffaf0; box-shadow: 0 3px 0 #304e35; }
+.crayon-title__simulation { border: 1px solid #809278; background: #faf5e7; color: #426047; }
+.crayon-title__text-button:hover { background: #35573b; }
+.crayon-title__simulation:hover { background: #edf0e1; }
+.crayon-title__menu button:active { box-shadow: none; }
+.crayon-title__menu button:focus-visible { outline: 2px solid #416747; outline-offset: 5px; }
+.crayon-title__menu button:disabled { cursor: default; opacity: .65; }
 body.title-screen-active { overflow: hidden; }
-.crayon-title__frame {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-.crayon-title__art .crayon-title__frame[hidden] { display: none; }
-body.graphics-paused .crayon-title__art img { opacity: 1 !important; }
-.crayon-title__text-button {
-    border: clamp(2px, .25vw, 4px) solid #557348;
-    background: #fff0a6;
-    color: #355e3c;
-    box-shadow: inset 0 0 0 3px #fff6cc, 0 0 0 1px #557348;
-    font: 700 clamp(12px, 2.2vw, 34px)/1.3 'Malgun Gothic', sans-serif;
-    white-space: nowrap;
-}
-
-.crayon-title__art--choices .crayon-title__start {
-    left: 30%; top: 75%; width: 40%; height: 10%;
-    font-size: clamp(12px, 2.1vw, 30px);
-}
-.crayon-title__simulation {
-    position: absolute; z-index: 1; left: 30%; top: 87%; width: 40%; height: 10%;
-    min-height: 24px; padding: 0 8px; border: 2px solid #557348; border-radius: 999px;
-    background: #f7f2df; color: #355e3c; cursor: pointer;
-    font: 700 clamp(10px, 1.6vw, 24px)/1.3 'Malgun Gothic', sans-serif;
-}
-.crayon-title__simulation:hover { background: #e8efd9; }
-.crayon-title__simulation:focus-visible, .crayon-title__art--choices .crayon-title__start:focus-visible {
-    outline: 3px solid #355e3c; outline-offset: 3px;
+@media (max-width: 700px) and (orientation: portrait) {
+ .crayon-title__art { width: 100%; max-width: 560px; aspect-ratio: auto; display: flex; flex-direction: column; align-items: center; }
+ .crayon-title__art > img { height: auto; }
+ .crayon-title__menu { position: relative; top: auto; left: auto; transform: none; width: min(320px, calc(100% - 64px)); margin-top: 8px; gap: 12px; }
+ .crayon-title__menu button { height: 52px; font-size: 15px; }
 }

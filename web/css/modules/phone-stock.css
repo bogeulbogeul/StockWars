@@ -213,3 +213,30 @@
     .stock-app .stock-detail-content:has(.stock-chart--expanded) { display: block; }
     .stock-app .stock-detail-content:has(.stock-chart--expanded) .stock-book-panel { margin-top: 18px; }
 }
+/* Keep the opening overview and stock list free of favorite controls. */
+.stock-body:not([data-screen="detail"]) [data-star],
+.stock-body:not([data-screen="detail"]) [data-sector="FAV"] { display: none; }
+.stock-chart-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: auto; cursor: grab; }
+.stock-chart-scroll:active { cursor: grabbing; }
+.stock-chart-scroll:focus-visible { outline: 2px solid #597c65; outline-offset: -2px; }
+.stock-app .stock-chart-scroll .stock-chart { width: 180%; min-width: 1000px; max-width: none; margin-top: 0; user-select: none; }
+.stock-chart-scroll .stock-chart { cursor: inherit; }
+.stock-chart-scroll::-webkit-scrollbar { height: 9px; }
+.stock-chart-scroll::-webkit-scrollbar-track { background: #e9e5d8; border-radius: 6px; }
+.stock-chart-scroll::-webkit-scrollbar-thumb { background: #8b9d80; border-radius: 6px; }
+/* News opened from a company keeps the trading workspace dimensions. */
+@media (min-width: 1000px) and (min-height: 600px) {
+ .cozy-phone.cozy-phone:has(.stock-news-from-trade) { width: min(1440px, calc(100vw - 40px)); height: min(960px, calc(100dvh - 40px)); }
+ .cozy-phone.cozy-phone:has(.stock-news-from-trade) .cozy-phone__shell { height: 100%; aspect-ratio: auto; padding: 38px 8px 8px; border-radius: 22px; }
+ .cozy-phone:has(.stock-news-from-trade) .cozy-phone__screen { height: 100%; border-radius: 14px; }
+ .cozy-phone:has(.stock-news-from-trade) .cozy-phone__speaker,
+ .cozy-phone:has(.stock-news-from-trade) .cozy-phone__status,
+ .cozy-phone:has(.stock-news-from-trade) .cozy-phone__shell::before,
+ .cozy-phone:has(.stock-news-from-trade) .cozy-phone__shell::after { display: none; }
+}
+.stock-info-news { margin-top: 20px; }
+.stock-info-news-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px; margin-bottom: 12px; }
+.stock-info-news-cards .news-list-card { width: 100%; margin: 0; text-align: left; border: 1px solid #d6decb; background: #fffaf0; padding: 16px; border-radius: 12px; }
+.stock-info-news-cards .news-headline { display: block; font-size: 17px; margin: 10px 0 6px; }
+.stock-info-news-cards .news-summary { display: block; font-size: 13px; line-height: 1.6; }
+.stock-info-news-cards .news-card-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 12px; font-size: 12px; }

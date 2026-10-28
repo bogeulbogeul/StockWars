@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "name": "initial",
+      "viewport": [
+        1264,
+        742
+      ],
+      "canvas": [
+        1264,
+        742
+      ],
+      "cache": [
+        1264,
+        742
+      ],
+      "style": [
+        "1264px",
+        "742px"
+      ],
+      "visible": "visible",
+      "aspect": 1.7035040431266846
+    },
+    {
+      "name": "cinematic-return-after-maximize",
+      "viewport": [
+        1920,
+        990
+      ],
+      "canvas": [
+        1920,
+        990
+      ],
+      "cache": [
+        1920,
+        990
+      ],
+      "style": [
+        "1920px",
+        "990px"
+      ],
+      "visible": "visible",
+      "aspect": 1.9393939393939394
+    },
+    {
+      "name": "stale-render-size-recovered",
+      "viewport": [
+        1920,
+        990
+      ],
+      "canvas": [
+        1920,
+        990
+      ],
+      "cache": [
+        1920,
+        990
+      ],
+      "style": [
+        "1920px",
+        "990px"
+      ],
+      "visible": "visible",
+      "aspect": 1.9393939393939394
+    },
+    {
+      "name": "stale-css-size-recovered",
+      "viewport": [
+        1920,
+        990
+      ],
+      "canvas": [
+        1920,
+        990
+      ],
+      "cache": [
+        1920,
+        990
+      ],
+      "style": [
+        "1920px",
+        "990px"
+      ],
+      "visible": "visible",
+      "aspect": 1.9393939393939394
+    },
+    {
+      "name": "shrink",
+      "viewport": [
+        1024,
+        768
+      ],
+      "canvas": [
+        1024,
+        768
+      ],
+      "cache": [
+        1024,
+        768
+      ],
+      "style": [
+        "1024px",
+        "768px"
+      ],
+      "visible": "visible",
+      "aspect": 1.3333333333333333
+    },
+    {
+      "name": "grow-again",
+      "viewport": [
+        1600,
+        900
+      ],
+      "canvas": [
+        1600,
+        900
+      ],
+      "cache": [
+        1600,
+        900
+      ],
+      "style": [
+        "1600px",
+        "900px"
+      ],
+      "visible": "visible",
+      "aspect": 1.7777777777777777
+    }
+  ],
+  "errors": []
+}

@@ -74,6 +74,7 @@ export class StockApp {
             this.order.price.value = b.dataset.pricePick; this.order.refresh(); this.order.price.focus();
         }
         if (b.hasAttribute('data-related')) this.openNews?.(this.id);
+        if (b.dataset.newsId) this.openNews?.(this.id, b.dataset.newsId);
     }
     openStock(id) {
         const stock = this.state().stocks.find(s => s.id === id); if (!stock) return;
@@ -100,7 +101,11 @@ export class StockApp {
         content.onclick = null;
         content.dataset.panel = tab;
         if (tab === 'order') this.order = new StockOrder(content, this.source, this.id);
-        else if (tab === 'info') content.innerHTML = infoScreen(this.state().stocks.find(s => s.id === this.id));
+        else if (tab === 'info') {
+            const news = this.source.news?.() || [];
+            this.infoNewsSignature = JSON.stringify(news.filter(a => a.stockId === this.id));
+            content.innerHTML = infoScreen(this.state().stocks.find(s => s.id === this.id), news);
+        }
         else {
             const book = this.source.book(this.id);
             content.innerHTML = '<section class="stock-chart-panel" aria-label="주가 차트">' + chartScreen(this.source.history(this.id), this.period, this.expanded)
@@ -117,6 +122,10 @@ export class StockApp {
             this.updateDetailHeader();
             if (this.order) this.order.refresh();
             else if (this.subtab === 'chart') this.renderDetail('chart');
+            else if (this.subtab === 'info') {
+                const news = this.source.news?.() || [];
+                if (this.infoNewsSignature !== JSON.stringify(news.filter(a => a.stockId === this.id))) this.renderDetail('info');
+            }
         } else if (this.tab === 'market') this.renderList();
         else {
             // Preserve the current list position on quote ticks.

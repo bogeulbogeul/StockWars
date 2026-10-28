@@ -1,0 +1,41 @@
+[
+  {
+    "label": "web",
+    "passed": true,
+    "result": "투자 체험 완료\n최종 자산 5,010잎 · +10잎 (0.2%)\n거래 내역\n다시 도전\n타이틀로\n결과 상세 · 체결 2건",
+    "layout": {
+      "dialog": {
+        "x": 12,
+        "y": 12,
+        "width": 366,
+        "height": 820,
+        "top": 12,
+        "right": 378,
+        "bottom": 832,
+        "left": 12
+      },
+      "panel": {
+        "x": 25,
+        "y": 68,
+        "width": 340,
+        "height": 90,
+        "top": 68,
+        "right": 365,
+        "bottom": 158,
+        "left": 25
+      },
+      "body": {
+        "x": 25,
+        "y": 214,
+        "width": 340,
+        "height": 530,
+        "top": 214,
+        "right": 365,
+        "bottom": 744,
+        "left": 25
+      },
+      "overflow": false
+    },
+    "errors": []
+  }
+]
