@@ -1,0 +1,20 @@
+[
+  {
+    "packaged": false,
+    "automaticScenes": true,
+    "automaticCaptions": true,
+    "clickSkipsScene": true,
+    "clickSkipsCaption": true,
+    "busArrivalReached": true,
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "automaticScenes": true,
+    "automaticCaptions": true,
+    "clickSkipsScene": true,
+    "clickSkipsCaption": true,
+    "busArrivalReached": true,
+    "errors": []
+  }
+]

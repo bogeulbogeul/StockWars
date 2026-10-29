@@ -46,10 +46,10 @@ test('phone unlocks immediately on receipt while the bank farewell still sends M
         assert(farewell > plan.findIndex(b => b.id === 'loan'));
         assert.equal(plan[farewell].place, 'bankOutside');
         assert.equal(plan[farewell - 1].speaker, '모아');
-        assert.match(plan[farewell - 1].text, /나무 아래 벤치에서 기다릴게요/);
+        assert(plan.slice(plan.findIndex(b => b.id === 'order'), farewell).some(b => /광장 벤치/.test(b.text || '')));
         assert.equal(plan.filter(b => b.id === 'moaFarewell').length, 1);
-        const mapHint = plan.find(b => b.place === 'bankOutside' && b.text?.includes('휴대폰 지도'));
-        assert(mapHint.text.includes('위치는 휴대폰 지도에서 확인하세요'));
+        const mapHint = plan.find(b => b.place === 'bankOutside' && b.text?.includes('스마트폰의 지도앱'));
+        assert(mapHint.text.includes('스마트폰의 지도앱'));
         assert(!mapHint.text.includes(order === 'stock' ? '잡화점' : '증권사'));
         const state = freshState(); complete(state, 'phone');
         assert(state.flags.phoneReady);
@@ -149,15 +149,16 @@ test('four map introductions replace outdoor stops and selected branches do not 
     assert.ok(!next.some(b => b.text === '주식 투자가 어떤 건지 배워보고 싶어.'));
 });
 
-test('go straight to information, show home interior next, then bank before activity choice', () => {
+test('go straight from information to bank and visit home only at night', () => {
     for (const order of ['packing', 'stock']) {
         const plan = buildPlan(chapters, order);
         assert.equal(plan.find(b => b.id === 'walk').place, 'informationOutside');
         const home = plan.findIndex(b => b.place === 'home'), bank = plan.findIndex(b => b.place === 'bank');
-        assert(home > plan.findLastIndex(b => b.mapIntro)); assert(home < bank);
+        assert(bank > plan.findLastIndex(b => b.mapIntro)); assert(home > bank);
+        assert.equal(plan.find(b => b.chapter === 6).place, 'information');
         assert(plan.findIndex(b => b.id === 'order') > plan.findIndex(b => b.id === 'loan'));
         assert.equal(plan.find(b => b.id === 'order').place, 'bankOutside');
-        assert.equal(plan.filter(b => b.chapter === 9 && b.place === 'home').length, 2);
+        assert.equal(plan.filter(b => b.chapter === 9 && b.place === 'home').length, 0);
     }
 });
 
@@ -180,4 +181,35 @@ test('updated dialogue keeps registered saves at the same action and restarts un
     const once = structuredClone(touring);
     migrateTourDialogue(touring, chapters);
     assert.deepEqual(touring, once);
+});
+
+test('restored original dialogue sends Moa ahead while keeping the current short location route', () => {
+ const p=buildPlan(chapters),short=buildPlan(chapters,'packing',false,false,true);
+ assert(p.filter(b=>b.kind==='line').length>short.filter(b=>b.kind==='line').length);
+ assert(p.some(b=>b.text==='왔다! 드디어 왔어요!'));
+ assert(p.some(b=>b.chapter===2&&b.text.includes('먼저 들어가서 기다리고')));
+ assert(!p.some(b=>b.chapter===3));
+ assert.deepEqual(p.filter(b=>b.kind==='action').map(b=>b.id),short.filter(b=>b.kind==='action').map(b=>b.id));
+});
+test('short-dialogue action cursors migrate to the same restored action without changing rewards', () => {
+ for(const order of ['packing','stock']){
+  const old=buildPlan(chapters,order,false,false,true,true),current=buildPlan(chapters,order);
+  for(let i=0;i<old.length;i++)if(old[i].kind==='action'){
+   const s={...freshState(),order,cursor:i,tourDialogueVersion:2,cash:6200,debt:5000};migrateTourDialogue(s,chapters);
+   assert.equal(current[s.cursor].id,old[i].id);assert.equal(s.cash,6200);assert.equal(s.debt,5000);assert.equal(s.tourDialogueVersion,4);
+  }
+ }
+});
+
+test('home preview saves resume at bank preparation and retain later action positions', () => {
+ for(const order of ['packing','stock']) {
+  const old=buildPlan(chapters,order,false,false,false,true), current=buildPlan(chapters,order);
+  for(let i=0;i<old.length;i++) if(old[i].kind==='action'||old[i].chapter===9&&old[i].place==='home') {
+   const state={...freshState(),order,cursor:i,tourDialogueVersion:3,cash:6200,debt:5000};
+   migrateTourDialogue(state,chapters);
+   if(old[i].kind==='action') assert.equal(current[state.cursor].id,old[i].id);
+   else {assert.equal(current[state.cursor].chapter,6); assert.equal(current[state.cursor].place,'information');}
+   assert.equal(state.cash,6200);assert.equal(state.debt,5000);assert.equal(state.tourDialogueVersion,4);
+  }
+ }
 });

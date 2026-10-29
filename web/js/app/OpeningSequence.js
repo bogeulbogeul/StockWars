@@ -1,6 +1,7 @@
 import { bindCinematicDialogue } from './CinematicDialogue.js';
 
 const sceneCount = 6;
+const sceneDurations = [12_000, 16_000, 19_000, 19_000, 21_000, 23_000];
 
 export function playOpening(screen) {
     return new Promise(resolve => {
@@ -16,7 +17,7 @@ export function playOpening(screen) {
         const cleanup = bindCinematicDialogue(frame, () => {
             if (index + 1 < sceneCount) play(++index);
             else finish();
-        });
+        }, { autoAdvanceMs: captions => sceneDurations[index] / Math.max(1, captions.length) });
         let finished = false;
         const finish = () => {
             if (finished) return;

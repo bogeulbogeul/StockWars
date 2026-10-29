@@ -4,7 +4,7 @@ import { TOUR_ORDER } from './TourOrder.js';
 import { VILLAGE_MAP_STEPS } from './VillageMapIntro.js';
 
 // Keep original dialogue; only implement its missing interactive connections here.
-export function buildPlan(chapters, order = 'packing', includeRetiredTour = false, walkingTour = false) {
+export function buildPlan(chapters, order = 'packing', includeRetiredTour = false, walkingTour = false, shortDialogue = false, homePreview = false) {
     const legacy = includeRetiredTour || walkingTour;
     const plan = [];
     const action = (id, place, title, extra = {}) => plan.push({ kind: 'action', id, place, title, ...extra });
@@ -27,15 +27,19 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     };
     add(1, 'arrival');
     if (legacy) add(2, 'arrival');
-    else for (const [speaker, text] of [['모아', '이름은 안내소에서 천천히 정해도 돼요.'],
-        ['소망이', '좋아. 같이 가자.'], ['모아', '먼저 제가 일하는 안내소로 가요. 마을은 지도를 보면서 짧게 소개해 드릴게요.']])
-        plan.push({ kind: 'line', speaker, text, chapter: 2, place: 'arrival' });
+    else {
+        add(2, 'arrival', undefined, '모아: “우선 어떤');
+        for (const beat of plan) if (beat.chapter === 2 && beat.text === '그럼 마을을 둘러보는 동안 생각해보는 건 어때요?')
+            beat.text = '그럼 안내소로 오는 동안 생각해보는 건 어때요?';
+        plan.push({ kind: 'line', speaker: '모아', chapter: 2, place: 'arrival',
+            text: '안내소에서 입주 안내를 도와드릴게요. 저는 먼저 들어가서 기다리고 있을게요. 안내소 문 앞에서 F키를 눌러 들어오세요.' });
+    }
     const tour = [['포포리 나무', 'tree'], ['소망이네 집', 'homeOutside'], ['봉봉 잡화점', 'storeOutside'],
         ['우디 가구점', 'furniture'], ['보니 옷장', includeRetiredTour ? 'retiredClothing' : null], ['도란 쉼터', 'pub'], ['소담 서점', 'bookstore'],
         ['두리 우체국', 'post'], ['토리 증권사', 'stockOutside'], ['차곡 은행', 'bankOutside'],
         ['주민 게시판', 'notice'], ['모아 안내소', 'informationOutside']];
     const orderedTour = includeRetiredTour ? tour : TOUR_ORDER.map(place => tour.find(stop => stop[1] === place));
-    action('walk', legacy ? orderedTour[0][1] : 'informationOutside', legacy ? `${orderedTour[0][0]}으로 가기` : '모아를 따라 안내소로 가기');
+    action('walk', legacy ? orderedTour[0][1] : 'informationOutside', legacy ? `${orderedTour[0][0]}으로 가기` : '안내소로 직접 찾아가기');
     if (legacy) orderedTour.forEach(([name, place]) => {
         const headings = chapters.get(3).lines.filter(line => line.startsWith('### '));
         const sourceIndex = headings.indexOf(`### ${name}`);
@@ -50,17 +54,19 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     if (!legacy) {
         VILLAGE_MAP_STEPS.forEach(([, text], i) => plan.push({ kind: 'line', speaker: '모아', text,
             place: 'information', mapIntro: i + 1 }));
-        plan.push({ kind: 'line', speaker: '모아', text: '그럼 먼저 집으로 가 볼까요? 제가 문을 열고 안쪽을 보여드릴게요.', place: 'information' });
-        add(9, 'home', undefined, '모아: “그럼 어떤');
+        if (homePreview) {
+            plan.push({ kind: 'line', speaker: '모아', text: '그럼 먼저 집으로 가 볼까요? 안쪽을 보여드릴게요.', place: 'information' });
+            add(9, 'home', undefined, '모아: “그럼 어떤');
+        }
     }
-    add(6, legacy ? 'information' : 'home');
+    add(6, !legacy && homePreview ? 'home' : 'information');
     add(7, 'bank', undefined, '[진행] 계좌'); action('bank', 'bank', '생활 계좌 개설하기');
     add(7, 'bank', '[진행] 계좌', '[대출 조건 안내');
     action('loan', 'bank', '정착 자금 확인하기');
     add(7, 'bank', '[대출 조건 안내', '[진행] 대출 조건 확인');
     add(7, 'bank', '[진행] 대출 조건 확인'); add(8, 'bankOutside', undefined, legacy ? undefined : '모아: “한꺼번에');
     if (legacy) add(9, 'home', undefined, '[선택지]');
-    else plan.push({ kind: 'line', speaker: '모아', text: '집도 둘러보고 생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?', place: 'bankOutside' });
+    else plan.push({ kind: 'line', speaker: '모아', text: homePreview ? '집도 둘러보고 생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?' : '생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?', place: 'bankOutside' });
     const choicePlace = legacy ? 'home' : 'bankOutside';
     action('order', choicePlace, '오늘 먼저 해볼 일');
     add(9, choicePlace, order === 'packing' ? '### 주민 부탁' : '### 주식 투자', order === 'packing' ? '### 주식 투자' : '### 선택 후');
@@ -119,7 +125,7 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     add(20, 'home', '[선택 버튼]', '[다이어리 첫 기록');
     action('diaryWritten', 'home', '첫 기록 남기기');
     action('asleep', 'home', '잠자기');
-    return legacy ? plan : shortenDemoDialogue(plan, order);
+    return legacy || !shortDialogue ? plan : shortenDemoDialogue(plan, order);
 }
 
 // Old saves used numeric scene positions. Remove only the retired tour's offset.
@@ -135,7 +141,35 @@ export function migrateClothingTour(state, chapters) {
 }
 
 export function migrateTourDialogue(state, chapters) {
-    if (state.tourDialogueVersion === 2) return;
+    if (state.tourDialogueVersion === 4) return;
+    if (state.tourDialogueVersion === 3) {
+        const old = buildPlan(chapters, state.order, false, false, false, true), current = buildPlan(chapters, state.order);
+        let index = -1;
+        for (let i = state.cursor; i < old.length; i++) {
+            const beat = old[i], previous = old.slice(0, i).findLast(b => b.kind === 'action');
+            const start = previous ? current.findIndex(b => b.id === previous.id) + 1 : 0;
+            let end = current.findIndex((b, j) => j >= start && b.kind === 'action');
+            if (end < 0) end = current.length;
+            index = current.findIndex((b, j) => beat.kind === 'action' ? b.id === beat.id
+                : j >= start && j < end && b.text === beat.text && b.speaker === beat.speaker && b.chapter === beat.chapter);
+            if (index >= 0) break;
+        }
+        state.cursor = index >= 0 ? index : current.length;
+        state.tourDialogueVersion = 4; return;
+    }
+    if (state.tourDialogueVersion === 2) {
+        const old = buildPlan(chapters, state.order, false, false, true, true), current = buildPlan(chapters, state.order);
+        const beat = old[state.cursor];
+        const previous = old.slice(0, state.cursor).findLast(b => b.kind === 'action');
+        const start = previous ? current.findIndex(b => b.id === previous.id) + 1 : 0;
+        let end = current.findIndex((b, i) => i >= start && b.kind === 'action');
+        if (end < 0) end = current.length;
+        let index = beat?.kind === 'action' ? current.findIndex(b => b.id === beat.id)
+            : current.findIndex((b, i) => i >= start && i < end && b.text === beat?.text && b.place === beat?.place);
+        if (index < 0) index = current.findIndex((b, i) => i >= start && i < end && b.place === beat?.place && b.chapter === beat?.chapter && b.speaker === beat?.speaker);
+        state.cursor = index >= 0 ? index : Math.min(start, current.length);
+        state.tourDialogueVersion = 4; return;
+    }
     const old = buildPlan(chapters, state.order, false, true), current = buildPlan(chapters, state.order);
     const walk = old.findIndex(beat => beat.id === 'walk');
     if (state.tourDialogueVersion !== 1) {
@@ -149,6 +183,6 @@ export function migrateTourDialogue(state, chapters) {
     else index = current.findIndex(b => beat?.kind === 'action' ? b.id === beat.id
         : b.chapter === beat?.chapter && b.speaker === beat?.speaker && b.text === beat?.text);
     if (index < 0) index = state.flags.nickname ? current.findIndex(b => b.mapIntro) : current.findIndex(b => b.id === 'walk');
-    state.cursor = index; state.tourDialogueVersion = 2;
+    state.cursor = index; state.tourDialogueVersion = 4;
 }
 

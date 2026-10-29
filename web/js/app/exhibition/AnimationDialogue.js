@@ -32,15 +32,17 @@ export async function waitForAnimationLine(app, options) {
     try { await advance.wait(); } finally { advance.dispose(); }
 }
 
-export function waitForCaption(element) {
+export function waitForCaption(element, { autoAdvanceMs = 0 } = {}) {
     element.setAttribute('role', 'button'); element.tabIndex = 0; element.style.cursor = 'pointer';
     return new Promise(resolve => {
-        let done = false;
+        let done = false, timer;
         const next = event => {
-            if (done || (event.type === 'keydown' && (!['Enter', ' '].includes(event.key) || event.repeat))) return;
-            event.preventDefault(); event.stopPropagation(); done = true;
+            if (done || (event?.type === 'keydown' && (!['Enter', ' '].includes(event.key) || event.repeat))) return;
+            event?.preventDefault(); event?.stopPropagation(); done = true;
+            clearTimeout(timer);
             element.removeEventListener('click', next); element.removeEventListener('keydown', next); resolve();
         };
         element.addEventListener('click', next); element.addEventListener('keydown', next);
+        if (autoAdvanceMs > 0) timer = setTimeout(next, autoAdvanceMs);
     });
 }

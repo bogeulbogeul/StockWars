@@ -12,7 +12,7 @@ for (const order of ['packing', 'stock']) test(`${order}: cookie, gifts and seed
     const cookie = plan.findIndex(b => b.id === 'cookie');
     const grant = plan.findIndex(b => b.id === 'grant');
     const diary = plan.findIndex(b => b.id === 'diary');
-    const opened = plan.findIndex(b => b.chapter === 17 && b.kind === 'line' && b.text.includes('오늘 기억하고 싶은 일'));
+    const opened = plan.findIndex(b => b.chapter === 17 && b.kind === 'line' && b.text.includes('쿠키 이야기부터'));
     const seed = plan.findIndex(b => b.chapter === 18 && b.speaker === '소망이' && b.text.includes('씨앗'));
     assert(cookie >= 0 && opened >= 0 && seed >= 0);
     assert(cookie < grant && grant < diary && diary < opened && opened < seed);

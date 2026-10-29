@@ -1,0 +1,44 @@
+{
+  "lines": [
+    "……음?",
+    "어……!",
+    "왔다! 드디어 왔어요!",
+    "……나?",
+    "네! 혹시 안내문 보고 오셨어요? 포포리 마을에서 새 주민을 찾는다는 안내문이요!",
+    "응. 정류장에 붙어 있던 거.",
+    "다행이다…… 아무도 못 봤으면 어쩌나 했어요.",
+    "여기서 기다리고 있었어?",
+    "네. 버스가 올 때마다요. 혹시 제가 없을 때 오시면 어디로 가야 할지 모르실 테니까.",
+    "그런데 자고 있었잖아.",
+    "……오늘은 조금 졸았어요.",
+    "아, 인사부터 해야 하는데!",
+    "포포리 마을에 오신 걸 환영해요. 저는 정착 안내를 맡은 모아예요!",
+    "이름이 뭐예요?",
+    "아직 못 정했어.",
+    "그럼 안내소로 오는 동안 생각해보는 건 어때요?",
+    "바로 정하지 않아도 돼?",
+    "그럼요. 앞으로 계속 불릴 이름인데, 천천히 생각해봐요.",
+    "안내소에서 입주 안내를 도와드릴게요. 저는 먼저 들어가서 기다리고 있을게요. 안내소 문 앞에서 F키를 눌러 들어오세요."
+  ],
+  "before": {
+    "x": 895,
+    "y": 2355
+  },
+  "atWait": {
+    "x": 895,
+    "y": 2355,
+    "moaOutside": false,
+    "inside": false
+  },
+  "noPlayerTeleport": true,
+  "moaWaitingIndoors": true,
+  "otherBuildingBlocked": true,
+  "FRequired": true,
+  "indoorSeatDialogue": true,
+  "errors": [],
+  "originalFormThemeRestored": true,
+  "borderRadius": "3px",
+  "submittedWithoutExtraClick": true,
+  "nicknameSaved": "새싹",
+  "nicknameCompleted": true
+}

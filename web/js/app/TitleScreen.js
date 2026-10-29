@@ -89,5 +89,4 @@ export function showTitleScreen(onStart, { opening = true, arrival = true, butto
         document.body.classList.remove('title-screen-active');
         window.dispatchEvent(new Event('stockwars-arrival-finished'));
     }, { once: true });
-    button.focus({ preventScroll: true });
 }

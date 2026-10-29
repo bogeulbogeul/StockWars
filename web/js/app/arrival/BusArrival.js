@@ -11,11 +11,12 @@ export function playBusArrival(screen) {
         const stage = screen.querySelector('.bus-arrival__stage');
         const caption = screen.querySelector('.bus-arrival__caption');
         const skip = screen.querySelector('button');
-        let view, audio, frame, finished = false, elapsed = 0, previous, departedAt, phase = 0, ready = false;
+        let view, audio, frame, autoTimer, finished = false, elapsed = 0, previous, departedAt, phase = 0, ready = false;
         const finish = () => {
             if (finished) return;
             finished = true;
             clearTimeout(loadTimeout);
+            clearTimeout(autoTimer);
             cancelAnimationFrame(frame);
             audio?.dispose();
             view?.dispose();
@@ -24,12 +25,14 @@ export function playBusArrival(screen) {
         };
         caption.setAttribute('role', 'button'); caption.tabIndex = 0; caption.style.cursor = 'pointer';
         const advance = event => {
-            if (!ready || finished || (event.type === 'keydown' && (!['Enter', ' '].includes(event.key) || event.repeat))) return;
-            event.preventDefault(); event.stopPropagation();
+            if (!ready || finished || (event?.type === 'keydown' && (!['Enter', ' '].includes(event.key) || event.repeat))) return;
+            event?.preventDefault(); event?.stopPropagation(); clearTimeout(autoTimer);
             if (phase === 0) { phase = 1; elapsed = Math.max(elapsed, 5); }
             else if (phase === 1) { phase = 2; elapsed = Math.max(elapsed, 8); }
-            else finish();
+            else { finish(); return; }
+            arm();
         };
+        const arm = () => { clearTimeout(autoTimer); autoTimer = setTimeout(() => advance(), [5000, 3000, 8000][phase]); };
         caption.addEventListener('click', advance); caption.addEventListener('keydown', advance);
         const loadTimeout = setTimeout(finish, 15000);
         skip.addEventListener('click', finish, { once: true });
@@ -40,6 +43,7 @@ export function playBusArrival(screen) {
         view.ready.then(() => {
             if (finished) return;
             clearTimeout(loadTimeout); ready = true;
+            arm();
             audio = createBusArrivalAudio();
             screen.dataset.arrivalState = 'driving';
             const tick = now => {

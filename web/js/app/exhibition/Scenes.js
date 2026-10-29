@@ -90,7 +90,17 @@ export class ExhibitionScenes {
             this.place = 'homeOutside';
         }
         const walking = tour && positions[this.place] && positions[place];
-        if (walking) await walkVillageTour(this, positions[place]);
+        if (walking && this.place === 'arrival' && place === 'informationOutside') {
+            // Only Moa goes ahead. Keep the player's outdoor position unchanged
+            // until they walk to the information office and press F themselves.
+            await this.ready;
+            this.townModelScene.sleepingAnna.root.visible = false;
+            this.townModelScene.player.storyYaw = this.townModelScene.player.storyTarget = this.townModelScene.player.storyCamera = null;
+            this.townModelScene.conversationCamera?.reset(this.townModelScene.camera);
+            await enterInformationAfterMoa(this);
+            await waitForDestination(this, positions[place], '안내소', { guidanceTitle: '모아가 안내소에서 기다리고 있어요. 문 앞에서 F로 들어가보자' });
+        }
+        else if (walking) await walkVillageTour(this, positions[place]);
         const target = STORY_BUILDINGS[place];
         if (target && positions[this.place] && this.place !== target.outside) {
             const returningHome = place === 'home' && this.place === 'storeOutside';

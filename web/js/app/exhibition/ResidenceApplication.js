@@ -1,7 +1,10 @@
 import { waitForCaption } from './AnimationDialogue.js';
 import { el } from './View.js';
+import { clearDialogueTheme } from '../../components/dialogue/dialogueTheme.js';
 
 export function mountResidenceApplication(panel, { name = '', onSubmit }) {
+    clearDialogueTheme(panel);
+    panel.classList.remove('dialogue-has-next');
     panel.classList.add('residence-panel');
     panel.replaceChildren();
     const form = el('form', 'residence-form');
@@ -48,7 +51,7 @@ export function mountResidenceApplication(panel, { name = '', onSubmit }) {
         narration.textContent = '소망 칸 앞에서 잠시 펜을 멈췄어요.';
         wish.classList.add('residence-wish-pause');
         wish.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-        await waitForCaption(narration);
+        await waitForCaption(narration, { autoAdvanceMs: 1200 });
         if (!panel.contains(form)) return;
         narration.textContent = '';
         wish.classList.remove('residence-wish-pause');
