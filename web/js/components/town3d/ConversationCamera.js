@@ -1,3 +1,4 @@
+import { uprightFacingYaw } from './SomangiFacing.js';
 import { Vector3, Quaternion, MathUtils } from '../../../vendor/three/three.module.js';
 
 // Frame the speakers without changing their conversation-facing direction.
@@ -37,8 +38,8 @@ export function createConversationCamera({ fitWidth = false, worldCoordinates = 
                 if (!wasActive) sideSign = side.z < 0 ? -1 : 1;
                 side.multiplyScalar(sideSign);
                 if (plaza && moa.root.userData.seated) {
-                    side.x += Math.sin(moa.root.rotation.y) * .8;
-                    side.z += Math.cos(moa.root.rotation.y) * .8;
+                    side.x += Math.sin(uprightFacingYaw(moa.root)) * .8;
+                    side.z += Math.cos(uprightFacingYaw(moa.root)) * .8;
                     side.normalize();
                 }
                 let distance = fitWidth ? Math.max(520, (playerPosition.distanceTo(residentPosition) + 90)

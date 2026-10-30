@@ -25,6 +25,8 @@ import { enterBuildingOnFoot, walkRoomTo } from '../OnFootNavigation.js';
 import { STORY_BUILDINGS, leaveStoryBuilding } from './BuildingTravel.js';
 import { waitForDestination } from './DestinationWalk.js';
 import { leaveHomeWithMoa } from './HomeDeparture.js';
+import { travelFromInformationToBank } from './InformationBankTravel.js';
+import { fadeOutMoa } from './MoaFadeOut.js';
 
 const outside = id => {
     const b = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
@@ -68,7 +70,10 @@ export class ExhibitionScenes {
             await leaveBankAfterMoa(this);
             preservePosition = true;
         }
-        if (this.place === 'information' && (place === 'bank' || place === 'home')) {
+        if (this.place === 'information' && place === 'bank') {
+            await travelFromInformationToBank(this, positions.bankOutside);
+        }
+        if (this.place === 'information' && place === 'home') {
             await leaveInformationForBank(this);
             const destination = place === 'home' ? 'homeOutside' : 'bankOutside';
             await walkVillageTour(this, positions[destination], { requireInteraction: false });
@@ -94,7 +99,7 @@ export class ExhibitionScenes {
             // Only Moa goes ahead. Keep the player's outdoor position unchanged
             // until they walk to the information office and press F themselves.
             await this.ready;
-            this.townModelScene.sleepingAnna.root.visible = false;
+            await fadeOutMoa(this.townModelScene.sleepingAnna.root);
             this.townModelScene.player.storyYaw = this.townModelScene.player.storyTarget = this.townModelScene.player.storyCamera = null;
             this.townModelScene.conversationCamera?.reset(this.townModelScene.camera);
             await enterInformationAfterMoa(this);

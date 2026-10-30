@@ -1,0 +1,110 @@
+{
+  "results": [
+    {
+      "place": "information",
+      "checks": [
+        {
+          "facing": "down",
+          "correct": true
+        },
+        {
+          "facing": "up",
+          "correct": true
+        },
+        {
+          "facing": "right",
+          "correct": true
+        },
+        {
+          "facing": "left",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "place": "bank",
+      "checks": [
+        {
+          "facing": "down",
+          "correct": true
+        },
+        {
+          "facing": "up",
+          "correct": true
+        },
+        {
+          "facing": "right",
+          "correct": true
+        },
+        {
+          "facing": "left",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "place": "home",
+      "checks": [
+        {
+          "facing": "down",
+          "correct": true
+        },
+        {
+          "facing": "up",
+          "correct": true
+        },
+        {
+          "facing": "right",
+          "correct": true
+        },
+        {
+          "facing": "left",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "place": "store",
+      "checks": [
+        {
+          "facing": "down",
+          "correct": true
+        },
+        {
+          "facing": "up",
+          "correct": true
+        },
+        {
+          "facing": "right",
+          "correct": true
+        },
+        {
+          "facing": "left",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "place": "stock",
+      "checks": [
+        {
+          "facing": "down",
+          "correct": true
+        },
+        {
+          "facing": "up",
+          "correct": true
+        },
+        {
+          "facing": "right",
+          "correct": true
+        },
+        {
+          "facing": "left",
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

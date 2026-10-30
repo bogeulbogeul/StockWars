@@ -1,3 +1,4 @@
+import { setUprightFacing } from './SomangiFacing.js';
 import {Quaternion,Vector3} from '../../../vendor/three/three.module.js';
 
 export function applySeatPose(player,seat){
@@ -12,7 +13,7 @@ export function applySeatPose(player,seat){
     };
     const f=seat.forward,yaw=Math.atan2(f.x,f.z);
     player.storyCamera=null;player.storyTarget=null;
-    player.root.rotation.y=yaw;
+    setUprightFacing(player.root,yaw);
     player.root.position.copy(seat.center).addScaledVector(f,seat.forwardOffset);player.root.position.y=0;
     player.root.updateMatrixWorld(true);
     const axis=new Vector3(f.z,0,-f.x);

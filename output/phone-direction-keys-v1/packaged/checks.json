@@ -1,0 +1,18 @@
+{
+  "clipStart": 46.093,
+  "checks": [
+    {
+      "key": "s",
+      "yaw": 0,
+      "facing": "down",
+      "crab": false
+    },
+    {
+      "key": "w",
+      "yaw": 3.141592653589793,
+      "facing": "up",
+      "crab": false
+    }
+  ],
+  "errors": []
+}

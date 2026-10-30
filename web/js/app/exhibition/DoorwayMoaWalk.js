@@ -1,3 +1,4 @@
+import { turnUprightFacing } from '../../components/town3d/SomangiFacing.js';
 import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
 import { routeLength, routePoint } from './TourRoute.js';
 import { doorwayRoute, doorwayHeight } from './DoorwayTraversal.js';
@@ -22,8 +23,7 @@ export async function walkMoaThroughDoor(moa, door, controller) {
             moa.root.position.x = point.x; moa.root.position.z = point.y / P;
             moa.root.position.y = doorwayHeight(door, point.y / P);
             if (progress < length) {
-                const yaw = Math.atan2(dx, dz), delta = Math.atan2(Math.sin(yaw - moa.root.rotation.y), Math.cos(yaw - moa.root.rotation.y));
-                moa.root.rotation.y += Math.max(-4 * dt, Math.min(4 * dt, delta));
+                turnUprightFacing(moa.root, Math.atan2(dx, dz), 4 * dt);
             }
             if (progress >= length) resolve(); else requestAnimationFrame(tick);
         };

@@ -1,3 +1,4 @@
+import { setUprightFacing, uprightFacingYaw } from './SomangiFacing.js';
 import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
 import { MathUtils, Quaternion, Vector3 } from '../../../vendor/three/three.module.js';
 import { createSleepEffect } from './SleepEffect.js';
@@ -27,7 +28,7 @@ export async function addSleepingAnna(scene, stop) {
         sleeping = !awake;
         if (awake) moa.standReady = seatMotion.stand(immediate || matchMedia('(prefers-reduced-motion: reduce)').matches);
         else {
-            moa.faceTarget(null); moa.root.rotation.y = 0;
+            moa.faceTarget(null); setUprightFacing(moa.root, 0);
             if (!wasSleeping) seatMotion.sit();
         }
         sleepEffect.setSleeping(sleeping);
@@ -46,7 +47,7 @@ export async function addSleepingAnna(scene, stop) {
             if (yaw !== null && moa.root.userData.conversationOpenCamera) {
                 faceConversationPartner(moa.root, moa.conversationTarget);
             } else if (yaw !== null) {
-                const local = Math.atan2(Math.sin(yaw - moa.root.rotation.y), Math.cos(yaw - moa.root.rotation.y));
+                const local = Math.atan2(Math.sin(yaw - uprightFacingYaw(moa.root)), Math.cos(yaw - uprightFacingYaw(moa.root)));
                 head.quaternion.multiply(turn.setFromAxisAngle(up, MathUtils.clamp(local, -.55, .55)));
             }
             if (sleeping) {

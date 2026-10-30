@@ -1,0 +1,13 @@
+const fs=require('fs'),assert=require('assert/strict'),path=require('path');const{chromium}=require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const cfg=JSON.parse(fs.readFileSync('scratch/qa-browser.json')),b=await chromium.connect(cfg.ws),c=await b.newContext({viewport:{width:1440,height:1000}}),page=await c.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));const env={page};await new(Object.getPrototypeOf(async()=>{}).constructor)('env','with(env){'+fs.readFileSync('scratch/qa-helpers.js','utf8')+'}')(env);env.inspect=()=>{};await page.goto(cfg.base+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.exteriorDoors,{},{timeout:120000});await page.evaluate(async()=>{const a=window.stockWarsExhibition,s=a.scenes;await s.ready;a.arrival.stop();a.busy=true;s.townModelScene.arrivalActive=false;a.view.root.hidden=false;a.view.panel.hidden=true;const r=await s.prepareRoom('information');s.place='information';s.townStage.containerEl.classList.add('hidden');r.show();r.controller.charPosX=0;r.controller.charPosY=130*.4383711467890774;window.travelError=null;window.travelDone=false;s.show('bank').then(()=>window.travelDone=true).catch(e=>window.travelError=e.stack);});
+await page.waitForFunction(()=>window.stockWarsExhibition.scenes.stockExitAwaiting);
+await page.evaluate(()=>{let r=window.stockWarsExhibition.scenes.rooms.get('information');r.controller.charPosX=-200;r.controller.charPosY=200*.4383711467890774;r.player.previous=null;});
+fs.mkdirSync('output/walking-facing-v1',{recursive:true});
+for(const key of ['w','s']){
+ const before=await page.evaluate(()=>window.stockWarsExhibition.scenes.rooms.get('information').controller.charPosY);
+ await page.keyboard.down(key);await page.waitForTimeout(240);await page.keyboard.up(key);await page.waitForTimeout(80);
+ const state=await page.evaluate(()=>{let r=window.stockWarsExhibition.scenes.rooms.get('information');return {y:r.controller.charPosY,yaw:r.player.root.rotation.y,facing:r.controller.facing,crab:r.controller.somangiCrab}});
+ console.log(key,state);assert.equal(state.facing,key==='w'?'up':'down');assert(key==='w'?state.y<before:state.y>before);assert.equal(state.crab,false);assert(Math.abs(state.yaw-(key==='w'?Math.PI:0))<.01);
+ await page.screenshot({path:'output/walking-facing-v1/'+key+'.png'});
+}
+assert.deepEqual(errors,[]);await c.close();await b.close();console.log('PASS actual W/S travel and facing agree');})().catch(e=>{console.error(e);process.exitCode=1});

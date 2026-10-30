@@ -1,0 +1,17 @@
+[
+  "components/town3d/SomangiFacing.js",
+  "components/town3d/SomangiPlayer.js",
+  "components/town3d/ConversationFacing.js",
+  "components/town3d/SeatPose.js",
+  "components/town3d/BusStopSeatPose.js",
+  "components/town3d/MoaCharacter.js",
+  "components/town3d/SleepingAnna.js",
+  "components/town3d/ConversationCamera.js",
+  "components/information3d/InformationModelRoom.js",
+  "app/exhibition/ToriLessonMovement.js",
+  "components/store3d/BongbongGreeting.js",
+  "components/store3d/BongbongWorkstationGuide.js",
+  "app/exhibition/DoorwayMoaWalk.js",
+  "app/exhibition/StoreRewardStaging.js",
+  "app/exhibition/PlayerSeatDismount.js"
+]

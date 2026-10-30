@@ -1,3 +1,4 @@
+import { setUprightFacing } from '../../components/town3d/SomangiFacing.js';
 import { AnimationMixer, Vector3, MathUtils } from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
 import { roomWalkingRoute, walkRoute } from '../OnFootNavigation.js';
@@ -33,7 +34,7 @@ export async function walkTori(scene, root, destination, passageSide = 0) {
     try { await walkRoute(route, (point, ahead, dt) => {
         root.position.copy(root.parent.worldToLocal(new Vector3(point.x, 0, point.y / P)));
         const dx = ahead.x - point.x, dz = (ahead.y - point.y) / P;
-        if (Math.hypot(dx, dz) > .01) root.rotation.y = Math.atan2(dx, dz);
+        if (Math.hypot(dx, dz) > .01) setUprightFacing(root, Math.atan2(dx, dz));
         mixer.update(dt);
     }, 135); } finally { action.stop(); root.userData.lessonWalking = false; }
 }

@@ -1,3 +1,4 @@
+import { turnUprightFacing } from '../../components/town3d/SomangiFacing.js';
 import { Vector3 } from '../../../vendor/three/three.module.js';
 import { walkRoomTo, walkRoute } from '../OnFootNavigation.js';
 import { guideRouteTo } from '../../components/store3d/BongbongWorkstationGuide.js';
@@ -18,8 +19,7 @@ export async function stageStoreRewardConversation(room) {
             root.position.copy(root.parent.worldToLocal(new Vector3(point.x, 0, point.y / P)));
             const dx = ahead.x - point.x, dz = (ahead.y - point.y) / P;
             if (Math.hypot(dx, dz) > .01) {
-                const yaw = Math.atan2(dx, dz), delta = Math.atan2(Math.sin(yaw-root.rotation.y),Math.cos(yaw-root.rotation.y));
-                root.rotation.y += Math.max(-4*dt, Math.min(4*dt,delta));
+                turnUprightFacing(root, Math.atan2(dx, dz), 4*dt);
             }
             mixer.update(dt);
         }, 135);

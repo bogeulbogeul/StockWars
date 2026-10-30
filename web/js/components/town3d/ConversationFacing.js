@@ -1,3 +1,4 @@
+import { setUprightFacing, uprightFacingYaw } from './SomangiFacing.js';
 import { Vector3, Quaternion, MathUtils } from '../../../vendor/three/three.module.js';
 
 const point = new Vector3();
@@ -6,17 +7,17 @@ export function faceConversationPartner(root, target) {
     if (!root || !target || root.userData.sleeping) return;
     const yaw = conversationYaw(root, target);
     if (yaw === null) return;
-    if (!root.userData.seated) { root.rotation.y = yaw; return; }
+    if (!root.userData.seated) { setUprightFacing(root, yaw); return; }
     // Preserve the adopted sitting pose and chair contact; only turn the head.
     let gaze = seatedHeads.get(root);
     if (!gaze) {
         const head = root.getObjectByName('Head');
         // Baked seated assets have no separate head bone. Rotate around the
         // existing seat anchor without changing their pose or contact height.
-        if (!head) { root.rotation.y = yaw; return; }
+        if (!head) { setUprightFacing(root, yaw); return; }
         gaze = { head, rest: head.quaternion.clone() }; seatedHeads.set(root, gaze);
     }
-    const delta = Math.atan2(Math.sin(yaw - root.rotation.y), Math.cos(yaw - root.rotation.y));
+    const delta = Math.atan2(Math.sin(yaw - uprightFacingYaw(root)), Math.cos(yaw - uprightFacingYaw(root)));
     const parentRotation = gaze.head.parent.getWorldQuaternion(new Quaternion());
     const axis = new Vector3(0, 1, 0).applyQuaternion(parentRotation.invert());
     gaze.head.quaternion.copy(gaze.rest).premultiply(new Quaternion().setFromAxisAngle(axis, MathUtils.clamp(delta, -1.2, 1.2)));

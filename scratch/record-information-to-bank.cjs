@@ -1,0 +1,38 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const{chromium}=require('C:/Users/bogeu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const cfg=JSON.parse(fs.readFileSync('scratch/qa-browser.json')),browser=await chromium.connect(cfg.ws),out=path.resolve('output/information-to-bank-recording-v1'+(process.argv.includes('--packaged')?'/packaged':''));fs.mkdirSync(out,{recursive:true});const videoStart=Date.now(), timeline=[];const context=await browser.newContext({viewport:{width:1440,height:1000},recordVideo:{dir:out+'/raw',size:{width:1440,height:1000}}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));const env={page};await new (Object.getPrototypeOf(async()=>{}).constructor)('env','with(env){'+fs.readFileSync('scratch/qa-helpers.js','utf8')+'}')(env);const wait=ms=>page.waitForTimeout(ms);const mark=name=>{timeline.push({name,seconds:(Date.now()-videoStart)/1000});console.log(name);};if(process.argv.includes('--packaged'))await context.route(cfg.base+'/**',async route=>{const rel=new URL(route.request().url()).pathname,file=path.resolve('electron-app/dist/win-unpacked/resources/web','.'+(rel==='/'?'/index.html':decodeURIComponent(rel)));try{await route.fulfill({body:fs.readFileSync(file),contentType:({'.js':'text/javascript','.css':'text/css','.html':'text/html','.png':'image/png'})[path.extname(file)]||'application/octet-stream'});}catch{await route.fulfill({status:404,body:'Missing'});}});await page.goto(cfg.base+'/?demo=first-day&skipOpening=1');await page.waitForFunction(()=>window.stockWarsExhibition?.scenes.townModelScene.exteriorDoors,{},{timeout:120000});await page.evaluate(()=>window.stockWarsExhibition.scenes.ready);env.inspect=()=>page.evaluate(()=>({cursor:window.stockWarsExhibition.state.cursor}));
+await env.walk({x:1040,z:2355/.4383711467890774},20);for(let i=0;i<3;i++){await page.keyboard.press('f');await wait(700);const d=page.locator('.moa-wake-dialogue:not(.hidden) .vn-dialogue-text');if(await d.count())await d.click();await wait(300);}
+const lines=[];let before;
+for(let i=0;i<50;i++){await page.waitForFunction(()=>!window.stockWarsExhibition.busy);const state=await page.evaluate(()=>{const a=window.stockWarsExhibition;return{beat:a.plan[a.state.cursor],position:{x:a.scenes.townStage.playerController.charPosX,y:a.scenes.townStage.playerController.charPosY}}});if(state.beat.id==='walk')break;lines.push(state.beat.text);before=state.position;await page.locator('.exhibition-panel:not([hidden]) .dialogue-next-triangle').click();await wait(100);if(await page.evaluate(()=>window.stockWarsExhibition.plan[window.stockWarsExhibition.state.cursor]?.id==='walk'))break;}
+await page.waitForFunction(()=>{let s=window.stockWarsExhibition.scenes;return s.tourActive&&s.rooms.get('information')?.room.userData.moa.root.userData.seated});const atWait=await page.evaluate(()=>{const s=window.stockWarsExhibition.scenes,c=s.townStage.playerController;return {x:c.charPosX,y:c.charPosY,moaOutside:s.townModelScene.sleepingAnna.root.visible,inside:s.rooms.get('information').active}});assert(Math.hypot(before.x-atWait.x,before.y-atWait.y)<.1);assert(!atWait.moaOutside);assert(!atWait.inside);await page.screenshot({path:out+'/01-moa-waits-inside.png'});await wait(500);assert.equal(await page.evaluate(()=>window.stockWarsExhibition.scenes.place),'arrival');
+let home=await page.evaluate(async()=>{let{TOWN_MODEL_BUILDINGS:B,GROUND_PROJECTION:P}=await import('/js/data/townModelBuildings.js');let b=B.find(b=>b.id==='node_finance');return{x:b.x+(b.entranceOffsetX||0),z:(b.y+105)/P}});await env.walk(home,18);await page.keyboard.press('f');await page.getByText('우선 안내소로 가보자.',{exact:true}).waitFor();await page.screenshot({path:out+'/02-other-building-reminder.png'});assert.equal(await page.evaluate(()=>window.stockWarsExhibition.scenes.place),'arrival');await page.locator('.moa-wake-dialogue:not(.hidden) .vn-dialogue-text').click();
+let info=await page.evaluate(async()=>{let{TOWN_MODEL_BUILDINGS:B,GROUND_PROJECTION:P}=await import('/js/data/townModelBuildings.js');let b=B.find(b=>b.id==='settlement_information');return{x:b.x+(b.entranceOffsetX||0),z:(b.y+105)/P}});await env.walk(info,18);assert.equal(await page.evaluate(()=>window.stockWarsExhibition.scenes.rooms.get('information').active),false);mark('안내소 입장');await page.keyboard.press('f');await page.waitForFunction(()=>window.stockWarsExhibition.scenes.informationAwaitingTalk);await wait(600);await page.screenshot({path:out+'/03-entered-information.png'});await wait(1200);await page.keyboard.press('e');await page.waitForFunction(()=>!window.stockWarsExhibition.busy);assert.equal(await page.evaluate(()=>window.stockWarsExhibition.scenes.place),'information');await page.screenshot({path:out+'/04-restored-dialogue.png'});for(let i=0;i<60;i++) {
+ if(await page.locator('#residence-name').count()) break;
+ const caption=page.locator('.exhibition-panel:not([hidden]) .exhibition-text');
+ const next=page.locator('.exhibition-panel:not([hidden]) .dialogue-next-triangle'); if(await next.count())await next.click(); else if(await caption.count())await caption.click();
+ await wait(2100);
+}
+await page.locator('#residence-name').waitFor();
+assert.equal(await page.locator('.residence-panel').evaluate(p=>p.classList.contains('crayon-dialogue')),false);
+assert.equal(await page.locator('.residence-panel').evaluate(p=>getComputedStyle(p).borderRadius),'3px');
+await page.screenshot({path:out+'/05-restored-application.png'});
+mark('신청서 작성');await wait(1800);await page.locator('#residence-name').pressSequentially('소망',{delay:350});await wait(1000);
+await page.locator('.residence-submit').click();
+await page.waitForFunction(()=>!document.querySelector('#residence-name'),{},{timeout:10000});
+assert.equal(await page.evaluate(()=>window.stockWarsExhibition.state.nickname),'소망');
+assert.equal(await page.evaluate(()=>window.stockWarsExhibition.state.flags.nickname),true);
+await page.screenshot({path:out+'/06-after-submit.png'});
+
+for(let i=0;i<110;i++){
+ const st=await page.evaluate(()=>{let a=window.stockWarsExhibition,r=a.scenes.rooms.get('information');return {exit:!!a.scenes.stockExitAwaiting,phone:a.plan[a.state.cursor]?.id,receiving:a.scenes.receivingItem,dialog:a.view.phoneHome.dialog.open,head:r.player.root.getObjectByName('Head').quaternion.toArray(),seated:r.controller.busSeated}});
+ if(st.exit){mark('은행으로 출발 안내');break;}
+ if(st.dialog){await wait(2000);await page.keyboard.press('Escape');}
+ else if(st.phone==='openPhone'){mark('핸드폰 열기');await page.keyboard.press('p');}
+ else {const next=page.locator('.exhibition-panel:not([hidden]) .dialogue-next-triangle');if(await next.count())await next.click();}
+ await wait(2100);
+}
+await page.waitForFunction(()=>window.stockWarsExhibition.scenes.stockExitAwaiting,{},{timeout:15000});
+
+mark('핸드폰 수령 후 이동 확인');
+for(const key of ['s','w']){await page.keyboard.down(key);await wait(300);await page.keyboard.up(key);await wait(600);}
+await env.walk({x:0,z:280},12);await wait(800);await page.keyboard.press('f');await page.waitForFunction(()=>window.stockWarsExhibition.scenes.place==='informationOutside');mark('안내소 밖 도착·은행 이동 전');await wait(2500);
+assert.deepEqual(errors,[]);const video=page.video();await context.close();const raw=out+'/full-session.webm';await video.saveAs(raw);fs.writeFileSync(out+'/recording.json',JSON.stringify({raw,timeline,errors,source:'packaged resources',actualInput:true,stateInjection:false},null,2));await browser.close();console.log('RECORDING COMPLETE',raw);})().catch(e=>{console.error(e);process.exitCode=1});

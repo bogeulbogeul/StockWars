@@ -1,4 +1,5 @@
 import { conversationYaw, faceConversationPartner } from './ConversationFacing.js';
+import { somangiFacingYaw, setSomangiFacing } from './SomangiFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION } from '../../data/townModelBuildings.js';
 import { recoverTownBody } from './TownBodyMovement.js';
@@ -52,7 +53,7 @@ export class SomangiPlayer {
     setExpression(id) { return this.expressions.set(id); }
     faceCamera(camera) { this.storyYaw = null; this.storyTarget = null; this.storyCamera = camera; }
     holdFacing() {
-        this.storyYaw = this.root.rotation.y;
+        this.storyYaw = somangiFacingYaw(this.root);
         this.storyTarget = this.storyCamera = null;
     }
     faceTarget(target) {
@@ -61,7 +62,7 @@ export class SomangiPlayer {
         this.update(0);
         this.storyTarget = target; this.storyCamera = null;
         const yaw = conversationYaw(this.root, target);
-        if (yaw !== null) this.root.rotation.y = yaw;
+        if (yaw !== null) setSomangiFacing(this.root, yaw);
         faceConversationPartner(target, this.root);
     }
     setControlsHint(text) { this.customHint = text; this.updateHint(); }
@@ -112,16 +113,26 @@ export class SomangiPlayer {
         const distance = Math.hypot(dx, dz);
         this.previous = { x, z };
         const moving = c.scriptedWalking ? c.isMoving !== false : (distance > .02 && distance < 100 && !c.resting);
-        if (moving) { this.storyYaw = null; this.storyCamera = null; this.storyTarget = null; }
+        if (moving) {
+            this.storyYaw = null; this.storyCamera = null; this.storyTarget = null;
+            // Indoor/manual controllers may update their facing after this render.
+            // Face the actual travel direction and retain it when input stops.
+            if (distance > .02 && distance < 100 && !c.somangiCrab) {
+                this.travelYaw = Math.atan2(dx, dz);
+                c.facing = Math.abs(dx) > Math.abs(dz) ? dx > 0 ? 'right' : 'left' : dz > 0 ? 'down' : 'up';
+            }
+        }
         this.root.position.set(p.x, (c.supportHeight||0)+this.jump.update(Math.min(Math.max(dt, 0), .1)), p.y / GROUND_PROJECTION);
         c.jumpActive = this.jump.active;
         if (c.canStand) updateSomangiClearance(c, dx, dz, x, z, (px, pz) => c.canStand(px, pz * GROUND_PROJECTION));
-        const previousYaw = this.root.rotation.y;
+        const previousYaw = somangiFacingYaw(this.root);
         faceConversationPartner(this.storyTarget, this.root);
-        this.root.rotation.y = this.storyYaw ?? conversationYaw(this.root, this.storyTarget) ?? (this.storyCamera ? Math.atan2(this.storyCamera.position.x - x, this.storyCamera.position.z - z)
-            : ({ down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[c.facing] ?? 0));
+        const yaw = this.storyYaw ?? conversationYaw(this.root, this.storyTarget) ?? (this.storyCamera ? Math.atan2(this.storyCamera.position.x - x, this.storyCamera.position.z - z)
+            : (moving && !c.somangiCrab ? this.travelYaw : null)
+                ?? ({ down: 0, right: Math.PI / 2, up: Math.PI, left: -Math.PI / 2 }[c.facing] ?? 0));
+        setSomangiFacing(this.root, yaw);
         if (c.somangiCrab && this.storyYaw == null && !this.storyTarget && !this.storyCamera) {
-            this.root.rotation.y = sidewaysYaw(c.somangiTravelAxis, this.sidewaysFacing ?? previousYaw);
+            setSomangiFacing(this.root, sidewaysYaw(c.somangiTravelAxis, this.sidewaysFacing ?? previousYaw));
             this.sidewaysFacing = this.root.rotation.y;
         } else this.sidewaysFacing = null;
         if (this.state === 'loading') return;

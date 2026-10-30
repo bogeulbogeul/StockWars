@@ -1,3 +1,4 @@
+import { setUprightFacing, turnUprightFacing } from '../town3d/SomangiFacing.js';
 import { Vector3, Quaternion, MathUtils } from '../../../vendor/three/three.module.js';
 import { VIVIAN_ROOM_RATIO as R } from '../../data/vivianModelRoom.js';
 import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
@@ -57,8 +58,7 @@ export async function greetBongbong(scene) {
                 root.position.copy(root.parent.worldToLocal(new Vector3(p.x, 0, p.y / P)));
                 if (d < length) {
                     const yaw = Math.atan2(ahead.x - p.x, (ahead.y - p.y) / P);
-                    const delta = Math.atan2(Math.sin(yaw - root.rotation.y), Math.cos(yaw - root.rotation.y));
-                    root.rotation.y += MathUtils.clamp(delta, -5 * dt, 5 * dt);
+                    turnUprightFacing(root, yaw, 5 * dt);
                 }
                 mixer.update(dt);
             });
@@ -66,7 +66,7 @@ export async function greetBongbong(scene) {
         }
         if (cancelled) return;
         const position = root.getWorldPosition(new Vector3());
-        root.rotation.y = Math.atan2(visitor.x - position.x, visitor.z - position.z);
+        setUprightFacing(root, Math.atan2(visitor.x - position.x, visitor.z - position.z));
         player.faceTarget(root); root.userData.greetingPhase = 'waving';
         await motion(.95, t => {
             if (!arm) return;

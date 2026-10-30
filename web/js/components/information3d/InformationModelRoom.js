@@ -1,3 +1,4 @@
+import { setUprightFacing } from '../town3d/SomangiFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { GLTFLoader } from '../../../vendor/three/GLTFLoader.js';
 import { INFORMATION_MODEL_URL } from '../../data/informationModelRoom.js';
@@ -40,7 +41,7 @@ export function buildInformationModelRoom(scene) {
             || moa.root.getObjectByName(name.replace('L', '.L').replace('R', '.R')));
         const rest = legs.map(bone => ({ bone, position: bone.position.clone(), quaternion: bone.quaternion.clone() }));
         room.userData.moaSeatRest = rest;
-        moa.root.position.set(center.x, 0, center.z); moa.root.rotation.y = 0;
+        moa.root.position.set(center.x, 0, center.z); setUprightFacing(moa.root, 0);
         seatMoaOnBench(moa, room, { seat, forwardOffset: 3 });
         await moa.setMood('calm', 'smile');
     };

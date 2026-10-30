@@ -1,3 +1,4 @@
+import { setUprightFacing } from './SomangiFacing.js';
 import { conversationYaw } from './ConversationFacing.js';
 import * as THREE from '../../../vendor/three/three.module.js';
 import { loadCharacterAsset } from './SomangiAssets.js';
@@ -9,7 +10,7 @@ const faceMoods = { happy: 'happy', sad: 'worried', curious: 'curious', surprise
 export class MoaCharacter {
     constructor(scene, { x = 0, z = 0, rotation = 0, mood = 'calm' } = {}) {
         this.root = new THREE.Group(); this.root.name = 'moa-character';
-        this.root.position.set(x, 0, z); this.root.rotation.y = rotation; scene.add(this.root);
+        this.root.position.set(x, 0, z); setUprightFacing(this.root, rotation); scene.add(this.root);
         this.model = this.root; this.mood = mood;
         this.expressions = new SomangiExpressions(moaAssetUrl);
         this.ready = this.load();
@@ -44,7 +45,7 @@ export class MoaCharacter {
         this.conversationTarget = target;
         if (this.root.userData.seated) return;
         const yaw = conversationYaw(this.root, target);
-        if (yaw !== null) this.root.rotation.y = yaw;
+        if (yaw !== null) setUprightFacing(this.root, yaw);
     }
     update(dt) {
         this.mixer?.update(Math.min(Math.max(dt || 0, 0), .1));

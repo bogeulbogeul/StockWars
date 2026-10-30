@@ -17,6 +17,8 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
         }
         for (const line of lines) if (!legacy && line.text === '마을을 둘러보는 동안 이름은 생각해봤어요?')
             line.text = '안내소로 오는 동안 이름은 생각해봤어요?';
+        for (const line of lines) if (!legacy && n === 6 && line.text === '그럼요. 차곡에게 소개해 드릴게요.')
+            line.text = '그럼요. 저는 먼저 은행에 가서 기다릴게요. 안내소 문 앞에서 F키로 나와 은행으로 와주세요. 차곡에게 소개해 드릴게요.';
         for (const line of lines) if (n === 18 && line.text === '네. 저도 정리하고 들어가려고요.')
             line.text = '저는 안내소로 돌아가서 남은 일을 정리하려고요. 오늘은 푹 쉬어요.';
         // Later adopted information-reading quiz supersedes the old personality test.

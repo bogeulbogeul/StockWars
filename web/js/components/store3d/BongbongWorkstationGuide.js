@@ -1,3 +1,4 @@
+import { setUprightFacing, turnUprightFacing } from '../town3d/SomangiFacing.js';
 import { Vector3, Quaternion, MathUtils } from '../../../vendor/three/three.module.js';
 import { GROUND_PROJECTION as P } from '../../data/townModelBuildings.js';
 import { shopkeeperGreetingRoute } from './BongbongGreeting.js';
@@ -58,7 +59,7 @@ export async function introducePackingWorkstation(scene, bounds) {
             root.position.copy(root.parent.worldToLocal(new Vector3(point.x, 0, point.y / P)));
             if (d < length) {
                 const yaw = Math.atan2(ahead.x - point.x, (ahead.y - point.y) / P);
-                root.rotation.y += MathUtils.clamp(Math.atan2(Math.sin(yaw - root.rotation.y), Math.cos(yaw - root.rotation.y)), -5 * dt, 5 * dt);
+                turnUprightFacing(root, yaw, 5 * dt);
             }
             mixer.update(dt);
         }); action.stop();
@@ -68,7 +69,7 @@ export async function introducePackingWorkstation(scene, bounds) {
         await walk(route);
         action.stop(); if (cancelled || !scene.active) return false;
         const position = root.getWorldPosition(new Vector3());
-        root.rotation.y = Math.atan2((bounds.min.x + bounds.max.x) / 2 - position.x, bounds.min.z - position.z);
+        setUprightFacing(root, Math.atan2((bounds.min.x + bounds.max.x) / 2 - position.x, bounds.min.z - position.z));
         root.userData.workstationPhase = 'pointing';
         await motion(.8, t => { if (arm) arm.quaternion.copy(rest).multiply(turn.setFromAxisAngle(new Vector3(1, 0, 0), -.9 * Math.sin(Math.PI * t))); });
         if (cancelled || !scene.active) return false;
