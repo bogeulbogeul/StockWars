@@ -1,0 +1,110 @@
+[
+  {
+    "packaged": false,
+    "size": {
+      "width": 1440,
+      "height": 1000
+    },
+    "rootHidden": false,
+    "display": "block",
+    "animation": "first-phone-dim",
+    "opacity": "1",
+    "dim": "rgba(8, 16, 11, 0.74)",
+    "buttonClickable": true,
+    "bounds": {
+      "x": 1350,
+      "y": 870,
+      "width": 72,
+      "height": 112,
+      "top": 870,
+      "right": 1422,
+      "bottom": 982,
+      "left": 1350
+    },
+    "openClearsHighlight": true,
+    "closeCompletesOnce": true,
+    "cancelClearsHighlight": true,
+    "errors": []
+  },
+  {
+    "packaged": false,
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "rootHidden": false,
+    "display": "block",
+    "animation": "first-phone-dim",
+    "opacity": "1",
+    "dim": "rgba(8, 16, 11, 0.74)",
+    "buttonClickable": true,
+    "bounds": {
+      "x": 300,
+      "y": 714,
+      "width": 72,
+      "height": 112,
+      "top": 714,
+      "right": 372,
+      "bottom": 826,
+      "left": 300
+    },
+    "openClearsHighlight": true,
+    "closeCompletesOnce": true,
+    "cancelClearsHighlight": true,
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "size": {
+      "width": 1440,
+      "height": 1000
+    },
+    "rootHidden": false,
+    "display": "block",
+    "animation": "first-phone-dim",
+    "opacity": "1",
+    "dim": "rgba(8, 16, 11, 0.74)",
+    "buttonClickable": true,
+    "bounds": {
+      "x": 1350,
+      "y": 870,
+      "width": 72,
+      "height": 112,
+      "top": 870,
+      "right": 1422,
+      "bottom": 982,
+      "left": 1350
+    },
+    "openClearsHighlight": true,
+    "closeCompletesOnce": true,
+    "cancelClearsHighlight": true,
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "size": {
+      "width": 390,
+      "height": 844
+    },
+    "rootHidden": false,
+    "display": "block",
+    "animation": "first-phone-dim",
+    "opacity": "1",
+    "dim": "rgba(8, 16, 11, 0.74)",
+    "buttonClickable": true,
+    "bounds": {
+      "x": 300,
+      "y": 714,
+      "width": 72,
+      "height": 112,
+      "top": 714,
+      "right": 372,
+      "bottom": 826,
+      "left": 300
+    },
+    "openClearsHighlight": true,
+    "closeCompletesOnce": true,
+    "cancelClearsHighlight": true,
+    "errors": []
+  }
+]

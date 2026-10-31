@@ -1,0 +1,44 @@
+[
+  {
+    "packaged": false,
+    "lines": [
+      "언제까지 갚아야 해?",
+      "이번 첫날 체험에서는 상환 기한이나 이자를 적용하지 않습니다. 다만 빌린 5,000잎은 갚아야 할 대출 원금으로 기록돼요.",
+      "모르는 부분이 있으면 물어봐도 괜찮아요.",
+      "설명을 다 들으신 뒤 결정하세요. 천천히 기다리겠습니다.",
+      "응. 빌린 돈이라는 건 알겠어. 생활에 필요한 만큼 잘 나눠 쓸게. 신청할래.",
+      "그럼 대출 신청서를 드릴게요. 안내 내용을 확인하고 동의하시면 서명해 주세요."
+    ],
+    "questionAnsweredBeforeForm": true,
+    "consentBeforeForm": true,
+    "loanAutoSubmit": true,
+    "state": {
+      "bank": true,
+      "loan": true,
+      "cash": 5000,
+      "debt": 5000
+    },
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "lines": [
+      "언제까지 갚아야 해?",
+      "이번 첫날 체험에서는 상환 기한이나 이자를 적용하지 않습니다. 다만 빌린 5,000잎은 갚아야 할 대출 원금으로 기록돼요.",
+      "모르는 부분이 있으면 물어봐도 괜찮아요.",
+      "설명을 다 들으신 뒤 결정하세요. 천천히 기다리겠습니다.",
+      "응. 빌린 돈이라는 건 알겠어. 생활에 필요한 만큼 잘 나눠 쓸게. 신청할래.",
+      "그럼 대출 신청서를 드릴게요. 안내 내용을 확인하고 동의하시면 서명해 주세요."
+    ],
+    "questionAnsweredBeforeForm": true,
+    "consentBeforeForm": true,
+    "loanAutoSubmit": true,
+    "state": {
+      "bank": true,
+      "loan": true,
+      "cash": 5000,
+      "debt": 5000
+    },
+    "errors": []
+  }
+]

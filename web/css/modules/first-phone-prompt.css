@@ -1,0 +1,26 @@
+.exhibition-ui.first-phone-prompt::before {
+    content: ''; position: absolute; inset: 0; z-index: 1201;
+    background: rgb(8 16 11 / 74%); pointer-events: auto;
+    animation: first-phone-dim .45s ease-out both;
+}
+body .exhibition-ui .first-phone-prompt__guide { z-index: 1202; }
+.exhibition-ui.first-phone-prompt > .exhibition-phone.phone-launcher {
+    z-index: 1203; background: #fff9e8; outline: 3px solid #a4be7f;
+    outline-offset: 7px; box-shadow: 0 0 0 13px #f9f3d52b, 0 0 38px #e8f3b85e;
+    animation: first-phone-glow 1.3s ease-in-out infinite alternate;
+}
+.exhibition-ui.first-phone-prompt > .exhibition-phone::after {
+    content: '여기를 눌러주세요'; position: absolute; right: 0; bottom: calc(100% + 24px);
+    width: max-content; padding: 9px 13px; border-radius: 12px;
+    background: #fff9e8; color: #3d5140; font-size: 14px; line-height: 1.4;
+    pointer-events: none; box-shadow: 0 3px 16px #0003;
+}
+@keyframes first-phone-dim { from { opacity: 0; } to { opacity: 1; } }
+@keyframes first-phone-glow {
+    from { box-shadow: 0 0 0 13px #f9f3d52b, 0 0 30px #e8f3b84d; }
+    to { box-shadow: 0 0 0 17px #f9f3d540, 0 0 46px #e8f3b899; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .exhibition-ui.first-phone-prompt::before,
+    .exhibition-ui.first-phone-prompt > .exhibition-phone.phone-launcher { animation: none; }
+}

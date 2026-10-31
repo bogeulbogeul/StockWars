@@ -70,7 +70,7 @@ export class ExhibitionView {
     choices(choices) {
         const row = el('div', 'exhibition-choices');
         choices.forEach(([text, action]) => row.append(button(text, action)));
-        this.panel.append(row); row.querySelector('button')?.focus({ preventScroll: true });
+        this.panel.append(row);
     }
     line(beat, next) {
         this.clear(null, beat.speaker === '소망이' ? this.state.nickname || '???' : beat.speaker);

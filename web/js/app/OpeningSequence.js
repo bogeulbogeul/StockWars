@@ -17,7 +17,7 @@ export function playOpening(screen) {
         const cleanup = bindCinematicDialogue(frame, () => {
             if (index + 1 < sceneCount) play(++index);
             else finish();
-        }, { autoAdvanceMs: captions => sceneDurations[index] / Math.max(1, captions.length) });
+        }, { autoAdvanceMs: captions => sceneDurations[index] / Math.max(1, captions.length), advanceOnScreen: true });
         let finished = false;
         const finish = () => {
             if (finished) return;

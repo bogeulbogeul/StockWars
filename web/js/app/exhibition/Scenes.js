@@ -27,6 +27,7 @@ import { waitForDestination } from './DestinationWalk.js';
 import { leaveHomeWithMoa } from './HomeDeparture.js';
 import { travelFromInformationToBank } from './InformationBankTravel.js';
 import { fadeOutMoa } from './MoaFadeOut.js';
+import { bankTripBlocksNavigation } from './BankTripNavigation.js';
 
 const outside = id => {
     const b = TOWN_MODEL_BUILDINGS.find(item => item.id === id);
@@ -63,6 +64,9 @@ export class ExhibitionScenes {
         draw(); this.container = container;
     }
     async show(place, { preservePosition = false, tour = false } = {}) {
+        // A pending bank journey owns navigation until its entry finishes.
+        // Reentrant room callbacks must not open another room behind the walk.
+        if (bankTripBlocksNavigation(this, place)) return;
         if (place === this.place) return;
         const previousMoa = this.rooms.get(this.place)?.room?.userData.moa || this.townModelScene.sleepingAnna;
         if (previousMoa && !previousMoa.root.userData.sleeping) await previousMoa.setMood('calm', 'smile');
@@ -155,7 +159,14 @@ export class ExhibitionScenes {
             this.bankAwaitingTalk = place === 'bank';
         }
         };
-        if (target) await quickFade(finishEntry); else await finishEntry();
+        try {
+            if (target) await quickFade(finishEntry); else await finishEntry();
+        } finally {
+            if (place === 'bank') {
+                this.bankTripPending = false;
+                this.bankTripGuard?.dispose(); this.bankTripGuard = null;
+            }
+        }
         if (place === 'store') await this.rooms.get('store').greetingReady;
     }
     async prepareRoom(place) {

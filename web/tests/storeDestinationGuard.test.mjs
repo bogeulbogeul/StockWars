@@ -36,3 +36,9 @@ test('stock trip allows securities and recognizes every other building entrance'
         b.id === 'cipher_securities' ? undefined : b.id);
     }
 });
+
+test('bank trip allows only the bank and recognizes the information office and offset entrances',()=>{
+ for(const b of TOWN_MODEL_BUILDINGS)assert.equal(otherStoreTripEntrance({charPosX:b.x+(b.entranceOffsetX||0),charPosY:b.y+110},TOWN_MODEL_BUILDINGS,'node_finance')?.id,b.id==='node_finance'?undefined:b.id);
+});
+
+test('bank reminder covers the outer edge of the F entry approach',()=>{const b=TOWN_MODEL_BUILDINGS.find(b=>b.id==='settlement_information');assert.equal(otherStoreTripEntrance({charPosX:b.x,charPosY:b.y+160},TOWN_MODEL_BUILDINGS,'node_finance')?.id,b.id);});

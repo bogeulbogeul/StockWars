@@ -89,6 +89,12 @@ body .crayon-dialogue button:focus-visible {
     outline-offset: 3px !important;
     border-radius: 24px !important;
 }
+/* Story choices use the same neutral appearance without a selected highlight. */
+body .crayon-dialogue .exhibition-choices button:is(:hover, :focus-visible, [aria-pressed="true"]) {
+    background-image: var(--dialogue-idle) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 body .crayon-dialogue button:disabled { opacity: .45; cursor: default; }
 body .crayon-dialogue .vn-next-indicator {
     display: block;

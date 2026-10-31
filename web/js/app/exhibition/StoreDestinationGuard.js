@@ -4,7 +4,7 @@ import { createMoaWakeDialogue } from '../../components/dialogue/MoaWakeDialogue
 export function otherStoreTripEntrance(c, buildings = TOWN_MODEL_BUILDINGS, allowedBuilding = 'vivian_store') {
     return buildings.find(b => b.id !== allowedBuilding
         && Math.abs(c.charPosX - b.x - (b.entranceOffsetX || 0)) < 85
-        && c.charPosY >= b.y - 10 && c.charPosY < b.y + 145);
+        && c.charPosY >= b.y - 10 && c.charPosY < b.y + 170);
 }
 
 export function atStoreEntrance(c, buildings = TOWN_MODEL_BUILDINGS) {
@@ -28,6 +28,7 @@ export function createStoreDestinationGuard(scenes, { allowedBuilding = 'vivian_
             { speaker: 'somang', name: window.stockWarsExhibition?.state.nickname || '???', onNext: hide });
     };
     return {
+        remind() { show({ id: 'required-destination' }); },
         interact() {
             if (dialogue.isOpen) { hide(); return true; }
             const building = otherStoreTripEntrance(c, TOWN_MODEL_BUILDINGS, allowedBuilding);

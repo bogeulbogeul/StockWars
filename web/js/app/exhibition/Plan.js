@@ -4,7 +4,7 @@ import { TOUR_ORDER } from './TourOrder.js';
 import { VILLAGE_MAP_STEPS } from './VillageMapIntro.js';
 
 // Keep original dialogue; only implement its missing interactive connections here.
-export function buildPlan(chapters, order = 'packing', includeRetiredTour = false, walkingTour = false, shortDialogue = false, homePreview = false) {
+export function buildPlan(chapters, order = 'packing', includeRetiredTour = false, walkingTour = false, shortDialogue = false, homePreview = false, oldLoanFlow = false) {
     const legacy = includeRetiredTour || walkingTour;
     const plan = [];
     const action = (id, place, title, extra = {}) => plan.push({ kind: 'action', id, place, title, ...extra });
@@ -64,8 +64,17 @@ export function buildPlan(chapters, order = 'packing', includeRetiredTour = fals
     add(6, !legacy && homePreview ? 'home' : 'information');
     add(7, 'bank', undefined, '[진행] 계좌'); action('bank', 'bank', '생활 계좌 개설하기');
     add(7, 'bank', '[진행] 계좌', '[대출 조건 안내');
-    action('loan', 'bank', '정착 자금 확인하기');
+    if (oldLoanFlow) action('loan', 'bank', '정착 자금 확인하기');
+    else {
+        plan.push({ kind: 'line', chapter: 7, place: 'bank', speaker: '차곡',
+            text: '이번 첫날 체험에서는 상환 기한이나 이자를 적용하지 않습니다. 다만 빌린 5,000잎은 갚아야 할 대출 원금으로 기록돼요.' });
+    }
     add(7, 'bank', '[대출 조건 안내', '[진행] 대출 조건 확인');
+    if (!oldLoanFlow) {
+        plan.push({ kind: 'line', chapter: 7, place: 'bank', speaker: '소망이', text: '응. 빌린 돈이라는 건 알겠어. 생활에 필요한 만큼 잘 나눠 쓸게. 신청할래.' });
+        plan.push({ kind: 'line', chapter: 7, place: 'bank', speaker: '차곡', text: '그럼 대출 신청서를 드릴게요. 안내 내용을 확인하고 동의하시면 서명해 주세요.' });
+        action('loan', 'bank', '정착 자금 확인하기');
+    }
     add(7, 'bank', '[진행] 대출 조건 확인'); add(8, 'bankOutside', undefined, legacy ? undefined : '모아: “한꺼번에');
     if (legacy) add(9, 'home', undefined, '[선택지]');
     else plan.push({ kind: 'line', speaker: '모아', text: homePreview ? '집도 둘러보고 생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?' : '생활에 필요한 준비도 마쳤네요. 이제 어떤 것부터 해볼까요?', place: 'bankOutside' });
@@ -143,9 +152,9 @@ export function migrateClothingTour(state, chapters) {
 }
 
 export function migrateTourDialogue(state, chapters) {
-    if (state.tourDialogueVersion === 4) return;
-    if (state.tourDialogueVersion === 3) {
-        const old = buildPlan(chapters, state.order, false, false, false, true), current = buildPlan(chapters, state.order);
+    if (state.tourDialogueVersion === 5) return;
+    if ([3, 4].includes(state.tourDialogueVersion)) {
+        const old = buildPlan(chapters, state.order, false, false, false, state.tourDialogueVersion === 3, true), current = buildPlan(chapters, state.order);
         let index = -1;
         for (let i = state.cursor; i < old.length; i++) {
             const beat = old[i], previous = old.slice(0, i).findLast(b => b.kind === 'action');
@@ -157,10 +166,10 @@ export function migrateTourDialogue(state, chapters) {
             if (index >= 0) break;
         }
         state.cursor = index >= 0 ? index : current.length;
-        state.tourDialogueVersion = 4; return;
+        state.tourDialogueVersion = 5; return;
     }
     if (state.tourDialogueVersion === 2) {
-        const old = buildPlan(chapters, state.order, false, false, true, true), current = buildPlan(chapters, state.order);
+        const old = buildPlan(chapters, state.order, false, false, true, true, true), current = buildPlan(chapters, state.order);
         const beat = old[state.cursor];
         const previous = old.slice(0, state.cursor).findLast(b => b.kind === 'action');
         const start = previous ? current.findIndex(b => b.id === previous.id) + 1 : 0;
@@ -170,7 +179,7 @@ export function migrateTourDialogue(state, chapters) {
             : current.findIndex((b, i) => i >= start && i < end && b.text === beat?.text && b.place === beat?.place);
         if (index < 0) index = current.findIndex((b, i) => i >= start && i < end && b.place === beat?.place && b.chapter === beat?.chapter && b.speaker === beat?.speaker);
         state.cursor = index >= 0 ? index : Math.min(start, current.length);
-        state.tourDialogueVersion = 4; return;
+        state.tourDialogueVersion = 5; return;
     }
     const old = buildPlan(chapters, state.order, false, true), current = buildPlan(chapters, state.order);
     const walk = old.findIndex(beat => beat.id === 'walk');
@@ -185,6 +194,6 @@ export function migrateTourDialogue(state, chapters) {
     else index = current.findIndex(b => beat?.kind === 'action' ? b.id === beat.id
         : b.chapter === beat?.chapter && b.speaker === beat?.speaker && b.text === beat?.text);
     if (index < 0) index = state.flags.nickname ? current.findIndex(b => b.mapIntro) : current.findIndex(b => b.id === 'walk');
-    state.cursor = index; state.tourDialogueVersion = 4;
+    state.cursor = index; state.tourDialogueVersion = 5;
 }
 

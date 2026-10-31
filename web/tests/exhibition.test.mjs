@@ -193,23 +193,46 @@ test('restored original dialogue sends Moa ahead while keeping the current short
 });
 test('short-dialogue action cursors migrate to the same restored action without changing rewards', () => {
  for(const order of ['packing','stock']){
-  const old=buildPlan(chapters,order,false,false,true,true),current=buildPlan(chapters,order);
+  const old=buildPlan(chapters,order,false,false,true,true,true),current=buildPlan(chapters,order);
   for(let i=0;i<old.length;i++)if(old[i].kind==='action'){
    const s={...freshState(),order,cursor:i,tourDialogueVersion:2,cash:6200,debt:5000};migrateTourDialogue(s,chapters);
-   assert.equal(current[s.cursor].id,old[i].id);assert.equal(s.cash,6200);assert.equal(s.debt,5000);assert.equal(s.tourDialogueVersion,4);
+   assert.equal(current[s.cursor].id,old[i].id);assert.equal(s.cash,6200);assert.equal(s.debt,5000);assert.equal(s.tourDialogueVersion,5);
   }
  }
 });
 
 test('home preview saves resume at bank preparation and retain later action positions', () => {
  for(const order of ['packing','stock']) {
-  const old=buildPlan(chapters,order,false,false,false,true), current=buildPlan(chapters,order);
+  const old=buildPlan(chapters,order,false,false,false,true,true), current=buildPlan(chapters,order);
   for(let i=0;i<old.length;i++) if(old[i].kind==='action'||old[i].chapter===9&&old[i].place==='home') {
    const state={...freshState(),order,cursor:i,tourDialogueVersion:3,cash:6200,debt:5000};
    migrateTourDialogue(state,chapters);
    if(old[i].kind==='action') assert.equal(current[state.cursor].id,old[i].id);
    else {assert.equal(current[state.cursor].chapter,6); assert.equal(current[state.cursor].place,'information');}
-   assert.equal(state.cash,6200);assert.equal(state.debt,5000);assert.equal(state.tourDialogueVersion,4);
+   assert.equal(state.cash,6200);assert.equal(state.debt,5000);assert.equal(state.tourDialogueVersion,5);
   }
+ }
+});
+
+test('loan question is answered and player agrees before the application appears',()=>{
+ for(const order of ['packing','stock']){
+  const p=buildPlan(chapters,order), question=p.findIndex(b=>b.text==='언제까지 갚아야 해?'),loan=p.findIndex(b=>b.id==='loan');
+  const between=p.slice(question+1,loan);
+  assert(between.some(b=>b.speaker==='차곡'&&b.text.includes('상환 기한이나 이자를 적용하지 않습니다')));
+  assert(between.some(b=>b.text.includes('대출 원금으로 기록')));
+  assert(between.some(b=>b.speaker==='소망이'&&b.text.includes('신청할래')));
+  assert(between.at(-1).text.includes('대출 신청서를 드릴게요'));
+  assert(p[loan+1].text.includes('계좌에 넣어드렸습니다'));
+ }
+});
+test('previous bank flow saves preserve actions, payout and cash under reordered loan dialogue',()=>{
+ for(const order of ['packing','stock']){
+  const old=buildPlan(chapters,order,false,false,false,false,true), current=buildPlan(chapters,order);
+  for(let i=0;i<old.length;i++)if(old[i].kind==='action'){
+   const s={...freshState(),order,cursor:i,tourDialogueVersion:4,cash:6200,debt:5000};migrateTourDialogue(s,chapters);
+   assert.equal(current[s.cursor].id,old[i].id);assert.equal(s.cash,6200);assert.equal(s.debt,5000);assert.equal(s.tourDialogueVersion,5);
+  }
+  const i=old.findIndex(b=>b.id==='loan')+1,s={...freshState(),order,cursor:i,tourDialogueVersion:4,flags:{bank:true,loan:true},cash:5000,debt:5000};
+  migrateTourDialogue(s,chapters);assert(current[s.cursor].text.includes('계좌에 넣어드렸습니다'));assert.equal(s.cash,5000);assert.equal(s.debt,5000);
  }
 });

@@ -1,4 +1,5 @@
 @import './first-day-finale.css';
+@import './first-phone-prompt.css';
 .exhibition-mode { background: #dbe5d2; }
 .exhibition-world { position: fixed; inset: 0; overflow: hidden; }
 .exhibition-mode .town-model-layer { position: absolute; inset: 0; }

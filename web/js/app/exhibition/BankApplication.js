@@ -1,8 +1,11 @@
 import { waitForCaption } from './AnimationDialogue.js';
 import { el } from './View.js';
+import { clearDialogueTheme } from '../../components/dialogue/dialogueTheme.js';
 
 export function mountBankApplication(panel, { name = '', onSubmit, loanAmount = null }) {
     const isLoan = loanAmount !== null;
+    clearDialogueTheme(panel);
+    panel.classList.remove('dialogue-has-next');
     panel.classList.add('residence-panel', 'bank-application-panel');
     panel.replaceChildren();
     const form = el('form', 'residence-form bank-application');
@@ -71,7 +74,7 @@ export function mountBankApplication(panel, { name = '', onSubmit, loanAmount = 
         form.querySelector('.bank-application-status').textContent = '이름을 서명하고 차곡이에게 신청서를 건넸어요.';
         signature.scrollIntoView({ block: 'nearest', behavior: 'instant' });
         const status = form.querySelector('.bank-application-status');
-        await waitForCaption(status);
+        await waitForCaption(status, { autoAdvanceMs: 1200 });
         if (!panel.contains(form)) return;
         onSubmit();
         // Restore the form if saving failed and the controller kept this step open.

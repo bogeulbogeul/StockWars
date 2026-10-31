@@ -8,6 +8,8 @@ export async function fadeOutMoa(root) {
         const original = mesh.material;
         const materials = (Array.isArray(original) ? original : [original]).map(material => {
             const copy = material.clone();
+            copy.onBeforeCompile = material.onBeforeCompile;
+            copy.customProgramCacheKey = material.customProgramCacheKey;
             copy.transparent = true;
             copy.depthWrite = false;
             return { copy, opacity: material.opacity };

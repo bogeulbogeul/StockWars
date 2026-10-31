@@ -76,3 +76,11 @@ test('counter body, top and attached decoration hide together without floating p
     occlusion.reset();
     assert.equal(body.visible,true); assert.equal(top.visible,true); assert.equal(ornament.visible,false);
 });
+
+test('reception desk stays when covering only legs but still hides when covering the face',()=>{
+ const f=fixture();f.front.visible=false;
+ const desk=new Group();desk.name='cipher-cozy-desk';desk.userData.dialogueOcclusionMinHeight=80;f.room.add(desk);
+ const body=new Mesh(new BoxGeometry(150,70,20),f.front.material);body.position.set(0,35,100);desk.add(body);
+ const occlusion=createIndoorOcclusion(f.room);occlusion.update(f.camera,[f.actor],{speaking:true});assert.equal(body.visible,true);occlusion.reset();
+ body.position.y=90;const raised=createIndoorOcclusion(f.room);raised.update(f.camera,[f.actor],{speaking:true});assert.equal(body.visible,false);raised.reset();assert.equal(body.visible,true);
+});

@@ -19,7 +19,7 @@ export async function waitForDestination(scenes, destination, title, { guidanceT
     const guard = scenes.plazaReturnPending ? createMoaDestinationGuard(scenes)
         : title === '증권사' ? createStockDestinationGuard(scenes)
         : title === '안내소' ? createStoreDestinationGuard(scenes, { allowedBuilding: 'settlement_information', text: '우선 안내소로 가보자.' })
-        : title === '은행' ? createStoreDestinationGuard(scenes, { allowedBuilding: 'node_finance', text: '우선 은행으로 가보자.' })
+        : title === '은행' ? scenes.bankTripGuard || createStoreDestinationGuard(scenes, { allowedBuilding: 'node_finance', text: '우선 은행에 가보자.' })
         : ['잡화점', '게시판'].includes(title) ? createStoreDestinationGuard(scenes) : null;
     const buildingId = ({ '잡화점': 'vivian_store', '증권사': 'cipher_securities', '집': 'home_office_tower',
         '은행': 'node_finance', '안내소': 'settlement_information' })[title];
@@ -44,5 +44,5 @@ export async function waitForDestination(scenes, destination, title, { guidanceT
                 resolve();
             }
             else again();
-    }); } finally { controls.dispose(); guard?.dispose(); guide.remove(); scenes.tourActive = false; }
+    }); } finally { controls.dispose(); if (guard !== scenes.bankTripGuard) guard?.dispose(); guide.remove(); scenes.tourActive = false; }
 }

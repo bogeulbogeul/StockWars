@@ -1,5 +1,5 @@
 // Optional timed playback; caption input always advances immediately.
-export function bindCinematicDialogue(frame, onComplete, { autoAdvanceMs = 0 } = {}) {
+export function bindCinematicDialogue(frame, onComplete, { autoAdvanceMs = 0, advanceOnScreen = false } = {}) {
     let clear = () => {};
     const load = () => {
         clear();
@@ -27,12 +27,18 @@ export function bindCinematicDialogue(frame, onComplete, { autoAdvanceMs = 0 } =
             if (index + 1 < captions.length) { index++; render(); arm(); if (event) captions[index].focus({ preventScroll: true }); }
             else { completed = true; clear(); onComplete(); }
         };
+        const screenClick = event => {
+            if (event.target.closest?.('button,a,input,textarea,select')) return;
+            advance(event);
+        };
         for (const caption of captions) {
-            caption.addEventListener('click', advance);
+            if (!advanceOnScreen) caption.addEventListener('click', advance);
             caption.addEventListener('keydown', advance);
         }
+        if (advanceOnScreen) doc.addEventListener('click', screenClick);
         clear = () => {
             completed = true; clearTimeout(timer);
+            doc.removeEventListener('click', screenClick);
             captions.forEach(caption => {
                 caption.removeEventListener('click', advance); caption.removeEventListener('keydown', advance);
             });

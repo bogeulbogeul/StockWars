@@ -1,0 +1,32 @@
+[
+  {
+    "packaged": false,
+    "residenceAutoSubmit": true,
+    "bankAutoSubmit": true,
+    "loanAutoSubmit": true,
+    "loanConfirmationRequired": true,
+    "duplicateSubmitSafe": true,
+    "state": {
+      "bank": true,
+      "loan": true,
+      "cash": 5000,
+      "debt": 5000
+    },
+    "errors": []
+  },
+  {
+    "packaged": true,
+    "residenceAutoSubmit": true,
+    "bankAutoSubmit": true,
+    "loanAutoSubmit": true,
+    "loanConfirmationRequired": true,
+    "duplicateSubmitSafe": true,
+    "state": {
+      "bank": true,
+      "loan": true,
+      "cash": 5000,
+      "debt": 5000
+    },
+    "errors": []
+  }
+]

@@ -11,12 +11,16 @@ export function playBusArrival(screen) {
         const stage = screen.querySelector('.bus-arrival__stage');
         const caption = screen.querySelector('.bus-arrival__caption');
         const skip = screen.querySelector('button');
+        const previousCursor = screen.style.cursor;
         let view, audio, frame, autoTimer, finished = false, elapsed = 0, previous, departedAt, phase = 0, ready = false;
         const finish = () => {
             if (finished) return;
             finished = true;
             clearTimeout(loadTimeout);
             clearTimeout(autoTimer);
+            screen.removeEventListener('click', screenClick);
+            caption.removeEventListener('keydown', advance);
+            screen.style.cursor = previousCursor;
             cancelAnimationFrame(frame);
             audio?.dispose();
             view?.dispose();
@@ -33,7 +37,12 @@ export function playBusArrival(screen) {
             arm();
         };
         const arm = () => { clearTimeout(autoTimer); autoTimer = setTimeout(() => advance(), [5000, 3000, 8000][phase]); };
-        caption.addEventListener('click', advance); caption.addEventListener('keydown', advance);
+        const screenClick = event => {
+            if (event.target.closest?.('button,a,input,textarea,select')) return;
+            advance(event);
+        };
+        screen.style.cursor = 'pointer';
+        screen.addEventListener('click', screenClick); caption.addEventListener('keydown', advance);
         const loadTimeout = setTimeout(finish, 15000);
         skip.addEventListener('click', finish, { once: true });
         skip.focus({ preventScroll: true });

@@ -130,6 +130,7 @@ export class TownModelScene {
         this.sleepingAnna = await addSleepingAnna(this.scene, this.scene.getObjectByName('village_bus_stop'));
         this.characterBodies = createCharacterBodies(this.scene);
         this.landscape.wrap(this.player.root);
+        this.landscape.wrap(this.sleepingAnna.root);
         installModelPreviewCollision(this.town.playerController, this.collisionFootprints);
         const controller = this.town.playerController;
         const sceneryCanStand = controller.canStand;

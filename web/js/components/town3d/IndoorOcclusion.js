@@ -38,6 +38,7 @@ export function createIndoorOcclusion(room) {
         else if (!/(floor|ground|carpet|rug|shadow)/i.test(mesh.name)) {
             props.push(entry);
             const key = furnitureKey(mesh, room);
+            entry.minHeight = typeof key === 'object' ? key.userData.dialogueOcclusionMinHeight || 0 : 0;
             if (!furniture.has(key)) furniture.set(key, []);
             furniture.get(key).push(mesh); membership.set(mesh, key);
         }
@@ -70,7 +71,8 @@ export function createIndoorOcclusion(room) {
                     root.getWorldPosition(target); target.y += height; target.addScaledVector(right, offset);
                     direction.subVectors(target, camera.position); ray.far = direction.length() - 18;
                     ray.set(camera.position, direction.normalize());
-                    for (const { mesh, bounds } of candidates) {
+                    for (const { mesh, bounds, minHeight = 0 } of candidates) {
+                        if (height < minHeight) continue;
                         if (!mesh.visible || blocked.has(mesh) || !ray.ray.intersectsBox(bounds)) continue;
                         let excluded = false;
                         for (let node = mesh; node; node = node.parent) {
